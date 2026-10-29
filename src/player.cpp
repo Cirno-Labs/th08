@@ -1123,3 +1123,27 @@ PlayerBombHitbox *Player::AddHitAreaCircle(D3DXVECTOR3 *pos, float radius, float
     area->itemType = itemType;
     return area;
 }
+
+PlayerBombHitbox *Player::AddBombHitbox(D3DXVECTOR3 *pos, float width, float height, int damage, int framesLeft)
+{
+    PlayerBombHitbox *area;
+    int j;
+
+    area = this->bombHitboxes;
+    for (j = 0; j < 0xbf; j++, area++)
+    {
+        if (!area->active)
+        {
+            break;
+        }
+    }
+    area->Reset();
+    area->active = 1;
+    area->x = pos->x;
+    area->y = pos->y;
+    area->width = width;
+    area->height = height;
+    area->framesLeft = framesLeft;
+    area->damage = damage;
+    return area;
+}
