@@ -94,3 +94,12 @@ int EffectUpdateBombRing41(Effect *effect)
     effect->angle = 0.0f;
     return 1;
 }
+
+int EffectUpdateBombRing46(Effect *effect)
+{
+    effect->radius += 8.0f;
+    effect->verticesDirty = 1;
+    effect->segmentCount = 0xc;
+    effect->ringWidth = 32.0f;
+    return 1;
+}

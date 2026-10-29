@@ -180,7 +180,7 @@ address,size,name,symbol
 0x004103f0,1655,Func4103f0,
 0x00410a70,67,D3DXVECTOR3::operator+=,??YD3DXVECTOR3@@QAEAAU0@ABU0@@Z
 0x00410ac0,225,Func410ac0,
-0x00410bb0,76,Func410bb0,
+0x00410bb0,76,EffectUpdateBombRing46,?EffectUpdateBombRing46@@YIHPAUEffect@@@Z
 0x00410c00,57,Func410c00,
 0x00410c40,922,Func410c40,
 0x00410fe0,959,Func410fe0,
