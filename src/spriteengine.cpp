@@ -655,3 +655,23 @@ fail:
     g_MemoryManager.Free(data);
     return -1;
 }
+
+int SpriteEngine::PreloadSurface(int surface, char *path)
+{
+    void *data;
+    int size;
+
+    if (this->surfaces[surface] != NULL)
+    {
+        this->ReleaseSurface(surface);
+    }
+    data = LoadFileData(path, &size, 0);
+    if (data == NULL)
+    {
+        LogError(&g_Log, "%sが読み込めないです。\r\n", path);
+        return -1;
+    }
+    this->surfaceFiles[surface] = data;
+    this->surfaceFileSizes[surface] = size;
+    return 0;
+}

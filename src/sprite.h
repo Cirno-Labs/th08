@@ -294,6 +294,9 @@ public:
     void FlushQuadBatch();
     // Loads the image at `path` as surface `surface` (0x4667c0).
     int LoadSurface(int surface, char *path);
+    // Reads the image file at `path` for LoadSurface to load surface
+    // `surface` from later. Returns 0, or -1 on failure. New in th08.
+    int PreloadSurface(int surface, char *path);
     // Loads the ANM file at `path` into slot `slot` (0x465800). Returns
     // it, or NULL on failure.
     AnmLoaded *LoadAnm(int slot, char *path);

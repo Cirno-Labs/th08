@@ -995,7 +995,7 @@ address,size,name,symbol
 0x004664a0,432,SpriteEngine::RenderTextRightAligned,?RenderTextRightAligned@SpriteEngine@@QAAXPAVSprite@@KKPADZZ
 0x00466650,366,SpriteEngine::RenderTextCentered,?RenderTextCentered@SpriteEngine@@QAAXPAVSprite@@KKPADZZ
 0x004667c0,670,SpriteEngine::LoadSurface,?LoadSurface@SpriteEngine@@QAEHHPAD@Z
-0x00466a60,126,Func466a60,
+0x00466a60,126,SpriteEngine::PreloadSurface,?PreloadSurface@SpriteEngine@@QAEHHPAD@Z
 0x00466ae0,200,SpriteEngine::ReleaseSurface,?ReleaseSurface@SpriteEngine@@QAEXH@Z
 0x00466bb0,445,SpriteEngine::CopySurfaceToBackBuffer,?CopySurfaceToBackBuffer@SpriteEngine@@QAEXHHHHH@Z
 0x00466d70,424,Func466d70,
