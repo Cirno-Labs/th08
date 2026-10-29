@@ -457,3 +457,64 @@ int BurstHitEffect(Player *player, PlayerBullet *bullet, D3DXVECTOR3 *pos)
     }
     return 0;
 }
+
+void FireShots(Player *player, int frame)
+{
+    ShotData *shot;
+    int ret;
+    PlayerBullet *curBullet;
+    ShotTable *shotTable;
+    int i;
+
+    shotTable = player->focused == 0 ? player->shotType->tables : player->shotTypeFocused->tables;
+    if (player->bomb.running &&
+        ((g_GameManager.character == 2 && (player->bomb.type & 1)) || g_GameManager.character == 9) &&
+        player->bomb.timer >= 60)
+    {
+        // These bombs fire the shot type's seventh or eighth table.
+        shotTable += (player->bomb.type & 2) ? 7 : 6;
+    }
+    else
+    {
+        while (g_GameManager.GetPower() >= shotTable->maxPower)
+        {
+            shotTable++;
+        }
+    }
+    shot = shotTable->shots;
+    curBullet = player->bullets;
+    for (i = 0; i < 0x80; i++, curBullet++)
+    {
+        if (curBullet->state != 0)
+        {
+            continue;
+        }
+    again:
+        if (shot->fire != NULL)
+        {
+            ret = shot->fire(player, curBullet, frame, shot);
+        }
+        else
+        {
+            ret = TryFireShot(player, curBullet, frame, shot);
+        }
+        if (ret == 1)
+        {
+            curBullet->sprite.flags |= 0x2000;
+            curBullet->state = 1;
+            curBullet->shot = shot;
+            curBullet->update = curBullet->shot->update;
+            curBullet->draw = curBullet->shot->draw;
+            curBullet->hit = curBullet->shot->hit;
+        }
+        shot++;
+        if (shot->interval < 0)
+        {
+            return;
+        }
+        if (ret == 0)
+        {
+            goto again;
+        }
+    }
+}

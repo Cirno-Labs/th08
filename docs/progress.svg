@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">71.77% (801)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">26.25% (293)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">71.86% (802)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">26.16% (292)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="536.15" height="6" x="0" y="0" class="named"/>
-<rect width="14.73" height="6" x="536.15" y="0" class="decompiled"/>
-<rect width="196.12" height="6" x="550.88" y="0" class="todo"/>
+<rect width="536.82" height="6" x="0" y="0" class="named"/>
+<rect width="14.73" height="6" x="536.82" y="0" class="decompiled"/>
+<rect width="195.45" height="6" x="551.55" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -883,7 +883,7 @@
 <rect width="12" height="12" x="180" y="240" class="named"><title>0x00450ad0 DrawTrailLaserBullet (372 bytes)</title></rect>
 <rect width="12" height="12" x="195" y="240" class="named"><title>0x00450c50 UpdateBombShot (611 bytes)</title></rect>
 <rect width="12" height="12" x="210" y="240" class="named"><title>0x00450ee0 BurstHitEffect (128 bytes)</title></rect>
-<rect width="12" height="12" x="225" y="240" class="todo"><title>0x00450f60 Func450f60 (487 bytes)</title></rect>
+<rect width="12" height="12" x="225" y="240" class="named"><title>0x00450f60 FireShots (487 bytes)</title></rect>
 <rect width="12" height="12" x="240" y="240" class="todo"><title>0x00451150 UpdateBullets (404 bytes)</title></rect>
 <rect width="12" height="12" x="255" y="240" class="todo"><title>0x004512f0 DrawBullets (268 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="240" class="todo"><title>0x00451400 DrawHitBullets (241 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">63.42%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">35.57%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">63.52%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">35.46%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="473.73" height="6" x="0" y="0" class="named"/>
-<rect width="7.57" height="6" x="473.73" y="0" class="decompiled"/>
-<rect width="265.70" height="6" x="481.30" y="0" class="todo"/>
+<rect width="474.52" height="6" x="0" y="0" class="named"/>
+<rect width="7.57" height="6" x="474.52" y="0" class="decompiled"/>
+<rect width="264.91" height="6" x="482.09" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1417,7 +1417,7 @@
 <rect width="13.92" height="13.80" x="539.30" y="83.32" class="named"><title>0x00427f00 EffectManager::OnDraw (501 bytes)</title></rect>
 <rect width="13.69" height="13.80" x="556.23" y="83.32" class="todo"><title>0x004244f0 Func4244f0 (494 bytes)</title></rect>
 <rect width="13.65" height="13.80" x="572.92" y="83.32" class="named"><title>0x0047087f MainMenu::OnDraw (493 bytes)</title></rect>
-<rect width="13.45" height="13.80" x="589.57" y="83.32" class="todo"><title>0x00450f60 Func450f60 (487 bytes)</title></rect>
+<rect width="13.45" height="13.80" x="589.57" y="83.32" class="named"><title>0x00450f60 FireShots (487 bytes)</title></rect>
 <rect width="13.35" height="13.80" x="606.02" y="83.32" class="named"><title>0x004723b0 CSound::FillBufferWithSound (484 bytes)</title></rect>
 <rect width="13.28" height="13.80" x="622.37" y="83.32" class="named"><title>0x00441e70 GameWindow::RunFrame (482 bytes)</title></rect>
 <rect width="13.08" height="13.80" x="638.66" y="83.32" class="named"><title>0x004655e0 SpriteEngine::CreateTextureFromImage (476 bytes)</title></rect>

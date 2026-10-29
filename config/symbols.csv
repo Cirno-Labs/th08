@@ -814,7 +814,7 @@ address,size,name,symbol
 0x00450ad0,372,DrawTrailLaserBullet,?DrawTrailLaserBullet@@YIHPAVPlayer@@PAUPlayerBullet@@@Z
 0x00450c50,611,UpdateBombShot,?UpdateBombShot@@YIHPAVPlayer@@PAUPlayerBullet@@PAUD3DXVECTOR3@@@Z
 0x00450ee0,128,BurstHitEffect,?BurstHitEffect@@YIHPAVPlayer@@PAUPlayerBullet@@PAUD3DXVECTOR3@@@Z
-0x00450f60,487,Func450f60,
+0x00450f60,487,FireShots,?FireShots@@YIXPAVPlayer@@H@Z
 0x00451150,404,UpdateBullets,?UpdateBullets@@YIXPAVPlayer@@@Z
 0x004512f0,268,DrawBullets,?DrawBullets@@YIXPAVPlayer@@@Z
 0x00451400,241,DrawHitBullets,?DrawHitBullets@@YIXPAVPlayer@@@Z
