@@ -1435,6 +1435,27 @@ void UpdateSakuyaLastWord(Player *player)
     }
 }
 
+void DrawSakuyaLastWord(Player *player)
+{
+    PlayerBombPart *blade;
+    int i;
+
+    DimPlayAreaForBomb(player, 0x80202080);
+    for (blade = player->bomb.parts, i = 0; i < 0x60; i++, blade++)
+    {
+        if (blade->state == 0)
+        {
+            continue;
+        }
+        blade->sprites[0].SetRotationZ(blade->angle);
+        blade->sprites[0].pos = blade->pos;
+        blade->sprites[0].pos.x += g_GameManager.arena[0];
+        blade->sprites[0].pos.y += g_GameManager.arena[1];
+        blade->sprites[0].pos.z = 0.0f;
+        g_SpriteEngine->Draw(&blade->sprites[0]);
+    }
+}
+
 int EffectUpdateBombRing46(Effect *effect)
 {
     effect->radius += 8.0f;
