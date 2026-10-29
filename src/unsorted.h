@@ -383,3 +383,12 @@ ASSERT_SIZE(GdiSurface, 0x24);
 // The formats GdiSurface supports: X8R8G8B8, A8R8G8B8, X1R5G5B5, R5G6B5,
 // A1R5G5B5 and A4R4G4B4.
 extern FormatInfo g_FormatInfos[];
+
+// The 1024 by 64 surface text is drawn on with GDI before it is copied
+// into a texture (640 by 64 in th06).
+extern IDirect3DSurface8 *g_TextSurface;
+
+// Creates g_TextSurface.
+void CreateTextSurface();
+// Releases g_TextSurface, if there is one.
+void ReleaseTextSurface();

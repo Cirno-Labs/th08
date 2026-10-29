@@ -607,7 +607,7 @@ address,size,name,symbol
 0x0043f873,14,GdiSurface::GetFormat,?GetFormat@GdiSurface@@QAEHXZ
 0x0043f881,23,GdiSurface::IsCreated,?IsCreated@GdiSurface@@QAE_NXZ
 0x0043f898,232,GdiSurface::CopyToSurface,?CopyToSurface@GdiSurface@@QAE_NPAUIDirect3DSurface8@@@Z
-0x0043f980,35,Func43f980,
+0x0043f980,35,CreateTextSurface,?CreateTextSurface@@YIXXZ
 0x0043f9a3,37,Func43f9a3,
 0x0043f9c8,801,Func43f9c8,
 0x0043fce9,793,Func43fce9,
@@ -2391,6 +2391,7 @@ address,size,name,symbol
 0x0164f588,,g_Archive,?g_Archive@@3VDatArchive@@A
 0x0164f598,,g_MemoryManager,?g_MemoryManager@@3VMemoryManager@@A
 0x016535a0,,g_PadButtons,?g_PadButtons@@3PAEA
+0x01653620,,g_TextSurface,?g_TextSurface@@3PAUIDirect3DSurface8@@A
 0x017ce6fc,,g_AppMutex,?g_AppMutex@@3PAXA
 0x017ce700,,g_GameWindow,?g_GameWindow@@3UGameWindow@@A
 0x017ce744,,g_Unknown17ce744,?g_Unknown17ce744@@3T_LARGE_INTEGER@@A
