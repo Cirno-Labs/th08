@@ -510,7 +510,7 @@ address,size,name,symbol
 0x004390ee,1482,Gui::LoadResources,?LoadResources@Gui@@QAEHXZ
 0x004396b8,64,Gui::HideInterface,?HideInterface@Gui@@QAEXXZ
 0x004396f8,24,Sprite::IsStopped,?IsStopped@Sprite@@QAEKXZ
-0x00439710,197,Func439710,
+0x00439710,197,Gui::LoadMsg,?LoadMsg@Gui@@QAEHPAD@Z
 0x004397d5,59,Gui::FreeMsgFile,?FreeMsgFile@Gui@@QAEXXZ
 0x00439810,25,Func439810,
 0x00439829,45,GameManager::HasClearedStage,?HasClearedStage@GameManager@@QAEHHHH@Z
