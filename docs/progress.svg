@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">39.87% (445)</tspan> · <tspan class="decompiled">0.27% (3)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">59.86% (668)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">39.96% (446)</tspan> · <tspan class="decompiled">0.27% (3)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">59.77% (667)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="297.86" height="6" x="0" y="0" class="named"/>
-<rect width="2.01" height="6" x="297.86" y="0" class="decompiled"/>
-<rect width="447.13" height="6" x="299.87" y="0" class="todo"/>
+<rect width="298.53" height="6" x="0" y="0" class="named"/>
+<rect width="2.01" height="6" x="298.53" y="0" class="decompiled"/>
+<rect width="446.46" height="6" x="300.54" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -591,8 +591,8 @@
 <rect width="12" height="12" x="300" y="150" class="todo"><title>0x00439916 Func439916 (75 bytes)</title></rect>
 <rect width="12" height="12" x="315" y="150" class="todo"><title>0x00439961 Func439961 (75 bytes)</title></rect>
 <rect width="12" height="12" x="330" y="150" class="named"><title>0x004399ac GameManager::IsInPlayArea (130 bytes)</title></rect>
-<rect width="12" height="12" x="345" y="150" class="todo"><title>0x00439a2e Func439a2e (151 bytes)</title></rect>
-<rect width="12" height="12" x="360" y="150" class="todo"><title>0x00439ac5 Func439ac5 (100 bytes)</title></rect>
+<rect width="12" height="12" x="345" y="150" class="named"><title>0x00439a2e GameManager::ComputeChecksum (151 bytes)</title></rect>
+<rect width="12" height="12" x="360" y="150" class="todo"><title>0x00439ac5 ChecksumBytes (100 bytes)</title></rect>
 <rect width="12" height="12" x="375" y="150" class="named"><title>0x00439b29 GameManager::AddLifeOrBomb (158 bytes)</title></rect>
 <rect width="12" height="12" x="390" y="150" class="todo"><title>0x00439bc7 GameManager::OnUpdate (3644 bytes)</title></rect>
 <rect width="12" height="12" x="405" y="150" class="named"><title>0x0043aa03 GameManager::OnDraw (89 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">31.94%</tspan> · <tspan class="decompiled">0.11%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">67.94%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">31.98%</tspan> · <tspan class="decompiled">0.11%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">67.91%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="238.61" height="6" x="0" y="0" class="named"/>
-<rect width="0.86" height="6" x="238.61" y="0" class="decompiled"/>
-<rect width="507.53" height="6" x="239.47" y="0" class="todo"/>
+<rect width="238.85" height="6" x="0" y="0" class="named"/>
+<rect width="0.86" height="6" x="238.85" y="0" class="decompiled"/>
+<rect width="507.29" height="6" x="239.71" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1709,7 +1709,7 @@
 <rect width="6.31" height="6.26" x="685.55" y="198.78" class="todo"><title>0x0040b910 Func40b910 (152 bytes)</title></rect>
 <rect width="6.31" height="6.26" x="694.86" y="198.78" class="todo"><title>0x004311a0 Func4311a0 (152 bytes)</title></rect>
 <rect width="6.31" height="6.26" x="704.18" y="198.78" class="named"><title>0x0043aa5c RegisterGameManagerChain (152 bytes)</title></rect>
-<rect width="6.25" height="6.26" x="713.49" y="198.78" class="todo"><title>0x00439a2e Func439a2e (151 bytes)</title></rect>
+<rect width="6.25" height="6.26" x="713.49" y="198.78" class="named"><title>0x00439a2e GameManager::ComputeChecksum (151 bytes)</title></rect>
 <rect width="6.19" height="6.26" x="722.74" y="198.78" class="todo"><title>0x0046d763 Func46d763 (150 bytes)</title></rect>
 <rect width="6.07" height="6.26" x="731.93" y="198.78" class="named"><title>0x00472840 CSound::SetVolume (148 bytes)</title></rect>
 <rect width="6.01" height="6.26" x="740.99" y="198.78" class="todo"><title>0x00429d40 Func429d40 (147 bytes)</title></rect>
@@ -1832,7 +1832,7 @@
 <rect width="4.60" height="4.62" x="634.36" y="302.96" class="named"><title>0x004522a0 ReplayManager::RecordOnUpdate2 (102 bytes)</title></rect>
 <rect width="4.60" height="4.54" x="634.36" y="310.58" class="todo"><title>0x004070b0 Func4070b0 (101 bytes)</title></rect>
 <rect width="4.60" height="4.54" x="634.36" y="318.12" class="named"><title>0x00474c70 DatArchive::FindEntry (101 bytes)</title></rect>
-<rect width="4.60" height="4.47" x="634.36" y="325.67" class="todo"><title>0x00439ac5 Func439ac5 (100 bytes)</title></rect>
+<rect width="4.60" height="4.47" x="634.36" y="325.67" class="todo"><title>0x00439ac5 ChecksumBytes (100 bytes)</title></rect>
 <rect width="4.60" height="4.47" x="634.36" y="333.14" class="named"><title>0x0045cbc0 FindRiffChunk (100 bytes)</title></rect>
 <rect width="4.60" height="4.39" x="634.36" y="340.61" class="todo"><title>0x00437ce2 Func437ce2 (99 bytes)</title></rect>
 <rect width="4.37" height="4.63" x="641.96" y="232.98" class="named"><title>0x0043c760 ChainElem::ChainElem (99 bytes)</title></rect>

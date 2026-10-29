@@ -29,6 +29,19 @@ BOOL GameManager::IsInPlayArea(float x, float y, float width, float height)
     return TRUE;
 }
 
+int GameManager::ComputeChecksum()
+{
+    int sum;
+
+    sum = ChecksumBytes((BYTE *)g_GameManager.stats->lifeChecksumKeys,
+                        (BYTE *)&this->stats->checksum - (BYTE *)this->stats->lifeChecksumKeys);
+    sum += ChecksumBytes((BYTE *)g_GameManager.stats->checksumKeysE, sizeof(g_GameManager.stats->checksumKeysE));
+    sum += ChecksumBytes((BYTE *)g_GameManager.unk_4, 0x3c);
+    sum += ChecksumBytes((BYTE *)&g_App.controllerMapping, 0x3c);
+    sum += ChecksumBytes((BYTE *)&this->hscr, sizeof(this->hscr));
+    return sum;
+}
+
 void GameManager::AddLifeOrBomb()
 {
     if ((int)this->stats->lives < 8)

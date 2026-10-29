@@ -1037,18 +1037,35 @@ struct GameManagerStats
     // Func43c35f compares them.
     int unk_3c;
     int unk_40;
-    unsigned char unk_44[0x20];
+    unsigned char unk_44[0x4];
+    // Set to 6543 plus a random number under 100000 by
+    // RerollStatsChecksumKeys, as th07's.
+    DWORD lifeChecksumKeys[7];
     // Floats, as th07's.
     float deaths;
-    unsigned char unk_68[0xc];
-    // The lives and bombs left, floats now.
+    float unk_68;
+    // Set to random floats from 6543 up by RerollStatsChecksumKeys, as
+    // statsChecksumKeysB, lifeChecksumKeysF and statsChecksumKeysC.
+    float statsChecksumKeysA[2];
+    // The lives left, a float behind checksums, as the other counts.
     float lives;
-    unsigned char unk_78[0x8];
+    float statsChecksumKeysB[2];
+    // The bombs left, the same way.
     float bombs;
     float bombsUsed;
-    unsigned char unk_88[0x10];
+    float unk_88;
+    float lifeChecksumKeysF[3];
     // The power, a float now.
     float power;
+    float statsChecksumKeysC[2];
+    // Player::Graze subtracts it from GameManager::bonusPoints, as th07's.
+    int grazeCount;
+    int checksumKeysD[8];
+    // ChecksumBytes adds checksumKeysE[2] to it for every byte it sums.
+    int checksum;
+    // The checksum, from ComputeChecksum.
+    int computedChecksum;
+    DWORD checksumKeysE[5];
 };
 struct GameManagerUnk4
 {
@@ -1119,6 +1136,11 @@ public:
         this->arena2[2] = 368.0f;
         this->arena2[3] = 416.0f;
     }
+    // The checksum: ChecksumBytes over stats from lifeChecksumKeys to
+    // checksum, over stats->checksumKeysE, over the config unk_4 points
+    // at, over g_App's config (0x3c bytes each) and, new in th08, over
+    // hscr.
+    int ComputeChecksum();
     // Gives a life, or a bomb when the lives are full (8). Either one
     // plays sound 0x1c, adds 200 to the subrank and marks the Gui's
     // count changed, as th07's.
@@ -1307,6 +1329,13 @@ struct RankSettings
 // By difficulty.
 extern RankSettings g_Ranks[6];
 
+// The sum of the `size` bytes at `data`. Adds
+// g_GameManager.stats->checksumKeysE[2] to its checksum for every byte, as
+// th07's.
+int ChecksumBytes(BYTE *data, int size);
+// Fills the checksum keys in g_GameManager.stats with random numbers
+// from 6543 up, then stores the checksum, as th07's.
+void RerollStatsChecksumKeys();
 // Adds one to `*count` while it is under 999999. Its callers pass
 // 999999 as `max`, which it ignores.
 void IncrementStatCounter(DWORD *count, DWORD max);

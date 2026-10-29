@@ -522,8 +522,8 @@ address,size,name,symbol
 0x00439916,75,Func439916,
 0x00439961,75,Func439961,
 0x004399ac,130,GameManager::IsInPlayArea,?IsInPlayArea@GameManager@@QAEHMMMM@Z
-0x00439a2e,151,Func439a2e,
-0x00439ac5,100,Func439ac5,
+0x00439a2e,151,GameManager::ComputeChecksum,?ComputeChecksum@GameManager@@QAEHXZ
+0x00439ac5,100,ChecksumBytes,?ChecksumBytes@@YIHPAEH@Z
 0x00439b29,158,GameManager::AddLifeOrBomb,?AddLifeOrBomb@GameManager@@QAEXXZ
 0x00439bc7,3644,GameManager::OnUpdate,?OnUpdate@GameManager@@SIHPAV1@@Z
 0x0043aa03,89,GameManager::OnDraw,?OnDraw@GameManager@@SIHPAV1@@Z
