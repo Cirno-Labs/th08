@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">47.94% (535)</tspan> · <tspan class="decompiled">1.52% (17)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">50.54% (564)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">48.03% (536)</tspan> · <tspan class="decompiled">1.52% (17)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">50.45% (563)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="358.10" height="6" x="0" y="0" class="named"/>
-<rect width="11.38" height="6" x="358.10" y="0" class="decompiled"/>
-<rect width="377.52" height="6" x="369.48" y="0" class="todo"/>
+<rect width="358.77" height="6" x="0" y="0" class="named"/>
+<rect width="11.38" height="6" x="358.77" y="0" class="decompiled"/>
+<rect width="376.85" height="6" x="370.15" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -120,7 +120,7 @@
 <rect width="12" height="12" x="735" y="0" class="named"><title>0x004068a0 AnmLoaded::InitSprite (49 bytes)</title></rect>
 <rect width="12" height="12" x="0" y="15" class="named"><title>0x004068e0 Sprite::Initialize (95 bytes)</title></rect>
 <rect width="12" height="12" x="15" y="15" class="named"><title>0x00406940 D3DXMatrixIdentity (173 bytes)</title></rect>
-<rect width="12" height="12" x="30" y="15" class="todo"><title>0x004069f0 Func4069f0 (64 bytes)</title></rect>
+<rect width="12" height="12" x="30" y="15" class="named"><title>0x004069f0 AnmLoaded::StartScript (64 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="15" class="todo"><title>0x00406a30 Func406a30 (140 bytes)</title></rect>
 <rect width="12" height="12" x="60" y="15" class="todo"><title>0x00406ac0 Func406ac0 (43 bytes)</title></rect>
 <rect width="12" height="12" x="75" y="15" class="todo"><title>0x00406af0 Func406af0 (68 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">40.45%</tspan> · <tspan class="decompiled">0.56%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">58.99%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">40.46%</tspan> · <tspan class="decompiled">0.56%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">58.97%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="302.16" height="6" x="0" y="0" class="named"/>
-<rect width="4.22" height="6" x="302.16" y="0" class="decompiled"/>
-<rect width="440.62" height="6" x="306.38" y="0" class="todo"/>
+<rect width="302.27" height="6" x="0" y="0" class="named"/>
+<rect width="4.22" height="6" x="302.27" y="0" class="decompiled"/>
+<rect width="440.52" height="6" x="306.48" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1955,7 +1955,7 @@
 <rect width="3.28" height="2.96" x="662.25" y="278.28" class="todo"><title>0x00426c40 Func426c40 (66 bytes)</title></rect>
 <rect width="3.28" height="2.96" x="662.25" y="284.24" class="todo"><title>0x00449ea0 Func449ea0 (66 bytes)</title></rect>
 <rect width="3.28" height="2.87" x="662.25" y="290.20" class="todo"><title>0x0044fd80 Func44fd80 (65 bytes)</title></rect>
-<rect width="3.28" height="2.78" x="662.25" y="296.07" class="todo"><title>0x004069f0 Func4069f0 (64 bytes)</title></rect>
+<rect width="3.28" height="2.78" x="662.25" y="296.07" class="named"><title>0x004069f0 AnmLoaded::StartScript (64 bytes)</title></rect>
 <rect width="3.28" height="2.78" x="662.25" y="301.85" class="todo"><title>0x00424130 Func424130 (64 bytes)</title></rect>
 <rect width="3.28" height="2.78" x="662.25" y="307.63" class="todo"><title>0x0042f1f0 EnemyManager::AnyBossActive (64 bytes)</title></rect>
 <rect width="3.28" height="2.78" x="662.25" y="313.41" class="todo"><title>0x0042f230 Func42f230 (64 bytes)</title></rect>
