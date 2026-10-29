@@ -348,3 +348,50 @@ int SoundPlayer::PreloadBgm(int slot, char *path)
     this->bgmPreloadSize[slot] = this->bgmEntries[slot]->size;
     return 0;
 }
+
+int SoundPlayer::PlayPreloadedBgm(int slot)
+{
+    DWORD notifySize;
+    HRESULT hr;
+    INT nSamplesPerSec;
+    DWORD nBlockAlign;
+
+    if (!this->manager)
+    {
+        return -1;
+    }
+    if (!g_App.musicMode)
+    {
+        return -1;
+    }
+    if (this->dsound == NULL)
+    {
+        return -1;
+    }
+    if (!g_App.GetPreloadBgm())
+    {
+        return this->SwitchBgmTrack(this->bgmNames[slot]);
+    }
+    if (this->bgmPreloadData[slot] == NULL)
+    {
+        return -1;
+    }
+    DebugPrint("Streming BGM Load no %d\r\n", slot);
+    nBlockAlign = this->bgmEntries[slot]->format.nBlockAlign;
+    nSamplesPerSec = this->bgmEntries[slot]->format.nSamplesPerSec;
+    notifySize = nSamplesPerSec * 4 * nBlockAlign / 16;
+    notifySize -= notifySize % nBlockAlign;
+    this->notifyEvent = CreateEventA(NULL, FALSE, FALSE, NULL);
+    this->notifyThread = CreateThread(NULL, 0, BgmNotificationProc, g_App.hwnd, 0, &this->notifyThreadId);
+    hr = this->manager->CreateStreamingFromMemory(&this->bgm, this->bgmPreloadCursor[slot], this->bgmPreloadSize[slot],
+                                   this->bgmEntries[slot], DSBCAPS_CTRLPOSITIONNOTIFY | DSBCAPS_GETCURRENTPOSITION2,
+                                   GUID_NULL, 0x10, notifySize, this->notifyEvent);
+    if (hr < 0)
+    {
+        DebugPrint("error : ストリーミング用サウンドバッファを作成出来ませんでした\r\n");
+        return -1;
+    }
+    DebugPrint("load comp\r\n");
+    this->bgmPlaying = slot;
+    return 0;
+}
