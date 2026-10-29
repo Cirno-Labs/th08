@@ -966,8 +966,29 @@ public:
             this->bgm->FadeIn(seconds);
         }
     }
-    // Queues the "UnPause" command (7), as th07 did by hand. Inline; the
-    // copy is at 0x406c50.
+    // The same for fades 4 (down) and 3 (up). New in th08; inline, the
+    // copies are at 0x406b40 and 0x406bb0.
+    void FadeDownBgm(float seconds)
+    {
+        if (this->bgm != NULL)
+        {
+            this->bgm->FadeDown(seconds);
+        }
+    }
+    void FadeUpBgm(float seconds)
+    {
+        if (this->bgm != NULL)
+        {
+            this->bgm->FadeUp(seconds);
+        }
+    }
+    // Queues the "Pause" command (6), as th07 did by hand. Inline; the
+    // copy is at 0x406c30.
+    void Pause()
+    {
+        this->QueueSoundCommand(6, 0, "Pause");
+    }
+    // Queues the "UnPause" command (7). Inline; the copy is at 0x406c50.
     void UnPause()
     {
         this->QueueSoundCommand(7, 0, "UnPause");
@@ -1942,6 +1963,11 @@ struct SpellCard
     int Func4178a0()
     {
         return this->unk_0 & 1;
+    }
+    // Bit 9 of unk_0. Inline; the copy is at 0x405260.
+    int Func405260()
+    {
+        return this->unk_0 >> 9 & 1;
     }
 
     DWORD unk_0;

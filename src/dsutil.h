@@ -176,6 +176,23 @@ public:
         this->fadeTotal = this->fadeFrames;
         this->SetVolume(-10000);
     }
+    // Starts fade 4 over `seconds`, from where the volume is. New in th08;
+    // inline, the copy is at 0x406b70.
+    void FadeDown(float seconds)
+    {
+        this->fading = 4;
+        this->fadeFrames = seconds * 60.0f;
+        this->fadeTotal = this->fadeFrames;
+    }
+    // Starts fade 3 over `seconds` from -1000. New in th08; inline, the
+    // copy is at 0x406be0.
+    void FadeUp(float seconds)
+    {
+        this->fading = 3;
+        this->fadeFrames = seconds * 60.0f;
+        this->fadeTotal = this->fadeFrames;
+        this->SetVolume(-1000);
+    }
 
     // Not in th06: releases the buffers and creates them again from
     // dsbd, with 16 notifications every m_dwNotifySize bytes.

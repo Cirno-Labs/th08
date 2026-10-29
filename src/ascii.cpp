@@ -966,6 +966,241 @@ void PauseMenu::DrawPauseMenu()
     }
 }
 
+int ContinueMenu::UpdateContinueMenu()
+{
+    int i;
+
+    if (g_GameManager.IsInPractice() && !((g_GameManager.unk_3dbac >> 14) & 1))
+    {
+        g_GameManager.isInContinueMenu = 0;
+        g_GameManager.stats->guiScore = g_GameManager.stats->score;
+        g_App.scene = 6;
+        return 1;
+    }
+    if (g_GameManager.IsReplay())
+    {
+        g_GameManager.isInContinueMenu = 0;
+        g_App.scene = 7;
+        g_GameManager.stats->guiScore = g_GameManager.stats->score;
+        return 1;
+    }
+    switch (this->state)
+    {
+    case 0:
+        if (this->stateFrames == 0)
+        {
+            if (!g_GameManager.IsInSpellCardPractice() && g_GameManager.difficulty < 4 &&
+                (g_GameManager.GetUnk28() >= 11 || g_GameManager.stage == 7))
+            {
+                g_GameManager.isInContinueMenu = 0;
+                g_GameManager.stats->guiScore = g_GameManager.stats->score;
+                if (g_GameManager.difficulty >= 4)
+                {
+                    g_App.scene = 6;
+                }
+                else
+                {
+                    g_GameManager.unk_3dbac &= ~0x10;
+                    g_App.scene = 9;
+                }
+                return 1;
+            }
+            if (g_GameManager.IsInSpellCardPractice() && !Func439916(g_GameManager.unk_3dbb0))
+            {
+                g_SoundPlayer.FadeDownBgm(1.0f);
+            }
+            else
+            {
+                g_SoundPlayer.Pause();
+            }
+            for (i = 0; i < 3; i++)
+            {
+                g_AsciiText.anm->StartScript(&this->sprites[i], i + 0x16);
+                this->sprites[i].pendingInterrupt = 1;
+            }
+            g_Gui.timesAnm->StartScript(&this->sprites[3], 1);
+            g_Gui.timesAnm->SetSprite(&this->sprites[3], g_GameManager.GetUnk28());
+            if ((g_App.stateFlags >> 1) & 1)
+            {
+                g_AsciiText.anm2->StartScript(&this->background, 0);
+                if (g_SpriteEngine->SetPendingCopy(3, 0x20, 0x10, 0x180, 0x1c0, this->background.spriteData->startX,
+                                                   this->background.spriteData->startY,
+                                                   this->background.spriteData->height,
+                                                   this->background.spriteData->width) != 0)
+                {
+                    this->state = 0;
+                    return 0;
+                }
+                this->background.pos.x = 32.0f;
+                this->background.pos.y = 16.0f;
+                this->background.pos.z = 0.0f;
+            }
+            g_App.AddTotalPlayTime();
+        }
+        if (this->stateFrames > 8)
+        {
+            break;
+        }
+        if (!g_GameManager.IsInSpellCardPractice() && g_GameManager.difficulty < 4)
+        {
+            this->state += 2;
+        }
+        else
+        {
+            this->state += !g_SpellCard.Func405260() && g_GameManager.IsInSpellCardPractice() ? 1 : 2;
+        }
+        this->stateFrames = 0;
+        if (this->state == 2)
+        {
+            goto choosingNo;
+        }
+    case 1:
+        this->sprites[1].color = 0xffff8080;
+        this->sprites[2].color = 0xff505050;
+        this->sprites[1].posOffset = D3DXVECTOR3(-4.0f, -4.0f, 0.0f);
+        this->sprites[2].posOffset = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+        if (this->stateFrames >= 4)
+        {
+            if (WAS_PRESSED(0x10) || WAS_PRESSED(0x20))
+            {
+                this->state = 2;
+                g_SoundPlayer.QueueSound(0, 0);
+            }
+            if (WAS_PRESSED(0x1001))
+            {
+                g_SoundPlayer.QueueSound(10, 0);
+                if (!g_GameManager.IsInSpellCardPractice() && g_GameManager.difficulty < 4)
+                {
+                    this->sprites[3].pendingInterrupt = 1;
+                    this->state = 3;
+                    this->stateFrames = 0;
+                }
+                else
+                {
+                    if (g_GameManager.IsInSpellCardPractice() && !Func439916(g_GameManager.unk_3dbb0))
+                    {
+                        g_GameManager.isInContinueMenu = 0;
+                        g_SoundPlayer.UnPause();
+                        g_SoundPlayer.FadeUpBgm(1.0f);
+                    }
+                    else
+                    {
+                        g_App.StopMusic();
+                    }
+                    g_App.scene = 11;
+                    g_Gui.Func438f58();
+                    g_GameManager.isInContinueMenu = 0;
+                    g_App.lastTotalPlayTimeTick = timeGetTime();
+                    return 0;
+                }
+            }
+        }
+        break;
+    case 2:
+    choosingNo:
+        this->sprites[2].color = 0xffff8080;
+        this->sprites[1].color = 0xff505050;
+        this->sprites[2].posOffset = D3DXVECTOR3(-4.0f, -4.0f, 0.0f);
+        this->sprites[1].posOffset = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+        if (this->stateFrames >= 30)
+        {
+            if (WAS_PRESSED(0x10) || WAS_PRESSED(0x20))
+            {
+                this->state = 1;
+                g_SoundPlayer.QueueSound(0, 0);
+            }
+            if (WAS_PRESSED(0x1001))
+            {
+                g_SoundPlayer.QueueSound(10, 0);
+                for (i = 0; i < 4; i++)
+                {
+                    this->sprites[i].pendingInterrupt = 2;
+                }
+                this->state = 4;
+                this->stateFrames = 0;
+            }
+        }
+        break;
+    case 4:
+        if (this->stateFrames >= 20)
+        {
+            this->state = 0;
+            this->stateFrames = 0;
+            g_GameManager.isInContinueMenu = 0;
+            g_App.scene = 6;
+            for (i = 0; i < 4; i++)
+            {
+                this->sprites[i].ClearShown();
+            }
+            g_GameManager.stats->guiScore = g_GameManager.stats->score;
+            g_App.lastTotalPlayTimeTick = timeGetTime();
+            return 0;
+        }
+        break;
+    case 3:
+        if (this->stateFrames == 15)
+        {
+            g_GameManager.AddUnk28(1);
+            g_Gui.timesAnm->SetSprite(&this->sprites[3], g_GameManager.GetUnk28());
+        }
+        if (this->stateFrames == 60)
+        {
+            this->background.pendingInterrupt = 1;
+            for (i = 0; i < 4; i++)
+            {
+                this->sprites[i].pendingInterrupt = 3;
+            }
+        }
+        if (this->stateFrames >= 90)
+        {
+            this->state = 0;
+            this->stateFrames = 0;
+            g_GameManager.isInContinueMenu = 0;
+            for (i = 0; i < 4; i++)
+            {
+                this->sprites[i].ClearShown();
+            }
+            g_GameManager.stats->continuesUsed++;
+            g_GameManager.stats->guiScore = g_GameManager.stats->continuesUsed;
+            g_GameManager.stats->scoreIncrement = 0;
+            g_GameManager.stats->score = g_GameManager.stats->guiScore;
+            g_GameManager.SetLives(g_GameManager.unk_4->lifeCount);
+            g_GameManager.SetBombs(g_Player.shotType->bombs);
+            g_GameManager.stats->graze = 0;
+            g_GameManager.stats->unk_2c = 0;
+            g_GameManager.stats->pointItemsTotal = 0;
+            g_GameManager.SetPower(0);
+            g_GameManager.stats->unk_34 = 0;
+            g_GameManager.stats->unk_38 = 100;
+            g_App.redrawFrames = 8;
+            // The shot type counters are indexed by character here.
+            IncrementCounterCapped((DWORD *)&g_GameManager.plst.counts[g_GameManager.difficulty].plays[0], 999999);
+            IncrementCounterCapped((DWORD *)&g_GameManager.plst.counts[6].plays[0], 999999);
+            IncrementCounterCapped(
+                (DWORD *)&g_GameManager.plst.counts[g_GameManager.difficulty].plays[g_GameManager.character + 1],
+                999999);
+            IncrementCounterCapped((DWORD *)&g_GameManager.plst.counts[6].plays[g_GameManager.character + 1],
+                                   999999);
+            IncrementCounterCapped((DWORD *)&g_GameManager.plst.counts[g_GameManager.difficulty].continues,
+                                   999999);
+            IncrementCounterCapped((DWORD *)&g_GameManager.plst.counts[6].continues, 999999);
+            g_SoundPlayer.UnPause();
+            g_App.lastTotalPlayTimeTick = timeGetTime();
+            return 0;
+        }
+    }
+    for (i = 0; i < 4; i++)
+    {
+        g_SpriteEngine->Step(&this->sprites[i]);
+    }
+    if ((g_App.stateFlags >> 1) & 1)
+    {
+        g_SpriteEngine->Step(&this->background);
+    }
+    this->stateFrames++;
+    return 0;
+}
+
 void IncrementCounterCapped(DWORD *count, DWORD max)
 {
     if (*count < max)
