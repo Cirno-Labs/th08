@@ -554,6 +554,20 @@ void Stage::SetupFixedCamera()
     g_App.d3dDevice->SetTransform(D3DTS_PROJECTION, &g_App.projectionMatrix);
 }
 
+void Stage::SetupCamera()
+{
+    D3DXVECTOR3 at = this->camera.at + this->camera.eye;
+    D3DXVECTOR3 eye = this->camera.offset + this->camera.eye;
+
+    D3DXMatrixLookAtLH((D3DXMATRIX *)&g_App.viewMatrix, &eye, &at, &this->camera.up);
+    D3DXMatrixPerspectiveFovLH((D3DXMATRIX *)&g_App.projectionMatrix, this->camera.fov,
+                               (float)g_App.viewport.Width / (float)g_App.viewport.Height, 30.0f, 1800.0f);
+    g_App.d3dDevice->SetTransform(D3DTS_VIEW, &g_App.viewMatrix);
+    g_App.d3dDevice->SetTransform(D3DTS_PROJECTION, &g_App.projectionMatrix);
+    D3DXVec3Cross(&this->camera.cameraRight, &this->camera.at, &this->camera.up);
+    D3DXVec3Normalize(&this->camera.cameraRight, &this->camera.cameraRight);
+}
+
 // An inline of unsorted.h, probably, whose out-of-line copy the original
 // keeps with this file's inline copies; defined here so that the other
 // files' calls stay calls, as th07's. checksum has to be
