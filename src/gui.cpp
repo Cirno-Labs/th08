@@ -181,3 +181,16 @@ void DecodeMsgString(char *dst, char *src)
         src++;
     } while (c != 0);
 }
+
+BOOL Gui::MsgHoldsTimeline()
+{
+    if (this->impl == NULL)
+    {
+        return FALSE;
+    }
+    if (this->impl->msg.timelineRelease > 0)
+    {
+        return FALSE;
+    }
+    return this->impl->msg.scriptIndex >= 0;
+}
