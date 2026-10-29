@@ -581,7 +581,7 @@ address,size,name,symbol
 0x0043eb60,343,LogError,?LogError@@YAHPAVLog@@PBDZZ
 0x0043ecc0,88,Rng::GetRandomU16,?GetRandomU16@Rng@@QAEGXZ
 0x0043ed20,40,Rng::GetRandomU32,?GetRandomU32@Rng@@QAEKXZ
-0x0043ed50,40,Func43ed50,
+0x0043ed50,40,Rng::GetRandomF32ZeroToOne,?GetRandomF32ZeroToOne@Rng@@QAEMXZ
 0x0043ed80,46,Func43ed80,
 0x0043edb0,127,Func43edb0,
 0x0043ee30,91,Func43ee30,
