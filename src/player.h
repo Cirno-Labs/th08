@@ -22,15 +22,33 @@ typedef int (*ShotUpdateFunc)(Player *player, PlayerBullet *bullet);
 typedef int (*ShotHitFunc)(Player *player, PlayerBullet *bullet, D3DXVECTOR3 *pos);
 
 // One shot of a shot type, as th07's (0x34 there). A table of them ends
-// with an interval below 0. Only the fields known so far.
+// with an interval below 0.
 struct ShotData
 {
     // Fired on frames where frame % interval is phase, as th07's.
     short interval;
     short phase;
-    unsigned char unk_4[0x24];
-    // Fires it, and the callbacks copied into the bullet it fires.
+    // Where it starts, from the player or its option.
+    float offsetX;
+    float offsetY;
+    float sizeX;
+    float sizeY;
+    float angle;
+    float speed;
+    short damage;
+    // Above 0, the bullet is drawn red while stats->unk_22 is at
+    // unk22High1. New in th08.
+    short unk_1e;
+    // 0 for the player, else the option, from 1.
+    short option;
+    // PlayerBullet::type.
+    short type;
+    // Its script, from 10, and its sound or -1.
+    short script;
+    short sound;
+    // Fires it; TryFireShot when NULL.
     ShotFireFunc fire;
+    // Copied into the bullet it fires.
     ShotUpdateFunc update;
     ShotUpdateFunc draw;
     ShotHitFunc hit;
@@ -220,19 +238,41 @@ struct PlayerBomb
 };
 ASSERT_SIZE(PlayerBomb, 0xb7858);
 
-// One of the player's bullets (0x484).
+// One of the player's bullets (0x484), as th07's.
 struct PlayerBullet
 {
     Sprite sprite;
     D3DXVECTOR3 pos;
     D3DXVECTOR3 trail[0x20];
     D3DXVECTOR3 size;
-    unsigned char unk_43c[0x18];
+    // D3DVECTOR, not D3DXVECTOR3: the implicit constructor skips it.
+    D3DVECTOR velocity;
+    float laserOffsetY;
+    float speed;
+    // The direction it flies in.
+    float angle;
     Timer timer;
-    unsigned char unk_460[0x2];
+    short damage;
     // 0 unused, 1 flying, 2 hit, as th07's.
     short state;
-    unsigned char unk_464[0x20];
+    // ShotData::type.
+    short type;
+    short laserIndex;
+    short option;
+    short trailLength;
+    // Player::focused when it was fired.
+    BYTE focused;
+    unsigned char unk_46d[0x1];
+    // ShotData::script.
+    short script;
+    // Drawn red (ShotData::unk_1e).
+    BYTE red;
+    unsigned char unk_471[0x3];
+    // The shot's callbacks, and the shot.
+    ShotUpdateFunc update;
+    ShotUpdateFunc draw;
+    ShotHitFunc hit;
+    ShotData *shot;
 };
 ASSERT_SIZE(PlayerBullet, 0x484);
 
@@ -243,6 +283,18 @@ struct PlayerLaser
     PlayerBullet *bullet;
 };
 ASSERT_SIZE(PlayerLaser, 0x10);
+
+// Fills `bullet` with shot `sd` and starts it, as th07's (0x44fb70):
+// from the player or its option, its script (from 10) and its panned
+// sound; red while stats->unk_22 is at unk22High1 for shots with
+// unk_1e.
+void FireShot(Player *player, PlayerBullet *bullet, ShotData *sd);
+// Fires `sd` into `bullet` on frames where frame % interval is phase,
+// returning 1 if it did, as th07's (0x44fd80).
+int TryFireShot(Player *player, PlayerBullet *bullet, int frame, ShotData *sd);
+// th07's FireShots: fires the shots of the shot type's table for the
+// player's power into free bullets (0x450f60).
+void FireShots(Player *player, int frame);
 
 // OnUpdate's steps, as th07's (0x44c5b0, 0x44c650, 0x44cbf0,
 // 0x44d180, 0x44d2c0, 0x44aec0, 0x44d420): UpdateDyingState returns
