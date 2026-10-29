@@ -944,7 +944,7 @@ address,size,name,symbol
 0x0045e960,125,SpriteEngine::DrawSprite,?DrawSprite@SpriteEngine@@QAEXPAVSprite@@@Z
 0x0045ea00,13933,SpriteEngine::Step,?Step@SpriteEngine@@QAEHPAVSprite@@@Z
 0x00462210,21,acosf,@acosf@4
-0x00462230,21,Func462230,
+0x00462230,21,atanf,@atanf@4
 0x00462250,21,Func462250,
 0x00462270,74,SpriteEngine::SendInterruptToLoadedSprites,?SendInterruptToLoadedSprites@SpriteEngine@@QAEXPAVSprite@@HF@Z
 0x004622c0,76,SpriteEngine::HasTexture,?HasTexture@SpriteEngine@@QAEHPAVSprite@@@Z
