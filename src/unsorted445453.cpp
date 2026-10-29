@@ -1265,3 +1265,19 @@ void App::StartLoadingSpritesOverScreen(D3DXVECTOR3 *pos)
     }
     g_SpriteEngine->SetPendingCopy(8, 0, 0, 640, 480, 0, 0, 640, 480);
 }
+
+void App::FinishLoadingSprites()
+{
+    if (this->loadingState == 1)
+    {
+        g_LoadingSprites[0].pendingInterrupt = 2;
+        g_LoadingSprites[1].pendingInterrupt = 2;
+        g_LoadingSprites[2].pendingInterrupt = 2;
+        this->loadingState = 2;
+    }
+    if (g_LoadingScreenEffect != NULL)
+    {
+        g_LoadingScreenEffect->Finish();
+        g_LoadingScreenEffect = NULL;
+    }
+}
