@@ -584,7 +584,7 @@ address,size,name,symbol
 0x0043ed50,40,Rng::GetRandomF32ZeroToOne,?GetRandomF32ZeroToOne@Rng@@QAEMXZ
 0x0043ed80,46,Rng::GetRandomF32MinusOneToOne,?GetRandomF32MinusOneToOne@Rng@@QAEMXZ
 0x0043edb0,127,AddNormalizeAngle,?AddNormalizeAngle@@YIMMM@Z
-0x0043ee30,91,Func43ee30,
+0x0043ee30,91,Rotate2D,?Rotate2D@@YIXPAUD3DXVECTOR3@@0M@Z
 0x0043ee90,27,MemoryManager::MemoryManager,??0MemoryManager@@QAE@XZ
 0x0043eeb0,84,MemoryManager::~MemoryManager,??1MemoryManager@@QAE@XZ
 0x0043ef10,48,Log::Log,??0Log@@QAE@XZ
@@ -1706,9 +1706,9 @@ address,size,name,symbol
 0x004a3e00,23,Func4a3e00,
 0x004a3e17,87,_vsprintf,_vsprintf
 0x004a3e70,117,__ftol2,__ftol2
-0x004a3ef0,20,Func4a3ef0,
+0x004a3ef0,20,__CIcos,__CIcos
 0x004a3f0d,145,Func4a3f0d,
-0x004a3fa0,20,Func4a3fa0,
+0x004a3fa0,20,__CIsin,__CIsin
 0x004a3fbd,145,Func4a3fbd,
 0x004a4050,20,Func4a4050,
 0x004a406d,157,Func4a406d,

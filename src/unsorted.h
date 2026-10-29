@@ -311,6 +311,10 @@ public:
 // a + b, brought back into [-pi, pi] (giving up after 17 turns).
 float AddNormalizeAngle(float a, float b);
 
+// Rotates `in` by `angle` radians in the xy plane into `out` (z is left
+// alone). The opposite direction to th07's.
+void Rotate2D(D3DXVECTOR3 *out, D3DXVECTOR3 *in, float angle);
+
 // How a D3DFORMAT's pixels are laid out, for a DIB section.
 struct FormatInfo
 {

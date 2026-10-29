@@ -678,6 +678,15 @@ float AddNormalizeAngle(float a, float b)
     return a;
 }
 
+void Rotate2D(D3DXVECTOR3 *out, D3DXVECTOR3 *in, float angle)
+{
+    float s = sinf(angle);
+    float c = cosf(angle);
+
+    out->x = c * in->x - s * in->y;
+    out->y = c * in->y + s * in->x;
+}
+
 MemoryManager::MemoryManager()
 {
     this->unk_4000 = 0;
