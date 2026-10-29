@@ -698,7 +698,7 @@ void DrawSakuyaBomb(Player *player);
 // Her last word 幻葬「夜霧の幻影殺人鬼」: the same with 128 knives
 // that flash as they hit (0x4103f0).
 void UpdateSakuyaLastWord(Player *player);
-// Its draw callback: the same with a red tint; draws the first 96
+// Its draw callback: the same with a blue tint; draws the first 96
 // knives only (0x410ac0).
 void DrawSakuyaLastWord(Player *player);
 // Draw callbacks of the bombs that only tint the play area, by the
