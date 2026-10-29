@@ -488,6 +488,70 @@ int ResultScreen::UpdateSpellShotSelect()
     return 0;
 }
 
+int ResultScreen::UpdateSpellList()
+{
+    int id;
+    int i;
+    int total;
+
+    if (this->unk_54 != 0 && this->frame >= 10)
+    {
+        this->SetState(7);
+    }
+    total = g_SpellCardListSizes[this->unk_48];
+    if ((this->unk_40 != this->cursor || this->unk_34 != this->spellCursor) && this->frame == 10)
+    {
+        this->unk_40 = this->cursor;
+        this->unk_34 = this->spellCursor;
+        for (i = this->unk_40 * 10; i < this->unk_40 * 10 + 10; i++)
+        {
+            if (i >= total)
+            {
+                break;
+            }
+            id = g_SpellCardLists[this->unk_48][i];
+            if (g_GameManager.catks[id].unk_124[12] == 0)
+            {
+                g_SpriteEngine->RenderText(&this->textSprites[i % 10], 0xffffff, 0, "？？？？？");
+            }
+            else
+            {
+                g_SpriteEngine->RenderText(&this->textSprites[i % 10], 0xffffff, 0, g_GameManager.catks[id].name);
+            }
+            this->textSprites[i % 10].alpha = 0xff;
+        }
+        g_SpriteEngine->RenderText(&this->textSprites[10], 0xffffff, 0, "%3d/%3d（キャラ切り替え↓↑）",
+                                   this->capturedSpellCounts[this->unk_48][this->spellCursor], total);
+        this->textSprites[10].alpha = 0xff;
+    }
+    if (this->frame < 6)
+    {
+        return 0;
+    }
+    if (MoveCursorHorizontal(this, (total + 9) / 10) != 0)
+    {
+        this->frame = 0;
+        this->sprites[0x28].pendingInterrupt = 10;
+    }
+    else if (LoadScreenPlstChunk(this, 0xd) != 0)
+    {
+        this->frame = 0;
+        this->unk_38 = 1;
+        this->sprites[this->unk_34 + 0x1b].pendingInterrupt = 0x18;
+        this->sprites[this->spellCursor + 0x1b].pendingInterrupt = 0x19;
+    }
+    if (WAS_PRESSED(0xa))
+    {
+        this->unk_54 = 1;
+        this->frame = 0;
+        g_SoundPlayer.QueueSound(0xb, 0);
+        this->sprites[0x28].pendingInterrupt = 1;
+        return 1;
+    }
+    this->unk_18++;
+    return 0;
+}
+
 void FormatTodayDate(char *date)
 {
     time_t t;

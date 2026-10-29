@@ -122,7 +122,15 @@ struct Catk
     BYTE unk_09[0x3];
     // The card's number.
     WORD index;
-    unsigned char unk_0e[0x21e];
+    BYTE unk_0e[0x2];
+    // The card's name; its length is a guess.
+    char name[0x40];
+    unsigned char unk_50[0xd4];
+    // By shot type, then with every shot type.
+    DWORD unk_124[0xd];
+    unsigned char unk_158[0x68];
+    DWORD unk_1c0[0xd];
+    unsigned char unk_1f4[0x38];
 };
 ASSERT_SIZE(Catk, 0x22c);
 
@@ -333,16 +341,25 @@ public:
     unsigned char unk_20[0x10];
     // A second cursor, moved by LoadScreenPlstChunk, as th07's.
     int spellCursor;
-    unsigned char unk_34[0x8];
+    // The spellCursor whose spell cards textSprites show.
+    int unk_34;
+    int unk_38;
     // The cursor of the list shown.
     int unk_3c;
+    // The spell card page (ten cards each) textSprites show; -1 to
+    // redraw.
     int unk_40;
     int unk_44;
     // The spell card difficulty cursor, kept while away.
     int unk_48;
     unsigned char unk_4c[0x8];
+    // Set to leave the spell card list once its sprites are out.
     int unk_54;
-    unsigned char unk_58[0x148];
+    unsigned char unk_58[0xc];
+    // By spell card list and shot type (and all of them): the spell cards
+    // captured.
+    int capturedSpellCounts[6][0xd];
+    unsigned char unk_19c[0x4];
     Sprite sprites[0x48];
     // Text drawn with RenderText, as th07's.
     Sprite textSprites[0x1e];
@@ -371,6 +388,12 @@ extern char *g_StageNames[9];
 // The shot types' names ("霊夢＆紫", ..., "西行寺　幽々子"), then
 // "全主人公合計", as th07's.
 extern char *g_ShotNames[13];
+
+// The spell card lists of the result screen, by list (difficulty, the
+// last one every card), and their lengths (42, 49, 50, 50, 14, 222). New
+// in th08.
+extern int *g_SpellCardLists[6];
+extern int g_SpellCardListSizes[6];
 
 // Returns g_StageNames[stage], or "Clear" for 9 and over. New in th08.
 char *GetStageName(int stage);
