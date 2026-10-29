@@ -150,6 +150,13 @@ public:
     // Adds the time since the last call to the time played in
     // g_GameManager.plst.
     void AddTotalPlayTime();
+    // Checks the version file against `version` ("0100d") and the
+    // executable's size and checksum: finds a line starting with the
+    // version and reads "%d %d" after it. Returns 0 without a version
+    // file, for a "debug" version or when both numbers match, otherwise
+    // -1, which makes OnUpdate quit. Unlike th07's, a line whose numbers
+    // differ does not end the search.
+    int CheckVersionFile(char *version, DWORD size, DWORD checksum);
     void TickTimer(int *frames, float *subFrame);
     // Saves the back buffer as a 24-bit 640x480 bitmap at `path`, from an
     // X8R8G8B8 back buffer only (a 16-bit one is logged and skipped).

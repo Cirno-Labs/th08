@@ -723,7 +723,7 @@ address,size,name,symbol
 0x00448270,49,App::SetRenderState,?SetRenderState@App@@QAEHW4_D3DRENDERSTATETYPE@@K@Z
 0x004482a1,375,App::AddPlayTime,?AddPlayTime@App@@QAEXXZ
 0x00448418,373,App::AddTotalPlayTime,?AddTotalPlayTime@App@@QAEXXZ
-0x0044858d,301,Func44858d,
+0x0044858d,301,App::CheckVersionFile,?CheckVersionFile@App@@QAEHPADKK@Z
 0x004486ba,97,Func4486ba,
 0x0044871b,117,App::CloseSubThread,?CloseSubThread@App@@QAEXXZ
 0x00448790,138,Func448790,
@@ -1765,7 +1765,7 @@ address,size,name,symbol
 0x004a5af9,46,Func4a5af9,
 0x004a5b27,156,Func4a5b27,
 0x004a5be0,195,_strchr,_strchr
-0x004a5c9e,52,_sscanf,
+0x004a5c9e,52,_sscanf,_sscanf
 0x004a5ce0,57,_strncmp,_strncmp
 0x004a5d20,7,Func4a5d20,
 0x004a5d30,232,Func4a5d30,
