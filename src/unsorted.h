@@ -13,6 +13,7 @@
 #include "common.h"
 #include "dsutil.h"
 #include "resultscreen.h"
+#include "sprite.h"
 #include "timer.h"
 
 // The application: window, Direct3D, configuration and the main loop.
@@ -1269,8 +1270,22 @@ public:
                                          : FALSE;
     }
     // Whether shot type `shot` cleared stage bit `stage` of `difficulty`
-    // without continues (0x439829).
-    int HasClearedStage(int stage, int shot, int difficulty);
+    // without continues, or at all. Inline; the copies at 0x439829 and
+    // 0x439856 are the Gui object's.
+    int HasClearedStage(int stage, int shot, int difficulty)
+    {
+        return this->clrds[shot].stagesClearedNoContinue[difficulty] & (1 << stage);
+    }
+    int HasClearedStageWithContinues(int stage, int shot, int difficulty)
+    {
+        return this->clrds[shot].stagesCleared[difficulty] & (1 << stage);
+    }
+    // Whether a replay plays (bit 3 of unk_3dbac). Inline; the copy at
+    // 0x406c90 is an /Od object's.
+    int IsReplay()
+    {
+        return this->unk_3dbac >> 3 & 1;
+    }
 
     // A block of random size LoadingThread allocates and frees at once,
     // as th07's tempBuffer.
@@ -1335,7 +1350,10 @@ public:
             unsigned int unk_3dbac_7 : 3;
             // The screen shakes hold still while it is set.
             unsigned int unk_3dbac_10 : 1;
-            unsigned int unk_3dbac_11 : 4;
+            // The clear level GuiImpl::StartMsgScript picked for the
+            // ending dialogue: AdvanceStage goes to 6B unless it is 0.
+            unsigned int clearLevel : 2;
+            unsigned int unk_3dbac_13 : 2;
             // AnyShotHasExtraOpen, Func43c2c5 and AllShotsHaveExtraOpen
             // as App::AddedCallback found them.
             unsigned int anyShotHasExtraOpen : 1;
@@ -1445,29 +1463,85 @@ int LoadScoreFile();
 // 999999 as `max`, which it ignores.
 void IncrementStatCounter(DWORD *count, DWORD max);
 
+// A dialogue file. Only what is known so far.
+struct MsgFile
+{
+    int count;
+    // The scripts, by index.
+    void *scripts[1];
+};
+
+// The dialogue state, as th07's GuiMsg (0x1570 bytes now).
+struct GuiMsg
+{
+    MsgFile *msgFile;
+    // The instruction being run.
+    void *instr;
+    // The script running, -1 for none.
+    int scriptIndex;
+    Timer timer;
+    int waitFrames;
+    int unk_1c;
+    Sprite portraits[4];
+    Sprite text[2];
+    Sprite nameplates[2];
+    // The text and shadow colours of the two lines, by character now.
+    D3DCOLOR textColors[4];
+    D3DCOLOR shadowColors[4];
+    int fontSize;
+    // While it is above 0, the dialogue does not hold the timeline.
+    DWORD timelineRelease;
+    // Whether the dialogue can be skipped.
+    BYTE skippable;
+    BYTE unk_1569;
+    BYTE unk_156a;
+    BYTE unk_156b;
+    BYTE unk_156c;
+    BYTE unk_156d;
+    // The Extra/clear level StartMsgScript picks for the ending dialogue
+    // (index 10 of stage 6), kept in bits 11-12 of
+    // GameManager::unk_3dbac.
+    BYTE clearLevel;
+    unsigned char pad_156f[0x1];
+};
+ASSERT_SIZE(GuiMsg, 0x1570);
+
+// A value shown for a while at a position, as th07's GuiPopup.
+struct GuiPopup
+{
+    D3DXVECTOR3 pos;
+    int value;
+    // Whether it shows, or what it shows.
+    int shown;
+    Timer timer;
+};
+ASSERT_SIZE(GuiPopup, 0x20);
+
 // The Gui's state behind Gui::impl, as th07's GuiImpl (0x230b8 bytes,
 // "FRScreenImplInf"). Only the fields known so far.
 struct GuiImpl
 {
+    // Starts dialogue script `index`, as th07's: clears msg (keeping the
+    // file), picks the ending dialogue by the clears for index 10 of
+    // stage 6 and a shorter one past index 5 of stage 6B while
+    // stats->unk_28 is 12 or more, sets the dialogue's defaults and
+    // clears the bullets, the enemies and the items (0x43396d).
+    void StartMsgScript(int index);
     // Runs the dialogue script, as th07's (0x433db3).
     int RunMsg();
     // Draws the dialogue, as th07's (0x43542b).
     int DrawMsg();
 
-    unsigned char unk_0[0x2181c];
-    // The dialogue script running, -1 for none, as th07's
-    // msg.scriptIndex.
-    int msgScriptIndex;
-    unsigned char unk_21820[0x1558];
-    // While it is above 0, the dialogue does not hold the timeline, as
-    // th07's msg.timelineRelease.
-    DWORD msgTimelineRelease;
-    // Whether the dialogue can be skipped, as th07's msg.skippable.
-    BYTE msgSkippable;
-    unsigned char unk_22d7d[0x7];
+    unsigned char unk_0[0x21814];
+    GuiMsg msg;
     // Gui::OnDraw runs Func43826b while it is set.
     int unk_22d84;
-    unsigned char unk_22d88[0x330];
+    int unk_22d88;
+    // The bonus, full power and spell card bonus popups, as th07's.
+    GuiPopup bonusPopup;
+    GuiPopup fullPowerPopup;
+    GuiPopup spellBonusPopup;
+    unsigned char unk_22dec[0x2cc];
 };
 ASSERT_SIZE(GuiImpl, 0x230b8);
 
@@ -1485,7 +1559,7 @@ public:
     // then the dialogue, the banners, the HUD and Func438a89. Returns 1.
     static int OnDraw(Gui *gui);
     // Whether the dialogue holds the timeline: impl is set,
-    // msgTimelineRelease is 0 and a script runs, as th07's.
+    // msg.timelineRelease is 0 and a script runs, as th07's.
     BOOL MsgHoldsTimeline();
     // Whether a dialogue runs, and whether it can be skipped, as th07's
     // (0x4358bb, 0x437dc7).
@@ -1518,6 +1592,15 @@ public:
 };
 ASSERT_SIZE(Gui, 0x9c);
 extern Gui g_Gui;
+
+// Has the back buffer's play area copied to texture 10 at sprite
+// `sprite` of ANM slot 10 (0x437f5c).
+void CopySpriteToTexture(int sprite);
+// Swapped by GuiImpl::StartMsgScript for stages 6B and Extra.
+extern int g_Unknown4ecc9c;
+extern int g_Unknown4ecca0;
+// The dialogue's text colours, by character.
+extern D3DCOLOR g_MsgColors[][4];
 
 // The thread LoadBgm starts, with the main window: streams the wave music
 // each time notifyEvent is signalled, until WM_QUIT or the music is gone.

@@ -109,7 +109,7 @@ struct ReplayHeader
     float slowdown;
     // 2 if the shot type has cleared Extra or Phantasm, 1 if the final
     // stage, else 0.
-    BYTE clearLevel;
+    char clearLevel;
     BYTE unk_11d[0x3];
     // 30.
     int replayFormatVersion;

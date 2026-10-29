@@ -70,7 +70,7 @@ address,size,name,symbol
 0x00406d40,38,Func406d40,
 0x00406d70,38,Func406d70,
 0x00406da0,38,Func406da0,
-0x00406dd0,20,GameManager::GetUnk28,?GetUnk28@GameManager@@QAEDXZ
+0x00406dd0,20,Func406dd0,
 0x00406df0,38,Func406df0,
 0x00406e20,33,GameManager::SetLives,?SetLives@GameManager@@QAEXH@Z
 0x00406e50,154,GameManager::RerollChecksumKeys,?RerollChecksumKeys@GameManager@@QAEXXZ
@@ -204,7 +204,7 @@ address,size,name,symbol
 0x00414540,68,Func414540,
 0x00414590,3237,Func414590,
 0x004152a0,2483,Func4152a0,
-0x00415c60,21,Func415c60,
+0x00415c60,21,BulletManager::Func415c60,?Func415c60@BulletManager@@QAEXXZ
 0x00415c80,85,Func415c80,
 0x00415ce0,37,Func415ce0,
 0x00415d10,71,Func415d10,
@@ -420,7 +420,7 @@ address,size,name,symbol
 0x0042ebf0,642,Func42ebf0,
 0x0042ee80,225,Func42ee80,
 0x0042ef70,50,EnemyManager::RemoveChain,?RemoveChain@EnemyManager@@SIXXZ
-0x0042efb0,575,Func42efb0,
+0x0042efb0,575,EnemyManager::ClearEnemiesForBonus,?ClearEnemiesForBonus@EnemyManager@@QAEHHH@Z
 0x0042f1f0,64,EnemyManager::AnyBossActive,?AnyBossActive@EnemyManager@@QAEHXZ
 0x0042f230,64,Func42f230,
 0x0042f270,64,Func42f270,
@@ -469,7 +469,7 @@ address,size,name,symbol
 0x004338c0,10,Func4338c0,
 0x004338ca,93,Gui::OnUpdate,?OnUpdate@Gui@@SIHPAV1@@Z
 0x00433927,70,Gui::OnDraw,?OnDraw@Gui@@SIHPAV1@@Z
-0x0043396d,1094,Func43396d,
+0x0043396d,1094,GuiImpl::StartMsgScript,?StartMsgScript@GuiImpl@@QAEXH@Z
 0x00433db3,5597,GuiImpl::RunMsg,?RunMsg@GuiImpl@@QAEHXZ
 0x004353ec,63,Func4353ec,
 0x0043542b,1107,GuiImpl::DrawMsg,?DrawMsg@GuiImpl@@QAEHXZ
@@ -491,7 +491,7 @@ address,size,name,symbol
 0x00437ddd,128,Func437ddd,
 0x00437e5d,127,Func437e5d,
 0x00437edc,128,Func437edc,
-0x00437f5c,234,Func437f5c,
+0x00437f5c,234,CopySpriteToTexture,?CopySpriteToTexture@@YIXH@Z
 0x00438046,517,Func438046,?Func438046@@YIXXZ
 0x0043826b,1982,Gui::Func43826b,?Func43826b@Gui@@QAEXXZ
 0x00438a29,24,Func438a29,
@@ -514,7 +514,7 @@ address,size,name,symbol
 0x004397d5,59,Func4397d5,
 0x00439810,25,Func439810,
 0x00439829,45,GameManager::HasClearedStage,?HasClearedStage@GameManager@@QAEHHHH@Z
-0x00439856,45,Func439856,
+0x00439856,45,GameManager::HasClearedStageWithContinues,?HasClearedStageWithContinues@GameManager@@QAEHHHH@Z
 0x00439883,75,Func439883,
 0x004398ce,26,GameManager::GetBombs,?GetBombs@GameManager@@QAEHXZ
 0x004398e8,23,Func4398e8,
@@ -621,7 +621,7 @@ address,size,name,symbol
 0x00441020,334,Func441020,
 0x00441170,315,Func441170,
 0x004412b0,293,Func4412b0,
-0x004413e0,97,Func4413e0,
+0x004413e0,97,ItemManager::CollectAll,?CollectAll@ItemManager@@QAEXXZ
 0x00441450,209,Func441450,
 0x00441530,109,Func441530,
 0x004415a0,451,Func4415a0,
@@ -2410,6 +2410,7 @@ address,size,name,symbol
 0x004bd700,,GUID_NULL,_GUID_NULL
 0x004c67d0,,g_SpellCardLists,?g_SpellCardLists@@3PAPAHA
 0x004c67e8,,g_SpellCardListSizes,?g_SpellCardListSizes@@3PAHA
+0x004c7180,,g_MsgColors,?g_MsgColors@@3PAY03KA
 0x004c7240,,g_StageBgms,?g_StageBgms@@3PAUStageBgm@@A
 0x004c7670,,g_SpellCardBgms,?g_SpellCardBgms@@3PAUSpellCardBgm@@A
 0x004c77f0,,g_Unknown4c77f0,?g_Unknown4c77f0@@3PAY03HA
@@ -2437,6 +2438,8 @@ address,size,name,symbol
 0x004e4030,,g_Stage,?g_Stage@@3VStage@@A
 0x004e4b50,,g_FogColorChanged,?g_FogColorChanged@@3EA
 0x004ea3f4,,g_CameraSizeOffset,?g_CameraSizeOffset@@3UD3DXVECTOR3@@A
+0x004ecc9c,,g_Unknown4ecc9c,?g_Unknown4ecc9c@@3HA
+0x004ecca0,,g_Unknown4ecca0,?g_Unknown4ecca0@@3HA
 0x00577f20,,g_EnemyManager,?g_EnemyManager@@3VEnemyManager@@A
 0x00f54e90,,g_BulletManager,?g_BulletManager@@3VBulletManager@@A
 0x0160f428,,g_Gui,?g_Gui@@3VGui@@A
@@ -2458,6 +2461,7 @@ address,size,name,symbol
 0x0164f598,,g_MemoryManager,?g_MemoryManager@@3VMemoryManager@@A
 0x016535a0,,g_PadButtons,?g_PadButtons@@3PAEA
 0x01653620,,g_TextSurface,?g_TextSurface@@3PAUIDirect3DSurface8@@A
+0x01653648,,g_ItemManager,?g_ItemManager@@3VItemManager@@A
 0x017ce6fc,,g_AppMutex,?g_AppMutex@@3PAXA
 0x017ce700,,g_GameWindow,?g_GameWindow@@3UGameWindow@@A
 0x017ce744,,g_Unknown17ce744,?g_Unknown17ce744@@3T_LARGE_INTEGER@@A

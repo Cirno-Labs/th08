@@ -17,5 +17,7 @@ public:
     // Adds the enemies' chain elements, as th07's (0x42c590). Returns 0,
     // or -1 on failure.
     static int RegisterChain();
+    // Clears the enemies for a bonus, as th07's (0x42efb0).
+    int ClearEnemiesForBonus(int maxBonus, int start);
 };
 extern EnemyManager g_EnemyManager;

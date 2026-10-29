@@ -15,6 +15,8 @@ public:
     // Loads the bullet sprites from `path` and adds the bullets' chain
     // elements, as th07's (0x4311a0). Returns 0, or -1 on failure.
     static int RegisterChain(char *path);
+    // Clears the bullets, as th07's ClearAll (0x415c60).
+    void Func415c60();
 
     unsigned char unk_0[0x6ba538];
     // The bullets alive, as th07's.
