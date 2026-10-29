@@ -763,6 +763,127 @@ int Gui::Func4390d6()
     return 0;
 }
 
+int Gui::LoadResources()
+{
+    int x;
+    int y;
+    DWORD i;
+
+    if (Func438fe9())
+    {
+        memset(this->impl, 0, sizeof(GuiImpl));
+        this->anm = g_SpriteEngine->PreloadAnm(10, "front.anm");
+        if (this->anm == NULL)
+        {
+            return -1;
+        }
+        this->HideInterface();
+        this->timesAnm = g_SpriteEngine->PreloadAnm(0xe, "times.anm");
+        if (this->timesAnm == NULL)
+        {
+            return -1;
+        }
+        this->characterAnm = g_SpriteEngine->PreloadAnm(0xc, g_LoadingAnmPaths[g_GameManager.character]);
+        if (this->characterAnm == NULL)
+        {
+            return -1;
+        }
+        g_AsciiText.anm->StartScript(&this->impl->unk_5484, 0x1a);
+        g_AsciiText.anm->StartScript(&this->impl->unk_22e14, 0x19);
+        if (g_GameManager.IsInSpellCardPractice() && g_GameManager.unk_3dbb0 >= 0xcd)
+        {
+            g_AsciiText.anm->SetSprite(&this->impl->unk_22e14, 0x120);
+        }
+        else
+        {
+            g_AsciiText.anm->SetSprite(&this->impl->unk_22e14, g_GameManager.difficulty + 0x11b);
+        }
+    }
+    else
+    {
+        this->HideInterface();
+        g_AsciiText.anm2->StartScript(&this->impl->loadingBar, 1);
+        this->impl->loadingBar.pendingInterrupt = 1;
+        for (y = 0; y < 0xe; y++)
+        {
+            for (x = 0; x < 0xc; x++)
+            {
+                g_AsciiText.anm2->StartScript(&this->impl->backgroundTiles[y * 0xc + x], ((y + x) & 1) + 3);
+                this->impl->backgroundTiles[y * 0xc + x].scriptVar8 = y + x * 2;
+                this->impl->backgroundTiles[y * 0xc + x].pos.x = x * 32.0f - 0.5f + 16.0f;
+                this->impl->backgroundTiles[y * 0xc + x].pos.y = y * 32.0f - 0.5f + 16.0f;
+                this->impl->backgroundTiles[y * 0xc + x].pos.z = 0.0f;
+                this->impl->backgroundTiles[y * 0xc + x].uvScrollX = x * 32.0f / 512.0f;
+                this->impl->backgroundTiles[y * 0xc + x].uvScrollY = y * 32.0f / 512.0f;
+            }
+        }
+        this->impl->backgroundTileCount = 0xa8;
+    }
+    g_Gui.Func4390d6();
+    this->timesAnm->StartScriptAtOrigin(&this->impl->unk_34d4, 0);
+    this->timesAnm->SetSprite(&this->impl->unk_34d4, g_GameManager.GetUnk28());
+    if (!g_GameManager.IsInSpellCardPractice() &&
+        this->LoadMsg(g_MsgPaths[g_GameManager.stage][g_GameManager.character]) != 0)
+    {
+        return -1;
+    }
+    if (!Func438ffd())
+    {
+        if (!(g_GameManager.unk_3dbac >> 14 & 1) || g_GameManager.unk_3dbb0 < 0xcd)
+        {
+            this->textAnm = g_SpriteEngine->PreloadAnm(0xd, g_StageTextAnmPaths[g_GameManager.stage]);
+            if (this->textAnm == NULL)
+            {
+                return -1;
+            }
+        }
+        else
+        {
+            this->textAnm = g_SpriteEngine->PreloadAnm(0xd, g_StageTextAnmPaths[8]);
+            if (this->textAnm == NULL)
+            {
+                return -1;
+            }
+        }
+    }
+    if (Func438fe9())
+    {
+        for (i = 0; i < 0x10; i++)
+        {
+            this->anm->StartScript(&this->impl->sprites[i], i);
+        }
+    }
+    this->frameCounter = 0;
+    this->unk_2c = 0;
+    this->impl->unk_2a40 = 0;
+    this->unk_30 = 0.0f;
+    this->unk_34 = 0.0f;
+    if (!(g_GameManager.unk_3dbac >> 14 & 1))
+    {
+        this->textAnm->StartSpriteSeries(this->impl->unk_2a44, 0, 4);
+    }
+    else if (!Func438ffd() || Func439916(g_GameManager.unk_3dbb0))
+    {
+        this->textAnm->StartSpriteSeries(this->impl->unk_2a44, 3, 1);
+        this->textAnm->SetSprite(this->impl->unk_2a44, Func439961(g_GameManager.unk_3dbb0) + 3);
+    }
+    this->impl->msg.scriptIndex = -1;
+    this->impl->stageClearShown = 0;
+    this->impl->bonusPopup.shown = 0;
+    this->impl->fullPowerPopup.shown = 0;
+    this->impl->spellBonusPopup.shown = 0;
+    this->livesChanged = 2;
+    this->bombsChanged = 2;
+    this->grazeChanged = 2;
+    this->unk_4_8 = 2;
+    this->powerChanged = 2;
+    this->unk_4_10 = 2;
+    g_AsciiText.anm->StartScript(&this->impl->unk_212c8, 3);
+    g_App.redrawFrames = 0x10;
+    this->impl->stageClearClock2 = 0;
+    return 0;
+}
+
 void Gui::HideInterface()
 {
     this->impl->loadingIcon.spriteIndex = -1;

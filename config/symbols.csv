@@ -520,7 +520,7 @@ address,size,name,symbol
 0x004398e8,23,AsciiText::SetColor,?SetColor@AsciiText@@QAEXK@Z
 0x004398ff,23,AsciiText::SetInArena,?SetInArena@AsciiText@@QAEXH@Z
 0x00439916,75,Func439916,?Func439916@@YIHH@Z
-0x00439961,75,Func439961,
+0x00439961,75,Func439961,?Func439961@@YIHH@Z
 0x004399ac,130,GameManager::IsInPlayArea,?IsInPlayArea@GameManager@@QAEHMMMM@Z
 0x00439a2e,151,GameManager::ComputeChecksum,?ComputeChecksum@GameManager@@QAEHXZ
 0x00439ac5,100,ChecksumBytes,?ChecksumBytes@@YIHPAEH@Z
@@ -2413,6 +2413,9 @@ address,size,name,symbol
 0x004c7180,,g_MsgColors,?g_MsgColors@@3PAY03KA
 0x004c7240,,g_StageBgms,?g_StageBgms@@3PAUStageBgm@@A
 0x004c72bc,,g_AmPmNames,?g_AmPmNames@@3PAPADA
+0x004c72c4,,g_LoadingAnmPaths,?g_LoadingAnmPaths@@3PAPADA
+0x004c745c,,g_StageTextAnmPaths,?g_StageTextAnmPaths@@3PAPADA
+0x004c74c0,,g_MsgPaths,?g_MsgPaths@@3PAY0M@PADA
 0x004c7670,,g_SpellCardBgms,?g_SpellCardBgms@@3PAUSpellCardBgm@@A
 0x004c77f0,,g_Unknown4c77f0,?g_Unknown4c77f0@@3PAY03HA
 0x004c7880,,g_Ranks,?g_Ranks@@3PAURankSettings@@A

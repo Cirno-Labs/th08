@@ -1548,7 +1548,8 @@ struct GuiImpl
     int DrawMsg();
 
     Sprite sprites[0x10];
-    int unk_2a40;
+    BYTE unk_2a40;
+    unsigned char unk_2a41[0x3];
     Sprite unk_2a44[4];
     Sprite unk_34d4;
     Sprite loadingIcon;
@@ -1673,15 +1674,25 @@ public:
     // Set to 2 when the lives or bombs change, as th07's.
     unsigned int livesChanged : 2;
     unsigned int bombsChanged : 2;
+    unsigned int powerChanged : 2;
+    unsigned int grazeChanged : 2;
+    unsigned int unk_4_8 : 2;
+    unsigned int unk_4_10 : 2;
     GuiImpl *impl;
     // front.anm (ANM slot 10), as th07's ANM slot.
     AnmLoaded *anm;
-    int unk_10;
+    // The stage's text ANM (slot 0xd), as th07's stdNtxt.anm.
+    AnmLoaded *textAnm;
     // times.anm (ANM slot 0xe), with the clock, and the character's
-    // ANM (slot 0xc).
+    // loading ANM (slot 0xc).
     AnmLoaded *timesAnm;
     AnmLoaded *characterAnm;
-    unsigned char unk_1c[0x80];
+    unsigned char unk_1c[0x10];
+    BYTE unk_2c;
+    unsigned char unk_2d[0x3];
+    float unk_30;
+    float unk_34;
+    unsigned char unk_38[0x64];
 };
 ASSERT_SIZE(Gui, 0x9c);
 extern Gui g_Gui;
@@ -1705,6 +1716,12 @@ void CopySpriteToTexture(int sprite);
 // Swapped by GuiImpl::StartMsgScript for stages 6B and Extra.
 extern int g_Unknown4ecc9c;
 extern int g_Unknown4ecca0;
+// The character's loading ANM, the stages' text ANMs (the last for
+// Extra's last spell cards) and the dialogue files by stage and
+// character.
+extern char *g_LoadingAnmPaths[];
+extern char *g_StageTextAnmPaths[];
+extern char *g_MsgPaths[][12];
 // "AM" and "PM", picked by whether the hour is before 12 (backwards).
 extern char *g_AmPmNames[2];
 // The dialogue's text colours, by character.
@@ -1791,6 +1808,7 @@ extern int g_Unknown4c77f0[][4];
 int Func417f60();
 // Sets stats->unk_38 from stats->unk_34 by difficulty (0x440470).
 void Func440470();
-// g_SpellCardBgms' unk_10 for the spell card practised; ignores `card`
-// (0x439916).
+// g_SpellCardBgms' unk_10 and unk_c for the spell card practised; both
+// ignore `card` (0x439916, 0x439961).
 int Func439916(int card);
+int Func439961(int card);
