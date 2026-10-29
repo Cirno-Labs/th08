@@ -251,3 +251,8 @@ int App::GetReferenceRasterizer()
 {
     return this->flags.referenceRasterizer;
 }
+
+int App::GetWindowed()
+{
+    return this->windowed;
+}

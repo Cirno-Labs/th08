@@ -74,6 +74,7 @@ public:
     int GetNoVertexBuffer();
     int GetForce16BitTextures();
     int GetReferenceRasterizer();
+    int GetWindowed();
 
     HINSTANCE hInstance;
     IDirect3D8 *d3d;

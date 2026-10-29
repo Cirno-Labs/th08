@@ -653,7 +653,7 @@ address,size,name,symbol
 0x00443a70,25,App::GetNoVertexBuffer,?GetNoVertexBuffer@App@@QAEHXZ
 0x00443a90,26,App::GetForce16BitTextures,?GetForce16BitTextures@App@@QAEHXZ
 0x00443ab0,26,App::GetReferenceRasterizer,?GetReferenceRasterizer@App@@QAEHXZ
-0x00443ad0,21,Func443ad0,
+0x00443ad0,21,App::GetWindowed,?GetWindowed@App@@QAEHXZ
 0x00443af0,104,Func443af0,
 0x00443b60,248,Func443b60,
 0x00443c60,33,MidiDevice::MidiDevice,??0MidiDevice@@QAE@XZ
