@@ -20,6 +20,8 @@ public:
     void AddString(D3DXVECTOR3 *pos, char *text);
     // Draws the queued strings (0x402b20).
     void DrawStrings();
+    // Resets the text state, as th07's (0x402450).
+    void Initialize();
 
     // Inline; /Os files call the copy at 0x4398e8.
     void SetColor(D3DCOLOR color)

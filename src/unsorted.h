@@ -285,7 +285,10 @@ public:
     int scene;
     // The scene the game came from.
     int prevScene;
-    unsigned char unk_164[0x8];
+    // Cleared by GameManager::AddedCallback in scenes 3, 11 and 12, else
+    // set; unk_168 the same by DeletedCallback.
+    int unk_164;
+    int unk_168;
     // Set by OnUpdate when a game restarts from scene 11.
     int unk_16c;
     unsigned char unk_170[0x4];
@@ -388,6 +391,11 @@ void RemoveGameManagerChain();
 
 // Counted down by App::OnUpdate every frame while nonzero.
 extern int g_Unknown18b8a2c;
+// Cleared by GameManager::DeletedCallback.
+extern int g_Unknown4e3d28;
+// Removes chain elements GameManager::DeletedCallback removes before the
+// stage's; probably a manager th07 did not have (0x4180f0).
+void Func4180f0();
 
 // Measures the frame rate every half second, with the performance
 // counter when there is one, and shows it when `draw` is set, as th07's.
@@ -1021,7 +1029,12 @@ struct GameManagerStats
     DWORD score;
     // The game's grazes.
     int grazeTotal;
-    unsigned char unk_10[0xc];
+    unsigned char unk_10[0x4];
+    // The high score to beat, from the score file, and what
+    // LoadHighScores stores from the best entry, as th07's.
+    DWORD highScore;
+    BYTE bestContinuesUsed;
+    unsigned char unk_19[0x3];
     int spellCardsCaptured;
     unsigned char unk_20[0x2];
     // Kept in each replay stage.
@@ -1336,6 +1349,15 @@ int ChecksumBytes(BYTE *data, int size);
 // Fills the checksum keys in g_GameManager.stats with random numbers
 // from 6543 up, then stores the checksum, as th07's.
 void RerollStatsChecksumKeys();
+// The score loading of th07's LoadScoreFile: saves the score file
+// (ResultScreen::RegisterChain(2)), resets the spell cards, then loads the
+// high score, the spell cards, the clears and the practice scores from
+// "score.dat" (a practice takes its high score from the practice scores,
+// counts the play and marks the shot type's practice scores to be saved)
+// and keeps a copy of the spell cards in savedCatks. New in th08: then
+// starts hscr with the shot type, difficulty and config. Returns 0, or -1
+// if the file cannot be read.
+int LoadScoreFile();
 // Adds one to `*count` while it is under 999999. Its callers pass
 // 999999 as `max`, which it ignores.
 void IncrementStatCounter(DWORD *count, DWORD max);
@@ -1348,6 +1370,8 @@ public:
     // (0x4358bb, 0x437dc7).
     int IsMsgRunning();
     int IsMsgSkippable();
+    // Removes the Gui's chain elements, as th07's (0x437d64).
+    static void RemoveChain();
 
     DWORD unk_0;
     // Set to 2 when the lives or bombs change, as th07's.
@@ -1381,5 +1405,7 @@ public:
     void SetupFixedCamera();
     // Sets the stage's view and projection (0x40b6d0).
     void SetupCamera();
+    // Removes the stage's chain elements, as th07's (0x409ca0).
+    static void RemoveChain();
 };
 extern Stage g_Stage;

@@ -12,5 +12,7 @@ class EnemyManager
 public:
     // Whether any of the bosses is set, as th07's (0x42f1f0).
     int AnyBossActive();
+    // Removes the enemies' chain elements, as th07's (0x42ef70).
+    static void RemoveChain();
 };
 extern EnemyManager g_EnemyManager;

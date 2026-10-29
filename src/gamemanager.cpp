@@ -4,7 +4,13 @@
 
 #include <string.h>
 
+#include "ascii.h"
+#include "bullet.h"
 #include "chain.h"
+#include "effect.h"
+#include "enemy.h"
+#include "midi.h"
+#include "player.h"
 #include "replay.h"
 #include "unsorted.h"
 
@@ -159,6 +165,58 @@ void RerollStatsChecksumKeys()
     sum = g_GameManager.ComputeChecksum();
     g_GameManager.stats->computedChecksum = sum;
     g_GameManager.checksumValue = (float)sum + g_GameManager.stats->checksumKeysD[3];
+}
+
+int LoadScoreFile()
+{
+    Catk *catks;
+    int i;
+    ScoreDat *data;
+    int j;
+
+    catks = g_GameManager.catks;
+    ResultScreen::RegisterChain(2);
+    memset(g_GameManager.catks, 0, sizeof(g_GameManager.catks));
+    for (i = 0; i < 0xde; i++, catks++)
+    {
+        catks->magic = 0x4b544143;
+        catks->size2 = sizeof(Catk);
+        catks->size = sizeof(Catk);
+        catks->version = 3;
+        catks->index = i;
+        for (j = 0; j < 7; j++)
+        {
+            catks->attempts[j] = 0;
+            catks->captures[j] = 0;
+            catks->maxBonus[j] = 0;
+        }
+    }
+    data = LoadScoreDat("score.dat");
+    if (data == NULL)
+    {
+        LogPrintf(&g_Log, "error : スコアファイルの読み取りに失敗しました\r\n");
+        return -1;
+    }
+    g_GameManager.stats->highScore = LoadHighScores(data, NULL, g_GameManager.character, g_GameManager.difficulty,
+                                                    &g_GameManager.stats->bestContinuesUsed);
+    LoadSpellCards(data, g_GameManager.catks);
+    LoadClears(data, g_GameManager.clrds);
+    LoadPracticeScores(data, g_GameManager.pscrs);
+    if (g_GameManager.unk_3dbac & 1)
+    {
+        g_GameManager.stats->highScore =
+            g_GameManager.pscrs[g_GameManager.character].scores[g_GameManager.stage][g_GameManager.difficulty];
+        g_GameManager.pscrs[g_GameManager.character].playCount[g_GameManager.stage][g_GameManager.difficulty]++;
+        g_GameManager.pscrs[g_GameManager.character].unk_175 = 1;
+    }
+    ReleaseScoreDat(data);
+    memcpy(g_GameManager.savedCatks, g_GameManager.catks, sizeof(g_GameManager.catks));
+    memset(&g_GameManager.hscr, 0, sizeof(g_GameManager.hscr));
+    g_GameManager.hscr.shot = g_GameManager.character;
+    g_GameManager.hscr.difficulty = g_GameManager.difficulty;
+    memcpy(g_GameManager.hscr.config, &g_App.controllerMapping, sizeof(g_GameManager.hscr.config));
+    g_GameManager.unk_3db94 = 0;
+    return 0;
 }
 
 void IncrementStatCounter(DWORD *count, DWORD max)

@@ -75,10 +75,21 @@ struct Hscr
     // "%m/%d" and a NUL.
     char date[6];
     BYTE continuesUsed;
-    unsigned char unk_27[0x1d];
-    // The lives the game started with, less one.
-    BYTE initialLives;
-    unsigned char unk_45[0x1f];
+    unsigned char unk_27;
+    union
+    {
+        // The config it was played with, in GameManagerUnk4's layout:
+        // GameManager's copy takes App's (LoadScoreFile).
+        BYTE config[0x3c];
+        struct
+        {
+            unsigned char unk_28[0x1c];
+            // The lives the game started with, less one: the config's
+            // lifeCount.
+            BYTE initialLives;
+            unsigned char unk_45[0x1f];
+        };
+    };
     // The frames played: HandleNameEntry copies GameManager::unk_3db94.
     int playFrames;
     // The point items collected.
@@ -219,7 +230,9 @@ struct Pscr
     WORD size2;
     BYTE version;
     BYTE unk_09[0x3];
-    DWORD unk_0c[9][5];
+    // How often each stage was practised, by stage and difficulty
+    // (LoadScoreFile counts them).
+    DWORD playCount[9][5];
     // The best score, by stage and difficulty.
     DWORD scores[9][5];
     // The shot type.
