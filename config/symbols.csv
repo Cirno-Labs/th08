@@ -2449,6 +2449,10 @@ address,size,name,symbol
 0x004c7d10,,g_ShotFilesFocused,?g_ShotFilesFocused@@3PAPADA
 0x004c7d40,,g_OptionUpdateFuncs,?g_OptionUpdateFuncs@@3PAY03P6IHPAVPlayer@@PAUPlayerOption@@@ZA
 0x004c7e10,,g_OptionDrawFuncs,?g_OptionDrawFuncs@@3PAY03P6IHPAVPlayer@@PAUPlayerOption@@@ZA
+0x004c7ee0,,g_ShotFireFuncs,?g_ShotFireFuncs@@3PAP6IHPAVPlayer@@PAUPlayerBullet@@HPAUShotData@@@ZA
+0x004c7f04,,g_ShotUpdateFuncs,?g_ShotUpdateFuncs@@3PAP6IHPAVPlayer@@PAUPlayerBullet@@@ZA
+0x004c7f1c,,g_ShotDrawFuncs,?g_ShotDrawFuncs@@3PAP6IHPAVPlayer@@PAUPlayerBullet@@@ZA
+0x004c7f24,,g_ShotHitFuncs,?g_ShotHitFuncs@@3PAP6IHPAVPlayer@@PAUPlayerBullet@@PAUD3DXVECTOR3@@@ZA
 0x004c7f30,,g_ReplayDifficultyNames,?g_ReplayDifficultyNames@@3PAPADA
 0x004c7f48,,g_NameAlphabet,?g_NameAlphabet@@3PADA
 0x004c7f4c,,g_ShotNames,?g_ShotNames@@3PAPADA

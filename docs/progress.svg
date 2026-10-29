@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">69.80% (779)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">28.23% (315)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">69.89% (780)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">28.14% (314)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="521.43" height="6" x="0" y="0" class="named"/>
-<rect width="14.73" height="6" x="521.43" y="0" class="decompiled"/>
-<rect width="210.85" height="6" x="536.15" y="0" class="todo"/>
+<rect width="522.10" height="6" x="0" y="0" class="named"/>
+<rect width="14.73" height="6" x="522.10" y="0" class="decompiled"/>
+<rect width="210.18" height="6" x="536.82" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -843,7 +843,7 @@
 <rect width="12" height="12" x="330" y="225" class="named"><title>0x0044d650 Player::AddedCallback (1537 bytes)</title></rect>
 <rect width="12" height="12" x="345" y="225" class="named"><title>0x0044dc60 Player::DeletedCallback (164 bytes)</title></rect>
 <rect width="12" height="12" x="360" y="225" class="named"><title>0x0044dd10 Player::RemoveChain (85 bytes)</title></rect>
-<rect width="12" height="12" x="375" y="225" class="todo"><title>0x0044dd70 LoadShotTypeFile (233 bytes)</title></rect>
+<rect width="12" height="12" x="375" y="225" class="named"><title>0x0044dd70 LoadShotTypeFile (233 bytes)</title></rect>
 <rect width="12" height="12" x="390" y="225" class="todo"><title>0x0044de60 Player::Func44de60 (153 bytes)</title></rect>
 <rect width="12" height="12" x="405" y="225" class="todo"><title>0x0044df00 Func44df00 (153 bytes)</title></rect>
 <rect width="12" height="12" x="420" y="225" class="todo"><title>0x0044dfa0 Player::Func44dfa0 (153 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">61.12%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">37.86%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">61.17%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">37.81%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="456.59" height="6" x="0" y="0" class="named"/>
-<rect width="7.57" height="6" x="456.59" y="0" class="decompiled"/>
-<rect width="282.83" height="6" x="464.17" y="0" class="todo"/>
+<rect width="456.97" height="6" x="0" y="0" class="named"/>
+<rect width="7.57" height="6" x="456.97" y="0" class="decompiled"/>
+<rect width="282.45" height="6" x="464.55" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1598,7 +1598,7 @@
 <rect width="8.77" height="8.37" x="558.02" y="258.36" class="named"><title>0x00472750 CSound::Play (236 bytes)</title></rect>
 <rect width="8.77" height="8.28" x="558.02" y="269.73" class="named"><title>0x00437f5c CopySpriteToTexture (234 bytes)</title></rect>
 <rect width="8.77" height="8.23" x="558.02" y="281.01" class="todo"><title>0x0040d010 Func40d010 (233 bytes)</title></rect>
-<rect width="8.77" height="8.23" x="558.02" y="292.24" class="todo"><title>0x0044dd70 LoadShotTypeFile (233 bytes)</title></rect>
+<rect width="8.77" height="8.23" x="558.02" y="292.24" class="named"><title>0x0044dd70 LoadShotTypeFile (233 bytes)</title></rect>
 <rect width="8.77" height="8.18" x="558.02" y="303.47" class="named"><title>0x0043ca50 Chain::RunCalcChain (232 bytes)</title></rect>
 <rect width="8.77" height="8.18" x="558.02" y="314.65" class="named"><title>0x0043f898 GdiSurface::CopyToSurface (232 bytes)</title></rect>
 <rect width="8.77" height="8.09" x="558.02" y="325.83" class="todo"><title>0x0040c820 Func40c820 (230 bytes)</title></rect>

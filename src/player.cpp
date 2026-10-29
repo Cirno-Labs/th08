@@ -1048,3 +1048,29 @@ void Player::RemoveChain()
     g_Chain.Remove(g_Player.drawChain2);
     g_Player.drawChain2 = NULL;
 }
+
+int LoadShotTypeFile(ShotTypeData **out, char *path)
+{
+    int i;
+    ShotData *shot;
+
+    *out = (ShotTypeData *)LoadFileData(path, NULL, 0);
+    if (*out == NULL)
+    {
+        return -1;
+    }
+    for (i = 0; i < (*out)->tableCount; i++)
+    {
+        (*out)->tables[i].shots = (ShotData *)((int)(*out)->tables[i].shots + (int)*out);
+        shot = (*out)->tables[i].shots;
+        while (shot->interval >= 0)
+        {
+            shot->fire = g_ShotFireFuncs[(int)shot->fire];
+            shot->update = g_ShotUpdateFuncs[(int)shot->update];
+            shot->draw = g_ShotDrawFuncs[(int)shot->draw];
+            shot->hit = g_ShotHitFuncs[(int)shot->hit];
+            shot++;
+        }
+    }
+    return 0;
+}
