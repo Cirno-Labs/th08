@@ -59,6 +59,9 @@ struct GameConfigFlags
 class App
 {
 public:
+    // Zeroes the whole App and sets bits 0x40 and 0x100 of unk_1a4.
+    // Emitted where g_App is defined (0x445b7a).
+    App();
     // Whether holding shoot also focuses (shootFocuses). th07 read the
     // field directly; th08 calls this out-of-line copy.
     int GetShootFocuses();
@@ -88,8 +91,8 @@ public:
     IDirectInputDevice8 *joystick;
     DIDEVCAPS joystickCaps;
     HWND hwnd;
-    D3DXMATRIX viewMatrix;
-    D3DXMATRIX projectionMatrix;
+    D3DMATRIX viewMatrix;
+    D3DMATRIX projectionMatrix;
     D3DVIEWPORT8 viewport;
     D3DPRESENT_PARAMETERS presentParams;
     MidiTimer *timer;
@@ -114,7 +117,18 @@ public:
     unsigned char unk_13f[0x11];
     // th07's flags, 4 bytes further on.
     GameConfigFlags flags;
-    unsigned char unk_154[0x50];
+    // Counts OnUpdate's calls.
+    int frames;
+    // The scene set up; OnUpdate switches it to `scene` when they
+    // differ.
+    int curScene;
+    // The scene the game is in or switches to.
+    int scene;
+    // The scene the game came from.
+    int prevScene;
+    unsigned char unk_164[0x3c];
+    // The loading screen's sprites, from nowloading.anm (AddedCallback).
+    void *loadingAnm;
     // Bit 0x40 is set by CheckSingleInstance when the startup info has
     // no title, cleared when it has one.
     DWORD unk_1a4;
@@ -129,7 +143,11 @@ public:
     // ChecksumExecutable.
     DWORD exeChecksum;
     DWORD exeSize;
+    // The version file OpenGameArchive loads, and its size.
+    int verFileSize;
+    void *verFile;
 };
+ASSERT_SIZE(App, 0x364);
 
 extern App g_App;
 
