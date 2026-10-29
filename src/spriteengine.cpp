@@ -274,15 +274,15 @@ int SpriteEngine::Step(Sprite *vm)
             vm->flags |= 8;
             break;
         case 12:
-            vm->rotationX = ANM_FLOAT_ARG(0);
-            vm->rotationY = ANM_FLOAT_ARG(1);
-            vm->rotationZ = ANM_FLOAT_ARG(2);
+            vm->rotation.x = ANM_FLOAT_ARG(0);
+            vm->rotation.y = ANM_FLOAT_ARG(1);
+            vm->rotation.z = ANM_FLOAT_ARG(2);
             vm->flags |= 4;
             break;
         case 13:
-            vm->rotationSpeedX = ANM_FLOAT_ARG(0);
-            vm->rotationSpeedY = ANM_FLOAT_ARG(1);
-            vm->rotationSpeedZ = ANM_FLOAT_ARG(2);
+            vm->rotationSpeed.x = ANM_FLOAT_ARG(0);
+            vm->rotationSpeed.y = ANM_FLOAT_ARG(1);
+            vm->rotationSpeed.z = ANM_FLOAT_ARG(2);
             vm->flags |= 4;
             break;
         case 14:
@@ -499,7 +499,7 @@ int SpriteEngine::Step(Sprite *vm)
             vm->interpDuration[3] = 0;
             vm->interpFrame[3] = ANM_INT_ARG(0);
             vm->rotationInterpEasing = curInstr->args[1].i;
-            vm->rotateStart = *(D3DXVECTOR3 *)&vm->rotationX;
+            vm->rotateStart = vm->rotation;
             vm->rotateEnd.x = ANM_FLOAT_ARG(2);
             vm->rotateEnd.y = ANM_FLOAT_ARG(3);
             vm->rotateEnd.z = ANM_FLOAT_ARG(4);
@@ -691,19 +691,19 @@ int SpriteEngine::Step(Sprite *vm)
     }
 
 done:
-    if (vm->rotationSpeedX != 0.0f)
+    if (vm->rotationSpeed.x != 0.0f)
     {
-        vm->rotationX = AddNormalizeAngle(vm->rotationX, g_App.gameSpeed * vm->rotationSpeedX);
+        vm->rotation.x = AddNormalizeAngle(vm->rotation.x, g_App.gameSpeed * vm->rotationSpeed.x);
         vm->flags |= 4;
     }
-    if (vm->rotationSpeedY != 0.0f)
+    if (vm->rotationSpeed.y != 0.0f)
     {
-        vm->rotationY = AddNormalizeAngle(vm->rotationY, g_App.gameSpeed * vm->rotationSpeedY);
+        vm->rotation.y = AddNormalizeAngle(vm->rotation.y, g_App.gameSpeed * vm->rotationSpeed.y);
         vm->flags |= 4;
     }
-    if (vm->rotationSpeedZ != 0.0f)
+    if (vm->rotationSpeed.z != 0.0f)
     {
-        vm->rotationZ = AddNormalizeAngle(vm->rotationZ, g_App.gameSpeed * vm->rotationSpeedZ);
+        vm->rotation.z = AddNormalizeAngle(vm->rotation.z, g_App.gameSpeed * vm->rotationSpeed.z);
         vm->flags |= 4;
     }
     for (k = 0; k < 7; k++)
@@ -785,9 +785,9 @@ done:
                                   ((BYTE *)&vm->color2TweenStart)[3];
                 break;
             case 3:
-                vm->rotationX = AddNormalizeAngle((vm->rotateEnd.x - vm->rotateStart.x) * t, vm->rotateStart.x);
-                vm->rotationY = AddNormalizeAngle((vm->rotateEnd.y - vm->rotateStart.y) * t, vm->rotateStart.y);
-                vm->rotationZ = AddNormalizeAngle((vm->rotateEnd.z - vm->rotateStart.z) * t, vm->rotateStart.z);
+                vm->rotation.x = AddNormalizeAngle((vm->rotateEnd.x - vm->rotateStart.x) * t, vm->rotateStart.x);
+                vm->rotation.y = AddNormalizeAngle((vm->rotateEnd.y - vm->rotateStart.y) * t, vm->rotateStart.y);
+                vm->rotation.z = AddNormalizeAngle((vm->rotateEnd.z - vm->rotateStart.z) * t, vm->rotateStart.z);
                 vm->flags |= 4;
                 break;
             case 4:
@@ -1189,7 +1189,7 @@ int SpriteEngine::Draw(Sprite *vm)
     float angle;
     float s;
 
-    if (vm->rotationZ == 0.0f)
+    if (vm->rotation.z == 0.0f)
     {
         return this->DrawUnrotated(vm);
     }
@@ -1205,7 +1205,7 @@ int SpriteEngine::Draw(Sprite *vm)
     {
         return -1;
     }
-    angle = vm->rotationZ;
+    angle = vm->rotation.z;
     __asm
     {
         fld angle
@@ -1261,7 +1261,7 @@ int SpriteEngine::DrawRotatedNoRound(Sprite *vm)
     {
         return -1;
     }
-    angle = vm->rotationZ;
+    angle = vm->rotation.z;
     if (angle != 0.0f)
     {
         __asm
@@ -1380,7 +1380,7 @@ int SpriteEngine::ProjectSprite(Sprite *vm)
     float h;
     float w;
 
-    angle = vm->rotationZ;
+    angle = vm->rotation.z;
     __asm
     {
         fld angle
@@ -1467,19 +1467,19 @@ void SpriteEngine::ProjectSprite3D(Sprite *vm)
         vm->drawMatrix._11 *= vm->scaleY;
         vm->drawMatrix._22 *= vm->scaleX;
         vm->flags &= ~8;
-        if (vm->rotationX != 0.0)
+        if (vm->rotation.x != 0.0)
         {
-            D3DXMatrixRotationX(&rotationMatrix, vm->rotationX);
+            D3DXMatrixRotationX(&rotationMatrix, vm->rotation.x);
             D3DXMatrixMultiply(&vm->drawMatrix, &vm->drawMatrix, &rotationMatrix);
         }
-        if (vm->rotationY != 0.0)
+        if (vm->rotation.y != 0.0)
         {
-            D3DXMatrixRotationY(&rotationMatrix, vm->rotationY);
+            D3DXMatrixRotationY(&rotationMatrix, vm->rotation.y);
             D3DXMatrixMultiply(&vm->drawMatrix, &vm->drawMatrix, &rotationMatrix);
         }
-        if (vm->rotationZ != 0.0)
+        if (vm->rotation.z != 0.0)
         {
-            D3DXMatrixRotationZ(&rotationMatrix, vm->rotationZ);
+            D3DXMatrixRotationZ(&rotationMatrix, vm->rotation.z);
             D3DXMatrixMultiply(&vm->drawMatrix, &vm->drawMatrix, &rotationMatrix);
         }
         vm->flags &= ~4;
@@ -1541,7 +1541,7 @@ int SpriteEngine::ProjectSpriteWithCallback(Sprite *vm, void (*callback)(Sprite 
     float h;
     float w;
 
-    angle = vm->rotationZ;
+    angle = vm->rotation.z;
     __asm
     {
         fld angle
@@ -1649,19 +1649,19 @@ int SpriteEngine::Draw3D(Sprite *vm)
         vm->drawMatrix._11 *= vm->scaleY;
         vm->drawMatrix._22 *= vm->scaleX;
         vm->flags &= ~8;
-        if (vm->rotationX != 0.0)
+        if (vm->rotation.x != 0.0)
         {
-            D3DXMatrixRotationX(&rotationMatrix, vm->rotationX);
+            D3DXMatrixRotationX(&rotationMatrix, vm->rotation.x);
             D3DXMatrixMultiply(&vm->drawMatrix, &vm->drawMatrix, &rotationMatrix);
         }
-        if (vm->rotationY != 0.0)
+        if (vm->rotation.y != 0.0)
         {
-            D3DXMatrixRotationY(&rotationMatrix, vm->rotationY);
+            D3DXMatrixRotationY(&rotationMatrix, vm->rotation.y);
             D3DXMatrixMultiply(&vm->drawMatrix, &vm->drawMatrix, &rotationMatrix);
         }
-        if (vm->rotationZ != 0.0)
+        if (vm->rotation.z != 0.0)
         {
-            D3DXMatrixRotationZ(&rotationMatrix, vm->rotationZ);
+            D3DXMatrixRotationZ(&rotationMatrix, vm->rotation.z);
             D3DXMatrixMultiply(&vm->drawMatrix, &vm->drawMatrix, &rotationMatrix);
         }
         vm->flags &= ~4;

@@ -82,70 +82,16 @@ struct SpriteData
 };
 ASSERT_SIZE(SpriteData, 0x44);
 
-// A sprite run by an ANM script, th07's Sprite (0x24c there). Only the
-// fields known so far.
-class Sprite
+// The part of Sprite up to pos, as th07's. Its implicit constructor
+// (0x4067c0) constructs the vectors, Timers and matrices; Sprite's
+// calls it.
+struct SpriteBase
 {
-public:
-    // Out of line at 0x406720.
-    Sprite();
-
-    // Flag bit 0. Inline; the copy is at 0x4066e0.
-    DWORD IsShown()
-    {
-        return this->flags & 1;
-    }
-    // Clears flag bit 0, as th07's. Inline; the copy is at 0x406700.
-    void ClearShown()
-    {
-        this->shown = 0;
-    }
-    // Whether the script waits for an interrupt. Inline; the copy at
-    // 0x4396f8 is the Gui object's.
-    DWORD IsStopped()
-    {
-        return this->stopped;
-    }
-    // Inline; /Os files call the copy at 0x407120.
-    void SetPendingInterrupt(short interrupt)
-    {
-        this->pendingInterrupt = interrupt;
-    }
-
-    // Resets the sprite's state up to pos, as th07's: a scale of 1,
-    // white, the identity matrix, flags 7. Inline; the copy is at
-    // 0x4068e0.
-    void Initialize()
-    {
-        memset(this, 0, offsetof(Sprite, pos));
-        this->scaleY = 1.0f;
-        this->scaleX = 1.0f;
-        this->color = 0xffffffff;
-        D3DXMatrixIdentity(&this->matrix);
-        *(WORD *)&this->flags = 7;
-        this->scriptTime.Initialize();
-    }
-
-    // The value of `value` as a float argument: the variable it stands
-    // for, if any, or itself.
-    float ResolveFloatArgument(float value);
-    // The same for an int argument; float variables are truncated.
-    int ResolveIntArgument(int value);
-    // Where a float script argument is read from or written to: when bit
-    // `bit` of `mask` is set and `*value` is 10004 to 10007, the float
-    // variable it stands for, else `value`.
-    float *ResolveFloatArgumentPtr(float *value, WORD mask, int bit);
-    // The same for an int argument and the int variables.
-    int *ResolveIntArgumentPtr(int *value, WORD mask, int bit);
-
-    // The sprite's rotations about x, y and z, as th07's.
-    float rotationX;
-    float rotationY;
-    float rotationZ;
+    // The sprite's rotations about x, y and z: th07's rotationX..Z as a
+    // vector, which SpriteBase's constructor constructs.
+    D3DXVECTOR3 rotation;
     // The rotation speeds about x, y and z, which Step adds each frame.
-    float rotationSpeedX;
-    float rotationSpeedY;
-    float rotationSpeedZ;
+    D3DXVECTOR3 rotationSpeed;
     // Draw scales the sprite's height and width by these, as th07's.
     float scaleY;
     float scaleX;
@@ -259,6 +205,70 @@ public:
     int drawMode;
     // The ANM file whose script runs (AnmLoaded::StartScript).
     AnmLoaded *anm;
+};
+ASSERT_SIZE(SpriteBase, 0x208);
+
+// A sprite run by an ANM script, th07's Sprite (0x24c there). Only the
+// fields known so far.
+class Sprite : public SpriteBase
+{
+public:
+    // Inline, as th07's: /Od files call the copy at 0x406720 (the ascii
+    // object's), /Ob1 files call it too, as it is too large to expand.
+    Sprite()
+    {
+        memset(this, 0, sizeof(Sprite));
+        this->spriteIndex = -1;
+    }
+
+    // Flag bit 0. Inline; the copy is at 0x4066e0.
+    DWORD IsShown()
+    {
+        return this->flags & 1;
+    }
+    // Clears flag bit 0, as th07's. Inline; the copy is at 0x406700.
+    void ClearShown()
+    {
+        this->shown = 0;
+    }
+    // Whether the script waits for an interrupt. Inline; the copy at
+    // 0x4396f8 is the Gui object's.
+    DWORD IsStopped()
+    {
+        return this->stopped;
+    }
+    // Inline; /Os files call the copy at 0x407120.
+    void SetPendingInterrupt(short interrupt)
+    {
+        this->pendingInterrupt = interrupt;
+    }
+
+    // Resets the sprite's state up to pos, as th07's: a scale of 1,
+    // white, the identity matrix, flags 7. Inline; the copy is at
+    // 0x4068e0.
+    void Initialize()
+    {
+        memset(this, 0, sizeof(SpriteBase));
+        this->scaleY = 1.0f;
+        this->scaleX = 1.0f;
+        this->color = 0xffffffff;
+        D3DXMatrixIdentity(&this->matrix);
+        *(WORD *)&this->flags = 7;
+        this->scriptTime.Initialize();
+    }
+
+    // The value of `value` as a float argument: the variable it stands
+    // for, if any, or itself.
+    float ResolveFloatArgument(float value);
+    // The same for an int argument; float variables are truncated.
+    int ResolveIntArgument(int value);
+    // Where a float script argument is read from or written to: when bit
+    // `bit` of `mask` is set and `*value` is 10004 to 10007, the float
+    // variable it stands for, else `value`.
+    float *ResolveFloatArgumentPtr(float *value, WORD mask, int bit);
+    // The same for an int argument and the int variables.
+    int *ResolveIntArgumentPtr(int *value, WORD mask, int bit);
+
     // Where it is drawn.
     D3DXVECTOR3 pos;
     short spriteIndex;
@@ -281,8 +291,10 @@ public:
     D3DXVECTOR3 moveEnd;
     D3DXVECTOR3 rotateStart;
     D3DXVECTOR3 rotateEnd;
-    D3DXVECTOR3 scaleTween;
-    D3DXVECTOR3 colorTween;
+    // D3DVECTOR, not D3DXVECTOR3: Sprite's constructor constructs every
+    // vector member but these two.
+    D3DVECTOR scaleTween;
+    D3DVECTOR colorTween;
     // color2's interpolation, from and to. New in th08.
     D3DCOLOR color2TweenStart;
     D3DCOLOR color2TweenEnd;
