@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">64.16% (716)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">34.05% (380)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">64.25% (717)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">33.96% (379)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="479.26" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="479.26" y="0" class="decompiled"/>
-<rect width="254.35" height="6" x="492.65" y="0" class="todo"/>
+<rect width="479.93" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="479.93" y="0" class="decompiled"/>
+<rect width="253.69" height="6" x="493.31" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -179,7 +179,7 @@
 <rect width="12" height="12" x="120" y="30" class="named"><title>0x0040b500 D3DXVec3LengthSq (49 bytes)</title></rect>
 <rect width="12" height="12" x="135" y="30" class="named"><title>0x0040b540 D3DXVec3Dot (54 bytes)</title></rect>
 <rect width="12" height="12" x="150" y="30" class="todo"><title>0x0040b580 Func40b580 (22 bytes)</title></rect>
-<rect width="12" height="12" x="165" y="30" class="todo"><title>0x0040b5a0 Stage::SetupFixedCamera (292 bytes)</title></rect>
+<rect width="12" height="12" x="165" y="30" class="named"><title>0x0040b5a0 Stage::SetupFixedCamera (292 bytes)</title></rect>
 <rect width="12" height="12" x="180" y="30" class="todo"><title>0x0040b6d0 Stage::SetupCamera (283 bytes)</title></rect>
 <rect width="12" height="12" x="195" y="30" class="todo"><title>0x0040b7f0 Func40b7f0 (132 bytes)</title></rect>
 <rect width="12" height="12" x="210" y="30" class="todo"><title>0x0040b880 MemoryManager::Alloc (25 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">55.31%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">43.70%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">55.37%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">43.63%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="413.17" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="413.17" y="0" class="decompiled"/>
-<rect width="326.42" height="6" x="420.58" y="0" class="todo"/>
+<rect width="413.65" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="413.65" y="0" class="decompiled"/>
+<rect width="325.95" height="6" x="421.05" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1532,7 +1532,7 @@
 <rect width="9.89" height="9.98" x="532.82" y="220.64" class="named"><title>0x00442060 PresentFrame (295 bytes)</title></rect>
 <rect width="9.89" height="9.98" x="532.82" y="233.62" class="named"><title>0x0045ae00 LoadPracticeScores (295 bytes)</title></rect>
 <rect width="9.89" height="9.89" x="532.82" y="246.61" class="named"><title>0x004412b0 Item::CollectTimeOrb (293 bytes)</title></rect>
-<rect width="9.89" height="9.85" x="532.82" y="259.50" class="todo"><title>0x0040b5a0 Stage::SetupFixedCamera (292 bytes)</title></rect>
+<rect width="9.89" height="9.85" x="532.82" y="259.50" class="named"><title>0x0040b5a0 Stage::SetupFixedCamera (292 bytes)</title></rect>
 <rect width="9.89" height="9.76" x="532.82" y="272.35" class="named"><title>0x004281e0 EffectManager::OnDraw2 (290 bytes)</title></rect>
 <rect width="9.89" height="9.67" x="532.82" y="285.11" class="todo"><title>0x0042b370 Func42b370 (288 bytes)</title></rect>
 <rect width="9.89" height="9.63" x="532.82" y="297.79" class="named"><title>0x0045d2d0 SoundPlayer::StopBgm (287 bytes)</title></rect>

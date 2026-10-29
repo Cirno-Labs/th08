@@ -1,6 +1,7 @@
 // The stage background, th07's Stage, from 0x4071a0, as th07's
 // stage.cpp.
 
+#include <math.h>
 #include <string.h>
 
 #include "effect.h"
@@ -531,6 +532,26 @@ int Stage::StepObjects()
         }
     }
     return 0;
+}
+
+void Stage::SetupFixedCamera()
+{
+    float midX;
+    float halfHeight;
+    float aspectXY;
+    float fovAngle;
+    float zDist;
+
+    midX = (float)g_App.viewport.Width / 2.0f;
+    halfHeight = (float)g_App.viewport.Height / 2.0f;
+    aspectXY = (float)g_App.viewport.Width / (float)g_App.viewport.Height;
+    fovAngle = 0.31415927f;
+    zDist = halfHeight / (float)tan(fovAngle / 2.0f);
+    D3DXMatrixLookAtLH((D3DXMATRIX *)&g_App.viewMatrix, &D3DXVECTOR3(midX, halfHeight, zDist), &D3DXVECTOR3(midX, halfHeight, 0.0f),
+                       &D3DXVECTOR3(0.0f, -1.0f, 0.0f));
+    D3DXMatrixPerspectiveFovLH((D3DXMATRIX *)&g_App.projectionMatrix, fovAngle, aspectXY, 1.0f, 10000.0f);
+    g_App.d3dDevice->SetTransform(D3DTS_VIEW, &g_App.viewMatrix);
+    g_App.d3dDevice->SetTransform(D3DTS_PROJECTION, &g_App.projectionMatrix);
 }
 
 // An inline of unsorted.h, probably, whose out-of-line copy the original
