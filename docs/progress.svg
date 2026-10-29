@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">25.99% (290)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">74.01% (826)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">26.08% (291)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">73.92% (825)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="194.11" height="6" x="0" y="0" class="named"/>
-<rect width="552.89" height="6" x="194.11" y="0" class="todo"/>
+<rect width="194.78" height="6" x="0" y="0" class="named"/>
+<rect width="552.22" height="6" x="194.78" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -1057,7 +1057,7 @@
 <rect width="12" height="12" x="555" y="285" class="named"><title>0x00466000 SpriteEngine::StepAnmLoading (91 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="285" class="named"><title>0x00466060 SpriteEngine::ReleaseAnm (243 bytes)</title></rect>
 <rect width="12" height="12" x="585" y="285" class="named"><title>0x00466160 SpriteEngine::ReleaseTexture (72 bytes)</title></rect>
-<rect width="12" height="12" x="600" y="285" class="todo"><title>0x004661b0 AnmLoaded::LoadSprite (341 bytes)</title></rect>
+<rect width="12" height="12" x="600" y="285" class="named"><title>0x004661b0 AnmLoaded::LoadSprite (341 bytes)</title></rect>
 <rect width="12" height="12" x="615" y="285" class="todo"><title>0x00466310 Func466310 (145 bytes)</title></rect>
 <rect width="12" height="12" x="630" y="285" class="todo"><title>0x004663b0 SpriteEngine::RenderText (238 bytes)</title></rect>
 <rect width="12" height="12" x="645" y="285" class="todo"><title>0x004664a0 Func4664a0 (432 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">15.73%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">84.27%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">15.81%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">84.19%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="117.54" height="6" x="0" y="0" class="named"/>
-<rect width="629.46" height="6" x="117.54" y="0" class="todo"/>
+<rect width="118.09" height="6" x="0" y="0" class="named"/>
+<rect width="628.91" height="6" x="118.09" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1491,7 +1491,7 @@
 <rect width="11.11" height="11.03" x="735.89" y="115.39" class="todo"><title>0x0040dee0 Func40dee0 (349 bytes)</title></rect>
 <rect width="10.83" height="11.07" x="518.98" y="129.42" class="named"><title>0x0043eb60 LogError (343 bytes)</title></rect>
 <rect width="10.83" height="11.03" x="518.98" y="143.49" class="named"><title>0x0045d3f0 SoundPlayer::LoadSounds (342 bytes)</title></rect>
-<rect width="10.83" height="10.99" x="518.98" y="157.52" class="todo"><title>0x004661b0 AnmLoaded::LoadSprite (341 bytes)</title></rect>
+<rect width="10.83" height="10.99" x="518.98" y="157.52" class="named"><title>0x004661b0 AnmLoaded::LoadSprite (341 bytes)</title></rect>
 <rect width="10.83" height="10.86" x="518.98" y="171.50" class="todo"><title>0x0044d2c0 Func44d2c0 (338 bytes)</title></rect>
 <rect width="10.83" height="10.82" x="518.98" y="185.37" class="named"><title>0x0043ea00 LogPrintf (337 bytes)</title></rect>
 <rect width="10.83" height="10.78" x="518.98" y="199.19" class="todo"><title>0x004326e0 Func4326e0 (336 bytes)</title></rect>
