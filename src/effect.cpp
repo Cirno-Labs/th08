@@ -276,3 +276,13 @@ int EffectInitDriftFast(Effect *effect)
     effect->acceleration *= g_App.gameSpeed;
     return 0;
 }
+
+int EffectInitForeground(Effect *effect)
+{
+    effect->drawList = 2;
+    effect->axis.x = 0.0f;
+    effect->axis.y = 0.0f;
+    effect->axis.z = 0.0f;
+    effect->radius = 0.0f;
+    return 0;
+}

@@ -331,7 +331,7 @@ address,size,name,symbol
 0x00425e60,63,EffectUpdateMove,?EffectUpdateMove@@YIHPAUEffect@@@Z
 0x00425ea0,248,EffectInitDriftFast,?EffectInitDriftFast@@YIHPAUEffect@@@Z
 0x00425fa0,59,Func425fa0,
-0x00425fe0,75,Func425fe0,
+0x00425fe0,75,EffectInitForeground,?EffectInitForeground@@YIHPAUEffect@@@Z
 0x00426030,588,Func426030,
 0x00426280,624,Func426280,
 0x004264f0,545,Func4264f0,
