@@ -126,7 +126,7 @@ address,size,name,symbol
 0x0040ba30,21,Func40ba30,
 0x0040ba50,24,Func40ba50,
 0x0040ba70,21,Func40ba70,
-0x0040ba90,25,Func40ba90,
+0x0040ba90,25,SpriteEngine::SetLastCameraSetupFlag,?SetLastCameraSetupFlag@SpriteEngine@@QAEXE@Z
 0x0040bab0,30,Func40bab0,
 0x0040bad0,31,SpriteEngine::SetColorModulation,?SetColorModulation@SpriteEngine@@QAEXK@Z
 0x0040baf0,33,SpriteEngine::DrawAndFlush,?DrawAndFlush@SpriteEngine@@QAEXPAVSprite@@@Z
