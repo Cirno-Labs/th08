@@ -898,7 +898,7 @@ address,size,name,symbol
 0x0045b1e0,687,DrawColorRect,?DrawColorRect@@YIXPAMK@Z
 0x0045b490,717,DrawGradientRect,?DrawGradientRect@@YIXPAMKKKK@Z
 0x0045b760,155,ScreenEffect::OnUpdateFadeOut,?OnUpdateFadeOut@ScreenEffect@@SIHPAV1@@Z
-0x0045b800,169,Func45b800,
+0x0045b800,169,ScreenEffect::OnUpdateLoadingFade,?OnUpdateLoadingFade@ScreenEffect@@SIHPAV1@@Z
 0x0045b8b0,628,ScreenEffect::StartEffect,?StartEffect@ScreenEffect@@SIPAV1@HHHHHH@Z
 0x0045bb50,145,Func45bb50,
 0x0045bbf0,69,Func45bbf0,

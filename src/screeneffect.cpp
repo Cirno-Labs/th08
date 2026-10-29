@@ -156,3 +156,24 @@ int ScreenEffect::OnUpdateFadeOut(ScreenEffect *effect)
     }
     return 1;
 }
+
+int ScreenEffect::OnUpdateLoadingFade(ScreenEffect *effect)
+{
+    if (!effect->finishing)
+    {
+        if (effect->duration != 0 && effect->timer <= effect->duration)
+        {
+            effect->alpha = effect->timer.AsFloat() * 128.0f / effect->duration;
+        }
+    }
+    else if (effect->timer <= 8)
+    {
+        effect->alpha = 0x80 - (int)(effect->timer.AsFloat() * 128.0f / 8.0f);
+    }
+    else
+    {
+        return 0;
+    }
+    effect->timer++;
+    return 1;
+}
