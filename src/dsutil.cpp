@@ -475,3 +475,19 @@ HRESULT CSound::Play(DWORD dwPriority, DWORD dwFlags)
     this->unk_2c = 0;
     return pDSB->Play(0, dwPriority, dwFlags);
 }
+
+HRESULT CSound::SetVolume(LONG lVolume)
+{
+    float scale = g_SoundPlayer.bgmVolume / 100.0f;
+
+    if (g_SoundPlayer.bgmVolume != 0)
+    {
+        scale = (scale = 1.0f - scale) * scale;
+        scale = 1.0f - scale;
+        return m_apDSBuffer[0]->SetVolume((LONG)((lVolume + 5000) * scale) - 5000);
+    }
+    else
+    {
+        return m_apDSBuffer[0]->SetVolume(DSBVOLUME_MIN);
+    }
+}
