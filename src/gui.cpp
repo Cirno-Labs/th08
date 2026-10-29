@@ -720,3 +720,8 @@ void Gui::Func438f58()
                                    this->impl->unk_3cc0.spriteData->startY, this->impl->unk_3cc0.spriteData->width,
                                    this->impl->unk_3cc0.spriteData->height);
 }
+
+int Func438fe9()
+{
+    return g_App.unk_164;
+}
