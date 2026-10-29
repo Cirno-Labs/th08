@@ -244,6 +244,11 @@ int EffectUpdateBombRing41(Effect *effect)
     return 1;
 }
 
+void DrawRemiliaBomb(Player *player)
+{
+    DimPlayAreaForBomb(player, 0x80d02020);
+}
+
 int EffectUpdateBombRing46(Effect *effect)
 {
     effect->radius += 8.0f;
