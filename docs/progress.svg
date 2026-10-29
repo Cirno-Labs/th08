@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">18.19% (203)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">81.81% (913)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">18.28% (204)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">81.72% (912)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="135.88" height="6" x="0" y="0" class="named"/>
-<rect width="611.12" height="6" x="135.88" y="0" class="todo"/>
+<rect width="136.55" height="6" x="0" y="0" class="named"/>
+<rect width="610.45" height="6" x="136.55" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -983,7 +983,7 @@
 <rect width="12" height="12" x="195" y="270" class="named"><title>0x0045c4b0 SoundPlayer::Release (506 bytes)</title></rect>
 <rect width="12" height="12" x="210" y="270" class="named"><title>0x0045c6b0 SoundPlayer::FindTrackIndex (523 bytes)</title></rect>
 <rect width="12" height="12" x="225" y="270" class="named"><title>0x0045c8c0 SoundPlayer::LoadSound (766 bytes)</title></rect>
-<rect width="12" height="12" x="240" y="270" class="todo"><title>0x0045cbc0 FindRiffChunk (100 bytes)</title></rect>
+<rect width="12" height="12" x="240" y="270" class="named"><title>0x0045cbc0 FindRiffChunk (100 bytes)</title></rect>
 <rect width="12" height="12" x="255" y="270" class="named"><title>0x0045cc30 SoundPlayer::LoadBgmFormat (50 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="270" class="named"><title>0x0045cc70 SoundPlayer::LoadBgm (386 bytes)</title></rect>
 <rect width="12" height="12" x="285" y="270" class="named"><title>0x0045ce00 SoundPlayer::SwitchBgmTrack (103 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">9.28%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">90.72%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">9.30%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">90.70%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="69.32" height="6" x="0" y="0" class="named"/>
-<rect width="677.68" height="6" x="69.32" y="0" class="todo"/>
+<rect width="69.48" height="6" x="0" y="0" class="named"/>
+<rect width="677.52" height="6" x="69.48" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1831,7 +1831,7 @@
 <rect width="4.60" height="4.54" x="634.36" y="310.58" class="todo"><title>0x004070b0 Func4070b0 (101 bytes)</title></rect>
 <rect width="4.60" height="4.54" x="634.36" y="318.12" class="named"><title>0x00474c70 DatArchive::FindEntry (101 bytes)</title></rect>
 <rect width="4.60" height="4.47" x="634.36" y="325.67" class="todo"><title>0x00439ac5 Func439ac5 (100 bytes)</title></rect>
-<rect width="4.60" height="4.47" x="634.36" y="333.14" class="todo"><title>0x0045cbc0 FindRiffChunk (100 bytes)</title></rect>
+<rect width="4.60" height="4.47" x="634.36" y="333.14" class="named"><title>0x0045cbc0 FindRiffChunk (100 bytes)</title></rect>
 <rect width="4.60" height="4.39" x="634.36" y="340.61" class="todo"><title>0x00437ce2 Func437ce2 (99 bytes)</title></rect>
 <rect width="4.37" height="4.63" x="641.96" y="232.98" class="named"><title>0x0043c760 ChainElem::ChainElem (99 bytes)</title></rect>
 <rect width="4.37" height="4.63" x="649.33" y="232.98" class="todo"><title>0x0046fd5f Func46fd5f (99 bytes)</title></rect>

@@ -246,6 +246,23 @@ int SoundPlayer::LoadSound(int index, char *path)
     return 0;
 }
 
+// Finds chunk `name` among the RIFF chunks at `data`, `size` bytes of
+// them. Returns its contents and sets *chunkSize, or returns NULL.
+char *FindRiffChunk(char *data, char *name, int *chunkSize, unsigned int size)
+{
+    while (size > 0)
+    {
+        *chunkSize = *(int *)(data + 4);
+        if (strncmp(data, name, 4) == 0)
+        {
+            return data + 8;
+        }
+        size -= *chunkSize + 8;
+        data += *chunkSize + 8;
+    }
+    return NULL;
+}
+
 int SoundPlayer::LoadBgmFormat(char *path)
 {
     this->bgmFormat = (BgmFormat *)LoadFileData(path, NULL, 0);
