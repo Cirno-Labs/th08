@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">76.25% (851)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">21.77% (243)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">76.34% (852)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">21.68% (242)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="569.62" height="6" x="0" y="0" class="named"/>
-<rect width="14.73" height="6" x="569.62" y="0" class="decompiled"/>
-<rect width="162.65" height="6" x="584.35" y="0" class="todo"/>
+<rect width="570.29" height="6" x="0" y="0" class="named"/>
+<rect width="14.73" height="6" x="570.29" y="0" class="decompiled"/>
+<rect width="161.98" height="6" x="585.02" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -245,7 +245,7 @@
 <rect width="12" height="12" x="360" y="45" class="named"><title>0x0040f570 UpdateRemiliaLastWord (1853 bytes)</title></rect>
 <rect width="12" height="12" x="375" y="45" class="named"><title>0x0040fcb0 DrawRemiliaLastWord (24 bytes)</title></rect>
 <rect width="12" height="12" x="390" y="45" class="named"><title>0x0040fcd0 UpdateSakuyaBomb (1573 bytes)</title></rect>
-<rect width="12" height="12" x="405" y="45" class="todo"><title>0x00410300 Func410300 (225 bytes)</title></rect>
+<rect width="12" height="12" x="405" y="45" class="named"><title>0x00410300 DrawSakuyaBomb (225 bytes)</title></rect>
 <rect width="12" height="12" x="420" y="45" class="todo"><title>0x004103f0 Func4103f0 (1655 bytes)</title></rect>
 <rect width="12" height="12" x="435" y="45" class="named"><title>0x00410a70 D3DXVECTOR3::operator+= (67 bytes)</title></rect>
 <rect width="12" height="12" x="450" y="45" class="todo"><title>0x00410ac0 Func410ac0 (225 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">69.11%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">29.87%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">69.16%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">29.82%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="516.28" height="6" x="0" y="0" class="named"/>
-<rect width="7.57" height="6" x="516.28" y="0" class="decompiled"/>
-<rect width="223.15" height="6" x="523.85" y="0" class="todo"/>
+<rect width="516.64" height="6" x="0" y="0" class="named"/>
+<rect width="7.57" height="6" x="516.64" y="0" class="decompiled"/>
+<rect width="222.78" height="6" x="524.22" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1610,7 +1610,7 @@
 <rect width="8.33" height="8.37" x="615.36" y="166.35" class="named"><title>0x0043aaf4 GameManager::AddedCallback (227 bytes)</title></rect>
 <rect width="8.33" height="8.37" x="626.68" y="166.35" class="named"><title>0x0043c960 Chain::AddToDrawChain (227 bytes)</title></rect>
 <rect width="8.28" height="8.37" x="638.01" y="166.35" class="named"><title>0x0045e0f0 BgmNotificationProc (226 bytes)</title></rect>
-<rect width="8.23" height="8.37" x="649.29" y="166.35" class="todo"><title>0x00410300 Func410300 (225 bytes)</title></rect>
+<rect width="8.23" height="8.37" x="649.29" y="166.35" class="named"><title>0x00410300 DrawSakuyaBomb (225 bytes)</title></rect>
 <rect width="8.23" height="8.37" x="660.52" y="166.35" class="todo"><title>0x00410ac0 Func410ac0 (225 bytes)</title></rect>
 <rect width="8.23" height="8.37" x="671.75" y="166.35" class="todo"><title>0x0042ee80 Func42ee80 (225 bytes)</title></rect>
 <rect width="8.23" height="8.37" x="682.98" y="166.35" class="named"><title>0x00459fd2 ResultScreen::DeletedCallback (225 bytes)</title></rect>

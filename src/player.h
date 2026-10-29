@@ -692,6 +692,9 @@ void UpdateRemiliaLastWord(Player *player);
 // player, stop and spin from frame 30 to 70, then fly on at
 // orbHomingTarget (0x40fcd0).
 void UpdateSakuyaBomb(Player *player);
+// Its draw callback: dims the play area and draws the knives
+// (0x410300).
+void DrawSakuyaBomb(Player *player);
 // Draw callbacks of the bombs that only tint the play area, by the
 // bomb they follow: Alice's (also Yukari's draw.funcs[0..1], 0x40d950)
 // and Remilia's and her last word's (0x40f550, 0x40fcb0).
