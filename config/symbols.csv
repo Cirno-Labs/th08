@@ -669,7 +669,7 @@ address,size,name,symbol
 0x00443f10,26,MmTimer::DefaultCallback,?DefaultCallback@MmTimer@@SGXIIKKK@Z
 0x00443f30,30,SwapBytes16,?SwapBytes16@@YIGG@Z
 0x00443f50,78,ReadVarLen,?ReadVarLen@@YIKPAPAE@Z
-0x00443fa0,351,Func443fa0,
+0x00443fa0,351,MidiPlayer::MidiPlayer,??0MidiPlayer@@QAE@XZ
 0x00444100,147,Func444100,
 0x004441a0,114,Func4441a0,
 0x00444220,54,Func444220,
@@ -682,7 +682,7 @@ address,size,name,symbol
 0x00444680,122,Func444680,
 0x00444700,197,Func444700,
 0x004447d0,79,Func4447d0,
-0x00444820,619,Func444820,
+0x00444820,619,MidiPlayer::OnTimer,?OnTimer@MidiPlayer@@UAEXXZ
 0x00444a90,1871,Func444a90,
 0x00445340,187,Func445340,
 0x00445400,22,Func445400,
@@ -1727,7 +1727,7 @@ address,size,name,symbol
 0x004a43e2,43,_JumpToContinuation,
 0x004a4412,7,FID_conflict:_CallMemberFunction1,
 0x004a4419,82,_UnwindNestedFrames,
-0x004a446b,54,___CxxFrameHandler,
+0x004a446b,54,___CxxFrameHandler,___CxxFrameHandler
 0x004a44c5,110,Func4a44c5,
 0x004a4536,122,_GetRangeOfTrysToCheck,
 0x004a45b0,40,Func4a45b0,
