@@ -481,3 +481,13 @@ int EffectUpdateConverge(Effect *effect)
     effect->pos.z = 0.0f;
     return 1;
 }
+
+int EffectUpdateFollowPlayer(Effect *effect)
+{
+    if (effect->sprite.IsScriptDone())
+    {
+        return 0;
+    }
+    effect->pos = g_Player.pos;
+    return 1;
+}

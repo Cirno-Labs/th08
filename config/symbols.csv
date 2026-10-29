@@ -339,7 +339,7 @@ address,size,name,symbol
 0x00426990,388,EffectUpdateBossPetal2,?EffectUpdateBossPetal2@@YIHPAUEffect@@@Z
 0x00426b20,134,EffectInitConverge,?EffectInitConverge@@YIHPAUEffect@@@Z
 0x00426bb0,133,EffectUpdateConverge,?EffectUpdateConverge@@YIHPAUEffect@@@Z
-0x00426c40,66,Func426c40,
+0x00426c40,66,EffectUpdateFollowPlayer,?EffectUpdateFollowPlayer@@YIHPAUEffect@@@Z
 0x00426c90,120,Func426c90,
 0x00426d10,94,Func426d10,
 0x00426d70,251,Func426d70,
@@ -367,7 +367,7 @@ address,size,name,symbol
 0x004286b0,35,EffectManager::RemoveChain,?RemoveChain@EffectManager@@SIXXZ
 0x004286e0,32,Vector2::SetPolar,?SetPolar@Vector2@@QAEXMM@Z
 0x00428700,32,Func428700,
-0x00428720,28,Func428720,
+0x00428720,28,Sprite::IsScriptDone,?IsScriptDone@Sprite@@QAEHXZ
 0x00428740,159,Func428740,
 0x004287e0,162,Func4287e0,
 0x00428890,115,Ending::ReadInt,?ReadInt@Ending@@QAEHXZ
