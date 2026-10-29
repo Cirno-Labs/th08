@@ -213,6 +213,8 @@ struct BombFuncs
 // The bomb update and draw callbacks, by character * 2 and character *
 // 2 + 1.
 extern BombFuncs g_BombFuncs[];
+// The colors of the bombs' flashes, by 20 frames of a bomb.
+extern D3DCOLOR g_BombFlashColors[7];
 
 // The option callbacks, by character; NULL where a character has fewer
 // than four options.
@@ -678,3 +680,8 @@ void SpawnBombAura(Player *player);
 void UpdateReimuBomb(Player *player);
 // Its draw callback: dims the play area and draws the orbs (0x40c820).
 void DrawReimuBomb(Player *player);
+// Reimu's last word 神霊「夢想封印　瞬」: the sixteen orbs circle the
+// player and burst one by one over the last 56 frames, while from frame
+// 40 every 20 frames a flash bursts at orbHomingTarget (else at random)
+// in g_BombFlashColors (0x40c910).
+void UpdateReimuLastWord(Player *player);

@@ -142,7 +142,7 @@ address,size,name,symbol
 0x0040c7b0,24,atan2f,@atan2f@8
 0x0040c7d0,76,D3DXVECTOR3::operator/,??KD3DXVECTOR3@@QBE?AU0@M@Z
 0x0040c820,230,DrawReimuBomb,?DrawReimuBomb@@YIXPAVPlayer@@@Z
-0x0040c910,1790,Func40c910,
+0x0040c910,1790,UpdateReimuLastWord,?UpdateReimuLastWord@@YIXPAVPlayer@@@Z
 0x0040d010,233,Func40d010,
 0x0040d100,521,UpdateDissolveBomb,?UpdateDissolveBomb@@YIXPAVPlayer@@@Z
 0x0040d310,121,DrawDissolveBomb,?DrawDissolveBomb@@YIXPAVPlayer@@@Z
@@ -2413,6 +2413,7 @@ address,size,name,symbol
 0x004bd6e0,,CLSID_ShellLink,_CLSID_ShellLink
 0x004bd6f0,,IID_IPersistFile,_IID_IPersistFile
 0x004bd700,,GUID_NULL,_GUID_NULL
+0x004c6100,,g_BombFlashColors,?g_BombFlashColors@@3PAKA
 0x004c67d0,,g_SpellCardLists,?g_SpellCardLists@@3PAPAHA
 0x004c67e8,,g_SpellCardListSizes,?g_SpellCardListSizes@@3PAHA
 0x004c6c40,,g_StageSpellCards,?g_StageSpellCards@@3PAPAHA
