@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">7.62% (85)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">92.38% (1031)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">7.71% (86)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">92.29% (1030)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="56.90" height="6" x="0" y="0" class="named"/>
-<rect width="690.10" height="6" x="56.90" y="0" class="todo"/>
+<rect width="57.56" height="6" x="0" y="0" class="named"/>
+<rect width="689.44" height="6" x="57.56" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -677,7 +677,7 @@
 <rect width="12" height="12" x="105" y="180" class="named"><title>0x0043f898 GdiSurface::CopyToSurface (232 bytes)</title></rect>
 <rect width="12" height="12" x="120" y="180" class="named"><title>0x0043f980 CreateTextSurface (35 bytes)</title></rect>
 <rect width="12" height="12" x="135" y="180" class="named"><title>0x0043f9a3 ReleaseTextSurface (37 bytes)</title></rect>
-<rect width="12" height="12" x="150" y="180" class="todo"><title>0x0043f9c8 Func43f9c8 (801 bytes)</title></rect>
+<rect width="12" height="12" x="150" y="180" class="named"><title>0x0043f9c8 RenderTextToTextureBold (801 bytes)</title></rect>
 <rect width="12" height="12" x="165" y="180" class="named"><title>0x0043fce9 RenderTextToTexture (793 bytes)</title></rect>
 <rect width="12" height="12" x="180" y="180" class="todo"><title>0x00440010 Func440010 (52 bytes)</title></rect>
 <rect width="12" height="12" x="195" y="180" class="todo"><title>0x00440050 Func440050 (78 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">4.21%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">95.79%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">4.38%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">95.62%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="31.43" height="6" x="0" y="0" class="named"/>
-<rect width="715.57" height="6" x="31.43" y="0" class="todo"/>
+<rect width="32.73" height="6" x="0" y="0" class="named"/>
+<rect width="714.27" height="6" x="32.73" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1319,7 +1319,7 @@
 <rect width="18.69" height="18.69" x="411.08" y="326.31" class="todo"><title>0x00465cc0 Func465cc0 (829 bytes)</title></rect>
 <rect width="18.94" height="18.19" x="432.76" y="24.13" class="todo"><title>0x004718d0 Func4718d0 (819 bytes)</title></rect>
 <rect width="18.70" height="18.19" x="454.70" y="24.13" class="todo"><title>0x0044f5e0 Func44f5e0 (810 bytes)</title></rect>
-<rect width="18.45" height="18.19" x="476.39" y="24.13" class="todo"><title>0x0043f9c8 Func43f9c8 (801 bytes)</title></rect>
+<rect width="18.45" height="18.19" x="476.39" y="24.13" class="named"><title>0x0043f9c8 RenderTextToTextureBold (801 bytes)</title></rect>
 <rect width="18.32" height="18.19" x="497.85" y="24.13" class="todo"><title>0x0042b930 Func42b930 (796 bytes)</title></rect>
 <rect width="18.29" height="18.19" x="519.17" y="24.13" class="todo"><title>0x00471c40 Func471c40 (795 bytes)</title></rect>
 <rect width="18.24" height="18.19" x="540.46" y="24.13" class="named"><title>0x0043fce9 RenderTextToTexture (793 bytes)</title></rect>

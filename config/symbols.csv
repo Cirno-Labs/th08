@@ -609,7 +609,7 @@ address,size,name,symbol
 0x0043f898,232,GdiSurface::CopyToSurface,?CopyToSurface@GdiSurface@@QAE_NPAUIDirect3DSurface8@@@Z
 0x0043f980,35,CreateTextSurface,?CreateTextSurface@@YIXXZ
 0x0043f9a3,37,ReleaseTextSurface,?ReleaseTextSurface@@YIXXZ
-0x0043f9c8,801,Func43f9c8,
+0x0043f9c8,801,RenderTextToTextureBold,?RenderTextToTextureBold@@YIXHHHHHHKKPADPAUIDirect3DTexture8@@@Z
 0x0043fce9,793,RenderTextToTexture,?RenderTextToTexture@@YIXHHHHHHKKPADPAUIDirect3DTexture8@@@Z
 0x00440010,52,Func440010,
 0x00440050,78,Func440050,

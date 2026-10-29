@@ -400,3 +400,8 @@ void ReleaseTextSurface();
 // `y`.
 void RenderTextToTexture(int x, int y, int width, int unk4, int fontHeight, int unk6, COLORREF textColor,
                          COLORREF shadowColor, char *text, IDirect3DTexture8 *texture);
+
+// th07's RenderTextToTexture, but semibold rather than bold. The other
+// font of SpriteEngine's text rendering (0x466340).
+void RenderTextToTextureBold(int x, int y, int width, int unk4, int fontHeight, int unk6, COLORREF textColor,
+                             COLORREF shadowColor, char *text, IDirect3DTexture8 *texture);
