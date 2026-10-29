@@ -4,6 +4,7 @@
 #include <math.h>
 #include <string.h>
 
+#include "ascii.h"
 #include "effect.h"
 #include "enemy.h"
 #include "item.h"
@@ -812,5 +813,27 @@ void UpdateInvulnerability(Player *player)
     else
     {
         player->unk_e2af4++;
+    }
+}
+
+void ResetHomingAndText(Player *player)
+{
+    player->orbHomingTarget = D3DXVECTOR3(-999.0f, -999.0f, 0.0f);
+    player->homingTarget = D3DXVECTOR3(-999.0f, -999.0f, 0.0f);
+    player->homingTargetSet = 0;
+    if (player->pos.y >= 400.0f)
+    {
+        if (g_AsciiText.GetSummaryPendingInterrupt() != 2 && player->pos.x < 160.0f)
+        {
+            g_AsciiText.SetSummaryPendingInterrupt(2);
+        }
+        else if (g_AsciiText.GetSummaryPendingInterrupt() == 2 && player->pos.x > 160.0f)
+        {
+            g_AsciiText.SetSummaryPendingInterrupt(3);
+        }
+    }
+    else if (g_AsciiText.GetSummaryPendingInterrupt() == 2)
+    {
+        g_AsciiText.SetSummaryPendingInterrupt(3);
     }
 }
