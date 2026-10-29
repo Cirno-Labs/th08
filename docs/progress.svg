@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">41.58% (464)</tspan> · <tspan class="decompiled">0.36% (4)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">58.06% (648)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">41.67% (465)</tspan> · <tspan class="decompiled">0.36% (4)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">57.97% (647)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="310.58" height="6" x="0" y="0" class="named"/>
-<rect width="2.68" height="6" x="310.58" y="0" class="decompiled"/>
-<rect width="433.74" height="6" x="313.26" y="0" class="todo"/>
+<rect width="311.25" height="6" x="0" y="0" class="named"/>
+<rect width="2.68" height="6" x="311.25" y="0" class="decompiled"/>
+<rect width="433.07" height="6" x="313.93" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -547,7 +547,7 @@
 <rect width="12" height="12" x="390" y="135" class="todo"><title>0x00435900 Gui::UpdateInterface (2397 bytes)</title></rect>
 <rect width="12" height="12" x="405" y="135" class="todo"><title>0x0043625d Gui::DrawHud (4544 bytes)</title></rect>
 <rect width="12" height="12" x="420" y="135" class="todo"><title>0x0043741d Gui::DrawBanners (1554 bytes)</title></rect>
-<rect width="12" height="12" x="435" y="135" class="todo"><title>0x00437a2f Func437a2f (17 bytes)</title></rect>
+<rect width="12" height="12" x="435" y="135" class="named"><title>0x00437a2f Gui::AddedCallback (17 bytes)</title></rect>
 <rect width="12" height="12" x="450" y="135" class="todo"><title>0x00437a40 Func437a40 (144 bytes)</title></rect>
 <rect width="12" height="12" x="465" y="135" class="todo"><title>0x00437ad0 Gui::RegisterChain (244 bytes)</title></rect>
 <rect width="12" height="12" x="480" y="135" class="todo"><title>0x00437bc4 Func437bc4 (281 bytes)</title></rect>
@@ -576,11 +576,11 @@
 <rect width="12" height="12" x="75" y="150" class="todo"><title>0x00439050 Func439050 (67 bytes)</title></rect>
 <rect width="12" height="12" x="90" y="150" class="todo"><title>0x00439093 Func439093 (67 bytes)</title></rect>
 <rect width="12" height="12" x="105" y="150" class="todo"><title>0x004390d6 Func4390d6 (24 bytes)</title></rect>
-<rect width="12" height="12" x="120" y="150" class="todo"><title>0x004390ee Func4390ee (1482 bytes)</title></rect>
+<rect width="12" height="12" x="120" y="150" class="todo"><title>0x004390ee Gui::LoadResources (1482 bytes)</title></rect>
 <rect width="12" height="12" x="135" y="150" class="todo"><title>0x004396b8 Func4396b8 (64 bytes)</title></rect>
 <rect width="12" height="12" x="150" y="150" class="todo"><title>0x004396f8 Func4396f8 (24 bytes)</title></rect>
 <rect width="12" height="12" x="165" y="150" class="todo"><title>0x00439710 Func439710 (197 bytes)</title></rect>
-<rect width="12" height="12" x="180" y="150" class="todo"><title>0x004397d5 Func4397d5 (59 bytes)</title></rect>
+<rect width="12" height="12" x="180" y="150" class="todo"><title>0x004397d5 Gui::FreeMsgFile (59 bytes)</title></rect>
 <rect width="12" height="12" x="195" y="150" class="todo"><title>0x00439810 Func439810 (25 bytes)</title></rect>
 <rect width="12" height="12" x="210" y="150" class="named"><title>0x00439829 GameManager::HasClearedStage (45 bytes)</title></rect>
 <rect width="12" height="12" x="225" y="150" class="named"><title>0x00439856 GameManager::HasClearedStageWithContinues (45 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">34.51%</tspan> · <tspan class="decompiled">0.15%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">65.33%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">34.52%</tspan> · <tspan class="decompiled">0.15%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">65.33%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="257.83" height="6" x="0" y="0" class="named"/>
-<rect width="1.12" height="6" x="257.83" y="0" class="decompiled"/>
-<rect width="488.05" height="6" x="258.95" y="0" class="todo"/>
+<rect width="257.85" height="6" x="0" y="0" class="named"/>
+<rect width="1.12" height="6" x="257.85" y="0" class="decompiled"/>
+<rect width="488.02" height="6" x="258.98" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1260,7 +1260,7 @@
 <rect width="27.32" height="26.44" x="326.26" y="124.44" class="todo"><title>0x0040fcd0 Func40fcd0 (1573 bytes)</title></rect>
 <rect width="27.32" height="26.09" x="326.26" y="153.88" class="todo"><title>0x0043741d Gui::DrawBanners (1554 bytes)</title></rect>
 <rect width="27.32" height="25.77" x="326.26" y="182.97" class="todo"><title>0x0044d650 Func44d650 (1537 bytes)</title></rect>
-<rect width="27.32" height="24.74" x="326.26" y="211.73" class="todo"><title>0x004390ee Func4390ee (1482 bytes)</title></rect>
+<rect width="27.32" height="24.74" x="326.26" y="211.73" class="todo"><title>0x004390ee Gui::LoadResources (1482 bytes)</title></rect>
 <rect width="27.32" height="24.55" x="326.26" y="239.47" class="named"><title>0x004424c0 InitD3dDevice (1472 bytes)</title></rect>
 <rect width="27.32" height="24.33" x="326.26" y="267.03" class="todo"><title>0x0046a071 Func46a071 (1460 bytes)</title></rect>
 <rect width="27.32" height="24.27" x="326.26" y="294.35" class="named"><title>0x0043d120 ReadJoystick (1457 bytes)</title></rect>
@@ -1983,7 +1983,7 @@
 <rect width="2.71" height="2.86" x="668.53" y="283.92" class="todo"><title>0x00423d70 Func423d70 (59 bytes)</title></rect>
 <rect width="2.71" height="2.86" x="668.53" y="289.78" class="todo"><title>0x00425fa0 Func425fa0 (59 bytes)</title></rect>
 <rect width="2.71" height="2.86" x="668.53" y="295.64" class="todo"><title>0x00427990 Func427990 (59 bytes)</title></rect>
-<rect width="2.71" height="2.86" x="668.53" y="301.50" class="todo"><title>0x004397d5 Func4397d5 (59 bytes)</title></rect>
+<rect width="2.71" height="2.86" x="668.53" y="301.50" class="todo"><title>0x004397d5 Gui::FreeMsgFile (59 bytes)</title></rect>
 <rect width="2.71" height="2.86" x="668.53" y="307.36" class="named"><title>0x00443d10 MidiDevice::Close (59 bytes)</title></rect>
 <rect width="2.71" height="2.86" x="668.53" y="313.23" class="named"><title>0x0045a5a0 FreeListNodes (59 bytes)</title></rect>
 <rect width="2.71" height="2.86" x="668.53" y="319.09" class="todo"><title>0x00470dd5 Func470dd5 (59 bytes)</title></rect>
@@ -2281,7 +2281,7 @@
 <rect width="0.10" height="0.40" x="732.87" y="341.38" class="todo"><title>0x0044e350 Func44e350 (18 bytes)</title></rect>
 <rect width="0.10" height="0.22" x="732.87" y="344.78" class="todo"><title>0x0040d3b0 Func40d3b0 (17 bytes)</title></rect>
 <rect width="0.10" height="0.41" x="735.87" y="330.98" class="todo"><title>0x0042f320 Func42f320 (17 bytes)</title></rect>
-<rect width="0.10" height="0.41" x="738.69" y="330.98" class="todo"><title>0x00437a2f Func437a2f (17 bytes)</title></rect>
+<rect width="0.10" height="0.41" x="738.69" y="330.98" class="named"><title>0x00437a2f Gui::AddedCallback (17 bytes)</title></rect>
 <rect width="0.10" height="0.41" x="741.52" y="330.98" class="named"><title>0x0043f02b GdiSurface::~GdiSurface (17 bytes)</title></rect>
 <rect width="0.10" height="0.41" x="744.35" y="330.98" class="named"><title>0x00446f42 MidiTimer::~MidiTimer (17 bytes)</title></rect>
 <rect width="0.10" height="0.41" x="747.17" y="330.98" class="named"><title>0x00453c20 Rng::GetSeed (17 bytes)</title></rect>

@@ -1576,8 +1576,23 @@ public:
     // Called by GameManager::OnUpdate when the result screen's mode ends
     // without a scene to go to (0x438f58).
     void Func438f58();
-    // Adds the Gui's chain elements, as th07's (0x437ad0). Returns 0, or
-    // -1 on failure.
+    // Loads the interface's sprites and the stage's portraits and
+    // messages, as th07's (0x4390ee). Returns 0, or -1 when a file fails
+    // to load.
+    int LoadResources();
+    // Frees the dialogue file, as th07's (0x4397d5).
+    void FreeMsgFile();
+    // The update element's added callback: runs LoadResources.
+    static int AddedCallback(Gui *gui);
+    // Releases ANM slot 0xd unless Func438ffd, frees the dialogue file
+    // and, if Func438ff3, releases ANM slots 0xa to 0xe and frees impl.
+    // Returns 0.
+    static int DeletedCallback(Gui *gui);
+    // Adds the Gui's chain elements, as th07's (0x437ad0): if
+    // Func438fe9, zeroes the Gui and allocates impl
+    // ("FRScreenImplInf"); then adds the update element (priority 15)
+    // and the draw element (priority 17). Returns 0, or -1 if adding
+    // fails.
     static int RegisterChain();
     // Removes the Gui's chain elements, as th07's (0x437d64).
     static void RemoveChain();
@@ -1592,6 +1607,15 @@ public:
 };
 ASSERT_SIZE(Gui, 0x9c);
 extern Gui g_Gui;
+
+// The update and draw chain elements of g_Gui.
+extern ChainElem g_GuiCalcChain;
+extern ChainElem g_GuiDrawChain;
+
+// App::unk_164, unk_168 and unk_16c (0x438fe9, 0x438ff3, 0x438ffd).
+int Func438fe9();
+int Func438ff3();
+int Func438ffd();
 
 // Decodes a dialogue string (each byte xor 0x77) from `src` into `dst`,
 // up to and including the terminating 0 (0x4353ec).

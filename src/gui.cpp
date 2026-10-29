@@ -5,6 +5,7 @@
 #include <string.h>
 
 #include "bullet.h"
+#include "chain.h"
 #include "enemy.h"
 #include "item.h"
 #include "replay.h"
@@ -282,4 +283,9 @@ int Gui::IsMsgRunning()
         return 0;
     }
     return this->impl->msg.scriptIndex >= 0 || this->impl->msg.scriptIndex == -2 ? 1 : 0;
+}
+
+int Gui::AddedCallback(Gui *gui)
+{
+    return gui->LoadResources();
 }
