@@ -53,6 +53,9 @@ public:
     int AddToCalcChain(ChainElem *elem, int priority);
     // Like AddToCalcChain, for the draw chain.
     int AddToDrawChain(ChainElem *elem, int priority);
+    // Unlinks `elem` from its chain and deletes it, inside critical
+    // section 0.
+    void Remove(ChainElem *elem);
     // Runs the update chain's callbacks in order, removing the elements
     // whose callback returns 0. A callback returns 2 to run again, 3, 4 or
     // 5 to stop with 1, 0 or -1, and 6 to start over. Returns how many
@@ -64,6 +67,9 @@ public:
     // while the element is deleted or its deleted callback runs. New in
     // th08.
     void RemoveLocked(ChainElem *elem);
+    // Releases the elements of the list that starts at `root`, going
+    // through a copy of the list it allocates.
+    void ReleaseList(ChainElem *root);
 
     ChainElem calcChain;
     ChainElem drawChain;

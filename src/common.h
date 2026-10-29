@@ -37,6 +37,17 @@ public:
     ~MemoryManager();
     void *Alloc(int size, const char *name);
     void Free(void *p);
+    // Records `p`, a block of `size` bytes allocated with new, under
+    // `name` and returns it; a no-op in the release build. Out-of-line
+    // copy at 0x429de0.
+    void *Register(void *p, int size, const char *name)
+    {
+        return p;
+    }
+    // Forgets `p` before it is deleted; a no-op (0x429df0).
+    void Unregister(void *p)
+    {
+    }
 
     // Allocated blocks, for a debug build's leak tracking: the release
     // Alloc and Free leave it alone.

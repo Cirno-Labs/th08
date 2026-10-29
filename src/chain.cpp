@@ -216,3 +216,37 @@ end:
     g_App.LeaveCriticalSection(0);
     return updateCount;
 }
+
+void Chain::ReleaseList(ChainElem *root)
+{
+    ChainElem list;
+    ChainElem *tail;
+    ChainElem *tmp;
+    ChainElem *cur;
+
+    tail = (ChainElem *)g_MemoryManager.Register(new ChainElem(), sizeof(ChainElem), "funcChainInf");
+    list.next = tail;
+    cur = root;
+    while (cur != NULL)
+    {
+        tail->self = cur;
+        tail->next = (ChainElem *)g_MemoryManager.Register(new ChainElem(), sizeof(ChainElem), "funcChainInf");
+        tail = tail->next;
+        cur = cur->next;
+    }
+    cur = &list;
+    while (cur != NULL)
+    {
+        this->Remove(cur->self);
+        cur = cur->next;
+    }
+    tail = list.next;
+    while (tail != NULL)
+    {
+        tmp = tail->next;
+        g_MemoryManager.Unregister(tail);
+        delete tail;
+        tail = NULL;
+        tail = tmp;
+    }
+}
