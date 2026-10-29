@@ -1241,7 +1241,10 @@ public:
     // 0x406e20, SetBombs 0x406f30, SetPower 0x406fa0.
     int GetPower();
     int GetLives();
-    int GetBombs();
+    int GetBombs()
+    {
+        return this->stats->bombs;
+    }
     void SetLives(int lives)
     {
         this->stats->lives = lives;
@@ -1417,6 +1420,8 @@ public:
     unsigned char unk_3de0c[0x4];
     // Cleared by LoadingThread.
     int unk_3de10;
+    // Frames counted for the stage clear screen's "over 80%" lines:
+    // all of them, and the two kinds counted.
     int unk_3de14;
     int unk_3de18;
     int unk_3de1c;
@@ -1553,14 +1558,29 @@ struct GuiImpl
     Sprite unk_2156c;
     int unk_21810;
     GuiMsg msg;
-    // Gui::OnDraw runs Func43826b while it is set.
-    int unk_22d84;
-    int unk_22d88;
+    // Gui::OnDraw draws the stage clear screen (DrawStageClear) while it
+    // is set, as th07's.
+    int stageClearShown;
+    // The stage clear screen's total, in tens, as th07's.
+    int stageClearTotal;
     // The bonus, full power and spell card bonus popups, as th07's.
     GuiPopup bonusPopup;
     GuiPopup fullPowerPopup;
     GuiPopup spellBonusPopup;
-    unsigned char unk_22dec[0x28];
+    // The stage clear screen's clear bonus (in tens), point items,
+    // grazes and time bonus count, as th07's.
+    int stageClearBonus;
+    int unk_22df0;
+    int stageClearPoints;
+    int stageClearGraze;
+    int stageClearTime;
+    int unk_22e00;
+    // Clock times in minutes (h * 60 + m): shown from stage 1 to 6 as two
+    // times, and from stage 6B as the last time for the night bonus.
+    int stageClearClock;
+    int stageClearLastTime;
+    int stageClearClock2;
+    int unk_22e10;
     Sprite unk_22e14;
 };
 ASSERT_SIZE(GuiImpl, 0x230b8);
@@ -1575,7 +1595,7 @@ public:
     // g_App.redrawFrames at 8 or more while button 0x100 is held and
     // counts frameCounter up. Returns 1.
     static int OnUpdate(Gui *gui);
-    // The draw chain callback: Func43826b while impl->unk_22d84 is set,
+    // The draw chain callback: DrawStageClear while impl->stageClearShown is set,
     // then the dialogue, the banners, the HUD and Func438a89. Returns 1.
     static int OnDraw(Gui *gui);
     // Whether the dialogue holds the timeline: impl is set,
@@ -1600,8 +1620,9 @@ public:
     // Draws the HUD and the banners, as th07's (0x43625d, 0x43741d).
     void DrawHud();
     void DrawBanners();
-    // Drawn by OnDraw (0x43826b, 0x438a89).
-    void Func43826b();
+    // Draws the stage clear screen, as th07's OnDraw did (0x43826b).
+    void DrawStageClear();
+    // Drawn by OnDraw (0x438a89).
     void Func438a89();
     // Called by GameManager::OnUpdate when the result screen's mode ends
     // without a scene to go to (0x438f58).
@@ -1659,6 +1680,8 @@ void CopySpriteToTexture(int sprite);
 // Swapped by GuiImpl::StartMsgScript for stages 6B and Extra.
 extern int g_Unknown4ecc9c;
 extern int g_Unknown4ecca0;
+// "AM" and "PM", picked by whether the hour is before 12 (backwards).
+extern char *g_AmPmNames[2];
 // The dialogue's text colours, by character.
 extern D3DCOLOR g_MsgColors[][4];
 

@@ -493,7 +493,7 @@ address,size,name,symbol
 0x00437edc,128,Gui::ShowSpellCardBonus,?ShowSpellCardBonus@Gui@@QAEXH@Z
 0x00437f5c,234,CopySpriteToTexture,?CopySpriteToTexture@@YIXH@Z
 0x00438046,517,Func438046,?Func438046@@YIXXZ
-0x0043826b,1982,Gui::Func43826b,?Func43826b@Gui@@QAEXXZ
+0x0043826b,1982,Gui::DrawStageClear,?DrawStageClear@Gui@@QAEXXZ
 0x00438a29,24,Func438a29,
 0x00438a41,24,App::GetNoDepthTest,?GetNoDepthTest@App@@QAEHXZ
 0x00438a59,24,App::GetNoColorBlending,?GetNoColorBlending@App@@QAEHXZ
@@ -517,7 +517,7 @@ address,size,name,symbol
 0x00439856,45,GameManager::HasClearedStageWithContinues,?HasClearedStageWithContinues@GameManager@@QAEHHHH@Z
 0x00439883,75,Func439883,
 0x004398ce,26,GameManager::GetBombs,?GetBombs@GameManager@@QAEHXZ
-0x004398e8,23,Func4398e8,
+0x004398e8,23,AsciiText::SetColor,?SetColor@AsciiText@@QAEXK@Z
 0x004398ff,23,Func4398ff,
 0x00439916,75,Func439916,?Func439916@@YIHH@Z
 0x00439961,75,Func439961,
@@ -2412,6 +2412,7 @@ address,size,name,symbol
 0x004c67e8,,g_SpellCardListSizes,?g_SpellCardListSizes@@3PAHA
 0x004c7180,,g_MsgColors,?g_MsgColors@@3PAY03KA
 0x004c7240,,g_StageBgms,?g_StageBgms@@3PAUStageBgm@@A
+0x004c72bc,,g_AmPmNames,?g_AmPmNames@@3PAPADA
 0x004c7670,,g_SpellCardBgms,?g_SpellCardBgms@@3PAUSpellCardBgm@@A
 0x004c77f0,,g_Unknown4c77f0,?g_Unknown4c77f0@@3PAY03HA
 0x004c7880,,g_Ranks,?g_Ranks@@3PAURankSettings@@A

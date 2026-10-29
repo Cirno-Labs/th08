@@ -4,6 +4,7 @@
 
 #include <string.h>
 
+#include "ascii.h"
 #include "bullet.h"
 #include "chain.h"
 #include "enemy.h"
@@ -30,9 +31,9 @@ int Gui::OnUpdate(Gui *gui)
 
 int Gui::OnDraw(Gui *gui)
 {
-    if (gui->impl->unk_22d84 != 0)
+    if (gui->impl->stageClearShown != 0)
     {
-        gui->Func43826b();
+        gui->DrawStageClear();
     }
     gui->impl->DrawMsg();
     gui->DrawBanners();
@@ -476,5 +477,139 @@ void Func438046()
             CopySpriteToTexture(0x19);
         }
         break;
+    }
+}
+
+void Gui::DrawStageClear()
+{
+    D3DXVECTOR3 cursor(120.0f, 96.0f, 0.0f);
+
+    g_AsciiText.SetColor(0xffffff40);
+    if (g_GameManager.stage < 6)
+    {
+        g_AsciiText.AddFormat(&cursor, "Stage Clear");
+    }
+    else
+    {
+        if (g_GameManager.stage >= 7)
+        {
+            cursor.y -= 16.0f;
+        }
+        g_AsciiText.AddFormat(&cursor, "All Clear!");
+    }
+    cursor.y += 32.0f;
+    g_AsciiText.SetColor(0xffffffff);
+    g_AsciiText.AddFormat(&cursor, "Clear = %8d0", this->impl->stageClearBonus);
+    cursor.y += 16.0f;
+    g_AsciiText.SetColor(0xffe0e0ff);
+    g_AsciiText.AddFormat(&cursor, "Point = %8d0", this->impl->stageClearPoints * 5000);
+    cursor.y += 16.0f;
+    g_AsciiText.SetColor(0xffd0d0ff);
+    g_AsciiText.AddFormat(&cursor, "Graze = %8d0", this->impl->stageClearGraze * 50);
+    cursor.y += 16.0f;
+    g_AsciiText.SetColor(0xffd0d0ff);
+    g_AsciiText.AddFormat(&cursor, "Time  = %8d0", this->impl->stageClearTime * 100);
+    cursor.y += 16.0f;
+    g_AsciiText.SetColor(0xffd0d0ff);
+    cursor.y += 16.0f;
+    g_AsciiText.AddFormat(&cursor, "over-80%% = %3d.%.2d%%", g_GameManager.unk_3de24 * 100 / g_GameManager.unk_3de14,
+                          g_GameManager.unk_3de24 * 10000 / g_GameManager.unk_3de14 % 100);
+    cursor.y += 16.0f;
+    g_AsciiText.AddFormat(&cursor, "over 80%% = %3d.%.2d%%", g_GameManager.unk_3de20 * 100 / g_GameManager.unk_3de14,
+                          g_GameManager.unk_3de20 * 10000 / g_GameManager.unk_3de14 % 100);
+    if (g_GameManager.stage >= 6 && !g_GameManager.IsInPractice() && !g_GameManager.IsPracticeReplay())
+    {
+        cursor.y += 16.0f;
+        g_AsciiText.SetColor(0xffffff80);
+        g_AsciiText.AddFormat(&cursor, "Player =%8d0", g_GameManager.GetLives() * 2500000);
+        cursor.y += 16.0f;
+        g_AsciiText.SetColor(0xffffff80);
+        g_AsciiText.AddFormat(&cursor, "Bomb   = %7d0", g_GameManager.GetBombs() * 500000);
+        if (g_GameManager.stage == 7 && !g_GameManager.IsInPractice() && !g_GameManager.IsPracticeReplay())
+        {
+            cursor.y += 16.0f;
+            g_AsciiText.SetColor(0xffffff80);
+            g_AsciiText.AddFormat(&cursor, "Last Time = %2d:%.2d", this->impl->stageClearLastTime / 60 % 12,
+                                  this->impl->stageClearLastTime % 60);
+            cursor.y += 16.0f;
+            g_AsciiText.AddFormat(&cursor, "Night Bonus");
+            cursor.y += 16.0f;
+            g_AsciiText.AddFormat(&cursor, "        %8d0", (12 - g_GameManager.GetUnk28()) * 2000000);
+        }
+    }
+    cursor.y += 32.0f;
+    switch (g_GameManager.difficulty)
+    {
+    case 0:
+        g_AsciiText.SetColor(0xffff8080);
+        g_AsciiText.AddFormat(&cursor, "Easy Rank    *0.5");
+        break;
+    case 1:
+        g_AsciiText.SetColor(0xffff8080);
+        g_AsciiText.AddFormat(&cursor, "Normal Rank  *1.0");
+        break;
+    case 2:
+        g_AsciiText.SetColor(0xffff8080);
+        g_AsciiText.AddFormat(&cursor, "Hard Rank    *1.2");
+        break;
+    case 3:
+        g_AsciiText.SetColor(0xffff8080);
+        g_AsciiText.AddFormat(&cursor, "Lunatic Rank *1.5");
+        break;
+    case 4:
+        g_AsciiText.SetColor(0xffff8080);
+        g_AsciiText.AddFormat(&cursor, "Extra Rank   *2.0");
+        break;
+    case 5:
+        g_AsciiText.SetColor(0xffff8080);
+        g_AsciiText.AddFormat(&cursor, "Phantasm Rank*2.0");
+        break;
+    }
+    if (g_GameManager.difficulty < 4 && !(g_GameManager.unk_3dbac & 1))
+    {
+        cursor.y += 16.0f;
+        switch (g_GameManager.unk_4->lifeCount)
+        {
+        case 3:
+            g_AsciiText.SetColor(0xffff8080);
+            g_AsciiText.AddFormat(&cursor, "Player Penalty*0.5");
+            cursor.y += 16.0f;
+            break;
+        case 4:
+            g_AsciiText.SetColor(0xffff8080);
+            g_AsciiText.AddFormat(&cursor, "Player Penalty*0.2");
+            cursor.y += 16.0f;
+            break;
+        case 5:
+            g_AsciiText.SetColor(0xffff8080);
+            g_AsciiText.AddFormat(&cursor, "Player Penalty*0.1");
+            cursor.y += 16.0f;
+            break;
+        case 6:
+            g_AsciiText.SetColor(0xffff8080);
+            g_AsciiText.AddFormat(&cursor, "Player Penalty*0.05");
+            cursor.y += 16.0f;
+            break;
+        }
+    }
+    cursor.y += 16.0f;
+    g_AsciiText.SetColor(0xffffffff);
+    g_AsciiText.AddFormat(&cursor, "Total = %8d0", this->impl->stageClearTotal);
+    g_AsciiText.SetColor(0xffffffff);
+    if (g_GameManager.stage <= 5)
+    {
+        cursor.y += 40.0f;
+        cursor.x = 120.0f;
+        g_AsciiText.SetColor(0xffdfdfdf);
+        g_AsciiText.AddFormat(&cursor, "%s%2d:%.2d", g_AmPmNames[this->impl->stageClearClock / 60 < 12],
+                              this->impl->stageClearClock / 60 % 12, this->impl->stageClearClock % 60);
+        cursor.x += 99.0f;
+        g_AsciiText.SetColor(0xffafafaf);
+        g_AsciiText.AddFormat(&cursor, ">>");
+        cursor.x += 34.0f;
+        g_AsciiText.SetColor(0xffff8f8f);
+        g_AsciiText.AddFormat(&cursor, "%s%2d:%.2d", g_AmPmNames[this->impl->stageClearClock2 / 60 < 12],
+                              this->impl->stageClearClock2 / 60 % 12, this->impl->stageClearClock2 % 60);
+        g_AsciiText.SetColor(0xffffffff);
     }
 }
