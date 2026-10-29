@@ -627,7 +627,7 @@ address,size,name,symbol
 0x004415a0,451,ItemManager::DrawItems,?DrawItems@ItemManager@@QAEXXZ
 0x00441770,106,Item::Unlink,?Unlink@Item@@QAEXXZ
 0x004417e0,79,ItemManager::CountType7Items,?CountType7Items@ItemManager@@QAEHXZ
-0x00441830,27,Func441830,
+0x00441830,27,Timer::operator!=,??9Timer@@QAEHH@Z
 0x00441850,77,GameManager::AddPower,?AddPower@GameManager@@QAEXH@Z
 0x004418a0,28,Func4418a0,
 0x004418c0,1354,WinMain,_WinMain@16
