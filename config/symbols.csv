@@ -323,7 +323,7 @@ address,size,name,symbol
 0x004253e0,34,Func4253e0,
 0x00425410,25,EffectManager::Reset,?Reset@EffectManager@@QAEXXZ
 0x00425430,529,EffectManager::SpawnEffect,?SpawnEffect@EffectManager@@QAEPAUEffect@@HPAUD3DXVECTOR3@@HK@Z
-0x00425650,533,Func425650,
+0x00425650,533,EffectManager::SpawnEffectWithVelocity,?SpawnEffectWithVelocity@EffectManager@@QAEPAUEffect@@HPAUD3DXVECTOR3@@0HK@Z
 0x00425870,365,Func425870,
 0x004259e0,394,Func4259e0,
 0x00425b70,509,Func425b70,

@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">56.27% (628)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">41.94% (468)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">56.36% (629)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">41.85% (467)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="420.35" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="420.35" y="0" class="decompiled"/>
-<rect width="313.26" height="6" x="433.74" y="0" class="todo"/>
+<rect width="421.02" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="421.02" y="0" class="decompiled"/>
+<rect width="312.59" height="6" x="434.41" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -392,7 +392,7 @@
 <rect width="12" height="12" x="315" y="90" class="todo"><title>0x004253e0 Func4253e0 (34 bytes)</title></rect>
 <rect width="12" height="12" x="330" y="90" class="named"><title>0x00425410 EffectManager::Reset (25 bytes)</title></rect>
 <rect width="12" height="12" x="345" y="90" class="named"><title>0x00425430 EffectManager::SpawnEffect (529 bytes)</title></rect>
-<rect width="12" height="12" x="360" y="90" class="todo"><title>0x00425650 Func425650 (533 bytes)</title></rect>
+<rect width="12" height="12" x="360" y="90" class="named"><title>0x00425650 EffectManager::SpawnEffectWithVelocity (533 bytes)</title></rect>
 <rect width="12" height="12" x="375" y="90" class="todo"><title>0x00425870 Func425870 (365 bytes)</title></rect>
 <rect width="12" height="12" x="390" y="90" class="todo"><title>0x004259e0 Func4259e0 (394 bytes)</title></rect>
 <rect width="12" height="12" x="405" y="90" class="todo"><title>0x00425b70 Func425b70 (509 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">51.21%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">47.80%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">51.33%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">47.68%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="382.56" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="382.56" y="0" class="decompiled"/>
-<rect width="357.04" height="6" x="389.96" y="0" class="todo"/>
+<rect width="383.43" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="383.43" y="0" class="decompiled"/>
+<rect width="356.17" height="6" x="390.83" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1395,7 +1395,7 @@
 <rect width="13.96" height="15.24" x="683.07" y="65.08" class="todo"><title>0x004264f0 Func4264f0 (545 bytes)</title></rect>
 <rect width="13.71" height="15.24" x="700.02" y="65.08" class="named"><title>0x00467180 SpriteEngine::CopyBackBufferToSurface (537 bytes)</title></rect>
 <rect width="13.68" height="15.24" x="716.73" y="65.08" class="todo"><title>0x00424a20 Func424a20 (536 bytes)</title></rect>
-<rect width="13.59" height="15.24" x="733.41" y="65.08" class="todo"><title>0x00425650 Func425650 (533 bytes)</title></rect>
+<rect width="13.59" height="15.24" x="733.41" y="65.08" class="named"><title>0x00425650 EffectManager::SpawnEffectWithVelocity (533 bytes)</title></rect>
 <rect width="13.71" height="15.03" x="471.21" y="83.32" class="named"><title>0x0043e660 LoadFileData (531 bytes)</title></rect>
 <rect width="13.71" height="14.96" x="471.21" y="101.35" class="named"><title>0x00425430 EffectManager::SpawnEffect (529 bytes)</title></rect>
 <rect width="13.71" height="14.96" x="471.21" y="119.32" class="todo"><title>0x0044c390 Func44c390 (529 bytes)</title></rect>
