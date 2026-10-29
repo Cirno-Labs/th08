@@ -952,7 +952,7 @@ address,size,name,symbol
 0x00462360,86,AnmLoaded::StartSpriteSeries,?StartSpriteSeries@AnmLoaded@@QAEXPAVSprite@@HH@Z
 0x004623c0,912,SpriteEngine::SetRenderStateForSprite,?SetRenderStateForSprite@SpriteEngine@@QAEXPAVSprite@@@Z
 0x00462750,52,ModulateChannel,?ModulateChannel@@YIEEE@Z
-0x00462790,278,Func462790,
+0x00462790,278,SpriteEngine::SetBlendModeForSprite,?SetBlendModeForSprite@SpriteEngine@@QAEXPAVSprite@@@Z
 0x004628b0,1359,Func4628b0,
 0x00462e00,60,SpriteEngine::BeginQuadBatch,?BeginQuadBatch@SpriteEngine@@QAEXXZ
 0x00462e40,198,SpriteEngine::FlushQuadBatch,?FlushQuadBatch@SpriteEngine@@QAEXXZ

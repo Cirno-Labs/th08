@@ -292,6 +292,37 @@ void SpriteEngine::SetRenderStateForSprite(Sprite *vm)
     this->renderStateSetCount++;
 }
 
+void SpriteEngine::SetBlendModeForSprite(Sprite *vm)
+{
+    if (this->blendMode != (vm->flags >> 4 & 3))
+    {
+        this->FlushQuadBatch();
+        this->blendMode = vm->flags >> 4 & 3;
+        switch (this->blendMode)
+        {
+        case 0:
+            g_App.d3dDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
+            break;
+        case 1:
+            g_App.d3dDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ONE);
+            break;
+        }
+    }
+    if (!g_App.GetNoDepthTest() && this->zWriteDisabled != (vm->flags >> 13 & 1))
+    {
+        this->zWriteDisabled = vm->flags >> 13 & 1;
+        if (this->zWriteDisabled == 0)
+        {
+            g_App.SetRenderState(D3DRS_ZWRITEENABLE, TRUE);
+        }
+        else
+        {
+            g_App.SetRenderState(D3DRS_ZWRITEENABLE, FALSE);
+        }
+    }
+    this->renderStateSetCount++;
+}
+
 SpriteEngine::SpriteEngine()
 {
     memset(this, 0, sizeof(*this));

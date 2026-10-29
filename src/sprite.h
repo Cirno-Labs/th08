@@ -412,6 +412,9 @@ public:
     void ReleaseVertexBuffer();
     // Sets the render states `vm` wants on the device, as th07's.
     void SetRenderStateForSprite(Sprite *vm);
+    // Sets the blend mode and z writes `vm` wants, as th07's; the z
+    // writes through App::SetRenderState, which flushes the batch first.
+    void SetBlendModeForSprite(Sprite *vm);
     // Starts batching quads for a frame, as th07's (0x462e00).
     void BeginQuadBatch();
     // Draws the batched quads (0x462e40).
