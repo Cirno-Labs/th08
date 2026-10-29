@@ -55,3 +55,13 @@ int TryFireShot(Player *player, PlayerBullet *bullet, int frame, ShotData *sd)
     }
     return 0;
 }
+
+int TryFireShotNoBomb(Player *player, PlayerBullet *bullet, int frame, ShotData *sd)
+{
+    if (!player->bomb.running && frame % sd->interval == sd->phase)
+    {
+        FireShot(player, bullet, sd);
+        return 1;
+    }
+    return 0;
+}
