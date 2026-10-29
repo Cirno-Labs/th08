@@ -95,6 +95,11 @@ public:
     {
         return this->flags & 1;
     }
+    // Clears flag bit 0, as th07's. Inline; the copy is at 0x406700.
+    void ClearShown()
+    {
+        this->shown = 0;
+    }
     // Whether the script waits for an interrupt. Inline; the copy at
     // 0x4396f8 is the Gui object's.
     DWORD IsStopped()

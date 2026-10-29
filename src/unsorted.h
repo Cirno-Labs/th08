@@ -957,6 +957,21 @@ public:
             this->bgm->FadeOut(seconds);
         }
     }
+    // Fades the wave music in over `seconds`. New in th08; inline, the
+    // copy is at 0x406ac0.
+    void FadeInBgm(float seconds)
+    {
+        if (this->bgm != NULL)
+        {
+            this->bgm->FadeIn(seconds);
+        }
+    }
+    // Queues the "UnPause" command (7), as th07 did by hand. Inline; the
+    // copy is at 0x406c50.
+    void UnPause()
+    {
+        this->QueueSoundCommand(7, 0, "UnPause");
+    }
     // Frees preload slot `slot`'s data, if any. An out-of-line copy at
     // the end of the sound object (0x45e370). Not in th07.
     void FreePreloadedBgm(int slot)

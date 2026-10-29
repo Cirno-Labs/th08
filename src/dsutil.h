@@ -167,6 +167,15 @@ public:
         this->fadeFrames = seconds * 60.0f;
         this->fadeTotal = this->fadeFrames;
     }
+    // Starts fade 2 over `seconds` from silence (-10000). New in th08;
+    // inline, the copy is at 0x406af0.
+    void FadeIn(float seconds)
+    {
+        this->fading = 2;
+        this->fadeFrames = seconds * 60.0f;
+        this->fadeTotal = this->fadeFrames;
+        this->SetVolume(-10000);
+    }
 
     // Not in th06: releases the buffers and creates them again from
     // dsbd, with 16 notifications every m_dwNotifySize bytes.
