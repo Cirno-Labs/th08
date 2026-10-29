@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">67.47% (753)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">30.73% (343)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">67.56% (754)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">30.65% (342)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="504.02" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="504.02" y="0" class="decompiled"/>
-<rect width="229.59" height="6" x="517.41" y="0" class="todo"/>
+<rect width="504.69" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="504.69" y="0" class="decompiled"/>
+<rect width="228.92" height="6" x="518.08" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -824,7 +824,7 @@
 <rect width="12" height="12" x="45" y="225" class="named"><title>0x0044a470 Player::CheckGraze (303 bytes)</title></rect>
 <rect width="12" height="12" x="60" y="225" class="named"><title>0x0044a5a0 Player::TouchesGrazeBox (249 bytes)</title></rect>
 <rect width="12" height="12" x="75" y="225" class="named"><title>0x0044a6a0 Player::CheckLaserHit (651 bytes)</title></rect>
-<rect width="12" height="12" x="90" y="225" class="todo"><title>0x0044a930 Player::Graze (521 bytes)</title></rect>
+<rect width="12" height="12" x="90" y="225" class="named"><title>0x0044a930 Player::Graze (521 bytes)</title></rect>
 <rect width="12" height="12" x="105" y="225" class="todo"><title>0x0044ab40 Player::Die (888 bytes)</title></rect>
 <rect width="12" height="12" x="120" y="225" class="todo"><title>0x0044aec0 Func44aec0 (4769 bytes)</title></rect>
 <rect width="12" height="12" x="135" y="225" class="todo"><title>0x0044c1b0 Player::AngleFrom (118 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">59.24%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">39.77%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">59.35%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">39.65%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="442.53" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="442.53" y="0" class="decompiled"/>
-<rect width="297.07" height="6" x="449.93" y="0" class="todo"/>
+<rect width="443.38" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="443.38" y="0" class="decompiled"/>
+<rect width="296.22" height="6" x="450.78" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1403,7 +1403,7 @@
 <rect width="13.71" height="14.79" x="471.21" y="155.21" class="todo"><title>0x0044fb70 Func44fb70 (524 bytes)</title></rect>
 <rect width="13.71" height="14.76" x="471.21" y="173.01" class="named"><title>0x0045c6b0 SoundPlayer::FindTrackIndex (523 bytes)</title></rect>
 <rect width="13.71" height="14.69" x="471.21" y="190.77" class="todo"><title>0x0040d100 Func40d100 (521 bytes)</title></rect>
-<rect width="13.71" height="14.69" x="471.21" y="208.46" class="todo"><title>0x0044a930 Player::Graze (521 bytes)</title></rect>
+<rect width="13.71" height="14.69" x="471.21" y="208.46" class="named"><title>0x0044a930 Player::Graze (521 bytes)</title></rect>
 <rect width="13.71" height="14.56" x="471.21" y="226.15" class="decompiled"><title>0x00438046 Func438046 (517 bytes)</title></rect>
 <rect width="13.71" height="14.56" x="471.21" y="243.71" class="named"><title>0x00446d06 App::DeletedCallback (517 bytes)</title></rect>
 <rect width="13.71" height="14.42" x="471.21" y="261.27" class="named"><title>0x004071a0 Stage::Stage (513 bytes)</title></rect>

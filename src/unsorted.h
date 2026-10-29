@@ -1259,6 +1259,17 @@ public:
     // at, over g_App's config (0x3c bytes each) and, new in th08, over
     // hscr.
     int ComputeChecksum();
+    // Whether the character plays alone (4 and up) and is the human of
+    // its team (even) or the youkai (odd). Inline; the copies at 0x42f230
+    // and 0x42f270 are in an /Od object.
+    int IsSoloHuman()
+    {
+        return this->character >= 4 && !(this->character & 1) ? TRUE : FALSE;
+    }
+    int IsSoloYoukai()
+    {
+        return this->character >= 4 && (this->character & 1) ? TRUE : FALSE;
+    }
     // Rerolls stats' lifeChecksumKeys and lifeChecksumKeysF, as th07's.
     // Inline; the copy at 0x44e160 is the player object's.
     void RerollLifeChecksumKeys()

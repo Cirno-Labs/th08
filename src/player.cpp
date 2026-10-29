@@ -5,6 +5,8 @@
 #include <string.h>
 
 #include "effect.h"
+#include "enemy.h"
+#include "item.h"
 #include "player.h"
 #include "replay.h"
 #include "sprite.h"
@@ -222,4 +224,49 @@ hit:
     g_GameManager.RerollLifeChecksumKeys();
     this->Die();
     return 1;
+}
+
+void Player::Graze(D3DXVECTOR3 *pos, int isLaser)
+{
+    D3DXVECTOR3 mid;
+    int count;
+    int points;
+
+    if (!g_Unknown17d6ed4)
+    {
+        count = g_GameManager.IsUnk22AtLow1() ? 3 : (g_GameManager.IsUnk22AtLow2() ? 2 : 1);
+        if (g_GameManager.stats->graze < 99999)
+        {
+            g_GameManager.stats->graze += count;
+        }
+        if (g_GameManager.stats->grazeTotal < 999999)
+        {
+            g_GameManager.stats->grazeTotal += count;
+        }
+    }
+    mid = (this->pos + *pos) / 2.0f;
+    g_EffectManager.SpawnEffect(8, &mid, 1, 0xffffffff);
+    g_GameManager.AddSubRank(6);
+    g_Gui.grazeChanged = 2;
+    g_SoundPlayer.QueueSoundPanned(0x1e, pos->x);
+    points = g_GameManager.IsUnk22AtHigh2() ? 4000 : 2000;
+    g_GameManager.AddScore(points);
+    if (this->IsUnk5Set())
+    {
+        g_GameManager.Func43c0bb(100, 0);
+    }
+    if ((!g_GameManager.IsSoloHuman() || g_GameManager.character == 10) && g_EnemyManager.AnyBossActive() &&
+        g_GameManager.IsUnk22AtHigh1())
+    {
+        g_ItemManager.SpawnItem(pos, 10, 1);
+        if (!isLaser && g_SpellCard.Func4178a0())
+        {
+            g_ItemManager.SpawnItem(pos, 10, 1);
+            if (!g_GameManager.IsSoloYoukai())
+            {
+                g_ItemManager.SpawnItem(pos, 10, 1);
+            }
+        }
+    }
+    g_ReplayManager->frameEvents |= 0x2000;
 }
