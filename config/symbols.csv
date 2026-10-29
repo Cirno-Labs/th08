@@ -21,7 +21,7 @@ address,size,name,symbol
 0x00403200,295,Func403200,
 0x00403330,297,Func403330,
 0x00403460,411,Func403460,
-0x00403600,420,Func403600,
+0x00403600,420,AsciiText::Func403600,?Func403600@AsciiText@@QAEXPAUD3DXVECTOR3@@HHK@Z
 0x004037b0,3898,Func4037b0,
 0x00404720,42,Func404720,
 0x00404750,309,Func404750,
@@ -2412,6 +2412,7 @@ address,size,name,symbol
 0x004c67e8,,g_SpellCardListSizes,?g_SpellCardListSizes@@3PAHA
 0x004c7180,,g_MsgColors,?g_MsgColors@@3PAY03KA
 0x004c7240,,g_StageBgms,?g_StageBgms@@3PAUStageBgm@@A
+0x004c72ac,,g_BossTimerColors,?g_BossTimerColors@@3PAKA
 0x004c72bc,,g_AmPmNames,?g_AmPmNames@@3PAPADA
 0x004c72c4,,g_LoadingAnmPaths,?g_LoadingAnmPaths@@3PAPADA
 0x004c745c,,g_StageTextAnmPaths,?g_StageTextAnmPaths@@3PAPADA

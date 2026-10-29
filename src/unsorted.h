@@ -456,6 +456,9 @@ void ClearScreen(D3DCOLOR color);
 // Draws the batched quads, then clears the whole back buffer to `color`
 // (0x45b0e0).
 void ClearViewport(D3DCOLOR color);
+// Draws `rect` with a color for each corner, blended across, as th07's
+// (0x45b490).
+void DrawGradientRect(float *rect, D3DCOLOR topLeft, D3DCOLOR topRight, D3DCOLOR bottomLeft, D3DCOLOR bottomRight);
 // Sets the device's render and texture stage states, as the config
 // flags pick them, and forgets SpriteEngine's cached states.
 void SetDefaultRenderStates();
@@ -1548,8 +1551,10 @@ struct GuiImpl
     int DrawMsg();
 
     Sprite sprites[0x10];
-    BYTE unk_2a40;
-    unsigned char unk_2a41[0x3];
+    // The boss's bar (sprites[12]): 0 hidden, 1 appearing, 2 shown, 3
+    // leaving, as th07's.
+    BYTE bossBarState;
+    unsigned char pad_2a41[0x3];
     Sprite unk_2a44[4];
     Sprite unk_34d4;
     Sprite loadingIcon;
@@ -1687,12 +1692,29 @@ public:
     // loading ANM (slot 0xc).
     AnmLoaded *timesAnm;
     AnmLoaded *characterAnm;
-    unsigned char unk_1c[0x10];
-    BYTE unk_2c;
-    unsigned char unk_2d[0x3];
-    float unk_30;
-    float unk_34;
-    unsigned char unk_38[0x64];
+    // The boss bar's alpha, as th07's.
+    DWORD bossBarAlpha;
+    // How many boss lives DrawBanners marks beside the bar.
+    int bossLives;
+    // The seconds left on the boss's timer.
+    int bossTimer;
+    // bossTimer as DrawBanners last drew it: it plays sound 0x1d when
+    // the timer changes under 10 (0x26 under 3, new in th08).
+    int lastDrawnBossTimer;
+    // Set while a boss fight runs.
+    BYTE bossPresent;
+    unsigned char pad_2d[0x3];
+    // The boss's life as a fraction of its maximum, and what the bar
+    // shows, following it.
+    float bossHealth;
+    float bossHealthShown;
+    unsigned char pad_38[0x4];
+    // Eight sections DrawBanners draws over the boss bar: where each
+    // ends and starts, as fractions of the bar (unused while the end
+    // is 0), and its color.
+    float sectionStarts[8];
+    float sectionEnds[8];
+    int sectionColors[8];
 };
 ASSERT_SIZE(Gui, 0x9c);
 extern Gui g_Gui;
@@ -1724,6 +1746,9 @@ extern char *g_StageTextAnmPaths[];
 extern char *g_MsgPaths[][12];
 // "AM" and "PM", picked by whether the hour is before 12 (backwards).
 extern char *g_AmPmNames[2];
+// The colors of the boss timer: 20 seconds and more, 10, 5 and under 5,
+// as th07's.
+extern D3DCOLOR g_BossTimerColors[4];
 // The dialogue's text colours, by character.
 extern D3DCOLOR g_MsgColors[][4];
 

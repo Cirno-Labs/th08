@@ -287,6 +287,139 @@ int Gui::IsMsgRunning()
     return this->impl->msg.scriptIndex >= 0 || this->impl->msg.scriptIndex == -2 ? 1 : 0;
 }
 
+void Gui::DrawBanners()
+{
+    int i;
+    D3DCOLOR colorA2;
+    D3DCOLOR dark;
+    float r2[4];
+    D3DCOLOR timerColor;
+    float end;
+    int index2;
+    int total;
+    int shrink;
+
+    for (i = 0; i < 4; i++)
+    {
+        g_SpriteEngine->Draw(&this->impl->unk_2a44[i]);
+    }
+    g_SpriteEngine->Draw(&this->impl->unk_34d4);
+    g_SpriteEngine->Draw(&this->impl->unk_2156c);
+    if (this->impl->loadingIcon.spriteIndex >= 0)
+    {
+        g_SpriteEngine->DrawUnrotated(&this->impl->loadingIcon);
+        g_SpriteEngine->DrawProjected3D(&this->impl->loadingBar);
+        for (i = 0; i < ARRAY_SIZE(this->impl->unk_3f64); i++)
+        {
+            g_SpriteEngine->DrawProjected3D(&this->impl->unk_3f64[i]);
+        }
+        if (this->impl->loadingCaption.spriteIndex >= 0)
+        {
+            this->impl->loadingCaption.pos = D3DXVECTOR3(304.0f, 448.0f, 0.0f);
+            g_SpriteEngine->DrawUnrotated(&this->impl->loadingCaption);
+        }
+    }
+    if (this->impl->backgroundTileCount != 0)
+    {
+        for (i = 0; i < 0xa8; i++)
+        {
+            g_SpriteEngine->DrawProjected3D(&this->impl->backgroundTiles[i]);
+            g_SpriteEngine->ClearSpriteData();
+        }
+    }
+    if (this->impl->msg.scriptIndex < 0 && this->bossPresent + this->impl->bossBarState > 0)
+    {
+        r2[0] = 64.0f;
+        r2[1] = 19.0f;
+        r2[2] = this->bossHealthShown * 320.0f + 64.0f;
+        r2[3] = 23.0f;
+        colorA2 = this->bossBarAlpha << 24 | 0xffffff;
+        dark = this->bossBarAlpha << 24 | 0x202060;
+        D3DXVECTOR3 pos(48.0f, 16.0f, 0.0f);
+        DrawGradientRect(r2, colorA2, colorA2, dark, dark);
+        for (index2 = 0; index2 < 8; index2++)
+        {
+            if (this->sectionStarts[index2] == 0.0f)
+            {
+                continue;
+            }
+            if (this->sectionEnds[index2] >= this->bossHealthShown)
+            {
+                continue;
+            }
+            end = this->sectionStarts[index2];
+            if (this->bossHealthShown < end)
+            {
+                end = this->bossHealthShown;
+            }
+            r2[0] = this->sectionEnds[index2] * 320.0f + 64.0f;
+            r2[1] = 19.0f;
+            r2[2] = end * 320.0f + 64.0f;
+            r2[3] = 23.0f;
+            colorA2 = this->bossBarAlpha << 24 | (this->sectionColors[index2] & 0xffffff);
+            dark = this->bossBarAlpha << 24 | (this->sectionColors[index2] >> 2 & 0x3f3f3f);
+            DrawGradientRect(r2, colorA2, colorA2, dark, dark);
+        }
+        g_SpriteEngine->DrawUnrotated(&this->impl->sprites[12]);
+        r2[0] = 33.0f;
+        r2[1] = 19.0f;
+        r2[2] = r2[0] + 3.0f;
+        r2[3] = r2[1] + 4.0f;
+        total = this->bossLives;
+        shrink = this->bossLives <= 5 ? 2 : 1;
+        for (index2 = 0; index2 < total; index2++)
+        {
+            r2[0] = index2 * 26.0f / total + 35.0f;
+            r2[2] = (index2 + 1) * 26.0f / total + 35.0f - shrink;
+            colorA2 = this->bossBarAlpha << 24 | (0xffffff - index2 * 0xff / 9);
+            dark = this->bossBarAlpha << 24 | 0x202020;
+            DrawGradientRect(r2, colorA2, colorA2, dark, dark);
+        }
+        pos = D3DXVECTOR3(384.0f, 16.0f, 0.0f);
+        if (this->bossTimer >= 20)
+        {
+            timerColor = g_BossTimerColors[0];
+        }
+        else if (this->bossTimer >= 10)
+        {
+            timerColor = g_BossTimerColors[1];
+        }
+        else if (this->bossTimer >= 5)
+        {
+            timerColor = g_BossTimerColors[2];
+        }
+        else
+        {
+            timerColor = g_BossTimerColors[3];
+        }
+        g_AsciiText.SetColor(this->bossBarAlpha << 24 | timerColor);
+        total = this->bossTimer > 99 ? 99 : this->bossTimer;
+        if (this->lastDrawnBossTimer != this->bossTimer)
+        {
+            if (total < 3)
+            {
+                g_SoundPlayer.QueueSound(0x26, 0);
+            }
+            else if (total < 10)
+            {
+                g_SoundPlayer.QueueSound(0x1d, 0);
+            }
+        }
+        g_AsciiText.AddFormat(&pos, "%.2d", total);
+        g_AsciiText.SetColor(0xffffffff);
+        this->lastDrawnBossTimer = this->bossTimer;
+        if (!g_GameManager.isPaused && !g_GameManager.isInContinueMenu && !g_GameManager.unk_3dbac_10 &&
+            g_EnemyManager.bosses[0] != NULL)
+        {
+            pos = D3DXVECTOR3(2.0f, 29.0f, 0.0f);
+            g_AsciiText.SetScale(1.0f, 1.0f);
+            g_AsciiText.Func403600(&pos, g_EnemyManager.bosses[0]->Func41fd40(), g_EnemyManager.bosses[0]->unk_3380,
+                                   0xfff0f00f);
+        }
+    }
+    g_SpriteEngine->DrawUnrotated(&this->impl->unk_212c8);
+}
+
 int Gui::AddedCallback(Gui *gui)
 {
     return gui->LoadResources();
@@ -854,10 +987,10 @@ int Gui::LoadResources()
         }
     }
     this->frameCounter = 0;
-    this->unk_2c = 0;
-    this->impl->unk_2a40 = 0;
-    this->unk_30 = 0.0f;
-    this->unk_34 = 0.0f;
+    this->bossPresent = 0;
+    this->impl->bossBarState = 0;
+    this->bossHealth = 0.0f;
+    this->bossHealthShown = 0.0f;
     if (!(g_GameManager.unk_3dbac >> 14 & 1))
     {
         this->textAnm->StartSpriteSeries(this->impl->unk_2a44, 0, 4);

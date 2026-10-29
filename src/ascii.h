@@ -26,6 +26,11 @@ public:
     void Initialize();
     // Starts the scripts of a few of its sprites (0x402600). New in th08.
     void Func402600();
+    // Queues `count` and `value` as a string of glyphs 0xf, `value`'s
+    // digits, 0xe, `count`'s digits and 0xd at `pos`, in `color`
+    // (0x403600). New in th08; DrawBanners shows the first boss's with
+    // it.
+    void Func403600(D3DXVECTOR3 *pos, int count, int value, D3DCOLOR color);
 
     // Inline; /Os files call the copy at 0x4398e8.
     void SetColor(D3DCOLOR color)
