@@ -206,6 +206,90 @@ void ResultScreen::SetState(int state)
     this->unk_54 = 0;
 }
 
+int ResultScreen::UpdateScoreShotSelect()
+{
+    int i;
+    Sprite *sprite;
+
+    switch (this->subState)
+    {
+    case 0:
+        if (this->unk_18 == 0)
+        {
+            this->cursor = this->unk_3c;
+            for (i = 0xf; i <= 0x1a; i++)
+            {
+                this->sprites[i].pendingInterrupt = 0x16;
+                g_SpriteEngine->Step(&this->sprites[i]);
+                if (i - 0xf == this->cursor)
+                {
+                    this->sprites[i].pendingInterrupt = 0x14;
+                }
+                else
+                {
+                    this->sprites[i].pendingInterrupt = 0x15;
+                }
+            }
+        }
+        if (this->unk_18 < 6)
+        {
+            break;
+        }
+        this->subState++;
+        this->unk_18 = 0;
+    case 1:
+        i = MoveCursorVertical(this, 0xc);
+        if (i != 0)
+        {
+            for (i = 0xf; i <= 0x1a; i++)
+            {
+                if (i - 0xf == this->cursor)
+                {
+                    this->sprites[i].pendingInterrupt = 0x14;
+                }
+                else
+                {
+                    this->sprites[i].pendingInterrupt = 0x15;
+                }
+            }
+        }
+        if (WAS_PRESSED(0xa))
+        {
+            this->SetState(3);
+            g_SoundPlayer.QueueSound(0xb, 0);
+            this->unk_3c = this->cursor;
+            for (i = 0xf; i <= 0x1a; i++)
+            {
+                this->sprites[i].pendingInterrupt = 1;
+            }
+            return 1;
+        }
+        if (WAS_PRESSED(0x1001))
+        {
+            sprite = this->sprites;
+            for (i = 0xf; i <= 0x1a; i++)
+            {
+                if (i - 0xf == this->cursor)
+                {
+                    this->sprites[i].pendingInterrupt = 0x17;
+                }
+                else
+                {
+                    this->sprites[i].pendingInterrupt = 1;
+                }
+            }
+            this->sprites[0x28].pendingInterrupt = 3;
+            this->unk_3c = -1;
+            this->SetState(5);
+            g_SoundPlayer.QueueSound(0xa, 0);
+            return 1;
+        }
+        break;
+    }
+    this->unk_18++;
+    return 0;
+}
+
 int ResultScreen::UpdateScoreList()
 {
     int prevCursor;
