@@ -58,6 +58,9 @@ extern GameWindow g_GameWindow;
 // sets bit 0x40 of g_App.unk_1a4 if the startup info has no title,
 // clearing it otherwise.
 int CheckSingleInstance(HINSTANCE instance);
+// Brings `hwnd` to the foreground, lifting the foreground lock timeout
+// for the time.
+void ForceForegroundWindow(HWND hwnd);
 // The mutex that keeps a second instance from starting.
 extern HANDLE g_AppMutex;
 // Resolves the shortcut at `path` into `out`, `size` bytes long.

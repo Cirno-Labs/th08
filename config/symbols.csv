@@ -644,7 +644,7 @@ address,size,name,symbol
 0x00442ef0,107,AppendCapsFlagText,?AppendCapsFlagText@@YIPADPADKK0@Z
 0x00442f60,1201,Func442f60,
 0x00443420,625,CheckSingleInstance,?CheckSingleInstance@@YIHPAUHINSTANCE__@@@Z
-0x004436a0,143,Func4436a0,
+0x004436a0,143,ForceForegroundWindow,?ForceForegroundWindow@@YIXPAUHWND__@@@Z
 0x00443730,266,Func443730,
 0x00443840,322,ResolveShortcut,?ResolveShortcut@@YIHPAD0H@Z
 0x00443990,35,Func443990,
