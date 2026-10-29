@@ -23,7 +23,7 @@ address,size,name,symbol
 0x00403460,411,AsciiText::Func403460,?Func403460@AsciiText@@QAEXPAUD3DXVECTOR3@@HHK@Z
 0x00403600,420,AsciiText::Func403600,?Func403600@AsciiText@@QAEXPAUD3DXVECTOR3@@HHK@Z
 0x004037b0,3898,PauseMenu::UpdatePauseMenu,?UpdatePauseMenu@PauseMenu@@QAEHXZ
-0x00404720,42,Func404720,
+0x00404720,42,D3DXVECTOR3::D3DXVECTOR3,??0D3DXVECTOR3@@QAE@MMM@Z
 0x00404750,309,PauseMenu::DrawPauseMenu,?DrawPauseMenu@PauseMenu@@QAEXXZ
 0x00404890,2482,ContinueMenu::UpdateContinueMenu,?UpdateContinueMenu@ContinueMenu@@QAEHXZ
 0x00405260,22,Func405260,

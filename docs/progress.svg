@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">48.84% (545)</tspan> · <tspan class="decompiled">1.52% (17)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">49.64% (554)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">48.92% (546)</tspan> · <tspan class="decompiled">1.52% (17)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">49.55% (553)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="364.80" height="6" x="0" y="0" class="named"/>
-<rect width="11.38" height="6" x="364.80" y="0" class="decompiled"/>
-<rect width="370.82" height="6" x="376.18" y="0" class="todo"/>
+<rect width="365.47" height="6" x="0" y="0" class="named"/>
+<rect width="11.38" height="6" x="365.47" y="0" class="decompiled"/>
+<rect width="370.15" height="6" x="376.85" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -92,7 +92,7 @@
 <rect width="12" height="12" x="315" y="0" class="decompiled"><title>0x00403460 AsciiText::Func403460 (411 bytes)</title></rect>
 <rect width="12" height="12" x="330" y="0" class="decompiled"><title>0x00403600 AsciiText::Func403600 (420 bytes)</title></rect>
 <rect width="12" height="12" x="345" y="0" class="named"><title>0x004037b0 PauseMenu::UpdatePauseMenu (3898 bytes)</title></rect>
-<rect width="12" height="12" x="360" y="0" class="todo"><title>0x00404720 Func404720 (42 bytes)</title></rect>
+<rect width="12" height="12" x="360" y="0" class="named"><title>0x00404720 D3DXVECTOR3::D3DXVECTOR3 (42 bytes)</title></rect>
 <rect width="12" height="12" x="375" y="0" class="named"><title>0x00404750 PauseMenu::DrawPauseMenu (309 bytes)</title></rect>
 <rect width="12" height="12" x="390" y="0" class="todo"><title>0x00404890 ContinueMenu::UpdateContinueMenu (2482 bytes)</title></rect>
 <rect width="12" height="12" x="405" y="0" class="todo"><title>0x00405260 Func405260 (22 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">41.41%</tspan> · <tspan class="decompiled">0.56%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">58.02%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">41.42%</tspan> · <tspan class="decompiled">0.56%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">58.01%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="309.35" height="6" x="0" y="0" class="named"/>
-<rect width="4.22" height="6" x="309.35" y="0" class="decompiled"/>
-<rect width="433.43" height="6" x="313.57" y="0" class="todo"/>
+<rect width="309.42" height="6" x="0" y="0" class="named"/>
+<rect width="4.22" height="6" x="309.42" y="0" class="decompiled"/>
+<rect width="433.36" height="6" x="313.64" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -2066,7 +2066,7 @@
 <rect width="2" height="1.88" x="720.37" y="283.37" class="named"><title>0x00454c87 ResultScreen::ReleaseScores (43 bytes)</title></rect>
 <rect width="2" height="1.88" x="725.37" y="283.37" class="todo"><title>0x0045e3c0 SoundPlayer::FadeOutBgm (43 bytes)</title></rect>
 <rect width="2" height="1.88" x="730.37" y="283.37" class="named"><title>0x004739c0 File::Tell (43 bytes)</title></rect>
-<rect width="1.88" height="1.88" x="735.36" y="283.37" class="todo"><title>0x00404720 Func404720 (42 bytes)</title></rect>
+<rect width="1.88" height="1.88" x="735.36" y="283.37" class="named"><title>0x00404720 D3DXVECTOR3::D3DXVECTOR3 (42 bytes)</title></rect>
 <rect width="1.88" height="1.88" x="740.24" y="283.37" class="named"><title>0x00406520 ChainElem::SetCallback (42 bytes)</title></rect>
 <rect width="1.88" height="1.88" x="745.12" y="283.37" class="todo"><title>0x00422bb0 Func422bb0 (42 bytes)</title></rect>
 <rect width="2.16" height="1.62" x="690.29" y="288.26" class="todo"><title>0x004337f0 Func4337f0 (42 bytes)</title></rect>
