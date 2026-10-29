@@ -160,3 +160,15 @@ int FireOptionAimedShot(Player *player, PlayerBullet *bullet, int frame, ShotDat
     }
     return 0;
 }
+
+int FireRandomShot(Player *player, PlayerBullet *bullet, int frame, ShotData *sd)
+{
+    if (frame % sd->interval == sd->phase)
+    {
+        FireShot(player, bullet, sd);
+        bullet->angle = g_Rng.GetRandomF32MinusOneToOne() * 3.1415927f / 48.0f - 1.5707964f;
+        ((Vector2 *)&bullet->velocity)->SetPolar(bullet->angle, sd->speed);
+        return 1;
+    }
+    return 0;
+}
