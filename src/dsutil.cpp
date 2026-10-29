@@ -821,3 +821,11 @@ HRESULT CStreamingSound::Reset()
 
     return m_apDSBuffer[0]->SetCurrentPosition(0L);
 }
+
+CWaveFile::CWaveFile()
+{
+    this->format = NULL;
+    m_pwfx = NULL;
+    m_dwSize = 0;
+    m_bIsReadingFromMemory = FALSE;
+}

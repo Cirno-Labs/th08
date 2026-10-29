@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">15.95% (178)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">84.05% (938)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">16.04% (179)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">83.96% (937)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="119.15" height="6" x="0" y="0" class="named"/>
-<rect width="627.85" height="6" x="119.15" y="0" class="todo"/>
+<rect width="119.81" height="6" x="0" y="0" class="named"/>
+<rect width="627.19" height="6" x="119.81" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -1135,7 +1135,7 @@
 <rect width="12" height="12" x="225" y="315" class="named"><title>0x00472cc0 CStreamingSound::UpdateFadeDown (107 bytes)</title></rect>
 <rect width="12" height="12" x="240" y="315" class="named"><title>0x00472d30 CStreamingSound::HandleWaveStreamNotification (1000 bytes)</title></rect>
 <rect width="12" height="12" x="255" y="315" class="named"><title>0x00473120 CStreamingSound::Reset (194 bytes)</title></rect>
-<rect width="12" height="12" x="270" y="315" class="todo"><title>0x004731f0 CWaveFile::CWaveFile (56 bytes)</title></rect>
+<rect width="12" height="12" x="270" y="315" class="named"><title>0x004731f0 CWaveFile::CWaveFile (56 bytes)</title></rect>
 <rect width="12" height="12" x="285" y="315" class="todo"><title>0x00473230 CWaveFile::~CWaveFile (19 bytes)</title></rect>
 <rect width="12" height="12" x="300" y="315" class="todo"><title>0x00473250 CWaveFile::Open (163 bytes)</title></rect>
 <rect width="12" height="12" x="315" y="315" class="todo"><title>0x00473300 CWaveFile::SwitchTrack (84 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">7.90%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">92.10%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">7.91%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">92.09%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="58.99" height="6" x="0" y="0" class="named"/>
-<rect width="688.01" height="6" x="58.99" y="0" class="todo"/>
+<rect width="59.08" height="6" x="0" y="0" class="named"/>
+<rect width="687.92" height="6" x="59.08" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1994,7 +1994,7 @@
 <rect width="2.47" height="2.81" x="685.47" y="272.19" class="todo"><title>0x00442200 Func442200 (56 bytes)</title></rect>
 <rect width="2.47" height="2.81" x="690.94" y="272.19" class="todo"><title>0x00451d50 Func451d50 (56 bytes)</title></rect>
 <rect width="2.47" height="2.81" x="696.40" y="272.19" class="todo"><title>0x004657c0 Func4657c0 (56 bytes)</title></rect>
-<rect width="2.47" height="2.81" x="701.87" y="272.19" class="todo"><title>0x004731f0 CWaveFile::CWaveFile (56 bytes)</title></rect>
+<rect width="2.47" height="2.81" x="701.87" y="272.19" class="named"><title>0x004731f0 CWaveFile::CWaveFile (56 bytes)</title></rect>
 <rect width="2.37" height="2.81" x="707.34" y="272.19" class="todo"><title>0x00406b70 Func406b70 (55 bytes)</title></rect>
 <rect width="2.37" height="2.81" x="712.71" y="272.19" class="todo"><title>0x00432170 Func432170 (55 bytes)</title></rect>
 <rect width="2.37" height="2.81" x="718.08" y="272.19" class="todo"><title>0x00446f0b Func446f0b (55 bytes)</title></rect>
