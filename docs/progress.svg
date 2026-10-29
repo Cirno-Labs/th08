@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">23.03% (257)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">76.97% (859)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">23.12% (258)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">76.88% (858)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="172.02" height="6" x="0" y="0" class="named"/>
-<rect width="574.98" height="6" x="172.02" y="0" class="todo"/>
+<rect width="172.69" height="6" x="0" y="0" class="named"/>
+<rect width="574.31" height="6" x="172.69" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -805,7 +805,7 @@
 <rect width="12" height="12" x="525" y="210" class="named"><title>0x00448b16 MusicScreen::UpdateList (1854 bytes)</title></rect>
 <rect width="12" height="12" x="540" y="210" class="named"><title>0x00449254 MusicScreen::RegisterChain (221 bytes)</title></rect>
 <rect width="12" height="12" x="555" y="210" class="named"><title>0x00449331 MusicScreen::MusicScreen (104 bytes)</title></rect>
-<rect width="12" height="12" x="570" y="210" class="todo"><title>0x00449399 MusicScreen::OnUpdate (238 bytes)</title></rect>
+<rect width="12" height="12" x="570" y="210" class="named"><title>0x00449399 MusicScreen::OnUpdate (238 bytes)</title></rect>
 <rect width="12" height="12" x="585" y="210" class="todo"><title>0x00449487 MusicScreen::OnDraw (648 bytes)</title></rect>
 <rect width="12" height="12" x="600" y="210" class="todo"><title>0x0044970f MusicScreen::AddedCallback (1247 bytes)</title></rect>
 <rect width="12" height="12" x="615" y="210" class="todo"><title>0x00449bee Func449bee (28 bytes)</title></rect>
@@ -1010,7 +1010,7 @@
 <rect width="12" height="12" x="600" y="270" class="todo"><title>0x0045e810 Func45e810 (124 bytes)</title></rect>
 <rect width="12" height="12" x="615" y="270" class="todo"><title>0x0045e8a0 Func45e8a0 (139 bytes)</title></rect>
 <rect width="12" height="12" x="630" y="270" class="todo"><title>0x0045e960 Func45e960 (125 bytes)</title></rect>
-<rect width="12" height="12" x="645" y="270" class="todo"><title>0x0045ea00 Func45ea00 (13933 bytes)</title></rect>
+<rect width="12" height="12" x="645" y="270" class="todo"><title>0x0045ea00 SpriteEngine::Step (13933 bytes)</title></rect>
 <rect width="12" height="12" x="660" y="270" class="todo"><title>0x00462210 Func462210 (21 bytes)</title></rect>
 <rect width="12" height="12" x="675" y="270" class="todo"><title>0x00462230 Func462230 (21 bytes)</title></rect>
 <rect width="12" height="12" x="690" y="270" class="todo"><title>0x00462250 Func462250 (21 bytes)</title></rect>
@@ -1187,14 +1187,14 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">12.99%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">87.01%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">13.04%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">86.96%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="97.04" height="6" x="0" y="0" class="named"/>
-<rect width="649.96" height="6" x="97.04" y="0" class="todo"/>
+<rect width="97.43" height="6" x="0" y="0" class="named"/>
+<rect width="649.57" height="6" x="97.43" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
-<rect width="83.52" height="88.38" x="0" y="174.71" class="todo"><title>0x0045ea00 Func45ea00 (13933 bytes)</title></rect>
+<rect width="83.52" height="88.38" x="0" y="174.71" class="todo"><title>0x0045ea00 SpriteEngine::Step (13933 bytes)</title></rect>
 <rect width="83.52" height="38.26" x="0" y="266.09" class="todo"><title>0x00407400 Func407400 (6291 bytes)</title></rect>
 <rect width="83.52" height="37.65" x="0" y="307.35" class="todo"><title>0x0042c660 Func42c660 (6198 bytes)</title></rect>
 <rect width="49.37" height="57.64" x="86.52" y="0" class="todo"><title>0x00433db3 Func433db3 (5597 bytes)</title></rect>
@@ -1590,7 +1590,7 @@
 <rect width="8.77" height="8.52" x="558.02" y="189.58" class="todo"><title>0x00418330 Func418330 (239 bytes)</title></rect>
 <rect width="8.77" height="8.47" x="558.02" y="201.10" class="todo"><title>0x004143e0 Func4143e0 (238 bytes)</title></rect>
 <rect width="8.77" height="8.47" x="558.02" y="212.57" class="todo"><title>0x00421300 Func421300 (238 bytes)</title></rect>
-<rect width="8.77" height="8.47" x="558.02" y="224.04" class="todo"><title>0x00449399 MusicScreen::OnUpdate (238 bytes)</title></rect>
+<rect width="8.77" height="8.47" x="558.02" y="224.04" class="named"><title>0x00449399 MusicScreen::OnUpdate (238 bytes)</title></rect>
 <rect width="8.77" height="8.47" x="558.02" y="235.51" class="todo"><title>0x004663b0 SpriteEngine::RenderText (238 bytes)</title></rect>
 <rect width="8.77" height="8.37" x="558.02" y="246.98" class="todo"><title>0x00425d70 Func425d70 (236 bytes)</title></rect>
 <rect width="8.77" height="8.37" x="558.02" y="258.36" class="named"><title>0x00472750 CSound::Play (236 bytes)</title></rect>

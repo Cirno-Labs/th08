@@ -942,7 +942,7 @@ address,size,name,symbol
 0x0045e810,124,Func45e810,
 0x0045e8a0,139,Func45e8a0,
 0x0045e960,125,Func45e960,
-0x0045ea00,13933,Func45ea00,
+0x0045ea00,13933,SpriteEngine::Step,?Step@SpriteEngine@@QAEHPAVSprite@@@Z
 0x00462210,21,Func462210,
 0x00462230,21,Func462230,
 0x00462250,21,Func462250,
