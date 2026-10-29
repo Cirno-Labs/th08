@@ -45,7 +45,10 @@ struct Enemy
     unsigned char unk_c[0x2d28];
     // Where it is.
     D3DXVECTOR3 pos;
-    unsigned char unk_2d40[0x64];
+    unsigned char unk_2d40[0x48];
+    // Where the player's homing options go to (MoveOptionToEnemy).
+    D3DXVECTOR3 unk_2d88;
+    unsigned char unk_2d94[0x10];
     int unk_2da4;
     unsigned char unk_2da8[0x54];
     // Cleared for the bosses as a spell card bomb (Player::bomb.type 4)

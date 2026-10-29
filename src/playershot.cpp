@@ -41,6 +41,27 @@ void MoveOptionToPlayer(Player *player, PlayerOption *option)
     }
 }
 
+void MoveOptionToEnemy(Player *player, PlayerOption *option)
+{
+    D3DXVECTOR3 target;
+    D3DXVECTOR3 accel;
+
+    target = player->homingEnemy->unk_2d88;
+    target.y += 32.0f;
+    if (target.y < 32.0f)
+    {
+        target.y = 32.0f;
+    }
+    accel = target - option->pos;
+    accel /= 16.0f;
+    option->velocity += (accel - option->velocity) * 0.2f;
+    option->pos += option->velocity;
+    if (fabsf(option->velocity.x) < 0.05f)
+    {
+        option->velocity.x = 0.0f;
+    }
+}
+
 int DrawOption(Player *player, PlayerOption *option)
 {
     option->sprite.pos.x = g_GameManager.arena[0] + option->pos.x;
