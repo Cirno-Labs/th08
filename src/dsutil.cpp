@@ -931,3 +931,49 @@ HRESULT CWaveFile::ResetFile(bool bLoop)
 
     return S_OK;
 }
+
+HRESULT CWaveFile::Read(BYTE *pBuffer, DWORD dwSizeToRead, DWORD *pdwSizeRead)
+{
+    if (m_bIsReadingFromMemory)
+    {
+        if (m_pbDataCur == NULL)
+            return CO_E_NOTINITIALIZED;
+        if (pdwSizeRead != NULL)
+            *pdwSizeRead = 0;
+
+        if ((BYTE *)(m_pbDataCur + dwSizeToRead) > (BYTE *)(m_pbData + m_ulDataSize))
+        {
+            dwSizeToRead = m_ulDataSize - (DWORD)(m_pbDataCur - m_pbData);
+        }
+
+        CopyMemory(pBuffer, m_pbDataCur, dwSizeToRead);
+        m_pbDataCur += dwSizeToRead;
+
+        if (pdwSizeRead != NULL)
+            *pdwSizeRead = dwSizeToRead;
+
+        return S_OK;
+    }
+    else
+    {
+        DWORD nRead;
+
+        if (this->hFile == NULL)
+            return CO_E_NOTINITIALIZED;
+        if (pBuffer == NULL || pdwSizeRead == NULL)
+            return E_INVALIDARG;
+
+        UINT cbDataIn = dwSizeToRead;
+        if (cbDataIn > m_ck.cksize)
+            cbDataIn = m_ck.cksize;
+
+        m_ck.cksize -= cbDataIn;
+
+        ReadFile(this->hFile, pBuffer, cbDataIn, &nRead, NULL);
+
+        if (pdwSizeRead != NULL)
+            *pdwSizeRead = nRead;
+
+        return S_OK;
+    }
+}
