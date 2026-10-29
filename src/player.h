@@ -307,6 +307,10 @@ int UpdateFrontOption(Player *player, PlayerOption *option);
 // The update callback of an option circling a point beside the player
 // by its index, script 0x18 (0x44eb70).
 int UpdateCirclingOption(Player *player, PlayerOption *option);
+// The update callback of the two options that swirl, radius 6, round
+// points 32 left and right of the player, trailing effect 0x2f, script
+// 0x15 (0x44f930).
+int UpdateSwirlOption(Player *player, PlayerOption *option);
 // Moves an option of UpdateHomingOption towards 96 above the player
 // (at least y 32), easing its velocity; when the fire timer runs, there
 // is a homingEnemy and the option has run 10 frames, sends it interrupt
