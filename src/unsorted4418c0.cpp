@@ -110,11 +110,11 @@ int CheckSingleInstance(HINSTANCE instance)
                 g_GameWindow.unk_1c = 1;
             }
         }
-        g_App.unk_1a4 &= ~0x40;
+        g_App.stateFlags &= ~0x40;
     }
     else
     {
-        g_App.unk_1a4 |= 0x40;
+        g_App.stateFlags |= 0x40;
     }
     if (g_AppMutex == NULL)
     {

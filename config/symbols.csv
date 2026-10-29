@@ -712,11 +712,11 @@ address,size,name,symbol
 0x00447764,77,SoundPlayer::UpdateBgmFades,?UpdateBgmFades@SoundPlayer@@QAEXXZ
 0x004477b1,1363,App::LoadConfig,?LoadConfig@App@@QAEHPAD@Z
 0x00447d04,82,GameManager::AllShotsHaveExtraOpen,?AllShotsHaveExtraOpen@GameManager@@QAEHXZ
-0x00447d56,241,Func447d56,
-0x00447e47,218,Func447e47,
-0x00447f21,352,Func447f21,
-0x00448081,119,Func448081,
-0x004480f8,183,Func4480f8,
+0x00447d56,241,App::LoadMidi,?LoadMidi@App@@QAEHHPAD@Z
+0x00447e47,218,App::PlayMidi,?PlayMidi@App@@QAEHHH@Z
+0x00447f21,352,App::PlayMusic,?PlayMusic@App@@QAEHPADH@Z
+0x00448081,119,App::StopMusic,?StopMusic@App@@QAEHXZ
+0x004480f8,183,App::FadeOutMusic,?FadeOutMusic@App@@QAEHM@Z
 0x004481af,48,Func4481af,
 0x004481df,74,Func4481df,
 0x00448229,71,Func448229,

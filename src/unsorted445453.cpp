@@ -20,8 +20,8 @@
 App::App()
 {
     memset(this, 0, sizeof(App));
-    this->unk_1a4 |= 0x40;
-    this->unk_1a4 |= 0x100;
+    this->stateFlags |= 0x40;
+    this->stateFlags |= 0x100;
 }
 
 int App::OnDraw(App *arg)
@@ -443,30 +443,30 @@ void DrawFps(int draw)
                 {
                     float target = 60.0f;
 
-                    g_App.unk_194 += target;
+                    g_App.expectedFrames += target;
                     if (target * 0.9f < fps)
                     {
-                        g_App.unk_190 += target;
+                        g_App.achievedFrames += target;
                     }
                     else if (target * 0.7f < fps)
                     {
-                        g_App.unk_190 += target * 0.8f;
+                        g_App.achievedFrames += target * 0.8f;
                     }
                     else if (target * 0.5f < fps)
                     {
-                        g_App.unk_190 += target * 0.6f;
+                        g_App.achievedFrames += target * 0.6f;
                     }
                     else
                     {
-                        g_App.unk_190 += target * 0.5f;
+                        g_App.achievedFrames += target * 0.5f;
                     }
                     if (!(g_GameManager.unk_3dbac >> 3 & 1))
                     {
-                        g_App.unk_198 = fps + 0.5f;
+                        g_App.roundedFps = fps + 0.5f;
                     }
                     else
                     {
-                        sprintf(speedText, "%2d", g_App.unk_198);
+                        sprintf(speedText, "%2d", g_App.roundedFps);
                     }
                 }
             }
@@ -509,7 +509,7 @@ void DrawFps(int draw)
             speedPos.x = 384.0f;
             speedPos.y = 448.0f;
             speedPos.z = 0.0f;
-            if (g_App.unk_33c != 0)
+            if (g_App.fpsWarning != 0)
             {
                 g_AsciiText.color = 0xffff4040;
             }
@@ -525,13 +525,13 @@ void DrawFps(int draw)
 
 void Timer::Add(int frames)
 {
-    if (g_App.unk_1a4 >> 5 & 1)
+    if (g_App.stateFlags >> 5 & 1)
     {
         this->current++;
         this->subFrame = 0.0f;
         this->previous = -999;
     }
-    if (g_App.unk_188 > 0.99f)
+    if (g_App.gameSpeed > 0.99f)
     {
         this->current += frames;
     }
@@ -542,7 +542,7 @@ void Timer::Add(int frames)
     else
     {
         this->previous = this->current;
-        this->subFrame += g_App.unk_188 * frames;
+        this->subFrame += g_App.gameSpeed * frames;
         while (this->subFrame >= 1.0f)
         {
             this->current++;
@@ -553,13 +553,13 @@ void Timer::Add(int frames)
 
 void Timer::Sub(int frames)
 {
-    if (g_App.unk_1a4 >> 5 & 1)
+    if (g_App.stateFlags >> 5 & 1)
     {
         this->current--;
         this->subFrame = 0.0f;
         this->previous = -999;
     }
-    if (g_App.unk_188 > 0.99f)
+    if (g_App.gameSpeed > 0.99f)
     {
         this->current -= frames;
     }
@@ -570,7 +570,7 @@ void Timer::Sub(int frames)
     else
     {
         this->previous = this->current;
-        this->subFrame -= g_App.unk_188 * frames;
+        this->subFrame -= g_App.gameSpeed * frames;
         while (this->subFrame < 0.0f)
         {
             this->current--;
@@ -581,9 +581,9 @@ void Timer::Sub(int frames)
 
 void App::TickTimer(int *frames, float *subFrame)
 {
-    if (this->unk_188 <= 0.99f)
+    if (this->gameSpeed <= 0.99f)
     {
-        *subFrame += this->unk_188;
+        *subFrame += this->gameSpeed;
         if (*subFrame >= 1.0f)
         {
             (*frames)++;
@@ -886,6 +886,31 @@ int GameManager::AllShotsHaveExtraOpen()
 {
     return this->HasExtraOpen(0) && this->HasExtraOpen(1) && this->HasExtraOpen(2) && this->HasExtraOpen(3) ? TRUE
                                                                                                          : FALSE;
+}
+
+int App::LoadMidi(int slot, char *path)
+{
+    char *dot;
+    char wavFile[0x100];
+
+    if (g_App.musicMode == 2)
+    {
+        if (g_App.midi != NULL)
+        {
+            g_App.midi->LoadFile(slot, path);
+        }
+        return 0;
+    }
+    if (g_App.musicMode == 1)
+    {
+        strcpy(wavFile, path);
+        dot = strrchr(wavFile, '.');
+        dot[1] = 'w';
+        dot[2] = 'a';
+        dot[3] = 'v';
+        g_SoundPlayer.QueueSoundCommand(1, slot, wavFile);
+    }
+    return 1;
 }
 
 inline void FreeData(void *data)

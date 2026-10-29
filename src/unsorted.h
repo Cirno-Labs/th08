@@ -12,6 +12,7 @@
 #include "archive.h"
 #include "common.h"
 #include "dsutil.h"
+#include "resultscreen.h"
 #include "timer.h"
 
 // The application: window, Direct3D, configuration and the main loop.
@@ -64,7 +65,7 @@ struct GameConfigFlags
 class App
 {
 public:
-    // Zeroes the whole App and sets bits 0x40 and 0x100 of unk_1a4.
+    // Zeroes the whole App and sets bits 0x40 and 0x100 of stateFlags.
     // Emitted where g_App is defined (0x445b7a).
     App();
     // Resets the scene and adds OnUpdate at priority 0, with its added
@@ -105,6 +106,31 @@ public:
     // back. Returns 0, or -1 if thbgm.dat has the wrong version or
     // writing fails.
     int LoadConfig(char *path);
+    // th06's LoadMidi: loads the MIDI file `path` into slot `slot` of
+    // `midi` in MIDI mode (2), and returns 0. In wave mode (1) it queues
+    // sound command 1 for the .wav of the same name instead. Returns 1
+    // outside MIDI mode.
+    int LoadMidi(int slot, char *path);
+    // th06's PlayMidi: plays MIDI slot `slot` from the start in MIDI
+    // mode. In wave mode it queues sound command 2 for the slot, after
+    // command 4 with g_App.flags.preloadBgm. Either way it then marks
+    // `bgm` heard in g_GameManager.plst, unless bit 3 or 1 of
+    // g_GameManager.unk_3dbac is set. Returns 0.
+    int PlayMidi(int slot, int bgm);
+    // Plays the MIDI file at `path` from the start in MIDI mode, or
+    // queues sound command 2 for the .wav of the same name in wave mode,
+    // then marks `bgm` heard as PlayMidi. Returns -1 if the music mode is
+    // neither, otherwise 0.
+    int PlayMusic(char *path, int bgm);
+    // th06's StopMusic: stops the MIDI player in MIDI mode; in wave mode
+    // it queues sound command 3, or 4 with g_App.flags.preloadBgm.
+    // Returns -1 if the music mode is neither, otherwise 0.
+    int StopMusic();
+    // Fades the music out over `seconds`: in wave mode by queueing sound
+    // command 5 with the whole seconds, stretched by gameSpeed while the
+    // game runs slow. Returns -1 if the music mode is neither wave nor
+    // MIDI, otherwise 0.
+    int FadeOutMusic(float seconds);
     void TickTimer(int *frames, float *subFrame);
     // Saves the back buffer as a 24-bit 640x480 bitmap at `path`, from an
     // X8R8G8B8 back buffer only (a 16-bit one is logged and skipped).
@@ -188,29 +214,38 @@ public:
     int hideFps;
     // Frames are paced by the clock rather than by the presents.
     int presentImmediate;
-    // Set while the device is created asking for 60 Hz, as th07's
-    // unk_170.
-    int unk_180;
+    // Set while the device is created asking for 60 Hz.
+    int wants60Hz;
     int unk_184;
     // The game's speed: 1, or less while it runs slow. Timer::Add counts
     // in fractions of a frame below 0.99.
-    float unk_188;
+    float gameSpeed;
     // The MIDI player; its long messages come back to WindowProc.
     MidiPlayer *midi;
     // Their ratio is the game's speed, which the score entry records
     // as slowdown.
-    float unk_190;
-    float unk_194;
+    float achievedFrames;
+    float expectedFrames;
     // The frame rate rounded, as DrawFps shows it with bit 3 of
     // g_GameManager.unk_3dbac.
-    short unk_198;
+    short roundedFps;
     unsigned char unk_19a[0x6];
     // The loading screen's sprites, from nowloading.anm (AddedCallback).
     void *loadingAnm;
-    // Bit 0x40 is set by CheckSingleInstance when the startup info has
-    // no title, cleared when it has one.
-    DWORD unk_1a4;
-    unsigned char unk_1a8[0xe8];
+    // As th07's: bit 1: the device does T&L in hardware; 2: the back
+    // buffer is lockable; 4: A8R8G8B8 textures work; 8: no score is
+    // recorded; 0x10: the device was reset and no frame has been drawn
+    // since; 0x20: Timer::Add steps by whole frames. New in th08: bit
+    // 0x40 is set by CheckSingleInstance when the startup info has no
+    // title, cleared when it has one; bit 0x80 makes OnUpdate quit once
+    // unk_284 is clear.
+    DWORD stateFlags;
+    // timeGetTime() when AddPlayTime last added to the run time.
+    DWORD lastPlayTimeTick;
+    // timeGetTime() when AddTotalPlayTime last added to the play time.
+    DWORD lastTotalPlayTimeTick;
+    D3DCAPS8 caps;
+    unsigned char unk_284[0xc];
     // OnUpdate returns early while unk_294 is set and unk_290 is.
     int unk_290;
     // OnUpdate quits when it is 2.
@@ -231,15 +266,15 @@ public:
     DWORD counter[2];
     SYSTEMTIME startTime;
     SYSTEMTIME time;
-    int unk_338;
+    int fastClockStreak;
     // DrawFps shows the rate in red when it is set.
-    int unk_33c;
-    int unk_340;
-    int unk_344;
-    int unk_348;
-    int unk_34c;
+    int fpsWarning;
+    int maxFastClockStreak;
+    int fastClockCycleCount;
+    int fastClockCycles;
+    int clockMeasurementPending;
     // Set to 0xff before each frame is drawn; DisableFog clears it.
-    DWORD unk_350;
+    DWORD fogState;
     // The sum of the executable's dwords and its size, from
     // ChecksumExecutable.
     DWORD exeChecksum;
@@ -323,7 +358,7 @@ extern GameWindow g_GameWindow;
 // Creates g_AppMutex and returns -1 if another instance holds it, as
 // th07's CheckSingleInstance. Also sets g_GameWindow.unk_1c when the
 // game was started through a shortcut or a path other than its own, and
-// sets bit 0x40 of g_App.unk_1a4 if the startup info has no title,
+// sets bit 0x40 of g_App.stateFlags if the startup info has no title,
 // clearing it otherwise.
 int CheckSingleInstance(HINSTANCE instance);
 // Brings `hwnd` to the foreground, lifting the foreground lock timeout
@@ -820,7 +855,10 @@ public:
     // As th07's unk_d: while it is set, the frame rate is not measured
     // and the buttons are only added to.
     char unk_2d;
-    unsigned char unk_2e[0x3db7e];
+    unsigned char unk_2e[0x3d7d6];
+    // The play statistics of the score file.
+    Plst plst;
+    unsigned char unk_3da2c[0x180];
     // Bit 2: the speed is measured; 3: it is shown, as th07's unk_93d8.
     DWORD unk_3dbac;
 };

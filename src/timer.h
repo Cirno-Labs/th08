@@ -34,7 +34,7 @@ struct Timer
     }
     // Advances by `frames`, in fractions of a frame while the game runs
     // slow; first by one more frame, with no fraction or previous count,
-    // while bit 0x20 of g_App.unk_1a4 is set.
+    // while bit 0x20 of g_App.stateFlags is set.
     void Add(int frames);
     // The same backwards.
     void Sub(int frames);
