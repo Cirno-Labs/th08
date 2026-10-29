@@ -398,6 +398,8 @@ extern int g_Unknown17d6ed4;
 // Removes chain elements GameManager::DeletedCallback removes before the
 // stage's; probably a manager th07 did not have (0x4180f0).
 void Func4180f0();
+// Starts the stage's Gui effects by g_GameManager.stage (0x438046).
+void Func438046();
 
 // Measures the frame rate every half second, with the performance
 // counter when there is one, and shows it when `draw` is set, as th07's.
@@ -727,6 +729,9 @@ public:
     }
 
     WORD seed;
+    // Where GameManager::OnUpdate keeps the seed while it rerolls the
+    // checksum keys on pausing. New in th08.
+    WORD savedSeed;
     // How many times the generator was advanced.
     DWORD generated;
 };
@@ -1031,7 +1036,9 @@ struct GameManagerStats
     DWORD score;
     // The game's grazes.
     int grazeTotal;
-    unsigned char unk_10[0x4];
+    // How much GameManager::OnUpdate moves guiScore on per frame, as
+    // th07's.
+    DWORD scoreIncrement;
     // The high score to beat, from the score file, and what
     // LoadHighScores stores from the best entry, as th07's.
     DWORD highScore;
@@ -1115,7 +1122,7 @@ public:
     // unk_3dbac) 1 or while unk_38 is set.
     static int OnDraw(GameManager *mgr);
     // Zeroes the GameManager and sets arena to the play area (32, 16,
-    // 384, 448) and unk_3dbb4 to 3. Emitted where g_GameManager is defined
+    // 384, 448) and demoIndex to 3. Emitted where g_GameManager is defined
     // (0x43c5e1).
     GameManager();
     // Whether the checksummed fields of `stats` no longer agree, as
@@ -1231,9 +1238,12 @@ public:
     void SetLives(int lives);
     void SetBombs(int bombs);
     void SetPower(int power);
-    // stats->unk_28 (0x406dd0, another object's copy) and a setter for
-    // it, inline: the copy at 0x453c60 is the replay object's.
-    BYTE GetUnk28();
+    // stats->unk_28 and a setter for it, inline: the copies at 0x406dd0
+    // and 0x453c60 are another object's and the replay object's.
+    char GetUnk28()
+    {
+        return this->stats->unk_28;
+    }
     void SetUnk28(int value)
     {
         this->stats->unk_28 = value;
@@ -1256,9 +1266,10 @@ public:
     unsigned char unk_2e[0x2];
     int difficulty;
     unsigned char unk_34[0x4];
-    // OnDraw returns 3 while it is set.
+    // OnDraw returns 3 while it is set; OnUpdate returns 4 while it is 2
+    // and counts unk_3c up while it is otherwise set.
     int unk_38;
-    unsigned char unk_3c[0x4];
+    int unk_3c;
     Catk catks[0xde];
     // A copy of catks, as th07's savedCatks.
     Catk savedCatks[0xde];
@@ -1272,7 +1283,9 @@ public:
     DWORD unk_3db94;
     // Set when the game is paused; the replay records it (as th07's).
     int pauseRequested;
-    unsigned char unk_3db9c[0x4];
+    // The scene OnUpdate switches to when the result screen's mode ends,
+    // or -1.
+    int unk_3db9c;
     int unk_3dba0;
     int unk_3dba4;
     BYTE unk_3dba8;
@@ -1287,7 +1300,11 @@ public:
         DWORD unk_3dbac;
         struct
         {
-            unsigned int unk_3dbac_0 : 5;
+            unsigned int unk_3dbac_0 : 2;
+            // Set while neither paused nor in the continue menu, as
+            // th07's isPlaying.
+            unsigned int isPlaying : 1;
+            unsigned int unk_3dbac_3 : 2;
             // The result screen's mode: OnDraw returns 3 in mode 1, and
             // AddedCallback turns 2 and 3 into 1.
             unsigned int unk_3dbac_5 : 2;
@@ -1312,10 +1329,14 @@ public:
     // Set while the continue menu shows, as th07's: fade outs hold
     // still.
     BYTE isInContinueMenu;
-    BYTE unk_3dbb4;
+    // The demo being played (0 to 3), as th07's.
+    BYTE demoIndex;
     // 2 while a replay is fast-forwarded, as th07's.
     BYTE replayMenuChoice;
-    unsigned char unk_3dbb6[0x206];
+    unsigned char unk_3dbb6[0x2];
+    // The frames a demo has played, as th07's.
+    int demoFrames;
+    unsigned char unk_3dbbc[0x200];
     // The random seed each replay stage starts with, as th07's.
     WORD rngSeed;
     unsigned char unk_3ddbe[0x2];
@@ -1325,7 +1346,10 @@ public:
     int stage;
     // The replay stage being recorded.
     int unk_3ddc8;
-    unsigned char unk_3ddcc[0x8];
+    unsigned char unk_3ddcc[0x4];
+    // ORed into the shot type's stage clear flags when a game ends.
+    WORD unk_3ddd0;
+    unsigned char unk_3ddd2[0x2];
     // The play area: x, y, width and height, and a second rectangle set
     // with it by SetPlayArea, as th07's.
     float arena[4];
@@ -1338,7 +1362,12 @@ public:
     unsigned char unk_3ddfc[0x8];
     // The frames played, as th07's.
     int progressFrames;
-    unsigned char unk_3de08[0x24];
+    // Counts the frames that slowdown may skip, as th07's.
+    DWORD slowdownCounter;
+    unsigned char unk_3de0c[0x1c];
+    // Set when the stage music is to start: OnUpdate stops the loading
+    // screen and, while it is 1, plays the stage's music.
+    int unk_3de28;
     // A replay stage keeps it. The rank, as th07's: SetRankForDifficulty
     // sets it and its bounds from g_Ranks.
     int rank;
@@ -1392,6 +1421,9 @@ public:
     // (0x4358bb, 0x437dc7).
     int IsMsgRunning();
     int IsMsgSkippable();
+    // Called by GameManager::OnUpdate when the result screen's mode ends
+    // without a scene to go to (0x438f58).
+    void Func438f58();
     // Removes the Gui's chain elements, as th07's (0x437d64).
     static void RemoveChain();
 
@@ -1429,5 +1461,30 @@ public:
     void SetupCamera();
     // Removes the stage's chain elements, as th07's (0x409ca0).
     static void RemoveChain();
+
+    unsigned char unk_0[0xaf4];
+    // The fog colour, as th07's fog.color.
+    D3DCOLOR fogColor;
 };
 extern Stage g_Stage;
+
+// Each stage's music: its BGM numbers for App::PlayMidi, the first for
+// the stage.
+struct StageBgm
+{
+    int stageBgm;
+    int bossBgm;
+    int unk_8;
+};
+extern StageBgm g_StageBgms[];
+// The music a practised spell card plays, by card number: entries up to
+// and including lastCard play bgm. Ends with lastCard -1.
+struct SpellCardBgm
+{
+    int lastCard;
+    int bgm;
+    char *unk_8;
+    int unk_c;
+    int unk_10;
+};
+extern SpellCardBgm g_SpellCardBgms[];

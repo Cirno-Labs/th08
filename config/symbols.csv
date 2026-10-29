@@ -70,7 +70,7 @@ address,size,name,symbol
 0x00406d40,38,Func406d40,
 0x00406d70,38,Func406d70,
 0x00406da0,38,Func406da0,
-0x00406dd0,20,GameManager::GetUnk28,?GetUnk28@GameManager@@QAEEXZ
+0x00406dd0,20,GameManager::GetUnk28,?GetUnk28@GameManager@@QAEDXZ
 0x00406df0,38,Func406df0,
 0x00406e20,33,GameManager::SetLives,?SetLives@GameManager@@QAEXH@Z
 0x00406e50,154,GameManager::RerollChecksumKeys,?RerollChecksumKeys@GameManager@@QAEXXZ
@@ -492,14 +492,14 @@ address,size,name,symbol
 0x00437e5d,127,Func437e5d,
 0x00437edc,128,Func437edc,
 0x00437f5c,234,Func437f5c,
-0x00438046,517,Func438046,
+0x00438046,517,Func438046,?Func438046@@YIXXZ
 0x0043826b,1982,Func43826b,
 0x00438a29,24,Func438a29,
 0x00438a41,24,App::GetNoDepthTest,?GetNoDepthTest@App@@QAEHXZ
 0x00438a59,24,App::GetNoColorBlending,?GetNoColorBlending@App@@QAEHXZ
 0x00438a71,24,Func438a71,
 0x00438a89,1231,Func438a89,
-0x00438f58,145,Func438f58,
+0x00438f58,145,Gui::Func438f58,?Func438f58@Gui@@QAEXXZ
 0x00438fe9,10,Func438fe9,
 0x00438ff3,10,Func438ff3,
 0x00438ffd,10,Func438ffd,
@@ -2410,6 +2410,8 @@ address,size,name,symbol
 0x004bd700,,GUID_NULL,_GUID_NULL
 0x004c67d0,,g_SpellCardLists,?g_SpellCardLists@@3PAPAHA
 0x004c67e8,,g_SpellCardListSizes,?g_SpellCardListSizes@@3PAHA
+0x004c7240,,g_StageBgms,?g_StageBgms@@3PAUStageBgm@@A
+0x004c7670,,g_SpellCardBgms,?g_SpellCardBgms@@3PAUSpellCardBgm@@A
 0x004c7880,,g_Ranks,?g_Ranks@@3PAURankSettings@@A
 0x004c78c8,,g_DefaultControllerMapping,?g_DefaultControllerMapping@@3UControllerMapping@@A
 0x004c78e0,,g_CryptParams,?g_CryptParams@@3PAUCryptParams@@A
@@ -2435,6 +2437,7 @@ address,size,name,symbol
 0x004e4b50,,g_FogColorChanged,?g_FogColorChanged@@3EA
 0x004ea3f4,,g_CameraSizeOffset,?g_CameraSizeOffset@@3UD3DXVECTOR3@@A
 0x00577f20,,g_EnemyManager,?g_EnemyManager@@3VEnemyManager@@A
+0x00f54e90,,g_BulletManager,?g_BulletManager@@3VBulletManager@@A
 0x0160f428,,g_Gui,?g_Gui@@3VGui@@A
 0x0160f508,,g_GameManager,?g_GameManager@@3VGameManager@@A
 0x0164d344,,g_GameManagerCalcChain,?g_GameManagerCalcChain@@3UChainElem@@A

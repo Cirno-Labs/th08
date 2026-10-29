@@ -12,6 +12,8 @@
 #include "midi.h"
 #include "player.h"
 #include "replay.h"
+#include "screeneffect.h"
+#include "sprite.h"
 #include "unsorted.h"
 
 BOOL GameManager::IsInPlayArea(float x, float y, float width, float height)
@@ -78,6 +80,324 @@ void GameManager::AddLifeOrBomb()
         this->AddSubRank(200);
         g_Gui.bombsChanged = 2;
     }
+}
+
+int GameManager::OnUpdate(GameManager *mgr)
+{
+    int check;
+    DWORD i;
+    DWORD step;
+    int next;
+    int stage;
+    int j;
+
+    g_GameManager.unk_3db94++;
+    if ((mgr->unk_3dbac >> 5 & 3) != 0)
+    {
+        if ((mgr->unk_3dbac >> 5 & 3) == 2)
+        {
+            mgr->unk_3dbac |= 0x60;
+            g_GameManager.unk_38 = 1;
+            g_GameManager.unk_3db9c = -1;
+            if (!(g_GameManager.unk_3dbac >> 3 & 1))
+            {
+                if (!g_GameManager.stats->continuesUsed)
+                {
+                    g_GameManager.clrds[g_GameManager.character].stagesClearedNoContinue[g_GameManager.difficulty] |=
+                        g_GameManager.unk_3ddd0;
+                    g_GameManager.clrds[12].stagesClearedNoContinue[g_GameManager.difficulty] |= g_GameManager.unk_3ddd0;
+                }
+                g_GameManager.clrds[g_GameManager.character].stagesCleared[g_GameManager.difficulty] |=
+                    g_GameManager.unk_3ddd0;
+                g_GameManager.clrds[12].stagesCleared[g_GameManager.difficulty] |= g_GameManager.unk_3ddd0;
+            }
+            mgr->stats->guiScore = mgr->stats->score;
+            if (mgr->unk_3dbac & 1)
+            {
+                g_GameManager.stats->guiScore = g_GameManager.stats->score;
+                g_GameManager.unk_3db9c = 6;
+                return 3;
+            }
+            if (g_GameManager.stage != 6 && g_GameManager.stage != 7 && g_GameManager.stage != 8)
+            {
+                if (g_GameManager.unk_3dbac >> 3 & 1)
+                {
+                    next = 0;
+                    for (stage = g_GameManager.stage + 1; stage < 9; stage++)
+                    {
+                        if ((BOOL)(g_ReplayManager->data->stages[stage] != NULL))
+                        {
+                            next = stage;
+                            break;
+                        }
+                    }
+                    if (next == 0)
+                    {
+                        g_App.scene = 7;
+                    }
+                    else
+                    {
+                        g_GameManager.stage = next;
+                        g_App.scene = 3;
+                    }
+                }
+                else
+                {
+                    if (g_GameManager.GetUnk28() >= 12)
+                    {
+                        g_GameManager.unk_3dbac &= ~0x10;
+                        g_GameManager.unk_3db9c = 9;
+                        return 3;
+                    }
+                    g_GameManager.AdvanceStage();
+                    g_App.scene = 3;
+                }
+            }
+            else if (g_GameManager.unk_3dbac >> 3 & 1)
+            {
+                g_GameManager.unk_3db9c = 7;
+            }
+            else
+            {
+                if (g_GameManager.difficulty >= 4)
+                {
+                    if (g_GameManager.difficulty == 4)
+                    {
+                        g_GameManager.clrds[g_GameManager.character].stagesClearedNoContinue[g_GameManager.difficulty] |=
+                            0x8000;
+                        g_GameManager.clrds[12].stagesCleared[g_GameManager.difficulty] |= 0x8000;
+                    }
+                    g_GameManager.plst.counts[g_GameManager.difficulty].clears++;
+                    g_GameManager.unk_3dbac |= 0x10;
+                    g_GameManager.stats->guiScore = g_GameManager.stats->score;
+                    g_GameManager.unk_3db9c = 6;
+                    return 3;
+                }
+                g_GameManager.unk_3dbac |= 0x10;
+                g_GameManager.unk_3db9c = 9;
+                return 3;
+            }
+            if (g_GameManager.unk_3db9c < 0)
+            {
+                g_Gui.Func438f58();
+            }
+        }
+        if (WAS_PRESSED(0x1001) || g_GameManager.unk_3dbac >> 3 & 1 || g_GameManager.stage == 6 ||
+            g_GameManager.stage == 7 || g_GameManager.stage == 8)
+        {
+            mgr->unk_3dbac &= ~0x60;
+            if (g_GameManager.unk_3db9c >= 0)
+            {
+                g_App.scene = g_GameManager.unk_3db9c;
+            }
+        }
+    }
+    if (mgr->unk_38 != 0)
+    {
+        if (mgr->unk_38 == 2)
+        {
+            return 4;
+        }
+        mgr->unk_3c++;
+        return 3;
+    }
+    if (mgr->unk_3de28 != 0)
+    {
+        Func438046();
+        g_SpriteEngine->ReleaseSurface(8);
+        g_App.loadingState = 0;
+        if (mgr->unk_3de28 == 1)
+        {
+            if (!(g_GameManager.unk_3dbac >> 14 & 1))
+            {
+                g_App.PlayMidi(0, g_StageBgms[g_GameManager.stage].stageBgm);
+            }
+            else
+            {
+                j = 0;
+                while (g_SpellCardBgms[j].lastCard >= 0)
+                {
+                    if (g_GameManager.unk_3dbb0 <= g_SpellCardBgms[j].lastCard)
+                    {
+                        g_App.PlayMidi(0, g_SpellCardBgms[j].bgm);
+                        break;
+                    }
+                    j++;
+                }
+            }
+        }
+        mgr->unk_3de28 = 0;
+    }
+    if (!mgr->isInContinueMenu && !mgr->isPaused && !(mgr->unk_3dbac >> 1 & 1) && !mgr->unk_2d && WAS_PRESSED(8))
+    {
+        mgr->isPaused = 1;
+        g_GameManager.arena[0] = 32.0f;
+        g_GameManager.arena[1] = 16.0f;
+        g_GameManager.arena[2] = 384.0f;
+        g_GameManager.arena[3] = 448.0f;
+        mgr->pauseRequested = 1;
+        g_SoundPlayer.QueueSoundCommand(6, 0, "Pause");
+        g_SoundPlayer.QueueSound(0x22, 0);
+        g_App.AddTotalPlayTime();
+        g_Rng.savedSeed = g_Rng.seed;
+        mgr->hscr.pauses++;
+        g_GameManager.RerollChecksumKeys();
+        g_Rng.seed = g_Rng.savedSeed;
+    }
+    g_App.viewport.X = mgr->arena[0];
+    g_App.viewport.Y = mgr->arena[1];
+    g_App.viewport.Width = mgr->arena[2];
+    g_App.viewport.Height = mgr->arena[3];
+    g_App.viewport.MinZ = 0.0f;
+    g_App.viewport.MaxZ = 1.0f;
+    g_SpriteEngine->ClearUnk2e4d4();
+    if (g_GameManager.unk_3dbac >> 3 & 1 && g_GameManager.replayMenuChoice == 1 && !g_Gui.IsMsgRunning())
+    {
+        mgr->slowdownCounter++;
+        if ((g_App.roundedFps < 20 && mgr->slowdownCounter % 3 != 0) ||
+            (g_App.roundedFps >= 20 && g_App.roundedFps < 30 && mgr->slowdownCounter % 2 != 0) ||
+            (g_App.roundedFps >= 30 && g_App.roundedFps < 40 && mgr->slowdownCounter % 3 == 0) ||
+            (g_App.roundedFps >= 40 && g_App.roundedFps < 50 && mgr->slowdownCounter % 6 == 0))
+        {
+            return 3;
+        }
+    }
+    if (mgr->unk_3dbac >> 1 & 1)
+    {
+        if (WAS_PRESSED(0xffff))
+        {
+            g_App.scene = 1;
+        }
+        mgr->demoFrames++;
+        if ((mgr->demoIndex == 0 && mgr->demoFrames == 6000) || (mgr->demoIndex == 1 && mgr->demoFrames == 4800) ||
+            (mgr->demoIndex == 2 && mgr->demoFrames == 4920) || (mgr->demoIndex == 3 && mgr->demoFrames == 6900))
+        {
+            ScreenEffect::StartEffect(2, 120, 0, 0, 0, 0x15);
+            g_App.FadeOutMusic(3.0f);
+        }
+        if ((mgr->demoIndex == 0 && mgr->demoFrames >= 6120) || (mgr->demoIndex == 1 && mgr->demoFrames >= 4920) ||
+            (mgr->demoIndex == 2 && mgr->demoFrames >= 5040) || (mgr->demoIndex == 3 && mgr->demoFrames == 7020))
+        {
+            g_App.scene = 1;
+            return 3;
+        }
+    }
+    g_GameManager.stats->checksum = g_GameManager.stats->lifeChecksumKeys[2];
+    check = mgr->ComputeChecksum();
+    g_GameManager.checksumValue = (float)check + g_GameManager.stats->checksumKeysD[3];
+    for (i = 0; i < 7; i++)
+    {
+        if ((int)mgr->stats->lifeChecksumKeys[i] < 6543 || (int)mgr->stats->lifeChecksumKeys[i] > 106543)
+        {
+            g_GameManager.checksumValue = -9999.0f;
+        }
+    }
+    for (i = 0; i < 2; i++)
+    {
+        if (mgr->stats->statsChecksumKeysB[i] < 6543.0f || mgr->stats->statsChecksumKeysB[i] > 106543.0f)
+        {
+            g_GameManager.checksumValue = -9999.0f;
+        }
+    }
+    mgr->isPlaying = !mgr->isInContinueMenu && !mgr->isPaused ? 1 : 0;
+    for (i = 0; i < 2; i++)
+    {
+        if (mgr->stats->statsChecksumKeysA[i] < 6543.0f || mgr->stats->statsChecksumKeysA[i] > 106543.0f)
+        {
+            g_GameManager.checksumValue = -9999.0f;
+        }
+    }
+    for (i = 0; i < 8; i++)
+    {
+        if (mgr->stats->checksumKeysD[i] < 6543 || mgr->stats->checksumKeysD[i] > 106543)
+        {
+            g_GameManager.checksumValue = -9999.0f;
+        }
+    }
+    g_App.d3dDevice->Clear(0, NULL, D3DCLEAR_ZBUFFER, g_Stage.fogColor, 1.0f, 0);
+    if (mgr->isPaused == 1 || mgr->isPaused == 2 || mgr->isInContinueMenu)
+    {
+        return 3;
+    }
+    if (mgr->stats->score >= 1000000000)
+    {
+        mgr->stats->score = 999999999;
+    }
+    if (mgr->stats->guiScore != mgr->stats->score)
+    {
+        if (mgr->stats->score < mgr->stats->guiScore)
+        {
+            mgr->stats->score = mgr->stats->guiScore;
+        }
+        step = (mgr->stats->score - mgr->stats->guiScore) >> 5;
+        if (step >= 0x8d55e)
+        {
+            step = 0x8d55e;
+        }
+        else if (step == 0)
+        {
+            step = 1;
+        }
+        if (mgr->stats->scoreIncrement < step)
+        {
+            mgr->stats->scoreIncrement = step;
+        }
+        if (mgr->stats->guiScore + mgr->stats->scoreIncrement > mgr->stats->score)
+        {
+            mgr->stats->scoreIncrement = mgr->stats->score - mgr->stats->guiScore;
+        }
+        mgr->stats->guiScore += mgr->stats->scoreIncrement;
+        if (mgr->stats->guiScore >= mgr->stats->score)
+        {
+            mgr->stats->scoreIncrement = 0;
+            mgr->stats->guiScore = mgr->stats->score;
+        }
+        if (mgr->stats->highScore < mgr->stats->guiScore)
+        {
+            mgr->stats->highScore = mgr->stats->guiScore;
+            mgr->stats->bestContinuesUsed = mgr->stats->continuesUsed;
+        }
+    }
+    for (i = 0; i < 3; i++)
+    {
+        if (mgr->stats->lifeChecksumKeysF[i] < 6543.0f || mgr->stats->lifeChecksumKeysF[i] > 106543.0f)
+        {
+            g_GameManager.checksumValue = -9999.0f;
+        }
+    }
+    for (i = 0; i < 2; i++)
+    {
+        if (mgr->stats->statsChecksumKeysC[i] < 6543.0f || mgr->stats->statsChecksumKeysC[i] > 106543.0f)
+        {
+            g_GameManager.checksumValue = -9999.0f;
+        }
+    }
+    for (i = 0; i < 5; i++)
+    {
+        if ((int)mgr->stats->checksumKeysE[i] < 6543 || (int)mgr->stats->checksumKeysE[i] > 106543)
+        {
+            g_GameManager.checksumValue = -9999.0f;
+        }
+    }
+    if (g_GameManager.unk_4->scoreDisabled)
+    {
+        g_GameManager.unk_2d = 0;
+        mgr->slowdownCounter++;
+        if ((g_BulletManager.bulletCount >= 320 && mgr->slowdownCounter % 3 == 0) ||
+            (g_BulletManager.bulletCount < 320 && g_BulletManager.bulletCount >= 224 && mgr->slowdownCounter % 4 == 0) ||
+            (g_BulletManager.bulletCount < 224 && g_BulletManager.bulletCount >= 128 && mgr->slowdownCounter % 5 == 0))
+        {
+            g_GameManager.unk_2d = 1;
+            return 3;
+        }
+        if (g_BulletManager.bulletCount < 128)
+        {
+            mgr->slowdownCounter = 0;
+        }
+    }
+    g_GameManager.ChecksumMismatch();
+    mgr->stageFrames++;
+    return 1;
 }
 
 int GameManager::OnDraw(GameManager *mgr)
@@ -529,5 +849,5 @@ GameManager::GameManager()
     this->arena[1] = 16.0f;
     this->arena[2] = 384.0f;
     this->arena[3] = 448.0f;
-    this->unk_3dbb4 = 3;
+    this->demoIndex = 3;
 }
