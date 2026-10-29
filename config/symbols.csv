@@ -147,7 +147,7 @@ address,size,name,symbol
 0x0040d100,521,Func40d100,
 0x0040d310,121,Func40d310,
 0x0040d390,24,Rng::GetRandomF32InRange,?GetRandomF32InRange@Rng@@QAEMM@Z
-0x0040d3b0,17,Func40d3b0,
+0x0040d3b0,17,Timer::AsFrames,?AsFrames@Timer@@QAEHXZ
 0x0040d3d0,27,Func40d3d0,
 0x0040d3f0,27,Func40d3f0,
 0x0040d410,25,Func40d410,
