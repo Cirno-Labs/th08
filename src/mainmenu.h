@@ -190,6 +190,8 @@ extern int g_CharacterMenuSprites[12][4];
 // The names the replay menu shows for shot types and difficulties.
 extern char *g_MenuShotTypeNames[12];
 extern char *g_MenuDifficultyNames[5];
+// The spell cards of each stage, for the spell card practice menu.
+extern int *g_StageSpellCards[];
 // The practice menu's stage names.
 extern char *g_PracticeStageNames[8];
 // The help line the options screen shows for each entry.

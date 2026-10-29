@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">56% (625)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">42.20% (471)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">56.09% (626)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">42.11% (470)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="418.35" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="418.35" y="0" class="decompiled"/>
-<rect width="315.27" height="6" x="431.73" y="0" class="todo"/>
+<rect width="419.02" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="419.02" y="0" class="decompiled"/>
+<rect width="314.60" height="6" x="432.40" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -1092,7 +1092,7 @@
 <rect width="12" height="12" x="315" y="300" class="todo"><title>0x0046f5cb MainMenu::DrawState16 (1940 bytes)</title></rect>
 <rect width="12" height="12" x="330" y="300" class="named"><title>0x0046fd5f GameManager::IsSpellCardSeen (99 bytes)</title></rect>
 <rect width="12" height="12" x="345" y="300" class="named"><title>0x0046fdc2 DrawFan (510 bytes)</title></rect>
-<rect width="12" height="12" x="360" y="300" class="todo"><title>0x0046ffc0 MainMenu::DrawState17 (843 bytes)</title></rect>
+<rect width="12" height="12" x="360" y="300" class="named"><title>0x0046ffc0 MainMenu::DrawState17 (843 bytes)</title></rect>
 <rect width="12" height="12" x="375" y="300" class="named"><title>0x0047030b MainMenu::MoveMenuCursor (281 bytes)</title></rect>
 <rect width="12" height="12" x="390" y="300" class="named"><title>0x00470424 MainMenu::MoveMenuCursorLR (265 bytes)</title></rect>
 <rect width="12" height="12" x="405" y="300" class="named"><title>0x0047052d MainMenu::DrawCharacterMenu (850 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">50.91%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">48.10%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">51.09%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">47.92%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="380.29" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="380.29" y="0" class="decompiled"/>
-<rect width="359.30" height="6" x="387.70" y="0" class="todo"/>
+<rect width="381.66" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="381.66" y="0" class="decompiled"/>
+<rect width="357.93" height="6" x="389.07" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1316,7 +1316,7 @@
 <rect width="18.69" height="19.71" x="411.08" y="214.83" class="named"><title>0x004740e0 LzssDecompress (868 bytes)</title></rect>
 <rect width="18.69" height="19.63" x="411.08" y="237.55" class="named"><title>0x0045a5e0 LoadScoreDat (865 bytes)</title></rect>
 <rect width="18.69" height="19.24" x="411.08" y="260.18" class="named"><title>0x0047052d MainMenu::DrawCharacterMenu (850 bytes)</title></rect>
-<rect width="18.69" height="19.06" x="411.08" y="282.42" class="todo"><title>0x0046ffc0 MainMenu::DrawState17 (843 bytes)</title></rect>
+<rect width="18.69" height="19.06" x="411.08" y="282.42" class="named"><title>0x0046ffc0 MainMenu::DrawState17 (843 bytes)</title></rect>
 <rect width="18.69" height="18.82" x="411.08" y="304.48" class="named"><title>0x00446f53 DrawFps (834 bytes)</title></rect>
 <rect width="18.69" height="18.69" x="411.08" y="326.31" class="named"><title>0x00465cc0 SpriteEngine::LoadAnmSprites (829 bytes)</title></rect>
 <rect width="18.94" height="18.19" x="432.76" y="24.13" class="named"><title>0x004718d0 CSoundManager::CreateStreaming (819 bytes)</title></rect>

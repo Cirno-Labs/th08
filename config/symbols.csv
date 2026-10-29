@@ -2412,6 +2412,7 @@ address,size,name,symbol
 0x004bd700,,GUID_NULL,_GUID_NULL
 0x004c67d0,,g_SpellCardLists,?g_SpellCardLists@@3PAPAHA
 0x004c67e8,,g_SpellCardListSizes,?g_SpellCardListSizes@@3PAHA
+0x004c6c40,,g_StageSpellCards,?g_StageSpellCards@@3PAPAHA
 0x004c7048,,g_BadEndingFiles,?g_BadEndingFiles@@3PAPADA
 0x004c7078,,g_EndingFiles,?g_EndingFiles@@3PAPADA
 0x004c70a8,,g_FinalBEndingFiles,?g_FinalBEndingFiles@@3PAPADA

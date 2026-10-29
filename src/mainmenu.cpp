@@ -2008,6 +2008,64 @@ int MainMenu::DrawPracticeScores()
     return 1;
 }
 
+int MainMenu::DrawState17()
+{
+    int cardId;
+    int i;
+    WORD cleared;
+    D3DXVECTOR3 pos;
+
+    g_AsciiText.SetColor(0xffffffff);
+    g_AsciiText.SetHighlight(0);
+    pos = D3DXVECTOR3(16.0f, 78.0f, 0.0f);
+    cleared = g_GameManager.clrds[g_GameManager.character].stagesCleared[g_App.defaultDifficulty];
+    if (cleared == 0)
+    {
+        cleared = 1;
+    }
+    pos.x += 318.0f;
+    this->unkSprites[15].pos = pos;
+    g_SpriteEngine->DrawUnrotated(&this->unkSprites[15]);
+    pos.x -= 318.0f;
+    pos.y += 16.0f;
+    for (i = 0; i < 15; i++)
+    {
+        if (i + this->unk_4 * 15 >= this->unk_c298)
+        {
+            break;
+        }
+        g_AsciiText.SetColor(this->unkSprites[i].color);
+        cardId = g_StageSpellCards[g_GameManager.stage][i + this->unk_4 * 15];
+        g_AsciiText.AddFormat(&pos, "%sNo.%.3d",
+                              g_GameManager.catks[cardId].practiceCaptures[g_GameManager.character] > 0 ? "@"
+                              : g_GameManager.catks[cardId].practiceCaptures[12] > 0                     ? "*"
+                                                                                                       : " ",
+                              cardId + 1);
+        pos.x += 414.0f;
+        g_AsciiText.SetScale(0.8f, 1.0f);
+        g_AsciiText.AddFormat(&pos, "%3d/%3d(%3d/%3d)", g_GameManager.catks[cardId].practiceCaptures[g_GameManager.character],
+                              g_GameManager.catks[cardId].practiceAttempts[g_GameManager.character],
+                              g_GameManager.catks[cardId].captures[g_GameManager.character],
+                              g_GameManager.catks[cardId].attempts[g_GameManager.character]);
+        g_AsciiText.SetScale(1.0f, 1.0f);
+        pos.x -= 414.0f;
+        this->unkSprites[i].pos = pos;
+        this->unkSprites[i].pos.x += 102.0f;
+        g_SpriteEngine->DrawUnrotated(&this->unkSprites[i]);
+        pos.y += 16.0f;
+    }
+    g_SpriteEngine->DrawUnrotated(&this->unkSprites2[0]);
+    g_SpriteEngine->DrawUnrotated(&this->unkSprites2[1]);
+    g_SpriteEngine->DrawUnrotated(&this->unkSprites2[2]);
+    g_SpriteEngine->DrawUnrotated(&this->unkSprites2[3]);
+    g_SpriteEngine->DrawUnrotated(&this->unkSprites2[4]);
+    g_SpriteEngine->DrawUnrotated(&this->unkSprites2[5]);
+    g_SpriteEngine->DrawUnrotated(&this->unkSprites2[6]);
+    g_AsciiText.SetColor(0xffffffff);
+    g_AsciiText.SetHighlight(0);
+    return 1;
+}
+
 int MainMenu::MoveMenuCursor(int count)
 {
     if (count == 0)
