@@ -82,7 +82,7 @@ address,size,name,symbol
 0x00407120,27,Sprite::SetPendingInterrupt,?SetPendingInterrupt@Sprite@@QAEXF@Z
 0x00407140,20,AsciiText::GetSummaryPendingInterrupt,?GetSummaryPendingInterrupt@AsciiText@@QAEHXZ
 0x00407160,24,AsciiText::ClearStrings,?ClearStrings@AsciiText@@QAEXXZ
-0x00407180,25,Func407180,
+0x00407180,25,AsciiText::SetGlyphWidth,?SetGlyphWidth@AsciiText@@QAEXH@Z
 0x004071a0,513,Func4071a0,
 0x004073b0,77,Func4073b0,
 0x00407400,6291,Func407400,
