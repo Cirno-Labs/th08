@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">39.34% (439)</tspan> · <tspan class="decompiled">0.09% (1)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">60.57% (676)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">39.34% (439)</tspan> · <tspan class="decompiled">0.18% (2)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">60.48% (675)</tspan></tspan></text>
 <g transform="translate(0 20)">
 <rect width="293.85" height="6" x="0" y="0" class="named"/>
-<rect width="0.67" height="6" x="293.85" y="0" class="decompiled"/>
-<rect width="452.48" height="6" x="294.52" y="0" class="todo"/>
+<rect width="1.34" height="6" x="293.85" y="0" class="decompiled"/>
+<rect width="451.81" height="6" x="295.19" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -611,7 +611,7 @@
 <rect width="12" height="12" x="600" y="150" class="named"><title>0x0043c15f GameManager::HasExtraOpen (138 bytes)</title></rect>
 <rect width="12" height="12" x="615" y="150" class="named"><title>0x0043c1e9 GameManager::AnyShotHasExtraOpen (82 bytes)</title></rect>
 <rect width="12" height="12" x="630" y="150" class="decompiled"><title>0x0043c23b GameManager::Func43c23b (138 bytes)</title></rect>
-<rect width="12" height="12" x="645" y="150" class="todo"><title>0x0043c2c5 GameManager::Func43c2c5 (82 bytes)</title></rect>
+<rect width="12" height="12" x="645" y="150" class="decompiled"><title>0x0043c2c5 GameManager::Func43c2c5 (82 bytes)</title></rect>
 <rect width="12" height="12" x="660" y="150" class="todo"><title>0x0043c317 GameManager::IsPhantasmOpen (11 bytes)</title></rect>
 <rect width="12" height="12" x="675" y="150" class="todo"><title>0x0043c322 Func43c322 (61 bytes)</title></rect>
 <rect width="12" height="12" x="690" y="150" class="todo"><title>0x0043c35f Func43c35f (308 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">31.80%</tspan> · <tspan class="decompiled">0.03%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">68.17%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">31.80%</tspan> · <tspan class="decompiled">0.05%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">68.16%</tspan></tspan></text>
 <g transform="translate(0 20)">
 <rect width="237.52" height="6" x="0" y="0" class="named"/>
-<rect width="0.22" height="6" x="237.52" y="0" class="decompiled"/>
-<rect width="509.25" height="6" x="237.75" y="0" class="todo"/>
+<rect width="0.36" height="6" x="237.52" y="0" class="decompiled"/>
+<rect width="509.12" height="6" x="237.88" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1880,7 +1880,7 @@
 <rect width="4" height="3.73" x="736.01" y="240.60" class="todo"><title>0x00421280 Func421280 (83 bytes)</title></rect>
 <rect width="4" height="3.73" x="743" y="240.60" class="named"><title>0x00465510 SpriteEngine::AdjustTextureFormat (83 bytes)</title></rect>
 <rect width="3.76" height="3.88" x="649.18" y="247.34" class="named"><title>0x0043c1e9 GameManager::AnyShotHasExtraOpen (82 bytes)</title></rect>
-<rect width="3.76" height="3.88" x="649.18" y="254.22" class="todo"><title>0x0043c2c5 GameManager::Func43c2c5 (82 bytes)</title></rect>
+<rect width="3.76" height="3.88" x="649.18" y="254.22" class="decompiled"><title>0x0043c2c5 GameManager::Func43c2c5 (82 bytes)</title></rect>
 <rect width="3.76" height="3.88" x="649.18" y="261.10" class="named"><title>0x0043c7d0 ChainElem::~ChainElem (82 bytes)</title></rect>
 <rect width="3.76" height="3.88" x="649.18" y="267.99" class="named"><title>0x00447d04 GameManager::AllShotsHaveExtraOpen (82 bytes)</title></rect>
 <rect width="3.76" height="3.80" x="649.18" y="274.87" class="named"><title>0x00444620 MidiPlayer::Play (81 bytes)</title></rect>
