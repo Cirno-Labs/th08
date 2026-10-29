@@ -443,3 +443,17 @@ int UpdateBombShot(Player *player, PlayerBullet *bullet, D3DXVECTOR3 *pos)
     }
     return 0;
 }
+
+int BurstHitEffect(Player *player, PlayerBullet *bullet, D3DXVECTOR3 *pos)
+{
+    player->hitCounter++;
+    if (player->hitCounter % 8 == 0)
+    {
+        D3DXVECTOR3 effectPos;
+
+        effectPos = *pos;
+        effectPos.x = bullet->pos.x;
+        g_EffectManager.SpawnEffect(5, &effectPos, 1, 0xffffffff);
+    }
+    return 0;
+}

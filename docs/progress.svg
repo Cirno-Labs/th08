@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">71.68% (800)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">26.34% (294)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">71.77% (801)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">26.25% (293)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="535.48" height="6" x="0" y="0" class="named"/>
-<rect width="14.73" height="6" x="535.48" y="0" class="decompiled"/>
-<rect width="196.79" height="6" x="550.21" y="0" class="todo"/>
+<rect width="536.15" height="6" x="0" y="0" class="named"/>
+<rect width="14.73" height="6" x="536.15" y="0" class="decompiled"/>
+<rect width="196.12" height="6" x="550.88" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -882,7 +882,7 @@
 <rect width="12" height="12" x="165" y="240" class="named"><title>0x00450840 UpdateTrailLaserBullet (643 bytes)</title></rect>
 <rect width="12" height="12" x="180" y="240" class="named"><title>0x00450ad0 DrawTrailLaserBullet (372 bytes)</title></rect>
 <rect width="12" height="12" x="195" y="240" class="named"><title>0x00450c50 UpdateBombShot (611 bytes)</title></rect>
-<rect width="12" height="12" x="210" y="240" class="todo"><title>0x00450ee0 Func450ee0 (128 bytes)</title></rect>
+<rect width="12" height="12" x="210" y="240" class="named"><title>0x00450ee0 BurstHitEffect (128 bytes)</title></rect>
 <rect width="12" height="12" x="225" y="240" class="todo"><title>0x00450f60 Func450f60 (487 bytes)</title></rect>
 <rect width="12" height="12" x="240" y="240" class="todo"><title>0x00451150 UpdateBullets (404 bytes)</title></rect>
 <rect width="12" height="12" x="255" y="240" class="todo"><title>0x004512f0 DrawBullets (268 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">63.39%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">35.60%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">63.42%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">35.57%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="473.52" height="6" x="0" y="0" class="named"/>
-<rect width="7.57" height="6" x="473.52" y="0" class="decompiled"/>
-<rect width="265.91" height="6" x="481.09" y="0" class="todo"/>
+<rect width="473.73" height="6" x="0" y="0" class="named"/>
+<rect width="7.57" height="6" x="473.73" y="0" class="decompiled"/>
+<rect width="265.70" height="6" x="481.30" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1758,7 +1758,7 @@
 <rect width="5.66" height="5.45" x="715.55" y="208.04" class="named"><title>0x00472b50 CStreamingSound::UpdateFade (129 bytes)</title></rect>
 <rect width="5.60" height="5.45" x="724.21" y="208.04" class="named"><title>0x00437ddd Gui::ShowBonusPopup (128 bytes)</title></rect>
 <rect width="5.60" height="5.45" x="732.81" y="208.04" class="named"><title>0x00437edc Gui::ShowSpellCardBonus (128 bytes)</title></rect>
-<rect width="5.60" height="5.45" x="741.40" y="208.04" class="todo"><title>0x00450ee0 Func450ee0 (128 bytes)</title></rect>
+<rect width="5.60" height="5.45" x="741.40" y="208.04" class="named"><title>0x00450ee0 BurstHitEffect (128 bytes)</title></rect>
 <rect width="5.42" height="5.56" x="618.51" y="216.49" class="named"><title>0x00437e5d Gui::ShowFullPowerPopup (127 bytes)</title></rect>
 <rect width="5.42" height="5.56" x="626.93" y="216.49" class="named"><title>0x0043edb0 AddNormalizeAngle (127 bytes)</title></rect>
 <rect width="5.35" height="5.56" x="635.35" y="216.49" class="named"><title>0x00466a60 SpriteEngine::PreloadSurface (126 bytes)</title></rect>

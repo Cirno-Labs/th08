@@ -523,7 +523,9 @@ public:
     unsigned char unk_e2a8c[0x4];
     // The itemType of the area CheckAreaHit met last, as th07's.
     int areaItemType;
-    int unk_e2a94;
+    // Counts hits on enemies, to burst an effect every few, as th07's.
+    BYTE hitCounter;
+    unsigned char unk_e2a95[0x3];
     // 0 still, 1 up, 2 down, 3 left, 4 right, 5 to 8 diagonal, as
     // th07's.
     int direction;
