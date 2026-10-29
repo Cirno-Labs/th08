@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">64.43% (719)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">33.78% (377)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">64.52% (720)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">33.69% (376)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="481.27" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="481.27" y="0" class="decompiled"/>
-<rect width="252.35" height="6" x="494.65" y="0" class="todo"/>
+<rect width="481.94" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="481.94" y="0" class="decompiled"/>
+<rect width="251.68" height="6" x="495.32" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -175,7 +175,7 @@
 <rect width="12" height="12" x="60" y="30" class="todo"><title>0x0040b440 Func40b440 (21 bytes)</title></rect>
 <rect width="12" height="12" x="75" y="30" class="todo"><title>0x0040b460 Func40b460 (14 bytes)</title></rect>
 <rect width="12" height="12" x="90" y="30" class="todo"><title>0x0040b470 Func40b470 (73 bytes)</title></rect>
-<rect width="12" height="12" x="105" y="30" class="todo"><title>0x0040b4c0 Func40b4c0 (58 bytes)</title></rect>
+<rect width="12" height="12" x="105" y="30" class="named"><title>0x0040b4c0 D3DXVec3Length (58 bytes)</title></rect>
 <rect width="12" height="12" x="120" y="30" class="named"><title>0x0040b500 D3DXVec3LengthSq (49 bytes)</title></rect>
 <rect width="12" height="12" x="135" y="30" class="named"><title>0x0040b540 D3DXVec3Dot (54 bytes)</title></rect>
 <rect width="12" height="12" x="150" y="30" class="todo"><title>0x0040b580 Func40b580 (22 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">55.46%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">43.54%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">55.48%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">43.53%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="414.32" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="414.32" y="0" class="decompiled"/>
-<rect width="325.28" height="6" x="421.72" y="0" class="todo"/>
+<rect width="414.42" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="414.42" y="0" class="decompiled"/>
+<rect width="325.18" height="6" x="421.82" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1987,7 +1987,7 @@
 <rect width="2.71" height="2.86" x="668.53" y="307.36" class="named"><title>0x00443d10 MidiDevice::Close (59 bytes)</title></rect>
 <rect width="2.71" height="2.86" x="668.53" y="313.23" class="named"><title>0x0045a5a0 FreeListNodes (59 bytes)</title></rect>
 <rect width="2.71" height="2.86" x="668.53" y="319.09" class="named"><title>0x00470dd5 App::ResetClockDriftCounters (59 bytes)</title></rect>
-<rect width="2.71" height="2.76" x="668.53" y="324.95" class="todo"><title>0x0040b4c0 Func40b4c0 (58 bytes)</title></rect>
+<rect width="2.71" height="2.76" x="668.53" y="324.95" class="named"><title>0x0040b4c0 D3DXVec3Length (58 bytes)</title></rect>
 <rect width="2.71" height="2.76" x="668.53" y="330.71" class="todo"><title>0x0040e350 Func40e350 (58 bytes)</title></rect>
 <rect width="2.71" height="2.76" x="668.53" y="336.47" class="named"><title>0x00444510 MidiPlayer::Load (58 bytes)</title></rect>
 <rect width="2.71" height="2.76" x="668.53" y="342.24" class="named"><title>0x00453160 ReplayManager::ReplayManager (58 bytes)</title></rect>
