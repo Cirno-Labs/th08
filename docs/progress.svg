@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">13.80% (154)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">86.20% (962)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">13.89% (155)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">86.11% (961)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="103.08" height="6" x="0" y="0" class="named"/>
-<rect width="643.92" height="6" x="103.08" y="0" class="todo"/>
+<rect width="103.75" height="6" x="0" y="0" class="named"/>
+<rect width="643.25" height="6" x="103.75" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -1111,7 +1111,7 @@
 <rect width="12" height="12" x="615" y="300" class="named"><title>0x004717c0 CSoundManager::SetPrimaryBufferFormat (265 bytes)</title></rect>
 <rect width="12" height="12" x="630" y="300" class="named"><title>0x004718d0 CSoundManager::CreateStreaming (819 bytes)</title></rect>
 <rect width="12" height="12" x="645" y="300" class="named"><title>0x00471c10 CWaveFile::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
-<rect width="12" height="12" x="660" y="300" class="todo"><title>0x00471c40 CSoundManager::CreateStreamingFromMemory (795 bytes)</title></rect>
+<rect width="12" height="12" x="660" y="300" class="named"><title>0x00471c40 CSoundManager::CreateStreamingFromMemory (795 bytes)</title></rect>
 <rect width="12" height="12" x="675" y="300" class="todo"><title>0x00471f60 CSound::CSound (221 bytes)</title></rect>
 <rect width="12" height="12" x="690" y="300" class="todo"><title>0x00472040 CSound::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
 <rect width="12" height="12" x="705" y="300" class="todo"><title>0x00472070 CStreamingSound::RecreateBuffers (599 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">6.72%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">93.28%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">6.90%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">93.10%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="50.23" height="6" x="0" y="0" class="named"/>
-<rect width="696.77" height="6" x="50.23" y="0" class="todo"/>
+<rect width="51.52" height="6" x="0" y="0" class="named"/>
+<rect width="695.48" height="6" x="51.52" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1321,7 +1321,7 @@
 <rect width="18.70" height="18.19" x="454.70" y="24.13" class="todo"><title>0x0044f5e0 Func44f5e0 (810 bytes)</title></rect>
 <rect width="18.45" height="18.19" x="476.39" y="24.13" class="named"><title>0x0043f9c8 RenderTextToTextureBold (801 bytes)</title></rect>
 <rect width="18.32" height="18.19" x="497.85" y="24.13" class="todo"><title>0x0042b930 Func42b930 (796 bytes)</title></rect>
-<rect width="18.29" height="18.19" x="519.17" y="24.13" class="todo"><title>0x00471c40 CSoundManager::CreateStreamingFromMemory (795 bytes)</title></rect>
+<rect width="18.29" height="18.19" x="519.17" y="24.13" class="named"><title>0x00471c40 CSoundManager::CreateStreamingFromMemory (795 bytes)</title></rect>
 <rect width="18.24" height="18.19" x="540.46" y="24.13" class="named"><title>0x0043fce9 RenderTextToTexture (793 bytes)</title></rect>
 <rect width="18.08" height="18.19" x="561.70" y="24.13" class="todo"><title>0x00452d60 Func452d60 (787 bytes)</title></rect>
 <rect width="18.05" height="18.19" x="582.78" y="24.13" class="todo"><title>0x004640e0 Func4640e0 (786 bytes)</title></rect>

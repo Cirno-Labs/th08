@@ -153,3 +153,68 @@ HRESULT CSoundManager::CreateStreaming(CStreamingSound **ppStreamingSound, LPTST
 
     return S_OK;
 }
+
+HRESULT CSoundManager::CreateStreamingFromMemory(CStreamingSound **ppStreamingSound, void *data, DWORD size, BgmFormat *format,
+                                  DWORD dwCreationFlags, GUID guid3DAlgorithm, DWORD dwNotifyCount, DWORD dwNotifySize,
+                                  HANDLE hNotifyEvent)
+{
+    HRESULT hr;
+
+    DebugPrint("StreamingSound Create \r\n");
+    if (m_pDS == NULL)
+        return CO_E_NOTINITIALIZED;
+
+    LPDIRECTSOUNDBUFFER pDSBuffer = NULL;
+    CWaveFile *pWaveFile = NULL;
+    DSBPOSITIONNOTIFY *aPosNotify = NULL;
+    LPDIRECTSOUNDNOTIFY pDSNotify = NULL;
+
+    pWaveFile = new CWaveFile();
+    pWaveFile->OpenFromMemory((BYTE *)data, size, format, 0);
+
+    DWORD dwDSBufferSize = dwNotifySize * dwNotifyCount;
+
+    DSBUFFERDESC dsbd;
+    ZeroMemory(&dsbd, sizeof(DSBUFFERDESC));
+    dsbd.dwSize = sizeof(DSBUFFERDESC);
+    dsbd.dwFlags = dwCreationFlags | DSBCAPS_CTRLPOSITIONNOTIFY | DSBCAPS_GLOBALFOCUS | DSBCAPS_GETCURRENTPOSITION2 |
+                   DSBCAPS_CTRLVOLUME | DSBCAPS_LOCSOFTWARE;
+    dsbd.dwBufferBytes = dwDSBufferSize;
+    dsbd.guid3DAlgorithm = guid3DAlgorithm;
+    dsbd.lpwfxFormat = &pWaveFile->format->format;
+
+    if (FAILED(hr = m_pDS->CreateSoundBuffer(&dsbd, &pDSBuffer, NULL)))
+        return DXTRACE_ERR(TEXT("CreateSoundBuffer"), E_FAIL);
+
+    if (FAILED(hr = pDSBuffer->QueryInterface(IID_IDirectSoundNotify, (VOID **)&pDSNotify)))
+        return DXTRACE_ERR(TEXT("QueryInterface"), E_FAIL);
+
+    aPosNotify = new DSBPOSITIONNOTIFY[dwNotifyCount];
+    if (aPosNotify == NULL)
+        return E_OUTOFMEMORY;
+
+    for (DWORD i = 0; i < dwNotifyCount; i++)
+    {
+        aPosNotify[i].dwOffset = (dwNotifySize * i) + dwNotifySize - 1;
+        aPosNotify[i].hEventNotify = hNotifyEvent;
+    }
+
+    if (FAILED(hr = pDSNotify->SetNotificationPositions(dwNotifyCount, aPosNotify)))
+    {
+        SAFE_RELEASE(pDSNotify);
+        SAFE_DELETE(aPosNotify);
+        return DXTRACE_ERR(TEXT("SetNotificationPositions"), E_FAIL);
+    }
+
+    SAFE_RELEASE(pDSNotify);
+    SAFE_DELETE(aPosNotify);
+
+    *ppStreamingSound = new CStreamingSound(pDSBuffer, dwDSBufferSize, pWaveFile, dwNotifySize);
+    (*ppStreamingSound)->dsbd = dsbd;
+    (*ppStreamingSound)->manager = this;
+    (*ppStreamingSound)->hNotifyEvent = hNotifyEvent;
+    (*ppStreamingSound)->unk_74 = 0;
+    DebugPrint("Success \r\n");
+
+    return S_OK;
+}
