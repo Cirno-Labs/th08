@@ -750,13 +750,13 @@ address,size,name,symbol
 0x00449f50,22,PlayerLaser::PlayerLaser,??0PlayerLaser@@QAE@XZ
 0x00449f70,115,PlayerBombPart::PlayerBombPart,??0PlayerBombPart@@QAE@XZ
 0x00449ff0,563,Player::CheckAreaHit,?CheckAreaHit@Player@@QAEHPAUD3DXVECTOR3@@0@Z
-0x0044a230,302,Func44a230,
+0x0044a230,302,Player::CheckHit,?CheckHit@Player@@QAEHPAUD3DXVECTOR3@@0@Z
 0x0044a360,272,Func44a360,
 0x0044a470,303,Func44a470,
 0x0044a5a0,249,Player::TouchesGrazeBox,?TouchesGrazeBox@Player@@QAEHPAUD3DXVECTOR3@@0@Z
 0x0044a6a0,651,Func44a6a0,
 0x0044a930,521,Func44a930,
-0x0044ab40,888,Func44ab40,
+0x0044ab40,888,Player::Die,?Die@Player@@QAEXXZ
 0x0044aec0,4769,Func44aec0,
 0x0044c1b0,118,Player::AngleFrom,?AngleFrom@Player@@QAEMPAUD3DXVECTOR3@@@Z
 0x0044c230,351,Player::RegisterChain,?RegisterChain@Player@@SIHH@Z
@@ -783,7 +783,7 @@ address,size,name,symbol
 0x0044e0f0,35,Func44e0f0,
 0x0044e120,32,Func44e120,
 0x0044e140,27,Func44e140,
-0x0044e160,255,Func44e160,
+0x0044e160,255,GameManager::RerollLifeChecksumKeys,?RerollLifeChecksumKeys@GameManager@@QAEXXZ
 0x0044e260,113,Func44e260,
 0x0044e2e0,104,Func44e2e0,
 0x0044e350,18,Func44e350,

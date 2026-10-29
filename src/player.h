@@ -204,6 +204,14 @@ public:
     // and returns 2 if so, else returns 0. As th07's, which tested the
     // whole box and had no turned ones; `size` is unused now.
     int CheckAreaHit(D3DXVECTOR3 *pos, D3DXVECTOR3 *size);
+    // Whether a `size` box at `pos` hits the player, as th07's: 2 if it
+    // meets one of hitAreas (CheckAreaHit; areaItemType 6 otherwise),
+    // else 1 if it meets the hitbox, else 0. A hit marks bit 1 of
+    // g_ReplayManager->frameEvents and kills the player while
+    // playerState is 0.
+    int CheckHit(D3DXVECTOR3 *pos, D3DXVECTOR3 *size);
+    // Starts dying (0x44ab40).
+    void Die();
     // The angle from `pos` to the player, as th07's (0x44c1b0).
     float AngleFrom(D3DXVECTOR3 *pos);
     // Whether the box of `size` at `pos` touches the player's graze box,

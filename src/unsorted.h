@@ -1259,6 +1259,51 @@ public:
     // at, over g_App's config (0x3c bytes each) and, new in th08, over
     // hscr.
     int ComputeChecksum();
+    // Rerolls stats' lifeChecksumKeys and lifeChecksumKeysF, as th07's.
+    // Inline; the copy at 0x44e160 is the player object's.
+    void RerollLifeChecksumKeys()
+    {
+        this->stats->lifeChecksumKeys[0] = g_Rng.GetRandomU32InRange(100000) + 6543;
+        this->stats->lifeChecksumKeys[1] = g_Rng.GetRandomU32InRange(100000) + 6543;
+        this->stats->lifeChecksumKeys[2] = g_Rng.GetRandomU32InRange(100000) + 6543;
+        this->stats->lifeChecksumKeys[3] = g_Rng.GetRandomU32InRange(100000) + 6543;
+        this->stats->lifeChecksumKeys[4] = g_Rng.GetRandomU32InRange(100000) + 6543;
+        this->stats->lifeChecksumKeysF[0] = g_Rng.GetRandomF32InRange(100000.0f) + 6543.0f;
+        this->stats->lifeChecksumKeysF[1] = g_Rng.GetRandomF32InRange(100000.0f) + 6543.0f;
+        this->stats->lifeChecksumKeysF[2] = g_Rng.GetRandomF32InRange(100000.0f) + 6543.0f;
+    }
+    // Adds `deaths` to stats->deaths and unk_68 and counts a miss in
+    // hscr; adds `bombs` to stats->bombsUsed and unk_88. Both wipe g_App
+    // first if the checksums were wrong, as th07's (which were out of
+    // line). Inline; the copies at 0x44e260 and 0x44e2e0 are the player
+    // object's.
+    void AddDeaths(int deaths)
+    {
+        if (this->ChecksumMismatch())
+        {
+            memset(&g_App, 0xff, sizeof(App));
+        }
+        this->stats->deaths += deaths;
+        this->stats->unk_68 += deaths;
+        this->hscr.misses++;
+        this->RerollChecksumKeys();
+    }
+    void AddBombsUsed(int bombs)
+    {
+        if (this->ChecksumMismatch())
+        {
+            memset(&g_App, 0xff, sizeof(App));
+        }
+        this->stats->bombsUsed += bombs;
+        this->stats->unk_88 += bombs;
+        this->RerollChecksumKeys();
+    }
+    // Sets stats->unk_22. Inline; the copy at 0x44e140 is the player
+    // object's.
+    void SetUnk22(short value)
+    {
+        this->stats->unk_22 = value;
+    }
     // Gives a life, or a bomb when the lives are full (8). Either one
     // plays sound 0x1c, adds 200 to the subrank and marks the Gui's
     // count changed, as th07's.
