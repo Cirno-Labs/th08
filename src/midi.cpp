@@ -291,3 +291,23 @@ int MidiPlayer::Load(char *path)
     this->UnloadFile(0x1f);
     return 0;
 }
+
+void MidiPlayer::Rewind()
+{
+    int i;
+    MidiTrack *track;
+
+    track = this->tracks;
+    this->volumeScale = 1.0f;
+    this->unk_2dc = 0;
+    this->fading = 0;
+    this->ticks = 0;
+    this->baseTime = 0;
+    for (i = 0; i < this->trackCount; i++, track++)
+    {
+        track->cursor = track->data;
+        track->loopCursor = track->cursor;
+        track->active = 1;
+        track->delta = ReadVarLen(&track->cursor);
+    }
+}

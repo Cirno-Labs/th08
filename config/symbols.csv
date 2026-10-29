@@ -677,7 +677,7 @@ address,size,name,symbol
 0x004442e0,511,MidiPlayer::ParseFile,?ParseFile@MidiPlayer@@QAEHH@Z
 0x004444e0,40,SwapBytes32,?SwapBytes32@@YIKK@Z
 0x00444510,58,MidiPlayer::Load,?Load@MidiPlayer@@QAEHPAD@Z
-0x00444550,203,Func444550,
+0x00444550,203,MidiPlayer::Rewind,?Rewind@MidiPlayer@@QAEXXZ
 0x00444620,81,Func444620,
 0x00444680,122,MidiPlayer::Stop,?Stop@MidiPlayer@@QAEHXZ
 0x00444700,197,Func444700,
