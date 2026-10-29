@@ -2432,5 +2432,7 @@ address,size,name,symbol
 0x018b8a2c,,g_Unknown18b8a2c,?g_Unknown18b8a2c@@3HA
 0x018b8a68,,g_SoundPlayer,?g_SoundPlayer@@3VSoundPlayer@@A
 0x018bdc90,,g_SpriteEngine,?g_SpriteEngine@@3PAVSpriteEngine@@A
+0x018bdc98,,g_DiffuseQuad,?g_DiffuseQuad@@3PAUVertexTex1DiffuseXyzrwh@@A
+0x018bdd08,,g_Quad,?g_Quad@@3PAUVertexTex1Xyzrwh@@A
 0x018bdf58,,g_LzssTree,?g_LzssTree@@3PAULzssNode@@A
 0x018d5f68,,g_LzssWindow,?g_LzssWindow@@3PAEA
