@@ -546,3 +546,13 @@ HRESULT CSound::Reset()
 
     return hr;
 }
+
+CStreamingSound::CStreamingSound(LPDIRECTSOUNDBUFFER pDSBuffer, DWORD dwDSBufferSize, CWaveFile *pWaveFile, DWORD dwNotifySize)
+    : CSound(&pDSBuffer, dwDSBufferSize, 1, pWaveFile)
+{
+    m_dwLastPlayPos = 0;
+    m_dwPlayProgress = 0;
+    m_dwNotifySize = dwNotifySize;
+    m_dwNextWriteOffset = 0;
+    m_bFillNextNotificationWithSilence = FALSE;
+}
