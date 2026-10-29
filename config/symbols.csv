@@ -164,7 +164,7 @@ address,size,name,symbol
 0x0040e3b0,600,Func40e3b0,
 0x0040e610,362,Func40e610,
 0x0040e780,968,Func40e780,
-0x0040eb50,112,Func40eb50,
+0x0040eb50,112,EffectUpdateBombRing41,?EffectUpdateBombRing41@@YIHPAUEffect@@@Z
 0x0040ebc0,61,Func40ebc0,
 0x0040ec00,43,Sprite::SetRotationZ,?SetRotationZ@Sprite@@QAEXM@Z
 0x0040ec30,112,Func40ec30,

@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">65.50% (731)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">32.71% (365)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">65.59% (732)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">32.62% (364)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="489.30" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="489.30" y="0" class="decompiled"/>
-<rect width="244.31" height="6" x="502.69" y="0" class="todo"/>
+<rect width="489.97" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="489.97" y="0" class="decompiled"/>
+<rect width="243.65" height="6" x="503.35" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -233,7 +233,7 @@
 <rect width="12" height="12" x="180" y="45" class="todo"><title>0x0040e3b0 Func40e3b0 (600 bytes)</title></rect>
 <rect width="12" height="12" x="195" y="45" class="todo"><title>0x0040e610 Func40e610 (362 bytes)</title></rect>
 <rect width="12" height="12" x="210" y="45" class="todo"><title>0x0040e780 Func40e780 (968 bytes)</title></rect>
-<rect width="12" height="12" x="225" y="45" class="todo"><title>0x0040eb50 Func40eb50 (112 bytes)</title></rect>
+<rect width="12" height="12" x="225" y="45" class="named"><title>0x0040eb50 EffectUpdateBombRing41 (112 bytes)</title></rect>
 <rect width="12" height="12" x="240" y="45" class="todo"><title>0x0040ebc0 Func40ebc0 (61 bytes)</title></rect>
 <rect width="12" height="12" x="255" y="45" class="named"><title>0x0040ec00 Sprite::SetRotationZ (43 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="45" class="todo"><title>0x0040ec30 Func40ec30 (112 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">58.07%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">40.94%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">58.10%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">40.91%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="433.80" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="433.80" y="0" class="decompiled"/>
-<rect width="305.80" height="6" x="441.20" y="0" class="todo"/>
+<rect width="433.98" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="433.98" y="0" class="decompiled"/>
+<rect width="305.61" height="6" x="441.39" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1796,7 +1796,7 @@
 <rect width="4.78" height="5.32" x="626.59" y="250" class="named"><title>0x0043f03c GdiSurface::Release (114 bytes)</title></rect>
 <rect width="4.78" height="5.32" x="626.59" y="258.32" class="named"><title>0x004441a0 MidiPlayer::LoadFile (114 bytes)</title></rect>
 <rect width="4.78" height="5.25" x="626.59" y="266.64" class="todo"><title>0x0044e260 Func44e260 (113 bytes)</title></rect>
-<rect width="4.78" height="5.17" x="626.59" y="274.89" class="todo"><title>0x0040eb50 Func40eb50 (112 bytes)</title></rect>
+<rect width="4.78" height="5.17" x="626.59" y="274.89" class="named"><title>0x0040eb50 EffectUpdateBombRing41 (112 bytes)</title></rect>
 <rect width="4.78" height="5.17" x="626.59" y="283.06" class="todo"><title>0x0040ec30 Func40ec30 (112 bytes)</title></rect>
 <rect width="4.78" height="5.17" x="626.59" y="291.23" class="todo"><title>0x00421de0 Func421de0 (112 bytes)</title></rect>
 <rect width="4.78" height="5.17" x="626.59" y="299.40" class="named"><title>0x00442190 GameWindow::GetTime (112 bytes)</title></rect>

@@ -84,3 +84,13 @@ int EffectUpdateBombRing45(Effect *effect)
     effect->ringWidth = 8.0f;
     return 1;
 }
+
+int EffectUpdateBombRing41(Effect *effect)
+{
+    effect->verticesDirty = 1;
+    effect->segmentCount = 0x30;
+    effect->ringWidth = 32.0f;
+    effect->radius = (effect->timer.AsFrames() & 1 ? 8 : 0) + 64.0f;
+    effect->angle = 0.0f;
+    return 1;
+}
