@@ -156,7 +156,7 @@ address,size,name,symbol
 0x0040d970,1390,Func40d970,
 0x0040dee0,349,Func40dee0,
 0x0040e040,209,EffectUpdateBombRing42,?EffectUpdateBombRing42@@YIHPAUEffect@@@Z
-0x0040e120,209,Func40e120,
+0x0040e120,209,EffectUpdateBombRing43,?EffectUpdateBombRing43@@YIHPAUEffect@@@Z
 0x0040e200,196,Func40e200,
 0x0040e2d0,119,Func40e2d0,
 0x0040e350,58,Func40e350,
