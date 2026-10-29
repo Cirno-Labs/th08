@@ -1129,6 +1129,48 @@ int SpriteEngine::FillVerticalStripVertices(Sprite *vm, VertexTex1DiffuseXyzrwh 
     return 0;
 }
 
+int SpriteEngine::DrawVertexStrip(Sprite *vm, VertexTex1DiffuseXyzrwh *vertices, int count)
+{
+    if (!vm->IsShown())
+    {
+        return -1;
+    }
+    if ((vm->flags >> 1 & 1) == 0)
+    {
+        return -1;
+    }
+    if (vm->alpha == 0)
+    {
+        return -1;
+    }
+    if (this->batchQuadCount != 0)
+    {
+        this->FlushQuadBatch();
+    }
+    if (this->currentTexture != vm->spriteData->texture)
+    {
+        this->currentTexture = vm->spriteData->texture;
+        g_App.d3dDevice->SetTexture(0, this->currentTexture);
+    }
+    if (this->vertexFormat != 3)
+    {
+        g_App.d3dDevice->SetVertexShader(D3DFVF_XYZRHW | D3DFVF_DIFFUSE | D3DFVF_TEX1);
+        this->vertexFormat = 3;
+    }
+    this->SetBlendModeForSprite(vm);
+    if (this->resetTextureArgs == 0)
+    {
+        this->resetTextureArgs = 1;
+        if (!g_App.GetNoVertexBuffer())
+        {
+            g_App.d3dDevice->SetTextureStageState(0, D3DTSS_ALPHAARG2, D3DTA_DIFFUSE);
+            g_App.d3dDevice->SetTextureStageState(0, D3DTSS_COLORARG2, D3DTA_DIFFUSE);
+        }
+    }
+    g_App.d3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLESTRIP, count - 2, vertices, sizeof(vertices[0]));
+    return 0;
+}
+
 SpriteEngine::SpriteEngine()
 {
     memset(this, 0, sizeof(*this));

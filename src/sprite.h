@@ -616,6 +616,12 @@ public:
     // vertices along its left side, odd ones along its right. New in
     // th08.
     int FillVerticalStripVertices(Sprite *vm, VertexTex1DiffuseXyzrwh *vertices, int count);
+    // Draws the `count` vertices from `vertices` as a triangle strip with
+    // `vm`'s texture and blend mode, after the pending batch, as th07's;
+    // the vertices' colors stand in for the texture factor until
+    // SetRenderStateForSprite resets it. Returns 0, or -1 when `vm` is
+    // hidden or transparent.
+    int DrawVertexStrip(Sprite *vm, VertexTex1DiffuseXyzrwh *vertices, int count);
     // Sends interrupt `interrupt` to the `count` sprites from `vms` that
     // show a loaded sprite, as th07's.
     void SendInterruptToLoadedSprites(Sprite *vms, int count, short interrupt);
