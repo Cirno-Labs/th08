@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">31.72% (354)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">68.28% (762)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">31.81% (355)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">68.19% (761)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="236.95" height="6" x="0" y="0" class="named"/>
-<rect width="510.05" height="6" x="236.95" y="0" class="todo"/>
+<rect width="237.62" height="6" x="0" y="0" class="named"/>
+<rect width="509.38" height="6" x="237.62" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -971,7 +971,7 @@
 <rect width="12" height="12" x="15" y="270" class="named"><title>0x0045bb50 ScreenEffect::OnDrawScreen (145 bytes)</title></rect>
 <rect width="12" height="12" x="30" y="270" class="named"><title>0x0045bbf0 ScreenEffect::OnDrawWholeScreen (69 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="270" class="named"><title>0x0045bc40 ScreenEffect::OnDrawPlayArea (69 bytes)</title></rect>
-<rect width="12" height="12" x="60" y="270" class="todo"><title>0x0045bc90 ScreenEffect::OnUpdateFlash (210 bytes)</title></rect>
+<rect width="12" height="12" x="60" y="270" class="named"><title>0x0045bc90 ScreenEffect::OnUpdateFlash (210 bytes)</title></rect>
 <rect width="12" height="12" x="75" y="270" class="todo"><title>0x0045bd70 ScreenEffect::OnDrawFlash (76 bytes)</title></rect>
 <rect width="12" height="12" x="90" y="270" class="todo"><title>0x0045bdc0 ScreenEffect::OnUpdateShake (332 bytes)</title></rect>
 <rect width="12" height="12" x="105" y="270" class="todo"><title>0x0045bf10 ScreenEffect::OnUpdateShakeRamp (459 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">23.23%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">76.77%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">23.27%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">76.73%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="173.52" height="6" x="0" y="0" class="named"/>
-<rect width="573.48" height="6" x="173.52" y="0" class="todo"/>
+<rect width="173.86" height="6" x="0" y="0" class="named"/>
+<rect width="573.14" height="6" x="173.86" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1632,7 +1632,7 @@
 <rect width="7.79" height="8.20" x="569.79" y="314.50" class="todo"><title>0x004251b0 Func4251b0 (213 bytes)</title></rect>
 <rect width="7.79" height="8.20" x="569.79" y="325.70" class="todo"><title>0x004322b0 Func4322b0 (213 bytes)</title></rect>
 <rect width="7.79" height="8.10" x="569.79" y="336.90" class="named"><title>0x00462f10 SpriteEngine::AddQuadToBatch (211 bytes)</title></rect>
-<rect width="7.78" height="8.06" x="580.58" y="177.72" class="todo"><title>0x0045bc90 ScreenEffect::OnUpdateFlash (210 bytes)</title></rect>
+<rect width="7.78" height="8.06" x="580.58" y="177.72" class="named"><title>0x0045bc90 ScreenEffect::OnUpdateFlash (210 bytes)</title></rect>
 <rect width="7.78" height="8.06" x="591.36" y="177.72" class="named"><title>0x00473a60 File::ReadAll (210 bytes)</title></rect>
 <rect width="7.73" height="8.06" x="602.14" y="177.72" class="todo"><title>0x0040e040 Func40e040 (209 bytes)</title></rect>
 <rect width="7.73" height="8.06" x="612.87" y="177.72" class="todo"><title>0x0040e120 Func40e120 (209 bytes)</title></rect>

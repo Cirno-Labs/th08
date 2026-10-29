@@ -285,3 +285,33 @@ int ScreenEffect::OnDrawPlayArea(ScreenEffect *effect)
     DrawColorRect(area, effect->alpha << 24 | effect->color);
     return 1;
 }
+
+int ScreenEffect::OnUpdateFlash(ScreenEffect *effect)
+{
+    DWORD startAlpha = (effect->flashColor >> 24) & 0xff;
+
+    if (g_Unknown18b8a2c != 0)
+    {
+        return 0;
+    }
+    if (effect->timer < effect->duration)
+    {
+        effect->alpha = startAlpha - (int)(effect->timer.AsFloat() * startAlpha / effect->duration);
+        if (effect->alpha < 0)
+        {
+            effect->alpha = 0;
+        }
+    }
+    else
+    {
+        effect->alpha = 0;
+        effect->flashes--;
+        if (effect->flashes <= 0)
+        {
+            return 0;
+        }
+        effect->timer = 0;
+    }
+    effect->timer++;
+    return 1;
+}
