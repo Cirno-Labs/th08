@@ -282,3 +282,58 @@ int ReplayManager::PlayOnUpdate(ReplayManager *replay)
     replay->frame++;
     return 1;
 }
+
+int ReplayManager::PlayOnUpdateWithSeeds(ReplayManager *replay)
+{
+    int unused;
+
+    if (!(g_GameManager.unk_3dbac >> 2 & 1))
+    {
+        return 1;
+    }
+    if (g_GameManager.unk_4->scoreDisabled != 0)
+    {
+        return 1;
+    }
+    if (g_GameManager.unk_3dbac >> 9 & 1)
+    {
+        return 1;
+    }
+    unused = 0;
+    g_PrevGameButtons = g_GameButtons;
+    g_GameButtons = replay->seedCursor->input;
+    // Compiles to nothing, but without it the registers after it
+    // differ: something the original tested here was compiled out.
+    if (0)
+    {
+    }
+    replay->seedCursor++;
+    g_ButtonRepeat = 0;
+    if (g_PrevGameButtons == g_GameButtons)
+    {
+        if (g_ButtonFrames >= 30)
+        {
+            if (g_ButtonFrames % 8 == 0)
+            {
+                g_ButtonRepeat = 1;
+            }
+            if (g_ButtonFrames >= 38)
+            {
+                g_ButtonFrames = 30;
+            }
+        }
+        g_ButtonFrames++;
+    }
+    else
+    {
+        g_ButtonFrames = 0;
+    }
+    if (replay->frame % 30 == 0)
+    {
+        g_App.roundedFps = (char)replay->extraCursor[1] & 0x7f;
+        g_App.fpsWarning = (char)replay->extraCursor[1] >> 7;
+        replay->extraCursor++;
+    }
+    replay->frame++;
+    return 1;
+}

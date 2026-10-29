@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">37.37% (417)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">62.63% (699)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">37.46% (418)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">62.54% (698)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="279.12" height="6" x="0" y="0" class="named"/>
-<rect width="467.88" height="6" x="279.12" y="0" class="todo"/>
+<rect width="279.79" height="6" x="0" y="0" class="named"/>
+<rect width="467.21" height="6" x="279.79" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -897,7 +897,7 @@
 <rect width="12" height="12" x="405" y="240" class="named"><title>0x00452310 ReplayManager::RecordOnUpdate (372 bytes)</title></rect>
 <rect width="12" height="12" x="420" y="240" class="named"><title>0x00452490 ReplayManager::PlayOnUpdate2 (184 bytes)</title></rect>
 <rect width="12" height="12" x="435" y="240" class="named"><title>0x00452550 ReplayManager::PlayOnUpdate (362 bytes)</title></rect>
-<rect width="12" height="12" x="450" y="240" class="todo"><title>0x004526c0 ReplayManager::PlayOnUpdateWithSeeds (361 bytes)</title></rect>
+<rect width="12" height="12" x="450" y="240" class="named"><title>0x004526c0 ReplayManager::PlayOnUpdateWithSeeds (361 bytes)</title></rect>
 <rect width="12" height="12" x="465" y="240" class="todo"><title>0x00452830 ReplayManager::RecordAddedCallback (1315 bytes)</title></rect>
 <rect width="12" height="12" x="480" y="240" class="todo"><title>0x00452d60 ReplayManager::PlayAddedCallback (787 bytes)</title></rect>
 <rect width="12" height="12" x="495" y="240" class="todo"><title>0x00453080 ReplayManager::DeletedCallback (209 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">30.40%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">69.60%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">30.48%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">69.52%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="227.07" height="6" x="0" y="0" class="named"/>
-<rect width="519.93" height="6" x="227.07" y="0" class="todo"/>
+<rect width="227.65" height="6" x="0" y="0" class="named"/>
+<rect width="519.35" height="6" x="227.65" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1480,7 +1480,7 @@
 <rect width="11.64" height="11.03" x="577.75" y="115.39" class="named"><title>0x00445bd4 App::OnDrawLogo (362 bytes)</title></rect>
 <rect width="11.64" height="11.03" x="592.39" y="115.39" class="named"><title>0x00452550 ReplayManager::PlayOnUpdate (362 bytes)</title></rect>
 <rect width="11.64" height="11.03" x="607.03" y="115.39" class="named"><title>0x0045a950 LoadHighScores (362 bytes)</title></rect>
-<rect width="11.60" height="11.03" x="621.67" y="115.39" class="todo"><title>0x004526c0 ReplayManager::PlayOnUpdateWithSeeds (361 bytes)</title></rect>
+<rect width="11.60" height="11.03" x="621.67" y="115.39" class="named"><title>0x004526c0 ReplayManager::PlayOnUpdateWithSeeds (361 bytes)</title></rect>
 <rect width="11.28" height="11.03" x="636.27" y="115.39" class="todo"><title>0x004272e0 Func4272e0 (353 bytes)</title></rect>
 <rect width="11.24" height="11.03" x="650.55" y="115.39" class="named"><title>0x00447f21 App::PlayMusic (352 bytes)</title></rect>
 <rect width="11.24" height="11.03" x="664.78" y="115.39" class="todo"><title>0x0044e770 Func44e770 (352 bytes)</title></rect>
