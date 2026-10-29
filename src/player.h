@@ -196,7 +196,9 @@ struct PlayerBombPart
     Sprite sprites[8];
     Effect *effect;
     Timer timer;
-    unsigned char unk_16e8[0x8];
+    // The bomb hitbox and the hit area that follow it, if any.
+    PlayerBombHitbox *hitbox;
+    PlayerBombHitbox *hitArea;
 };
 ASSERT_SIZE(PlayerBombPart, 0x16f0);
 
@@ -667,3 +669,10 @@ void DrawRemiliaLastWord(Player *player);
 // starts a red aura at the player that runs as long as stateTimer
 // (0x40bf00).
 void SpawnBombAura(Player *player);
+
+// The per-character bomb callbacks of g_BombFuncs, by character, each
+// bomb's update then its draw callback, then its last word's.
+// Reimu's 霊符「夢想妙珠」: sixteen orbs spin out from the player for 40
+// frames, then home in on orbHomingTarget (else the player) and burst
+// after 200 damage or 30 frames before the end (0x40c010).
+void UpdateReimuBomb(Player *player);

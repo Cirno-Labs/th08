@@ -80,6 +80,147 @@ void SpawnBombAura(Player *player)
     player->invulnerabilityEffect = effect;
 }
 
+void UpdateReimuBomb(Player *player)
+{
+    PlayerBomb *pb = &player->bomb;
+    PlayerBombPart *orbs;
+    DWORD i;
+
+    if (pb->timer.HasTicked() && pb->timer == 0)
+    {
+        float angle;
+
+        StartBomb(player, 0, "\x97\xec\x95\x84\x81\x75\x96\xb2\x91\x7a\x96\xad\x8e\xec\x81\x76", 200, 260, 0);
+        g_EffectManager.SpawnEffect(0xc, &player->pos, 1, 0xff4040ff);
+        angle = -3.1415927f;
+        for (orbs = pb->parts, i = 0; (int)i < 0x10; i++, orbs++)
+        {
+            player->anm->StartScript(&pb->parts[i].sprites[0], 0x13);
+            pb->parts[i].angle = angle;
+            angle += 0.3926991f;
+            orbs->pos = player->pos;
+            orbs->trail[0] = orbs->pos;
+            orbs->unk_8 = 0.0f;
+            orbs->state = 1;
+            orbs->hitArea = player->AddHitAreaCircle(&player->pos, 96.0f, 0.0f, 200, 6);
+            orbs->hitbox = player->AddBombHitboxCircle(&orbs->pos, 64.0f, 0.0f, 5, 200);
+            orbs->hitbox->damageInterval = 2;
+            orbs->hitbox->maxDamage = 200;
+            orbs->hitbox->unk_3d = 1;
+        }
+        g_SoundPlayer.QueueSound(0xd, 0);
+    }
+    if (pb->timer < 40)
+    {
+        D3DXVECTOR3 oldPos;
+
+        for (orbs = pb->parts, i = 0; (int)i < 0x10; i++, orbs++)
+        {
+            orbs->angle = AddNormalizeAngle(orbs->angle, i & 1 ? 0.05235988f : -0.05235988f);
+            oldPos = orbs->pos;
+            orbs->pos.x = sinf(orbs->angle) * orbs->unk_8 + orbs->trail[0].x;
+            orbs->pos.y = cosf(orbs->angle) * orbs->unk_8 + orbs->trail[0].y;
+            orbs->unk_8 += 3.2f;
+            orbs->velocity = orbs->pos - oldPos;
+        }
+    }
+    else
+    {
+        D3DXVECTOR3 target;
+        float x;
+        float y;
+        float len;
+        PlayerBombHitbox *hitbox;
+
+        if (pb->timer == 40)
+        {
+            for (orbs = pb->parts, i = 0; (int)i < 0x10; i++, orbs++)
+            {
+                orbs->speed = sqrtf(orbs->velocity.x * orbs->velocity.x + orbs->velocity.y * orbs->velocity.y);
+                orbs->angle = atan2f(orbs->velocity.x, orbs->velocity.y);
+                orbs->burstTimer = 0;
+                orbs->unk_8 = 8.0f;
+            }
+        }
+        for (i = 0, orbs = pb->parts; (int)i < 0x10; i++, orbs++)
+        {
+            if (orbs->state == 0)
+            {
+                continue;
+            }
+            if (orbs->state == 1 && pb->timer.HasTicked())
+            {
+                if (player->orbHomingTarget.x > -100.0f)
+                {
+                    target = player->orbHomingTarget;
+                }
+                else
+                {
+                    target = player->pos;
+                }
+                x = target[0] - orbs->pos.x;
+                y = target[1] - orbs->pos.y;
+                len = sqrtf(x * x + y * y) / (orbs->unk_8 / 8.0f);
+                if (len < 1.0f)
+                {
+                    len = 1.0f;
+                }
+                x = x / len + orbs->velocity.x;
+                y = y / len + orbs->velocity.y;
+                len = sqrtf(x * x + y * y);
+                orbs->unk_8 = (len > 10.0f) ? 10.0f : len;
+                if (orbs->unk_8 < 1.0f)
+                {
+                    orbs->unk_8 = 1.0f;
+                }
+                orbs->velocity.x = x * orbs->unk_8 / len;
+                orbs->velocity.y = y * orbs->unk_8 / len;
+                player->AddHitAreaCircle(&orbs->pos, 128.0f, 0.0f, 0, 6);
+                if (orbs->hitbox->hits >= orbs->hitbox->maxDamage || pb->timer >= pb->duration - 30)
+                {
+                    orbs->hitArea->active = 0;
+                    orbs->hitbox->active = 0;
+                    player->AddHitAreaCircle(&player->pos, 64.0f, 4.2666669f, 30, 6);
+                    hitbox = player->AddBombHitboxCircle(&orbs->pos, 64.0f, 12.8f, 500, 12);
+                    hitbox->damageInterval = 4;
+                    hitbox->maxDamage = 0;
+                    g_EffectManager.SpawnEffect(6, &orbs->pos, 8, 0xffffffff);
+                    orbs->state = 2;
+                    orbs->sprites[0].pendingInterrupt = 1;
+                    orbs->velocity / 8.0f;
+                    g_SoundPlayer.QueueSoundPanned(0xf, orbs->pos.x);
+                    ScreenEffect::StartEffect(1, 0x10, 8, 0, 0, 0x15);
+                }
+            }
+            orbs->pos.x += g_App.gameSpeed * orbs->velocity.x;
+            orbs->pos.y += g_App.gameSpeed * orbs->velocity.y;
+        }
+    }
+    for (i = 0, orbs = pb->parts; (int)i < 0x10; i++, orbs++)
+    {
+        if (orbs->state == 0)
+        {
+            continue;
+        }
+        if (orbs->state == 1)
+        {
+            orbs->hitArea->x = orbs->pos.x;
+            orbs->hitArea->y = orbs->pos.y;
+            orbs->hitbox->x = orbs->pos.x;
+            orbs->hitbox->y = orbs->pos.y;
+        }
+        else if (orbs->state != 0 && pb->timer.HasTicked())
+        {
+            orbs->burstTimer++;
+            if (orbs->burstTimer >= 30)
+            {
+                orbs->state = 0;
+            }
+        }
+        g_SpriteEngine->Step(&orbs->sprites[0]);
+    }
+}
+
 void UpdateDissolveBomb(Player *player)
 {
     PlayerBomb *bomb = &player->bomb;

@@ -138,7 +138,7 @@ address,size,name,symbol
 0x0040bc60,450,DimPlayAreaForBomb,?DimPlayAreaForBomb@@YIXPAVPlayer@@K@Z
 0x0040be30,194,StartBomb,?StartBomb@@YIXPAVPlayer@@HPADHHH@Z
 0x0040bf00,264,SpawnBombAura,?SpawnBombAura@@YIXPAVPlayer@@@Z
-0x0040c010,1941,Func40c010,
+0x0040c010,1941,UpdateReimuBomb,?UpdateReimuBomb@@YIXPAVPlayer@@@Z
 0x0040c7b0,24,atan2f,@atan2f@8
 0x0040c7d0,76,D3DXVECTOR3::operator/,??KD3DXVECTOR3@@QBE?AU0@M@Z
 0x0040c820,230,Func40c820,
