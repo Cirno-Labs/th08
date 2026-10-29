@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">45.07% (503)</tspan> · <tspan class="decompiled">1.34% (15)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">53.58% (598)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">45.16% (504)</tspan> · <tspan class="decompiled">1.34% (15)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">53.49% (597)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="336.69" height="6" x="0" y="0" class="named"/>
-<rect width="10.04" height="6" x="336.69" y="0" class="decompiled"/>
-<rect width="400.27" height="6" x="346.73" y="0" class="todo"/>
+<rect width="337.35" height="6" x="0" y="0" class="named"/>
+<rect width="10.04" height="6" x="337.35" y="0" class="decompiled"/>
+<rect width="399.60" height="6" x="347.40" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -73,7 +73,7 @@
 <rect width="12" height="12" x="30" y="0" class="named"><title>0x00402150 PauseMenu::PauseMenu (52 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="0" class="named"><title>0x00402190 ContinueMenu::ContinueMenu (52 bytes)</title></rect>
 <rect width="12" height="12" x="60" y="0" class="named"><title>0x004021d0 AsciiPopup::AsciiPopup (36 bytes)</title></rect>
-<rect width="12" height="12" x="75" y="0" class="todo"><title>0x00402200 Func402200 (460 bytes)</title></rect>
+<rect width="12" height="12" x="75" y="0" class="named"><title>0x00402200 AsciiText::OnUpdate (460 bytes)</title></rect>
 <rect width="12" height="12" x="90" y="0" class="todo"><title>0x004023d0 Func4023d0 (95 bytes)</title></rect>
 <rect width="12" height="12" x="105" y="0" class="todo"><title>0x00402430 Func402430 (24 bytes)</title></rect>
 <rect width="12" height="12" x="120" y="0" class="todo"><title>0x00402450 AsciiText::Initialize (426 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">39.17%</tspan> · <tspan class="decompiled">0.38%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">60.44%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">39.27%</tspan> · <tspan class="decompiled">0.38%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">60.34%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="292.61" height="6" x="0" y="0" class="named"/>
-<rect width="2.87" height="6" x="292.61" y="0" class="decompiled"/>
-<rect width="451.52" height="6" x="295.48" y="0" class="todo"/>
+<rect width="293.36" height="6" x="0" y="0" class="named"/>
+<rect width="2.87" height="6" x="293.36" y="0" class="decompiled"/>
+<rect width="450.77" height="6" x="296.23" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1429,7 +1429,7 @@
 <rect width="12.78" height="13.80" x="734.22" y="83.32" class="todo"><title>0x00420f40 Func420f40 (467 bytes)</title></rect>
 <rect width="13.39" height="13.14" x="487.92" y="100.12" class="named"><title>0x00465070 SpriteEngine::SpriteEngine (466 bytes)</title></rect>
 <rect width="13.39" height="12.96" x="487.92" y="116.25" class="todo"><title>0x004222b0 Func4222b0 (461 bytes)</title></rect>
-<rect width="13.39" height="12.93" x="487.92" y="132.21" class="todo"><title>0x00402200 Func402200 (460 bytes)</title></rect>
+<rect width="13.39" height="12.93" x="487.92" y="132.21" class="named"><title>0x00402200 AsciiText::OnUpdate (460 bytes)</title></rect>
 <rect width="13.39" height="12.89" x="487.92" y="148.14" class="named"><title>0x0045bf10 ScreenEffect::OnUpdateShakeRamp (459 bytes)</title></rect>
 <rect width="13.39" height="12.72" x="487.92" y="164.03" class="todo"><title>0x00421e50 Func421e50 (454 bytes)</title></rect>
 <rect width="13.39" height="12.62" x="487.92" y="179.75" class="todo"><title>0x004415a0 Func4415a0 (451 bytes)</title></rect>

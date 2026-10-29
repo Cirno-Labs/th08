@@ -1236,6 +1236,12 @@ public:
     {
         return this->stats->unk_40;
     }
+    // Whether a demo plays: unk_3dbac's bit 1, as th07's stateFlags.
+    // Inline; the copy at 0x406cb0 is in an /Od object.
+    int IsDemo()
+    {
+        return this->unk_3dbac >> 1 & 1;
+    }
     // Whether the game is a practice: unk_3dbac's bit 0, which th07 read
     // directly. Inline; the copy at 0x406cd0 is in an /Od object.
     int IsInPractice()

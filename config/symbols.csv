@@ -4,7 +4,7 @@ address,size,name,symbol
 0x00402150,52,PauseMenu::PauseMenu,??0PauseMenu@@QAE@XZ
 0x00402190,52,ContinueMenu::ContinueMenu,??0ContinueMenu@@QAE@XZ
 0x004021d0,36,AsciiPopup::AsciiPopup,??0AsciiPopup@@QAE@XZ
-0x00402200,460,Func402200,
+0x00402200,460,AsciiText::OnUpdate,?OnUpdate@AsciiText@@SIHPAV1@@Z
 0x004023d0,95,Func4023d0,
 0x00402430,24,Func402430,
 0x00402450,426,AsciiText::Initialize,?Initialize@AsciiText@@QAEXXZ

@@ -93,9 +93,21 @@ public:
     // digit, digit2 (sprite 0x88, new) and glyph up and glyphWidth to 13
     // (th07 14) (0x402450).
     void Initialize();
-    // Steps summaryPopup to summaryPopup4, unk_127c, unk_1520 and
-    // nearbyLabels[] for a frame. Inline; the copy is at 0x406fd0.
-    void RunScripts();
+    // Steps summaryPopup to summaryPopup4, unk_127c, nearbyLabels[] and
+    // unk_1520 for a frame, as th07's. Inline; the copy is at 0x406fd0.
+    void RunScripts()
+    {
+        g_SpriteEngine->Step(&this->summaryPopup);
+        g_SpriteEngine->Step(&this->summaryPopup2);
+        g_SpriteEngine->Step(&this->summaryPopup3);
+        g_SpriteEngine->Step(&this->summaryPopup4);
+        g_SpriteEngine->Step(&this->unk_127c);
+        g_SpriteEngine->Step(&this->nearbyLabels[0]);
+        g_SpriteEngine->Step(&this->nearbyLabels[1]);
+        g_SpriteEngine->Step(&this->nearbyLabels[2]);
+        g_SpriteEngine->Step(&this->nearbyLabels[3]);
+        g_SpriteEngine->Step(&this->unk_1520);
+    }
     // Starts the scripts of the summary sprites (5 to 9, 4 for unk_127c)
     // and nearbyLabels[] (10), moves summaryPopup2 and summaryPopup3 by
     // g_GameManager.unk_3ddf8 and unk_3ddfa and resends
