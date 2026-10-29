@@ -607,3 +607,31 @@ int EffectInitMoveOut(Effect *effect)
     effect->sprite.rotation.z = AddNormalizeAngle(effect->velocity.x, 1.5707964f);
     return 0;
 }
+
+int EffectInitRing(Effect *effect)
+{
+    effect->vertices = (VertexTex1DiffuseXyzrwh *)g_MemoryManager.Alloc(0x1c38, "Effect");
+    if (effect->vertices == NULL)
+    {
+        return -1;
+    }
+    effect->segmentCount = 3;
+    effect->origin = effect->pos;
+    effect->axis.x = 0.0f;
+    effect->axis.y = 0.0f;
+    effect->axis.z = 1.0f;
+    effect->unk_2f8.x = 0.0f;
+    effect->unk_2f8.y = -1.0f;
+    effect->unk_2f8.z = 0.0f;
+    effect->angle = effect->velocity.x;
+    effect->radius = effect->velocity.y;
+    effect->ringWidth = effect->velocity.z;
+    g_SpriteEngine->FillSpriteStripVertices(&effect->sprite, effect->vertices, effect->segmentCount * 2);
+    effect->verticesDirty = 1;
+    effect->draw = EffectDrawRing;
+    effect->unk_32c = 0.0f;
+    effect->unk_330 = 0.0f;
+    effect->unk_334 = 0.0f;
+    effect->segmentCount = 0x18;
+    return 0;
+}

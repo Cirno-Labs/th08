@@ -348,8 +348,8 @@ address,size,name,symbol
 0x004271a0,166,EffectUpdateDivergeEased,?EffectUpdateDivergeEased@@YIHPAUEffect@@@Z
 0x00427250,16,EffectUpdateNone,?EffectUpdateNone@@YIHPAUEffect@@@Z
 0x00427260,114,EffectInitMoveOut,?EffectInitMoveOut@@YIHPAUEffect@@@Z
-0x004272e0,353,Func4272e0,
-0x00427450,1303,Func427450,
+0x004272e0,353,EffectInitRing,?EffectInitRing@@YIHPAUEffect@@@Z
+0x00427450,1303,EffectDrawRing,?EffectDrawRing@@YIHPAUEffect@@@Z
 0x00427970,31,Func427970,
 0x00427990,59,Func427990,
 0x004279d0,143,Func4279d0,
