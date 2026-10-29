@@ -153,3 +153,16 @@ int ReplayManager::RegisterChain(int mode, char *path)
     }
     return 0;
 }
+
+int ReplayManager::RecordOnUpdate2(ReplayManager *replay)
+{
+    replay->frameEvents = 0;
+    replay->frameSeed = g_Rng.GetSeed();
+    g_Rng.ResetGenerated();
+    if (g_GameManager.pauseRequested)
+    {
+        replay->frameEvents |= 0x100;
+    }
+    g_GameManager.pauseRequested = 0;
+    return 1;
+}

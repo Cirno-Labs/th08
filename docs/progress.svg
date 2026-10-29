@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">36.74% (410)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">63.26% (706)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">37.01% (413)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">62.99% (703)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="274.44" height="6" x="0" y="0" class="named"/>
-<rect width="472.56" height="6" x="274.44" y="0" class="todo"/>
+<rect width="276.44" height="6" x="0" y="0" class="named"/>
+<rect width="470.56" height="6" x="276.44" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -893,7 +893,7 @@
 <rect width="12" height="12" x="345" y="240" class="todo"><title>0x00451d50 Func451d50 (56 bytes)</title></rect>
 <rect width="12" height="12" x="360" y="240" class="named"><title>0x00451d90 ValidateReplay (511 bytes)</title></rect>
 <rect width="12" height="12" x="375" y="240" class="named"><title>0x00451f90 ReplayManager::RegisterChain (777 bytes)</title></rect>
-<rect width="12" height="12" x="390" y="240" class="todo"><title>0x004522a0 ReplayManager::RecordOnUpdate2 (102 bytes)</title></rect>
+<rect width="12" height="12" x="390" y="240" class="named"><title>0x004522a0 ReplayManager::RecordOnUpdate2 (102 bytes)</title></rect>
 <rect width="12" height="12" x="405" y="240" class="todo"><title>0x00452310 ReplayManager::RecordOnUpdate (372 bytes)</title></rect>
 <rect width="12" height="12" x="420" y="240" class="todo"><title>0x00452490 ReplayManager::PlayOnUpdate2 (184 bytes)</title></rect>
 <rect width="12" height="12" x="435" y="240" class="todo"><title>0x00452550 ReplayManager::PlayOnUpdate (362 bytes)</title></rect>
@@ -906,8 +906,8 @@
 <rect width="12" height="12" x="540" y="240" class="todo"><title>0x004531f0 SaveReplay (2445 bytes)</title></rect>
 <rect width="12" height="12" x="555" y="240" class="todo"><title>0x00453b80 Func453b80 (88 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="240" class="todo"><title>0x00453be0 Func453be0 (23 bytes)</title></rect>
-<rect width="12" height="12" x="585" y="240" class="todo"><title>0x00453c00 Func453c00 (21 bytes)</title></rect>
-<rect width="12" height="12" x="600" y="240" class="todo"><title>0x00453c20 Func453c20 (17 bytes)</title></rect>
+<rect width="12" height="12" x="585" y="240" class="named"><title>0x00453c00 Rng::ResetGenerated (21 bytes)</title></rect>
+<rect width="12" height="12" x="600" y="240" class="named"><title>0x00453c20 Rng::GetSeed (17 bytes)</title></rect>
 <rect width="12" height="12" x="615" y="240" class="todo"><title>0x00453c40 Func453c40 (26 bytes)</title></rect>
 <rect width="12" height="12" x="630" y="240" class="todo"><title>0x00453c60 Func453c60 (25 bytes)</title></rect>
 <rect width="12" height="12" x="645" y="240" class="todo"><title>0x00453c80 Func453c80 (25 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">30.16%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">69.84%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">30.19%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">69.81%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="225.31" height="6" x="0" y="0" class="named"/>
-<rect width="521.69" height="6" x="225.31" y="0" class="todo"/>
+<rect width="225.54" height="6" x="0" y="0" class="named"/>
+<rect width="521.46" height="6" x="225.54" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1827,7 +1827,7 @@
 <rect width="4.60" height="4.77" x="634.36" y="279.73" class="named"><title>0x00449331 MusicScreen::MusicScreen (104 bytes)</title></rect>
 <rect width="4.60" height="4.77" x="634.36" y="287.50" class="todo"><title>0x0044e2e0 Func44e2e0 (104 bytes)</title></rect>
 <rect width="4.60" height="4.69" x="634.36" y="295.27" class="named"><title>0x0045ce00 SoundPlayer::SwitchBgmTrack (103 bytes)</title></rect>
-<rect width="4.60" height="4.62" x="634.36" y="302.96" class="todo"><title>0x004522a0 ReplayManager::RecordOnUpdate2 (102 bytes)</title></rect>
+<rect width="4.60" height="4.62" x="634.36" y="302.96" class="named"><title>0x004522a0 ReplayManager::RecordOnUpdate2 (102 bytes)</title></rect>
 <rect width="4.60" height="4.54" x="634.36" y="310.58" class="todo"><title>0x004070b0 Func4070b0 (101 bytes)</title></rect>
 <rect width="4.60" height="4.54" x="634.36" y="318.12" class="named"><title>0x00474c70 DatArchive::FindEntry (101 bytes)</title></rect>
 <rect width="4.60" height="4.47" x="634.36" y="325.67" class="todo"><title>0x00439ac5 Func439ac5 (100 bytes)</title></rect>
@@ -2254,7 +2254,7 @@
 <rect width="0.51" height="0.39" x="726.18" y="331.05" class="todo"><title>0x00415c60 Func415c60 (21 bytes)</title></rect>
 <rect width="0.51" height="0.39" x="726.18" y="334.44" class="named"><title>0x0043ef50 App::GetShootFocuses (21 bytes)</title></rect>
 <rect width="0.51" height="0.39" x="726.18" y="337.83" class="named"><title>0x00443ad0 App::GetWindowed (21 bytes)</title></rect>
-<rect width="0.51" height="0.39" x="726.18" y="341.22" class="todo"><title>0x00453c00 Func453c00 (21 bytes)</title></rect>
+<rect width="0.51" height="0.39" x="726.18" y="341.22" class="named"><title>0x00453c00 Rng::ResetGenerated (21 bytes)</title></rect>
 <rect width="0.51" height="0.39" x="726.18" y="344.61" class="named"><title>0x00462210 acosf (21 bytes)</title></rect>
 <rect width="0.49" height="0.41" x="729.70" y="324.27" class="named"><title>0x00462230 atanf (21 bytes)</title></rect>
 <rect width="0.49" height="0.41" x="733.19" y="324.27" class="named"><title>0x00462250 tanf (21 bytes)</title></rect>
@@ -2282,7 +2282,7 @@
 <rect width="0.10" height="0.41" x="738.69" y="330.98" class="todo"><title>0x00437a2f Func437a2f (17 bytes)</title></rect>
 <rect width="0.10" height="0.41" x="741.52" y="330.98" class="named"><title>0x0043f02b GdiSurface::~GdiSurface (17 bytes)</title></rect>
 <rect width="0.10" height="0.41" x="744.35" y="330.98" class="named"><title>0x00446f42 MidiTimer::~MidiTimer (17 bytes)</title></rect>
-<rect width="0.10" height="0.41" x="747.17" y="330.98" class="todo"><title>0x00453c20 Func453c20 (17 bytes)</title></rect>
+<rect width="0.10" height="0.41" x="747.17" y="330.98" class="named"><title>0x00453c20 Rng::GetSeed (17 bytes)</title></rect>
 <rect width="0.10" height="0.40" x="735.87" y="334.39" class="todo"><title>0x00453cc0 Func453cc0 (17 bytes)</title></rect>
 <rect width="0.10" height="0.40" x="735.87" y="337.79" class="named"><title>0x0045e300 CSound::GetWaveFile (17 bytes)</title></rect>
 <rect width="0.10" height="0.40" x="735.87" y="341.19" class="todo"><title>0x00471651 Func471651 (17 bytes)</title></rect>

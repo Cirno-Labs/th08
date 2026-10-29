@@ -838,8 +838,8 @@ address,size,name,symbol
 0x004531f0,2445,SaveReplay,?SaveReplay@@YIXPAD0@Z
 0x00453b80,88,Func453b80,
 0x00453be0,23,Func453be0,
-0x00453c00,21,Func453c00,
-0x00453c20,17,Func453c20,
+0x00453c00,21,Rng::ResetGenerated,?ResetGenerated@Rng@@QAEXXZ
+0x00453c20,17,Rng::GetSeed,?GetSeed@Rng@@QAEGXZ
 0x00453c40,26,Func453c40,
 0x00453c60,25,Func453c60,
 0x00453c80,25,Func453c80,
