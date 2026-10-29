@@ -107,6 +107,23 @@ void MainMenu::ReassignButton(short button, short replacement, int unused)
     }
 }
 
+int MainMenu::ShowButtonDigits(Sprite *vm, short value)
+{
+    if (value < 0)
+    {
+        vm[0].flags &= ~2;
+        vm[1].flags &= ~2;
+    }
+    else
+    {
+        this->titleAnm->SetSprite(&vm[0], vm[0].baseSpriteIndex + value / 10 * 2);
+        this->titleAnm->SetSprite(&vm[1], vm[1].baseSpriteIndex + value % 10 * 2);
+        vm[0].flags |= 2;
+        vm[1].flags |= 2;
+    }
+    return 0;
+}
+
 int MainMenu::MoveMenuCursor(int count)
 {
     if (count == 0)

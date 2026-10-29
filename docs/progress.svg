@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">53.76% (600)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">44.44% (496)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">53.85% (601)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">44.35% (495)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="401.61" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="401.61" y="0" class="decompiled"/>
-<rect width="332" height="6" x="415" y="0" class="todo"/>
+<rect width="402.28" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="402.28" y="0" class="decompiled"/>
+<rect width="331.33" height="6" x="415.67" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -1077,7 +1077,7 @@
 <rect width="12" height="12" x="90" y="300" class="todo"><title>0x004694c3 Func4694c3 (72 bytes)</title></rect>
 <rect width="12" height="12" x="105" y="300" class="named"><title>0x0046950b MainMenu::ReassignButton (299 bytes)</title></rect>
 <rect width="12" height="12" x="120" y="300" class="todo"><title>0x00469636 MainMenu::UpdateKeyConfig (2383 bytes)</title></rect>
-<rect width="12" height="12" x="135" y="300" class="todo"><title>0x00469fa9 Func469fa9 (200 bytes)</title></rect>
+<rect width="12" height="12" x="135" y="300" class="named"><title>0x00469fa9 MainMenu::ShowButtonDigits (200 bytes)</title></rect>
 <rect width="12" height="12" x="150" y="300" class="todo"><title>0x0046a071 MainMenu::UpdateDifficultyMenu (1460 bytes)</title></rect>
 <rect width="12" height="12" x="165" y="300" class="todo"><title>0x0046a625 MainMenu::UpdateCharacterMenu (1931 bytes)</title></rect>
 <rect width="12" height="12" x="180" y="300" class="todo"><title>0x0046adb0 MainMenu::UpdateGameStartMenu (964 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">45.37%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">53.64%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">45.41%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">53.60%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="338.88" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="338.88" y="0" class="decompiled"/>
-<rect width="400.72" height="6" x="346.28" y="0" class="todo"/>
+<rect width="339.21" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="339.21" y="0" class="decompiled"/>
+<rect width="400.39" height="6" x="346.61" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1651,7 +1651,7 @@
 <rect width="7.42" height="8.06" x="729.32" y="177.72" class="todo"><title>0x00471586 Func471586 (203 bytes)</title></rect>
 <rect width="7.26" height="8.06" x="739.74" y="177.72" class="named"><title>0x004577e2 ResultScreen::WaitAfterNameEntry (200 bytes)</title></rect>
 <rect width="7.39" height="7.92" x="580.58" y="188.78" class="named"><title>0x00466ae0 SpriteEngine::ReleaseSurface (200 bytes)</title></rect>
-<rect width="7.39" height="7.92" x="580.58" y="199.70" class="todo"><title>0x00469fa9 Func469fa9 (200 bytes)</title></rect>
+<rect width="7.39" height="7.92" x="580.58" y="199.70" class="named"><title>0x00469fa9 MainMenu::ShowButtonDigits (200 bytes)</title></rect>
 <rect width="7.39" height="7.81" x="580.58" y="210.62" class="named"><title>0x00447295 Timer::Add (198 bytes)</title></rect>
 <rect width="7.39" height="7.81" x="580.58" y="221.43" class="named"><title>0x0044735b Timer::Sub (198 bytes)</title></rect>
 <rect width="7.39" height="7.81" x="580.58" y="232.24" class="named"><title>0x00462e40 SpriteEngine::FlushQuadBatch (198 bytes)</title></rect>

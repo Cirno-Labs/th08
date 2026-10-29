@@ -1008,7 +1008,7 @@ address,size,name,symbol
 0x004694c3,72,Func4694c3,
 0x0046950b,299,MainMenu::ReassignButton,?ReassignButton@MainMenu@@QAEXFFH@Z
 0x00469636,2383,MainMenu::UpdateKeyConfig,?UpdateKeyConfig@MainMenu@@QAEHXZ
-0x00469fa9,200,Func469fa9,
+0x00469fa9,200,MainMenu::ShowButtonDigits,?ShowButtonDigits@MainMenu@@QAEHPAVSprite@@F@Z
 0x0046a071,1460,MainMenu::UpdateDifficultyMenu,?UpdateDifficultyMenu@MainMenu@@QAEHXZ
 0x0046a625,1931,MainMenu::UpdateCharacterMenu,?UpdateCharacterMenu@MainMenu@@QAEHXZ
 0x0046adb0,964,MainMenu::UpdateGameStartMenu,?UpdateGameStartMenu@MainMenu@@QAEHXZ
