@@ -678,6 +678,11 @@ float AddNormalizeAngle(float a, float b)
     return a;
 }
 
+MemoryManager::MemoryManager()
+{
+    this->unk_4000 = 0;
+}
+
 Log::Log()
 {
     this->cursor = this->buffer;

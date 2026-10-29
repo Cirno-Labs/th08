@@ -30,7 +30,17 @@ inline void *MemAlloc(int size)
 class MemoryManager
 {
 public:
+    // Out-of-line copies of inline functions, at the end of the input
+    // object (0x43ee90, 0x43eeb0); nothing references them.
+    MemoryManager();
+    // Frees every block left in `blocks` if `unk_4000` is set.
+    ~MemoryManager();
     void *Alloc(int size, const char *name);
     void Free(void *p);
+
+    // Allocated blocks, for a debug build's leak tracking: the release
+    // Alloc and Free leave it alone.
+    void *blocks[0x1000];
+    int unk_4000;
 };
 extern MemoryManager g_MemoryManager;
