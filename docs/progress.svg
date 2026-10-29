@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">46.77% (522)</tspan> · <tspan class="decompiled">1.52% (17)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">51.70% (577)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">46.86% (523)</tspan> · <tspan class="decompiled">1.52% (17)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">51.61% (576)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="349.40" height="6" x="0" y="0" class="named"/>
-<rect width="11.38" height="6" x="349.40" y="0" class="decompiled"/>
-<rect width="386.22" height="6" x="360.78" y="0" class="todo"/>
+<rect width="350.07" height="6" x="0" y="0" class="named"/>
+<rect width="11.38" height="6" x="350.07" y="0" class="decompiled"/>
+<rect width="385.55" height="6" x="361.45" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -103,7 +103,7 @@
 <rect width="12" height="12" x="480" y="0" class="named"><title>0x00406520 ChainElem::SetCallback (42 bytes)</title></rect>
 <rect width="12" height="12" x="495" y="0" class="named"><title>0x00406550 App::HasFlag0Or8 (40 bytes)</title></rect>
 <rect width="12" height="12" x="510" y="0" class="todo"><title>0x00406580 App::GetNoFog (26 bytes)</title></rect>
-<rect width="12" height="12" x="525" y="0" class="todo"><title>0x004065a0 Func4065a0 (22 bytes)</title></rect>
+<rect width="12" height="12" x="525" y="0" class="named"><title>0x004065a0 Timer::Timer (22 bytes)</title></rect>
 <rect width="12" height="12" x="540" y="0" class="todo"><title>0x004065c0 Func4065c0 (40 bytes)</title></rect>
 <rect width="12" height="12" x="555" y="0" class="todo"><title>0x004065f0 Func4065f0 (25 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="0" class="todo"><title>0x00406610 Func406610 (41 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">40.31%</tspan> · <tspan class="decompiled">0.56%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">59.12%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">40.32%</tspan> · <tspan class="decompiled">0.56%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">59.12%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="301.14" height="6" x="0" y="0" class="named"/>
-<rect width="4.22" height="6" x="301.14" y="0" class="decompiled"/>
-<rect width="441.65" height="6" x="305.35" y="0" class="todo"/>
+<rect width="301.17" height="6" x="0" y="0" class="named"/>
+<rect width="4.22" height="6" x="301.17" y="0" class="decompiled"/>
+<rect width="441.61" height="6" x="305.39" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -2234,7 +2234,7 @@
 <rect width="0.47" height="0.76" x="733.09" y="316.88" class="named"><title>0x004716e0 CSoundManager::CSoundManager (23 bytes)</title></rect>
 <rect width="0.47" height="0.76" x="736.56" y="316.88" class="named"><title>0x00473c40 FileBase::FileBase (23 bytes)</title></rect>
 <rect width="0.32" height="0.76" x="740.03" y="316.88" class="todo"><title>0x00405260 Func405260 (22 bytes)</title></rect>
-<rect width="0.32" height="0.76" x="743.36" y="316.88" class="todo"><title>0x004065a0 Func4065a0 (22 bytes)</title></rect>
+<rect width="0.32" height="0.76" x="743.36" y="316.88" class="named"><title>0x004065a0 Timer::Timer (22 bytes)</title></rect>
 <rect width="0.32" height="0.76" x="746.68" y="316.88" class="todo"><title>0x0040b580 Func40b580 (22 bytes)</title></rect>
 <rect width="0.44" height="0.63" x="722.67" y="320.64" class="todo"><title>0x004230c0 Func4230c0 (22 bytes)</title></rect>
 <rect width="0.44" height="0.63" x="726.11" y="320.64" class="todo"><title>0x00423130 Func423130 (22 bytes)</title></rect>

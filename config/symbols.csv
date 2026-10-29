@@ -34,7 +34,7 @@ address,size,name,symbol
 0x00406520,42,ChainElem::SetCallback,?SetCallback@ChainElem@@QAEXP6IHPAX@Z@Z
 0x00406550,40,App::HasFlag0Or8,?HasFlag0Or8@App@@QAEHXZ
 0x00406580,26,App::GetNoFog,?GetNoFog@App@@QAEHXZ
-0x004065a0,22,Func4065a0,
+0x004065a0,22,Timer::Timer,??0Timer@@QAE@XZ
 0x004065c0,40,Func4065c0,
 0x004065f0,25,Func4065f0,
 0x00406610,41,Func406610,
