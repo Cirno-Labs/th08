@@ -48,3 +48,22 @@ int GameManager::OnDraw(GameManager *mgr)
     }
     return 1;
 }
+
+int RegisterGameManagerChain()
+{
+    GameManager *mgr = &g_GameManager;
+
+    g_GameManagerCalcChain.SetCallback((ChainCallback)GameManager::OnUpdate);
+    g_GameManagerCalcChain.addedCallback = (ChainCallback)GameManager::AddedCallback;
+    g_GameManagerCalcChain.deletedCallback = (ChainCallback)GameManager::DeletedCallback;
+    g_GameManagerCalcChain.arg = mgr;
+    mgr->stageFrames = 0;
+    if (g_Chain.AddToCalcChain(&g_GameManagerCalcChain, 2) != 0)
+    {
+        return -1;
+    }
+    g_GameManagerDrawChain.SetCallback((ChainCallback)GameManager::OnDraw);
+    g_GameManagerDrawChain.arg = mgr;
+    g_Chain.AddToDrawChain(&g_GameManagerDrawChain, 5);
+    return 0;
+}
