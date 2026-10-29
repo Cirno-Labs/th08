@@ -273,7 +273,7 @@ void PresentFrame()
             g_App.SaveScreenshot(path);
         }
     }
-    if (g_App.redrawFrames != 0 && !g_GameManager.unk_3dbb2)
+    if (g_App.redrawFrames != 0 && !g_GameManager.isPaused)
     {
         g_App.redrawFrames--;
     }

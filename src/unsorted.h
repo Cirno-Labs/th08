@@ -427,6 +427,9 @@ int CreateD3d();
 int CreateGameWindow(HINSTANCE instance);
 // Creates the Direct3D device. Returns 0, or nonzero on failure.
 int InitD3dDevice();
+// Clears the back buffer and the z buffer to `color` and presents, twice,
+// resetting the device when presenting fails, as th07's.
+void ClearScreen(D3DCOLOR color);
 // Draws the batched quads, then clears the whole back buffer to `color`
 // (0x45b0e0).
 void ClearViewport(D3DCOLOR color);
@@ -1019,7 +1022,9 @@ public:
     GameManagerStats *stats;
     // The score file's chunks, loaded by App::AddedCallback.
     Flsp flsp;
-    BYTE unk_2c;
+    // Set while the game is paused: the screen shakes hold still. As
+    // th07's isFrozen.
+    char isFrozen;
     // As th07's unk_d: while it is set, the frame rate is not measured
     // and the buttons are only added to.
     char unk_2d;
@@ -1041,7 +1046,10 @@ public:
         DWORD unk_3dbac;
         struct
         {
-            unsigned int unk_3dbac_0 : 15;
+            unsigned int unk_3dbac_0 : 10;
+            // The screen shakes hold still while it is set.
+            unsigned int unk_3dbac_10 : 1;
+            unsigned int unk_3dbac_11 : 4;
             // AnyShotHasExtraOpen, Func43c2c5 and AllShotsHaveExtraOpen
             // as App::AddedCallback found them.
             unsigned int anyShotHasExtraOpen : 1;
@@ -1051,9 +1059,15 @@ public:
         };
     };
     unsigned char unk_3dbb0[0x2];
-    // While it is set, PresentFrame keeps redrawFrames.
-    BYTE unk_3dbb2;
-    unsigned char unk_3dbb3[0x211];
+    // While it is set, PresentFrame keeps redrawFrames and fade outs
+    // hold still. As th07's isPaused.
+    BYTE isPaused;
+    // Set while the continue menu shows, as th07's: fade outs hold
+    // still.
+    BYTE isInContinueMenu;
+    unsigned char unk_3dbb4[0x20c];
+    // The screen shakes end at once while this is 1 or less, as th07's.
+    int stageFrames;
     // The stage being played, from 0.
     int stage;
 };

@@ -892,7 +892,7 @@ address,size,name,symbol
 0x0045af30,129,LoadPlstChunk,?LoadPlstChunk@@YIHPAUScoreDat@@PAUPlst@@@Z
 0x0045afc0,53,ReleaseScoreDat,?ReleaseScoreDat@@YIXPAUScoreDat@@@Z
 0x0045b000,25,Func45b000,
-0x0045b020,190,Func45b020,
+0x0045b020,190,ClearScreen,?ClearScreen@@YIXK@Z
 0x0045b0e0,124,ClearViewport,?ClearViewport@@YIXK@Z
 0x0045b160,123,Func45b160,
 0x0045b1e0,687,Func45b1e0,

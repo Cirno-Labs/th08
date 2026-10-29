@@ -8,12 +8,10 @@
 
 struct Timer
 {
-    // Starts counting from 0.
+    // Starts counting from 0. Inline; the copy is at 0x4065a0.
     Timer()
     {
-        this->current = 0;
-        this->previous = -999;
-        this->subFrame = 0.0f;
+        this->Initialize();
     }
 
     // Starts counting from 0 again, as the constructor.
