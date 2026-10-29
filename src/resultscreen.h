@@ -97,3 +97,11 @@ int LoadPracticeScores(ScoreDat *scoreDat, Pscr *pscrs);
 int LoadPlstChunk(ScoreDat *scoreDat, Plst *plst);
 // Frees `dat` (0x45afc0).
 void ReleaseScoreDat(ScoreDat *dat);
+
+class ResultScreen
+{
+public:
+    // Adds the result screen's chain elements, as th07's (0x4582a0).
+    // Returns 0, or nonzero on failure.
+    static int RegisterChain(int unk);
+};

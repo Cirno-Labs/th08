@@ -115,6 +115,11 @@ public:
     // Unless the loading screen shows (loadingState), starts
     // g_LoadingSprites on scripts 0 to 2 of loadingAnm at `pos` and sets
     // loadingState to 1. New in th08.
+    // Whether the sub thread is running.
+    BOOL HasSubThread()
+    {
+        return this->subThread != NULL;
+    }
     void StartLoadingSprites(D3DXVECTOR3 *pos);
     // If the loading screen is in state 1, sends g_LoadingSprites
     // interrupt 1 and clears loadingState. Then ends
@@ -266,7 +271,10 @@ public:
     int scene;
     // The scene the game came from.
     int prevScene;
-    unsigned char unk_164[0x10];
+    unsigned char unk_164[0x8];
+    // Set by OnUpdate when a game restarts from scene 11.
+    int unk_16c;
+    unsigned char unk_170[0x4];
     // How many more frames to draw in full, after the device was reset.
     int redrawFrames;
     // DrawFps shows the frame rate while it is 0; AddedCallback sets it
@@ -356,6 +364,15 @@ public:
 ASSERT_SIZE(App, 0x364);
 
 extern App g_App;
+
+// Scene set-up and tear-down functions App::OnUpdate calls, not
+// decompiled yet. The set-up ones return nonzero on failure.
+// th07's GameManager::RegisterChain and RemoveChain.
+int RegisterGameManagerChain();
+void RemoveGameManagerChain();
+
+// Counted down by App::OnUpdate every frame while nonzero.
+extern int g_Unknown18b8a2c;
 
 // Measures the frame rate every half second, with the performance
 // counter when there is one, and shows it when `draw` is set, as th07's.
@@ -527,6 +544,16 @@ BYTE *GetPadButtons();
 // th08 adds P as a second 0x800 key, and reacquires the keyboard on any
 // DirectInput failure, not only a lost device.
 WORD ReadButtons();
+
+// The buttons held this frame and the frame before, as bits.
+extern WORD g_Buttons;
+extern WORD g_PrevButtons;
+// 1 on every 8th frame once the buttons have been held unchanged for 30
+// frames, for key repeat.
+extern WORD g_ButtonRepeat;
+// How many frames the buttons have been held unchanged, cycling from 38
+// back to 30.
+extern WORD g_ButtonFrames;
 
 // Clears the down bit (0x80) of every key in the thread's keyboard
 // state.
@@ -925,6 +952,8 @@ public:
     int Func43c2c5();
     // Whether every shot type has Extra open. In App's object.
     int AllShotsHaveExtraOpen();
+    // Moves `stage` on to the next stage (0x43c4b3).
+    void AdvanceStage();
 
     DWORD unk_0;
     GameManagerUnk4 *unk_4;
@@ -935,7 +964,9 @@ public:
     // As th07's unk_d: while it is set, the frame rate is not measured
     // and the buttons are only added to.
     char unk_2d;
-    unsigned char unk_2e[0x12];
+    unsigned char unk_2e[0x2];
+    int difficulty;
+    unsigned char unk_34[0xc];
     Catk catks[0xde];
     // A copy of catks, as th07's savedCatks.
     Catk savedCatks[0xde];
@@ -960,6 +991,9 @@ public:
             unsigned int unk_3dbac_18 : 14;
         };
     };
+    unsigned char unk_3dbb0[0x214];
+    // The stage being played, from 0.
+    int stage;
 };
 extern GameManager g_GameManager;
 

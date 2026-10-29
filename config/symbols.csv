@@ -374,7 +374,7 @@ address,size,name,symbol
 0x00428910,591,Func428910,
 0x00428b80,2428,Func428b80,
 0x004295e0,180,Func4295e0,
-0x004296a0,266,Func4296a0,
+0x004296a0,266,Ending::RegisterChain,?RegisterChain@Ending@@SIHXZ
 0x004297b0,169,Func4297b0,
 0x00429860,141,Func429860,
 0x004298f0,131,Func4298f0,
@@ -527,7 +527,7 @@ address,size,name,symbol
 0x00439b29,158,Func439b29,
 0x00439bc7,3644,Func439bc7,
 0x0043aa03,89,Func43aa03,
-0x0043aa5c,152,Func43aa5c,
+0x0043aa5c,152,RegisterGameManagerChain,?RegisterGameManagerChain@@YIHXZ
 0x0043aaf4,227,Func43aaf4,
 0x0043abd7,3423,Func43abd7,
 0x0043b936,78,Func43b936,
@@ -535,7 +535,7 @@ address,size,name,symbol
 0x0043bbe1,552,Func43bbe1,
 0x0043be09,35,Func43be09,
 0x0043be2c,322,Func43be2c,
-0x0043bf6e,85,Func43bf6e,
+0x0043bf6e,85,RemoveGameManagerChain,?RemoveGameManagerChain@@YIXXZ
 0x0043bfc3,124,Func43bfc3,
 0x0043c03f,124,Func43c03f,
 0x0043c0bb,164,Func43c0bb,
@@ -546,7 +546,7 @@ address,size,name,symbol
 0x0043c317,11,Func43c317,
 0x0043c322,61,Func43c322,
 0x0043c35f,308,Func43c35f,
-0x0043c4b3,274,Func43c4b3,
+0x0043c4b3,274,GameManager::AdvanceStage,?AdvanceStage@GameManager@@QAEXXZ
 0x0043c5e1,96,Func43c5e1,
 0x0043c641,69,Func43c641,
 0x0043c686,129,Func43c686,
@@ -735,7 +735,7 @@ address,size,name,symbol
 0x00448a2f,54,App::DeleteCriticalSections,?DeleteCriticalSections@App@@QAEXXZ
 0x00448a65,177,Func448a65,
 0x00448b16,1854,Func448b16,
-0x00449254,221,Func449254,
+0x00449254,221,MusicScreen::RegisterChain,?RegisterChain@MusicScreen@@SIHXZ
 0x00449331,104,Func449331,
 0x00449399,238,Func449399,
 0x00449487,648,Func449487,
@@ -866,7 +866,7 @@ address,size,name,symbol
 0x004577e2,200,Func4577e2,
 0x004578aa,1366,Func4578aa,
 0x00457e00,1184,Func457e00,
-0x004582a0,395,Func4582a0,
+0x004582a0,395,ResultScreen::RegisterChain,?RegisterChain@ResultScreen@@SIHH@Z
 0x0045842b,133,Func45842b,
 0x004584b0,424,Func4584b0,
 0x004586b4,3993,Func4586b4,
@@ -948,7 +948,7 @@ address,size,name,symbol
 0x00462250,21,Func462250,
 0x00462270,74,Func462270,
 0x004622c0,76,Func4622c0,
-0x00462310,70,Func462310,
+0x00462310,70,SpriteEngine::StepSprites,?StepSprites@SpriteEngine@@QAEXPAVSprite@@H@Z
 0x00462360,86,Func462360,
 0x004623c0,912,Func4623c0,
 0x00462750,52,Func462750,
@@ -986,7 +986,7 @@ address,size,name,symbol
 0x00465ac0,219,Func465ac0,
 0x00465ba0,284,Func465ba0,
 0x00465cc0,829,Func465cc0,
-0x00466000,91,Func466000,
+0x00466000,91,SpriteEngine::StepAnmLoading,?StepAnmLoading@SpriteEngine@@QAEHXZ
 0x00466060,243,SpriteEngine::ReleaseAnm,?ReleaseAnm@SpriteEngine@@QAEXH@Z
 0x00466160,72,Func466160,
 0x004661b0,341,Func4661b0,
@@ -1033,7 +1033,7 @@ address,size,name,symbol
 0x00470e10,881,Func470e10,
 0x00471181,639,Func471181,
 0x00471400,109,Func471400,
-0x0047146d,281,Func47146d,
+0x0047146d,281,SetUpTitleScene,?SetUpTitleScene@@YIHH@Z
 0x00471586,203,Func471586,
 0x00471651,17,Func471651,
 0x00471662,125,Func471662,
@@ -2409,6 +2409,10 @@ address,size,name,symbol
 0x0164d388,,g_JoyCaps,?g_JoyCaps@@3UtagJOYCAPSA@@A
 0x0164d51c,,g_ShotHeldFrames,?g_ShotHeldFrames@@3GA
 0x0164d520,,g_Rng,?g_Rng@@3VRng@@A
+0x0164d528,,g_Buttons,?g_Buttons@@3GA
+0x0164d530,,g_PrevButtons,?g_PrevButtons@@3GA
+0x0164d538,,g_ButtonRepeat,?g_ButtonRepeat@@3GA
+0x0164d53c,,g_ButtonFrames,?g_ButtonFrames@@3GA
 0x0164d540,,g_Log,?g_Log@@3VLog@@A
 0x0164f548,,g_Chain,?g_Chain@@3VChain@@A
 0x0164f588,,g_Archive,?g_Archive@@3VDatArchive@@A
@@ -2421,6 +2425,7 @@ address,size,name,symbol
 0x017ce750,,g_LoadingScreenEffect,?g_LoadingScreenEffect@@3PAVScreenEffect@@A
 0x017ce758,,g_App,?g_App@@3VApp@@A
 0x017ceac0,,g_LoadingSprites,?g_LoadingSprites@@3PAVSprite@@A
+0x018b8a2c,,g_Unknown18b8a2c,?g_Unknown18b8a2c@@3HA
 0x018b8a68,,g_SoundPlayer,?g_SoundPlayer@@3VSoundPlayer@@A
 0x018bdc90,,g_SpriteEngine,?g_SpriteEngine@@3PAVSpriteEngine@@A
 0x018bdf58,,g_LzssTree,?g_LzssTree@@3PAULzssNode@@A

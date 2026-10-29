@@ -121,13 +121,81 @@ public:
         return 0;
     }
 
-    unsigned char unk_0[0x8];
+    // Forget the render state last set, as th07's, so that the next
+    // sprite sets it again. Expanded under /Ob1.
+    void ClearBlendMode()
+    {
+        this->blendMode = 3;
+    }
+    void ClearColorOp()
+    {
+        this->colorOp = 0xff;
+    }
+    void ClearVertexFormat()
+    {
+        this->vertexFormat = 0xff;
+    }
+    void ClearTexture()
+    {
+        this->currentTexture = NULL;
+    }
+    void ClearZWrite()
+    {
+        this->zWriteDisabled = 0xff;
+    }
+    void ClearSpriteData()
+    {
+        this->currentSpriteData = NULL;
+    }
+    void ClearUnk2e4d4()
+    {
+        this->lastCameraSetupFlag = 0xff;
+    }
+    void ClearUnk8()
+    {
+        this->stepCount = 0;
+        this->renderStateSetCount = 0;
+        this->scriptStartCount = 0;
+        this->batchDrawCount = 0;
+    }
+    void ResetUnk0()
+    {
+        this->modulateColorEnabled = 0;
+        this->modulateColor = 0x80808080;
+    }
+    // Runs `count` sprites from `vms` a frame, as th07's (0x462310).
+    void StepSprites(Sprite *vms, int count);
+    // Steps every ANM file still loading; returns -1 if one fails, else
+    // 0 (0x466000).
+    int StepAnmLoading();
+
+    // The color sprites are modulated by while modulateColorEnabled is
+    // set.
+    D3DCOLOR modulateColor;
+    int modulateColorEnabled;
     // The texture SetPendingCopy's copy goes to; negative for none. The
     // rest of the copy's parameters are at the end.
     int pendingCopyTexture;
-    unsigned char unk_c[0x202c];
+    // Counters, cleared every frame.
+    int scriptStartCount;
+    int stepCount;
+    int renderStateSetCount;
+    int batchDrawCount;
+    // How far the screen shakes.
+    float shakeX;
+    float shakeY;
+    unsigned char unk_24[0x2014];
     IDirect3DSurface8 *surfaces[0x20];
-    unsigned char unk_20b8[0x414];
+    unsigned char unk_20b8[0x404];
+    // The render state last set.
+    IDirect3DTexture8 *currentTexture;
+    BYTE blendMode;
+    BYTE colorOp;
+    BYTE vertexFormat;
+    BYTE zWriteDisabled;
+    BYTE lastCameraSetupFlag;
+    unsigned char unk_24c5[0x3];
+    void *currentSpriteData;
     IDirect3DVertexBuffer8 *vertexBuffer;
     unsigned char unk_24d0[0x2a0080];
     int pendingCopySrcLeft;

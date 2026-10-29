@@ -19,3 +19,6 @@ ASSERT_SIZE(ConfigCopy, 0x3c);
 
 // The button mapping the key config's reset entry restores.
 extern ControllerMapping g_DefaultControllerMapping;
+
+// Sets up the title scene (0x47146d). Returns 0, or nonzero on failure.
+int SetUpTitleScene(int unk);

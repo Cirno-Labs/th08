@@ -14,11 +14,274 @@
 #include "ascii.h"
 #include "chain.h"
 #include "mainmenu.h"
+#include "ending.h"
 #include "midi.h"
+#include "musicscreen.h"
 #include "replay.h"
+#include "resultscreen.h"
 #include "screeneffect.h"
 #include "sprite.h"
 #include "unsorted.h"
+
+int App::OnUpdate(App *arg)
+{
+    if ((arg->stateFlags >> 7 & 1) && !arg->HasSubThread())
+    {
+        return 4;
+    }
+    g_SpriteEngine->ClearVertexFormat();
+    g_SpriteEngine->ClearSpriteData();
+    g_SpriteEngine->ClearTexture();
+    g_SpriteEngine->ClearColorOp();
+    g_SpriteEngine->ClearBlendMode();
+    g_SpriteEngine->ClearZWrite();
+    g_SpriteEngine->ClearUnk8();
+    g_SpriteEngine->ClearUnk2e4d4();
+    g_SpriteEngine->ResetUnk0();
+    g_SpriteEngine->shakeY = 0.0f;
+    g_SpriteEngine->shakeX = 0.0f;
+    g_SpriteEngine->StepSprites(g_LoadingSprites, 3);
+    if (g_SpriteEngine->StepAnmLoading() != 0)
+    {
+        return 4;
+    }
+    if (arg->unk_294 != 0)
+    {
+        if (arg->unk_294 == 2)
+        {
+            return 4;
+        }
+        if (arg->subThreadRunning == 0)
+        {
+            arg->unk_294 = 0;
+        }
+        else
+        {
+            return 1;
+        }
+    }
+    g_App.fogState = 0xff;
+    g_SoundPlayer.UpdateBgmFades();
+    if (g_GameManager.unk_2d == 0)
+    {
+        g_PrevButtons = g_Buttons;
+        g_Buttons = ReadButtons();
+        g_ButtonRepeat = 0;
+        if (g_PrevButtons == g_Buttons)
+        {
+            if (g_ButtonFrames >= 30)
+            {
+                if (g_ButtonFrames % 8 == 0)
+                {
+                    g_ButtonRepeat = 1;
+                }
+                if (g_ButtonFrames >= 38)
+                {
+                    g_ButtonFrames = 30;
+                }
+            }
+            g_ButtonFrames++;
+        }
+        else
+        {
+            g_ButtonFrames = 0;
+        }
+    }
+    else
+    {
+        g_Buttons |= ReadButtons();
+    }
+    if (arg->curScene != arg->scene)
+    {
+        arg->prevScene = arg->curScene;
+        DebugPrint2("scene %d -> %d\r\n", arg->curScene, arg->scene);
+        switch (arg->curScene)
+        {
+        case 0:
+        title:
+            arg->scene = 1;
+            g_App.d3dDevice->ResourceManagerDiscardBytes(0);
+            if (SetUpTitleScene(0) != 0)
+            {
+                return 4;
+            }
+            break;
+        case 1:
+            switch (arg->scene)
+            {
+            case -1:
+                return 4;
+            case 2:
+                if (RegisterGameManagerChain() != 0)
+                {
+                    return 4;
+                }
+                break;
+            case 4:
+                return 5;
+            case 5:
+                if (ResultScreen::RegisterChain(0) != 0)
+                {
+                    return 4;
+                }
+                break;
+            case 8:
+                if (MusicScreen::RegisterChain() != 0)
+                {
+                    return 4;
+                }
+                break;
+            case 9:
+                RemoveGameManagerChain();
+                if (Ending::RegisterChain() != 0)
+                {
+                    return 4;
+                }
+                break;
+            }
+            break;
+        case 5:
+            switch (arg->scene)
+            {
+            case -1:
+                return 4;
+            case 1:
+                arg->scene = 0;
+                goto title;
+            }
+            break;
+        case 2:
+            switch (arg->scene)
+            {
+            case -1:
+                return 4;
+            case 1:
+                RemoveGameManagerChain();
+                arg->scene = 0;
+                SaveReplay(NULL, NULL);
+                goto title;
+            case 6:
+                RemoveGameManagerChain();
+                if (ResultScreen::RegisterChain(1) != 0)
+                {
+                    return 4;
+                }
+                break;
+            case 10:
+                RemoveGameManagerChain();
+                if (!(g_GameManager.unk_3dbac & 1) && g_GameManager.difficulty < 4)
+                {
+                    g_GameManager.stage = 0;
+                }
+                SaveReplay(NULL, NULL);
+                if (RegisterGameManagerChain() != 0)
+                {
+                    return 4;
+                }
+                arg->scene = 2;
+                break;
+            case 11:
+                g_App.scene = 3;
+                g_App.unk_16c = 1;
+                RemoveGameManagerChain();
+                if (RegisterGameManagerChain() != 0)
+                {
+                    return 4;
+                }
+                arg->scene = 2;
+                break;
+            case 12:
+                g_App.scene = 3;
+                RemoveGameManagerChain();
+                g_GameManager.AdvanceStage();
+                if (RegisterGameManagerChain() != 0)
+                {
+                    return 4;
+                }
+                arg->scene = 2;
+                break;
+            case 3:
+                RemoveGameManagerChain();
+                if (RegisterGameManagerChain() != 0)
+                {
+                    return 4;
+                }
+                arg->scene = 2;
+                break;
+            case 7:
+                RemoveGameManagerChain();
+                arg->scene = 0;
+                SaveReplay(NULL, NULL);
+                arg->scene = 1;
+                g_App.d3dDevice->ResourceManagerDiscardBytes(0);
+                if (SetUpTitleScene(1) != 0)
+                {
+                    return 4;
+                }
+                break;
+            case 9:
+                RemoveGameManagerChain();
+                if (Ending::RegisterChain() != 0)
+                {
+                    return 4;
+                }
+                break;
+            }
+            break;
+        case 6:
+            switch (arg->scene)
+            {
+            case -1:
+                SaveReplay(NULL, NULL);
+                return 4;
+            case 1:
+                arg->scene = 0;
+                SaveReplay(NULL, NULL);
+                goto title;
+            }
+            break;
+        case 8:
+            switch (arg->scene)
+            {
+            case -1:
+                return 4;
+            case 1:
+                arg->scene = 0;
+                goto title;
+            }
+            break;
+        case 9:
+            switch (arg->scene)
+            {
+            case -1:
+                return 4;
+            case 1:
+                arg->scene = 0;
+                goto title;
+            case 6:
+                if (ResultScreen::RegisterChain(1) != 0)
+                {
+                    return 4;
+                }
+            }
+        }
+        g_Buttons = g_PrevButtons = g_ButtonRepeat = 0;
+    }
+    arg->curScene = arg->scene;
+    arg->frames++;
+    if (arg->frames % 4000 == 3999)
+    {
+        if (g_App.CheckVersionFile("0100d", g_App.exeSize, g_App.exeChecksum) != 0)
+        {
+            return 4;
+        }
+    }
+    if (g_Unknown18b8a2c != 0)
+    {
+        g_Unknown18b8a2c--;
+    }
+    return 1;
+}
 
 App::App()
 {
