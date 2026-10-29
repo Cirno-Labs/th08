@@ -122,3 +122,13 @@ void GameManager::SubSubRank(int amount)
         this->rank = this->minRank;
     }
 }
+
+int GameManager::HasExtraOpen(int shot)
+{
+    return shot > 3 || this->clrds[shot].stagesClearedNoContinue[0] & 0x4000 ||
+                   this->clrds[shot].stagesClearedNoContinue[1] & 0x4000 ||
+                   this->clrds[shot].stagesClearedNoContinue[2] & 0x4000 ||
+                   this->clrds[shot].stagesClearedNoContinue[3] & 0x4000
+               ? TRUE
+               : FALSE;
+}
