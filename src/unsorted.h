@@ -2112,6 +2112,9 @@ public:
     // Loads stage `stage` and adds its chain elements, as th07's
     // (0x409b20). Returns 0, or -1 on failure.
     static int RegisterChain(int stage);
+    // Sets tintColor to `color`, or to the average of the two while its
+    // alpha byte is set, as th07's.
+    void SetTintColor(D3DCOLOR color);
 
     // One Sprite per object sprite in the data.
     Sprite *sprites;

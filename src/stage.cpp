@@ -81,3 +81,21 @@ float HermiteInterpolate(float p0, float p1, float m0, float m1, float t)
     f11 = (t - 1.0f) * t * t;
     return f00 * p0 + f01 * p1 + f10 * m0 + f11 * m1;
 }
+
+void Stage::SetTintColor(D3DCOLOR color)
+{
+    ColorBytes c;
+
+    if (this->tintColor.a == 0)
+    {
+        this->tintColor.color = color;
+    }
+    else
+    {
+        c.color = color;
+        this->tintColor.r = (DWORD)(c.r + this->tintColor.r) >> 1;
+        this->tintColor.g = (DWORD)(c.g + this->tintColor.g) >> 1;
+        this->tintColor.b = (DWORD)(c.b + this->tintColor.b) >> 1;
+        this->tintColor.a = (DWORD)(c.a + this->tintColor.a) >> 1;
+    }
+}

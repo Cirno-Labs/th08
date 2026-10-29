@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">62.19% (694)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">36.02% (402)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">62.28% (695)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">35.93% (401)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="464.53" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="464.53" y="0" class="decompiled"/>
-<rect width="269.08" height="6" x="477.92" y="0" class="todo"/>
+<rect width="465.20" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="465.20" y="0" class="decompiled"/>
+<rect width="268.41" height="6" x="478.59" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -162,7 +162,7 @@
 <rect width="12" height="12" x="615" y="15" class="named"><title>0x00409080 D3DXVECTOR3::operator+ (70 bytes)</title></rect>
 <rect width="12" height="12" x="630" y="15" class="named"><title>0x004090d0 D3DXVECTOR3::operator- (70 bytes)</title></rect>
 <rect width="12" height="12" x="645" y="15" class="named"><title>0x00409120 D3DXVECTOR3::operator* (62 bytes)</title></rect>
-<rect width="12" height="12" x="660" y="15" class="todo"><title>0x00409160 Func409160 (157 bytes)</title></rect>
+<rect width="12" height="12" x="660" y="15" class="named"><title>0x00409160 Stage::SetTintColor (157 bytes)</title></rect>
 <rect width="12" height="12" x="675" y="15" class="todo"><title>0x00409200 Func409200 (1087 bytes)</title></rect>
 <rect width="12" height="12" x="690" y="15" class="todo"><title>0x00409640 Func409640 (528 bytes)</title></rect>
 <rect width="12" height="12" x="705" y="15" class="todo"><title>0x00409850 Func409850 (706 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">54.32%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">44.69%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">54.35%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">44.66%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="405.74" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="405.74" y="0" class="decompiled"/>
-<rect width="333.86" height="6" x="413.14" y="0" class="todo"/>
+<rect width="405.99" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="405.99" y="0" class="decompiled"/>
+<rect width="333.60" height="6" x="413.40" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1696,7 +1696,7 @@
 <rect width="6.85" height="6.16" x="590.98" y="311.59" class="named"><title>0x0045a500 InsertScore (159 bytes)</title></rect>
 <rect width="6.85" height="6.10" x="590.98" y="320.75" class="named"><title>0x00427b50 EffectUpdateRingAt (158 bytes)</title></rect>
 <rect width="6.85" height="6.10" x="590.98" y="329.85" class="named"><title>0x00439b29 GameManager::AddLifeOrBomb (158 bytes)</title></rect>
-<rect width="6.85" height="6.05" x="590.98" y="338.95" class="todo"><title>0x00409160 Func409160 (157 bytes)</title></rect>
+<rect width="6.85" height="6.05" x="590.98" y="338.95" class="named"><title>0x00409160 Stage::SetTintColor (157 bytes)</title></rect>
 <rect width="6.62" height="6.26" x="600.82" y="198.78" class="todo"><title>0x00418050 Func418050 (157 bytes)</title></rect>
 <rect width="6.50" height="6.26" x="610.44" y="198.78" class="named"><title>0x0045b760 ScreenEffect::OnUpdateFadeOut (155 bytes)</title></rect>
 <rect width="6.43" height="6.26" x="619.94" y="198.78" class="todo"><title>0x00406e50 GameManager::RerollChecksumKeys (154 bytes)</title></rect>
