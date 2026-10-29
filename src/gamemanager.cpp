@@ -82,3 +82,15 @@ void IncrementStatCounter(DWORD *count, DWORD max)
         (*count)++;
     }
 }
+
+void RemoveGameManagerChain()
+{
+    g_Chain.Remove(&g_GameManagerCalcChain);
+    g_Chain.Remove(&g_GameManagerDrawChain);
+    if (g_GameManager.stats->score >= 1000000000)
+    {
+        g_GameManager.stats->score = 999999999;
+    }
+    g_GameManager.stats->guiScore = g_GameManager.stats->score;
+    g_App.gameSpeed = 1.0f;
+}
