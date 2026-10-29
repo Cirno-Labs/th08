@@ -692,7 +692,7 @@ address,size,name,symbol
 0x00445b7a,70,App::App,??0App@@QAE@XZ
 0x00445bc0,20,App::OnDraw,?OnDraw@App@@SIHPAV1@@Z
 0x00445bd4,362,App::OnDrawLogo,?OnDrawLogo@App@@SIHPAV1@@Z
-0x00445d3e,255,Func445d3e,
+0x00445d3e,255,App::OnDrawLoading,?OnDrawLoading@App@@SIHPAV1@@Z
 0x00445e3d,106,Func445e3d,
 0x00445ea7,252,Func445ea7,
 0x00445fa3,509,Func445fa3,
@@ -959,7 +959,7 @@ address,size,name,symbol
 0x00462f10,211,Func462f10,
 0x00462ff0,469,Func462ff0,
 0x004631d0,58,Func4631d0,
-0x00463210,600,Func463210,
+0x00463210,600,SpriteEngine::Draw,?Draw@SpriteEngine@@QAEHPAVSprite@@@Z
 0x00463470,912,Func463470,
 0x00463800,469,Func463800,
 0x004639e0,771,Func4639e0,
@@ -2411,6 +2411,7 @@ address,size,name,symbol
 0x017ce700,,g_GameWindow,?g_GameWindow@@3UGameWindow@@A
 0x017ce744,,g_Unknown17ce744,?g_Unknown17ce744@@3T_LARGE_INTEGER@@A
 0x017ce758,,g_App,?g_App@@3VApp@@A
+0x017ceac0,,g_LoadingSprites,?g_LoadingSprites@@3PAVSprite@@A
 0x018b8a68,,g_SoundPlayer,?g_SoundPlayer@@3VSoundPlayer@@A
 0x018bdc90,,g_SpriteEngine,?g_SpriteEngine@@3PAVSpriteEngine@@A
 0x018bdf58,,g_LzssTree,?g_LzssTree@@3PAULzssNode@@A

@@ -74,6 +74,9 @@ public:
     // shows the logo in surface 8 while logoFrames is nonzero, or
     // releases it. Returns 1.
     static int OnDrawLogo(App *arg);
+    // The third draw chain callback, new in th08: draws
+    // g_LoadingSprites, each moved by its posOffset. Returns 1.
+    static int OnDrawLoading(App *arg);
     // Whether holding shoot also focuses (shootFocuses). th07 read the
     // field directly; th08 calls this out-of-line copy.
     int GetShootFocuses();
@@ -146,7 +149,11 @@ public:
     // Bit 0x40 is set by CheckSingleInstance when the startup info has
     // no title, cleared when it has one.
     DWORD unk_1a4;
-    unsigned char unk_1a8[0xf0];
+    unsigned char unk_1a8[0xe8];
+    // OnUpdate returns early while unk_294 is set and unk_290 is.
+    int unk_290;
+    // OnUpdate quits when it is 2.
+    int unk_294;
     // Locked by EnterCriticalSection: 2 around file access, 3 around the
     // log.
     CRITICAL_SECTION criticalSections[4];

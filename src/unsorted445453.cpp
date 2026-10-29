@@ -65,3 +65,20 @@ int App::OnDrawLogo(App *arg)
     }
     return 1;
 }
+
+int App::OnDrawLoading(App *arg)
+{
+    DWORD i;
+
+    for (i = 0; i < 3; i++)
+    {
+        g_LoadingSprites[i].pos += g_LoadingSprites[i].posOffset;
+        g_SpriteEngine->Draw(&g_LoadingSprites[i]);
+        g_LoadingSprites[i].pos -= g_LoadingSprites[i].posOffset;
+    }
+    if (arg->unk_294 != 0)
+    {
+        return 1;
+    }
+    return 1;
+}
