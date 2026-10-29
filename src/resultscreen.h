@@ -124,7 +124,15 @@ struct Clrd
     WORD size;
     WORD size2;
     BYTE version;
-    unsigned char unk_9[0x1b];
+    BYTE unk_09[0x3];
+    // By difficulty, as th07's (WORDs now, 5 difficulties): the stages
+    // cleared, without continues and with.
+    WORD stagesClearedNoContinue[5];
+    WORD stagesCleared[5];
+    BYTE unk_20;
+    // The shot type.
+    BYTE shot;
+    BYTE unk_22[0x2];
 };
 ASSERT_SIZE(Clrd, 0x24);
 
@@ -201,7 +209,7 @@ ScoreDat *LoadScoreDat(char *path);
 // th07's: LoadClears and LoadPracticeScores first fill theirs with fresh
 // chunks. Return 0, or -1 if the destination is NULL; LoadFlspChunk
 // returns 1 if it found its chunk, else 0.
-int LoadClears(ScoreDat *scoreDat, Clrd *clrds);
+int LoadClears(void *scoreDat, Clrd *clrds);
 int LoadSpellCards(void *scoreDat, Catk *catks);
 int LoadFlspChunk(void *scoreDat, Flsp *flsp);
 // Copies the score file's version 1 "LSNM" chunk to `lsnm`. Returns 1,

@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">32.97% (368)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">67.03% (748)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">33.06% (369)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">66.94% (747)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="246.32" height="6" x="0" y="0" class="named"/>
-<rect width="500.68" height="6" x="246.32" y="0" class="todo"/>
+<rect width="246.99" height="6" x="0" y="0" class="named"/>
+<rect width="500.01" height="6" x="246.99" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -955,7 +955,7 @@
 <rect width="12" height="12" x="525" y="255" class="named"><title>0x0045aac0 LoadSpellCards (175 bytes)</title></rect>
 <rect width="12" height="12" x="540" y="255" class="named"><title>0x0045ab70 LoadLsnmChunk (136 bytes)</title></rect>
 <rect width="12" height="12" x="555" y="255" class="named"><title>0x0045ac00 LoadFlspChunk (136 bytes)</title></rect>
-<rect width="12" height="12" x="570" y="255" class="todo"><title>0x0045ac90 LoadClears (368 bytes)</title></rect>
+<rect width="12" height="12" x="570" y="255" class="named"><title>0x0045ac90 LoadClears (368 bytes)</title></rect>
 <rect width="12" height="12" x="585" y="255" class="todo"><title>0x0045ae00 LoadPracticeScores (295 bytes)</title></rect>
 <rect width="12" height="12" x="600" y="255" class="todo"><title>0x0045af30 LoadPlstChunk (129 bytes)</title></rect>
 <rect width="12" height="12" x="615" y="255" class="todo"><title>0x0045afc0 ReleaseScoreDat (53 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">23.91%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">76.09%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">23.99%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">76.01%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="178.59" height="6" x="0" y="0" class="named"/>
-<rect width="568.41" height="6" x="178.59" y="0" class="todo"/>
+<rect width="179.19" height="6" x="0" y="0" class="named"/>
+<rect width="567.81" height="6" x="179.19" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1468,7 +1468,7 @@
 <rect width="11.67" height="11.39" x="504.31" y="233.96" class="todo"><title>0x00402600 Func402600 (372 bytes)</title></rect>
 <rect width="11.67" height="11.39" x="504.31" y="248.34" class="todo"><title>0x00450ad0 Func450ad0 (372 bytes)</title></rect>
 <rect width="11.67" height="11.39" x="504.31" y="262.73" class="todo"><title>0x00452310 Func452310 (372 bytes)</title></rect>
-<rect width="11.67" height="11.23" x="504.31" y="277.12" class="todo"><title>0x0045ac90 LoadClears (368 bytes)</title></rect>
+<rect width="11.67" height="11.23" x="504.31" y="277.12" class="named"><title>0x0045ac90 LoadClears (368 bytes)</title></rect>
 <rect width="11.67" height="11.19" x="504.31" y="291.35" class="todo"><title>0x0042c420 Func42c420 (367 bytes)</title></rect>
 <rect width="11.67" height="11.19" x="504.31" y="305.54" class="named"><title>0x00464c60 SpriteEngine::DrawVertexStrip (367 bytes)</title></rect>
 <rect width="11.67" height="11.15" x="504.31" y="319.73" class="named"><title>0x00466650 SpriteEngine::RenderTextCentered (366 bytes)</title></rect>
