@@ -398,6 +398,15 @@ int App::DeletedCallback(App *arg)
     return 0;
 }
 
+void SpriteEngine::ReleaseVertexBuffer()
+{
+    if (this->vertexBuffer != NULL)
+    {
+        this->vertexBuffer->Release();
+        this->vertexBuffer = NULL;
+    }
+}
+
 inline void FreeData(void *data)
 {
     free(data);

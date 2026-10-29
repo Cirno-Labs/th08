@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">19.53% (218)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">80.47% (898)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">19.62% (219)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">80.38% (897)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="145.92" height="6" x="0" y="0" class="named"/>
-<rect width="601.08" height="6" x="145.92" y="0" class="todo"/>
+<rect width="146.59" height="6" x="0" y="0" class="named"/>
+<rect width="600.41" height="6" x="146.59" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -770,7 +770,7 @@
 <rect width="12" height="12" x="0" y="210" class="named"><title>0x00446a37 InitDirectInput (656 bytes)</title></rect>
 <rect width="12" height="12" x="15" y="210" class="named"><title>0x00446cc7 EnumJoysticksCallback (63 bytes)</title></rect>
 <rect width="12" height="12" x="30" y="210" class="named"><title>0x00446d06 App::DeletedCallback (517 bytes)</title></rect>
-<rect width="12" height="12" x="45" y="210" class="todo"><title>0x00446f0b SpriteEngine::ReleaseVertexBuffer (55 bytes)</title></rect>
+<rect width="12" height="12" x="45" y="210" class="named"><title>0x00446f0b SpriteEngine::ReleaseVertexBuffer (55 bytes)</title></rect>
 <rect width="12" height="12" x="60" y="210" class="todo"><title>0x00446f42 Func446f42 (17 bytes)</title></rect>
 <rect width="12" height="12" x="75" y="210" class="todo"><title>0x00446f53 DrawFps (834 bytes)</title></rect>
 <rect width="12" height="12" x="90" y="210" class="todo"><title>0x00447295 Func447295 (198 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">10.14%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">89.86%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">10.15%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">89.85%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="75.74" height="6" x="0" y="0" class="named"/>
-<rect width="671.26" height="6" x="75.74" y="0" class="todo"/>
+<rect width="75.83" height="6" x="0" y="0" class="named"/>
+<rect width="671.17" height="6" x="75.83" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1997,7 +1997,7 @@
 <rect width="2.47" height="2.81" x="701.87" y="272.19" class="named"><title>0x004731f0 CWaveFile::CWaveFile (56 bytes)</title></rect>
 <rect width="2.37" height="2.81" x="707.34" y="272.19" class="todo"><title>0x00406b70 Func406b70 (55 bytes)</title></rect>
 <rect width="2.37" height="2.81" x="712.71" y="272.19" class="todo"><title>0x00432170 Func432170 (55 bytes)</title></rect>
-<rect width="2.37" height="2.81" x="718.08" y="272.19" class="todo"><title>0x00446f0b SpriteEngine::ReleaseVertexBuffer (55 bytes)</title></rect>
+<rect width="2.37" height="2.81" x="718.08" y="272.19" class="named"><title>0x00446f0b SpriteEngine::ReleaseVertexBuffer (55 bytes)</title></rect>
 <rect width="2.37" height="2.81" x="723.45" y="272.19" class="todo"><title>0x00456938 Func456938 (55 bytes)</title></rect>
 <rect width="2.37" height="2.81" x="728.81" y="272.19" class="todo"><title>0x0045e3f0 CStreamingSound::FadeOut (55 bytes)</title></rect>
 <rect width="2.27" height="2.81" x="734.18" y="272.19" class="todo"><title>0x0040b540 Func40b540 (54 bytes)</title></rect>
