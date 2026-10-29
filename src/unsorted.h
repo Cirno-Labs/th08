@@ -131,6 +131,18 @@ public:
     // game runs slow. Returns -1 if the music mode is neither wave nor
     // MIDI, otherwise 0.
     int FadeOutMusic(float seconds);
+    // Whether g_GameManager.unk_4 is set and its scoreDisabled is not 0.
+    // The result screen records no score then.
+    int IsScoreDisabled();
+    // Flushes the sprites and turns fog on unless fogState is 1 already;
+    // returns 0 when it was.
+    int EnableFog();
+    // Flushes the sprites and turns fog off if fogState is set; returns
+    // 0 when it was not.
+    int DisableFog();
+    // Flushes the sprites and sets render state `state` to `value`.
+    // Returns what SetRenderState returned.
+    int SetRenderState(D3DRENDERSTATETYPE state, DWORD value);
     void TickTimer(int *frames, float *subFrame);
     // Saves the back buffer as a 24-bit 640x480 bitmap at `path`, from an
     // X8R8G8B8 back buffer only (a 16-bit one is logged and skipped).
@@ -830,10 +842,15 @@ public:
 ASSERT_SIZE(SoundPlayer, 0x5224);
 extern SoundPlayer g_SoundPlayer;
 
-// What th07's GameManager points to at +0x8 and +0x4. Their layouts are
-// not known yet.
+// What th07's GameManager points to at +0x8 and +0x4. Only the fields
+// known so far.
 struct GameManagerStats;
-struct GameManagerUnk4;
+struct GameManagerUnk4
+{
+    unsigned char unk_0[0x25];
+    // App::IsScoreDisabled tests it.
+    BYTE scoreDisabled;
+};
 
 // th07's GameManager (g_Unknown626270 there), at 0x160f508. Only the
 // fields known so far.

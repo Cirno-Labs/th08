@@ -37,6 +37,8 @@ public:
     void ReleaseAnm(int slot);
     // Releases the vertex buffer (0x446f0b, in App's object).
     void ReleaseVertexBuffer();
+    // Draws the batched quads (0x462e40).
+    void FlushQuadBatch();
 
     IDirect3DSurface8 *GetSurface(int surface)
     {

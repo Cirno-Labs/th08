@@ -1047,6 +1047,11 @@ int App::FadeOutMusic(float seconds)
     return 0;
 }
 
+int App::IsScoreDisabled()
+{
+    return g_GameManager.unk_4 != NULL && g_GameManager.unk_4->scoreDisabled != 0;
+}
+
 inline void FreeData(void *data)
 {
     free(data);

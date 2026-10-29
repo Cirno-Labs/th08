@@ -717,10 +717,10 @@ address,size,name,symbol
 0x00447f21,352,App::PlayMusic,?PlayMusic@App@@QAEHPADH@Z
 0x00448081,119,App::StopMusic,?StopMusic@App@@QAEHXZ
 0x004480f8,183,App::FadeOutMusic,?FadeOutMusic@App@@QAEHM@Z
-0x004481af,48,Func4481af,
-0x004481df,74,Func4481df,
-0x00448229,71,Func448229,
-0x00448270,49,Func448270,
+0x004481af,48,App::IsScoreDisabled,?IsScoreDisabled@App@@QAEHXZ
+0x004481df,74,App::EnableFog,?EnableFog@App@@QAEHXZ
+0x00448229,71,App::DisableFog,?DisableFog@App@@QAEHXZ
+0x00448270,49,App::SetRenderState,?SetRenderState@App@@QAEHW4_D3DRENDERSTATETYPE@@K@Z
 0x004482a1,375,Func4482a1,
 0x00448418,373,Func448418,
 0x0044858d,301,Func44858d,
@@ -955,7 +955,7 @@ address,size,name,symbol
 0x00462790,278,Func462790,
 0x004628b0,1359,Func4628b0,
 0x00462e00,60,Func462e00,
-0x00462e40,198,Func462e40,
+0x00462e40,198,SpriteEngine::FlushQuadBatch,?FlushQuadBatch@SpriteEngine@@QAEXXZ
 0x00462f10,211,Func462f10,
 0x00462ff0,469,Func462ff0,
 0x004631d0,58,Func4631d0,
