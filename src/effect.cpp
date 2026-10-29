@@ -1123,3 +1123,17 @@ void EffectManager::RemoveChain()
     g_Chain.Remove(&g_EffectCalcChain);
     g_Chain.Remove(&g_EffectDrawChain);
 }
+
+void Vector2::SetPolar(float angle, float radius)
+{
+    __asm
+    {
+        mov eax, this
+        fld angle
+        fsincos
+        fmul radius
+        fstp [eax]
+        fmul radius
+        fstp [eax+4]
+    }
+}
