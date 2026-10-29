@@ -235,3 +235,44 @@ bool GdiSurface::IsCreated()
 {
     return this->bitmap != NULL;
 }
+
+bool GdiSurface::CopyToSurface(IDirect3DSurface8 *surface)
+{
+    BYTE *dst;
+    int lineSize;
+    RECT region;
+    int row;
+    int srcPitch;
+    D3DSURFACE_DESC surfaceDesc;
+    BYTE *src;
+    D3DLOCKED_RECT lockedSurface;
+
+    if (!this->IsCreated())
+    {
+        return false;
+    }
+    surface->GetDesc(&surfaceDesc);
+    region.left = 0;
+    region.top = 0;
+    region.right = this->GetWidth();
+    region.bottom = this->GetHeight();
+    if (surface->LockRect(&lockedSurface, &region, 0) != D3D_OK)
+    {
+        return false;
+    }
+    lineSize = lockedSurface.Pitch;
+    srcPitch = this->GetWidthBytes();
+    src = (BYTE *)this->GetBits();
+    dst = (BYTE *)lockedSurface.pBits;
+    if (surfaceDesc.Format == this->GetFormat())
+    {
+        for (row = 0; row < this->GetHeight(); row++)
+        {
+            memcpy(dst, src, srcPitch);
+            src += srcPitch;
+            dst += lineSize;
+        }
+    }
+    surface->UnlockRect();
+    return true;
+}

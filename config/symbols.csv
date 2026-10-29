@@ -606,7 +606,7 @@ address,size,name,symbol
 0x0043f864,15,GdiSurface::GetWidth,?GetWidth@GdiSurface@@QAEHXZ
 0x0043f873,14,GdiSurface::GetFormat,?GetFormat@GdiSurface@@QAEHXZ
 0x0043f881,23,GdiSurface::IsCreated,?IsCreated@GdiSurface@@QAE_NXZ
-0x0043f898,232,Func43f898,
+0x0043f898,232,GdiSurface::CopyToSurface,?CopyToSurface@GdiSurface@@QAE_NPAUIDirect3DSurface8@@@Z
 0x0043f980,35,Func43f980,
 0x0043f9a3,37,Func43f9a3,
 0x0043f9c8,801,Func43f9c8,
@@ -1746,7 +1746,7 @@ address,size,name,symbol
 0x004a48b0,45,_strrchr,_strrchr
 0x004a48e0,61,__chkstk,__chkstk
 0x004a4920,96,_memset,_memset
-0x004a4980,672,_memcpy,
+0x004a4980,672,_memcpy,_memcpy
 0x004a4cc0,139,_strlen,
 0x004a4d50,672,_memmove,
 0x004a508d,44,Func4a508d,
