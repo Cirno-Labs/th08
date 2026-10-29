@@ -854,6 +854,75 @@ int SpriteEngine::DrawProjected3D(Sprite *vm)
     return this->DrawQuad(vm, 0);
 }
 
+int SpriteEngine::ProjectSpriteWithCallback(Sprite *vm, void (*callback)(Sprite *vm, D3DXVECTOR3 *pos))
+{
+    float c;
+    float angle;
+    float s;
+    float x;
+    float y;
+    float h;
+    float w;
+
+    angle = vm->rotationZ;
+    __asm
+    {
+        fld angle
+        fsincos
+        fstp c
+        fstp s
+    }
+    D3DXMATRIX world;
+    D3DXVECTOR3 origin;
+    D3DXVECTOR3 edge;
+    D3DXVECTOR3 d;
+    D3DXVECTOR3 o(0.0f, 0.0f, 0.0f);
+
+    // origin is o, the sprite's position, projected to the screen.
+    D3DXMatrixIdentity(&world);
+    world._41 = vm->pos[0];
+    world._42 = vm->pos[1];
+    world._43 = vm->pos[2];
+    D3DXVec3Project(&origin, &o, &g_App.viewport, (D3DXMATRIX *)&g_App.projectionMatrix,
+                    (D3DXMATRIX *)&g_App.viewMatrix, &world);
+    if (origin.z < 0.0f || origin.z > 1.0f)
+    {
+        return -1;
+    }
+    D3DXVec3Project(&edge, &g_CameraSizeOffset, &g_App.viewport, (D3DXMATRIX *)&g_App.projectionMatrix,
+                    (D3DXMATRIX *)&g_App.viewMatrix, &world);
+    d = edge - origin;
+    x = D3DXVec3Length(&d) * 0.5f;
+    w = x * vm->spriteWidth * vm->scaleY;
+    h = x * vm->spriteHeight * vm->scaleX;
+    if (callback != NULL)
+    {
+        callback(vm, &origin);
+    }
+    x = origin.x;
+    y = origin.y;
+    this->RotatePoint((float *)&g_DiffuseQuad[0].pos, -w, -h, s, c, x, y);
+    this->RotatePoint((float *)&g_DiffuseQuad[1].pos, w, -h, s, c, x, y);
+    this->RotatePoint((float *)&g_DiffuseQuad[2].pos, -w, h, s, c, x, y);
+    this->RotatePoint((float *)&g_DiffuseQuad[3].pos, w, h, s, c, x, y);
+    g_DiffuseQuad[0].pos.z = g_DiffuseQuad[1].pos.z = g_DiffuseQuad[2].pos.z = g_DiffuseQuad[3].pos.z = origin.z;
+    if ((vm->flags >> 11 & 3) & 1)
+    {
+        g_DiffuseQuad[0].pos.x += w;
+        g_DiffuseQuad[1].pos.x += w;
+        g_DiffuseQuad[2].pos.x += w;
+        g_DiffuseQuad[3].pos.x += w;
+    }
+    if ((vm->flags >> 11 & 3) & 2)
+    {
+        g_DiffuseQuad[0].pos.y += h;
+        g_DiffuseQuad[1].pos.y += h;
+        g_DiffuseQuad[2].pos.y += h;
+        g_DiffuseQuad[3].pos.y += h;
+    }
+    return 0;
+}
+
 SpriteEngine::SpriteEngine()
 {
     memset(this, 0, sizeof(*this));

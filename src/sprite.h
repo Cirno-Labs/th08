@@ -407,6 +407,12 @@ public:
     // rotations while flag 3 or 2 is set and flag 16 is not.
     void ProjectSprite3D(Sprite *vm);
     int DrawProjected3D(Sprite *vm);
+    // ProjectSprite, calling `callback` with `vm` and its projected
+    // position, if not NULL, before the quad is placed there: it can
+    // move it. New in th08.
+    int ProjectSpriteWithCallback(Sprite *vm, void (*callback)(Sprite *vm, D3DXVECTOR3 *pos));
+    // DrawProjected with ProjectSpriteWithCallback. New in th08.
+    int DrawProjectedWithCallback(Sprite *vm, void (*callback)(Sprite *vm, D3DXVECTOR3 *pos));
     // Draws `vm` with the draw function its drawMode picks: 0
     // DrawUnrotated, 1 DrawNoRound, 2 Draw, 3 DrawRotatedNoRound, 4
     // DrawProjected, 5 DrawProjected3D. New in th08.
