@@ -117,3 +117,15 @@ fail:
     }
     return NULL;
 }
+
+DWORD DatArchive::GetEntrySize(char *name)
+{
+    DatArchiveEntry *entry;
+
+    entry = this->FindEntry(name);
+    if (entry != NULL)
+    {
+        return entry->size;
+    }
+    return 0;
+}
