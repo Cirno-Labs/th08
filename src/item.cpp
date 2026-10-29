@@ -287,7 +287,7 @@ void ItemManager::UpdateItems()
                 g_Gui.powerChanged = 2;
                 break;
             case 6:
-                if (!g_Player.unk_e2a7c)
+                if (!g_Player.bombJustStarted)
                 {
                     amount = g_GameManager.stats->grazeTotal / 40 * 10 + 300;
                     if (amount <= 0)
@@ -514,7 +514,7 @@ void Item::CollectTimeOrb()
 {
     int amount;
 
-    if (g_Player.unk_e2a7c == 0)
+    if (g_Player.bombJustStarted == 0)
     {
         if (g_GameManager.stats->unk_2c >= 2000)
         {
