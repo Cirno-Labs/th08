@@ -58,6 +58,8 @@ public:
     // 5 to stop with 1, 0 or -1, and 6 to start over. Returns how many
     // ran. Holds critical section 0 except while a callback runs.
     int RunCalcChain();
+    // Like RunCalcChain for the draw chain, without starting over.
+    int RunDrawChain();
     // Like Remove, for a caller that holds critical section 0. Leaves it
     // while the element is deleted or its deleted callback runs. New in
     // th08.

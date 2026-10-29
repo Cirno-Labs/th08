@@ -557,7 +557,7 @@ address,size,name,symbol
 0x0043c880,224,Chain::AddToCalcChain,?AddToCalcChain@Chain@@QAEHPAUChainElem@@H@Z
 0x0043c960,227,Chain::AddToDrawChain,?AddToDrawChain@Chain@@QAEHPAUChainElem@@H@Z
 0x0043ca50,232,Chain::RunCalcChain,?RunCalcChain@Chain@@QAEHXZ
-0x0043cb60,230,Func43cb60,
+0x0043cb60,230,Chain::RunDrawChain,?RunDrawChain@Chain@@QAEHXZ
 0x0043cc60,408,Func43cc60,
 0x0043ce00,46,Func43ce00,
 0x0043ce30,48,Func43ce30,
