@@ -41,3 +41,39 @@ HRESULT CSoundManager::Initialize(HWND hWnd, DWORD dwCoopLevel, DWORD dwPrimaryC
 
     return S_OK;
 }
+
+HRESULT CSoundManager::SetPrimaryBufferFormat(DWORD dwPrimaryChannels, DWORD dwPrimaryFreq, DWORD dwPrimaryBitRate)
+{
+    HRESULT hr;
+    LPDIRECTSOUNDBUFFER pDSBPrimary = NULL;
+
+    if (m_pDS == NULL)
+        return CO_E_NOTINITIALIZED;
+
+    // Get the primary buffer
+    DSBUFFERDESC dsbd;
+    ZeroMemory(&dsbd, sizeof(DSBUFFERDESC));
+    dsbd.dwSize = sizeof(DSBUFFERDESC);
+    dsbd.dwFlags = DSBCAPS_PRIMARYBUFFER;
+    dsbd.dwBufferBytes = 0;
+    dsbd.lpwfxFormat = NULL;
+
+    if (FAILED(hr = m_pDS->CreateSoundBuffer(&dsbd, &pDSBPrimary, NULL)))
+        return DXTRACE_ERR(TEXT("CreateSoundBuffer"), hr);
+
+    WAVEFORMATEX wfx;
+    ZeroMemory(&wfx, sizeof(WAVEFORMATEX));
+    wfx.wFormatTag = WAVE_FORMAT_PCM;
+    wfx.nChannels = (WORD)dwPrimaryChannels;
+    wfx.nSamplesPerSec = dwPrimaryFreq;
+    wfx.wBitsPerSample = (WORD)dwPrimaryBitRate;
+    wfx.nBlockAlign = wfx.wBitsPerSample / 8 * wfx.nChannels;
+    wfx.nAvgBytesPerSec = wfx.nSamplesPerSec * wfx.nBlockAlign;
+
+    if (FAILED(hr = pDSBPrimary->SetFormat(&wfx)))
+        return DXTRACE_ERR(TEXT("SetFormat"), hr);
+
+    SAFE_RELEASE(pDSBPrimary);
+
+    return S_OK;
+}
