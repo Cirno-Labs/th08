@@ -966,6 +966,14 @@ void PauseMenu::DrawPauseMenu()
     }
 }
 
+void IncrementCounterCapped(DWORD *count, DWORD max)
+{
+    if (*count < max)
+    {
+        *count = *count + 1;
+    }
+}
+
 void ContinueMenu::DrawContinueMenu()
 {
     int i;

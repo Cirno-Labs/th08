@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">49.55% (553)</tspan> · <tspan class="decompiled">1.52% (17)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">48.92% (546)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">49.64% (554)</tspan> · <tspan class="decompiled">1.52% (17)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">48.84% (545)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="370.15" height="6" x="0" y="0" class="named"/>
-<rect width="11.38" height="6" x="370.15" y="0" class="decompiled"/>
-<rect width="365.47" height="6" x="381.53" y="0" class="todo"/>
+<rect width="370.82" height="6" x="0" y="0" class="named"/>
+<rect width="11.38" height="6" x="370.82" y="0" class="decompiled"/>
+<rect width="364.80" height="6" x="382.20" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -96,7 +96,7 @@
 <rect width="12" height="12" x="375" y="0" class="named"><title>0x00404750 PauseMenu::DrawPauseMenu (309 bytes)</title></rect>
 <rect width="12" height="12" x="390" y="0" class="todo"><title>0x00404890 ContinueMenu::UpdateContinueMenu (2482 bytes)</title></rect>
 <rect width="12" height="12" x="405" y="0" class="todo"><title>0x00405260 Func405260 (22 bytes)</title></rect>
-<rect width="12" height="12" x="420" y="0" class="todo"><title>0x00405280 Func405280 (39 bytes)</title></rect>
+<rect width="12" height="12" x="420" y="0" class="named"><title>0x00405280 IncrementCounterCapped (39 bytes)</title></rect>
 <rect width="12" height="12" x="435" y="0" class="named"><title>0x004052b0 ContinueMenu::DrawContinueMenu (364 bytes)</title></rect>
 <rect width="12" height="12" x="450" y="0" class="todo"><title>0x00405420 AsciiText::DrawPopups (2538 bytes)</title></rect>
 <rect width="12" height="12" x="465" y="0" class="todo"><title>0x00405e10 Func405e10 (1803 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">41.50%</tspan> · <tspan class="decompiled">0.56%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">57.94%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">41.51%</tspan> · <tspan class="decompiled">0.56%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">57.93%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="310.01" height="6" x="0" y="0" class="named"/>
-<rect width="4.22" height="6" x="310.01" y="0" class="decompiled"/>
-<rect width="432.78" height="6" x="314.22" y="0" class="todo"/>
+<rect width="310.07" height="6" x="0" y="0" class="named"/>
+<rect width="4.22" height="6" x="310.07" y="0" class="decompiled"/>
+<rect width="432.71" height="6" x="314.29" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -2082,7 +2082,7 @@
 <rect width="1.91" height="1.62" x="740.17" y="288.26" class="named"><title>0x004444e0 SwapBytes32 (40 bytes)</title></rect>
 <rect width="1.91" height="1.62" x="745.09" y="288.26" class="named"><title>0x00475270 DatArchiveEntry::~DatArchiveEntry (40 bytes)</title></rect>
 <rect width="1.80" height="1.61" x="690.29" y="292.88" class="named"><title>0x004028c0 AsciiText::DeletedCallback (39 bytes)</title></rect>
-<rect width="1.80" height="1.61" x="690.29" y="297.49" class="todo"><title>0x00405280 Func405280 (39 bytes)</title></rect>
+<rect width="1.80" height="1.61" x="690.29" y="297.49" class="named"><title>0x00405280 IncrementCounterCapped (39 bytes)</title></rect>
 <rect width="1.80" height="1.61" x="690.29" y="302.10" class="named"><title>0x00406850 `vector_constructor_iterator&#x27; (39 bytes)</title></rect>
 <rect width="1.80" height="1.61" x="690.29" y="306.72" class="todo"><title>0x00416130 Func416130 (39 bytes)</title></rect>
 <rect width="1.80" height="1.61" x="690.29" y="311.33" class="todo"><title>0x00422b80 Func422b80 (39 bytes)</title></rect>

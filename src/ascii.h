@@ -274,3 +274,8 @@ extern AsciiText g_AsciiText;
 extern ChainElem g_AsciiCalcChain;
 extern ChainElem g_AsciiDrawChain;
 extern ChainElem g_AsciiDrawChain2;
+
+// Adds 1 to `*count` unless it reached `max`, as th07's (which ignored
+// `max`). ContinueMenu::UpdateContinueMenu calls it on six counters of
+// g_GameManager (0x405280).
+void IncrementCounterCapped(DWORD *count, DWORD max);

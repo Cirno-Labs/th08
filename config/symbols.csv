@@ -27,7 +27,7 @@ address,size,name,symbol
 0x00404750,309,PauseMenu::DrawPauseMenu,?DrawPauseMenu@PauseMenu@@QAEXXZ
 0x00404890,2482,ContinueMenu::UpdateContinueMenu,?UpdateContinueMenu@ContinueMenu@@QAEHXZ
 0x00405260,22,Func405260,
-0x00405280,39,Func405280,
+0x00405280,39,IncrementCounterCapped,?IncrementCounterCapped@@YIXPAKK@Z
 0x004052b0,364,ContinueMenu::DrawContinueMenu,?DrawContinueMenu@ContinueMenu@@QAEXXZ
 0x00405420,2538,AsciiText::DrawPopups,?DrawPopups@AsciiText@@QAEXXZ
 0x00405e10,1803,Func405e10,
