@@ -350,7 +350,7 @@ address,size,name,symbol
 0x00427260,114,EffectInitMoveOut,?EffectInitMoveOut@@YIHPAUEffect@@@Z
 0x004272e0,353,EffectInitRing,?EffectInitRing@@YIHPAUEffect@@@Z
 0x00427450,1303,EffectDrawRing,?EffectDrawRing@@YIHPAUEffect@@@Z
-0x00427970,31,Func427970,
+0x00427970,31,EffectInitRing2,?EffectInitRing2@@YIHPAUEffect@@@Z
 0x00427990,59,Func427990,
 0x004279d0,143,Func4279d0,
 0x00427a60,114,Func427a60,

@@ -749,3 +749,10 @@ int EffectDrawRing(Effect *effect)
     g_SpriteEngine->DrawVertexStrip(&effect->sprite, effect->vertices, effect->segmentCount * 2 + 2);
     return 1;
 }
+
+int EffectInitRing2(Effect *effect)
+{
+    EffectInitRing(effect);
+    effect->unk_355 = 1;
+    return 0;
+}
