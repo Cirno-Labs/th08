@@ -403,3 +403,27 @@ HRESULT CSound::RestoreBuffer(LPDIRECTSOUNDBUFFER pDSB, BOOL *pbWasRestored)
         return S_FALSE;
     }
 }
+
+LPDIRECTSOUNDBUFFER CSound::GetFreeBuffer()
+{
+    BOOL bIsPlaying = FALSE;
+
+    if (m_apDSBuffer == NULL)
+        return FALSE;
+
+    for (DWORD i = 0; i < m_dwNumBuffers; i++)
+    {
+        if (m_apDSBuffer[i])
+        {
+            DWORD dwStatus = 0;
+            m_apDSBuffer[i]->GetStatus(&dwStatus);
+            if ((dwStatus & DSBSTATUS_PLAYING) == 0)
+                break;
+        }
+    }
+
+    if (i != m_dwNumBuffers)
+        return m_apDSBuffer[i];
+    else
+        return m_apDSBuffer[rand() % m_dwNumBuffers];
+}
