@@ -10,6 +10,7 @@
 #include <string.h>
 
 #include "ascii.h"
+#include "chain.h"
 #include "sprite.h"
 #include "unsorted.h"
 
@@ -103,4 +104,34 @@ BOOL CALLBACK EnumAxesCallback(const DIDEVICEOBJECTINSTANCE *pdidoi, VOID *pCont
         }
     }
     return DIENUM_CONTINUE;
+}
+
+int App::RegisterChain()
+{
+    App *game = &g_App;
+    ChainElem *elem;
+    int ret;
+
+    game->curScene = 0;
+    game->scene = -1;
+    game->frames = 0;
+    elem = g_Chain.CreateElem((ChainCallback)App::OnUpdate);
+    elem->arg = game;
+    elem->addedCallback = (ChainCallback)App::AddedCallback;
+    elem->deletedCallback = (ChainCallback)App::DeletedCallback;
+    ret = g_Chain.AddToCalcChain(elem, 0);
+    if (ret != 0)
+    {
+        return ret;
+    }
+    elem = g_Chain.CreateElem((ChainCallback)App::OnDraw);
+    elem->arg = game;
+    g_Chain.AddToDrawChain(elem, 0x10);
+    elem = g_Chain.CreateElem((ChainCallback)App::OnDrawLogo);
+    elem->arg = game;
+    g_Chain.AddToDrawChain(elem, 0);
+    elem = g_Chain.CreateElem((ChainCallback)App::OnDrawLoading);
+    elem->arg = game;
+    g_Chain.AddToDrawChain(elem, 2);
+    return 0;
 }

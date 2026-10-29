@@ -62,6 +62,11 @@ public:
     // Zeroes the whole App and sets bits 0x40 and 0x100 of unk_1a4.
     // Emitted where g_App is defined (0x445b7a).
     App();
+    // Resets the scene and adds OnUpdate at priority 0, with its added
+    // and deleted callbacks, then OnDraw at 0x10, OnDrawLogo at 0 and
+    // OnDrawLoading at 2 to the draw chain. Returns 0, -1 to quit, or
+    // anything else to restart: what adding OnUpdate returned.
+    static int RegisterChain();
     // The main update chain callback and its added and deleted
     // callbacks.
     static int OnUpdate(App *arg);
