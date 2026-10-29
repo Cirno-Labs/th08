@@ -8,7 +8,7 @@ address,size,name,symbol
 0x004023d0,95,Func4023d0,
 0x00402430,24,Func402430,
 0x00402450,426,AsciiText::Initialize,?Initialize@AsciiText@@QAEXXZ
-0x00402600,372,Func402600,
+0x00402600,372,AsciiText::Func402600,?Func402600@AsciiText@@QAEXXZ
 0x00402780,168,AsciiText::RegisterChain,?RegisterChain@AsciiText@@SIHXZ
 0x00402830,131,Func402830,
 0x004028c0,39,Func4028c0,
@@ -97,7 +97,7 @@ address,size,name,symbol
 0x00409200,1087,Func409200,
 0x00409640,528,Func409640,
 0x00409850,706,Func409850,
-0x00409b20,254,Func409b20,
+0x00409b20,254,Stage::RegisterChain,?RegisterChain@Stage@@SIHH@Z
 0x00409c20,122,Func409c20,
 0x00409ca0,50,Stage::RemoveChain,?RemoveChain@Stage@@SIXXZ
 0x00409ce0,598,Func409ce0,
@@ -220,7 +220,7 @@ address,size,name,symbol
 0x00417860,59,Func417860,
 0x004178a0,19,Func4178a0,
 0x004178c0,1685,Func4178c0,
-0x00417f60,175,Func417f60,
+0x00417f60,175,Func417f60,?Func417f60@@YIHXZ
 0x00418010,19,Func418010,
 0x00418030,19,Func418030,
 0x00418050,157,Func418050,
@@ -363,7 +363,7 @@ address,size,name,symbol
 0x00428310,411,Func428310,
 0x004284b0,216,Func4284b0,
 0x00428590,132,Func428590,
-0x00428620,135,Func428620,
+0x00428620,135,EffectManager::RegisterChain,?RegisterChain@EffectManager@@SIHXZ
 0x004286b0,35,EffectManager::RemoveChain,?RemoveChain@EffectManager@@SIXXZ
 0x004286e0,32,Func4286e0,
 0x00428700,32,Func428700,
@@ -406,7 +406,7 @@ address,size,name,symbol
 0x0042c290,284,Func42c290,
 0x0042c3b0,110,Func42c3b0,
 0x0042c420,367,Func42c420,
-0x0042c590,203,Func42c590,
+0x0042c590,203,EnemyManager::RegisterChain,?RegisterChain@EnemyManager@@SIHXZ
 0x0042c660,6198,Func42c660,
 0x0042deb0,252,Func42deb0,
 0x0042dfb0,20,Func42dfb0,
@@ -445,7 +445,7 @@ address,size,name,symbol
 0x00430d30,214,Func430d30,
 0x00430e10,259,Func430e10,
 0x00430f20,639,Func430f20,
-0x004311a0,152,Func4311a0,
+0x004311a0,152,BulletManager::RegisterChain,?RegisterChain@BulletManager@@SIHPAD@Z
 0x00431240,3862,Func431240,
 0x00432170,55,Func432170,
 0x004321b0,89,Func4321b0,
@@ -480,7 +480,7 @@ address,size,name,symbol
 0x0043741d,1554,Func43741d,
 0x00437a2f,17,Func437a2f,
 0x00437a40,144,Func437a40,
-0x00437ad0,244,Func437ad0,
+0x00437ad0,244,Gui::RegisterChain,?RegisterChain@Gui@@SIHXZ
 0x00437bc4,281,Func437bc4,
 0x00437cdd,5,DebugPrint2,?DebugPrint2@@YAXPBDZZ
 0x00437ce2,99,Func437ce2,
@@ -519,7 +519,7 @@ address,size,name,symbol
 0x004398ce,26,GameManager::GetBombs,?GetBombs@GameManager@@QAEHXZ
 0x004398e8,23,Func4398e8,
 0x004398ff,23,Func4398ff,
-0x00439916,75,Func439916,
+0x00439916,75,Func439916,?Func439916@@YIHH@Z
 0x00439961,75,Func439961,
 0x004399ac,130,GameManager::IsInPlayArea,?IsInPlayArea@GameManager@@QAEHMMMM@Z
 0x00439a2e,151,GameManager::ComputeChecksum,?ComputeChecksum@GameManager@@QAEHXZ
@@ -549,7 +549,7 @@ address,size,name,symbol
 0x0043c4b3,274,GameManager::AdvanceStage,?AdvanceStage@GameManager@@QAEXXZ
 0x0043c5e1,96,GameManager::GameManager,??0GameManager@@QAE@XZ
 0x0043c641,69,GameManager::AddLives,?AddLives@GameManager@@QAEXH@Z
-0x0043c686,129,Func43c686,
+0x0043c686,129,GameManager::SetPlayArea,?SetPlayArea@GameManager@@QAEXXZ
 0x0043c710,75,Chain::~Chain,??1Chain@@QAE@XZ
 0x0043c760,99,ChainElem::ChainElem,??0ChainElem@@QAE@XZ
 0x0043c7d0,82,ChainElem::~ChainElem,??1ChainElem@@QAE@XZ
@@ -614,7 +614,7 @@ address,size,name,symbol
 0x00440010,52,Func440010,
 0x00440050,78,Func440050,
 0x004400a0,970,Func4400a0,
-0x00440470,137,Func440470,
+0x00440470,137,Func440470,?Func440470@@YIXXZ
 0x00440500,1989,Func440500,
 0x00440cf0,334,Func440cf0,
 0x00440e40,472,Func440e40,
@@ -759,7 +759,7 @@ address,size,name,symbol
 0x0044ab40,888,Func44ab40,
 0x0044aec0,4769,Func44aec0,
 0x0044c1b0,118,Func44c1b0,
-0x0044c230,351,Func44c230,
+0x0044c230,351,Player::RegisterChain,?RegisterChain@Player@@SIHH@Z
 0x0044c390,529,Func44c390,
 0x0044c5b0,159,Func44c5b0,
 0x0044c650,1352,Func44c650,
@@ -2412,6 +2412,7 @@ address,size,name,symbol
 0x004c67e8,,g_SpellCardListSizes,?g_SpellCardListSizes@@3PAHA
 0x004c7240,,g_StageBgms,?g_StageBgms@@3PAUStageBgm@@A
 0x004c7670,,g_SpellCardBgms,?g_SpellCardBgms@@3PAUSpellCardBgm@@A
+0x004c77f0,,g_Unknown4c77f0,?g_Unknown4c77f0@@3PAY03HA
 0x004c7880,,g_Ranks,?g_Ranks@@3PAURankSettings@@A
 0x004c78c8,,g_DefaultControllerMapping,?g_DefaultControllerMapping@@3UControllerMapping@@A
 0x004c78e0,,g_CryptParams,?g_CryptParams@@3PAUCryptParams@@A
@@ -2463,6 +2464,7 @@ address,size,name,symbol
 0x017ce750,,g_LoadingScreenEffect,?g_LoadingScreenEffect@@3PAVScreenEffect@@A
 0x017ce758,,g_App,?g_App@@3VApp@@A
 0x017ceac0,,g_LoadingSprites,?g_LoadingSprites@@3PAVSprite@@A
+0x017d5ef8,,g_Player,?g_Player@@3VPlayer@@A
 0x017d6ed4,,g_Unknown17d6ed4,?g_Unknown17d6ed4@@3HA
 0x018b8a28,,g_ReplayManager,?g_ReplayManager@@3PAVReplayManager@@A
 0x018b8a2c,,g_Unknown18b8a2c,?g_Unknown18b8a2c@@3HA

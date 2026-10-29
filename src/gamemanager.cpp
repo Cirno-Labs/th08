@@ -470,6 +470,409 @@ int GameManager::AddedCallback(GameManager *mgr)
     return 0;
 }
 
+void GameManager::LoadingThread(GameManager *arg)
+{
+    GameManager *mgr = &g_GameManager;
+    int size;
+    WORD seed;
+    int j;
+
+    mgr->unk_3c = 0;
+    g_App.lastTotalPlayTimeTick = timeGetTime();
+    mgr->unk_3ddd0 = 1 << mgr->stage;
+    mgr->unk_3ddc8 = mgr->stage;
+    if (mgr->difficulty < 4)
+    {
+        mgr->difficultyMask = 1 << mgr->difficulty;
+    }
+    else
+    {
+        mgr->difficultyMask = 0xf;
+    }
+    mgr->shotIndex = mgr->character + mgr->shotType;
+    g_App.gameSpeed = 1.0f;
+    mgr->unk_3dbac &= ~0x400;
+    if (g_App.unk_164 != 0 || mgr->unk_3dbac >> 14 & 1 || g_GameManager.unk_3dbac & 1 || g_GameManager.difficulty >= 4)
+    {
+        if (mgr->unk_4 != NULL)
+        {
+            delete mgr->unk_4;
+            mgr->unk_4 = NULL;
+        }
+        if (mgr->stats != NULL)
+        {
+            delete mgr->stats;
+            mgr->stats = NULL;
+        }
+        size = g_Rng.GetRandomU32InRange(0xffff) + 0x10;
+        mgr->unk_0 = malloc(size);
+        mgr->unk_4 = new GameManagerUnk4;
+        mgr->stats = new GameManagerStats;
+        RerollStatsChecksumKeys();
+        *mgr->unk_4 = *(GameManagerUnk4 *)&g_App.controllerMapping;
+        MemFree(mgr->unk_0);
+        mgr->unk_3dba8 = 0;
+        mgr->stats->unk_22 = 0;
+        mgr->SetUnk28(g_GameManager.stage == 8 ? 6 : 0);
+        if (g_GameManager.difficulty >= 4)
+        {
+            mgr->unk_4->lifeCount = 2;
+        }
+        if (g_GameManager.unk_3dbac & 1)
+        {
+            mgr->unk_4->lifeCount = 8;
+        }
+        if (Player::RegisterChain(0) != 0)
+        {
+            if (g_App.closeSubThread)
+            {
+                return;
+            }
+            LogPrintf(&g_Log, "error : プレイヤーの初期化に失敗しました\r\n");
+            goto fail;
+        }
+        if (!(g_GameManager.unk_3dbac >> 3 & 1))
+        {
+            g_GameManager.SetLives(mgr->unk_4->lifeCount);
+            g_GameManager.SetBombs(g_Player.shotType->bombs);
+        }
+        mgr->SetPlayArea();
+        mgr->stats->power = 0.0f;
+        mgr->RerollChecksumKeys();
+        mgr->progressFrames = 0;
+        g_GameManager.unk_3dba4 = 0;
+        g_GameManager.unk_3dba0 = 0;
+        mgr->stats->guiScore = 0;
+        mgr->stats->score = 0;
+        mgr->stats->scoreIncrement = 0;
+        mgr->stats->highScore = 100000;
+        mgr->stats->continuesUsed = 0;
+        mgr->stats->grazeTotal = 0;
+        mgr->stats->pointItemsTotal = 0;
+        if (mgr->difficulty >= 4 || mgr->unk_3dbac & 1 || mgr->unk_3dbac >> 14 & 1)
+        {
+            mgr->unk_4->scoreDisabled = 0;
+        }
+        switch (g_GameManager.difficulty)
+        {
+        case 0:
+            mgr->stats->unk_24 = 60000;
+            break;
+        case 1:
+            mgr->stats->unk_24 = 100000;
+            break;
+        case 2:
+            mgr->stats->unk_24 = 200000;
+            break;
+        case 3:
+            mgr->stats->unk_24 = 300000;
+            break;
+        case 4:
+            mgr->stats->unk_24 = 300000;
+            break;
+        }
+        mgr->stats->unk_34 = 0;
+        Func440470();
+        if (LoadScoreFile() != 0)
+        {
+            goto fail;
+        }
+        mgr->SetRankForDifficulty();
+        mgr->stats->deaths = 0.0f;
+        mgr->stats->unk_68 = 0.0f;
+        mgr->RerollChecksumKeys();
+        mgr->stats->bombsUsed = 0.0f;
+        mgr->stats->unk_88 = 0.0f;
+        mgr->RerollChecksumKeys();
+        mgr->stats->spellCardsCaptured = 0;
+        mgr->unk_3de10 = 0;
+        mgr->unk_3de18 = 0;
+        mgr->unk_3de1c = 0;
+        if (!(g_GameManager.unk_3dbac >> 3 & 1) && !(g_GameManager.unk_3dbac >> 14 & 1))
+        {
+            if (!mgr->unk_4->scoreDisabled)
+            {
+                IncrementStatCounter((DWORD *)&g_GameManager.plst.counts[g_GameManager.difficulty].plays[0], 999999);
+                IncrementStatCounter((DWORD *)&g_GameManager.plst.counts[6].plays[0], 999999);
+                IncrementStatCounter((DWORD *)&g_GameManager.plst.counts[g_GameManager.difficulty].plays[mgr->character + 1],
+                                     999999);
+                IncrementStatCounter((DWORD *)&g_GameManager.plst.counts[6].plays[mgr->character + 1], 999999);
+                if (g_App.scene == 10)
+                {
+                    IncrementStatCounter((DWORD *)&g_GameManager.plst.counts[g_GameManager.difficulty].retries, 999999);
+                    IncrementStatCounter((DWORD *)&g_GameManager.plst.counts[6].retries, 999999);
+                }
+                if (g_GameManager.unk_3dbac & 1 && !(g_GameManager.unk_3dbac >> 14 & 1))
+                {
+                    IncrementStatCounter((DWORD *)&g_GameManager.plst.counts[g_GameManager.difficulty].practices, 999999);
+                    IncrementStatCounter((DWORD *)&g_GameManager.plst.counts[6].practices, 999999);
+                }
+            }
+        }
+        else
+        {
+            mgr->unk_4->scoreDisabled = 0;
+        }
+    }
+    else
+    {
+        mgr->stats->guiScore = mgr->stats->score;
+        mgr->stats->scoreIncrement = 0;
+        mgr->stats->unk_68 = 0.0f;
+        mgr->RerollChecksumKeys();
+        mgr->stats->unk_88 = 0.0f;
+        mgr->RerollChecksumKeys();
+        if (Player::RegisterChain(0) != 0)
+        {
+            if (g_App.closeSubThread)
+            {
+                return;
+            }
+            LogPrintf(&g_Log, "error : プレイヤーの初期化に失敗しました\r\n");
+            goto fail;
+        }
+    }
+    mgr->subRank = 0;
+    mgr->stats->unk_2c = 0;
+    mgr->stats->graze = 0;
+    mgr->isPaused = 0;
+    mgr->unk_3dbac &= ~0x180;
+    mgr->unk_3dbac &= ~0x2000;
+    mgr->unk_3de14 = 0;
+    mgr->unk_3de20 = 0;
+    mgr->unk_3de24 = 0;
+    mgr->stats->unk_20 = mgr->stats->unk_22;
+    mgr->stats->unk_3c = 0;
+    mgr->stats->unk_44 = 0;
+    if (!(g_GameManager.unk_3dbac >> 14 & 1))
+    {
+        mgr->stats->unk_40 = g_Unknown4c77f0[mgr->stage][g_GameManager.difficulty];
+    }
+    else
+    {
+        mgr->stats->unk_40 = 0;
+    }
+    if (mgr->unk_3dbac & 1)
+    {
+        if (!(mgr->unk_3dbac >> 14 & 1))
+        {
+            switch (mgr->stage)
+            {
+            case 0:
+                mgr->stats->power = 0.0f;
+                mgr->RerollChecksumKeys();
+                break;
+            case 1:
+                mgr->stats->power = 112.0f;
+                mgr->RerollChecksumKeys();
+                break;
+            default:
+                mgr->stats->power = 128.0f;
+                mgr->RerollChecksumKeys();
+                break;
+            }
+        }
+        else if (mgr->unk_3dbb0 <= 1)
+        {
+            mgr->stats->power = 30.0f;
+            mgr->RerollChecksumKeys();
+        }
+        else if (mgr->unk_3dbb0 <= 12)
+        {
+            mgr->stats->power = 80.0f;
+            mgr->RerollChecksumKeys();
+        }
+        else
+        {
+            mgr->stats->power = 128.0f;
+            mgr->RerollChecksumKeys();
+        }
+    }
+    if (g_GameManager.unk_3dbac >> 3 & 1)
+    {
+        mgr->SetRankForDifficulty();
+        ReplayManager::RegisterChain(1, g_GameManager.replayFile);
+        seed = g_Rng.seed;
+        mgr->RerollChecksumKeys();
+        g_Rng.seed = seed;
+    }
+    mgr->rngSeed = g_Rng.seed;
+    if (Stage::RegisterChain(mgr->stage) != 0)
+    {
+        if (g_App.closeSubThread)
+        {
+            return;
+        }
+        LogPrintf(&g_Log, "error : 背景データの初期化に失敗しました\r\n");
+        goto fail;
+    }
+    if (BulletManager::RegisterChain("etama.anm") != 0)
+    {
+        if (g_App.closeSubThread)
+        {
+            return;
+        }
+        LogPrintf(&g_Log, "error : 敵弾の初期化に失敗しました\r\n");
+        goto fail;
+    }
+    if (EnemyManager::RegisterChain() != 0)
+    {
+        if (g_App.closeSubThread)
+        {
+            return;
+        }
+        LogPrintf(&g_Log, "error : 敵の初期化に失敗しました\r\n");
+        goto fail;
+    }
+    if (EffectManager::RegisterChain() != 0)
+    {
+        if (g_App.closeSubThread)
+        {
+            return;
+        }
+        LogPrintf(&g_Log, "error : エフェクトの初期化に失敗しました\r\n");
+        goto fail;
+    }
+    if (Gui::RegisterChain() != 0)
+    {
+        if (g_App.closeSubThread)
+        {
+            return;
+        }
+        LogPrintf(&g_Log, "error : 2D表示の初期化に失敗しました\r\n");
+        goto fail;
+    }
+    if (Func417f60() != 0)
+    {
+        if (g_App.closeSubThread)
+        {
+            return;
+        }
+        LogPrintf(&g_Log, "error : スペルカードの初期化に失敗しました\r\n");
+        goto fail;
+    }
+    if (!(g_GameManager.unk_3dbac >> 3 & 1))
+    {
+        ReplayManager::RegisterChain(0, "replay/th8_00.rpy");
+    }
+    if (g_GameManager.unk_3dbac >> 14 & 1)
+    {
+        switch (g_GameManager.stage)
+        {
+        case 5:
+            // Tested and dropped, as the original does.
+            g_GameManager.IsPracticingSpellCard(0xd4);
+            break;
+        case 6:
+            if (!g_GameManager.IsPracticingSpellCardIn(0x77, 0x7a))
+            {
+                g_Stage.unk_b34 = 2;
+            }
+            break;
+        case 7:
+            if (!g_GameManager.IsPracticingSpellCardIn(0x93, 0x96))
+            {
+                g_Stage.unk_b34 = 2;
+            }
+            break;
+        case 8:
+            if (!g_GameManager.IsPracticingSpellCardIn(0xbf, 0xc1) && !g_GameManager.IsPracticingSpellCard(0xd5))
+            {
+                g_Stage.unk_b34 = 2;
+            }
+            break;
+        }
+    }
+    if (g_App.unk_16c == 0)
+    {
+        if (g_GameManager.unk_3dbac >> 14 & 1)
+        {
+            j = 0;
+            while (g_SpellCardBgms[j].lastCard >= 0)
+            {
+                if (g_GameManager.unk_3dbb0 <= g_SpellCardBgms[j].lastCard)
+                {
+                    g_App.LoadMidi(0, g_SpellCardBgms[j].unk_8);
+                    break;
+                }
+                j++;
+            }
+        }
+        else
+        {
+            g_App.LoadMidi(0, g_Stage.data->songPaths[0]);
+            if (g_Stage.data->songPaths[1][0] != ' ')
+            {
+                g_App.LoadMidi(1, g_Stage.data->songPaths[1]);
+            }
+            if (g_Stage.data->songPaths[2][0] != ' ')
+            {
+                g_App.LoadMidi(2, g_Stage.data->songPaths[2]);
+            }
+        }
+    }
+    mgr->isInContinueMenu = 0;
+    mgr->unk_3dbac |= 4;
+    if (g_App.unk_16c != 0 && g_GameManager.unk_3dbac >> 14 & 1 && !Func439916(g_GameManager.unk_3dbb0))
+    {
+        mgr->unk_3de28 = 2;
+    }
+    else
+    {
+        mgr->unk_3de28 = 1;
+    }
+    if (g_App.scene != 3)
+    {
+        g_App.achievedFrames = 0.0f;
+        g_App.expectedFrames = 0.0f;
+    }
+    mgr->isFrozen = 0;
+    mgr->stats->score = 0;
+    mgr->unk_3dbac &= ~0x10;
+    g_AsciiText.Initialize();
+    g_AsciiText.Func402600();
+    g_GameManager.unk_2d = 0;
+    g_Unknown4e3d28 = 0;
+    DrawFps(0);
+    if (g_GameManager.unk_3dbac >> 3 & 1)
+    {
+        while (mgr->unk_3c < 0x50)
+        {
+            Sleep(0x11);
+        }
+    }
+    else
+    {
+        while (mgr->unk_3c < 0x1e)
+        {
+            Sleep(0x11);
+        }
+    }
+    g_App.FinishLoadingSprites();
+    while ((mgr->unk_3dbac >> 5 & 3) != 0)
+    {
+        Sleep(0x11);
+    }
+    g_GameManager.unk_38 = 0;
+    g_App.subThread = NULL;
+    g_App.closeSubThread = 0;
+    g_App.subThreadRunning = 0;
+    g_App.redrawFrames = 60;
+    mgr->unk_3dbac &= ~0x200;
+    g_App.unk_16c = 0;
+    g_Unknown18b8a2c = 2;
+    return;
+
+fail:
+    g_GameManager.unk_38 = 2;
+    g_App.FinishLoadingSprites();
+    g_App.subThread = NULL;
+    g_App.closeSubThread = 0;
+    g_App.subThreadRunning = 0;
+    g_App.unk_16c = 0;
+    g_Unknown18b8a2c = 2;
+}
+
 void GameManager::SetRankForDifficulty()
 {
     this->rank = g_Ranks[g_GameManager.difficulty].rank;

@@ -14,5 +14,8 @@ public:
     int AnyBossActive();
     // Removes the enemies' chain elements, as th07's (0x42ef70).
     static void RemoveChain();
+    // Adds the enemies' chain elements, as th07's (0x42c590). Returns 0,
+    // or -1 on failure.
+    static int RegisterChain();
 };
 extern EnemyManager g_EnemyManager;

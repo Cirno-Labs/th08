@@ -1032,7 +1032,8 @@ struct GameManagerStats
 {
     // The score shown.
     DWORD guiScore;
-    unsigned char unk_04[0x4];
+    // The grazes of the stage, as th07's graze.
+    int graze;
     DWORD score;
     // The game's grazes.
     int grazeTotal;
@@ -1052,7 +1053,8 @@ struct GameManagerStats
     int unk_24;
     BYTE unk_28;
     BYTE continuesUsed;
-    unsigned char unk_2a[0x6];
+    unsigned char unk_2a[0x2];
+    int unk_2c;
     int pointItemsTotal;
     // Kept in each replay stage.
     int unk_34;
@@ -1060,7 +1062,7 @@ struct GameManagerStats
     // Func43c35f compares them.
     int unk_3c;
     int unk_40;
-    unsigned char unk_44[0x4];
+    int unk_44;
     // Set to 6543 plus a random number under 100000 by
     // RerollStatsChecksumKeys, as th07's.
     DWORD lifeChecksumKeys[7];
@@ -1092,7 +1094,10 @@ struct GameManagerStats
 };
 struct GameManagerUnk4
 {
-    unsigned char unk_0[0x25];
+    unsigned char unk_0[0x1c];
+    // The lives a game starts with, as th07's.
+    BYTE lifeCount;
+    unsigned char unk_1d[0x8];
     // App::IsScoreDisabled tests it.
     BYTE scoreDisabled;
     unsigned char unk_26[0x16];
@@ -1235,7 +1240,11 @@ public:
     int GetPower();
     int GetLives();
     int GetBombs();
-    void SetLives(int lives);
+    void SetLives(int lives)
+    {
+        this->stats->lives = lives;
+        this->RerollChecksumKeys();
+    }
     void SetBombs(int bombs);
     void SetPower(int power);
     // stats->unk_28 and a setter for it, inline: the copies at 0x406dd0
@@ -1248,11 +1257,24 @@ public:
     {
         this->stats->unk_28 = value;
     }
+    // Whether the spell card practised (bit 14 of unk_3dbac) is `card`,
+    // or one from `first` to `last`. Inline.
+    int IsPracticingSpellCard(int card)
+    {
+        return this->unk_3dbac >> 14 & 1 ? this->unk_3dbb0 == card : FALSE;
+    }
+    int IsPracticingSpellCardIn(int first, int last)
+    {
+        return this->unk_3dbac >> 14 & 1 ? (this->unk_3dbb0 >= first && this->unk_3dbb0 <= last ? TRUE : FALSE)
+                                         : FALSE;
+    }
     // Whether shot type `shot` cleared stage bit `stage` of `difficulty`
     // without continues (0x439829).
     int HasClearedStage(int stage, int shot, int difficulty);
 
-    DWORD unk_0;
+    // A block of random size LoadingThread allocates and frees at once,
+    // as th07's tempBuffer.
+    void *unk_0;
     GameManagerUnk4 *unk_4;
     GameManagerStats *stats;
     // The score file's chunks, loaded by App::AddedCallback.
@@ -1265,7 +1287,8 @@ public:
     char unk_2d;
     unsigned char unk_2e[0x2];
     int difficulty;
-    unsigned char unk_34[0x4];
+    // 1 << difficulty, or 0xf from Extra on, as th07's.
+    int difficultyMask;
     // OnDraw returns 3 while it is set; OnUpdate returns 4 while it is 2
     // and counts unk_3c up while it is otherwise set.
     int unk_38;
@@ -1292,7 +1315,8 @@ public:
     // As th07's: the shot type is character + shotType.
     BYTE character;
     BYTE shotType;
-    BYTE unk_3dbab;
+    // character + shotType, as th07's shotIndex.
+    BYTE shotIndex;
     union
     {
         // Bit 2: the speed is measured; 3: it is shown, as th07's
@@ -1336,7 +1360,8 @@ public:
     unsigned char unk_3dbb6[0x2];
     // The frames a demo has played, as th07's.
     int demoFrames;
-    unsigned char unk_3dbbc[0x200];
+    // The replay file to play, as th07's.
+    char replayFile[0x200];
     // The random seed each replay stage starts with, as th07's.
     WORD rngSeed;
     unsigned char unk_3ddbe[0x2];
@@ -1364,7 +1389,14 @@ public:
     int progressFrames;
     // Counts the frames that slowdown may skip, as th07's.
     DWORD slowdownCounter;
-    unsigned char unk_3de0c[0x1c];
+    unsigned char unk_3de0c[0x4];
+    // Cleared by LoadingThread.
+    int unk_3de10;
+    int unk_3de14;
+    int unk_3de18;
+    int unk_3de1c;
+    int unk_3de20;
+    int unk_3de24;
     // Set when the stage music is to start: OnUpdate stops the loading
     // screen and, while it is 1, plays the stage's music.
     int unk_3de28;
@@ -1424,6 +1456,9 @@ public:
     // Called by GameManager::OnUpdate when the result screen's mode ends
     // without a scene to go to (0x438f58).
     void Func438f58();
+    // Adds the Gui's chain elements, as th07's (0x437ad0). Returns 0, or
+    // -1 on failure.
+    static int RegisterChain();
     // Removes the Gui's chain elements, as th07's (0x437d64).
     static void RemoveChain();
 
@@ -1450,6 +1485,15 @@ extern SoundInfo g_SoundInfos[0x2e];
 // The sound files LoadSounds loads, by index: 0x24 (th07 0x1e).
 extern char *g_SoundPaths[];
 
+// The stage file a Stage loads. Only what is known so far.
+struct StageData
+{
+    unsigned char unk_0[0x290];
+    // The stage's MIDI files, as th07's; a path starting with ' ' is
+    // unused.
+    char songPaths[3][0x80];
+};
+
 // The stage's background, th07's Stage. Only what is known so far.
 class Stage
 {
@@ -1461,10 +1505,21 @@ public:
     void SetupCamera();
     // Removes the stage's chain elements, as th07's (0x409ca0).
     static void RemoveChain();
+    // Loads stage `stage` and adds its chain elements, as th07's
+    // (0x409b20). Returns 0, or -1 on failure.
+    static int RegisterChain(int stage);
 
-    unsigned char unk_0[0xaf4];
+    unsigned char unk_0[0x7f4];
+    // The stage file, as th07's.
+    StageData *data;
+    unsigned char unk_7f8[0x2fc];
     // The fog colour, as th07's fog.color.
     D3DCOLOR fogColor;
+    // g_FogColorChanged is at +0xb20.
+    unsigned char unk_af8[0x3c];
+    // Set to 2 by GameManager::LoadingThread unless a stage 6 or Extra
+    // spell card is practised.
+    int unk_b34;
 };
 extern Stage g_Stage;
 
@@ -1488,3 +1543,13 @@ struct SpellCardBgm
     int unk_10;
 };
 extern SpellCardBgm g_SpellCardBgms[];
+// By stage and difficulty: what LoadingThread sets stats->unk_40 to.
+extern int g_Unknown4c77f0[][4];
+// The spell card manager's RegisterChain (0x417f60), the counterpart of
+// Func4180f0.
+int Func417f60();
+// Sets stats->unk_38 from stats->unk_34 by difficulty (0x440470).
+void Func440470();
+// g_SpellCardBgms' unk_10 for the spell card practised; ignores `card`
+// (0x439916).
+int Func439916(int card);
