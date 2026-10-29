@@ -116,8 +116,16 @@ public:
     // Releases the surfaces before the device is reset. Inline, defined
     // in the WinMain file.
     void ReleaseSurfaces();
-    // Does the copy SetPendingCopy asked for, if any, as th07's. Inline,
-    // defined in the WinMain file.
+    // Copies the back buffer's rectangle into texture `texture`, as
+    // th07's (0x466f20).
+    void CopyBackBufferToTexture(int texture, int srcLeft, int srcTop, int srcWidth, int srcHeight, int dstLeft,
+                                 int dstTop, int dstWidth, int dstHeight);
+    // Copies the back buffer's rectangle into surface `surface`,
+    // creating it at the destination size (0x467180). New in th08.
+    void CopyBackBufferToSurface(int surface, int srcLeft, int srcTop, int srcWidth, int srcHeight, int dstLeft,
+                                 int dstTop, int dstWidth, int dstHeight);
+    // Does the pending copies, if any: the texture copy, then the surface
+    // copy. Inline, defined in the WinMain file.
     void DoPendingCopy();
     // Releases the vertex buffer (0x446f0b, in App's object).
     void ReleaseVertexBuffer();
@@ -142,8 +150,9 @@ public:
         return this->surfaces[surface];
     }
 
-    // Has CopyBackBufferToTexture's copy done after the frame is drawn,
-    // as th07's, unless one is already pending: then returns -1, else 0.
+    // Has a copy of the back buffer done after the frame is drawn, as
+    // th07's, unless one is already pending: then returns -1, else 0. In
+    // th08 this copy goes to surface `texture` (CopyBackBufferToSurface).
     int SetPendingCopy(int texture, int srcLeft, int srcTop, int srcWidth, int srcHeight, int dstLeft, int dstTop,
                        int dstWidth, int dstHeight)
     {
@@ -215,7 +224,7 @@ public:
     // set.
     D3DCOLOR modulateColor;
     int modulateColorEnabled;
-    // The texture SetPendingCopy's copy goes to; negative for none. The
+    // The surface SetPendingCopy's copy goes to; negative for none. The
     // rest of the copy's parameters are at the end.
     int pendingCopyTexture;
     // Counters, cleared every frame.
@@ -239,7 +248,19 @@ public:
     unsigned char unk_24c5[0x3];
     void *currentSpriteData;
     IDirect3DVertexBuffer8 *vertexBuffer;
-    unsigned char unk_24d0[0x2a0080];
+    unsigned char unk_24d0[0x2a005c];
+    // A pending CopyBackBufferToTexture, as th07's pendingCopy: the
+    // texture, negative for none, then its other arguments. New in th08
+    // next to the surface copy.
+    int pendingTexCopyTexture;
+    int pendingTexCopySrcLeft;
+    int pendingTexCopySrcTop;
+    int pendingTexCopySrcWidth;
+    int pendingTexCopySrcHeight;
+    int pendingTexCopyDstLeft;
+    int pendingTexCopyDstTop;
+    int pendingTexCopyDstWidth;
+    int pendingTexCopyDstHeight;
     int pendingCopySrcLeft;
     int pendingCopySrcTop;
     int pendingCopySrcWidth;
