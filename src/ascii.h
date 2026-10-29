@@ -146,6 +146,15 @@ public:
     void AddFormat(D3DXVECTOR3 *pos, char *fmt, ...);
     // AddFormat that returns the length of the formatted text (0x402a80).
     int AddFormatLen(D3DXVECTOR3 *pos, char *fmt, ...);
+    // Shows `value` rising from `pos` (play-area coordinates) in `color`
+    // for 60 frames, in one of the first 0x2d0 popups, as th07's
+    // (0x403200).
+    void AddPopup(D3DXVECTOR3 *pos, int value, D3DCOLOR color);
+    // Like AddPopup, in the last three popups, as th07's (0x403330).
+    void AddPopup2(D3DXVECTOR3 *pos, int value, D3DCOLOR color);
+    // Func403600 at `pos` in play-area coordinates, in the scale text is
+    // added with (0x403460). New in th08.
+    void Func403460(D3DXVECTOR3 *pos, int count, int value, D3DCOLOR color);
     // Queues `count` and `value` as a string of glyphs 0xf, `value`'s
     // digits, 0xe, `count`'s digits and 0xd at `pos`, in `color`, in the
     // next of numberPopups (0x403600). New in th08; DrawBanners shows the

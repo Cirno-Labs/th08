@@ -399,3 +399,43 @@ void AsciiText::DrawStrings()
         }
     }
 }
+
+void AsciiText::AddPopup(D3DXVECTOR3 *pos, int value, D3DCOLOR color)
+{
+    AsciiPopup *popup;
+    int n;
+
+    if (this->nextPopup >= 0x2d0)
+    {
+        this->nextPopup = 0;
+    }
+    popup = &this->popups[this->nextPopup];
+    popup->active = 1;
+    n = 0;
+    if (value >= 0)
+    {
+        while (value != 0)
+        {
+            popup->digits[n] = value % 10;
+            n++;
+            value /= 10;
+        }
+    }
+    else
+    {
+        popup->digits[n] = 10;
+        n++;
+    }
+    if (n == 0)
+    {
+        popup->digits[n] = 0;
+        n++;
+    }
+    popup->digitCount = n;
+    popup->color = color;
+    popup->timer = 0;
+    popup->pos = *pos;
+    popup->pos.x += g_GameManager.arena[0];
+    popup->pos.y += g_GameManager.arena[1];
+    this->nextPopup++;
+}
