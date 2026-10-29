@@ -829,3 +829,8 @@ CWaveFile::CWaveFile()
     m_dwSize = 0;
     m_bIsReadingFromMemory = FALSE;
 }
+
+CWaveFile::~CWaveFile()
+{
+    Close();
+}
