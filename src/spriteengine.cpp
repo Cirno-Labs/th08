@@ -173,6 +173,19 @@ void SpriteEngine::SendInterruptToLoadedSprites(Sprite *vms, int count, short in
     }
 }
 
+void SpriteEngine::StepSprites(Sprite *vms, int count)
+{
+    while (count != 0)
+    {
+        if (vms->scriptIndex >= 0)
+        {
+            g_SpriteEngine->Step(vms);
+        }
+        vms++;
+        count--;
+    }
+}
+
 SpriteEngine::SpriteEngine()
 {
     memset(this, 0, sizeof(*this));
