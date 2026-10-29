@@ -554,3 +554,34 @@ int FileExists(char *path)
     g_App.LeaveCriticalSection(2);
     return 0;
 }
+
+int WriteToFile(char *path, void *data, int size)
+{
+    HANDLE file;
+    DWORD written;
+    char *msg;
+
+    g_App.EnterCriticalSection(2);
+    file = CreateFileA(path, GENERIC_WRITE, FILE_SHARE_READ, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+    if (file == INVALID_HANDLE_VALUE)
+    {
+        FormatMessageA(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
+                       NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), (LPSTR)&msg, 0, NULL);
+        DebugPrint("error : %s write error %s\r\n", path, msg);
+        LocalFree(msg);
+        g_App.LeaveCriticalSection(2);
+        return -1;
+    }
+    WriteFile(file, data, size, &written, NULL);
+    if (size != written)
+    {
+        CloseHandle(file);
+        DebugPrint("error : %s write error\r\n", path);
+        g_App.LeaveCriticalSection(2);
+        return -2;
+    }
+    CloseHandle(file);
+    DebugPrint("%s write ...\r\n", path);
+    g_App.LeaveCriticalSection(2);
+    return 0;
+}
