@@ -650,7 +650,7 @@ address,size,name,symbol
 0x00443990,35,Log::Reset,?Reset@Log@@QAEXXZ
 0x004439c0,133,Log::Flush,?Flush@Log@@QAEXXZ
 0x00443a50,23,App::GetEmulateColorAdd,?GetEmulateColorAdd@App@@QAEHXZ
-0x00443a70,25,Func443a70,
+0x00443a70,25,App::GetNoVertexBuffer,?GetNoVertexBuffer@App@@QAEHXZ
 0x00443a90,26,Func443a90,
 0x00443ab0,26,Func443ab0,
 0x00443ad0,21,Func443ad0,

@@ -236,3 +236,8 @@ int App::GetEmulateColorAdd()
 {
     return this->flags.emulateColorAdd;
 }
+
+int App::GetNoVertexBuffer()
+{
+    return this->flags.noVertexBuffer;
+}

@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">9.41% (105)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">90.59% (1011)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">9.50% (106)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">90.50% (1010)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="70.28" height="6" x="0" y="0" class="named"/>
-<rect width="676.72" height="6" x="70.28" y="0" class="todo"/>
+<rect width="70.95" height="6" x="0" y="0" class="named"/>
+<rect width="676.05" height="6" x="70.95" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -718,7 +718,7 @@
 <rect width="12" height="12" x="720" y="180" class="named"><title>0x00443990 Log::Reset (35 bytes)</title></rect>
 <rect width="12" height="12" x="735" y="180" class="named"><title>0x004439c0 Log::Flush (133 bytes)</title></rect>
 <rect width="12" height="12" x="0" y="195" class="named"><title>0x00443a50 App::GetEmulateColorAdd (23 bytes)</title></rect>
-<rect width="12" height="12" x="15" y="195" class="todo"><title>0x00443a70 Func443a70 (25 bytes)</title></rect>
+<rect width="12" height="12" x="15" y="195" class="named"><title>0x00443a70 App::GetNoVertexBuffer (25 bytes)</title></rect>
 <rect width="12" height="12" x="30" y="195" class="todo"><title>0x00443a90 Func443a90 (26 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="195" class="todo"><title>0x00443ab0 Func443ab0 (26 bytes)</title></rect>
 <rect width="12" height="12" x="60" y="195" class="todo"><title>0x00443ad0 Func443ad0 (21 bytes)</title></rect>
@@ -1189,8 +1189,8 @@
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
 <text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">4.93%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">95.07%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="36.80" height="6" x="0" y="0" class="named"/>
-<rect width="710.20" height="6" x="36.80" y="0" class="todo"/>
+<rect width="36.84" height="6" x="0" y="0" class="named"/>
+<rect width="710.16" height="6" x="36.84" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -2192,7 +2192,7 @@
 <rect width="0.71" height="0.83" x="711.63" y="340.35" class="todo"><title>0x0042dfd0 Func42dfd0 (25 bytes)</title></rect>
 <rect width="0.71" height="0.83" x="711.63" y="344.17" class="todo"><title>0x0042f2b0 Func42f2b0 (25 bytes)</title></rect>
 <rect width="0.90" height="0.63" x="715.34" y="309.74" class="todo"><title>0x00439810 Func439810 (25 bytes)</title></rect>
-<rect width="0.90" height="0.63" x="719.24" y="309.74" class="todo"><title>0x00443a70 Func443a70 (25 bytes)</title></rect>
+<rect width="0.90" height="0.63" x="719.24" y="309.74" class="named"><title>0x00443a70 App::GetNoVertexBuffer (25 bytes)</title></rect>
 <rect width="0.90" height="0.63" x="723.14" y="309.74" class="named"><title>0x00445420 MidiTimer::StartTimer (25 bytes)</title></rect>
 <rect width="0.90" height="0.63" x="727.05" y="309.74" class="todo"><title>0x00453c60 Func453c60 (25 bytes)</title></rect>
 <rect width="0.90" height="0.63" x="730.95" y="309.74" class="todo"><title>0x00453c80 Func453c80 (25 bytes)</title></rect>
