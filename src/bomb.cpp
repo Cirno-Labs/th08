@@ -166,6 +166,57 @@ int EffectInitBombRing36(Effect *effect)
     return 0;
 }
 
+int EffectUpdateBombRing37(Effect *effect)
+{
+    effect->angle = AddNormalizeAngle(effect->angle, effect->reservedSlot & 1 ? 0.03926991f : -0.03926991f);
+    effect->verticesDirty = 1;
+    if (effect->timer < 0x32)
+    {
+        float t;
+        float depth;
+
+        t = 1.0f - effect->timer.AsFloat() / 50.0f;
+        depth = (effect->reservedSlot - 4) * 32.0f + 384.0f;
+        effect->ringWidth = 88.0f - effect->timer.AsFloat() * 80.0f / 50.0f;
+        effect->radius = (effect->reservedSlot - 4) * 32.0f + 192.0f - depth * t * t;
+        effect->segmentCount--;
+    }
+    else
+    {
+        if (effect->timer == 0x32)
+        {
+            int i;
+            PlayerBombHitbox *laser;
+            float angle;
+            float spread;
+
+            ScreenEffect::StartEffect(1, 0x10, 8, 0, 0, 0x15);
+            ScreenEffect::StartEffect(3, 8, 1, 0x8f6060f0, 0, 0x15);
+            angle = effect->angle + 0.7853982f;
+            spread = effect->radius * 0.70710671f;
+            D3DXVECTOR3 pos;
+            g_SpriteEngine->FillVerticalStripVertices(&effect->sprite, effect->vertices, effect->segmentCount * 2 + 2);
+            for (i = 0; i < 4; i++)
+            {
+                if (angle >= 3.1415927f)
+                {
+                    angle -= 6.2831855f;
+                }
+                ((Vector2 *)&pos)->SetPolar(angle, spread);
+                pos += effect->origin;
+                laser = g_Player.Func44dfa0(&pos, spread * 8.0f, effect->ringWidth * 4.0f, 0x3c, 100);
+                laser->unk_38 = 2;
+                laser->angle = AddNormalizeAngle(angle, 1.5707964f);
+                angle = laser->angle;
+                laser = g_Player.Func44de60(&pos, spread * 4.0f, effect->ringWidth * 4.0f, 6, 0x96);
+                laser->angle = angle;
+            }
+        }
+        effect->verticesDirty = 1;
+    }
+    return 1;
+}
+
 int EffectInitBombRing37(Effect *effect)
 {
     D3DXVECTOR3 pos = effect->pos;
