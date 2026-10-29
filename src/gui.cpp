@@ -623,3 +623,8 @@ int App::GetNoDepthTest()
 {
     return this->flags.noDepthTest;
 }
+
+int App::GetNoColorBlending()
+{
+    return this->flags.noColorBlending;
+}
