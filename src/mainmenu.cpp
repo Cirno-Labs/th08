@@ -153,6 +153,41 @@ int GameManager::IsSpellCardSeen(int card)
                : FALSE;
 }
 
+void DrawFan(D3DXVECTOR3 *center, D3DCOLOR color, float arc, float diameter)
+{
+    VertexDiffuseXyzrwh vertices[0x40];
+    Sprite sprite;
+    D3DXVECTOR3 offset;
+
+    sprite.blendMode = 0;
+    sprite.color = 0xffffffff;
+    sprite.zWriteDisabled = 1;
+    sprite.cameraSetup = 0;
+    vertices[0].diffuse = color;
+    vertices[0].pos = *center;
+    vertices[0].w = 1.0f;
+    // A block: its locals sit below the vertices.
+    {
+        int i;
+        float angle;
+
+        angle = -1.5707964f;
+        offset.x = diameter / 2.0f;
+        offset.y = 0.0f;
+        for (i = 1; i < 0x40; i++)
+        {
+            Rotate2D(&vertices[i].pos, &offset, angle);
+            vertices[i].pos.x = vertices[0].pos.x + vertices[i].pos.x;
+            vertices[i].pos.y = vertices[0].pos.y + vertices[i].pos.y;
+            vertices[i].pos.z = vertices[0].pos.z;
+            vertices[i].diffuse = color;
+            vertices[i].w = 1.0f;
+            angle = AddNormalizeAngle(angle, 0.1013417f * arc);
+        }
+    }
+    g_SpriteEngine->DrawColoredFan(&sprite, vertices, 0x40);
+}
+
 int MainMenu::MoveMenuCursor(int count)
 {
     if (count == 0)

@@ -1022,7 +1022,7 @@ address,size,name,symbol
 0x0046f429,418,MainMenu::DrawPracticeScores,?DrawPracticeScores@MainMenu@@QAEHXZ
 0x0046f5cb,1940,MainMenu::DrawState16,?DrawState16@MainMenu@@QAEHXZ
 0x0046fd5f,99,GameManager::IsSpellCardSeen,?IsSpellCardSeen@GameManager@@QAEHH@Z
-0x0046fdc2,510,Func46fdc2,
+0x0046fdc2,510,DrawFan,?DrawFan@@YIXPAUD3DXVECTOR3@@KMM@Z
 0x0046ffc0,843,MainMenu::DrawState17,?DrawState17@MainMenu@@QAEHXZ
 0x0047030b,281,MainMenu::MoveMenuCursor,?MoveMenuCursor@MainMenu@@QAEHH@Z
 0x00470424,265,MainMenu::MoveMenuCursorLR,?MoveMenuCursorLR@MainMenu@@QAEHH@Z

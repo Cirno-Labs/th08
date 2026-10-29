@@ -171,6 +171,10 @@ public:
     {
         this->color = color;
     }
+    void SetHighlight(int highlight)
+    {
+        this->highlight = highlight;
+    }
     void SetAlpha(int alpha)
     {
         this->alpha = alpha;
