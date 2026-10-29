@@ -592,7 +592,7 @@ address,size,name,symbol
 0x0043ef50,21,App::GetShootFocuses,?GetShootFocuses@App@@QAEHXZ
 0x0043ef70,63,App::EnterCriticalSection,?EnterCriticalSection@App@@QAEXH@Z
 0x0043efb0,63,App::LeaveCriticalSection,?LeaveCriticalSection@App@@QAEXH@Z
-0x0043efef,60,Func43efef,
+0x0043efef,60,GdiSurface::GdiSurface,??0GdiSurface@@QAE@XZ
 0x0043f02b,17,Func43f02b,
 0x0043f03c,114,Func43f03c,
 0x0043f0ae,95,Func43f0ae,
