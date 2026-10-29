@@ -580,3 +580,14 @@ int EffectInitDiverge(Effect *effect)
     effect->axis *= g_Rng.GetRandomF32InRange(1.5f) + 1.0f;
     return 0;
 }
+
+int EffectUpdateDivergeEased(Effect *effect)
+{
+    float f;
+
+    f = effect->timer.AsFloat() / 90.0f;
+    f = 1.0f - (1.0f - f) * (1.0f - f);
+    effect->pos = effect->axis * f * 128.0f + effect->origin;
+    effect->pos.z = 0.0f;
+    return 1;
+}
