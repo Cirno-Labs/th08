@@ -22,6 +22,9 @@ public:
     unsigned char unk_0[0x6ba538];
     // The bullets alive, as th07's.
     int bulletCount;
+    unsigned char unk_6ba53c[0x38];
+    // A copy of g_EtamaAnm, which the items also run their scripts from.
+    AnmLoaded *etamaAnm;
 };
 extern BulletManager g_BulletManager;
 // etama.anm (slot 6), which BulletManager's added callback loads.

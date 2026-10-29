@@ -742,6 +742,12 @@ public:
     {
         return this->GetRandomF32ZeroToOne() * range;
     }
+    // A random float from -`range` up to `range`. New in th08; the copy
+    // at 0x4143c0 is in an /Od object.
+    float GetRandomF32SignedInRange(float range)
+    {
+        return this->GetRandomF32MinusOneToOne() * range;
+    }
 
     WORD seed;
     // Where GameManager::OnUpdate keeps the seed while it rerolls the

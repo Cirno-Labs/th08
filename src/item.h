@@ -40,6 +40,14 @@ class ItemManager
 public:
     // Constructs the items (0x440010).
     ItemManager();
+    // Drops item `type` at `pos` in `state` into the next free slot,
+    // appends it to the active list and returns it; returns the spare
+    // last item when all are taken, when `pos` is outside x -64 to 448,
+    // or for a type 7 item that does not find a free slot at once. At
+    // full power (128), power items (0 and 2) turn into type 8; type 7
+    // spawns in state 3, type 10 as type 7 in state 5. States 3 and 5 fly
+    // up and sideways at random, unless the player is dying (0x4400a0).
+    Item *SpawnItem(D3DXVECTOR3 *pos, int type, int state);
     // Collects every item on the screen, as th07's (0x4413e0).
     void CollectAll();
 
