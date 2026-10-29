@@ -699,8 +699,8 @@ address,size,name,symbol
 0x004461a0,146,OpenGameArchive,?OpenGameArchive@@YIHXZ
 0x00446232,662,MeasureRefreshRate,?MeasureRefreshRate@@YIHXZ
 0x004464c8,1391,Func4464c8,
-0x00446a37,656,Func446a37,
-0x00446cc7,63,Func446cc7,
+0x00446a37,656,InitDirectInput,?InitDirectInput@@YIHPAVApp@@@Z
+0x00446cc7,63,EnumJoysticksCallback,?EnumJoysticksCallback@@YGHPBUDIDEVICEINSTANCEA@@PAX@Z
 0x00446d06,517,App::DeletedCallback,?DeletedCallback@App@@SIHPAV1@@Z
 0x00446f0b,55,Func446f0b,
 0x00446f42,17,Func446f42,
@@ -1115,6 +1115,7 @@ address,size,name,symbol
 0x00475200,31,DatArchiveCursor::SkipDword,?SkipDword@DatArchiveCursor@@QAEKXZ
 0x00475220,76,DatArchiveCursor::SkipString,?SkipString@DatArchiveCursor@@QAEPAEXZ
 0x00475270,40,DatArchiveEntry::~DatArchiveEntry,??1DatArchiveEntry@@QAE@XZ
+0x00476ce0,,DirectInput8Create,_DirectInput8Create@20
 0x00476ce6,,DirectSoundCreate8,_DirectSoundCreate8@12
 0x00476cf2,45,Func476cf2,
 0x00476d1f,142,Func476d1f,
@@ -2387,7 +2388,11 @@ address,size,name,symbol
 0x004b98b4,36,File::`vftable',??_7File@@6B@
 0x004b98d8,32,FileBase::`vftable',??_7FileBase@@6B@
 0x004b98f8,,g_SeekOrigins,?g_SeekOrigins@@3QBKB
+0x004b9b94,,c_dfDIJoystick2,_c_dfDIJoystick2
+0x004b9d9c,,c_dfDIKeyboard,_c_dfDIKeyboard
 0x004bd610,,IID_IDirectSoundNotify,_IID_IDirectSoundNotify
+0x004bd620,,GUID_SysKeyboard,_GUID_SysKeyboard
+0x004bd6c0,,IID_IDirectInput8A,_IID_IDirectInput8A
 0x004bd6d0,,IID_IShellLinkA,_IID_IShellLinkA
 0x004bd6e0,,CLSID_ShellLink,_CLSID_ShellLink
 0x004bd6f0,,IID_IPersistFile,_IID_IPersistFile

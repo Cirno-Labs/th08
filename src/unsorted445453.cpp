@@ -246,3 +246,72 @@ int MeasureRefreshRate()
     }
     return 0;
 }
+
+int InitDirectInput(App *game)
+{
+    HINSTANCE hInst = (HINSTANCE)GetWindowLongA(game->hwnd, GWL_HINSTANCE);
+
+    if (game->flags.noDirectInput)
+    {
+        return -1;
+    }
+    if (FAILED(DirectInput8Create(hInst, DIRECTINPUT_VERSION, IID_IDirectInput8, (VOID **)&game->dinput, NULL)))
+    {
+        game->dinput = NULL;
+        LogPrintf(&g_Log, "DirectInput が使用できません\r\n");
+        return -1;
+    }
+    if (FAILED(game->dinput->CreateDevice(GUID_SysKeyboard, &game->keyboard, NULL)))
+    {
+        if (game->dinput)
+        {
+            game->dinput->Release();
+            game->dinput = NULL;
+        }
+        LogPrintf(&g_Log, "DirectInput が使用できません\r\n");
+        return -1;
+    }
+    if (FAILED(game->keyboard->SetDataFormat(&c_dfDIKeyboard)))
+    {
+        if (game->keyboard)
+        {
+            game->keyboard->Release();
+            game->keyboard = NULL;
+        }
+        if (game->dinput)
+        {
+            game->dinput->Release();
+            game->dinput = NULL;
+        }
+        LogPrintf(&g_Log, "DirectInput SetDataFormat が使用できません\r\n");
+        return -1;
+    }
+    if (FAILED(game->keyboard->SetCooperativeLevel(game->hwnd, DISCL_NONEXCLUSIVE | DISCL_FOREGROUND | DISCL_NOWINKEY)))
+    {
+        if (game->keyboard)
+        {
+            game->keyboard->Release();
+            game->keyboard = NULL;
+        }
+        if (game->dinput)
+        {
+            game->dinput->Release();
+            game->dinput = NULL;
+        }
+        LogPrintf(&g_Log, "DirectInput SetCooperativeLevel が使用できません\r\n");
+        return -1;
+    }
+    game->keyboard->Acquire();
+    LogPrintf(&g_Log, "DirectInput は正常に初期化されました\r\n");
+    game->dinput->EnumDevices(DI8DEVCLASS_GAMECTRL, EnumJoysticksCallback, NULL, DIEDFL_ATTACHEDONLY);
+    if (game->joystick)
+    {
+        game->joystick->SetDataFormat(&c_dfDIJoystick2);
+        game->joystick->SetCooperativeLevel(game->hwnd, DISCL_NONEXCLUSIVE | DISCL_BACKGROUND);
+        g_App.joystickCaps.dwSize = sizeof(DIDEVCAPS);
+        game->joystick->GetCapabilities(&g_App.joystickCaps);
+        game->joystick->EnumObjects(EnumAxesCallback, NULL, DIDFT_ALL);
+        LogPrintf(&g_Log, "有効なパッドを発見しました\r\n");
+    }
+    return 0;
+}
