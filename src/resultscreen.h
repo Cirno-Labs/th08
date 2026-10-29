@@ -318,6 +318,11 @@ public:
     // Runs states 0x13 to 0x15, the statistics, as th07's. Returns
     // nonzero to go back to the menu.
     int RunStatisticsMenu();
+    // In states 0xf and 0x10, shows the game's statistics next to sprite
+    // 0x47: score, continues (up to 9), difficulty, progress, continues,
+    // deaths, bombs, spell cards and slowdown. It also works out a rating
+    // from them that it never shows. Returns 0.
+    int DrawStatistics();
     // Switches to `state`, keeping the old one in prevState, and clears
     // the frame count and subState. New in th08: th07 set `state` alone.
     void SetState(int state);
@@ -402,6 +407,16 @@ extern char *g_ShotNames[13];
 // in th08.
 extern int *g_SpellCardLists[6];
 extern int g_SpellCardListSizes[6];
+
+// The difficulties' names ("     Easy", ...), right-aligned, as th07's.
+extern char *g_DifficultyNames[5];
+// By difficulty: what the statistics' rating starts from, and what
+// each spell card captured adds to it, as th07's.
+extern float g_DifficultyRatings[5];
+extern float g_SpellCardRatings[5];
+// What DrawStatistics moves its columns by, in nines. Nothing sets it,
+// so it is 0. New in th08.
+extern int g_StatisticsColumnWidth;
 
 // Returns g_StageNames[stage], or "Clear" for 9 and over. New in th08.
 char *GetStageName(int stage);

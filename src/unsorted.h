@@ -992,7 +992,26 @@ extern SoundPlayer g_SoundPlayer;
 
 // What th07's GameManager points to at +0x8 and +0x4. Only the fields
 // known so far.
-struct GameManagerStats;
+// th07's GameStats, laid out anew.
+struct GameManagerStats
+{
+    // The score shown.
+    DWORD guiScore;
+    unsigned char unk_04[0x8];
+    // The game's grazes.
+    int grazeTotal;
+    unsigned char unk_10[0xc];
+    int spellCardsCaptured;
+    unsigned char unk_20[0x9];
+    BYTE continuesUsed;
+    unsigned char unk_2a[0x6];
+    int pointItemsTotal;
+    unsigned char unk_34[0x30];
+    // Floats, as th07's.
+    float deaths;
+    unsigned char unk_68[0x1c];
+    float bombsUsed;
+};
 struct GameManagerUnk4
 {
     unsigned char unk_0[0x25];
@@ -1021,6 +1040,16 @@ public:
     int IsInPractice()
     {
         return this->unk_3dbac & 1;
+    }
+    // The deaths and bombs used, as ints. New in th08; inline, the copies
+    // at 0x453c80 and 0x453ca0 are in an /Od object.
+    int GetDeaths()
+    {
+        return this->stats->deaths;
+    }
+    int GetBombsUsed()
+    {
+        return this->stats->bombsUsed;
     }
 
     DWORD unk_0;

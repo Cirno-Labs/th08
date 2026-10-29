@@ -9,6 +9,7 @@
 #include <string.h>
 #include <time.h>
 
+#include "ascii.h"
 #include "lzss.h"
 #include "resultscreen.h"
 #include "unsorted.h"
@@ -879,6 +880,116 @@ int ResultScreen::WaitAfterNameEntry()
             this->frame = 9;
             this->state = 0xa;
         }
+        break;
+    }
+    return 0;
+}
+
+int ResultScreen::DrawStatistics()
+{
+    Sprite *spr;
+    D3DXVECTOR3 cursorPos;
+    float progress;
+    float rating;
+    float slowdown;
+
+    switch (this->state)
+    {
+    case 0xf:
+    case 0x10:
+        spr = &this->sprites[0x47];
+        g_AsciiText.SetColor(spr->color);
+        rating = 0.0f;
+        progress = g_GameManager.difficulty < 4 ? g_GameManager.progressFrames / 195559.0f
+                                                : g_GameManager.progressFrames / 80000.0f;
+        cursorPos = spr->pos;
+        cursorPos.x += 210.0f;
+        cursorPos.y += 32.0f;
+        g_AsciiText.AddFormat(&cursorPos, "%9d", g_GameManager.stats->guiScore);
+        cursorPos.x += g_StatisticsColumnWidth * 9;
+        g_AsciiText.AddFormat(&cursorPos, "%1d",
+                              g_GameManager.stats->continuesUsed >= 10 ? 9 : g_GameManager.stats->continuesUsed);
+        cursorPos.x -= g_StatisticsColumnWidth * 9;
+        if (g_GameManager.stats->guiScore < 2000000)
+        {
+            rating -= 20.0f;
+        }
+        else if (g_GameManager.stats->guiScore < 200000000)
+        {
+            rating += (g_GameManager.stats->guiScore - 2000000) / 198000000.0f * 60.0f - 20.0f;
+        }
+        else
+        {
+            rating += 40.0f;
+        }
+        cursorPos.y += 22.0f;
+        g_AsciiText.AddString(&cursorPos, g_DifficultyNames[g_GameManager.difficulty]);
+        rating += g_DifficultyRatings[g_GameManager.difficulty];
+        cursorPos.x += g_StatisticsColumnWidth;
+        cursorPos.y += 22.0f;
+        if ((g_GameManager.unk_3dbac >> 4 & 1) == 0)
+        {
+            if (progress >= 1.0f)
+            {
+                progress = 0.99f;
+            }
+            g_AsciiText.AddFormat(&cursorPos, "    %3.2f%%", progress * 100.0f);
+            rating += progress * 70.0f;
+        }
+        else
+        {
+            g_AsciiText.AddFormat(&cursorPos, "      100%%");
+            rating += 70.0f;
+        }
+        cursorPos.y += 22.0f;
+        g_AsciiText.AddFormat(&cursorPos, "%9d", g_GameManager.stats->continuesUsed);
+        rating -= g_GameManager.stats->continuesUsed * 10.0f;
+        cursorPos.y += 22.0f;
+        g_AsciiText.AddFormat(&cursorPos, "%9d", g_GameManager.GetDeaths());
+        rating -= g_GameManager.GetDeaths() * 5.0f - 10.0f;
+        cursorPos.y += 22.0f;
+        g_AsciiText.AddFormat(&cursorPos, "%9d", g_GameManager.GetBombsUsed());
+        rating -= g_GameManager.GetBombsUsed() * 2.0f - 10.0f;
+        cursorPos.y += 22.0f;
+        g_AsciiText.AddFormat(&cursorPos, "%9d", g_GameManager.stats->spellCardsCaptured);
+        rating += g_GameManager.stats->spellCardsCaptured * g_SpellCardRatings[g_GameManager.difficulty];
+        slowdown = (g_App.achievedFrames / g_App.expectedFrames - 0.5f) * 2.0f;
+        if (slowdown < 0.0f)
+        {
+            slowdown = 0.0f;
+        }
+        else if (slowdown >= 1.0f)
+        {
+            slowdown = 1.0f;
+        }
+        slowdown = (1.0f - slowdown) * 100.0f;
+        cursorPos.y += 22.0f;
+        g_AsciiText.AddFormat(&cursorPos, "    %3.2f%%", slowdown);
+        if (slowdown < 50.0f)
+        {
+            rating -= 70.0f * slowdown / 100.0f;
+        }
+        else
+        {
+            rating = -999.0f;
+        }
+        if (g_GameManager.stats->pointItemsTotal < 800)
+        {
+            rating += 0.01f * g_GameManager.stats->pointItemsTotal;
+        }
+        else
+        {
+            rating += 8.0f;
+        }
+        if (g_GameManager.stats->grazeTotal < 5000)
+        {
+            rating += 0.0025f * g_GameManager.stats->grazeTotal;
+        }
+        else
+        {
+            rating += 12.5f;
+        }
+        g_AsciiText.SetColor(0xffffffff);
         break;
     }
     return 0;

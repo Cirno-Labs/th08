@@ -865,7 +865,7 @@ address,size,name,symbol
 0x0045696f,3699,ResultScreen::HandleReplaySaving,?HandleReplaySaving@ResultScreen@@QAEHXZ
 0x004577e2,200,ResultScreen::WaitAfterNameEntry,?WaitAfterNameEntry@ResultScreen@@QAEHXZ
 0x004578aa,1366,ResultScreen::RunStatisticsMenu,?RunStatisticsMenu@ResultScreen@@QAEHXZ
-0x00457e00,1184,Func457e00,
+0x00457e00,1184,ResultScreen::DrawStatistics,?DrawStatistics@ResultScreen@@QAEHXZ
 0x004582a0,395,ResultScreen::RegisterChain,?RegisterChain@ResultScreen@@SIHH@Z
 0x0045842b,133,ResultScreen::ResultScreen,??0ResultScreen@@QAE@XZ
 0x004584b0,424,ResultScreen::OnUpdate,?OnUpdate@ResultScreen@@SIHPAV1@@Z
@@ -2390,6 +2390,7 @@ address,size,name,symbol
 0x004b4280,4,CoCreateInstance,__imp__CoCreateInstance@20
 0x004b4284,4,CoUninitialize,__imp__CoUninitialize@0
 0x004b4288,4,CoInitialize,__imp__CoInitialize@4
+0x004b7b14,,g_DifficultyRatings,?g_DifficultyRatings@@3PAMA
 0x004b847c,,g_Half,?g_Half@@3MA
 0x004b8480,,g_TextureFormats,?g_TextureFormats@@3PAW4_D3DFORMAT@@A
 0x004b8498,,g_TextureFormatSizes,?g_TextureFormatSizes@@3PAHA
@@ -2416,10 +2417,13 @@ address,size,name,symbol
 0x004c7aac,,g_MusicNotHeardComment,?g_MusicNotHeardComment@@3PAPADA
 0x004c7f4c,,g_ShotNames,?g_ShotNames@@3PAPADA
 0x004c7fac,,g_StageNames,?g_StageNames@@3PAPADA
+0x004c7fe8,,g_SpellCardRatings,?g_SpellCardRatings@@3PAMA
+0x004c7ffc,,g_DifficultyNames,?g_DifficultyNames@@3PAPADA
 0x004c8040,,g_SoundInfos,?g_SoundInfos@@3PAUSoundInfo@@A
 0x004c81b0,,g_SoundPaths,?g_SoundPaths@@3PAPADA
 0x004c8704,,g_FileModes,?g_FileModes@@3PAPADA
 0x004cce20,,g_AsciiText,?g_AsciiText@@3VAsciiText@@A
+0x004d50a0,,g_StatisticsColumnWidth,?g_StatisticsColumnWidth@@3HA
 0x004e4030,,g_Stage,?g_Stage@@3VStage@@A
 0x004e4b50,,g_FogColorChanged,?g_FogColorChanged@@3EA
 0x004ea3f4,,g_CameraSizeOffset,?g_CameraSizeOffset@@3UD3DXVECTOR3@@A
