@@ -366,7 +366,7 @@ address,size,name,symbol
 0x00428620,135,EffectManager::RegisterChain,?RegisterChain@EffectManager@@SIHXZ
 0x004286b0,35,EffectManager::RemoveChain,?RemoveChain@EffectManager@@SIXXZ
 0x004286e0,32,Vector2::SetPolar,?SetPolar@Vector2@@QAEXMM@Z
-0x00428700,32,Func428700,
+0x00428700,32,Vector2::SetPolarEllipse,?SetPolarEllipse@Vector2@@QAEXMMM@Z
 0x00428720,28,Sprite::IsScriptDone,?IsScriptDone@Sprite@@QAEHXZ
 0x00428740,159,Func428740,
 0x004287e0,162,Func4287e0,

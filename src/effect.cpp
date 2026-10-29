@@ -635,3 +635,117 @@ int EffectInitRing(Effect *effect)
     effect->segmentCount = 0x18;
     return 0;
 }
+
+int EffectDrawRing(Effect *effect)
+{
+    float outer;
+    float delta;
+    VertexTex1DiffuseXyzrwh *vtx;
+    float inner;
+    int i;
+
+    if (effect->verticesDirty)
+    {
+        delta = 6.2831855f / effect->segmentCount;
+        outer = effect->ringWidth / sinf((3.1415927f - delta) / 2.0f);
+        vtx = effect->vertices;
+        g_SpriteEngine->FillVerticalStripVertices(&effect->sprite, effect->vertices, effect->segmentCount * 2 + 2);
+        if (effect->unk_32c == 0.0f)
+        {
+            float angle = effect->angle;
+
+            inner = effect->radius - outer;
+            outer += effect->radius;
+            for (i = effect->segmentCount + 1; i > 0; i--)
+            {
+                if (angle >= 3.1415927f)
+                {
+                    angle -= 6.2831855f;
+                }
+                vtx->pos.z = 0.0f;
+                ((Vector2 *)&vtx->pos)->SetPolar(angle, outer);
+                vtx->pos += effect->origin;
+                vtx->pos.x = g_GameManager.arena[0] + vtx->pos.x;
+                vtx->pos.y = g_GameManager.arena[1] + vtx->pos.y;
+                vtx++;
+                vtx->pos.z = 0.0f;
+                ((Vector2 *)&vtx->pos)->SetPolar(angle, inner);
+                vtx->pos += effect->origin;
+                vtx->pos.x = g_GameManager.arena[0] + vtx->pos.x;
+                vtx->pos.y = g_GameManager.arena[1] + vtx->pos.y;
+                vtx++;
+                angle += delta;
+            }
+        }
+        else if (effect->unk_334 == 0.0f)
+        {
+            float angle = 0.0f;
+            D3DXVECTOR3 pos;
+            float outerY;
+            float ryInner;
+
+            outerY = outer + effect->unk_32c;
+            ryInner = effect->unk_32c - outer;
+            inner = effect->radius - outer;
+            outer += effect->radius;
+            for (i = effect->segmentCount + 1; i > 0; i--)
+            {
+                ((Vector2 *)&pos)->SetPolarEllipse(angle, outer, outerY);
+                Rotate2D(&vtx->pos, &pos, effect->unk_330);
+                vtx->pos += effect->origin;
+                vtx->pos.x = g_GameManager.arena[0] + vtx->pos.x;
+                vtx->pos.y = g_GameManager.arena[1] + vtx->pos.y;
+                vtx->pos.z = 0.0f;
+                vtx++;
+                ((Vector2 *)&pos)->SetPolarEllipse(angle, inner, ryInner);
+                Rotate2D(&vtx->pos, &pos, effect->unk_330);
+                vtx->pos += effect->origin;
+                vtx->pos.x = g_GameManager.arena[0] + vtx->pos.x;
+                vtx->pos.y = g_GameManager.arena[1] + vtx->pos.y;
+                vtx->pos.z = 0.0f;
+                vtx++;
+                angle += delta;
+            }
+        }
+        else
+        {
+            float wobbleAngle = effect->unk_330;
+            float angle = effect->angle;
+            float phaseStep = 6.2831855f * effect->unk_334 / effect->segmentCount;
+            D3DXVECTOR3 unused;
+            float wobble;
+
+            inner = effect->radius - outer;
+            outer += effect->radius;
+            for (i = effect->segmentCount + 1; i > 0; i--)
+            {
+                if (angle >= 3.1415927f)
+                {
+                    angle -= 6.2831855f;
+                }
+                if (wobbleAngle >= 3.1415927f)
+                {
+                    wobbleAngle -= 6.2831855f;
+                }
+                wobble = cosf(wobbleAngle) * effect->unk_32c;
+                ((Vector2 *)&vtx->pos)->SetPolar(angle, outer + wobble);
+                vtx->pos += effect->origin;
+                vtx->pos.x = g_GameManager.arena[0] + vtx->pos.x;
+                vtx->pos.y = g_GameManager.arena[1] + vtx->pos.y;
+                vtx->pos.z = 0.0f;
+                vtx++;
+                ((Vector2 *)&vtx->pos)->SetPolar(angle, inner + wobble);
+                vtx->pos += effect->origin;
+                vtx->pos.x = g_GameManager.arena[0] + vtx->pos.x;
+                vtx->pos.y = g_GameManager.arena[1] + vtx->pos.y;
+                vtx->pos.z = 0.0f;
+                vtx++;
+                angle += delta;
+                wobbleAngle += phaseStep;
+            }
+        }
+        effect->verticesDirty = 0;
+    }
+    g_SpriteEngine->DrawVertexStrip(&effect->sprite, effect->vertices, effect->segmentCount * 2 + 2);
+    return 1;
+}

@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">58.69% (655)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">39.52% (441)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">58.78% (656)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">39.43% (440)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="438.43" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="438.43" y="0" class="decompiled"/>
-<rect width="295.19" height="6" x="451.81" y="0" class="todo"/>
+<rect width="439.10" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="439.10" y="0" class="decompiled"/>
+<rect width="294.52" height="6" x="452.48" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -418,7 +418,7 @@
 <rect width="12" height="12" x="705" y="90" class="named"><title>0x00427250 EffectUpdateNone (16 bytes)</title></rect>
 <rect width="12" height="12" x="720" y="90" class="named"><title>0x00427260 EffectInitMoveOut (114 bytes)</title></rect>
 <rect width="12" height="12" x="735" y="90" class="named"><title>0x004272e0 EffectInitRing (353 bytes)</title></rect>
-<rect width="12" height="12" x="0" y="105" class="todo"><title>0x00427450 EffectDrawRing (1303 bytes)</title></rect>
+<rect width="12" height="12" x="0" y="105" class="named"><title>0x00427450 EffectDrawRing (1303 bytes)</title></rect>
 <rect width="12" height="12" x="15" y="105" class="todo"><title>0x00427970 Func427970 (31 bytes)</title></rect>
 <rect width="12" height="12" x="30" y="105" class="todo"><title>0x00427990 Func427990 (59 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="105" class="todo"><title>0x004279d0 Func4279d0 (143 bytes)</title></rect>
@@ -435,7 +435,7 @@
 <rect width="12" height="12" x="210" y="105" class="todo"><title>0x00428620 EffectManager::RegisterChain (135 bytes)</title></rect>
 <rect width="12" height="12" x="225" y="105" class="todo"><title>0x004286b0 EffectManager::RemoveChain (35 bytes)</title></rect>
 <rect width="12" height="12" x="240" y="105" class="todo"><title>0x004286e0 Vector2::SetPolar (32 bytes)</title></rect>
-<rect width="12" height="12" x="255" y="105" class="todo"><title>0x00428700 Func428700 (32 bytes)</title></rect>
+<rect width="12" height="12" x="255" y="105" class="todo"><title>0x00428700 Vector2::SetPolarEllipse (32 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="105" class="named"><title>0x00428720 Sprite::IsScriptDone (28 bytes)</title></rect>
 <rect width="12" height="12" x="285" y="105" class="todo"><title>0x00428740 Func428740 (159 bytes)</title></rect>
 <rect width="12" height="12" x="300" y="105" class="todo"><title>0x004287e0 Func4287e0 (162 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">52.85%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">46.16%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">53.13%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">45.88%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="394.76" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="394.76" y="0" class="decompiled"/>
-<rect width="344.84" height="6" x="402.16" y="0" class="todo"/>
+<rect width="396.88" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="396.88" y="0" class="decompiled"/>
+<rect width="342.72" height="6" x="404.28" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1279,7 +1279,7 @@
 <rect width="25.75" height="23.01" x="356.57" y="296.03" class="named"><title>0x00464470 SpriteEngine::Draw3D (1318 bytes)</title></rect>
 <rect width="25.75" height="22.95" x="356.57" y="322.05" class="named"><title>0x00452830 ReplayManager::RecordAddedCallback (1315 bytes)</title></rect>
 <rect width="22.75" height="25.71" x="385.32" y="0" class="todo"><title>0x0040d430 Func40d430 (1303 bytes)</title></rect>
-<rect width="22.75" height="25.71" x="385.32" y="28.71" class="todo"><title>0x00427450 EffectDrawRing (1303 bytes)</title></rect>
+<rect width="22.75" height="25.71" x="385.32" y="28.71" class="named"><title>0x00427450 EffectDrawRing (1303 bytes)</title></rect>
 <rect width="22.75" height="25.47" x="385.32" y="57.43" class="named"><title>0x0043f31c GdiSurface::InvertAlpha (1292 bytes)</title></rect>
 <rect width="22.75" height="24.48" x="385.32" y="85.90" class="named"><title>0x0044970f MusicScreen::AddedCallback (1247 bytes)</title></rect>
 <rect width="22.75" height="24.13" x="385.32" y="113.38" class="named"><title>0x00438a89 Gui::DrawPopups (1231 bytes)</title></rect>
@@ -2129,7 +2129,7 @@
 <rect width="1.47" height="1.06" x="699.41" y="339.88" class="named"><title>0x00406700 Sprite::ClearShown (32 bytes)</title></rect>
 <rect width="1.47" height="1.06" x="699.41" y="343.94" class="todo"><title>0x00416af0 Func416af0 (32 bytes)</title></rect>
 <rect width="1.30" height="1.22" x="703.88" y="297.47" class="todo"><title>0x004286e0 Vector2::SetPolar (32 bytes)</title></rect>
-<rect width="1.30" height="1.22" x="708.18" y="297.47" class="todo"><title>0x00428700 Func428700 (32 bytes)</title></rect>
+<rect width="1.30" height="1.22" x="708.18" y="297.47" class="todo"><title>0x00428700 Vector2::SetPolarEllipse (32 bytes)</title></rect>
 <rect width="1.30" height="1.22" x="712.48" y="297.47" class="todo"><title>0x0044e120 Func44e120 (32 bytes)</title></rect>
 <rect width="1.30" height="1.22" x="716.79" y="297.47" class="named"><title>0x0045a4dc ListNode::ListNode (32 bytes)</title></rect>
 <rect width="1.17" height="1.22" x="721.09" y="297.47" class="todo"><title>0x0040bad0 Func40bad0 (31 bytes)</title></rect>
