@@ -485,7 +485,7 @@ int ResultScreen::UpdateScoreDifficultySelect()
             {
                 for (k = 0; k < 0xd; k++)
                 {
-                    g_GameManager.catks[shot].unk_124[k]++;
+                    g_GameManager.catks[shot].attempts[k]++;
                 }
             }
             this->cheatProgress = 0;
@@ -626,7 +626,7 @@ int ResultScreen::UpdateSpellDifficultySelect()
     case 0:
         if (this->unk_18 == 0)
         {
-            this->cursor = this->unk_48;
+            this->cursor = this->spellList;
             for (i = 9; i <= 0xe; i++)
             {
                 this->sprites[i].pendingInterrupt = 0x16;
@@ -667,7 +667,7 @@ int ResultScreen::UpdateSpellDifficultySelect()
         {
             this->SetState(1);
             g_SoundPlayer.QueueSound(0xb, 0);
-            this->unk_48 = this->cursor;
+            this->spellList = this->cursor;
             this->cursor = 1;
             return 1;
         }
@@ -685,7 +685,7 @@ int ResultScreen::UpdateSpellDifficultySelect()
                     this->sprites[i].pendingInterrupt = 1;
                 }
             }
-            this->unk_48 = this->cursor;
+            this->spellList = this->cursor;
             this->SetState(7);
             g_SoundPlayer.QueueSound(0xa, 0);
             return 1;
@@ -773,7 +773,7 @@ int ResultScreen::UpdateSpellShotSelect()
             g_SoundPlayer.QueueSound(0xa, 0);
             this->sprites[0x28].pendingInterrupt = 3;
             this->cursor = 0;
-            this->unk_40 = -1;
+            this->spellPage = -1;
             return 1;
         }
         break;
@@ -792,19 +792,19 @@ int ResultScreen::UpdateSpellList()
     {
         this->SetState(7);
     }
-    total = g_SpellCardListSizes[this->unk_48];
-    if ((this->unk_40 != this->cursor || this->unk_34 != this->spellCursor) && this->frame == 10)
+    total = g_SpellCardListSizes[this->spellList];
+    if ((this->spellPage != this->cursor || this->shownShotType != this->spellCursor) && this->frame == 10)
     {
-        this->unk_40 = this->cursor;
-        this->unk_34 = this->spellCursor;
-        for (i = this->unk_40 * 10; i < this->unk_40 * 10 + 10; i++)
+        this->spellPage = this->cursor;
+        this->shownShotType = this->spellCursor;
+        for (i = this->spellPage * 10; i < this->spellPage * 10 + 10; i++)
         {
             if (i >= total)
             {
                 break;
             }
-            id = g_SpellCardLists[this->unk_48][i];
-            if (g_GameManager.catks[id].unk_124[12] == 0)
+            id = g_SpellCardLists[this->spellList][i];
+            if (g_GameManager.catks[id].attempts[12] == 0)
             {
                 g_SpriteEngine->RenderText(&this->textSprites[i % 10], 0xffffff, 0, "？？？？？");
             }
@@ -815,7 +815,7 @@ int ResultScreen::UpdateSpellList()
             this->textSprites[i % 10].alpha = 0xff;
         }
         g_SpriteEngine->RenderText(&this->textSprites[10], 0xffffff, 0, "%3d/%3d（キャラ切り替え↓↑）",
-                                   this->capturedSpellCounts[this->unk_48][this->spellCursor], total);
+                                   this->capturedSpellCounts[this->spellList][this->spellCursor], total);
         this->textSprites[10].alpha = 0xff;
     }
     if (this->frame < 6)
@@ -830,8 +830,8 @@ int ResultScreen::UpdateSpellList()
     else if (LoadScreenPlstChunk(this, 0xd) != 0)
     {
         this->frame = 0;
-        this->unk_38 = 1;
-        this->sprites[this->unk_34 + 0x1b].pendingInterrupt = 0x18;
+        this->spellInfoSliding = 1;
+        this->sprites[this->shownShotType + 0x1b].pendingInterrupt = 0x18;
         this->sprites[this->spellCursor + 0x1b].pendingInterrupt = 0x19;
     }
     if (WAS_PRESSED(0xa))
@@ -1813,6 +1813,315 @@ int ResultScreen::OnUpdate(ResultScreen *screen)
         g_SpriteEngine->Step(vm);
     }
     screen->frame++;
+    return 1;
+}
+
+int ResultScreen::OnDraw(ResultScreen *screen)
+{
+    Sprite *sprite = screen->sprites;
+    char str[2];
+    // Never used; th07's unused D3DXVECTOR3 slot, without a constructor
+    // call here.
+    float unused_[3];
+    float shift;
+    float scale3;
+    int number;
+    char *diffLetters[5];
+    int card;
+    float x0;
+    D3DXVECTOR3 pos3;
+    int col0;
+    ListNode *node3;
+    char name[9];
+    int i;
+    D3DXVECTOR3 charPos;
+
+    g_SpriteEngine->FlushQuadBatch();
+    g_App.viewport.X = 0;
+    g_App.viewport.Y = 0;
+    g_App.viewport.Width = 640;
+    g_App.viewport.Height = 480;
+    g_App.d3dDevice->SetViewport(&g_App.viewport);
+    g_SpriteEngine->CopySurfaceToBackBuffer(0, 0, 0, 0, 0);
+    for (i = 0; i < 0x48; i++, sprite++)
+    {
+        pos3 = sprite->pos;
+        sprite->pos += sprite->posOffset;
+        g_SpriteEngine->DrawUnrotated(sprite);
+        sprite->pos = pos3;
+    }
+    sprite = &screen->sprites[0x28];
+    if (sprite->pos[0] < 640.0f)
+    {
+        if (screen->state != 8)
+        {
+            pos3 = sprite->pos;
+            pos3[1] += 18.0f;
+            pos3[0] += 24.0f;
+            g_AsciiText.SetColor(0xffe0e0ef);
+            g_AsciiText.AddFormat(&pos3, "No  Name       Score(Stage)   Date   Slow");
+            pos3[1] += 18.0f;
+            node3 = screen->scores[screen->difficulty][screen->character].next;
+            for (i = 0; i < 10; i++)
+            {
+                if (screen->state == 9)
+                {
+                    if (node3->data->isNew != 0)
+                    {
+                        g_AsciiText.SetColor(0xfff0f0ff);
+                    }
+                    else
+                    {
+                        g_AsciiText.SetColor(0xc0ffc0c0);
+                    }
+                }
+                else
+                {
+                    g_AsciiText.SetColor(0xffffc0c0);
+                }
+                g_AsciiText.AddFormat(&pos3, "%2d", i + 1);
+                pos3.x += 48.0f;
+                if (screen->state == 9 && node3->data->isNew != 0)
+                {
+                    *(DWORD *)&name[0] = *(DWORD *)"    ";
+                    *(DWORD *)&name[4] = *(DWORD *)"    ";
+                    name[8] = 0;
+                    name[screen->cursor >= 8 ? 7 : screen->cursor] = '_';
+                    g_AsciiText.AddFormat(&pos3, "%8s", name);
+                }
+                if (node3->data->stage < 99)
+                {
+                    g_AsciiText.AddFormat(
+                        &pos3, "%8s %9d%1d(%d)", node3->data->name, node3->data->score,
+                        (char)node3->data->continuesUsed >= 10 ? 9 : (char)node3->data->continuesUsed,
+                        g_StageNumbers[node3->data->stage]);
+                }
+                else
+                {
+                    g_AsciiText.AddFormat(
+                        &pos3, "%8s %9d%1d(C)", node3->data->name, node3->data->score,
+                        (char)node3->data->continuesUsed >= 10 ? 9 : (char)node3->data->continuesUsed);
+                }
+                pos3.x += 320.0f;
+                g_AsciiText.AddFormat(&pos3, " %5s   %3.2f", node3->data->date, node3->data->slowdown);
+                pos3[1] += 18.0f;
+                pos3[0] -= 368.0f;
+                node3 = node3->next;
+            }
+        }
+        else
+        {
+            diffLetters[0] = "E";
+            diffLetters[1] = "N";
+            diffLetters[2] = "H";
+            diffLetters[3] = "L";
+            diffLetters[4] = "-";
+            pos3 = sprite->pos;
+            screen->textSprites[10].pos = pos3;
+            screen->textSprites[10].pos.x += 320.0f;
+            screen->textSprites[10].pos.y -= 16.0f;
+            g_SpriteEngine->DrawUnrotated(&screen->textSprites[10]);
+            pos3[1] += 16.0f;
+            for (i = 0; i < 10; i++)
+            {
+                card = screen->spellPage * 10 + i;
+                if (card >= g_SpellCardListSizes[screen->spellList])
+                {
+                    break;
+                }
+                x0 = pos3[0];
+                pos3[0] += 320.0f;
+                pos3[1] += 16.0f;
+                screen->spellCardRowDivider.pos = pos3;
+                screen->spellCardRowDivider.scaleY = 2.375f;
+                g_SpriteEngine->DrawUnrotated(&screen->spellCardRowDivider);
+                pos3[1] -= 16.0f;
+                pos3[0] = x0;
+                screen->textSprites[i].pos = pos3;
+                number = g_SpellCardLists[screen->spellList][card];
+                if (g_GameManager.catks[number].attempts[screen->shownShotType] == 0)
+                {
+                    g_AsciiText.SetColor(0xc0c0c0ff);
+                }
+                else if (g_GameManager.catks[number].captures[screen->shownShotType] == 0)
+                {
+                    g_AsciiText.SetColor(0xffc0a0a0);
+                }
+                else
+                {
+                    g_AsciiText.SetColor(0xfff0f0ff - i * 0x80800);
+                }
+                g_AsciiText.AddFormat(&pos3, "No.%.2d", number + 1);
+                screen->textSprites[i].pos[0] += 78.0f;
+                g_SpriteEngine->DrawUnrotated(&screen->textSprites[i]);
+                pos3[0] += 446.0f;
+                if (number < 0xcd)
+                {
+                    if (g_GameManager.catks[number].attempts[screen->shownShotType] == 0)
+                    {
+                        g_AsciiText.AddFormat(&pos3, "---/---(-)");
+                    }
+                    else
+                    {
+                        g_AsciiText.AddFormat(&pos3, "%3d/%3d(%s)",
+                                              g_GameManager.catks[number].captures[screen->shownShotType],
+                                              g_GameManager.catks[number].attempts[screen->shownShotType],
+                                              diffLetters[g_GameManager.catks[number].difficulty]);
+                    }
+                }
+                else if (g_GameManager.catks[number].practiceAttempts[screen->shownShotType] == 0)
+                {
+                    g_AsciiText.AddFormat(&pos3, "---/---(-)");
+                }
+                else
+                {
+                    g_AsciiText.AddFormat(&pos3, "%3d/%3d(%s)",
+                                          g_GameManager.catks[number].practiceCaptures[screen->shownShotType],
+                                          g_GameManager.catks[number].practiceAttempts[screen->shownShotType],
+                                          diffLetters[g_GameManager.catks[number].difficulty]);
+                }
+                pos3[0] -= 446.0f;
+                pos3[0] += 424.0f;
+                pos3[1] -= 13.0f;
+                g_AsciiText.SetColor(0xffa08090);
+                g_AsciiText.SetScale(0.8f, 0.8f);
+                if (g_GameManager.catks[number].captures[screen->shownShotType] != 0)
+                {
+                    g_AsciiText.AddFormat(&pos3, "MaxBonus %8d",
+                                          g_GameManager.catks[number].maxBonus[screen->shownShotType]);
+                }
+                pos3[0] -= 424.0f;
+                pos3[1] += 13.0f;
+                g_AsciiText.SetScale(1.0f, 1.0f);
+                if (screen->spellInfoSliding == 0)
+                {
+                    pos3[1] += 33.0f;
+                }
+                else if (screen->frame < 10)
+                {
+                    pos3[1] += (10 - screen->frame) * 33 / 10;
+                }
+                else
+                {
+                    pos3[1] += (screen->frame - 10) * 33 / 10;
+                }
+            }
+            if (screen->frame >= 20)
+            {
+                screen->spellInfoSliding = 0;
+            }
+        }
+    }
+    if (screen->state == 9 || screen->state == 13)
+    {
+        pos3 = D3DXVECTOR3(160.0f, 356.0f, 0.0f);
+        for (i = 0; i < 6; i++)
+        {
+            for (col0 = 0; col0 < 0x10; col0++)
+            {
+                scale3 = 0.0f;
+                shift = 0.0f;
+                if (screen->charIndex == i * 16 + col0)
+                {
+                    g_AsciiText.SetColor(0xffffffc0);
+                    if (screen->frame % 64 < 32)
+                    {
+                        scale3 = 0.8f * (screen->frame % 32) / 32.0f + 1.2f;
+                    }
+                    else
+                    {
+                        scale3 = 2.0f - 0.8f * (screen->frame % 32) / 32.0f;
+                    }
+                    g_AsciiText.SetScale(scale3, scale3);
+                    shift = scale3 = -(scale3 - 1.0f) * 8.0f;
+                }
+                else
+                {
+                    g_AsciiText.SetColor(0xc0c0c0c0);
+                    g_AsciiText.SetScale(1.0f, 1.0f);
+                }
+                charPos = pos3;
+                charPos.x += scale3;
+                charPos.y += shift;
+                str[0] = g_NameAlphabet[i * 16 + col0];
+                str[1] = 0;
+                if (i == 5)
+                {
+                    if (col0 == 14)
+                    {
+                        str[0] = 0x80;
+                    }
+                    else if (col0 == 15)
+                    {
+                        str[0] = 0x81;
+                    }
+                }
+                g_AsciiText.AddString(&charPos, str);
+                pos3[0] += 20.0f;
+            }
+            pos3[0] -= col0 * 20;
+            pos3[1] += 18.0f;
+        }
+    }
+    g_AsciiText.SetScale(1.0f, 1.0f);
+    if (screen->state >= 10 && screen->state <= 14)
+    {
+        sprite = &screen->sprites[0x31];
+        for (i = 0; i < 6; i++, sprite++)
+        {
+            g_SpriteEngine->DrawUnrotated(sprite);
+        }
+        sprite = &screen->sprites[0x37];
+        pos3 = sprite->pos;
+        sprite++;
+        g_AsciiText.AddFormat(&pos3, "No.   Name     Date   Player Score");
+        for (i = 0; i < 0xf; i++)
+        {
+            pos3 = sprite->pos;
+            sprite++;
+            if (i == screen->replaySlot)
+            {
+                g_AsciiText.SetColor(0xffff8080);
+            }
+            else
+            {
+                g_AsciiText.SetColor(0xff808080);
+            }
+            if (screen->state == 13)
+            {
+                g_AsciiText.AddFormat(&pos3, "No.%.2d %8s %5s  %7s %9d0", i + 1, screen->name, screen->replay.date,
+                                      g_ShotTypeNames[g_GameManager.character + g_GameManager.shotType],
+                                      screen->replay.score);
+                g_AsciiText.SetColor(0xfff0f0ff);
+                *(DWORD *)&name[0] = *(DWORD *)"    ";
+                *(DWORD *)&name[4] = *(DWORD *)"    ";
+                name[8] = 0;
+                name[screen->cursor >= 8 ? 7 : screen->cursor] = '_';
+                g_AsciiText.AddFormat(&pos3, "      %8s", name);
+            }
+            else if (*(DWORD *)screen->replays[i].magic != *(DWORD *)"T8RP" ||
+                     (screen->replays[i].version & 0xfff) != 6)
+            {
+                g_AsciiText.AddFormat(&pos3, "No.%.2d -------- --/--  -------          0", i + 1);
+            }
+            else
+            {
+                g_AsciiText.AddFormat(&pos3, "No.%.2d %8s %5s  %7s %9d0", i + 1, screen->replays[i].name,
+                                      screen->replays[i].date, g_ShotTypeNames[screen->replays[i].shotType],
+                                      screen->replays[i].score);
+            }
+        }
+    }
+    g_AsciiText.SetColor(0xffffffff);
+    screen->DrawStatistics();
+    if (screen->state == 0x13 || screen->state == 0x14 || screen->state == 0x15)
+    {
+        sprite = screen->textSprites;
+        for (i = 0; i < 0x14; i++, sprite++)
+        {
+            g_SpriteEngine->DrawUnrotated(sprite);
+        }
+    }
     return 1;
 }
 

@@ -149,15 +149,22 @@ struct Catk
     BYTE unk_09[0x3];
     // The card's number.
     WORD index;
-    BYTE unk_0e[0x2];
+    BYTE unk_0e;
+    // The card's difficulty, 0 to 3, or 4 for none.
+    BYTE difficulty;
     // The card's name; its length is a guess.
     char name[0x40];
-    unsigned char unk_50[0xd4];
-    // By shot type, then with every shot type.
-    DWORD unk_124[0xd];
-    unsigned char unk_158[0x68];
-    DWORD unk_1c0[0xd];
-    unsigned char unk_1f4[0x38];
+    unsigned char unk_50[0xa0];
+    // By shot type, then with every shot type, as th07's (DWORDs now):
+    // the best bonus, the attempts and the captures.
+    DWORD maxBonus[0xd];
+    DWORD attempts[0xd];
+    DWORD captures[0xd];
+    DWORD unk_18c[0xd];
+    // The same in spell card practice.
+    DWORD practiceAttempts[0xd];
+    DWORD practiceCaptures[0xd];
+    unsigned char unk_228[0x4];
 };
 ASSERT_SIZE(Catk, 0x22c);
 
@@ -315,6 +322,9 @@ public:
     // 1, or 0 once it sets the scene back to the title (states 2, 0x11,
     // 0x16) or in state 0x12.
     static int OnUpdate(ResultScreen *screen);
+    // Draws the sprites, the score lists or the spell cards, the name
+    // entry's alphabet, the replay slots, then DrawStatistics, as
+    // th07's. Returns 1.
     static int OnDraw(ResultScreen *screen);
     static int AddedCallback(ResultScreen *screen);
     // Saves and frees the score file, empties the lists, releases ANMs
@@ -381,19 +391,21 @@ public:
     int charIndex;
     // A second cursor, moved by LoadScreenPlstChunk, as th07's.
     int spellCursor;
-    // The spellCursor whose spell cards textSprites show.
-    int unk_34;
-    int unk_38;
+    // The spellCursor whose spell cards textSprites show, as th07's.
+    int shownShotType;
+    // Set while the spell card rows slide in, as th07's.
+    int spellInfoSliding;
     // The shot type whose list is shown, as th07's: the score's shot
     // type in the name entry. -1 to redraw.
     int character;
     // The spell card page (ten cards each) textSprites show; -1 to
     // redraw.
-    int unk_40;
+    int spellPage;
     // The difficulty whose list is shown, as th07's.
     int difficulty;
-    // The spell card difficulty cursor, kept while away.
-    int unk_48;
+    // The spell card list shown (g_SpellCardLists' index), kept while
+    // away.
+    int spellList;
     // How far the button sequence that marks every stage cleared and
     // every spell card met has got, as th07's: three of 0x80, two of
     // 0x40, two of 0x2000, three of 0x200 while 4 or 0x100 is held.
@@ -414,7 +426,7 @@ public:
     // Text drawn with RenderText, as th07's.
     Sprite textSprites[0x1e];
     Sprite unk_10ef8;
-    Sprite unk_1119c;
+    Sprite spellCardRowDivider;
     unsigned char unk_11440[0xc];
     // The high score lists, by difficulty and shot.
     ListNode scores[5][0xc];
@@ -454,6 +466,11 @@ extern int g_SpellCardListSizes[6];
 // The characters a name can be made of, 16 to a row; the last two
 // stand for a space and the end. As th07's.
 extern char *g_NameAlphabet;
+// The shot types' short names ("Rm & Yk", ...), by shot type, as
+// th07's.
+extern char *g_ShotTypeNames[0xc];
+// The stages' numbers for the score lists, by stage. New in th08.
+extern int g_StageNumbers[9];
 // The difficulties' names ("     Easy", ...), right-aligned, as th07's.
 extern char *g_DifficultyNames[5];
 // By difficulty: what the statistics' rating starts from, and what

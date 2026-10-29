@@ -14,10 +14,15 @@ struct ReplayHeader
     char magic[4];
     // 6 in its low 12 bits.
     WORD version;
-    unsigned char unk_06[0x66];
+    unsigned char unk_06[0x64];
+    // The shot type.
+    BYTE shotType;
+    BYTE unk_6b;
     // The date it was saved, "%m/%d".
     char date[6];
-    unsigned char unk_72[0x3e];
+    // The player's name.
+    char name[0xc];
+    unsigned char unk_7e[0x32];
     DWORD score;
     unsigned char unk_b4[0x80];
 };

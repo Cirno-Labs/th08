@@ -30,6 +30,12 @@ public:
     {
         this->alpha = alpha;
     }
+    // Inline; the copy at 0x42f2f0 is in an /Od object.
+    void SetScale(float x, float y)
+    {
+        this->scaleX = x;
+        this->scaleY = y;
+    }
 
     unsigned char unk_0[0x8264];
     // How many strings are queued.
