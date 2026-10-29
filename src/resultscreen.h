@@ -98,7 +98,10 @@ struct Catk
     WORD size;
     WORD size2;
     BYTE version;
-    unsigned char unk_9[0x223];
+    BYTE unk_09[0x3];
+    // The card's number.
+    WORD index;
+    unsigned char unk_0e[0x21e];
 };
 ASSERT_SIZE(Catk, 0x22c);
 
@@ -187,7 +190,7 @@ ScoreDat *LoadScoreDat(char *path);
 // chunks. Return 0, or -1 if the destination is NULL; LoadFlspChunk
 // returns 1 if it found its chunk, else 0.
 int LoadClears(ScoreDat *scoreDat, Clrd *clrds);
-int LoadSpellCards(ScoreDat *scoreDat, Catk *catks);
+int LoadSpellCards(void *scoreDat, Catk *catks);
 int LoadFlspChunk(ScoreDat *scoreDat, Flsp *flsp);
 int LoadPracticeScores(ScoreDat *scoreDat, Pscr *pscrs);
 // Copies the score file's last "PLST" chunk to `plst`. Returns 0.

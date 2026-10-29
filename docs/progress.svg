@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">32.71% (365)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">67.29% (751)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">32.80% (366)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">67.20% (750)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="244.31" height="6" x="0" y="0" class="named"/>
-<rect width="502.69" height="6" x="244.31" y="0" class="todo"/>
+<rect width="244.98" height="6" x="0" y="0" class="named"/>
+<rect width="502.02" height="6" x="244.98" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -952,7 +952,7 @@
 <rect width="12" height="12" x="480" y="255" class="named"><title>0x0045a5a0 FreeListNodes (59 bytes)</title></rect>
 <rect width="12" height="12" x="495" y="255" class="named"><title>0x0045a5e0 LoadScoreDat (865 bytes)</title></rect>
 <rect width="12" height="12" x="510" y="255" class="named"><title>0x0045a950 LoadHighScores (362 bytes)</title></rect>
-<rect width="12" height="12" x="525" y="255" class="todo"><title>0x0045aac0 LoadSpellCards (175 bytes)</title></rect>
+<rect width="12" height="12" x="525" y="255" class="named"><title>0x0045aac0 LoadSpellCards (175 bytes)</title></rect>
 <rect width="12" height="12" x="540" y="255" class="todo"><title>0x0045ab70 Func45ab70 (136 bytes)</title></rect>
 <rect width="12" height="12" x="555" y="255" class="todo"><title>0x0045ac00 LoadFlspChunk (136 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="255" class="todo"><title>0x0045ac90 LoadClears (368 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">23.81%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">76.19%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">23.85%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">76.15%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="177.86" height="6" x="0" y="0" class="named"/>
-<rect width="569.14" height="6" x="177.86" y="0" class="todo"/>
+<rect width="178.15" height="6" x="0" y="0" class="named"/>
+<rect width="568.85" height="6" x="178.15" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1671,7 +1671,7 @@
 <rect width="7.04" height="7" x="642.49" y="188.78" class="todo"><title>0x0042f360 Func42f360 (177 bytes)</title></rect>
 <rect width="7.04" height="7" x="652.53" y="188.78" class="named"><title>0x00448a65 MusicScreen::UpdateIntro (177 bytes)</title></rect>
 <rect width="6.93" height="7" x="662.57" y="188.78" class="todo"><title>0x00417f60 Func417f60 (175 bytes)</title></rect>
-<rect width="6.93" height="7" x="672.50" y="188.78" class="todo"><title>0x0045aac0 LoadSpellCards (175 bytes)</title></rect>
+<rect width="6.93" height="7" x="672.50" y="188.78" class="named"><title>0x0045aac0 LoadSpellCards (175 bytes)</title></rect>
 <rect width="6.87" height="7" x="682.43" y="188.78" class="todo"><title>0x0040eca0 Func40eca0 (174 bytes)</title></rect>
 <rect width="6.81" height="7" x="692.30" y="188.78" class="todo"><title>0x00406940 Func406940 (173 bytes)</title></rect>
 <rect width="6.70" height="7" x="702.12" y="188.78" class="named"><title>0x004728e0 CSound::Stop (171 bytes)</title></rect>
