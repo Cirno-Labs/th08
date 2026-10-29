@@ -860,3 +860,17 @@ HRESULT CWaveFile::Open(LPTSTR strFileName, BgmFormat *format, DWORD dwFlags)
 
     return S_OK;
 }
+
+HRESULT CWaveFile::SwitchTrack(BgmFormat *format)
+{
+    if (m_bIsReadingFromMemory)
+        return E_FAIL;
+    if (this->hFile == INVALID_HANDLE_VALUE)
+        return E_FAIL;
+
+    this->format = format;
+    ResetFile(false);
+    m_dwSize = m_ck.cksize;
+
+    return S_OK;
+}
