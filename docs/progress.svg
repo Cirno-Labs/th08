@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">52.33% (584)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">45.88% (512)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">52.42% (585)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">45.79% (511)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="390.90" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="390.90" y="0" class="decompiled"/>
-<rect width="342.71" height="6" x="404.29" y="0" class="todo"/>
+<rect width="391.57" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="391.57" y="0" class="decompiled"/>
+<rect width="342.04" height="6" x="404.96" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -692,7 +692,7 @@
 <rect width="12" height="12" x="315" y="180" class="todo"><title>0x004412b0 Func4412b0 (293 bytes)</title></rect>
 <rect width="12" height="12" x="330" y="180" class="named"><title>0x004413e0 ItemManager::CollectAll (97 bytes)</title></rect>
 <rect width="12" height="12" x="345" y="180" class="named"><title>0x00441450 ItemManager::ConvertPowerItems (209 bytes)</title></rect>
-<rect width="12" height="12" x="360" y="180" class="todo"><title>0x00441530 Func441530 (109 bytes)</title></rect>
+<rect width="12" height="12" x="360" y="180" class="named"><title>0x00441530 ItemManager::RecycleCollectedItems (109 bytes)</title></rect>
 <rect width="12" height="12" x="375" y="180" class="todo"><title>0x004415a0 Func4415a0 (451 bytes)</title></rect>
 <rect width="12" height="12" x="390" y="180" class="todo"><title>0x00441770 Func441770 (106 bytes)</title></rect>
 <rect width="12" height="12" x="405" y="180" class="todo"><title>0x004417e0 Func4417e0 (79 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">44.13%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">54.88%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">44.15%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">54.86%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="329.62" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="329.62" y="0" class="decompiled"/>
-<rect width="409.97" height="6" x="337.03" y="0" class="todo"/>
+<rect width="329.80" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="329.80" y="0" class="decompiled"/>
+<rect width="409.80" height="6" x="337.20" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1809,7 +1809,7 @@
 <rect width="4.87" height="4.93" x="642.23" y="225.05" class="named"><title>0x0043e160 ResetKeyboard (110 bytes)</title></rect>
 <rect width="4.87" height="4.93" x="650.11" y="225.05" class="named"><title>0x00447421 App::TickTimer (110 bytes)</title></rect>
 <rect width="4.87" height="4.93" x="657.98" y="225.05" class="named"><title>0x00472a30 CSound::Reset (110 bytes)</title></rect>
-<rect width="4.80" height="4.93" x="665.85" y="225.05" class="todo"><title>0x00441530 Func441530 (109 bytes)</title></rect>
+<rect width="4.80" height="4.93" x="665.85" y="225.05" class="named"><title>0x00441530 ItemManager::RecycleCollectedItems (109 bytes)</title></rect>
 <rect width="4.80" height="4.93" x="673.65" y="225.05" class="todo"><title>0x00471400 Func471400 (109 bytes)</title></rect>
 <rect width="4.73" height="4.93" x="681.45" y="225.05" class="todo"><title>0x00451ce0 Func451ce0 (108 bytes)</title></rect>
 <rect width="4.66" height="4.93" x="689.18" y="225.05" class="named"><title>0x00442ef0 AppendCapsFlagText (107 bytes)</title></rect>

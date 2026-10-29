@@ -166,3 +166,20 @@ void ItemManager::ConvertPowerItems(Item *except)
         entry = entry->next;
     }
 }
+
+void ItemManager::RecycleCollectedItems()
+{
+    Item *entry = this->activeList.next;
+
+    while (entry != NULL)
+    {
+        if (entry->state == 1)
+        {
+            entry->state = 0;
+            entry->velocity.x = 0.0f;
+            entry->velocity.y = -0.9f;
+            entry->velocity.z = 0.0f;
+        }
+        entry = entry->next;
+    }
+}

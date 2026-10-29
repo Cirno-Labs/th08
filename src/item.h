@@ -55,6 +55,9 @@ public:
     // there). Those not rising faster are set to drift up at 0.5
     // (0x441450).
     void ConvertPowerItems(Item *except);
+    // Lets every item drawn to the player (state 1) fall again, starting
+    // at a slow upward drift, as th07's (0x441530).
+    void RecycleCollectedItems();
 
     // The last one is what SpawnItem returns when all others are taken.
     Item items[0x831];
