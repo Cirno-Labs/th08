@@ -278,3 +278,41 @@ AnmLoaded *SpriteEngine::PreloadAnm(int slot, char *path)
     DebugPrint("::preloadAnimEnd : %s\n", path);
     return g_App.closeSubThread ? NULL : anm;
 }
+
+int SpriteEngine::PreloadAnmTexture(AnmLoaded *anm, int index, int *spriteIndex, int *scriptIndex, AnmFile *file)
+{
+    void *data;
+    int size;
+    char *name;
+    AnmFile *anmHeader;
+    int highest;
+
+    highest = 0;
+    if (file == NULL)
+    {
+        LogError(&g_Log, "アニメが読み込めません。データが失われてるか壊れています\r\n");
+        return -1;
+    }
+    anmHeader = file;
+    if (anmHeader->version != 3)
+    {
+        LogError(&g_Log, "アニメのバージョンが違います\r\n");
+        return -1;
+    }
+    if (!anmHeader->hasImage)
+    {
+        name = (char *)anmHeader + anmHeader->nameOffset;
+        if (*name != '@')
+        {
+            data = LoadFileData(name, &size, 1);
+            if (data == NULL)
+            {
+                LogError(&g_Log, "テクスチャ %s が読み込めません。データが失われてるか壊れています\r\n", name);
+                return -1;
+            }
+            anm->textures[index].size = size;
+            anm->textures[index].data = data;
+        }
+    }
+    return highest + 1;
+}
