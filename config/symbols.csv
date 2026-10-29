@@ -124,7 +124,7 @@ address,size,name,symbol
 0x0040b9f0,21,SpriteEngine::ClearVertexFormat,?ClearVertexFormat@SpriteEngine@@QAEXXZ
 0x0040ba10,24,SpriteEngine::ClearTexture,?ClearTexture@SpriteEngine@@QAEXXZ
 0x0040ba30,21,Func40ba30,
-0x0040ba50,24,Func40ba50,
+0x0040ba50,24,SpriteEngine::ClearSpriteData,?ClearSpriteData@SpriteEngine@@QAEXXZ
 0x0040ba70,21,Func40ba70,
 0x0040ba90,25,SpriteEngine::SetLastCameraSetupFlag,?SetLastCameraSetupFlag@SpriteEngine@@QAEXE@Z
 0x0040bab0,30,SpriteEngine::ResetColorModulation,?ResetColorModulation@SpriteEngine@@QAEXXZ
