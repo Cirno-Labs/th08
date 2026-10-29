@@ -36,7 +36,7 @@ address,size,name,symbol
 0x00406580,26,App::GetNoFog,?GetNoFog@App@@QAEHXZ
 0x004065a0,22,Timer::Timer,??0Timer@@QAE@XZ
 0x004065c0,40,Timer::Initialize,?Initialize@Timer@@QAEXXZ
-0x004065f0,25,Func4065f0,
+0x004065f0,25,Timer::operator=,??4Timer@@QAEXH@Z
 0x00406610,41,Func406610,
 0x00406640,21,Func406640,
 0x00406660,52,Func406660,
