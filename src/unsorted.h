@@ -1241,6 +1241,12 @@ public:
     {
         return this->stats->bombsUsed;
     }
+    // Adds `points` to stats->score, which counts in tens, as th07's.
+    // Inline; the copy at 0x4181f0 is in an /Od object.
+    void AddScore(int points)
+    {
+        this->stats->score += points / 10;
+    }
     // The power, lives and bombs as ints, and setters for them (as ints;
     // they also update what depends on them). Copies in other objects:
     // GetPower 0x422480, GetLives 0x42f2b0, GetBombs 0x4398ce, SetLives

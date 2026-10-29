@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">44.27% (494)</tspan> · <tspan class="decompiled">1.34% (15)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">54.39% (607)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">44.35% (495)</tspan> · <tspan class="decompiled">1.34% (15)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">54.30% (606)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="330.66" height="6" x="0" y="0" class="named"/>
-<rect width="10.04" height="6" x="330.66" y="0" class="decompiled"/>
-<rect width="406.30" height="6" x="340.70" y="0" class="todo"/>
+<rect width="331.33" height="6" x="0" y="0" class="named"/>
+<rect width="10.04" height="6" x="331.33" y="0" class="decompiled"/>
+<rect width="405.63" height="6" x="341.37" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -544,7 +544,7 @@
 <rect width="12" height="12" x="345" y="135" class="named"><title>0x0043542b GuiImpl::DrawMsg (1107 bytes)</title></rect>
 <rect width="12" height="12" x="360" y="135" class="named"><title>0x0043587e Gui::MsgHoldsTimeline (61 bytes)</title></rect>
 <rect width="12" height="12" x="375" y="135" class="named"><title>0x004358bb Gui::IsMsgRunning (69 bytes)</title></rect>
-<rect width="12" height="12" x="390" y="135" class="todo"><title>0x00435900 Gui::UpdateInterface (2397 bytes)</title></rect>
+<rect width="12" height="12" x="390" y="135" class="named"><title>0x00435900 Gui::UpdateInterface (2397 bytes)</title></rect>
 <rect width="12" height="12" x="405" y="135" class="todo"><title>0x0043625d Gui::DrawHud (4544 bytes)</title></rect>
 <rect width="12" height="12" x="420" y="135" class="named"><title>0x0043741d Gui::DrawBanners (1554 bytes)</title></rect>
 <rect width="12" height="12" x="435" y="135" class="named"><title>0x00437a2f Gui::AddedCallback (17 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">36.33%</tspan> · <tspan class="decompiled">0.38%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">63.29%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">36.85%</tspan> · <tspan class="decompiled">0.38%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">62.77%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="271.38" height="6" x="0" y="0" class="named"/>
-<rect width="2.87" height="6" x="271.38" y="0" class="decompiled"/>
-<rect width="472.75" height="6" x="274.25" y="0" class="todo"/>
+<rect width="275.27" height="6" x="0" y="0" class="named"/>
+<rect width="2.87" height="6" x="275.27" y="0" class="decompiled"/>
+<rect width="468.86" height="6" x="278.14" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1226,7 +1226,7 @@
 <rect width="32.04" height="36.60" x="226.20" y="0" class="named"><title>0x004531f0 SaveReplay (2445 bytes)</title></rect>
 <rect width="32.04" height="36.47" x="226.20" y="39.60" class="named"><title>0x0045964d ResultScreen::AddedCallback (2437 bytes)</title></rect>
 <rect width="32.04" height="36.32" x="226.20" y="79.06" class="todo"><title>0x00428b80 Func428b80 (2428 bytes)</title></rect>
-<rect width="32.04" height="35.82" x="226.20" y="118.39" class="todo"><title>0x00435900 Gui::UpdateInterface (2397 bytes)</title></rect>
+<rect width="32.04" height="35.82" x="226.20" y="118.39" class="named"><title>0x00435900 Gui::UpdateInterface (2397 bytes)</title></rect>
 <rect width="32.04" height="35.59" x="226.20" y="157.21" class="todo"><title>0x00469636 Func469636 (2383 bytes)</title></rect>
 <rect width="32.04" height="35.30" x="226.20" y="195.80" class="todo"><title>0x0046d7f9 Func46d7f9 (2365 bytes)</title></rect>
 <rect width="32.04" height="35.19" x="226.20" y="234.10" class="todo"><title>0x0045d790 SoundPlayer::PlayQueuedSounds (2358 bytes)</title></rect>

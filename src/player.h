@@ -3,6 +3,7 @@
 #pragma once
 
 #include <windows.h>
+#include <d3dx8math.h>
 
 #include "common.h"
 
@@ -25,7 +26,10 @@ public:
     // Removes the player's chain elements, as th07's (0x44dd10).
     static void RemoveChain();
 
-    unsigned char unk_0[0xe2a74];
+    unsigned char unk_0[0x2b4];
+    // The player's position.
+    D3DXVECTOR3 pos;
+    unsigned char unk_2c0[0xe27b4];
     ShotTypeData *shotType;
 };
 extern Player g_Player;

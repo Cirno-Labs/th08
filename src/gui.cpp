@@ -10,6 +10,7 @@
 #include "chain.h"
 #include "enemy.h"
 #include "item.h"
+#include "player.h"
 #include "replay.h"
 #include "sprite.h"
 #include "unsorted.h"
@@ -285,6 +286,267 @@ int Gui::IsMsgRunning()
         return 0;
     }
     return this->impl->msg.scriptIndex >= 0 || this->impl->msg.scriptIndex == -2 ? 1 : 0;
+}
+
+void Gui::UpdateInterface()
+{
+    int m;
+    int clearBonus;
+    int j;
+    int remaining;
+    int i;
+
+    if (this->impl->msg.scriptIndex < 0)
+    {
+        if (this->bossPresent)
+        {
+            if (this->impl->bossBarState == 0)
+            {
+                this->impl->sprites[12].SetPendingInterrupt(1);
+                this->impl->bossBarState = 1;
+                this->bossBarAlpha = 0;
+            }
+            else
+            {
+                if (this->impl->sprites[12].IsStopped())
+                {
+                    this->impl->bossBarState = 2;
+                }
+                if (this->bossBarAlpha < 0xfc)
+                {
+                    this->bossBarAlpha += 4;
+                }
+                else
+                {
+                    this->bossBarAlpha = 0xff;
+                }
+            }
+        }
+        else if (this->impl->bossBarState != 0)
+        {
+            if (this->impl->bossBarState <= 2)
+            {
+                this->impl->sprites[12].SetPendingInterrupt(2);
+                this->impl->bossBarState = 3;
+            }
+            if (this->bossBarAlpha > 0)
+            {
+                this->bossBarAlpha -= 4;
+            }
+            else
+            {
+                this->bossBarAlpha = 0;
+            }
+            if (this->impl->sprites[12].IsStopped())
+            {
+                this->impl->bossBarState = 0;
+                this->bossHealthShown = 0.0f;
+                this->bossBarAlpha = 0;
+            }
+        }
+        if (this->impl->bossBarState >= 2)
+        {
+            if (this->bossHealth > this->bossHealthShown)
+            {
+                this->bossHealthShown += 0.01f;
+                if (this->bossHealth < this->bossHealthShown)
+                {
+                    this->bossHealthShown = this->bossHealth;
+                }
+            }
+            else if (this->bossHealth < this->bossHealthShown)
+            {
+                this->bossHealthShown -= 0.02f;
+                if (this->bossHealth > this->bossHealthShown)
+                {
+                    this->bossHealthShown = this->bossHealth;
+                }
+            }
+        }
+    }
+    g_SpriteEngine->StepSprites(this->impl->sprites, 0x10);
+    g_SpriteEngine->StepSprites(this->impl->unk_2a44, 4);
+    if (!(g_GameManager.unk_3dbac >> 14 & 1) && this->impl->unk_2a44[0].alpha != 0)
+    {
+        g_SpriteEngine->StepSprites(&this->impl->unk_34d4, 1);
+    }
+    g_SpriteEngine->Step(&this->impl->unk_212c8);
+    g_SpriteEngine->Step(&this->impl->unk_2156c);
+    // The clock fades to 0x40 while the player is near it.
+    if (this->impl->unk_2156c.alpha != 0)
+    {
+        if (g_Player.pos.x >= 64.0f && g_Player.pos.y < 128.0f)
+        {
+            if (this->impl->unk_2156c.alpha > 0x40)
+            {
+                this->impl->unk_2156c.alpha -= 4;
+            }
+        }
+        else if (this->impl->unk_2156c.alpha < 0xff)
+        {
+            if (this->impl->unk_2156c.alpha <= 0xfb)
+            {
+                this->impl->unk_2156c.alpha += 4;
+            }
+            else
+            {
+                this->impl->unk_2156c.alpha = 0xff;
+            }
+        }
+    }
+    g_SpriteEngine->Step(&this->impl->unk_5484);
+    g_SpriteEngine->Step(&this->impl->unk_22e14);
+    if (this->impl->loadingIcon.spriteIndex >= 0)
+    {
+        if (g_SpriteEngine->Step(&this->impl->loadingIcon) != 0)
+        {
+            this->impl->loadingIcon.spriteIndex = -1;
+        }
+        if (g_SpriteEngine->Step(&this->impl->loadingBar) != 0)
+        {
+            this->impl->loadingBar.spriteIndex = -1;
+        }
+        for (i = 0; i < ARRAY_SIZE(this->impl->unk_3f64); i++)
+        {
+            g_SpriteEngine->Step(&this->impl->unk_3f64[i]);
+        }
+    }
+    if (this->impl->backgroundTileCount != 0)
+    {
+        remaining = 0xa8;
+        for (j = 0; j < 0xa8; j++)
+        {
+            if (g_SpriteEngine->Step(&this->impl->backgroundTiles[j]) != 0)
+            {
+                remaining--;
+            }
+        }
+        this->impl->backgroundTileCount = remaining;
+    }
+    if (this->impl->bonusPopup.shown)
+    {
+        if (this->impl->bonusPopup.timer < 30)
+        {
+            this->impl->bonusPopup.pos.x = this->impl->bonusPopup.timer.AsFloat() * -312.0f / 30.0f + 416.0f;
+        }
+        else
+        {
+            this->impl->bonusPopup.pos.x = 104.0f;
+        }
+        if (this->impl->bonusPopup.timer >= 250)
+        {
+            this->impl->bonusPopup.shown = 0;
+        }
+        this->impl->bonusPopup.timer++;
+    }
+    if (this->impl->fullPowerPopup.shown)
+    {
+        if (this->impl->fullPowerPopup.timer < 30)
+        {
+            this->impl->fullPowerPopup.pos.x = this->impl->fullPowerPopup.timer.AsFloat() * -312.0f / 30.0f + 416.0f;
+        }
+        else
+        {
+            this->impl->fullPowerPopup.pos.x = 104.0f;
+        }
+        if (this->impl->fullPowerPopup.timer >= 180)
+        {
+            this->impl->fullPowerPopup.shown = 0;
+        }
+        this->impl->fullPowerPopup.timer++;
+    }
+    if (this->impl->spellBonusPopup.shown)
+    {
+        if (this->impl->spellBonusPopup.timer >= 280)
+        {
+            this->impl->spellBonusPopup.shown = 0;
+        }
+        this->impl->spellBonusPopup.timer++;
+    }
+    if (this->impl->stageClearShown == 1)
+    {
+        clearBonus = 0;
+        clearBonus += this->impl->stageClearBonus;
+        clearBonus += this->impl->stageClearGraze * 50;
+        clearBonus += this->impl->stageClearPoints * 5000;
+        clearBonus += this->impl->stageClearTime * 100;
+        if (g_GameManager.stage >= 6 && !g_GameManager.IsInPractice())
+        {
+            clearBonus += g_GameManager.GetLives() * 2500000;
+            clearBonus += g_GameManager.GetBombs() * 500000;
+        }
+        if (g_GameManager.stage == 7)
+        {
+            clearBonus += (12 - g_GameManager.GetUnk28()) * 2000000;
+        }
+        switch (g_GameManager.difficulty)
+        {
+        case 0:
+            clearBonus /= 2;
+            break;
+        case 2:
+            clearBonus = clearBonus * 12 / 10;
+            break;
+        case 3:
+            clearBonus = clearBonus * 15 / 10;
+            break;
+        case 4:
+            clearBonus *= 2;
+            break;
+        }
+        switch (g_GameManager.unk_4->lifeCount)
+        {
+        case 3:
+            clearBonus = clearBonus * 5 / 10;
+            break;
+        case 4:
+            clearBonus = clearBonus * 2 / 10;
+            break;
+        case 5:
+            clearBonus = clearBonus / 10;
+            break;
+        case 6:
+            clearBonus = clearBonus / 20;
+            break;
+        }
+        this->impl->stageClearTotal = clearBonus;
+        for (m = 0; m < 10; m++)
+        {
+            g_GameManager.AddScore(clearBonus);
+        }
+        this->impl->stageClearShown++;
+    }
+    if (g_GameManager.stage < 6 && this->impl->stageClearClock2 != 0 &&
+        this->impl->stageClearClock2 >= this->impl->stageClearLastTime && g_GameManager.unk_3dbac_5 == 0)
+    {
+        g_GameManager.unk_3dbac_5 = 2;
+    }
+    if (this->impl->stageClearClock2 != 0 && this->impl->stageClearClock2 != this->impl->stageClearLastTime)
+    {
+        if (this->impl->unk_22e10 >= 60)
+        {
+            if (this->impl->stageClearClock2 < this->impl->stageClearLastTime)
+            {
+                this->impl->stageClearClock2++;
+                if ((g_GameButtons & 1) || (g_GameButtons & 0x100))
+                {
+                    this->impl->stageClearClock2 += 3;
+                }
+                if (this->impl->stageClearClock2 > this->impl->stageClearLastTime)
+                {
+                    this->impl->stageClearClock2 = this->impl->stageClearLastTime;
+                }
+            }
+            else
+            {
+                this->impl->unk_22e10++;
+            }
+        }
+        else
+        {
+            this->impl->unk_22e10++;
+        }
+    }
 }
 
 void Gui::DrawBanners()
