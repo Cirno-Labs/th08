@@ -330,7 +330,7 @@ address,size,name,symbol
 0x00425d70,236,EffectInitDrift,?EffectInitDrift@@YIHPAUEffect@@@Z
 0x00425e60,63,EffectUpdateMove,?EffectUpdateMove@@YIHPAUEffect@@@Z
 0x00425ea0,248,EffectInitDriftFast,?EffectInitDriftFast@@YIHPAUEffect@@@Z
-0x00425fa0,59,Func425fa0,
+0x00425fa0,59,D3DXVECTOR3::operator-,??GD3DXVECTOR3@@QBE?AU0@XZ
 0x00425fe0,75,EffectInitForeground,?EffectInitForeground@@YIHPAUEffect@@@Z
 0x00426030,588,EffectUpdateOrbit,?EffectUpdateOrbit@@YIHPAUEffect@@@Z
 0x00426280,624,EffectInitBossPetal,?EffectInitBossPetal@@YIHPAUEffect@@@Z
