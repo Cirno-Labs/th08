@@ -758,6 +758,27 @@ int SpriteEngine::ProjectSprite(Sprite *vm)
     return 0;
 }
 
+int SpriteEngine::DrawProjected(Sprite *vm)
+{
+    if (!vm->IsShown())
+    {
+        return -1;
+    }
+    if ((vm->flags >> 1 & 1) == 0)
+    {
+        return -1;
+    }
+    if (vm->alpha == 0)
+    {
+        return -1;
+    }
+    if (this->ProjectSprite(vm) != 0)
+    {
+        return -1;
+    }
+    return this->DrawQuad(vm, 0);
+}
+
 SpriteEngine::SpriteEngine()
 {
     memset(this, 0, sizeof(*this));
