@@ -47,6 +47,11 @@ public:
     Chain();
     ~Chain();
 
+    // Calls `elem`'s added callback, clearing it, then inserts `elem`
+    // into the update chain by priority, inside critical section 0.
+    // Returns the callback's result, or 0 without one.
+    int AddToCalcChain(ChainElem *elem, int priority);
+
     ChainElem calcChain;
     ChainElem drawChain;
 };
