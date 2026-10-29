@@ -283,6 +283,105 @@ int UpdateCirclingOption(Player *player, PlayerOption *option)
     return 0;
 }
 
+int UpdateFollowingCirclingOption(Player *player, PlayerOption *option)
+{
+    D3DXVECTOR3 target;
+
+    switch (option->active)
+    {
+    case 1:
+        player->anm->StartScript(&option->sprite, 0x18);
+        option->active = 2;
+        option->center = player->pos;
+        switch (option->index)
+        {
+        case 0:
+            option->center.x -= 30.0f;
+            option->center.y -= 16.0f;
+            option->orbitAngle = 0.0f;
+            break;
+        case 1:
+            option->center.x -= 10.0f;
+            option->center.y -= 32.0f;
+            option->orbitAngle = 3.1415927f;
+            break;
+        case 2:
+            option->center.x += 10.0f;
+            option->center.y -= 32.0f;
+            option->orbitAngle = 0.0f;
+            break;
+        case 3:
+            option->center.x += 30.0f;
+            option->center.y -= 16.0f;
+            option->orbitAngle = 3.1415927f;
+            break;
+        }
+    case 2:
+        if (option->timer > 12)
+        {
+            switch (option->index)
+            {
+            case 0:
+                option->orbitAngle = AddNormalizeAngle(option->orbitAngle, 0.02617994f);
+                break;
+            case 1:
+                option->orbitAngle = AddNormalizeAngle(option->orbitAngle, -0.034906585f);
+                break;
+            case 2:
+                option->orbitAngle = AddNormalizeAngle(option->orbitAngle, 0.034906585f);
+                break;
+            case 3:
+                option->orbitAngle = AddNormalizeAngle(option->orbitAngle, -0.02617994f);
+                break;
+            }
+        }
+        option->sprite.color = 0xffff8080;
+        ((Vector2 *)&option->pos)->SetPolar(option->orbitAngle, 8.0f);
+        if (!player->focused)
+        {
+            target = player->pos;
+            option->sprite.color = 0xff80ffff;
+            switch (option->index)
+            {
+            case 0:
+                target.x -= 30.0f;
+                target.y -= 16.0f;
+                break;
+            case 1:
+                target.x -= 10.0f;
+                target.y -= 32.0f;
+                break;
+            case 2:
+                target.x += 10.0f;
+                target.y -= 32.0f;
+                break;
+            case 3:
+                target.x += 30.0f;
+                target.y -= 16.0f;
+                break;
+            }
+            option->center = (target - option->center) * 0.2f + option->center;
+        }
+        option->pos += option->center;
+        option->pos.z = 0.0f;
+        g_EffectManager.SpawnEffect(0x2f, &option->pos, 1, 0x80602050);
+        break;
+    case 3:
+        if (option->timer == 0)
+        {
+            option->sprite.SetPendingInterrupt(5);
+        }
+        if (option->timer > 16)
+        {
+            option->active = 0;
+            option->update = NULL;
+            option->draw = NULL;
+        }
+        break;
+    }
+    return 0;
+}
+
 int UpdateTrailingOption(Player *player, PlayerOption *option)
 {
     float target;

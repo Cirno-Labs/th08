@@ -307,6 +307,10 @@ int UpdateFrontOption(Player *player, PlayerOption *option);
 // The update callback of an option circling a point beside the player
 // by its index, script 0x18 (0x44eb70).
 int UpdateCirclingOption(Player *player, PlayerOption *option);
+// UpdateCirclingOption whose circles follow the player (easing 20% a
+// frame) while it is not focused, tinted cyan then and red focused,
+// leaving effect 0x2f (0x44ee70).
+int UpdateFollowingCirclingOption(Player *player, PlayerOption *option);
 // The third option of character 3 (g_OptionUpdateFuncs[12][2]), which
 // swirls, radius 8, round a point easing (5% a frame) after the
 // player's oldest position, and turns its angle towards the player's
