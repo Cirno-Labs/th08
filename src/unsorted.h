@@ -1452,6 +1452,10 @@ public:
     }
     // Whether a replay plays (bit 3 of unk_3dbac). Inline; the copy at
     // 0x406c90 is an /Od object's.
+    void SetIsReplay(int isReplay)
+    {
+        this->isReplay = isReplay;
+    }
     int IsReplay()
     {
         return this->unk_3dbac >> 3 & 1;
@@ -1513,7 +1517,9 @@ public:
             // Set while neither paused nor in the continue menu, as
             // th07's isPlaying.
             unsigned int isPlaying : 1;
-            unsigned int unk_3dbac_3 : 2;
+            // IsReplay, as th07's isInReplay.
+            unsigned int isReplay : 1;
+            unsigned int unk_3dbac_4 : 1;
             // The result screen's mode: OnDraw returns 3 in mode 1, and
             // AddedCallback turns 2 and 3 into 1.
             unsigned int unk_3dbac_5 : 2;

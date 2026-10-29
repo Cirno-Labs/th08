@@ -2444,8 +2444,10 @@ address,size,name,symbol
 0x004c8010,,g_ShotTypeNames,?g_ShotTypeNames@@3PAPADA
 0x004c8040,,g_SoundInfos,?g_SoundInfos@@3PAUSoundInfo@@A
 0x004c81b0,,g_SoundPaths,?g_SoundPaths@@3PAPADA
+0x004c8240,,g_DemoReplayPaths,?g_DemoReplayPaths@@3PAPADA
 0x004c8250,,g_PracticeStageNames,?g_PracticeStageNames@@3PAPADA
 0x004c829c,,g_FullWidthDigits,?g_FullWidthDigits@@3PAPADA
+0x004c8640,,g_TitleHelpTexts,?g_TitleHelpTexts@@3PAPADA
 0x004c868c,,g_LastPressedKey,?g_LastPressedKey@@3FA
 0x004c8690,,g_KeyConfigHelpTexts,?g_KeyConfigHelpTexts@@3PAPADA
 0x004c8704,,g_FileModes,?g_FileModes@@3PAPADA

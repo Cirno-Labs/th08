@@ -180,6 +180,10 @@ extern char g_FullWidthNumber[0x40];
 // "０" to "９".
 extern char *g_FullWidthDigits[10];
 
+// The help line the title menu shows for each entry.
+extern char *g_TitleHelpTexts[9];
+// The demo replays the title menu plays in turn.
+extern char *g_DemoReplayPaths[4];
 // The practice menu's stage names.
 extern char *g_PracticeStageNames[8];
 // The help line the key config shows for each entry.

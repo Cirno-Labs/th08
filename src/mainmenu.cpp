@@ -67,6 +67,282 @@ int MainMenu::OnUpdate(MainMenu *menu)
     }
     return status;
 }
+int MainMenu::StartTitle()
+{
+    int i;
+    int size;
+
+    switch (this->subState)
+    {
+    case 0:
+        if (this->inputLockout == 0)
+        {
+            if (this->prevState == 0 && g_App.prevScene != 5)
+            {
+                g_App.PlayMidi(8, 0);
+            }
+            if ((this->prevState == 0 || this->prevState == 4 || this->prevState == 7 || this->prevState == 8 ||
+                 this->prevState == 12 || this->prevState == 15 || this->prevState == 16) &&
+                g_SpriteEngine->LoadSurface(0, "title/title00.png") != 0)
+            {
+                return 0;
+            }
+            if (this->spriteCount == 0)
+            {
+                this->spriteCount = 0x8e;
+                this->sprites = new Sprite[this->spriteCount];
+                this->titleAnm->StartSpriteSeries(this->sprites, 0, this->spriteCount);
+            }
+            g_SpriteEngine->SendInterruptToLoadedSprites(this->sprites, this->spriteCount, 2);
+            if (g_GameManager.IsReplay())
+            {
+                this->SetState(7);
+                g_SpriteEngine->SendInterruptToLoadedSprites(this->sprites, this->spriteCount, 13);
+                this->helpSprite->SetPendingInterrupt(2);
+                g_GameManager.SetIsReplay(0);
+                return 1;
+            }
+            if (this->returningFromPractice != 0)
+            {
+                if (this->returningFromPractice == 2)
+                {
+                    g_GameManager.unk_3dbac |= 0x4000;
+                }
+                this->SetState(g_GameManager.IsInSpellCardPractice() ? 15 : 8);
+                g_SpriteEngine->SendInterruptToLoadedSprites(this->sprites, this->spriteCount, 5);
+                this->helpSprite->SetPendingInterrupt(2);
+                return 1;
+            }
+            for (i = 0; i < 9; i++)
+            {
+                this->titleAnm->SetSprite(&this->sprites[i + 1], this->sprites[i + 1].baseSpriteIndex + 1);
+            }
+            this->titleAnm->SetSprite(&this->sprites[this->cursor + 1], this->sprites[this->cursor + 1].baseSpriteIndex);
+            if (!g_GameManager.Func43c2c5())
+            {
+                this->sprites[3].color = 0xff404040;
+            }
+            if (!g_GameManager.AnyShotHasExtraOpen())
+            {
+                this->sprites[2].color = 0xff404040;
+            }
+        }
+        if (this->inputLockout < ARRAY_SIZE(g_TitleHelpTexts))
+        {
+            g_SpriteEngine->RenderTextCentered(&this->helpSprites[this->inputLockout], 0xfff0e0, 0x300000,
+                                               g_TitleHelpTexts[this->inputLockout]);
+            this->inputLockout++;
+            return 1;
+        }
+        this->inputLockout = 0;
+        this->stateFrames = 0;
+        this->prevCursor = -1;
+        this->subState = 1;
+        this->idleFrames = 0;
+    case 1:
+        i = this->MoveMenuCursor(9);
+        if (i != 0)
+        {
+            for (;;)
+            {
+                while (!g_GameManager.Func43c2c5() && this->cursor == 2)
+                {
+                    this->cursor += i;
+                }
+                if (!g_GameManager.AnyShotHasExtraOpen() && this->cursor == 1)
+                {
+                    this->cursor += i;
+                    continue;
+                }
+                break;
+            }
+            for (i = 0; i < 9; i++)
+            {
+                this->titleAnm->SetSprite(&this->sprites[i + 1], this->sprites[i + 1].baseSpriteIndex + 1);
+            }
+            this->titleAnm->SetSprite(&this->sprites[this->cursor + 1], this->sprites[this->cursor + 1].baseSpriteIndex);
+            if (!g_GameManager.Func43c2c5())
+            {
+                this->sprites[3].color = 0xff404040;
+            }
+            if (!g_GameManager.AnyShotHasExtraOpen())
+            {
+                this->sprites[2].color = 0xff404040;
+            }
+        }
+        this->idleFrames++;
+        if (g_Buttons != 0)
+        {
+            this->idleFrames = 0;
+        }
+        if (this->idleFrames > 1500)
+        {
+            g_GameManager.demoIndex++;
+            g_GameManager.demoIndex %= 4;
+            strcpy(g_GameManager.replayFile, g_DemoReplayPaths[g_GameManager.demoIndex]);
+            this->loadedReplay = (ReplayHeader *)LoadFileData(g_GameManager.replayFile, &size, 0);
+            this->loadedReplay = ValidateReplay(this->loadedReplay, size);
+            if (this->loadedReplay == NULL)
+            {
+                DebugPrint2("error : Demo Play is not ready\r\n");
+                this->idleFrames = 0;
+            }
+            else
+            {
+                g_GameManager.SetIsReplay(1);
+                g_GameManager.unk_3dbac |= 2;
+                g_GameManager.demoFrames = 0;
+                g_GameManager.difficulty = this->loadedReplay->difficulty;
+                g_GameManager.character = this->loadedReplay->shotType / 2;
+                g_GameManager.shotType = this->loadedReplay->shotType % 2;
+                g_GameManager.character = this->loadedReplay->shotType;
+                i = 0;
+                while (this->loadedReplay->stages[i] == NULL)
+                {
+                    i++;
+                }
+                g_GameManager.stage = i;
+                MemFree(this->loadedReplay);
+                this->loadedReplay = NULL;
+                g_App.scene = 2;
+                g_GameManager.replayMenuChoice = 0;
+                g_GameManager.unk_3dbac &= ~0x4000;
+                return 0;
+            }
+        }
+        if (this->prevCursor != this->cursor)
+        {
+            this->helpSprite = &this->helpSprites[this->cursor];
+            this->helpSprite->SetPendingInterrupt(1);
+        }
+        this->prevCursor = this->cursor;
+        if (this->inputLockout < 10)
+        {
+            break;
+        }
+        if (WAS_PRESSED(0x1001))
+        {
+            g_SoundPlayer.QueueSound(10, 0);
+            g_SoundPlayer.PlayQueuedSounds();
+            switch (this->cursor)
+            {
+            case 0:
+                g_GameManager.unk_3dbac &= ~1;
+                g_GameManager.unk_3dbac &= ~0x4000;
+                this->cursor = g_App.defaultDifficulty;
+                if (this->cursor >= 4)
+                {
+                    this->cursor = 2;
+                }
+                this->SetState(4);
+                g_SpriteEngine->SendInterruptToLoadedSprites(this->sprites, this->spriteCount, 5);
+                this->helpSprite->SetPendingInterrupt(2);
+                return 1;
+            case 3:
+                g_GameManager.unk_3dbac |= 1;
+                g_GameManager.unk_3dbac &= ~0x4000;
+                this->cursor = g_App.defaultDifficulty;
+                if (this->cursor >= 4)
+                {
+                    this->cursor = 2;
+                }
+                this->SetState(8);
+                g_SpriteEngine->SendInterruptToLoadedSprites(this->sprites, this->spriteCount, 5);
+                this->helpSprite->SetPendingInterrupt(2);
+                return 1;
+            case 1:
+                if (g_GameManager.AnyShotHasExtraOpen())
+                {
+                    g_GameManager.unk_3dbac &= ~1;
+                    g_GameManager.unk_3dbac &= ~0x4000;
+                    this->cursor = 0;
+                    this->SetState(12);
+                    g_SpriteEngine->SendInterruptToLoadedSprites(this->sprites, this->spriteCount, 5);
+                    this->helpSprite->SetPendingInterrupt(2);
+                    return 1;
+                }
+            case 2:
+                if (g_GameManager.Func43c2c5())
+                {
+                    g_GameManager.unk_3dbac |= 1;
+                    g_GameManager.unk_3dbac |= 0x4000;
+                    this->cursor = g_GameManager.character;
+                    this->SetState(16);
+                    g_SpriteEngine->SendInterruptToLoadedSprites(this->sprites, this->spriteCount, 5);
+                    this->helpSprite->SetPendingInterrupt(2);
+                    return 1;
+                }
+            case 4:
+                g_GameManager.unk_3dbac &= ~1;
+                g_GameManager.unk_3dbac &= ~0x4000;
+                this->SetState(7);
+                g_SpriteEngine->SendInterruptToLoadedSprites(this->sprites, this->spriteCount, 13);
+                this->helpSprite->SetPendingInterrupt(2);
+                return 1;
+            case 6:
+                g_App.scene = 8;
+                this->helpSprite->SetPendingInterrupt(2);
+                return 0;
+            case 5:
+                g_App.scene = 5;
+                this->helpSprite->SetPendingInterrupt(2);
+                return 0;
+            case 7:
+                this->subState = 0;
+                this->cursor = 0;
+                this->inputLockout = 0;
+                this->stateFrames = 0;
+                this->subState = 3;
+                this->stateFrames = 0;
+                this->UpdateOptions();
+                this->cursor = 0;
+                break;
+            case 8:
+                this->subState = 2;
+                this->stateFrames = 0;
+                g_SpriteEngine->SendInterruptToLoadedSprites(this->sprites, this->spriteCount, 1);
+                if (g_App.musicMode == 2)
+                {
+                    g_App.midi->Restart(30);
+                }
+            }
+        }
+        if (WAS_PRESSED(10))
+        {
+            this->titleAnm->SetSprite(&this->sprites[this->cursor + 1], this->sprites[this->cursor + 1].baseSpriteIndex + 1);
+            this->cursor = 8;
+            this->titleAnm->SetSprite(&this->sprites[this->cursor + 1], this->sprites[this->cursor + 1].baseSpriteIndex);
+            g_SoundPlayer.QueueSound(11, 0);
+            g_SoundPlayer.PlayQueuedSounds();
+        }
+        break;
+    case 2:
+        if (this->stateFrames >= 60)
+        {
+            delete[] this->sprites;
+            this->sprites = NULL;
+            this->sprites = NULL;
+            this->spriteCount = 0;
+            this->inputLockout = 0;
+            g_App.scene = -1;
+            return 0;
+        }
+        break;
+    case 3:
+        if (this->stateFrames >= 30)
+        {
+            this->SetState(2);
+            this->cursor = 0;
+            this->savedConfig = *(ConfigCopy *)&g_App.controllerMapping;
+            return 1;
+        }
+    }
+    this->subMenuIdleFrames++;
+    this->stateFrames++;
+    this->inputLockout++;
+    return 1;
+}
+
 void MainMenu::ReassignButton(short button, short replacement, int unused)
 {
     if (this->controllerMapping.shootButton == button)
