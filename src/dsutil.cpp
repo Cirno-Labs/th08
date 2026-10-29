@@ -599,3 +599,22 @@ int CStreamingSound::UpdateFadeIn()
     }
     return 0;
 }
+
+int CStreamingSound::UpdateFadeUp()
+{
+    LONG lVolume;
+    HRESULT hr;
+
+    if (this->fading == 3)
+    {
+        this->fadeFrames--;
+        if (this->fadeFrames <= 0)
+        {
+            this->fading = 0;
+            return 1;
+        }
+        lVolume = 0 - this->fadeFrames * 1000 / this->fadeTotal;
+        hr = SetVolume(lVolume);
+    }
+    return 0;
+}
