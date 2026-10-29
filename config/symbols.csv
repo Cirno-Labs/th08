@@ -134,7 +134,7 @@ address,size,name,symbol
 0x0040bb60,26,SpriteEngine::GetAnm,?GetAnm@SpriteEngine@@QAEPAVAnmLoaded@@H@Z
 0x0040bb80,145,GameManager::ChecksumMismatch,?ChecksumMismatch@GameManager@@QAEHXZ
 0x0040bc20,23,Player::IsUnk5Clear,?IsUnk5Clear@Player@@QAEHXZ
-0x0040bc40,18,Func40bc40,
+0x0040bc40,18,Player::IsUnk5Set,?IsUnk5Set@Player@@QAEHXZ
 0x0040bc60,450,Func40bc60,
 0x0040be30,194,Func40be30,
 0x0040bf00,264,Func40bf00,
