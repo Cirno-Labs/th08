@@ -6,6 +6,11 @@ MidiDevice::MidiDevice()
     this->deviceId = 0;
 }
 
+MidiDevice::~MidiDevice()
+{
+    this->Close();
+}
+
 int MidiDevice::Close()
 {
     if (this->handle == 0)

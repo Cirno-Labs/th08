@@ -22,6 +22,7 @@ class MidiDevice
 {
 public:
     MidiDevice();
+    ~MidiDevice();
 
     // Returns -1 if no device is open, 0 once it is closed.
     int Close();
