@@ -51,3 +51,17 @@ void FormatCapsReport(D3DCAPS8 *caps, char *buffer)
     p = AppendCapsFlagText("　バイリニア補間（縮小） : ", caps->TextureFilterCaps, 0x200, p);
     p += sprintf(p, "--------------------------------------------\r\n");
 }
+
+char *AppendCapsFlagText(char *name, DWORD caps, DWORD flag, char *out)
+{
+    out += sprintf(out, name);
+    if ((caps & flag) == 0)
+    {
+        out += sprintf(out, "不可\r\n");
+    }
+    else
+    {
+        out += sprintf(out, "可\r\n");
+    }
+    return out;
+}
