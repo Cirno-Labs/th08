@@ -560,3 +560,23 @@ CStreamingSound::CStreamingSound(LPDIRECTSOUNDBUFFER pDSBuffer, DWORD dwDSBuffer
 CStreamingSound::~CStreamingSound()
 {
 }
+
+int CStreamingSound::UpdateFade()
+{
+    LONG lVolume;
+    HRESULT hr;
+
+    if (this->fading == 1)
+    {
+        this->fadeFrames--;
+        if (this->fadeFrames <= 0)
+        {
+            this->fading = 0;
+            m_apDSBuffer[0]->Stop();
+            return 1;
+        }
+        lVolume = this->fadeFrames * 5000 / this->fadeTotal - 5000;
+        hr = SetVolume(lVolume);
+    }
+    return 0;
+}
