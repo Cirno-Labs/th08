@@ -210,3 +210,25 @@ int ReplayManager::RecordOnUpdate(ReplayManager *replay)
     replay->frame++;
     return 1;
 }
+
+int ReplayManager::PlayOnUpdate2(ReplayManager *replay)
+{
+    if (!(g_GameManager.unk_3dbac >> 2 & 1))
+    {
+        return 1;
+    }
+    if (g_GameManager.unk_3dbac >> 9 & 1)
+    {
+        return 1;
+    }
+    if (g_Gui.IsMsgRunning() && g_Gui.IsMsgSkippable() && replay->frame % 3 != 2)
+    {
+        return 6;
+    }
+    if (!(g_GameManager.unk_3dbac >> 9 & 1) && g_GameManager.replayMenuChoice == 2 &&
+        !g_EnemyManager.AnyBossActive() && replay->frame % 5 != 4)
+    {
+        return 6;
+    }
+    return 1;
+}

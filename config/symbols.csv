@@ -421,7 +421,7 @@ address,size,name,symbol
 0x0042ee80,225,Func42ee80,
 0x0042ef70,50,Func42ef70,
 0x0042efb0,575,Func42efb0,
-0x0042f1f0,64,Func42f1f0,
+0x0042f1f0,64,EnemyManager::AnyBossActive,?AnyBossActive@EnemyManager@@QAEHXZ
 0x0042f230,64,Func42f230,
 0x0042f270,64,Func42f270,
 0x0042f2b0,25,Func42f2b0,
@@ -474,7 +474,7 @@ address,size,name,symbol
 0x004353ec,63,Func4353ec,
 0x0043542b,1107,Func43542b,
 0x0043587e,61,Func43587e,
-0x004358bb,69,Func4358bb,
+0x004358bb,69,Gui::IsMsgRunning,?IsMsgRunning@Gui@@QAEHXZ
 0x00435900,2397,Func435900,
 0x0043625d,4544,Func43625d,
 0x0043741d,1554,Func43741d,
@@ -487,7 +487,7 @@ address,size,name,symbol
 0x00437d45,31,Func437d45,
 0x00437d64,35,Func437d64,
 0x00437d87,64,Func437d87,
-0x00437dc7,22,Func437dc7,
+0x00437dc7,22,Gui::IsMsgSkippable,?IsMsgSkippable@Gui@@QAEHXZ
 0x00437ddd,128,Func437ddd,
 0x00437e5d,127,Func437e5d,
 0x00437edc,128,Func437edc,
@@ -2431,6 +2431,8 @@ address,size,name,symbol
 0x004e4030,,g_Stage,?g_Stage@@3VStage@@A
 0x004e4b50,,g_FogColorChanged,?g_FogColorChanged@@3EA
 0x004ea3f4,,g_CameraSizeOffset,?g_CameraSizeOffset@@3UD3DXVECTOR3@@A
+0x00577f20,,g_EnemyManager,?g_EnemyManager@@3VEnemyManager@@A
+0x0160f428,,g_Gui,?g_Gui@@3VGui@@A
 0x0160f508,,g_GameManager,?g_GameManager@@3VGameManager@@A
 0x0164d388,,g_JoyCaps,?g_JoyCaps@@3UtagJOYCAPSA@@A
 0x0164d51c,,g_ShotHeldFrames,?g_ShotHeldFrames@@3GA
