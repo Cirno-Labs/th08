@@ -364,3 +364,38 @@ int EffectInitBossPetal(Effect *effect)
     effect->sprite.rotateStart.z = 0.0f;
     return 0;
 }
+
+int EffectUpdateBossPetal(Effect *effect)
+{
+    float cosine;
+
+    effect->step += effect->acceleration;
+    effect->truePos += effect->step;
+    effect->pos = effect->truePos;
+    D3DXVECTOR3 v;
+    v = effect->pos - g_Stage.camera.eye;
+    D3DXVec3Normalize(&v, &v);
+    cosine = D3DXVec3Dot(&g_Stage.camera.dir, &v);
+    if (cosine < 0.94f)
+    {
+        return 0;
+    }
+    if (g_EnemyManager.AnyBossActive() && g_EnemyManager.bosses[0]->unk_3324 >> 3 & 1)
+    {
+        if (effect->sprite.posOffset.x <= -9999.0f)
+        {
+            effect->sprite.posOffset = g_EnemyManager.bosses[0]->pos;
+        }
+        else
+        {
+            effect->sprite.posOffset =
+                (g_EnemyManager.bosses[0]->pos - effect->sprite.posOffset) * 0.1f + effect->sprite.posOffset;
+        }
+    }
+    effect->sprite.flags |= 0x20000;
+    effect->sprite.color2Rgb[2] = (DWORD)effect->sprite.colorRgb[2] * g_Stage.unk_a34[2] >> 8;
+    effect->sprite.color2Rgb[1] = (DWORD)effect->sprite.colorRgb[1] * g_Stage.unk_a34[1] >> 8;
+    effect->sprite.color2Rgb[0] = (DWORD)effect->sprite.colorRgb[0] * g_Stage.unk_a34[0] >> 8;
+    effect->sprite.color2Alpha = (DWORD)effect->sprite.alpha * g_Stage.unk_a34[3] >> 8;
+    return 1;
+}
