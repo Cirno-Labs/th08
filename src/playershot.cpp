@@ -104,3 +104,25 @@ int FireLaser(Player *player, PlayerBullet *bullet, int frame, ShotData *sd)
     player->laserShots[laser] = sd;
     return 1;
 }
+
+int FireHomingShot(Player *player, PlayerBullet *bullet, int frame, ShotData *sd)
+{
+    float angle;
+    float speed;
+
+    if (frame % sd->interval == sd->phase)
+    {
+        FireShot(player, bullet, sd);
+        if (player->homingTarget.x > -100.0f)
+        {
+            angle = AddNormalizeAngle(atan2f(player->homingTarget.y - bullet->pos.y,
+                                             player->homingTarget.x - bullet->pos.x),
+                                      sd->angle + 1.5707964f);
+            speed = sd->speed * 1.5f;
+            ((Vector2 *)&bullet->velocity)->SetPolar(angle, speed);
+            bullet->angle = angle;
+        }
+        return 1;
+    }
+    return 0;
+}
