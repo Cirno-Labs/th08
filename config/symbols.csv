@@ -103,7 +103,7 @@ address,size,name,symbol
 0x00409ce0,598,Stage::Load,?Load@Stage@@QAEHPAD@Z
 0x00409f40,610,Stage::StepObjects,?StepObjects@Stage@@QAEHXZ
 0x0040a1b0,4746,Stage::DrawLayer,?DrawLayer@Stage@@QAEHH@Z
-0x0040b440,21,Func40b440,
+0x0040b440,21,sqrtf,@sqrtf@4
 0x0040b460,14,Func40b460,
 0x0040b470,73,Func40b470,
 0x0040b4c0,58,D3DXVec3Length,?D3DXVec3Length@@YIMPBUD3DXVECTOR3@@@Z
