@@ -857,3 +857,60 @@ void SpriteEngine::CopyTextureRect(int dstAnm, int dstTexture, int srcAnm, int s
     dest->Release();
     src->Release();
 }
+
+void SpriteEngine::CopyBackBufferToSurface(int surface, int srcLeft, int srcTop, int srcWidth, int srcHeight,
+                                           int dstLeft, int dstTop, int dstWidth, int dstHeight)
+{
+    IDirect3DSurface8 *backBuffer;
+    RECT rect;
+    RECT destinationRect;
+
+    this->FlushQuadBatch();
+    if (this->surfaces[surface] != NULL)
+    {
+        this->ReleaseSurface(surface);
+    }
+    rect.left = srcLeft;
+    rect.top = srcTop;
+    rect.right = srcLeft + srcWidth;
+    rect.bottom = srcTop + srcHeight;
+    destinationRect.left = dstLeft;
+    destinationRect.top = dstTop;
+    destinationRect.right = dstLeft + dstWidth;
+    destinationRect.bottom = dstTop + dstHeight;
+    if (g_App.d3dDevice->GetBackBuffer(0, D3DBACKBUFFER_TYPE_MONO, &backBuffer) != D3D_OK)
+    {
+        return;
+    }
+    this->surfaceInfos[surface].Width = dstWidth;
+    this->surfaceInfos[surface].Height = dstHeight;
+    if (g_App.d3dDevice->CreateRenderTarget(this->surfaceInfos[surface].Width, this->surfaceInfos[surface].Height,
+                                            g_App.presentParams.BackBufferFormat, D3DMULTISAMPLE_NONE, TRUE,
+                                            &this->surfaces[surface]) != D3D_OK &&
+        g_App.d3dDevice->CreateImageSurface(this->surfaceInfos[surface].Width, this->surfaceInfos[surface].Height,
+                                            g_App.presentParams.BackBufferFormat,
+                                            &this->surfaces[surface]) != D3D_OK)
+    {
+        goto done;
+    }
+    if (g_App.d3dDevice->CreateImageSurface(this->surfaceInfos[surface].Width, this->surfaceInfos[surface].Height,
+                                            g_App.presentParams.BackBufferFormat,
+                                            &this->surfacesBackup[surface]) != D3D_OK)
+    {
+        goto done;
+    }
+    if (D3DXLoadSurfaceFromSurface(this->surfaces[surface], NULL, &destinationRect, backBuffer, NULL, &rect,
+                                   D3DX_DEFAULT, 0) != D3D_OK)
+    {
+        goto done;
+    }
+    D3DXLoadSurfaceFromSurface(this->surfacesBackup[surface], NULL, NULL, this->surfaces[surface], NULL, NULL,
+                               D3DX_DEFAULT, 0);
+
+done:
+    if (backBuffer != NULL)
+    {
+        backBuffer->Release();
+        backBuffer = NULL;
+    }
+}
