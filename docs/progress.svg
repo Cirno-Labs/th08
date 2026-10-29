@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">13.89% (155)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">86.11% (961)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">14.07% (157)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">85.93% (959)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="103.75" height="6" x="0" y="0" class="named"/>
-<rect width="643.25" height="6" x="103.75" y="0" class="todo"/>
+<rect width="105.09" height="6" x="0" y="0" class="named"/>
+<rect width="641.91" height="6" x="105.09" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -1112,8 +1112,8 @@
 <rect width="12" height="12" x="630" y="300" class="named"><title>0x004718d0 CSoundManager::CreateStreaming (819 bytes)</title></rect>
 <rect width="12" height="12" x="645" y="300" class="named"><title>0x00471c10 CWaveFile::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
 <rect width="12" height="12" x="660" y="300" class="named"><title>0x00471c40 CSoundManager::CreateStreamingFromMemory (795 bytes)</title></rect>
-<rect width="12" height="12" x="675" y="300" class="todo"><title>0x00471f60 CSound::CSound (221 bytes)</title></rect>
-<rect width="12" height="12" x="690" y="300" class="todo"><title>0x00472040 CSound::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
+<rect width="12" height="12" x="675" y="300" class="named"><title>0x00471f60 CSound::CSound (221 bytes)</title></rect>
+<rect width="12" height="12" x="690" y="300" class="named"><title>0x00472040 CSound::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
 <rect width="12" height="12" x="705" y="300" class="todo"><title>0x00472070 CStreamingSound::RecreateBuffers (599 bytes)</title></rect>
 <rect width="12" height="12" x="720" y="300" class="todo"><title>0x004722d0 CSound::~CSound (216 bytes)</title></rect>
 <rect width="12" height="12" x="735" y="300" class="todo"><title>0x004723b0 CSound::FillBufferWithSound (484 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">6.90%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">93.10%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">6.96%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">93.04%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="51.52" height="6" x="0" y="0" class="named"/>
-<rect width="695.48" height="6" x="51.52" y="0" class="todo"/>
+<rect width="51.96" height="6" x="0" y="0" class="named"/>
+<rect width="695.04" height="6" x="51.96" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1617,7 +1617,7 @@
 <rect width="8.18" height="8.37" x="716.66" y="166.35" class="named"><title>0x0043c880 Chain::AddToCalcChain (224 bytes)</title></rect>
 <rect width="8.13" height="8.37" x="727.84" y="166.35" class="todo"><title>0x00450240 Func450240 (223 bytes)</title></rect>
 <rect width="8.03" height="8.37" x="738.97" y="166.35" class="todo"><title>0x00449254 Func449254 (221 bytes)</title></rect>
-<rect width="7.79" height="8.62" x="569.79" y="177.72" class="todo"><title>0x00471f60 CSound::CSound (221 bytes)</title></rect>
+<rect width="7.79" height="8.62" x="569.79" y="177.72" class="named"><title>0x00471f60 CSound::CSound (221 bytes)</title></rect>
 <rect width="7.79" height="8.52" x="569.79" y="189.34" class="todo"><title>0x00428100 Func428100 (219 bytes)</title></rect>
 <rect width="7.79" height="8.52" x="569.79" y="200.86" class="todo"><title>0x00465ac0 Func465ac0 (219 bytes)</title></rect>
 <rect width="7.79" height="8.46" x="569.79" y="212.38" class="todo"><title>0x00447e47 Func447e47 (218 bytes)</title></rect>
@@ -2045,7 +2045,7 @@
 <rect width="2.19" height="2.03" x="685.10" y="283.37" class="todo"><title>0x00454c59 Func454c59 (46 bytes)</title></rect>
 <rect width="2.19" height="2.03" x="685.10" y="288.40" class="todo"><title>0x0045c480 Func45c480 (46 bytes)</title></rect>
 <rect width="2.19" height="2.03" x="685.10" y="293.43" class="named"><title>0x00471c10 CWaveFile::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
-<rect width="2.19" height="2.03" x="685.10" y="298.46" class="todo"><title>0x00472040 CSound::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
+<rect width="2.19" height="2.03" x="685.10" y="298.46" class="named"><title>0x00472040 CSound::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
 <rect width="2.19" height="2.03" x="685.10" y="303.49" class="todo"><title>0x00472b00 CStreamingSound::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
 <rect width="2.19" height="2.03" x="685.10" y="308.52" class="named"><title>0x00473700 File::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
 <rect width="2.19" height="2.03" x="685.10" y="313.55" class="named"><title>0x00473c80 FileBase::`scalar deleting destructor&#x27; (46 bytes)</title></rect>

@@ -2382,8 +2382,8 @@ address,size,name,symbol
 0x004b4280,4,CoCreateInstance,__imp__CoCreateInstance@20
 0x004b4284,4,CoUninitialize,__imp__CoUninitialize@0
 0x004b4288,4,CoInitialize,__imp__CoInitialize@4
-0x004b96bc,,CSound::`vftable',??_7CSound@@6B@
-0x004b96c0,,CStreamingSound::`vftable',??_7CStreamingSound@@6B@
+0x004b96bc,4,CSound::`vftable',??_7CSound@@6B@
+0x004b96c0,4,CStreamingSound::`vftable',??_7CStreamingSound@@6B@
 0x004b98b4,36,File::`vftable',??_7File@@6B@
 0x004b98d8,32,FileBase::`vftable',??_7FileBase@@6B@
 0x004b98f8,,g_SeekOrigins,?g_SeekOrigins@@3QBKB

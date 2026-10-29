@@ -218,3 +218,24 @@ HRESULT CSoundManager::CreateStreamingFromMemory(CStreamingSound **ppStreamingSo
 
     return S_OK;
 }
+
+CSound::CSound(LPDIRECTSOUNDBUFFER *apDSBuffer, DWORD dwDSBufferSize, DWORD dwNumBuffers, CWaveFile *pWaveFile)
+{
+    DWORD i;
+
+    m_apDSBuffer = new LPDIRECTSOUNDBUFFER[dwNumBuffers];
+    for (i = 0; i < dwNumBuffers; i++)
+        m_apDSBuffer[i] = apDSBuffer[i];
+
+    m_dwDSBufferSize = dwDSBufferSize;
+    m_dwNumBuffers = dwNumBuffers;
+    m_pWaveFile = pWaveFile;
+
+    FillBufferWithSound(m_apDSBuffer[0], FALSE);
+
+    // Make DirectSound do pre-processing on sound effects
+    for (i = 0; i < dwNumBuffers; i++)
+        m_apDSBuffer[i]->SetCurrentPosition(0);
+
+    this->unk_30 = 0;
+}
