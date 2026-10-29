@@ -738,6 +738,236 @@ int MainMenu::UpdateDifficultyMenu()
     return 1;
 }
 
+int MainMenu::UpdateCharacterMenu()
+{
+    int charCount;
+    int dir;
+
+    switch (this->subState)
+    {
+    case 0:
+        if (this->inputLockout == 0)
+        {
+            int i;
+            DWORD j;
+
+            this->cursor = g_GameManager.character;
+            g_SpriteEngine->SendInterruptToLoadedSprites(this->sprites, this->spriteCount, 8);
+            charCount = g_GameManager.AllShotsHaveExtraOpen() ? 12 : 4;
+            if (this->state == 15)
+            {
+                if (g_SpriteEngine->LoadSurface(0, "title/select00.png") != 0)
+                {
+                    return 0;
+                }
+                while (!g_GameManager.Func43c23b(this->cursor))
+                {
+                    this->cursor++;
+                    if (this->cursor >= charCount)
+                    {
+                        this->cursor -= charCount;
+                    }
+                }
+            }
+            else
+            {
+                this->sprites[g_App.defaultDifficulty + 0x83].SetPendingInterrupt(9);
+                if (this->state == 13)
+                {
+                    while (!g_GameManager.HasExtraOpen(this->cursor))
+                    {
+                        this->cursor++;
+                        if (this->cursor >= charCount)
+                        {
+                            this->cursor -= charCount;
+                        }
+                    }
+                }
+            }
+            for (i = 0x6f; i <= 0x82; i++)
+            {
+                this->sprites[i].flags &= ~2;
+                this->sprites[i].SetPendingInterrupt(8);
+                for (j = 0; j < 3; j++)
+                {
+                    if (g_CharacterMenuSprites[this->cursor][j] == i)
+                    {
+                        this->sprites[i].flags |= 2;
+                        this->sprites[i].SetPendingInterrupt(9);
+                    }
+                }
+                if (g_CharacterMenuSprites[this->cursor][j] == i)
+                {
+                    this->sprites[i].flags |= 2;
+                    this->sprites[i].SetPendingInterrupt(0x17);
+                }
+            }
+            this->subState = 0;
+            this->stateFrames = 0;
+        }
+        if (this->returningFromPractice != 0)
+        {
+            if (this->state != 15)
+            {
+                this->SetState(11);
+            }
+            else
+            {
+                this->SetState(16);
+            }
+            this->cursor = g_GameManager.stage;
+            return 1;
+        }
+        if (this->inputLockout == 8)
+        {
+            this->subState = 1;
+        }
+        break;
+    case 1:
+        charCount = g_GameManager.AllShotsHaveExtraOpen() ? 12 : 4;
+        if (this->cursor >= charCount)
+        {
+            this->cursor = 0;
+        }
+        dir = this->MoveMenuCursorLR(charCount);
+        if (dir != 0)
+        {
+            int i;
+            DWORD j;
+
+            if (this->state == 15)
+            {
+                while (!g_GameManager.Func43c23b(this->cursor))
+                {
+                    this->cursor += dir;
+                    if (this->cursor >= charCount)
+                    {
+                        this->cursor -= charCount;
+                    }
+                    if (this->cursor < 0)
+                    {
+                        this->cursor += charCount;
+                    }
+                }
+            }
+            else if (this->state == 13)
+            {
+                while (!g_GameManager.HasExtraOpen(this->cursor))
+                {
+                    this->cursor += dir;
+                    if (this->cursor >= charCount)
+                    {
+                        this->cursor -= charCount;
+                    }
+                    if (this->cursor < 0)
+                    {
+                        this->cursor += charCount;
+                    }
+                }
+            }
+            for (i = 0x6f; i <= 0x82; i++)
+            {
+                this->sprites[i].flags |= 2;
+                this->sprites[i].SetPendingInterrupt(8);
+                for (j = 0; j < 3; j++)
+                {
+                    if (g_CharacterMenuSprites[this->cursor][j] == i)
+                    {
+                        this->sprites[i].SetPendingInterrupt(9);
+                    }
+                }
+                if (g_CharacterMenuSprites[this->cursor][j] == i)
+                {
+                    this->sprites[i].SetPendingInterrupt(0x17);
+                }
+            }
+        }
+        if (WAS_PRESSED(0x1001))
+        {
+            g_GameManager.character = this->cursor;
+            g_GameManager.shotType = 0;
+            g_SoundPlayer.QueueSound(10, 0);
+            g_SoundPlayer.PlayQueuedSounds();
+            if (this->state == 9)
+            {
+                this->cursor = g_GameManager.stage;
+                this->SetState(11);
+                return 2;
+            }
+            if (this->state == 15)
+            {
+                this->cursor = g_GameManager.stage;
+                this->SetState(16);
+                return 2;
+            }
+            g_GameManager.difficulty = g_App.defaultDifficulty;
+            if (this->state != 13)
+            {
+                g_GameManager.stage = 0;
+            }
+            else
+            {
+                g_GameManager.stage = g_GameManager.difficulty + 4;
+            }
+            g_App.scene = 2;
+            g_GameManager.SetIsReplay(0);
+            g_App.StopMusic();
+            return 0;
+        }
+        if (WAS_PRESSED(0xa))
+        {
+            g_SoundPlayer.QueueSound(11, 0);
+            g_SoundPlayer.PlayQueuedSounds();
+            g_GameManager.character = this->cursor;
+            if (this->state == 15)
+            {
+                g_SoundPlayer.QueueSound(11, 0);
+                g_SoundPlayer.PlayQueuedSounds();
+                this->subState = 3;
+                this->stateFrames = 0;
+                g_SpriteEngine->SendInterruptToLoadedSprites(this->sprites, this->spriteCount, 6);
+                break;
+            }
+            else
+            {
+                if (this->state != 13)
+                {
+                    if (!(g_GameManager.unk_3dbac & 1))
+                    {
+                        this->SetState(4);
+                    }
+                    else
+                    {
+                        this->SetState(8);
+                    }
+                }
+                else
+                {
+                    this->SetState(12);
+                }
+                this->cursor = 0;
+                return 1;
+            }
+        }
+        break;
+    case 3:
+        if (this->stateFrames >= 30)
+        {
+            int state = this->state;
+
+            this->SetState(0);
+            this->cursor = 2;
+            g_GameManager.unk_3dbac &= ~1;
+            return 1;
+        }
+        break;
+    }
+    this->subMenuIdleFrames++;
+    this->stateFrames++;
+    this->inputLockout++;
+    return 1;
+}
+
 int MainMenu::ShowButtonDigits(Sprite *vm, short value)
 {
     if (value < 0)
