@@ -801,7 +801,7 @@ address,size,name,symbol
 0x0044fb70,524,FireShot,?FireShot@@YIXPAVPlayer@@PAUPlayerBullet@@PAUShotData@@@Z
 0x0044fd80,65,TryFireShot,?TryFireShot@@YIHPAVPlayer@@PAUPlayerBullet@@HPAUShotData@@@Z
 0x0044fdd0,77,TryFireShotNoBomb,?TryFireShotNoBomb@@YIHPAVPlayer@@PAUPlayerBullet@@HPAUShotData@@@Z
-0x0044fe20,375,Func44fe20,
+0x0044fe20,375,FireLaser,?FireLaser@@YIHPAVPlayer@@PAUPlayerBullet@@HPAUShotData@@@Z
 0x0044ffa0,217,Func44ffa0,
 0x00450080,142,Func450080,
 0x00450110,145,Func450110,

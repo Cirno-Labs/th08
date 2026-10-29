@@ -65,3 +65,42 @@ int TryFireShotNoBomb(Player *player, PlayerBullet *bullet, int frame, ShotData 
     }
     return 0;
 }
+
+int FireLaser(Player *player, PlayerBullet *bullet, int frame, ShotData *sd)
+{
+    int laser = sd->phase;
+    int j;
+
+    if (player->bomb.running)
+    {
+        return 0;
+    }
+    if (g_GameManager.unk_3dbac_13)
+    {
+        return 0;
+    }
+    if (player->lasers[laser].bullet != NULL)
+    {
+        if (player->laserShots[laser] != sd)
+        {
+            player->lasers[laser].bullet->sprite.pendingInterrupt = 1;
+            player->lasers[laser].bullet = NULL;
+        }
+        return 0;
+    }
+    player->lasers[laser].timer = 999;
+    player->lasers[laser].bullet = bullet;
+    bullet->laserIndex = laser;
+    bullet->option = sd->option;
+    bullet->velocity.z = sd->offsetX;
+    bullet->laserOffsetY = sd->offsetY;
+    bullet->trailLength = sd->interval;
+    FireShot(player, bullet, sd);
+    for (j = 0x1f; j >= 0; j--)
+    {
+        bullet->trail[j].x = -999.0f;
+    }
+    bullet->pos.x = -999.0f;
+    player->laserShots[laser] = sd;
+    return 1;
+}
