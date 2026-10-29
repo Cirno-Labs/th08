@@ -290,3 +290,68 @@ void ReleaseTextSurface()
         g_TextSurface = NULL;
     }
 }
+
+void RenderTextToTexture(int x, int y, int width, int unk4, int fontHeight, int unk6, COLORREF textColor,
+                         COLORREF shadowColor, char *text, IDirect3DTexture8 *texture)
+{
+    HDC hdcMem;
+    HFONT hNewFont;
+    D3DSURFACE_DESC sd;
+    HGDIOBJ oldObject;
+    RECT rcSrc;
+    RECT rcDst;
+    IDirect3DSurface8 *dstSurface;
+
+    hNewFont = CreateFontA(fontHeight * 2, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, SHIFTJIS_CHARSET,
+                           OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, ANTIALIASED_QUALITY, FF_ROMAN | FIXED_PITCH,
+                           "ＭＳ ゴシック");
+    GdiSurface dib;
+    g_TextSurface->GetDesc(&sd);
+    dib.Create(sd.Width, sd.Height, sd.Format);
+    hdcMem = dib.GetHdc();
+    oldObject = SelectObject(hdcMem, hNewFont);
+    dib.InvertAlpha(0, 0, sd.Width, fontHeight * 2 + 6, 0);
+    SetBkMode(hdcMem, TRANSPARENT);
+    if (shadowColor != (COLORREF)-1)
+    {
+        SetTextColor(hdcMem, 0);
+        TextOutA(hdcMem, x * 2 + 4, 2, text, strlen(text));
+        TextOutA(hdcMem, x * 2, 2, text, strlen(text));
+        TextOutA(hdcMem, x * 2 + 2, 0, text, strlen(text));
+        TextOutA(hdcMem, x * 2 + 2, 4, text, strlen(text));
+    }
+    else
+    {
+        SetTextColor(hdcMem, 0);
+        TextOutA(hdcMem, x * 2 + 3, 2, text, strlen(text));
+        TextOutA(hdcMem, x * 2 + 1, 2, text, strlen(text));
+        TextOutA(hdcMem, x * 2 + 2, 1, text, strlen(text));
+        TextOutA(hdcMem, x * 2 + 2, 3, text, strlen(text));
+    }
+    SetTextColor(hdcMem, textColor);
+    TextOutA(hdcMem, x * 2 + 2, 2, text, strlen(text));
+    SelectObject(hdcMem, oldObject);
+    dib.InvertAlpha(0, 0, sd.Width, fontHeight * 2 + 6, shadowColor == (COLORREF)-1);
+    dib.CopyToSurface(g_TextSurface);
+    SelectObject(hdcMem, oldObject);
+    DeleteObject(hNewFont);
+    rcDst.left = 0;
+    rcDst.top = y;
+    rcDst.right = width;
+    rcDst.bottom = y + unk6;
+    rcSrc.left = 0;
+    rcSrc.top = 0;
+    rcSrc.right = width * 2;
+    rcSrc.bottom = fontHeight * 2;
+    if (rcSrc.right > 1024)
+    {
+        rcSrc.right = 1024;
+    }
+    texture->GetSurfaceLevel(0, &dstSurface);
+    D3DXLoadSurfaceFromSurface(dstSurface, NULL, &rcDst, g_TextSurface, NULL, &rcSrc, D3DX_FILTER_TRIANGLE, 0);
+    if (dstSurface != NULL)
+    {
+        dstSurface->Release();
+        dstSurface = NULL;
+    }
+}

@@ -610,7 +610,7 @@ address,size,name,symbol
 0x0043f980,35,CreateTextSurface,?CreateTextSurface@@YIXXZ
 0x0043f9a3,37,ReleaseTextSurface,?ReleaseTextSurface@@YIXXZ
 0x0043f9c8,801,Func43f9c8,
-0x0043fce9,793,Func43fce9,
+0x0043fce9,793,RenderTextToTexture,?RenderTextToTexture@@YIXHHHHHHKKPADPAUIDirect3DTexture8@@@Z
 0x00440010,52,Func440010,
 0x00440050,78,Func440050,
 0x004400a0,970,Func4400a0,
@@ -1210,7 +1210,7 @@ address,size,name,symbol
 0x0047aa65,40,Func47aa65,
 0x0047aa8d,102,Func47aa8d,
 0x0047aaf3,184,Func47aaf3,
-0x0047abab,422,Func47abab,
+0x0047abab,422,D3DXLoadSurfaceFromSurface,_D3DXLoadSurfaceFromSurface@32
 0x0047ad51,134,Func47ad51,
 0x0047add7,740,Func47add7,
 0x0047b0bb,1651,Func47b0bb,
@@ -1741,13 +1741,13 @@ address,size,name,symbol
 0x004a47f2,35,__abnormal_termination,
 0x004a4815,9,__NLG_Notify1,
 0x004a481e,24,Func4a481e,
-0x004a4838,31,Func4a4838,
+0x004a4838,31,__EH_prolog,__EH_prolog
 0x004a4857,88,_sprintf,_sprintf
 0x004a48b0,45,_strrchr,_strrchr
 0x004a48e0,61,__chkstk,__chkstk
 0x004a4920,96,_memset,_memset
 0x004a4980,672,_memcpy,_memcpy
-0x004a4cc0,139,_strlen,
+0x004a4cc0,139,_strlen,_strlen
 0x004a4d50,672,_memmove,
 0x004a508d,44,Func4a508d,
 0x004a50c0,104,__aulldiv,__aulldiv

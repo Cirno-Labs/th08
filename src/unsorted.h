@@ -392,3 +392,11 @@ extern IDirect3DSurface8 *g_TextSurface;
 void CreateTextSurface();
 // Releases g_TextSurface, if there is one.
 void ReleaseTextSurface();
+
+// Draws `text` at `x` in "ＭＳ ゴシック" `fontHeight` high (not bold, unlike
+// th07's), with a black outline when `shadowColor` is -1 and a wider
+// black shadow otherwise, on g_TextSurface at twice the size, then scales
+// `width` by `fontHeight` of it into `texture`, `unk6` rows high at row
+// `y`.
+void RenderTextToTexture(int x, int y, int width, int unk4, int fontHeight, int unk6, COLORREF textColor,
+                         COLORREF shadowColor, char *text, IDirect3DTexture8 *texture);
