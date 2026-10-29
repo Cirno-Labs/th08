@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">13.35% (149)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">86.65% (967)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">13.44% (150)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">86.56% (966)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="99.73" height="6" x="0" y="0" class="named"/>
-<rect width="647.27" height="6" x="99.73" y="0" class="todo"/>
+<rect width="100.40" height="6" x="0" y="0" class="named"/>
+<rect width="646.60" height="6" x="100.40" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -1106,44 +1106,44 @@
 <rect width="12" height="12" x="540" y="300" class="todo"><title>0x00471651 Func471651 (17 bytes)</title></rect>
 <rect width="12" height="12" x="555" y="300" class="todo"><title>0x00471662 Func471662 (125 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="300" class="named"><title>0x004716e0 CSoundManager::CSoundManager (23 bytes)</title></rect>
-<rect width="12" height="12" x="585" y="300" class="todo"><title>0x00471700 Func471700 (44 bytes)</title></rect>
-<rect width="12" height="12" x="600" y="300" class="todo"><title>0x00471730 Func471730 (142 bytes)</title></rect>
-<rect width="12" height="12" x="615" y="300" class="todo"><title>0x004717c0 Func4717c0 (265 bytes)</title></rect>
-<rect width="12" height="12" x="630" y="300" class="todo"><title>0x004718d0 Func4718d0 (819 bytes)</title></rect>
-<rect width="12" height="12" x="645" y="300" class="todo"><title>0x00471c10 Func471c10 (46 bytes)</title></rect>
-<rect width="12" height="12" x="660" y="300" class="todo"><title>0x00471c40 Func471c40 (795 bytes)</title></rect>
-<rect width="12" height="12" x="675" y="300" class="todo"><title>0x00471f60 Func471f60 (221 bytes)</title></rect>
-<rect width="12" height="12" x="690" y="300" class="todo"><title>0x00472040 Func472040 (46 bytes)</title></rect>
-<rect width="12" height="12" x="705" y="300" class="todo"><title>0x00472070 Func472070 (599 bytes)</title></rect>
-<rect width="12" height="12" x="720" y="300" class="todo"><title>0x004722d0 Func4722d0 (216 bytes)</title></rect>
-<rect width="12" height="12" x="735" y="300" class="todo"><title>0x004723b0 Func4723b0 (484 bytes)</title></rect>
-<rect width="12" height="12" x="0" y="315" class="todo"><title>0x004725a0 Func4725a0 (163 bytes)</title></rect>
-<rect width="12" height="12" x="15" y="315" class="todo"><title>0x00472650 Func472650 (182 bytes)</title></rect>
-<rect width="12" height="12" x="30" y="315" class="todo"><title>0x00472710 Func472710 (53 bytes)</title></rect>
-<rect width="12" height="12" x="45" y="315" class="todo"><title>0x00472750 Func472750 (236 bytes)</title></rect>
-<rect width="12" height="12" x="60" y="315" class="todo"><title>0x00472840 Func472840 (148 bytes)</title></rect>
-<rect width="12" height="12" x="75" y="315" class="todo"><title>0x004728e0 Func4728e0 (171 bytes)</title></rect>
-<rect width="12" height="12" x="90" y="315" class="todo"><title>0x00472990 Func472990 (79 bytes)</title></rect>
-<rect width="12" height="12" x="105" y="315" class="todo"><title>0x004729e0 Func4729e0 (78 bytes)</title></rect>
-<rect width="12" height="12" x="120" y="315" class="todo"><title>0x00472a30 Func472a30 (110 bytes)</title></rect>
-<rect width="12" height="12" x="135" y="315" class="todo"><title>0x00472aa0 Func472aa0 (96 bytes)</title></rect>
-<rect width="12" height="12" x="150" y="315" class="todo"><title>0x00472b00 Func472b00 (46 bytes)</title></rect>
-<rect width="12" height="12" x="165" y="315" class="todo"><title>0x00472b30 Func472b30 (28 bytes)</title></rect>
-<rect width="12" height="12" x="180" y="315" class="todo"><title>0x00472b50 Func472b50 (129 bytes)</title></rect>
-<rect width="12" height="12" x="195" y="315" class="todo"><title>0x00472be0 Func472be0 (106 bytes)</title></rect>
-<rect width="12" height="12" x="210" y="315" class="todo"><title>0x00472c50 Func472c50 (106 bytes)</title></rect>
-<rect width="12" height="12" x="225" y="315" class="todo"><title>0x00472cc0 Func472cc0 (107 bytes)</title></rect>
-<rect width="12" height="12" x="240" y="315" class="todo"><title>0x00472d30 Func472d30 (1000 bytes)</title></rect>
-<rect width="12" height="12" x="255" y="315" class="todo"><title>0x00473120 Func473120 (194 bytes)</title></rect>
-<rect width="12" height="12" x="270" y="315" class="todo"><title>0x004731f0 Func4731f0 (56 bytes)</title></rect>
-<rect width="12" height="12" x="285" y="315" class="todo"><title>0x00473230 Func473230 (19 bytes)</title></rect>
-<rect width="12" height="12" x="300" y="315" class="todo"><title>0x00473250 Func473250 (163 bytes)</title></rect>
-<rect width="12" height="12" x="315" y="315" class="todo"><title>0x00473300 Func473300 (84 bytes)</title></rect>
-<rect width="12" height="12" x="330" y="315" class="todo"><title>0x00473360 Func473360 (92 bytes)</title></rect>
-<rect width="12" height="12" x="345" y="315" class="todo"><title>0x004733c0 Func4733c0 (17 bytes)</title></rect>
-<rect width="12" height="12" x="360" y="315" class="todo"><title>0x004733e0 Func4733e0 (328 bytes)</title></rect>
-<rect width="12" height="12" x="375" y="315" class="todo"><title>0x00473530 Func473530 (328 bytes)</title></rect>
-<rect width="12" height="12" x="390" y="315" class="todo"><title>0x00473680 Func473680 (51 bytes)</title></rect>
+<rect width="12" height="12" x="585" y="300" class="named"><title>0x00471700 CSoundManager::~CSoundManager (44 bytes)</title></rect>
+<rect width="12" height="12" x="600" y="300" class="todo"><title>0x00471730 CSoundManager::Initialize (142 bytes)</title></rect>
+<rect width="12" height="12" x="615" y="300" class="todo"><title>0x004717c0 CSoundManager::SetPrimaryBufferFormat (265 bytes)</title></rect>
+<rect width="12" height="12" x="630" y="300" class="todo"><title>0x004718d0 CSoundManager::CreateStreaming (819 bytes)</title></rect>
+<rect width="12" height="12" x="645" y="300" class="todo"><title>0x00471c10 CWaveFile::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
+<rect width="12" height="12" x="660" y="300" class="todo"><title>0x00471c40 CSoundManager::CreateStreamingFromMemory (795 bytes)</title></rect>
+<rect width="12" height="12" x="675" y="300" class="todo"><title>0x00471f60 CSound::CSound (221 bytes)</title></rect>
+<rect width="12" height="12" x="690" y="300" class="todo"><title>0x00472040 CSound::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
+<rect width="12" height="12" x="705" y="300" class="todo"><title>0x00472070 CStreamingSound::RecreateBuffers (599 bytes)</title></rect>
+<rect width="12" height="12" x="720" y="300" class="todo"><title>0x004722d0 CSound::~CSound (216 bytes)</title></rect>
+<rect width="12" height="12" x="735" y="300" class="todo"><title>0x004723b0 CSound::FillBufferWithSound (484 bytes)</title></rect>
+<rect width="12" height="12" x="0" y="315" class="todo"><title>0x004725a0 CSound::RestoreBuffer (163 bytes)</title></rect>
+<rect width="12" height="12" x="15" y="315" class="todo"><title>0x00472650 CSound::GetFreeBuffer (182 bytes)</title></rect>
+<rect width="12" height="12" x="30" y="315" class="todo"><title>0x00472710 CSound::GetBuffer (53 bytes)</title></rect>
+<rect width="12" height="12" x="45" y="315" class="todo"><title>0x00472750 CSound::Play (236 bytes)</title></rect>
+<rect width="12" height="12" x="60" y="315" class="todo"><title>0x00472840 CSound::SetVolume (148 bytes)</title></rect>
+<rect width="12" height="12" x="75" y="315" class="todo"><title>0x004728e0 CSound::Stop (171 bytes)</title></rect>
+<rect width="12" height="12" x="90" y="315" class="todo"><title>0x00472990 CSound::PauseBuffer (79 bytes)</title></rect>
+<rect width="12" height="12" x="105" y="315" class="todo"><title>0x004729e0 CSound::ResumeBuffer (78 bytes)</title></rect>
+<rect width="12" height="12" x="120" y="315" class="todo"><title>0x00472a30 CSound::Reset (110 bytes)</title></rect>
+<rect width="12" height="12" x="135" y="315" class="todo"><title>0x00472aa0 CStreamingSound::CStreamingSound (96 bytes)</title></rect>
+<rect width="12" height="12" x="150" y="315" class="todo"><title>0x00472b00 CStreamingSound::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
+<rect width="12" height="12" x="165" y="315" class="todo"><title>0x00472b30 CStreamingSound::~CStreamingSound (28 bytes)</title></rect>
+<rect width="12" height="12" x="180" y="315" class="todo"><title>0x00472b50 CStreamingSound::UpdateFade (129 bytes)</title></rect>
+<rect width="12" height="12" x="195" y="315" class="todo"><title>0x00472be0 CStreamingSound::UpdateFadeIn (106 bytes)</title></rect>
+<rect width="12" height="12" x="210" y="315" class="todo"><title>0x00472c50 CStreamingSound::UpdateFadeUp (106 bytes)</title></rect>
+<rect width="12" height="12" x="225" y="315" class="todo"><title>0x00472cc0 CStreamingSound::UpdateFadeDown (107 bytes)</title></rect>
+<rect width="12" height="12" x="240" y="315" class="todo"><title>0x00472d30 CStreamingSound::HandleWaveStreamNotification (1000 bytes)</title></rect>
+<rect width="12" height="12" x="255" y="315" class="todo"><title>0x00473120 CStreamingSound::Reset (194 bytes)</title></rect>
+<rect width="12" height="12" x="270" y="315" class="todo"><title>0x004731f0 CWaveFile::CWaveFile (56 bytes)</title></rect>
+<rect width="12" height="12" x="285" y="315" class="todo"><title>0x00473230 CWaveFile::~CWaveFile (19 bytes)</title></rect>
+<rect width="12" height="12" x="300" y="315" class="todo"><title>0x00473250 CWaveFile::Open (163 bytes)</title></rect>
+<rect width="12" height="12" x="315" y="315" class="todo"><title>0x00473300 CWaveFile::SwitchTrack (84 bytes)</title></rect>
+<rect width="12" height="12" x="330" y="315" class="todo"><title>0x00473360 CWaveFile::OpenFromMemory (92 bytes)</title></rect>
+<rect width="12" height="12" x="345" y="315" class="todo"><title>0x004733c0 CWaveFile::GetSize (17 bytes)</title></rect>
+<rect width="12" height="12" x="360" y="315" class="todo"><title>0x004733e0 CWaveFile::ResetFile (328 bytes)</title></rect>
+<rect width="12" height="12" x="375" y="315" class="todo"><title>0x00473530 CWaveFile::Read (328 bytes)</title></rect>
+<rect width="12" height="12" x="390" y="315" class="todo"><title>0x00473680 CWaveFile::Close (51 bytes)</title></rect>
 <rect width="12" height="12" x="405" y="315" class="named"><title>0x004736c0 File::File (51 bytes)</title></rect>
 <rect width="12" height="12" x="420" y="315" class="named"><title>0x00473700 File::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
 <rect width="12" height="12" x="435" y="315" class="named"><title>0x00473730 File::~File (81 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">6.44%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">93.56%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">6.45%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">93.55%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="48.09" height="6" x="0" y="0" class="named"/>
-<rect width="698.91" height="6" x="48.09" y="0" class="todo"/>
+<rect width="48.17" height="6" x="0" y="0" class="named"/>
+<rect width="698.83" height="6" x="48.17" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1297,7 +1297,7 @@
 <rect width="21.91" height="21.13" x="539.57" y="0" class="todo"><title>0x0044ee70 Func44ee70 (1059 bytes)</title></rect>
 <rect width="21.20" height="21.13" x="564.47" y="0" class="todo"><title>0x00429e00 Func429e00 (1029 bytes)</title></rect>
 <rect width="21.20" height="21.13" x="588.68" y="0" class="todo"><title>0x00454cb2 Func454cb2 (1029 bytes)</title></rect>
-<rect width="20.52" height="21.13" x="612.88" y="0" class="todo"><title>0x00472d30 Func472d30 (1000 bytes)</title></rect>
+<rect width="20.52" height="21.13" x="612.88" y="0" class="todo"><title>0x00472d30 CStreamingSound::HandleWaveStreamNotification (1000 bytes)</title></rect>
 <rect width="19.81" height="21.13" x="636.40" y="0" class="todo"><title>0x004400a0 Func4400a0 (970 bytes)</title></rect>
 <rect width="19.79" height="21.13" x="659.21" y="0" class="todo"><title>0x00432b50 Func432b50 (969 bytes)</title></rect>
 <rect width="19.77" height="21.13" x="682" y="0" class="todo"><title>0x0040e780 Func40e780 (968 bytes)</title></rect>
@@ -1317,11 +1317,11 @@
 <rect width="18.69" height="19.06" x="411.08" y="282.42" class="todo"><title>0x0046ffc0 Func46ffc0 (843 bytes)</title></rect>
 <rect width="18.69" height="18.82" x="411.08" y="304.48" class="todo"><title>0x00446f53 Func446f53 (834 bytes)</title></rect>
 <rect width="18.69" height="18.69" x="411.08" y="326.31" class="todo"><title>0x00465cc0 Func465cc0 (829 bytes)</title></rect>
-<rect width="18.94" height="18.19" x="432.76" y="24.13" class="todo"><title>0x004718d0 Func4718d0 (819 bytes)</title></rect>
+<rect width="18.94" height="18.19" x="432.76" y="24.13" class="todo"><title>0x004718d0 CSoundManager::CreateStreaming (819 bytes)</title></rect>
 <rect width="18.70" height="18.19" x="454.70" y="24.13" class="todo"><title>0x0044f5e0 Func44f5e0 (810 bytes)</title></rect>
 <rect width="18.45" height="18.19" x="476.39" y="24.13" class="named"><title>0x0043f9c8 RenderTextToTextureBold (801 bytes)</title></rect>
 <rect width="18.32" height="18.19" x="497.85" y="24.13" class="todo"><title>0x0042b930 Func42b930 (796 bytes)</title></rect>
-<rect width="18.29" height="18.19" x="519.17" y="24.13" class="todo"><title>0x00471c40 Func471c40 (795 bytes)</title></rect>
+<rect width="18.29" height="18.19" x="519.17" y="24.13" class="todo"><title>0x00471c40 CSoundManager::CreateStreamingFromMemory (795 bytes)</title></rect>
 <rect width="18.24" height="18.19" x="540.46" y="24.13" class="named"><title>0x0043fce9 RenderTextToTexture (793 bytes)</title></rect>
 <rect width="18.08" height="18.19" x="561.70" y="24.13" class="todo"><title>0x00452d60 Func452d60 (787 bytes)</title></rect>
 <rect width="18.05" height="18.19" x="582.78" y="24.13" class="todo"><title>0x004640e0 Func4640e0 (786 bytes)</title></rect>
@@ -1375,7 +1375,7 @@
 <rect width="15.31" height="15.59" x="452.90" y="236.85" class="todo"><title>0x0040e3b0 Func40e3b0 (600 bytes)</title></rect>
 <rect width="15.31" height="15.59" x="452.90" y="255.44" class="todo"><title>0x00463210 Func463210 (600 bytes)</title></rect>
 <rect width="15.31" height="15.56" x="452.90" y="274.03" class="todo"><title>0x00450320 Func450320 (599 bytes)</title></rect>
-<rect width="15.31" height="15.56" x="452.90" y="292.59" class="todo"><title>0x00472070 Func472070 (599 bytes)</title></rect>
+<rect width="15.31" height="15.56" x="452.90" y="292.59" class="todo"><title>0x00472070 CStreamingSound::RecreateBuffers (599 bytes)</title></rect>
 <rect width="15.31" height="15.53" x="452.90" y="311.16" class="todo"><title>0x00409ce0 Func409ce0 (598 bytes)</title></rect>
 <rect width="15.31" height="15.31" x="452.90" y="329.69" class="todo"><title>0x00428910 Func428910 (591 bytes)</title></rect>
 <rect width="15.30" height="15.24" x="471.21" y="65.08" class="todo"><title>0x00426030 Func426030 (588 bytes)</title></rect>
@@ -1416,7 +1416,7 @@
 <rect width="13.69" height="13.80" x="556.23" y="83.32" class="todo"><title>0x004244f0 Func4244f0 (494 bytes)</title></rect>
 <rect width="13.65" height="13.80" x="572.92" y="83.32" class="todo"><title>0x0047087f Func47087f (493 bytes)</title></rect>
 <rect width="13.45" height="13.80" x="589.57" y="83.32" class="todo"><title>0x00450f60 Func450f60 (487 bytes)</title></rect>
-<rect width="13.35" height="13.80" x="606.02" y="83.32" class="todo"><title>0x004723b0 Func4723b0 (484 bytes)</title></rect>
+<rect width="13.35" height="13.80" x="606.02" y="83.32" class="todo"><title>0x004723b0 CSound::FillBufferWithSound (484 bytes)</title></rect>
 <rect width="13.28" height="13.80" x="622.37" y="83.32" class="todo"><title>0x00441e70 Func441e70 (482 bytes)</title></rect>
 <rect width="13.08" height="13.80" x="638.66" y="83.32" class="todo"><title>0x004655e0 Func4655e0 (476 bytes)</title></rect>
 <rect width="12.98" height="13.80" x="654.74" y="83.32" class="todo"><title>0x00465860 Func465860 (473 bytes)</title></rect>
@@ -1501,8 +1501,8 @@
 <rect width="10.83" height="10.62" x="518.98" y="254.03" class="todo"><title>0x0045bdc0 Func45bdc0 (332 bytes)</title></rect>
 <rect width="10.83" height="10.54" x="518.98" y="267.65" class="named"><title>0x00473790 File::Open (330 bytes)</title></rect>
 <rect width="10.83" height="10.49" x="518.98" y="281.18" class="todo"><title>0x00442240 Func442240 (329 bytes)</title></rect>
-<rect width="10.83" height="10.45" x="518.98" y="294.68" class="todo"><title>0x004733e0 Func4733e0 (328 bytes)</title></rect>
-<rect width="10.83" height="10.45" x="518.98" y="308.13" class="todo"><title>0x00473530 Func473530 (328 bytes)</title></rect>
+<rect width="10.83" height="10.45" x="518.98" y="294.68" class="todo"><title>0x004733e0 CWaveFile::ResetFile (328 bytes)</title></rect>
+<rect width="10.83" height="10.45" x="518.98" y="308.13" class="todo"><title>0x00473530 CWaveFile::Read (328 bytes)</title></rect>
 <rect width="10.83" height="10.21" x="518.98" y="321.59" class="todo"><title>0x0043be2c Func43be2c (322 bytes)</title></rect>
 <rect width="10.83" height="10.21" x="518.98" y="334.79" class="named"><title>0x00443840 ResolveShortcut (322 bytes)</title></rect>
 <rect width="11.09" height="9.93" x="532.82" y="129.42" class="named"><title>0x00474af0 DatArchive::Decode (321 bytes)</title></rect>
@@ -1560,7 +1560,7 @@
 <rect width="9.31" height="9.27" x="545.71" y="203.77" class="named"><title>0x00443730 ChecksumExecutable (266 bytes)</title></rect>
 <rect width="9.31" height="9.22" x="545.71" y="216.03" class="todo"><title>0x00402920 Func402920 (265 bytes)</title></rect>
 <rect width="9.31" height="9.22" x="545.71" y="228.25" class="todo"><title>0x00470424 Func470424 (265 bytes)</title></rect>
-<rect width="9.31" height="9.22" x="545.71" y="240.47" class="todo"><title>0x004717c0 Func4717c0 (265 bytes)</title></rect>
+<rect width="9.31" height="9.22" x="545.71" y="240.47" class="todo"><title>0x004717c0 CSoundManager::SetPrimaryBufferFormat (265 bytes)</title></rect>
 <rect width="9.31" height="9.17" x="545.71" y="252.69" class="todo"><title>0x0040bf00 Func40bf00 (264 bytes)</title></rect>
 <rect width="9.31" height="9.08" x="545.71" y="264.86" class="named"><title>0x0043e390 DecryptFileData (262 bytes)</title></rect>
 <rect width="9.31" height="8.94" x="545.71" y="276.95" class="todo"><title>0x00430e10 Func430e10 (259 bytes)</title></rect>
@@ -1593,7 +1593,7 @@
 <rect width="8.77" height="8.47" x="558.02" y="224.04" class="todo"><title>0x00449399 Func449399 (238 bytes)</title></rect>
 <rect width="8.77" height="8.47" x="558.02" y="235.51" class="todo"><title>0x004663b0 Func4663b0 (238 bytes)</title></rect>
 <rect width="8.77" height="8.37" x="558.02" y="246.98" class="todo"><title>0x00425d70 Func425d70 (236 bytes)</title></rect>
-<rect width="8.77" height="8.37" x="558.02" y="258.36" class="todo"><title>0x00472750 Func472750 (236 bytes)</title></rect>
+<rect width="8.77" height="8.37" x="558.02" y="258.36" class="todo"><title>0x00472750 CSound::Play (236 bytes)</title></rect>
 <rect width="8.77" height="8.28" x="558.02" y="269.73" class="todo"><title>0x00437f5c Func437f5c (234 bytes)</title></rect>
 <rect width="8.77" height="8.23" x="558.02" y="281.01" class="todo"><title>0x0040d010 Func40d010 (233 bytes)</title></rect>
 <rect width="8.77" height="8.23" x="558.02" y="292.24" class="todo"><title>0x0044dd70 Func44dd70 (233 bytes)</title></rect>
@@ -1617,7 +1617,7 @@
 <rect width="8.18" height="8.37" x="716.66" y="166.35" class="named"><title>0x0043c880 Chain::AddToCalcChain (224 bytes)</title></rect>
 <rect width="8.13" height="8.37" x="727.84" y="166.35" class="todo"><title>0x00450240 Func450240 (223 bytes)</title></rect>
 <rect width="8.03" height="8.37" x="738.97" y="166.35" class="todo"><title>0x00449254 Func449254 (221 bytes)</title></rect>
-<rect width="7.79" height="8.62" x="569.79" y="177.72" class="todo"><title>0x00471f60 Func471f60 (221 bytes)</title></rect>
+<rect width="7.79" height="8.62" x="569.79" y="177.72" class="todo"><title>0x00471f60 CSound::CSound (221 bytes)</title></rect>
 <rect width="7.79" height="8.52" x="569.79" y="189.34" class="todo"><title>0x00428100 Func428100 (219 bytes)</title></rect>
 <rect width="7.79" height="8.52" x="569.79" y="200.86" class="todo"><title>0x00465ac0 Func465ac0 (219 bytes)</title></rect>
 <rect width="7.79" height="8.46" x="569.79" y="212.38" class="todo"><title>0x00447e47 Func447e47 (218 bytes)</title></rect>
@@ -1625,7 +1625,7 @@
 <rect width="7.79" height="8.41" x="569.79" y="235.25" class="todo"><title>0x004270c0 Func4270c0 (217 bytes)</title></rect>
 <rect width="7.79" height="8.41" x="569.79" y="246.66" class="todo"><title>0x0044ffa0 Func44ffa0 (217 bytes)</title></rect>
 <rect width="7.79" height="8.36" x="569.79" y="258.07" class="todo"><title>0x004284b0 Func4284b0 (216 bytes)</title></rect>
-<rect width="7.79" height="8.36" x="569.79" y="269.43" class="todo"><title>0x004722d0 Func4722d0 (216 bytes)</title></rect>
+<rect width="7.79" height="8.36" x="569.79" y="269.43" class="todo"><title>0x004722d0 CSound::~CSound (216 bytes)</title></rect>
 <rect width="7.79" height="8.25" x="569.79" y="280.79" class="todo"><title>0x00421bd0 Func421bd0 (214 bytes)</title></rect>
 <rect width="7.79" height="8.25" x="569.79" y="292.05" class="todo"><title>0x00430d30 Func430d30 (214 bytes)</title></rect>
 <rect width="7.79" height="8.20" x="569.79" y="303.30" class="todo"><title>0x004250d0 Func4250d0 (213 bytes)</title></rect>
@@ -1658,14 +1658,14 @@
 <rect width="7.39" height="7.76" x="580.58" y="264.57" class="named"><title>0x00444700 MidiPlayer::ReleaseHeader (197 bytes)</title></rect>
 <rect width="7.39" height="7.70" x="580.58" y="275.32" class="todo"><title>0x0040e200 Func40e200 (196 bytes)</title></rect>
 <rect width="7.39" height="7.59" x="580.58" y="286.03" class="todo"><title>0x0040be30 Func40be30 (194 bytes)</title></rect>
-<rect width="7.39" height="7.59" x="580.58" y="296.62" class="todo"><title>0x00473120 Func473120 (194 bytes)</title></rect>
+<rect width="7.39" height="7.59" x="580.58" y="296.62" class="todo"><title>0x00473120 CStreamingSound::Reset (194 bytes)</title></rect>
 <rect width="7.39" height="7.37" x="580.58" y="307.21" class="todo"><title>0x0045b020 Func45b020 (190 bytes)</title></rect>
 <rect width="7.39" height="7.21" x="580.58" y="317.59" class="named"><title>0x00445340 MidiPlayer::SendVolume (187 bytes)</title></rect>
 <rect width="7.39" height="7.16" x="580.58" y="327.80" class="todo"><title>0x0045e720 Func45e720 (186 bytes)</title></rect>
 <rect width="7.39" height="7.05" x="580.58" y="337.95" class="todo"><title>0x00452490 Func452490 (184 bytes)</title></rect>
 <rect width="7.38" height="7" x="590.98" y="188.78" class="todo"><title>0x004480f8 Func4480f8 (183 bytes)</title></rect>
 <rect width="7.38" height="7" x="601.36" y="188.78" class="named"><title>0x00474760 LzssReplaceChild (183 bytes)</title></rect>
-<rect width="7.33" height="7" x="611.74" y="188.78" class="todo"><title>0x00472650 Func472650 (182 bytes)</title></rect>
+<rect width="7.33" height="7" x="611.74" y="188.78" class="todo"><title>0x00472650 CSound::GetFreeBuffer (182 bytes)</title></rect>
 <rect width="7.21" height="7" x="622.07" y="188.78" class="todo"><title>0x00418220 Func418220 (180 bytes)</title></rect>
 <rect width="7.21" height="7" x="632.28" y="188.78" class="todo"><title>0x004295e0 Func4295e0 (180 bytes)</title></rect>
 <rect width="7.04" height="7" x="642.49" y="188.78" class="todo"><title>0x0042f360 Func42f360 (177 bytes)</title></rect>
@@ -1674,7 +1674,7 @@
 <rect width="6.93" height="7" x="672.50" y="188.78" class="todo"><title>0x0045aac0 Func45aac0 (175 bytes)</title></rect>
 <rect width="6.87" height="7" x="682.43" y="188.78" class="todo"><title>0x0040eca0 Func40eca0 (174 bytes)</title></rect>
 <rect width="6.81" height="7" x="692.30" y="188.78" class="todo"><title>0x00406940 Func406940 (173 bytes)</title></rect>
-<rect width="6.70" height="7" x="702.12" y="188.78" class="todo"><title>0x004728e0 Func4728e0 (171 bytes)</title></rect>
+<rect width="6.70" height="7" x="702.12" y="188.78" class="todo"><title>0x004728e0 CSound::Stop (171 bytes)</title></rect>
 <rect width="6.59" height="7" x="711.82" y="188.78" class="todo"><title>0x004297b0 Func4297b0 (169 bytes)</title></rect>
 <rect width="6.59" height="7" x="721.41" y="188.78" class="todo"><title>0x0045b800 Func45b800 (169 bytes)</title></rect>
 <rect width="6.53" height="7" x="730.99" y="188.78" class="todo"><title>0x00402780 Func402780 (168 bytes)</title></rect>
@@ -1685,8 +1685,8 @@
 <rect width="6.85" height="6.45" x="590.98" y="227.53" class="todo"><title>0x0043c0bb Func43c0bb (164 bytes)</title></rect>
 <rect width="6.85" height="6.45" x="590.98" y="236.98" class="todo"><title>0x0044dc60 Func44dc60 (164 bytes)</title></rect>
 <rect width="6.85" height="6.39" x="590.98" y="246.43" class="todo"><title>0x0045a3fd Func45a3fd (163 bytes)</title></rect>
-<rect width="6.85" height="6.39" x="590.98" y="255.82" class="todo"><title>0x004725a0 Func4725a0 (163 bytes)</title></rect>
-<rect width="6.85" height="6.39" x="590.98" y="265.21" class="todo"><title>0x00473250 Func473250 (163 bytes)</title></rect>
+<rect width="6.85" height="6.39" x="590.98" y="255.82" class="todo"><title>0x004725a0 CSound::RestoreBuffer (163 bytes)</title></rect>
+<rect width="6.85" height="6.39" x="590.98" y="265.21" class="todo"><title>0x00473250 CWaveFile::Open (163 bytes)</title></rect>
 <rect width="6.85" height="6.33" x="590.98" y="274.60" class="todo"><title>0x004287e0 Func4287e0 (162 bytes)</title></rect>
 <rect width="6.85" height="6.33" x="590.98" y="283.93" class="named"><title>0x0043ce60 Chain::CreateElem (162 bytes)</title></rect>
 <rect width="6.85" height="6.16" x="590.98" y="293.27" class="todo"><title>0x00428740 Func428740 (159 bytes)</title></rect>
@@ -1709,7 +1709,7 @@
 <rect width="6.31" height="6.26" x="704.18" y="198.78" class="todo"><title>0x0043aa5c Func43aa5c (152 bytes)</title></rect>
 <rect width="6.25" height="6.26" x="713.49" y="198.78" class="todo"><title>0x00439a2e Func439a2e (151 bytes)</title></rect>
 <rect width="6.19" height="6.26" x="722.74" y="198.78" class="todo"><title>0x0046d763 Func46d763 (150 bytes)</title></rect>
-<rect width="6.07" height="6.26" x="731.93" y="198.78" class="todo"><title>0x00472840 Func472840 (148 bytes)</title></rect>
+<rect width="6.07" height="6.26" x="731.93" y="198.78" class="todo"><title>0x00472840 CSound::SetVolume (148 bytes)</title></rect>
 <rect width="6.01" height="6.26" x="740.99" y="198.78" class="todo"><title>0x00429d40 Func429d40 (147 bytes)</title></rect>
 <rect width="5.78" height="6.50" x="600.82" y="208.04" class="named"><title>0x00444100 MidiPlayer::~MidiPlayer (147 bytes)</title></rect>
 <rect width="5.78" height="6.43" x="600.82" y="217.54" class="todo"><title>0x00402a80 Func402a80 (146 bytes)</title></rect>
@@ -1725,7 +1725,7 @@
 <rect width="5.78" height="6.24" x="600.82" y="311.23" class="named"><title>0x004436a0 ForceForegroundWindow (143 bytes)</title></rect>
 <rect width="5.78" height="6.18" x="600.82" y="320.47" class="todo"><title>0x004067c0 Func4067c0 (142 bytes)</title></rect>
 <rect width="5.78" height="6.18" x="600.82" y="329.65" class="todo"><title>0x00450080 Func450080 (142 bytes)</title></rect>
-<rect width="5.78" height="6.18" x="600.82" y="338.82" class="todo"><title>0x00471730 Func471730 (142 bytes)</title></rect>
+<rect width="5.78" height="6.18" x="600.82" y="338.82" class="todo"><title>0x00471730 CSoundManager::Initialize (142 bytes)</title></rect>
 <rect width="5.90" height="5.99" x="609.61" y="208.04" class="todo"><title>0x00429860 Func429860 (141 bytes)</title></rect>
 <rect width="5.90" height="5.92" x="609.61" y="217.03" class="todo"><title>0x00406a30 Func406a30 (140 bytes)</title></rect>
 <rect width="5.90" height="5.86" x="609.61" y="225.95" class="todo"><title>0x00411720 Func411720 (139 bytes)</title></rect>
@@ -1753,7 +1753,7 @@
 <rect width="5.73" height="5.45" x="689.49" y="208.04" class="todo"><title>0x004399ac Func4399ac (130 bytes)</title></rect>
 <rect width="5.66" height="5.45" x="698.22" y="208.04" class="todo"><title>0x0043c686 Func43c686 (129 bytes)</title></rect>
 <rect width="5.66" height="5.45" x="706.89" y="208.04" class="todo"><title>0x0045af30 Func45af30 (129 bytes)</title></rect>
-<rect width="5.66" height="5.45" x="715.55" y="208.04" class="todo"><title>0x00472b50 Func472b50 (129 bytes)</title></rect>
+<rect width="5.66" height="5.45" x="715.55" y="208.04" class="todo"><title>0x00472b50 CStreamingSound::UpdateFade (129 bytes)</title></rect>
 <rect width="5.60" height="5.45" x="724.21" y="208.04" class="todo"><title>0x00437ddd Func437ddd (128 bytes)</title></rect>
 <rect width="5.60" height="5.45" x="732.81" y="208.04" class="todo"><title>0x00437edc Func437edc (128 bytes)</title></rect>
 <rect width="5.60" height="5.45" x="741.40" y="208.04" class="todo"><title>0x00450ee0 Func450ee0 (128 bytes)</title></rect>
@@ -1806,17 +1806,17 @@
 <rect width="4.87" height="4.93" x="634.36" y="225.05" class="todo"><title>0x0042c3b0 Func42c3b0 (110 bytes)</title></rect>
 <rect width="4.87" height="4.93" x="642.23" y="225.05" class="named"><title>0x0043e160 ResetKeyboard (110 bytes)</title></rect>
 <rect width="4.87" height="4.93" x="650.11" y="225.05" class="todo"><title>0x00447421 Func447421 (110 bytes)</title></rect>
-<rect width="4.87" height="4.93" x="657.98" y="225.05" class="todo"><title>0x00472a30 Func472a30 (110 bytes)</title></rect>
+<rect width="4.87" height="4.93" x="657.98" y="225.05" class="todo"><title>0x00472a30 CSound::Reset (110 bytes)</title></rect>
 <rect width="4.80" height="4.93" x="665.85" y="225.05" class="todo"><title>0x00441530 Func441530 (109 bytes)</title></rect>
 <rect width="4.80" height="4.93" x="673.65" y="225.05" class="todo"><title>0x00471400 Func471400 (109 bytes)</title></rect>
 <rect width="4.73" height="4.93" x="681.45" y="225.05" class="todo"><title>0x00451ce0 Func451ce0 (108 bytes)</title></rect>
 <rect width="4.66" height="4.93" x="689.18" y="225.05" class="named"><title>0x00442ef0 AppendCapsFlagText (107 bytes)</title></rect>
 <rect width="4.66" height="4.93" x="696.83" y="225.05" class="todo"><title>0x00463cf0 Func463cf0 (107 bytes)</title></rect>
-<rect width="4.66" height="4.93" x="704.49" y="225.05" class="todo"><title>0x00472cc0 Func472cc0 (107 bytes)</title></rect>
+<rect width="4.66" height="4.93" x="704.49" y="225.05" class="todo"><title>0x00472cc0 CStreamingSound::UpdateFadeDown (107 bytes)</title></rect>
 <rect width="4.59" height="4.93" x="712.15" y="225.05" class="todo"><title>0x00441770 Func441770 (106 bytes)</title></rect>
 <rect width="4.59" height="4.93" x="719.73" y="225.05" class="todo"><title>0x00445e3d Func445e3d (106 bytes)</title></rect>
-<rect width="4.59" height="4.93" x="727.32" y="225.05" class="todo"><title>0x00472be0 Func472be0 (106 bytes)</title></rect>
-<rect width="4.59" height="4.93" x="734.90" y="225.05" class="todo"><title>0x00472c50 Func472c50 (106 bytes)</title></rect>
+<rect width="4.59" height="4.93" x="727.32" y="225.05" class="todo"><title>0x00472be0 CStreamingSound::UpdateFadeIn (106 bytes)</title></rect>
+<rect width="4.59" height="4.93" x="734.90" y="225.05" class="todo"><title>0x00472c50 CStreamingSound::UpdateFadeUp (106 bytes)</title></rect>
 <rect width="4.51" height="4.93" x="742.49" y="225.05" class="todo"><title>0x0040eda0 Func40eda0 (105 bytes)</title></rect>
 <rect width="4.60" height="4.84" x="634.36" y="232.98" class="todo"><title>0x004144d0 Func4144d0 (105 bytes)</title></rect>
 <rect width="4.60" height="4.84" x="634.36" y="240.82" class="named"><title>0x0043e880 FileExists (105 bytes)</title></rect>
@@ -1844,7 +1844,7 @@
 <rect width="4.14" height="4.63" x="700.22" y="232.98" class="todo"><title>0x0042bc90 Func42bc90 (96 bytes)</title></rect>
 <rect width="4.14" height="4.63" x="707.36" y="232.98" class="todo"><title>0x0043c5e1 Func43c5e1 (96 bytes)</title></rect>
 <rect width="4.14" height="4.63" x="714.51" y="232.98" class="todo"><title>0x00465800 Func465800 (96 bytes)</title></rect>
-<rect width="4.14" height="4.63" x="721.65" y="232.98" class="todo"><title>0x00472aa0 Func472aa0 (96 bytes)</title></rect>
+<rect width="4.14" height="4.63" x="721.65" y="232.98" class="todo"><title>0x00472aa0 CStreamingSound::CStreamingSound (96 bytes)</title></rect>
 <rect width="4.07" height="4.63" x="728.79" y="232.98" class="todo"><title>0x004023d0 Func4023d0 (95 bytes)</title></rect>
 <rect width="4.07" height="4.63" x="735.86" y="232.98" class="todo"><title>0x004068e0 Func4068e0 (95 bytes)</title></rect>
 <rect width="4.07" height="4.63" x="742.93" y="232.98" class="named"><title>0x0043f0ae GdiSurface::Create (95 bytes)</title></rect>
@@ -1854,7 +1854,7 @@
 <rect width="4.22" height="4.31" x="641.96" y="262.78" class="todo"><title>0x004338ca Func4338ca (93 bytes)</title></rect>
 <rect width="4.22" height="4.23" x="641.96" y="270.09" class="todo"><title>0x0042eb90 Func42eb90 (92 bytes)</title></rect>
 <rect width="4.22" height="4.23" x="641.96" y="277.32" class="todo"><title>0x0042f4a0 Func42f4a0 (92 bytes)</title></rect>
-<rect width="4.22" height="4.23" x="641.96" y="284.55" class="todo"><title>0x00473360 Func473360 (92 bytes)</title></rect>
+<rect width="4.22" height="4.23" x="641.96" y="284.55" class="todo"><title>0x00473360 CWaveFile::OpenFromMemory (92 bytes)</title></rect>
 <rect width="4.22" height="4.15" x="641.96" y="291.79" class="named"><title>0x0043ee30 Rotate2D (91 bytes)</title></rect>
 <rect width="4.22" height="4.15" x="641.96" y="298.94" class="todo"><title>0x00466000 Func466000 (91 bytes)</title></rect>
 <rect width="4.22" height="4" x="641.96" y="306.10" class="todo"><title>0x00421120 Func421120 (89 bytes)</title></rect>
@@ -1874,7 +1874,7 @@
 <rect width="4.17" height="3.73" x="707.51" y="240.60" class="todo"><title>0x0044881a Func44881a (85 bytes)</title></rect>
 <rect width="4.17" height="3.73" x="714.68" y="240.60" class="todo"><title>0x0044dd10 Func44dd10 (85 bytes)</title></rect>
 <rect width="4.08" height="3.73" x="721.84" y="240.60" class="named"><title>0x0043eeb0 MemoryManager::~MemoryManager (84 bytes)</title></rect>
-<rect width="4.08" height="3.73" x="728.93" y="240.60" class="todo"><title>0x00473300 Func473300 (84 bytes)</title></rect>
+<rect width="4.08" height="3.73" x="728.93" y="240.60" class="todo"><title>0x00473300 CWaveFile::SwitchTrack (84 bytes)</title></rect>
 <rect width="4" height="3.73" x="736.01" y="240.60" class="todo"><title>0x00421280 Func421280 (83 bytes)</title></rect>
 <rect width="4" height="3.73" x="743" y="240.60" class="todo"><title>0x00465510 Func465510 (83 bytes)</title></rect>
 <rect width="3.76" height="3.88" x="649.18" y="247.34" class="todo"><title>0x0043c1e9 Func43c1e9 (82 bytes)</title></rect>
@@ -1887,14 +1887,14 @@
 <rect width="3.76" height="3.72" x="649.18" y="295.19" class="named"><title>0x0043f2cc GdiSurface::FindFormat (80 bytes)</title></rect>
 <rect width="3.76" height="3.63" x="649.18" y="301.91" class="todo"><title>0x004417e0 Func4417e0 (79 bytes)</title></rect>
 <rect width="3.76" height="3.63" x="649.18" y="308.54" class="named"><title>0x004447d0 MidiPlayer::FadeOut (79 bytes)</title></rect>
-<rect width="3.76" height="3.63" x="649.18" y="315.17" class="todo"><title>0x00472990 Func472990 (79 bytes)</title></rect>
+<rect width="3.76" height="3.63" x="649.18" y="315.17" class="todo"><title>0x00472990 CSound::PauseBuffer (79 bytes)</title></rect>
 <rect width="3.76" height="3.55" x="649.18" y="321.81" class="todo"><title>0x0043b936 Func43b936 (78 bytes)</title></rect>
 <rect width="3.76" height="3.55" x="649.18" y="328.35" class="named"><title>0x0043c830 Chain::Chain (78 bytes)</title></rect>
 <rect width="3.76" height="3.55" x="649.18" y="334.90" class="todo"><title>0x00440050 Func440050 (78 bytes)</title></rect>
 <rect width="3.76" height="3.55" x="649.18" y="341.45" class="named"><title>0x00443d50 MidiDevice::SendLongMsg (78 bytes)</title></rect>
 <rect width="3.83" height="3.48" x="655.94" y="247.34" class="named"><title>0x00443f50 ReadVarLen (78 bytes)</title></rect>
 <rect width="3.83" height="3.48" x="662.76" y="247.34" class="todo"><title>0x00449e50 Func449e50 (78 bytes)</title></rect>
-<rect width="3.83" height="3.48" x="669.59" y="247.34" class="todo"><title>0x004729e0 Func4729e0 (78 bytes)</title></rect>
+<rect width="3.83" height="3.48" x="669.59" y="247.34" class="todo"><title>0x004729e0 CSound::ResumeBuffer (78 bytes)</title></rect>
 <rect width="3.74" height="3.48" x="676.41" y="247.34" class="todo"><title>0x004073b0 Func4073b0 (77 bytes)</title></rect>
 <rect width="3.74" height="3.48" x="683.15" y="247.34" class="todo"><title>0x00441850 Func441850 (77 bytes)</title></rect>
 <rect width="3.74" height="3.48" x="689.89" y="247.34" class="todo"><title>0x00447764 Func447764 (77 bytes)</title></rect>
@@ -1994,7 +1994,7 @@
 <rect width="2.47" height="2.81" x="685.47" y="272.19" class="todo"><title>0x00442200 Func442200 (56 bytes)</title></rect>
 <rect width="2.47" height="2.81" x="690.94" y="272.19" class="todo"><title>0x00451d50 Func451d50 (56 bytes)</title></rect>
 <rect width="2.47" height="2.81" x="696.40" y="272.19" class="todo"><title>0x004657c0 Func4657c0 (56 bytes)</title></rect>
-<rect width="2.47" height="2.81" x="701.87" y="272.19" class="todo"><title>0x004731f0 Func4731f0 (56 bytes)</title></rect>
+<rect width="2.47" height="2.81" x="701.87" y="272.19" class="todo"><title>0x004731f0 CWaveFile::CWaveFile (56 bytes)</title></rect>
 <rect width="2.37" height="2.81" x="707.34" y="272.19" class="todo"><title>0x00406b70 Func406b70 (55 bytes)</title></rect>
 <rect width="2.37" height="2.81" x="712.71" y="272.19" class="todo"><title>0x00432170 Func432170 (55 bytes)</title></rect>
 <rect width="2.37" height="2.81" x="718.08" y="272.19" class="todo"><title>0x00446f0b Func446f0b (55 bytes)</title></rect>
@@ -2007,7 +2007,7 @@
 <rect width="2.55" height="2.52" x="674.24" y="283.52" class="todo"><title>0x00448a2f Func448a2f (54 bytes)</title></rect>
 <rect width="2.55" height="2.42" x="674.24" y="289.04" class="todo"><title>0x0041f000 Func41f000 (53 bytes)</title></rect>
 <rect width="2.55" height="2.42" x="674.24" y="294.46" class="todo"><title>0x0045afc0 Func45afc0 (53 bytes)</title></rect>
-<rect width="2.55" height="2.42" x="674.24" y="299.87" class="todo"><title>0x00472710 Func472710 (53 bytes)</title></rect>
+<rect width="2.55" height="2.42" x="674.24" y="299.87" class="todo"><title>0x00472710 CSound::GetBuffer (53 bytes)</title></rect>
 <rect width="2.55" height="2.42" x="674.24" y="305.29" class="named"><title>0x004738e0 File::Close (53 bytes)</title></rect>
 <rect width="2.55" height="2.42" x="674.24" y="310.70" class="named"><title>0x00474860 DatArchive::DatArchive (53 bytes)</title></rect>
 <rect width="2.55" height="2.31" x="674.24" y="316.12" class="todo"><title>0x00402150 Func402150 (52 bytes)</title></rect>
@@ -2019,7 +2019,7 @@
 <rect width="2.30" height="2.57" x="679.79" y="278" class="todo"><title>0x00462750 Func462750 (52 bytes)</title></rect>
 <rect width="2.30" height="2.46" x="679.79" y="283.57" class="todo"><title>0x0040bb20 Func40bb20 (51 bytes)</title></rect>
 <rect width="2.30" height="2.46" x="679.79" y="289.03" class="todo"><title>0x00422be0 Func422be0 (51 bytes)</title></rect>
-<rect width="2.30" height="2.46" x="679.79" y="294.49" class="todo"><title>0x00473680 Func473680 (51 bytes)</title></rect>
+<rect width="2.30" height="2.46" x="679.79" y="294.49" class="todo"><title>0x00473680 CWaveFile::Close (51 bytes)</title></rect>
 <rect width="2.30" height="2.46" x="679.79" y="299.95" class="named"><title>0x004736c0 File::File (51 bytes)</title></rect>
 <rect width="2.30" height="2.46" x="679.79" y="305.40" class="named"><title>0x00473a20 File::Seek (51 bytes)</title></rect>
 <rect width="2.30" height="2.35" x="679.79" y="310.86" class="todo"><title>0x00409ca0 Func409ca0 (50 bytes)</title></rect>
@@ -2044,9 +2044,9 @@
 <rect width="1.86" height="2.37" x="745.14" y="278" class="todo"><title>0x00441e40 Func441e40 (46 bytes)</title></rect>
 <rect width="2.19" height="2.03" x="685.10" y="283.37" class="todo"><title>0x00454c59 Func454c59 (46 bytes)</title></rect>
 <rect width="2.19" height="2.03" x="685.10" y="288.40" class="todo"><title>0x0045c480 Func45c480 (46 bytes)</title></rect>
-<rect width="2.19" height="2.03" x="685.10" y="293.43" class="todo"><title>0x00471c10 Func471c10 (46 bytes)</title></rect>
-<rect width="2.19" height="2.03" x="685.10" y="298.46" class="todo"><title>0x00472040 Func472040 (46 bytes)</title></rect>
-<rect width="2.19" height="2.03" x="685.10" y="303.49" class="todo"><title>0x00472b00 Func472b00 (46 bytes)</title></rect>
+<rect width="2.19" height="2.03" x="685.10" y="293.43" class="todo"><title>0x00471c10 CWaveFile::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
+<rect width="2.19" height="2.03" x="685.10" y="298.46" class="todo"><title>0x00472040 CSound::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
+<rect width="2.19" height="2.03" x="685.10" y="303.49" class="todo"><title>0x00472b00 CStreamingSound::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
 <rect width="2.19" height="2.03" x="685.10" y="308.52" class="named"><title>0x00473700 File::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
 <rect width="2.19" height="2.03" x="685.10" y="313.55" class="named"><title>0x00473c80 FileBase::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
 <rect width="2.19" height="2.03" x="685.10" y="318.58" class="named"><title>0x00474c40 DatArchive::GetEntrySize (46 bytes)</title></rect>
@@ -2055,7 +2055,7 @@
 <rect width="2.19" height="1.92" x="685.10" y="333.46" class="todo"><title>0x00451640 Func451640 (45 bytes)</title></rect>
 <rect width="2.19" height="1.81" x="685.10" y="338.38" class="todo"><title>0x004181f0 Func4181f0 (44 bytes)</title></rect>
 <rect width="2.19" height="1.81" x="685.10" y="343.19" class="todo"><title>0x00418420 Func418420 (44 bytes)</title></rect>
-<rect width="2.11" height="1.88" x="690.29" y="283.37" class="todo"><title>0x00471700 Func471700 (44 bytes)</title></rect>
+<rect width="2.11" height="1.88" x="690.29" y="283.37" class="named"><title>0x00471700 CSoundManager::~CSoundManager (44 bytes)</title></rect>
 <rect width="2" height="1.88" x="695.40" y="283.37" class="todo"><title>0x00406ac0 Func406ac0 (43 bytes)</title></rect>
 <rect width="2" height="1.88" x="700.39" y="283.37" class="todo"><title>0x00406b40 Func406b40 (43 bytes)</title></rect>
 <rect width="2" height="1.88" x="705.39" y="283.37" class="todo"><title>0x00406bb0 Func406bb0 (43 bytes)</title></rect>
@@ -2149,7 +2149,7 @@
 <rect width="0.79" height="1.20" x="738.64" y="301.69" class="todo"><title>0x004418a0 Func4418a0 (28 bytes)</title></rect>
 <rect width="0.79" height="1.20" x="742.43" y="301.69" class="todo"><title>0x00449bee Func449bee (28 bytes)</title></rect>
 <rect width="0.79" height="1.20" x="746.21" y="301.69" class="todo"><title>0x00453ca0 Func453ca0 (28 bytes)</title></rect>
-<rect width="1.02" height="0.96" x="703.88" y="305.89" class="todo"><title>0x00472b30 Func472b30 (28 bytes)</title></rect>
+<rect width="1.02" height="0.96" x="703.88" y="305.89" class="todo"><title>0x00472b30 CStreamingSound::~CStreamingSound (28 bytes)</title></rect>
 <rect width="1.02" height="0.82" x="703.88" y="309.85" class="todo"><title>0x004066a0 Func4066a0 (27 bytes)</title></rect>
 <rect width="1.02" height="0.82" x="703.88" y="313.66" class="todo"><title>0x004066c0 Func4066c0 (27 bytes)</title></rect>
 <rect width="1.02" height="0.82" x="703.88" y="317.48" class="todo"><title>0x00407120 Func407120 (27 bytes)</title></rect>
@@ -2272,7 +2272,7 @@
 <rect width="0.17" height="0.40" x="729.70" y="334.38" class="named"><title>0x00443c90 MidiDevice::~MidiDevice (19 bytes)</title></rect>
 <rect width="0.17" height="0.40" x="729.70" y="337.79" class="named"><title>0x00445440 MidiTimer::StopTimer (19 bytes)</title></rect>
 <rect width="0.17" height="0.40" x="729.70" y="341.19" class="todo"><title>0x00453cfa Func453cfa (19 bytes)</title></rect>
-<rect width="0.17" height="0.40" x="729.70" y="344.60" class="todo"><title>0x00473230 Func473230 (19 bytes)</title></rect>
+<rect width="0.17" height="0.40" x="729.70" y="344.60" class="todo"><title>0x00473230 CWaveFile::~CWaveFile (19 bytes)</title></rect>
 <rect width="0.10" height="0.59" x="732.87" y="330.98" class="named"><title>0x004748a0 DatArchive::~DatArchive (19 bytes)</title></rect>
 <rect width="0.10" height="0.40" x="732.87" y="334.57" class="todo"><title>0x004031e0 Func4031e0 (18 bytes)</title></rect>
 <rect width="0.10" height="0.40" x="732.87" y="337.98" class="todo"><title>0x0040bc40 Func40bc40 (18 bytes)</title></rect>
@@ -2286,7 +2286,7 @@
 <rect width="0.10" height="0.40" x="735.87" y="334.39" class="todo"><title>0x00453cc0 Func453cc0 (17 bytes)</title></rect>
 <rect width="0.10" height="0.40" x="735.87" y="337.79" class="todo"><title>0x0045e300 Func45e300 (17 bytes)</title></rect>
 <rect width="0.10" height="0.40" x="735.87" y="341.19" class="todo"><title>0x00471651 Func471651 (17 bytes)</title></rect>
-<rect width="0.10" height="0.40" x="735.87" y="344.60" class="todo"><title>0x004733c0 Func4733c0 (17 bytes)</title></rect>
+<rect width="0.10" height="0.40" x="735.87" y="344.60" class="todo"><title>0x004733c0 CWaveFile::GetSize (17 bytes)</title></rect>
 <rect width="0.10" height="0.16" x="738.70" y="334.39" class="todo"><title>0x00427250 Func427250 (16 bytes)</title></rect>
 <rect width="0.10" height="0.16" x="741.57" y="334.39" class="named"><title>0x00429de0 MemoryManager::Register (16 bytes)</title></rect>
 <rect width="0.10" height="0.16" x="744.44" y="334.39" class="todo"><title>0x0045e2f0 Func45e2f0 (16 bytes)</title></rect>

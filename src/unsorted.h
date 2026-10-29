@@ -444,3 +444,43 @@ void RenderTextToTexture(int x, int y, int width, int unk4, int fontHeight, int 
 // font of SpriteEngine's text rendering (0x466340).
 void RenderTextToTextureBold(int x, int y, int width, int unk4, int fontHeight, int unk6, COLORREF textColor,
                              COLORREF shadowColor, char *text, IDirect3DTexture8 *texture);
+
+// An entry of thbgm.fmt: where a track is in thbgm.dat and its format.
+// The same as th07's.
+struct BgmFormat
+{
+    // The track's file name; an empty one ends the list.
+    char name[0x10];
+    DWORD offset;
+    DWORD size;
+    // CWaveFile::ResetFile limits the track to `loopEnd` bytes and, when
+    // looping, skips its first `loopStart`.
+    int loopStart;
+    int loopEnd;
+    WAVEFORMATEX format;
+
+    BOOL Loops()
+    {
+        return this->loopEnd != 0;
+    }
+};
+ASSERT_SIZE(BgmFormat, 0x34);
+
+// Plays the sound effects and music, as th07's (0x39cc bytes there).
+// Only the fields known so far.
+class SoundPlayer
+{
+public:
+    unsigned char unk_0[0x5214];
+    // Added to every BgmFormat offset by CWaveFile::ResetFile (th07's
+    // unk_39c8).
+    DWORD unk_5214;
+    // The music and sound effect volumes in percent, copied from the
+    // config (App+0x13f, App+0x140). New in th08: CSound::SetVolume
+    // scales by bgmVolume.
+    int bgmVolume;
+    int seVolume;
+    unsigned char unk_5220[4];
+};
+ASSERT_SIZE(SoundPlayer, 0x5224);
+extern SoundPlayer g_SoundPlayer;
