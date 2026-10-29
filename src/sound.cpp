@@ -579,3 +579,22 @@ DWORD WINAPI BgmNotificationProc(LPVOID lpParameter)
     DebugPrint("atention : ストリーミング用スレッドは終了しました。\r\n");
     return 0;
 }
+
+void SoundPlayer::QueueSoundCommand(int type, int arg, char *path)
+{
+    int i;
+
+    for (i = 0; i < 0x1f; i++)
+    {
+        if (this->commands[i].type != 0)
+        {
+            continue;
+        }
+        this->commands[i].type = type;
+        this->commands[i].arg = arg;
+        strcpy(this->commands[i].path, path);
+        this->commands[i].stage = 0;
+        break;
+    }
+    DebugPrint("Sound Que Add %d\r\n", type);
+}

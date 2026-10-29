@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">18.46% (206)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">81.54% (910)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">18.55% (207)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">81.45% (909)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="137.89" height="6" x="0" y="0" class="named"/>
-<rect width="609.11" height="6" x="137.89" y="0" class="todo"/>
+<rect width="138.56" height="6" x="0" y="0" class="named"/>
+<rect width="608.44" height="6" x="138.56" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -995,7 +995,7 @@
 <rect width="12" height="12" x="375" y="270" class="named"><title>0x0045d660 SoundPlayer::QueueSoundPanned (296 bytes)</title></rect>
 <rect width="12" height="12" x="390" y="270" class="todo"><title>0x0045d790 SoundPlayer::PlayQueuedSounds (2358 bytes)</title></rect>
 <rect width="12" height="12" x="405" y="270" class="named"><title>0x0045e0f0 BgmNotificationProc (226 bytes)</title></rect>
-<rect width="12" height="12" x="420" y="270" class="todo"><title>0x0045e1e0 SoundPlayer::QueueSoundCommand (225 bytes)</title></rect>
+<rect width="12" height="12" x="420" y="270" class="named"><title>0x0045e1e0 SoundPlayer::QueueSoundCommand (225 bytes)</title></rect>
 <rect width="12" height="12" x="435" y="270" class="todo"><title>0x0045e2d0 CWaveFile::GetFormat (20 bytes)</title></rect>
 <rect width="12" height="12" x="450" y="270" class="named"><title>0x0045e2f0 CSoundManager::GetDirectSound (16 bytes)</title></rect>
 <rect width="12" height="12" x="465" y="270" class="named"><title>0x0045e300 CSound::GetWaveFile (17 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">9.41%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">90.59%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">9.46%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">90.54%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="70.33" height="6" x="0" y="0" class="named"/>
-<rect width="676.67" height="6" x="70.33" y="0" class="todo"/>
+<rect width="70.69" height="6" x="0" y="0" class="named"/>
+<rect width="676.31" height="6" x="70.69" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1612,7 +1612,7 @@
 <rect width="8.23" height="8.37" x="660.52" y="166.35" class="todo"><title>0x00410ac0 Func410ac0 (225 bytes)</title></rect>
 <rect width="8.23" height="8.37" x="671.75" y="166.35" class="todo"><title>0x0042ee80 Func42ee80 (225 bytes)</title></rect>
 <rect width="8.23" height="8.37" x="682.98" y="166.35" class="todo"><title>0x00459fd2 Func459fd2 (225 bytes)</title></rect>
-<rect width="8.23" height="8.37" x="694.21" y="166.35" class="todo"><title>0x0045e1e0 SoundPlayer::QueueSoundCommand (225 bytes)</title></rect>
+<rect width="8.23" height="8.37" x="694.21" y="166.35" class="named"><title>0x0045e1e0 SoundPlayer::QueueSoundCommand (225 bytes)</title></rect>
 <rect width="8.23" height="8.37" x="705.43" y="166.35" class="todo"><title>0x00464dd0 Func464dd0 (225 bytes)</title></rect>
 <rect width="8.18" height="8.37" x="716.66" y="166.35" class="named"><title>0x0043c880 Chain::AddToCalcChain (224 bytes)</title></rect>
 <rect width="8.13" height="8.37" x="727.84" y="166.35" class="todo"><title>0x00450240 Func450240 (223 bytes)</title></rect>
