@@ -40,6 +40,16 @@ public:
         this->scaleX = x;
         this->scaleY = y;
     }
+    // Inline; the copy at 0x4398ff is the Gui object's.
+    void SetInArena(int inArena)
+    {
+        this->inArena = inArena;
+    }
+    // Inline; the copy at 0x407180 is in an /Od object.
+    void SetGlyphWidth(int width)
+    {
+        this->glyphWidth = width;
+    }
 
     unsigned char unk_0[0x8264];
     // How many strings are queued.
@@ -57,5 +67,11 @@ public:
     // The scale of the characters added next.
     float scaleX;
     float scaleY;
+    // Whether positions are relative to the play area, as th07's.
+    int inArena;
+    int unk_8278;
+    int unk_827c;
+    // The advance of a character, in pixels, as th07's.
+    int glyphWidth;
 };
 extern AsciiText g_AsciiText;

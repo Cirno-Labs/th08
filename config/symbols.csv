@@ -498,7 +498,7 @@ address,size,name,symbol
 0x00438a41,24,App::GetNoDepthTest,?GetNoDepthTest@App@@QAEHXZ
 0x00438a59,24,App::GetNoColorBlending,?GetNoColorBlending@App@@QAEHXZ
 0x00438a71,24,App::GetUnk12,?GetUnk12@App@@QAEHXZ
-0x00438a89,1231,Gui::Func438a89,?Func438a89@Gui@@QAEXXZ
+0x00438a89,1231,Gui::DrawPopups,?DrawPopups@Gui@@QAEXXZ
 0x00438f58,145,Gui::Func438f58,?Func438f58@Gui@@QAEXXZ
 0x00438fe9,10,Func438fe9,?Func438fe9@@YIHXZ
 0x00438ff3,10,Func438ff3,?Func438ff3@@YIHXZ
@@ -518,7 +518,7 @@ address,size,name,symbol
 0x00439883,75,Func439883,
 0x004398ce,26,GameManager::GetBombs,?GetBombs@GameManager@@QAEHXZ
 0x004398e8,23,AsciiText::SetColor,?SetColor@AsciiText@@QAEXK@Z
-0x004398ff,23,Func4398ff,
+0x004398ff,23,AsciiText::SetInArena,?SetInArena@AsciiText@@QAEXH@Z
 0x00439916,75,Func439916,?Func439916@@YIHH@Z
 0x00439961,75,Func439961,
 0x004399ac,130,GameManager::IsInPlayArea,?IsInPlayArea@GameManager@@QAEHMMMM@Z

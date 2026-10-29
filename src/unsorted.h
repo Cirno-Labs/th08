@@ -1599,7 +1599,7 @@ public:
     // counts frameCounter up. Returns 1.
     static int OnUpdate(Gui *gui);
     // The draw chain callback: DrawStageClear while impl->stageClearShown is set,
-    // then the dialogue, the banners, the HUD and Func438a89. Returns 1.
+    // then the dialogue, the banners, the HUD and the popups. Returns 1.
     static int OnDraw(Gui *gui);
     // Whether the dialogue holds the timeline: impl is set,
     // msg.timelineRelease is 0 and a script runs, as th07's.
@@ -1625,8 +1625,9 @@ public:
     void DrawBanners();
     // Draws the stage clear screen, as th07's OnDraw did (0x43826b).
     void DrawStageClear();
-    // Drawn by OnDraw (0x438a89).
-    void Func438a89();
+    // Draws the bonus, full power and spell card bonus popups, as th07's
+    // OnDraw did (0x438a89).
+    void DrawPopups();
     // Called by GameManager::OnUpdate when the result screen's mode ends
     // without a scene to go to (0x438f58).
     void Func438f58();

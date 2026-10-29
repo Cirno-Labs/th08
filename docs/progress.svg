@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">43.55% (486)</tspan> · <tspan class="decompiled">0.45% (5)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">56% (625)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">43.73% (488)</tspan> · <tspan class="decompiled">0.45% (5)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">55.82% (623)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="325.31" height="6" x="0" y="0" class="named"/>
-<rect width="3.35" height="6" x="325.31" y="0" class="decompiled"/>
-<rect width="418.35" height="6" x="328.65" y="0" class="todo"/>
+<rect width="326.65" height="6" x="0" y="0" class="named"/>
+<rect width="3.35" height="6" x="326.65" y="0" class="decompiled"/>
+<rect width="417.01" height="6" x="329.99" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -567,7 +567,7 @@
 <rect width="12" height="12" x="690" y="135" class="named"><title>0x00438a41 App::GetNoDepthTest (24 bytes)</title></rect>
 <rect width="12" height="12" x="705" y="135" class="named"><title>0x00438a59 App::GetNoColorBlending (24 bytes)</title></rect>
 <rect width="12" height="12" x="720" y="135" class="named"><title>0x00438a71 App::GetUnk12 (24 bytes)</title></rect>
-<rect width="12" height="12" x="735" y="135" class="todo"><title>0x00438a89 Gui::Func438a89 (1231 bytes)</title></rect>
+<rect width="12" height="12" x="735" y="135" class="named"><title>0x00438a89 Gui::DrawPopups (1231 bytes)</title></rect>
 <rect width="12" height="12" x="0" y="150" class="todo"><title>0x00438f58 Gui::Func438f58 (145 bytes)</title></rect>
 <rect width="12" height="12" x="15" y="150" class="todo"><title>0x00438fe9 Func438fe9 (10 bytes)</title></rect>
 <rect width="12" height="12" x="30" y="150" class="todo"><title>0x00438ff3 Func438ff3 (10 bytes)</title></rect>
@@ -587,7 +587,7 @@
 <rect width="12" height="12" x="240" y="150" class="todo"><title>0x00439883 Func439883 (75 bytes)</title></rect>
 <rect width="12" height="12" x="255" y="150" class="named"><title>0x004398ce GameManager::GetBombs (26 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="150" class="named"><title>0x004398e8 AsciiText::SetColor (23 bytes)</title></rect>
-<rect width="12" height="12" x="285" y="150" class="todo"><title>0x004398ff Func4398ff (23 bytes)</title></rect>
+<rect width="12" height="12" x="285" y="150" class="named"><title>0x004398ff AsciiText::SetInArena (23 bytes)</title></rect>
 <rect width="12" height="12" x="300" y="150" class="todo"><title>0x00439916 Func439916 (75 bytes)</title></rect>
 <rect width="12" height="12" x="315" y="150" class="todo"><title>0x00439961 Func439961 (75 bytes)</title></rect>
 <rect width="12" height="12" x="330" y="150" class="named"><title>0x004399ac GameManager::IsInPlayArea (130 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">35.32%</tspan> · <tspan class="decompiled">0.26%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">64.42%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">35.59%</tspan> · <tspan class="decompiled">0.26%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">64.14%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="263.85" height="6" x="0" y="0" class="named"/>
-<rect width="1.96" height="6" x="263.85" y="0" class="decompiled"/>
-<rect width="481.19" height="6" x="265.81" y="0" class="todo"/>
+<rect width="265.89" height="6" x="0" y="0" class="named"/>
+<rect width="1.96" height="6" x="265.89" y="0" class="decompiled"/>
+<rect width="479.15" height="6" x="267.85" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1282,7 +1282,7 @@
 <rect width="22.75" height="25.71" x="385.32" y="28.71" class="todo"><title>0x00427450 Func427450 (1303 bytes)</title></rect>
 <rect width="22.75" height="25.47" x="385.32" y="57.43" class="named"><title>0x0043f31c GdiSurface::InvertAlpha (1292 bytes)</title></rect>
 <rect width="22.75" height="24.48" x="385.32" y="85.90" class="named"><title>0x0044970f MusicScreen::AddedCallback (1247 bytes)</title></rect>
-<rect width="22.75" height="24.13" x="385.32" y="113.38" class="todo"><title>0x00438a89 Gui::Func438a89 (1231 bytes)</title></rect>
+<rect width="22.75" height="24.13" x="385.32" y="113.38" class="named"><title>0x00438a89 Gui::DrawPopups (1231 bytes)</title></rect>
 <rect width="22.75" height="23.80" x="385.32" y="140.50" class="todo"><title>0x0042a8a0 Func42a8a0 (1216 bytes)</title></rect>
 <rect width="22.75" height="23.51" x="385.32" y="167.30" class="todo"><title>0x004235a0 Func4235a0 (1203 bytes)</title></rect>
 <rect width="22.75" height="23.47" x="385.32" y="193.81" class="named"><title>0x00442f60 SetDefaultRenderStates (1201 bytes)</title></rect>
@@ -2227,7 +2227,7 @@
 <rect width="0.79" height="0.44" x="718.88" y="334.23" class="todo"><title>0x00418110 Func418110 (23 bytes)</title></rect>
 <rect width="0.79" height="0.44" x="718.88" y="337.68" class="todo"><title>0x0042e120 Func42e120 (23 bytes)</title></rect>
 <rect width="0.79" height="0.44" x="718.88" y="341.12" class="named"><title>0x004398e8 AsciiText::SetColor (23 bytes)</title></rect>
-<rect width="0.79" height="0.44" x="718.88" y="344.56" class="todo"><title>0x004398ff Func4398ff (23 bytes)</title></rect>
+<rect width="0.79" height="0.44" x="718.88" y="344.56" class="named"><title>0x004398ff AsciiText::SetInArena (23 bytes)</title></rect>
 <rect width="0.47" height="0.76" x="722.67" y="316.88" class="named"><title>0x0043f881 GdiSurface::IsCreated (23 bytes)</title></rect>
 <rect width="0.47" height="0.76" x="726.14" y="316.88" class="named"><title>0x00443a50 App::GetEmulateColorAdd (23 bytes)</title></rect>
 <rect width="0.47" height="0.76" x="729.62" y="316.88" class="named"><title>0x00453be0 Rng::SetSeed (23 bytes)</title></rect>

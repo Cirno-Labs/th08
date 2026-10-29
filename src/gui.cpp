@@ -2,6 +2,7 @@
 // The /Os file with Gui, as th07's, from 0x4338ca to GameManager at
 // 0x4399ac.
 
+#include <stdio.h>
 #include <string.h>
 
 #include "ascii.h"
@@ -38,7 +39,7 @@ int Gui::OnDraw(Gui *gui)
     gui->impl->DrawMsg();
     gui->DrawBanners();
     gui->DrawHud();
-    gui->Func438a89();
+    gui->DrawPopups();
     return 1;
 }
 
@@ -632,4 +633,82 @@ int App::GetNoColorBlending()
 int App::GetUnk12()
 {
     return this->flags.unk12;
+}
+
+void Gui::DrawPopups()
+{
+    char buf[32];
+
+    g_AsciiText.SetInArena(1);
+    if (this->impl->bonusPopup.shown)
+    {
+        g_AsciiText.SetColor(0xffffff80);
+        g_AsciiText.AddFormat(&this->impl->bonusPopup.pos, " BONUS %8d", this->impl->bonusPopup.value);
+        g_AsciiText.SetColor(0xffffffff);
+    }
+    switch (this->impl->fullPowerPopup.shown)
+    {
+    case 1:
+        g_AsciiText.SetColor(0xffc0b0ff);
+        g_AsciiText.AddFormat(&this->impl->fullPowerPopup.pos, "Full Power Mode!");
+        g_AsciiText.SetColor(0xffffffff);
+        break;
+    case 2:
+        g_AsciiText.SetScale(0.9f, 1.0f);
+        g_AsciiText.SetGlyphWidth(11);
+        g_AsciiText.SetColor(0xffe0b0ff);
+        g_AsciiText.AddFormat(&this->impl->fullPowerPopup.pos, "Supernatural Border!!");
+        g_AsciiText.SetColor(0xffffffff);
+        g_AsciiText.SetScale(1.0f, 1.0f);
+        g_AsciiText.SetGlyphWidth(13);
+        break;
+    case 3:
+        g_AsciiText.SetColor(0xffc0b0ff);
+        g_AsciiText.AddFormat(&this->impl->fullPowerPopup.pos, "CherryPoint Max!");
+        g_AsciiText.SetColor(0xffffffff);
+        break;
+    case 4:
+        g_AsciiText.SetScale(0.9f, 1.0f);
+        g_AsciiText.SetGlyphWidth(11);
+        g_AsciiText.SetColor(0xffe0b0ff);
+        g_AsciiText.AddFormat(&this->impl->fullPowerPopup.pos, "Border Bonus %7d", this->impl->fullPowerPopup.value);
+        g_AsciiText.SetColor(0xffffffff);
+        g_AsciiText.SetScale(1.0f, 1.0f);
+        g_AsciiText.SetGlyphWidth(13);
+        break;
+    case 5:
+        g_AsciiText.SetScale(0.9f, 1.0f);
+        g_AsciiText.SetGlyphWidth(11);
+        g_AsciiText.SetColor(0xffe0b0ff);
+        g_AsciiText.AddFormat(&this->impl->fullPowerPopup.pos, "Spell Bonus Failed");
+        g_AsciiText.SetColor(0xffffffff);
+        g_AsciiText.SetScale(1.0f, 1.0f);
+        g_AsciiText.SetGlyphWidth(13);
+        break;
+    case 6:
+        g_AsciiText.SetScale(0.9f, 1.0f);
+        g_AsciiText.SetGlyphWidth(11);
+        g_AsciiText.SetColor(0xffe0b0ff);
+        g_AsciiText.AddFormat(&this->impl->fullPowerPopup.pos, "Last Spell Failed");
+        g_AsciiText.SetColor(0xffffffff);
+        g_AsciiText.SetScale(1.0f, 1.0f);
+        g_AsciiText.SetGlyphWidth(13);
+        break;
+    }
+    if (this->impl->spellBonusPopup.shown)
+    {
+        g_AsciiText.SetColor(0xffff0000);
+        this->impl->spellBonusPopup.pos.x = (384.0f - strlen("Spell Card Bonus!") * 14.0f) / 2.0f + 32.0f;
+        this->impl->spellBonusPopup.pos.y = 80.0f;
+        g_AsciiText.AddFormat(&this->impl->spellBonusPopup.pos, "Spell Card Bonus!");
+        this->impl->spellBonusPopup.pos.y += 16.0f;
+        sprintf(buf, "+%d", this->impl->spellBonusPopup.value);
+        this->impl->spellBonusPopup.pos.x = (384.0f - strlen(buf) * 28.0f) / 2.0f + 32.0f;
+        g_AsciiText.SetScale(2.0f, 2.0f);
+        g_AsciiText.SetColor(0xffff8080);
+        g_AsciiText.AddString(&this->impl->spellBonusPopup.pos, buf);
+        g_AsciiText.SetScale(1.0f, 1.0f);
+        g_AsciiText.SetColor(0xffffffff);
+    }
+    g_AsciiText.SetInArena(0);
 }
