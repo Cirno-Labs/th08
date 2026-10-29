@@ -278,6 +278,26 @@ void PresentFrame()
     }
 }
 
+double GameWindow::GetTime()
+{
+    // A LARGE_INTEGER, but only 4-aligned, like GameWindow's.
+    DWORD count[2];
+    double time;
+
+    if (g_GameWindow.perfFrequency[0] != 0)
+    {
+        QueryPerformanceCounter((LARGE_INTEGER *)count);
+        return (double)count[0] / (double)g_GameWindow.perfFrequency[0];
+    }
+    else
+    {
+        timeBeginPeriod(1);
+        time = timeGetTime();
+        timeEndPeriod(1);
+        return time;
+    }
+}
+
 void FormatCapsReport(D3DCAPS8 *caps, char *buffer)
 {
     char *p = buffer;
