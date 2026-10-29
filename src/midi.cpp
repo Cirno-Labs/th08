@@ -6,6 +6,18 @@ MidiDevice::MidiDevice()
     this->deviceId = 0;
 }
 
+int MidiDevice::Close()
+{
+    if (this->handle == 0)
+    {
+        return -1;
+    }
+    midiOutReset(this->handle);
+    midiOutClose(this->handle);
+    this->handle = 0;
+    return 0;
+}
+
 WORD SwapBytes16(WORD value)
 {
     union
