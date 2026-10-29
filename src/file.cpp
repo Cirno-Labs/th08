@@ -83,3 +83,15 @@ DWORD File::Read(void *buffer, DWORD size)
     ReadFile(this->handle, buffer, size, &read, NULL);
     return read;
 }
+
+bool File::Write(void *buffer, DWORD size)
+{
+    DWORD written = 0;
+
+    if (this->access != GENERIC_WRITE)
+    {
+        return false;
+    }
+    WriteFile(this->handle, buffer, size, &written, NULL);
+    return size == written ? true : false;
+}
