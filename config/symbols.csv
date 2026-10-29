@@ -356,7 +356,7 @@ address,size,name,symbol
 0x00427a60,114,EffectUpdateRingTimed,?EffectUpdateRingTimed@@YIHPAUEffect@@@Z
 0x00427ae0,110,EffectUpdateRingFade,?EffectUpdateRingFade@@YIHPAUEffect@@@Z
 0x00427b50,158,EffectUpdateRingAt,?EffectUpdateRingAt@@YIHPAUEffect@@@Z
-0x00427bf0,778,Func427bf0,
+0x00427bf0,778,EffectManager::OnUpdate,?OnUpdate@EffectManager@@SIHPAV1@@Z
 0x00427f00,501,Func427f00,
 0x00428100,219,Func428100,
 0x004281e0,290,Func4281e0,

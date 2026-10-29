@@ -818,3 +818,87 @@ int EffectUpdateRingAt(Effect *effect)
     effect->origin = effect->sprite.pos;
     return 1;
 }
+
+int EffectManager::OnUpdate(EffectManager *mgr)
+{
+    Effect *eff = mgr->effects;
+    int i;
+
+    mgr->activeCount = 0;
+    mgr->drawListTails[0] = &mgr->drawList0;
+    mgr->drawListTails[1] = &mgr->drawList1;
+    mgr->drawListTails[2] = &mgr->drawList2;
+    mgr->drawListTails[3] = &mgr->drawList3;
+    mgr->drawListTails[4] = &mgr->drawList4;
+    mgr->drawList0.next = NULL;
+    mgr->drawList1.next = NULL;
+    mgr->drawList2.next = NULL;
+    mgr->drawList3.next = NULL;
+    mgr->drawList4.next = NULL;
+    for (i = 0; i < 0x28d; i++, eff++)
+    {
+        if (!eff->active)
+        {
+            if (eff->vertices != NULL)
+            {
+                g_MemoryManager.Free(eff->vertices);
+                eff->vertices = NULL;
+            }
+            continue;
+        }
+        mgr->activeCount++;
+        if (!(g_GameManager.unk_3dbac >> 10 & 1) || eff->unk_357)
+        {
+            if (eff->update != NULL && eff->update(eff) != 1)
+            {
+                eff->active = 0;
+                continue;
+            }
+            if (g_SpriteEngine->Step(&eff->sprite) != 0)
+            {
+                eff->active = 0;
+                continue;
+            }
+            eff->timer++;
+        }
+        eff->next = NULL;
+        if (eff->type == 0x40)
+        {
+            continue;
+        }
+        if (eff->drawList == 1 || eff->drawList >= 3)
+        {
+            mgr->drawListTails[1]->next = eff;
+            mgr->drawListTails[1] = eff;
+        }
+        else if (eff->drawList == 0)
+        {
+            if (eff->unk_355)
+            {
+                mgr->drawListTails[3]->next = eff;
+                mgr->drawListTails[3] = eff;
+            }
+            else if (eff->sprite.blendMode == 1)
+            {
+                mgr->drawListTails[4]->next = eff;
+                mgr->drawListTails[4] = eff;
+            }
+            else
+            {
+                mgr->drawListTails[0]->next = eff;
+                mgr->drawListTails[0] = eff;
+            }
+        }
+        else
+        {
+            mgr->drawListTails[2]->next = eff;
+            mgr->drawListTails[2] = eff;
+        }
+    }
+    mgr->frames++;
+    if (mgr->frames % 300 == 100 && g_GameManager.ChecksumMismatch())
+    {
+        return 4;
+    }
+    return 1;
+}
