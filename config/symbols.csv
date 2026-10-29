@@ -333,7 +333,7 @@ address,size,name,symbol
 0x00425fa0,59,Func425fa0,
 0x00425fe0,75,EffectInitForeground,?EffectInitForeground@@YIHPAUEffect@@@Z
 0x00426030,588,EffectUpdateOrbit,?EffectUpdateOrbit@@YIHPAUEffect@@@Z
-0x00426280,624,Func426280,
+0x00426280,624,EffectInitBossPetal,?EffectInitBossPetal@@YIHPAUEffect@@@Z
 0x004264f0,545,Func4264f0,
 0x00426720,620,Func426720,
 0x00426990,388,Func426990,
