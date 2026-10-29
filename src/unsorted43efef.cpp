@@ -215,3 +215,8 @@ int GdiSurface::GetHeight()
 {
     return this->height;
 }
+
+HDC GdiSurface::GetHdc()
+{
+    return this->hdc;
+}

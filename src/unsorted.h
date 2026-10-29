@@ -364,6 +364,7 @@ public:
     void *GetBits();
     int GetWidthBytes();
     int GetHeight();
+    HDC GetHdc();
 
     int format;
     int width;
