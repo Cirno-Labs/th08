@@ -403,3 +403,60 @@ void Stage::RemoveChain()
     g_Chain.Remove(&g_StageDrawChain);
     g_Chain.Remove(&g_StageDrawChain2);
 }
+
+int Stage::Load(char *dataPath)
+{
+    int count;
+    int i;
+    StageObject *ob;
+    StageQuad *quad;
+
+    if (!IsRestarting())
+    {
+        this->data = (StageData *)LoadFileData(dataPath, NULL, 0);
+        if (this->data == NULL)
+        {
+            LogPrintf(&g_Log, "ステージデータが見つかりません。データが壊れています\r\n");
+            return -1;
+        }
+    }
+    this->objectCount = this->data->objectCount;
+    this->quadCount = this->data->quadCount;
+    this->instances = (StageInstance *)(this->data->instancesOffset + (int)this->data);
+    this->script = (StageInstr *)(this->data->scriptOffset + (int)this->data);
+    this->objects = (StageObject **)((char *)this->data + 0x490);
+    if (!IsRestarting())
+    {
+        for (i = 0; i < this->objectCount; i++)
+        {
+            this->objects[i] = (StageObject *)((int)this->objects[i] + (int)this->data);
+        }
+    }
+    this->sprites = (Sprite *)g_MemoryManager.Alloc(this->quadCount * sizeof(Sprite), "bgscroll");
+    for (i = 0, count = 0; i < this->objectCount; i++)
+    {
+        ob = this->objects[i];
+        ob->flags = 1;
+        quad = ob->quads;
+        while (quad->type >= 0)
+        {
+            this->anm->StartScriptAtOrigin(&this->sprites[count], quad->script);
+            quad->spriteIndex = count;
+            count++;
+            quad = (StageQuad *)((char *)quad + quad->size);
+        }
+    }
+    switch (g_GameManager.stage)
+    {
+    case 2:
+        g_App.textAnm->StartScript(&this->unk_844, 0x21);
+        break;
+    default:
+        g_App.textAnm->StartScript(&this->unk_844, 0x21);
+        break;
+    }
+    this->unk_844.SetPendingInterrupt(2);
+    this->unk_834 = 0;
+    this->unk_838 = 0;
+    return 0;
+}

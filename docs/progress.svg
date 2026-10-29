@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">62.81% (701)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">35.39% (395)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">62.90% (702)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">35.30% (394)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="469.22" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="469.22" y="0" class="decompiled"/>
-<rect width="264.40" height="6" x="482.60" y="0" class="todo"/>
+<rect width="469.89" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="469.89" y="0" class="decompiled"/>
+<rect width="263.73" height="6" x="483.27" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -169,7 +169,7 @@
 <rect width="12" height="12" x="720" y="15" class="named"><title>0x00409b20 Stage::RegisterChain (254 bytes)</title></rect>
 <rect width="12" height="12" x="735" y="15" class="named"><title>0x00409c20 Stage::DeletedCallback (122 bytes)</title></rect>
 <rect width="12" height="12" x="0" y="30" class="named"><title>0x00409ca0 Stage::RemoveChain (50 bytes)</title></rect>
-<rect width="12" height="12" x="15" y="30" class="todo"><title>0x00409ce0 Stage::Load (598 bytes)</title></rect>
+<rect width="12" height="12" x="15" y="30" class="named"><title>0x00409ce0 Stage::Load (598 bytes)</title></rect>
 <rect width="12" height="12" x="30" y="30" class="todo"><title>0x00409f40 Func409f40 (610 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="30" class="todo"><title>0x0040a1b0 Stage::DrawLayer (4746 bytes)</title></rect>
 <rect width="12" height="12" x="60" y="30" class="todo"><title>0x0040b440 Func40b440 (21 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">54.95%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">44.06%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">55.08%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">43.93%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="410.45" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="410.45" y="0" class="decompiled"/>
-<rect width="329.14" height="6" x="417.86" y="0" class="todo"/>
+<rect width="411.43" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="411.43" y="0" class="decompiled"/>
+<rect width="328.17" height="6" x="418.83" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1378,7 +1378,7 @@
 <rect width="15.31" height="15.59" x="452.90" y="255.44" class="named"><title>0x00463210 SpriteEngine::Draw (600 bytes)</title></rect>
 <rect width="15.31" height="15.56" x="452.90" y="274.03" class="todo"><title>0x00450320 Func450320 (599 bytes)</title></rect>
 <rect width="15.31" height="15.56" x="452.90" y="292.59" class="named"><title>0x00472070 CStreamingSound::RecreateBuffers (599 bytes)</title></rect>
-<rect width="15.31" height="15.53" x="452.90" y="311.16" class="todo"><title>0x00409ce0 Stage::Load (598 bytes)</title></rect>
+<rect width="15.31" height="15.53" x="452.90" y="311.16" class="named"><title>0x00409ce0 Stage::Load (598 bytes)</title></rect>
 <rect width="15.31" height="15.31" x="452.90" y="329.69" class="named"><title>0x00428910 Ending::DrawFade (591 bytes)</title></rect>
 <rect width="15.30" height="15.24" x="471.21" y="65.08" class="named"><title>0x00426030 EffectUpdateOrbit (588 bytes)</title></rect>
 <rect width="15.27" height="15.24" x="489.51" y="65.08" class="named"><title>0x00426e70 EffectInitPetal (587 bytes)</title></rect>
