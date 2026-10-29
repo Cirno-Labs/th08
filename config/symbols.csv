@@ -352,7 +352,7 @@ address,size,name,symbol
 0x00427450,1303,EffectDrawRing,?EffectDrawRing@@YIHPAUEffect@@@Z
 0x00427970,31,EffectInitRing2,?EffectInitRing2@@YIHPAUEffect@@@Z
 0x00427990,59,EffectUpdateRing,?EffectUpdateRing@@YIHPAUEffect@@@Z
-0x004279d0,143,Func4279d0,
+0x004279d0,143,EffectUpdateRingFull,?EffectUpdateRingFull@@YIHPAUEffect@@@Z
 0x00427a60,114,Func427a60,
 0x00427ae0,110,Func427ae0,
 0x00427b50,158,Func427b50,

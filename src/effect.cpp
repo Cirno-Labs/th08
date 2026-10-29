@@ -764,3 +764,16 @@ int EffectUpdateRing(Effect *effect)
     effect->radius = effect->sprite.pos.x;
     return 1;
 }
+
+int EffectUpdateRingFull(Effect *effect)
+{
+    effect->segmentCount = effect->sprite.scriptVar0;
+    effect->unk_334 = effect->sprite.scriptVar1;
+    effect->ringWidth = effect->sprite.scaleY;
+    effect->radius = effect->sprite.pos.x;
+    effect->unk_32c = effect->sprite.pos.y;
+    effect->angle = effect->sprite.rotation.z;
+    effect->unk_330 = effect->sprite.rotation.y;
+    effect->verticesDirty = 1;
+    return 1;
+}
