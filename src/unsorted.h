@@ -33,6 +33,28 @@ ASSERT_SIZE(ControllerMapping, 0x12);
 
 class MidiTimer;
 
+// The config's option bits, in th07's order: the bits used so far test
+// the same options as th07's.
+struct GameConfigFlags
+{
+    unsigned int emulateColorAdd : 1;
+    unsigned int noVertexBuffer : 1;
+    unsigned int force16BitTextures : 1;
+    unsigned int clearBackBuffer : 1;
+    unsigned int noFrameItems : 1;
+    unsigned int noGouraudShading : 1;
+    unsigned int noDepthTest : 1;
+    unsigned int force60Fps : 1;
+    unsigned int noColorBlending : 1;
+    unsigned int referenceRasterizer : 1;
+    unsigned int noFog : 1;
+    unsigned int noDirectInput : 1;
+    unsigned int unk12 : 1;
+    unsigned int preloadBgm : 1;
+    unsigned int unk14 : 1;
+    unsigned int unk15 : 17;
+};
+
 class App
 {
 public:
@@ -46,6 +68,9 @@ public:
     // Asks the sub thread (App+0x284, new in th08) to close and waits for
     // it (0x44871b).
     void CloseSubThread();
+    // Getters for config options that th07 read directly; th08 calls
+    // these out-of-line copies (0x443a50..0x443ad0).
+    int GetEmulateColorAdd();
 
     HINSTANCE hInstance;
     IDirect3D8 *d3d;
@@ -78,7 +103,10 @@ public:
     // Whether holding shoot also focuses: ReadJoystick reports focus
     // once shoot has been held for 10 frames.
     BYTE shootFocuses;
-    unsigned char unk_13f[0x65];
+    unsigned char unk_13f[0x11];
+    // th07's flags, 4 bytes further on.
+    GameConfigFlags flags;
+    unsigned char unk_154[0x50];
     // Bit 0x40 is set by CheckSingleInstance when the startup info has
     // no title, cleared when it has one.
     DWORD unk_1a4;

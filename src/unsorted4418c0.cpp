@@ -231,3 +231,8 @@ void Log::Flush()
         WriteToFile("./log.txt", this->buffer, strlen(this->buffer));
     }
 }
+
+int App::GetEmulateColorAdd()
+{
+    return this->flags.emulateColorAdd;
+}
