@@ -819,7 +819,7 @@ address,size,name,symbol
 0x004512f0,268,DrawBullets,?DrawBullets@@YIXPAVPlayer@@@Z
 0x00451400,241,DrawHitBullets,?DrawHitBullets@@YIXPAVPlayer@@@Z
 0x00451500,311,UpdateFiring,?UpdateFiring@@YIHPAVPlayer@@@Z
-0x00451640,45,Func451640,
+0x00451640,45,Player::StartFiring,?StartFiring@Player@@SIXPAV1@@Z
 0x00451670,1646,Func451670,
 0x00451ce0,108,Func451ce0,
 0x00451d50,56,Func451d50,

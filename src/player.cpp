@@ -354,6 +354,475 @@ void Player::Die()
     g_ItemManager.RecycleCollectedItems();
 }
 
+int HandleInput(Player *player)
+{
+    int previous;
+    float deltaY;
+    float deltaX;
+    int focused;
+
+    deltaX = 0.0f;
+    deltaY = 0.0f;
+    previous = player->unk_e2a98;
+    if ((g_GameButtons & 0x50) == 0x50)
+    {
+        player->unk_e2a98 = 5;
+    }
+    else if ((g_GameButtons & 0x60) == 0x60)
+    {
+        player->unk_e2a98 = 7;
+    }
+    else if ((g_GameButtons & 0x90) == 0x90)
+    {
+        player->unk_e2a98 = 6;
+    }
+    else if ((g_GameButtons & 0xa0) == 0xa0)
+    {
+        player->unk_e2a98 = 8;
+    }
+    else if (g_GameButtons & 0x20)
+    {
+        player->unk_e2a98 = 2;
+    }
+    else if (g_GameButtons & 0x10)
+    {
+        player->unk_e2a98 = 1;
+    }
+    else if (g_GameButtons & 0x40)
+    {
+        player->unk_e2a98 = 3;
+    }
+    else if (g_GameButtons & 0x80)
+    {
+        player->unk_e2a98 = 4;
+    }
+    else
+    {
+        player->unk_e2a98 = 0;
+    }
+    focused = player->bomb.running ? player->bomb.type & 1 : g_GameButtons & 4;
+    if (focused)
+    {
+        DWORD idx;
+        PlayerOption *opt;
+
+        if (player->unk_3 != 1)
+        {
+            if (g_GameManager.character <= 3)
+            {
+                opt = player->options;
+                for (idx = 0; idx < 4; idx++, opt++)
+                {
+                    memset(opt, 0, sizeof(PlayerOption));
+                    opt->update = g_OptionUpdateFuncs[g_GameManager.character][idx];
+                    opt->draw = g_OptionDrawFuncs[g_GameManager.character][idx];
+                    if (opt->update != NULL)
+                    {
+                        opt->active = 1;
+                        opt->timer = 0;
+                        opt->index = idx;
+                    }
+                    else
+                    {
+                        opt->active = 0;
+                    }
+                }
+            }
+            if (g_GameManager.character < 4)
+            {
+                player->anm->StartScript(&player->sprite, 5);
+                player->velocityX = 0.0f;
+                if (player->unk_8 >= 4)
+                {
+                    g_EffectManager.SpawnEffect(0x1d, &player->pos, 1, 0x80ff8080);
+                }
+            }
+            if (player->unk_be834 == NULL)
+            {
+                player->unk_be834 = g_EffectManager.SpawnReservedEffect(0x16, &player->pos, 2, 1, 0xffffffff);
+            }
+            player->unk_8 = 0;
+            player->unk_e2ae8 = 0;
+        }
+        else
+        {
+            player->unk_8++;
+        }
+        if (player->unk_8 >= 7)
+        {
+            player->unk_5 = 1;
+        }
+        player->unk_3 = 1;
+    }
+    else
+    {
+        DWORD k;
+        int num;
+        DWORD i;
+        PlayerOption *p;
+
+        if (player->unk_3)
+        {
+            p = player->options;
+            if (g_GameManager.character < 3)
+            {
+                for (i = 0; i < 4; i++, p++)
+                {
+                    if (p->active != 0 && p->active != 3)
+                    {
+                        p->active = 3;
+                        p->timer = 0;
+                    }
+                }
+            }
+            else if (g_GameManager.character == 3)
+            {
+                for (num = 0; num < 2; num++, p++)
+                {
+                    if (p->active != 0 && p->active != 3)
+                    {
+                        p->active = 3;
+                        p->timer = 0;
+                    }
+                }
+                memset(p, 0, sizeof(PlayerOption));
+                p->update = g_OptionUpdateFuncs[12][num];
+                p->draw = g_OptionDrawFuncs[12][num];
+                p->active = 1;
+                p->timer = 0;
+                p->index = num;
+                for (k = 0; k < ARRAY_SIZE(player->posHistory); k++)
+                {
+                    player->posHistory[k] = player->pos;
+                }
+            }
+            if (g_GameManager.character < 4)
+            {
+                player->anm->StartScript(&player->sprite, 0);
+                player->velocityX = 0.0f;
+                if (player->unk_8 >= 4)
+                {
+                    g_EffectManager.SpawnEffect(0x1c, &player->pos, 1, 0x808080ff);
+                }
+            }
+            if (player->unk_be834 != NULL)
+            {
+                player->unk_be834->sprite.SetPendingInterrupt(1);
+            }
+            player->unk_be834 = NULL;
+            player->unk_8 = 0;
+            player->unk_e2ae8 = 0;
+        }
+        else
+        {
+            player->unk_8++;
+        }
+        if (player->unk_8 >= 7)
+        {
+            player->unk_5 = 0;
+        }
+        player->unk_3 = 0;
+    }
+    if (g_GameManager.character >= 4)
+    {
+        if (g_GameManager.character & 1)
+        {
+            player->unk_5 = 1;
+        }
+        else
+        {
+            player->unk_5 = 0;
+        }
+    }
+    if (player->unk_3)
+    {
+        switch (player->unk_e2a98)
+        {
+        case 4:
+            deltaX = player->unk_e2a78->speedFocused;
+            break;
+        case 3:
+            deltaX = -player->unk_e2a78->speedFocused;
+            break;
+        case 1:
+            deltaY = -player->unk_e2a78->speedFocused;
+            break;
+        case 2:
+            deltaY = player->unk_e2a78->speedFocused;
+            break;
+        case 5:
+            deltaX = -player->unk_e2a78->speedDiagonalFocused;
+            deltaY = deltaX;
+            break;
+        case 7:
+            deltaY = player->unk_e2a78->speedDiagonalFocused;
+            deltaX = -deltaY;
+            break;
+        case 6:
+            deltaX = player->unk_e2a78->speedDiagonalFocused;
+            deltaY = -deltaX;
+            break;
+        case 8:
+            deltaX = player->unk_e2a78->speedDiagonalFocused;
+            deltaY = deltaX;
+            break;
+        }
+    }
+    else
+    {
+        switch (player->unk_e2a98)
+        {
+        case 4:
+            deltaX = player->shotType->speed;
+            break;
+        case 3:
+            deltaX = -player->shotType->speed;
+            break;
+        case 1:
+            deltaY = -player->shotType->speed;
+            break;
+        case 2:
+            deltaY = player->shotType->speed;
+            break;
+        case 5:
+            deltaX = -player->shotType->speedDiagonal;
+            deltaY = deltaX;
+            break;
+        case 7:
+            deltaY = player->shotType->speedDiagonal;
+            deltaX = -deltaY;
+            break;
+        case 6:
+            deltaX = player->shotType->speedDiagonal;
+            deltaY = -deltaX;
+            break;
+        case 8:
+            deltaX = player->shotType->speedDiagonal;
+            deltaY = deltaX;
+            break;
+        }
+    }
+    deltaX *= player->moveScaleX;
+    deltaY *= player->moveScaleY;
+    if (g_GameManager.character < 4)
+    {
+        if (!player->unk_3)
+        {
+            if (deltaX < 0.0f && player->velocityX >= 0.0f)
+            {
+                player->anm->StartScript(&player->sprite, 1);
+            }
+            else if (deltaX == 0.0f && player->velocityX < 0.0f)
+            {
+                player->anm->StartScript(&player->sprite, 2);
+            }
+            if (deltaX > 0.0f && player->velocityX <= 0.0f)
+            {
+                player->anm->StartScript(&player->sprite, 3);
+            }
+            else if (deltaX == 0.0f && player->velocityX > 0.0f)
+            {
+                player->anm->StartScript(&player->sprite, 4);
+            }
+        }
+        else
+        {
+            if (deltaX < 0.0f && player->velocityX >= 0.0f)
+            {
+                player->anm->StartScript(&player->sprite, 6);
+            }
+            else if (deltaX == 0.0f && player->velocityX < 0.0f)
+            {
+                player->anm->StartScript(&player->sprite, 7);
+            }
+            if (deltaX > 0.0f && player->velocityX <= 0.0f)
+            {
+                player->anm->StartScript(&player->sprite, 8);
+            }
+            else if (deltaX == 0.0f && player->velocityX > 0.0f)
+            {
+                player->anm->StartScript(&player->sprite, 9);
+            }
+        }
+    }
+    else if (g_GameManager.character & 1)
+    {
+        if (deltaX < 0.0f && player->velocityX >= 0.0f)
+        {
+            player->anm->StartScript(&player->sprite, 6);
+        }
+        else if (deltaX == 0.0f && player->velocityX < 0.0f)
+        {
+            player->anm->StartScript(&player->sprite, 7);
+        }
+        if (deltaX > 0.0f && player->velocityX <= 0.0f)
+        {
+            player->anm->StartScript(&player->sprite, 8);
+        }
+        else if (deltaX == 0.0f && player->velocityX > 0.0f)
+        {
+            player->anm->StartScript(&player->sprite, 9);
+        }
+    }
+    else
+    {
+        if (deltaX < 0.0f && player->velocityX >= 0.0f)
+        {
+            player->anm->StartScript(&player->sprite, 1);
+        }
+        else if (deltaX == 0.0f && player->velocityX < 0.0f)
+        {
+            player->anm->StartScript(&player->sprite, 2);
+        }
+        if (deltaX > 0.0f && player->velocityX <= 0.0f)
+        {
+            player->anm->StartScript(&player->sprite, 3);
+        }
+        else if (deltaX == 0.0f && player->velocityX > 0.0f)
+        {
+            player->anm->StartScript(&player->sprite, 4);
+        }
+    }
+    player->velocityX = deltaX;
+    player->velocityY = deltaY;
+    player->unk_3f8.x = deltaX * g_App.gameSpeed;
+    player->unk_3f8.y = deltaY * g_App.gameSpeed;
+    player->pos[0] += player->unk_3f8.x;
+    player->pos[1] += player->unk_3f8.y;
+    if (player->pos[0] < g_GameManager.arena2[0])
+    {
+        player->pos[0] = g_GameManager.arena2[0];
+    }
+    else if (player->pos[0] > g_GameManager.arena2[0] + g_GameManager.arena2[2])
+    {
+        player->pos[0] = g_GameManager.arena2[0] + g_GameManager.arena2[2];
+    }
+    if (player->pos[1] < g_GameManager.arena2[1])
+    {
+        player->pos[1] = g_GameManager.arena2[1];
+    }
+    else if (player->pos[1] > g_GameManager.arena2[1] + g_GameManager.arena2[3])
+    {
+        player->pos[1] = g_GameManager.arena2[1] + g_GameManager.arena2[3];
+    }
+    player->hitboxMin = player->pos - player->hitboxSize;
+    player->hitboxMax = player->pos + player->hitboxSize;
+    player->grazeMin = player->pos - player->grazeSize;
+    player->grazeMax = player->pos + player->grazeSize;
+    player->grazeTestMin = player->pos - player->grazeTestHalfSize;
+    player->grazeTestMax = player->pos + player->grazeTestHalfSize;
+    {
+        DWORD i;
+
+        for (i = 0; i < 4; i++)
+        {
+            if (player->options[i].update != NULL)
+            {
+                player->options[i].update(player, &player->options[i]);
+                g_SpriteEngine->Step(&player->options[i].sprite);
+                player->options[i].timer++;
+            }
+        }
+    }
+    if ((g_GameButtons & 1) && !g_Gui.IsMsgRunning() && !g_GameManager.ChecksumMismatch())
+    {
+        Player::StartFiring(player);
+    }
+    if (!g_Gui.IsMsgRunning() && player->unk_8 >= 30 && !player->bomb.running)
+    {
+        int amount;
+
+        amount = 0;
+        if (player->unk_e2ac4 >= 0)
+        {
+            if (player->unk_e2ad0 > 0)
+            {
+                player->unk_e2ad0--;
+            }
+            else
+            {
+                amount = player->unk_e2ae8.AsFloat() > 300.0f ? 21.0f : player->unk_e2ae8.AsFloat() / 15.0f;
+                if (!player->unk_3)
+                {
+                    amount = -amount;
+                }
+                g_GameManager.Func43c0bb(amount * g_App.gameSpeed, 0);
+                player->unk_e2ae8++;
+            }
+        }
+        else
+        {
+            if (player->unk_e2ad0 >= 4)
+            {
+                player->unk_e2ae8 = 0;
+            }
+            if (player->unk_e2ad0 >= 30)
+            {
+                if (fabs((double)g_GameManager.GetUnk22()) <= 9.0)
+                {
+                    g_GameManager.SetUnk22(0);
+                }
+                else
+                {
+                    if (g_GameManager.IsUnk22AtHigh1())
+                    {
+                        amount = -5;
+                    }
+                    else if (g_GameManager.IsUnk22AtHigh2())
+                    {
+                        amount = -3;
+                    }
+                    else if (g_GameManager.GetUnk22() > 0)
+                    {
+                        amount = -2;
+                    }
+                    else if (!g_GameManager.IsUnk22AtLow2())
+                    {
+                        amount = 2;
+                    }
+                    else if (!g_GameManager.IsUnk22AtLow1())
+                    {
+                        amount = 3;
+                    }
+                    else
+                    {
+                        amount = 5;
+                    }
+                    g_GameManager.Func43c0bb(amount * g_App.gameSpeed, 0);
+                }
+            }
+            else
+            {
+                player->unk_e2ad0++;
+            }
+        }
+    }
+    if ((g_GameManager.IsUnk22AtLow1() || g_GameManager.IsUnk22AtHigh1()) && player->unk_e2b24 == NULL)
+    {
+        player->unk_e2b24 = g_EffectManager.SpawnReservedEffect(0x19, &player->pos, 8, 1, 0xffffffff);
+    }
+    if (player->unk_e2b24 != NULL)
+    {
+        player->unk_e2b24->pos = player->pos;
+        if (!g_GameManager.IsUnk22AtLow1() && !g_GameManager.IsUnk22AtHigh1())
+        {
+            player->unk_e2b24->active = 0;
+            player->unk_e2b24 = NULL;
+        }
+    }
+    if (deltaY != 0.0f || deltaX != 0.0f)
+    {
+        int i;
+
+        for (i = 15; i > 0; i--)
+        {
+            player->posHistory[i] = player->posHistory[i - 1];
+        }
+        player->posHistory[0] = player->pos;
+    }
+    return 0;
+}
+
 float Player::AngleFrom(D3DXVECTOR3 *pos)
 {
     float x;

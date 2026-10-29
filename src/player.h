@@ -73,7 +73,15 @@ struct ShotTypeData
     // Above this line the player draws the items in, as th07's (which had
     // deathScoreShare before it).
     float itemAutoCollectLine;
-    unsigned char pad_20[0x14];
+    unsigned char pad_20[0x4];
+    // The movement speeds, straight and diagonal, unfocused and focused,
+    // as th07's. Each shot type file has all four; HandleInput takes the
+    // unfocused ones from shotType and the focused ones from
+    // shotTypeFocused.
+    float speed;
+    float speedFocused;
+    float speedDiagonal;
+    float speedDiagonalFocused;
     // How fast the items move, as a factor of their velocity. New in th08.
     float itemSpeed;
     ShotTable tables[1];
@@ -260,6 +268,9 @@ public:
     // Empty, and defined out of line: constructs the members (0x449ca0).
     Player();
 
+    // Starts the fire timer from 0 unless it already runs, as th07's
+    // (0x451640, in the shot object).
+    static void StartFiring(Player *player);
     // Clears the player, keeping the shot types while KeepsResources(),
     // and adds it to the chains (update priority 9, draw 9 and 10),
     // keeping `arg` in registerChainArg, as th07's. Returns 0, or -1 if
@@ -359,7 +370,9 @@ public:
     // set, 2 as it is cleared.
     BYTE unk_5;
     BYTE unk_6;
-    unsigned char unk_7[0x5];
+    unsigned char unk_7[0x1];
+    // The frames since the player last switched focus.
+    int unk_8;
     // The character's ANM, in slot 5.
     AnmLoaded *anm;
     Sprite sprite;
