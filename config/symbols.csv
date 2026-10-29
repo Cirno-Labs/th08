@@ -752,10 +752,10 @@ address,size,name,symbol
 0x00449ff0,563,Player::CheckAreaHit,?CheckAreaHit@Player@@QAEHPAUD3DXVECTOR3@@0@Z
 0x0044a230,302,Player::CheckHit,?CheckHit@Player@@QAEHPAUD3DXVECTOR3@@0@Z
 0x0044a360,272,Player::CheckHitIgnoringAreas,?CheckHitIgnoringAreas@Player@@QAEHPAUD3DXVECTOR3@@0@Z
-0x0044a470,303,Func44a470,
+0x0044a470,303,Player::CheckGraze,?CheckGraze@Player@@QAEHPAUD3DXVECTOR3@@0@Z
 0x0044a5a0,249,Player::TouchesGrazeBox,?TouchesGrazeBox@Player@@QAEHPAUD3DXVECTOR3@@0@Z
 0x0044a6a0,651,Func44a6a0,
-0x0044a930,521,Func44a930,
+0x0044a930,521,Player::Graze,?Graze@Player@@QAEXPAUD3DXVECTOR3@@H@Z
 0x0044ab40,888,Player::Die,?Die@Player@@QAEXXZ
 0x0044aec0,4769,Func44aec0,
 0x0044c1b0,118,Player::AngleFrom,?AngleFrom@Player@@QAEMPAUD3DXVECTOR3@@@Z

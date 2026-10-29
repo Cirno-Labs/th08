@@ -213,6 +213,14 @@ public:
     // CheckHit without the hit areas: 1 if the box meets the hitbox,
     // else 0. New in th08; an enemy's body uses it (0x42c290).
     int CheckHitIgnoringAreas(D3DXVECTOR3 *pos, D3DXVECTOR3 *size);
+    // Whether a `size` box at `pos`, grown by 20 on each side, grazes the
+    // player, as th07's: 2 if it meets one of hitAreas, else 0 while
+    // respawning or dying or off the graze box, else grazes `pos` and
+    // returns 1.
+    int CheckGraze(D3DXVECTOR3 *pos, D3DXVECTOR3 *size);
+    // Scores a graze of the bullet at `pos` (0x44a930); `isLaser` is
+    // set for lasers.
+    void Graze(D3DXVECTOR3 *pos, int isLaser);
     // Starts dying (0x44ab40).
     void Die();
     // The angle from `pos` to the player, as th07's (0x44c1b0).
