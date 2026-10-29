@@ -10,6 +10,10 @@
 #include "sprite.h"
 #include "unsorted.h"
 
+// The original allocates in an inline from global.h, whose __FILE__ names
+// that header.
+#define GLOBAL_H "d:\\cygwin\\home\\zun\\prog\\th08\\global.h"
+
 SpriteEngine::SpriteEngine()
 {
     memset(this, 0, sizeof(*this));
@@ -185,6 +189,74 @@ AnmLoaded *SpriteEngine::LoadAnm(int slot, char *path)
         {
             anm = this->PostloadAnm(anm);
         }
+    }
+    return anm;
+}
+
+AnmLoaded *SpriteEngine::PreloadAnmFile(int slot, char *path)
+{
+    AnmFile *header;
+    int numScripts;
+    int result;
+    AnmFile *data;
+    AnmLoaded *anm;
+    int anmCount;
+    int spriteCount;
+    int i;
+
+    DebugPrint("::preloadAnim : %s\n", path);
+    if (slot >= 0x19)
+    {
+        LogError(&g_Log, "テクスチャ格納先が足りません\r\n");
+        return NULL;
+    }
+    this->ReleaseAnm(slot);
+    data = (AnmFile *)LoadFileData(path, NULL, 0);
+    anmCount = 0;
+    numScripts = 0;
+    spriteCount = 0;
+    i = 0;
+    anm = &this->anms[slot];
+    if (data == NULL)
+    {
+        return NULL;
+    }
+    anm->slot = slot;
+    anm->file = data;
+    header = data;
+    while (1)
+    {
+        anmCount++;
+        numScripts += header->numScripts;
+        spriteCount += header->numSprites;
+        if (header->nextOffset == 0)
+        {
+            break;
+        }
+        header = (AnmFile *)((BYTE *)header + header->nextOffset);
+    }
+    anm->anmCount = anmCount;
+    anm->textures = (AnmTexture *)g_MemoryManager.Alloc(anmCount * sizeof(AnmTexture), GLOBAL_H);
+    memset(anm->textures, 0, anmCount * sizeof(AnmTexture));
+    anm->sprites = (SpriteData *)g_MemoryManager.Alloc(spriteCount * sizeof(SpriteData), GLOBAL_H);
+    anm->scripts = (void **)g_MemoryManager.Alloc(numScripts * sizeof(void *), GLOBAL_H);
+    header = data;
+    anmCount = 0;
+    spriteCount = 0;
+    numScripts = 0;
+    while (1)
+    {
+        result = this->PreloadAnmTexture(anm, i, &spriteCount, &numScripts, header);
+        if (result < 0)
+        {
+            return NULL;
+        }
+        i++;
+        if (header->nextOffset == 0)
+        {
+            break;
+        }
+        header = (AnmFile *)((BYTE *)header + header->nextOffset);
     }
     return anm;
 }

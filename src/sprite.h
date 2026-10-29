@@ -305,6 +305,10 @@ public:
     // created later, by PostloadAnm. Returns the slot's AnmLoaded, or
     // NULL on failure.
     AnmLoaded *PreloadAnmFile(int slot, char *path);
+    // Checks `file`, ANM `index` of `anm`, and reads its image file
+    // unless the image is in the ANM or made blank. Returns 1, or -1 on
+    // failure.
+    int PreloadAnmTexture(AnmLoaded *anm, int index, int *spriteIndex, int *scriptIndex, AnmFile *file);
     // Creates the textures and sprites of the next ANM of `anm`
     // ("::postloadAnim"): one a call, counted by anm->loadStep, which
     // drops to 0 after the last. Returns `anm`, or NULL on failure.
