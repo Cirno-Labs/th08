@@ -188,6 +188,182 @@ char *FormatAndAdvance(char *buf, const char *fmt, ...)
     return buf + strlen(buf);
 }
 
+void ResultScreen::WriteScoreText()
+{
+    // The names (and their suffixes) only place the locals where the
+    // original has them.
+    int shot2;
+    Catk *cat2;
+    Catk *catk1;
+    char *p22;
+    int k1;
+    char *cardNames2[0xde];
+    int count_;
+    int headerDone1;
+    char *shotText0;
+    char dateStr[0x80];
+    time_t t1;
+    struct tm *tm_;
+    char *buf;
+    int shot;
+    ListNode *node0;
+    int dummy;
+    char cardName_[0x40];
+    char *p0;
+    int rank1;
+    int i;
+
+    dummy = 0;
+    buf = p0 = (char *)g_MemoryManager.Alloc(0x640000, GLOBAL_H);
+    memset(p0, 0, 0x640000);
+    p0 = FormatAndAdvance(p0, "# 東方永夜抄　～ Imperishable Night. ver 1.00d 記録テキスト版\r\n# \r\n");
+    p0 = FormatAndAdvance(p0, "# このファイルは、現在の記録をダンプした物です。\r\n");
+    p0 = FormatAndAdvance(p0, "# このファイルの内容を変更してもゲームには反映されません。\r\n");
+    p0 = FormatAndAdvance(p0, "# このファイルは自由に利用したり転載したり、別のフォーマットにしても構いません。\r\n");
+    time(&t1);
+    tm_ = localtime(&t1);
+    strftime(dateStr, 0x80, "%y/%m/%d %H:%M:%S", tm_);
+    p0 = FormatAndAdvance(p0, "# 　　　　　　　　　　　　   Time-stamp: <%s>\r\n", dateStr);
+    p0 = FormatAndAdvance(p0, "\r\n\r\n");
+    p0 = FormatAndAdvance(p0, "Version: %.2f\r\n", 0.01f);
+    p0 = FormatAndAdvance(p0, "\r\n");
+    shotText0 = p22 = (char *)g_MemoryManager.Alloc(0x10004, GLOBAL_H);
+    catk1 = g_GameManager.catks;
+    for (i = 0; i < 0xde; i++, catk1++)
+    {
+        if (catk1->magic == 0x4b544143)
+        {
+            cardNames2[i] = catk1->name;
+        }
+        else
+        {
+            cardNames2[i] = "？？？？？";
+        }
+    }
+    for (i = 0; i < 5; i++)
+    {
+        headerDone1 = 0;
+        for (shot = 0; shot < 0xc; shot++)
+        {
+            node0 = this->scores[i][shot].next;
+            rank1 = 0;
+            count_ = 0;
+            p22 = shotText0;
+            while (node0 != NULL)
+            {
+                if (node0->data->magic == 0x52435348)
+                {
+                    p22 = FormatAndAdvance(p22, "  No.%d \r\n", rank1 + 1);
+                    p22 = FormatAndAdvance(p22, "    得点  %d%d\r\n", node0->data->score, (char)node0->data->continuesUsed);
+                    p22 = FormatAndAdvance(p22, "    名前  %s\r\n", node0->data->name);
+                    if (node0->data->stage == 99)
+                    {
+                        p22 = FormatAndAdvance(p22, "    ステージ         All Clear\r\n");
+                    }
+                    else
+                    {
+                        p22 = FormatAndAdvance(p22, "    ステージ         %s\r\n", g_StageNames[node0->data->stage]);
+                    }
+                    p22 = FormatAndAdvance(p22, "    日付               %s\r\n", node0->data->date);
+                    p22 = FormatAndAdvance(p22, "    処理落ち率        %.2f％\r\n", node0->data->slowdown);
+                    p22 = FormatAndAdvance(p22, "    プレイ時間      %.2d分%.2d秒\r\n", node0->data->playFrames / 3600,
+                                          node0->data->playFrames / 60 % 60);
+                    p22 = FormatAndAdvance(p22, "    初期プレイヤー数     %d人\r\n", node0->data->initialLives + 1);
+                    p22 = FormatAndAdvance(p22, "    得点アイテム数   %5d個\r\n", node0->data->pointItems);
+                    p22 = FormatAndAdvance(p22, "    刻符数          %6d個\r\n", node0->data->timeOrbs);
+                    p22 = FormatAndAdvance(p22, "    ミス回数           %3d回\r\n", node0->data->misses);
+                    p22 = FormatAndAdvance(p22, "    ボム回数           %3d回\r\n", node0->data->bombs);
+                    p22 = FormatAndAdvance(p22, "    ラストスペル回数   %3d回\r\n", node0->data->lastSpells);
+                    p22 = FormatAndAdvance(p22, "    ポーズ回数         %3d回\r\n", node0->data->pauses);
+                    p22 = FormatAndAdvance(p22, "    コンティニュー回数 %3d回\r\n", (char)node0->data->continuesUsed);
+                    p22 = FormatAndAdvance(p22, "    人間率          %3.2f%%\r\n", node0->data->humanRate / 100.0f);
+                    p22 = FormatAndAdvance(p22, "    取得スペルカード一覧 (総取得回数/総遭遇回数)\r\n");
+                    for (k1 = 0; k1 < 0xde; k1++)
+                    {
+                        if (node0->data->spellCards[k1] != 0)
+                        {
+                            memset(cardName_, ' ', 0x40);
+                            cardName_[0x30] = cardName_[0x31] = 0;
+                            memcpy(cardName_, cardNames2[k1], strlen(cardNames2[k1]));
+                            p22 = FormatAndAdvance(p22, "      No.%.3d %s (%d/%d)\r\n", k1 + 1, cardName_,
+                                                  g_GameManager.catks[k1].captures[12],
+                                                  g_GameManager.catks[k1].attempts[12]);
+                        }
+                    }
+                    count_++;
+                }
+                node0 = node0->next;
+                rank1++;
+                if (rank1 >= 10)
+                {
+                    break;
+                }
+            }
+            if (count_ != 0)
+            {
+                if (headerDone1 == 0)
+                {
+                    p0 = FormatAndAdvance(p0, "# ======================================== \r\n");
+                    p0 = FormatAndAdvance(p0, "難易度 %s\r\n", g_PlainDifficultyNames[i]);
+                    headerDone1 = 1;
+                }
+                p0 = FormatAndAdvance(p0, "# ---------------------------------------- \r\n");
+                p0 = FormatAndAdvance(p0, "使用キャラ %s\r\n", g_ShotNames[shot]);
+                p0 = FormatAndAdvance(p0, "%s\r\n", shotText0);
+            }
+        }
+    }
+    cat2 = g_GameManager.catks;
+    p0 = FormatAndAdvance(p0, "# ======================================== \r\n");
+    p0 = FormatAndAdvance(p0, "スペルカード一覧 本編　練習\r\n");
+    for (i = 0; i < 0xde; i++, cat2++)
+    {
+        if (cat2->magic == 0x4b544143 && cat2->WasAttempted(12))
+        {
+            memset(cardName_, ' ', 0x40);
+            cardName_[0x30] = cardName_[0x31] = 0;
+            memcpy(cardName_, cat2->name, strlen(cat2->name));
+            p0 = FormatAndAdvance(p0, "No.%.3d %s %3d/%3d %3d/%3d  (%s)\r\n", i + 1, cardName_, cat2->captures[12],
+                                 cat2->attempts[12], cat2->practiceCaptures[12], cat2->practiceAttempts[12],
+                                 g_PlainDifficultyNames[cat2->difficulty]);
+        }
+    }
+    g_App.AddPlayTime();
+    p0 = FormatAndAdvance(p0, "# ======================================== \r\n");
+    p0 = FormatAndAdvance(p0, "総起動時間   %.2d:%.2d:%.2d\r\n", g_GameManager.plst.runHours, g_GameManager.plst.runMinutes,
+                         g_GameManager.plst.runSeconds);
+    p0 = FormatAndAdvance(p0, "総プレイ時間 %.2d:%.2d:%.2d\r\n", g_GameManager.plst.playHours,
+                         g_GameManager.plst.playMinutes, g_GameManager.plst.playSeconds);
+    p0 = FormatAndAdvance(p0, "プレイ回数　　　 　Easy 　Norm 　Hard 　Luna  Extra  Total\r\n");
+    for (shot2 = 0; shot2 < 0xc; shot2++)
+    {
+        p0 = FormatAndAdvance(p0, "%s %6d %6d %6d %6d %6d %6d\r\n", g_ShotNames[shot2],
+                             g_GameManager.plst.counts[0].plays[shot2 + 1], g_GameManager.plst.counts[1].plays[shot2 + 1],
+                             g_GameManager.plst.counts[2].plays[shot2 + 1], g_GameManager.plst.counts[3].plays[shot2 + 1],
+                             g_GameManager.plst.counts[4].plays[shot2 + 1],
+                             g_GameManager.plst.counts[6].plays[shot2 + 1]);
+    }
+    p0 = FormatAndAdvance(p0, "%s %6d %6d %6d %6d %6d %6d\r\n", g_ShotNames[0xc], g_GameManager.plst.counts[0].plays[0],
+                         g_GameManager.plst.counts[1].plays[0], g_GameManager.plst.counts[2].plays[0],
+                         g_GameManager.plst.counts[3].plays[0], g_GameManager.plst.counts[4].plays[0],
+                         g_GameManager.plst.counts[6].plays[0]);
+    p0 = FormatAndAdvance(p0, "クリア回数  　　 %6d %6d %6d %6d %6d %6d\r\n", g_GameManager.plst.counts[0].clears,
+                         g_GameManager.plst.counts[1].clears, g_GameManager.plst.counts[2].clears,
+                         g_GameManager.plst.counts[3].clears, g_GameManager.plst.counts[4].clears,
+                         g_GameManager.plst.counts[6].clears);
+    p0 = FormatAndAdvance(p0, "コンティニュー   %6d %6d %6d %6d %6d %6d\r\n", g_GameManager.plst.counts[0].continues,
+                         g_GameManager.plst.counts[1].continues, g_GameManager.plst.counts[2].continues,
+                         g_GameManager.plst.counts[3].continues, g_GameManager.plst.counts[4].continues,
+                         g_GameManager.plst.counts[6].continues);
+    p0 = FormatAndAdvance(p0, "プラクティス　   %6d %6d %6d %6d %6d %6d\r\n", g_GameManager.plst.counts[0].practices,
+                         g_GameManager.plst.counts[1].practices, g_GameManager.plst.counts[2].practices,
+                         g_GameManager.plst.counts[3].practices, g_GameManager.plst.counts[4].practices,
+                         g_GameManager.plst.counts[6].practices);
+    g_MemoryManager.Free(shotText0);
+    WriteToFile("score.txt", buf, strlen(buf));
+    g_MemoryManager.Free(buf);
+}
+
 int ResultScreen::AddScore(Hscr *entry, int difficulty, int shot)
 {
     return InsertScore(&this->scores[difficulty][shot], entry);
@@ -870,8 +1046,8 @@ int ResultScreen::HandleNameEntry()
         }
         g_SpriteEngine->RenderTextCentered(&this->textSprites[0], 0xffffff, 0, g_ShotNames[this->character]);
         this->textSprites[0].alpha = 0xff;
-        g_GameManager.hscr.unk_64 = g_GameManager.unk_3db94;
-        g_GameManager.hscr.unk_84 = (float)g_GameManager.unk_3dba0 / g_GameManager.unk_3dba4 * 10000.0f;
+        g_GameManager.hscr.playFrames = g_GameManager.unk_3db94;
+        g_GameManager.hscr.humanRate = (float)g_GameManager.unk_3dba0 / g_GameManager.unk_3dba4 * 10000.0f;
         this->entry = g_GameManager.hscr;
         this->entry.score = g_GameManager.stats->score;
         this->entry.continuesUsed = g_GameManager.stats->continuesUsed;

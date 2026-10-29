@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">36.29% (405)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">63.71% (711)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">36.38% (406)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">63.62% (710)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="271.09" height="6" x="0" y="0" class="named"/>
-<rect width="475.91" height="6" x="271.09" y="0" class="todo"/>
+<rect width="271.76" height="6" x="0" y="0" class="named"/>
+<rect width="475.24" height="6" x="271.76" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -917,7 +917,7 @@
 <rect width="12" height="12" x="705" y="240" class="named"><title>0x00453cfa GetShotName (19 bytes)</title></rect>
 <rect width="12" height="12" x="720" y="240" class="named"><title>0x00453d0d SaveScoreDat (1372 bytes)</title></rect>
 <rect width="12" height="12" x="735" y="240" class="named"><title>0x00454269 FormatAndAdvance (47 bytes)</title></rect>
-<rect width="12" height="12" x="0" y="255" class="todo"><title>0x00454298 ResultScreen::WriteScoreText (2497 bytes)</title></rect>
+<rect width="12" height="12" x="0" y="255" class="named"><title>0x00454298 ResultScreen::WriteScoreText (2497 bytes)</title></rect>
 <rect width="12" height="12" x="15" y="255" class="named"><title>0x00454c59 ResultScreen::AddScore (46 bytes)</title></rect>
 <rect width="12" height="12" x="30" y="255" class="named"><title>0x00454c87 ResultScreen::ReleaseScores (43 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="255" class="named"><title>0x00454cb2 ResultScreen::UpdateMenu (1029 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">29.31%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">70.69%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">29.86%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">70.14%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="218.97" height="6" x="0" y="0" class="named"/>
-<rect width="528.03" height="6" x="218.97" y="0" class="todo"/>
+<rect width="223.02" height="6" x="0" y="0" class="named"/>
+<rect width="523.98" height="6" x="223.02" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1218,7 +1218,7 @@
 <rect width="36.75" height="34.63" x="186.46" y="131.87" class="todo"><title>0x0046b174 Func46b174 (2636 bytes)</title></rect>
 <rect width="36.75" height="33.23" x="186.46" y="169.50" class="todo"><title>0x00405420 Func405420 (2538 bytes)</title></rect>
 <rect width="36.75" height="32.75" x="186.46" y="205.73" class="todo"><title>0x0042e140 Func42e140 (2504 bytes)</title></rect>
-<rect width="36.75" height="32.65" x="186.46" y="241.47" class="todo"><title>0x00454298 ResultScreen::WriteScoreText (2497 bytes)</title></rect>
+<rect width="36.75" height="32.65" x="186.46" y="241.47" class="named"><title>0x00454298 ResultScreen::WriteScoreText (2497 bytes)</title></rect>
 <rect width="36.75" height="32.45" x="186.46" y="277.12" class="todo"><title>0x004152a0 Func4152a0 (2483 bytes)</title></rect>
 <rect width="36.75" height="32.43" x="186.46" y="312.57" class="todo"><title>0x00404890 Func404890 (2482 bytes)</title></rect>
 <rect width="32.04" height="36.60" x="226.20" y="0" class="todo"><title>0x004531f0 SaveReplay (2445 bytes)</title></rect>

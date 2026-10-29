@@ -75,13 +75,27 @@ struct Hscr
     // "%m/%d" and a NUL.
     char date[6];
     BYTE continuesUsed;
-    unsigned char unk_27[0x3d];
-    // Copied from GameManager::unk_3db94 by HandleNameEntry.
-    DWORD unk_64;
-    unsigned char unk_68[0x1c];
-    // GameManager::unk_3dba0 / unk_3dba4, times 10000.
-    int unk_84;
-    unsigned char unk_88[0xde];
+    unsigned char unk_27[0x1d];
+    // The lives the game started with, less one.
+    BYTE initialLives;
+    unsigned char unk_45[0x1f];
+    // The frames played: HandleNameEntry copies GameManager::unk_3db94.
+    int playFrames;
+    // The point items collected.
+    int pointItems;
+    int unk_6c;
+    // The misses, bombs, last spells and pauses.
+    int misses;
+    int bombs;
+    int lastSpells;
+    int pauses;
+    // The time orbs (刻符) collected.
+    int timeOrbs;
+    // How human the player was, in hundredths of a percent:
+    // GameManager::unk_3dba0 / unk_3dba4 times 10000 (HandleNameEntry).
+    int humanRate;
+    // Set for each spell card captured, by card number.
+    BYTE spellCards[0xde];
     // 1 in the entries the lists start with.
     BYTE unk_166;
     BYTE unk_167;
@@ -168,6 +182,13 @@ struct Catk
     DWORD practiceAttempts[0xd];
     DWORD practiceCaptures[0xd];
     unsigned char unk_228[0x4];
+
+    // Whether the card was met with shot type `shot`, in a game or in
+    // practice. Inline; WriteScoreText calls the copy at 0x45a4a0.
+    int WasAttempted(int shot)
+    {
+        return this->attempts[shot] > 0 || this->practiceAttempts[shot] != 0;
+    }
 };
 ASSERT_SIZE(Catk, 0x22c);
 
@@ -492,6 +513,8 @@ extern char *g_NameAlphabet;
 extern char *g_ShotTypeNames[0xc];
 // The stages' numbers for the score lists, by stage. New in th08.
 extern int g_StageNumbers[9];
+// The difficulties' names ("Easy", ...), for score.txt. New in th08.
+extern char *g_PlainDifficultyNames[5];
 // The difficulties' names ("     Easy", ...), right-aligned, as th07's.
 extern char *g_DifficultyNames[5];
 // By difficulty: what the statistics' rating starts from, and what

@@ -2419,6 +2419,7 @@ address,size,name,symbol
 0x004c7f4c,,g_ShotNames,?g_ShotNames@@3PAPADA
 0x004c7f80,,g_StageNumbers,?g_StageNumbers@@3PAHA
 0x004c7fac,,g_StageNames,?g_StageNames@@3PAPADA
+0x004c7fd4,,g_PlainDifficultyNames,?g_PlainDifficultyNames@@3PAPADA
 0x004c7fe8,,g_SpellCardRatings,?g_SpellCardRatings@@3PAMA
 0x004c7ffc,,g_DifficultyNames,?g_DifficultyNames@@3PAPADA
 0x004c8010,,g_ShotTypeNames,?g_ShotTypeNames@@3PAPADA
