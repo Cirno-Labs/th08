@@ -1074,6 +1074,12 @@ int App::DisableFog()
     return 0;
 }
 
+int App::SetRenderState(D3DRENDERSTATETYPE state, DWORD value)
+{
+    g_SpriteEngine->FlushQuadBatch();
+    return this->d3dDevice->SetRenderState(state, value);
+}
+
 inline void FreeData(void *data)
 {
     free(data);

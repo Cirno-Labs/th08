@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">21.15% (236)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">78.85% (880)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">21.24% (237)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">78.76% (879)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="157.97" height="6" x="0" y="0" class="named"/>
-<rect width="589.03" height="6" x="157.97" y="0" class="todo"/>
+<rect width="158.64" height="6" x="0" y="0" class="named"/>
+<rect width="588.36" height="6" x="158.64" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -788,7 +788,7 @@
 <rect width="12" height="12" x="270" y="210" class="named"><title>0x004481af App::IsScoreDisabled (48 bytes)</title></rect>
 <rect width="12" height="12" x="285" y="210" class="named"><title>0x004481df App::EnableFog (74 bytes)</title></rect>
 <rect width="12" height="12" x="300" y="210" class="named"><title>0x00448229 App::DisableFog (71 bytes)</title></rect>
-<rect width="12" height="12" x="315" y="210" class="todo"><title>0x00448270 App::SetRenderState (49 bytes)</title></rect>
+<rect width="12" height="12" x="315" y="210" class="named"><title>0x00448270 App::SetRenderState (49 bytes)</title></rect>
 <rect width="12" height="12" x="330" y="210" class="todo"><title>0x004482a1 Func4482a1 (375 bytes)</title></rect>
 <rect width="12" height="12" x="345" y="210" class="todo"><title>0x00448418 Func448418 (373 bytes)</title></rect>
 <rect width="12" height="12" x="360" y="210" class="todo"><title>0x0044858d Func44858d (301 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">11.22%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">88.78%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">11.23%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">88.77%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="83.81" height="6" x="0" y="0" class="named"/>
-<rect width="663.19" height="6" x="83.81" y="0" class="todo"/>
+<rect width="83.89" height="6" x="0" y="0" class="named"/>
+<rect width="663.11" height="6" x="83.89" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -2030,7 +2030,7 @@
 <rect width="2.30" height="2.24" x="679.79" y="337.51" class="todo"><title>0x00406ef0 Func406ef0 (49 bytes)</title></rect>
 <rect width="2.30" height="2.24" x="679.79" y="342.76" class="todo"><title>0x0040b500 Func40b500 (49 bytes)</title></rect>
 <rect width="2.18" height="2.37" x="685.10" y="278" class="named"><title>0x0043cf10 Chain::Remove (49 bytes)</title></rect>
-<rect width="2.18" height="2.37" x="690.28" y="278" class="todo"><title>0x00448270 App::SetRenderState (49 bytes)</title></rect>
+<rect width="2.18" height="2.37" x="690.28" y="278" class="named"><title>0x00448270 App::SetRenderState (49 bytes)</title></rect>
 <rect width="2.07" height="2.37" x="695.46" y="278" class="named"><title>0x0043ce30 Chain::Release (48 bytes)</title></rect>
 <rect width="2.07" height="2.37" x="700.53" y="278" class="named"><title>0x0043ef10 Log::Log (48 bytes)</title></rect>
 <rect width="2.07" height="2.37" x="705.60" y="278" class="named"><title>0x00443df0 MmTimer::MmTimer (48 bytes)</title></rect>
