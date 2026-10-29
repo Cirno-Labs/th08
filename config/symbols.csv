@@ -611,7 +611,7 @@ address,size,name,symbol
 0x0043f9a3,37,ReleaseTextSurface,?ReleaseTextSurface@@YIXXZ
 0x0043f9c8,801,RenderTextToTextureBold,?RenderTextToTextureBold@@YIXHHHHHHKKPADPAUIDirect3DTexture8@@@Z
 0x0043fce9,793,RenderTextToTexture,?RenderTextToTexture@@YIXHHHHHHKKPADPAUIDirect3DTexture8@@@Z
-0x00440010,52,Func440010,
+0x00440010,52,ItemManager::ItemManager,??0ItemManager@@QAE@XZ
 0x00440050,78,Func440050,
 0x004400a0,970,Func4400a0,
 0x00440470,137,Func440470,?Func440470@@YIXXZ
