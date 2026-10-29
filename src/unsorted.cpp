@@ -682,3 +682,9 @@ int App::GetShootFocuses()
 {
     return this->shootFocuses;
 }
+
+void App::EnterCriticalSection(int idx)
+{
+    ::EnterCriticalSection(&this->criticalSections[idx]);
+    this->criticalSectionDepths[idx]++;
+}
