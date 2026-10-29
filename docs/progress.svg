@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">61.11% (682)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">37.10% (414)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">61.20% (683)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">37.01% (413)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="456.50" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="456.50" y="0" class="decompiled"/>
-<rect width="277.11" height="6" x="469.89" y="0" class="todo"/>
+<rect width="457.17" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="457.17" y="0" class="decompiled"/>
+<rect width="276.44" height="6" x="470.56" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -186,7 +186,7 @@
 <rect width="12" height="12" x="225" y="30" class="todo"><title>0x0040b8a0 MemoryManager::Free (25 bytes)</title></rect>
 <rect width="12" height="12" x="240" y="30" class="named"><title>0x0040b8c0 Timer::AsFloat (23 bytes)</title></rect>
 <rect width="12" height="12" x="255" y="30" class="named"><title>0x0040b8e0 Timer::operator&gt;= (27 bytes)</title></rect>
-<rect width="12" height="12" x="270" y="30" class="todo"><title>0x0040b900 Func40b900 (10 bytes)</title></rect>
+<rect width="12" height="12" x="270" y="30" class="named"><title>0x0040b900 IsRestarting (10 bytes)</title></rect>
 <rect width="12" height="12" x="285" y="30" class="todo"><title>0x0040b910 Func40b910 (152 bytes)</title></rect>
 <rect width="12" height="12" x="300" y="30" class="todo"><title>0x0040b9b0 Func40b9b0 (21 bytes)</title></rect>
 <rect width="12" height="12" x="315" y="30" class="todo"><title>0x0040b9d0 Func40b9d0 (21 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">53.95%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">45.06%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">53.96%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">45.05%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="403.04" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="403.04" y="0" class="decompiled"/>
-<rect width="336.56" height="6" x="410.44" y="0" class="todo"/>
+<rect width="403.05" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="403.05" y="0" class="decompiled"/>
+<rect width="336.55" height="6" x="410.45" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -2303,7 +2303,7 @@
 <rect width="0.10" height="0.10" x="741.96" y="340.59" class="named"><title>0x00429df0 MemoryManager::Unregister (13 bytes)</title></rect>
 <rect width="0.10" height="0.10" x="741.96" y="343.34" class="named"><title>0x0043c317 GameManager::IsPhantasmOpen (11 bytes)</title></rect>
 <rect width="0.10" height="0.10" x="741.96" y="345.67" class="named"><title>0x0043ef40 MmTimer::OnTimer (11 bytes)</title></rect>
-<rect width="0.10" height="0.10" x="744.64" y="340.59" class="todo"><title>0x0040b900 Func40b900 (10 bytes)</title></rect>
+<rect width="0.10" height="0.10" x="744.64" y="340.59" class="named"><title>0x0040b900 IsRestarting (10 bytes)</title></rect>
 <rect width="0.10" height="0.10" x="747.32" y="340.59" class="todo"><title>0x004338b0 Func4338b0 (10 bytes)</title></rect>
 <rect width="0.10" height="0.10" x="744.64" y="342.71" class="todo"><title>0x004338c0 Func4338c0 (10 bytes)</title></rect>
 <rect width="0.10" height="0.10" x="744.64" y="345.35" class="decompiled"><title>0x00438fe9 Func438fe9 (10 bytes)</title></rect>
