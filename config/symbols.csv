@@ -551,7 +551,7 @@ address,size,name,symbol
 0x0043c641,69,Func43c641,
 0x0043c686,129,Func43c686,
 0x0043c710,75,Chain::~Chain,??1Chain@@QAE@XZ
-0x0043c760,99,Func43c760,
+0x0043c760,99,ChainElem::ChainElem,??0ChainElem@@QAE@XZ
 0x0043c7d0,82,ChainElem::~ChainElem,??1ChainElem@@QAE@XZ
 0x0043c830,78,Func43c830,
 0x0043c880,224,Func43c880,
