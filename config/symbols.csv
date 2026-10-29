@@ -533,7 +533,7 @@ address,size,name,symbol
 0x0043b936,78,GameManager::SetRankForDifficulty,?SetRankForDifficulty@GameManager@@QAEXXZ
 0x0043b984,605,Func43b984,
 0x0043bbe1,552,Func43bbe1,
-0x0043be09,35,Func43be09,
+0x0043be09,35,IncrementStatCounter,?IncrementStatCounter@@YIXPAKK@Z
 0x0043be2c,322,GameManager::DeletedCallback,?DeletedCallback@GameManager@@SIHPAV1@@Z
 0x0043bf6e,85,RemoveGameManagerChain,?RemoveGameManagerChain@@YIXXZ
 0x0043bfc3,124,Func43bfc3,

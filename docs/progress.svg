@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">38.80% (433)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">61.20% (683)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">38.89% (434)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">61.11% (682)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="289.83" height="6" x="0" y="0" class="named"/>
-<rect width="457.17" height="6" x="289.83" y="0" class="todo"/>
+<rect width="290.50" height="6" x="0" y="0" class="named"/>
+<rect width="456.50" height="6" x="290.50" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -601,7 +601,7 @@
 <rect width="12" height="12" x="465" y="150" class="named"><title>0x0043b936 GameManager::SetRankForDifficulty (78 bytes)</title></rect>
 <rect width="12" height="12" x="480" y="150" class="todo"><title>0x0043b984 Func43b984 (605 bytes)</title></rect>
 <rect width="12" height="12" x="495" y="150" class="todo"><title>0x0043bbe1 Func43bbe1 (552 bytes)</title></rect>
-<rect width="12" height="12" x="510" y="150" class="todo"><title>0x0043be09 Func43be09 (35 bytes)</title></rect>
+<rect width="12" height="12" x="510" y="150" class="named"><title>0x0043be09 IncrementStatCounter (35 bytes)</title></rect>
 <rect width="12" height="12" x="525" y="150" class="todo"><title>0x0043be2c GameManager::DeletedCallback (322 bytes)</title></rect>
 <rect width="12" height="12" x="540" y="150" class="todo"><title>0x0043bf6e RemoveGameManagerChain (85 bytes)</title></rect>
 <rect width="12" height="12" x="555" y="150" class="todo"><title>0x0043bfc3 Func43bfc3 (124 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">31.67%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">68.33%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">31.68%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">68.32%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="236.57" height="6" x="0" y="0" class="named"/>
-<rect width="510.43" height="6" x="236.57" y="0" class="todo"/>
+<rect width="236.62" height="6" x="0" y="0" class="named"/>
+<rect width="510.38" height="6" x="236.62" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -2110,7 +2110,7 @@
 <rect width="1.32" height="1.59" x="695.08" y="315.85" class="todo"><title>0x00433820 Func433820 (35 bytes)</title></rect>
 <rect width="1.32" height="1.59" x="695.08" y="320.44" class="todo"><title>0x00433850 Func433850 (35 bytes)</title></rect>
 <rect width="1.32" height="1.59" x="695.08" y="325.03" class="todo"><title>0x00437d64 Func437d64 (35 bytes)</title></rect>
-<rect width="1.32" height="1.59" x="695.08" y="329.63" class="todo"><title>0x0043be09 Func43be09 (35 bytes)</title></rect>
+<rect width="1.32" height="1.59" x="695.08" y="329.63" class="named"><title>0x0043be09 IncrementStatCounter (35 bytes)</title></rect>
 <rect width="1.32" height="1.59" x="695.08" y="334.22" class="named"><title>0x0043f980 CreateTextSurface (35 bytes)</title></rect>
 <rect width="1.32" height="1.59" x="695.08" y="338.81" class="named"><title>0x00443990 Log::Reset (35 bytes)</title></rect>
 <rect width="1.32" height="1.59" x="695.08" y="343.41" class="todo"><title>0x0044e0f0 Func44e0f0 (35 bytes)</title></rect>

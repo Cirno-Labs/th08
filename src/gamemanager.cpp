@@ -74,3 +74,11 @@ void GameManager::SetRankForDifficulty()
     this->minRank = g_Ranks[g_GameManager.difficulty].minRank;
     this->maxRank = g_Ranks[g_GameManager.difficulty].maxRank;
 }
+
+void IncrementStatCounter(DWORD *count, DWORD max)
+{
+    if (*count < 999999)
+    {
+        (*count)++;
+    }
+}
