@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">26.79% (299)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">73.21% (817)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">26.88% (300)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">73.12% (816)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="200.14" height="6" x="0" y="0" class="named"/>
-<rect width="546.86" height="6" x="200.14" y="0" class="todo"/>
+<rect width="200.81" height="6" x="0" y="0" class="named"/>
+<rect width="546.19" height="6" x="200.81" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -1066,7 +1066,7 @@
 <rect width="12" height="12" x="690" y="285" class="named"><title>0x00466a60 SpriteEngine::PreloadSurface (126 bytes)</title></rect>
 <rect width="12" height="12" x="705" y="285" class="named"><title>0x00466ae0 SpriteEngine::ReleaseSurface (200 bytes)</title></rect>
 <rect width="12" height="12" x="720" y="285" class="named"><title>0x00466bb0 SpriteEngine::CopySurfaceToBackBuffer (445 bytes)</title></rect>
-<rect width="12" height="12" x="735" y="285" class="todo"><title>0x00466d70 Func466d70 (424 bytes)</title></rect>
+<rect width="12" height="12" x="735" y="285" class="named"><title>0x00466d70 SpriteEngine::CopySurfaceRectToBackBuffer (424 bytes)</title></rect>
 <rect width="12" height="12" x="0" y="300" class="todo"><title>0x00466f20 SpriteEngine::CopyBackBufferToTexture (286 bytes)</title></rect>
 <rect width="12" height="12" x="15" y="300" class="todo"><title>0x00467040 Func467040 (307 bytes)</title></rect>
 <rect width="12" height="12" x="30" y="300" class="todo"><title>0x00467180 SpriteEngine::CopyBackBufferToSurface (537 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">16.38%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">83.62%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">16.47%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">83.53%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="122.35" height="6" x="0" y="0" class="named"/>
-<rect width="624.65" height="6" x="122.35" y="0" class="todo"/>
+<rect width="123.04" height="6" x="0" y="0" class="named"/>
+<rect width="623.96" height="6" x="123.04" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1443,7 +1443,7 @@
 <rect width="13.39" height="11.79" x="487.92" y="333.21" class="todo"><title>0x00464ec0 Func464ec0 (427 bytes)</title></rect>
 <rect width="12.82" height="12.28" x="504.31" y="100.12" class="todo"><title>0x00402450 Func402450 (426 bytes)</title></rect>
 <rect width="12.75" height="12.28" x="520.14" y="100.12" class="todo"><title>0x004584b0 Func4584b0 (424 bytes)</title></rect>
-<rect width="12.75" height="12.28" x="535.89" y="100.12" class="todo"><title>0x00466d70 Func466d70 (424 bytes)</title></rect>
+<rect width="12.75" height="12.28" x="535.89" y="100.12" class="named"><title>0x00466d70 SpriteEngine::CopySurfaceRectToBackBuffer (424 bytes)</title></rect>
 <rect width="12.68" height="12.28" x="551.64" y="100.12" class="todo"><title>0x00449ca0 Func449ca0 (422 bytes)</title></rect>
 <rect width="12.60" height="12.28" x="567.31" y="100.12" class="todo"><title>0x00403600 Func403600 (420 bytes)</title></rect>
 <rect width="12.60" height="12.28" x="582.91" y="100.12" class="named"><title>0x00474fa0 DatArchive::BuildEntryTable (420 bytes)</title></rect>

@@ -246,6 +246,9 @@ public:
     // Copies surface `surface` to the back buffer at (`left`, `top`), as
     // th07's (0x466bb0).
     void CopySurfaceToBackBuffer(int surface, int left, int top, int x, int y);
+    // Copies the `width` by `height` rectangle at (`left`, `top`) of
+    // surface `surface` to the back buffer at (`x`, `y`), as th07's.
+    void CopySurfaceRectToBackBuffer(int surface, int x, int y, int left, int top, int width, int height);
     // Releases surface `surface` (0x466ae0).
     void ReleaseSurface(int surface);
     // Draws `vm` at its position (0x463210).
