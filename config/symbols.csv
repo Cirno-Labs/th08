@@ -664,9 +664,9 @@ address,size,name,symbol
 0x00443da0,67,MidiDevice::SendShortMsg,?SendShortMsg@MidiDevice@@QAEHEEE@Z
 0x00443df0,48,MmTimer::MmTimer,??0MmTimer@@QAE@XZ
 0x00443e20,41,MmTimer::~MmTimer,??1MmTimer@@QAE@XZ
-0x00443e50,115,Func443e50,
+0x00443e50,115,MmTimer::Start,?Start@MmTimer@@QAEIIP6GXIIKKK@ZK@Z
 0x00443ed0,61,MmTimer::Stop,?Stop@MmTimer@@QAEHXZ
-0x00443f10,26,Func443f10,
+0x00443f10,26,MmTimer::DefaultCallback,?DefaultCallback@MmTimer@@SGXIIKKK@Z
 0x00443f30,30,SwapBytes16,?SwapBytes16@@YIGG@Z
 0x00443f50,78,ReadVarLen,?ReadVarLen@@YIKPAPAE@Z
 0x00443fa0,351,Func443fa0,

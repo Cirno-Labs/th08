@@ -55,6 +55,11 @@ public:
     MmTimer();
     ~MmTimer();
 
+    // Starts a periodic timer event every `delay` ms at the finest
+    // resolution, calling `callback` with `user`, or OnTimer if there is no
+    // callback. Returns the timer ID, 0 on failure.
+    UINT Start(UINT delay, LPTIMECALLBACK callback, DWORD_PTR user);
+
     // Kills the timer event, if any, and ends the timer period. Returns 1.
     int Stop();
 
@@ -62,6 +67,10 @@ public:
     // of its own. Empty here; the linker folded it with another empty
     // function, which Func441e10 calls directly.
     virtual void OnTimer();
+
+    // The timeSetEvent callback used when Start gets none: calls OnTimer
+    // on the timer passed as user data.
+    static void CALLBACK DefaultCallback(UINT id, UINT msg, DWORD_PTR user, DWORD_PTR dw1, DWORD_PTR dw2);
 
     UINT timerId;
     TIMECAPS caps;
