@@ -148,7 +148,7 @@ address,size,name,symbol
 0x0040d310,121,DrawDissolveBomb,?DrawDissolveBomb@@YIXPAVPlayer@@@Z
 0x0040d390,24,Rng::GetRandomF32InRange,?GetRandomF32InRange@Rng@@QAEMM@Z
 0x0040d3b0,17,Timer::AsFrames,?AsFrames@Timer@@QAEHXZ
-0x0040d3d0,27,Func40d3d0,
+0x0040d3d0,27,Timer::HasTicked,?HasTicked@Timer@@QAEHXZ
 0x0040d3f0,27,Timer::operator==,??8Timer@@QAEHH@Z
 0x0040d410,25,Func40d410,
 0x0040d430,1303,Func40d430,
