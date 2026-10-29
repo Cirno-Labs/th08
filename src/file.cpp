@@ -123,3 +123,41 @@ bool File::Seek(LONG offset, DWORD origin)
     SetFilePointer(this->handle, offset, NULL, origin);
     return true;
 }
+
+void *File::ReadAll(DWORD maxSize)
+{
+    DWORD size;
+    HGLOBAL hMem;
+    DWORD pos;
+
+    if (this->access != GENERIC_READ)
+    {
+        return NULL;
+    }
+    size = this->GetSize();
+    if (size > maxSize)
+    {
+        return NULL;
+    }
+    hMem = GlobalAlloc(GPTR, size);
+    if (hMem == NULL)
+    {
+        return NULL;
+    }
+    pos = this->Tell();
+    if (!this->Seek(pos, g_SeekOrigins[0]))
+    {
+        return NULL;
+    }
+    if (this->Read(hMem, size) == 0)
+    {
+        if (hMem != NULL)
+        {
+            GlobalFree(hMem);
+            hMem = NULL;
+        }
+        return NULL;
+    }
+    this->Seek(pos, g_SeekOrigins[0]);
+    return hMem;
+}

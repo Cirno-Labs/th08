@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">11.74% (131)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">88.26% (985)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">11.83% (132)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">88.17% (984)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="87.69" height="6" x="0" y="0" class="named"/>
-<rect width="659.31" height="6" x="87.69" y="0" class="todo"/>
+<rect width="88.35" height="6" x="0" y="0" class="named"/>
+<rect width="658.65" height="6" x="88.35" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -1154,7 +1154,7 @@
 <rect width="12" height="12" x="510" y="315" class="named"><title>0x004739c0 File::Tell (43 bytes)</title></rect>
 <rect width="12" height="12" x="525" y="315" class="named"><title>0x004739f0 File::GetSize (39 bytes)</title></rect>
 <rect width="12" height="12" x="540" y="315" class="named"><title>0x00473a20 File::Seek (51 bytes)</title></rect>
-<rect width="12" height="12" x="555" y="315" class="todo"><title>0x00473a60 File::ReadAll (210 bytes)</title></rect>
+<rect width="12" height="12" x="555" y="315" class="named"><title>0x00473a60 File::ReadAll (210 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="315" class="todo"><title>0x00473b40 MakeFullPath (253 bytes)</title></rect>
 <rect width="12" height="12" x="585" y="315" class="named"><title>0x00473c40 FileBase::FileBase (23 bytes)</title></rect>
 <rect width="12" height="12" x="600" y="315" class="named"><title>0x00473c60 FileBase::~FileBase (20 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">5.78%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">94.22%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">5.83%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">94.17%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="43.20" height="6" x="0" y="0" class="named"/>
-<rect width="703.80" height="6" x="43.20" y="0" class="todo"/>
+<rect width="43.54" height="6" x="0" y="0" class="named"/>
+<rect width="703.46" height="6" x="43.54" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1633,7 +1633,7 @@
 <rect width="7.79" height="8.20" x="569.79" y="325.70" class="todo"><title>0x004322b0 Func4322b0 (213 bytes)</title></rect>
 <rect width="7.79" height="8.10" x="569.79" y="336.90" class="todo"><title>0x00462f10 Func462f10 (211 bytes)</title></rect>
 <rect width="7.78" height="8.06" x="580.58" y="177.72" class="todo"><title>0x0045bc90 Func45bc90 (210 bytes)</title></rect>
-<rect width="7.78" height="8.06" x="591.36" y="177.72" class="todo"><title>0x00473a60 File::ReadAll (210 bytes)</title></rect>
+<rect width="7.78" height="8.06" x="591.36" y="177.72" class="named"><title>0x00473a60 File::ReadAll (210 bytes)</title></rect>
 <rect width="7.73" height="8.06" x="602.14" y="177.72" class="todo"><title>0x0040e040 Func40e040 (209 bytes)</title></rect>
 <rect width="7.73" height="8.06" x="612.87" y="177.72" class="todo"><title>0x0040e120 Func40e120 (209 bytes)</title></rect>
 <rect width="7.73" height="8.06" x="623.59" y="177.72" class="todo"><title>0x00441450 Func441450 (209 bytes)</title></rect>
