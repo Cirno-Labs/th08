@@ -151,3 +151,8 @@ int GameManager::Func43c2c5()
 {
     return this->Func43c23b(0) || this->Func43c23b(1) || this->Func43c23b(2) || this->Func43c23b(3) ? TRUE : FALSE;
 }
+
+int GameManager::IsPhantasmOpen()
+{
+    return 0;
+}
