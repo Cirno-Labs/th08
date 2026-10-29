@@ -710,7 +710,7 @@ address,size,name,symbol
 0x00447421,110,App::TickTimer,?TickTimer@App@@QAEXPAHPAM@Z
 0x0044748f,725,App::SaveScreenshot,?SaveScreenshot@App@@QAEHPAD@Z
 0x00447764,77,SoundPlayer::UpdateBgmFades,?UpdateBgmFades@SoundPlayer@@QAEXXZ
-0x004477b1,1363,Func4477b1,
+0x004477b1,1363,App::LoadConfig,?LoadConfig@App@@QAEHPAD@Z
 0x00447d04,82,Func447d04,
 0x00447d56,241,Func447d56,
 0x00447e47,218,Func447e47,
@@ -2397,6 +2397,7 @@ address,size,name,symbol
 0x004bd6e0,,CLSID_ShellLink,_CLSID_ShellLink
 0x004bd6f0,,IID_IPersistFile,_IID_IPersistFile
 0x004bd700,,GUID_NULL,_GUID_NULL
+0x004c78c8,,g_DefaultControllerMapping,?g_DefaultControllerMapping@@3UControllerMapping@@A
 0x004c78e0,,g_CryptParams,?g_CryptParams@@3PAUCryptParams@@A
 0x004c7940,,g_CryptMagic,?g_CryptMagic@@3PAEA
 0x004c7948,,g_FormatInfos,?g_FormatInfos@@3PAUFormatInfo@@A

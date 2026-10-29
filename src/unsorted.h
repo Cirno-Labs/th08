@@ -55,7 +55,10 @@ struct GameConfigFlags
     unsigned int unk12 : 1;
     unsigned int preloadBgm : 1;
     unsigned int unk14 : 1;
-    unsigned int unk15 : 17;
+    // Text rendering's environment is not detected automatically. New
+    // in th08.
+    unsigned int unk15 : 1;
+    unsigned int unk16 : 16;
 };
 
 class App
@@ -96,6 +99,12 @@ public:
     void CloseSubThread();
     // Advances `frames` by one frame, or by a fraction of one into
     // `subFrame` while the game runs slow.
+    // Reads the config file at `path` into the config, resetting it to
+    // the defaults if the file is missing or invalid, checks the header
+    // of thbgm.dat, logs the options in effect and writes the config
+    // back. Returns 0, or -1 if thbgm.dat has the wrong version or
+    // writing fails.
+    int LoadConfig(char *path);
     void TickTimer(int *frames, float *subFrame);
     // Saves the back buffer as a 24-bit 640x480 bitmap at `path`, from an
     // X8R8G8B8 back buffer only (a 16-bit one is logged and skipped).
@@ -111,6 +120,14 @@ public:
     // flags.preloadBgm, through an out-of-line copy in an /Os object
     // (0x449c79).
     int GetPreloadBgm();
+
+    // Whether the back buffer is cleared every frame: forced, or because
+    // the items around the game are not drawn. Inline; the operands are
+    // evaluated right to left.
+    int ClearsBackBuffer()
+    {
+        return this->flags.clearBackBuffer | this->flags.noFrameItems;
+    }
 
     HINSTANCE hInstance;
     IDirect3D8 *d3d;
@@ -140,12 +157,18 @@ public:
     BYTE defaultDifficulty;
     BYTE windowed;
     BYTE frameSkip;
-    BYTE unk_13c;
-    BYTE unk_13d;
+    // 0 to 2, 2 by default.
+    BYTE effectsQuality;
+    // The options screen's last entry: 0 or 1.
+    BYTE optionsMenuCursor;
     // Whether holding shoot also focuses: ReadJoystick reports focus
     // once shoot has been held for 10 frames.
     BYTE shootFocuses;
-    unsigned char unk_13f[0x11];
+    // The music and sound effect volumes in percent: 100 and 80 by
+    // default.
+    BYTE bgmVolume;
+    BYTE seVolume;
+    unsigned char unk_141[0xf];
     // th07's flags, 4 bytes further on.
     GameConfigFlags flags;
     // Counts OnUpdate's calls.

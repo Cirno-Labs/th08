@@ -11,6 +11,7 @@
 
 #include "ascii.h"
 #include "chain.h"
+#include "mainmenu.h"
 #include "midi.h"
 #include "replay.h"
 #include "sprite.h"
@@ -707,6 +708,178 @@ void SoundPlayer::UpdateBgmFades()
         this->bgm->UpdateFadeDown();
         this->bgm->UpdateFadeUp();
     }
+}
+
+// The start of thbgm.dat.
+struct BgmDatHeader
+{
+    // "ZWAV".
+    DWORD magic;
+    // 1.
+    int version;
+    // 0x800 (0x700 in th07).
+    int unk_8;
+    int unk_c;
+};
+
+int App::LoadConfig(char *path)
+{
+    ConfigCopy *file;
+    int configFileSize;
+
+    memset(&g_App.controllerMapping, 0, sizeof(ConfigCopy));
+    file = (ConfigCopy *)LoadFileData(path, &configFileSize, 1);
+    if (file == NULL)
+    {
+        LogPrintf(&g_Log, "コンフィグデータが見つからないので初期化しました\r\n");
+    reset:
+        g_App.lifeCount = 2;
+        g_App.bombCount = 3;
+        g_App.colorMode16Bits = 0;
+        g_App.version = 0x80001;
+        g_App.padThresholdX = 600;
+        g_App.padThresholdY = 600;
+        // Wave music if thbgm.dat is there, with the right header.
+        {
+            HANDLE bgmFile;
+            DWORD read;
+            BgmDatHeader bgmHeader;
+
+            bgmFile = CreateFileA("./thbgm.dat", GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING,
+                                  FILE_ATTRIBUTE_NORMAL | FILE_FLAG_SEQUENTIAL_SCAN, NULL);
+            if (bgmFile != INVALID_HANDLE_VALUE)
+            {
+                ReadFile(bgmFile, &bgmHeader, sizeof(BgmDatHeader), &read, NULL);
+                CloseHandle(bgmFile);
+                if (bgmHeader.magic != 'VAWZ' || bgmHeader.version != 1 || bgmHeader.unk_8 != 0x800)
+                {
+                    LogError(&g_Log, "BGM データのバージョンが違います\r\n");
+                    return -1;
+                }
+                g_App.musicMode = 1;
+            }
+            else
+            {
+                g_App.musicMode = 2;
+                DebugPrint2("wave データが無いので、midi にします\r\n");
+            }
+        }
+        g_App.playSounds = 1;
+        g_App.defaultDifficulty = 1;
+        g_App.windowed = 0;
+        g_App.frameSkip = 0;
+        g_App.controllerMapping = g_DefaultControllerMapping;
+        g_App.effectsQuality = 2;
+        g_App.optionsMenuCursor = 0;
+        g_App.shootFocuses = 0;
+        g_App.bgmVolume = 100;
+        g_App.seVolume = 80;
+    }
+    else
+    {
+        *(ConfigCopy *)&g_App.controllerMapping = *file;
+        free(file);
+        {
+            HANDLE bgmFile;
+            DWORD read;
+            BgmDatHeader bgmHeader;
+
+            bgmFile = CreateFileA("./thbgm.dat", GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING,
+                                  FILE_ATTRIBUTE_NORMAL | FILE_FLAG_SEQUENTIAL_SCAN, NULL);
+            if (bgmFile != INVALID_HANDLE_VALUE)
+            {
+                ReadFile(bgmFile, &bgmHeader, sizeof(BgmDatHeader), &read, NULL);
+                CloseHandle(bgmFile);
+                if (bgmHeader.magic != 'VAWZ' || bgmHeader.version != 1 || bgmHeader.unk_8 != 0x800)
+                {
+                    LogError(&g_Log, "BGM データのバージョンが違います\r\n");
+                    return -1;
+                }
+            }
+        }
+        if (g_App.lifeCount >= 7 || g_App.bombCount >= 4 || g_App.colorMode16Bits >= 2 || g_App.musicMode >= 3 ||
+            g_App.defaultDifficulty >= 6 || g_App.playSounds >= 2 || g_App.windowed >= 2 || g_App.frameSkip >= 3 ||
+            g_App.effectsQuality >= 3 || g_App.optionsMenuCursor >= 2 || g_App.shootFocuses >= 2 || g_App.version != 0x80001 ||
+            configFileSize != sizeof(ConfigCopy))
+        {
+            LogPrintf(&g_Log, "コンフィグデータが異常でしたので再初期化しました\r\n");
+            memset(&g_App.controllerMapping, 0, sizeof(ConfigCopy));
+            goto reset;
+        }
+        g_DefaultControllerMapping = g_App.controllerMapping;
+    }
+    g_App.flags.emulateColorAdd = 1;
+    if (this->flags.noVertexBuffer)
+    {
+        LogPrintf(&g_Log, "頂点バッファの使用を抑制します\r\n");
+    }
+    if (this->flags.noFog)
+    {
+        LogPrintf(&g_Log, "フォグの使用を抑制します\r\n");
+    }
+    if (this->flags.force16BitTextures)
+    {
+        LogPrintf(&g_Log, "16Bit のテクスチャの使用を強制します\r\n");
+    }
+    if (this->ClearsBackBuffer())
+    {
+        LogPrintf(&g_Log, "バックバッファの消去を強制します\r\n");
+    }
+    if (this->flags.noFrameItems)
+    {
+        LogPrintf(&g_Log, "ゲーム周りのアイテムの描画を抑制します\r\n");
+    }
+    if (this->flags.noGouraudShading)
+    {
+        LogPrintf(&g_Log, "グーローシェーディングを抑制します\r\n");
+    }
+    if (this->flags.noDepthTest)
+    {
+        LogPrintf(&g_Log, "デプステストを抑制します\r\n");
+    }
+    // th06's 60 frame mode is gone: the bit is cleared.
+    this->presentImmediate = 0;
+    this->flags.force60Fps = 0;
+    if (this->flags.noColorBlending)
+    {
+        LogPrintf(&g_Log, "テクスチャの色合成を抑制します\r\n");
+    }
+    if (this->windowed)
+    {
+        LogPrintf(&g_Log, "ウィンドウモードで起動します\r\n");
+    }
+    if (this->flags.referenceRasterizer)
+    {
+        LogPrintf(&g_Log, "リファレンスラスタライザを強制します\r\n");
+    }
+    if (this->flags.noDirectInput)
+    {
+        LogPrintf(&g_Log, "パッド、キーボードの入力に DirectInput を使用しません\r\n");
+    }
+    if (this->flags.unk12)
+    {
+        LogPrintf(&g_Log, "画面周りを毎回描画します\r\n");
+    }
+    if (this->flags.preloadBgm)
+    {
+        LogPrintf(&g_Log, "ＢＧＭをメモリに読み込みます\r\n");
+    }
+    if (this->flags.unk14)
+    {
+        LogPrintf(&g_Log, "垂直同期を取りません\r\n");
+        g_App.presentImmediate = 1;
+    }
+    if (this->flags.unk15)
+    {
+        LogPrintf(&g_Log, "文字描画の環境を自動検出しません\r\n");
+    }
+    if (WriteToFile(path, &g_App.controllerMapping, sizeof(ConfigCopy)) != 0)
+    {
+        LogError(&g_Log, "ファイルが書き出せません %s\r\n", path);
+        LogError(&g_Log, "フォルダが書込み禁止属性になっているか、ディスクがいっぱいいっぱいになってませんか？\r\n");
+        return -1;
+    }
+    return 0;
 }
 
 inline void FreeData(void *data)
