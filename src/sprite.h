@@ -412,8 +412,8 @@ public:
     // move it. New in th08.
     int ProjectSpriteWithCallback(Sprite *vm, void (*callback)(Sprite *vm, D3DXVECTOR3 *pos));
     // Draws `vm` in 3D with the vertex buffer's quad, after the pending
-    // batch, as th07's. The texture matrix is set again while the
-    // texture scrolls.
+    // batch, as th07's. The texture matrix is also set again while the
+    // texture scrolls in x.
     int Draw3D(Sprite *vm);
     // DrawProjected with ProjectSpriteWithCallback. New in th08.
     int DrawProjectedWithCallback(Sprite *vm, void (*callback)(Sprite *vm, D3DXVECTOR3 *pos));
@@ -607,6 +607,11 @@ public:
         }
         return this->anms[vm->spriteData->sourceFileIndex].textures != NULL;
     }
+    // Sets the texture coordinates, color and w of the `count` vertices
+    // from `vertices`, a strip across `vm`'s sprite from right to left:
+    // even ones along its top, odd ones along its bottom, as th07's.
+    // Returns 0, or -1 for fewer than 3.
+    int FillSpriteStripVertices(Sprite *vm, VertexTex1DiffuseXyzrwh *vertices, int count);
     // Sends interrupt `interrupt` to the `count` sprites from `vms` that
     // show a loaded sprite, as th07's.
     void SendInterruptToLoadedSprites(Sprite *vms, int count, short interrupt);
