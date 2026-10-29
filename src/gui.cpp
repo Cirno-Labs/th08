@@ -730,3 +730,8 @@ int Func438ff3()
 {
     return g_App.unk_168;
 }
+
+int Func438ffd()
+{
+    return g_App.unk_16c;
+}
