@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">74.82% (835)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">23.21% (259)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">74.91% (836)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">23.12% (258)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="558.91" height="6" x="0" y="0" class="named"/>
-<rect width="14.73" height="6" x="558.91" y="0" class="decompiled"/>
-<rect width="173.36" height="6" x="573.64" y="0" class="todo"/>
+<rect width="559.58" height="6" x="0" y="0" class="named"/>
+<rect width="14.73" height="6" x="559.58" y="0" class="decompiled"/>
+<rect width="172.69" height="6" x="574.31" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -212,7 +212,7 @@
 <rect width="12" height="12" x="615" y="30" class="named"><title>0x0040c7d0 D3DXVECTOR3::operator/ (76 bytes)</title></rect>
 <rect width="12" height="12" x="630" y="30" class="named"><title>0x0040c820 DrawReimuBomb (230 bytes)</title></rect>
 <rect width="12" height="12" x="645" y="30" class="named"><title>0x0040c910 UpdateReimuLastWord (1790 bytes)</title></rect>
-<rect width="12" height="12" x="660" y="30" class="todo"><title>0x0040d010 Func40d010 (233 bytes)</title></rect>
+<rect width="12" height="12" x="660" y="30" class="named"><title>0x0040d010 DrawReimuLastWord (233 bytes)</title></rect>
 <rect width="12" height="12" x="675" y="30" class="named"><title>0x0040d100 UpdateDissolveBomb (521 bytes)</title></rect>
 <rect width="12" height="12" x="690" y="30" class="named"><title>0x0040d310 DrawDissolveBomb (121 bytes)</title></rect>
 <rect width="12" height="12" x="705" y="30" class="named"><title>0x0040d390 Rng::GetRandomF32InRange (24 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">66.71%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">32.28%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">66.76%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">32.23%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="498.29" height="6" x="0" y="0" class="named"/>
-<rect width="7.57" height="6" x="498.29" y="0" class="decompiled"/>
-<rect width="241.13" height="6" x="505.87" y="0" class="todo"/>
+<rect width="498.67" height="6" x="0" y="0" class="named"/>
+<rect width="7.57" height="6" x="498.67" y="0" class="decompiled"/>
+<rect width="240.76" height="6" x="506.24" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1597,7 +1597,7 @@
 <rect width="8.77" height="8.37" x="558.02" y="246.98" class="named"><title>0x00425d70 EffectInitDrift (236 bytes)</title></rect>
 <rect width="8.77" height="8.37" x="558.02" y="258.36" class="named"><title>0x00472750 CSound::Play (236 bytes)</title></rect>
 <rect width="8.77" height="8.28" x="558.02" y="269.73" class="named"><title>0x00437f5c CopySpriteToTexture (234 bytes)</title></rect>
-<rect width="8.77" height="8.23" x="558.02" y="281.01" class="todo"><title>0x0040d010 Func40d010 (233 bytes)</title></rect>
+<rect width="8.77" height="8.23" x="558.02" y="281.01" class="named"><title>0x0040d010 DrawReimuLastWord (233 bytes)</title></rect>
 <rect width="8.77" height="8.23" x="558.02" y="292.24" class="named"><title>0x0044dd70 LoadShotTypeFile (233 bytes)</title></rect>
 <rect width="8.77" height="8.18" x="558.02" y="303.47" class="named"><title>0x0043ca50 Chain::RunCalcChain (232 bytes)</title></rect>
 <rect width="8.77" height="8.18" x="558.02" y="314.65" class="named"><title>0x0043f898 GdiSurface::CopyToSurface (232 bytes)</title></rect>

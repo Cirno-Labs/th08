@@ -685,3 +685,6 @@ void DrawReimuBomb(Player *player);
 // 40 every 20 frames a flash bursts at orbHomingTarget (else at random)
 // in g_BombFlashColors (0x40c910).
 void UpdateReimuLastWord(Player *player);
+// Its draw callback: tints the play area red and draws the orbs and
+// flashes (0x40d010).
+void DrawReimuLastWord(Player *player);

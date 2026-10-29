@@ -373,6 +373,28 @@ void UpdateReimuLastWord(Player *player)
     }
 }
 
+void DrawReimuLastWord(Player *player)
+{
+    Sprite *sprite;
+    DWORD k;
+    PlayerBombPart *orbs;
+
+    DimPlayAreaForBomb(player, 0x802020d0);
+    for (k = 0, orbs = player->bomb.parts; k < 0x80; k++, orbs++)
+    {
+        if (orbs->state == 0)
+        {
+            continue;
+        }
+        sprite = &orbs->sprites[0];
+        sprite->pos = orbs->pos + sprite->posOffset;
+        sprite->pos.x += g_GameManager.arena[0];
+        sprite->pos.y += g_GameManager.arena[1];
+        sprite->pos.z = 0.0f;
+        g_SpriteEngine->DrawUnrotated(sprite);
+    }
+}
+
 void UpdateDissolveBomb(Player *player)
 {
     PlayerBomb *bomb = &player->bomb;
