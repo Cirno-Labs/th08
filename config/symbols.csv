@@ -50,7 +50,7 @@ address,size,name,symbol
 0x00406880,25,AnmLoaded::GetSprite,?GetSprite@AnmLoaded@@QAEPAUSpriteData@@H@Z
 0x004068a0,49,AnmLoaded::InitSprite,?InitSprite@AnmLoaded@@QAEXPAVSprite@@H@Z
 0x004068e0,95,Sprite::Initialize,?Initialize@Sprite@@QAEXXZ
-0x00406940,173,Func406940,
+0x00406940,173,D3DXMatrixIdentity,?D3DXMatrixIdentity@@YIPAUD3DXMATRIX@@PAU1@@Z
 0x004069f0,64,Func4069f0,
 0x00406a30,140,Func406a30,
 0x00406ac0,43,Func406ac0,
