@@ -665,3 +665,8 @@ void MidiTimer::OnTimer()
 {
     QueryPerformanceCounter(&g_Unknown17ce744);
 }
+
+void MidiTimer::StartTimer()
+{
+    this->Start(16, NULL, 0);
+}

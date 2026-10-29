@@ -686,7 +686,7 @@ address,size,name,symbol
 0x00444a90,1871,MidiPlayer::ProcessEvent,?ProcessEvent@MidiPlayer@@QAEXPAUMidiTrack@@@Z
 0x00445340,187,MidiPlayer::SendVolume,?SendVolume@MidiPlayer@@QAEXH@Z
 0x00445400,22,MidiTimer::OnTimer,?OnTimer@MidiTimer@@UAEXXZ
-0x00445420,25,Func445420,
+0x00445420,25,MidiTimer::StartTimer,?StartTimer@MidiTimer@@QAEXXZ
 0x00445440,19,Func445440,
 0x00445453,1831,Func445453,
 0x00445b7a,70,Func445b7a,
