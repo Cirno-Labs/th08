@@ -90,6 +90,11 @@ public:
     // Out of line at 0x406720.
     Sprite();
 
+    // Flag bit 0. Inline; the copy is at 0x4066e0.
+    DWORD IsShown()
+    {
+        return this->flags & 1;
+    }
     // Inline; /Os files call the copy at 0x407120.
     void SetPendingInterrupt(short interrupt)
     {
@@ -126,7 +131,11 @@ public:
     // Draw scales the sprite's height and width by these, as th07's.
     float scaleY;
     float scaleX;
-    unsigned char unk_20[0x10];
+    unsigned char unk_20[0x8];
+    // The size the draw functions draw the sprite at before scaling;
+    // th07's used spriteData->width and height.
+    float spriteWidth;
+    float spriteHeight;
     // Added to the sprite's texture coordinates.
     float uvScrollX;
     float uvScrollY;
@@ -149,7 +158,16 @@ public:
     unsigned char unk_128[0x8];
     D3DXMATRIX matrix;
     unsigned char unk_170[0x80];
-    D3DCOLOR color;
+    union
+    {
+        D3DCOLOR color;
+        struct
+        {
+            BYTE colorRgb[3];
+            // The alpha byte of color.
+            BYTE alpha;
+        };
+    };
     // The color drawn instead of color while flag bit 17 is set.
     D3DCOLOR color2;
     // Bit 1: shown; DrawUnrotated draws nothing without it.
