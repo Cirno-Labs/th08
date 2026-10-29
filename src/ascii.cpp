@@ -531,3 +531,55 @@ void AsciiText::Func403460(D3DXVECTOR3 *pos, int count, int value, D3DCOLOR colo
     popup->scaleY = this->scaleY;
     this->nextNumberPopup++;
 }
+
+void AsciiText::Func403600(D3DXVECTOR3 *pos, int count, int value, D3DCOLOR color)
+{
+    AsciiPopup *popup;
+    int n;
+
+    if (this->nextNumberPopup >= 0x80)
+    {
+        this->nextNumberPopup = 0;
+    }
+    popup = &this->numberPopups[this->nextNumberPopup];
+    popup->active = 1;
+    n = 0;
+    if (value > 0)
+    {
+        popup->digits[n] = 0xf;
+        n++;
+        while (value != 0)
+        {
+            popup->digits[n] = value % 10;
+            n++;
+            value /= 10;
+        }
+        popup->digits[n] = 0xe;
+        n++;
+    }
+    if (count > 0)
+    {
+        while (count != 0)
+        {
+            popup->digits[n] = count % 10;
+            n++;
+            count /= 10;
+        }
+    }
+    else
+    {
+        popup->digits[n] = 0;
+        n++;
+    }
+    popup->digits[n] = 0xd;
+    n++;
+    popup->digitCount = n;
+    popup->color = color;
+    popup->timer = 0x58;
+    popup->pos = *pos;
+    popup->pos.x += n * 3.5f + g_GameManager.arena[0];
+    popup->pos.y += g_GameManager.arena[1];
+    popup->scaleX = this->scaleX;
+    popup->scaleY = this->scaleY;
+    this->nextNumberPopup++;
+}
