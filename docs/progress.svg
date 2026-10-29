@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">34.95% (390)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">65.05% (726)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">35.04% (391)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">64.96% (725)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="261.05" height="6" x="0" y="0" class="named"/>
-<rect width="485.95" height="6" x="261.05" y="0" class="todo"/>
+<rect width="261.72" height="6" x="0" y="0" class="named"/>
+<rect width="485.28" height="6" x="261.72" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -931,7 +931,7 @@
 <rect width="12" height="12" x="165" y="255" class="todo"><title>0x0045621e ResultScreen::HandleNameEntry (1818 bytes)</title></rect>
 <rect width="12" height="12" x="180" y="255" class="todo"><title>0x00456938 Func456938 (55 bytes)</title></rect>
 <rect width="12" height="12" x="195" y="255" class="todo"><title>0x0045696f ResultScreen::HandleReplaySaving (3699 bytes)</title></rect>
-<rect width="12" height="12" x="210" y="255" class="todo"><title>0x004577e2 ResultScreen::WaitAfterNameEntry (200 bytes)</title></rect>
+<rect width="12" height="12" x="210" y="255" class="named"><title>0x004577e2 ResultScreen::WaitAfterNameEntry (200 bytes)</title></rect>
 <rect width="12" height="12" x="225" y="255" class="todo"><title>0x004578aa ResultScreen::RunStatisticsMenu (1366 bytes)</title></rect>
 <rect width="12" height="12" x="240" y="255" class="todo"><title>0x00457e00 Func457e00 (1184 bytes)</title></rect>
 <rect width="12" height="12" x="255" y="255" class="named"><title>0x004582a0 ResultScreen::RegisterChain (395 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">24.93%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">75.07%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">24.97%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">75.03%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="186.22" height="6" x="0" y="0" class="named"/>
-<rect width="560.78" height="6" x="186.22" y="0" class="todo"/>
+<rect width="186.54" height="6" x="0" y="0" class="named"/>
+<rect width="560.46" height="6" x="186.54" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1647,7 +1647,7 @@
 <rect width="7.42" height="8.06" x="708.48" y="177.72" class="todo"><title>0x0042c590 Func42c590 (203 bytes)</title></rect>
 <rect width="7.42" height="8.06" x="718.90" y="177.72" class="named"><title>0x00444550 MidiPlayer::Rewind (203 bytes)</title></rect>
 <rect width="7.42" height="8.06" x="729.32" y="177.72" class="todo"><title>0x00471586 Func471586 (203 bytes)</title></rect>
-<rect width="7.26" height="8.06" x="739.74" y="177.72" class="todo"><title>0x004577e2 ResultScreen::WaitAfterNameEntry (200 bytes)</title></rect>
+<rect width="7.26" height="8.06" x="739.74" y="177.72" class="named"><title>0x004577e2 ResultScreen::WaitAfterNameEntry (200 bytes)</title></rect>
 <rect width="7.39" height="7.92" x="580.58" y="188.78" class="named"><title>0x00466ae0 SpriteEngine::ReleaseSurface (200 bytes)</title></rect>
 <rect width="7.39" height="7.92" x="580.58" y="199.70" class="todo"><title>0x00469fa9 Func469fa9 (200 bytes)</title></rect>
 <rect width="7.39" height="7.81" x="580.58" y="210.62" class="named"><title>0x00447295 Timer::Add (198 bytes)</title></rect>

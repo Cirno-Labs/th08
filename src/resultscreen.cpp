@@ -205,6 +205,37 @@ void ResultScreen::SetState(int state)
     this->unk_54 = 0;
 }
 
+int ResultScreen::WaitAfterNameEntry()
+{
+    Sprite *sprite;
+
+    switch (this->state)
+    {
+    case 0xf:
+        if (this->frame <= 30)
+        {
+            sprite = &this->sprites[0x47];
+            sprite->pendingInterrupt = 0x12;
+        }
+        if (this->frame >= 90 && WAS_PRESSED(0x1001))
+        {
+            sprite = &this->sprites[0x47];
+            sprite->pendingInterrupt = 2;
+            this->frame = 0;
+            this->state = 0x10;
+        }
+        break;
+    case 0x10:
+        if (this->frame >= 30)
+        {
+            this->frame = 9;
+            this->state = 0xa;
+        }
+        break;
+    }
+    return 0;
+}
+
 int ResultScreen::RegisterChain(int mode)
 {
     ResultScreen *screen = (ResultScreen *)g_MemoryManager.Register(new ResultScreen, sizeof(ResultScreen),
