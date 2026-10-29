@@ -195,3 +195,45 @@ int FireEnemyHomingShot(Player *player, PlayerBullet *bullet, int frame, ShotDat
     }
     return 0;
 }
+
+int UpdateHomingOrb(Player *player, PlayerBullet *bullet)
+{
+    float x;
+    float y;
+    float len;
+
+    if (bullet->state == 1)
+    {
+        if (player->orbHomingTarget.x > -100.0f && bullet->timer.AsFrames() < 40 && bullet->timer.HasTicked())
+        {
+            x = player->orbHomingTarget.x - bullet->pos[0];
+            y = player->orbHomingTarget.y - bullet->pos[1];
+            len = sqrtf(x * x + y * y) / (bullet->speed / 4.0f);
+            if (len < 1.0f)
+            {
+                len = 1.0f;
+            }
+            x = x / len + bullet->velocity.x;
+            y = y / len + bullet->velocity.y;
+            len = sqrtf(x * x + y * y);
+            bullet->speed = (len > 10.0f) ? 10.0f : len;
+            if (bullet->speed < 1.0f)
+            {
+                bullet->speed = 1.0f;
+            }
+            bullet->velocity.x = x * bullet->speed / len;
+            bullet->velocity.y = y * bullet->speed / len;
+        }
+        else if (bullet->speed < 10.0f)
+        {
+            bullet->speed += 0.33333334f;
+            x = bullet->velocity.x;
+            y = bullet->velocity.y;
+            len = sqrtf(x * x + y * y);
+            bullet->velocity.x = x * bullet->speed / len;
+            bullet->velocity.y = y * bullet->speed / len;
+        }
+    }
+    bullet->angle = atan2f(bullet->velocity.y, bullet->velocity.x);
+    return 0;
+}

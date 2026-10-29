@@ -807,7 +807,7 @@ address,size,name,symbol
 0x00450110,145,FireOptionAimedShot,?FireOptionAimedShot@@YIHPAVPlayer@@PAUPlayerBullet@@HPAUShotData@@@Z
 0x004501b0,133,FireRandomShot,?FireRandomShot@@YIHPAVPlayer@@PAUPlayerBullet@@HPAUShotData@@@Z
 0x00450240,223,FireEnemyHomingShot,?FireEnemyHomingShot@@YIHPAVPlayer@@PAUPlayerBullet@@HPAUShotData@@@Z
-0x00450320,599,Func450320,
+0x00450320,599,UpdateHomingOrb,?UpdateHomingOrb@@YIHPAVPlayer@@PAUPlayerBullet@@@Z
 0x00450580,72,Func450580,
 0x004505d0,609,Func4505d0,
 0x00450840,643,Func450840,

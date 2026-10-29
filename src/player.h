@@ -315,6 +315,11 @@ int FireOptionAimedShot(Player *player, PlayerBullet *bullet, int frame, ShotDat
 int FireRandomShot(Player *player, PlayerBullet *bullet, int frame, ShotData *sd);
 // FireHomingShot at Player::homingEnemy, when set (0x450240).
 int FireEnemyHomingShot(Player *player, PlayerBullet *bullet, int frame, ShotData *sd);
+// th07's UpdateHomingOrb, turning the bullet along its velocity
+// (0x450320).
+int UpdateHomingOrb(Player *player, PlayerBullet *bullet);
+// th07's UpdateAcceleratingBullet (0x450580).
+int UpdateAcceleratingBullet(Player *player, PlayerBullet *bullet);
 // th07's FireShots: fires the shots of the shot type's table for the
 // player's power into free bullets (0x450f60).
 void FireShots(Player *player, int frame);
