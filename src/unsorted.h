@@ -215,10 +215,13 @@ public:
     int GetForce16BitTextures();
     int GetReferenceRasterizer();
     int GetWindowed();
-    // More of them, out-of-line copies from other objects: noDepthTest
-    // (0x438a41), noColorBlending (0x438a59) and noFog (0x406580).
+    // More of them, out-of-line copies from other objects: noFrameItems
+    // (0x438a29), noDepthTest (0x438a41), noColorBlending (0x438a59) and
+    // unk12 (0x438a71) from the Gui object, noFog (0x406580).
+    int GetNoFrameItems();
     int GetNoDepthTest();
     int GetNoColorBlending();
+    int GetUnk12();
     int GetNoFog();
     // flags.preloadBgm. Inline: the copy at 0x449c79 comes from the /Os
     // music screen object.

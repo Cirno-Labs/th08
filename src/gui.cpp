@@ -613,3 +613,8 @@ void Gui::DrawStageClear()
         g_AsciiText.SetColor(0xffffffff);
     }
 }
+
+int App::GetNoFrameItems()
+{
+    return this->flags.noFrameItems;
+}

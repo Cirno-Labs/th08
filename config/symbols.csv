@@ -494,10 +494,10 @@ address,size,name,symbol
 0x00437f5c,234,CopySpriteToTexture,?CopySpriteToTexture@@YIXH@Z
 0x00438046,517,Func438046,?Func438046@@YIXXZ
 0x0043826b,1982,Gui::DrawStageClear,?DrawStageClear@Gui@@QAEXXZ
-0x00438a29,24,Func438a29,
+0x00438a29,24,App::GetNoFrameItems,?GetNoFrameItems@App@@QAEHXZ
 0x00438a41,24,App::GetNoDepthTest,?GetNoDepthTest@App@@QAEHXZ
 0x00438a59,24,App::GetNoColorBlending,?GetNoColorBlending@App@@QAEHXZ
-0x00438a71,24,Func438a71,
+0x00438a71,24,App::GetUnk12,?GetUnk12@App@@QAEHXZ
 0x00438a89,1231,Gui::Func438a89,?Func438a89@Gui@@QAEXXZ
 0x00438f58,145,Gui::Func438f58,?Func438f58@Gui@@QAEXXZ
 0x00438fe9,10,Func438fe9,?Func438fe9@@YIHXZ
