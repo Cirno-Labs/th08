@@ -736,7 +736,7 @@ address,size,name,symbol
 0x00448a65,177,MusicScreen::UpdateIntro,?UpdateIntro@MusicScreen@@QAEHXZ
 0x00448b16,1854,MusicScreen::UpdateList,?UpdateList@MusicScreen@@QAEHXZ
 0x00449254,221,MusicScreen::RegisterChain,?RegisterChain@MusicScreen@@SIHXZ
-0x00449331,104,Func449331,
+0x00449331,104,MusicScreen::MusicScreen,??0MusicScreen@@QAE@XZ
 0x00449399,238,MusicScreen::OnUpdate,?OnUpdate@MusicScreen@@SIHPAV1@@Z
 0x00449487,648,MusicScreen::OnDraw,?OnDraw@MusicScreen@@SIHPAV1@@Z
 0x0044970f,1247,MusicScreen::AddedCallback,?AddedCallback@MusicScreen@@SIHPAV1@@Z
