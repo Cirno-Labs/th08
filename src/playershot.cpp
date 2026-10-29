@@ -237,3 +237,12 @@ int UpdateHomingOrb(Player *player, PlayerBullet *bullet)
     bullet->angle = atan2f(bullet->velocity.y, bullet->velocity.x);
     return 0;
 }
+
+int UpdateAcceleratingBullet(Player *player, PlayerBullet *bullet)
+{
+    if (bullet->state == 1)
+    {
+        bullet->velocity.y -= g_Rng.GetRandomF32InRange(0.1f) + 0.27f;
+    }
+    return 0;
+}
