@@ -411,6 +411,8 @@ extern int g_Unknown18b8a2c;
 extern int g_Unknown4e3d28;
 // GameManager::Func43c0bb only applies while it is clear, unless forced.
 extern int g_Unknown17d6ed4;
+// The damage an enemy takes per time orb Player::CalcDamage spawns.
+extern int g_Unknown18b8a24;
 // Removes chain elements GameManager::DeletedCallback removes before the
 // stage's; probably a manager th07 did not have (0x4180f0).
 void Func4180f0();

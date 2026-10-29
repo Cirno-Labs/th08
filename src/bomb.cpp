@@ -142,7 +142,7 @@ int EffectUpdateBombRing36(Effect *effect)
                 ((Vector2 *)&pos)->SetPolar(angle, spread);
                 pos += effect->origin;
                 laser = g_Player.AddBombHitbox(&pos, spread * 8.0f, effect->ringWidth * 4.0f, 0x3c, 0x46);
-                laser->unk_38 = 4;
+                laser->damageInterval = 4;
                 laser->angle = AddNormalizeAngle(angle, 1.5707964f);
                 angle = laser->angle;
                 laser = g_Player.AddHitArea(&pos, spread * 4.0f, effect->ringWidth * 4.0f, 6, 100);
@@ -205,7 +205,7 @@ int EffectUpdateBombRing37(Effect *effect)
                 ((Vector2 *)&pos)->SetPolar(angle, spread);
                 pos += effect->origin;
                 laser = g_Player.AddBombHitbox(&pos, spread * 8.0f, effect->ringWidth * 4.0f, 0x3c, 100);
-                laser->unk_38 = 2;
+                laser->damageInterval = 2;
                 laser->angle = AddNormalizeAngle(angle, 1.5707964f);
                 angle = laser->angle;
                 laser = g_Player.AddHitArea(&pos, spread * 4.0f, effect->ringWidth * 4.0f, 6, 0x96);

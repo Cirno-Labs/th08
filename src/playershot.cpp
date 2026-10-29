@@ -6,6 +6,7 @@
 
 #include "effect.h"
 #include "enemy.h"
+#include "item.h"
 #include "player.h"
 #include "sprite.h"
 #include "unsorted.h"
@@ -658,4 +659,166 @@ void Player::StartFiring(Player *player)
     {
         player->fireTimer = 0;
     }
+}
+
+// The corners of a `size` box centred on `pos`, as th07's. Inline; the
+// copy is at 0x451ce0.
+inline void GetBox(D3DXVECTOR3 &min, D3DXVECTOR3 &max, D3DXVECTOR3 *pos, D3DXVECTOR3 *size)
+{
+    min.x = pos->x - size->x * 0.5f;
+    min.y = pos->y - size->y * 0.5f;
+    max.x = size->x * 0.5f + pos->x;
+    max.y = size->y * 0.5f + pos->y;
+}
+
+int Player::CalcDamage(D3DXVECTOR3 *pos, D3DXVECTOR3 *size, int *damageTaken, int *hitByBomb)
+{
+    PlayerBullet *cur;
+    // The enemy's box, and the box of the bullet or bomb hitbox tested.
+    D3DXVECTOR3 enemyMin0;
+    D3DXVECTOR3 eMax2;
+    int idx;
+    D3DXVECTOR3 targetLo;
+    D3DXVECTOR3 targetHi;
+    float rotZ;
+    int damage2;
+    PlayerBombHitbox *hitbox;
+
+    damage2 = 0;
+    if (!this->stateTimer.HasTicked())
+    {
+        return 0;
+    }
+    GetBox(enemyMin0, eMax2, pos, size);
+    cur = this->bullets;
+    if (hitByBomb != NULL)
+    {
+        *hitByBomb = 0;
+    }
+    for (idx = 0; idx < 0x80; idx++, cur++)
+    {
+        if (cur->state == 0 || (cur->state != 1 && cur->type != 3))
+        {
+            continue;
+        }
+        GetBox(targetLo, targetHi, &cur->pos, &cur->size);
+        if (targetLo.y > eMax2.y || targetLo.x > eMax2.x || targetHi.y < enemyMin0.y || targetHi.x < enemyMin0.x)
+        {
+            continue;
+        }
+        if ((cur->type == 4 || cur->type == 5) && cur->timer % 2 != 0)
+        {
+            continue;
+        }
+        if (cur->hit != NULL && cur->hit(this, cur, pos))
+        {
+            continue;
+        }
+        if (!this->bomb.running)
+        {
+            damage2 += cur->damage;
+        }
+        else
+        {
+            damage2 += (cur->damage / 5 != 0) ? cur->damage / 5 : 1;
+        }
+        while (*damageTaken >= g_Unknown18b8a24)
+        {
+            if (g_GameManager.IsUnk22AtLow1() && cur->shot->unk_1e < 0)
+            {
+                g_ItemManager.SpawnItem(&cur->pos, 7, 3);
+            }
+            *damageTaken -= g_Unknown18b8a24;
+        }
+        if (cur->type != 4 && cur->type != 5 && cur->type != 6)
+        {
+            if (cur->state == 1)
+            {
+                rotZ = cur->sprite.rotation.z;
+                this->anm->StartScript(&cur->sprite, cur->script + 11);
+                cur->sprite.rotation.z = rotZ;
+                g_EffectManager.SpawnEffect(5, &cur->pos, 1, 0xffffffff);
+                cur->pos[2] = 0.1f;
+            }
+            cur->state = 2;
+            if (cur->type != 3)
+            {
+                cur->velocity.x /= 8.0f;
+                cur->velocity.y /= 8.0f;
+            }
+        }
+    }
+    *damageTaken += damage2 > 50 ? 50 : damage2;
+    hitbox = this->bombHitboxes;
+    for (idx = 0; idx < 0xc0; idx++, hitbox++)
+    {
+        if (!hitbox->active)
+        {
+            continue;
+        }
+        if (hitbox->framesLeft % hitbox->damageInterval != 0)
+        {
+            continue;
+        }
+        if (hitbox->radius == 0.0f)
+        {
+            if (hitbox->angle == 0.0f)
+            {
+                if (hitbox->x - hitbox->width / 2.0f > eMax2.x || hitbox->width / 2.0f + hitbox->x < enemyMin0.x ||
+                    hitbox->y - hitbox->height / 2.0f > eMax2.y || hitbox->height / 2.0f + hitbox->y < enemyMin0.y)
+                {
+                    continue;
+                }
+            }
+            else
+            {
+                targetLo.x = pos->x - hitbox->x;
+                targetLo.y = pos->y - hitbox->y;
+                Rotate2D(&targetHi, &targetLo, -hitbox->angle);
+                if (-hitbox->width / 2.0f > size->x / 2.0f + targetHi.x ||
+                    hitbox->width / 2.0f < targetHi.x - size->x / 2.0f ||
+                    -hitbox->height / 2.0f > size->y / 2.0f + targetHi.y ||
+                    hitbox->height / 2.0f < targetHi.y - size->y / 2.0f)
+                {
+                    continue;
+                }
+            }
+        }
+        else if (hitbox->radius * hitbox->radius <
+                 (hitbox->x - pos->x) * (hitbox->x - pos->x) + (hitbox->y - pos->y) * (hitbox->y - pos->y))
+        {
+            continue;
+        }
+        damage2 += hitbox->damage;
+        hitbox->hits += hitbox->damage;
+        if (hitbox->maxDamage > 0 && hitbox->maxDamage <= hitbox->hits)
+        {
+            hitbox->damage = 0;
+            damage2 -= hitbox->hits - hitbox->maxDamage;
+        }
+        if (!hitbox->unk_3d)
+        {
+            this->hitCounter++;
+            if (this->hitCounter % 4 == 0)
+            {
+                if (idx < 0xc0)
+                {
+                    g_EffectManager.SpawnEffect(3, pos, 1, 0xffffffff);
+                }
+                else
+                {
+                    g_EffectManager.SpawnEffect(5, pos, 1, 0xffffffff);
+                }
+            }
+        }
+        if (this->bomb.running && hitByBomb != NULL)
+        {
+            *hitByBomb = 1;
+        }
+    }
+    if (g_GameManager.IsUnk22AtHigh1() && damage2 != 0)
+    {
+        damage2 = damage2 * 106 / 100;
+    }
+    return damage2;
 }

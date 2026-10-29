@@ -820,8 +820,8 @@ address,size,name,symbol
 0x00451400,241,DrawHitBullets,?DrawHitBullets@@YIXPAVPlayer@@@Z
 0x00451500,311,UpdateFiring,?UpdateFiring@@YIHPAVPlayer@@@Z
 0x00451640,45,Player::StartFiring,?StartFiring@Player@@SIXPAV1@@Z
-0x00451670,1646,Func451670,
-0x00451ce0,108,Func451ce0,
+0x00451670,1646,Player::CalcDamage,?CalcDamage@Player@@QAEHPAUD3DXVECTOR3@@0PAH1@Z
+0x00451ce0,108,GetBox,?GetBox@@YIXAAUD3DXVECTOR3@@0PAU1@1@Z
 0x00451d50,56,Player::IsSpellCardBombRunning,?IsSpellCardBombRunning@Player@@QAEHXZ
 0x00451d90,511,ValidateReplay,?ValidateReplay@@YIPAUReplayHeader@@PAXH@Z
 0x00451f90,777,ReplayManager::RegisterChain,?RegisterChain@ReplayManager@@SIHHPAD@Z
@@ -2520,6 +2520,7 @@ address,size,name,symbol
 0x017ceac0,,g_LoadingSprites,?g_LoadingSprites@@3PAVSprite@@A
 0x017d5ef8,,g_Player,?g_Player@@3VPlayer@@A
 0x017d6ed4,,g_Unknown17d6ed4,?g_Unknown17d6ed4@@3HA
+0x018b8a24,,g_Unknown18b8a24,?g_Unknown18b8a24@@3HA
 0x018b8a28,,g_ReplayManager,?g_ReplayManager@@3PAVReplayManager@@A
 0x018b8a2c,,g_Unknown18b8a2c,?g_Unknown18b8a2c@@3HA
 0x018b8a68,,g_SoundPlayer,?g_SoundPlayer@@3VSoundPlayer@@A

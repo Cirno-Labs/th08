@@ -115,7 +115,7 @@ struct PlayerBombHitbox
     void Reset()
     {
         memset(this, 0, sizeof(PlayerBombHitbox));
-        this->unk_38 = 1;
+        this->damageInterval = 1;
     }
     // Inline; the copy is at 0x44e350.
     void Deactivate()
@@ -143,8 +143,11 @@ struct PlayerBombHitbox
     int damage;
     // How often it hit.
     int hits;
-    int unk_34;
-    int unk_38;
+    // The most damage it deals in all (bombHitboxes), when above 0.
+    int maxDamage;
+    // It deals damage on frames where framesLeft % damageInterval is 0;
+    // Reset sets it to 1.
+    int damageInterval;
     BYTE active;
     // Set on the boxes of UpdateTrailLaserBullet's lasers.
     BYTE unk_3d;
@@ -397,6 +400,16 @@ public:
     // g_ReplayManager->frameEvents and kills the player while
     // playerState is 0.
     int CheckHit(D3DXVECTOR3 *pos, D3DXVECTOR3 *size);
+    // The damage the player's bullets and bomb hitboxes deal to an
+    // enemy's `size` box at `pos`, as th07's: none until stateTimer has
+    // ticked. Bullets deal their damage (a fifth during a bomb), at most
+    // 50 a frame, which also goes to `*damageTaken`; every
+    // g_Unknown18b8a24 of it there spawns a time orb at bullets whose
+    // shot has unk_1e below 0 while stats->unk_22 is at unk22Low1. Then
+    // every bombHitboxes box or circle (turned by its angle) that meets
+    // it on its damage frames, up to its maxDamage; during a bomb that
+    // sets `*hitByBomb`. 6% more at unk22High1 (0x451670).
+    int CalcDamage(D3DXVECTOR3 *pos, D3DXVECTOR3 *size, int *damageTaken, int *hitByBomb);
     // CheckHit without the hit areas: 1 if the box meets the hitbox,
     // else 0. New in th08; an enemy's body uses it (0x42c290).
     int CheckHitIgnoringAreas(D3DXVECTOR3 *pos, D3DXVECTOR3 *size);
