@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">42.11% (470)</tspan> · <tspan class="decompiled">0.36% (4)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">57.53% (642)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">42.20% (471)</tspan> · <tspan class="decompiled">0.36% (4)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">57.44% (641)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="314.60" height="6" x="0" y="0" class="named"/>
-<rect width="2.68" height="6" x="314.60" y="0" class="decompiled"/>
-<rect width="429.73" height="6" x="317.27" y="0" class="todo"/>
+<rect width="315.27" height="6" x="0" y="0" class="named"/>
+<rect width="2.68" height="6" x="315.27" y="0" class="decompiled"/>
+<rect width="429.06" height="6" x="317.94" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -551,7 +551,7 @@
 <rect width="12" height="12" x="450" y="135" class="named"><title>0x00437a40 Gui::DeletedCallback (144 bytes)</title></rect>
 <rect width="12" height="12" x="465" y="135" class="named"><title>0x00437ad0 Gui::RegisterChain (244 bytes)</title></rect>
 <rect width="12" height="12" x="480" y="135" class="named"><title>0x00437bc4 GuiImpl::GuiImpl (281 bytes)</title></rect>
-<rect width="12" height="12" x="495" y="135" class="todo"><title>0x00437cdd DebugPrint2 (5 bytes)</title></rect>
+<rect width="12" height="12" x="495" y="135" class="named"><title>0x00437cdd DebugPrint2 (5 bytes)</title></rect>
 <rect width="12" height="12" x="510" y="135" class="named"><title>0x00437ce2 GuiMsg::GuiMsg (99 bytes)</title></rect>
 <rect width="12" height="12" x="525" y="135" class="named"><title>0x00437d45 GuiPopup::GuiPopup (31 bytes)</title></rect>
 <rect width="12" height="12" x="540" y="135" class="todo"><title>0x00437d64 Gui::RemoveChain (35 bytes)</title></rect>
@@ -1190,8 +1190,8 @@
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
 <text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">34.69%</tspan> · <tspan class="decompiled">0.15%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">65.16%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="259.15" height="6" x="0" y="0" class="named"/>
-<rect width="1.12" height="6" x="259.15" y="0" class="decompiled"/>
+<rect width="259.16" height="6" x="0" y="0" class="named"/>
+<rect width="1.12" height="6" x="259.16" y="0" class="decompiled"/>
 <rect width="486.72" height="6" x="260.28" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
@@ -2310,7 +2310,7 @@
 <rect width="0.22" height="0.10" x="746.78" y="342.71" class="todo"><title>0x00438ff3 Func438ff3 (10 bytes)</title></rect>
 <rect width="0.22" height="0.10" x="746.78" y="344.47" class="todo"><title>0x00438ffd Func438ffd (10 bytes)</title></rect>
 <rect width="0.10" height="0.10" x="746.78" y="346.24" class="todo"><title>0x00421dd0 DebugPrint (5 bytes)</title></rect>
-<rect width="0.10" height="0.10" x="748.39" y="346.24" class="todo"><title>0x00437cdd DebugPrint2 (5 bytes)</title></rect>
+<rect width="0.10" height="0.10" x="748.39" y="346.24" class="named"><title>0x00437cdd DebugPrint2 (5 bytes)</title></rect>
 </g>
 </g>
 </svg>

@@ -332,3 +332,7 @@ int Gui::RegisterChain()
     g_Chain.AddToDrawChain(&g_GuiDrawChain, 17);
     return 0;
 }
+
+void DebugPrint2(const char *fmt, ...)
+{
+}
