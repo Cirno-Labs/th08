@@ -440,6 +440,19 @@ void SpriteEngine::FlushQuadBatch()
     this->batchDrawCount++;
 }
 
+int SpriteEngine::AddQuadToBatch(VertexTex1DiffuseXyzrwh *quad)
+{
+    this->batchCursor[0] = quad[0];
+    this->batchCursor[1] = quad[1];
+    this->batchCursor[2] = quad[2];
+    this->batchCursor[3] = quad[1];
+    this->batchCursor[4] = quad[2];
+    this->batchCursor[5] = quad[3];
+    this->batchCursor += 6;
+    this->batchQuadCount++;
+    return 0;
+}
+
 SpriteEngine::SpriteEngine()
 {
     memset(this, 0, sizeof(*this));
