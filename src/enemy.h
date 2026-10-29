@@ -82,7 +82,10 @@ public:
     // Clears the enemies for a bonus, as th07's (0x42efb0).
     int ClearEnemiesForBonus(int maxBonus, int start);
 
-    unsigned char unk_0[0x9dcda0];
+    unsigned char unk_0[0x2e10];
+    // Set by Player::AddedCallback from Player::unk_e2b2c.
+    int unk_2e10;
+    unsigned char unk_2e14[0x9d9f8c];
     // The bosses, as th07's.
     Enemy *bosses[8];
 };

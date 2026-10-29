@@ -869,3 +869,149 @@ int Player::OnDraw2(Player *player)
     DrawHitBullets(player);
     return 1;
 }
+
+int Player::AddedCallback(Player *player)
+{
+    DWORD j;
+    PlayerOption *option;
+    PlayerBullet *cur;
+    int i;
+
+    if (IsLoadingResources())
+    {
+        if (LoadShotTypeFile(&player->shotType, g_ShotFiles[g_GameManager.character]))
+        {
+            return -1;
+        }
+        if (LoadShotTypeFile(&player->unk_e2a78, g_ShotFilesFocused[g_GameManager.character]))
+        {
+            return -1;
+        }
+        player->anm = g_SpriteEngine->PreloadAnm(5, g_PlayerAnmPaths[g_GameManager.character]);
+        if (player->anm == NULL)
+        {
+            return -1;
+        }
+    }
+    else
+    {
+        player->anm = g_SpriteEngine->GetAnm(5);
+    }
+    if (g_GameManager.character < 4 || !(g_GameManager.character & 1))
+    {
+        player->anm->StartScript(&player->sprite, 0);
+    }
+    else
+    {
+        player->anm->StartScript(&player->sprite, 5);
+    }
+    player->pos[0] = g_GameManager.arena[2] / 2.0f;
+    player->pos[1] = g_GameManager.arena[3] - 64.0f;
+    player->pos[2] = 0.49f;
+    for (i = 0; i < ARRAY_SIZE(player->bombHitboxes) * 2; i++)
+    {
+        player->bombHitboxes[i].Reset();
+    }
+    player->hitboxSize.x = player->hitboxSize.y = g_Player.shotType->hitboxSize / 2.0f;
+    player->hitboxSize.z = 5.0f;
+    player->grazeSize.x = player->grazeSize.y = g_Player.shotType->grazeSize / 2.0f;
+    player->grazeSize.z = 5.0f;
+    player->grazeTestHalfSize.x = player->grazeTestHalfSize.y = g_Player.shotType->itemCatchSize / 2.0f;
+    player->grazeTestHalfSize.z = 5.0f;
+    player->unk_e2a98 = 0;
+    player->playerState = 1;
+    player->unk_e2af4 = g_GameManager.IsInSpellCardPractice() ? 10 : 120;
+    player->unk_2 = 1;
+    cur = player->bullets;
+    for (i = 0; i < 0x80; i++, cur++)
+    {
+        cur->state = 0;
+    }
+    player->unk_e2ac4 = -1;
+    player->unk_e2ad0 = 0;
+    player->unk_e2ae8 = 0;
+    player->bomb.update = g_BombFuncs[g_GameManager.character * 2];
+    player->bomb.draw = g_BombFuncs[g_GameManager.character * 2 + 1];
+    player->bomb.running = 0;
+    player->aimedShotAngle = -1.5707964f;
+    player->moveScaleY = 1.0f;
+    player->moveScaleX = 1.0f;
+    player->deathbombFrames = g_Player.shotType->deathbombFrames;
+    if (IsLoadingResources())
+    {
+        g_AsciiText.SetSummaryPendingInterrupt(1);
+    }
+    g_AsciiText.SetNearbyLabelInterrupt(0, 2);
+    g_AsciiText.SetNearbyLabelInterrupt(1, 2);
+    g_AsciiText.SetNearbyLabelInterrupt(2, 2);
+    // The bounds of stats->unk_22 and where its gauge changes color.
+    g_GameManager.unk_3ddf8 = -10000;
+    g_GameManager.unk22Low1 = -8000;
+    g_GameManager.unk22Low2 = -2000;
+    g_GameManager.unk_3ddfa = 10000;
+    g_GameManager.unk22High1 = 8000;
+    g_GameManager.unk22High2 = 2000;
+    if (g_GameManager.character == 3)
+    {
+        g_GameManager.unk_3ddf8 = -5000;
+        g_GameManager.unk22Low1 = -3000;
+        g_GameManager.unk22Low2 = -2000;
+    }
+    else if (g_GameManager.character == 10)
+    {
+        g_GameManager.unk_3ddf8 = -5000;
+        g_GameManager.unk22Low1 = -3000;
+        g_GameManager.unk22Low2 = -2000;
+        g_GameManager.unk_3ddfa = 5000;
+        g_GameManager.unk22High1 = 3000;
+        g_GameManager.unk22High2 = 2000;
+    }
+    else if (g_GameManager.IsSoloHuman())
+    {
+        g_GameManager.unk_3ddfa = 2000;
+        g_GameManager.unk22High1 = 8000;
+        g_GameManager.unk22High2 = 2001;
+    }
+    else if (g_GameManager.IsSoloYoukai())
+    {
+        g_GameManager.unk_3ddf8 = -2000;
+        g_GameManager.unk22Low1 = -8000;
+        g_GameManager.unk22Low2 = -2001;
+    }
+    player->unk_e2b24 = NULL;
+    for (i = 0; i < ARRAY_SIZE(player->posHistory); i++)
+    {
+        player->posHistory[i] = player->pos;
+    }
+    player->unk_3 = 2;
+    if (g_GameManager.character > 3)
+    {
+        option = player->options;
+        for (j = 0; j < ARRAY_SIZE(player->options); j++, option++)
+        {
+            memset(option, 0, sizeof(PlayerOption));
+            option->update = g_OptionUpdateFuncs[g_GameManager.character][j];
+            option->draw = g_OptionDrawFuncs[g_GameManager.character][j];
+            if (option->update != NULL)
+            {
+                option->active = 1;
+                option->timer = 0;
+                option->index = j;
+            }
+            else
+            {
+                option->active = 0;
+            }
+        }
+    }
+    if (g_GameManager.IsSoloHuman())
+    {
+        player->unk_e2b2c = 0x1b;
+    }
+    else
+    {
+        player->unk_e2b2c = 0x28;
+    }
+    g_EnemyManager.unk_2e10 = player->unk_e2b2c;
+    return 0;
+}

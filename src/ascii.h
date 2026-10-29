@@ -216,6 +216,13 @@ public:
         this->summaryPendingInterrupt = value;
     }
 
+    // Sends nearbyLabels[i] `interrupt`. Inline; the copy at 0x422bb0
+    // is in an /Od object.
+    void SetNearbyLabelInterrupt(int i, short interrupt)
+    {
+        this->nearbyLabels[i].SetPendingInterrupt(interrupt);
+    }
+
     // The glyph DrawStrings draws each character with, as th07's.
     Sprite glyph;
     // The digit the popups are drawn with, as th07's, and a second one

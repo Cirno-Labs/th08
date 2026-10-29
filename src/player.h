@@ -99,7 +99,7 @@ struct PlayerOption
     int index;
     unsigned char unk_2d4[0xc];
     Timer timer;
-    // From g_OptionUpdateFuncs and g_OptionDrawFuncs by shot type.
+    // From g_OptionUpdateFuncs and g_OptionDrawFuncs by character.
     int (*update)(Player *player, PlayerOption *option);
     int (*draw)(Player *player, PlayerOption *option);
 };
@@ -132,14 +132,25 @@ struct BombFuncs
     void (*funcs[5])(Player *player);
 };
 
-// The bomb update and draw callbacks of a shot type, from
-// g_BombData by character.
-struct BombData
-{
-    BombFuncs update;
-    BombFuncs draw;
-};
-extern BombData g_BombData[];
+// The bomb update and draw callbacks, by character * 2 and character *
+// 2 + 1.
+extern BombFuncs g_BombFuncs[];
+
+// The option callbacks, by character; NULL where a character has fewer
+// than four options.
+typedef int (*OptionFunc)(Player *player, PlayerOption *option);
+extern OptionFunc g_OptionUpdateFuncs[][4];
+extern OptionFunc g_OptionDrawFuncs[][4];
+
+// The shot type files of each character's two shot types, and its ANM,
+// by character.
+extern char *g_ShotFiles[];
+extern char *g_ShotFilesFocused[];
+extern char *g_PlayerAnmPaths[];
+
+// Loads the shot type file at `path` into `*out`, as th07's (0x44dd70).
+// Returns 0, or -1 if the file does not load.
+int LoadShotTypeFile(ShotTypeData **out, char *path);
 
 // The player's bomb, as th07's.
 struct PlayerBomb
