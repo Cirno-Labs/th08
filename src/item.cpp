@@ -181,6 +181,59 @@ void Item::CollectPower()
     g_GameManager.AddSubRank(1);
 }
 
+void Item::CollectPoint()
+{
+    int maxValue = g_GameManager.stats->unk_24;
+    int amount;
+
+    amount = (this->pos.y < g_Player.shotType->itemAutoCollectLine ? 1 : 0)
+                 ? maxValue
+                 : maxValue / 2 - (int)(this->pos.y - g_Player.shotType->itemAutoCollectLine) *
+                                      (g_GameManager.stats->unk_24 / 1000);
+    if (this->countsFullValue == 1)
+    {
+        amount = maxValue;
+    }
+    amount -= amount % 10;
+    if (g_GameManager.IsUnk22AtLow1())
+    {
+        amount += amount;
+    }
+    g_AsciiText.AddPopup(&this->pos, amount, amount >= maxValue ? 0xffffff00 : 0xffffffff);
+    if (amount >= maxValue)
+    {
+        this->countsFullValue = 1;
+    }
+    g_GameManager.AddScore(amount);
+    g_GameManager.stats->unk_2c++;
+    g_GameManager.stats->pointItemsTotal++;
+    g_Gui.frameItemsHideTimer = 2;
+    if (amount >= maxValue)
+    {
+        g_GameManager.AddSubRank(10);
+    }
+    else
+    {
+        g_GameManager.AddSubRank(3);
+    }
+    if (g_GameManager.stats->unk_34 >= 0)
+    {
+        for (;;)
+        {
+            Func440470();
+            if (g_GameManager.stats->pointItemsTotal >= g_GameManager.stats->unk_38)
+            {
+                g_GameManager.AddLifeOrBomb();
+                g_GameManager.stats->unk_34++;
+                continue;
+            }
+            break;
+        }
+    }
+    g_GameManager.hscr.pointItems++;
+    g_GameManager.RerollChecksumKeys();
+}
+
 void ItemManager::CollectAll()
 {
     Item *entry = this->activeList.next;

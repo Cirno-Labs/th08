@@ -24,6 +24,12 @@ struct Item
     // (0x440cf0, 0x441170). New in th08 as functions.
     void CollectPower();
     void CollectBigPower();
+    // What collecting a point item (type 1) does, as th07's UpdateItems:
+    // stats->unk_24 points above the auto-collect line or when it counts
+    // in full (which also marks it so), else half of it less
+    // unk_24 / 1000 per pixel below the line; doubled at unk22Low1. Then
+    // counts it and gives the extends it reaches (0x440e40).
+    void CollectPoint();
 
     Sprite sprite;
     D3DXVECTOR3 pos;

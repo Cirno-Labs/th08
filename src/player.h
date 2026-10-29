@@ -15,6 +15,15 @@ struct ShotTypeData
     unsigned char pad_0[0x4];
     // The bombs the player respawns with.
     float bombs;
+    unsigned char pad_8[0xc];
+    // The speed of the items drawn to the player, as th07's.
+    float itemPullSpeed;
+    // The width and height of the box the player collects items in, as
+    // th07's.
+    float itemCatchSize;
+    // Above this line the player draws the items in, as th07's (which had
+    // deathScoreShare before it).
+    float itemAutoCollectLine;
 };
 
 class Player
