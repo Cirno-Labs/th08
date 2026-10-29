@@ -945,6 +945,45 @@ int App::PlayMidi(int slot, int bgm)
     return 0;
 }
 
+int App::PlayMusic(char *path, int bgm)
+{
+    char *dot;
+    char wavFile[0x100];
+
+    if (g_App.musicMode == 2)
+    {
+        if (g_App.midi != NULL)
+        {
+            MidiPlayer *midi = g_App.midi;
+            midi->Stop();
+            midi->Load(path);
+            midi->Play();
+        }
+        if (!(g_GameManager.unk_3dbac >> 3 & 1) && !(g_GameManager.unk_3dbac >> 1 & 1))
+        {
+            g_GameManager.plst.bgmHeard[bgm] = 1;
+        }
+    }
+    else if (g_App.musicMode == 1)
+    {
+        strcpy(wavFile, path);
+        dot = strrchr(wavFile, '.');
+        dot[1] = 'w';
+        dot[2] = 'a';
+        dot[3] = 'v';
+        g_SoundPlayer.QueueSoundCommand(2, -1, wavFile);
+        if (!(g_GameManager.unk_3dbac >> 3 & 1) && !(g_GameManager.unk_3dbac >> 1 & 1))
+        {
+            g_GameManager.plst.bgmHeard[bgm] = 1;
+        }
+    }
+    else
+    {
+        return -1;
+    }
+    return 0;
+}
+
 inline void FreeData(void *data)
 {
     free(data);
