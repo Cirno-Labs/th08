@@ -790,3 +790,12 @@ int Gui::LoadMsg(char *path)
     }
     return 0;
 }
+
+void Gui::FreeMsgFile()
+{
+    if (this->impl->msg.msgFile != NULL)
+    {
+        g_MemoryManager.Free(this->impl->msg.msgFile);
+        this->impl->msg.msgFile = NULL;
+    }
+}
