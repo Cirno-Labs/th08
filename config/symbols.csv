@@ -468,7 +468,7 @@ address,size,name,symbol
 0x004338b0,10,Func4338b0,
 0x004338c0,10,Func4338c0,
 0x004338ca,93,Gui::OnUpdate,?OnUpdate@Gui@@SIHPAV1@@Z
-0x00433927,70,Func433927,
+0x00433927,70,Gui::OnDraw,?OnDraw@Gui@@SIHPAV1@@Z
 0x0043396d,1094,Func43396d,
 0x00433db3,5597,GuiImpl::RunMsg,?RunMsg@GuiImpl@@QAEHXZ
 0x004353ec,63,Func4353ec,

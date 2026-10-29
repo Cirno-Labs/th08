@@ -19,3 +19,16 @@ int Gui::OnUpdate(Gui *gui)
     gui->frameCounter++;
     return 1;
 }
+
+int Gui::OnDraw(Gui *gui)
+{
+    if (gui->impl->unk_22d84 != 0)
+    {
+        gui->Func43826b();
+    }
+    gui->impl->DrawMsg();
+    gui->DrawBanners();
+    gui->DrawHud();
+    gui->Func438a89();
+    return 1;
+}
