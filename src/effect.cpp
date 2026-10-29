@@ -952,3 +952,28 @@ int EffectManager::OnDraw(EffectManager *mgr)
     }
     return 1;
 }
+
+int EffectManager::OnDraw3()
+{
+    Effect *eff;
+
+    eff = this->drawList3.next;
+    while (eff != NULL)
+    {
+        if (eff->draw != NULL)
+        {
+            eff->draw(eff);
+        }
+        else
+        {
+            eff->sprite.pos = eff->pos;
+            eff->sprite.pos.x = g_GameManager.arena[0] + eff->sprite.pos.x;
+            eff->sprite.pos.y = g_GameManager.arena[1] + eff->sprite.pos.y;
+            eff->sprite.pos += eff->sprite.posOffset;
+            eff->sprite.pos.z = 0.04f;
+            g_SpriteEngine->Draw(&eff->sprite);
+        }
+        eff = eff->next;
+    }
+    return 1;
+}

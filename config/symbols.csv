@@ -358,7 +358,7 @@ address,size,name,symbol
 0x00427b50,158,EffectUpdateRingAt,?EffectUpdateRingAt@@YIHPAUEffect@@@Z
 0x00427bf0,778,EffectManager::OnUpdate,?OnUpdate@EffectManager@@SIHPAV1@@Z
 0x00427f00,501,EffectManager::OnDraw,?OnDraw@EffectManager@@SIHPAV1@@Z
-0x00428100,219,Func428100,
+0x00428100,219,EffectManager::OnDraw3,?OnDraw3@EffectManager@@QAEHXZ
 0x004281e0,290,Func4281e0,
 0x00428310,411,Func428310,
 0x004284b0,216,Func4284b0,
