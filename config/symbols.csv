@@ -114,7 +114,7 @@ address,size,name,symbol
 0x0040b6d0,283,Func40b6d0,
 0x0040b7f0,132,Func40b7f0,
 0x0040b880,25,Func40b880,
-0x0040b8a0,25,Func40b8a0,
+0x0040b8a0,25,MemoryManager::Free,?Free@MemoryManager@@QAEXPAX@Z
 0x0040b8c0,23,Func40b8c0,
 0x0040b8e0,27,Func40b8e0,
 0x0040b900,10,Func40b900,
@@ -2379,4 +2379,5 @@ address,size,name,symbol
 0x004b4284,4,CoUninitialize,__imp__CoUninitialize@0
 0x004b4288,4,CoInitialize,__imp__CoInitialize@4
 0x0164d540,,g_Log,?g_Log@@3VLog@@A
+0x0164f598,,g_MemoryManager,?g_MemoryManager@@3VMemoryManager@@A
 0x017ce758,,g_App,?g_App@@3VApp@@A

@@ -200,3 +200,9 @@ int MidiPlayer::LoadFile(int slot, char *path)
     }
     return 0;
 }
+
+void MidiPlayer::UnloadFile(int slot)
+{
+    g_MemoryManager.Free(this->fileData[slot]);
+    this->fileData[slot] = NULL;
+}

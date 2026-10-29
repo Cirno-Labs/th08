@@ -23,3 +23,14 @@ inline void *MemAlloc(int size)
 {
     return malloc(size);
 }
+
+// The object every allocation goes through in th08, in place of th07's
+// MemAlloc and MemFree. Alloc takes a name for the block: a class name,
+// "midi", or __FILE__ of an inline in global.h.
+class MemoryManager
+{
+public:
+    void *Alloc(int size, const char *name);
+    void Free(void *p);
+};
+extern MemoryManager g_MemoryManager;
