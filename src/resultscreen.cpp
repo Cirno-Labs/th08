@@ -104,3 +104,28 @@ int MoveCursorVertical(ResultScreen *screen, int count)
     }
     return 0;
 }
+
+int LoadScreenPlstChunk(ResultScreen *screen, int count)
+{
+    if (WAS_PRESSED_OR_HELD(0x10))
+    {
+        screen->spellCursor--;
+        if (screen->spellCursor < 0)
+        {
+            screen->spellCursor += count;
+        }
+        g_SoundPlayer.QueueSound(0xc, 0);
+        return -1;
+    }
+    if (WAS_PRESSED_OR_HELD(0x20))
+    {
+        screen->spellCursor++;
+        if (screen->spellCursor >= count)
+        {
+            screen->spellCursor -= count;
+        }
+        g_SoundPlayer.QueueSound(0xc, 0);
+        return 1;
+    }
+    return 0;
+}

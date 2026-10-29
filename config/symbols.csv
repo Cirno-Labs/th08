@@ -875,7 +875,7 @@ address,size,name,symbol
 0x0045a0b3,41,ResultScreen::`scalar deleting destructor',??_GResultScreen@@QAEPAXI@Z
 0x0045a0dc,24,ResultScreen::~ResultScreen,??1ResultScreen@@QAE@XZ
 0x0045a0f4,255,MoveCursorVertical,?MoveCursorVertical@@YIHPAVResultScreen@@H@Z
-0x0045a1f3,255,Func45a1f3,
+0x0045a1f3,255,LoadScreenPlstChunk,?LoadScreenPlstChunk@@YIHPAVResultScreen@@H@Z
 0x0045a2f2,267,Func45a2f2,
 0x0045a3fd,163,SpriteEngine::MoveSurface,?MoveSurface@SpriteEngine@@QAEXHH@Z
 0x0045a4a0,60,Func45a4a0,
