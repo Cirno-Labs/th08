@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">69% (770)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">29.03% (324)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">69.09% (771)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">28.94% (323)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="515.40" height="6" x="0" y="0" class="named"/>
-<rect width="14.73" height="6" x="515.40" y="0" class="decompiled"/>
-<rect width="216.87" height="6" x="530.13" y="0" class="todo"/>
+<rect width="516.07" height="6" x="0" y="0" class="named"/>
+<rect width="14.73" height="6" x="516.07" y="0" class="decompiled"/>
+<rect width="216.20" height="6" x="530.80" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -836,7 +836,7 @@
 <rect width="12" height="12" x="225" y="225" class="named"><title>0x0044cbf0 UpdateDyingState (1373 bytes)</title></rect>
 <rect width="12" height="12" x="240" y="225" class="decompiled"><title>0x0044d150 SpellCard::Func44d150 (37 bytes)</title></rect>
 <rect width="12" height="12" x="255" y="225" class="named"><title>0x0044d180 UpdateRespawningState (314 bytes)</title></rect>
-<rect width="12" height="12" x="270" y="225" class="todo"><title>0x0044d2c0 UpdateInvulnerability (338 bytes)</title></rect>
+<rect width="12" height="12" x="270" y="225" class="named"><title>0x0044d2c0 UpdateInvulnerability (338 bytes)</title></rect>
 <rect width="12" height="12" x="285" y="225" class="todo"><title>0x0044d420 ResetHomingAndText (267 bytes)</title></rect>
 <rect width="12" height="12" x="300" y="225" class="todo"><title>0x0044d530 Player::OnDraw (241 bytes)</title></rect>
 <rect width="12" height="12" x="315" y="225" class="todo"><title>0x0044d630 Player::OnDraw2 (24 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">60.54%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">38.45%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">60.61%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">38.38%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="452.21" height="6" x="0" y="0" class="named"/>
-<rect width="7.57" height="6" x="452.21" y="0" class="decompiled"/>
-<rect width="287.22" height="6" x="459.78" y="0" class="todo"/>
+<rect width="452.76" height="6" x="0" y="0" class="named"/>
+<rect width="7.57" height="6" x="452.76" y="0" class="decompiled"/>
+<rect width="286.67" height="6" x="460.33" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1494,7 +1494,7 @@
 <rect width="10.83" height="11.07" x="518.98" y="129.42" class="named"><title>0x0043eb60 LogError (343 bytes)</title></rect>
 <rect width="10.83" height="11.03" x="518.98" y="143.49" class="named"><title>0x0045d3f0 SoundPlayer::LoadSounds (342 bytes)</title></rect>
 <rect width="10.83" height="10.99" x="518.98" y="157.52" class="named"><title>0x004661b0 AnmLoaded::LoadSprite (341 bytes)</title></rect>
-<rect width="10.83" height="10.86" x="518.98" y="171.50" class="todo"><title>0x0044d2c0 UpdateInvulnerability (338 bytes)</title></rect>
+<rect width="10.83" height="10.86" x="518.98" y="171.50" class="named"><title>0x0044d2c0 UpdateInvulnerability (338 bytes)</title></rect>
 <rect width="10.83" height="10.82" x="518.98" y="185.37" class="named"><title>0x0043ea00 LogPrintf (337 bytes)</title></rect>
 <rect width="10.83" height="10.78" x="518.98" y="199.19" class="todo"><title>0x004326e0 Func4326e0 (336 bytes)</title></rect>
 <rect width="10.83" height="10.70" x="518.98" y="212.97" class="named"><title>0x00440cf0 Item::CollectPower (334 bytes)</title></rect>

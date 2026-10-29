@@ -772,3 +772,45 @@ void UpdateRespawningState(Player *player)
         player->deathbombFrames = g_Player.shotType->deathbombFrames;
     }
 }
+
+void UpdateInvulnerability(Player *player)
+{
+    if (player->respawnClearFrames != 0)
+    {
+        player->respawnClearFrames--;
+        // A hit area over the whole play area clears the bullets.
+        player->Func44de60(&player->pos, 768.0f, 896.0f, -1, 0);
+    }
+    if (player->playerState == 3)
+    {
+        player->unk_4 = 0;
+        if (player->invulnerabilityEffect != NULL)
+        {
+            player->invulnerabilityEffect->pos = player->pos;
+        }
+        player->unk_e2af4--;
+        if (player->unk_e2af4.AsFrames() <= 0)
+        {
+            if (player->invulnerabilityEffect != NULL)
+            {
+                player->invulnerabilityEffect->active = 0;
+                player->invulnerabilityEffect = NULL;
+            }
+            player->playerState = 0;
+            player->unk_e2af4 = 0;
+            player->sprite.color = 0xffffffff;
+        }
+        else if (player->unk_e2af4.AsFrames() % 8 < 2)
+        {
+            player->sprite.color = 0xfff02020;
+        }
+        else
+        {
+            player->sprite.color = 0xffffffff;
+        }
+    }
+    else
+    {
+        player->unk_e2af4++;
+    }
+}
