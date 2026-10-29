@@ -452,3 +452,25 @@ int SpriteEngine::StepAnmLoading()
     }
     return 0;
 }
+
+void SpriteEngine::ReleaseAnm(int slot)
+{
+    int i;
+
+    if (slot < 0 || slot >= ARRAY_SIZE(this->anms))
+    {
+        return;
+    }
+    if (this->anms[slot].file != NULL)
+    {
+        for (i = 0; i < this->anms[slot].anmCount; i++)
+        {
+            this->ReleaseTexture(&this->anms[slot].textures[i]);
+        }
+        g_MemoryManager.Free(this->anms[slot].textures);
+        g_MemoryManager.Free(this->anms[slot].sprites);
+        g_MemoryManager.Free(this->anms[slot].scripts);
+        g_MemoryManager.Free(this->anms[slot].file);
+        memset(&this->anms[slot], 0, sizeof(AnmLoaded));
+    }
+}

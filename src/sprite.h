@@ -259,6 +259,8 @@ public:
     void RenderText(Sprite *sprite, D3DCOLOR textColor, D3DCOLOR shadowColor, char *fmt, ...);
     // Frees ANM slot `slot` (0x466060).
     void ReleaseAnm(int slot);
+    // Releases `tex`'s texture and frees its image file.
+    void ReleaseTexture(AnmTexture *tex);
     // Releases the surfaces before the device is reset. Inline, defined
     // in the WinMain file.
     void ReleaseSurfaces();
