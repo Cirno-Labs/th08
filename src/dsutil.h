@@ -158,6 +158,15 @@ public:
     int UpdateFadeUp();
     // Fade 4: from full volume down to -1000. Not in th07.
     int UpdateFadeDown();
+    // Starts fade 1 over `seconds`, counted in frames at 60 per second.
+    // An out-of-line copy at the end of the sound object (0x45e3f0); th07
+    // set the fields in SoundPlayer::FadeOutBgm.
+    void FadeOut(float seconds)
+    {
+        this->fading = 1;
+        this->fadeFrames = seconds * 60.0f;
+        this->fadeTotal = this->fadeFrames;
+    }
 
     // Not in th06: releases the buffers and creates them again from
     // dsbd, with 16 notifications every m_dwNotifySize bytes.
