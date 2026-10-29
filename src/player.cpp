@@ -1015,3 +1015,26 @@ int Player::AddedCallback(Player *player)
     g_EnemyManager.unk_2e10 = player->unk_e2b2c;
     return 0;
 }
+
+int Player::DeletedCallback(Player *player)
+{
+    if (IsFreeingResources())
+    {
+        g_SpriteEngine->ReleaseAnm(5);
+        g_AsciiText.SetSummaryPendingInterrupt(99);
+        g_AsciiText.SetNearbyLabelInterrupt(0, 99);
+        g_AsciiText.SetNearbyLabelInterrupt(1, 99);
+        g_AsciiText.SetNearbyLabelInterrupt(2, 99);
+        if (g_Player.shotType != NULL)
+        {
+            g_MemoryManager.Free(g_Player.shotType);
+            g_Player.shotType = NULL;
+        }
+        if (g_Player.unk_e2a78 != NULL)
+        {
+            g_MemoryManager.Free(g_Player.unk_e2a78);
+            g_Player.unk_e2a78 = NULL;
+        }
+    }
+    return 0;
+}

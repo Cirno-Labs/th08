@@ -466,7 +466,7 @@ address,size,name,symbol
 0x00433850,35,BulletManager::RemoveChain,?RemoveChain@BulletManager@@SIXXZ
 0x00433880,33,Func433880,
 0x004338b0,10,IsLoadingResources,?IsLoadingResources@@YIHXZ
-0x004338c0,10,Func4338c0,
+0x004338c0,10,IsFreeingResources,?IsFreeingResources@@YIHXZ
 0x004338ca,93,Gui::OnUpdate,?OnUpdate@Gui@@SIHPAV1@@Z
 0x00433927,70,Gui::OnDraw,?OnDraw@Gui@@SIHPAV1@@Z
 0x0043396d,1094,GuiImpl::StartMsgScript,?StartMsgScript@GuiImpl@@QAEXH@Z
