@@ -791,3 +791,17 @@ int EffectUpdateRingTimed(Effect *effect)
     }
     return 1;
 }
+
+int EffectUpdateRingFade(Effect *effect)
+{
+    effect->verticesDirty = 1;
+    effect->ringWidth = effect->sprite.scaleY;
+    effect->radius = effect->sprite.pos.x;
+    effect->unk_32c = effect->sprite.pos.y;
+    effect->angle = effect->sprite.rotation.z;
+    if (effect->sprite.alpha == 0)
+    {
+        return 0;
+    }
+    return 1;
+}
