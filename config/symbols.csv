@@ -33,7 +33,7 @@ address,size,name,symbol
 0x00405e10,1803,Func405e10,
 0x00406520,42,ChainElem::SetCallback,?SetCallback@ChainElem@@QAEXP6IHPAX@Z@Z
 0x00406550,40,Func406550,
-0x00406580,26,Func406580,
+0x00406580,26,App::GetNoFog,?GetNoFog@App@@QAEHXZ
 0x004065a0,22,Func4065a0,
 0x004065c0,40,Func4065c0,
 0x004065f0,25,Func4065f0,
@@ -495,8 +495,8 @@ address,size,name,symbol
 0x00438046,517,Func438046,
 0x0043826b,1982,Func43826b,
 0x00438a29,24,Func438a29,
-0x00438a41,24,Func438a41,
-0x00438a59,24,Func438a59,
+0x00438a41,24,App::GetNoDepthTest,?GetNoDepthTest@App@@QAEHXZ
+0x00438a59,24,App::GetNoColorBlending,?GetNoColorBlending@App@@QAEHXZ
 0x00438a71,24,Func438a71,
 0x00438a89,1231,Func438a89,
 0x00438f58,145,Func438f58,
@@ -2408,6 +2408,7 @@ address,size,name,symbol
 0x004c81b0,,g_SoundPaths,?g_SoundPaths@@3PAPADA
 0x004c8704,,g_FileModes,?g_FileModes@@3PAPADA
 0x004cce20,,g_AsciiText,?g_AsciiText@@3VAsciiText@@A
+0x004e4b50,,g_FogColorChanged,?g_FogColorChanged@@3EA
 0x0160f508,,g_GameManager,?g_GameManager@@3VGameManager@@A
 0x0164d388,,g_JoyCaps,?g_JoyCaps@@3UtagJOYCAPSA@@A
 0x0164d51c,,g_ShotHeldFrames,?g_ShotHeldFrames@@3GA

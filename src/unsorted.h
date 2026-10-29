@@ -208,6 +208,11 @@ public:
     int GetForce16BitTextures();
     int GetReferenceRasterizer();
     int GetWindowed();
+    // More of them, out-of-line copies from other objects: noDepthTest
+    // (0x438a41), noColorBlending (0x438a59) and noFog (0x406580).
+    int GetNoDepthTest();
+    int GetNoColorBlending();
+    int GetNoFog();
     // flags.preloadBgm. Inline: the copy at 0x449c79 comes from the /Os
     // music screen object.
     int GetPreloadBgm()
@@ -428,6 +433,9 @@ void ClearViewport(D3DCOLOR color);
 // Sets the device's render and texture stage states, as the config
 // flags pick them, and forgets SpriteEngine's cached states.
 void SetDefaultRenderStates();
+// Set by SetDefaultRenderStates; th06 sets g_Stage.fogColorChanged
+// there.
+extern BYTE g_FogColorChanged;
 // Prints `name` and then 可 or 不可 (yes or no), by whether `caps` has
 // any of `flag`, at `out`; returns the end of the text.
 char *AppendCapsFlagText(char *name, DWORD caps, DWORD flag, char *out);
@@ -483,9 +491,9 @@ extern GameWindow g_GameWindow;
 
 // Creates g_AppMutex and returns -1 if another instance holds it, as
 // th07's CheckSingleInstance. Also sets g_GameWindow.forceClockPacing
-// when the game was started through a shortcut or a path other than its own, and
-// sets bit 0x40 of g_App.stateFlags if the startup info has no title,
-// clearing it otherwise.
+// when the game was started through a shortcut or a path other than its
+// own, and sets bit 0x40 of g_App.stateFlags if the startup info has no
+// title, clearing it otherwise.
 int CheckSingleInstance(HINSTANCE instance);
 // Brings `hwnd` to the foreground, lifting the foreground lock timeout
 // for the time.
