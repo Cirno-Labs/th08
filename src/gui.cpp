@@ -361,3 +361,12 @@ void Gui::ShowBonusPopup(int bonus)
     this->impl->bonusPopup.value = bonus;
     g_App.redrawFrames = 2;
 }
+
+void Gui::ShowFullPowerPopup(int points, int kind)
+{
+    this->impl->fullPowerPopup.pos = D3DXVECTOR3(416.0f, 168.0f, 0.0f);
+    this->impl->fullPowerPopup.shown = kind;
+    this->impl->fullPowerPopup.timer = 0;
+    this->impl->fullPowerPopup.value = points;
+    g_App.redrawFrames = 2;
+}
