@@ -2444,6 +2444,7 @@ address,size,name,symbol
 0x004c8010,,g_ShotTypeNames,?g_ShotTypeNames@@3PAPADA
 0x004c8040,,g_SoundInfos,?g_SoundInfos@@3PAUSoundInfo@@A
 0x004c81b0,,g_SoundPaths,?g_SoundPaths@@3PAPADA
+0x004c8250,,g_PracticeStageNames,?g_PracticeStageNames@@3PAPADA
 0x004c829c,,g_FullWidthDigits,?g_FullWidthDigits@@3PAPADA
 0x004c8704,,g_FileModes,?g_FileModes@@3PAPADA
 0x004cce00,,g_AsciiDrawChain,?g_AsciiDrawChain@@3UChainElem@@A

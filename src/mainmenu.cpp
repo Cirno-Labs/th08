@@ -188,6 +188,54 @@ void DrawFan(D3DXVECTOR3 *center, D3DCOLOR color, float arc, float diameter)
     g_SpriteEngine->DrawColoredFan(&sprite, vertices, 0x40);
 }
 
+int MainMenu::DrawPracticeScores()
+{
+    Sprite *text;
+    int i;
+    WORD cleared;
+    D3DXVECTOR3 pos;
+
+    g_AsciiText.SetColor(0xffffffff);
+    g_AsciiText.SetHighlight(0);
+    text = &this->sprites[0x8d];
+    pos = text->pos;
+    pos.y -= 96.0f;
+    g_AsciiText.AddFormat(&pos, "Stage    HI-Score");
+    pos.y += 16.0f;
+    cleared = g_GameManager.clrds[g_GameManager.character].stagesCleared[g_App.defaultDifficulty];
+    if (cleared == 0)
+    {
+        cleared = 1;
+    }
+    if (cleared & 0x80)
+    {
+        cleared |= 0x18;
+    }
+    for (i = 0; i < ARRAY_SIZE(g_PracticeStageNames); i++)
+    {
+        g_AsciiText.SetHighlight(i == this->cursor);
+        if (i == this->cursor)
+        {
+            g_AsciiText.SetColor(0xffffffff);
+        }
+        else if (cleared & 1 << i)
+        {
+            g_AsciiText.SetColor(0xffa0a0a0);
+        }
+        else
+        {
+            g_AsciiText.SetColor(0xff404040);
+        }
+        g_AsciiText.AddFormat(&pos, "%s %9d0 (%3d)", g_PracticeStageNames[i],
+                              g_GameManager.pscrs[g_GameManager.character].scores[i][g_App.defaultDifficulty],
+                              g_GameManager.pscrs[g_GameManager.character].playCount[i][g_App.defaultDifficulty]);
+        pos.y += 16.0f;
+    }
+    g_AsciiText.SetColor(0xffffffff);
+    g_AsciiText.SetHighlight(0);
+    return 1;
+}
+
 int MainMenu::MoveMenuCursor(int count)
 {
     if (count == 0)

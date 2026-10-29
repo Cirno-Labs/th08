@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">55.02% (614)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">43.19% (482)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">55.11% (615)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">43.10% (481)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="410.98" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="410.98" y="0" class="decompiled"/>
-<rect width="322.63" height="6" x="424.37" y="0" class="todo"/>
+<rect width="411.65" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="411.65" y="0" class="decompiled"/>
+<rect width="321.96" height="6" x="425.04" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -1088,7 +1088,7 @@
 <rect width="12" height="12" x="255" y="300" class="todo"><title>0x0046d7f9 Func46d7f9 (2365 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="300" class="todo"><title>0x0046e136 MainMenu::UpdateReplayMenu (3671 bytes)</title></rect>
 <rect width="12" height="12" x="285" y="300" class="todo"><title>0x0046ef8d MainMenu::DrawReplayMenu (1180 bytes)</title></rect>
-<rect width="12" height="12" x="300" y="300" class="todo"><title>0x0046f429 MainMenu::DrawPracticeScores (418 bytes)</title></rect>
+<rect width="12" height="12" x="300" y="300" class="named"><title>0x0046f429 MainMenu::DrawPracticeScores (418 bytes)</title></rect>
 <rect width="12" height="12" x="315" y="300" class="todo"><title>0x0046f5cb MainMenu::DrawState16 (1940 bytes)</title></rect>
 <rect width="12" height="12" x="330" y="300" class="named"><title>0x0046fd5f GameManager::IsSpellCardSeen (99 bytes)</title></rect>
 <rect width="12" height="12" x="345" y="300" class="named"><title>0x0046fdc2 DrawFan (510 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">46.33%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">52.68%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">46.42%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">52.59%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="346.10" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="346.10" y="0" class="decompiled"/>
-<rect width="393.50" height="6" x="353.50" y="0" class="todo"/>
+<rect width="346.78" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="346.78" y="0" class="decompiled"/>
+<rect width="392.82" height="6" x="354.18" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1449,7 +1449,7 @@
 <rect width="12.68" height="12.28" x="551.64" y="100.12" class="todo"><title>0x00449ca0 Func449ca0 (422 bytes)</title></rect>
 <rect width="12.60" height="12.28" x="567.31" y="100.12" class="decompiled"><title>0x00403600 AsciiText::Func403600 (420 bytes)</title></rect>
 <rect width="12.60" height="12.28" x="582.91" y="100.12" class="named"><title>0x00474fa0 DatArchive::BuildEntryTable (420 bytes)</title></rect>
-<rect width="12.53" height="12.28" x="598.52" y="100.12" class="todo"><title>0x0046f429 MainMenu::DrawPracticeScores (418 bytes)</title></rect>
+<rect width="12.53" height="12.28" x="598.52" y="100.12" class="named"><title>0x0046f429 MainMenu::DrawPracticeScores (418 bytes)</title></rect>
 <rect width="12.42" height="12.28" x="614.04" y="100.12" class="todo"><title>0x00415d60 Func415d60 (415 bytes)</title></rect>
 <rect width="12.34" height="12.28" x="629.46" y="100.12" class="todo"><title>0x0042a680 Func42a680 (413 bytes)</title></rect>
 <rect width="12.27" height="12.28" x="644.80" y="100.12" class="decompiled"><title>0x00403460 AsciiText::Func403460 (411 bytes)</title></rect>

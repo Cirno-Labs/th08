@@ -106,9 +106,9 @@ public:
 
     // The selected entry.
     int cursor;
-    // The cursor the title menu last highlighted.
+    int unk_4;
+    // The cursor the menus last highlighted.
     int prevCursor;
-    int unk_8;
     int subState;
     // Counts the frames in the current state.
     int stateFrames;
@@ -179,6 +179,14 @@ void DrawFan(D3DXVECTOR3 *center, D3DCOLOR color, float arc, float diameter);
 extern char g_FullWidthNumber[0x40];
 // "０" to "９".
 extern char *g_FullWidthDigits[10];
+
+// The practice menu's stage names.
+extern char *g_PracticeStageNames[8];
+// The help line the key config shows for each entry.
+extern char *g_KeyConfigHelpTexts[12];
+// The button the key config saw pressed last frame, so that a held
+// button is assigned once.
+extern short g_LastPressedKey;
 
 // The title menu SetUpTitleScene created. New in th08: the loading
 // thread reaches the menu through it.
