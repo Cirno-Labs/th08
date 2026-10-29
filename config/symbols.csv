@@ -885,7 +885,7 @@ address,size,name,symbol
 0x0045a5e0,865,LoadScoreDat,?LoadScoreDat@@YIPAUScoreDat@@PAD@Z
 0x0045a950,362,LoadHighScores,?LoadHighScores@@YIKPAXPAUListNode@@HHPAE@Z
 0x0045aac0,175,LoadSpellCards,?LoadSpellCards@@YIHPAXPAUCatk@@@Z
-0x0045ab70,136,Func45ab70,
+0x0045ab70,136,LoadLsnmChunk,?LoadLsnmChunk@@YIHPAXPAULsnm@@@Z
 0x0045ac00,136,LoadFlspChunk,?LoadFlspChunk@@YIHPAUScoreDat@@PAUFlsp@@@Z
 0x0045ac90,368,LoadClears,?LoadClears@@YIHPAUScoreDat@@PAUClrd@@@Z
 0x0045ae00,295,LoadPracticeScores,?LoadPracticeScores@@YIHPAUScoreDat@@PAUPscr@@@Z

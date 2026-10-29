@@ -91,6 +91,18 @@ struct Flsp
 };
 ASSERT_SIZE(Flsp, 0x20);
 
+// The chunk with the last name entered ("LSNM"), as th07's.
+struct Lsnm
+{
+    DWORD magic;
+    WORD size;
+    WORD size2;
+    BYTE version;
+    BYTE unk_09[0x3];
+    char name[0xc];
+};
+ASSERT_SIZE(Lsnm, 0x18);
+
 // "CATK": a spell card's record (version 3), by card number (222).
 struct Catk
 {
@@ -192,6 +204,9 @@ ScoreDat *LoadScoreDat(char *path);
 int LoadClears(ScoreDat *scoreDat, Clrd *clrds);
 int LoadSpellCards(void *scoreDat, Catk *catks);
 int LoadFlspChunk(ScoreDat *scoreDat, Flsp *flsp);
+// Copies the score file's version 1 "LSNM" chunk to `lsnm`. Returns 1,
+// or 0 if there is none.
+int LoadLsnmChunk(void *scoreDat, Lsnm *lsnm);
 int LoadPracticeScores(ScoreDat *scoreDat, Pscr *pscrs);
 // Copies the score file's last "PLST" chunk to `plst`. Returns 0.
 int LoadPlstChunk(ScoreDat *scoreDat, Plst *plst);

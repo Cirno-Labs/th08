@@ -234,3 +234,24 @@ int LoadSpellCards(void *scoreDat, Catk *catks)
     }
     return 0;
 }
+
+int LoadLsnmChunk(void *scoreDat, Lsnm *lsnm)
+{
+    Lsnm *chunk;
+    int left;
+    ScoreDat *dat1 = (ScoreDat *)scoreDat;
+
+    chunk = (Lsnm *)((BYTE *)dat1 + dat1->dataOffset);
+    left = dat1->fileSize - dat1->dataOffset;
+    while (left > 0)
+    {
+        if (chunk->magic == 0x4d4e534c && chunk->version == 1)
+        {
+            *lsnm = *chunk;
+            return 1;
+        }
+        left -= chunk->size;
+        chunk = (Lsnm *)((BYTE *)chunk + chunk->size);
+    }
+    return 0;
+}
