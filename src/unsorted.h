@@ -1445,14 +1445,60 @@ int LoadScoreFile();
 // 999999 as `max`, which it ignores.
 void IncrementStatCounter(DWORD *count, DWORD max);
 
-// The game's HUD and dialogue, at 0x160f428. Only what is known so far.
+// The Gui's state behind Gui::impl, as th07's GuiImpl (0x230b8 bytes,
+// "FRScreenImplInf"). Only the fields known so far.
+struct GuiImpl
+{
+    // Runs the dialogue script, as th07's (0x433db3).
+    int RunMsg();
+    // Draws the dialogue, as th07's (0x43542b).
+    int DrawMsg();
+
+    unsigned char unk_0[0x2181c];
+    // The dialogue script running, -1 for none, as th07's
+    // msg.scriptIndex.
+    int msgScriptIndex;
+    unsigned char unk_21820[0x1558];
+    // While it is above 0, the dialogue does not hold the timeline, as
+    // th07's msg.timelineRelease.
+    DWORD msgTimelineRelease;
+    // Whether the dialogue can be skipped, as th07's msg.skippable.
+    BYTE msgSkippable;
+    unsigned char unk_22d7d[0x7];
+    // Gui::OnDraw runs Func43826b while it is set.
+    int unk_22d84;
+    unsigned char unk_22d88[0x330];
+};
+ASSERT_SIZE(GuiImpl, 0x230b8);
+
+// The game's HUD and dialogue, at 0x160f428 (0x9c bytes), as th07's.
+// Only the fields known so far.
 class Gui
 {
 public:
+    // The update chain callback, as th07's: unless g_GameManager.isFrozen
+    // is set, updates the interface and the dialogue, keeps
+    // g_App.redrawFrames at 8 or more while button 0x100 is held and
+    // counts frameCounter up. Returns 1.
+    static int OnUpdate(Gui *gui);
+    // The draw chain callback: Func43826b while impl->unk_22d84 is set,
+    // then the dialogue, the banners, the HUD and Func438a89. Returns 1.
+    static int OnDraw(Gui *gui);
+    // Whether the dialogue holds the timeline: impl is set,
+    // msgTimelineRelease is 0 and a script runs, as th07's.
+    BOOL MsgHoldsTimeline();
     // Whether a dialogue runs, and whether it can be skipped, as th07's
     // (0x4358bb, 0x437dc7).
     int IsMsgRunning();
     int IsMsgSkippable();
+    // Updates the HUD's sprites and values, as th07's (0x435900).
+    void UpdateInterface();
+    // Draws the HUD and the banners, as th07's (0x43625d, 0x43741d).
+    void DrawHud();
+    void DrawBanners();
+    // Drawn by OnDraw (0x43826b, 0x438a89).
+    void Func43826b();
+    void Func438a89();
     // Called by GameManager::OnUpdate when the result screen's mode ends
     // without a scene to go to (0x438f58).
     void Func438f58();
@@ -1462,11 +1508,15 @@ public:
     // Removes the Gui's chain elements, as th07's (0x437d64).
     static void RemoveChain();
 
-    DWORD unk_0;
+    // The frames the Gui has run, as th07's.
+    int frameCounter;
     // Set to 2 when the lives or bombs change, as th07's.
     unsigned int livesChanged : 2;
     unsigned int bombsChanged : 2;
+    GuiImpl *impl;
+    unsigned char unk_c[0x90];
 };
+ASSERT_SIZE(Gui, 0x9c);
 extern Gui g_Gui;
 
 // The thread LoadBgm starts, with the main window: streams the wave music
