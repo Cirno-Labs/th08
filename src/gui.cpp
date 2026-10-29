@@ -336,3 +336,9 @@ int Gui::RegisterChain()
 void DebugPrint2(const char *fmt, ...)
 {
 }
+
+void Gui::RemoveChain()
+{
+    g_Chain.Remove(&g_GuiCalcChain);
+    g_Chain.Remove(&g_GuiDrawChain);
+}
