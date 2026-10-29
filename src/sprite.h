@@ -246,6 +246,15 @@ struct VertexTex1DiffuseXyz
     D3DXVECTOR2 uv;
 };
 
+// A vertex with a transformed position and a color, as
+// D3DFVF_XYZRHW | D3DFVF_DIFFUSE.
+struct VertexDiffuseXyzrwh
+{
+    D3DXVECTOR3 pos;
+    float w;
+    D3DCOLOR diffuse;
+};
+
 // An image stored in an ANM file, its pixels following the header, as
 // th07's.
 struct AnmImage
@@ -626,6 +635,11 @@ public:
     // texture and blend mode, as DrawQuad's end. Returns 0, or -1 when
     // `vm` is hidden or transparent. New in th08.
     int DrawVertexQuad(Sprite *vm, VertexTex1DiffuseXyzrwh *quad);
+    // Draws the `count` vertices from `vertices` as an untextured
+    // triangle fan in their own colors, with `vm`'s blend mode and no z
+    // writes, after the pending batch, then has the next sprite set its
+    // states again. Returns 0. New in th08.
+    int DrawColoredFan(Sprite *vm, VertexDiffuseXyzrwh *vertices, int count);
     // Sends interrupt `interrupt` to the `count` sprites from `vms` that
     // show a loaded sprite, as th07's.
     void SendInterruptToLoadedSprites(Sprite *vms, int count, short interrupt);
