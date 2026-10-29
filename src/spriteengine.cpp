@@ -578,3 +578,80 @@ void SpriteEngine::RenderTextCentered(Sprite *vm, D3DCOLOR color, D3DCOLOR shado
                                    color, shadowColor, buf, vm->spriteData->scaleX, vm->spriteData->scaleY);
     vm->flags |= 1;
 }
+
+int SpriteEngine::LoadSurface(int surface, char *path)
+{
+    void *data;
+    int size;
+    IDirect3DSurface8 *srcSurface;
+
+    if (this->surfaces[surface] != NULL)
+    {
+        this->ReleaseSurface(surface);
+    }
+    if (this->surfaceFiles[surface] == NULL)
+    {
+        data = LoadFileData(path, &size, 0);
+        if (data == NULL)
+        {
+            LogError(&g_Log, "%sが読み込めないです。\r\n", path);
+            return -1;
+        }
+    }
+    else
+    {
+        data = this->surfaceFiles[surface];
+        size = this->surfaceFileSizes[surface];
+        this->surfaceFiles[surface] = NULL;
+    }
+    if (g_App.d3dDevice->CreateImageSurface(640, 1024, g_App.presentParams.BackBufferFormat, &srcSurface) != D3D_OK)
+    {
+        return -1;
+    }
+    if (D3DXLoadSurfaceFromFileInMemory(srcSurface, NULL, NULL, data, size, NULL, D3DX_FILTER_NONE, 0,
+                                        &this->surfaceInfos[surface]) != D3D_OK)
+    {
+        goto fail;
+    }
+    if (g_App.d3dDevice->CreateRenderTarget(this->surfaceInfos[surface].Width, this->surfaceInfos[surface].Height,
+                                            g_App.presentParams.BackBufferFormat, D3DMULTISAMPLE_NONE, TRUE,
+                                            &this->surfaces[surface]) != D3D_OK &&
+        g_App.d3dDevice->CreateImageSurface(this->surfaceInfos[surface].Width, this->surfaceInfos[surface].Height,
+                                            g_App.presentParams.BackBufferFormat,
+                                            &this->surfaces[surface]) != D3D_OK)
+    {
+        goto fail;
+    }
+    if (g_App.d3dDevice->CreateImageSurface(this->surfaceInfos[surface].Width, this->surfaceInfos[surface].Height,
+                                            g_App.presentParams.BackBufferFormat,
+                                            &this->surfacesBackup[surface]) != D3D_OK)
+    {
+        goto fail;
+    }
+    if (D3DXLoadSurfaceFromSurface(this->surfaces[surface], NULL, NULL, srcSurface, NULL, NULL, D3DX_FILTER_NONE, 0) !=
+        D3D_OK)
+    {
+        goto fail;
+    }
+    if (D3DXLoadSurfaceFromSurface(this->surfacesBackup[surface], NULL, NULL, srcSurface, NULL, NULL, D3DX_FILTER_NONE,
+                                   0) != D3D_OK)
+    {
+        goto fail;
+    }
+    if (srcSurface != NULL)
+    {
+        srcSurface->Release();
+        srcSurface = NULL;
+    }
+    g_MemoryManager.Free(data);
+    return 0;
+
+fail:
+    if (srcSurface != NULL)
+    {
+        srcSurface->Release();
+        srcSurface = NULL;
+    }
+    g_MemoryManager.Free(data);
+    return -1;
+}
