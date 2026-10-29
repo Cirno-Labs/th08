@@ -989,7 +989,7 @@ address,size,name,symbol
 0x00466000,91,SpriteEngine::StepAnmLoading,?StepAnmLoading@SpriteEngine@@QAEHXZ
 0x00466060,243,SpriteEngine::ReleaseAnm,?ReleaseAnm@SpriteEngine@@QAEXH@Z
 0x00466160,72,Func466160,
-0x004661b0,341,Func4661b0,
+0x004661b0,341,AnmLoaded::LoadSprite,?LoadSprite@AnmLoaded@@QAEXHPAUSpriteData@@@Z
 0x00466310,145,Func466310,
 0x004663b0,238,SpriteEngine::RenderText,?RenderText@SpriteEngine@@QAAXPAVSprite@@KKPADZZ
 0x004664a0,432,Func4664a0,

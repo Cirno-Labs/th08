@@ -189,6 +189,9 @@ class AnmLoaded
 public:
     // Starts `script` on `vm` (0x45e580).
     void SetScript(Sprite *vm, void *script);
+    // Copies `sprite` into sprite `index` and works out its texture
+    // coordinates and size, as th07's SpriteEngine::LoadSprite.
+    void LoadSprite(int index, SpriteData *sprite);
     // Starts script `script` of this file on `vm`, at the origin with
     // no offset, as th07's SpriteEngine::StartScriptAtOrigin. Inline, but
     // too large to expand in /Ob1 files: they call the copy at 0x40b910

@@ -364,3 +364,74 @@ AnmLoaded *SpriteEngine::PostloadAnm(AnmLoaded *anm)
     anm->loadStep = 0;
     return anm;
 }
+
+int SpriteEngine::LoadAnmSprites(AnmLoaded *anm, int index, int spriteOffset, int scriptOffset, AnmFile *file)
+{
+    SpriteData data;
+    int *entries;
+    int k;
+    AnmSprite *rawSprite;
+    char *name;
+    D3DSURFACE_DESC desc;
+    AnmFile *anmHeader;
+    int highest;
+
+    highest = 0;
+    if (file == NULL)
+    {
+        LogError(&g_Log, "アニメが読み込めません。データが失われてるか壊れています\r\n");
+        return -1;
+    }
+    anmHeader = file;
+    if (anmHeader->version != 3)
+    {
+        LogError(&g_Log, "アニメのバージョンが違います\r\n");
+        return -1;
+    }
+    if (!anmHeader->hasImage)
+    {
+        name = (char *)anmHeader + anmHeader->nameOffset;
+        if (*name == '@')
+        {
+            this->CreateTexture(&anm->textures[index], anmHeader->width, anmHeader->height, anmHeader->format);
+        }
+        else if (this->LoadTexture(&anm->textures[index], anmHeader->format, anmHeader->colorKey) != 0)
+        {
+            LogError(&g_Log, "テクスチャ %s が作成できません。データが失われてるか壊れています\r\n", name);
+            return -1;
+        }
+    }
+    else if (this->CreateTextureFromImage(&anm->textures[index],
+                                          (AnmImage *)((BYTE *)anmHeader + anmHeader->imageOffset),
+                                          anmHeader->format) != 0)
+    {
+        LogError(&g_Log, "テクスチャが読み込めません。データが失われてるか壊れています\r\n");
+        return -1;
+    }
+    anm->textures[index].texture->SetPriority(anmHeader->priority);
+    anm->textures[index].texture->PreLoad();
+    anm->textures[index].texture->GetLevelDesc(0, &desc);
+    entries = anmHeader->spriteOffsets;
+    for (k = 0; k < anmHeader->numSprites; k++, entries++)
+    {
+        rawSprite = (AnmSprite *)((char *)anmHeader + *entries);
+        data.sourceFileIndex = anm->slot;
+        data.texture = anm->textures[index].texture;
+        data.scaleX = (float)desc.Width / anmHeader->width;
+        data.scaleY = (float)desc.Height / anmHeader->height;
+        data.startX = data.scaleX * rawSprite->x;
+        data.startY = data.scaleY * rawSprite->y;
+        data.endX = (rawSprite->x + rawSprite->width) * data.scaleX;
+        data.endY = (rawSprite->y + rawSprite->height) * data.scaleY;
+        data.textureWidth = desc.Width;
+        data.textureHeight = desc.Height;
+        anm->LoadSprite(spriteOffset, &data);
+        spriteOffset++;
+    }
+    for (k = 0; k < anmHeader->numScripts; k++, entries += 2)
+    {
+        anm->scripts[scriptOffset] = (char *)anmHeader + entries[1];
+        scriptOffset++;
+    }
+    return highest + 1;
+}
