@@ -314,7 +314,7 @@ int GameManager::OnUpdate(GameManager *mgr)
             g_GameManager.checksumValue = -9999.0f;
         }
     }
-    g_App.d3dDevice->Clear(0, NULL, D3DCLEAR_ZBUFFER, g_Stage.fogColor, 1.0f, 0);
+    g_App.d3dDevice->Clear(0, NULL, D3DCLEAR_ZBUFFER, g_Stage.fog.color, 1.0f, 0);
     if (mgr->isPaused == 1 || mgr->isPaused == 2 || mgr->isInContinueMenu)
     {
         return 3;
@@ -766,19 +766,19 @@ void GameManager::LoadingThread(GameManager *arg)
         case 6:
             if (!g_GameManager.IsPracticingSpellCardIn(0x77, 0x7a))
             {
-                g_Stage.unk_b34 = 2;
+                g_Stage.dialogueScriptOffset = 2;
             }
             break;
         case 7:
             if (!g_GameManager.IsPracticingSpellCardIn(0x93, 0x96))
             {
-                g_Stage.unk_b34 = 2;
+                g_Stage.dialogueScriptOffset = 2;
             }
             break;
         case 8:
             if (!g_GameManager.IsPracticingSpellCardIn(0xbf, 0xc1) && !g_GameManager.IsPracticingSpellCard(0xd5))
             {
-                g_Stage.unk_b34 = 2;
+                g_Stage.dialogueScriptOffset = 2;
             }
             break;
         }

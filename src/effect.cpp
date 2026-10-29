@@ -393,10 +393,10 @@ int EffectUpdateBossPetal(Effect *effect)
         }
     }
     effect->sprite.flags |= 0x20000;
-    effect->sprite.color2Rgb[2] = (DWORD)effect->sprite.colorRgb[2] * g_Stage.unk_a34[2] >> 8;
-    effect->sprite.color2Rgb[1] = (DWORD)effect->sprite.colorRgb[1] * g_Stage.unk_a34[1] >> 8;
-    effect->sprite.color2Rgb[0] = (DWORD)effect->sprite.colorRgb[0] * g_Stage.unk_a34[0] >> 8;
-    effect->sprite.color2Alpha = (DWORD)effect->sprite.alpha * g_Stage.unk_a34[3] >> 8;
+    effect->sprite.color2Rgb[2] = (DWORD)effect->sprite.colorRgb[2] * g_Stage.unk_844.colorRgb[2] >> 8;
+    effect->sprite.color2Rgb[1] = (DWORD)effect->sprite.colorRgb[1] * g_Stage.unk_844.colorRgb[1] >> 8;
+    effect->sprite.color2Rgb[0] = (DWORD)effect->sprite.colorRgb[0] * g_Stage.unk_844.colorRgb[0] >> 8;
+    effect->sprite.color2Alpha = (DWORD)effect->sprite.alpha * g_Stage.unk_844.alpha >> 8;
     return 1;
 }
 
@@ -1055,8 +1055,8 @@ int EffectManager::AddedCallback(EffectManager *mgr)
 {
     mgr->Reset();
     mgr->anm = g_SpriteEngine->GetAnm(6);
-    g_Stage.unk_b34 = 0;
-    g_Stage.unk_b30 = 2;
+    g_Stage.dialogueScriptOffset = 0;
+    g_Stage.dialogueSpriteCount = 2;
     if (!IsRestarting())
     {
         if (!g_GameManager.IsInSpellCardPractice() || g_GameManager.unk_3dbb0 < 0xd8)

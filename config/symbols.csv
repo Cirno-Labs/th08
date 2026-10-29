@@ -83,8 +83,8 @@ address,size,name,symbol
 0x00407140,20,AsciiText::GetSummaryPendingInterrupt,?GetSummaryPendingInterrupt@AsciiText@@QAEHXZ
 0x00407160,24,AsciiText::ClearStrings,?ClearStrings@AsciiText@@QAEXXZ
 0x00407180,25,AsciiText::SetGlyphWidth,?SetGlyphWidth@AsciiText@@QAEXH@Z
-0x004071a0,513,Func4071a0,
-0x004073b0,77,Func4073b0,
+0x004071a0,513,Stage::Stage,??0Stage@@QAE@XZ
+0x004073b0,77,StageCamera::StageCamera,??0StageCamera@@QAE@XZ
 0x00407400,6291,Func407400,
 0x00408d40,21,cosf,@cosf@4
 0x00408d60,577,Func408d60,
@@ -2467,8 +2467,6 @@ address,size,name,symbol
 0x004e3fd0,,g_AsciiCalcChain,?g_AsciiCalcChain@@3UChainElem@@A
 0x004e3ff0,,g_AsciiDrawChain2,?g_AsciiDrawChain2@@3UChainElem@@A
 0x004e4030,,g_Stage,?g_Stage@@3VStage@@A
-0x004e4b50,,g_FogColorChanged,?g_FogColorChanged@@3EA
-0x004ea3f4,,g_CameraSizeOffset,?g_CameraSizeOffset@@3UD3DXVECTOR3@@A
 0x004ea670,,g_SpellCard,?g_SpellCard@@3USpellCard@@A
 0x004ece60,,g_EffectManager,?g_EffectManager@@3VEffectManager@@A
 0x00577eb4,,g_EtamaAnm,?g_EtamaAnm@@3PAVAnmLoaded@@A

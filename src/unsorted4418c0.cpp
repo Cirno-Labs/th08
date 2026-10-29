@@ -745,7 +745,7 @@ void SetDefaultRenderStates()
         g_SpriteEngine->ClearTexture();
         g_SpriteEngine->ClearUnk2e4d4();
     }
-    g_FogColorChanged = 1;
+    g_Stage.fogColorChanged = 1;
 }
 
 int CheckSingleInstance(HINSTANCE instance)

@@ -1405,7 +1405,7 @@ int SpriteEngine::ProjectSprite(Sprite *vm)
     {
         return -1;
     }
-    D3DXVec3Project(&edge, &g_CameraSizeOffset, &g_App.viewport, (D3DXMATRIX *)&g_App.projectionMatrix,
+    D3DXVec3Project(&edge, &g_Stage.camera.cameraRight, &g_App.viewport, (D3DXMATRIX *)&g_App.projectionMatrix,
                     (D3DXMATRIX *)&g_App.viewMatrix, &world);
     d = edge - origin;
     x = D3DXVec3Length(&d) * 0.5f;
@@ -1566,7 +1566,7 @@ int SpriteEngine::ProjectSpriteWithCallback(Sprite *vm, void (*callback)(Sprite 
     {
         return -1;
     }
-    D3DXVec3Project(&edge, &g_CameraSizeOffset, &g_App.viewport, (D3DXMATRIX *)&g_App.projectionMatrix,
+    D3DXVec3Project(&edge, &g_Stage.camera.cameraRight, &g_App.viewport, (D3DXMATRIX *)&g_App.projectionMatrix,
                     (D3DXMATRIX *)&g_App.viewMatrix, &world);
     d = edge - origin;
     x = D3DXVec3Length(&d) * 0.5f;

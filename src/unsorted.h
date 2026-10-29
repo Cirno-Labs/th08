@@ -13,6 +13,7 @@
 #include "common.h"
 #include "dsutil.h"
 #include "resultscreen.h"
+#include "screeneffect.h"
 #include "sprite.h"
 #include "timer.h"
 
@@ -473,9 +474,6 @@ void DrawGradientRect(float *rect, D3DCOLOR topLeft, D3DCOLOR topRight, D3DCOLOR
 // Sets the device's render and texture stage states, as the config
 // flags pick them, and forgets SpriteEngine's cached states.
 void SetDefaultRenderStates();
-// Set by SetDefaultRenderStates; th06 sets g_Stage.fogColorChanged
-// there.
-extern BYTE g_FogColorChanged;
 // Prints `name` and then 可 or 不可 (yes or no), by whether `caps` has
 // any of `flag`, at `out`; returns the end of the text.
 char *AppendCapsFlagText(char *name, DWORD caps, DWORD flag, char *out);
@@ -1997,30 +1995,113 @@ extern SoundInfo g_SoundInfos[0x2e];
 // The sound files LoadSounds loads, by index: 0x24 (th07 0x1e).
 extern char *g_SoundPaths[];
 
-// The stage file a Stage loads. Only what is known so far.
-struct StageData
+// A run of quads in the stage data, ended by one with a negative type,
+// as th07's.
+struct StageQuad
 {
-    unsigned char unk_0[0x290];
-    // The stage's MIDI files, as th07's; a path starting with ' ' is
-    // unused.
-    char songPaths[3][0x80];
+    short type;
+    // The offset of the next quad.
+    short size;
+    short script;
+    // Set by Load: the quad's Sprite in Stage::sprites.
+    short spriteIndex;
+    D3DXVECTOR3 pos;
+    float width;
+    float height;
 };
 
-// A camera of the stage, as th07's: where it is, where it looks (relative
-// to eye), its up vector and `at` normalized. g_CameraSizeOffset follows
-// it in Stage.
+// An instruction of the stage script: at `frame`, `opcode` acts on
+// `args`. As th07's, with more opcodes.
+struct StageInstr
+{
+    int frame;
+    short opcode;
+    short unusedShort06;
+    D3DXVECTOR3 args;
+};
+
+// D3DRS_FOGSTART, D3DRS_FOGEND and D3DRS_FOGCOLOR, as th07's.
+struct StageFog
+{
+    float nearPlane;
+    float farPlane;
+    D3DCOLOR color;
+};
+
+// An object of the stage data: its quads start at +0x1c. As th07's.
+struct StageObject
+{
+    BYTE pad_00[0x2];
+    // The background layer it is drawn on.
+    char layer;
+    // Bit 0: its sprites still run scripts. Bit 1: DrawLayer drew it.
+    char flags;
+    D3DXVECTOR3 pos;
+    D3DXVECTOR3 size;
+    StageQuad quads[1];
+};
+
+// A placement of an object; a negative `id` ends the list.
+struct StageInstance
+{
+    short id;
+    short unusedShort02;
+    D3DXVECTOR3 pos;
+};
+
+// The start of the stage data file, as th07's.
+struct StageData
+{
+    short objectCount;
+    short quadCount;
+    int instancesOffset;
+    int scriptOffset;
+    DWORD unusedDword0c;
+    char name[0x80];
+    char songNames[4][0x80];
+    // The stage's MIDI files; a path starting with ' ' is unused.
+    char songPaths[4][0x80];
+    // Then, at 0x490, the objects' offsets.
+};
+
+// A camera of the stage script: where it is, where it looks (relative to
+// `eye`) and its field of view, as th07's, with `offset`.
 struct StageCamera
 {
     D3DXVECTOR3 eye;
     D3DXVECTOR3 at;
     D3DXVECTOR3 up;
+    // `at`, normalized.
     D3DXVECTOR3 dir;
+    // ProjectSprite projects a sprite's position plus this vector to
+    // get the size it draws the sprite at.
+    D3DXVECTOR3 cameraRight;
+    // Set by opcode 32 and the camera shakes. New in th08.
+    D3DXVECTOR3 offset;
+    float fov;
 };
 
-// The stage's background, th07's Stage. Only what is known so far.
+class Stage;
+// Moves `out` from `from` to `to` over stage->cameraFadeFrames[i] frames, on
+// stage->cameraFadeTimer[i], eased by stage->cameraFadeMode[i]: 1 to 3 slow down, 4
+// to 6 speed up, 7 follows a Hermite curve with tangents m0 and m1.
+// Clears the frame count once the timer reaches it. As th07's.
+void UpdateEasedVector(Stage *stage, int i, D3DXVECTOR3 *out, D3DXVECTOR3 *from, D3DXVECTOR3 *to, D3DXVECTOR3 *m0, D3DXVECTOR3 *m1);
+// The cubic Hermite curve from p0 to p1, with tangents m0 and m1, at `t`
+// (0 to 1), as th07's.
+float HermiteInterpolate(float p0, float p1, float m0, float m1, float t);
+
+struct Effect;
+
+// The object at 0x4e4030: th07's Stage, the background.
 class Stage
 {
 public:
+    // Zeroes the object, then puts the camera at (0, 0, 1000) looking
+    // nowhere, with up along y and a field of view of pi / 6, and copies
+    // it to cameraFrom and cameraTo, as th07's.
+    Stage();
+
     // Sets the view and projection for things drawn on the screen
     // rather than in the stage (0x40b5a0).
     void SetupFixedCamera();
@@ -2032,27 +2113,89 @@ public:
     // (0x409b20). Returns 0, or -1 on failure.
     static int RegisterChain(int stage);
 
-    unsigned char unk_0[0x7f4];
-    // The stage file, as th07's.
+    // One Sprite per object sprite in the data.
+    Sprite *sprites;
+    Sprite backgroundLayer0;
+    Sprite backgroundLayer1;
+    // Started by opcode 34; its color becomes clearColor while it runs.
+    // New in th08.
+    Sprite backgroundLayer2;
+    // The stage's background ANM (slot 4). New in th08.
+    AnmLoaded *anm;
     StageData *data;
-    unsigned char unk_7f8[0x23c];
-    // What the petal effects' color2 is their color scaled by (blue,
-    // green, red, alpha, each out of 0x100).
-    BYTE unk_a34[4];
-    unsigned char unk_a38[0xbc];
-    // The fog colour, as th07's fog.color.
-    D3DCOLOR fogColor;
-    // g_FogColorChanged is at +0xb20.
-    unsigned char unk_af8[0x38];
-    // Set to 2 by EffectManager::AddedCallback.
-    int unk_b30;
+    int quadCount;
+    int objectCount;
+    StageObject **objects;
+    StageInstance *instances;
+    StageInstr *script;
+    Timer scriptTime;
+    int scriptIndex;
+    int checksumCheckFrames;
+    // RegisterChain's argument.
+    int stage;
+    D3DXVECTOR3 cameraPos;
+    D3DCOLOR clearColor;
+    // Follows g_Player.unk_5: set, unk_844 gets interrupt 1, cleared,
+    // interrupt 2. New in th08.
+    BYTE unk_834;
+    unsigned char pad_835[0x3];
+    // Restarted whenever unk_834 changes. New in th08.
+    Timer unk_838;
+    // Script 0x21 of the background ANM. Its color scales the color of
+    // the petals and of some of the stage's sprites. New in th08.
+    Sprite unk_844;
+    // Stage 7's effect. New in th08.
+    Effect *unk_ae8;
+    StageFog fog;
+    StageFog fogStart;
+    StageFog fogTarget;
+    int fogFadeFrames;
+    Timer fogFadeTime;
+    // Set by SetDefaultRenderStates, as th07's.
+    BYTE fogColorChanged;
+    unsigned char pad_b21[0x3];
+    int spellCardState;
+    int spellCardFrames;
+    int clearScreenOnce;
+    // Set to 2 by EffectManager::AddedCallback, which clears
+    // dialogueScriptOffset.
+    int dialogueSpriteCount;
     // Set to 2 by GameManager::LoadingThread unless a stage 6 or Extra
-    // spell card is practised.
-    int unk_b34;
-    unsigned char unk_b38[0x585c];
-    // The camera, as th07's. Only the effects read it so far.
+    // spell card is practised, and by the Gui.
+    int dialogueScriptOffset;
+    Sprite dialogueSprites[0x20];
+    Sprite unusedSprite5fb8;
+    // Called by OnDraw2 after the dialogue sprites. New in th08.
+    void (*unk_625c)();
+    int waitLabel;
+    StageCamera cameraFrom;
+    StageCamera cameraTo;
+    StageCamera cameraFadeTarget;
+    StageCamera cameraFadeStart;
     StageCamera camera;
+    int cameraFadeFrames[5];
+    Timer cameraFadeTimer[5];
+    int cameraFadeMode[5];
+    D3DXVECTOR3 nextKeyPos;
+    int nextKeyFrame;
+    D3DXVECTOR3 keyPos;
+    int keyFrame;
+    BYTE cameraOffsetChanged;
+    unsigned char pad_6465[0x3];
+    ColorBytes tintColor;
+    int keepTintColor;
+    // Probably the squared distance DrawLayer draws objects within:
+    // 1150 squared, 1350 squared for stage 5, 1800 squared for stages 6
+    // and 7. New in th08.
+    float unk_6470;
+    // The camera shake opcode 33 starts: 1 to 3. New in th08.
+    char shakeMode;
+    unsigned char pad_6475[0x3];
+    int unk_6478;
+    int unk_647c;
+    D3DXVECTOR3 unk_6480[0x20];
 };
+ASSERT_SIZE(Stage, 0x6600);
 extern Stage g_Stage;
 
 // Each stage's music: its BGM numbers for App::PlayMidi, the first for

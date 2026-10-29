@@ -120,7 +120,7 @@ int EffectInitBossPetal(Effect *effect);
 // An effect update for the petals of EffectInitBossPetal, as
 // EffectUpdatePetal; while the first boss has bit 3 of unk_3324,
 // posOffset follows it (a tenth of the way each frame). Its color2 is its
-// color scaled by g_Stage.unk_a34. New in th08; placeholder name.
+// color scaled by g_Stage.unk_844.color. New in th08; placeholder name.
 int EffectUpdateBossPetal(Effect *effect);
 
 // EffectInitBossPetal scattered twice as far up and down, with a y step

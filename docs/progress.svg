@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">61.83% (690)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">36.38% (406)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">62.01% (692)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">36.20% (404)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="461.85" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="461.85" y="0" class="decompiled"/>
-<rect width="271.76" height="6" x="475.24" y="0" class="todo"/>
+<rect width="463.19" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="463.19" y="0" class="decompiled"/>
+<rect width="270.42" height="6" x="476.58" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -152,8 +152,8 @@
 <rect width="12" height="12" x="465" y="15" class="named"><title>0x00407140 AsciiText::GetSummaryPendingInterrupt (20 bytes)</title></rect>
 <rect width="12" height="12" x="480" y="15" class="named"><title>0x00407160 AsciiText::ClearStrings (24 bytes)</title></rect>
 <rect width="12" height="12" x="495" y="15" class="named"><title>0x00407180 AsciiText::SetGlyphWidth (25 bytes)</title></rect>
-<rect width="12" height="12" x="510" y="15" class="todo"><title>0x004071a0 Func4071a0 (513 bytes)</title></rect>
-<rect width="12" height="12" x="525" y="15" class="todo"><title>0x004073b0 Func4073b0 (77 bytes)</title></rect>
+<rect width="12" height="12" x="510" y="15" class="named"><title>0x004071a0 Stage::Stage (513 bytes)</title></rect>
+<rect width="12" height="12" x="525" y="15" class="named"><title>0x004073b0 StageCamera::StageCamera (77 bytes)</title></rect>
 <rect width="12" height="12" x="540" y="15" class="todo"><title>0x00407400 Func407400 (6291 bytes)</title></rect>
 <rect width="12" height="12" x="555" y="15" class="named"><title>0x00408d40 cosf (21 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="15" class="todo"><title>0x00408d60 Func408d60 (577 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">54.03%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">44.98%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">54.16%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">44.85%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="403.60" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="403.60" y="0" class="decompiled"/>
-<rect width="336" height="6" x="411" y="0" class="todo"/>
+<rect width="404.55" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="404.55" y="0" class="decompiled"/>
+<rect width="335.04" height="6" x="411.96" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1406,7 +1406,7 @@
 <rect width="13.71" height="14.69" x="471.21" y="208.46" class="todo"><title>0x0044a930 Func44a930 (521 bytes)</title></rect>
 <rect width="13.71" height="14.56" x="471.21" y="226.15" class="decompiled"><title>0x00438046 Func438046 (517 bytes)</title></rect>
 <rect width="13.71" height="14.56" x="471.21" y="243.71" class="named"><title>0x00446d06 App::DeletedCallback (517 bytes)</title></rect>
-<rect width="13.71" height="14.42" x="471.21" y="261.27" class="todo"><title>0x004071a0 Func4071a0 (513 bytes)</title></rect>
+<rect width="13.71" height="14.42" x="471.21" y="261.27" class="named"><title>0x004071a0 Stage::Stage (513 bytes)</title></rect>
 <rect width="13.71" height="14.35" x="471.21" y="278.69" class="named"><title>0x004442e0 MidiPlayer::ParseFile (511 bytes)</title></rect>
 <rect width="13.71" height="14.35" x="471.21" y="296.04" class="named"><title>0x00451d90 ValidateReplay (511 bytes)</title></rect>
 <rect width="13.71" height="14.32" x="471.21" y="313.40" class="named"><title>0x0046fdc2 DrawFan (510 bytes)</title></rect>
@@ -1897,7 +1897,7 @@
 <rect width="3.83" height="3.48" x="655.94" y="247.34" class="named"><title>0x00443f50 ReadVarLen (78 bytes)</title></rect>
 <rect width="3.83" height="3.48" x="662.76" y="247.34" class="todo"><title>0x00449e50 Func449e50 (78 bytes)</title></rect>
 <rect width="3.83" height="3.48" x="669.59" y="247.34" class="named"><title>0x004729e0 CSound::ResumeBuffer (78 bytes)</title></rect>
-<rect width="3.74" height="3.48" x="676.41" y="247.34" class="todo"><title>0x004073b0 Func4073b0 (77 bytes)</title></rect>
+<rect width="3.74" height="3.48" x="676.41" y="247.34" class="named"><title>0x004073b0 StageCamera::StageCamera (77 bytes)</title></rect>
 <rect width="3.74" height="3.48" x="683.15" y="247.34" class="named"><title>0x00441850 GameManager::AddPower (77 bytes)</title></rect>
 <rect width="3.74" height="3.48" x="689.89" y="247.34" class="named"><title>0x00447764 SoundPlayer::UpdateBgmFades (77 bytes)</title></rect>
 <rect width="3.74" height="3.48" x="696.62" y="247.34" class="todo"><title>0x0044fdd0 Func44fdd0 (77 bytes)</title></rect>

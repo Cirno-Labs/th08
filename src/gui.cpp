@@ -61,14 +61,14 @@ void GuiImpl::StartMsgScript(int index)
             CopySpriteToTexture(0x16);
             break;
         case 6:
-            g_Stage.unk_b34 = 2;
+            g_Stage.dialogueScriptOffset = 2;
             break;
         case 7:
         {
             AnmLoaded *tmp = g_SpellCard.faceAnms[2];
             g_SpellCard.faceAnms[2] = g_SpellCard.faceAnms[3];
             g_SpellCard.faceAnms[3] = tmp;
-            g_Stage.unk_b34 = 2;
+            g_Stage.dialogueScriptOffset = 2;
             CopySpriteToTexture(0x18);
             break;
         }
@@ -77,7 +77,7 @@ void GuiImpl::StartMsgScript(int index)
             AnmLoaded *tmp = g_SpellCard.faceAnms[2];
             g_SpellCard.faceAnms[2] = g_SpellCard.faceAnms[3];
             g_SpellCard.faceAnms[3] = tmp;
-            g_Stage.unk_b34 = 2;
+            g_Stage.dialogueScriptOffset = 2;
             CopySpriteToTexture(0x19);
             break;
         }
