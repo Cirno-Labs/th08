@@ -458,3 +458,18 @@ int Ending::AddedCallback(Ending *ending)
     }
     return 0;
 }
+
+int Ending::DeletedCallback(Ending *ending)
+{
+    g_SpriteEngine->ReleaseAnm(0x18);
+    g_App.scene = 6;
+    g_SpriteEngine->ReleaseSurface(0);
+    g_MemoryManager.Free(ending->file);
+    g_Chain.Remove(ending->drawChain);
+    ending->drawChain = NULL;
+    g_MemoryManager.Unregister(ending);
+    delete ending;
+    ending = NULL;
+    g_App.hideFps = 0;
+    return 0;
+}
