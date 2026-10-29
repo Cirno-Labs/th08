@@ -550,9 +550,9 @@ address,size,name,symbol
 0x0043c5e1,96,Func43c5e1,
 0x0043c641,69,Func43c641,
 0x0043c686,129,Func43c686,
-0x0043c710,75,Func43c710,
+0x0043c710,75,Chain::~Chain,??1Chain@@QAE@XZ
 0x0043c760,99,Func43c760,
-0x0043c7d0,82,Func43c7d0,
+0x0043c7d0,82,ChainElem::~ChainElem,??1ChainElem@@QAE@XZ
 0x0043c830,78,Func43c830,
 0x0043c880,224,Func43c880,
 0x0043c960,227,Func43c960,
@@ -2388,6 +2388,7 @@ address,size,name,symbol
 0x0164d388,,g_JoyCaps,?g_JoyCaps@@3UtagJOYCAPSA@@A
 0x0164d51c,,g_ShotHeldFrames,?g_ShotHeldFrames@@3GA
 0x0164d540,,g_Log,?g_Log@@3VLog@@A
+0x0164f548,,g_Chain,?g_Chain@@3VChain@@A
 0x0164f588,,g_Archive,?g_Archive@@3VDatArchive@@A
 0x0164f598,,g_MemoryManager,?g_MemoryManager@@3VMemoryManager@@A
 0x016535a0,,g_PadButtons,?g_PadButtons@@3PAEA
