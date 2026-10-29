@@ -4,6 +4,11 @@
 #include <stdio.h>
 #include <string.h>
 
+#include <windows.h>
+#define NO_SHDOCVW_GUIDS
+#include <shlguid.h>
+#include <shobjidl.h>
+
 #include "unsorted.h"
 
 void FormatCapsReport(D3DCAPS8 *caps, char *buffer)
@@ -162,4 +167,48 @@ int ChecksumExecutable()
         return sum;
     }
     return -1;
+}
+
+int ResolveShortcut(char *path, char *out, int size)
+{
+    HRESULT res;
+    int ok;
+    IShellLinkA *shellLink;
+    IPersistFile *storage;
+    WCHAR *buf;
+    WIN32_FIND_DATAA findData;
+
+    if (out == NULL)
+    {
+        return 0;
+    }
+    ok = 0;
+    CoInitialize(NULL);
+    res = CoCreateInstance(CLSID_ShellLink, NULL, CLSCTX_INPROC_SERVER, IID_IShellLinkA, (void **)&shellLink);
+    if (SUCCEEDED(res))
+    {
+        res = shellLink->QueryInterface(IID_IPersistFile, (void **)&storage);
+        if (SUCCEEDED(res))
+        {
+            buf = new WCHAR[size];
+            if (SUCCEEDED(res))
+            {
+                MultiByteToWideChar(CP_ACP, 0, path, -1, buf, size);
+                res = storage->Load(buf, STGM_READ);
+                if (SUCCEEDED(res))
+                {
+                    res = shellLink->GetPath(out, size, &findData, 0);
+                    if (SUCCEEDED(res))
+                    {
+                        ok = 1;
+                    }
+                }
+            }
+            delete buf;
+            storage->Release();
+        }
+        shellLink->Release();
+    }
+    CoUninitialize();
+    return ok;
 }

@@ -1723,7 +1723,8 @@ address,size,name,symbol
 0x004a42fa,10,Func4a42fa,
 0x004a431a,10,Func4a431a,
 0x004a4342,136,_atol,
-0x004a43d4,14,operator_new,
+0x004a43cf,,operator delete,??3@YAXPAX@Z
+0x004a43d4,14,operator new,??2@YAPAXI@Z
 0x004a43e2,43,_JumpToContinuation,
 0x004a4412,7,FID_conflict:_CallMemberFunction1,
 0x004a4419,82,_UnwindNestedFrames,
@@ -2378,6 +2379,9 @@ address,size,name,symbol
 0x004b4280,4,CoCreateInstance,__imp__CoCreateInstance@20
 0x004b4284,4,CoUninitialize,__imp__CoUninitialize@0
 0x004b4288,4,CoInitialize,__imp__CoInitialize@4
+0x004bd6d0,,IID_IShellLinkA,_IID_IShellLinkA
+0x004bd6e0,,CLSID_ShellLink,_CLSID_ShellLink
+0x004bd6f0,,IID_IPersistFile,_IID_IPersistFile
 0x0164d540,,g_Log,?g_Log@@3VLog@@A
 0x0164f598,,g_MemoryManager,?g_MemoryManager@@3VMemoryManager@@A
 0x017ce6fc,,g_AppMutex,?g_AppMutex@@3PAXA
