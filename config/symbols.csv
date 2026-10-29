@@ -939,7 +939,7 @@ address,size,name,symbol
 0x0045e580,206,AnmLoaded::SetScript,?SetScript@AnmLoaded@@QAEXPAVSprite@@PAX@Z
 0x0045e650,166,Sprite::ResolveFloatArgument,?ResolveFloatArgument@Sprite@@QAEMM@Z
 0x0045e720,186,Sprite::ResolveIntArgument,?ResolveIntArgument@Sprite@@QAEHH@Z
-0x0045e810,124,Func45e810,
+0x0045e810,124,Sprite::ResolveFloatArgumentPtr,?ResolveFloatArgumentPtr@Sprite@@QAEPAMPAMGH@Z
 0x0045e8a0,139,Func45e8a0,
 0x0045e960,125,Func45e960,
 0x0045ea00,13933,SpriteEngine::Step,?Step@SpriteEngine@@QAEHPAVSprite@@@Z
