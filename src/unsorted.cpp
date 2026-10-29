@@ -638,3 +638,8 @@ WORD Rng::GetRandomU16()
     this->generated++;
     return this->seed;
 }
+
+DWORD Rng::GetRandomU32()
+{
+    return (this->GetRandomU16() << 16) | this->GetRandomU16();
+}
