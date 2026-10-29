@@ -547,7 +547,7 @@ address,size,name,symbol
 0x0043c322,61,GameManager::IsPracticeReplay,?IsPracticeReplay@GameManager@@QAEHXZ
 0x0043c35f,308,GameManager::Func43c35f,?Func43c35f@GameManager@@QAEHXZ
 0x0043c4b3,274,GameManager::AdvanceStage,?AdvanceStage@GameManager@@QAEXXZ
-0x0043c5e1,96,Func43c5e1,
+0x0043c5e1,96,GameManager::GameManager,??0GameManager@@QAE@XZ
 0x0043c641,69,GameManager::AddLives,?AddLives@GameManager@@QAEXH@Z
 0x0043c686,129,Func43c686,
 0x0043c710,75,Chain::~Chain,??1Chain@@QAE@XZ

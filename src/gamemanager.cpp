@@ -301,3 +301,13 @@ void GameManager::AdvanceStage()
         break;
     }
 }
+
+GameManager::GameManager()
+{
+    memset(this, 0, sizeof(GameManager));
+    this->arena[0] = 32.0f;
+    this->arena[1] = 16.0f;
+    this->arena[2] = 384.0f;
+    this->arena[3] = 448.0f;
+    this->unk_3dbb4 = 3;
+}
