@@ -496,6 +496,12 @@ int SpriteEngine::DrawUnrotated(Sprite *vm)
     return this->DrawQuad(vm, 1);
 }
 
+void SpriteEngine::RotatePoint(float *out, float x, float y, float sine, float cosine, float cx, float cy)
+{
+    out[0] = x * cosine - y * sine + cx;
+    out[1] = x * sine + y * cosine + cy;
+}
+
 SpriteEngine::SpriteEngine()
 {
     memset(this, 0, sizeof(*this));

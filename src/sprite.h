@@ -376,6 +376,9 @@ public:
     void ReleaseSurface(int surface);
     // Draws `vm` at its position (0x463210).
     int Draw(Sprite *vm);
+    // Rotates (`x`, `y`) by the angle with `sine` and `cosine` and moves
+    // it to (`cx`, `cy`), into `out`, as th07's.
+    void RotatePoint(float *out, float x, float y, float sine, float cosine, float cx, float cy);
     // Draws `vm` unrotated, as th07's (0x462ff0).
     int DrawUnrotated(Sprite *vm);
     // DrawUnrotated without rounding to pixels, as th07's.

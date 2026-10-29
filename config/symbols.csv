@@ -958,7 +958,7 @@ address,size,name,symbol
 0x00462e40,198,SpriteEngine::FlushQuadBatch,?FlushQuadBatch@SpriteEngine@@QAEXXZ
 0x00462f10,211,SpriteEngine::AddQuadToBatch,?AddQuadToBatch@SpriteEngine@@QAEHPAUVertexTex1DiffuseXyzrwh@@@Z
 0x00462ff0,469,SpriteEngine::DrawUnrotated,?DrawUnrotated@SpriteEngine@@QAEHPAVSprite@@@Z
-0x004631d0,58,Func4631d0,
+0x004631d0,58,SpriteEngine::RotatePoint,?RotatePoint@SpriteEngine@@QAEXPAMMMMMMM@Z
 0x00463210,600,SpriteEngine::Draw,?Draw@SpriteEngine@@QAEHPAVSprite@@@Z
 0x00463470,912,SpriteEngine::DrawRotatedNoRound,?DrawRotatedNoRound@SpriteEngine@@QAEHPAVSprite@@@Z
 0x00463800,469,SpriteEngine::DrawNoRound,?DrawNoRound@SpriteEngine@@QAEHPAVSprite@@@Z
