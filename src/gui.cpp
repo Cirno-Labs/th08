@@ -166,3 +166,18 @@ void GuiImpl::StartMsgScript(int index)
     g_EnemyManager.ClearEnemiesForBonus(0, 0);
     g_ItemManager.CollectAll();
 }
+
+void DecodeMsgString(char *dst, char *src)
+{
+    int i;
+    char c;
+
+    i = 0;
+    do
+    {
+        c = *src ^ 0x77;
+        dst[i] = c;
+        i++;
+        src++;
+    } while (c != 0);
+}

@@ -471,7 +471,7 @@ address,size,name,symbol
 0x00433927,70,Gui::OnDraw,?OnDraw@Gui@@SIHPAV1@@Z
 0x0043396d,1094,GuiImpl::StartMsgScript,?StartMsgScript@GuiImpl@@QAEXH@Z
 0x00433db3,5597,GuiImpl::RunMsg,?RunMsg@GuiImpl@@QAEHXZ
-0x004353ec,63,Func4353ec,
+0x004353ec,63,DecodeMsgString,?DecodeMsgString@@YIXPAD0@Z
 0x0043542b,1107,GuiImpl::DrawMsg,?DrawMsg@GuiImpl@@QAEHXZ
 0x0043587e,61,Func43587e,
 0x004358bb,69,Gui::IsMsgRunning,?IsMsgRunning@Gui@@QAEHXZ

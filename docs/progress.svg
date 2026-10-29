@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">41.22% (460)</tspan> · <tspan class="decompiled">0.36% (4)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">58.42% (652)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">41.31% (461)</tspan> · <tspan class="decompiled">0.36% (4)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">58.33% (651)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="307.90" height="6" x="0" y="0" class="named"/>
-<rect width="2.68" height="6" x="307.90" y="0" class="decompiled"/>
-<rect width="436.42" height="6" x="310.58" y="0" class="todo"/>
+<rect width="308.57" height="6" x="0" y="0" class="named"/>
+<rect width="2.68" height="6" x="308.57" y="0" class="decompiled"/>
+<rect width="435.75" height="6" x="311.25" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -540,7 +540,7 @@
 <rect width="12" height="12" x="285" y="135" class="named"><title>0x00433927 Gui::OnDraw (70 bytes)</title></rect>
 <rect width="12" height="12" x="300" y="135" class="named"><title>0x0043396d GuiImpl::StartMsgScript (1094 bytes)</title></rect>
 <rect width="12" height="12" x="315" y="135" class="todo"><title>0x00433db3 GuiImpl::RunMsg (5597 bytes)</title></rect>
-<rect width="12" height="12" x="330" y="135" class="todo"><title>0x004353ec Func4353ec (63 bytes)</title></rect>
+<rect width="12" height="12" x="330" y="135" class="named"><title>0x004353ec DecodeMsgString (63 bytes)</title></rect>
 <rect width="12" height="12" x="345" y="135" class="todo"><title>0x0043542b GuiImpl::DrawMsg (1107 bytes)</title></rect>
 <rect width="12" height="12" x="360" y="135" class="todo"><title>0x0043587e Func43587e (61 bytes)</title></rect>
 <rect width="12" height="12" x="375" y="135" class="todo"><title>0x004358bb Gui::IsMsgRunning (69 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">34.23%</tspan> · <tspan class="decompiled">0.15%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">65.62%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">34.25%</tspan> · <tspan class="decompiled">0.15%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">65.60%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="255.71" height="6" x="0" y="0" class="named"/>
-<rect width="1.12" height="6" x="255.71" y="0" class="decompiled"/>
-<rect width="490.16" height="6" x="256.84" y="0" class="todo"/>
+<rect width="255.82" height="6" x="0" y="0" class="named"/>
+<rect width="1.12" height="6" x="255.82" y="0" class="decompiled"/>
+<rect width="490.06" height="6" x="256.94" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1964,7 +1964,7 @@
 <rect width="3.28" height="2.78" x="662.25" y="330.75" class="todo"><title>0x00437d87 Func437d87 (64 bytes)</title></rect>
 <rect width="3.28" height="2.78" x="662.25" y="336.53" class="todo"><title>0x004396b8 Func4396b8 (64 bytes)</title></rect>
 <rect width="3.28" height="2.69" x="662.25" y="342.31" class="todo"><title>0x00425e60 Func425e60 (63 bytes)</title></rect>
-<rect width="2.95" height="3.01" x="668.53" y="266.18" class="todo"><title>0x004353ec Func4353ec (63 bytes)</title></rect>
+<rect width="2.95" height="3.01" x="668.53" y="266.18" class="named"><title>0x004353ec DecodeMsgString (63 bytes)</title></rect>
 <rect width="2.95" height="3.01" x="674.48" y="266.18" class="named"><title>0x0043ef70 App::EnterCriticalSection (63 bytes)</title></rect>
 <rect width="2.95" height="3.01" x="680.42" y="266.18" class="named"><title>0x0043efb0 App::LeaveCriticalSection (63 bytes)</title></rect>
 <rect width="2.95" height="3.01" x="686.37" y="266.18" class="named"><title>0x00446cc7 EnumJoysticksCallback (63 bytes)</title></rect>

@@ -1593,6 +1593,10 @@ public:
 ASSERT_SIZE(Gui, 0x9c);
 extern Gui g_Gui;
 
+// Decodes a dialogue string (each byte xor 0x77) from `src` into `dst`,
+// up to and including the terminating 0 (0x4353ec).
+void DecodeMsgString(char *dst, char *src);
+
 // Has the back buffer's play area copied to texture 10 at sprite
 // `sprite` of ANM slot 10 (0x437f5c).
 void CopySpriteToTexture(int sprite);
