@@ -21,6 +21,15 @@ struct ChainElem
     // callbacks.
     ~ChainElem();
 
+    // Sets the callback and clears the added and deleted callbacks.
+    // Out-of-line copy at 0x406520.
+    void SetCallback(ChainCallback callback)
+    {
+        this->callback = callback;
+        this->addedCallback = NULL;
+        this->deletedCallback = NULL;
+    }
+
     // Lower runs first.
     short priority;
     // Set by Chain::CreateElem: the element was allocated with new.
@@ -72,6 +81,8 @@ public:
     void ReleaseList(ChainElem *root);
     // Closes the App's sub thread, then releases both chains.
     void Release();
+    // Allocates an element that runs `callback`.
+    ChainElem *CreateElem(ChainCallback callback);
 
     ChainElem calcChain;
     ChainElem drawChain;

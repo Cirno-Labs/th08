@@ -257,3 +257,11 @@ void Chain::Release()
     this->ReleaseList(&this->calcChain);
     this->ReleaseList(&this->drawChain);
 }
+
+ChainElem *Chain::CreateElem(ChainCallback callback)
+{
+    ChainElem *elem = (ChainElem *)g_MemoryManager.Register(new ChainElem(), sizeof(ChainElem), "funcChainInf");
+    elem->SetCallback(callback);
+    elem->allocated = 1;
+    return elem;
+}

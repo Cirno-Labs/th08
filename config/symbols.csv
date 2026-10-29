@@ -31,7 +31,7 @@ address,size,name,symbol
 0x004052b0,364,Func4052b0,
 0x00405420,2538,Func405420,
 0x00405e10,1803,Func405e10,
-0x00406520,42,Func406520,
+0x00406520,42,ChainElem::SetCallback,?SetCallback@ChainElem@@QAEXP6IHPAX@Z@Z
 0x00406550,40,Func406550,
 0x00406580,26,Func406580,
 0x004065a0,22,Func4065a0,
@@ -561,7 +561,7 @@ address,size,name,symbol
 0x0043cc60,408,Chain::ReleaseList,?ReleaseList@Chain@@QAEXPAUChainElem@@@Z
 0x0043ce00,46,ChainElem::`scalar deleting destructor',??_GChainElem@@QAEPAXI@Z
 0x0043ce30,48,Chain::Release,?Release@Chain@@QAEXXZ
-0x0043ce60,162,Func43ce60,
+0x0043ce60,162,Chain::CreateElem,?CreateElem@Chain@@QAEPAUChainElem@@P6IHPAX@Z@Z
 0x0043cf10,49,Chain::Remove,?Remove@Chain@@QAEXPAUChainElem@@@Z
 0x0043cf50,362,Chain::RemoveLocked,?RemoveLocked@Chain@@QAEXPAUChainElem@@@Z
 0x0043d0c0,85,InitJoystick,?InitJoystick@@YIGXZ
