@@ -458,3 +458,16 @@ int EffectUpdateBossPetal2(Effect *effect)
     }
     return 1;
 }
+
+int EffectInitConverge(Effect *effect)
+{
+    float f;
+
+    effect->origin = effect->pos;
+    effect->origin.z = 0.0f;
+    f = g_Rng.GetRandomF32InRange(6.2831855f) - 3.1415927f;
+    effect->axis.x = cosf(f);
+    effect->axis.y = sinf(f);
+    effect->axis.z = 0.0f;
+    return 0;
+}
