@@ -688,3 +688,9 @@ void App::EnterCriticalSection(int idx)
     ::EnterCriticalSection(&this->criticalSections[idx]);
     this->criticalSectionDepths[idx]++;
 }
+
+void App::LeaveCriticalSection(int idx)
+{
+    ::LeaveCriticalSection(&this->criticalSections[idx]);
+    this->criticalSectionDepths[idx]--;
+}
