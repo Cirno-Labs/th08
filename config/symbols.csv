@@ -55,7 +55,7 @@ address,size,name,symbol
 0x00406a30,140,SpriteEngine::SetPendingCopy,?SetPendingCopy@SpriteEngine@@QAEHHHHHHHHHH@Z
 0x00406ac0,43,SoundPlayer::FadeInBgm,?FadeInBgm@SoundPlayer@@QAEXM@Z
 0x00406af0,68,CStreamingSound::FadeIn,?FadeIn@CStreamingSound@@QAEXM@Z
-0x00406b40,43,Func406b40,
+0x00406b40,43,SoundPlayer::FadeDownBgm,?FadeDownBgm@SoundPlayer@@QAEXM@Z
 0x00406b70,55,Func406b70,
 0x00406bb0,43,Func406bb0,
 0x00406be0,68,Func406be0,
