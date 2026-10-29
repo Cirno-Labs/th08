@@ -402,3 +402,68 @@ int Player::RegisterChain(int arg)
     g_Chain.AddToDrawChain(player->drawChain2, 10);
     return 0;
 }
+
+int Player::OnUpdate(Player *player)
+{
+    if (g_GameManager.isFrozen)
+    {
+        if (player->unk_be834 != NULL)
+        {
+            player->unk_be834->sprite.scriptPaused = 1;
+        }
+        if (player->unk_e2b24 != NULL)
+        {
+            player->unk_e2b24->sprite.scriptPaused = 1;
+        }
+        return 1;
+    }
+    if (player->unk_be834 != NULL)
+    {
+        player->unk_be834->sprite.scriptPaused = 0;
+    }
+    if (player->unk_e2b24 != NULL)
+    {
+        player->unk_e2b24->sprite.scriptPaused = 0;
+    }
+    UpdateHitboxAreas(player);
+    UpdateBombState(player);
+    if (player->playerState == 2)
+    {
+        if (UpdateDyingState(player))
+        {
+            goto respawn;
+        }
+    }
+    else if (player->playerState == 1)
+    {
+    respawn:
+        UpdateRespawningState(player);
+    }
+    UpdateInvulnerability(player);
+    if (player->playerState != 2 && player->playerState != 1)
+    {
+        HandleInput(player);
+    }
+    g_SpriteEngine->Step(&player->sprite);
+    UpdateBullets(player);
+    UpdateFiring(player);
+    ResetHomingAndText(player);
+    if (!g_Gui.IsMsgRunning())
+    {
+        g_GameManager.unk_3de10++;
+        g_GameManager.unk_3de14++;
+        if (g_GameManager.IsUnk22AtLow1())
+        {
+            g_GameManager.unk_3de1c++;
+            g_GameManager.unk_3de24++;
+            g_GameManager.AddScore(100);
+        }
+        else if (g_GameManager.IsUnk22AtHigh1())
+        {
+            g_GameManager.unk_3de18++;
+            g_GameManager.unk_3de20++;
+            g_GameManager.AddScore(100);
+        }
+    }
+    return 1;
+}

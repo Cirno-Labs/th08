@@ -186,6 +186,23 @@ struct PlayerLaser
 };
 ASSERT_SIZE(PlayerLaser, 0x10);
 
+// OnUpdate's steps, as th07's (0x44c5b0, 0x44c650, 0x44cbf0,
+// 0x44d180, 0x44d2c0, 0x44aec0, 0x44d420): UpdateDyingState returns
+// nonzero when the player respawns.
+void UpdateHitboxAreas(Player *player);
+void UpdateBombState(Player *player);
+int UpdateDyingState(Player *player);
+void UpdateRespawningState(Player *player);
+void UpdateInvulnerability(Player *player);
+int HandleInput(Player *player);
+void ResetHomingAndText(Player *player);
+// The bullets' update, firing and drawing, as th07's, in the shot
+// object (0x451150, 0x451500, 0x4512f0, 0x451400).
+void UpdateBullets(Player *player);
+int UpdateFiring(Player *player);
+void DrawBullets(Player *player);
+void DrawHitBullets(Player *player);
+
 // The player, the global at 0x17d5ef8.
 class Player
 {
