@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">17.56% (196)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">82.44% (920)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">17.74% (198)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">82.26% (918)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="131.19" height="6" x="0" y="0" class="named"/>
-<rect width="615.81" height="6" x="131.19" y="0" class="todo"/>
+<rect width="132.53" height="6" x="0" y="0" class="named"/>
+<rect width="614.47" height="6" x="132.53" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -986,7 +986,7 @@
 <rect width="12" height="12" x="240" y="270" class="todo"><title>0x0045cbc0 FindRiffChunk (100 bytes)</title></rect>
 <rect width="12" height="12" x="255" y="270" class="named"><title>0x0045cc30 SoundPlayer::LoadBgmFormat (50 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="270" class="named"><title>0x0045cc70 SoundPlayer::LoadBgm (386 bytes)</title></rect>
-<rect width="12" height="12" x="285" y="270" class="todo"><title>0x0045ce00 SoundPlayer::SwitchBgmTrack (103 bytes)</title></rect>
+<rect width="12" height="12" x="285" y="270" class="named"><title>0x0045ce00 SoundPlayer::SwitchBgmTrack (103 bytes)</title></rect>
 <rect width="12" height="12" x="300" y="270" class="todo"><title>0x0045ce70 SoundPlayer::PreloadBgm (626 bytes)</title></rect>
 <rect width="12" height="12" x="315" y="270" class="todo"><title>0x0045d0f0 SoundPlayer::PlayPreloadedBgm (470 bytes)</title></rect>
 <rect width="12" height="12" x="330" y="270" class="todo"><title>0x0045d2d0 SoundPlayer::StopBgm (287 bytes)</title></rect>
@@ -998,7 +998,7 @@
 <rect width="12" height="12" x="420" y="270" class="todo"><title>0x0045e1e0 SoundPlayer::QueueSoundCommand (225 bytes)</title></rect>
 <rect width="12" height="12" x="435" y="270" class="todo"><title>0x0045e2d0 CWaveFile::GetFormat (20 bytes)</title></rect>
 <rect width="12" height="12" x="450" y="270" class="named"><title>0x0045e2f0 CSoundManager::GetDirectSound (16 bytes)</title></rect>
-<rect width="12" height="12" x="465" y="270" class="todo"><title>0x0045e300 CSound::GetWaveFile (17 bytes)</title></rect>
+<rect width="12" height="12" x="465" y="270" class="named"><title>0x0045e300 CSound::GetWaveFile (17 bytes)</title></rect>
 <rect width="12" height="12" x="480" y="270" class="todo"><title>0x0045e320 SoundPlayer::SoundPlayer (76 bytes)</title></rect>
 <rect width="12" height="12" x="495" y="270" class="named"><title>0x0045e370 SoundPlayer::FreePreloadedBgm (70 bytes)</title></rect>
 <rect width="12" height="12" x="510" y="270" class="todo"><title>0x0045e3c0 SoundPlayer::FadeOutBgm (43 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">8.82%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">91.18%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">8.85%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">91.15%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="65.89" height="6" x="0" y="0" class="named"/>
-<rect width="681.11" height="6" x="65.89" y="0" class="todo"/>
+<rect width="66.08" height="6" x="0" y="0" class="named"/>
+<rect width="680.92" height="6" x="66.08" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1826,7 +1826,7 @@
 <rect width="4.60" height="4.77" x="634.36" y="271.97" class="todo"><title>0x00443af0 Func443af0 (104 bytes)</title></rect>
 <rect width="4.60" height="4.77" x="634.36" y="279.73" class="todo"><title>0x00449331 Func449331 (104 bytes)</title></rect>
 <rect width="4.60" height="4.77" x="634.36" y="287.50" class="todo"><title>0x0044e2e0 Func44e2e0 (104 bytes)</title></rect>
-<rect width="4.60" height="4.69" x="634.36" y="295.27" class="todo"><title>0x0045ce00 SoundPlayer::SwitchBgmTrack (103 bytes)</title></rect>
+<rect width="4.60" height="4.69" x="634.36" y="295.27" class="named"><title>0x0045ce00 SoundPlayer::SwitchBgmTrack (103 bytes)</title></rect>
 <rect width="4.60" height="4.62" x="634.36" y="302.96" class="todo"><title>0x004522a0 Func4522a0 (102 bytes)</title></rect>
 <rect width="4.60" height="4.54" x="634.36" y="310.58" class="todo"><title>0x004070b0 Func4070b0 (101 bytes)</title></rect>
 <rect width="4.60" height="4.54" x="634.36" y="318.12" class="named"><title>0x00474c70 DatArchive::FindEntry (101 bytes)</title></rect>
@@ -2284,7 +2284,7 @@
 <rect width="0.10" height="0.41" x="744.35" y="330.98" class="todo"><title>0x00446f42 Func446f42 (17 bytes)</title></rect>
 <rect width="0.10" height="0.41" x="747.17" y="330.98" class="todo"><title>0x00453c20 Func453c20 (17 bytes)</title></rect>
 <rect width="0.10" height="0.40" x="735.87" y="334.39" class="todo"><title>0x00453cc0 Func453cc0 (17 bytes)</title></rect>
-<rect width="0.10" height="0.40" x="735.87" y="337.79" class="todo"><title>0x0045e300 CSound::GetWaveFile (17 bytes)</title></rect>
+<rect width="0.10" height="0.40" x="735.87" y="337.79" class="named"><title>0x0045e300 CSound::GetWaveFile (17 bytes)</title></rect>
 <rect width="0.10" height="0.40" x="735.87" y="341.19" class="todo"><title>0x00471651 Func471651 (17 bytes)</title></rect>
 <rect width="0.10" height="0.40" x="735.87" y="344.60" class="named"><title>0x004733c0 CWaveFile::GetSize (17 bytes)</title></rect>
 <rect width="0.10" height="0.16" x="738.70" y="334.39" class="todo"><title>0x00427250 Func427250 (16 bytes)</title></rect>

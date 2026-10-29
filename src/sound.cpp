@@ -287,3 +287,17 @@ int SoundPlayer::LoadBgm(char *path)
     }
     return 0;
 }
+
+int SoundPlayer::SwitchBgmTrack(char *path)
+{
+    int i;
+
+    if (this->bgm == NULL)
+    {
+        return -1;
+    }
+    i = this->FindTrackIndex(path);
+    this->bgm->GetWaveFile()->SwitchTrack(&this->bgmFormat[i]);
+    DebugPrint("Streming BGM Reopen %d\r\n", i);
+    return 0;
+}
