@@ -913,6 +913,38 @@ int App::LoadMidi(int slot, char *path)
     return 1;
 }
 
+int App::PlayMidi(int slot, int bgm)
+{
+    if (g_App.musicMode == 2)
+    {
+        if (g_App.midi != NULL)
+        {
+            MidiPlayer *midi = g_App.midi;
+            midi->Stop();
+            midi->ParseFile(slot);
+            midi->Play();
+        }
+        if (!(g_GameManager.unk_3dbac >> 3 & 1) && !(g_GameManager.unk_3dbac >> 1 & 1))
+        {
+            g_GameManager.plst.bgmHeard[bgm] = 1;
+        }
+        return 0;
+    }
+    if (g_App.musicMode == 1)
+    {
+        if (g_App.flags.preloadBgm)
+        {
+            g_SoundPlayer.QueueSoundCommand(4, 0, "dummy");
+        }
+        g_SoundPlayer.QueueSoundCommand(2, slot, "dummy");
+        if (!(g_GameManager.unk_3dbac >> 3 & 1) && !(g_GameManager.unk_3dbac >> 1 & 1))
+        {
+            g_GameManager.plst.bgmHeard[bgm] = 1;
+        }
+    }
+    return 0;
+}
+
 inline void FreeData(void *data)
 {
     free(data);
