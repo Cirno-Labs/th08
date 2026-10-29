@@ -756,3 +756,9 @@ int Gui::Func439093()
     this->impl->unk_2156c.SetPendingInterrupt(2);
     return 0;
 }
+
+int Gui::Func4390d6()
+{
+    this->impl->unk_2156c.alpha = 0;
+    return 0;
+}

@@ -506,7 +506,7 @@ address,size,name,symbol
 0x00439007,73,Gui::Func439007,?Func439007@Gui@@QAEHXZ
 0x00439050,67,Gui::Func439050,?Func439050@Gui@@QAEHXZ
 0x00439093,67,Gui::Func439093,?Func439093@Gui@@QAEHXZ
-0x004390d6,24,Func4390d6,
+0x004390d6,24,Gui::Func4390d6,?Func4390d6@Gui@@QAEHXZ
 0x004390ee,1482,Gui::LoadResources,?LoadResources@Gui@@QAEHXZ
 0x004396b8,64,Func4396b8,
 0x004396f8,24,Sprite::IsStopped,?IsStopped@Sprite@@QAEKXZ
