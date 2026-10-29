@@ -27,3 +27,24 @@ BOOL GameManager::IsInPlayArea(float x, float y, float width, float height)
     }
     return TRUE;
 }
+
+int GameManager::OnDraw(GameManager *mgr)
+{
+    if (mgr->isPaused)
+    {
+        mgr->isPaused = 2;
+    }
+    if (g_App.scene != 2)
+    {
+        return 3;
+    }
+    if ((mgr->unk_3dbac >> 5 & 3) == 1)
+    {
+        return 3;
+    }
+    if (mgr->unk_38 != 0)
+    {
+        return 3;
+    }
+    return 1;
+}
