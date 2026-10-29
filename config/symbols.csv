@@ -727,7 +727,7 @@ address,size,name,symbol
 0x004486ba,97,App::StartSubThread,?StartSubThread@App@@QAEHP6GKPAX@Z0@Z
 0x0044871b,117,App::CloseSubThread,?CloseSubThread@App@@QAEXXZ
 0x00448790,138,App::StartLoadingSprites,?StartLoadingSprites@App@@QAEXPAUD3DXVECTOR3@@@Z
-0x0044881a,85,Func44881a,
+0x0044881a,85,App::StopLoadingSprites,?StopLoadingSprites@App@@QAEXXZ
 0x0044886f,259,Func44886f,
 0x00448972,88,Func448972,
 0x004489ca,47,Func4489ca,
@@ -899,7 +899,7 @@ address,size,name,symbol
 0x0045b490,717,Func45b490,
 0x0045b760,155,Func45b760,
 0x0045b800,169,Func45b800,
-0x0045b8b0,628,Func45b8b0,
+0x0045b8b0,628,ScreenEffect::StartEffect,?StartEffect@ScreenEffect@@SIPAV1@HHHHHH@Z
 0x0045bb50,145,Func45bb50,
 0x0045bbf0,69,Func45bbf0,
 0x0045bc40,69,Func45bc40,
@@ -909,7 +909,7 @@ address,size,name,symbol
 0x0045bf10,459,Func45bf10,
 0x0045c0e0,26,Func45c0e0,
 0x0045c100,94,Func45c100,
-0x0045c160,34,Func45c160,
+0x0045c160,34,ScreenEffect::Finish,?Finish@ScreenEffect@@QAEXXZ
 0x0045c190,746,SoundPlayer::Initialize,?Initialize@SoundPlayer@@QAEHPAUHWND__@@@Z
 0x0045c480,46,CSoundManager::`scalar deleting destructor',??_GCSoundManager@@QAEPAXI@Z
 0x0045c4b0,506,SoundPlayer::Release,?Release@SoundPlayer@@QAEHXZ
@@ -2417,6 +2417,7 @@ address,size,name,symbol
 0x017ce6fc,,g_AppMutex,?g_AppMutex@@3PAXA
 0x017ce700,,g_GameWindow,?g_GameWindow@@3UGameWindow@@A
 0x017ce744,,g_Unknown17ce744,?g_Unknown17ce744@@3T_LARGE_INTEGER@@A
+0x017ce750,,g_LoadingScreenEffect,?g_LoadingScreenEffect@@3PAVScreenEffect@@A
 0x017ce758,,g_App,?g_App@@3VApp@@A
 0x017ceac0,,g_LoadingSprites,?g_LoadingSprites@@3PAVSprite@@A
 0x018b8a68,,g_SoundPlayer,?g_SoundPlayer@@3VSoundPlayer@@A

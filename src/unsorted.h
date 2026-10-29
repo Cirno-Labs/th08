@@ -81,9 +81,9 @@ public:
     static int DeletedCallback(App *arg);
     // The draw chain callback: draws the frame rate. Returns 1.
     static int OnDraw(App *arg);
-    // The first draw chain callback, new in th08: from logoFrames 2 on,
+    // The first draw chain callback, new in th08: from loadingState 2 on,
     // counts it up and blinks "Press Shot Button" from 5 to 64, then
-    // shows the logo in surface 8 while logoFrames is nonzero, or
+    // shows the logo in surface 8 while loadingState is nonzero, or
     // releases it. Returns 1.
     static int OnDrawLogo(App *arg);
     // The third draw chain callback, new in th08: draws
@@ -103,10 +103,26 @@ public:
     // Asks the sub thread to close (closeSubThread) and waits for it,
     // then closes its handle. New in th08.
     void CloseSubThread();
-    // Unless the loading screen shows (logoFrames), starts
+    // Unless the loading screen shows (loadingState), starts
     // g_LoadingSprites on scripts 0 to 2 of loadingAnm at `pos` and sets
-    // logoFrames to 1. New in th08.
+    // loadingState to 1. New in th08.
     void StartLoadingSprites(D3DXVECTOR3 *pos);
+    // If the loading screen is in state 1, sends g_LoadingSprites
+    // interrupt 1 and clears loadingState. Then ends
+    // g_LoadingScreenEffect if there is one.
+    void StopLoadingSprites();
+    // StartLoadingSprites, then has the back buffer copied to texture 8
+    // after the frame unless a copy is pending.
+    void StartLoadingSpritesOverScreen(D3DXVECTOR3 *pos);
+    // As StopLoadingSprites, with interrupt 2 and state 2: the screen
+    // waits for the shot button.
+    void FinishLoadingSprites();
+    // Starts g_LoadingScreenEffect (type `type` + 5, 60 frames) unless
+    // there is one.
+    void StartLoadingScreenEffect(int type);
+    // Initializes and deletes criticalSections.
+    void InitCriticalSections();
+    void DeleteCriticalSections();
     // Advances `frames` by one frame, or by a fraction of one into
     // `subFrame` while the game runs slow.
     // Reads the config file at `path` into the config, resetting it to
@@ -296,9 +312,11 @@ public:
     CRITICAL_SECTION criticalSections[4];
     // How deep each of criticalSections is entered.
     BYTE criticalSectionDepths[4];
-    // The logo screen's frame counter: OnDrawLogo shows the logo while
-    // it is nonzero, and blinks "Press Shot Button" from 2 on.
-    int logoFrames;
+    // The loading screen's state: 0 for none, 1 while g_LoadingSprites
+    // show, then from 2 on a frame counter while OnDrawLogo blinks
+    // "Press Shot Button". OnDrawLogo shows surface 8 while it is
+    // nonzero.
+    int loadingState;
     // QueryPerformanceFrequency's result, as AddedCallback read it. Only
     // 4-aligned, so not a LARGE_INTEGER.
     DWORD perfFrequency[2];

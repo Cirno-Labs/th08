@@ -64,6 +64,8 @@ public:
     void **scripts;
 };
 
+class ScreenEffect;
+
 // The sprite engine, th07's SpriteEngine. Only the fields known so far.
 class SpriteEngine
 {
@@ -87,11 +89,46 @@ public:
         return this->surfaces[surface];
     }
 
-    unsigned char unk_0[0x2038];
+    // Has CopyBackBufferToTexture's copy done after the frame is drawn,
+    // as th07's, unless one is already pending: then returns -1, else 0.
+    int SetPendingCopy(int texture, int srcLeft, int srcTop, int srcWidth, int srcHeight, int dstLeft, int dstTop,
+                       int dstWidth, int dstHeight)
+    {
+        if (this->pendingCopyTexture >= 0)
+        {
+            return -1;
+        }
+        this->pendingCopyTexture = texture;
+        this->pendingCopySrcLeft = srcLeft;
+        this->pendingCopySrcTop = srcTop;
+        this->pendingCopySrcWidth = srcWidth;
+        this->pendingCopySrcHeight = srcHeight;
+        this->pendingCopyDstLeft = dstLeft;
+        this->pendingCopyDstTop = dstTop;
+        this->pendingCopyDstWidth = dstWidth;
+        this->pendingCopyDstHeight = dstHeight;
+        return 0;
+    }
+
+    unsigned char unk_0[0x8];
+    // The texture SetPendingCopy's copy goes to; negative for none. The
+    // rest of the copy's parameters are at the end.
+    int pendingCopyTexture;
+    unsigned char unk_c[0x202c];
     IDirect3DSurface8 *surfaces[0x20];
     unsigned char unk_20b8[0x414];
     IDirect3DVertexBuffer8 *vertexBuffer;
+    unsigned char unk_24d0[0x2a0080];
+    int pendingCopySrcLeft;
+    int pendingCopySrcTop;
+    int pendingCopySrcWidth;
+    int pendingCopySrcHeight;
+    int pendingCopyDstLeft;
+    int pendingCopyDstTop;
+    int pendingCopyDstWidth;
+    int pendingCopyDstHeight;
 };
+ASSERT_SIZE(SpriteEngine, 0x2a2570);
 extern SpriteEngine *g_SpriteEngine;
 
 // The loading screen's sprites, right after g_App (0x17ceac0).
