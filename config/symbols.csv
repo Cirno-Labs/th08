@@ -145,7 +145,7 @@ address,size,name,symbol
 0x0040c910,1790,Func40c910,
 0x0040d010,233,Func40d010,
 0x0040d100,521,UpdateDissolveBomb,?UpdateDissolveBomb@@YIXPAVPlayer@@@Z
-0x0040d310,121,Func40d310,
+0x0040d310,121,DrawDissolveBomb,?DrawDissolveBomb@@YIXPAVPlayer@@@Z
 0x0040d390,24,Rng::GetRandomF32InRange,?GetRandomF32InRange@Rng@@QAEMM@Z
 0x0040d3b0,17,Timer::AsFrames,?AsFrames@Timer@@QAEHXZ
 0x0040d3d0,27,Func40d3d0,

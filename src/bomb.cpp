@@ -132,6 +132,22 @@ void UpdateDissolveBomb(Player *player)
     }
 }
 
+void DrawDissolveBomb(Player *player)
+{
+    PlayerBomb *bomb = &player->bomb;
+    int shade;
+
+    if (bomb->timer < 60)
+    {
+        DimPlayAreaForBomb(player, 0x80404040);
+    }
+    else
+    {
+        shade = (bomb->timer.AsFrames() - 60) * 0xb0 / 60 + 0x40;
+        DimPlayAreaForBomb(player, shade << 16 | 0x80000000 | shade << 8 | shade);
+    }
+}
+
 int EffectUpdateBombRing42(Effect *effect)
 {
     float t;

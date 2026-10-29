@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">73.84% (824)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">24.19% (270)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">73.92% (825)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">24.10% (269)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="551.55" height="6" x="0" y="0" class="named"/>
-<rect width="14.73" height="6" x="551.55" y="0" class="decompiled"/>
-<rect width="180.73" height="6" x="566.27" y="0" class="todo"/>
+<rect width="552.22" height="6" x="0" y="0" class="named"/>
+<rect width="14.73" height="6" x="552.22" y="0" class="decompiled"/>
+<rect width="180.06" height="6" x="566.94" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -214,7 +214,7 @@
 <rect width="12" height="12" x="645" y="30" class="todo"><title>0x0040c910 Func40c910 (1790 bytes)</title></rect>
 <rect width="12" height="12" x="660" y="30" class="todo"><title>0x0040d010 Func40d010 (233 bytes)</title></rect>
 <rect width="12" height="12" x="675" y="30" class="named"><title>0x0040d100 UpdateDissolveBomb (521 bytes)</title></rect>
-<rect width="12" height="12" x="690" y="30" class="todo"><title>0x0040d310 Func40d310 (121 bytes)</title></rect>
+<rect width="12" height="12" x="690" y="30" class="named"><title>0x0040d310 DrawDissolveBomb (121 bytes)</title></rect>
 <rect width="12" height="12" x="705" y="30" class="named"><title>0x0040d390 Rng::GetRandomF32InRange (24 bytes)</title></rect>
 <rect width="12" height="12" x="720" y="30" class="named"><title>0x0040d3b0 Timer::AsFrames (17 bytes)</title></rect>
 <rect width="12" height="12" x="735" y="30" class="todo"><title>0x0040d3d0 Func40d3d0 (27 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">65.78%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">33.21%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">65.81%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">33.18%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="491.38" height="6" x="0" y="0" class="named"/>
-<rect width="7.57" height="6" x="491.38" y="0" class="decompiled"/>
-<rect width="248.05" height="6" x="498.95" y="0" class="todo"/>
+<rect width="491.57" height="6" x="0" y="0" class="named"/>
+<rect width="7.57" height="6" x="491.57" y="0" class="decompiled"/>
+<rect width="247.85" height="6" x="499.15" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1774,7 +1774,7 @@
 <rect width="5.09" height="5.56" x="717.71" y="216.49" class="named"><title>0x00409c20 Stage::DeletedCallback (122 bytes)</title></rect>
 <rect width="5.09" height="5.56" x="725.80" y="216.49" class="named"><title>0x0043d6e0 SetButtonFromDirectInput (122 bytes)</title></rect>
 <rect width="5.09" height="5.56" x="733.89" y="216.49" class="named"><title>0x00444680 MidiPlayer::Stop (122 bytes)</title></rect>
-<rect width="5.02" height="5.56" x="741.98" y="216.49" class="todo"><title>0x0040d310 Func40d310 (121 bytes)</title></rect>
+<rect width="5.02" height="5.56" x="741.98" y="216.49" class="named"><title>0x0040d310 DrawDissolveBomb (121 bytes)</title></rect>
 <rect width="5.08" height="5.43" x="618.51" y="225.05" class="named"><title>0x00426c90 EffectUpdateConvergeSlow (120 bytes)</title></rect>
 <rect width="5.08" height="5.36" x="618.51" y="233.48" class="named"><title>0x0040e2d0 EffectUpdateBombRing45 (119 bytes)</title></rect>
 <rect width="5.08" height="5.36" x="618.51" y="241.84" class="named"><title>0x00448081 App::StopMusic (119 bytes)</title></rect>
