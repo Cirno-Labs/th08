@@ -131,3 +131,15 @@ void Func440470()
         g_GameManager.stats->unk_38 = 99999;
     }
 }
+
+void ItemManager::CollectAll()
+{
+    Item *entry = this->activeList.next;
+
+    while (entry != NULL)
+    {
+        entry->state = 1;
+        entry->velocity = D3DXVECTOR3(0.0f, -0.5f, 0.0f);
+        entry = entry->next;
+    }
+}
