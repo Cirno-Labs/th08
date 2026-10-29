@@ -786,7 +786,7 @@ address,size,name,symbol
 0x0044e160,255,GameManager::RerollLifeChecksumKeys,?RerollLifeChecksumKeys@GameManager@@QAEXXZ
 0x0044e260,113,Func44e260,
 0x0044e2e0,104,Func44e2e0,
-0x0044e350,18,Func44e350,
+0x0044e350,18,PlayerBombHitbox::Deactivate,?Deactivate@PlayerBombHitbox@@QAEXXZ
 0x0044e370,35,Func44e370,
 0x0044e3a0,949,Func44e3a0,
 0x0044e770,352,Func44e770,

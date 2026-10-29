@@ -467,3 +467,27 @@ int Player::OnUpdate(Player *player)
     }
     return 1;
 }
+
+void UpdateHitboxAreas(Player *player)
+{
+    PlayerBombHitbox *area;
+    int i;
+
+    // Both arrays, bombHitboxes and hitAreas.
+    area = player->bombHitboxes;
+    for (i = 0; i < 0x180; i++, area++)
+    {
+        if (area->framesLeft < 0)
+        {
+            continue;
+        }
+        area->framesLeft--;
+        area->radius += area->radiusGrowth;
+        area->width += area->widthGrowth;
+        area->height += area->heightGrowth;
+        if (area->framesLeft <= 0)
+        {
+            area->Deactivate();
+        }
+    }
+}
