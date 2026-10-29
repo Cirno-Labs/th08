@@ -311,3 +311,16 @@ void MidiPlayer::Rewind()
         track->delta = ReadVarLen(&track->cursor);
     }
 }
+
+int MidiPlayer::Play()
+{
+    if (this->tracks == NULL)
+    {
+        return -1;
+    }
+    this->Rewind();
+    this->device.Open(MIDI_MAPPER);
+    this->Start(1, NULL, 0);
+    DebugPrint(" midi play\n");
+    return 0;
+}
