@@ -244,6 +244,109 @@ int MainMenu::OnDraw(MainMenu *menu)
     return 1;
 }
 
+int MainMenu::InitTitleScene()
+{
+    ScoreDat *dat;
+
+    g_Unknown18b8a2c = 0;
+    g_AsciiText.Initialize();
+    g_AsciiText.StartScripts();
+    if (g_GameManager.unk_4 != NULL)
+    {
+        delete g_GameManager.unk_4;
+        g_GameManager.unk_4 = NULL;
+    }
+    g_GameManager.unk_4 = new GameManagerUnk4;
+    if (g_GameManager.stats != NULL)
+    {
+        delete g_GameManager.stats;
+        g_GameManager.stats = NULL;
+    }
+    g_GameManager.stats = new GameManagerStats;
+    g_App.gameSpeed = 1.0f;
+    if (g_GameManager.unk_3dbac >> 3 & 1)
+    {
+        g_GameManager.character = g_GameManager.character = 0;
+    }
+    if (g_GameManager.unk_3dbac >> 1 & 1)
+    {
+        g_GameManager.unk_3dbac &= ~8;
+    }
+    if (g_GameManager.AnyShotHasExtraOpen() && !g_GameManager.anyShotHasExtraOpen)
+    {
+        ShowInfoScreen("title/info00.jpg");
+    }
+    if (g_GameManager.Func43c2c5() && !g_GameManager.unk_3dbac_16)
+    {
+        ShowInfoScreen("title/info02.jpg");
+    }
+    if (g_GameManager.AllShotsHaveExtraOpen() && !g_GameManager.allShotsHaveExtraOpen)
+    {
+        ShowInfoScreen("title/info01.jpg");
+    }
+    dat = LoadScoreDat("score.dat");
+    LoadClears(dat, g_GameManager.clrds);
+    LoadPracticeScores(dat, g_GameManager.pscrs);
+    LoadSpellCards(dat, g_GameManager.catks);
+    LoadFlspChunk(dat, &g_GameManager.flsp);
+    ReleaseScoreDat(dat);
+    g_GameManager.anyShotHasExtraOpen = g_GameManager.AnyShotHasExtraOpen();
+    g_GameManager.unk_3dbac_16 = g_GameManager.Func43c2c5();
+    g_GameManager.allShotsHaveExtraOpen = g_GameManager.AllShotsHaveExtraOpen();
+    this->Func46cbbb();
+    this->state = 0;
+    g_App.ResetClockDriftCounters();
+    switch (g_App.prevScene)
+    {
+    case 2:
+    case 3:
+    case 6:
+        this->cursor = g_GameManager.difficulty >= 4;
+        break;
+    case 5:
+        this->cursor = 5;
+        break;
+    case 8:
+        this->cursor = 6;
+        break;
+    default:
+        this->cursor = 0;
+        break;
+    }
+    this->returningFromPractice = 0;
+    if (g_GameManager.unk_3dbac & 1)
+    {
+        this->cursor = (g_GameManager.unk_3dbac >> 14 & 1) ? 2 : 3;
+        this->returningFromPractice = (g_GameManager.unk_3dbac >> 14 & 1) ? 2 : 1;
+    }
+    g_GameManager.unk_3dbac &= ~1;
+    g_GameManager.unk_3dbac &= ~0x4000;
+    D3DXVECTOR3 pos(500.0f, 440.0f, 0.0f);
+    if (g_App.prevScene == 2)
+    {
+        g_App.StartLoadingSpritesOverScreen(&pos);
+        g_App.StartLoadingScreenEffect(0);
+    }
+    else if (g_App.prevScene != 0)
+    {
+        g_App.StartLoadingSprites(&pos);
+    }
+    g_GameManager.unk_3dbac &= ~2;
+    g_GameManager.demoFrames = 0;
+    this->loadingState = 1;
+    g_App.StartSubThread((LPTHREAD_START_ROUTINE)LoadingThread, NULL);
+    return 0;
+}
+
+void App::ResetClockDriftCounters()
+{
+    this->fastClockStreak = 0;
+    this->maxFastClockStreak = 0;
+    this->clockMeasurementPending = 0;
+    this->fastClockCycleCount = 0;
+    this->fastClockCycles = 0;
+}
+
 int MainMenu::ReleaseTitleScene()
 {
     if (this->loadedReplay != NULL)

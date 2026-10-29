@@ -1014,7 +1014,7 @@ address,size,name,symbol
 0x0046adb0,964,MainMenu::UpdateGameStartMenu,?UpdateGameStartMenu@MainMenu@@QAEHXZ
 0x0046b174,2636,MainMenu::UpdateState16,?UpdateState16@MainMenu@@QAEHXZ
 0x0046bbc0,4047,MainMenu::UpdateState17,?UpdateState17@MainMenu@@QAEHXZ
-0x0046cbbb,2984,Func46cbbb,
+0x0046cbbb,2984,MainMenu::Func46cbbb,?Func46cbbb@MainMenu@@QAEXXZ
 0x0046d763,150,Func46d763,
 0x0046d7f9,2365,Func46d7f9,
 0x0046e136,3671,MainMenu::UpdateReplayMenu,?UpdateReplayMenu@MainMenu@@QAEHXZ
@@ -1029,9 +1029,9 @@ address,size,name,symbol
 0x0047052d,850,MainMenu::DrawCharacterMenu,?DrawCharacterMenu@MainMenu@@QAEHXZ
 0x0047087f,493,MainMenu::OnDraw,?OnDraw@MainMenu@@SIHPAV1@@Z
 0x00470a6c,873,MainMenu::InitTitleScene,?InitTitleScene@MainMenu@@QAEHXZ
-0x00470dd5,59,Func470dd5,
-0x00470e10,881,Func470e10,
-0x00471181,639,Func471181,
+0x00470dd5,59,App::ResetClockDriftCounters,?ResetClockDriftCounters@App@@QAEXXZ
+0x00470e10,881,MainMenu::LoadingThread,?LoadingThread@MainMenu@@SIXPAV1@@Z
+0x00471181,639,MainMenu::ShowInfoScreen,?ShowInfoScreen@MainMenu@@SIXPAD@Z
 0x00471400,109,MainMenu::ReleaseTitleScene,?ReleaseTitleScene@MainMenu@@QAEHXZ
 0x0047146d,281,SetUpTitleScene,?SetUpTitleScene@@YIHH@Z
 0x00471586,203,MainMenu::MainMenu,??0MainMenu@@QAE@XZ

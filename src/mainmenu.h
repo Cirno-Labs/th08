@@ -45,7 +45,19 @@ public:
     // slots 0x14 and 0x16 and surface 0, removes the draw element, frees
     // the menu's buffers and the menu. Returns 0.
     static int DeletedCallback(MainMenu *menu);
+    // The body of the added callback: resets the game's numbers, shows
+    // the info screens of newly opened stages, reloads the score file,
+    // puts the cursor on the entry the previous scene came from, starts
+    // the loading sprites and LoadingThread. Returns 0.
     int InitTitleScene();
+    // Loads the title's ANMs and surface in the sub thread, then the
+    // music; sets loadingState to 0, or 2 on failure. New in th08.
+    static void LoadingThread(MainMenu *arg);
+    // Shows the picture at `path` for up to 100 seconds, fading in and
+    // out; shot or bomb skips it after 3 seconds. New in th08.
+    static void ShowInfoScreen(char *path);
+    // Sets the title menu's sprites up (0x46cbbb).
+    void Func46cbbb();
 
     // Moves to state `state`, remembering the one it leaves in
     // prevState, and resets the frame counters. Inline: the copy is at

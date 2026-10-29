@@ -135,6 +135,10 @@ public:
     // Starts g_LoadingScreenEffect (type `type` + 5, 60 frames) unless
     // there is one.
     void StartLoadingScreenEffect(int type);
+    // Clears th07's clock drift counters. th07 defined it in its title
+    // menu file; here the copy (0x470dd5) follows InitTitleScene, its
+    // caller.
+    void ResetClockDriftCounters();
     // Initializes and deletes criticalSections.
     void InitCriticalSections();
     void DeleteCriticalSections();
