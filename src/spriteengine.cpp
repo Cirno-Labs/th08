@@ -1,6 +1,6 @@
-// The file with SpriteEngine's loading and copying, from 0x465070: th07's
-// spriteengine.cpp without the drawing and the script interpreter, which
-// come before it in th08.
+// The file with SpriteEngine, from 0x45e580: th07's spriteengine.cpp, in
+// a different order. The script interpreter and drawing come first, then
+// the constructor and the loading and copying from 0x465070.
 
 #include <math.h>
 #include <stdarg.h>
@@ -13,6 +13,27 @@
 // The original allocates in an inline from global.h, whose __FILE__ names
 // that header.
 #define GLOBAL_H "d:\\cygwin\\home\\zun\\prog\\th08\\global.h"
+
+void AnmLoaded::SetScript(Sprite *vm, void *script)
+{
+    if (script == NULL || this->loadStep != 0)
+    {
+        memset(vm, 0, sizeof(Sprite));
+    }
+    else
+    {
+        vm->Initialize();
+        vm->anmSlot = this->slot;
+        vm->anm = this;
+        vm->flags &= ~0x600;
+        vm->scriptStart = (AnmInstr *)script;
+        vm->scriptPos = vm->scriptStart;
+        vm->scriptTime = 0;
+        vm->flags &= ~1;
+        g_SpriteEngine->Step(vm);
+        g_SpriteEngine->scriptStartCount++;
+    }
+}
 
 SpriteEngine::SpriteEngine()
 {

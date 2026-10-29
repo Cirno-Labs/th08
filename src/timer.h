@@ -32,6 +32,11 @@ struct Timer
         this->subFrame = 0.0f;
         this->previous = -999;
     }
+    // Set, as an assignment. Inline; the copy is at 0x4065f0.
+    void operator=(int frames)
+    {
+        this->Set(frames);
+    }
     // Advances by `frames`, in fractions of a frame while the game runs
     // slow; first by one more frame, with no fraction or previous count,
     // while bit 0x20 of g_App.stateFlags is set.

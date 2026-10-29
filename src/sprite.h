@@ -2,13 +2,37 @@
 
 #pragma once
 
+#include <stddef.h>
+
 #include <d3d8.h>
 #include <d3dx8math.h>
 #include <d3dx8tex.h>
 
 #include "common.h"
+#include "timer.h"
 
 class AnmLoaded;
+
+// An argument of an ANM instruction.
+union AnmArg
+{
+    int i;
+    float f;
+    BYTE b[4];
+};
+
+// An instruction of an ANM script, as th07's.
+struct AnmInstr
+{
+    short opcode;
+    // The size of the instruction, arguments included.
+    WORD size;
+    // The frame of the script it runs on.
+    short time;
+    // Bit n: argument n names a script variable.
+    WORD paramMask;
+    AnmArg args[1];
+};
 
 // An entry of a loaded ANM file's sprite list, th07's with the texture
 // pointer added. Only the fields known so far.
@@ -56,7 +80,30 @@ public:
         this->pendingInterrupt = interrupt;
     }
 
-    unsigned char unk_0[0x1f0];
+    // Resets the sprite's state up to pos, as th07's: a scale of 1,
+    // white, the identity matrix, flags 7. Inline; the copy is at
+    // 0x4068e0.
+    void Initialize()
+    {
+        memset(this, 0, offsetof(Sprite, pos));
+        this->scaleY = 1.0f;
+        this->scaleX = 1.0f;
+        this->color = 0xffffffff;
+        D3DXMatrixIdentity(&this->matrix);
+        *(WORD *)&this->flags = 7;
+        this->scriptTime.Initialize();
+    }
+
+    unsigned char unk_0[0x18];
+    // Draw scales the sprite's height and width by these, as th07's.
+    float scaleY;
+    float scaleX;
+    unsigned char unk_20[0x18];
+    // The script's frame.
+    Timer scriptTime;
+    unsigned char unk_44[0xec];
+    D3DXMATRIX matrix;
+    unsigned char unk_170[0x80];
     D3DCOLOR color;
     unsigned char unk_1f4[0x4];
     // Bit 1: shown; DrawUnrotated draws nothing without it.
@@ -69,10 +116,15 @@ public:
     AnmLoaded *anm;
     // Where it is drawn.
     D3DXVECTOR3 pos;
-    unsigned char unk_214[0x6];
+    short spriteIndex;
+    // The slot of the ANM file whose script runs. New in th08.
+    short anmSlot;
+    unsigned char unk_218[0x2];
     // The script AnmLoaded::StartScript started.
     short scriptIndex;
-    unsigned char unk_21c[0x8];
+    // The script SetScript started, and the instruction Step runs next.
+    AnmInstr *scriptStart;
+    AnmInstr *scriptPos;
     // The entry SetSprite chose.
     SpriteData *spriteData;
     unsigned char unk_228[0x60];
