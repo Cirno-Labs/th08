@@ -66,7 +66,7 @@ address,size,name,symbol
 0x00406cb0,25,GameManager::IsDemo,?IsDemo@GameManager@@QAEHXZ
 0x00406cd0,23,GameManager::IsInPractice,?IsInPractice@GameManager@@QAEHXZ
 0x00406cf0,21,GameManager::GetUnk22,?GetUnk22@GameManager@@QAEHXZ
-0x00406d10,38,Func406d10,
+0x00406d10,38,GameManager::IsUnk22AtLow1,?IsUnk22AtLow1@GameManager@@QAEHXZ
 0x00406d40,38,Func406d40,
 0x00406d70,38,Func406d70,
 0x00406da0,38,Func406da0,
