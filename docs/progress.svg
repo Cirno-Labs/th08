@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">53.05% (592)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">45.16% (504)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">53.14% (593)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">45.07% (503)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="396.26" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="396.26" y="0" class="decompiled"/>
-<rect width="337.35" height="6" x="409.65" y="0" class="todo"/>
+<rect width="396.93" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="396.93" y="0" class="decompiled"/>
+<rect width="336.69" height="6" x="410.31" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -688,7 +688,7 @@
 <rect width="12" height="12" x="255" y="180" class="named"><title>0x00440cf0 Item::CollectPower (334 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="180" class="named"><title>0x00440e40 Item::CollectPoint (472 bytes)</title></rect>
 <rect width="12" height="12" x="285" y="180" class="named"><title>0x00441020 Item::CollectFullPowerItem (334 bytes)</title></rect>
-<rect width="12" height="12" x="300" y="180" class="todo"><title>0x00441170 Func441170 (315 bytes)</title></rect>
+<rect width="12" height="12" x="300" y="180" class="named"><title>0x00441170 Item::CollectBigPower (315 bytes)</title></rect>
 <rect width="12" height="12" x="315" y="180" class="todo"><title>0x004412b0 Func4412b0 (293 bytes)</title></rect>
 <rect width="12" height="12" x="330" y="180" class="named"><title>0x004413e0 ItemManager::CollectAll (97 bytes)</title></rect>
 <rect width="12" height="12" x="345" y="180" class="named"><title>0x00441450 ItemManager::ConvertPowerItems (209 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">44.55%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">54.46%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">44.62%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">54.39%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="332.81" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="332.81" y="0" class="decompiled"/>
-<rect width="406.79" height="6" x="340.21" y="0" class="todo"/>
+<rect width="333.32" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="333.32" y="0" class="decompiled"/>
+<rect width="406.28" height="6" x="340.72" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1509,7 +1509,7 @@
 <rect width="10.83" height="10.21" x="518.98" y="334.79" class="named"><title>0x00443840 ResolveShortcut (322 bytes)</title></rect>
 <rect width="11.09" height="9.93" x="532.82" y="129.42" class="named"><title>0x00474af0 DatArchive::Decode (321 bytes)</title></rect>
 <rect width="11.04" height="9.93" x="546.91" y="129.42" class="todo"><title>0x00432f20 Func432f20 (320 bytes)</title></rect>
-<rect width="10.82" height="9.93" x="560.95" y="129.42" class="todo"><title>0x00441170 Func441170 (315 bytes)</title></rect>
+<rect width="10.82" height="9.93" x="560.95" y="129.42" class="named"><title>0x00441170 Item::CollectBigPower (315 bytes)</title></rect>
 <rect width="10.78" height="9.93" x="574.77" y="129.42" class="todo"><title>0x0044d180 Func44d180 (314 bytes)</title></rect>
 <rect width="10.74" height="9.93" x="588.55" y="129.42" class="todo"><title>0x004113a0 Func4113a0 (313 bytes)</title></rect>
 <rect width="10.74" height="9.93" x="602.29" y="129.42" class="todo"><title>0x00432460 Func432460 (313 bytes)</title></rect>

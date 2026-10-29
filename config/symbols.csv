@@ -619,7 +619,7 @@ address,size,name,symbol
 0x00440cf0,334,Item::CollectPower,?CollectPower@Item@@QAEXXZ
 0x00440e40,472,Item::CollectPoint,?CollectPoint@Item@@QAEXXZ
 0x00441020,334,Item::CollectFullPowerItem,?CollectFullPowerItem@Item@@QAEXXZ
-0x00441170,315,Func441170,
+0x00441170,315,Item::CollectBigPower,?CollectBigPower@Item@@QAEXXZ
 0x004412b0,293,Func4412b0,
 0x004413e0,97,ItemManager::CollectAll,?CollectAll@ItemManager@@QAEXXZ
 0x00441450,209,ItemManager::ConvertPowerItems,?ConvertPowerItems@ItemManager@@QAEXPAUItem@@@Z

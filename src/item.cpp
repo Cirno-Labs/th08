@@ -263,6 +263,51 @@ void Item::CollectFullPowerItem()
     }
 }
 
+void Item::CollectBigPower()
+{
+    int prevLevel;
+    int level;
+
+    if (g_GameManager.GetPower() >= 128)
+    {
+    }
+    else
+    {
+        level = 0;
+        while (g_GameManager.GetPower() >= g_PowerLevels[level])
+        {
+            level++;
+        }
+        prevLevel = level;
+        g_GameManager.AddPower(8);
+        if (g_GameManager.GetPower() >= 128)
+        {
+            g_GameManager.SetPower(128);
+            if (!g_SpellCard.Func4178a0())
+            {
+                g_BulletManager.Func415c60();
+            }
+            g_Gui.ShowFullPowerPopup(0, 1);
+            g_ItemManager.ConvertPowerItems(this);
+        }
+        g_Gui.powerChanged = 2;
+        g_GameManager.AddScore(10);
+        while (g_GameManager.GetPower() >= g_PowerLevels[level])
+        {
+            level++;
+        }
+        if (level != prevLevel)
+        {
+            g_AsciiText.AddPopup(&this->pos, -1, 0xffffc0a0);
+            g_SoundPlayer.QueueSound(0x1f, 0);
+        }
+        else
+        {
+            g_AsciiText.AddPopup(&this->pos, 10, 0xffffffff);
+        }
+    }
+}
+
 void ItemManager::CollectAll()
 {
     Item *entry = this->activeList.next;
