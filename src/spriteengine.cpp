@@ -1,4 +1,4 @@
-// The file with SpriteEngine, from 0x45e580: th07's spriteengine.cpp, in
+// The file with SpriteEngine, from 0x45e430: th07's spriteengine.cpp, in
 // a different order. The script interpreter and drawing come first, then
 // the constructor and the loading and copying from 0x465070.
 
@@ -13,6 +13,31 @@
 // The original allocates in an inline from global.h, whose __FILE__ names
 // that header.
 #define GLOBAL_H "d:\\cygwin\\home\\zun\\prog\\th08\\global.h"
+
+int AnmLoaded::SetSprite(Sprite *vm, int sprite)
+{
+    if (this->file == NULL || this->loadStep != 0)
+    {
+        return -1;
+    }
+    vm->anm = this;
+    vm->spriteIndex = sprite;
+    vm->spriteData = &this->sprites[sprite];
+    vm->spriteWidth = vm->spriteData->width;
+    vm->spriteHeight = vm->spriteData->height;
+    D3DXMatrixIdentity(&vm->matrix);
+    D3DXMatrixIdentity(&vm->sizeMatrix);
+    if (vm->spriteData->scaleX < 1.0f)
+    {
+        sprite = 0;
+    }
+    vm->matrix.m[0][0] = vm->spriteWidth / 256.0f;
+    vm->matrix.m[1][1] = vm->spriteHeight / 256.0f;
+    vm->sizeMatrix.m[0][0] = vm->spriteWidth / vm->spriteData->textureWidth * vm->spriteData->scaleX;
+    vm->sizeMatrix.m[1][1] = vm->spriteHeight / vm->spriteData->textureHeight * vm->spriteData->scaleY;
+    vm->drawMatrix = vm->matrix;
+    return 0;
+}
 
 void AnmLoaded::SetScript(Sprite *vm, void *script)
 {
