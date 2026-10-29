@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">7.44% (83)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">92.56% (1033)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">7.53% (84)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">92.47% (1032)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="55.56" height="6" x="0" y="0" class="named"/>
-<rect width="691.44" height="6" x="55.56" y="0" class="todo"/>
+<rect width="56.23" height="6" x="0" y="0" class="named"/>
+<rect width="690.77" height="6" x="56.23" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -676,7 +676,7 @@
 <rect width="12" height="12" x="90" y="180" class="named"><title>0x0043f881 GdiSurface::IsCreated (23 bytes)</title></rect>
 <rect width="12" height="12" x="105" y="180" class="named"><title>0x0043f898 GdiSurface::CopyToSurface (232 bytes)</title></rect>
 <rect width="12" height="12" x="120" y="180" class="named"><title>0x0043f980 CreateTextSurface (35 bytes)</title></rect>
-<rect width="12" height="12" x="135" y="180" class="todo"><title>0x0043f9a3 Func43f9a3 (37 bytes)</title></rect>
+<rect width="12" height="12" x="135" y="180" class="named"><title>0x0043f9a3 ReleaseTextSurface (37 bytes)</title></rect>
 <rect width="12" height="12" x="150" y="180" class="todo"><title>0x0043f9c8 Func43f9c8 (801 bytes)</title></rect>
 <rect width="12" height="12" x="165" y="180" class="todo"><title>0x0043fce9 Func43fce9 (793 bytes)</title></rect>
 <rect width="12" height="12" x="180" y="180" class="todo"><title>0x00440010 Func440010 (52 bytes)</title></rect>
@@ -1189,8 +1189,8 @@
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
 <text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">4.03%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">95.97%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="30.08" height="6" x="0" y="0" class="named"/>
-<rect width="716.92" height="6" x="30.08" y="0" class="todo"/>
+<rect width="30.14" height="6" x="0" y="0" class="named"/>
+<rect width="716.86" height="6" x="30.14" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -2099,7 +2099,7 @@
 <rect width="1.57" height="1.60" x="718.28" y="292.88" class="todo"><title>0x0041f0b0 Func41f0b0 (37 bytes)</title></rect>
 <rect width="1.57" height="1.60" x="722.85" y="292.88" class="todo"><title>0x00425040 Func425040 (37 bytes)</title></rect>
 <rect width="1.57" height="1.60" x="727.42" y="292.88" class="todo"><title>0x0042f2f0 Func42f2f0 (37 bytes)</title></rect>
-<rect width="1.57" height="1.60" x="731.98" y="292.88" class="todo"><title>0x0043f9a3 Func43f9a3 (37 bytes)</title></rect>
+<rect width="1.57" height="1.60" x="731.98" y="292.88" class="named"><title>0x0043f9a3 ReleaseTextSurface (37 bytes)</title></rect>
 <rect width="1.57" height="1.60" x="736.55" y="292.88" class="todo"><title>0x0044d150 Func44d150 (37 bytes)</title></rect>
 <rect width="1.44" height="1.60" x="741.11" y="292.88" class="todo"><title>0x004021d0 Func4021d0 (36 bytes)</title></rect>
 <rect width="1.44" height="1.60" x="745.56" y="292.88" class="todo"><title>0x00406fa0 Func406fa0 (36 bytes)</title></rect>
