@@ -67,6 +67,46 @@ int MainMenu::OnUpdate(MainMenu *menu)
     }
     return status;
 }
+void MainMenu::ReassignButton(short button, short replacement, int unused)
+{
+    if (this->controllerMapping.shootButton == button)
+    {
+        this->controllerMapping.shootButton = replacement;
+    }
+    if (this->controllerMapping.bombButton == button)
+    {
+        this->controllerMapping.bombButton = replacement;
+    }
+    if (this->controllerMapping.focusButton == button)
+    {
+        this->controllerMapping.focusButton = replacement;
+    }
+    if (this->controllerMapping.upButton == button)
+    {
+        this->controllerMapping.upButton = replacement;
+    }
+    if (this->controllerMapping.downButton == button)
+    {
+        this->controllerMapping.downButton = replacement;
+    }
+    if (this->controllerMapping.leftButton == button)
+    {
+        this->controllerMapping.leftButton = replacement;
+    }
+    if (this->controllerMapping.rightButton == button)
+    {
+        this->controllerMapping.rightButton = replacement;
+    }
+    if (this->controllerMapping.menuButton == button)
+    {
+        this->controllerMapping.menuButton = replacement;
+    }
+    if (this->controllerMapping.skipButton == button)
+    {
+        this->controllerMapping.skipButton = replacement;
+    }
+}
+
 int MainMenu::MoveMenuCursor(int count)
 {
     if (count == 0)
