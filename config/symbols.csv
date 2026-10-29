@@ -2439,7 +2439,6 @@ address,size,name,symbol
 0x004c81b0,,g_SoundPaths,?g_SoundPaths@@3PAPADA
 0x004c8704,,g_FileModes,?g_FileModes@@3PAPADA
 0x004cce20,,g_AsciiText,?g_AsciiText@@3VAsciiText@@A
-0x004d50a0,,g_StatisticsColumnWidth,?g_StatisticsColumnWidth@@3HA
 0x004e3d28,,g_Unknown4e3d28,?g_Unknown4e3d28@@3HA
 0x004e4030,,g_Stage,?g_Stage@@3VStage@@A
 0x004e4b50,,g_FogColorChanged,?g_FogColorChanged@@3EA

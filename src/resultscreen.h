@@ -534,9 +534,6 @@ extern char *g_DifficultyNames[5];
 // each spell card captured adds to it, as th07's.
 extern float g_DifficultyRatings[5];
 extern float g_SpellCardRatings[5];
-// What DrawStatistics moves its columns by, in nines. Nothing sets it,
-// so it is 0. New in th08.
-extern int g_StatisticsColumnWidth;
 
 // Returns g_StageNames[stage], or "Clear" for 9 and over. New in th08.
 char *GetStageName(int stage);

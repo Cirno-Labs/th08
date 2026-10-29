@@ -1771,10 +1771,10 @@ int ResultScreen::DrawStatistics()
         cursorPos.x += 210.0f;
         cursorPos.y += 32.0f;
         g_AsciiText.AddFormat(&cursorPos, "%9d", g_GameManager.stats->guiScore);
-        cursorPos.x += g_StatisticsColumnWidth * 9;
+        cursorPos.x += g_AsciiText.glyphWidth * 9;
         g_AsciiText.AddFormat(&cursorPos, "%1d",
                               g_GameManager.stats->continuesUsed >= 10 ? 9 : g_GameManager.stats->continuesUsed);
-        cursorPos.x -= g_StatisticsColumnWidth * 9;
+        cursorPos.x -= g_AsciiText.glyphWidth * 9;
         if (g_GameManager.stats->guiScore < 2000000)
         {
             rating -= 20.0f;
@@ -1790,7 +1790,7 @@ int ResultScreen::DrawStatistics()
         cursorPos.y += 22.0f;
         g_AsciiText.AddString(&cursorPos, g_DifficultyNames[g_GameManager.difficulty]);
         rating += g_DifficultyRatings[g_GameManager.difficulty];
-        cursorPos.x += g_StatisticsColumnWidth;
+        cursorPos.x += g_AsciiText.glyphWidth;
         cursorPos.y += 22.0f;
         if ((g_GameManager.unk_3dbac >> 4 & 1) == 0)
         {
