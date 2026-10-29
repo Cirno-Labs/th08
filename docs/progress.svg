@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">10.57% (118)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">89.43% (998)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">11.02% (123)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">88.98% (993)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="78.98" height="6" x="0" y="0" class="named"/>
-<rect width="668.02" height="6" x="78.98" y="0" class="todo"/>
+<rect width="82.33" height="6" x="0" y="0" class="named"/>
+<rect width="664.67" height="6" x="82.33" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -1144,21 +1144,21 @@
 <rect width="12" height="12" x="360" y="315" class="todo"><title>0x004733e0 Func4733e0 (328 bytes)</title></rect>
 <rect width="12" height="12" x="375" y="315" class="todo"><title>0x00473530 Func473530 (328 bytes)</title></rect>
 <rect width="12" height="12" x="390" y="315" class="todo"><title>0x00473680 Func473680 (51 bytes)</title></rect>
-<rect width="12" height="12" x="405" y="315" class="todo"><title>0x004736c0 Func4736c0 (51 bytes)</title></rect>
-<rect width="12" height="12" x="420" y="315" class="todo"><title>0x00473700 Func473700 (46 bytes)</title></rect>
-<rect width="12" height="12" x="435" y="315" class="todo"><title>0x00473730 Func473730 (81 bytes)</title></rect>
-<rect width="12" height="12" x="450" y="315" class="todo"><title>0x00473790 Func473790 (330 bytes)</title></rect>
-<rect width="12" height="12" x="465" y="315" class="todo"><title>0x004738e0 Func4738e0 (53 bytes)</title></rect>
-<rect width="12" height="12" x="480" y="315" class="todo"><title>0x00473920 Func473920 (68 bytes)</title></rect>
-<rect width="12" height="12" x="495" y="315" class="todo"><title>0x00473970 Func473970 (74 bytes)</title></rect>
-<rect width="12" height="12" x="510" y="315" class="todo"><title>0x004739c0 Func4739c0 (43 bytes)</title></rect>
-<rect width="12" height="12" x="525" y="315" class="todo"><title>0x004739f0 Func4739f0 (39 bytes)</title></rect>
-<rect width="12" height="12" x="540" y="315" class="todo"><title>0x00473a20 Func473a20 (51 bytes)</title></rect>
-<rect width="12" height="12" x="555" y="315" class="todo"><title>0x00473a60 Func473a60 (210 bytes)</title></rect>
-<rect width="12" height="12" x="570" y="315" class="todo"><title>0x00473b40 Func473b40 (253 bytes)</title></rect>
-<rect width="12" height="12" x="585" y="315" class="todo"><title>0x00473c40 Func473c40 (23 bytes)</title></rect>
-<rect width="12" height="12" x="600" y="315" class="todo"><title>0x00473c60 Func473c60 (20 bytes)</title></rect>
-<rect width="12" height="12" x="615" y="315" class="todo"><title>0x00473c80 Func473c80 (46 bytes)</title></rect>
+<rect width="12" height="12" x="405" y="315" class="named"><title>0x004736c0 File::File (51 bytes)</title></rect>
+<rect width="12" height="12" x="420" y="315" class="named"><title>0x00473700 File::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
+<rect width="12" height="12" x="435" y="315" class="todo"><title>0x00473730 File::~File (81 bytes)</title></rect>
+<rect width="12" height="12" x="450" y="315" class="todo"><title>0x00473790 File::Open (330 bytes)</title></rect>
+<rect width="12" height="12" x="465" y="315" class="todo"><title>0x004738e0 File::Close (53 bytes)</title></rect>
+<rect width="12" height="12" x="480" y="315" class="todo"><title>0x00473920 File::Read (68 bytes)</title></rect>
+<rect width="12" height="12" x="495" y="315" class="todo"><title>0x00473970 File::Write (74 bytes)</title></rect>
+<rect width="12" height="12" x="510" y="315" class="todo"><title>0x004739c0 File::Tell (43 bytes)</title></rect>
+<rect width="12" height="12" x="525" y="315" class="todo"><title>0x004739f0 File::GetSize (39 bytes)</title></rect>
+<rect width="12" height="12" x="540" y="315" class="todo"><title>0x00473a20 File::Seek (51 bytes)</title></rect>
+<rect width="12" height="12" x="555" y="315" class="todo"><title>0x00473a60 File::ReadAll (210 bytes)</title></rect>
+<rect width="12" height="12" x="570" y="315" class="todo"><title>0x00473b40 MakeFullPath (253 bytes)</title></rect>
+<rect width="12" height="12" x="585" y="315" class="named"><title>0x00473c40 FileBase::FileBase (23 bytes)</title></rect>
+<rect width="12" height="12" x="600" y="315" class="named"><title>0x00473c60 FileBase::~FileBase (20 bytes)</title></rect>
+<rect width="12" height="12" x="615" y="315" class="named"><title>0x00473c80 FileBase::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
 <rect width="12" height="12" x="630" y="315" class="named"><title>0x00473cb0 LzssCompress (1065 bytes)</title></rect>
 <rect width="12" height="12" x="645" y="315" class="named"><title>0x004740e0 LzssDecompress (868 bytes)</title></rect>
 <rect width="12" height="12" x="660" y="315" class="named"><title>0x00474450 LzssTreeInitNode (67 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">5.58%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">94.42%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">5.62%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">94.38%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="41.70" height="6" x="0" y="0" class="named"/>
-<rect width="705.30" height="6" x="41.70" y="0" class="todo"/>
+<rect width="42" height="6" x="0" y="0" class="named"/>
+<rect width="705" height="6" x="42" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1499,7 +1499,7 @@
 <rect width="10.83" height="10.70" x="518.98" y="226.67" class="todo"><title>0x00441020 Func441020 (334 bytes)</title></rect>
 <rect width="10.83" height="10.66" x="518.98" y="240.37" class="todo"><title>0x0045e430 Func45e430 (333 bytes)</title></rect>
 <rect width="10.83" height="10.62" x="518.98" y="254.03" class="todo"><title>0x0045bdc0 Func45bdc0 (332 bytes)</title></rect>
-<rect width="10.83" height="10.54" x="518.98" y="267.65" class="todo"><title>0x00473790 Func473790 (330 bytes)</title></rect>
+<rect width="10.83" height="10.54" x="518.98" y="267.65" class="todo"><title>0x00473790 File::Open (330 bytes)</title></rect>
 <rect width="10.83" height="10.49" x="518.98" y="281.18" class="todo"><title>0x00442240 Func442240 (329 bytes)</title></rect>
 <rect width="10.83" height="10.45" x="518.98" y="294.68" class="todo"><title>0x004733e0 Func4733e0 (328 bytes)</title></rect>
 <rect width="10.83" height="10.45" x="518.98" y="308.13" class="todo"><title>0x00473530 Func473530 (328 bytes)</title></rect>
@@ -1573,7 +1573,7 @@
 <rect width="9.28" height="8.78" x="570.30" y="154.57" class="todo"><title>0x0045a0f4 Func45a0f4 (255 bytes)</title></rect>
 <rect width="9.28" height="8.78" x="582.59" y="154.57" class="todo"><title>0x0045a1f3 Func45a1f3 (255 bytes)</title></rect>
 <rect width="9.24" height="8.78" x="594.87" y="154.57" class="todo"><title>0x00409b20 Func409b20 (254 bytes)</title></rect>
-<rect width="9.19" height="8.78" x="607.11" y="154.57" class="todo"><title>0x00473b40 Func473b40 (253 bytes)</title></rect>
+<rect width="9.19" height="8.78" x="607.11" y="154.57" class="todo"><title>0x00473b40 MakeFullPath (253 bytes)</title></rect>
 <rect width="9.14" height="8.78" x="619.30" y="154.57" class="todo"><title>0x0042deb0 Func42deb0 (252 bytes)</title></rect>
 <rect width="9.14" height="8.78" x="631.44" y="154.57" class="todo"><title>0x00445ea7 Func445ea7 (252 bytes)</title></rect>
 <rect width="9.09" height="8.78" x="643.58" y="154.57" class="todo"><title>0x00426d70 Func426d70 (251 bytes)</title></rect>
@@ -1633,7 +1633,7 @@
 <rect width="7.79" height="8.20" x="569.79" y="325.70" class="todo"><title>0x004322b0 Func4322b0 (213 bytes)</title></rect>
 <rect width="7.79" height="8.10" x="569.79" y="336.90" class="todo"><title>0x00462f10 Func462f10 (211 bytes)</title></rect>
 <rect width="7.78" height="8.06" x="580.58" y="177.72" class="todo"><title>0x0045bc90 Func45bc90 (210 bytes)</title></rect>
-<rect width="7.78" height="8.06" x="591.36" y="177.72" class="todo"><title>0x00473a60 Func473a60 (210 bytes)</title></rect>
+<rect width="7.78" height="8.06" x="591.36" y="177.72" class="todo"><title>0x00473a60 File::ReadAll (210 bytes)</title></rect>
 <rect width="7.73" height="8.06" x="602.14" y="177.72" class="todo"><title>0x0040e040 Func40e040 (209 bytes)</title></rect>
 <rect width="7.73" height="8.06" x="612.87" y="177.72" class="todo"><title>0x0040e120 Func40e120 (209 bytes)</title></rect>
 <rect width="7.73" height="8.06" x="623.59" y="177.72" class="todo"><title>0x00441450 Func441450 (209 bytes)</title></rect>
@@ -1882,7 +1882,7 @@
 <rect width="3.76" height="3.88" x="649.18" y="261.10" class="named"><title>0x0043c7d0 ChainElem::~ChainElem (82 bytes)</title></rect>
 <rect width="3.76" height="3.88" x="649.18" y="267.99" class="todo"><title>0x00447d04 Func447d04 (82 bytes)</title></rect>
 <rect width="3.76" height="3.80" x="649.18" y="274.87" class="named"><title>0x00444620 MidiPlayer::Play (81 bytes)</title></rect>
-<rect width="3.76" height="3.80" x="649.18" y="281.67" class="todo"><title>0x00473730 Func473730 (81 bytes)</title></rect>
+<rect width="3.76" height="3.80" x="649.18" y="281.67" class="todo"><title>0x00473730 File::~File (81 bytes)</title></rect>
 <rect width="3.76" height="3.72" x="649.18" y="288.47" class="todo"><title>0x0040ed50 Func40ed50 (80 bytes)</title></rect>
 <rect width="3.76" height="3.72" x="649.18" y="295.19" class="named"><title>0x0043f2cc GdiSurface::FindFormat (80 bytes)</title></rect>
 <rect width="3.76" height="3.63" x="649.18" y="301.91" class="todo"><title>0x004417e0 Func4417e0 (79 bytes)</title></rect>
@@ -1914,7 +1914,7 @@
 <rect width="3.74" height="3.23" x="690.08" y="253.82" class="todo"><title>0x00425390 Func425390 (74 bytes)</title></rect>
 <rect width="3.74" height="3.23" x="696.82" y="253.82" class="todo"><title>0x004481df Func4481df (74 bytes)</title></rect>
 <rect width="3.74" height="3.23" x="703.56" y="253.82" class="todo"><title>0x00462270 Func462270 (74 bytes)</title></rect>
-<rect width="3.74" height="3.23" x="710.30" y="253.82" class="todo"><title>0x00473970 Func473970 (74 bytes)</title></rect>
+<rect width="3.74" height="3.23" x="710.30" y="253.82" class="todo"><title>0x00473970 File::Write (74 bytes)</title></rect>
 <rect width="3.65" height="3.23" x="717.04" y="253.82" class="todo"><title>0x0040b470 Func40b470 (73 bytes)</title></rect>
 <rect width="3.65" height="3.23" x="723.68" y="253.82" class="todo"><title>0x00439007 Func439007 (73 bytes)</title></rect>
 <rect width="3.56" height="3.23" x="730.33" y="253.82" class="todo"><title>0x00450580 Func450580 (72 bytes)</title></rect>
@@ -1941,7 +1941,7 @@
 <rect width="3.29" height="3.13" x="687.61" y="260.05" class="todo"><title>0x00406be0 Func406be0 (68 bytes)</title></rect>
 <rect width="3.29" height="3.13" x="693.90" y="260.05" class="todo"><title>0x00414540 Func414540 (68 bytes)</title></rect>
 <rect width="3.29" height="3.13" x="700.20" y="260.05" class="todo"><title>0x004246e0 Func4246e0 (68 bytes)</title></rect>
-<rect width="3.29" height="3.13" x="706.49" y="260.05" class="todo"><title>0x00473920 Func473920 (68 bytes)</title></rect>
+<rect width="3.29" height="3.13" x="706.49" y="260.05" class="todo"><title>0x00473920 File::Read (68 bytes)</title></rect>
 <rect width="3.20" height="3.13" x="712.79" y="260.05" class="todo"><title>0x00410a70 Func410a70 (67 bytes)</title></rect>
 <rect width="3.20" height="3.13" x="718.99" y="260.05" class="todo"><title>0x00418130 Func418130 (67 bytes)</title></rect>
 <rect width="3.20" height="3.13" x="725.19" y="260.05" class="todo"><title>0x0041f040 Func41f040 (67 bytes)</title></rect>
@@ -2008,7 +2008,7 @@
 <rect width="2.55" height="2.42" x="674.24" y="289.04" class="todo"><title>0x0041f000 Func41f000 (53 bytes)</title></rect>
 <rect width="2.55" height="2.42" x="674.24" y="294.46" class="todo"><title>0x0045afc0 Func45afc0 (53 bytes)</title></rect>
 <rect width="2.55" height="2.42" x="674.24" y="299.87" class="todo"><title>0x00472710 Func472710 (53 bytes)</title></rect>
-<rect width="2.55" height="2.42" x="674.24" y="305.29" class="todo"><title>0x004738e0 Func4738e0 (53 bytes)</title></rect>
+<rect width="2.55" height="2.42" x="674.24" y="305.29" class="todo"><title>0x004738e0 File::Close (53 bytes)</title></rect>
 <rect width="2.55" height="2.42" x="674.24" y="310.70" class="todo"><title>0x00474860 Func474860 (53 bytes)</title></rect>
 <rect width="2.55" height="2.31" x="674.24" y="316.12" class="todo"><title>0x00402150 Func402150 (52 bytes)</title></rect>
 <rect width="2.55" height="2.31" x="674.24" y="321.43" class="todo"><title>0x00402190 Func402190 (52 bytes)</title></rect>
@@ -2020,8 +2020,8 @@
 <rect width="2.30" height="2.46" x="679.79" y="283.57" class="todo"><title>0x0040bb20 Func40bb20 (51 bytes)</title></rect>
 <rect width="2.30" height="2.46" x="679.79" y="289.03" class="todo"><title>0x00422be0 Func422be0 (51 bytes)</title></rect>
 <rect width="2.30" height="2.46" x="679.79" y="294.49" class="todo"><title>0x00473680 Func473680 (51 bytes)</title></rect>
-<rect width="2.30" height="2.46" x="679.79" y="299.95" class="todo"><title>0x004736c0 Func4736c0 (51 bytes)</title></rect>
-<rect width="2.30" height="2.46" x="679.79" y="305.40" class="todo"><title>0x00473a20 Func473a20 (51 bytes)</title></rect>
+<rect width="2.30" height="2.46" x="679.79" y="299.95" class="named"><title>0x004736c0 File::File (51 bytes)</title></rect>
+<rect width="2.30" height="2.46" x="679.79" y="305.40" class="todo"><title>0x00473a20 File::Seek (51 bytes)</title></rect>
 <rect width="2.30" height="2.35" x="679.79" y="310.86" class="todo"><title>0x00409ca0 Func409ca0 (50 bytes)</title></rect>
 <rect width="2.30" height="2.35" x="679.79" y="316.21" class="todo"><title>0x0042bc50 Func42bc50 (50 bytes)</title></rect>
 <rect width="2.30" height="2.35" x="679.79" y="321.56" class="todo"><title>0x0042ef70 Func42ef70 (50 bytes)</title></rect>
@@ -2047,8 +2047,8 @@
 <rect width="2.19" height="2.03" x="685.10" y="293.43" class="todo"><title>0x00471c10 Func471c10 (46 bytes)</title></rect>
 <rect width="2.19" height="2.03" x="685.10" y="298.46" class="todo"><title>0x00472040 Func472040 (46 bytes)</title></rect>
 <rect width="2.19" height="2.03" x="685.10" y="303.49" class="todo"><title>0x00472b00 Func472b00 (46 bytes)</title></rect>
-<rect width="2.19" height="2.03" x="685.10" y="308.52" class="todo"><title>0x00473700 Func473700 (46 bytes)</title></rect>
-<rect width="2.19" height="2.03" x="685.10" y="313.55" class="todo"><title>0x00473c80 Func473c80 (46 bytes)</title></rect>
+<rect width="2.19" height="2.03" x="685.10" y="308.52" class="named"><title>0x00473700 File::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
+<rect width="2.19" height="2.03" x="685.10" y="313.55" class="named"><title>0x00473c80 FileBase::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
 <rect width="2.19" height="2.03" x="685.10" y="318.58" class="todo"><title>0x00474c40 DatArchive::GetEntrySize (46 bytes)</title></rect>
 <rect width="2.19" height="1.92" x="685.10" y="323.61" class="todo"><title>0x00439829 Func439829 (45 bytes)</title></rect>
 <rect width="2.19" height="1.92" x="685.10" y="328.54" class="todo"><title>0x00439856 Func439856 (45 bytes)</title></rect>
@@ -2063,7 +2063,7 @@
 <rect width="2" height="1.88" x="715.38" y="283.37" class="todo"><title>0x00421ba0 Func421ba0 (43 bytes)</title></rect>
 <rect width="2" height="1.88" x="720.37" y="283.37" class="todo"><title>0x00454c87 Func454c87 (43 bytes)</title></rect>
 <rect width="2" height="1.88" x="725.37" y="283.37" class="todo"><title>0x0045e3c0 Func45e3c0 (43 bytes)</title></rect>
-<rect width="2" height="1.88" x="730.37" y="283.37" class="todo"><title>0x004739c0 Func4739c0 (43 bytes)</title></rect>
+<rect width="2" height="1.88" x="730.37" y="283.37" class="todo"><title>0x004739c0 File::Tell (43 bytes)</title></rect>
 <rect width="1.88" height="1.88" x="735.36" y="283.37" class="todo"><title>0x00404720 Func404720 (42 bytes)</title></rect>
 <rect width="1.88" height="1.88" x="740.24" y="283.37" class="named"><title>0x00406520 ChainElem::SetCallback (42 bytes)</title></rect>
 <rect width="1.88" height="1.88" x="745.12" y="283.37" class="todo"><title>0x00422bb0 Func422bb0 (42 bytes)</title></rect>
@@ -2088,7 +2088,7 @@
 <rect width="1.80" height="1.61" x="690.29" y="320.56" class="todo"><title>0x004233d0 Func4233d0 (39 bytes)</title></rect>
 <rect width="1.80" height="1.61" x="690.29" y="325.17" class="todo"><title>0x00424e20 Func424e20 (39 bytes)</title></rect>
 <rect width="1.80" height="1.61" x="690.29" y="329.78" class="todo"><title>0x00424f60 Func424f60 (39 bytes)</title></rect>
-<rect width="1.80" height="1.61" x="690.29" y="334.40" class="todo"><title>0x004739f0 Func4739f0 (39 bytes)</title></rect>
+<rect width="1.80" height="1.61" x="690.29" y="334.40" class="todo"><title>0x004739f0 File::GetSize (39 bytes)</title></rect>
 <rect width="1.80" height="1.50" x="690.29" y="339.01" class="todo"><title>0x00406d10 Func406d10 (38 bytes)</title></rect>
 <rect width="1.80" height="1.50" x="690.29" y="343.50" class="todo"><title>0x00406d40 Func406d40 (38 bytes)</title></rect>
 <rect width="1.69" height="1.60" x="695.08" y="292.88" class="todo"><title>0x00406d70 Func406d70 (38 bytes)</title></rect>
@@ -2230,7 +2230,7 @@
 <rect width="0.47" height="0.76" x="726.14" y="316.88" class="named"><title>0x00443a50 App::GetEmulateColorAdd (23 bytes)</title></rect>
 <rect width="0.47" height="0.76" x="729.62" y="316.88" class="todo"><title>0x00453be0 Func453be0 (23 bytes)</title></rect>
 <rect width="0.47" height="0.76" x="733.09" y="316.88" class="todo"><title>0x004716e0 Func4716e0 (23 bytes)</title></rect>
-<rect width="0.47" height="0.76" x="736.56" y="316.88" class="todo"><title>0x00473c40 Func473c40 (23 bytes)</title></rect>
+<rect width="0.47" height="0.76" x="736.56" y="316.88" class="named"><title>0x00473c40 FileBase::FileBase (23 bytes)</title></rect>
 <rect width="0.32" height="0.76" x="740.03" y="316.88" class="todo"><title>0x00405260 Func405260 (22 bytes)</title></rect>
 <rect width="0.32" height="0.76" x="743.36" y="316.88" class="todo"><title>0x004065a0 Func4065a0 (22 bytes)</title></rect>
 <rect width="0.32" height="0.76" x="746.68" y="316.88" class="todo"><title>0x0040b580 Func40b580 (22 bytes)</title></rect>
@@ -2265,7 +2265,7 @@
 <rect width="0.44" height="0.30" x="729.70" y="327.68" class="todo"><title>0x0042dfb0 Func42dfb0 (20 bytes)</title></rect>
 <rect width="0.44" height="0.30" x="733.14" y="327.68" class="todo"><title>0x00445bc0 Func445bc0 (20 bytes)</title></rect>
 <rect width="0.44" height="0.30" x="736.58" y="327.68" class="todo"><title>0x0045e2d0 Func45e2d0 (20 bytes)</title></rect>
-<rect width="0.44" height="0.30" x="740.02" y="327.68" class="todo"><title>0x00473c60 Func473c60 (20 bytes)</title></rect>
+<rect width="0.44" height="0.30" x="740.02" y="327.68" class="named"><title>0x00473c60 FileBase::~FileBase (20 bytes)</title></rect>
 <rect width="0.27" height="0.30" x="743.46" y="327.68" class="todo"><title>0x004178a0 Func4178a0 (19 bytes)</title></rect>
 <rect width="0.27" height="0.30" x="746.73" y="327.68" class="todo"><title>0x00418010 Func418010 (19 bytes)</title></rect>
 <rect width="0.17" height="0.40" x="729.70" y="330.98" class="todo"><title>0x00418030 Func418030 (19 bytes)</title></rect>
