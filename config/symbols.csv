@@ -375,7 +375,7 @@ address,size,name,symbol
 0x00428b80,2428,Ending::RunScript,?RunScript@Ending@@QAEHXZ
 0x004295e0,180,Ending::Load,?Load@Ending@@QAEHPAD@Z
 0x004296a0,266,Ending::RegisterChain,?RegisterChain@Ending@@SIHXZ
-0x004297b0,169,Func4297b0,
+0x004297b0,169,Ending::Ending,??0Ending@@QAE@XZ
 0x00429860,141,Ending::OnUpdate,?OnUpdate@Ending@@SIHPAV1@@Z
 0x004298f0,131,Ending::OnDraw,?OnDraw@Ending@@SIHPAV1@@Z
 0x00429980,951,Ending::AddedCallback,?AddedCallback@Ending@@SIHPAV1@@Z
