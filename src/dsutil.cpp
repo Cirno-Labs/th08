@@ -834,3 +834,29 @@ CWaveFile::~CWaveFile()
 {
     Close();
 }
+
+HRESULT CWaveFile::Open(LPTSTR strFileName, BgmFormat *format, DWORD dwFlags)
+{
+    m_dwFlags = dwFlags;
+    m_bIsReadingFromMemory = FALSE;
+
+    if (m_dwFlags == WAVEFILE_READ)
+    {
+        if (strFileName == NULL)
+            return E_INVALIDARG;
+
+        DebugPrint("Streaming File Open %s\r\n", strFileName);
+        this->hFile = CreateFileA(strFileName, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING,
+                                  FILE_ATTRIBUTE_NORMAL | FILE_FLAG_SEQUENTIAL_SCAN, NULL);
+        if (this->hFile == INVALID_HANDLE_VALUE)
+            return E_FAIL;
+
+        this->format = format;
+        ResetFile(false);
+
+        // After the reset, the size of the wav file is m_ck.cksize so store it now
+        m_dwSize = m_ck.cksize;
+    }
+
+    return S_OK;
+}
