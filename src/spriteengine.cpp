@@ -559,3 +559,22 @@ void SpriteEngine::RenderTextRightAligned(Sprite *vm, D3DCOLOR color, D3DCOLOR s
                                    color, shadowColor, buf, vm->spriteData->scaleX, vm->spriteData->scaleY);
     vm->flags |= 1;
 }
+
+void SpriteEngine::RenderTextCentered(Sprite *vm, D3DCOLOR color, D3DCOLOR shadowColor, char *fmt, ...)
+{
+    va_list args;
+    int xPos;
+    char buf[0x48];
+    int fontW;
+
+    fontW = vm->fontWidth <= 0 ? 15 : vm->fontWidth;
+    va_start(args, fmt);
+    vsprintf(buf, fmt, args);
+    va_end(args);
+    xPos = vm->spriteData->startX + vm->spriteData->width * vm->spriteData->scaleX / 2.0f -
+           (float)strlen(buf) * fontW * vm->spriteData->scaleX / 4.0f;
+    this->RenderTextToTextureIndex(vm->spriteData->texture, xPos, vm->spriteData->startY,
+                                   vm->spriteData->textureWidth, vm->spriteData->textureHeight, fontW, vm->fontHeight,
+                                   color, shadowColor, buf, vm->spriteData->scaleX, vm->spriteData->scaleY);
+    vm->flags |= 1;
+}
