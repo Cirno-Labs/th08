@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">46.51% (519)</tspan> · <tspan class="decompiled">1.34% (15)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">52.15% (582)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">46.51% (519)</tspan> · <tspan class="decompiled">1.43% (16)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">52.06% (581)</tspan></tspan></text>
 <g transform="translate(0 20)">
 <rect width="347.40" height="6" x="0" y="0" class="named"/>
-<rect width="10.04" height="6" x="347.40" y="0" class="decompiled"/>
-<rect width="389.56" height="6" x="357.44" y="0" class="todo"/>
+<rect width="10.71" height="6" x="347.40" y="0" class="decompiled"/>
+<rect width="388.90" height="6" x="358.10" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -89,7 +89,7 @@
 <rect width="12" height="12" x="270" y="0" class="named"><title>0x004031e0 fabsf (18 bytes)</title></rect>
 <rect width="12" height="12" x="285" y="0" class="named"><title>0x00403200 AsciiText::AddPopup (295 bytes)</title></rect>
 <rect width="12" height="12" x="300" y="0" class="named"><title>0x00403330 AsciiText::AddPopup2 (297 bytes)</title></rect>
-<rect width="12" height="12" x="315" y="0" class="todo"><title>0x00403460 Func403460 (411 bytes)</title></rect>
+<rect width="12" height="12" x="315" y="0" class="decompiled"><title>0x00403460 AsciiText::Func403460 (411 bytes)</title></rect>
 <rect width="12" height="12" x="330" y="0" class="todo"><title>0x00403600 AsciiText::Func403600 (420 bytes)</title></rect>
 <rect width="12" height="12" x="345" y="0" class="todo"><title>0x004037b0 PauseMenu::UpdatePauseMenu (3898 bytes)</title></rect>
 <rect width="12" height="12" x="360" y="0" class="todo"><title>0x00404720 Func404720 (42 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">40.16%</tspan> · <tspan class="decompiled">0.38%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">59.46%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">40.16%</tspan> · <tspan class="decompiled">0.47%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">59.37%</tspan></tspan></text>
 <g transform="translate(0 20)">
 <rect width="299.98" height="6" x="0" y="0" class="named"/>
-<rect width="2.87" height="6" x="299.98" y="0" class="decompiled"/>
-<rect width="444.15" height="6" x="302.85" y="0" class="todo"/>
+<rect width="3.53" height="6" x="299.98" y="0" class="decompiled"/>
+<rect width="443.49" height="6" x="303.51" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1452,7 +1452,7 @@
 <rect width="12.53" height="12.28" x="598.52" y="100.12" class="todo"><title>0x0046f429 Func46f429 (418 bytes)</title></rect>
 <rect width="12.42" height="12.28" x="614.04" y="100.12" class="todo"><title>0x00415d60 Func415d60 (415 bytes)</title></rect>
 <rect width="12.34" height="12.28" x="629.46" y="100.12" class="todo"><title>0x0042a680 Func42a680 (413 bytes)</title></rect>
-<rect width="12.27" height="12.28" x="644.80" y="100.12" class="todo"><title>0x00403460 Func403460 (411 bytes)</title></rect>
+<rect width="12.27" height="12.28" x="644.80" y="100.12" class="decompiled"><title>0x00403460 AsciiText::Func403460 (411 bytes)</title></rect>
 <rect width="12.27" height="12.28" x="660.07" y="100.12" class="todo"><title>0x00428310 Func428310 (411 bytes)</title></rect>
 <rect width="12.19" height="12.28" x="675.33" y="100.12" class="todo"><title>0x0042a4e0 Func42a4e0 (409 bytes)</title></rect>
 <rect width="12.16" height="12.28" x="690.53" y="100.12" class="named"><title>0x0043cc60 Chain::ReleaseList (408 bytes)</title></rect>
