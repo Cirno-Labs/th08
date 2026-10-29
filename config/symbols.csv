@@ -361,7 +361,7 @@ address,size,name,symbol
 0x00428100,219,EffectManager::OnDraw3,?OnDraw3@EffectManager@@QAEHXZ
 0x004281e0,290,EffectManager::OnDraw2,?OnDraw2@EffectManager@@QAEHXZ
 0x00428310,411,EffectDrawBossPetal,?EffectDrawBossPetal@@YIXPAVSprite@@PAUD3DXVECTOR3@@@Z
-0x004284b0,216,Func4284b0,
+0x004284b0,216,EffectManager::AddedCallback,?AddedCallback@EffectManager@@SIHPAV1@@Z
 0x00428590,132,Func428590,
 0x00428620,135,EffectManager::RegisterChain,?RegisterChain@EffectManager@@SIHXZ
 0x004286b0,35,EffectManager::RemoveChain,?RemoveChain@EffectManager@@SIXXZ
@@ -2427,6 +2427,7 @@ address,size,name,symbol
 0x004c72bc,,g_AmPmNames,?g_AmPmNames@@3PAPADA
 0x004c72c4,,g_LoadingAnmPaths,?g_LoadingAnmPaths@@3PAPADA
 0x004c745c,,g_StageTextAnmPaths,?g_StageTextAnmPaths@@3PAPADA
+0x004c7480,,g_EffectAnmPaths,?g_EffectAnmPaths@@3PAPADA
 0x004c74c0,,g_MsgPaths,?g_MsgPaths@@3PAY0M@PADA
 0x004c7670,,g_SpellCardBgms,?g_SpellCardBgms@@3PAUSpellCardBgm@@A
 0x004c77f0,,g_Unknown4c77f0,?g_Unknown4c77f0@@3PAY03HA

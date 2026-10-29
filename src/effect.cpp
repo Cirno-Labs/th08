@@ -1050,3 +1050,31 @@ void EffectDrawBossPetal(Sprite *vm, D3DXVECTOR3 *pos)
     }
     *pos += vm->moveEnd;
 }
+
+int EffectManager::AddedCallback(EffectManager *mgr)
+{
+    mgr->Reset();
+    mgr->anm = g_SpriteEngine->GetAnm(6);
+    g_Stage.unk_b34 = 0;
+    g_Stage.unk_b30 = 2;
+    if (!IsRestarting())
+    {
+        if (!g_GameManager.IsInSpellCardPractice() || g_GameManager.unk_3dbb0 < 0xd8)
+        {
+            mgr->stageAnm = g_SpriteEngine->PreloadAnm(9, g_EffectAnmPaths[g_GameManager.stage]);
+        }
+        else
+        {
+            mgr->stageAnm = g_SpriteEngine->PreloadAnm(9, g_EffectAnmPaths[g_GameManager.unk_3dbb0 - 0xcf]);
+        }
+        if (mgr->stageAnm == NULL)
+        {
+            return -1;
+        }
+    }
+    else
+    {
+        mgr->stageAnm = g_SpriteEngine->GetAnm(9);
+    }
+    return 0;
+}
