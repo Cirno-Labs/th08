@@ -19,7 +19,7 @@ address,size,name,symbol
 0x00402b20,1698,AsciiText::DrawStrings,?DrawStrings@AsciiText@@QAEXXZ
 0x004031e0,18,fabsf,@fabsf@4
 0x00403200,295,AsciiText::AddPopup,?AddPopup@AsciiText@@QAEXPAUD3DXVECTOR3@@HK@Z
-0x00403330,297,Func403330,
+0x00403330,297,AsciiText::AddPopup2,?AddPopup2@AsciiText@@QAEXPAUD3DXVECTOR3@@HK@Z
 0x00403460,411,Func403460,
 0x00403600,420,AsciiText::Func403600,?Func403600@AsciiText@@QAEXPAUD3DXVECTOR3@@HHK@Z
 0x004037b0,3898,PauseMenu::UpdatePauseMenu,?UpdatePauseMenu@PauseMenu@@QAEHXZ
