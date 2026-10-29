@@ -596,3 +596,14 @@ int EffectUpdateNone(Effect *effect)
 {
     return 1;
 }
+
+int EffectInitMoveOut(Effect *effect)
+{
+    D3DXVECTOR3 offset;
+
+    ((Vector2 *)&offset)->SetPolar(effect->velocity.x, 256.0f);
+    effect->pos.x += offset.x;
+    effect->pos.y += offset.y;
+    effect->sprite.rotation.z = AddNormalizeAngle(effect->velocity.x, 1.5707964f);
+    return 0;
+}
