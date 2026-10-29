@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">26.97% (301)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">73.03% (815)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">27.06% (302)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">72.94% (814)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="201.48" height="6" x="0" y="0" class="named"/>
-<rect width="545.52" height="6" x="201.48" y="0" class="todo"/>
+<rect width="202.15" height="6" x="0" y="0" class="named"/>
+<rect width="544.85" height="6" x="202.15" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -1068,7 +1068,7 @@
 <rect width="12" height="12" x="720" y="285" class="named"><title>0x00466bb0 SpriteEngine::CopySurfaceToBackBuffer (445 bytes)</title></rect>
 <rect width="12" height="12" x="735" y="285" class="named"><title>0x00466d70 SpriteEngine::CopySurfaceRectToBackBuffer (424 bytes)</title></rect>
 <rect width="12" height="12" x="0" y="300" class="named"><title>0x00466f20 SpriteEngine::CopyBackBufferToTexture (286 bytes)</title></rect>
-<rect width="12" height="12" x="15" y="300" class="todo"><title>0x00467040 Func467040 (307 bytes)</title></rect>
+<rect width="12" height="12" x="15" y="300" class="named"><title>0x00467040 SpriteEngine::CopyTextureRect (307 bytes)</title></rect>
 <rect width="12" height="12" x="30" y="300" class="todo"><title>0x00467180 SpriteEngine::CopyBackBufferToSurface (537 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="300" class="todo"><title>0x00467399 Func467399 (269 bytes)</title></rect>
 <rect width="12" height="12" x="60" y="300" class="todo"><title>0x004674e0 Func4674e0 (3703 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">16.53%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">83.47%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">16.60%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">83.40%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="123.50" height="6" x="0" y="0" class="named"/>
-<rect width="623.50" height="6" x="123.50" y="0" class="todo"/>
+<rect width="124" height="6" x="0" y="0" class="named"/>
+<rect width="623" height="6" x="124" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1514,7 +1514,7 @@
 <rect width="10.65" height="9.93" x="616.02" y="129.42" class="todo"><title>0x00451500 Func451500 (311 bytes)</title></rect>
 <rect width="10.56" height="9.93" x="629.67" y="129.42" class="todo"><title>0x00404750 Func404750 (309 bytes)</title></rect>
 <rect width="10.52" height="9.93" x="643.23" y="129.42" class="todo"><title>0x0043c35f Func43c35f (308 bytes)</title></rect>
-<rect width="10.47" height="9.93" x="656.75" y="129.42" class="todo"><title>0x00467040 Func467040 (307 bytes)</title></rect>
+<rect width="10.47" height="9.93" x="656.75" y="129.42" class="named"><title>0x00467040 SpriteEngine::CopyTextureRect (307 bytes)</title></rect>
 <rect width="10.43" height="9.93" x="670.22" y="129.42" class="todo"><title>0x004325a0 Func4325a0 (306 bytes)</title></rect>
 <rect width="10.30" height="9.93" x="683.65" y="129.42" class="named"><title>0x00442390 WindowProc (303 bytes)</title></rect>
 <rect width="10.30" height="9.93" x="696.94" y="129.42" class="todo"><title>0x0044a470 Func44a470 (303 bytes)</title></rect>

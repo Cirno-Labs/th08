@@ -282,6 +282,10 @@ public:
     // th07's (0x466f20).
     void CopyBackBufferToTexture(int texture, int srcLeft, int srcTop, int srcWidth, int srcHeight, int dstLeft,
                                  int dstTop, int dstWidth, int dstHeight);
+    // Copies rectangle `srcRect` of texture `srcTexture` of ANM slot
+    // `srcAnm` into rectangle `dstRect` of texture `dstTexture` of slot
+    // `dstAnm`, as th07's.
+    void CopyTextureRect(int dstAnm, int dstTexture, int srcAnm, int srcTexture, RECT *dstRect, RECT *srcRect);
     // Copies the back buffer's rectangle into surface `surface`,
     // creating it at the destination size (0x467180). New in th08.
     void CopyBackBufferToSurface(int surface, int srcLeft, int srcTop, int srcWidth, int srcHeight, int dstLeft,

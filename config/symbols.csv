@@ -1000,7 +1000,7 @@ address,size,name,symbol
 0x00466bb0,445,SpriteEngine::CopySurfaceToBackBuffer,?CopySurfaceToBackBuffer@SpriteEngine@@QAEXHHHHH@Z
 0x00466d70,424,SpriteEngine::CopySurfaceRectToBackBuffer,?CopySurfaceRectToBackBuffer@SpriteEngine@@QAEXHHHHHHH@Z
 0x00466f20,286,SpriteEngine::CopyBackBufferToTexture,?CopyBackBufferToTexture@SpriteEngine@@QAEXHHHHHHHHH@Z
-0x00467040,307,Func467040,
+0x00467040,307,SpriteEngine::CopyTextureRect,?CopyTextureRect@SpriteEngine@@QAEXHHHHPAUtagRECT@@0@Z
 0x00467180,537,SpriteEngine::CopyBackBufferToSurface,?CopyBackBufferToSurface@SpriteEngine@@QAEXHHHHHHHHH@Z
 0x00467399,269,Func467399,
 0x004674e0,3703,Func4674e0,
