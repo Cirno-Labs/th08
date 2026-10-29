@@ -206,3 +206,16 @@ void MidiPlayer::UnloadFile(int slot)
     g_MemoryManager.Free(this->fileData[slot]);
     this->fileData[slot] = NULL;
 }
+
+void MidiPlayer::FreeTracks()
+{
+    int i;
+
+    for (i = 0; i < this->trackCount; i++)
+    {
+        g_MemoryManager.Free(this->tracks[i].data);
+    }
+    g_MemoryManager.Free(this->tracks);
+    this->tracks = NULL;
+    this->trackCount = 0;
+}
