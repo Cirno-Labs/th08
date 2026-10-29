@@ -680,7 +680,7 @@ address,size,name,symbol
 0x00444550,203,MidiPlayer::Rewind,?Rewind@MidiPlayer@@QAEXXZ
 0x00444620,81,MidiPlayer::Play,?Play@MidiPlayer@@QAEHXZ
 0x00444680,122,MidiPlayer::Stop,?Stop@MidiPlayer@@QAEHXZ
-0x00444700,197,Func444700,
+0x00444700,197,MidiPlayer::ReleaseHeader,?ReleaseHeader@MidiPlayer@@QAEHPAUmidihdr_tag@@@Z
 0x004447d0,79,Func4447d0,
 0x00444820,619,MidiPlayer::OnTimer,?OnTimer@MidiPlayer@@UAEXXZ
 0x00444a90,1871,Func444a90,
