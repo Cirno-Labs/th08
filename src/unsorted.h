@@ -174,7 +174,7 @@ public:
     // The result screen records no score then.
     int IsScoreDisabled();
     // Bit 3 of stateFlags: no score is recorded. Inline; the copy at
-    // 0x453c40 is in an /Od object.
+    // 0x453c40 is the replay object's.
     int GetNoScore()
     {
         return this->stateFlags >> 3 & 1;
@@ -611,6 +611,10 @@ WORD ReadButtons();
 // The buttons held this frame and the frame before, as bits.
 extern WORD g_Buttons;
 extern WORD g_PrevButtons;
+// The buttons the game plays by this frame and the frame before: the
+// held ones, or a replay's.
+extern WORD g_GameButtons;
+extern WORD g_PrevGameButtons;
 // 1 on every 8th frame once the buttons have been held unchanged for 30
 // frames, for key repeat.
 extern WORD g_ButtonRepeat;
@@ -681,6 +685,16 @@ public:
     void SetSeed(WORD seed)
     {
         this->seed = seed;
+    }
+    // Clears `generated`. New in th08 (th07 wrote it directly).
+    void ResetGenerated()
+    {
+        this->generated = 0;
+    }
+    // `seed`. New in th08.
+    WORD GetSeed()
+    {
+        return this->seed;
     }
     // 32 random bits, from two GetRandomU16 calls.
     DWORD GetRandomU32();
@@ -1009,22 +1023,38 @@ struct GameManagerStats
     int grazeTotal;
     unsigned char unk_10[0xc];
     int spellCardsCaptured;
-    unsigned char unk_20[0x9];
+    unsigned char unk_20[0x2];
+    // Kept in each replay stage.
+    WORD unk_22;
+    int unk_24;
+    BYTE unk_28;
     BYTE continuesUsed;
     unsigned char unk_2a[0x6];
     int pointItemsTotal;
-    unsigned char unk_34[0x30];
+    // Kept in each replay stage.
+    int unk_34;
+    int unk_38;
+    unsigned char unk_3c[0x28];
     // Floats, as th07's.
     float deaths;
-    unsigned char unk_68[0x1c];
+    unsigned char unk_68[0xc];
+    // The lives and bombs left, floats now.
+    float lives;
+    unsigned char unk_78[0x8];
+    float bombs;
     float bombsUsed;
+    unsigned char unk_88[0x10];
+    // The power, a float now.
+    float power;
 };
 struct GameManagerUnk4
 {
     unsigned char unk_0[0x25];
     // App::IsScoreDisabled tests it.
     BYTE scoreDisabled;
+    unsigned char unk_26[0x16];
 };
+ASSERT_SIZE(GameManagerUnk4, 0x3c);
 
 // th07's GameManager (g_Unknown626270 there), at 0x160f508. Only the
 // fields known so far.
@@ -1051,7 +1081,7 @@ public:
         return this->unk_3dbac & 1;
     }
     // The deaths and bombs used, as ints. New in th08; inline, the copies
-    // at 0x453c80 and 0x453ca0 are in an /Od object.
+    // at 0x453c80 and 0x453ca0 are the replay object's.
     int GetDeaths()
     {
         return this->stats->deaths;
@@ -1060,6 +1090,26 @@ public:
     {
         return this->stats->bombsUsed;
     }
+    // The power, lives and bombs as ints, and setters for them (as ints;
+    // they also update what depends on them). Copies in other objects:
+    // GetPower 0x422480, GetLives 0x42f2b0, GetBombs 0x4398ce, SetLives
+    // 0x406e20, SetBombs 0x406f30, SetPower 0x406fa0.
+    int GetPower();
+    int GetLives();
+    int GetBombs();
+    void SetLives(int lives);
+    void SetBombs(int bombs);
+    void SetPower(int power);
+    // stats->unk_28 (0x406dd0, another object's copy) and a setter for
+    // it, inline: the copy at 0x453c60 is the replay object's.
+    BYTE GetUnk28();
+    void SetUnk28(int value)
+    {
+        this->stats->unk_28 = value;
+    }
+    // Whether shot type `shot` cleared stage bit `stage` of `difficulty`
+    // without continues (0x439829).
+    int HasClearedStage(int stage, int shot, int difficulty);
 
     DWORD unk_0;
     GameManagerUnk4 *unk_4;
@@ -1086,7 +1136,9 @@ public:
     // in the rest and enters a copy. New in th08.
     Hscr hscr;
     DWORD unk_3db94;
-    unsigned char unk_3db98[0x8];
+    // Set when the game is paused; the replay records it (as th07's).
+    int pauseRequested;
+    unsigned char unk_3db9c[0x4];
     int unk_3dba0;
     int unk_3dba4;
     BYTE unk_3dba8;
@@ -1113,23 +1165,46 @@ public:
             unsigned int unk_3dbac_18 : 14;
         };
     };
-    unsigned char unk_3dbb0[0x2];
+    // The spell card being practised, kept in the replay when bit 14 of
+    // unk_3dbac is set.
+    short unk_3dbb0;
     // While it is set, PresentFrame keeps redrawFrames and fade outs
     // hold still. As th07's isPaused.
     BYTE isPaused;
     // Set while the continue menu shows, as th07's: fade outs hold
     // still.
     BYTE isInContinueMenu;
-    unsigned char unk_3dbb4[0x20c];
+    BYTE unk_3dbb4;
+    // 2 while a replay is fast-forwarded, as th07's.
+    BYTE replayMenuChoice;
+    unsigned char unk_3dbb6[0x206];
+    // The random seed each replay stage starts with, as th07's.
+    WORD rngSeed;
+    unsigned char unk_3ddbe[0x2];
     // The screen shakes end at once while this is 1 or less, as th07's.
     int stageFrames;
     // The stage being played, from 0.
     int stage;
-    unsigned char unk_3ddc8[0x3c];
+    // The replay stage being recorded.
+    int unk_3ddc8;
+    unsigned char unk_3ddcc[0x38];
     // The frames played, as th07's.
     int progressFrames;
+    unsigned char unk_3de08[0x24];
+    int rank;
 };
 extern GameManager g_GameManager;
+
+// The game's HUD and dialogue, at 0x160f428. Only what is known so far.
+class Gui
+{
+public:
+    // Whether a dialogue runs, and whether it can be skipped, as th07's
+    // (0x4358bb, 0x437dc7).
+    int IsMsgRunning();
+    int IsMsgSkippable();
+};
+extern Gui g_Gui;
 
 // The thread LoadBgm starts, with the main window: streams the wave music
 // each time notifyEvent is signalled, until WM_QUIT or the music is gone.
