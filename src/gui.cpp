@@ -289,3 +289,23 @@ int Gui::AddedCallback(Gui *gui)
 {
     return gui->LoadResources();
 }
+
+int Gui::DeletedCallback(Gui *gui)
+{
+    if (!Func438ffd())
+    {
+        g_SpriteEngine->ReleaseAnm(0xd);
+    }
+    gui->FreeMsgFile();
+    if (Func438ff3())
+    {
+        g_SpriteEngine->ReleaseAnm(0xa);
+        g_SpriteEngine->ReleaseAnm(0xc);
+        g_SpriteEngine->ReleaseAnm(0xb);
+        g_SpriteEngine->ReleaseAnm(0xe);
+        g_MemoryManager.Unregister(gui->impl);
+        delete gui->impl;
+        gui->impl = NULL;
+    }
+    return 0;
+}

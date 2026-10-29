@@ -479,7 +479,7 @@ address,size,name,symbol
 0x0043625d,4544,Gui::DrawHud,?DrawHud@Gui@@QAEXXZ
 0x0043741d,1554,Gui::DrawBanners,?DrawBanners@Gui@@QAEXXZ
 0x00437a2f,17,Gui::AddedCallback,?AddedCallback@Gui@@SIHPAV1@@Z
-0x00437a40,144,Func437a40,
+0x00437a40,144,Gui::DeletedCallback,?DeletedCallback@Gui@@SIHPAV1@@Z
 0x00437ad0,244,Gui::RegisterChain,?RegisterChain@Gui@@SIHXZ
 0x00437bc4,281,Func437bc4,
 0x00437cdd,5,DebugPrint2,?DebugPrint2@@YAXPBDZZ
