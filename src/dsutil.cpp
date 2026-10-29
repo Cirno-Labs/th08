@@ -427,3 +427,13 @@ LPDIRECTSOUNDBUFFER CSound::GetFreeBuffer()
     else
         return m_apDSBuffer[rand() % m_dwNumBuffers];
 }
+
+LPDIRECTSOUNDBUFFER CSound::GetBuffer(DWORD dwIndex)
+{
+    if (m_apDSBuffer == NULL)
+        return NULL;
+    if (dwIndex >= m_dwNumBuffers)
+        return NULL;
+
+    return m_apDSBuffer[dwIndex];
+}
