@@ -30,6 +30,27 @@ struct ShotTypeData
     float itemSpeed;
 };
 
+// One of the player's bomb hit areas (0x40 bytes), in two arrays of
+// 0xc0 at Player+0xb8834 and +0xbb834. Placeholder name; only what is
+// known so far.
+struct PlayerBombHitbox
+{
+    float x;
+    float y;
+    unsigned char unk_8[0x8];
+    float width;
+    float height;
+    unsigned char unk_18[0x8];
+    float angle;
+    int unk_24;
+    unsigned char unk_28[0x4];
+    int unk_2c;
+    unsigned char unk_30[0x8];
+    int unk_38;
+    BYTE active;
+    unsigned char unk_3d[0x3];
+};
+
 class Player
 {
 public:
@@ -43,6 +64,12 @@ public:
     // Whether the box of `size` at `pos` touches the player's graze box,
     // as th07's (0x44a5a0).
     int TouchesGrazeBox(D3DXVECTOR3 *pos, D3DXVECTOR3 *size);
+    // Starts the first free hit area of the second array at `pos` (x
+    // and y), `width` by `height`, with unk_2c `a` and unk_24 `b`, and
+    // returns it (0x44de60).
+    PlayerBombHitbox *Func44de60(D3DXVECTOR3 *pos, float width, float height, int a, int b);
+    // The same in the first array (0x44dfa0).
+    PlayerBombHitbox *Func44dfa0(D3DXVECTOR3 *pos, float width, float height, int a, int b);
     // Whether unk_5 is set. Inline; the copy is at 0x40bc40.
     int IsUnk5Set()
     {

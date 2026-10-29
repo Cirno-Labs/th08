@@ -2,6 +2,9 @@
 // callbacks of g_EffectInfos so far.
 
 #include "effect.h"
+#include "player.h"
+#include "screeneffect.h"
+#include "sprite.h"
 #include "unsorted.h"
 
 int EffectUpdateBombRing42(Effect *effect)
@@ -101,6 +104,53 @@ int EffectUpdateBombRing46(Effect *effect)
     effect->verticesDirty = 1;
     effect->segmentCount = 0xc;
     effect->ringWidth = 32.0f;
+    return 1;
+}
+
+int EffectUpdateBombRing36(Effect *effect)
+{
+    if (effect->timer < 0x28)
+    {
+        float t;
+
+        t = 1.0f - effect->timer.AsFloat() / 40.0f;
+        effect->ringWidth = 88.0f - effect->timer.AsFloat() * 80.0f / 40.0f;
+        effect->radius = 192.0f - 384.0f * t * t;
+        effect->segmentCount--;
+        effect->verticesDirty = 1;
+    }
+    else
+    {
+        if (effect->timer == 0x28)
+        {
+            int i;
+            PlayerBombHitbox *laser;
+            float angle;
+            float spread;
+
+            ScreenEffect::StartEffect(3, 8, 1, 0x8ff08080, 0, 0x15);
+            angle = effect->angle + 0.7853982f;
+            spread = effect->radius * 0.70710671f;
+            D3DXVECTOR3 pos;
+            g_SpriteEngine->FillVerticalStripVertices(&effect->sprite, effect->vertices, effect->segmentCount * 2 + 2);
+            for (i = 0; i < 4; i++)
+            {
+                if (angle >= 3.1415927f)
+                {
+                    angle -= 6.2831855f;
+                }
+                ((Vector2 *)&pos)->SetPolar(angle, spread);
+                pos += effect->origin;
+                laser = g_Player.Func44dfa0(&pos, spread * 8.0f, effect->ringWidth * 4.0f, 0x3c, 0x46);
+                laser->unk_38 = 4;
+                laser->angle = AddNormalizeAngle(angle, 1.5707964f);
+                angle = laser->angle;
+                laser = g_Player.Func44de60(&pos, spread * 4.0f, effect->ringWidth * 4.0f, 6, 100);
+                laser->angle = angle;
+            }
+        }
+        effect->verticesDirty = 1;
+    }
     return 1;
 }
 

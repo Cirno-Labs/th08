@@ -775,9 +775,9 @@ address,size,name,symbol
 0x0044dc60,164,Func44dc60,
 0x0044dd10,85,Player::RemoveChain,?RemoveChain@Player@@SIXXZ
 0x0044dd70,233,Func44dd70,
-0x0044de60,153,Func44de60,
+0x0044de60,153,Player::Func44de60,?Func44de60@Player@@QAEPAUPlayerBombHitbox@@PAUD3DXVECTOR3@@MMHH@Z
 0x0044df00,153,Func44df00,
-0x0044dfa0,153,Func44dfa0,
+0x0044dfa0,153,Player::Func44dfa0,?Func44dfa0@Player@@QAEPAUPlayerBombHitbox@@PAUD3DXVECTOR3@@MMHH@Z
 0x0044e040,153,Func44e040,
 0x0044e0e0,15,Func44e0e0,
 0x0044e0f0,35,Func44e0f0,
