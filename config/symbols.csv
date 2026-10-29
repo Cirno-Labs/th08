@@ -979,7 +979,7 @@ address,size,name,symbol
 0x00465510,83,SpriteEngine::AdjustTextureFormat,?AdjustTextureFormat@SpriteEngine@@SIHH@Z
 0x00465570,98,SpriteEngine::LoadTexture,?LoadTexture@SpriteEngine@@QAEHPAUAnmTexture@@HK@Z
 0x004655e0,476,SpriteEngine::CreateTextureFromImage,?CreateTextureFromImage@SpriteEngine@@QAEHPAUAnmTexture@@PAUAnmImage@@H@Z
-0x004657c0,56,Func4657c0,
+0x004657c0,56,SpriteEngine::CreateTexture,?CreateTexture@SpriteEngine@@QAEHPAUAnmTexture@@HHH@Z
 0x00465800,96,SpriteEngine::LoadAnm,?LoadAnm@SpriteEngine@@QAEPAVAnmLoaded@@HPAD@Z
 0x00465860,473,Func465860,
 0x00465a40,115,SpriteEngine::PreloadAnm,?PreloadAnm@SpriteEngine@@QAEPAVAnmLoaded@@HPAD@Z
