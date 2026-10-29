@@ -482,7 +482,7 @@ address,size,name,symbol
 0x00437a40,144,Func437a40,
 0x00437ad0,244,Func437ad0,
 0x00437bc4,281,Func437bc4,
-0x00437cdd,5,Func437cdd,
+0x00437cdd,5,DebugPrint2,?DebugPrint2@@YAXPBDZZ
 0x00437ce2,99,Func437ce2,
 0x00437d45,31,Func437d45,
 0x00437d64,35,Func437d64,
@@ -708,7 +708,7 @@ address,size,name,symbol
 0x00447295,198,Timer::Add,?Add@Timer@@QAEXH@Z
 0x0044735b,198,Timer::Sub,?Sub@Timer@@QAEXH@Z
 0x00447421,110,App::TickTimer,?TickTimer@App@@QAEXPAHPAM@Z
-0x0044748f,725,Func44748f,
+0x0044748f,725,App::SaveScreenshot,?SaveScreenshot@App@@QAEHPAD@Z
 0x00447764,77,Func447764,
 0x004477b1,1363,Func4477b1,
 0x00447d04,82,Func447d04,
@@ -1719,7 +1719,7 @@ address,size,name,symbol
 0x004a41c2,111,__heap_alloc,
 0x004a4234,9,Func4a4234,
 0x004a423d,44,__nh_malloc,
-0x004a4269,18,_malloc,
+0x004a4269,18,_malloc,_malloc
 0x004a427b,104,_free,_free
 0x004a42ce,9,Func4a42ce,
 0x004a42fa,10,Func4a42fa,

@@ -595,6 +595,109 @@ void App::TickTimer(int *frames, float *subFrame)
     }
 }
 
+int App::SaveScreenshot(char *path)
+{
+    BITMAPFILEHEADER fileHdr;
+    BYTE *bits;
+    BITMAPINFO *bmi;
+    IDirect3DSurface8 *buffer;
+
+    bmi = NULL;
+    bits = NULL;
+    buffer = NULL;
+    DebugPrint2("SnapShot! %s\n", path);
+    this->d3dDevice->GetBackBuffer(0, D3DBACKBUFFER_TYPE_MONO, &buffer);
+    memset(&fileHdr, 0, sizeof(fileHdr));
+    fileHdr.bfType = *(WORD *)"BM";
+    fileHdr.bfOffBits = sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER);
+    fileHdr.bfSize = fileHdr.bfOffBits;
+    switch (this->presentParams.BackBufferFormat)
+    {
+    case D3DFMT_R5G6B5:
+        DebugPrint2("16bit は取り込めない\r\n");
+        LogPrintf(&g_Log, "16bit は取り込めない\r\n");
+        break;
+    case D3DFMT_X8R8G8B8:
+    {
+        int widthBytes;
+        int x;
+        int y;
+        BYTE *dst;
+        BYTE *read;
+        D3DLOCKED_RECT lockRect;
+        int outRow;
+        HANDLE file;
+        DWORD written;
+        int size;
+
+        size = sizeof(BITMAPINFO);
+        bmi = (BITMAPINFO *)malloc(size);
+        if (bmi == NULL)
+        {
+            LogPrintf(&g_Log, "snapShotScreen : 確保しくり\r\n");
+            break;
+        }
+        memset(bmi, 0, sizeof(BITMAPINFO));
+        widthBytes = 640 * 3;
+        bits = (BYTE *)malloc(widthBytes * 480);
+        if (bits == NULL)
+        {
+            LogPrintf(&g_Log, "snapShotScreen : 確保しくり\r\n");
+            break;
+        }
+        fileHdr.bfSize += widthBytes * 480;
+        bmi->bmiHeader.biBitCount = 24;
+        bmi->bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
+        bmi->bmiHeader.biWidth = 640;
+        bmi->bmiHeader.biHeight = 480;
+        bmi->bmiHeader.biPlanes = 1;
+        bmi->bmiHeader.biCompression = BI_RGB;
+        buffer->LockRect(&lockRect, NULL, 0);
+        // Bottom-up, as a bitmap's rows go.
+        outRow = 0;
+        for (y = 479; y > -1; y--, outRow++)
+        {
+            dst = bits + widthBytes * outRow;
+            read = (BYTE *)lockRect.pBits + lockRect.Pitch * y;
+            for (x = 0; x < 640; x++)
+            {
+                *dst = *read;
+                read++;
+                dst++;
+                *dst = *read;
+                read++;
+                dst++;
+                *dst = *read;
+                read += 2;
+                dst++;
+            }
+        }
+        buffer->UnlockRect();
+        file = CreateFileA(path, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+        if (file == INVALID_HANDLE_VALUE)
+        {
+            break;
+        }
+        WriteFile(file, &fileHdr, sizeof(BITMAPFILEHEADER), &written, NULL);
+        WriteFile(file, bmi, sizeof(BITMAPINFOHEADER), &written, NULL);
+        WriteFile(file, bits, widthBytes * 480, &written, NULL);
+        CloseHandle(file);
+        break;
+    }
+    default:
+        LogPrintf(&g_Log, "error ? mother.cpp\r\n");
+        return 1;
+    }
+    if (buffer != NULL)
+    {
+        buffer->Release();
+        buffer = NULL;
+    }
+    free(bmi);
+    free(bits);
+    return 0;
+}
+
 inline void FreeData(void *data)
 {
     free(data);

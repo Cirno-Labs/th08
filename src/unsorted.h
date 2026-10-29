@@ -97,6 +97,10 @@ public:
     // Advances `frames` by one frame, or by a fraction of one into
     // `subFrame` while the game runs slow.
     void TickTimer(int *frames, float *subFrame);
+    // Saves the back buffer as a 24-bit 640x480 bitmap at `path`, from an
+    // X8R8G8B8 back buffer only (a 16-bit one is logged and skipped).
+    // Returns 1 for any other format, otherwise 0.
+    int SaveScreenshot(char *path);
     // Getters for config options that th07 read directly; th08 calls
     // these out-of-line copies (0x443a50..0x443ad0).
     int GetEmulateColorAdd();
@@ -313,6 +317,10 @@ int ResolveShortcut(char *path, char *out, int size);
 // Debug output, compiled out of the release build: an empty function
 // that the game still calls with messages.
 void DebugPrint(const char *fmt, ...);
+
+// Another empty debug output function, in an /Os object (0x437cdd), as
+// th07's.
+void DebugPrint2(const char *fmt, ...);
 
 // Loads a whole file into a buffer from g_MemoryManager; NULL on
 // failure. Unlike th07's, it stores the file's size in `size` if that is
