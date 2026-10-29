@@ -148,7 +148,7 @@ void ItemManager::UpdateItems()
     D3DXVECTOR3 catchSize(g_Player.shotType->itemCatchSize, g_Player.shotType->itemCatchSize, 16.0f);
 
     this->activeCount = 0;
-    speed = g_Player.unk_3 ? g_Player.unk_e2a78->itemSpeed : g_Player.shotType->itemSpeed;
+    speed = g_Player.focused ? g_Player.shotTypeFocused->itemSpeed : g_Player.shotType->itemSpeed;
     speed *= g_App.gameSpeed;
     while (entry != NULL)
     {
@@ -204,7 +204,7 @@ void ItemManager::UpdateItems()
         }
         else if (entry->state == 1 ||
                  (g_Player.pos.y < g_Player.shotType->itemAutoCollectLine &&
-                  (g_GameManager.GetPower() >= 128.0 || g_Player.unk_3 || g_GameManager.character == 1 ||
+                  (g_GameManager.GetPower() >= 128.0 || g_Player.focused || g_GameManager.character == 1 ||
                    g_GameManager.character == 6)))
         {
             if (g_Player.playerState != 2 && g_Player.playerState != 1)
@@ -545,7 +545,7 @@ void Item::CollectTimeOrb()
     if (g_Player.unk_e2adc == 0)
     {
         amount = 111;
-        g_GameManager.Func43c0bb(g_Player.unk_3 ? amount : -amount, 0);
+        g_GameManager.Func43c0bb(g_Player.focused ? amount : -amount, 0);
     }
 }
 

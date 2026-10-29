@@ -281,7 +281,7 @@ void Player::Die()
     g_GameManager.RerollChecksumKeys();
     g_EffectManager.SpawnEffect(6, &this->pos, 16, 0xffffffff);
     this->playerState = 2;
-    this->unk_e2af4 = 0;
+    this->stateTimer = 0;
     g_SoundPlayer.QueueSoundPanned(4, this->pos.x);
     g_ReplayManager->frameEvents |= 0x200;
     if (g_GameManager.unk_3dbac_7 != 0)
@@ -363,42 +363,42 @@ int HandleInput(Player *player)
 
     deltaX = 0.0f;
     deltaY = 0.0f;
-    previous = player->unk_e2a98;
+    previous = player->direction;
     if ((g_GameButtons & 0x50) == 0x50)
     {
-        player->unk_e2a98 = 5;
+        player->direction = 5;
     }
     else if ((g_GameButtons & 0x60) == 0x60)
     {
-        player->unk_e2a98 = 7;
+        player->direction = 7;
     }
     else if ((g_GameButtons & 0x90) == 0x90)
     {
-        player->unk_e2a98 = 6;
+        player->direction = 6;
     }
     else if ((g_GameButtons & 0xa0) == 0xa0)
     {
-        player->unk_e2a98 = 8;
+        player->direction = 8;
     }
     else if (g_GameButtons & 0x20)
     {
-        player->unk_e2a98 = 2;
+        player->direction = 2;
     }
     else if (g_GameButtons & 0x10)
     {
-        player->unk_e2a98 = 1;
+        player->direction = 1;
     }
     else if (g_GameButtons & 0x40)
     {
-        player->unk_e2a98 = 3;
+        player->direction = 3;
     }
     else if (g_GameButtons & 0x80)
     {
-        player->unk_e2a98 = 4;
+        player->direction = 4;
     }
     else
     {
-        player->unk_e2a98 = 0;
+        player->direction = 0;
     }
     focused = player->bomb.running ? player->bomb.type & 1 : g_GameButtons & 4;
     if (focused)
@@ -406,7 +406,7 @@ int HandleInput(Player *player)
         DWORD idx;
         PlayerOption *opt;
 
-        if (player->unk_3 != 1)
+        if (player->focused != 1)
         {
             if (g_GameManager.character <= 3)
             {
@@ -432,7 +432,7 @@ int HandleInput(Player *player)
             {
                 player->anm->StartScript(&player->sprite, 5);
                 player->velocityX = 0.0f;
-                if (player->unk_8 >= 4)
+                if (player->focusFrames >= 4)
                 {
                     g_EffectManager.SpawnEffect(0x1d, &player->pos, 1, 0x80ff8080);
                 }
@@ -441,18 +441,18 @@ int HandleInput(Player *player)
             {
                 player->unk_be834 = g_EffectManager.SpawnReservedEffect(0x16, &player->pos, 2, 1, 0xffffffff);
             }
-            player->unk_8 = 0;
+            player->focusFrames = 0;
             player->unk_e2ae8 = 0;
         }
         else
         {
-            player->unk_8++;
+            player->focusFrames++;
         }
-        if (player->unk_8 >= 7)
+        if (player->focusFrames >= 7)
         {
             player->unk_5 = 1;
         }
-        player->unk_3 = 1;
+        player->focused = 1;
     }
     else
     {
@@ -461,7 +461,7 @@ int HandleInput(Player *player)
         DWORD i;
         PlayerOption *p;
 
-        if (player->unk_3)
+        if (player->focused)
         {
             p = player->options;
             if (g_GameManager.character < 3)
@@ -500,7 +500,7 @@ int HandleInput(Player *player)
             {
                 player->anm->StartScript(&player->sprite, 0);
                 player->velocityX = 0.0f;
-                if (player->unk_8 >= 4)
+                if (player->focusFrames >= 4)
                 {
                     g_EffectManager.SpawnEffect(0x1c, &player->pos, 1, 0x808080ff);
                 }
@@ -510,18 +510,18 @@ int HandleInput(Player *player)
                 player->unk_be834->sprite.SetPendingInterrupt(1);
             }
             player->unk_be834 = NULL;
-            player->unk_8 = 0;
+            player->focusFrames = 0;
             player->unk_e2ae8 = 0;
         }
         else
         {
-            player->unk_8++;
+            player->focusFrames++;
         }
-        if (player->unk_8 >= 7)
+        if (player->focusFrames >= 7)
         {
             player->unk_5 = 0;
         }
-        player->unk_3 = 0;
+        player->focused = 0;
     }
     if (g_GameManager.character >= 4)
     {
@@ -534,43 +534,43 @@ int HandleInput(Player *player)
             player->unk_5 = 0;
         }
     }
-    if (player->unk_3)
+    if (player->focused)
     {
-        switch (player->unk_e2a98)
+        switch (player->direction)
         {
         case 4:
-            deltaX = player->unk_e2a78->speedFocused;
+            deltaX = player->shotTypeFocused->speedFocused;
             break;
         case 3:
-            deltaX = -player->unk_e2a78->speedFocused;
+            deltaX = -player->shotTypeFocused->speedFocused;
             break;
         case 1:
-            deltaY = -player->unk_e2a78->speedFocused;
+            deltaY = -player->shotTypeFocused->speedFocused;
             break;
         case 2:
-            deltaY = player->unk_e2a78->speedFocused;
+            deltaY = player->shotTypeFocused->speedFocused;
             break;
         case 5:
-            deltaX = -player->unk_e2a78->speedDiagonalFocused;
+            deltaX = -player->shotTypeFocused->speedDiagonalFocused;
             deltaY = deltaX;
             break;
         case 7:
-            deltaY = player->unk_e2a78->speedDiagonalFocused;
+            deltaY = player->shotTypeFocused->speedDiagonalFocused;
             deltaX = -deltaY;
             break;
         case 6:
-            deltaX = player->unk_e2a78->speedDiagonalFocused;
+            deltaX = player->shotTypeFocused->speedDiagonalFocused;
             deltaY = -deltaX;
             break;
         case 8:
-            deltaX = player->unk_e2a78->speedDiagonalFocused;
+            deltaX = player->shotTypeFocused->speedDiagonalFocused;
             deltaY = deltaX;
             break;
         }
     }
     else
     {
-        switch (player->unk_e2a98)
+        switch (player->direction)
         {
         case 4:
             deltaX = player->shotType->speed;
@@ -606,7 +606,7 @@ int HandleInput(Player *player)
     deltaY *= player->moveScaleY;
     if (g_GameManager.character < 4)
     {
-        if (!player->unk_3)
+        if (!player->focused)
         {
             if (deltaX < 0.0f && player->velocityX >= 0.0f)
             {
@@ -728,7 +728,7 @@ int HandleInput(Player *player)
     {
         Player::StartFiring(player);
     }
-    if (!g_Gui.IsMsgRunning() && player->unk_8 >= 30 && !player->bomb.running)
+    if (!g_Gui.IsMsgRunning() && player->focusFrames >= 30 && !player->bomb.running)
     {
         int amount;
 
@@ -742,7 +742,7 @@ int HandleInput(Player *player)
             else
             {
                 amount = player->unk_e2ae8.AsFloat() > 300.0f ? 21.0f : player->unk_e2ae8.AsFloat() / 15.0f;
-                if (!player->unk_3)
+                if (!player->focused)
                 {
                     amount = -amount;
                 }
@@ -846,15 +846,15 @@ int Player::RegisterChain(int arg)
     if (KeepsResources())
     {
         oldShotType = player->shotType;
-        oldShotType2 = player->unk_e2a78;
+        oldShotType2 = player->shotTypeFocused;
     }
     memset(player, 0, sizeof(Player));
     if (KeepsResources())
     {
         player->shotType = oldShotType;
-        player->unk_e2a78 = oldShotType2;
+        player->shotTypeFocused = oldShotType2;
     }
-    player->unk_e2af4 = 0;
+    player->stateTimer = 0;
     player->registerChainArg = arg;
     player->calcChain = g_Chain.CreateElem((ChainCallback)Player::OnUpdate);
     player->calcChain->arg = player;
@@ -1050,7 +1050,7 @@ void UpdateBombState(Player *player)
             }
             g_GameManager.unk_3dbac_10 = 0;
             g_SpriteEngine->ResetColorModulation();
-            player->bomb.type = player->unk_3;
+            player->bomb.type = player->focused;
             if (player->unk_4)
             {
                 player->bomb.type = 1 - player->bomb.type;
@@ -1174,23 +1174,23 @@ int UpdateDyingState(Player *player)
     }
     else
     {
-        progress = player->unk_e2af4.AsFloat() / 30.0f;
+        progress = player->stateTimer.AsFloat() / 30.0f;
         player->sprite.scaleX = 3.0f * progress + 1.0f;
         player->sprite.scaleY = 1.0f - 1.0f * progress;
-        player->sprite.color = (int)(255.0f - player->unk_e2af4.AsFloat() * 255.0f / 30.0f) << 24 | 0xffffff;
+        player->sprite.color = (int)(255.0f - player->stateTimer.AsFloat() * 255.0f / 30.0f) << 24 | 0xffffff;
         player->sprite.SetBlendModeAdd();
         player->velocityX = 0.0f;
         player->velocityY = 0.0f;
-        if (player->unk_e2af4.AsFrames() >= 30)
+        if (player->stateTimer.AsFrames() >= 30)
         {
             player->playerState = 1;
             player->pos[0] = g_GameManager.arena[2] / 2.0f;
             player->pos[1] = g_GameManager.arena[3] - 64.0f;
             player->pos[2] = 0.2f;
-            player->unk_e2af4 = 0;
+            player->stateTimer = 0;
             player->sprite.scaleY = 3.0f;
             player->sprite.scaleX = 3.0f;
-            if ((g_GameManager.character < 4 && !player->unk_3) || !(g_GameManager.character & 1))
+            if ((g_GameManager.character < 4 && !player->focused) || !(g_GameManager.character & 1))
             {
                 player->anm->StartScript(&player->sprite, 0);
             }
@@ -1220,15 +1220,15 @@ void UpdateRespawningState(Player *player)
     float progress;
 
     player->respawnClearFrames = 60;
-    progress = 1.0f - player->unk_e2af4.AsFloat() / 30.0f;
+    progress = 1.0f - player->stateTimer.AsFloat() / 30.0f;
     player->sprite.scaleX = 2.0f * progress + 1.0f;
     player->sprite.scaleY = 1.0f - 1.0f * progress;
     player->sprite.SetBlendModeAdd();
     player->moveScaleY = 1.0f;
     player->moveScaleX = 1.0f;
-    player->sprite.color = player->unk_e2af4.AsFrames() * 255 / 30 << 24 | 0xffffff;
+    player->sprite.color = player->stateTimer.AsFrames() * 255 / 30 << 24 | 0xffffff;
     player->deathbombFrames = 0;
-    if (player->unk_e2af4.AsFrames() >= 30)
+    if (player->stateTimer.AsFrames() >= 30)
     {
         player->playerState = 3;
         player->sprite.scaleY = 1.0f;
@@ -1237,7 +1237,7 @@ void UpdateRespawningState(Player *player)
         player->sprite.SetBlendModeNormal();
         if (!g_GameManager.isInSpellCardPractice)
         {
-            player->unk_e2af4 = 240;
+            player->stateTimer = 240;
         }
         player->deathbombFrames = g_Player.shotType->deathbombFrames;
     }
@@ -1258,8 +1258,8 @@ void UpdateInvulnerability(Player *player)
         {
             player->invulnerabilityEffect->pos = player->pos;
         }
-        player->unk_e2af4--;
-        if (player->unk_e2af4.AsFrames() <= 0)
+        player->stateTimer--;
+        if (player->stateTimer.AsFrames() <= 0)
         {
             if (player->invulnerabilityEffect != NULL)
             {
@@ -1267,10 +1267,10 @@ void UpdateInvulnerability(Player *player)
                 player->invulnerabilityEffect = NULL;
             }
             player->playerState = 0;
-            player->unk_e2af4 = 0;
+            player->stateTimer = 0;
             player->sprite.color = 0xffffffff;
         }
-        else if (player->unk_e2af4.AsFrames() % 8 < 2)
+        else if (player->stateTimer.AsFrames() % 8 < 2)
         {
             player->sprite.color = 0xfff02020;
         }
@@ -1281,7 +1281,7 @@ void UpdateInvulnerability(Player *player)
     }
     else
     {
-        player->unk_e2af4++;
+        player->stateTimer++;
     }
 }
 
@@ -1352,7 +1352,7 @@ int Player::AddedCallback(Player *player)
         {
             return -1;
         }
-        if (LoadShotTypeFile(&player->unk_e2a78, g_ShotFilesFocused[g_GameManager.character]))
+        if (LoadShotTypeFile(&player->shotTypeFocused, g_ShotFilesFocused[g_GameManager.character]))
         {
             return -1;
         }
@@ -1387,9 +1387,9 @@ int Player::AddedCallback(Player *player)
     player->grazeSize.z = 5.0f;
     player->grazeTestHalfSize.x = player->grazeTestHalfSize.y = g_Player.shotType->itemCatchSize / 2.0f;
     player->grazeTestHalfSize.z = 5.0f;
-    player->unk_e2a98 = 0;
+    player->direction = 0;
     player->playerState = 1;
-    player->unk_e2af4 = g_GameManager.IsInSpellCardPractice() ? 10 : 120;
+    player->stateTimer = g_GameManager.IsInSpellCardPractice() ? 10 : 120;
     player->unk_2 = 1;
     cur = player->bullets;
     for (i = 0; i < 0x80; i++, cur++)
@@ -1452,7 +1452,7 @@ int Player::AddedCallback(Player *player)
     {
         player->posHistory[i] = player->pos;
     }
-    player->unk_3 = 2;
+    player->focused = 2;
     if (g_GameManager.character > 3)
     {
         option = player->options;
@@ -1499,10 +1499,10 @@ int Player::DeletedCallback(Player *player)
             g_MemoryManager.Free(g_Player.shotType);
             g_Player.shotType = NULL;
         }
-        if (g_Player.unk_e2a78 != NULL)
+        if (g_Player.shotTypeFocused != NULL)
         {
-            g_MemoryManager.Free(g_Player.unk_e2a78);
-            g_Player.unk_e2a78 = NULL;
+            g_MemoryManager.Free(g_Player.shotTypeFocused);
+            g_Player.shotTypeFocused = NULL;
         }
     }
     return 0;

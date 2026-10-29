@@ -317,7 +317,7 @@ public:
     // set for lasers.
     void Graze(D3DXVECTOR3 *pos, int isLaser);
     // Starts dying, as th07's: unfreezes the game, rerolls the
-    // checksums, bursts effect 6, sets playerState to 2 with unk_e2af4 at
+    // checksums, bursts effect 6, sets playerState to 2 with stateTimer at
     // 0, plays sound 4 and marks bit 9 of g_ReplayManager->frameEvents.
     // With GameManager::unk_3dbac_7 set, just leaves 2 deathbombFrames
     // and sets unk_6. Otherwise clears stats->unk_22 and, with bombs
@@ -362,9 +362,12 @@ public:
     // RegisterChain's argument, as th07's.
     BYTE registerChainArg;
     char unk_2;
-    // Picks unk_e2a78 over shotType for the items' pull speed, and the
-    // direction a time orb moves stats->unk_22. Probably the focus.
-    BYTE unk_3;
+    // Whether the player is focused (HandleInput; 2 until the first
+    // frame), as th07's. Picks shotTypeFocused over shotType and the
+    // direction a time orb moves stats->unk_22.
+    BYTE focused;
+    // Set while the last words run (UpdateDyingState): a bomb then
+    // starts as the other character's last word.
     BYTE unk_4;
     // Stage::StepObjects sends interrupt 1 to g_Stage.unk_844 as it is
     // set, 2 as it is cleared.
@@ -372,7 +375,7 @@ public:
     BYTE unk_6;
     unsigned char unk_7[0x1];
     // The frames since the player last switched focus.
-    int unk_8;
+    int focusFrames;
     // The character's ANM, in slot 5.
     AnmLoaded *anm;
     Sprite sprite;
@@ -411,7 +414,7 @@ public:
     // Frames left of clearing all bullets after a respawn, as th07's.
     int respawnClearFrames;
     ShotTypeData *shotType;
-    ShotTypeData *unk_e2a78;
+    ShotTypeData *shotTypeFocused;
     // 1 on the frames a bomb starts, else 0, as th07's. A time orb counts
     // 100 points while it is set.
     int bombJustStarted;
@@ -419,7 +422,9 @@ public:
     // The itemType of the area CheckAreaHit met last, as th07's.
     int areaItemType;
     int unk_e2a94;
-    int unk_e2a98;
+    // 0 still, 1 up, 2 down, 3 left, 4 right, 5 to 8 diagonal, as
+    // th07's.
+    int direction;
     // The last frame's movement, as th07's.
     float velocityX;
     float velocityY;
@@ -435,7 +440,8 @@ public:
     // Collecting a time orb moves stats->unk_22 while it is 0.
     Timer unk_e2adc;
     Timer unk_e2ae8;
-    Timer unk_e2af4;
+    // Runs through the player states, as th07's.
+    Timer stateTimer;
     Timer unk_e2b00;
     // The angle the aimed shots fly at, as th07's.
     float aimedShotAngle;
