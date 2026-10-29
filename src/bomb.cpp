@@ -148,6 +148,11 @@ void DrawDissolveBomb(Player *player)
     }
 }
 
+void DrawAliceBomb(Player *player)
+{
+    DimPlayAreaForBomb(player, 0x80404040);
+}
+
 int EffectUpdateBombRing42(Effect *effect)
 {
     float t;

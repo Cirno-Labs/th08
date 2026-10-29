@@ -657,6 +657,12 @@ void UpdateDissolveBomb(Player *player);
 // Its draw callback: tints the play area from 0x404040 up to 0xf0f0f0
 // over its first 60 frames (0x40d310).
 void DrawDissolveBomb(Player *player);
+// Draw callbacks of the bombs that only tint the play area, by the
+// bomb they follow: Alice's (also Yukari's draw.funcs[0..1], 0x40d950)
+// and Remilia's and her last word's (0x40f550, 0x40fcb0).
+void DrawAliceBomb(Player *player);
+void DrawRemiliaBomb(Player *player);
+void DrawRemiliaLastWord(Player *player);
 // th07's SpawnBombAura, with effect 0x17: ends invulnerabilityEffect and
 // starts a red aura at the player that runs as long as stateTimer
 // (0x40bf00).

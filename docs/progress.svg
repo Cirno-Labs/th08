@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">73.92% (825)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">24.10% (269)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">74.01% (826)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">24.01% (268)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="552.22" height="6" x="0" y="0" class="named"/>
-<rect width="14.73" height="6" x="552.22" y="0" class="decompiled"/>
-<rect width="180.06" height="6" x="566.94" y="0" class="todo"/>
+<rect width="552.89" height="6" x="0" y="0" class="named"/>
+<rect width="14.73" height="6" x="552.89" y="0" class="decompiled"/>
+<rect width="179.39" height="6" x="567.61" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -221,7 +221,7 @@
 <rect width="12" height="12" x="0" y="45" class="named"><title>0x0040d3f0 Timer::operator== (27 bytes)</title></rect>
 <rect width="12" height="12" x="15" y="45" class="todo"><title>0x0040d410 Func40d410 (25 bytes)</title></rect>
 <rect width="12" height="12" x="30" y="45" class="todo"><title>0x0040d430 Func40d430 (1303 bytes)</title></rect>
-<rect width="12" height="12" x="45" y="45" class="todo"><title>0x0040d950 Func40d950 (24 bytes)</title></rect>
+<rect width="12" height="12" x="45" y="45" class="named"><title>0x0040d950 DrawAliceBomb (24 bytes)</title></rect>
 <rect width="12" height="12" x="60" y="45" class="todo"><title>0x0040d970 Func40d970 (1390 bytes)</title></rect>
 <rect width="12" height="12" x="75" y="45" class="todo"><title>0x0040dee0 Func40dee0 (349 bytes)</title></rect>
 <rect width="12" height="12" x="90" y="45" class="named"><title>0x0040e040 EffectUpdateBombRing42 (209 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">65.81%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">33.18%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">65.81%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">33.17%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="491.57" height="6" x="0" y="0" class="named"/>
-<rect width="7.57" height="6" x="491.57" y="0" class="decompiled"/>
-<rect width="247.85" height="6" x="499.15" y="0" class="todo"/>
+<rect width="491.61" height="6" x="0" y="0" class="named"/>
+<rect width="7.57" height="6" x="491.61" y="0" class="decompiled"/>
+<rect width="247.81" height="6" x="499.19" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -2205,7 +2205,7 @@
 <rect width="0.54" height="0.85" x="715.34" y="313.38" class="named"><title>0x0040ba50 SpriteEngine::ClearSpriteData (24 bytes)</title></rect>
 <rect width="0.54" height="0.85" x="715.34" y="317.22" class="todo"><title>0x0040c7b0 Func40c7b0 (24 bytes)</title></rect>
 <rect width="0.54" height="0.85" x="715.34" y="321.07" class="named"><title>0x0040d390 Rng::GetRandomF32InRange (24 bytes)</title></rect>
-<rect width="0.54" height="0.85" x="715.34" y="324.92" class="todo"><title>0x0040d950 Func40d950 (24 bytes)</title></rect>
+<rect width="0.54" height="0.85" x="715.34" y="324.92" class="named"><title>0x0040d950 DrawAliceBomb (24 bytes)</title></rect>
 <rect width="0.54" height="0.85" x="715.34" y="328.76" class="todo"><title>0x0040f550 Func40f550 (24 bytes)</title></rect>
 <rect width="0.54" height="0.85" x="715.34" y="332.61" class="todo"><title>0x0040fcb0 Func40fcb0 (24 bytes)</title></rect>
 <rect width="0.54" height="0.85" x="715.34" y="336.46" class="named"><title>0x004143c0 Rng::GetRandomF32SignedInRange (24 bytes)</title></rect>
