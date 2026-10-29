@@ -280,3 +280,14 @@ DWORD SwapBytes32(DWORD value)
     swapped.bytes[3] = ((BYTE *)&value)[0];
     return swapped.dword;
 }
+
+int MidiPlayer::Load(char *path)
+{
+    if (this->LoadFile(0x1f, path) != 0)
+    {
+        return -1;
+    }
+    this->ParseFile(0x1f);
+    this->UnloadFile(0x1f);
+    return 0;
+}
