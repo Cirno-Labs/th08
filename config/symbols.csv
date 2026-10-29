@@ -2384,6 +2384,7 @@ address,size,name,symbol
 0x004bd6f0,,IID_IPersistFile,_IID_IPersistFile
 0x004c78e0,,g_CryptParams,?g_CryptParams@@3PAUCryptParams@@A
 0x004c7940,,g_CryptMagic,?g_CryptMagic@@3PAEA
+0x004c7948,,g_FormatInfos,?g_FormatInfos@@3PAUFormatInfo@@A
 0x0164d388,,g_JoyCaps,?g_JoyCaps@@3UtagJOYCAPSA@@A
 0x0164d51c,,g_ShotHeldFrames,?g_ShotHeldFrames@@3GA
 0x0164d540,,g_Log,?g_Log@@3VLog@@A

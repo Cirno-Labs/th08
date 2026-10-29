@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">6.45% (72)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">93.55% (1044)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">6.54% (73)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">93.46% (1043)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="48.19" height="6" x="0" y="0" class="named"/>
-<rect width="698.81" height="6" x="48.19" y="0" class="todo"/>
+<rect width="48.86" height="6" x="0" y="0" class="named"/>
+<rect width="698.14" height="6" x="48.86" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -665,7 +665,7 @@
 <rect width="12" height="12" x="675" y="165" class="named"><title>0x0043f03c GdiSurface::Release (114 bytes)</title></rect>
 <rect width="12" height="12" x="690" y="165" class="named"><title>0x0043f0ae GdiSurface::Create (95 bytes)</title></rect>
 <rect width="12" height="12" x="705" y="165" class="named"><title>0x0043f10d GdiSurface::CreateInFormat (447 bytes)</title></rect>
-<rect width="12" height="12" x="720" y="165" class="todo"><title>0x0043f2cc GdiSurface::FindFormat (80 bytes)</title></rect>
+<rect width="12" height="12" x="720" y="165" class="named"><title>0x0043f2cc GdiSurface::FindFormat (80 bytes)</title></rect>
 <rect width="12" height="12" x="735" y="165" class="todo"><title>0x0043f31c Func43f31c (1292 bytes)</title></rect>
 <rect width="12" height="12" x="0" y="180" class="todo"><title>0x0043f828 Func43f828 (15 bytes)</title></rect>
 <rect width="12" height="12" x="15" y="180" class="todo"><title>0x0043f837 Func43f837 (15 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">3.65%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">96.35%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">3.66%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">96.34%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="27.24" height="6" x="0" y="0" class="named"/>
-<rect width="719.76" height="6" x="27.24" y="0" class="todo"/>
+<rect width="27.37" height="6" x="0" y="0" class="named"/>
+<rect width="719.63" height="6" x="27.37" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1884,7 +1884,7 @@
 <rect width="3.76" height="3.80" x="649.18" y="274.87" class="named"><title>0x00444620 MidiPlayer::Play (81 bytes)</title></rect>
 <rect width="3.76" height="3.80" x="649.18" y="281.67" class="todo"><title>0x00473730 Func473730 (81 bytes)</title></rect>
 <rect width="3.76" height="3.72" x="649.18" y="288.47" class="todo"><title>0x0040ed50 Func40ed50 (80 bytes)</title></rect>
-<rect width="3.76" height="3.72" x="649.18" y="295.19" class="todo"><title>0x0043f2cc GdiSurface::FindFormat (80 bytes)</title></rect>
+<rect width="3.76" height="3.72" x="649.18" y="295.19" class="named"><title>0x0043f2cc GdiSurface::FindFormat (80 bytes)</title></rect>
 <rect width="3.76" height="3.63" x="649.18" y="301.91" class="todo"><title>0x004417e0 Func4417e0 (79 bytes)</title></rect>
 <rect width="3.76" height="3.63" x="649.18" y="308.54" class="named"><title>0x004447d0 MidiPlayer::FadeOut (79 bytes)</title></rect>
 <rect width="3.76" height="3.63" x="649.18" y="315.17" class="todo"><title>0x00472990 Func472990 (79 bytes)</title></rect>

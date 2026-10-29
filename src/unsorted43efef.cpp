@@ -110,3 +110,17 @@ bool GdiSurface::CreateInFormat(int width, int height, int format)
     this->widthBytes = widthBytes;
     return true;
 }
+
+FormatInfo *GdiSurface::FindFormat(int format)
+{
+    int i;
+
+    for (i = 0; g_FormatInfos[i].format != -1 && g_FormatInfos[i].format != format; i++)
+    {
+    }
+    if (format == -1)
+    {
+        return NULL;
+    }
+    return &g_FormatInfos[i];
+}
