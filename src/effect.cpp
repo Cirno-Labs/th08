@@ -399,3 +399,32 @@ int EffectUpdateBossPetal(Effect *effect)
     effect->sprite.color2Alpha = (DWORD)effect->sprite.alpha * g_Stage.unk_a34[3] >> 8;
     return 1;
 }
+
+int EffectInitBossPetal2(Effect *effect)
+{
+    D3DXVECTOR3 back;
+
+    back = -g_Stage.camera.at;
+    effect->truePos = g_Stage.camera.at + g_Stage.camera.eye;
+    effect->truePos.x += g_Rng.GetRandomF32SignedInRange(60.0f) + back.x / 2.0f;
+    effect->truePos.y += g_Rng.GetRandomF32SignedInRange(200.0f) - 200.0f + back.y / 2.0f;
+    effect->truePos.z += g_Rng.GetRandomF32InRange(100.0f) - 100.0f + back.z / 2.0f;
+    effect->step.x = g_Rng.GetRandomF32SignedInRange(0.001f) + effect->velocity.x;
+    effect->step.y = g_Rng.GetRandomF32SignedInRange(0.03f) + 0.4f;
+    effect->step.z = -g_Rng.GetRandomF32InRange(0.1f) - 0.3f + effect->velocity.z;
+    effect->acceleration.x = g_Rng.GetRandomF32SignedInRange(0.0001f);
+    effect->acceleration.y = g_Rng.GetRandomF32SignedInRange(0.0001f);
+    effect->acceleration.z = -0.0003f;
+    effect->step = effect->step * g_App.gameSpeed;
+    effect->acceleration = effect->acceleration * g_App.gameSpeed;
+    effect->drawList = 1;
+    effect->sprite.posOffset.x = -9999.0f;
+    effect->sprite.moveStart.x = 0.0f;
+    effect->sprite.moveEnd.x = 0.0f;
+    effect->sprite.moveEnd.y = 0.0f;
+    effect->sprite.moveEnd.z = 0.0f;
+    effect->sprite.rotateStart.x = 0.0f;
+    effect->sprite.rotateStart.y = 0.0f;
+    effect->sprite.rotateStart.z = 0.0f;
+    return 0;
+}
