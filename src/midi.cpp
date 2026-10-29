@@ -23,19 +23,6 @@ int MidiDevice::Close()
     return 0;
 }
 
-WORD SwapBytes16(WORD value)
-{
-    union
-    {
-        WORD word;
-        BYTE bytes[2];
-    } swapped;
-
-    swapped.bytes[0] = ((BYTE *)&value)[1];
-    swapped.bytes[1] = ((BYTE *)&value)[0];
-    return swapped.word;
-}
-
 int MidiDevice::SendLongMsg(LPMIDIHDR header)
 {
     if (this->handle == 0)
@@ -61,4 +48,31 @@ int MidiDevice::SendShortMsg(BYTE status, BYTE data1, BYTE data2)
     msg.bytes[1] = data1;
     msg.bytes[2] = data2;
     return midiOutShortMsg(this->handle, msg.dword) != MMSYSERR_NOERROR;
+}
+
+WORD SwapBytes16(WORD value)
+{
+    union
+    {
+        WORD word;
+        BYTE bytes[2];
+    } swapped;
+
+    swapped.bytes[0] = ((BYTE *)&value)[1];
+    swapped.bytes[1] = ((BYTE *)&value)[0];
+    return swapped.word;
+}
+
+DWORD ReadVarLen(BYTE **cursor)
+{
+    DWORD value = 0;
+    BYTE byte;
+
+    do
+    {
+        byte = **cursor;
+        (*cursor)++;
+        value = (value << 7) + (byte & 0x7f);
+    } while (byte & 0x80);
+    return value;
 }

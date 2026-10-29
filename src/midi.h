@@ -18,6 +18,10 @@ union MidiShortMsg
 // Swaps the bytes of a big-endian 16-bit value from a MIDI file.
 WORD SwapBytes16(WORD value);
 
+// Reads a MIDI variable-length quantity (7 bits per byte, high bit set on
+// all but the last) and advances the cursor past it.
+DWORD ReadVarLen(BYTE **cursor);
+
 class MidiDevice
 {
 public:

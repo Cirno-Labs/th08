@@ -668,7 +668,7 @@ address,size,name,symbol
 0x00443ed0,61,Func443ed0,
 0x00443f10,26,Func443f10,
 0x00443f30,30,SwapBytes16,?SwapBytes16@@YIGG@Z
-0x00443f50,78,Func443f50,
+0x00443f50,78,ReadVarLen,?ReadVarLen@@YIKPAPAE@Z
 0x00443fa0,351,Func443fa0,
 0x00444100,147,Func444100,
 0x004441a0,114,Func4441a0,
