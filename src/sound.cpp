@@ -160,3 +160,88 @@ int SoundPlayer::FindTrackIndex(char *path)
     }
     return i;
 }
+
+int SoundPlayer::LoadSound(int index, char *path)
+{
+    char *cursor;
+    DSBUFFERDESC params;
+    char *chunk;
+    int size;
+    LPVOID audioPtrTwo;
+    DWORD size2;
+    DWORD sizeOne;
+    LPVOID audioPtr_1;
+    char *wavBuf;
+    WAVEFORMATEX formatInfo;
+    int totalSize2;
+
+    if (!this->manager)
+    {
+        return 0;
+    }
+    if (this->soundBuffers[index] != NULL)
+    {
+        this->soundBuffers[index]->Release();
+        this->soundBuffers[index] = NULL;
+    }
+    wavBuf = (char *)LoadFileData(path, NULL, 0);
+    cursor = wavBuf;
+    if (cursor == NULL)
+    {
+        return -1;
+    }
+    if (strncmp(cursor, "RIFF", 4))
+    {
+        LogPrintf(&g_Log, "Wav ファイルじゃない %s\r\n", path);
+        g_MemoryManager.Free(wavBuf);
+        return -1;
+    }
+    cursor += 4;
+    totalSize2 = *(int *)cursor;
+    cursor += 4;
+    if (strncmp(cursor, "WAVE", 4))
+    {
+        LogPrintf(&g_Log, "Wav ファイルじゃない? %s\r\n", path);
+        g_MemoryManager.Free(wavBuf);
+        return -1;
+    }
+    cursor += 4;
+    chunk = FindRiffChunk(cursor, "fmt ", &size, totalSize2 - 12);
+    if (chunk == NULL)
+    {
+        LogPrintf(&g_Log, "Wav ファイルじゃない? %s\r\n", path);
+        g_MemoryManager.Free(wavBuf);
+        return -1;
+    }
+    formatInfo = *(WAVEFORMATEX *)chunk;
+    chunk = FindRiffChunk(cursor, "data", &size, totalSize2 - 12);
+    if (chunk == NULL)
+    {
+        LogPrintf(&g_Log, "Wav ファイルじゃない? %s\r\n", path);
+        g_MemoryManager.Free(wavBuf);
+        return -1;
+    }
+    memset(&params, 0, sizeof(params));
+    params.dwSize = sizeof(params);
+    params.dwFlags = DSBCAPS_CTRLPAN | DSBCAPS_CTRLVOLUME | DSBCAPS_LOCSOFTWARE | DSBCAPS_GLOBALFOCUS;
+    params.dwBufferBytes = size;
+    params.lpwfxFormat = &formatInfo;
+    if (this->dsound->CreateSoundBuffer(&params, &this->soundBuffers[index], NULL) < 0)
+    {
+        g_MemoryManager.Free(wavBuf);
+        return -1;
+    }
+    if (this->soundBuffers[index]->Lock(0, size, &audioPtr_1, &sizeOne, &audioPtrTwo, &size2, 0) < 0)
+    {
+        g_MemoryManager.Free(wavBuf);
+        return -1;
+    }
+    memcpy(audioPtr_1, chunk, sizeOne);
+    if (size2 != 0)
+    {
+        memcpy(audioPtrTwo, chunk + sizeOne, size2);
+    }
+    this->soundBuffers[index]->Unlock(audioPtr_1, sizeOne, audioPtrTwo, size2);
+    g_MemoryManager.Free(wavBuf);
+    return 0;
+}
