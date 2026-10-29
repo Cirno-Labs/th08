@@ -14,6 +14,11 @@ char *GetStageName(int stage)
     return stage >= 9 ? "Clear" : g_StageNames[stage];
 }
 
+char *GetShotName(int shot)
+{
+    return g_ShotNames[shot];
+}
+
 int ResultScreen::RegisterChain(int mode)
 {
     ResultScreen *screen = (ResultScreen *)g_MemoryManager.Register(new ResultScreen, sizeof(ResultScreen),
