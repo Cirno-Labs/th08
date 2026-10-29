@@ -754,7 +754,7 @@ address,size,name,symbol
 0x0044a360,272,Player::CheckHitIgnoringAreas,?CheckHitIgnoringAreas@Player@@QAEHPAUD3DXVECTOR3@@0@Z
 0x0044a470,303,Player::CheckGraze,?CheckGraze@Player@@QAEHPAUD3DXVECTOR3@@0@Z
 0x0044a5a0,249,Player::TouchesGrazeBox,?TouchesGrazeBox@Player@@QAEHPAUD3DXVECTOR3@@0@Z
-0x0044a6a0,651,Func44a6a0,
+0x0044a6a0,651,Player::CheckLaserHit,?CheckLaserHit@Player@@QAEHPAUD3DXVECTOR3@@00MH@Z
 0x0044a930,521,Player::Graze,?Graze@Player@@QAEXPAUD3DXVECTOR3@@H@Z
 0x0044ab40,888,Player::Die,?Die@Player@@QAEXXZ
 0x0044aec0,4769,Func44aec0,

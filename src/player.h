@@ -218,6 +218,14 @@ public:
     // respawning or dying or off the graze box, else grazes `pos` and
     // returns 1.
     int CheckGraze(D3DXVECTOR3 *pos, D3DXVECTOR3 *size);
+    // Whether a laser hits or grazes the player, as th07's: `pos` and
+    // `size` are its box in its own frame, into which the hitbox is
+    // turned by `angle` around `origin`. On a hit, marks bit 1 of
+    // g_ReplayManager->frameEvents and kills the player while
+    // playerState is 0, returning 1, else 0. Otherwise, with `canGraze`,
+    // grazes the player within 48 of the box unless it is respawning or
+    // dying, returning 2; else returns 0.
+    int CheckLaserHit(D3DXVECTOR3 *pos, D3DXVECTOR3 *size, D3DXVECTOR3 *origin, float angle, int canGraze);
     // Scores a graze of the bullet at `pos` (0x44a930); `isLaser` is
     // set for lasers.
     void Graze(D3DXVECTOR3 *pos, int isLaser);
