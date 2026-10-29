@@ -370,3 +370,12 @@ void Gui::ShowFullPowerPopup(int points, int kind)
     this->impl->fullPowerPopup.value = points;
     g_App.redrawFrames = 2;
 }
+
+void Gui::ShowSpellCardBonus(int value)
+{
+    this->impl->spellBonusPopup.pos = D3DXVECTOR3(224.0f, 16.0f, 0.0f);
+    this->impl->spellBonusPopup.shown = 1;
+    this->impl->spellBonusPopup.timer = 0;
+    this->impl->spellBonusPopup.value = value;
+    g_App.redrawFrames = 2;
+}

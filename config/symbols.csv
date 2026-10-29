@@ -490,7 +490,7 @@ address,size,name,symbol
 0x00437dc7,22,Gui::IsMsgSkippable,?IsMsgSkippable@Gui@@QAEHXZ
 0x00437ddd,128,Gui::ShowBonusPopup,?ShowBonusPopup@Gui@@QAEXH@Z
 0x00437e5d,127,Gui::ShowFullPowerPopup,?ShowFullPowerPopup@Gui@@QAEXHH@Z
-0x00437edc,128,Func437edc,
+0x00437edc,128,Gui::ShowSpellCardBonus,?ShowSpellCardBonus@Gui@@QAEXH@Z
 0x00437f5c,234,CopySpriteToTexture,?CopySpriteToTexture@@YIXH@Z
 0x00438046,517,Func438046,?Func438046@@YIXXZ
 0x0043826b,1982,Gui::Func43826b,?Func43826b@Gui@@QAEXXZ
