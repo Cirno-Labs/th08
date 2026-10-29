@@ -31,3 +31,7 @@ ChainElem::~ChainElem()
     this->addedCallback = NULL;
     this->deletedCallback = NULL;
 }
+
+Chain::Chain()
+{
+}
