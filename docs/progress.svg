@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">15.68% (175)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">84.32% (941)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">15.77% (176)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">84.23% (940)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="117.14" height="6" x="0" y="0" class="named"/>
-<rect width="629.86" height="6" x="117.14" y="0" class="todo"/>
+<rect width="117.81" height="6" x="0" y="0" class="named"/>
+<rect width="629.19" height="6" x="117.81" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -1132,7 +1132,7 @@
 <rect width="12" height="12" x="180" y="315" class="named"><title>0x00472b50 CStreamingSound::UpdateFade (129 bytes)</title></rect>
 <rect width="12" height="12" x="195" y="315" class="named"><title>0x00472be0 CStreamingSound::UpdateFadeIn (106 bytes)</title></rect>
 <rect width="12" height="12" x="210" y="315" class="named"><title>0x00472c50 CStreamingSound::UpdateFadeUp (106 bytes)</title></rect>
-<rect width="12" height="12" x="225" y="315" class="todo"><title>0x00472cc0 CStreamingSound::UpdateFadeDown (107 bytes)</title></rect>
+<rect width="12" height="12" x="225" y="315" class="named"><title>0x00472cc0 CStreamingSound::UpdateFadeDown (107 bytes)</title></rect>
 <rect width="12" height="12" x="240" y="315" class="todo"><title>0x00472d30 CStreamingSound::HandleWaveStreamNotification (1000 bytes)</title></rect>
 <rect width="12" height="12" x="255" y="315" class="todo"><title>0x00473120 CStreamingSound::Reset (194 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="315" class="todo"><title>0x004731f0 CWaveFile::CWaveFile (56 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">7.61%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">92.39%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">7.64%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">92.36%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="56.88" height="6" x="0" y="0" class="named"/>
-<rect width="690.12" height="6" x="56.88" y="0" class="todo"/>
+<rect width="57.05" height="6" x="0" y="0" class="named"/>
+<rect width="689.95" height="6" x="57.05" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1812,7 +1812,7 @@
 <rect width="4.73" height="4.93" x="681.45" y="225.05" class="todo"><title>0x00451ce0 Func451ce0 (108 bytes)</title></rect>
 <rect width="4.66" height="4.93" x="689.18" y="225.05" class="named"><title>0x00442ef0 AppendCapsFlagText (107 bytes)</title></rect>
 <rect width="4.66" height="4.93" x="696.83" y="225.05" class="todo"><title>0x00463cf0 Func463cf0 (107 bytes)</title></rect>
-<rect width="4.66" height="4.93" x="704.49" y="225.05" class="todo"><title>0x00472cc0 CStreamingSound::UpdateFadeDown (107 bytes)</title></rect>
+<rect width="4.66" height="4.93" x="704.49" y="225.05" class="named"><title>0x00472cc0 CStreamingSound::UpdateFadeDown (107 bytes)</title></rect>
 <rect width="4.59" height="4.93" x="712.15" y="225.05" class="todo"><title>0x00441770 Func441770 (106 bytes)</title></rect>
 <rect width="4.59" height="4.93" x="719.73" y="225.05" class="todo"><title>0x00445e3d Func445e3d (106 bytes)</title></rect>
 <rect width="4.59" height="4.93" x="727.32" y="225.05" class="named"><title>0x00472be0 CStreamingSound::UpdateFadeIn (106 bytes)</title></rect>
