@@ -166,3 +166,47 @@ int ReplayManager::RecordOnUpdate2(ReplayManager *replay)
     g_GameManager.pauseRequested = 0;
     return 1;
 }
+
+int ReplayManager::RecordOnUpdate(ReplayManager *replay)
+{
+    int idx;
+    WORD buttons;
+
+    if (!(g_GameManager.unk_3dbac >> 2 & 1))
+    {
+        return 1;
+    }
+    g_PrevGameButtons = g_GameButtons;
+    g_GameButtons = g_Buttons;
+    if (g_GameManager.unk_4->scoreDisabled != 0)
+    {
+        return 1;
+    }
+    if (g_App.GetNoScore())
+    {
+        return 1;
+    }
+    if (g_GameManager.unk_3dbac >> 9 & 1)
+    {
+        if (replay->unk_04 >= 3)
+        {
+            return 1;
+        }
+        replay->unk_04++;
+    }
+    idx = g_GameManager.unk_3ddc8;
+    buttons = g_Buttons;
+    g_GameButtons = buttons;
+    replay->cursor++;
+    replay->stageEnds[idx] = replay->cursor + 1;
+    *replay->cursor = buttons;
+    if (replay->frame % 30 == 0)
+    {
+        *replay->extraCursor = (BYTE)g_App.roundedFps | (g_App.fastClockStreak != 0 ? 0x80 : 0);
+        replay->extraCursor[1] = (BYTE)g_App.roundedFps;
+        replay->extraEnds[idx] = replay->extraCursor + 2;
+        replay->extraCursor++;
+    }
+    replay->frame++;
+    return 1;
+}

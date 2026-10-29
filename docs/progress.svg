@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">37.01% (413)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">62.99% (703)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">37.19% (415)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">62.81% (701)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="276.44" height="6" x="0" y="0" class="named"/>
-<rect width="470.56" height="6" x="276.44" y="0" class="todo"/>
+<rect width="277.78" height="6" x="0" y="0" class="named"/>
+<rect width="469.22" height="6" x="277.78" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -894,7 +894,7 @@
 <rect width="12" height="12" x="360" y="240" class="named"><title>0x00451d90 ValidateReplay (511 bytes)</title></rect>
 <rect width="12" height="12" x="375" y="240" class="named"><title>0x00451f90 ReplayManager::RegisterChain (777 bytes)</title></rect>
 <rect width="12" height="12" x="390" y="240" class="named"><title>0x004522a0 ReplayManager::RecordOnUpdate2 (102 bytes)</title></rect>
-<rect width="12" height="12" x="405" y="240" class="todo"><title>0x00452310 ReplayManager::RecordOnUpdate (372 bytes)</title></rect>
+<rect width="12" height="12" x="405" y="240" class="named"><title>0x00452310 ReplayManager::RecordOnUpdate (372 bytes)</title></rect>
 <rect width="12" height="12" x="420" y="240" class="todo"><title>0x00452490 ReplayManager::PlayOnUpdate2 (184 bytes)</title></rect>
 <rect width="12" height="12" x="435" y="240" class="todo"><title>0x00452550 ReplayManager::PlayOnUpdate (362 bytes)</title></rect>
 <rect width="12" height="12" x="450" y="240" class="todo"><title>0x004526c0 ReplayManager::PlayOnUpdateWithSeeds (361 bytes)</title></rect>
@@ -908,7 +908,7 @@
 <rect width="12" height="12" x="570" y="240" class="todo"><title>0x00453be0 Func453be0 (23 bytes)</title></rect>
 <rect width="12" height="12" x="585" y="240" class="named"><title>0x00453c00 Rng::ResetGenerated (21 bytes)</title></rect>
 <rect width="12" height="12" x="600" y="240" class="named"><title>0x00453c20 Rng::GetSeed (17 bytes)</title></rect>
-<rect width="12" height="12" x="615" y="240" class="todo"><title>0x00453c40 Func453c40 (26 bytes)</title></rect>
+<rect width="12" height="12" x="615" y="240" class="named"><title>0x00453c40 App::GetNoScore (26 bytes)</title></rect>
 <rect width="12" height="12" x="630" y="240" class="todo"><title>0x00453c60 Func453c60 (25 bytes)</title></rect>
 <rect width="12" height="12" x="645" y="240" class="todo"><title>0x00453c80 Func453c80 (25 bytes)</title></rect>
 <rect width="12" height="12" x="660" y="240" class="todo"><title>0x00453ca0 Func453ca0 (28 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">30.19%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">69.81%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">30.28%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">69.72%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="225.54" height="6" x="0" y="0" class="named"/>
-<rect width="521.46" height="6" x="225.54" y="0" class="todo"/>
+<rect width="226.18" height="6" x="0" y="0" class="named"/>
+<rect width="520.82" height="6" x="226.18" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1467,7 +1467,7 @@
 <rect width="11.67" height="11.42" x="504.31" y="219.53" class="named"><title>0x00448418 App::AddTotalPlayTime (373 bytes)</title></rect>
 <rect width="11.67" height="11.39" x="504.31" y="233.96" class="todo"><title>0x00402600 Func402600 (372 bytes)</title></rect>
 <rect width="11.67" height="11.39" x="504.31" y="248.34" class="todo"><title>0x00450ad0 Func450ad0 (372 bytes)</title></rect>
-<rect width="11.67" height="11.39" x="504.31" y="262.73" class="todo"><title>0x00452310 ReplayManager::RecordOnUpdate (372 bytes)</title></rect>
+<rect width="11.67" height="11.39" x="504.31" y="262.73" class="named"><title>0x00452310 ReplayManager::RecordOnUpdate (372 bytes)</title></rect>
 <rect width="11.67" height="11.23" x="504.31" y="277.12" class="named"><title>0x0045ac90 LoadClears (368 bytes)</title></rect>
 <rect width="11.67" height="11.19" x="504.31" y="291.35" class="todo"><title>0x0042c420 Func42c420 (367 bytes)</title></rect>
 <rect width="11.67" height="11.19" x="504.31" y="305.54" class="named"><title>0x00464c60 SpriteEngine::DrawVertexStrip (367 bytes)</title></rect>
@@ -2171,7 +2171,7 @@
 <rect width="0.83" height="0.85" x="738.52" y="305.89" class="named"><title>0x00443a90 App::GetForce16BitTextures (26 bytes)</title></rect>
 <rect width="0.83" height="0.85" x="742.34" y="305.89" class="named"><title>0x00443ab0 App::GetReferenceRasterizer (26 bytes)</title></rect>
 <rect width="0.83" height="0.85" x="746.17" y="305.89" class="named"><title>0x00443f10 MmTimer::DefaultCallback (26 bytes)</title></rect>
-<rect width="0.74" height="0.95" x="707.89" y="309.74" class="todo"><title>0x00453c40 Func453c40 (26 bytes)</title></rect>
+<rect width="0.74" height="0.95" x="707.89" y="309.74" class="named"><title>0x00453c40 App::GetNoScore (26 bytes)</title></rect>
 <rect width="0.74" height="0.95" x="707.89" y="313.69" class="named"><title>0x0045c0e0 ScreenEffect::AddedCallback (26 bytes)</title></rect>
 <rect width="0.74" height="0.80" x="707.89" y="317.64" class="todo"><title>0x00402130 Func402130 (25 bytes)</title></rect>
 <rect width="0.74" height="0.80" x="707.89" y="321.43" class="todo"><title>0x004065f0 Func4065f0 (25 bytes)</title></rect>

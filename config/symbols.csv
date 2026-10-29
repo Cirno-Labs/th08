@@ -840,7 +840,7 @@ address,size,name,symbol
 0x00453be0,23,Func453be0,
 0x00453c00,21,Rng::ResetGenerated,?ResetGenerated@Rng@@QAEXXZ
 0x00453c20,17,Rng::GetSeed,?GetSeed@Rng@@QAEGXZ
-0x00453c40,26,Func453c40,
+0x00453c40,26,App::GetNoScore,?GetNoScore@App@@QAEHXZ
 0x00453c60,25,Func453c60,
 0x00453c80,25,Func453c80,
 0x00453ca0,28,Func453ca0,
