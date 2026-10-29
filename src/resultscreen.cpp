@@ -402,6 +402,92 @@ int ResultScreen::UpdateSpellDifficultySelect()
     return 0;
 }
 
+int ResultScreen::UpdateSpellShotSelect()
+{
+    int i;
+    Sprite *sprite;
+
+    switch (this->subState)
+    {
+    case 0:
+        if (this->unk_18 == 0)
+        {
+            this->cursor = this->spellCursor;
+            for (i = 0x1b; i <= 0x27; i++)
+            {
+                this->sprites[i].pendingInterrupt = 0x16;
+                g_SpriteEngine->Step(&this->sprites[i]);
+                if (i - 0x1b == this->cursor)
+                {
+                    this->sprites[i].pendingInterrupt = 0x14;
+                }
+                else
+                {
+                    this->sprites[i].pendingInterrupt = 0x15;
+                }
+            }
+        }
+        if (this->unk_18 < 6)
+        {
+            break;
+        }
+        this->subState++;
+        this->unk_18 = 0;
+    case 1:
+        i = MoveCursorVertical(this, 0xd);
+        if (i != 0)
+        {
+            for (i = 0x1b; i <= 0x27; i++)
+            {
+                if (i - 0x1b == this->cursor)
+                {
+                    this->sprites[i].pendingInterrupt = 0x14;
+                }
+                else
+                {
+                    this->sprites[i].pendingInterrupt = 0x15;
+                }
+            }
+        }
+        if (WAS_PRESSED(0xa))
+        {
+            this->SetState(6);
+            g_SoundPlayer.QueueSound(0xb, 0);
+            this->spellCursor = this->cursor;
+            for (i = 0x1b; i <= 0x27; i++)
+            {
+                this->sprites[i].pendingInterrupt = 1;
+            }
+            return 1;
+        }
+        if (WAS_PRESSED(0x1001))
+        {
+            sprite = this->sprites;
+            for (i = 0x1b; i <= 0x27; i++)
+            {
+                if (i - 0x1b == this->cursor)
+                {
+                    this->sprites[i].pendingInterrupt = 0x17;
+                }
+                else
+                {
+                    this->sprites[i].pendingInterrupt = 1;
+                }
+            }
+            this->spellCursor = this->cursor;
+            this->SetState(8);
+            g_SoundPlayer.QueueSound(0xa, 0);
+            this->sprites[0x28].pendingInterrupt = 3;
+            this->cursor = 0;
+            this->unk_40 = -1;
+            return 1;
+        }
+        break;
+    }
+    this->unk_18++;
+    return 0;
+}
+
 void FormatTodayDate(char *date)
 {
     time_t t;
