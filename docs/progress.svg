@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">58.42% (652)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">39.78% (444)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">58.51% (653)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">39.70% (443)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="436.42" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="436.42" y="0" class="decompiled"/>
-<rect width="297.19" height="6" x="449.81" y="0" class="todo"/>
+<rect width="437.09" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="437.09" y="0" class="decompiled"/>
+<rect width="296.52" height="6" x="450.48" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -415,7 +415,7 @@
 <rect width="12" height="12" x="660" y="90" class="named"><title>0x00426e70 EffectInitPetal (587 bytes)</title></rect>
 <rect width="12" height="12" x="675" y="90" class="named"><title>0x004270c0 EffectInitDiverge (217 bytes)</title></rect>
 <rect width="12" height="12" x="690" y="90" class="named"><title>0x004271a0 EffectUpdateDivergeEased (166 bytes)</title></rect>
-<rect width="12" height="12" x="705" y="90" class="todo"><title>0x00427250 Func427250 (16 bytes)</title></rect>
+<rect width="12" height="12" x="705" y="90" class="named"><title>0x00427250 EffectUpdateNone (16 bytes)</title></rect>
 <rect width="12" height="12" x="720" y="90" class="todo"><title>0x00427260 Func427260 (114 bytes)</title></rect>
 <rect width="12" height="12" x="735" y="90" class="todo"><title>0x004272e0 Func4272e0 (353 bytes)</title></rect>
 <rect width="12" height="12" x="0" y="105" class="todo"><title>0x00427450 Func427450 (1303 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">52.74%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">46.27%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">52.74%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">46.26%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="393.97" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="393.97" y="0" class="decompiled"/>
-<rect width="345.62" height="6" x="401.38" y="0" class="todo"/>
+<rect width="394" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="394" y="0" class="decompiled"/>
+<rect width="345.60" height="6" x="401.40" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -2289,7 +2289,7 @@
 <rect width="0.10" height="0.40" x="735.87" y="337.79" class="named"><title>0x0045e300 CSound::GetWaveFile (17 bytes)</title></rect>
 <rect width="0.10" height="0.40" x="735.87" y="341.19" class="named"><title>0x00471651 MainMenu::AddedCallback (17 bytes)</title></rect>
 <rect width="0.10" height="0.40" x="735.87" y="344.60" class="named"><title>0x004733c0 CWaveFile::GetSize (17 bytes)</title></rect>
-<rect width="0.10" height="0.16" x="738.70" y="334.39" class="todo"><title>0x00427250 Func427250 (16 bytes)</title></rect>
+<rect width="0.10" height="0.16" x="738.70" y="334.39" class="named"><title>0x00427250 EffectUpdateNone (16 bytes)</title></rect>
 <rect width="0.10" height="0.16" x="741.57" y="334.39" class="named"><title>0x00429de0 MemoryManager::Register (16 bytes)</title></rect>
 <rect width="0.10" height="0.16" x="744.44" y="334.39" class="named"><title>0x0045e2f0 CSoundManager::GetDirectSound (16 bytes)</title></rect>
 <rect width="0.10" height="0.16" x="747.31" y="334.39" class="named"><title>0x0043f828 GdiSurface::GetBits (15 bytes)</title></rect>

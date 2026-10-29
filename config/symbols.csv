@@ -346,7 +346,7 @@ address,size,name,symbol
 0x00426e70,587,EffectInitPetal,?EffectInitPetal@@YIHPAUEffect@@@Z
 0x004270c0,217,EffectInitDiverge,?EffectInitDiverge@@YIHPAUEffect@@@Z
 0x004271a0,166,EffectUpdateDivergeEased,?EffectUpdateDivergeEased@@YIHPAUEffect@@@Z
-0x00427250,16,Func427250,
+0x00427250,16,EffectUpdateNone,?EffectUpdateNone@@YIHPAUEffect@@@Z
 0x00427260,114,Func427260,
 0x004272e0,353,Func4272e0,
 0x00427450,1303,Func427450,

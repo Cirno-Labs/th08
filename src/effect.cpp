@@ -591,3 +591,8 @@ int EffectUpdateDivergeEased(Effect *effect)
     effect->pos.z = 0.0f;
     return 1;
 }
+
+int EffectUpdateNone(Effect *effect)
+{
+    return 1;
+}
