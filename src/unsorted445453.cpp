@@ -1080,6 +1080,41 @@ int App::SetRenderState(D3DRENDERSTATETYPE state, DWORD value)
     return this->d3dDevice->SetRenderState(state, value);
 }
 
+void App::AddPlayTime()
+{
+    DWORD now = timeGetTime();
+    DWORD delta;
+
+    if (now < this->lastPlayTimeTick)
+    {
+        this->lastPlayTimeTick = now;
+    }
+    delta = now - this->lastPlayTimeTick;
+    g_GameManager.plst.runHours += delta / 3600000;
+    delta %= 3600000;
+    g_GameManager.plst.runMinutes += delta / 60000;
+    delta %= 60000;
+    g_GameManager.plst.runSeconds += delta / 1000;
+    delta %= 1000;
+    g_GameManager.plst.runMilliseconds += delta;
+    if (g_GameManager.plst.runMilliseconds >= 1000)
+    {
+        g_GameManager.plst.runSeconds += g_GameManager.plst.runMilliseconds / 1000;
+        g_GameManager.plst.runMilliseconds %= 1000;
+    }
+    if (g_GameManager.plst.runSeconds >= 60)
+    {
+        g_GameManager.plst.runMinutes += g_GameManager.plst.runSeconds / 60;
+        g_GameManager.plst.runSeconds %= 60;
+    }
+    if (g_GameManager.plst.runMinutes >= 60)
+    {
+        g_GameManager.plst.runHours += g_GameManager.plst.runMinutes / 60;
+        g_GameManager.plst.runMinutes %= 60;
+    }
+    this->lastPlayTimeTick = now;
+}
+
 inline void FreeData(void *data)
 {
     free(data);

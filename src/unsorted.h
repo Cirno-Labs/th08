@@ -143,6 +143,13 @@ public:
     // Flushes the sprites and sets render state `state` to `value`.
     // Returns what SetRenderState returned.
     int SetRenderState(D3DRENDERSTATETYPE state, DWORD value);
+    // Adds the time since the last call to the run time in
+    // g_GameManager.plst. th08 restarts from now when the clock went
+    // back, where th07 counted from 0.
+    void AddPlayTime();
+    // Adds the time since the last call to the time played in
+    // g_GameManager.plst.
+    void AddTotalPlayTime();
     void TickTimer(int *frames, float *subFrame);
     // Saves the back buffer as a 24-bit 640x480 bitmap at `path`, from an
     // X8R8G8B8 back buffer only (a 16-bit one is logged and skipped).

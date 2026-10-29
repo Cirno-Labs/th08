@@ -721,7 +721,7 @@ address,size,name,symbol
 0x004481df,74,App::EnableFog,?EnableFog@App@@QAEHXZ
 0x00448229,71,App::DisableFog,?DisableFog@App@@QAEHXZ
 0x00448270,49,App::SetRenderState,?SetRenderState@App@@QAEHW4_D3DRENDERSTATETYPE@@K@Z
-0x004482a1,375,Func4482a1,
+0x004482a1,375,App::AddPlayTime,?AddPlayTime@App@@QAEXXZ
 0x00448418,373,Func448418,
 0x0044858d,301,Func44858d,
 0x004486ba,97,Func4486ba,
