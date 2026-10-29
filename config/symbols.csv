@@ -182,7 +182,7 @@ address,size,name,symbol
 0x00410ac0,225,DrawSakuyaLastWord,?DrawSakuyaLastWord@@YIXPAVPlayer@@@Z
 0x00410bb0,76,EffectUpdateBombRing46,?EffectUpdateBombRing46@@YIHPAUEffect@@@Z
 0x00410c00,57,Rng::GetRandomU16InRange,?GetRandomU16InRange@Rng@@QAEGG@Z
-0x00410c40,922,Func410c40,
+0x00410c40,922,UpdateYukariBomb,?UpdateYukariBomb@@YIXPAVPlayer@@@Z
 0x00410fe0,959,Func410fe0,
 0x004113a0,313,Func4113a0,
 0x004114e0,567,EffectUpdateBombRing36,?EffectUpdateBombRing36@@YIHPAUEffect@@@Z

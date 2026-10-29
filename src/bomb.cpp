@@ -1465,6 +1465,69 @@ int EffectUpdateBombRing46(Effect *effect)
     return 1;
 }
 
+void UpdateYukariBomb(Player *player)
+{
+    PlayerBomb *bomb = &player->bomb;
+
+    if (bomb->timer.HasTicked() && bomb->timer == 0)
+    {
+        PlayerBombHitbox *hitbox;
+        float theta;
+        PlayerBombPart *part;
+
+        StartBomb(player, 1, "\x8b\xab\x95\x84\x81\x75\x8e\x6c\x8f\x64\x8c\x8b\x8a\x45\x81\x76", 150, 200, 0);
+        theta = -3.1415927f;
+        part = bomb->parts;
+        g_SoundPlayer.QueueSound(0xd, 0);
+        part->pos = player->pos;
+        player->AddHitAreaCircle(&player->pos, 100.0f, 1.0f, 40, 6);
+        hitbox = player->AddBombHitboxCircle(&player->pos, 100.0f, 1.0f, 70, 40);
+        hitbox->damageInterval = 5;
+        D3DXVECTOR3 velocity(0.7853982f, 1.0f, 4.0f);
+        g_EffectManager.SpawnReservedWithVelocity(0x24, &part->pos, &velocity, 4, 1, 0xffffffff);
+    }
+    if (bomb->timer.HasTickedTo(10))
+    {
+        Effect *eff;
+        PlayerBombHitbox *hitbox;
+
+        player->AddHitAreaCircle(&player->pos, 100.0f, 1.0f, 40, 6);
+        hitbox = player->AddBombHitboxCircle(&player->pos, 100.0f, 1.0f, 70, 40);
+        hitbox->damageInterval = 5;
+        D3DXVECTOR3 velocity(1.1780972f, 1.0f, 4.0f);
+        eff = g_EffectManager.SpawnReservedWithVelocity(0x24, &player->pos, &velocity, 5, 1, 0xffffffff);
+        g_EtamaAnm->StartScript(&eff->sprite, 0x59);
+        bomb->parts[1].pos = player->pos;
+    }
+    if (bomb->timer.HasTickedTo(20))
+    {
+        Effect *eff;
+        PlayerBombHitbox *hitbox;
+
+        player->AddHitAreaCircle(&player->pos, 100.0f, 1.0f, 40, 6);
+        hitbox = player->AddBombHitboxCircle(&player->pos, 100.0f, 1.0f, 70, 40);
+        hitbox->damageInterval = 5;
+        D3DXVECTOR3 velocity(1.5707964f, 1.0f, 4.0f);
+        eff = g_EffectManager.SpawnReservedWithVelocity(0x24, &player->pos, &velocity, 6, 1, 0xffffffff);
+        g_EtamaAnm->StartScript(&eff->sprite, 0x5a);
+        bomb->parts[2].pos = player->pos;
+    }
+    if (bomb->timer.HasTickedTo(30))
+    {
+        Effect *eff;
+        PlayerBombHitbox *hitbox;
+
+        player->AddHitAreaCircle(&player->pos, 100.0f, 1.0f, 40, 6);
+        hitbox = player->AddBombHitboxCircle(&player->pos, 100.0f, 1.0f, 70, 40);
+        hitbox->damageInterval = 5;
+        D3DXVECTOR3 velocity(1.9634955f, 1.0f, 4.0f);
+        eff = g_EffectManager.SpawnReservedWithVelocity(0x24, &player->pos, &velocity, 7, 1, 0xffffffff);
+        g_EtamaAnm->StartScript(&eff->sprite, 0x5b);
+        bomb->parts[3].pos = player->pos;
+    }
+    g_SpriteEngine->StepSprites(&bomb->parts[0].sprites[0], 2);
+}
+
 int EffectUpdateBombRing36(Effect *effect)
 {
     if (effect->timer < 0x28)

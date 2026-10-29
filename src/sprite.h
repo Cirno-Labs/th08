@@ -506,9 +506,8 @@ public:
     // Starts script `script` of this file on `vm`, at the origin with
     // no offset, as th07's SpriteEngine::StartScriptAtOrigin. Inline, but
     // too large to expand in /Ob1 files: they call the copy at 0x40b910
-    // and keep its temporaries' slots. That copy stays unnamed in
-    // symbols.csv: ours comes from the /Os App object, the original's
-    // from an /Od one.
+    // and keep its temporaries' slots. Named since bomb.obj, an /Od
+    // object linked before the App one, emits our first copy.
     void StartScriptAtOrigin(Sprite *vm, int script)
     {
         vm->scriptIndex = script;

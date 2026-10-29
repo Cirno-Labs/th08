@@ -701,6 +701,10 @@ void UpdateSakuyaLastWord(Player *player);
 // Its draw callback: the same with a blue tint; draws the first 96
 // knives only (0x410ac0).
 void DrawSakuyaLastWord(Player *player);
+// Yukari's 境符「四重結界」: four barrier rings (effect 0x24) spread from
+// the player every 10 frames, each with a growing hit circle
+// (0x410c40); drawn by DrawAliceBomb.
+void UpdateYukariBomb(Player *player);
 // Draw callbacks of the bombs that only tint the play area, by the
 // bomb they follow: Alice's (also Yukari's draw.funcs[0..1], 0x40d950)
 // and Remilia's and her last word's (0x40f550, 0x40fcb0).
