@@ -112,7 +112,7 @@ address,size,name,symbol
 0x0040b580,22,Func40b580,
 0x0040b5a0,292,Stage::SetupFixedCamera,?SetupFixedCamera@Stage@@QAEXXZ
 0x0040b6d0,283,Stage::SetupCamera,?SetupCamera@Stage@@QAEXXZ
-0x0040b7f0,132,Func40b7f0,
+0x0040b7f0,132,D3DXVec3Cross,?D3DXVec3Cross@@YIPAUD3DXVECTOR3@@PAU1@PBU1@1@Z
 0x0040b880,25,MemoryManager::Alloc,?Alloc@MemoryManager@@QAEPAXHPBD@Z
 0x0040b8a0,25,MemoryManager::Free,?Free@MemoryManager@@QAEXPAX@Z
 0x0040b8c0,23,Timer::AsFloat,?AsFloat@Timer@@QAEMXZ
