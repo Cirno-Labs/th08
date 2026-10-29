@@ -491,3 +491,21 @@ HRESULT CSound::SetVolume(LONG lVolume)
         return m_apDSBuffer[0]->SetVolume(DSBVOLUME_MIN);
     }
 }
+
+HRESULT CSound::Stop()
+{
+    if (m_apDSBuffer == NULL)
+        return CO_E_NOTINITIALIZED;
+
+    HRESULT hr = 0;
+
+    this->unk_30 = 0;
+    for (DWORD i = 0; i < m_dwNumBuffers; i++)
+    {
+        hr |= m_apDSBuffer[i]->Stop();
+        hr |= m_apDSBuffer[i]->SetCurrentPosition(0);
+    }
+    this->fading = 0;
+
+    return hr;
+}
