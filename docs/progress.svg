@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">57.53% (642)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">40.68% (454)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">57.62% (643)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">40.59% (453)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="429.73" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="429.73" y="0" class="decompiled"/>
-<rect width="303.89" height="6" x="443.11" y="0" class="todo"/>
+<rect width="430.40" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="430.40" y="0" class="decompiled"/>
+<rect width="303.22" height="6" x="443.78" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -407,7 +407,7 @@
 <rect width="12" height="12" x="540" y="90" class="named"><title>0x00426720 EffectInitBossPetal2 (620 bytes)</title></rect>
 <rect width="12" height="12" x="555" y="90" class="named"><title>0x00426990 EffectUpdateBossPetal2 (388 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="90" class="named"><title>0x00426b20 EffectInitConverge (134 bytes)</title></rect>
-<rect width="12" height="12" x="585" y="90" class="todo"><title>0x00426bb0 Func426bb0 (133 bytes)</title></rect>
+<rect width="12" height="12" x="585" y="90" class="named"><title>0x00426bb0 EffectUpdateConverge (133 bytes)</title></rect>
 <rect width="12" height="12" x="600" y="90" class="todo"><title>0x00426c40 Func426c40 (66 bytes)</title></rect>
 <rect width="12" height="12" x="615" y="90" class="todo"><title>0x00426c90 Func426c90 (120 bytes)</title></rect>
 <rect width="12" height="12" x="630" y="90" class="todo"><title>0x00426d10 Func426d10 (94 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">52.37%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">46.64%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">52.40%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">46.61%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="391.21" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="391.21" y="0" class="decompiled"/>
-<rect width="348.39" height="6" x="398.61" y="0" class="todo"/>
+<rect width="391.42" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="391.42" y="0" class="decompiled"/>
+<rect width="348.18" height="6" x="398.82" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1743,7 +1743,7 @@
 <rect width="5.90" height="5.60" x="609.61" y="313.84" class="todo"><title>0x00428620 EffectManager::RegisterChain (135 bytes)</title></rect>
 <rect width="5.90" height="5.54" x="609.61" y="322.44" class="named"><title>0x00426b20 EffectInitConverge (134 bytes)</title></rect>
 <rect width="5.90" height="5.54" x="609.61" y="330.98" class="named"><title>0x00474640 LzssDeleteNode (134 bytes)</title></rect>
-<rect width="5.90" height="5.48" x="609.61" y="339.52" class="todo"><title>0x00426bb0 Func426bb0 (133 bytes)</title></rect>
+<rect width="5.90" height="5.48" x="609.61" y="339.52" class="named"><title>0x00426bb0 EffectUpdateConverge (133 bytes)</title></rect>
 <rect width="5.93" height="5.45" x="618.51" y="208.04" class="named"><title>0x004439c0 Log::Flush (133 bytes)</title></rect>
 <rect width="5.93" height="5.45" x="627.44" y="208.04" class="todo"><title>0x004501b0 Func4501b0 (133 bytes)</title></rect>
 <rect width="5.93" height="5.45" x="636.37" y="208.04" class="named"><title>0x0045842b ResultScreen::ResultScreen (133 bytes)</title></rect>

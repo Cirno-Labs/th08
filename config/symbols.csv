@@ -338,7 +338,7 @@ address,size,name,symbol
 0x00426720,620,EffectInitBossPetal2,?EffectInitBossPetal2@@YIHPAUEffect@@@Z
 0x00426990,388,EffectUpdateBossPetal2,?EffectUpdateBossPetal2@@YIHPAUEffect@@@Z
 0x00426b20,134,EffectInitConverge,?EffectInitConverge@@YIHPAUEffect@@@Z
-0x00426bb0,133,Func426bb0,
+0x00426bb0,133,EffectUpdateConverge,?EffectUpdateConverge@@YIHPAUEffect@@@Z
 0x00426c40,66,Func426c40,
 0x00426c90,120,Func426c90,
 0x00426d10,94,Func426d10,

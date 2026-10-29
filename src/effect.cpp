@@ -471,3 +471,13 @@ int EffectInitConverge(Effect *effect)
     effect->axis.z = 0.0f;
     return 0;
 }
+
+int EffectUpdateConverge(Effect *effect)
+{
+    float f;
+
+    f = 256.0f - effect->timer.AsFloat() * 256.0f / 60.0f;
+    effect->pos = effect->axis * f + effect->origin;
+    effect->pos.z = 0.0f;
+    return 1;
+}
