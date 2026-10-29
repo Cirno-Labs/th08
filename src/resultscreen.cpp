@@ -184,6 +184,11 @@ char *FormatAndAdvance(char *buf, const char *fmt, ...)
     return buf + strlen(buf);
 }
 
+int ResultScreen::AddScore(Hscr *entry, int difficulty, int shot)
+{
+    return InsertScore(&this->scores[difficulty][shot], entry);
+}
+
 int ResultScreen::RegisterChain(int mode)
 {
     ResultScreen *screen = (ResultScreen *)g_MemoryManager.Register(new ResultScreen, sizeof(ResultScreen),

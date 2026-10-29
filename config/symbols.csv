@@ -850,7 +850,7 @@ address,size,name,symbol
 0x00453d0d,1372,SaveScoreDat,?SaveScoreDat@@YIXPAVResultScreen@@@Z
 0x00454269,47,FormatAndAdvance,?FormatAndAdvance@@YAPADPADPBDZZ
 0x00454298,2497,Func454298,
-0x00454c59,46,Func454c59,
+0x00454c59,46,ResultScreen::AddScore,?AddScore@ResultScreen@@QAEHPAUHscr@@HH@Z
 0x00454c87,43,ResultScreen::ReleaseScores,?ReleaseScores@ResultScreen@@QAEXHH@Z
 0x00454cb2,1029,Func454cb2,
 0x004550b7,69,Func4550b7,

@@ -280,6 +280,9 @@ public:
     // and deletes the screen. Returns 0.
     static int DeletedCallback(ResultScreen *screen);
 
+    // Inserts `entry` into the high score list for `difficulty` and
+    // `shot`.
+    int AddScore(Hscr *entry, int difficulty, int shot);
     // Frees the entries of the high score list for `difficulty` and
     // `shot` (0x454c87).
     void ReleaseScores(int difficulty, int shot);

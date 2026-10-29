@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">34.59% (386)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">65.41% (730)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">34.68% (387)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">65.32% (729)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="258.37" height="6" x="0" y="0" class="named"/>
-<rect width="488.63" height="6" x="258.37" y="0" class="todo"/>
+<rect width="259.04" height="6" x="0" y="0" class="named"/>
+<rect width="487.96" height="6" x="259.04" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -918,7 +918,7 @@
 <rect width="12" height="12" x="720" y="240" class="named"><title>0x00453d0d SaveScoreDat (1372 bytes)</title></rect>
 <rect width="12" height="12" x="735" y="240" class="named"><title>0x00454269 FormatAndAdvance (47 bytes)</title></rect>
 <rect width="12" height="12" x="0" y="255" class="todo"><title>0x00454298 Func454298 (2497 bytes)</title></rect>
-<rect width="12" height="12" x="15" y="255" class="todo"><title>0x00454c59 Func454c59 (46 bytes)</title></rect>
+<rect width="12" height="12" x="15" y="255" class="named"><title>0x00454c59 ResultScreen::AddScore (46 bytes)</title></rect>
 <rect width="12" height="12" x="30" y="255" class="todo"><title>0x00454c87 ResultScreen::ReleaseScores (43 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="255" class="todo"><title>0x00454cb2 Func454cb2 (1029 bytes)</title></rect>
 <rect width="12" height="12" x="60" y="255" class="todo"><title>0x004550b7 Func4550b7 (69 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">24.80%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">75.20%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">24.81%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">75.19%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="185.27" height="6" x="0" y="0" class="named"/>
-<rect width="561.73" height="6" x="185.27" y="0" class="todo"/>
+<rect width="185.35" height="6" x="0" y="0" class="named"/>
+<rect width="561.65" height="6" x="185.35" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -2042,7 +2042,7 @@
 <rect width="1.86" height="2.37" x="735.41" y="278" class="named"><title>0x0043ed80 Rng::GetRandomF32MinusOneToOne (46 bytes)</title></rect>
 <rect width="1.86" height="2.37" x="740.27" y="278" class="named"><title>0x00441e10 SpriteEngine::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
 <rect width="1.86" height="2.37" x="745.14" y="278" class="named"><title>0x00441e40 MidiPlayer::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
-<rect width="2.19" height="2.03" x="685.10" y="283.37" class="todo"><title>0x00454c59 Func454c59 (46 bytes)</title></rect>
+<rect width="2.19" height="2.03" x="685.10" y="283.37" class="named"><title>0x00454c59 ResultScreen::AddScore (46 bytes)</title></rect>
 <rect width="2.19" height="2.03" x="685.10" y="288.40" class="named"><title>0x0045c480 CSoundManager::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
 <rect width="2.19" height="2.03" x="685.10" y="293.43" class="named"><title>0x00471c10 CWaveFile::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
 <rect width="2.19" height="2.03" x="685.10" y="298.46" class="named"><title>0x00472040 CSound::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
