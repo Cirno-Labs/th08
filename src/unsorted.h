@@ -3,6 +3,7 @@
 #pragma once
 
 #include <windows.h>
+#include <d3d8.h>
 
 // The application: window, Direct3D, configuration and the main loop.
 // Only the fields known so far. Its start matches th07's App: the same
@@ -15,6 +16,13 @@ public:
 };
 
 extern App g_App;
+
+// Prints `name` and then 可 or 不可 (yes or no), by whether `caps` has
+// any of `flag`, at `out`; returns the end of the text.
+char *AppendCapsFlagText(char *name, DWORD caps, DWORD flag, char *out);
+// Writes a report of the device capabilities `caps` that matter to the
+// game into `buffer`, in Japanese.
+void FormatCapsReport(D3DCAPS8 *caps, char *buffer);
 
 // Debug output, compiled out of the release build: an empty function
 // that the game still calls with messages.

@@ -640,8 +640,8 @@ address,size,name,symbol
 0x00442240,329,Func442240,
 0x00442390,303,Func442390,
 0x004424c0,1472,Func4424c0,
-0x00442a80,1130,Func442a80,
-0x00442ef0,107,Func442ef0,
+0x00442a80,1130,FormatCapsReport,?FormatCapsReport@@YIXPAU_D3DCAPS8@@PAD@Z
+0x00442ef0,107,AppendCapsFlagText,?AppendCapsFlagText@@YIPADPADKK0@Z
 0x00442f60,1201,Func442f60,
 0x00443420,625,Func443420,
 0x004436a0,143,Func4436a0,
@@ -1741,7 +1741,7 @@ address,size,name,symbol
 0x004a4815,9,__NLG_Notify1,
 0x004a481e,24,Func4a481e,
 0x004a4838,31,Func4a4838,
-0x004a4857,88,Func4a4857,
+0x004a4857,88,_sprintf,_sprintf
 0x004a48b0,45,_strrchr,
 0x004a48e0,61,__chkstk,
 0x004a4920,96,_memset,
