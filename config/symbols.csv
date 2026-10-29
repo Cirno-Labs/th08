@@ -17,7 +17,7 @@ address,size,name,symbol
 0x00402a30,68,AsciiText::AddFormat,?AddFormat@AsciiText@@QAAXPAUD3DXVECTOR3@@PADZZ
 0x00402a80,146,AsciiText::AddFormatLen,?AddFormatLen@AsciiText@@QAAHPAUD3DXVECTOR3@@PADZZ
 0x00402b20,1698,AsciiText::DrawStrings,?DrawStrings@AsciiText@@QAEXXZ
-0x004031e0,18,Func4031e0,
+0x004031e0,18,fabsf,@fabsf@4
 0x00403200,295,Func403200,
 0x00403330,297,Func403330,
 0x00403460,411,Func403460,
