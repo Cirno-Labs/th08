@@ -77,3 +77,16 @@ int AsciiText::OnUpdate(AsciiText *text)
     text->frameCounter++;
     return 1;
 }
+
+int AsciiText::OnDraw(AsciiText *text)
+{
+    text->DrawStrings();
+    text->ClearStrings();
+    text->pauseMenu.DrawPauseMenu();
+    text->continueMenu.DrawContinueMenu();
+    if (text->demoIcon.scriptIndex)
+    {
+        g_SpriteEngine->DrawUnrotated(&text->demoIcon);
+    }
+    return 1;
+}
