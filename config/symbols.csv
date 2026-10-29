@@ -370,7 +370,7 @@ address,size,name,symbol
 0x00428720,28,Func428720,
 0x00428740,159,Func428740,
 0x004287e0,162,Func4287e0,
-0x00428890,115,Func428890,
+0x00428890,115,Ending::ReadInt,?ReadInt@Ending@@QAEHXZ
 0x00428910,591,Func428910,
 0x00428b80,2428,Func428b80,
 0x004295e0,180,Func4295e0,
@@ -1732,6 +1732,7 @@ address,size,name,symbol
 0x004a42fa,10,Func4a42fa,
 0x004a431a,10,__CIfmod,__CIfmod
 0x004a4342,136,_atol,
+0x004a43ca,,atoi,_atoi
 0x004a43cf,,operator delete,??3@YAXPAX@Z
 0x004a43d4,14,operator new,??2@YAPAXI@Z
 0x004a43e2,43,_JumpToContinuation,

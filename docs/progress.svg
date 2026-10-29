@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">50.99% (569)</tspan> · <tspan class="decompiled">1.70% (19)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">47.31% (528)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">51.08% (570)</tspan> · <tspan class="decompiled">1.70% (19)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">47.22% (527)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="380.86" height="6" x="0" y="0" class="named"/>
-<rect width="12.72" height="6" x="380.86" y="0" class="decompiled"/>
-<rect width="353.42" height="6" x="393.58" y="0" class="todo"/>
+<rect width="381.53" height="6" x="0" y="0" class="named"/>
+<rect width="12.72" height="6" x="381.53" y="0" class="decompiled"/>
+<rect width="352.75" height="6" x="394.25" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -439,7 +439,7 @@
 <rect width="12" height="12" x="270" y="105" class="todo"><title>0x00428720 Func428720 (28 bytes)</title></rect>
 <rect width="12" height="12" x="285" y="105" class="todo"><title>0x00428740 Func428740 (159 bytes)</title></rect>
 <rect width="12" height="12" x="300" y="105" class="todo"><title>0x004287e0 Func4287e0 (162 bytes)</title></rect>
-<rect width="12" height="12" x="315" y="105" class="todo"><title>0x00428890 Func428890 (115 bytes)</title></rect>
+<rect width="12" height="12" x="315" y="105" class="named"><title>0x00428890 Ending::ReadInt (115 bytes)</title></rect>
 <rect width="12" height="12" x="330" y="105" class="todo"><title>0x00428910 Func428910 (591 bytes)</title></rect>
 <rect width="12" height="12" x="345" y="105" class="todo"><title>0x00428b80 Func428b80 (2428 bytes)</title></rect>
 <rect width="12" height="12" x="360" y="105" class="todo"><title>0x004295e0 Func4295e0 (180 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">42.71%</tspan> · <tspan class="decompiled">0.96%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">56.33%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">42.73%</tspan> · <tspan class="decompiled">0.96%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">56.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="319.03" height="6" x="0" y="0" class="named"/>
-<rect width="7.18" height="6" x="319.03" y="0" class="decompiled"/>
-<rect width="420.79" height="6" x="326.21" y="0" class="todo"/>
+<rect width="319.21" height="6" x="0" y="0" class="named"/>
+<rect width="7.18" height="6" x="319.21" y="0" class="decompiled"/>
+<rect width="420.61" height="6" x="326.39" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1783,7 +1783,7 @@
 <rect width="5.08" height="5.22" x="618.51" y="266.78" class="todo"><title>0x0042b2f0 Func42b2f0 (117 bytes)</title></rect>
 <rect width="5.08" height="5.22" x="618.51" y="275" class="todo"><title>0x0042f420 Func42f420 (117 bytes)</title></rect>
 <rect width="5.08" height="5.22" x="618.51" y="283.22" class="named"><title>0x0044871b App::CloseSubThread (117 bytes)</title></rect>
-<rect width="5.08" height="5.08" x="618.51" y="291.44" class="todo"><title>0x00428890 Func428890 (115 bytes)</title></rect>
+<rect width="5.08" height="5.08" x="618.51" y="291.44" class="named"><title>0x00428890 Ending::ReadInt (115 bytes)</title></rect>
 <rect width="5.08" height="5.08" x="618.51" y="299.52" class="todo"><title>0x0042a820 Func42a820 (115 bytes)</title></rect>
 <rect width="5.08" height="5.08" x="618.51" y="307.60" class="todo"><title>0x0042f500 Func42f500 (115 bytes)</title></rect>
 <rect width="5.08" height="5.08" x="618.51" y="315.68" class="named"><title>0x0043d760 SetButtonFromJoystick (115 bytes)</title></rect>
