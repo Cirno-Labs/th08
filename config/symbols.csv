@@ -605,7 +605,7 @@ address,size,name,symbol
 0x0043f855,15,GdiSurface::GetHdc,?GetHdc@GdiSurface@@QAEPAUHDC__@@XZ
 0x0043f864,15,GdiSurface::GetWidth,?GetWidth@GdiSurface@@QAEHXZ
 0x0043f873,14,GdiSurface::GetFormat,?GetFormat@GdiSurface@@QAEHXZ
-0x0043f881,23,Func43f881,
+0x0043f881,23,GdiSurface::IsCreated,?IsCreated@GdiSurface@@QAE_NXZ
 0x0043f898,232,Func43f898,
 0x0043f980,35,Func43f980,
 0x0043f9a3,37,Func43f9a3,

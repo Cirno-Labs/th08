@@ -230,3 +230,8 @@ int GdiSurface::GetFormat()
 {
     return this->format;
 }
+
+bool GdiSurface::IsCreated()
+{
+    return this->bitmap != NULL;
+}

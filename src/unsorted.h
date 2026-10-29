@@ -367,6 +367,7 @@ public:
     HDC GetHdc();
     int GetWidth();
     int GetFormat();
+    bool IsCreated();
 
     int format;
     int width;
