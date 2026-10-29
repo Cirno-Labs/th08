@@ -393,7 +393,7 @@ address,size,name,symbol
 0x0042a680,413,Func42a680,
 0x0042a820,115,Func42a820,
 0x0042a8a0,1216,Func42a8a0,
-0x0042adb0,1336,Func42adb0,
+0x0042adb0,1336,Enemy::Func42adb0,?Func42adb0@Enemy@@QAEXH@Z
 0x0042b2f0,117,Func42b2f0,
 0x0042b370,288,Func42b370,
 0x0042b490,1180,Func42b490,
@@ -763,7 +763,7 @@ address,size,name,symbol
 0x0044c390,529,Player::OnUpdate,?OnUpdate@Player@@SIHPAV1@@Z
 0x0044c5b0,159,UpdateHitboxAreas,?UpdateHitboxAreas@@YIXPAVPlayer@@@Z
 0x0044c650,1352,UpdateBombState,?UpdateBombState@@YIXPAVPlayer@@@Z
-0x0044cba0,69,Func44cba0,
+0x0044cba0,69,SpellCard::Func44cba0,?Func44cba0@SpellCard@@QAEXXZ
 0x0044cbf0,1373,UpdateDyingState,?UpdateDyingState@@YIHPAVPlayer@@@Z
 0x0044d150,37,Func44d150,
 0x0044d180,314,UpdateRespawningState,?UpdateRespawningState@@YIXPAVPlayer@@@Z
@@ -785,7 +785,7 @@ address,size,name,symbol
 0x0044e140,27,GameManager::SetUnk22,?SetUnk22@GameManager@@QAEXF@Z
 0x0044e160,255,GameManager::RerollLifeChecksumKeys,?RerollLifeChecksumKeys@GameManager@@QAEXXZ
 0x0044e260,113,Func44e260,
-0x0044e2e0,104,Func44e2e0,
+0x0044e2e0,104,GameManager::AddBombsUsed,?AddBombsUsed@GameManager@@QAEXH@Z
 0x0044e350,18,PlayerBombHitbox::Deactivate,?Deactivate@PlayerBombHitbox@@QAEXXZ
 0x0044e370,35,Func44e370,
 0x0044e3a0,949,Func44e3a0,

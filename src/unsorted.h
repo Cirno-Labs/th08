@@ -2394,8 +2394,47 @@ struct SpellCard
         return this->unk_0 >> 9 & 1;
     }
 
-    DWORD unk_0;
-    unsigned char unk_4[0x2620];
+    // Ends the spell card's bonus: sets unk_12f6 and sends unk_1b88
+    // interrupt 2. Inline; the copy at 0x416130 is an /Od object's.
+    void Func416130()
+    {
+        this->unk_12f6 = 1;
+        this->unk_1b88.SetPendingInterrupt(2);
+    }
+    // Clear unk_0_2 and unk_fc; the first also copies bit 0 to bit 7.
+    // Called as a bomb starts and as the player dies. Inline; the copies
+    // at 0x44cba0 and 0x44d150 are the player object's.
+    void Func44cba0()
+    {
+        this->unk_0_2 = 0;
+        this->unk_fc = 0;
+        this->unk_0_7 = this->unk_0_0;
+    }
+    void Func44d150()
+    {
+        this->unk_0_2 = 0;
+        this->unk_fc = 0;
+    }
+
+    union
+    {
+        DWORD unk_0;
+        struct
+        {
+            DWORD unk_0_0 : 1;
+            DWORD unk_0_1 : 1;
+            DWORD unk_0_2 : 1;
+            DWORD unk_0_3 : 4;
+            DWORD unk_0_7 : 1;
+        };
+    };
+    unsigned char unk_4[0xf8];
+    int unk_fc;
+    unsigned char unk_100[0x11f6];
+    short unk_12f6;
+    unsigned char unk_12f8[0x890];
+    Sprite unk_1b88;
+    unsigned char unk_1e2c[0x7f8];
     // The face ANMs (slots 0x10 to 0x13) of the dialogue's four portraits.
     // GuiImpl::StartMsgScript swaps the last two for stages 6B and Extra.
     AnmLoaded *faceAnms[4];

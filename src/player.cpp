@@ -491,3 +491,146 @@ void UpdateHitboxAreas(Player *player)
         }
     }
 }
+
+void UpdateBombState(Player *player)
+{
+    int forced;
+    DWORD i;
+
+    forced = 0;
+    if (player->unk_6 && player->deathbombFrames == 1)
+    {
+        // The last words run out: a bomb starts on its own.
+        forced = 1;
+        goto start;
+    }
+    if (player->bombCooldown != 0)
+    {
+        player->bombCooldown--;
+    }
+    if (player->bomb.running)
+    {
+        if (player->bomb.timer.HasTicked())
+        {
+            g_Gui.frameItemsHideTimer = 2;
+        }
+        if (player->bomb.timer >= player->bomb.duration)
+        {
+            g_SpellCard.Func416130();
+            player->bomb.running = 0;
+            player->moveScaleX = player->moveScaleY = 1.0f;
+            if (player->bomb.type == 4)
+            {
+                g_GameManager.unk_3dbac_7 = 0;
+                for (i = 0; i < 8; i++)
+                {
+                    if (g_EnemyManager.bosses[i] != NULL)
+                    {
+                        g_EnemyManager.bosses[i]->Func42adb0(0);
+                        g_EnemyManager.bosses[i]->unk_2dfc = 0;
+                        g_EnemyManager.bosses[i]->unk_3324_30 = 0;
+                    }
+                }
+                ScreenEffect::StartEffect(3, 0x1e, 1, -1, 0, 0x15);
+            }
+        }
+        else
+        {
+            player->bomb.update.funcs[player->bomb.type](player);
+            player->bomb.timer++;
+        }
+        if (player->bomb.type < 4)
+        {
+            if (player->bomb.type & 1)
+            {
+                g_GameManager.Func43c0bb(26000 / player->bomb.duration, 1);
+            }
+            else
+            {
+                g_GameManager.Func43c0bb(-26000 / player->bomb.duration, 1);
+            }
+        }
+        return;
+    }
+    if ((g_GameButtons & 2) && !g_GameManager.ChecksumMismatch() && !g_Gui.IsMsgRunning() &&
+        player->deathbombFrames != 0 && g_GameManager.GetBombs() > 0 && player->bombCooldown == 0)
+    {
+        if (g_GameManager.unk_3dbac_7 != 0 || g_GameManager.isInSpellCardPractice)
+        {
+            if ((g_GameButtons & 2) && (g_GameButtons & 2) != (g_PrevGameButtons & 2))
+            {
+                g_SoundPlayer.QueueSound(0x29, 0);
+            }
+            return;
+        }
+    start:
+        g_ReplayManager->frameEvents |= 1;
+        player->unk_6 = 0;
+        if (g_GameManager.unk_3dbac_7 != 0)
+        {
+            player->bomb.type = 4;
+        }
+        else
+        {
+            player->sprite.useColor2 = 0;
+            if (player->unk_e2b28 != NULL)
+            {
+                player->unk_e2b28->active = 0;
+                player->unk_e2b28 = NULL;
+            }
+            g_GameManager.unk_3dbac_10 = 0;
+            g_SpriteEngine->ResetColorModulation();
+            player->bomb.type = player->unk_3;
+            if (player->unk_4)
+            {
+                player->bomb.type = 1 - player->bomb.type;
+            }
+            if (player->unk_4)
+            {
+                // Last words: up to two bombs.
+                player->bomb.type += 2;
+                if (forced)
+                {
+                    player->bomb.bombsUsed = g_GameManager.GetBombs();
+                    g_GameManager.SetBombs(0);
+                }
+                else if (g_GameManager.GetBombs() < 2)
+                {
+                    player->bomb.bombsUsed = g_GameManager.GetBombs();
+                    g_GameManager.SetBombs(0);
+                }
+                else
+                {
+                    player->bomb.bombsUsed = 2;
+                    g_GameManager.AddBombs(-2);
+                }
+                g_GameManager.hscr.lastSpells++;
+            }
+            else
+            {
+                g_GameManager.hscr.bombs++;
+                g_GameManager.AddBombs(-1);
+            }
+            g_GameManager.AddBombsUsed(1);
+        }
+        player->unk_4 = 0;
+        g_Gui.bombsChanged = 2;
+        player->bomb.running = 1;
+        player->bombJustStarted = 1;
+        player->bomb.timer = 0;
+        player->bomb.duration = 999;
+        player->bomb.update.funcs[player->bomb.type](player);
+        player->bomb.timer++;
+        g_GameManager.SubSubRank(200);
+        g_SpellCard.Func44cba0();
+        player->deathbombFrames += 6;
+        if (player->deathbombFrames > g_Player.shotType->deathbombFrames)
+        {
+            player->deathbombFrames = g_Player.shotType->deathbombFrames;
+        }
+    }
+    else
+    {
+        player->bombJustStarted = 0;
+    }
+}

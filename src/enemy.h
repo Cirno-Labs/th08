@@ -37,6 +37,9 @@ struct Enemy
         return count;
     }
 
+    // Called on the bosses with 0 as a spell card bomb ends (0x42adb0).
+    void Func42adb0(int arg);
+
     unsigned char unk_0[0x8];
     Enemy *unk_8;
     unsigned char unk_c[0x2d28];
@@ -44,10 +47,22 @@ struct Enemy
     D3DXVECTOR3 pos;
     unsigned char unk_2d40[0x64];
     int unk_2da4;
-    unsigned char unk_2da8[0x57c];
+    unsigned char unk_2da8[0x54];
+    // Cleared for the bosses as a spell card bomb (Player::bomb.type 4)
+    // ends.
+    int unk_2dfc;
+    unsigned char unk_2e00[0x524];
     // Bit 3: the petal effects drift towards it while it is the first
-    // boss.
-    DWORD unk_3324;
+    // boss. Bit 30 is cleared with unk_2dfc.
+    union
+    {
+        DWORD unk_3324;
+        struct
+        {
+            DWORD unk_3324_0 : 30;
+            DWORD unk_3324_30 : 1;
+        };
+    };
     unsigned char unk_3328[0x58];
     // Shown by DrawBanners next to Func41fd40.
     int unk_3380;
