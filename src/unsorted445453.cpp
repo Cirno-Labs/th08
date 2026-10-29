@@ -984,6 +984,33 @@ int App::PlayMusic(char *path, int bgm)
     return 0;
 }
 
+int App::StopMusic()
+{
+    if (g_App.musicMode == 2)
+    {
+        if (g_App.midi != NULL)
+        {
+            g_App.midi->Stop();
+        }
+    }
+    else if (g_App.musicMode == 1)
+    {
+        if (g_App.flags.preloadBgm)
+        {
+            g_SoundPlayer.QueueSoundCommand(4, 0, "dummy");
+        }
+        else
+        {
+            g_SoundPlayer.QueueSoundCommand(3, 0, "dummy");
+        }
+    }
+    else
+    {
+        return -1;
+    }
+    return 0;
+}
+
 inline void FreeData(void *data)
 {
     free(data);
