@@ -509,3 +509,16 @@ HRESULT CSound::Stop()
 
     return hr;
 }
+
+HRESULT CSound::PauseBuffer()
+{
+    if (m_apDSBuffer == NULL)
+        return CO_E_NOTINITIALIZED;
+
+    HRESULT hr = 0;
+
+    this->unk_30 = 0;
+    hr |= m_apDSBuffer[0]->Stop();
+
+    return hr;
+}
