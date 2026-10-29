@@ -69,7 +69,7 @@ address,size,name,symbol
 0x00406d10,38,GameManager::IsUnk22AtLow1,?IsUnk22AtLow1@GameManager@@QAEHXZ
 0x00406d40,38,GameManager::IsUnk22AtLow2,?IsUnk22AtLow2@GameManager@@QAEHXZ
 0x00406d70,38,GameManager::IsUnk22AtHigh1,?IsUnk22AtHigh1@GameManager@@QAEHXZ
-0x00406da0,38,Func406da0,
+0x00406da0,38,GameManager::IsUnk22AtHigh2,?IsUnk22AtHigh2@GameManager@@QAEHXZ
 0x00406dd0,20,GameManager::GetUnk28,?GetUnk28@GameManager@@QAEDXZ
 0x00406df0,38,GameManager::AddUnk28,?AddUnk28@GameManager@@QAEXD@Z
 0x00406e20,33,GameManager::SetLives,?SetLives@GameManager@@QAEXH@Z
