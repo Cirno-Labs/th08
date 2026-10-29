@@ -52,7 +52,7 @@ address,size,name,symbol
 0x004068e0,95,Sprite::Initialize,?Initialize@Sprite@@QAEXXZ
 0x00406940,173,D3DXMatrixIdentity,?D3DXMatrixIdentity@@YIPAUD3DXMATRIX@@PAU1@@Z
 0x004069f0,64,AnmLoaded::StartScript,?StartScript@AnmLoaded@@QAEXPAVSprite@@H@Z
-0x00406a30,140,Func406a30,
+0x00406a30,140,SpriteEngine::SetPendingCopy,?SetPendingCopy@SpriteEngine@@QAEHHHHHHHHHH@Z
 0x00406ac0,43,SoundPlayer::FadeInBgm,?FadeInBgm@SoundPlayer@@QAEXM@Z
 0x00406af0,68,CStreamingSound::FadeIn,?FadeIn@CStreamingSound@@QAEXM@Z
 0x00406b40,43,Func406b40,

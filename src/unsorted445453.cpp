@@ -1730,7 +1730,7 @@ void App::StartLoadingSpritesOverScreen(D3DXVECTOR3 *pos)
         g_LoadingSprites[1].pos = *pos;
         g_LoadingSprites[2].pos = *pos;
     }
-    g_SpriteEngine->SetPendingCopy(8, 0, 0, 640, 480, 0, 0, 640, 480);
+    g_SpriteEngine->SetPendingSurfaceCopy(8, 0, 0, 640, 480, 0, 0, 640, 480);
 }
 
 void App::FinishLoadingSprites()

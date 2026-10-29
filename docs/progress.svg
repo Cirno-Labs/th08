@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">49.46% (552)</tspan> · <tspan class="decompiled">1.52% (17)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">49.01% (547)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">49.55% (553)</tspan> · <tspan class="decompiled">1.52% (17)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">48.92% (546)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="369.48" height="6" x="0" y="0" class="named"/>
-<rect width="11.38" height="6" x="369.48" y="0" class="decompiled"/>
-<rect width="366.14" height="6" x="380.86" y="0" class="todo"/>
+<rect width="370.15" height="6" x="0" y="0" class="named"/>
+<rect width="11.38" height="6" x="370.15" y="0" class="decompiled"/>
+<rect width="365.47" height="6" x="381.53" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -121,7 +121,7 @@
 <rect width="12" height="12" x="0" y="15" class="named"><title>0x004068e0 Sprite::Initialize (95 bytes)</title></rect>
 <rect width="12" height="12" x="15" y="15" class="named"><title>0x00406940 D3DXMatrixIdentity (173 bytes)</title></rect>
 <rect width="12" height="12" x="30" y="15" class="named"><title>0x004069f0 AnmLoaded::StartScript (64 bytes)</title></rect>
-<rect width="12" height="12" x="45" y="15" class="todo"><title>0x00406a30 Func406a30 (140 bytes)</title></rect>
+<rect width="12" height="12" x="45" y="15" class="named"><title>0x00406a30 SpriteEngine::SetPendingCopy (140 bytes)</title></rect>
 <rect width="12" height="12" x="60" y="15" class="named"><title>0x00406ac0 SoundPlayer::FadeInBgm (43 bytes)</title></rect>
 <rect width="12" height="12" x="75" y="15" class="named"><title>0x00406af0 CStreamingSound::FadeIn (68 bytes)</title></rect>
 <rect width="12" height="12" x="90" y="15" class="todo"><title>0x00406b40 Func406b40 (43 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">41.47%</tspan> · <tspan class="decompiled">0.56%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">57.97%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">41.50%</tspan> · <tspan class="decompiled">0.56%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">57.94%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="309.78" height="6" x="0" y="0" class="named"/>
-<rect width="4.22" height="6" x="309.78" y="0" class="decompiled"/>
-<rect width="433" height="6" x="314" y="0" class="todo"/>
+<rect width="310.01" height="6" x="0" y="0" class="named"/>
+<rect width="4.22" height="6" x="310.01" y="0" class="decompiled"/>
+<rect width="432.78" height="6" x="314.22" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1729,7 +1729,7 @@
 <rect width="5.78" height="6.18" x="600.82" y="329.65" class="todo"><title>0x00450080 Func450080 (142 bytes)</title></rect>
 <rect width="5.78" height="6.18" x="600.82" y="338.82" class="named"><title>0x00471730 CSoundManager::Initialize (142 bytes)</title></rect>
 <rect width="5.90" height="5.99" x="609.61" y="208.04" class="todo"><title>0x00429860 Func429860 (141 bytes)</title></rect>
-<rect width="5.90" height="5.92" x="609.61" y="217.03" class="todo"><title>0x00406a30 Func406a30 (140 bytes)</title></rect>
+<rect width="5.90" height="5.92" x="609.61" y="217.03" class="named"><title>0x00406a30 SpriteEngine::SetPendingCopy (140 bytes)</title></rect>
 <rect width="5.90" height="5.86" x="609.61" y="225.95" class="todo"><title>0x00411720 Func411720 (139 bytes)</title></rect>
 <rect width="5.90" height="5.86" x="609.61" y="234.81" class="todo"><title>0x00411a80 Func411a80 (139 bytes)</title></rect>
 <rect width="5.90" height="5.86" x="609.61" y="243.67" class="named"><title>0x0045e8a0 Sprite::ResolveIntArgumentPtr (139 bytes)</title></rect>

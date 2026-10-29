@@ -656,10 +656,30 @@ public:
         }
     }
 
-    // Has a copy of the back buffer done after the frame is drawn, as
-    // th07's, unless one is already pending: then returns -1, else 0. In
-    // th08 this copy goes to surface `texture` (CopyBackBufferToSurface).
+    // Has a copy of the back buffer to ANM slot `texture`'s texture done
+    // after the frame is drawn (CopyBackBufferToTexture), as th07's, unless one is already pending: then returns -1, else 0.
+    // Inline; the copy is at 0x406a30.
     int SetPendingCopy(int texture, int srcLeft, int srcTop, int srcWidth, int srcHeight, int dstLeft, int dstTop,
+                       int dstWidth, int dstHeight)
+    {
+        if (this->pendingTexCopyTexture >= 0)
+        {
+            return -1;
+        }
+        this->pendingTexCopyTexture = texture;
+        this->pendingTexCopySrcLeft = srcLeft;
+        this->pendingTexCopySrcTop = srcTop;
+        this->pendingTexCopySrcWidth = srcWidth;
+        this->pendingTexCopySrcHeight = srcHeight;
+        this->pendingTexCopyDstLeft = dstLeft;
+        this->pendingTexCopyDstTop = dstTop;
+        this->pendingTexCopyDstWidth = dstWidth;
+        this->pendingTexCopyDstHeight = dstHeight;
+        return 0;
+    }
+    // The same for a copy to surface `texture` (CopyBackBufferToSurface).
+    // New in th08.
+    int SetPendingSurfaceCopy(int texture, int srcLeft, int srcTop, int srcWidth, int srcHeight, int dstLeft, int dstTop,
                        int dstWidth, int dstHeight)
     {
         if (this->pendingCopyTexture >= 0)
