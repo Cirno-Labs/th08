@@ -329,7 +329,7 @@ address,size,name,symbol
 0x00425b70,509,EffectManager::SpawnEffect2,?SpawnEffect2@EffectManager@@QAEPAUEffect@@HPAUD3DXVECTOR3@@HK@Z
 0x00425d70,236,EffectInitDrift,?EffectInitDrift@@YIHPAUEffect@@@Z
 0x00425e60,63,EffectUpdateMove,?EffectUpdateMove@@YIHPAUEffect@@@Z
-0x00425ea0,248,Func425ea0,
+0x00425ea0,248,EffectInitDriftFast,?EffectInitDriftFast@@YIHPAUEffect@@@Z
 0x00425fa0,59,Func425fa0,
 0x00425fe0,75,Func425fe0,
 0x00426030,588,Func426030,

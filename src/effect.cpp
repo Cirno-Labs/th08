@@ -265,3 +265,14 @@ int EffectUpdateMove(Effect *effect)
     effect->step += effect->acceleration;
     return 1;
 }
+
+int EffectInitDriftFast(Effect *effect)
+{
+    effect->step[0] = (g_Rng.GetRandomF32InRange(256.0f) - 128.0f) * 4.0f / 33.0f;
+    effect->step[1] = (g_Rng.GetRandomF32InRange(256.0f) - 128.0f) * 4.0f / 33.0f;
+    effect->step[2] = 0.0f;
+    effect->acceleration = -effect->step / 20.0f;
+    effect->step *= g_App.gameSpeed;
+    effect->acceleration *= g_App.gameSpeed;
+    return 0;
+}
