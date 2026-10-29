@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">73.66% (822)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">24.37% (272)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">73.75% (823)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">24.28% (271)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="550.21" height="6" x="0" y="0" class="named"/>
-<rect width="14.73" height="6" x="550.21" y="0" class="decompiled"/>
-<rect width="182.06" height="6" x="564.94" y="0" class="todo"/>
+<rect width="550.88" height="6" x="0" y="0" class="named"/>
+<rect width="14.73" height="6" x="550.88" y="0" class="decompiled"/>
+<rect width="181.40" height="6" x="565.60" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -205,7 +205,7 @@
 <rect width="12" height="12" x="510" y="30" class="named"><title>0x0040bc20 Player::IsUnk5Clear (23 bytes)</title></rect>
 <rect width="12" height="12" x="525" y="30" class="named"><title>0x0040bc40 Player::IsUnk5Set (18 bytes)</title></rect>
 <rect width="12" height="12" x="540" y="30" class="named"><title>0x0040bc60 DimPlayAreaForBomb (450 bytes)</title></rect>
-<rect width="12" height="12" x="555" y="30" class="todo"><title>0x0040be30 Func40be30 (194 bytes)</title></rect>
+<rect width="12" height="12" x="555" y="30" class="named"><title>0x0040be30 StartBomb (194 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="30" class="named"><title>0x0040bf00 SpawnBombAura (264 bytes)</title></rect>
 <rect width="12" height="12" x="585" y="30" class="todo"><title>0x0040c010 Func40c010 (1941 bytes)</title></rect>
 <rect width="12" height="12" x="600" y="30" class="todo"><title>0x0040c7b0 Func40c7b0 (24 bytes)</title></rect>
@@ -277,7 +277,7 @@
 <rect width="12" height="12" x="90" y="60" class="todo"><title>0x00415c80 Func415c80 (85 bytes)</title></rect>
 <rect width="12" height="12" x="105" y="60" class="todo"><title>0x00415ce0 Func415ce0 (37 bytes)</title></rect>
 <rect width="12" height="12" x="120" y="60" class="todo"><title>0x00415d10 Func415d10 (71 bytes)</title></rect>
-<rect width="12" height="12" x="135" y="60" class="todo"><title>0x00415d60 Func415d60 (415 bytes)</title></rect>
+<rect width="12" height="12" x="135" y="60" class="todo"><title>0x00415d60 SpellCard::StartBombCard (415 bytes)</title></rect>
 <rect width="12" height="12" x="150" y="60" class="todo"><title>0x00415f00 Func415f00 (558 bytes)</title></rect>
 <rect width="12" height="12" x="165" y="60" class="todo"><title>0x00416130 Func416130 (39 bytes)</title></rect>
 <rect width="12" height="12" x="180" y="60" class="todo"><title>0x00416160 Func416160 (70 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">65.62%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">33.36%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">65.67%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">33.32%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="490.22" height="6" x="0" y="0" class="named"/>
-<rect width="7.57" height="6" x="490.22" y="0" class="decompiled"/>
-<rect width="249.21" height="6" x="497.79" y="0" class="todo"/>
+<rect width="490.53" height="6" x="0" y="0" class="named"/>
+<rect width="7.57" height="6" x="490.53" y="0" class="decompiled"/>
+<rect width="248.89" height="6" x="498.11" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1450,7 +1450,7 @@
 <rect width="12.60" height="12.28" x="567.31" y="100.12" class="decompiled"><title>0x00403600 AsciiText::Func403600 (420 bytes)</title></rect>
 <rect width="12.60" height="12.28" x="582.91" y="100.12" class="named"><title>0x00474fa0 DatArchive::BuildEntryTable (420 bytes)</title></rect>
 <rect width="12.53" height="12.28" x="598.52" y="100.12" class="named"><title>0x0046f429 MainMenu::DrawPracticeScores (418 bytes)</title></rect>
-<rect width="12.42" height="12.28" x="614.04" y="100.12" class="todo"><title>0x00415d60 Func415d60 (415 bytes)</title></rect>
+<rect width="12.42" height="12.28" x="614.04" y="100.12" class="todo"><title>0x00415d60 SpellCard::StartBombCard (415 bytes)</title></rect>
 <rect width="12.34" height="12.28" x="629.46" y="100.12" class="todo"><title>0x0042a680 Func42a680 (413 bytes)</title></rect>
 <rect width="12.27" height="12.28" x="644.80" y="100.12" class="decompiled"><title>0x00403460 AsciiText::Func403460 (411 bytes)</title></rect>
 <rect width="12.27" height="12.28" x="660.07" y="100.12" class="named"><title>0x00428310 EffectDrawBossPetal (411 bytes)</title></rect>
@@ -1659,7 +1659,7 @@
 <rect width="7.39" height="7.76" x="580.58" y="253.81" class="named"><title>0x00439710 Gui::LoadMsg (197 bytes)</title></rect>
 <rect width="7.39" height="7.76" x="580.58" y="264.57" class="named"><title>0x00444700 MidiPlayer::ReleaseHeader (197 bytes)</title></rect>
 <rect width="7.39" height="7.70" x="580.58" y="275.32" class="named"><title>0x0040e200 EffectUpdateBombRing44 (196 bytes)</title></rect>
-<rect width="7.39" height="7.59" x="580.58" y="286.03" class="todo"><title>0x0040be30 Func40be30 (194 bytes)</title></rect>
+<rect width="7.39" height="7.59" x="580.58" y="286.03" class="named"><title>0x0040be30 StartBomb (194 bytes)</title></rect>
 <rect width="7.39" height="7.59" x="580.58" y="296.62" class="named"><title>0x00473120 CStreamingSound::Reset (194 bytes)</title></rect>
 <rect width="7.39" height="7.37" x="580.58" y="307.21" class="named"><title>0x0045b020 ClearScreen (190 bytes)</title></rect>
 <rect width="7.39" height="7.21" x="580.58" y="317.59" class="named"><title>0x00445340 MidiPlayer::SendVolume (187 bytes)</title></rect>

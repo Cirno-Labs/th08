@@ -2390,6 +2390,10 @@ struct SpellCard
     }
     // Called with 8000 when a time orb is collected (0x416b10).
     void Func416b10(int amount);
+    // Shows the name of a bomb's spell card as the bomb starts
+    // (StartBomb): the portrait for `face` (0 or 1, else none), `name`
+    // and sprite `sprite` (0x415d60).
+    void StartBombCard(int face, char *name, int sprite);
     // Bit 9 of unk_0. Inline; the copy is at 0x405260.
     int Func405260()
     {

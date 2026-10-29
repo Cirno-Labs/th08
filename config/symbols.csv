@@ -136,7 +136,7 @@ address,size,name,symbol
 0x0040bc20,23,Player::IsUnk5Clear,?IsUnk5Clear@Player@@QAEHXZ
 0x0040bc40,18,Player::IsUnk5Set,?IsUnk5Set@Player@@QAEHXZ
 0x0040bc60,450,DimPlayAreaForBomb,?DimPlayAreaForBomb@@YIXPAVPlayer@@K@Z
-0x0040be30,194,Func40be30,
+0x0040be30,194,StartBomb,?StartBomb@@YIXPAVPlayer@@HPADHHH@Z
 0x0040bf00,264,SpawnBombAura,?SpawnBombAura@@YIXPAVPlayer@@@Z
 0x0040c010,1941,Func40c010,
 0x0040c7b0,24,Func40c7b0,
@@ -208,7 +208,7 @@ address,size,name,symbol
 0x00415c80,85,Func415c80,
 0x00415ce0,37,Func415ce0,
 0x00415d10,71,Func415d10,
-0x00415d60,415,Func415d60,
+0x00415d60,415,SpellCard::StartBombCard,?StartBombCard@SpellCard@@QAEXHPADH@Z
 0x00415f00,558,Func415f00,
 0x00416130,39,Func416130,
 0x00416160,70,Func416160,

@@ -640,6 +640,13 @@ extern Player g_Player;
 // sets the stage's keepTintColor (0x40bc60).
 void DimPlayAreaForBomb(Player *player, D3DCOLOR tint);
 
+// The start shared by the bombs' first frames: shows the spell card
+// (SpellCard::StartBombCard with `face`, `name` and `sprite`), sets the
+// bomb's duration and
+// stateTimer, makes the player invulnerable (playerState 3) with an
+// aura, clears the bomb's parts, collects all items and keeps the
+// player's position in startPos (0x40be30).
+void StartBomb(Player *player, int face, char *name, int duration, int stateFrames, int sprite);
 // th07's SpawnBombAura, with effect 0x17: ends invulnerabilityEffect and
 // starts a red aura at the player that runs as long as stateTimer
 // (0x40bf00).

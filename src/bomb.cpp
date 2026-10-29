@@ -3,6 +3,7 @@
 // g_EffectInfos. Only part of it so far.
 
 #include "effect.h"
+#include "item.h"
 #include "player.h"
 #include "screeneffect.h"
 #include "sprite.h"
@@ -34,6 +35,25 @@ void DimPlayAreaForBomb(Player *player, D3DCOLOR tint)
     g_SpriteEngine->ResetColorModulation();
     g_Stage.SetTintColor(out.color);
     g_Stage.keepTintColor = 1;
+}
+
+void StartBomb(Player *player, int face, char *name, int duration, int stateFrames, int sprite)
+{
+    DWORD i;
+    PlayerBombPart *part;
+    PlayerBomb *pb = &player->bomb;
+
+    g_SpellCard.StartBombCard(face, name, sprite);
+    pb->duration = duration;
+    player->stateTimer = stateFrames;
+    player->playerState = 3;
+    SpawnBombAura(player);
+    for (i = 0, part = pb->parts; i < 0x80; i++, part++)
+    {
+        part->state = 0;
+    }
+    g_ItemManager.CollectAll();
+    pb->startPos = player->pos;
 }
 
 void SpawnBombAura(Player *player)
