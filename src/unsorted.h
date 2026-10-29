@@ -118,3 +118,10 @@ int FileExists(char *path);
 // Writes `size` bytes of `data` to the file at `path`. Returns 0, -1 if
 // the file cannot be created, -2 if writing fails.
 int WriteToFile(char *path, void *data, int size);
+
+// The joystick's capabilities, from joyGetDevCaps.
+extern JOYCAPSA g_JoyCaps;
+
+// Checks that joystick 1 is there and reads its capabilities into
+// g_JoyCaps. Returns 1 when there is none.
+WORD InitJoystick();

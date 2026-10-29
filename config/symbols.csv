@@ -564,7 +564,7 @@ address,size,name,symbol
 0x0043ce60,162,Func43ce60,
 0x0043cf10,49,Func43cf10,
 0x0043cf50,362,Func43cf50,
-0x0043d0c0,85,Func43d0c0,
+0x0043d0c0,85,InitJoystick,?InitJoystick@@YIGXZ
 0x0043d120,1457,Func43d120,
 0x0043d6e0,122,Func43d6e0,
 0x0043d760,115,Func43d760,
@@ -2382,6 +2382,7 @@ address,size,name,symbol
 0x004bd6d0,,IID_IShellLinkA,_IID_IShellLinkA
 0x004bd6e0,,CLSID_ShellLink,_CLSID_ShellLink
 0x004bd6f0,,IID_IPersistFile,_IID_IPersistFile
+0x0164d388,,g_JoyCaps,?g_JoyCaps@@3UtagJOYCAPSA@@A
 0x0164d540,,g_Log,?g_Log@@3VLog@@A
 0x0164f598,,g_MemoryManager,?g_MemoryManager@@3VMemoryManager@@A
 0x017ce6fc,,g_AppMutex,?g_AppMutex@@3PAXA
