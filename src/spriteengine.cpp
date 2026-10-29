@@ -779,6 +779,63 @@ int SpriteEngine::DrawProjected(Sprite *vm)
     return this->DrawQuad(vm, 0);
 }
 
+void SpriteEngine::ProjectSprite3D(Sprite *vm)
+{
+    D3DXMATRIX worldMatrix;
+    D3DXMATRIX rotationMatrix;
+
+    if ((vm->flags >> 16 & 1) == 0 && ((vm->flags >> 3 & 1) != 0 || (vm->flags >> 2 & 1) != 0))
+    {
+        vm->drawMatrix = vm->matrix;
+        vm->drawMatrix._11 *= vm->scaleY;
+        vm->drawMatrix._22 *= vm->scaleX;
+        vm->flags &= ~8;
+        if (vm->rotationX != 0.0)
+        {
+            D3DXMatrixRotationX(&rotationMatrix, vm->rotationX);
+            D3DXMatrixMultiply(&vm->drawMatrix, &vm->drawMatrix, &rotationMatrix);
+        }
+        if (vm->rotationY != 0.0)
+        {
+            D3DXMatrixRotationY(&rotationMatrix, vm->rotationY);
+            D3DXMatrixMultiply(&vm->drawMatrix, &vm->drawMatrix, &rotationMatrix);
+        }
+        if (vm->rotationZ != 0.0)
+        {
+            D3DXMatrixRotationZ(&rotationMatrix, vm->rotationZ);
+            D3DXMatrixMultiply(&vm->drawMatrix, &vm->drawMatrix, &rotationMatrix);
+        }
+        vm->flags &= ~4;
+    }
+    worldMatrix = vm->drawMatrix;
+    if (((vm->flags >> 11 & 3) & 1) == 0)
+    {
+        worldMatrix._41 = vm->pos.x;
+    }
+    else
+    {
+        worldMatrix._41 = fabsf(vm->spriteWidth * vm->scaleY / 2.0f) + vm->pos.x;
+    }
+    if (((vm->flags >> 11 & 3) & 2) == 0)
+    {
+        worldMatrix._42 = vm->pos.y;
+    }
+    else
+    {
+        worldMatrix._42 = fabsf(vm->spriteHeight * vm->scaleX / 2.0f) + vm->pos.y;
+    }
+    worldMatrix._43 = vm->pos.z;
+    D3DXVec3Project(&g_DiffuseQuad[0].pos, &this->quad[0].pos, &g_App.viewport, (D3DXMATRIX *)&g_App.projectionMatrix,
+                    (D3DXMATRIX *)&g_App.viewMatrix, &worldMatrix);
+    D3DXVec3Project(&g_DiffuseQuad[1].pos, &this->quad[1].pos, &g_App.viewport, (D3DXMATRIX *)&g_App.projectionMatrix,
+                    (D3DXMATRIX *)&g_App.viewMatrix, &worldMatrix);
+    D3DXVec3Project(&g_DiffuseQuad[2].pos, &this->quad[2].pos, &g_App.viewport, (D3DXMATRIX *)&g_App.projectionMatrix,
+                    (D3DXMATRIX *)&g_App.viewMatrix, &worldMatrix);
+    D3DXVec3Project(&g_DiffuseQuad[3].pos, &this->quad[3].pos, &g_App.viewport, (D3DXMATRIX *)&g_App.projectionMatrix,
+                    (D3DXMATRIX *)&g_App.viewMatrix, &worldMatrix);
+    this->lastWorldMatrix = worldMatrix;
+}
+
 SpriteEngine::SpriteEngine()
 {
     memset(this, 0, sizeof(*this));

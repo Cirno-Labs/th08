@@ -161,7 +161,10 @@ public:
     int scriptVar9;
     unsigned char unk_128[0x8];
     D3DXMATRIX matrix;
-    unsigned char unk_170[0x80];
+    // A copy of matrix, scaled and rotated by ProjectSprite3D.
+    D3DXMATRIX drawMatrix;
+    // The sprite's size relative to its texture.
+    D3DXMATRIX sizeMatrix;
     union
     {
         D3DCOLOR color;
@@ -398,6 +401,11 @@ public:
     int ProjectSprite(Sprite *vm);
     int DrawProjected(Sprite *vm);
     // Draws `vm` in 3D, projected by ProjectSprite3D, as th07's.
+    // Sets g_DiffuseQuad to the vertex buffer's quad transformed by
+    // `vm`'s drawMatrix and its position, projected to the screen, as
+    // th07's. Remakes drawMatrix first from matrix, the scale and the
+    // rotations while flag 3 or 2 is set and flag 16 is not.
+    void ProjectSprite3D(Sprite *vm);
     int DrawProjected3D(Sprite *vm);
     // Draws `vm` with the draw function its drawMode picks: 0
     // DrawUnrotated, 1 DrawNoRound, 2 Draw, 3 DrawRotatedNoRound, 4
