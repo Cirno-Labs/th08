@@ -162,7 +162,9 @@ struct PlayerOption
     int unk_2cc;
     // Its index among the four.
     int index;
-    unsigned char unk_2d4[0xc];
+    unsigned char unk_2d4[0x8];
+    // The direction it aims (FireOptionAimedShot).
+    float angle;
     Timer timer;
     // From g_OptionUpdateFuncs and g_OptionDrawFuncs by character.
     int (*update)(Player *player, PlayerOption *option);
@@ -303,6 +305,16 @@ int TryFireShotNoBomb(Player *player, PlayerBullet *bullet, int frame, ShotData 
 int FireLaser(Player *player, PlayerBullet *bullet, int frame, ShotData *sd);
 // th07's FireHomingShot (0x44ffa0).
 int FireHomingShot(Player *player, PlayerBullet *bullet, int frame, ShotData *sd);
+// th07's FireAimedShot (0x450080).
+int FireAimedShot(Player *player, PlayerBullet *bullet, int frame, ShotData *sd);
+// Unless a bomb runs, a plain shot that flies along the third
+// option's angle, turned by sd->angle (0x450110).
+int FireOptionAimedShot(Player *player, PlayerBullet *bullet, int frame, ShotData *sd);
+// A plain shot that flies up at a random angle, up to pi/48 off
+// (0x4501b0).
+int FireRandomShot(Player *player, PlayerBullet *bullet, int frame, ShotData *sd);
+// FireHomingShot at Player::homingEnemy, when set (0x450240).
+int FireEnemyHomingShot(Player *player, PlayerBullet *bullet, int frame, ShotData *sd);
 // th07's FireShots: fires the shots of the shot type's table for the
 // player's power into free bullets (0x450f60).
 void FireShots(Player *player, int frame);
@@ -497,7 +509,8 @@ public:
     // there is nothing.
     D3DXVECTOR3 orbHomingTarget;
     D3DXVECTOR3 homingTarget;
-    int unk_e2abc;
+    // The enemy FireEnemyHomingShot's shots fly at, if any.
+    struct Enemy *homingEnemy;
     int homingTargetSet;
     // While it is below 0, items flying up (state 3) are drawn in.
     Timer unk_e2ac4;
