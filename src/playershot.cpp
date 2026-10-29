@@ -303,7 +303,7 @@ int UpdateTrailLaserBullet(Player *player, PlayerBullet *bullet)
     int j;
 
     if (player->lasers[bullet->laserIndex].bullet != bullet || g_Gui.IsMsgRunning() ||
-        player->unk_e2ac4.AsFrames() < 0 || player->playerState == 2 || player->bomb.running ||
+        player->fireTimer.AsFrames() < 0 || player->playerState == 2 || player->bomb.running ||
         g_GameManager.unk_3dbac_13)
     {
         bullet->sprite.pendingInterrupt = 1;
@@ -614,4 +614,40 @@ void DrawHitBullets(Player *player)
         }
         g_SpriteEngine->DrawSprite(&bullet->sprite);
     }
+}
+
+int UpdateFiring(Player *player)
+{
+    if (g_GameManager.stageFrames < 20)
+    {
+        return 0;
+    }
+    if (player->fireTimer.AsFrames() < 0)
+    {
+        return 0;
+    }
+    if (player->IsSpellCardBombRunning())
+    {
+        return 0;
+    }
+    if (player->fireTimer.HasTicked() &&
+        (!g_Unknown17d6ed4 ||
+         (g_GameManager.character != 1 && g_GameManager.character != 7 && g_GameManager.character != 6)))
+    {
+        FireShots(player, player->fireTimer.AsFrames());
+    }
+    player->fireTimer++;
+    if (player->fireTimer.AsFrames() >= 20)
+    {
+        player->fireTimer = -1;
+    }
+    if ((g_GameButtons & 1) && player->fireTimer.AsFrames() < 0 && !g_Gui.IsMsgRunning())
+    {
+        player->fireTimer = 0;
+    }
+    if (player->playerState == 2 || player->playerState == 1)
+    {
+        player->fireTimer = -1;
+    }
+    return 0;
 }

@@ -733,7 +733,7 @@ int HandleInput(Player *player)
         int amount;
 
         amount = 0;
-        if (player->unk_e2ac4 >= 0)
+        if (player->fireTimer >= 0)
         {
             if (player->unk_e2ad0 > 0)
             {
@@ -1396,7 +1396,7 @@ int Player::AddedCallback(Player *player)
     {
         cur->state = 0;
     }
-    player->unk_e2ac4 = -1;
+    player->fireTimer = -1;
     player->unk_e2ad0 = 0;
     player->unk_e2ae8 = 0;
     player->bomb.update = g_BombFuncs[g_GameManager.character * 2];

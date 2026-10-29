@@ -446,6 +446,12 @@ public:
     PlayerBombHitbox *AddBombHitbox(D3DXVECTOR3 *pos, float width, float height, int damage, int framesLeft);
     PlayerBombHitbox *AddBombHitboxCircle(D3DXVECTOR3 *pos, float radius, float radiusGrowth, int damage,
                                           int framesLeft);
+    // Whether a spell-card bomb (type 4) runs. Inline; the copy is at
+    // 0x451d50.
+    BOOL IsSpellCardBombRunning()
+    {
+        return this->bomb.running && this->bomb.type == 4 ? TRUE : FALSE;
+    }
     // Whether unk_5 is set. Inline; the copy is at 0x40bc40.
     int IsUnk5Set()
     {
@@ -539,8 +545,10 @@ public:
     // The enemy FireEnemyHomingShot's shots fly at, if any.
     struct Enemy *homingEnemy;
     int homingTargetSet;
-    // While it is below 0, items flying up (state 3) are drawn in.
-    Timer unk_e2ac4;
+    // Runs while firing, as th07's: -1 when idle, stopped after 20
+    // frames. While it is below 0, items flying up (state 3) are drawn
+    // in.
+    Timer fireTimer;
     Timer unk_e2ad0;
     // Collecting a time orb moves stats->unk_22 while it is 0.
     Timer unk_e2adc;

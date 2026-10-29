@@ -170,7 +170,7 @@ void ItemManager::UpdateItems()
         else if (entry->state == 3)
         {
             entry->velocity.y += 0.05f * g_App.gameSpeed;
-            if (entry->velocity.y > 0.0f || g_Player.unk_e2ac4 < 0)
+            if (entry->velocity.y > 0.0f || g_Player.fireTimer < 0)
             {
                 entry->state = 1;
             }
