@@ -229,6 +229,15 @@ int EffectUpdateBombRing45(Effect *effect);
 int EffectUpdateBombRing41(Effect *effect);
 // 46: grows by 8 a frame, 0xc segments, 32 wide.
 int EffectUpdateBombRing46(Effect *effect);
+// 36 and 37: inits that start effect 0x23 at the same position with the
+// same velocity in the same reserved slot, then make this one a ring
+// shrinking onto it (EffectUpdateBombRing36, 0x2c segments, 4 wide; or
+// EffectUpdateBombRing37, 0x36 segments, 6 wide) that ends in a burst of
+// player bullets. Return 0.
+int EffectInitBombRing36(Effect *effect);
+int EffectUpdateBombRing36(Effect *effect);
+int EffectUpdateBombRing37(Effect *effect);
+int EffectInitBombRing37(Effect *effect);
 
 // The effects, at 0x4ece60: 0x200 started in turn, 0x80 started in
 // order from 0x200, 0xd reserved slots and a spare.

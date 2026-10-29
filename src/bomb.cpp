@@ -103,3 +103,15 @@ int EffectUpdateBombRing46(Effect *effect)
     effect->ringWidth = 32.0f;
     return 1;
 }
+
+int EffectInitBombRing36(Effect *effect)
+{
+    D3DXVECTOR3 pos = effect->pos;
+    D3DXVECTOR3 velocity = effect->velocity;
+
+    g_EffectManager.SpawnReservedWithVelocity(0x23, &pos, &velocity, effect->reservedSlot, 1, 0xffffffff);
+    effect->update = EffectUpdateBombRing36;
+    effect->segmentCount = 0x2c;
+    effect->ringWidth = 4.0f;
+    return 0;
+}

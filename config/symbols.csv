@@ -185,9 +185,9 @@ address,size,name,symbol
 0x00410c40,922,Func410c40,
 0x00410fe0,959,Func410fe0,
 0x004113a0,313,Func4113a0,
-0x004114e0,567,Func4114e0,
-0x00411720,139,Func411720,
-0x004117b0,708,Func4117b0,
+0x004114e0,567,EffectUpdateBombRing36,?EffectUpdateBombRing36@@YIHPAUEffect@@@Z
+0x00411720,139,EffectInitBombRing36,?EffectInitBombRing36@@YIHPAUEffect@@@Z
+0x004117b0,708,EffectUpdateBombRing37,?EffectUpdateBombRing37@@YIHPAUEffect@@@Z
 0x00411a80,139,Func411a80,
 0x00411b10,2032,Func411b10,
 0x00412300,207,Func412300,
