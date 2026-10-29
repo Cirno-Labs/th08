@@ -12,6 +12,7 @@
 #include "archive.h"
 #include "common.h"
 #include "dsutil.h"
+#include "timer.h"
 
 // The application: window, Direct3D, configuration and the main loop.
 // Only the fields known so far. Its start matches th07's App: the same
@@ -93,6 +94,9 @@ public:
     // Asks the sub thread (App+0x284, new in th08) to close and waits for
     // it (0x44871b).
     void CloseSubThread();
+    // Advances `frames` by one frame, or by a fraction of one into
+    // `subFrame` while the game runs slow.
+    void TickTimer(int *frames, float *subFrame);
     // Getters for config options that th07 read directly; th08 calls
     // these out-of-line copies (0x443a50..0x443ad0).
     int GetEmulateColorAdd();
@@ -157,7 +161,13 @@ public:
     int hideFps;
     // Frames are paced by the clock rather than by the presents.
     int presentImmediate;
-    unsigned char unk_180[0xc];
+    // Set while the device is created asking for 60 Hz, as th07's
+    // unk_170.
+    int unk_180;
+    int unk_184;
+    // The game's speed: 1, or less while it runs slow. Timer::Add counts
+    // in fractions of a frame below 0.99.
+    float unk_188;
     // The MIDI player; its long messages come back to WindowProc.
     MidiPlayer *midi;
     // Their ratio is the game's speed, which the score entry records
@@ -252,6 +262,12 @@ char *AppendCapsFlagText(char *name, DWORD caps, DWORD flag, char *out);
 // Writes a report of the device capabilities `caps` that matter to the
 // game into `buffer`, in Japanese.
 void FormatCapsReport(D3DCAPS8 *caps, char *buffer);
+
+inline void Timer::Tick()
+{
+    this->previous = this->current;
+    g_App.TickTimer(&this->current, &this->subFrame);
+}
 
 // The game window (at 0x17ce700), as in th07: the fields used so far are
 // at the same offsets.
