@@ -740,7 +740,7 @@ address,size,name,symbol
 0x00449399,238,MusicScreen::OnUpdate,?OnUpdate@MusicScreen@@SIHPAV1@@Z
 0x00449487,648,MusicScreen::OnDraw,?OnDraw@MusicScreen@@SIHPAV1@@Z
 0x0044970f,1247,MusicScreen::AddedCallback,?AddedCallback@MusicScreen@@SIHPAV1@@Z
-0x00449bee,28,Func449bee,
+0x00449bee,28,MusicTune::MusicTune,??0MusicTune@@QAE@XZ
 0x00449c0a,111,MusicScreen::DeletedCallback,?DeletedCallback@MusicScreen@@SIHPAV1@@Z
 0x00449c79,24,App::GetPreloadBgm,?GetPreloadBgm@App@@QAEHXZ
 0x00449ca0,422,Func449ca0,
