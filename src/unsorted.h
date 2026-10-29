@@ -1288,6 +1288,10 @@ public:
     int Func43c2c5();
     // Whether every shot type has Extra open. In App's object.
     int AllShotsHaveExtraOpen();
+    // Whether spell card `card` was attempted, in a game or in practice,
+    // or, for a last spell, seen (flsp). The copy at 0x46fd5f is the
+    // title menu object's.
+    int IsSpellCardSeen(int card);
     // th07's IsPhantasmOpen, which returns 0 in th08 (0x43c317).
     int IsPhantasmOpen();
     // Whether a replay (bit 3 of unk_3dbac) of a practice is playing.

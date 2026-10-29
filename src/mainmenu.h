@@ -169,6 +169,17 @@ ASSERT_SIZE(MainMenu, 0x14490);
 // element cannot be added. The argument is unused.
 int SetUpTitleScene(int unused);
 
+// Writes `value` as `digits` full-width digits into g_FullWidthNumber
+// and returns it. New in th08.
+char *FormatFullWidthNumber(int value, int digits);
+// Draws a fan of 63 triangles around `center`, `diameter` wide, from
+// straight up, each `arc` * 2 pi / 62 wider than the last. New in th08.
+void DrawFan(D3DXVECTOR3 *center, D3DCOLOR color, float arc, float diameter);
+// FormatFullWidthNumber's result.
+extern char g_FullWidthNumber[0x40];
+// "０" to "９".
+extern char *g_FullWidthDigits[10];
+
 // The title menu SetUpTitleScene created. New in th08: the loading
 // thread reaches the menu through it.
 extern MainMenu *g_MainMenu;

@@ -124,6 +124,27 @@ int MainMenu::ShowButtonDigits(Sprite *vm, short value)
     return 0;
 }
 
+char *FormatFullWidthNumber(int value, int digits)
+{
+    int i;
+    int divisor = 1;
+
+    memset(g_FullWidthNumber, 0, sizeof(g_FullWidthNumber));
+    for (i = 1; i < digits; i++)
+    {
+        divisor *= 10;
+    }
+    i = 0;
+    while (divisor > 0)
+    {
+        strcpy(&g_FullWidthNumber[i], g_FullWidthDigits[value / divisor]);
+        value %= divisor;
+        divisor /= 10;
+        i += 2;
+    }
+    return g_FullWidthNumber;
+}
+
 int MainMenu::MoveMenuCursor(int count)
 {
     if (count == 0)
