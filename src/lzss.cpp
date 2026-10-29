@@ -365,3 +365,17 @@ void LzssDeleteNode(int pos)
         LzssReplaceChild(pos, replacement);
     }
 }
+
+void LzssReplaceNode(int oldNode, int newNode)
+{
+    g_LzssTree[newNode].parent = g_LzssTree[oldNode].parent;
+    if (g_LzssTree[g_LzssTree[oldNode].parent].largerChild == oldNode)
+    {
+        g_LzssTree[g_LzssTree[oldNode].parent].largerChild = newNode;
+    }
+    else
+    {
+        g_LzssTree[g_LzssTree[oldNode].parent].smallerChild = newNode;
+    }
+    g_LzssTree[oldNode].parent = 0;
+}
