@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">64.61% (721)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">33.60% (375)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">64.70% (722)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">33.51% (374)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="482.60" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="482.60" y="0" class="decompiled"/>
-<rect width="251.01" height="6" x="495.99" y="0" class="todo"/>
+<rect width="483.27" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="483.27" y="0" class="decompiled"/>
+<rect width="250.34" height="6" x="496.66" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -182,7 +182,7 @@
 <rect width="12" height="12" x="165" y="30" class="named"><title>0x0040b5a0 Stage::SetupFixedCamera (292 bytes)</title></rect>
 <rect width="12" height="12" x="180" y="30" class="named"><title>0x0040b6d0 Stage::SetupCamera (283 bytes)</title></rect>
 <rect width="12" height="12" x="195" y="30" class="named"><title>0x0040b7f0 D3DXVec3Cross (132 bytes)</title></rect>
-<rect width="12" height="12" x="210" y="30" class="todo"><title>0x0040b880 MemoryManager::Alloc (25 bytes)</title></rect>
+<rect width="12" height="12" x="210" y="30" class="named"><title>0x0040b880 MemoryManager::Alloc (25 bytes)</title></rect>
 <rect width="12" height="12" x="225" y="30" class="todo"><title>0x0040b8a0 MemoryManager::Free (25 bytes)</title></rect>
 <rect width="12" height="12" x="240" y="30" class="named"><title>0x0040b8c0 Timer::AsFloat (23 bytes)</title></rect>
 <rect width="12" height="12" x="255" y="30" class="named"><title>0x0040b8e0 Timer::operator&gt;= (27 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">55.48%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">43.53%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">55.49%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">43.52%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="414.45" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="414.45" y="0" class="decompiled"/>
-<rect width="325.15" height="6" x="421.85" y="0" class="todo"/>
+<rect width="414.49" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="414.49" y="0" class="decompiled"/>
+<rect width="325.11" height="6" x="421.89" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -2180,7 +2180,7 @@
 <rect width="0.74" height="0.80" x="707.89" y="325.23" class="named"><title>0x00406880 AnmLoaded::GetSprite (25 bytes)</title></rect>
 <rect width="0.74" height="0.80" x="707.89" y="329.02" class="named"><title>0x00406cb0 GameManager::IsDemo (25 bytes)</title></rect>
 <rect width="0.74" height="0.80" x="707.89" y="332.82" class="named"><title>0x00407180 AsciiText::SetGlyphWidth (25 bytes)</title></rect>
-<rect width="0.74" height="0.80" x="707.89" y="336.61" class="todo"><title>0x0040b880 MemoryManager::Alloc (25 bytes)</title></rect>
+<rect width="0.74" height="0.80" x="707.89" y="336.61" class="named"><title>0x0040b880 MemoryManager::Alloc (25 bytes)</title></rect>
 <rect width="0.74" height="0.80" x="707.89" y="340.41" class="todo"><title>0x0040b8a0 MemoryManager::Free (25 bytes)</title></rect>
 <rect width="0.74" height="0.80" x="707.89" y="344.20" class="named"><title>0x0040ba90 SpriteEngine::SetLastCameraSetupFlag (25 bytes)</title></rect>
 <rect width="0.71" height="0.83" x="711.63" y="309.74" class="todo"><title>0x0040d410 Func40d410 (25 bytes)</title></rect>

@@ -35,7 +35,12 @@ public:
     MemoryManager();
     // Frees every block left in `blocks` if `unk_4000` is set.
     ~MemoryManager();
-    void *Alloc(int size, const char *name);
+    // malloc() and free(); `name` is unused in the release build.
+    // Inline; the copies are at 0x40b880 and 0x40b8a0.
+    void *Alloc(int size, const char *name)
+    {
+        return malloc(size);
+    }
     void Free(void *p);
     // Records `p`, a block of `size` bytes allocated with new, under
     // `name` and returns it; a no-op in the release build. Out-of-line
