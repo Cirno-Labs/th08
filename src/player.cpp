@@ -634,3 +634,113 @@ void UpdateBombState(Player *player)
         player->bombJustStarted = 0;
     }
 }
+
+int UpdateDyingState(Player *player)
+{
+    float progress;
+
+    if (player->deathbombFrames != 0)
+    {
+        // The last words: they cost time orbs while they run.
+        g_GameManager.AddTimeOrbs(-15);
+        player->deathbombFrames--;
+        player->unk_4 = 1;
+        if (player->deathbombFrames == 0)
+        {
+            if (player->unk_e2b28 != NULL)
+            {
+                player->unk_e2b28->active = 0;
+                player->unk_e2b28 = NULL;
+            }
+            g_EffectManager.SpawnReservedEffect(0xc, &player->pos, 3, 1, 0xff4040ff);
+            g_EffectManager.SpawnEffect(6, &player->pos, 16, 0xffffffff);
+            g_SoundPlayer.QueueSoundPanned(0xf, player->pos.x);
+            g_GameManager.unk_3dbac_10 = 0;
+            g_SpriteEngine->ResetColorModulation();
+            player->sprite.useColor2 = 0;
+            g_ReplayManager->frameEvents |= 4;
+            g_GameManager.unk_3dba8 = 0;
+            player->unk_4 = 0;
+            g_SpellCard.Func44d150();
+            g_GameManager.AddDeaths(1);
+            g_Gui.unk_4_10 = 2;
+            g_GameManager.AddTimeOrbs(g_GameManager.stats->unk_3c > 5000 ? -500 : -g_GameManager.stats->unk_3c / 10);
+            if (g_GameManager.GetLives() > 0)
+            {
+                if (g_GameManager.GetPower() <= 16)
+                {
+                    g_GameManager.SetPower(0);
+                }
+                else
+                {
+                    g_GameManager.AddPower(-16);
+                }
+                g_ItemManager.SpawnItem(&player->pos, 2, 2);
+                g_ItemManager.SpawnItem(&player->pos, 0, 2);
+                g_ItemManager.SpawnItem(&player->pos, 0, 2);
+                g_ItemManager.SpawnItem(&player->pos, 0, 2);
+                g_ItemManager.SpawnItem(&player->pos, 0, 2);
+                g_ItemManager.SpawnItem(&player->pos, 0, 2);
+                if (g_GameManager.GetBombs() > 0 &&
+                    (g_GameManager.character == 2 || g_GameManager.character == 8 || g_GameManager.character == 9))
+                {
+                    g_ItemManager.SpawnItem(&player->pos, 3, 2);
+                }
+                g_Gui.powerChanged = 2;
+                g_ItemManager.RecycleCollectedItems();
+            }
+            else
+            {
+                g_GameManager.SetPower(0);
+                g_ItemManager.SpawnItem(&player->pos, 4, 2);
+                g_ItemManager.SpawnItem(&player->pos, 4, 2);
+                g_ItemManager.SpawnItem(&player->pos, 4, 2);
+                g_ItemManager.SpawnItem(&player->pos, 4, 2);
+                g_ItemManager.SpawnItem(&player->pos, 4, 2);
+                g_Gui.powerChanged = 2;
+            }
+            g_GameManager.SubSubRank(1600);
+        }
+    }
+    else
+    {
+        progress = player->unk_e2af4.AsFloat() / 30.0f;
+        player->sprite.scaleX = 3.0f * progress + 1.0f;
+        player->sprite.scaleY = 1.0f - 1.0f * progress;
+        player->sprite.color = (int)(255.0f - player->unk_e2af4.AsFloat() * 255.0f / 30.0f) << 24 | 0xffffff;
+        player->sprite.SetBlendModeAdd();
+        player->velocityX = 0.0f;
+        player->velocityY = 0.0f;
+        if (player->unk_e2af4.AsFrames() >= 30)
+        {
+            player->playerState = 1;
+            player->pos[0] = g_GameManager.arena[2] / 2.0f;
+            player->pos[1] = g_GameManager.arena[3] - 64.0f;
+            player->pos[2] = 0.2f;
+            player->unk_e2af4 = 0;
+            player->sprite.scaleY = 3.0f;
+            player->sprite.scaleX = 3.0f;
+            if ((g_GameManager.character < 4 && !player->unk_3) || !(g_GameManager.character & 1))
+            {
+                player->anm->StartScript(&player->sprite, 0);
+            }
+            else
+            {
+                player->anm->StartScript(&player->sprite, 5);
+            }
+            if (g_GameManager.GetLives() <= 0)
+            {
+                g_GameManager.isInContinueMenu = 1;
+            }
+            else
+            {
+                g_GameManager.AddLives(-1);
+                g_Gui.livesChanged = 2;
+                g_GameManager.SetBombs(g_Player.shotType->bombs);
+                g_Gui.bombsChanged = 2;
+                return 1;
+            }
+        }
+    }
+    return 0;
+}

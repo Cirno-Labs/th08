@@ -249,6 +249,16 @@ public:
         this->rotation.z = z;
         this->flags |= 4;
     }
+    // Set the blend mode to 1 (additive) or 0. Inline; the copies at
+    // 0x44e0f0 and 0x44e120 are the player object's.
+    void SetBlendModeAdd()
+    {
+        this->blendMode = 1;
+    }
+    void SetBlendModeNormal()
+    {
+        this->blendMode = 0;
+    }
     // Whether its script has ended. Inline; the copy is at 0x428720.
     int IsScriptDone()
     {

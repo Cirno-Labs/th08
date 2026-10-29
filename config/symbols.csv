@@ -765,7 +765,7 @@ address,size,name,symbol
 0x0044c650,1352,UpdateBombState,?UpdateBombState@@YIXPAVPlayer@@@Z
 0x0044cba0,69,SpellCard::Func44cba0,?Func44cba0@SpellCard@@QAEXXZ
 0x0044cbf0,1373,UpdateDyingState,?UpdateDyingState@@YIHPAVPlayer@@@Z
-0x0044d150,37,Func44d150,
+0x0044d150,37,SpellCard::Func44d150,?Func44d150@SpellCard@@QAEXXZ
 0x0044d180,314,UpdateRespawningState,?UpdateRespawningState@@YIXPAVPlayer@@@Z
 0x0044d2c0,338,UpdateInvulnerability,?UpdateInvulnerability@@YIXPAVPlayer@@@Z
 0x0044d420,267,ResetHomingAndText,?ResetHomingAndText@@YIXPAVPlayer@@@Z
@@ -780,11 +780,11 @@ address,size,name,symbol
 0x0044dfa0,153,Player::Func44dfa0,?Func44dfa0@Player@@QAEPAUPlayerBombHitbox@@PAUD3DXVECTOR3@@MMHH@Z
 0x0044e040,153,Func44e040,
 0x0044e0e0,15,KeepsResources,?KeepsResources@@YIHXZ
-0x0044e0f0,35,Func44e0f0,
+0x0044e0f0,35,Sprite::SetBlendModeAdd,?SetBlendModeAdd@Sprite@@QAEXXZ
 0x0044e120,32,Func44e120,
 0x0044e140,27,GameManager::SetUnk22,?SetUnk22@GameManager@@QAEXF@Z
 0x0044e160,255,GameManager::RerollLifeChecksumKeys,?RerollLifeChecksumKeys@GameManager@@QAEXXZ
-0x0044e260,113,Func44e260,
+0x0044e260,113,GameManager::AddDeaths,?AddDeaths@GameManager@@QAEXH@Z
 0x0044e2e0,104,GameManager::AddBombsUsed,?AddBombsUsed@GameManager@@QAEXH@Z
 0x0044e350,18,PlayerBombHitbox::Deactivate,?Deactivate@PlayerBombHitbox@@QAEXXZ
 0x0044e370,35,Func44e370,
