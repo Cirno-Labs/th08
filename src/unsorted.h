@@ -15,3 +15,21 @@ public:
 };
 
 extern App g_App;
+
+// Debug output, compiled out of the release build: an empty function
+// that the game still calls with messages.
+void DebugPrint(const char *fmt, ...);
+
+// Loads a whole file into a buffer from g_MemoryManager; NULL on
+// failure. Unlike th07's, it stores the file's size in `size` if that is
+// not NULL; the last argument says whether the file is read from disk
+// rather than from the archives.
+void *LoadFileData(char *path, DWORD *size, int isExternal);
+
+// The object error messages go to, e.g. "error : MIDI File が読み込めない".
+// The layout is not known yet.
+class Log;
+extern Log g_Log;
+
+// Logs a printf-style message to a log object.
+int LogPrintf(Log *log, const char *fmt, ...);

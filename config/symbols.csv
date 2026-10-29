@@ -574,10 +574,10 @@ address,size,name,symbol
 0x0043e1d0,448,Func43e1d0,
 0x0043e390,262,Func43e390,
 0x0043e4a0,448,Func43e4a0,
-0x0043e660,531,Func43e660,
+0x0043e660,531,LoadFileData,?LoadFileData@@YIPAXPADPAKH@Z
 0x0043e880,105,Func43e880,
 0x0043e8f0,267,Func43e8f0,
-0x0043ea00,337,Func43ea00,
+0x0043ea00,337,LogPrintf,?LogPrintf@@YAHPAVLog@@PBDZZ
 0x0043eb60,343,Func43eb60,
 0x0043ecc0,88,Func43ecc0,
 0x0043ed20,40,Func43ed20,
@@ -671,7 +671,7 @@ address,size,name,symbol
 0x00443f50,78,ReadVarLen,?ReadVarLen@@YIKPAPAE@Z
 0x00443fa0,351,MidiPlayer::MidiPlayer,??0MidiPlayer@@QAE@XZ
 0x00444100,147,MidiPlayer::~MidiPlayer,??1MidiPlayer@@QAE@XZ
-0x004441a0,114,Func4441a0,
+0x004441a0,114,MidiPlayer::LoadFile,?LoadFile@MidiPlayer@@QAEHHPAD@Z
 0x00444220,54,MidiPlayer::UnloadFile,?UnloadFile@MidiPlayer@@QAEXH@Z
 0x00444260,123,MidiPlayer::FreeTracks,?FreeTracks@MidiPlayer@@QAEXXZ
 0x004442e0,511,Func4442e0,
@@ -2378,4 +2378,5 @@ address,size,name,symbol
 0x004b4280,4,CoCreateInstance,__imp__CoCreateInstance@20
 0x004b4284,4,CoUninitialize,__imp__CoUninitialize@0
 0x004b4288,4,CoInitialize,__imp__CoInitialize@4
+0x0164d540,,g_Log,?g_Log@@3VLog@@A
 0x017ce758,,g_App,?g_App@@3VApp@@A
