@@ -283,6 +283,88 @@ int UpdateCirclingOption(Player *player, PlayerOption *option)
     return 0;
 }
 
+int UpdateTrailingOption(Player *player, PlayerOption *option)
+{
+    float target;
+    float dist;
+
+    switch (option->active)
+    {
+    case 1:
+        player->anm->StartScript(&option->sprite, 0x15);
+        option->active = 2;
+        option->center = player->posHistory[15];
+        option->orbitAngle = 0.0f;
+        option->angle = -1.5707964f;
+    case 2:
+        option->orbitAngle = AddNormalizeAngle(option->orbitAngle, 0.05235988f);
+        ((Vector2 *)&option->pos)->SetPolar(option->orbitAngle, 8.0f);
+        option->center = (player->posHistory[15] - option->center) * 0.05f + option->center;
+        option->pos += option->center;
+        option->pos.z = 0.0f;
+        g_EffectManager.SpawnEffect(0x2f, &option->pos, 1, 0x80405080);
+        switch (player->direction)
+        {
+        case 0:
+            // Standing still keeps the angle.
+            goto done;
+        case 1:
+            target = 1.5707964f;
+            break;
+        case 2:
+            target = -1.5707964f;
+            break;
+        case 3:
+            target = 0.0f;
+            break;
+        case 4:
+            target = 3.1415927f;
+            break;
+        case 5:
+            target = 0.7853982f;
+            break;
+        case 6:
+            target = 2.3561945f;
+            break;
+        case 7:
+            target = -0.7853982f;
+            break;
+        case 8:
+            target = -2.3561945f;
+            break;
+        }
+        dist = fabsf(option->angle - target);
+        if (dist > 3.1415927f)
+        {
+            target += option->angle > target ? 6.2831855f : -6.2831855f;
+            dist = fabsf(option->angle - target);
+        }
+        if (dist > 1.5707964f)
+        {
+            option->angle = target;
+        }
+        else
+        {
+            option->angle = AddNormalizeAngle((target - option->angle) * 0.07f, option->angle);
+        }
+    done:
+        break;
+    case 3:
+        if (option->timer == 0)
+        {
+            option->sprite.SetPendingInterrupt(5);
+        }
+        if (option->timer > 16)
+        {
+            option->active = 0;
+            option->update = NULL;
+            option->draw = NULL;
+        }
+        break;
+    }
+    return 0;
+}
+
 int UpdateSwirlOption(Player *player, PlayerOption *option)
 {
     D3DXVECTOR3 target = player->pos;

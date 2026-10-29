@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">73.21% (817)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">24.82% (277)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">73.30% (818)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">24.73% (276)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="546.86" height="6" x="0" y="0" class="named"/>
-<rect width="14.73" height="6" x="546.86" y="0" class="decompiled"/>
-<rect width="185.41" height="6" x="561.59" y="0" class="todo"/>
+<rect width="547.53" height="6" x="0" y="0" class="named"/>
+<rect width="14.73" height="6" x="547.53" y="0" class="decompiled"/>
+<rect width="184.74" height="6" x="562.26" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -864,7 +864,7 @@
 <rect width="12" height="12" x="645" y="225" class="named"><title>0x0044ea40 UpdateFrontOption (303 bytes)</title></rect>
 <rect width="12" height="12" x="660" y="225" class="named"><title>0x0044eb70 UpdateCirclingOption (731 bytes)</title></rect>
 <rect width="12" height="12" x="675" y="225" class="todo"><title>0x0044ee70 Func44ee70 (1059 bytes)</title></rect>
-<rect width="12" height="12" x="690" y="225" class="todo"><title>0x0044f2d0 Func44f2d0 (737 bytes)</title></rect>
+<rect width="12" height="12" x="690" y="225" class="named"><title>0x0044f2d0 UpdateTrailingOption (737 bytes)</title></rect>
 <rect width="12" height="12" x="705" y="225" class="todo"><title>0x0044f5e0 Func44f5e0 (810 bytes)</title></rect>
 <rect width="12" height="12" x="720" y="225" class="named"><title>0x0044f930 UpdateSwirlOption (570 bytes)</title></rect>
 <rect width="12" height="12" x="735" y="225" class="named"><title>0x0044fb70 FireShot (524 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">64.90%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">34.08%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">65.06%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">33.92%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="484.82" height="6" x="0" y="0" class="named"/>
-<rect width="7.57" height="6" x="484.82" y="0" class="decompiled"/>
-<rect width="254.60" height="6" x="492.40" y="0" class="todo"/>
+<rect width="486.02" height="6" x="0" y="0" class="named"/>
+<rect width="7.57" height="6" x="486.02" y="0" class="decompiled"/>
+<rect width="253.40" height="6" x="493.60" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1336,7 +1336,7 @@
 <rect width="17.65" height="18.19" x="729.35" y="24.13" class="named"><title>0x004639e0 SpriteEngine::ProjectSprite (771 bytes)</title></rect>
 <rect width="17.14" height="18.58" x="432.76" y="45.31" class="named"><title>0x0045c8c0 SoundPlayer::LoadSound (766 bytes)</title></rect>
 <rect width="17.14" height="18.02" x="432.76" y="66.89" class="named"><title>0x0045c190 SoundPlayer::Initialize (746 bytes)</title></rect>
-<rect width="17.14" height="17.76" x="432.76" y="87.91" class="todo"><title>0x0044f2d0 Func44f2d0 (737 bytes)</title></rect>
+<rect width="17.14" height="17.76" x="432.76" y="87.91" class="named"><title>0x0044f2d0 UpdateTrailingOption (737 bytes)</title></rect>
 <rect width="17.14" height="17.68" x="432.76" y="108.67" class="todo"><title>0x0042bea0 Func42bea0 (734 bytes)</title></rect>
 <rect width="17.14" height="17.59" x="432.76" y="129.35" class="named"><title>0x0044eb70 UpdateCirclingOption (731 bytes)</title></rect>
 <rect width="17.14" height="17.43" x="432.76" y="149.94" class="named"><title>0x0044748f App::SaveScreenshot (725 bytes)</title></rect>

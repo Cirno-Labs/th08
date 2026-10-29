@@ -795,7 +795,7 @@ address,size,name,symbol
 0x0044ea40,303,UpdateFrontOption,?UpdateFrontOption@@YIHPAVPlayer@@PAUPlayerOption@@@Z
 0x0044eb70,731,UpdateCirclingOption,?UpdateCirclingOption@@YIHPAVPlayer@@PAUPlayerOption@@@Z
 0x0044ee70,1059,Func44ee70,
-0x0044f2d0,737,Func44f2d0,
+0x0044f2d0,737,UpdateTrailingOption,?UpdateTrailingOption@@YIHPAVPlayer@@PAUPlayerOption@@@Z
 0x0044f5e0,810,Func44f5e0,
 0x0044f930,570,UpdateSwirlOption,?UpdateSwirlOption@@YIHPAVPlayer@@PAUPlayerOption@@@Z
 0x0044fb70,524,FireShot,?FireShot@@YIXPAVPlayer@@PAUPlayerBullet@@PAUShotData@@@Z

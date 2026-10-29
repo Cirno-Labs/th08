@@ -307,6 +307,12 @@ int UpdateFrontOption(Player *player, PlayerOption *option);
 // The update callback of an option circling a point beside the player
 // by its index, script 0x18 (0x44eb70).
 int UpdateCirclingOption(Player *player, PlayerOption *option);
+// The third option of character 3 (g_OptionUpdateFuncs[12][2]), which
+// swirls, radius 8, round a point easing (5% a frame) after the
+// player's oldest position, and turns its angle towards the player's
+// direction of movement, which FireOptionAimedShot fires along
+// (0x44f2d0).
+int UpdateTrailingOption(Player *player, PlayerOption *option);
 // The update callback of the two options that swirl, radius 6, round
 // points 32 left and right of the player, trailing effect 0x2f, script
 // 0x15 (0x44f930).
