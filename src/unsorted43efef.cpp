@@ -22,3 +22,22 @@ GdiSurface::~GdiSurface()
 {
     this->Release();
 }
+
+bool GdiSurface::Release()
+{
+    if (this->hdc != NULL)
+    {
+        SelectObject(this->hdc, this->oldObject);
+        DeleteDC(this->hdc);
+        DeleteObject(this->bitmap);
+        this->format = -1;
+        this->width = 0;
+        this->height = 0;
+        this->hdc = NULL;
+        this->bitmap = NULL;
+        this->oldObject = NULL;
+        this->bits = NULL;
+        return true;
+    }
+    return false;
+}

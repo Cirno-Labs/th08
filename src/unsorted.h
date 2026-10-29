@@ -361,7 +361,6 @@ public:
     // black. Returns false for other formats.
     bool InvertAlpha(int x, int y, int width, int height, int lightShading);
 
-
     int format;
     int width;
     int height;
