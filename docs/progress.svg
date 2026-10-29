@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">22.67% (253)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">77.33% (863)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">22.85% (255)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">77.15% (861)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="169.35" height="6" x="0" y="0" class="named"/>
-<rect width="577.65" height="6" x="169.35" y="0" class="todo"/>
+<rect width="170.69" height="6" x="0" y="0" class="named"/>
+<rect width="576.31" height="6" x="170.69" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -802,7 +802,7 @@
 <rect width="12" height="12" x="480" y="210" class="named"><title>0x004489f9 App::InitCriticalSections (54 bytes)</title></rect>
 <rect width="12" height="12" x="495" y="210" class="named"><title>0x00448a2f App::DeleteCriticalSections (54 bytes)</title></rect>
 <rect width="12" height="12" x="510" y="210" class="named"><title>0x00448a65 MusicScreen::UpdateIntro (177 bytes)</title></rect>
-<rect width="12" height="12" x="525" y="210" class="todo"><title>0x00448b16 Func448b16 (1854 bytes)</title></rect>
+<rect width="12" height="12" x="525" y="210" class="named"><title>0x00448b16 MusicScreen::UpdateList (1854 bytes)</title></rect>
 <rect width="12" height="12" x="540" y="210" class="todo"><title>0x00449254 MusicScreen::RegisterChain (221 bytes)</title></rect>
 <rect width="12" height="12" x="555" y="210" class="todo"><title>0x00449331 Func449331 (104 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="210" class="todo"><title>0x00449399 Func449399 (238 bytes)</title></rect>
@@ -810,7 +810,7 @@
 <rect width="12" height="12" x="600" y="210" class="todo"><title>0x0044970f Func44970f (1247 bytes)</title></rect>
 <rect width="12" height="12" x="615" y="210" class="todo"><title>0x00449bee Func449bee (28 bytes)</title></rect>
 <rect width="12" height="12" x="630" y="210" class="todo"><title>0x00449c0a Func449c0a (111 bytes)</title></rect>
-<rect width="12" height="12" x="645" y="210" class="todo"><title>0x00449c79 App::GetPreloadBgm (24 bytes)</title></rect>
+<rect width="12" height="12" x="645" y="210" class="named"><title>0x00449c79 App::GetPreloadBgm (24 bytes)</title></rect>
 <rect width="12" height="12" x="660" y="210" class="todo"><title>0x00449ca0 Func449ca0 (422 bytes)</title></rect>
 <rect width="12" height="12" x="675" y="210" class="todo"><title>0x00449e50 Func449e50 (78 bytes)</title></rect>
 <rect width="12" height="12" x="690" y="210" class="todo"><title>0x00449ea0 Func449ea0 (66 bytes)</title></rect>
@@ -1059,7 +1059,7 @@
 <rect width="12" height="12" x="585" y="285" class="todo"><title>0x00466160 Func466160 (72 bytes)</title></rect>
 <rect width="12" height="12" x="600" y="285" class="todo"><title>0x004661b0 Func4661b0 (341 bytes)</title></rect>
 <rect width="12" height="12" x="615" y="285" class="todo"><title>0x00466310 Func466310 (145 bytes)</title></rect>
-<rect width="12" height="12" x="630" y="285" class="todo"><title>0x004663b0 Func4663b0 (238 bytes)</title></rect>
+<rect width="12" height="12" x="630" y="285" class="todo"><title>0x004663b0 SpriteEngine::RenderText (238 bytes)</title></rect>
 <rect width="12" height="12" x="645" y="285" class="todo"><title>0x004664a0 Func4664a0 (432 bytes)</title></rect>
 <rect width="12" height="12" x="660" y="285" class="todo"><title>0x00466650 Func466650 (366 bytes)</title></rect>
 <rect width="12" height="12" x="675" y="285" class="todo"><title>0x004667c0 SpriteEngine::LoadSurface (670 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">12.51%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">87.49%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">12.92%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">87.08%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="93.46" height="6" x="0" y="0" class="named"/>
-<rect width="653.54" height="6" x="93.46" y="0" class="todo"/>
+<rect width="96.51" height="6" x="0" y="0" class="named"/>
+<rect width="650.49" height="6" x="96.51" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1242,7 +1242,7 @@
 <rect width="29.54" height="30.12" x="261.24" y="314.88" class="todo"><title>0x0041f420 Func41f420 (1899 bytes)</title></rect>
 <rect width="29.48" height="29.69" x="293.78" y="0" class="named"><title>0x00444a90 MidiPlayer::ProcessEvent (1871 bytes)</title></rect>
 <rect width="29.48" height="29.48" x="293.78" y="32.69" class="todo"><title>0x00413140 Func413140 (1859 bytes)</title></rect>
-<rect width="29.48" height="29.39" x="293.78" y="65.17" class="todo"><title>0x00448b16 Func448b16 (1854 bytes)</title></rect>
+<rect width="29.48" height="29.39" x="293.78" y="65.17" class="named"><title>0x00448b16 MusicScreen::UpdateList (1854 bytes)</title></rect>
 <rect width="29.48" height="29.38" x="293.78" y="97.57" class="todo"><title>0x0040ee10 Func40ee10 (1853 bytes)</title></rect>
 <rect width="29.48" height="29.38" x="293.78" y="129.94" class="todo"><title>0x0040f570 Func40f570 (1853 bytes)</title></rect>
 <rect width="29.48" height="28.99" x="293.78" y="162.32" class="named"><title>0x00445453 App::OnUpdate (1831 bytes)</title></rect>
@@ -1591,7 +1591,7 @@
 <rect width="8.77" height="8.47" x="558.02" y="201.10" class="todo"><title>0x004143e0 Func4143e0 (238 bytes)</title></rect>
 <rect width="8.77" height="8.47" x="558.02" y="212.57" class="todo"><title>0x00421300 Func421300 (238 bytes)</title></rect>
 <rect width="8.77" height="8.47" x="558.02" y="224.04" class="todo"><title>0x00449399 Func449399 (238 bytes)</title></rect>
-<rect width="8.77" height="8.47" x="558.02" y="235.51" class="todo"><title>0x004663b0 Func4663b0 (238 bytes)</title></rect>
+<rect width="8.77" height="8.47" x="558.02" y="235.51" class="todo"><title>0x004663b0 SpriteEngine::RenderText (238 bytes)</title></rect>
 <rect width="8.77" height="8.37" x="558.02" y="246.98" class="todo"><title>0x00425d70 Func425d70 (236 bytes)</title></rect>
 <rect width="8.77" height="8.37" x="558.02" y="258.36" class="named"><title>0x00472750 CSound::Play (236 bytes)</title></rect>
 <rect width="8.77" height="8.28" x="558.02" y="269.73" class="todo"><title>0x00437f5c Func437f5c (234 bytes)</title></rect>
@@ -2215,7 +2215,7 @@
 <rect width="0.89" height="0.50" x="730.55" y="313.38" class="todo"><title>0x00438a71 Func438a71 (24 bytes)</title></rect>
 <rect width="0.89" height="0.50" x="734.44" y="313.38" class="todo"><title>0x004390d6 Func4390d6 (24 bytes)</title></rect>
 <rect width="0.89" height="0.50" x="738.33" y="313.38" class="todo"><title>0x004396f8 Func4396f8 (24 bytes)</title></rect>
-<rect width="0.89" height="0.50" x="742.22" y="313.38" class="todo"><title>0x00449c79 App::GetPreloadBgm (24 bytes)</title></rect>
+<rect width="0.89" height="0.50" x="742.22" y="313.38" class="named"><title>0x00449c79 App::GetPreloadBgm (24 bytes)</title></rect>
 <rect width="0.89" height="0.50" x="746.11" y="313.38" class="todo"><title>0x0044d630 Func44d630 (24 bytes)</title></rect>
 <rect width="0.79" height="0.59" x="718.88" y="316.88" class="todo"><title>0x0045a0dc Func45a0dc (24 bytes)</title></rect>
 <rect width="0.79" height="0.44" x="718.88" y="320.47" class="todo"><title>0x004066e0 Func4066e0 (23 bytes)</title></rect>

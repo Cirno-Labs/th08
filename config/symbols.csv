@@ -734,7 +734,7 @@ address,size,name,symbol
 0x004489f9,54,App::InitCriticalSections,?InitCriticalSections@App@@QAEXXZ
 0x00448a2f,54,App::DeleteCriticalSections,?DeleteCriticalSections@App@@QAEXXZ
 0x00448a65,177,MusicScreen::UpdateIntro,?UpdateIntro@MusicScreen@@QAEHXZ
-0x00448b16,1854,Func448b16,
+0x00448b16,1854,MusicScreen::UpdateList,?UpdateList@MusicScreen@@QAEHXZ
 0x00449254,221,MusicScreen::RegisterChain,?RegisterChain@MusicScreen@@SIHXZ
 0x00449331,104,Func449331,
 0x00449399,238,Func449399,
@@ -991,7 +991,7 @@ address,size,name,symbol
 0x00466160,72,Func466160,
 0x004661b0,341,Func4661b0,
 0x00466310,145,Func466310,
-0x004663b0,238,Func4663b0,
+0x004663b0,238,SpriteEngine::RenderText,?RenderText@SpriteEngine@@QAAXPAVSprite@@KKPADZZ
 0x004664a0,432,Func4664a0,
 0x00466650,366,Func466650,
 0x004667c0,670,SpriteEngine::LoadSurface,?LoadSurface@SpriteEngine@@QAEHHPAD@Z
@@ -2401,6 +2401,7 @@ address,size,name,symbol
 0x004c78e0,,g_CryptParams,?g_CryptParams@@3PAUCryptParams@@A
 0x004c7940,,g_CryptMagic,?g_CryptMagic@@3PAEA
 0x004c7948,,g_FormatInfos,?g_FormatInfos@@3PAUFormatInfo@@A
+0x004c7aac,,g_MusicNotHeardComment,?g_MusicNotHeardComment@@3PAPADA
 0x004c8040,,g_SoundInfos,?g_SoundInfos@@3PAUSoundInfo@@A
 0x004c81b0,,g_SoundPaths,?g_SoundPaths@@3PAPADA
 0x004c8704,,g_FileModes,?g_FileModes@@3PAPADA

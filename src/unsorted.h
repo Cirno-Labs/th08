@@ -208,9 +208,12 @@ public:
     int GetForce16BitTextures();
     int GetReferenceRasterizer();
     int GetWindowed();
-    // flags.preloadBgm, through an out-of-line copy in an /Os object
-    // (0x449c79).
-    int GetPreloadBgm();
+    // flags.preloadBgm. Inline: the copy at 0x449c79 comes from the /Os
+    // music screen object.
+    int GetPreloadBgm()
+    {
+        return this->flags.preloadBgm;
+    }
 
     // Whether the back buffer is cleared every frame: forced, or because
     // the items around the game are not drawn. Inline; the operands are
