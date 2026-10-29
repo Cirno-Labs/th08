@@ -18,8 +18,19 @@ our own analysis or, for library code, from the libraries themselves.
 
 ## Status
 
-The toolchain and workflow are up, taken from the th07 project. No
-function is decompiled yet.
+The toolchain and workflow are up, taken from the th07 project, and the
+first function matches.
+
+Ghidra finds 2225 functions. As in th06 and th07, the game code is mostly
+compiled without optimization, so its functions start with `push ebp;
+mov ebp, esp`, with a few objects optimized for size; the statically
+linked D3DX8 and CRT code is optimized. That puts the game code at
+`0x402000`–`0x475298`: 1116 functions, about 460 KB. D3DX8's tables
+follow it, then the DirectX import thunks, D3DX8 and the CRT.
+
+```sh
+just analyze   # writes build/functions_100d.csv
+```
 
 ## Target
 
