@@ -709,6 +709,10 @@ public:
     // Queues a command of `type` with `arg` and `path` in the first free
     // entry of `commands`.
     void QueueSoundCommand(int type, int arg, char *path);
+    // Steps the BGM's fades, if there is a BGM: UpdateFade, then
+    // UpdateFadeIn, UpdateFadeDown and UpdateFadeUp. In App's object
+    // (0x447764); th07's App::OnUpdate called UpdateFade itself.
+    void UpdateBgmFades();
 
     IDirectSound8 *dsound;
     DWORD unk_004;

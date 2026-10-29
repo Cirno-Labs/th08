@@ -709,7 +709,7 @@ address,size,name,symbol
 0x0044735b,198,Timer::Sub,?Sub@Timer@@QAEXH@Z
 0x00447421,110,App::TickTimer,?TickTimer@App@@QAEXPAHPAM@Z
 0x0044748f,725,App::SaveScreenshot,?SaveScreenshot@App@@QAEHPAD@Z
-0x00447764,77,Func447764,
+0x00447764,77,SoundPlayer::UpdateBgmFades,?UpdateBgmFades@SoundPlayer@@QAEXXZ
 0x004477b1,1363,Func4477b1,
 0x00447d04,82,Func447d04,
 0x00447d56,241,Func447d56,

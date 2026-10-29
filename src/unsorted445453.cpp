@@ -698,6 +698,17 @@ int App::SaveScreenshot(char *path)
     return 0;
 }
 
+void SoundPlayer::UpdateBgmFades()
+{
+    if (this->bgm != NULL)
+    {
+        this->bgm->UpdateFade();
+        this->bgm->UpdateFadeIn();
+        this->bgm->UpdateFadeDown();
+        this->bgm->UpdateFadeUp();
+    }
+}
+
 inline void FreeData(void *data)
 {
     free(data);
