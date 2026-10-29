@@ -379,3 +379,19 @@ void Gui::ShowSpellCardBonus(int value)
     this->impl->spellBonusPopup.value = value;
     g_App.redrawFrames = 2;
 }
+
+void CopySpriteToTexture(int sprite)
+{
+    RECT dstRect;
+    RECT spriteRect;
+
+    dstRect.left = g_Gui.anm->GetSprite(10)->startX;
+    dstRect.top = g_Gui.anm->GetSprite(10)->startY;
+    dstRect.right = g_Gui.anm->GetSprite(10)->endX;
+    dstRect.bottom = g_Gui.anm->GetSprite(10)->endY;
+    spriteRect.left = g_Gui.anm->GetSprite(sprite)->startX;
+    spriteRect.top = g_Gui.anm->GetSprite(sprite)->startY;
+    spriteRect.right = g_Gui.anm->GetSprite(sprite)->endX;
+    spriteRect.bottom = g_Gui.anm->GetSprite(sprite)->endY;
+    g_SpriteEngine->CopyTextureRect(10, 0, 10, 1, &dstRect, &spriteRect);
+}

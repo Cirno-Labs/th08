@@ -1626,7 +1626,9 @@ public:
     unsigned int livesChanged : 2;
     unsigned int bombsChanged : 2;
     GuiImpl *impl;
-    unsigned char unk_c[0x90];
+    // front.anm, as th07's ANM slot.
+    AnmLoaded *anm;
+    unsigned char unk_10[0x8c];
 };
 ASSERT_SIZE(Gui, 0x9c);
 extern Gui g_Gui;

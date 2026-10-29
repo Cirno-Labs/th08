@@ -447,6 +447,13 @@ public:
         this->SetScript(vm, this->scripts[script]);
     }
 
+    // Sprite `sprite` of this file. Inline; the copy at 0x406880 is an
+    // /Od object's.
+    SpriteData *GetSprite(int sprite)
+    {
+        return &this->sprites[sprite];
+    }
+
     // Its slot in SpriteEngine::anms.
     int slot;
     // The file's data: the first of its chained ANMs.
