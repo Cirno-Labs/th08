@@ -313,6 +313,9 @@ int UpdateCirclingOption(Player *player, PlayerOption *option);
 // direction of movement, which FireOptionAimedShot fires along
 // (0x44f2d0).
 int UpdateTrailingOption(Player *player, PlayerOption *option);
+// UpdateTrailingOption for a solo character: tinted red while focused,
+// when it keeps its angle (0x44f5e0).
+int UpdateTintedTrailingOption(Player *player, PlayerOption *option);
 // The update callback of the two options that swirl, radius 6, round
 // points 32 left and right of the player, trailing effect 0x2f, script
 // 0x15 (0x44f930).
