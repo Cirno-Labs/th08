@@ -676,3 +676,5 @@ void SpawnBombAura(Player *player);
 // frames, then home in on orbHomingTarget (else the player) and burst
 // after 200 damage or 30 frames before the end (0x40c010).
 void UpdateReimuBomb(Player *player);
+// Its draw callback: dims the play area and draws the orbs (0x40c820).
+void DrawReimuBomb(Player *player);
