@@ -118,6 +118,8 @@ public:
     void ReleaseSurfaces();
     // Releases the vertex buffer (0x446f0b, in App's object).
     void ReleaseVertexBuffer();
+    // Starts batching quads for a frame, as th07's (0x462e00).
+    void BeginQuadBatch();
     // Draws the batched quads (0x462e40).
     void FlushQuadBatch();
     // Loads the image at `path` as surface `surface` (0x4667c0).

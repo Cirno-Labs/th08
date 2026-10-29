@@ -634,8 +634,8 @@ address,size,name,symbol
 0x00441e10,46,SpriteEngine::`scalar deleting destructor',??_GSpriteEngine@@QAEPAXI@Z
 0x00441e40,46,MidiPlayer::`scalar deleting destructor',??_GMidiPlayer@@QAEPAXI@Z
 0x00441e70,482,GameWindow::RunFrame,?RunFrame@GameWindow@@QAEHXZ
-0x00442060,295,Func442060,
-0x00442190,112,Func442190,
+0x00442060,295,PresentFrame,?PresentFrame@@YIXXZ
+0x00442190,112,GameWindow::GetTime,?GetTime@GameWindow@@QAENXZ
 0x00442200,56,CreateD3d,?CreateD3d@@YIHXZ
 0x00442240,329,CreateGameWindow,?CreateGameWindow@@YIHPAUHINSTANCE__@@@Z
 0x00442390,303,Func442390,
@@ -954,7 +954,7 @@ address,size,name,symbol
 0x00462750,52,Func462750,
 0x00462790,278,Func462790,
 0x004628b0,1359,Func4628b0,
-0x00462e00,60,Func462e00,
+0x00462e00,60,SpriteEngine::BeginQuadBatch,?BeginQuadBatch@SpriteEngine@@QAEXXZ
 0x00462e40,198,SpriteEngine::FlushQuadBatch,?FlushQuadBatch@SpriteEngine@@QAEXXZ
 0x00462f10,211,Func462f10,
 0x00462ff0,469,SpriteEngine::DrawUnrotated,?DrawUnrotated@SpriteEngine@@QAEHPAVSprite@@@Z

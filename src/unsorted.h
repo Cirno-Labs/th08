@@ -443,8 +443,13 @@ inline void Timer::Tick()
 struct GameWindow
 {
     // Runs one frame of the main loop. Returns 0 to go on, else what
-    // App::RegisterChain's result means.
+    // App::RegisterChain's result means. New in th08: paces the frames
+    // by nextFrameTime, 1/60 s apart, and sleeps while it is ahead.
     int RunFrame();
+    // The time in seconds by the performance counter, or else
+    // timeGetTime() in milliseconds: RunFrame's pacing is off without a
+    // performance counter.
+    double GetTime();
 
     HWND hwnd;
     // Set when the window is being closed: the main loop ends.

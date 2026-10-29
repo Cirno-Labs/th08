@@ -184,6 +184,64 @@ stop:
     return 0;
 }
 
+int GameWindow::RunFrame()
+{
+    int res;
+
+    this->now = this->GetTime();
+    // The clock went back: start again from now.
+    if (this->lastTime > this->now)
+    {
+        this->nextFrameTime = this->now;
+    }
+    this->lastTime = this->now;
+    if (this->nextFrameTime < this->now)
+    {
+        while (this->nextFrameTime < this->now)
+        {
+            this->nextFrameTime += 1.0 / 60.0;
+        }
+        g_SpriteEngine->FlushQuadBatch();
+        g_App.viewport.X = 0;
+        g_App.viewport.Y = 0;
+        g_App.viewport.Width = 640;
+        g_App.viewport.Height = 480;
+        g_App.d3dDevice->SetViewport(&g_App.viewport);
+        res = g_Chain.RunCalcChain();
+        g_SoundPlayer.PlayQueuedSounds();
+        if (res == 0)
+        {
+            g_App.CloseSubThread();
+            return 1;
+        }
+        if (res == -1)
+        {
+            g_App.CloseSubThread();
+            return 2;
+        }
+        this->curFrame++;
+        if (g_App.frameSkip <= this->curFrame)
+        {
+            g_App.d3dDevice->BeginScene();
+            g_SpriteEngine->BeginQuadBatch();
+            g_App.fogState = 0xff;
+            g_App.DisableFog();
+            g_Chain.RunDrawChain();
+            g_SpriteEngine->FlushQuadBatch();
+            g_App.d3dDevice->SetTexture(0, NULL);
+            g_App.d3dDevice->EndScene();
+            this->curFrame = 0;
+        }
+        this->now = this->GetTime();
+        PresentFrame();
+    }
+    else
+    {
+        Sleep(0);
+    }
+    return 0;
+}
+
 void FormatCapsReport(D3DCAPS8 *caps, char *buffer)
 {
     char *p = buffer;
