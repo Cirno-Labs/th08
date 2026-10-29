@@ -863,3 +863,9 @@ int Player::OnDraw(Player *player)
     }
     return 1;
 }
+
+int Player::OnDraw2(Player *player)
+{
+    DrawHitBullets(player);
+    return 1;
+}
