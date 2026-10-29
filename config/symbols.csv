@@ -845,7 +845,7 @@ address,size,name,symbol
 0x00453c80,25,Func453c80,
 0x00453ca0,28,Func453ca0,
 0x00453cc0,17,Func453cc0,
-0x00453cd1,41,Func453cd1,
+0x00453cd1,41,GetStageName,?GetStageName@@YIPADH@Z
 0x00453cfa,19,Func453cfa,
 0x00453d0d,1372,SaveScoreDat,?SaveScoreDat@@YIXPAVResultScreen@@@Z
 0x00454269,47,Func454269,
@@ -2412,6 +2412,7 @@ address,size,name,symbol
 0x004c7940,,g_CryptMagic,?g_CryptMagic@@3PAEA
 0x004c7948,,g_FormatInfos,?g_FormatInfos@@3PAUFormatInfo@@A
 0x004c7aac,,g_MusicNotHeardComment,?g_MusicNotHeardComment@@3PAPADA
+0x004c7fac,,g_StageNames,?g_StageNames@@3PAPADA
 0x004c8040,,g_SoundInfos,?g_SoundInfos@@3PAUSoundInfo@@A
 0x004c81b0,,g_SoundPaths,?g_SoundPaths@@3PAPADA
 0x004c8704,,g_FileModes,?g_FileModes@@3PAPADA

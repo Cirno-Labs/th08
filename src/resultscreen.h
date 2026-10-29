@@ -309,6 +309,18 @@ ASSERT_SIZE(ResultScreen, 0x477b0);
 // lists and g_GameManager's chunks, as th07's (0x453d0d).
 void SaveScoreDat(ResultScreen *screen);
 
+// The stages' names ("Stage 1", ..., "Stage 4-uncanny", "Stage
+// 4-powerful", ..., "Extra Stage"), by stage. New in th08.
+extern char *g_StageNames[9];
+// The shot types' names ("霊夢＆紫", ..., "西行寺　幽々子"), then
+// "全主人公合計", as th07's.
+extern char *g_ShotNames[13];
+
+// Returns g_StageNames[stage], or "Clear" for 9 and over. New in th08.
+char *GetStageName(int stage);
+// Returns g_ShotNames[shot]. New in th08.
+char *GetShotName(int shot);
+
 // Moves `screen`'s cursor up or down through `count` items, wrapping.
 // Returns -1 for up, 1 for down, 0 if it did not move.
 int MoveCursorVertical(ResultScreen *screen, int count);

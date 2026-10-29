@@ -9,6 +9,11 @@
 #include "resultscreen.h"
 #include "unsorted.h"
 
+char *GetStageName(int stage)
+{
+    return stage >= 9 ? "Clear" : g_StageNames[stage];
+}
+
 int ResultScreen::RegisterChain(int mode)
 {
     ResultScreen *screen = (ResultScreen *)g_MemoryManager.Register(new ResultScreen, sizeof(ResultScreen),
