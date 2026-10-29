@@ -302,6 +302,54 @@ int MainMenu::MoveMenuCursorLR(int count)
     return 0;
 }
 
+int MainMenu::DrawCharacterMenu()
+{
+    BOOL shown = FALSE;
+
+    if (this->inputLockout > 8)
+    {
+        if (g_GameManager.HasClearedStage(7, this->cursor, g_App.defaultDifficulty) &&
+            g_GameManager.HasClearedStageWithContinues(6, this->cursor, g_App.defaultDifficulty))
+        {
+            shown = TRUE;
+            this->titleAnm->InitSprite(&this->unkSprites[0], 0x92);
+        }
+        else if (g_GameManager.HasClearedStage(7, this->cursor, g_App.defaultDifficulty))
+        {
+            shown = TRUE;
+            this->titleAnm->InitSprite(&this->unkSprites[0], 0x94);
+        }
+        else if (g_GameManager.HasClearedStage(7, this->cursor, 0) || g_GameManager.HasClearedStage(7, this->cursor, 1) ||
+                 g_GameManager.HasClearedStage(7, this->cursor, 2) || g_GameManager.HasClearedStage(7, this->cursor, 3) ||
+                 this->cursor > 3)
+        {
+            shown = TRUE;
+            this->titleAnm->InitSprite(&this->unkSprites[0], 0x93);
+        }
+        else if (g_GameManager.HasClearedStageWithContinues(6, this->cursor, 0) ||
+                 g_GameManager.HasClearedStageWithContinues(6, this->cursor, 1) ||
+                 g_GameManager.HasClearedStageWithContinues(6, this->cursor, 2) ||
+                 g_GameManager.HasClearedStageWithContinues(6, this->cursor, 3))
+        {
+            shown = TRUE;
+            this->titleAnm->InitSprite(&this->unkSprites[0], 0x91);
+        }
+    }
+    if (shown)
+    {
+        this->unkSprites[0].flags |= 0x1800;
+        this->unkSprites[0].alpha = 0xff;
+        this->unkSprites[0].colorRgb[2] = 0xff;
+        this->unkSprites[0].colorRgb[1] = 0xff;
+        this->unkSprites[0].colorRgb[0] = 0xff;
+        this->unkSprites[0].pos.x = 400.0f;
+        this->unkSprites[0].pos.y = 170.0f;
+        this->unkSprites[0].pos.z = 0.0f;
+        g_SpriteEngine->DrawUnrotated(&this->unkSprites[0]);
+    }
+    return 0;
+}
+
 int MainMenu::OnDraw(MainMenu *menu)
 {
     int i;
