@@ -194,3 +194,12 @@ BOOL Gui::MsgHoldsTimeline()
     }
     return this->impl->msg.scriptIndex >= 0;
 }
+
+int Gui::IsMsgRunning()
+{
+    if (this->impl == NULL)
+    {
+        return 0;
+    }
+    return this->impl->msg.scriptIndex >= 0 || this->impl->msg.scriptIndex == -2 ? 1 : 0;
+}
