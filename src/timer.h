@@ -86,6 +86,11 @@ struct Timer
     {
         return this->current != this->previous && this->current == frames;
     }
+    // Whether it has just ticked to a multiple of `n`. New in th08.
+    BOOL HasTickedEvery(int n)
+    {
+        return this->current != this->previous && this->current % n == 0;
+    }
     BOOL operator==(int frames)
     {
         return this->current == frames;

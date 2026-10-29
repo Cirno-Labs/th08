@@ -2,6 +2,7 @@
 // per-shot bomb callbacks of g_BombFuncs and the effect callbacks of
 // g_EffectInfos. Only part of it so far.
 
+#include "bullet.h"
 #include "effect.h"
 #include "enemy.h"
 #include "item.h"
@@ -868,6 +869,84 @@ void DrawMarisaBomb(Player *player)
         sprite->pos.z = 0.0f;
         g_SpriteEngine->Draw(sprite);
     }
+}
+
+void UpdateMarisaLastWord(Player *player)
+{
+    PlayerBomb *bomb = &player->bomb;
+
+    if (bomb->timer.HasTicked() && bomb->timer == 0)
+    {
+        float theta;
+        PlayerBombPart *part;
+
+        StartBomb(player, 0, "\x96\x82\x96\x43\x81\x75\x83\x74\x83\x40\x83\x43\x83\x69\x83\x8b\x83\x58\x83\x70\x81\x5b\x83\x4e\x81\x76", 350, 380, 1);
+        theta = -3.1415927f;
+        part = bomb->parts;
+        g_SoundPlayer.QueueSound(0xd, 0);
+        g_SoundPlayer.QueueSound(0x13, 0);
+        part->pos = player->pos;
+        player->anm->StartScript(&bomb->parts[0].sprites[0], 0x23);
+        player->anm->StartScript(&bomb->parts[0].sprites[1], 0x24);
+        player->anm->StartScript(&bomb->parts[0].sprites[2], 0x25);
+        player->anm->StartScript(&bomb->parts[0].sprites[3], 0x26);
+        player->anm->StartScript(&bomb->parts[0].sprites[4], 0x27);
+        ScreenEffect::StartEffect(7, 0x10, 0x78, 0x3c, 0x78, 0x15);
+        player->moveScaleY = 0.2f;
+        player->moveScaleX = 0.2f;
+        bomb->unk_14 = 0;
+    }
+    if (bomb->timer.HasTickedEvery(10))
+    {
+        Effect *eff;
+        float scaleStart[2];
+        float scaleTo[2];
+
+        eff = g_EffectManager.SpawnReservedEffect(0x35, &player->pos, bomb->unk_14 % 4 + 4, 1, 0xffffffff);
+        if (bomb->unk_14 & 1)
+        {
+            g_EtamaAnm->StartScript(&eff->sprite, 0x5c);
+        }
+        eff->segmentCount = 0x20;
+        eff->unk_334 = 0.0f;
+        D3DXVECTOR3 start;
+        D3DXVECTOR3 to;
+        start.x = 0.0f;
+        start.y = 0.0f;
+        start.z = 0.0f;
+        to.x = 128.0f;
+        to.y = 0.0f;
+        to.z = 0.0f;
+        eff->sprite.SetMoveInterp(30, 4, &start, &to);
+        scaleStart[0] = 32.0f;
+        scaleStart[1] = 0.0f;
+        scaleTo[0] = 64.0f;
+        scaleTo[1] = 0.0f;
+        eff->sprite.SetScaleInterp(30, 1, (D3DXVECTOR2 *)scaleStart, (D3DXVECTOR2 *)scaleTo);
+        eff->sprite.SetAlphaInterp(30, 3, 0xff, 0);
+        eff->sprite.SetColorInterp(30, 0, 0xffffffff, 0xffff0000);
+        g_SpriteEngine->Step(&eff->sprite);
+        bomb->unk_14++;
+        g_SoundPlayer.QueueSoundPanned(0x11, player->pos.x);
+    }
+    if (player->bomb.timer.HasTicked() && player->bomb.timer.AsFrames() % 4 != 0)
+    {
+        PlayerBombHitbox *hitbox;
+        D3DXVECTOR3 pos;
+
+        pos = player->pos;
+        pos.x = 192.0f;
+        pos.y /= 2.0f;
+        player->AddHitArea(&pos, 384.0f, pos.y * 2.0f, 6, 0);
+        pos = player->pos;
+        pos.y /= 2.0f;
+        hitbox = player->AddBombHitbox(&pos, 128.0f, pos.y * 2.0f, 12, 0);
+        hitbox->unk_3d = 1;
+        pos.x = 192.0f;
+        hitbox = player->AddBombHitbox(&pos, 384.0f, pos.y * 2.0f, 7, 0);
+        hitbox->unk_3d = 1;
+    }
+    g_SpriteEngine->StepSprites(&bomb->parts[0].sprites[0], 5);
 }
 
 int EffectUpdateBombRing41(Effect *effect)

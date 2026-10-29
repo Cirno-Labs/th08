@@ -249,6 +249,46 @@ public:
         this->rotation.z = z;
         this->flags |= 4;
     }
+    // Start interpolations as the ANM instructions do: over `frames`
+    // with `easing`, pos from `from` to `to`, the color's RGB, its alpha
+    // and the scale. New in th08. Inline; the copies at 0x40ec30,
+    // 0x40eca0, 0x40ed50 and 0x40eda0 are an /Od object's.
+    void SetMoveInterp(int frames, BYTE easing, D3DXVECTOR3 *from, D3DXVECTOR3 *to)
+    {
+        this->interpDuration[0] = 0;
+        this->interpFrame[0] = frames;
+        this->interpEasing = easing;
+        this->moveStart = *from;
+        this->moveEnd = *to;
+    }
+    void SetColorInterp(int frames, BYTE easing, D3DCOLOR from, D3DCOLOR to)
+    {
+        this->interpDuration[1] = 0;
+        this->interpFrame[1] = frames;
+        this->colorInterpEasing = easing;
+        ((BYTE *)&this->colorTween.y)[2] = from >> 16 & 0xff;
+        ((BYTE *)&this->colorTween.y)[1] = from >> 8 & 0xff;
+        ((BYTE *)&this->colorTween.y)[0] = from & 0xff;
+        ((BYTE *)&this->colorTween.z)[2] = to >> 16 & 0xff;
+        ((BYTE *)&this->colorTween.z)[1] = to >> 8 & 0xff;
+        ((BYTE *)&this->colorTween.z)[0] = to & 0xff;
+    }
+    void SetAlphaInterp(int frames, BYTE easing, BYTE from, BYTE to)
+    {
+        this->interpDuration[2] = 0;
+        this->interpFrame[2] = frames;
+        this->alphaInterpEasing = easing;
+        ((BYTE *)&this->colorTween.y)[3] = from;
+        ((BYTE *)&this->colorTween.z)[3] = to;
+    }
+    void SetScaleInterp(int frames, BYTE easing, D3DXVECTOR2 *from, D3DXVECTOR2 *to)
+    {
+        this->interpDuration[4] = 0;
+        this->interpFrame[4] = frames;
+        this->scaleInterpEasing = easing;
+        *(D3DXVECTOR2 *)&this->scaleTween = *from;
+        *(D3DXVECTOR2 *)&this->scaleTween.z = *to;
+    }
     // Set the blend mode to 1 (additive) or 0. Inline; the copies at
     // 0x44e0f0 and 0x44e120 are the player object's.
     void SetBlendModeAdd()
