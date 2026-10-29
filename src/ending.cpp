@@ -340,3 +340,25 @@ int Ending::RegisterChain()
     g_Chain.AddToDrawChain(ending->drawChain, 4);
     return 0;
 }
+
+int Ending::OnUpdate(Ending *ending)
+{
+    int i;
+    int extra = 0;
+
+loop:
+    if (ending->RunScript() != 0)
+    {
+        return 0;
+    }
+    for (i = 0; i < 0xf; i++)
+    {
+        g_SpriteEngine->Step(&ending->sprites[i]);
+    }
+    if (ending->canSkip != 0 && (g_Buttons & 0x100) != 0 && extra < 8)
+    {
+        extra++;
+        goto loop;
+    }
+    return 1;
+}
