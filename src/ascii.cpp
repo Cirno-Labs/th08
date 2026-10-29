@@ -583,3 +583,32 @@ void AsciiText::Func403600(D3DXVECTOR3 *pos, int count, int value, D3DCOLOR colo
     popup->scaleY = this->scaleY;
     this->nextNumberPopup++;
 }
+
+void PauseMenu::DrawPauseMenu()
+{
+    DWORD i;
+
+    if (g_GameManager.isPaused)
+    {
+        g_SpriteEngine->FlushQuadBatch();
+        g_App.viewport.X = g_GameManager.arena[0];
+        g_App.viewport.Y = g_GameManager.arena[1];
+        g_App.viewport.Width = g_GameManager.arena[2];
+        g_App.viewport.Height = g_GameManager.arena[3];
+        g_App.d3dDevice->SetViewport(&g_App.viewport);
+        if ((g_App.stateFlags >> 1) & 1 && this->state != 0)
+        {
+            Sprite sprite = this->background;
+
+            sprite.flags |= 0x2000;
+            g_SpriteEngine->DrawUnrotated(&sprite);
+        }
+        for (i = 0; i < ARRAY_SIZE(this->sprites); i++)
+        {
+            if (this->sprites[i].IsShown())
+            {
+                g_SpriteEngine->DrawUnrotated(&this->sprites[i]);
+            }
+        }
+    }
+}
