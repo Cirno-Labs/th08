@@ -50,6 +50,11 @@ public:
     Item *SpawnItem(D3DXVECTOR3 *pos, int type, int state);
     // Collects every item on the screen, as th07's (0x4413e0).
     void CollectAll();
+    // Turns every active power item (types 0 and 2) except `except` into
+    // type 8, with effect 0 on it, as th07's ConvertPowerItems (type 7
+    // there). Those not rising faster are set to drift up at 0.5
+    // (0x441450).
+    void ConvertPowerItems(Item *except);
 
     // The last one is what SpawnItem returns when all others are taken.
     Item items[0x831];

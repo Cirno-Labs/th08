@@ -322,7 +322,7 @@ address,size,name,symbol
 0x00425390,74,Func425390,
 0x004253e0,34,Func4253e0,
 0x00425410,25,Func425410,
-0x00425430,529,Func425430,
+0x00425430,529,EffectManager::SpawnEffect,?SpawnEffect@EffectManager@@QAEPAUEffect@@HPAUD3DXVECTOR3@@HK@Z
 0x00425650,533,Func425650,
 0x00425870,365,Func425870,
 0x004259e0,394,Func4259e0,
@@ -622,7 +622,7 @@ address,size,name,symbol
 0x00441170,315,Func441170,
 0x004412b0,293,Func4412b0,
 0x004413e0,97,ItemManager::CollectAll,?CollectAll@ItemManager@@QAEXXZ
-0x00441450,209,Func441450,
+0x00441450,209,ItemManager::ConvertPowerItems,?ConvertPowerItems@ItemManager@@QAEXPAUItem@@@Z
 0x00441530,109,Func441530,
 0x004415a0,451,Func4415a0,
 0x00441770,106,Func441770,
@@ -2453,6 +2453,7 @@ address,size,name,symbol
 0x004e4b50,,g_FogColorChanged,?g_FogColorChanged@@3EA
 0x004ea3f4,,g_CameraSizeOffset,?g_CameraSizeOffset@@3UD3DXVECTOR3@@A
 0x004ea670,,g_SpellCard,?g_SpellCard@@3USpellCard@@A
+0x004ece60,,g_EffectManager,?g_EffectManager@@3VEffectManager@@A
 0x00577eb4,,g_EtamaAnm,?g_EtamaAnm@@3PAVAnmLoaded@@A
 0x00577f20,,g_EnemyManager,?g_EnemyManager@@3VEnemyManager@@A
 0x00f54e90,,g_BulletManager,?g_BulletManager@@3VBulletManager@@A

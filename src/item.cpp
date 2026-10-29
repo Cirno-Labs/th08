@@ -1,6 +1,7 @@
 // The items, 0x440010 to 0x4418bb, as th07's item.cpp.
 
 #include "bullet.h"
+#include "effect.h"
 #include "item.h"
 #include "player.h"
 #include "unsorted.h"
@@ -140,6 +141,28 @@ void ItemManager::CollectAll()
     {
         entry->state = 1;
         entry->velocity = D3DXVECTOR3(0.0f, -0.5f, 0.0f);
+        entry = entry->next;
+    }
+}
+
+void ItemManager::ConvertPowerItems(Item *except)
+{
+    Item *entry = this->activeList.next;
+
+    while (entry != NULL)
+    {
+        if (entry != except && (entry->type == 0 || entry->type == 2))
+        {
+            if (entry->velocity.y > -0.5f)
+            {
+                entry->velocity.x = 0.0f;
+                entry->velocity.y = -0.5f;
+                entry->velocity.z = 0.0f;
+            }
+            g_EffectManager.SpawnEffect(0, &entry->pos, 1, 0xffffffff);
+            entry->type = 8;
+            g_BulletManager.etamaAnm->StartScript(&entry->sprite, 0x45);
+        }
         entry = entry->next;
     }
 }
