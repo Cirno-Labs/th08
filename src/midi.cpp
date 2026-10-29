@@ -68,6 +68,12 @@ int MidiDevice::SendShortMsg(BYTE status, BYTE data1, BYTE data2)
     return midiOutShortMsg(this->handle, msg.dword) != MMSYSERR_NOERROR;
 }
 
+MmTimer::MmTimer()
+{
+    timeGetDevCaps(&this->caps, sizeof(this->caps));
+    this->timerId = 0;
+}
+
 void MmTimer::OnTimer()
 {
 }

@@ -662,7 +662,7 @@ address,size,name,symbol
 0x00443d10,59,MidiDevice::Close,?Close@MidiDevice@@QAEHXZ
 0x00443d50,78,MidiDevice::SendLongMsg,?SendLongMsg@MidiDevice@@QAEHPAUmidihdr_tag@@@Z
 0x00443da0,67,MidiDevice::SendShortMsg,?SendShortMsg@MidiDevice@@QAEHEEE@Z
-0x00443df0,48,Func443df0,
+0x00443df0,48,MmTimer::MmTimer,??0MmTimer@@QAE@XZ
 0x00443e20,41,Func443e20,
 0x00443e50,115,Func443e50,
 0x00443ed0,61,Func443ed0,
