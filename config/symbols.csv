@@ -153,7 +153,7 @@ address,size,name,symbol
 0x0040d410,25,Timer::operator%,??LTimer@@QAEHH@Z
 0x0040d430,1303,UpdateAliceBomb,?UpdateAliceBomb@@YIXPAVPlayer@@@Z
 0x0040d950,24,DrawAliceBomb,?DrawAliceBomb@@YIXPAVPlayer@@@Z
-0x0040d970,1390,Func40d970,
+0x0040d970,1390,UpdateAliceLastWord,?UpdateAliceLastWord@@YIXPAVPlayer@@@Z
 0x0040dee0,349,Func40dee0,
 0x0040e040,209,EffectUpdateBombRing42,?EffectUpdateBombRing42@@YIHPAUEffect@@@Z
 0x0040e120,209,EffectUpdateBombRing43,?EffectUpdateBombRing43@@YIHPAUEffect@@@Z

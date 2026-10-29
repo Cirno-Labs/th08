@@ -565,6 +565,108 @@ void DrawAliceBomb(Player *player)
     DimPlayAreaForBomb(player, 0x80404040);
 }
 
+void UpdateAliceLastWord(Player *player)
+{
+    PlayerBomb *bomb = &player->bomb;
+    PlayerBombPart *part = bomb->parts;
+
+    if (bomb->timer.HasTicked() && bomb->timer == 0)
+    {
+        StartBomb(player, 1, "\x96\x82\x91\x80\x81\x75\x83\x8a\x83\x5e\x81\x5b\x83\x93\x83\x43\x83\x69\x83\x6a\x83\x81\x83\x67\x83\x6c\x83\x58\x81\x76", 230, 280, 1);
+        g_SoundPlayer.QueueSound(0xd, 0);
+        part->pos = player->pos;
+    }
+    if (bomb->timer < 60)
+    {
+        D3DXVECTOR3 target(192.0f, 224.0f, 0.0f);
+        float progress;
+
+        progress = (progress = bomb->timer.AsFloat() / 60.0f) * progress;
+        player->options[0].pos = (target - part->pos) * progress + part->pos;
+        player->options[0].sprite.rotation.z += -0.31415927f;
+        player->AddHitAreaCircle(&player->options[0].pos, 32.0f, 0.0f, 0, 6);
+        player->AddBombHitboxCircle(&player->options[0].pos, 32.0f, 0.0f, 40, 0);
+    }
+    else
+    {
+        player->options[0].sprite.rotation.z = 0.0f;
+        player->options[0].pos.x = 192.0f;
+        player->options[0].pos.y = 224.0f;
+        if (bomb->timer >= 128)
+        {
+            player->options[0].sprite.alpha = 0;
+        }
+        if (bomb->timer.HasTickedTo(60))
+        {
+            g_EffectManager.SpawnEffect(0x28, &player->options[0].pos, 1, 0xffffffff);
+        }
+        else if (bomb->timer.HasTickedTo(64))
+        {
+            g_EffectManager.SpawnEffect(0x28, &player->options[0].pos, 1, 0xffffd0d0);
+        }
+        else if (bomb->timer.HasTickedTo(68))
+        {
+            g_EffectManager.SpawnEffect(0x28, &player->options[0].pos, 1, 0xffffb0b0);
+        }
+        else if (bomb->timer.HasTickedTo(72))
+        {
+            g_EffectManager.SpawnEffect(0x28, &player->options[0].pos, 1, 0xffff8080);
+        }
+        else if (bomb->timer.HasTickedTo(76))
+        {
+            g_EffectManager.SpawnEffect(0x28, &player->options[0].pos, 1, 0xffff4040);
+        }
+        else if (bomb->timer.HasTickedTo(120))
+        {
+            Effect *effect;
+            PlayerBombHitbox *hitbox;
+
+            g_SoundPlayer.QueueSound(0xf, 0);
+            effect = g_EffectManager.SpawnEffect(0x2a, &player->options[0].pos, 1, 0xffffffff);
+            effect = g_EffectManager.SpawnEffect(0x2b, &player->options[0].pos, 1, 0xffffffff);
+            effect = g_EffectManager.SpawnEffect(0x2c, &player->options[0].pos, 1, 0xffffffff);
+            D3DXVECTOR3 pos(64.0f, 96.0f, 0.0f);
+            effect = g_EffectManager.SpawnEffect(0x2d, &pos, 1, 0xff0000f0);
+            pos.y = 352.0f;
+            effect = g_EffectManager.SpawnEffect(0x2d, &pos, 1, 0xfff00000);
+            pos.x = 320.0f;
+            effect = g_EffectManager.SpawnEffect(0x2d, &pos, 1, 0xff00f000);
+            pos.y = 96.0f;
+            effect = g_EffectManager.SpawnEffect(0x2d, &pos, 1, 0xff00f0f0);
+            player->AddHitAreaCircle(&player->options[0].pos, 1.0f, 5.0f, 110, 6);
+            hitbox = player->AddBombHitboxCircle(&player->options[0].pos, 1.0f, 5.0f, 70, 110);
+            hitbox->damageInterval = 5;
+        }
+        else if (bomb->timer.HasTickedTo(130))
+        {
+            Effect *effect = g_EffectManager.SpawnEffect(0x2d, &player->options[0].pos, 1, 0xffffffff);
+        }
+        else if (bomb->timer.HasTickedTo(140))
+        {
+            Effect *effect = g_EffectManager.SpawnEffect(0x2d, &player->options[0].pos, 1, 0xffffd0d0);
+        }
+        else if (bomb->timer.HasTickedTo(150))
+        {
+            Effect *effect = g_EffectManager.SpawnEffect(0x2d, &player->options[0].pos, 1, 0xffff8080);
+        }
+        else if (bomb->timer.HasTickedTo(160))
+        {
+            Effect *effect = g_EffectManager.SpawnEffect(0x2d, &player->options[0].pos, 1, 0xffff0000);
+        }
+        else if (bomb->timer.HasTickedTo(180))
+        {
+            ScreenEffect::StartEffect(3, 8, 1, 0xffffffff, 0, 0x15);
+            ScreenEffect::StartEffect(1, 0x18, 8, 0, 0, 0x15);
+            g_SoundPlayer.QueueSound(0x19, 0);
+        }
+        else if (bomb->timer.HasTickedTo(229))
+        {
+            player->options[0].active = 1;
+            player->options[0].timer = 0;
+        }
+    }
+}
+
 int EffectUpdateBombRing42(Effect *effect)
 {
     float t;

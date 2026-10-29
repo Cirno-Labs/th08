@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">75.09% (838)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">22.94% (256)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">75.18% (839)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">22.85% (255)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="560.92" height="6" x="0" y="0" class="named"/>
-<rect width="14.73" height="6" x="560.92" y="0" class="decompiled"/>
-<rect width="171.35" height="6" x="575.65" y="0" class="todo"/>
+<rect width="561.59" height="6" x="0" y="0" class="named"/>
+<rect width="14.73" height="6" x="561.59" y="0" class="decompiled"/>
+<rect width="170.69" height="6" x="576.31" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -222,7 +222,7 @@
 <rect width="12" height="12" x="15" y="45" class="named"><title>0x0040d410 Timer::operator% (25 bytes)</title></rect>
 <rect width="12" height="12" x="30" y="45" class="named"><title>0x0040d430 UpdateAliceBomb (1303 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="45" class="named"><title>0x0040d950 DrawAliceBomb (24 bytes)</title></rect>
-<rect width="12" height="12" x="60" y="45" class="todo"><title>0x0040d970 Func40d970 (1390 bytes)</title></rect>
+<rect width="12" height="12" x="60" y="45" class="named"><title>0x0040d970 UpdateAliceLastWord (1390 bytes)</title></rect>
 <rect width="12" height="12" x="75" y="45" class="todo"><title>0x0040dee0 Func40dee0 (349 bytes)</title></rect>
 <rect width="12" height="12" x="90" y="45" class="named"><title>0x0040e040 EffectUpdateBombRing42 (209 bytes)</title></rect>
 <rect width="12" height="12" x="105" y="45" class="named"><title>0x0040e120 EffectUpdateBombRing43 (209 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">67.05%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">31.93%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">67.35%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">31.63%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="500.88" height="6" x="0" y="0" class="named"/>
-<rect width="7.57" height="6" x="500.88" y="0" class="decompiled"/>
-<rect width="238.55" height="6" x="508.45" y="0" class="todo"/>
+<rect width="503.14" height="6" x="0" y="0" class="named"/>
+<rect width="7.57" height="6" x="503.14" y="0" class="decompiled"/>
+<rect width="236.29" height="6" x="510.71" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1266,7 +1266,7 @@
 <rect width="27.32" height="24.27" x="326.26" y="294.35" class="named"><title>0x0043d120 ReadJoystick (1457 bytes)</title></rect>
 <rect width="27.32" height="23.37" x="326.26" y="321.63" class="named"><title>0x004550fc ResultScreen::UpdateScoreDifficultySelect (1409 bytes)</title></rect>
 <rect width="25.75" height="24.45" x="356.57" y="0" class="named"><title>0x004464c8 App::LoadingThread (1391 bytes)</title></rect>
-<rect width="25.75" height="24.43" x="356.57" y="27.45" class="todo"><title>0x0040d970 Func40d970 (1390 bytes)</title></rect>
+<rect width="25.75" height="24.43" x="356.57" y="27.45" class="named"><title>0x0040d970 UpdateAliceLastWord (1390 bytes)</title></rect>
 <rect width="25.75" height="24.10" x="356.57" y="54.89" class="named"><title>0x0044cbf0 UpdateDyingState (1373 bytes)</title></rect>
 <rect width="25.75" height="24.08" x="356.57" y="81.99" class="named"><title>0x00453d0d SaveScoreDat (1372 bytes)</title></rect>
 <rect width="25.75" height="23.96" x="356.57" y="109.07" class="named"><title>0x004578aa ResultScreen::RunStatisticsMenu (1366 bytes)</title></rect>
