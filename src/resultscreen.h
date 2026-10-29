@@ -294,9 +294,9 @@ public:
     int UpdateScoreDifficultySelect();
     int UpdateScoreShotSelect();
     int UpdateScoreList();
-    int UpdateSpellCardDifficultySelect();
-    int UpdateSpellCardShotSelect();
-    int UpdateSpellCardList();
+    int UpdateSpellDifficultySelect();
+    int UpdateSpellShotSelect();
+    int UpdateSpellList();
     // Lets the player enter a name for the score just made, as th07's.
     int HandleNameEntry();
     // Offers to save the replay and lists the slots, as th07's.
@@ -338,7 +338,9 @@ public:
     int unk_3c;
     int unk_40;
     int unk_44;
-    unsigned char unk_48[0xc];
+    // The spell card difficulty cursor, kept while away.
+    int unk_48;
+    unsigned char unk_4c[0x8];
     int unk_54;
     unsigned char unk_58[0x148];
     Sprite sprites[0x48];

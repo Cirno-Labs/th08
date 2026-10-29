@@ -322,6 +322,86 @@ int ResultScreen::UpdateScoreList()
     return 0;
 }
 
+int ResultScreen::UpdateSpellDifficultySelect()
+{
+    int i;
+    Sprite *sprite;
+
+    switch (this->subState)
+    {
+    case 0:
+        if (this->unk_18 == 0)
+        {
+            this->cursor = this->unk_48;
+            for (i = 9; i <= 0xe; i++)
+            {
+                this->sprites[i].pendingInterrupt = 0x16;
+                g_SpriteEngine->Step(&this->sprites[i]);
+                if (i - 9 == this->cursor)
+                {
+                    this->sprites[i].pendingInterrupt = 0x14;
+                }
+                else
+                {
+                    this->sprites[i].pendingInterrupt = 0x15;
+                }
+            }
+        }
+        if (this->unk_18 < 6)
+        {
+            break;
+        }
+        this->subState++;
+        this->unk_18 = 0;
+    case 1:
+        i = MoveCursorVertical(this, 6);
+        if (i != 0)
+        {
+            for (i = 9; i <= 0xe; i++)
+            {
+                if (i - 9 == this->cursor)
+                {
+                    this->sprites[i].pendingInterrupt = 0x14;
+                }
+                else
+                {
+                    this->sprites[i].pendingInterrupt = 0x15;
+                }
+            }
+        }
+        if (WAS_PRESSED(0xa))
+        {
+            this->SetState(1);
+            g_SoundPlayer.QueueSound(0xb, 0);
+            this->unk_48 = this->cursor;
+            this->cursor = 1;
+            return 1;
+        }
+        if (WAS_PRESSED(0x1001))
+        {
+            sprite = this->sprites;
+            for (i = 9; i <= 0xe; i++)
+            {
+                if (i - 9 == this->cursor)
+                {
+                    this->sprites[i].pendingInterrupt = 0x17;
+                }
+                else
+                {
+                    this->sprites[i].pendingInterrupt = 1;
+                }
+            }
+            this->unk_48 = this->cursor;
+            this->SetState(7);
+            g_SoundPlayer.QueueSound(0xa, 0);
+            return 1;
+        }
+        break;
+    }
+    this->unk_18++;
+    return 0;
+}
+
 void FormatTodayDate(char *date)
 {
     time_t t;
@@ -455,13 +535,13 @@ int ResultScreen::OnUpdate(ResultScreen *screen)
         screen->UpdateScoreList();
         break;
     case 7:
-        screen->UpdateSpellCardShotSelect();
+        screen->UpdateSpellShotSelect();
         break;
     case 6:
-        screen->UpdateSpellCardDifficultySelect();
+        screen->UpdateSpellDifficultySelect();
         break;
     case 8:
-        screen->UpdateSpellCardList();
+        screen->UpdateSpellList();
         break;
     case 9:
         screen->HandleNameEntry();

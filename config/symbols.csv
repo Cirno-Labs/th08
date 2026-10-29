@@ -857,9 +857,9 @@ address,size,name,symbol
 0x004550fc,1409,ResultScreen::UpdateScoreDifficultySelect,?UpdateScoreDifficultySelect@ResultScreen@@QAEHXZ
 0x0045567d,680,ResultScreen::UpdateScoreShotSelect,?UpdateScoreShotSelect@ResultScreen@@QAEHXZ
 0x00455925,270,ResultScreen::UpdateScoreList,?UpdateScoreList@ResultScreen@@QAEHXZ
-0x00455a33,637,ResultScreen::UpdateSpellCardDifficultySelect,?UpdateSpellCardDifficultySelect@ResultScreen@@QAEHXZ
-0x00455cb0,699,ResultScreen::UpdateSpellCardShotSelect,?UpdateSpellCardShotSelect@ResultScreen@@QAEHXZ
-0x00455f6b,691,ResultScreen::UpdateSpellCardList,?UpdateSpellCardList@ResultScreen@@QAEHXZ
+0x00455a33,637,ResultScreen::UpdateSpellDifficultySelect,?UpdateSpellDifficultySelect@ResultScreen@@QAEHXZ
+0x00455cb0,699,ResultScreen::UpdateSpellShotSelect,?UpdateSpellShotSelect@ResultScreen@@QAEHXZ
+0x00455f6b,691,ResultScreen::UpdateSpellList,?UpdateSpellList@ResultScreen@@QAEHXZ
 0x0045621e,1818,ResultScreen::HandleNameEntry,?HandleNameEntry@ResultScreen@@QAEHXZ
 0x00456938,55,FormatTodayDate,?FormatTodayDate@@YIXPAD@Z
 0x0045696f,3699,ResultScreen::HandleReplaySaving,?HandleReplaySaving@ResultScreen@@QAEHXZ

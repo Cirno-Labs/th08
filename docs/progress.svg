@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">35.30% (394)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">64.70% (722)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">35.39% (395)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">64.61% (721)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="263.73" height="6" x="0" y="0" class="named"/>
-<rect width="483.27" height="6" x="263.73" y="0" class="todo"/>
+<rect width="264.40" height="6" x="0" y="0" class="named"/>
+<rect width="482.60" height="6" x="264.40" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -925,9 +925,9 @@
 <rect width="12" height="12" x="75" y="255" class="todo"><title>0x004550fc ResultScreen::UpdateScoreDifficultySelect (1409 bytes)</title></rect>
 <rect width="12" height="12" x="90" y="255" class="named"><title>0x0045567d ResultScreen::UpdateScoreShotSelect (680 bytes)</title></rect>
 <rect width="12" height="12" x="105" y="255" class="named"><title>0x00455925 ResultScreen::UpdateScoreList (270 bytes)</title></rect>
-<rect width="12" height="12" x="120" y="255" class="todo"><title>0x00455a33 ResultScreen::UpdateSpellCardDifficultySelect (637 bytes)</title></rect>
-<rect width="12" height="12" x="135" y="255" class="todo"><title>0x00455cb0 ResultScreen::UpdateSpellCardShotSelect (699 bytes)</title></rect>
-<rect width="12" height="12" x="150" y="255" class="todo"><title>0x00455f6b ResultScreen::UpdateSpellCardList (691 bytes)</title></rect>
+<rect width="12" height="12" x="120" y="255" class="named"><title>0x00455a33 ResultScreen::UpdateSpellDifficultySelect (637 bytes)</title></rect>
+<rect width="12" height="12" x="135" y="255" class="todo"><title>0x00455cb0 ResultScreen::UpdateSpellShotSelect (699 bytes)</title></rect>
+<rect width="12" height="12" x="150" y="255" class="todo"><title>0x00455f6b ResultScreen::UpdateSpellList (691 bytes)</title></rect>
 <rect width="12" height="12" x="165" y="255" class="todo"><title>0x0045621e ResultScreen::HandleNameEntry (1818 bytes)</title></rect>
 <rect width="12" height="12" x="180" y="255" class="named"><title>0x00456938 FormatTodayDate (55 bytes)</title></rect>
 <rect width="12" height="12" x="195" y="255" class="todo"><title>0x0045696f ResultScreen::HandleReplaySaving (3699 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">25.19%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">74.81%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">25.33%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">74.67%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="188.17" height="6" x="0" y="0" class="named"/>
-<rect width="558.83" height="6" x="188.17" y="0" class="todo"/>
+<rect width="189.21" height="6" x="0" y="0" class="named"/>
+<rect width="557.79" height="6" x="189.21" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1343,9 +1343,9 @@
 <rect width="17.14" height="16.89" x="432.76" y="210.52" class="todo"><title>0x00409850 Func409850 (706 bytes)</title></rect>
 <rect width="17.14" height="16.75" x="432.76" y="230.41" class="named"><title>0x00474ce0 DatArchive::ReadTable (701 bytes)</title></rect>
 <rect width="17.14" height="16.72" x="432.76" y="250.16" class="named"><title>0x00465250 SpriteEngine::CreateQuad (700 bytes)</title></rect>
-<rect width="17.14" height="16.69" x="432.76" y="269.88" class="todo"><title>0x00455cb0 ResultScreen::UpdateSpellCardShotSelect (699 bytes)</title></rect>
+<rect width="17.14" height="16.69" x="432.76" y="269.88" class="todo"><title>0x00455cb0 ResultScreen::UpdateSpellShotSelect (699 bytes)</title></rect>
 <rect width="17.14" height="16.61" x="432.76" y="289.57" class="todo"><title>0x00420950 Func420950 (696 bytes)</title></rect>
-<rect width="17.14" height="16.47" x="432.76" y="309.18" class="todo"><title>0x00455f6b ResultScreen::UpdateSpellCardList (691 bytes)</title></rect>
+<rect width="17.14" height="16.47" x="432.76" y="309.18" class="todo"><title>0x00455f6b ResultScreen::UpdateSpellList (691 bytes)</title></rect>
 <rect width="17.14" height="16.35" x="432.76" y="328.65" class="named"><title>0x0045b1e0 DrawColorRect (687 bytes)</title></rect>
 <rect width="16.52" height="16.77" x="452.90" y="45.31" class="named"><title>0x0045567d ResultScreen::UpdateScoreShotSelect (680 bytes)</title></rect>
 <rect width="16.23" height="16.77" x="472.42" y="45.31" class="named"><title>0x004667c0 SpriteEngine::LoadSurface (670 bytes)</title></rect>
@@ -1359,7 +1359,7 @@
 <rect width="15.43" height="16.77" x="622.55" y="45.31" class="todo"><title>0x0042ebf0 Func42ebf0 (642 bytes)</title></rect>
 <rect width="15.34" height="16.77" x="640.97" y="45.31" class="todo"><title>0x00430f20 Func430f20 (639 bytes)</title></rect>
 <rect width="15.34" height="16.77" x="659.31" y="45.31" class="todo"><title>0x00471181 Func471181 (639 bytes)</title></rect>
-<rect width="15.28" height="16.77" x="677.65" y="45.31" class="todo"><title>0x00455a33 ResultScreen::UpdateSpellCardDifficultySelect (637 bytes)</title></rect>
+<rect width="15.28" height="16.77" x="677.65" y="45.31" class="named"><title>0x00455a33 ResultScreen::UpdateSpellDifficultySelect (637 bytes)</title></rect>
 <rect width="15.08" height="16.77" x="695.93" y="45.31" class="todo"><title>0x004224a0 Func4224a0 (630 bytes)</title></rect>
 <rect width="15.02" height="16.77" x="714.01" y="45.31" class="named"><title>0x0045b8b0 ScreenEffect::StartEffect (628 bytes)</title></rect>
 <rect width="14.97" height="16.77" x="732.03" y="45.31" class="named"><title>0x0045ce70 SoundPlayer::PreloadBgm (626 bytes)</title></rect>
