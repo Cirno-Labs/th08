@@ -586,7 +586,7 @@ address,size,name,symbol
 0x0043edb0,127,AddNormalizeAngle,?AddNormalizeAngle@@YIMMM@Z
 0x0043ee30,91,Func43ee30,
 0x0043ee90,27,MemoryManager::MemoryManager,??0MemoryManager@@QAE@XZ
-0x0043eeb0,84,Func43eeb0,
+0x0043eeb0,84,MemoryManager::~MemoryManager,??1MemoryManager@@QAE@XZ
 0x0043ef10,48,Log::Log,??0Log@@QAE@XZ
 0x0043ef40,11,MmTimer::OnTimer,?OnTimer@MmTimer@@UAEXXZ
 0x0043ef50,21,App::GetShootFocuses,?GetShootFocuses@App@@QAEHXZ
@@ -1718,7 +1718,7 @@ address,size,name,symbol
 0x004a4234,9,Func4a4234,
 0x004a423d,44,__nh_malloc,
 0x004a4269,18,_malloc,
-0x004a427b,104,_free,
+0x004a427b,104,_free,_free
 0x004a42ce,9,Func4a42ce,
 0x004a42fa,10,Func4a42fa,
 0x004a431a,10,Func4a431a,

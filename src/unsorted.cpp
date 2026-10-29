@@ -683,6 +683,22 @@ MemoryManager::MemoryManager()
     this->unk_4000 = 0;
 }
 
+MemoryManager::~MemoryManager()
+{
+    int i;
+
+    if (this->unk_4000 != 0)
+    {
+        for (i = 0; i < 0x1000; i++)
+        {
+            if (this->blocks[i] != NULL)
+            {
+                free(this->blocks[i]);
+            }
+        }
+    }
+}
+
 Log::Log()
 {
     this->cursor = this->buffer;
