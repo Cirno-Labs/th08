@@ -131,3 +131,28 @@ void DrawGradientRect(float *rect, D3DCOLOR topLeft, D3DCOLOR topRight, D3DCOLOR
     g_App.d3dDevice->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE);
     g_App.d3dDevice->SetTextureStageState(0, D3DTSS_COLORARG1, D3DTA_TEXTURE);
 }
+
+int ScreenEffect::OnUpdateFadeOut(ScreenEffect *effect)
+{
+    if (g_Unknown18b8a2c != 0)
+    {
+        return 0;
+    }
+    if (effect->duration != 0)
+    {
+        effect->alpha = effect->timer.AsFloat() * 255.0f / effect->duration;
+        if (effect->alpha < 0)
+        {
+            effect->alpha = 0;
+        }
+    }
+    if (effect->timer >= effect->duration)
+    {
+        return 0;
+    }
+    if (!g_GameManager.isPaused && !g_GameManager.isInContinueMenu)
+    {
+        effect->timer++;
+    }
+    return 1;
+}
