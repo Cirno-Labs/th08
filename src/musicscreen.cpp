@@ -454,3 +454,15 @@ done:
     g_MemoryManager.Free(data);
     return 0;
 }
+
+int MusicScreen::DeletedCallback(MusicScreen *screen)
+{
+    g_MemoryManager.Unregister(screen->tunes);
+    delete screen->tunes;
+    screen->tunes = NULL;
+    g_SpriteEngine->ReleaseSurface(0);
+    g_SpriteEngine->ReleaseAnm(0x17);
+    g_Chain.Remove(screen->drawChain);
+    screen->drawChain = NULL;
+    return 0;
+}
