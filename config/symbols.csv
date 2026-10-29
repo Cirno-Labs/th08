@@ -177,7 +177,7 @@ address,size,name,symbol
 0x0040fcb0,24,DrawRemiliaLastWord,?DrawRemiliaLastWord@@YIXPAVPlayer@@@Z
 0x0040fcd0,1573,UpdateSakuyaBomb,?UpdateSakuyaBomb@@YIXPAVPlayer@@@Z
 0x00410300,225,DrawSakuyaBomb,?DrawSakuyaBomb@@YIXPAVPlayer@@@Z
-0x004103f0,1655,Func4103f0,
+0x004103f0,1655,UpdateSakuyaLastWord,?UpdateSakuyaLastWord@@YIXPAVPlayer@@@Z
 0x00410a70,67,D3DXVECTOR3::operator+=,??YD3DXVECTOR3@@QAEAAU0@ABU0@@Z
 0x00410ac0,225,Func410ac0,
 0x00410bb0,76,EffectUpdateBombRing46,?EffectUpdateBombRing46@@YIHPAUEffect@@@Z

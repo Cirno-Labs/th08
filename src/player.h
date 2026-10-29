@@ -695,6 +695,9 @@ void UpdateSakuyaBomb(Player *player);
 // Its draw callback: dims the play area and draws the knives
 // (0x410300).
 void DrawSakuyaBomb(Player *player);
+// Her last word 幻葬「夜霧の幻影殺人鬼」: the same with 128 knives
+// that flash as they hit (0x4103f0).
+void UpdateSakuyaLastWord(Player *player);
 // Draw callbacks of the bombs that only tint the play area, by the
 // bomb they follow: Alice's (also Yukari's draw.funcs[0..1], 0x40d950)
 // and Remilia's and her last word's (0x40f550, 0x40fcb0).
