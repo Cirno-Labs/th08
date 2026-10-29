@@ -235,3 +235,19 @@ void Item::Unlink()
         g_ItemManager.activeListTail = this->prev;
     }
 }
+
+int ItemManager::CountType7Items()
+{
+    Item *entry = this->activeList.next;
+    int count = 0;
+
+    while (entry != NULL)
+    {
+        if (entry->type == 7)
+        {
+            count++;
+        }
+        entry = entry->next;
+    }
+    return count;
+}

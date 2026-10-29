@@ -65,6 +65,8 @@ public:
     // Draws the active items; those above the top as markers at its
     // edge, fading out with the distance, as th07's (0x4415a0).
     void DrawItems();
+    // The active items of type 7 (0x4417e0). New in th08.
+    int CountType7Items();
 
     // The last one is what SpawnItem returns when all others are taken.
     Item items[0x831];
