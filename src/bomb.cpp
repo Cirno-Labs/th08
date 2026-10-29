@@ -800,6 +800,49 @@ int EffectUpdateBombRing45(Effect *effect)
     return 1;
 }
 
+void UpdateMarisaBomb(Player *player)
+{
+    PlayerBomb *bomb = &player->bomb;
+
+    if (bomb->timer.HasTicked() && bomb->timer == 0)
+    {
+        float theta;
+        PlayerBombPart *part;
+
+        StartBomb(player, 0, "\x97\xf6\x95\x84\x81\x75\x83\x7d\x83\x58\x83\x5e\x81\x5b\x83\x58\x83\x70\x81\x5b\x83\x4e\x81\x76", 300, 350, 0);
+        theta = -3.1415927f;
+        part = bomb->parts;
+        g_SoundPlayer.QueueSound(0x13, 0);
+        part->pos = player->pos;
+        player->anm->StartScript(&bomb->parts[0].sprites[0], 0x1e);
+        player->anm->StartScript(&bomb->parts[0].sprites[1], 0x1f);
+        player->anm->StartScript(&bomb->parts[0].sprites[2], 0x20);
+        player->anm->StartScript(&bomb->parts[0].sprites[3], 0x21);
+        player->anm->StartScript(&bomb->parts[0].sprites[4], 0x22);
+        player->moveScaleY = 0.2f;
+        player->moveScaleX = 0.2f;
+        ScreenEffect::StartEffect(7, 0x10, 0x78, 0x3c, 0x78, 0x15);
+    }
+    if (player->bomb.timer.HasTicked() && player->bomb.timer.AsFrames() % 4 != 0)
+    {
+        PlayerBombHitbox *hitbox;
+        D3DXVECTOR3 pos;
+
+        pos = player->pos;
+        pos.x = 192.0f;
+        pos.y /= 2.0f;
+        player->AddHitArea(&pos, 384.0f, pos.y * 2.0f, 6, 0);
+        pos = player->pos;
+        pos.y /= 2.0f;
+        hitbox = player->AddBombHitbox(&pos, 128.0f, pos.y * 2.0f, 12, 0);
+        hitbox->unk_3d = 1;
+        pos.x = 192.0f;
+        hitbox = player->AddBombHitbox(&pos, 384.0f, pos.y * 2.0f, 6, 0);
+        hitbox->unk_3d = 1;
+    }
+    g_SpriteEngine->StepSprites(&bomb->parts[0].sprites[0], 5);
+}
+
 int EffectUpdateBombRing41(Effect *effect)
 {
     effect->verticesDirty = 1;

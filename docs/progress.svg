@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">75.27% (840)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">22.76% (254)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">75.36% (841)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">22.67% (253)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="562.26" height="6" x="0" y="0" class="named"/>
-<rect width="14.73" height="6" x="562.26" y="0" class="decompiled"/>
-<rect width="170.02" height="6" x="576.98" y="0" class="todo"/>
+<rect width="562.93" height="6" x="0" y="0" class="named"/>
+<rect width="14.73" height="6" x="562.93" y="0" class="decompiled"/>
+<rect width="169.35" height="6" x="577.65" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -230,7 +230,7 @@
 <rect width="12" height="12" x="135" y="45" class="named"><title>0x0040e2d0 EffectUpdateBombRing45 (119 bytes)</title></rect>
 <rect width="12" height="12" x="150" y="45" class="named"><title>0x0040e350 Timer::HasTickedTo (58 bytes)</title></rect>
 <rect width="12" height="12" x="165" y="45" class="named"><title>0x0040e390 Timer::operator&lt;= (27 bytes)</title></rect>
-<rect width="12" height="12" x="180" y="45" class="todo"><title>0x0040e3b0 Func40e3b0 (600 bytes)</title></rect>
+<rect width="12" height="12" x="180" y="45" class="named"><title>0x0040e3b0 UpdateMarisaBomb (600 bytes)</title></rect>
 <rect width="12" height="12" x="195" y="45" class="todo"><title>0x0040e610 Func40e610 (362 bytes)</title></rect>
 <rect width="12" height="12" x="210" y="45" class="todo"><title>0x0040e780 Func40e780 (968 bytes)</title></rect>
 <rect width="12" height="12" x="225" y="45" class="named"><title>0x0040eb50 EffectUpdateBombRing41 (112 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">67.43%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">31.56%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">67.56%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">31.43%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="503.70" height="6" x="0" y="0" class="named"/>
-<rect width="7.57" height="6" x="503.70" y="0" class="decompiled"/>
-<rect width="235.72" height="6" x="511.28" y="0" class="todo"/>
+<rect width="504.68" height="6" x="0" y="0" class="named"/>
+<rect width="7.57" height="6" x="504.68" y="0" class="decompiled"/>
+<rect width="234.75" height="6" x="512.25" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1374,7 +1374,7 @@
 <rect width="15.31" height="15.90" x="452.90" y="180.33" class="named"><title>0x00409f40 Stage::StepObjects (610 bytes)</title></rect>
 <rect width="15.31" height="15.87" x="452.90" y="199.23" class="named"><title>0x004505d0 UpdateLaserBullet (609 bytes)</title></rect>
 <rect width="15.31" height="15.75" x="452.90" y="218.10" class="named"><title>0x0043b984 RerollStatsChecksumKeys (605 bytes)</title></rect>
-<rect width="15.31" height="15.59" x="452.90" y="236.85" class="todo"><title>0x0040e3b0 Func40e3b0 (600 bytes)</title></rect>
+<rect width="15.31" height="15.59" x="452.90" y="236.85" class="named"><title>0x0040e3b0 UpdateMarisaBomb (600 bytes)</title></rect>
 <rect width="15.31" height="15.59" x="452.90" y="255.44" class="named"><title>0x00463210 SpriteEngine::Draw (600 bytes)</title></rect>
 <rect width="15.31" height="15.56" x="452.90" y="274.03" class="named"><title>0x00450320 UpdateHomingOrb (599 bytes)</title></rect>
 <rect width="15.31" height="15.56" x="452.90" y="292.59" class="named"><title>0x00472070 CStreamingSound::RecreateBuffers (599 bytes)</title></rect>
