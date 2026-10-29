@@ -977,3 +977,14 @@ HRESULT CWaveFile::Read(BYTE *pBuffer, DWORD dwSizeToRead, DWORD *pdwSizeRead)
         return S_OK;
     }
 }
+
+HRESULT CWaveFile::Close()
+{
+    if (m_dwFlags == WAVEFILE_READ)
+    {
+        CloseHandle(this->hFile);
+        this->hFile = INVALID_HANDLE_VALUE;
+    }
+
+    return S_OK;
+}

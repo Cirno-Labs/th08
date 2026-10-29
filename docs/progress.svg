@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">16.67% (186)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">83.33% (930)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">16.76% (187)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">83.24% (929)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="124.50" height="6" x="0" y="0" class="named"/>
-<rect width="622.50" height="6" x="124.50" y="0" class="todo"/>
+<rect width="125.17" height="6" x="0" y="0" class="named"/>
+<rect width="621.83" height="6" x="125.17" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -1143,7 +1143,7 @@
 <rect width="12" height="12" x="345" y="315" class="named"><title>0x004733c0 CWaveFile::GetSize (17 bytes)</title></rect>
 <rect width="12" height="12" x="360" y="315" class="named"><title>0x004733e0 CWaveFile::ResetFile (328 bytes)</title></rect>
 <rect width="12" height="12" x="375" y="315" class="named"><title>0x00473530 CWaveFile::Read (328 bytes)</title></rect>
-<rect width="12" height="12" x="390" y="315" class="todo"><title>0x00473680 CWaveFile::Close (51 bytes)</title></rect>
+<rect width="12" height="12" x="390" y="315" class="named"><title>0x00473680 CWaveFile::Close (51 bytes)</title></rect>
 <rect width="12" height="12" x="405" y="315" class="named"><title>0x004736c0 File::File (51 bytes)</title></rect>
 <rect width="12" height="12" x="420" y="315" class="named"><title>0x00473700 File::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
 <rect width="12" height="12" x="435" y="315" class="named"><title>0x00473730 File::~File (81 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">8.13%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">91.87%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">8.14%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">91.86%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="60.76" height="6" x="0" y="0" class="named"/>
-<rect width="686.24" height="6" x="60.76" y="0" class="todo"/>
+<rect width="60.84" height="6" x="0" y="0" class="named"/>
+<rect width="686.16" height="6" x="60.84" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -2019,7 +2019,7 @@
 <rect width="2.30" height="2.57" x="679.79" y="278" class="todo"><title>0x00462750 Func462750 (52 bytes)</title></rect>
 <rect width="2.30" height="2.46" x="679.79" y="283.57" class="todo"><title>0x0040bb20 Func40bb20 (51 bytes)</title></rect>
 <rect width="2.30" height="2.46" x="679.79" y="289.03" class="todo"><title>0x00422be0 Func422be0 (51 bytes)</title></rect>
-<rect width="2.30" height="2.46" x="679.79" y="294.49" class="todo"><title>0x00473680 CWaveFile::Close (51 bytes)</title></rect>
+<rect width="2.30" height="2.46" x="679.79" y="294.49" class="named"><title>0x00473680 CWaveFile::Close (51 bytes)</title></rect>
 <rect width="2.30" height="2.46" x="679.79" y="299.95" class="named"><title>0x004736c0 File::File (51 bytes)</title></rect>
 <rect width="2.30" height="2.46" x="679.79" y="305.40" class="named"><title>0x00473a20 File::Seek (51 bytes)</title></rect>
 <rect width="2.30" height="2.35" x="679.79" y="310.86" class="todo"><title>0x00409ca0 Func409ca0 (50 bytes)</title></rect>
