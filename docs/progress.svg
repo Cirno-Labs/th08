@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">67.11% (749)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">31.09% (347)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">67.20% (750)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">31% (346)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="501.35" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="501.35" y="0" class="decompiled"/>
-<rect width="232.27" height="6" x="514.73" y="0" class="todo"/>
+<rect width="502.02" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="502.02" y="0" class="decompiled"/>
+<rect width="231.60" height="6" x="515.40" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -820,7 +820,7 @@
 <rect width="12" height="12" x="735" y="210" class="named"><title>0x00449f70 PlayerBombPart::PlayerBombPart (115 bytes)</title></rect>
 <rect width="12" height="12" x="0" y="225" class="named"><title>0x00449ff0 Player::CheckAreaHit (563 bytes)</title></rect>
 <rect width="12" height="12" x="15" y="225" class="named"><title>0x0044a230 Player::CheckHit (302 bytes)</title></rect>
-<rect width="12" height="12" x="30" y="225" class="todo"><title>0x0044a360 Func44a360 (272 bytes)</title></rect>
+<rect width="12" height="12" x="30" y="225" class="named"><title>0x0044a360 Player::CheckHitIgnoringAreas (272 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="225" class="todo"><title>0x0044a470 Func44a470 (303 bytes)</title></rect>
 <rect width="12" height="12" x="60" y="225" class="todo"><title>0x0044a5a0 Player::TouchesGrazeBox (249 bytes)</title></rect>
 <rect width="12" height="12" x="75" y="225" class="todo"><title>0x0044a6a0 Func44a6a0 (651 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">58.92%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">40.09%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">58.98%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">40.03%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="440.13" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="440.13" y="0" class="decompiled"/>
-<rect width="299.46" height="6" x="447.54" y="0" class="todo"/>
+<rect width="440.58" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="440.58" y="0" class="decompiled"/>
+<rect width="299.02" height="6" x="447.98" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1548,7 +1548,7 @@
 <rect width="9.91" height="9.22" x="624.20" y="142.35" class="named"><title>0x00462790 SpriteEngine::SetBlendModeForSprite (278 bytes)</title></rect>
 <rect width="9.72" height="9.22" x="637.11" y="142.35" class="named"><title>0x0043c4b3 GameManager::AdvanceStage (274 bytes)</title></rect>
 <rect width="9.63" height="9.22" x="649.83" y="142.35" class="todo"><title>0x00424e50 Func424e50 (272 bytes)</title></rect>
-<rect width="9.63" height="9.22" x="662.46" y="142.35" class="todo"><title>0x0044a360 Func44a360 (272 bytes)</title></rect>
+<rect width="9.63" height="9.22" x="662.46" y="142.35" class="named"><title>0x0044a360 Player::CheckHitIgnoringAreas (272 bytes)</title></rect>
 <rect width="9.54" height="9.22" x="675.09" y="142.35" class="todo"><title>0x0042c180 Func42c180 (270 bytes)</title></rect>
 <rect width="9.54" height="9.22" x="687.63" y="142.35" class="named"><title>0x00455925 ResultScreen::UpdateScoreList (270 bytes)</title></rect>
 <rect width="9.49" height="9.22" x="700.17" y="142.35" class="todo"><title>0x0044e8d0 Func44e8d0 (269 bytes)</title></rect>

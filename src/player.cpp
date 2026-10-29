@@ -102,3 +102,28 @@ int Player::CheckHit(D3DXVECTOR3 *pos, D3DXVECTOR3 *size)
     this->Die();
     return 1;
 }
+
+int Player::CheckHitIgnoringAreas(D3DXVECTOR3 *pos, D3DXVECTOR3 *size)
+{
+    D3DXVECTOR3 start;
+    D3DXVECTOR3 end;
+
+    this->areaItemType = 6;
+    start.x = pos->x - size->x / 2.0f;
+    start.y = pos->y - size->y / 2.0f;
+    end.x = size->x / 2.0f + pos->x;
+    end.y = size->y / 2.0f + pos->y;
+    if (this->hitboxMin.x > end.x || this->hitboxMin.y > end.y || this->hitboxMax.x < start.x ||
+        this->hitboxMax.y < start.y)
+    {
+        return 0;
+    }
+    g_ReplayManager->frameEvents |= 2;
+    if (this->playerState != 0)
+    {
+        return 1;
+    }
+    g_GameManager.RerollLifeChecksumKeys();
+    this->Die();
+    return 1;
+}

@@ -210,6 +210,9 @@ public:
     // g_ReplayManager->frameEvents and kills the player while
     // playerState is 0.
     int CheckHit(D3DXVECTOR3 *pos, D3DXVECTOR3 *size);
+    // CheckHit without the hit areas: 1 if the box meets the hitbox,
+    // else 0. New in th08; an enemy's body uses it (0x42c290).
+    int CheckHitIgnoringAreas(D3DXVECTOR3 *pos, D3DXVECTOR3 *size);
     // Starts dying (0x44ab40).
     void Die();
     // The angle from `pos` to the player, as th07's (0x44c1b0).

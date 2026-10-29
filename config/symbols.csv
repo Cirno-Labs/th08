@@ -751,7 +751,7 @@ address,size,name,symbol
 0x00449f70,115,PlayerBombPart::PlayerBombPart,??0PlayerBombPart@@QAE@XZ
 0x00449ff0,563,Player::CheckAreaHit,?CheckAreaHit@Player@@QAEHPAUD3DXVECTOR3@@0@Z
 0x0044a230,302,Player::CheckHit,?CheckHit@Player@@QAEHPAUD3DXVECTOR3@@0@Z
-0x0044a360,272,Func44a360,
+0x0044a360,272,Player::CheckHitIgnoringAreas,?CheckHitIgnoringAreas@Player@@QAEHPAUD3DXVECTOR3@@0@Z
 0x0044a470,303,Func44a470,
 0x0044a5a0,249,Player::TouchesGrazeBox,?TouchesGrazeBox@Player@@QAEHPAUD3DXVECTOR3@@0@Z
 0x0044a6a0,651,Func44a6a0,
