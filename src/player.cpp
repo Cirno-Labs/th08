@@ -154,3 +154,22 @@ int Player::CheckGraze(D3DXVECTOR3 *pos, D3DXVECTOR3 *size)
     this->Graze(pos, 0);
     return 1;
 }
+
+int Player::TouchesGrazeBox(D3DXVECTOR3 *pos, D3DXVECTOR3 *size)
+{
+    D3DXVECTOR3 start;
+    D3DXVECTOR3 end;
+
+    if (this->playerState != 0 && this->playerState != 3 && this->playerState != 4)
+    {
+        return 0;
+    }
+    start = *pos - *size / 2.0f;
+    end = *pos + *size / 2.0f;
+    if (this->grazeTestMin.x > end.x || this->grazeTestMax.x < start.x || this->grazeTestMin.y > end.y ||
+        this->grazeTestMax.y < start.y)
+    {
+        return 0;
+    }
+    return 1;
+}
