@@ -1016,6 +1016,12 @@ public:
     int AllShotsHaveExtraOpen();
     // Moves `stage` on to the next stage (0x43c4b3).
     void AdvanceStage();
+    // Whether the game is a practice: unk_3dbac's bit 0, which th07 read
+    // directly. Inline; the copy at 0x406cd0 is in an /Od object.
+    int IsInPractice()
+    {
+        return this->unk_3dbac & 1;
+    }
 
     DWORD unk_0;
     GameManagerUnk4 *unk_4;
@@ -1070,6 +1076,9 @@ public:
     int stageFrames;
     // The stage being played, from 0.
     int stage;
+    unsigned char unk_3ddc8[0x3c];
+    // The frames played, as th07's.
+    int progressFrames;
 };
 extern GameManager g_GameManager;
 

@@ -868,10 +868,10 @@ address,size,name,symbol
 0x00457e00,1184,Func457e00,
 0x004582a0,395,ResultScreen::RegisterChain,?RegisterChain@ResultScreen@@SIHH@Z
 0x0045842b,133,Func45842b,
-0x004584b0,424,Func4584b0,
-0x004586b4,3993,Func4586b4,
-0x0045964d,2437,Func45964d,
-0x00459fd2,225,Func459fd2,
+0x004584b0,424,ResultScreen::OnUpdate,?OnUpdate@ResultScreen@@SIHPAV1@@Z
+0x004586b4,3993,ResultScreen::OnDraw,?OnDraw@ResultScreen@@SIHPAV1@@Z
+0x0045964d,2437,ResultScreen::AddedCallback,?AddedCallback@ResultScreen@@SIHPAV1@@Z
+0x00459fd2,225,ResultScreen::DeletedCallback,?DeletedCallback@ResultScreen@@SIHPAV1@@Z
 0x0045a0b3,41,Func45a0b3,
 0x0045a0dc,24,Func45a0dc,
 0x0045a0f4,255,Func45a0f4,

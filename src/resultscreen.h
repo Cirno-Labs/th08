@@ -2,9 +2,12 @@
 
 #pragma once
 
+#include <string.h>
 #include <windows.h>
 
+#include "chain.h"
 #include "common.h"
+#include "sprite.h"
 
 // A chunk of the score file ("PLST") with the play statistics, th07's
 // grown to 0x228 bytes (0x160 there).
@@ -234,10 +237,49 @@ int LoadPlstChunk(void *scoreDat, Plst *plst);
 // Frees `dat` and its list.
 void ReleaseScoreDat(ScoreDat *dat);
 
+// The result screen's scene object (0x477b0 bytes; th07 0xce6c). Only
+// the fields known so far.
 class ResultScreen
 {
 public:
-    // Adds the result screen's chain elements, as th07's (0x4582a0).
-    // Returns 0, or nonzero on failure.
-    static int RegisterChain(int unk);
+    // Constructs the Sprites and lists, then zeroes the whole screen.
+    // Inline: RegisterChain calls the copy at 0x45842b.
+    ResultScreen()
+    {
+        memset(this, 0, sizeof(ResultScreen));
+    }
+
+    // Allocates the screen and adds it to the chains (update priority
+    // 0x10, draw 0x12). With `mode` 1 it starts in state 9 after a game,
+    // in a practice 0x11, or 0x16 in a spell card practice; with 2 (on
+    // exit) in state 0x12, running only AddedCallback. Returns 0, or -1
+    // if adding fails.
+    static int RegisterChain(int mode);
+    static int OnUpdate(ResultScreen *screen);
+    static int OnDraw(ResultScreen *screen);
+    static int AddedCallback(ResultScreen *screen);
+    static int DeletedCallback(ResultScreen *screen);
+
+    // The score file, as loaded.
+    ScoreDat *scoreDat;
+    // Counts the frames in the current state.
+    int frame;
+    int state;
+    unsigned char unk_0c[0x194];
+    Sprite sprites[0x48];
+    // Text drawn with RenderText, as th07's.
+    Sprite textSprites[0x1e];
+    Sprite unk_10ef8;
+    Sprite unk_1119c;
+    unsigned char unk_11440[0xc];
+    // The high score lists.
+    ListNode scores[0x3c];
+    unsigned char unk_1171c[0x34d28];
+    // The "TH8K" chunk SaveScoreDat writes.
+    Th8k th8k;
+    Lsnm lsnm;
+    ChainElem *calcChain;
+    ChainElem *drawChain;
+    unsigned char unk_46470[0x1340];
 };
+ASSERT_SIZE(ResultScreen, 0x477b0);
