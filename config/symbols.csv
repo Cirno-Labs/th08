@@ -78,7 +78,7 @@ address,size,name,symbol
 0x00406f30,110,GameManager::SetBombs,?SetBombs@GameManager@@QAEXH@Z
 0x00406fa0,36,GameManager::SetPower,?SetPower@GameManager@@QAEXH@Z
 0x00406fd0,217,AsciiText::RunScripts,?RunScripts@AsciiText@@QAEXXZ
-0x004070b0,101,Func4070b0,
+0x004070b0,101,AsciiText::SetSummaryPendingInterrupt,?SetSummaryPendingInterrupt@AsciiText@@QAEXH@Z
 0x00407120,27,Func407120,
 0x00407140,20,Func407140,
 0x00407160,24,Func407160,

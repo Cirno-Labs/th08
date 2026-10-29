@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">48.30% (539)</tspan> · <tspan class="decompiled">1.52% (17)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">50.18% (560)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">48.39% (540)</tspan> · <tspan class="decompiled">1.52% (17)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">50.09% (559)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="360.78" height="6" x="0" y="0" class="named"/>
-<rect width="11.38" height="6" x="360.78" y="0" class="decompiled"/>
-<rect width="374.84" height="6" x="372.16" y="0" class="todo"/>
+<rect width="361.45" height="6" x="0" y="0" class="named"/>
+<rect width="11.38" height="6" x="361.45" y="0" class="decompiled"/>
+<rect width="374.17" height="6" x="372.83" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -147,7 +147,7 @@
 <rect width="12" height="12" x="390" y="15" class="todo"><title>0x00406f30 GameManager::SetBombs (110 bytes)</title></rect>
 <rect width="12" height="12" x="405" y="15" class="todo"><title>0x00406fa0 GameManager::SetPower (36 bytes)</title></rect>
 <rect width="12" height="12" x="420" y="15" class="named"><title>0x00406fd0 AsciiText::RunScripts (217 bytes)</title></rect>
-<rect width="12" height="12" x="435" y="15" class="todo"><title>0x004070b0 Func4070b0 (101 bytes)</title></rect>
+<rect width="12" height="12" x="435" y="15" class="named"><title>0x004070b0 AsciiText::SetSummaryPendingInterrupt (101 bytes)</title></rect>
 <rect width="12" height="12" x="450" y="15" class="todo"><title>0x00407120 Func407120 (27 bytes)</title></rect>
 <rect width="12" height="12" x="465" y="15" class="todo"><title>0x00407140 Func407140 (20 bytes)</title></rect>
 <rect width="12" height="12" x="480" y="15" class="todo"><title>0x00407160 Func407160 (24 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">40.52%</tspan> · <tspan class="decompiled">0.56%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">58.91%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">40.54%</tspan> · <tspan class="decompiled">0.56%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">58.89%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="302.70" height="6" x="0" y="0" class="named"/>
-<rect width="4.22" height="6" x="302.70" y="0" class="decompiled"/>
-<rect width="440.08" height="6" x="306.92" y="0" class="todo"/>
+<rect width="302.87" height="6" x="0" y="0" class="named"/>
+<rect width="4.22" height="6" x="302.87" y="0" class="decompiled"/>
+<rect width="439.92" height="6" x="307.08" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1830,7 +1830,7 @@
 <rect width="4.60" height="4.77" x="634.36" y="287.50" class="todo"><title>0x0044e2e0 Func44e2e0 (104 bytes)</title></rect>
 <rect width="4.60" height="4.69" x="634.36" y="295.27" class="named"><title>0x0045ce00 SoundPlayer::SwitchBgmTrack (103 bytes)</title></rect>
 <rect width="4.60" height="4.62" x="634.36" y="302.96" class="named"><title>0x004522a0 ReplayManager::RecordOnUpdate2 (102 bytes)</title></rect>
-<rect width="4.60" height="4.54" x="634.36" y="310.58" class="todo"><title>0x004070b0 Func4070b0 (101 bytes)</title></rect>
+<rect width="4.60" height="4.54" x="634.36" y="310.58" class="named"><title>0x004070b0 AsciiText::SetSummaryPendingInterrupt (101 bytes)</title></rect>
 <rect width="4.60" height="4.54" x="634.36" y="318.12" class="named"><title>0x00474c70 DatArchive::FindEntry (101 bytes)</title></rect>
 <rect width="4.60" height="4.47" x="634.36" y="325.67" class="named"><title>0x00439ac5 ChecksumBytes (100 bytes)</title></rect>
 <rect width="4.60" height="4.47" x="634.36" y="333.14" class="named"><title>0x0045cbc0 FindRiffChunk (100 bytes)</title></rect>
