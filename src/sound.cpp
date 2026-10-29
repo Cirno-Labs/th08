@@ -245,3 +245,9 @@ int SoundPlayer::LoadSound(int index, char *path)
     g_MemoryManager.Free(wavBuf);
     return 0;
 }
+
+int SoundPlayer::LoadBgmFormat(char *path)
+{
+    this->bgmFormat = (BgmFormat *)LoadFileData(path, NULL, 0);
+    return this->bgmFormat != NULL ? 0 : -1;
+}
