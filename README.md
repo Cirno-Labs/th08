@@ -76,6 +76,8 @@ as functions show otherwise.
 ## Workflow
 
 Everything runs headless, so it works over SSH. `just` lists the recipes.
+`tools/` is a submodule: clone with `--recursive`, or run
+`git submodule update --init tools` after cloning.
 
 1. Analyze the binary with Ghidra in headless mode (`just analyze`).
    New functions are added to `config/symbols.csv` with placeholder names
@@ -124,7 +126,10 @@ orig/     your game files (not tracked) and their checksums
 src/      decompiled source; src/dll/ is the hook DLL's own code,
           src/exe/ the game's data and globals for the standalone exe
 config/   symbols.csv: address, size, name and mangled symbol
-tools/    build, compare, exe patcher, symbol seeding, Ghidra scripts
+tools/    build, compare, exe patcher, symbol seeding, Ghidra scripts:
+          the decomp-tools repository shared with th06 and th07, as a
+          git submodule (just tools-init, tools-pull, tools-push)
+project.toml  th08's settings for tools/
 build/    outputs; build/game/ is a runnable copy of the patched game
 ```
 
