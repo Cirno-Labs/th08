@@ -82,3 +82,25 @@ int App::OnDrawLoading(App *arg)
     }
     return 1;
 }
+
+BOOL CALLBACK EnumAxesCallback(const DIDEVICEOBJECTINSTANCE *pdidoi, VOID *pContext)
+{
+    HWND hDlg = (HWND)pContext;
+    DIPROPRANGE diprg;
+
+    if (pdidoi->dwType & DIDFT_AXIS)
+    {
+        diprg.diph.dwSize = sizeof(DIPROPRANGE);
+        diprg.diph.dwHeaderSize = sizeof(DIPROPHEADER);
+        diprg.diph.dwHow = DIPH_BYID;
+        diprg.diph.dwObj = pdidoi->dwType;
+        diprg.lMin = -1000;
+        diprg.lMax = +1000;
+
+        if (FAILED(g_App.joystick->SetProperty(DIPROP_RANGE, &diprg.diph)))
+        {
+            return DIENUM_STOP;
+        }
+    }
+    return DIENUM_CONTINUE;
+}

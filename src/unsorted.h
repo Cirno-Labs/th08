@@ -179,6 +179,21 @@ extern App g_App;
 // counter when there is one, and shows it when `draw` is set, as th07's.
 void DrawFps(int draw);
 
+// Sets up DirectInput as the DirectX 8 SDK's Keyboard and Joystick
+// samples: the keyboard, then the first joystick found, if any. Returns
+// 0, or -1 if DirectInput is off or the keyboard fails.
+int InitDirectInput(App *game);
+
+// IDirectInput8::EnumDevices's callback for joysticks, from the DirectX
+// 8 SDK's Joystick sample: creates a device for the first joystick that
+// works, unless there already is one.
+BOOL CALLBACK EnumJoysticksCallback(const DIDEVICEINSTANCE *pdidInstance, VOID *pContext);
+
+// IDirectInputDevice8::EnumObjects's callback for the joystick's axes,
+// from the same sample without its dialog updates: sets each axis's
+// range to -1000 to 1000.
+BOOL CALLBACK EnumAxesCallback(const DIDEVICEOBJECTINSTANCE *pdidoi, VOID *pContext);
+
 // Prints `name` and then 可 or 不可 (yes or no), by whether `caps` has
 // any of `flag`, at `out`; returns the end of the text.
 char *AppendCapsFlagText(char *name, DWORD caps, DWORD flag, char *out);

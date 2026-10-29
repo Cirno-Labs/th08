@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">18.91% (211)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">81.09% (905)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">19% (212)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">81% (904)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="141.23" height="6" x="0" y="0" class="named"/>
-<rect width="605.77" height="6" x="141.23" y="0" class="todo"/>
+<rect width="141.90" height="6" x="0" y="0" class="named"/>
+<rect width="605.10" height="6" x="141.90" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -761,7 +761,7 @@
 <rect width="12" height="12" x="615" y="195" class="named"><title>0x00445bc0 App::OnDraw (20 bytes)</title></rect>
 <rect width="12" height="12" x="630" y="195" class="named"><title>0x00445bd4 App::OnDrawLogo (362 bytes)</title></rect>
 <rect width="12" height="12" x="645" y="195" class="named"><title>0x00445d3e App::OnDrawLoading (255 bytes)</title></rect>
-<rect width="12" height="12" x="660" y="195" class="todo"><title>0x00445e3d Func445e3d (106 bytes)</title></rect>
+<rect width="12" height="12" x="660" y="195" class="named"><title>0x00445e3d EnumAxesCallback (106 bytes)</title></rect>
 <rect width="12" height="12" x="675" y="195" class="todo"><title>0x00445ea7 Func445ea7 (252 bytes)</title></rect>
 <rect width="12" height="12" x="690" y="195" class="todo"><title>0x00445fa3 Func445fa3 (509 bytes)</title></rect>
 <rect width="12" height="12" x="705" y="195" class="todo"><title>0x004461a0 Func4461a0 (146 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">9.62%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">90.38%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">9.64%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">90.36%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="71.84" height="6" x="0" y="0" class="named"/>
-<rect width="675.16" height="6" x="71.84" y="0" class="todo"/>
+<rect width="72.01" height="6" x="0" y="0" class="named"/>
+<rect width="674.99" height="6" x="72.01" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1814,7 +1814,7 @@
 <rect width="4.66" height="4.93" x="696.83" y="225.05" class="todo"><title>0x00463cf0 Func463cf0 (107 bytes)</title></rect>
 <rect width="4.66" height="4.93" x="704.49" y="225.05" class="named"><title>0x00472cc0 CStreamingSound::UpdateFadeDown (107 bytes)</title></rect>
 <rect width="4.59" height="4.93" x="712.15" y="225.05" class="todo"><title>0x00441770 Func441770 (106 bytes)</title></rect>
-<rect width="4.59" height="4.93" x="719.73" y="225.05" class="todo"><title>0x00445e3d Func445e3d (106 bytes)</title></rect>
+<rect width="4.59" height="4.93" x="719.73" y="225.05" class="named"><title>0x00445e3d EnumAxesCallback (106 bytes)</title></rect>
 <rect width="4.59" height="4.93" x="727.32" y="225.05" class="named"><title>0x00472be0 CStreamingSound::UpdateFadeIn (106 bytes)</title></rect>
 <rect width="4.59" height="4.93" x="734.90" y="225.05" class="named"><title>0x00472c50 CStreamingSound::UpdateFadeUp (106 bytes)</title></rect>
 <rect width="4.51" height="4.93" x="742.49" y="225.05" class="todo"><title>0x0040eda0 Func40eda0 (105 bytes)</title></rect>

@@ -693,7 +693,7 @@ address,size,name,symbol
 0x00445bc0,20,App::OnDraw,?OnDraw@App@@SIHPAV1@@Z
 0x00445bd4,362,App::OnDrawLogo,?OnDrawLogo@App@@SIHPAV1@@Z
 0x00445d3e,255,App::OnDrawLoading,?OnDrawLoading@App@@SIHPAV1@@Z
-0x00445e3d,106,Func445e3d,
+0x00445e3d,106,EnumAxesCallback,?EnumAxesCallback@@YGHPBUDIDEVICEOBJECTINSTANCEA@@PAX@Z
 0x00445ea7,252,Func445ea7,
 0x00445fa3,509,Func445fa3,
 0x004461a0,146,Func4461a0,
