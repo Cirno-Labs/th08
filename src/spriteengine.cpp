@@ -417,6 +417,13 @@ int SpriteEngine::DrawQuad(Sprite *vm, int flags)
     return 0;
 }
 
+void SpriteEngine::BeginQuadBatch()
+{
+    this->batchQuadCount = 0;
+    this->batchCursor = this->batchVertices;
+    this->batchStart = this->batchCursor;
+}
+
 SpriteEngine::SpriteEngine()
 {
     memset(this, 0, sizeof(*this));
