@@ -347,7 +347,7 @@ void Gui::RemoveChain()
 
 BOOL Gui::IsLoadingShown()
 {
-    return this->impl->unk_3778.spriteIndex >= 0 && this->impl->unk_3778.IsStopped();
+    return this->impl->loadingIcon.spriteIndex >= 0 && this->impl->loadingIcon.IsStopped();
 }
 
 int Gui::IsMsgSkippable()
@@ -715,10 +715,10 @@ void Gui::DrawPopups()
 
 void Gui::Func438f58()
 {
-    g_AsciiText.anm2->StartScript(&this->impl->unk_3cc0, 1);
-    g_SpriteEngine->SetPendingCopy(3, 32, 16, 384, 448, this->impl->unk_3cc0.spriteData->startX,
-                                   this->impl->unk_3cc0.spriteData->startY, this->impl->unk_3cc0.spriteData->width,
-                                   this->impl->unk_3cc0.spriteData->height);
+    g_AsciiText.anm2->StartScript(&this->impl->loadingBar, 1);
+    g_SpriteEngine->SetPendingCopy(3, 32, 16, 384, 448, this->impl->loadingBar.spriteData->startX,
+                                   this->impl->loadingBar.spriteData->startY, this->impl->loadingBar.spriteData->width,
+                                   this->impl->loadingBar.spriteData->height);
 }
 
 int Func438fe9()
@@ -761,4 +761,12 @@ int Gui::Func4390d6()
 {
     this->impl->unk_2156c.alpha = 0;
     return 0;
+}
+
+void Gui::HideInterface()
+{
+    this->impl->loadingIcon.spriteIndex = -1;
+    this->impl->loadingCaption.spriteIndex = -1;
+    this->impl->loadingBar.spriteIndex = -1;
+    this->impl->backgroundTileCount = 0;
 }

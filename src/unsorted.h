@@ -1551,15 +1551,15 @@ struct GuiImpl
     int unk_2a40;
     Sprite unk_2a44[4];
     Sprite unk_34d4;
-    Sprite unk_3778;
-    Sprite unk_3a1c;
-    Sprite unk_3cc0;
+    Sprite loadingIcon;
+    Sprite loadingCaption;
+    Sprite loadingBar;
     Sprite unk_3f64[8];
     Sprite unk_5484;
-    Sprite unk_5728[0xa8];
+    Sprite backgroundTiles[0xa8];
     Sprite unk_212c8;
     Sprite unk_2156c;
-    int unk_21810;
+    int backgroundTileCount;
     GuiMsg msg;
     // Gui::OnDraw draws the stage clear screen (DrawStageClear) while it
     // is set, as th07's.
@@ -1604,7 +1604,7 @@ public:
     // Whether the dialogue holds the timeline: impl is set,
     // msg.timelineRelease is 0 and a script runs, as th07's.
     BOOL MsgHoldsTimeline();
-    // Whether impl->unk_3778 shows a sprite whose script waits for an
+    // Whether impl->loadingIcon shows a sprite whose script waits for an
     // interrupt, as th07's IsLoadingShown (0x437d87).
     BOOL IsLoadingShown();
     // Show `bonus` in bonusPopup at (416, 48), `points` in fullPowerPopup
@@ -1642,8 +1642,17 @@ public:
     // messages, as th07's (0x4390ee). Returns 0, or -1 when a file fails
     // to load.
     int LoadResources();
+    // Hides loadingIcon, loadingCaption and loadingBar (spriteIndex -1)
+    // and clears impl->backgroundTileCount, as th07's (0x4396b8).
+    void HideInterface();
+    // Loads the dialogue file `path` and makes its script offsets
+    // pointers, as th07's (0x439710). Returns 0, or -1 if it fails to
+    // load.
+    int LoadMsg(char *path);
     // Frees the dialogue file, as th07's (0x4397d5).
     void FreeMsgFile();
+    // Starts dialogue script `index`, as th07's (0x439810).
+    void StartMsg(int index);
     // The update element's added callback: runs LoadResources.
     static int AddedCallback(Gui *gui);
     // Releases ANM slot 0xd unless Func438ffd, frees the dialogue file
