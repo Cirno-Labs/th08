@@ -13,6 +13,44 @@
 class Player;
 struct Effect;
 
+struct PlayerBullet;
+struct ShotData;
+
+// A shot's callbacks, as th07's. Under /Gr these are __fastcall.
+typedef int (*ShotFireFunc)(Player *player, PlayerBullet *bullet, int frame, ShotData *sd);
+typedef int (*ShotUpdateFunc)(Player *player, PlayerBullet *bullet);
+typedef int (*ShotHitFunc)(Player *player, PlayerBullet *bullet, D3DXVECTOR3 *pos);
+
+// One shot of a shot type, as th07's (0x34 there). A table of them ends
+// with an interval below 0. Only the fields known so far.
+struct ShotData
+{
+    // Fired on frames where frame % interval is phase, as th07's.
+    short interval;
+    short phase;
+    unsigned char unk_4[0x24];
+    // Fires it, and the callbacks copied into the bullet it fires.
+    ShotFireFunc fire;
+    ShotUpdateFunc update;
+    ShotUpdateFunc draw;
+    ShotHitFunc hit;
+};
+ASSERT_SIZE(ShotData, 0x38);
+
+// The shots of a shot type up to a power level, as th07's.
+struct ShotTable
+{
+    ShotData *shots;
+    int maxPower;
+};
+
+// The shot callbacks a shot file names by index, which LoadShotTypeFile
+// turns into pointers, as th07's. Entry 0 is NULL.
+extern ShotFireFunc g_ShotFireFuncs[];
+extern ShotUpdateFunc g_ShotUpdateFuncs[];
+extern ShotUpdateFunc g_ShotDrawFuncs[];
+extern ShotHitFunc g_ShotHitFuncs[];
+
 // A shot type's data, behind Player::shotType and shotTypeFocused, as
 // th07's. Only the fields known so far.
 struct ShotTypeData
@@ -38,6 +76,7 @@ struct ShotTypeData
     unsigned char pad_20[0x14];
     // How fast the items move, as a factor of their velocity. New in th08.
     float itemSpeed;
+    ShotTable tables[1];
 };
 
 // One of the player's hit areas (0x40 bytes), in two arrays of 0xc0:

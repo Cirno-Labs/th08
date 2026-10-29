@@ -1038,3 +1038,13 @@ int Player::DeletedCallback(Player *player)
     }
     return 0;
 }
+
+void Player::RemoveChain()
+{
+    g_Chain.Remove(g_Player.calcChain);
+    g_Player.calcChain = NULL;
+    g_Chain.Remove(g_Player.drawChain);
+    g_Player.drawChain = NULL;
+    g_Chain.Remove(g_Player.drawChain2);
+    g_Player.drawChain2 = NULL;
+}
