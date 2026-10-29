@@ -799,3 +799,8 @@ void Gui::FreeMsgFile()
         this->impl->msg.msgFile = NULL;
     }
 }
+
+void Gui::StartMsg(int index)
+{
+    this->impl->StartMsgScript(index);
+}

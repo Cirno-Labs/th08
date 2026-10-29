@@ -512,7 +512,7 @@ address,size,name,symbol
 0x004396f8,24,Sprite::IsStopped,?IsStopped@Sprite@@QAEKXZ
 0x00439710,197,Gui::LoadMsg,?LoadMsg@Gui@@QAEHPAD@Z
 0x004397d5,59,Gui::FreeMsgFile,?FreeMsgFile@Gui@@QAEXXZ
-0x00439810,25,Func439810,
+0x00439810,25,Gui::StartMsg,?StartMsg@Gui@@QAEXH@Z
 0x00439829,45,GameManager::HasClearedStage,?HasClearedStage@GameManager@@QAEHHHH@Z
 0x00439856,45,GameManager::HasClearedStageWithContinues,?HasClearedStageWithContinues@GameManager@@QAEHHHH@Z
 0x00439883,75,Func439883,
