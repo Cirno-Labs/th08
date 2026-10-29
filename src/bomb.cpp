@@ -1,11 +1,40 @@
-// The bombs, from 0x40bc60, as th07's bomb.cpp. Only the effect
-// callbacks of g_EffectInfos so far.
+// The bombs, from 0x40bc60, as th07's bomb.cpp: the shared helpers, the
+// per-shot bomb callbacks of g_BombFuncs and the effect callbacks of
+// g_EffectInfos. Only part of it so far.
 
 #include "effect.h"
 #include "player.h"
 #include "screeneffect.h"
 #include "sprite.h"
 #include "unsorted.h"
+
+void DimPlayAreaForBomb(Player *player, D3DCOLOR tint)
+{
+    ColorBytes target;
+    ColorBytes out;
+
+    target.color = tint;
+    if (player->bomb.timer < 60)
+    {
+        out.r = 0x80 - (0x80 - target.r) * player->bomb.timer.AsFrames() / 60;
+        out.g = 0x80 - (0x80 - target.g) * player->bomb.timer.AsFrames() / 60;
+        out.b = 0x80 - (0x80 - target.b) * player->bomb.timer.AsFrames() / 60;
+    }
+    else if (player->bomb.timer >= player->bomb.duration - 60)
+    {
+        out.r = 0x80 - (0x80 - target.r) * (player->bomb.duration - player->bomb.timer.AsFrames()) / 60;
+        out.g = 0x80 - (0x80 - target.g) * (player->bomb.duration - player->bomb.timer.AsFrames()) / 60;
+        out.b = 0x80 - (0x80 - target.b) * (player->bomb.duration - player->bomb.timer.AsFrames()) / 60;
+    }
+    else
+    {
+        out = target;
+    }
+    out.a = 0x80;
+    g_SpriteEngine->ResetColorModulation();
+    g_Stage.SetTintColor(out.color);
+    g_Stage.keepTintColor = 1;
+}
 
 int EffectUpdateBombRing42(Effect *effect)
 {

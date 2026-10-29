@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">73.48% (820)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">24.55% (274)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">73.57% (821)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">24.46% (273)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="548.87" height="6" x="0" y="0" class="named"/>
-<rect width="14.73" height="6" x="548.87" y="0" class="decompiled"/>
-<rect width="183.40" height="6" x="563.60" y="0" class="todo"/>
+<rect width="549.54" height="6" x="0" y="0" class="named"/>
+<rect width="14.73" height="6" x="549.54" y="0" class="decompiled"/>
+<rect width="182.73" height="6" x="564.27" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -204,7 +204,7 @@
 <rect width="12" height="12" x="495" y="30" class="named"><title>0x0040bb80 GameManager::ChecksumMismatch (145 bytes)</title></rect>
 <rect width="12" height="12" x="510" y="30" class="named"><title>0x0040bc20 Player::IsUnk5Clear (23 bytes)</title></rect>
 <rect width="12" height="12" x="525" y="30" class="named"><title>0x0040bc40 Player::IsUnk5Set (18 bytes)</title></rect>
-<rect width="12" height="12" x="540" y="30" class="todo"><title>0x0040bc60 Func40bc60 (450 bytes)</title></rect>
+<rect width="12" height="12" x="540" y="30" class="named"><title>0x0040bc60 DimPlayAreaForBomb (450 bytes)</title></rect>
 <rect width="12" height="12" x="555" y="30" class="todo"><title>0x0040be30 Func40be30 (194 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="30" class="todo"><title>0x0040bf00 Func40bf00 (264 bytes)</title></rect>
 <rect width="12" height="12" x="585" y="30" class="todo"><title>0x0040c010 Func40c010 (1941 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">65.47%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">33.52%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">65.57%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">33.42%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="489.06" height="6" x="0" y="0" class="named"/>
-<rect width="7.57" height="6" x="489.06" y="0" class="decompiled"/>
-<rect width="250.37" height="6" x="496.63" y="0" class="todo"/>
+<rect width="489.79" height="6" x="0" y="0" class="named"/>
+<rect width="7.57" height="6" x="489.79" y="0" class="decompiled"/>
+<rect width="249.64" height="6" x="497.36" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1433,7 +1433,7 @@
 <rect width="13.39" height="12.89" x="487.92" y="148.14" class="named"><title>0x0045bf10 ScreenEffect::OnUpdateShakeRamp (459 bytes)</title></rect>
 <rect width="13.39" height="12.72" x="487.92" y="164.03" class="todo"><title>0x00421e50 Func421e50 (454 bytes)</title></rect>
 <rect width="13.39" height="12.62" x="487.92" y="179.75" class="named"><title>0x004415a0 ItemManager::DrawItems (451 bytes)</title></rect>
-<rect width="13.39" height="12.58" x="487.92" y="195.37" class="todo"><title>0x0040bc60 Func40bc60 (450 bytes)</title></rect>
+<rect width="13.39" height="12.58" x="487.92" y="195.37" class="named"><title>0x0040bc60 DimPlayAreaForBomb (450 bytes)</title></rect>
 <rect width="13.39" height="12.51" x="487.92" y="210.95" class="named"><title>0x0043e1d0 DecryptData (448 bytes)</title></rect>
 <rect width="13.39" height="12.51" x="487.92" y="226.46" class="named"><title>0x0043e4a0 EncryptData (448 bytes)</title></rect>
 <rect width="13.39" height="12.48" x="487.92" y="241.98" class="named"><title>0x0043f10d GdiSurface::CreateInFormat (447 bytes)</title></rect>
