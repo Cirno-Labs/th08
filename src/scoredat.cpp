@@ -29,3 +29,16 @@ int InsertScore(ListNode *head, Hscr *entry)
     head->next = next;
     return index;
 }
+
+void FreeListNodes(ListNode *head)
+{
+    ListNode *next;
+
+    head = head->next;
+    while (head != NULL)
+    {
+        next = head->next;
+        g_MemoryManager.Free(head);
+        head = next;
+    }
+}

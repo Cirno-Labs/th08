@@ -881,7 +881,7 @@ address,size,name,symbol
 0x0045a4a0,60,Func45a4a0,
 0x0045a4dc,32,Func45a4dc,
 0x0045a500,159,InsertScore,?InsertScore@@YIHPAUListNode@@PAUHscr@@@Z
-0x0045a5a0,59,Func45a5a0,
+0x0045a5a0,59,FreeListNodes,?FreeListNodes@@YIXPAUListNode@@@Z
 0x0045a5e0,865,LoadScoreDat,?LoadScoreDat@@YIPAUScoreDat@@PAD@Z
 0x0045a950,362,Func45a950,
 0x0045aac0,175,LoadSpellCards,?LoadSpellCards@@YIHPAUScoreDat@@PAUCatk@@@Z
