@@ -999,9 +999,9 @@ address,size,name,symbol
 0x00466ae0,200,SpriteEngine::ReleaseSurface,?ReleaseSurface@SpriteEngine@@QAEXH@Z
 0x00466bb0,445,SpriteEngine::CopySurfaceToBackBuffer,?CopySurfaceToBackBuffer@SpriteEngine@@QAEXHHHHH@Z
 0x00466d70,424,Func466d70,
-0x00466f20,286,Func466f20,
+0x00466f20,286,SpriteEngine::CopyBackBufferToTexture,?CopyBackBufferToTexture@SpriteEngine@@QAEXHHHHHHHHH@Z
 0x00467040,307,Func467040,
-0x00467180,537,Func467180,
+0x00467180,537,SpriteEngine::CopyBackBufferToSurface,?CopyBackBufferToSurface@SpriteEngine@@QAEXHHHHHHHHH@Z
 0x00467399,269,Func467399,
 0x004674e0,3703,Func4674e0,
 0x0046837b,4424,Func46837b,
