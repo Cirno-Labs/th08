@@ -758,6 +758,16 @@ public:
 };
 extern Rng g_Rng;
 
+// A 2D vector, as th07's.
+struct Vector2
+{
+    // Sets x and y to `radius` along `angle`, with one fsincos (0x4286e0).
+    void SetPolar(float angle, float radius);
+
+    float x;
+    float y;
+};
+
 // a + b, brought back into [-pi, pi] (giving up after 17 turns).
 float AddNormalizeAngle(float a, float b);
 

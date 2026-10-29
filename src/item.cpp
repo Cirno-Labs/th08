@@ -5,6 +5,7 @@
 #include "effect.h"
 #include "item.h"
 #include "player.h"
+#include "replay.h"
 #include "unsorted.h"
 
 ItemManager::ItemManager()
@@ -131,6 +132,207 @@ void Func440470()
     else
     {
         g_GameManager.stats->unk_38 = 99999;
+    }
+}
+
+void ItemManager::UpdateItems()
+{
+    float weight;
+    float speed;
+    int amount;
+    float angle;
+    // The sound effect to play for the items collected this frame, if
+    // any.
+    int pickupSe = 0;
+    Item *entry = this->activeList.next;
+    D3DXVECTOR3 catchSize(g_Player.shotType->itemCatchSize, g_Player.shotType->itemCatchSize, 16.0f);
+
+    this->activeCount = 0;
+    speed = g_Player.unk_3 ? g_Player.unk_e2a78->itemSpeed : g_Player.shotType->itemSpeed;
+    speed *= g_App.gameSpeed;
+    while (entry != NULL)
+    {
+        this->activeCount++;
+        if (entry->state == 2)
+        {
+            if (entry->timer < 60)
+            {
+                weight = entry->timer.AsFloat() / 60.0f;
+                entry->pos = entry->target * weight + entry->velocity * (1.0f - weight);
+                goto touch;
+            }
+            if (entry->timer == 60)
+            {
+                entry->velocity = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+                entry->state = 0;
+            }
+        }
+        else if (entry->state == 3)
+        {
+            entry->velocity.y += 0.05f * g_App.gameSpeed;
+            if (entry->velocity.y > 0.0f || g_Player.unk_e2ac4 < 0)
+            {
+                entry->state = 1;
+            }
+            if (g_Player.playerState == 2)
+            {
+                entry->state = 0;
+                entry->velocity.x = 0.0f;
+                entry->velocity.y = -0.7f;
+                entry->velocity.z = 0.0f;
+            }
+        }
+        else if (entry->state == 5)
+        {
+            entry->velocity.y += 0.05f * g_App.gameSpeed;
+            entry->pos += entry->velocity * speed;
+            if (entry->velocity.y > 0.0f)
+            {
+                entry->state = 1;
+            }
+            else
+            {
+                goto skip;
+            }
+            if (g_Player.playerState == 2)
+            {
+                entry->state = 0;
+                entry->velocity.x = 0.0f;
+                entry->velocity.y = -0.7f;
+                entry->velocity.z = 0.0f;
+            }
+        }
+        else if (entry->state == 1 ||
+                 (g_Player.pos.y < g_Player.shotType->itemAutoCollectLine &&
+                  (g_GameManager.GetPower() >= 128.0 || g_Player.unk_3 || g_GameManager.character == 1 ||
+                   g_GameManager.character == 6)))
+        {
+            if (g_Player.playerState != 2 && g_Player.playerState != 1)
+            {
+                angle = g_Player.AngleFrom(&entry->pos);
+                ((Vector2 *)&entry->velocity)->SetPolar(angle, g_Player.shotType->itemPullSpeed);
+                entry->state = 1;
+                entry->pos += entry->velocity * g_App.gameSpeed;
+                goto touch;
+            }
+            entry->velocity.y = -0.7f;
+            entry->state = 0;
+        }
+        else
+        {
+            entry->velocity.x = 0.0f;
+            entry->velocity.z = 0.0f;
+            if (entry->velocity.y < -2.2f)
+            {
+                entry->velocity.y = -2.2f;
+            }
+        }
+        entry->pos += entry->velocity * speed;
+        if (entry->state == 0 && g_GameManager.arena[3] + 16.0f <= entry->pos.y)
+        {
+            g_GameManager.SubSubRank(3);
+            entry->Unlink();
+            entry = entry->next;
+            continue;
+        }
+        if (entry->velocity[1] < 3.0f)
+        {
+            entry->velocity.y += 0.03f * speed;
+        }
+        else
+        {
+            entry->velocity.y = 3.0f;
+        }
+    touch:
+        if (entry->state != 3 && g_Player.TouchesGrazeBox(&entry->pos, &catchSize))
+        {
+            g_ReplayManager->frameEvents |= 0x40;
+            switch (entry->type)
+            {
+            case 0:
+                entry->CollectPower();
+                break;
+            case 1:
+                entry->CollectPoint();
+                break;
+            case 8:
+                entry->CollectFullPowerItem();
+                break;
+            case 2:
+                entry->CollectBigPower();
+                break;
+            case 3:
+                if (g_GameManager.GetBombs() < 8)
+                {
+                    g_GameManager.AddBombs(1);
+                    g_Gui.bombsChanged = 2;
+                }
+                g_GameManager.AddSubRank(5);
+                break;
+            case 5:
+                g_GameManager.AddLifeOrBomb();
+                break;
+            case 4:
+                if (g_GameManager.GetPower() < 128)
+                {
+                    g_BulletManager.Func415c60();
+                    g_Gui.ShowFullPowerPopup(0, 1);
+                    g_SoundPlayer.QueueSound(0x1f, 0);
+                    g_AsciiText.AddPopup(&entry->pos, -1, 0xffffc0a0);
+                    this->ConvertPowerItems(entry);
+                }
+                g_GameManager.SetPower(128);
+                g_GameManager.AddScore(1000);
+                g_AsciiText.AddPopup(&entry->pos, 1000, 0xffffffff);
+                g_Gui.powerChanged = 2;
+                break;
+            case 6:
+                if (!g_Player.unk_e2a7c)
+                {
+                    amount = g_GameManager.stats->grazeTotal / 40 * 10 + 300;
+                    if (amount <= 0)
+                    {
+                        amount = 10;
+                    }
+                }
+                else
+                {
+                    amount = 100;
+                }
+                g_AsciiText.AddPopup2(&entry->pos, amount, 0xffffffff);
+                g_GameManager.AddScore(amount);
+                break;
+            case 7:
+                entry->CollectTimeOrb();
+                break;
+            }
+            if (pickupSe <= 0x15)
+            {
+                pickupSe = entry->countsFullValue ? 0x2c : 0x15;
+            }
+            entry->Unlink();
+            entry = entry->next;
+            continue;
+        }
+    skip:
+        entry->timer++;
+        if (entry->sprite.scriptPos != NULL)
+        {
+            g_SpriteEngine->Step(&entry->sprite);
+        }
+        entry = entry->next;
+    }
+    if (pickupSe != 0)
+    {
+        g_SoundPlayer.QueueSound(pickupSe, 0);
+    }
+    if (g_Player.unk_e2adc != 0)
+    {
+        g_Player.unk_e2adc--;
+        if (g_Player.unk_e2adc <= 0)
+        {
+            g_Player.unk_e2adc = 0;
+        }
     }
 }
 

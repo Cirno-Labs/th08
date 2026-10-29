@@ -79,6 +79,14 @@ public:
     Item *SpawnItem(D3DXVECTOR3 *pos, int type, int state);
     // Collects every item on the screen, as th07's (0x4413e0).
     void CollectAll();
+    // Moves the active items and collects those the player touches, each
+    // frame, as th07's: items fly to their target (state 2), fly up
+    // (states 3 and 5), are drawn in (state 1, at full power or for
+    // characters 1 and 6 above the auto-collect line, or while
+    // Player::unk_3 is set) or fall; collecting one runs its type's
+    // Collect function and plays sound 0x15 (0x2c if it counted in full).
+    // Counts Player::unk_e2adc down (0x440500).
+    void UpdateItems();
     // Turns every active power item (types 0 and 2) except `except` into
     // type 8, with effect 0 on it, as th07's ConvertPowerItems (type 7
     // there). Those not rising faster are set to drift up at 0.5

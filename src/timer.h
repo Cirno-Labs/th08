@@ -90,6 +90,11 @@ struct Timer
     {
         return this->current == frames;
     }
+    // Inline; the copy at 0x441830 is the item object's.
+    BOOL operator!=(int frames)
+    {
+        return this->current != frames;
+    }
     BOOL operator<(int frames)
     {
         return this->current < frames;

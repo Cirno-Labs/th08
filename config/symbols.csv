@@ -365,7 +365,7 @@ address,size,name,symbol
 0x00428590,132,Func428590,
 0x00428620,135,EffectManager::RegisterChain,?RegisterChain@EffectManager@@SIHXZ
 0x004286b0,35,EffectManager::RemoveChain,?RemoveChain@EffectManager@@SIXXZ
-0x004286e0,32,Func4286e0,
+0x004286e0,32,Vector2::SetPolar,?SetPolar@Vector2@@QAEXMM@Z
 0x00428700,32,Func428700,
 0x00428720,28,Func428720,
 0x00428740,159,Func428740,
@@ -615,7 +615,7 @@ address,size,name,symbol
 0x00440050,78,Item::Item,??0Item@@QAE@XZ
 0x004400a0,970,ItemManager::SpawnItem,?SpawnItem@ItemManager@@QAEPAUItem@@PAUD3DXVECTOR3@@HH@Z
 0x00440470,137,Func440470,?Func440470@@YIXXZ
-0x00440500,1989,Func440500,
+0x00440500,1989,ItemManager::UpdateItems,?UpdateItems@ItemManager@@QAEXXZ
 0x00440cf0,334,Item::CollectPower,?CollectPower@Item@@QAEXXZ
 0x00440e40,472,Item::CollectPoint,?CollectPoint@Item@@QAEXXZ
 0x00441020,334,Item::CollectFullPowerItem,?CollectFullPowerItem@Item@@QAEXXZ
@@ -753,12 +753,12 @@ address,size,name,symbol
 0x0044a230,302,Func44a230,
 0x0044a360,272,Func44a360,
 0x0044a470,303,Func44a470,
-0x0044a5a0,249,Func44a5a0,
+0x0044a5a0,249,Player::TouchesGrazeBox,?TouchesGrazeBox@Player@@QAEHPAUD3DXVECTOR3@@0@Z
 0x0044a6a0,651,Func44a6a0,
 0x0044a930,521,Func44a930,
 0x0044ab40,888,Func44ab40,
 0x0044aec0,4769,Func44aec0,
-0x0044c1b0,118,Func44c1b0,
+0x0044c1b0,118,Player::AngleFrom,?AngleFrom@Player@@QAEMPAUD3DXVECTOR3@@@Z
 0x0044c230,351,Player::RegisterChain,?RegisterChain@Player@@SIHH@Z
 0x0044c390,529,Func44c390,
 0x0044c5b0,159,Func44c5b0,
