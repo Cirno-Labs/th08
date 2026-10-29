@@ -145,6 +145,14 @@ char *FormatFullWidthNumber(int value, int digits)
     return g_FullWidthNumber;
 }
 
+int GameManager::IsSpellCardSeen(int card)
+{
+    return (card < 0xcd && (this->catks[card].attempts[12] != 0 || this->catks[card].practiceAttempts[12] != 0)) ||
+                   this->flsp.lastSpellsSeen[card - 0xcd] == card
+               ? TRUE
+               : FALSE;
+}
+
 int MainMenu::MoveMenuCursor(int count)
 {
     if (count == 0)
