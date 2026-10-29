@@ -7,6 +7,7 @@
 #include "chain.h"
 #include "replay.h"
 #include "unsorted.h"
+
 BOOL GameManager::IsInPlayArea(float x, float y, float width, float height)
 {
     if (x + width / 2.0f < 0.0f)
@@ -26,6 +27,24 @@ BOOL GameManager::IsInPlayArea(float x, float y, float width, float height)
         return FALSE;
     }
     return TRUE;
+}
+
+void GameManager::AddLifeOrBomb()
+{
+    if ((int)this->stats->lives < 8)
+    {
+        this->AddLives(1);
+        g_SoundPlayer.QueueSound(0x1c, 0);
+        this->AddSubRank(200);
+        g_Gui.livesChanged = 2;
+    }
+    else if ((int)this->stats->bombs < 8)
+    {
+        this->AddBombs(1);
+        g_SoundPlayer.QueueSound(0x1c, 0);
+        this->AddSubRank(200);
+        g_Gui.bombsChanged = 2;
+    }
 }
 
 int GameManager::OnDraw(GameManager *mgr)

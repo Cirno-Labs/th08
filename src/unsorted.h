@@ -1073,6 +1073,56 @@ public:
     // or 3 outside scene 2, in the result screen's mode (bits 5-6 of
     // unk_3dbac) 1 or while unk_38 is set.
     static int OnDraw(GameManager *mgr);
+    // Zeroes the GameManager and sets arena to the play area (32, 16,
+    // 384, 448) and unk_3dbb4 to 3. Emitted where g_GameManager is defined
+    // (0x43c5e1).
+    GameManager();
+    // Whether the checksummed fields of `stats` no longer agree, as
+    // th07's (0x40bb80).
+    int ChecksumMismatch();
+    // Rerolls the checksum keys and recomputes the checksums, as th07's
+    // (0x406e50).
+    void RerollChecksumKeys();
+    // Add `lives` to stats->lives and `bombs` to stats->bombs and
+    // recompute the checksums; wipe g_App with 0xff first if the checksums
+    // were already wrong, as th07's. Inline; the copies are at 0x43c641
+    // (the GameManager object's) and 0x439883 (another object's).
+    void AddLives(int lives)
+    {
+        if (this->ChecksumMismatch())
+        {
+            memset(&g_App, 0xff, sizeof(App));
+        }
+        this->stats->lives += lives;
+        this->RerollChecksumKeys();
+    }
+    void AddBombs(int bombs)
+    {
+        if (this->ChecksumMismatch())
+        {
+            memset(&g_App, 0xff, sizeof(App));
+        }
+        this->stats->bombs += bombs;
+        this->RerollChecksumKeys();
+    }
+    // Sets arena to the play area (32, 16, 384, 448) and arena2 to (8,
+    // 16, 368, 416), as th07's. Inline; the copy at 0x43c686 is the
+    // GameManager object's.
+    void SetPlayArea()
+    {
+        this->arena[0] = 32.0f;
+        this->arena[1] = 16.0f;
+        this->arena[2] = 384.0f;
+        this->arena[3] = 448.0f;
+        this->arena2[0] = 8.0f;
+        this->arena2[1] = 16.0f;
+        this->arena2[2] = 368.0f;
+        this->arena2[3] = 416.0f;
+    }
+    // Gives a life, or a bomb when the lives are full (8). Either one
+    // plays sound 0x1c, adds 200 to the subrank and marks the Gui's
+    // count changed, as th07's.
+    void AddLifeOrBomb();
     // Whether a `width` by `height` box centred on (`x`, `y`) touches the
     // play area, as th07's.
     BOOL IsInPlayArea(float x, float y, float width, float height);
@@ -1269,6 +1319,11 @@ public:
     // (0x4358bb, 0x437dc7).
     int IsMsgRunning();
     int IsMsgSkippable();
+
+    DWORD unk_0;
+    // Set to 2 when the lives or bombs change, as th07's.
+    unsigned int livesChanged : 2;
+    unsigned int bombsChanged : 2;
 };
 extern Gui g_Gui;
 

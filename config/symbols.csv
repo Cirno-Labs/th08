@@ -73,7 +73,7 @@ address,size,name,symbol
 0x00406dd0,20,GameManager::GetUnk28,?GetUnk28@GameManager@@QAEEXZ
 0x00406df0,38,Func406df0,
 0x00406e20,33,GameManager::SetLives,?SetLives@GameManager@@QAEXH@Z
-0x00406e50,154,Func406e50,
+0x00406e50,154,GameManager::RerollChecksumKeys,?RerollChecksumKeys@GameManager@@QAEXXZ
 0x00406ef0,49,Func406ef0,
 0x00406f30,110,GameManager::SetBombs,?SetBombs@GameManager@@QAEXH@Z
 0x00406fa0,36,GameManager::SetPower,?SetPower@GameManager@@QAEXH@Z
@@ -132,7 +132,7 @@ address,size,name,symbol
 0x0040baf0,33,Func40baf0,
 0x0040bb20,51,Func40bb20,
 0x0040bb60,26,Func40bb60,
-0x0040bb80,145,Func40bb80,
+0x0040bb80,145,GameManager::ChecksumMismatch,?ChecksumMismatch@GameManager@@QAEHXZ
 0x0040bc20,23,Func40bc20,
 0x0040bc40,18,Func40bc40,
 0x0040bc60,450,Func40bc60,
@@ -524,7 +524,7 @@ address,size,name,symbol
 0x004399ac,130,GameManager::IsInPlayArea,?IsInPlayArea@GameManager@@QAEHMMMM@Z
 0x00439a2e,151,Func439a2e,
 0x00439ac5,100,Func439ac5,
-0x00439b29,158,Func439b29,
+0x00439b29,158,GameManager::AddLifeOrBomb,?AddLifeOrBomb@GameManager@@QAEXXZ
 0x00439bc7,3644,GameManager::OnUpdate,?OnUpdate@GameManager@@SIHPAV1@@Z
 0x0043aa03,89,GameManager::OnDraw,?OnDraw@GameManager@@SIHPAV1@@Z
 0x0043aa5c,152,RegisterGameManagerChain,?RegisterGameManagerChain@@YIHXZ
@@ -548,7 +548,7 @@ address,size,name,symbol
 0x0043c35f,308,GameManager::Func43c35f,?Func43c35f@GameManager@@QAEHXZ
 0x0043c4b3,274,GameManager::AdvanceStage,?AdvanceStage@GameManager@@QAEXXZ
 0x0043c5e1,96,Func43c5e1,
-0x0043c641,69,Func43c641,
+0x0043c641,69,GameManager::AddLives,?AddLives@GameManager@@QAEXH@Z
 0x0043c686,129,Func43c686,
 0x0043c710,75,Chain::~Chain,??1Chain@@QAE@XZ
 0x0043c760,99,ChainElem::ChainElem,??0ChainElem@@QAE@XZ
