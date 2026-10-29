@@ -578,6 +578,23 @@ void Timer::Sub(int frames)
     }
 }
 
+void App::TickTimer(int *frames, float *subFrame)
+{
+    if (this->unk_188 <= 0.99f)
+    {
+        *subFrame += this->unk_188;
+        if (*subFrame >= 1.0f)
+        {
+            (*frames)++;
+            *subFrame -= 1.0f;
+        }
+    }
+    else
+    {
+        (*frames)++;
+    }
+}
+
 inline void FreeData(void *data)
 {
     free(data);
