@@ -183,3 +183,41 @@ void ItemManager::RecycleCollectedItems()
         entry = entry->next;
     }
 }
+
+void ItemManager::DrawItems()
+{
+    Item *entry = this->activeList.next;
+    int alpha;
+
+    while (entry != NULL)
+    {
+        entry->sprite.pos.x = g_GameManager.arena[0] + entry->pos.x;
+        entry->sprite.pos.y = g_GameManager.arena[1] + entry->pos.y;
+        entry->sprite.pos.z = 0.15f;
+        if (entry->pos[1] < -8.0f)
+        {
+            entry->sprite.pos.y = 8.0f + g_GameManager.arena[1];
+            if (entry->onScreen)
+            {
+                g_BulletManager.etamaAnm->SetSprite(&entry->sprite, entry->type + 0xb6);
+                entry->onScreen = 0;
+                entry->sprite.flags |= 0x2000;
+            }
+            alpha = 255 - (int)((8.0f - entry->pos[1]) * 255.0f / 128.0f);
+            if (alpha < 64)
+            {
+                alpha = 64;
+            }
+            entry->sprite.color = entry->sprite.color & 0xffffff | alpha << 24;
+        }
+        else if (!entry->onScreen)
+        {
+            g_BulletManager.etamaAnm->SetSprite(&entry->sprite, entry->type + 0xac);
+            entry->onScreen = 1;
+            entry->sprite.color = 0xffffffff;
+            entry->sprite.flags |= 0x2000;
+        }
+        g_SpriteEngine->Draw(&entry->sprite);
+        entry = entry->next;
+    }
+}

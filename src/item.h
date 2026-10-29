@@ -58,6 +58,9 @@ public:
     // Lets every item drawn to the player (state 1) fall again, starting
     // at a slow upward drift, as th07's (0x441530).
     void RecycleCollectedItems();
+    // Draws the active items; those above the top as markers at its
+    // edge, fading out with the distance, as th07's (0x4415a0).
+    void DrawItems();
 
     // The last one is what SpawnItem returns when all others are taken.
     Item items[0x831];
