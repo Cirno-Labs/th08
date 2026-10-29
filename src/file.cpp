@@ -113,3 +113,13 @@ DWORD File::GetSize()
     }
     return GetFileSize(this->handle, NULL);
 }
+
+bool File::Seek(LONG offset, DWORD origin)
+{
+    if (this->handle == INVALID_HANDLE_VALUE)
+    {
+        return false;
+    }
+    SetFilePointer(this->handle, offset, NULL, origin);
+    return true;
+}
