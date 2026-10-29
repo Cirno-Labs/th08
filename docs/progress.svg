@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">71.86% (802)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">26.16% (292)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">71.95% (803)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">26.08% (291)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="536.82" height="6" x="0" y="0" class="named"/>
-<rect width="14.73" height="6" x="536.82" y="0" class="decompiled"/>
-<rect width="195.45" height="6" x="551.55" y="0" class="todo"/>
+<rect width="537.49" height="6" x="0" y="0" class="named"/>
+<rect width="14.73" height="6" x="537.49" y="0" class="decompiled"/>
+<rect width="194.78" height="6" x="552.22" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -884,7 +884,7 @@
 <rect width="12" height="12" x="195" y="240" class="named"><title>0x00450c50 UpdateBombShot (611 bytes)</title></rect>
 <rect width="12" height="12" x="210" y="240" class="named"><title>0x00450ee0 BurstHitEffect (128 bytes)</title></rect>
 <rect width="12" height="12" x="225" y="240" class="named"><title>0x00450f60 FireShots (487 bytes)</title></rect>
-<rect width="12" height="12" x="240" y="240" class="todo"><title>0x00451150 UpdateBullets (404 bytes)</title></rect>
+<rect width="12" height="12" x="240" y="240" class="named"><title>0x00451150 UpdateBullets (404 bytes)</title></rect>
 <rect width="12" height="12" x="255" y="240" class="todo"><title>0x004512f0 DrawBullets (268 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="240" class="todo"><title>0x00451400 DrawHitBullets (241 bytes)</title></rect>
 <rect width="12" height="12" x="285" y="240" class="todo"><title>0x00451500 UpdateFiring (311 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">63.52%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">35.46%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">63.61%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">35.38%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="474.52" height="6" x="0" y="0" class="named"/>
-<rect width="7.57" height="6" x="474.52" y="0" class="decompiled"/>
-<rect width="264.91" height="6" x="482.09" y="0" class="todo"/>
+<rect width="475.17" height="6" x="0" y="0" class="named"/>
+<rect width="7.57" height="6" x="475.17" y="0" class="decompiled"/>
+<rect width="264.25" height="6" x="482.75" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1456,7 +1456,7 @@
 <rect width="12.27" height="12.28" x="660.07" y="100.12" class="named"><title>0x00428310 EffectDrawBossPetal (411 bytes)</title></rect>
 <rect width="12.19" height="12.28" x="675.33" y="100.12" class="todo"><title>0x0042a4e0 Func42a4e0 (409 bytes)</title></rect>
 <rect width="12.16" height="12.28" x="690.53" y="100.12" class="named"><title>0x0043cc60 Chain::ReleaseList (408 bytes)</title></rect>
-<rect width="12.01" height="12.28" x="705.68" y="100.12" class="todo"><title>0x00451150 UpdateBullets (404 bytes)</title></rect>
+<rect width="12.01" height="12.28" x="705.68" y="100.12" class="named"><title>0x00451150 UpdateBullets (404 bytes)</title></rect>
 <rect width="11.67" height="12.28" x="720.69" y="100.12" class="named"><title>0x004582a0 ResultScreen::RegisterChain (395 bytes)</title></rect>
 <rect width="11.64" height="12.28" x="735.36" y="100.12" class="named"><title>0x004259e0 EffectManager::SpawnReservedWithVelocity (394 bytes)</title></rect>
 <rect width="11.67" height="12.24" x="504.31" y="115.39" class="todo"><title>0x0042a280 Func42a280 (394 bytes)</title></rect>
