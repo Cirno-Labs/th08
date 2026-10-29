@@ -874,3 +874,17 @@ HRESULT CWaveFile::SwitchTrack(BgmFormat *format)
 
     return S_OK;
 }
+
+HRESULT CWaveFile::OpenFromMemory(BYTE *pbData, ULONG ulDataSize, BgmFormat *format, DWORD dwFlags)
+{
+    this->format = format;
+    m_ulDataSize = ulDataSize;
+    m_pbData = pbData;
+    m_pbDataCur = m_pbData;
+    m_bIsReadingFromMemory = TRUE;
+
+    if (dwFlags != WAVEFILE_READ)
+        return E_NOTIMPL;
+
+    return S_OK;
+}
