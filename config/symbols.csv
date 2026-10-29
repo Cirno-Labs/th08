@@ -598,8 +598,8 @@ address,size,name,symbol
 0x0043f0ae,95,GdiSurface::Create,?Create@GdiSurface@@QAE_NHHH@Z
 0x0043f10d,447,GdiSurface::CreateInFormat,?CreateInFormat@GdiSurface@@QAE_NHHH@Z
 0x0043f2cc,80,GdiSurface::FindFormat,?FindFormat@GdiSurface@@QAEPAUFormatInfo@@H@Z
-0x0043f31c,1292,Func43f31c,
-0x0043f828,15,Func43f828,
+0x0043f31c,1292,GdiSurface::InvertAlpha,?InvertAlpha@GdiSurface@@QAE_NHHHHH@Z
+0x0043f828,15,GdiSurface::GetBits,?GetBits@GdiSurface@@QAEPAXXZ
 0x0043f837,15,Func43f837,
 0x0043f846,15,Func43f846,
 0x0043f855,15,Func43f855,

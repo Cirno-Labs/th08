@@ -360,6 +360,8 @@ public:
     // much when `lightShading` is set, and makes the uncovered pixels
     // black. Returns false for other formats.
     bool InvertAlpha(int x, int y, int width, int height, int lightShading);
+    // th07's inline getters, called out of line in th08 (0x43f828 on).
+    void *GetBits();
 
     int format;
     int width;

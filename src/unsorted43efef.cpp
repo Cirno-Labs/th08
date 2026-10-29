@@ -124,3 +124,79 @@ FormatInfo *GdiSurface::FindFormat(int format)
     }
     return &g_FormatInfos[i];
 }
+
+bool GdiSurface::InvertAlpha(int x, int y, int width, int height, int lightShading)
+{
+    BYTE *line;
+    int offset;
+    int total;
+    int val;
+
+    total = width * height * 2;
+    line = (BYTE *)this->GetBits() + y * width * 2;
+    switch (this->format)
+    {
+    case D3DFMT_A8R8G8B8:
+        for (offset = 3; offset < total; offset += 4)
+        {
+            line[offset] ^= 0xff;
+        }
+        break;
+    case D3DFMT_A1R5G5B5:
+        A1R5G5B5 *px;
+        for (px = (A1R5G5B5 *)line, offset = 0; offset < total; offset += 2, px++)
+        {
+            px->a ^= 1;
+            if (px->a)
+            {
+                if (!lightShading)
+                {
+                    if (px->r >= px->b)
+                    {
+                        val = px->r - px->r * offset * 2 / total / 3;
+                        px->r = val >= 32 ? 31 : val;
+                        val = px->g - px->g * offset * 2 / total / 3;
+                        px->g = val >= 32 ? 31 : val;
+                    }
+                    else
+                    {
+                        val = px->b - px->b * offset / total / 2;
+                        px->b = val >= 32 ? 31 : val;
+                        val = px->g - px->g * offset / total / 2;
+                        px->g = val >= 32 ? 31 : val;
+                    }
+                }
+                else if (px->r >= px->b)
+                {
+                    val = px->r - px->r * offset / total / 4;
+                    px->r = val >= 32 ? 31 : val;
+                    val = px->g - px->g * offset / total / 4;
+                    px->g = val >= 32 ? 31 : val;
+                }
+                else
+                {
+                    val = px->b - px->b * offset / total / 4;
+                    px->b = val >= 32 ? 31 : val;
+                    val = px->g - px->g * offset / total / 4;
+                    px->g = val >= 32 ? 31 : val;
+                }
+            }
+            else
+            {
+                px->r = 0;
+                px->g = 0;
+                px->b = 0;
+            }
+        }
+        break;
+    case D3DFMT_A4R4G4B4:
+        for (offset = 1; offset < total; offset += 2)
+        {
+            line[offset] ^= 0xf0;
+        }
+        break;
+    default:
+        return false;
+    }
+    return true;
+}
