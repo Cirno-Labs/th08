@@ -2,12 +2,14 @@
 // popups, as th07's ascii.cpp. The first object of the game, from
 // 0x402000; its inline copies run to about 0x4071a0.
 
+#include <math.h>
 #include <stdarg.h>
 #include <stdio.h>
 #include <string.h>
 
 #include "ascii.h"
 #include "chain.h"
+#include "player.h"
 #include "sprite.h"
 #include "unsorted.h"
 
@@ -242,4 +244,158 @@ int AsciiText::AddFormatLen(D3DXVECTOR3 *pos, char *fmt, ...)
     this->AddString(pos, buf);
     va_end(args);
     return strlen(buf);
+}
+
+void AsciiText::DrawStrings()
+{
+    float advance;
+    int idx;
+    AsciiString *string;
+    BYTE *c;
+    D3DXVECTOR3 pos;
+    int clipped = 1;
+
+    string = this->strings;
+    this->glyph.flags |= 1;
+    this->glyph.flags |= 0x1800;
+    for (idx = 0; idx < this->stringCount; idx++, string++)
+    {
+        this->glyph.pos = string->pos;
+        c = (BYTE *)string->text;
+        this->glyph.scaleY = string->scaleX;
+        this->glyph.scaleX = string->scaleY;
+        advance = this->glyphWidth * string->scaleX;
+        if (clipped != string->inArena)
+        {
+            clipped = string->inArena;
+            g_SpriteEngine->FlushQuadBatch();
+            if (clipped != 0)
+            {
+                g_App.viewport.X = g_GameManager.arena[0];
+                g_App.viewport.Y = g_GameManager.arena[1];
+                g_App.viewport.Width = g_GameManager.arena[2];
+                g_App.viewport.Height = g_GameManager.arena[3];
+                g_App.d3dDevice->SetViewport(&g_App.viewport);
+            }
+            else
+            {
+                g_App.viewport.X = 0;
+                g_App.viewport.Y = 0;
+                g_App.viewport.Width = 640;
+                g_App.viewport.Height = 480;
+                g_App.d3dDevice->SetViewport(&g_App.viewport);
+            }
+        }
+        while (*c != 0)
+        {
+            if (*c == '\n')
+            {
+                this->glyph.pos.y += 16.0f * string->scaleY;
+                this->glyph.pos.x = string->pos.x;
+            }
+            else if (*c == ' ')
+            {
+                this->glyph.pos.x += advance;
+            }
+            else
+            {
+                if (string->highlight == 0)
+                {
+                    this->glyph.spriteData = this->anm->GetSprite(*c - 1);
+                    this->glyph.color = string->color;
+                }
+                else
+                {
+                    this->glyph.spriteData = this->anm->GetSprite(*c + 0x8a);
+                    this->glyph.color = 0xffffffff;
+                }
+                g_SpriteEngine->DrawUnrotated(&this->glyph);
+                this->glyph.pos.x += advance;
+            }
+            c++;
+        }
+    }
+    if (clipped != 0)
+    {
+        g_SpriteEngine->FlushQuadBatch();
+        g_App.viewport.X = 0;
+        g_App.viewport.Y = 0;
+        g_App.viewport.Width = 640;
+        g_App.viewport.Height = 480;
+        g_App.d3dDevice->SetViewport(&g_App.viewport);
+    }
+    for (idx = 0; idx < 4; idx++)
+    {
+        if (this->nearbyLabels[idx].pos.x >= 56.0f && this->nearbyLabels[idx].pos.x <= 392.0f)
+        {
+            advance = fabsf(this->nearbyLabels[idx].pos.x - 32.0f - g_Player.pos.x);
+            this->nearbyLabels[idx].spriteData = this->anm->GetSprite(0x9d);
+            switch (this->nearbyLabelDimmed[idx])
+            {
+            case 0:
+            normal:
+                this->nearbyLabels[idx].colorRgb[2] = 0xff;
+                this->nearbyLabels[idx].colorRgb[1] = 0xff;
+                this->nearbyLabels[idx].colorRgb[0] = 0xff;
+                if (advance < 64.0f)
+                {
+                    this->nearbyLabels[idx].alpha = advance * 64.0f / 64.0f + 96.0f;
+                }
+                else
+                {
+                    this->nearbyLabels[idx].alpha = 0xa0;
+                }
+                break;
+            case 1:
+                this->nearbyLabels[idx].alpha = 0x80;
+                this->nearbyLabels[idx].colorRgb[2] = 0xff;
+                this->nearbyLabels[idx].colorRgb[1] = 0x40;
+                this->nearbyLabels[idx].colorRgb[0] = 0x40;
+                break;
+            case 2:
+                if (this->frameCounter % 8 == 0)
+                {
+                    this->nearbyLabels[idx].spriteData = this->anm->GetSprite(0x9e);
+                    this->nearbyLabels[idx].alpha = 0xff;
+                    this->nearbyLabels[idx].colorRgb[2] = 0xff;
+                    this->nearbyLabels[idx].colorRgb[1] = 0xff;
+                    this->nearbyLabels[idx].colorRgb[0] = 0xff;
+                }
+                else
+                {
+                    goto normal;
+                }
+                break;
+            case 3:
+                if (this->frameCounter % 4 == 0)
+                {
+                    this->nearbyLabels[idx].spriteData = this->anm->GetSprite(0x9e);
+                    this->nearbyLabels[idx].alpha = 0xff;
+                    this->nearbyLabels[idx].colorRgb[2] = 0xff;
+                    this->nearbyLabels[idx].colorRgb[1] = 0xff;
+                    this->nearbyLabels[idx].colorRgb[0] = 0xff;
+                }
+                else
+                {
+                    goto normal;
+                }
+                break;
+            case 4:
+                if (this->frameCounter % 2 == 0)
+                {
+                    this->nearbyLabels[idx].spriteData = this->anm->GetSprite(0x9e);
+                    this->nearbyLabels[idx].alpha = 0xff;
+                    this->nearbyLabels[idx].colorRgb[2] = 0xff;
+                    this->nearbyLabels[idx].colorRgb[1] = 0xff;
+                    this->nearbyLabels[idx].colorRgb[0] = 0xff;
+                }
+                else
+                {
+                    goto normal;
+                }
+                break;
+            }
+            g_SpriteEngine->DrawUnrotated(&this->nearbyLabels[idx]);
+        }
+    }
 }

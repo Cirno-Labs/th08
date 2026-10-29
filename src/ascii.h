@@ -239,7 +239,7 @@ public:
     // The advance of a character, in pixels, as th07's.
     int glyphWidth;
     // The frames OnUpdate has run. New in th08.
-    int frameCounter;
+    DWORD frameCounter;
     // ascii.anm and capture.anm, which the Gui also runs scripts from.
     AnmLoaded *anm;
     AnmLoaded *anm2;
