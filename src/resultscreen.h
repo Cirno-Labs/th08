@@ -7,6 +7,7 @@
 
 #include "chain.h"
 #include "common.h"
+#include "replay.h"
 #include "sprite.h"
 
 // One difficulty's line of the play statistics, th07's with 12 shot
@@ -373,7 +374,9 @@ public:
     int unk_18;
     // The menu item selected.
     int cursor;
-    unsigned char unk_20[0xc];
+    unsigned char unk_20[0x8];
+    // The replay slot chosen, 0 to 14, as th07's.
+    int replaySlot;
     // The character of g_NameAlphabet selected, as th07's.
     int charIndex;
     // A second cursor, moved by LoadScreenPlstChunk, as th07's.
@@ -423,7 +426,11 @@ public:
     Lsnm lsnm;
     ChainElem *calcChain;
     ChainElem *drawChain;
-    unsigned char unk_46470[0x1340];
+    // The headers of "./replay/th8_01.rpy" to "th8_15.rpy", where they
+    // are valid.
+    ReplayHeader replays[0xf];
+    // The date and score of the replay being saved.
+    ReplayHeader replay;
 };
 ASSERT_SIZE(ResultScreen, 0x477b0);
 

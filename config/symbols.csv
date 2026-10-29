@@ -823,7 +823,7 @@ address,size,name,symbol
 0x00451670,1646,Func451670,
 0x00451ce0,108,Func451ce0,
 0x00451d50,56,Func451d50,
-0x00451d90,511,Func451d90,
+0x00451d90,511,ValidateReplay,?ValidateReplay@@YIPAUReplayHeader@@PAXH@Z
 0x00451f90,777,Func451f90,
 0x004522a0,102,Func4522a0,
 0x00452310,372,Func452310,
