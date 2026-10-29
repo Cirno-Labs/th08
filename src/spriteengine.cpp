@@ -836,6 +836,24 @@ void SpriteEngine::ProjectSprite3D(Sprite *vm)
     this->lastWorldMatrix = worldMatrix;
 }
 
+int SpriteEngine::DrawProjected3D(Sprite *vm)
+{
+    if (!vm->IsShown())
+    {
+        return -1;
+    }
+    if ((vm->flags >> 1 & 1) == 0)
+    {
+        return -1;
+    }
+    if (vm->alpha == 0)
+    {
+        return -1;
+    }
+    this->ProjectSprite3D(vm);
+    return this->DrawQuad(vm, 0);
+}
+
 SpriteEngine::SpriteEngine()
 {
     memset(this, 0, sizeof(*this));
