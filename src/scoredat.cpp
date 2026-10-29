@@ -255,3 +255,24 @@ int LoadLsnmChunk(void *scoreDat, Lsnm *lsnm)
     }
     return 0;
 }
+
+int LoadFlspChunk(void *scoreDat, Flsp *flsp)
+{
+    Flsp *chunk;
+    int left;
+    ScoreDat *dat1 = (ScoreDat *)scoreDat;
+
+    chunk = (Flsp *)((BYTE *)dat1 + dat1->dataOffset);
+    left = dat1->fileSize - dat1->dataOffset;
+    while (left > 0)
+    {
+        if (chunk->magic == 0x50534c46 && chunk->version == 1)
+        {
+            *flsp = *chunk;
+            return 1;
+        }
+        left -= chunk->size;
+        chunk = (Flsp *)((BYTE *)chunk + chunk->size);
+    }
+    return 0;
+}

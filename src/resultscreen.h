@@ -203,7 +203,7 @@ ScoreDat *LoadScoreDat(char *path);
 // returns 1 if it found its chunk, else 0.
 int LoadClears(ScoreDat *scoreDat, Clrd *clrds);
 int LoadSpellCards(void *scoreDat, Catk *catks);
-int LoadFlspChunk(ScoreDat *scoreDat, Flsp *flsp);
+int LoadFlspChunk(void *scoreDat, Flsp *flsp);
 // Copies the score file's version 1 "LSNM" chunk to `lsnm`. Returns 1,
 // or 0 if there is none.
 int LoadLsnmChunk(void *scoreDat, Lsnm *lsnm);
