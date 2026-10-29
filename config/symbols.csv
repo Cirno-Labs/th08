@@ -13,7 +13,7 @@ address,size,name,symbol
 0x00402830,131,Func402830,
 0x004028c0,39,Func4028c0,
 0x004028f0,35,AsciiText::RemoveChain,?RemoveChain@AsciiText@@SIXXZ
-0x00402920,265,Func402920,
+0x00402920,265,AsciiText::AddString,?AddString@AsciiText@@QAEXPAUD3DXVECTOR3@@PAD@Z
 0x00402a30,68,AsciiText::AddFormat,?AddFormat@AsciiText@@QAAXPAUD3DXVECTOR3@@PADZZ
 0x00402a80,146,Func402a80,
 0x00402b20,1698,AsciiText::DrawStrings,?DrawStrings@AsciiText@@QAEXXZ

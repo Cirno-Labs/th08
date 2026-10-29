@@ -407,6 +407,121 @@ void SpriteEngine::ReleaseVertexBuffer()
     }
 }
 
+void DrawFps(int draw)
+{
+    static DWORD frames;
+    static char fpsText[0x100];
+    static LARGE_INTEGER lastCounter;
+    static DWORD measures;
+    static char speedText[0x100];
+    float fps;
+    float duration;
+
+    if (g_GameManager.unk_2d == 0)
+    {
+        frames += 1 + g_App.frameSkip;
+        if (g_App.perfFrequency[0] == 0)
+        {
+            static DWORD lastTime = timeGetTime();
+            DWORD now = timeGetTime();
+
+            if (now < lastTime)
+            {
+                lastTime = now;
+                frames = 0;
+            }
+            if (now - lastTime >= 500)
+            {
+                duration = (now - lastTime) / 1000.0f;
+                lastTime = now;
+            measured:
+                fps = frames / duration;
+                frames = 0;
+                sprintf(fpsText, "%.02ffps", fps);
+                if ((g_GameManager.unk_3dbac >> 2 & 1) && draw)
+                {
+                    float target = 60.0f;
+
+                    g_App.unk_194 += target;
+                    if (target * 0.9f < fps)
+                    {
+                        g_App.unk_190 += target;
+                    }
+                    else if (target * 0.7f < fps)
+                    {
+                        g_App.unk_190 += target * 0.8f;
+                    }
+                    else if (target * 0.5f < fps)
+                    {
+                        g_App.unk_190 += target * 0.6f;
+                    }
+                    else
+                    {
+                        g_App.unk_190 += target * 0.5f;
+                    }
+                    if (!(g_GameManager.unk_3dbac >> 3 & 1))
+                    {
+                        g_App.unk_198 = fps + 0.5f;
+                    }
+                    else
+                    {
+                        sprintf(speedText, "%2d", g_App.unk_198);
+                    }
+                }
+            }
+        }
+        else
+        {
+            LARGE_INTEGER counter;
+
+            if (lastCounter.LowPart == 0)
+            {
+                QueryPerformanceCounter(&lastCounter);
+            }
+            QueryPerformanceCounter(&counter);
+            if (counter.LowPart < lastCounter.LowPart)
+            {
+                lastCounter = counter;
+                frames = 0;
+            }
+            if (counter.LowPart >= lastCounter.LowPart + (g_App.perfFrequency[0] >> 1))
+            {
+                duration = (float)(counter.LowPart - lastCounter.LowPart) / (float)g_App.perfFrequency[0];
+                lastCounter = counter;
+                measures++;
+                goto measured;
+            }
+        }
+    }
+    if (g_App.hideFps == 0 && draw)
+    {
+        D3DXVECTOR3 pos;
+
+        pos.x = 512.0f;
+        pos.y = 464.0f;
+        pos.z = 0.0f;
+        g_AsciiText.AddString(&pos, fpsText);
+        if ((g_GameManager.unk_3dbac >> 3 & 1) && (g_GameManager.unk_3dbac >> 2 & 1))
+        {
+            D3DXVECTOR3 speedPos;
+
+            speedPos.x = 384.0f;
+            speedPos.y = 448.0f;
+            speedPos.z = 0.0f;
+            if (g_App.unk_33c != 0)
+            {
+                g_AsciiText.color = 0xffff4040;
+            }
+            else
+            {
+                g_AsciiText.color = 0xffffffd0;
+            }
+            g_AsciiText.AddString(&speedPos, speedText);
+            g_AsciiText.color = 0xffffffff;
+        }
+    }
+}
+
 inline void FreeData(void *data)
 {
     free(data);

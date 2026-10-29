@@ -160,7 +160,14 @@ public:
     unsigned char unk_180[0xc];
     // The MIDI player; its long messages come back to WindowProc.
     MidiPlayer *midi;
-    unsigned char unk_190[0x10];
+    // Their ratio is the game's speed, which the score entry records
+    // as slowdown.
+    float unk_190;
+    float unk_194;
+    // The frame rate rounded, as DrawFps shows it with bit 3 of
+    // g_GameManager.unk_3dbac.
+    short unk_198;
+    unsigned char unk_19a[0x6];
     // The loading screen's sprites, from nowloading.anm (AddedCallback).
     void *loadingAnm;
     // Bit 0x40 is set by CheckSingleInstance when the startup info has
@@ -179,7 +186,23 @@ public:
     // The logo screen's frame counter: OnDrawLogo shows the logo while
     // it is nonzero, and blinks "Press Shot Button" from 2 on.
     int logoFrames;
-    unsigned char unk_300[0x54];
+    // QueryPerformanceFrequency's result, as AddedCallback read it. Only
+    // 4-aligned, so not a LARGE_INTEGER.
+    DWORD perfFrequency[2];
+    // th07's clock drift measurement, which th08 no longer runs.
+    DWORD startCounter[2];
+    DWORD counter[2];
+    SYSTEMTIME startTime;
+    SYSTEMTIME time;
+    int unk_338;
+    // DrawFps shows the rate in red when it is set.
+    int unk_33c;
+    int unk_340;
+    int unk_344;
+    int unk_348;
+    int unk_34c;
+    // Set to 0xff before each frame is drawn; DisableFog clears it.
+    DWORD unk_350;
     // The sum of the executable's dwords and its size, from
     // ChecksumExecutable.
     DWORD exeChecksum;
@@ -734,6 +757,13 @@ public:
     DWORD unk_0;
     GameManagerUnk4 *unk_4;
     GameManagerStats *stats;
+    unsigned char unk_c[0x21];
+    // As th07's unk_d: while it is set, the frame rate is not measured
+    // and the buttons are only added to.
+    char unk_2d;
+    unsigned char unk_2e[0x3db7e];
+    // Bit 2: the speed is measured; 3: it is shown, as th07's unk_93d8.
+    DWORD unk_3dbac;
 };
 extern GameManager g_GameManager;
 
