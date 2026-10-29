@@ -258,3 +258,10 @@ int EffectInitDrift(Effect *effect)
     effect->acceleration *= g_App.gameSpeed;
     return 0;
 }
+
+int EffectUpdateMove(Effect *effect)
+{
+    effect->pos += effect->step;
+    effect->step += effect->acceleration;
+    return 1;
+}
