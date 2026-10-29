@@ -85,7 +85,7 @@ address,size,name,symbol
 0x00407180,25,AsciiText::SetGlyphWidth,?SetGlyphWidth@AsciiText@@QAEXH@Z
 0x004071a0,513,Stage::Stage,??0Stage@@QAE@XZ
 0x004073b0,77,StageCamera::StageCamera,??0StageCamera@@QAE@XZ
-0x00407400,6291,Func407400,
+0x00407400,6291,Stage::OnUpdate,?OnUpdate@Stage@@SIHPAV1@@Z
 0x00408d40,21,cosf,@cosf@4
 0x00408d60,577,UpdateEasedVector,?UpdateEasedVector@@YIXPAVStage@@HPAUD3DXVECTOR3@@1111@Z
 0x00408fc0,152,HermiteInterpolate,?HermiteInterpolate@@YIMMMMMM@Z
@@ -98,7 +98,7 @@ address,size,name,symbol
 0x00409640,528,Stage::OnDraw2,?OnDraw2@Stage@@SIHPAV1@@Z
 0x00409850,706,Stage::AddedCallback,?AddedCallback@Stage@@SIHPAV1@@Z
 0x00409b20,254,Stage::RegisterChain,?RegisterChain@Stage@@SIHH@Z
-0x00409c20,122,Func409c20,
+0x00409c20,122,Stage::DeletedCallback,?DeletedCallback@Stage@@SIHPAV1@@Z
 0x00409ca0,50,Stage::RemoveChain,?RemoveChain@Stage@@SIXXZ
 0x00409ce0,598,Stage::Load,?Load@Stage@@QAEHPAD@Z
 0x00409f40,610,Func409f40,
@@ -2469,7 +2469,10 @@ address,size,name,symbol
 0x004e3d28,,g_Unknown4e3d28,?g_Unknown4e3d28@@3HA
 0x004e3fd0,,g_AsciiCalcChain,?g_AsciiCalcChain@@3UChainElem@@A
 0x004e3ff0,,g_AsciiDrawChain2,?g_AsciiDrawChain2@@3UChainElem@@A
+0x004e4010,,g_StageDrawChain,?g_StageDrawChain@@3UChainElem@@A
 0x004e4030,,g_Stage,?g_Stage@@3VStage@@A
+0x004ea630,,g_StageDrawChain2,?g_StageDrawChain2@@3UChainElem@@A
+0x004ea650,,g_StageCalcChain,?g_StageCalcChain@@3UChainElem@@A
 0x004ea670,,g_SpellCard,?g_SpellCard@@3USpellCard@@A
 0x004ece60,,g_EffectManager,?g_EffectManager@@3VEffectManager@@A
 0x00577eb4,,g_EtamaAnm,?g_EtamaAnm@@3PAVAnmLoaded@@A

@@ -2109,9 +2109,18 @@ public:
     void SetupCamera();
     // Removes the stage's chain elements, as th07's (0x409ca0).
     static void RemoveChain();
-    // Loads stage `stage` and adds its chain elements, as th07's
-    // (0x409b20). Returns 0, or -1 on failure.
+    // Zeroes the stage (keeping the data when restarting), remembers
+    // `stage` and adds the update element (priority 8) and the draw
+    // elements (priorities 6 and 7), as th07's (0x409b20). Returns 0, or
+    // -1 if adding fails.
     static int RegisterChain(int stage);
+    // Runs the stage script up to the current frame, as th07's (0x407400).
+    // Returns 1, or 4 when ChecksumMismatch finds the player's numbers
+    // tampered with.
+    static int OnUpdate(Stage *stage);
+    // Releases the background ANM (slot 4) and frees the sprites, and
+    // the data unless restarting (0x409c20). Returns 0.
+    static int DeletedCallback(Stage *stage);
     // Sets tintColor to `color`, or to the average of the two while its
     // alpha byte is set, as th07's.
     void SetTintColor(D3DCOLOR color);
@@ -2232,6 +2241,10 @@ public:
 };
 ASSERT_SIZE(Stage, 0x6600);
 extern Stage g_Stage;
+// Stage's statically allocated chain elements.
+extern ChainElem g_StageCalcChain;
+extern ChainElem g_StageDrawChain;
+extern ChainElem g_StageDrawChain2;
 // The background ANM of each stage (4A and 4B share one).
 extern char *g_StageAnmPaths[9];
 // The stage data file of each stage.
