@@ -95,3 +95,12 @@ bool File::Write(void *buffer, DWORD size)
     WriteFile(this->handle, buffer, size, &written, NULL);
     return size == written ? true : false;
 }
+
+DWORD File::Tell()
+{
+    if (this->handle == INVALID_HANDLE_VALUE)
+    {
+        return 0;
+    }
+    return SetFilePointer(this->handle, 0, NULL, FILE_CURRENT);
+}
