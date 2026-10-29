@@ -213,3 +213,12 @@ WORD ReadButtons();
 // Clears the down bit (0x80) of every key in the thread's keyboard
 // state.
 void ResetKeyboard();
+
+// Decrypts `size` bytes of `data` into a new buffer from
+// g_MemoryManager and returns it (or `data` if the allocation fails).
+// The first `limit` bytes go in blocks of `blockSize`: each block's
+// bytes are xored with a key that starts at `key` and grows by `step`,
+// and land at every other byte from the block's end backwards, then
+// in the gaps. A short tail (and the odd byte) is copied as is. New in
+// th08.
+BYTE *DecryptData(BYTE *data, int size, BYTE key, BYTE step, int blockSize, int limit);

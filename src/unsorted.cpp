@@ -319,3 +319,60 @@ void ResetKeyboard()
     }
     SetKeyboardState(keyState);
 }
+
+// The original allocates in an inline from global.h, whose __FILE__ names
+// the block.
+#define GLOBAL_H "d:\\cygwin\\home\\zun\\prog\\th08\\global.h"
+
+BYTE *DecryptData(BYTE *data, int size, BYTE key, BYTE step, int blockSize, int limit)
+{
+    int unused = 0;
+    int tail;
+    BYTE *wp;
+    BYTE *dest;
+    int i;
+    BYTE *line;
+    BYTE *p;
+
+    tail = (size % blockSize < blockSize / 4) ? size % blockSize : 0;
+    p = data;
+    dest = (BYTE *)g_MemoryManager.Alloc(size, GLOBAL_H);
+    wp = dest;
+    if (dest == NULL)
+    {
+        return data;
+    }
+    tail += size & 1;
+    size -= tail;
+    while (size > 0 && limit > 0)
+    {
+        if (size < blockSize)
+        {
+            blockSize = size;
+        }
+        line = wp;
+        wp = wp + blockSize - 1;
+        for (i = (blockSize + 1) / 2; i > 0; i--, p++)
+        {
+            *wp = *p ^ key;
+            wp -= 2;
+            key += step;
+        }
+        wp = line + blockSize - 2;
+        for (i = blockSize / 2; i > 0; i--, p++)
+        {
+            *wp = *p ^ key;
+            wp -= 2;
+            key += step;
+        }
+        size -= blockSize;
+        wp = line + blockSize;
+        limit -= blockSize;
+    }
+    size += tail;
+    if (size > 0)
+    {
+        memcpy(wp, p, size);
+    }
+    return dest;
+}

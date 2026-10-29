@@ -571,7 +571,7 @@ address,size,name,symbol
 0x0043d7e0,392,GetPadButtons,?GetPadButtons@@YIPAEXZ
 0x0043d970,2029,ReadButtons,?ReadButtons@@YIGXZ
 0x0043e160,110,ResetKeyboard,?ResetKeyboard@@YIXXZ
-0x0043e1d0,448,Func43e1d0,
+0x0043e1d0,448,DecryptData,?DecryptData@@YIPAEPAEHEEHH@Z
 0x0043e390,262,Func43e390,
 0x0043e4a0,448,Func43e4a0,
 0x0043e660,531,LoadFileData,?LoadFileData@@YIPAXPADPAHH@Z
