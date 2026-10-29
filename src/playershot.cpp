@@ -11,6 +11,36 @@
 #include "sprite.h"
 #include "unsorted.h"
 
+void MoveOptionToPlayer(Player *player, PlayerOption *option)
+{
+    D3DXVECTOR3 target;
+    D3DXVECTOR3 accel;
+
+    target = player->pos;
+    target.y -= 96.0f;
+    if (target.y < 32.0f)
+    {
+        target.y = 32.0f;
+    }
+    accel = target - option->pos;
+    accel /= 16.0f;
+    option->velocity += (accel - option->velocity) * 0.2f;
+    option->pos += option->velocity;
+    if (fabsf(option->velocity.x) < 0.05f)
+    {
+        option->velocity.x = 0.0f;
+    }
+    if (player->fireTimer >= 0 && player->homingEnemy != NULL && option->timer >= 10)
+    {
+        option->sprite.SetPendingInterrupt(3);
+        option->state = 3;
+    }
+    else
+    {
+        player->homingEnemy = NULL;
+    }
+}
+
 int DrawOption(Player *player, PlayerOption *option)
 {
     option->sprite.pos.x = g_GameManager.arena[0] + option->pos.x;

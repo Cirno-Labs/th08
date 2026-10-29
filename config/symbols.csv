@@ -789,7 +789,7 @@ address,size,name,symbol
 0x0044e350,18,PlayerBombHitbox::Deactivate,?Deactivate@PlayerBombHitbox@@QAEXXZ
 0x0044e370,35,PlayerBombHitbox::Reset,?Reset@PlayerBombHitbox@@QAEXXZ
 0x0044e3a0,949,Func44e3a0,
-0x0044e770,352,Func44e770,
+0x0044e770,352,MoveOptionToPlayer,?MoveOptionToPlayer@@YIXPAVPlayer@@PAUPlayerOption@@@Z
 0x0044e8d0,269,Func44e8d0,
 0x0044e9e0,94,DrawOption,?DrawOption@@YIHPAVPlayer@@PAUPlayerOption@@@Z
 0x0044ea40,303,Func44ea40,

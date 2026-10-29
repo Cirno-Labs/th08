@@ -161,10 +161,11 @@ struct PlayerOption
     Sprite sprite;
     D3DXVECTOR3 pos;
     D3DXVECTOR3 unk_2b0;
-    D3DXVECTOR3 unk_2bc;
-    // Whether it is in use.
+    D3DXVECTOR3 velocity;
+    // 0 unused, 1 starting, 2 running, 3 leaving (it then ends).
     int active;
-    int unk_2cc;
+    // What a running option does; its update callback's own states.
+    int state;
     // Its index among the four.
     int index;
     unsigned char unk_2d4[0x8];
@@ -290,6 +291,15 @@ struct PlayerLaser
     PlayerBullet *bullet;
 };
 ASSERT_SIZE(PlayerLaser, 0x10);
+
+// Moves an option of OptionUpdateHomer towards 96 above the player
+// (at least y 32), easing its velocity; when the fire timer runs, there
+// is a homingEnemy and the option has run 10 frames, sends it interrupt
+// 3 and state 3, else clears homingEnemy (0x44e770).
+void MoveOptionToPlayer(Player *player, PlayerOption *option);
+// The same towards 32 below Player::homingEnemy's +0x2d88 position,
+// without the state change (0x44e8d0).
+void MoveOptionToEnemy(Player *player, PlayerOption *option);
 
 // The options' draw callback: draws the option at its position in the
 // play area (0x44e9e0, every entry of g_OptionDrawFuncs).
