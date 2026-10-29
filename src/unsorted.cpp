@@ -156,3 +156,14 @@ int SetButtonFromDirectInput(WORD *buttons, short button, WORD bit, BYTE *rgbBut
     *buttons |= (rgbButtons[button] & 0x80) ? bit : 0;
     return (rgbButtons[button] & 0x80) ? bit : 0;
 }
+
+int SetButtonFromJoystick(WORD *buttons, short button, WORD bit, DWORD joyButtons)
+{
+    if (button < 0)
+    {
+        return 0;
+    }
+    DWORD mask = 1 << button;
+    *buttons |= (joyButtons & mask) ? bit : 0;
+    return (joyButtons & mask) ? bit : 0;
+}
