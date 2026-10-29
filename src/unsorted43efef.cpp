@@ -205,3 +205,8 @@ void * GdiSurface::GetBits()
 {
     return this->bits;
 }
+
+int GdiSurface::GetWidthBytes()
+{
+    return this->widthBytes;
+}

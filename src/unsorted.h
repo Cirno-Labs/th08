@@ -362,6 +362,7 @@ public:
     bool InvertAlpha(int x, int y, int width, int height, int lightShading);
     // th07's inline getters, called out of line in th08 (0x43f828 on).
     void *GetBits();
+    int GetWidthBytes();
 
     int format;
     int width;
