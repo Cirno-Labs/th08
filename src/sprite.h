@@ -506,6 +506,24 @@ public:
         this->modulateColorEnabled = 0;
         this->modulateColor = 0x80808080;
     }
+    // Whether `vm` shows a sprite of an ANM file whose textures are
+    // loaded: th07's Sprite::HasTexture. Inline; the copy is at
+    // 0x4622c0.
+    BOOL HasTexture(Sprite *vm)
+    {
+        if (vm->spriteData == NULL)
+        {
+            return FALSE;
+        }
+        if (vm->spriteData->sourceFileIndex < 0)
+        {
+            return FALSE;
+        }
+        return this->anms[vm->spriteData->sourceFileIndex].textures != NULL;
+    }
+    // Sends interrupt `interrupt` to the `count` sprites from `vms` that
+    // show a loaded sprite, as th07's.
+    void SendInterruptToLoadedSprites(Sprite *vms, int count, short interrupt);
     // Runs `count` sprites from `vms` a frame, as th07's (0x462310).
     void StepSprites(Sprite *vms, int count);
     // Steps every ANM file still loading; returns -1 if one fails, else

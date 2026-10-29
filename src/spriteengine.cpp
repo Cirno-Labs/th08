@@ -160,6 +160,19 @@ void SpriteEngine::DrawSprite(Sprite *vm)
     }
 }
 
+void SpriteEngine::SendInterruptToLoadedSprites(Sprite *vms, int count, short interrupt)
+{
+    while (count != 0)
+    {
+        if (g_SpriteEngine->HasTexture(vms))
+        {
+            vms->SetPendingInterrupt(interrupt);
+        }
+        vms++;
+        count--;
+    }
+}
+
 SpriteEngine::SpriteEngine()
 {
     memset(this, 0, sizeof(*this));
