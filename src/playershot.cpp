@@ -5,6 +5,7 @@
 #include <string.h>
 
 #include "effect.h"
+#include "enemy.h"
 #include "player.h"
 #include "sprite.h"
 #include "unsorted.h"
@@ -168,6 +169,28 @@ int FireRandomShot(Player *player, PlayerBullet *bullet, int frame, ShotData *sd
         FireShot(player, bullet, sd);
         bullet->angle = g_Rng.GetRandomF32MinusOneToOne() * 3.1415927f / 48.0f - 1.5707964f;
         ((Vector2 *)&bullet->velocity)->SetPolar(bullet->angle, sd->speed);
+        return 1;
+    }
+    return 0;
+}
+
+int FireEnemyHomingShot(Player *player, PlayerBullet *bullet, int frame, ShotData *sd)
+{
+    float angle;
+    float speed;
+
+    if (frame % sd->interval == sd->phase)
+    {
+        FireShot(player, bullet, sd);
+        if (player->homingEnemy != NULL)
+        {
+            angle = AddNormalizeAngle(atan2f(player->homingEnemy->pos.y - bullet->pos.y,
+                                             player->homingEnemy->pos.x - bullet->pos.x),
+                                      sd->angle + 1.5707964f);
+            speed = sd->speed * 1.5f;
+            ((Vector2 *)&bullet->velocity)->SetPolar(angle, speed);
+            bullet->angle = angle;
+        }
         return 1;
     }
     return 0;
