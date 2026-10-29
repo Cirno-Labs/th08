@@ -422,3 +422,36 @@ void SoundPlayer::StopBgm()
         }
     }
 }
+
+int SoundPlayer::LoadSounds()
+{
+    int i;
+
+    if (!this->manager)
+    {
+        return -1;
+    }
+    if (this->dsound == NULL)
+    {
+        return 0;
+    }
+    for (i = 0; i < 0xc; i++)
+    {
+        this->queue[i] = -1;
+    }
+    for (i = 0; i < 0x24; i++)
+    {
+        if (this->LoadSound(i, g_SoundPaths[i]) != 0)
+        {
+            LogPrintf(&g_Log, "error : Sound ファイルが読み込めない データを確認 %s\r\n", g_SoundPaths[i]);
+            return -1;
+        }
+    }
+    for (i = 0; i < ARRAY_SIZE(g_SoundInfos); i++)
+    {
+        this->dsound->DuplicateSoundBuffer(this->soundBuffers[g_SoundInfos[i].buffer], &this->sounds[i]);
+        this->sounds[i]->SetCurrentPosition(0);
+        this->sounds[i]->SetVolume(g_SoundInfos[i].volume);
+    }
+    return 0;
+}
