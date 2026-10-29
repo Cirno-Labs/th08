@@ -941,3 +941,19 @@ int Func439916(int card)
     }
     return 0;
 }
+
+int Func439961(int card)
+{
+    int i;
+
+    i = 0;
+    while (g_SpellCardBgms[i].lastCard >= 0)
+    {
+        if (g_GameManager.unk_3dbb0 <= g_SpellCardBgms[i].lastCard)
+        {
+            return g_SpellCardBgms[i].unk_c;
+        }
+        i++;
+    }
+    return 0;
+}
