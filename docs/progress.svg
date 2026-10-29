@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">9.59% (107)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">90.41% (1009)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">9.68% (108)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">90.32% (1008)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="71.62" height="6" x="0" y="0" class="named"/>
-<rect width="675.38" height="6" x="71.62" y="0" class="todo"/>
+<rect width="72.29" height="6" x="0" y="0" class="named"/>
+<rect width="674.71" height="6" x="72.29" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -720,7 +720,7 @@
 <rect width="12" height="12" x="0" y="195" class="named"><title>0x00443a50 App::GetEmulateColorAdd (23 bytes)</title></rect>
 <rect width="12" height="12" x="15" y="195" class="named"><title>0x00443a70 App::GetNoVertexBuffer (25 bytes)</title></rect>
 <rect width="12" height="12" x="30" y="195" class="named"><title>0x00443a90 App::GetForce16BitTextures (26 bytes)</title></rect>
-<rect width="12" height="12" x="45" y="195" class="todo"><title>0x00443ab0 Func443ab0 (26 bytes)</title></rect>
+<rect width="12" height="12" x="45" y="195" class="named"><title>0x00443ab0 App::GetReferenceRasterizer (26 bytes)</title></rect>
 <rect width="12" height="12" x="60" y="195" class="todo"><title>0x00443ad0 Func443ad0 (21 bytes)</title></rect>
 <rect width="12" height="12" x="75" y="195" class="todo"><title>0x00443af0 Func443af0 (104 bytes)</title></rect>
 <rect width="12" height="12" x="90" y="195" class="todo"><title>0x00443b60 Func443b60 (248 bytes)</title></rect>
@@ -1189,8 +1189,8 @@
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
 <text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">4.94%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">95.06%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="36.88" height="6" x="0" y="0" class="named"/>
-<rect width="710.12" height="6" x="36.88" y="0" class="todo"/>
+<rect width="36.92" height="6" x="0" y="0" class="named"/>
+<rect width="710.08" height="6" x="36.92" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -2169,7 +2169,7 @@
 <rect width="0.83" height="0.85" x="730.86" y="305.89" class="todo"><title>0x00425020 Func425020 (26 bytes)</title></rect>
 <rect width="0.83" height="0.85" x="734.69" y="305.89" class="todo"><title>0x004398ce Func4398ce (26 bytes)</title></rect>
 <rect width="0.83" height="0.85" x="738.52" y="305.89" class="named"><title>0x00443a90 App::GetForce16BitTextures (26 bytes)</title></rect>
-<rect width="0.83" height="0.85" x="742.34" y="305.89" class="todo"><title>0x00443ab0 Func443ab0 (26 bytes)</title></rect>
+<rect width="0.83" height="0.85" x="742.34" y="305.89" class="named"><title>0x00443ab0 App::GetReferenceRasterizer (26 bytes)</title></rect>
 <rect width="0.83" height="0.85" x="746.17" y="305.89" class="named"><title>0x00443f10 MmTimer::DefaultCallback (26 bytes)</title></rect>
 <rect width="0.74" height="0.95" x="707.89" y="309.74" class="todo"><title>0x00453c40 Func453c40 (26 bytes)</title></rect>
 <rect width="0.74" height="0.95" x="707.89" y="313.69" class="todo"><title>0x0045c0e0 Func45c0e0 (26 bytes)</title></rect>

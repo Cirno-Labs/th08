@@ -73,6 +73,7 @@ public:
     int GetEmulateColorAdd();
     int GetNoVertexBuffer();
     int GetForce16BitTextures();
+    int GetReferenceRasterizer();
 
     HINSTANCE hInstance;
     IDirect3D8 *d3d;

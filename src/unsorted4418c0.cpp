@@ -246,3 +246,8 @@ int App::GetForce16BitTextures()
 {
     return this->flags.force16BitTextures;
 }
+
+int App::GetReferenceRasterizer()
+{
+    return this->flags.referenceRasterizer;
+}
