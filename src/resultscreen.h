@@ -32,6 +32,47 @@ struct Plst
 };
 ASSERT_SIZE(Plst, 0x228);
 
+// A high score chunk of the score file ("HSCR", version 4). Only the
+// fields known so far, at th07's offsets; its size is not known yet.
+struct Hscr
+{
+    DWORD magic;
+    WORD size;
+    // The size again.
+    WORD size2;
+    BYTE version;
+    BYTE unk_09[0x3];
+    DWORD score;
+    unsigned char unk_10[0x4];
+    // The shot and difficulty of its list.
+    BYTE shot;
+    BYTE difficulty;
+    unsigned char unk_16[0x10];
+    char continuesUsed;
+};
+
+// A node of the score file's lists. Each list starts with a head node
+// whose `data` is NULL; the entries after it are sorted.
+struct ListNode
+{
+    ListNode()
+    {
+        this->prev = NULL;
+        this->next = NULL;
+        this->data = NULL;
+    }
+
+    ListNode *prev;
+    ListNode *next;
+    struct Hscr *data;
+};
+
+// Frees every node after `head`.
+void FreeListNodes(ListNode *head);
+// Links `entry` in after `head`, before the first entry whose score is no
+// higher. Returns its rank, from 0.
+int InsertScore(ListNode *head, Hscr *entry);
+
 // The score file's other chunks, by their magic. Only their sizes are
 // known so far.
 // "FLSP", new in th08 (version 1).
