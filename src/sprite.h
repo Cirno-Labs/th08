@@ -242,6 +242,18 @@ public:
     {
         this->pendingInterrupt = interrupt;
     }
+    // Sets rotation.z and flag bit 2, as th07's. Inline; the copy at
+    // 0x40ec00 is an /Od object's.
+    void SetRotationZ(float z)
+    {
+        this->rotation.z = z;
+        this->flags |= 4;
+    }
+    // Whether its script has ended. Inline; the copy is at 0x428720.
+    int IsScriptDone()
+    {
+        return this->scriptPos == NULL;
+    }
 
     // Resets the sprite's state up to pos, as th07's: a scale of 1,
     // white, the identity matrix, flags 7. Inline; the copy is at
@@ -618,6 +630,11 @@ public:
     // LoadAnm for the sub thread: waits until the file is loaded or
     // g_App.closeSubThread is set, NULL then (0x465a40).
     AnmLoaded *PreloadAnm(int slot, char *path);
+    // The ANM in slot `slot`. Inline; the copy is at 0x40bb60.
+    AnmLoaded *GetAnm(int slot)
+    {
+        return &this->anms[slot];
+    }
     // Creates the vertex buffer and the quads sprites are drawn with
     // (0x465250).
     void CreateQuad();

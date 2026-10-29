@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">56.09% (626)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">42.11% (470)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">56.18% (627)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">42.03% (469)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="419.02" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="419.02" y="0" class="decompiled"/>
-<rect width="314.60" height="6" x="432.40" y="0" class="todo"/>
+<rect width="419.69" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="419.69" y="0" class="decompiled"/>
+<rect width="313.93" height="6" x="433.07" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -390,7 +390,7 @@
 <rect width="12" height="12" x="285" y="90" class="todo"><title>0x00425290 Func425290 (255 bytes)</title></rect>
 <rect width="12" height="12" x="300" y="90" class="todo"><title>0x00425390 Func425390 (74 bytes)</title></rect>
 <rect width="12" height="12" x="315" y="90" class="todo"><title>0x004253e0 Func4253e0 (34 bytes)</title></rect>
-<rect width="12" height="12" x="330" y="90" class="todo"><title>0x00425410 Func425410 (25 bytes)</title></rect>
+<rect width="12" height="12" x="330" y="90" class="named"><title>0x00425410 EffectManager::Reset (25 bytes)</title></rect>
 <rect width="12" height="12" x="345" y="90" class="todo"><title>0x00425430 EffectManager::SpawnEffect (529 bytes)</title></rect>
 <rect width="12" height="12" x="360" y="90" class="todo"><title>0x00425650 Func425650 (533 bytes)</title></rect>
 <rect width="12" height="12" x="375" y="90" class="todo"><title>0x00425870 Func425870 (365 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">51.09%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">47.92%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">51.10%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">47.91%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="381.66" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="381.66" y="0" class="decompiled"/>
-<rect width="357.93" height="6" x="389.07" y="0" class="todo"/>
+<rect width="381.70" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="381.70" y="0" class="decompiled"/>
+<rect width="357.89" height="6" x="389.11" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -2189,7 +2189,7 @@
 <rect width="0.71" height="0.83" x="711.63" y="321.22" class="todo"><title>0x0041fdd0 Func41fdd0 (25 bytes)</title></rect>
 <rect width="0.71" height="0.83" x="711.63" y="325.05" class="todo"><title>0x0041fdf0 Func41fdf0 (25 bytes)</title></rect>
 <rect width="0.71" height="0.83" x="711.63" y="328.87" class="todo"><title>0x00422c20 Func422c20 (25 bytes)</title></rect>
-<rect width="0.71" height="0.83" x="711.63" y="332.70" class="todo"><title>0x00425410 Func425410 (25 bytes)</title></rect>
+<rect width="0.71" height="0.83" x="711.63" y="332.70" class="named"><title>0x00425410 EffectManager::Reset (25 bytes)</title></rect>
 <rect width="0.71" height="0.83" x="711.63" y="336.52" class="todo"><title>0x0042a4c0 Func42a4c0 (25 bytes)</title></rect>
 <rect width="0.71" height="0.83" x="711.63" y="340.35" class="todo"><title>0x0042dfd0 Func42dfd0 (25 bytes)</title></rect>
 <rect width="0.71" height="0.83" x="711.63" y="344.17" class="todo"><title>0x0042f2b0 GameManager::GetLives (25 bytes)</title></rect>

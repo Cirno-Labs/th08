@@ -767,6 +767,8 @@ struct Vector2
 {
     // Sets x and y to `radius` along `angle`, with one fsincos (0x4286e0).
     void SetPolar(float angle, float radius);
+    // SetPolar with a separate x and y radius (0x428700). New in th08.
+    void SetPolarEllipse(float angle, float radiusX, float radiusY);
 
     float x;
     float y;
@@ -1944,6 +1946,13 @@ extern Gui g_Gui;
 extern ChainElem g_GuiCalcChain;
 extern ChainElem g_GuiDrawChain;
 
+// Whether the game restarts (App::unk_16c), so the stage keeps its
+// loaded ANMs. Inline; the copy at 0x40b900 is an /Od object's.
+inline int IsRestarting()
+{
+    return g_App.unk_16c;
+}
+
 // App::unk_164, unk_168 and unk_16c (0x438fe9, 0x438ff3, 0x438ffd).
 int Func438fe9();
 int Func438ff3();
@@ -2015,16 +2024,34 @@ public:
     unsigned char unk_0[0x7f4];
     // The stage file, as th07's.
     StageData *data;
-    unsigned char unk_7f8[0x2fc];
+    unsigned char unk_7f8[0x23c];
+    // What the petal effects' color2 is their color scaled by (blue,
+    // green, red, alpha, each out of 0x100).
+    BYTE unk_a34[4];
+    unsigned char unk_a38[0xbc];
     // The fog colour, as th07's fog.color.
     D3DCOLOR fogColor;
     // g_FogColorChanged is at +0xb20.
-    unsigned char unk_af8[0x3c];
+    unsigned char unk_af8[0x38];
+    // Set to 2 by EffectManager::AddedCallback.
+    int unk_b30;
     // Set to 2 by GameManager::LoadingThread unless a stage 6 or Extra
     // spell card is practised.
     int unk_b34;
 };
 extern Stage g_Stage;
+
+// The stage's camera, as th07's StageCamera: where it is, where it looks
+// (relative to eye), its up vector and `at` normalized. Only the effects
+// read it so far. g_CameraSizeOffset follows it.
+struct StageCamera
+{
+    D3DXVECTOR3 eye;
+    D3DXVECTOR3 at;
+    D3DXVECTOR3 up;
+    D3DXVECTOR3 dir;
+};
+extern StageCamera g_StageCamera;
 
 // Each stage's music: its BGM numbers for App::PlayMidi, the first for
 // the stage.

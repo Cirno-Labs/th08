@@ -3,6 +3,7 @@
 #pragma once
 
 #include <windows.h>
+#include <d3dx8math.h>
 
 #include "common.h"
 
@@ -38,9 +39,16 @@ struct Enemy
 
     unsigned char unk_0[0x8];
     Enemy *unk_8;
-    unsigned char unk_c[0x2d98];
+    unsigned char unk_c[0x2d28];
+    // Where it is.
+    D3DXVECTOR3 pos;
+    unsigned char unk_2d40[0x64];
     int unk_2da4;
-    unsigned char unk_2da8[0x5d8];
+    unsigned char unk_2da8[0x57c];
+    // Bit 3: the petal effects drift towards it while it is the first
+    // boss.
+    DWORD unk_3324;
+    unsigned char unk_3328[0x58];
     // Shown by DrawBanners next to Func41fd40.
     int unk_3380;
 };
