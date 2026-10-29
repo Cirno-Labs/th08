@@ -228,3 +228,22 @@ public:
     unsigned __int64 loopBaseTime;
 };
 ASSERT_SIZE(MidiPlayer, 0x300);
+
+// The performance counter at the last tick of MidiTimer's timer.
+extern LARGE_INTEGER g_Unknown17ce744;
+
+// A 16 ms MmTimer that keeps the performance counter of its last tick in
+// g_Unknown17ce744. Not in th06.
+class MidiTimer : public MmTimer
+{
+public:
+    virtual void OnTimer();
+
+    // Starts the timer, ticking every 16 ms. th07's ticked every 6 ms.
+    void StartTimer();
+    // Stops the timer.
+    void StopTimer();
+
+    int unk_10;
+};
+ASSERT_SIZE(MidiTimer, 0x14);

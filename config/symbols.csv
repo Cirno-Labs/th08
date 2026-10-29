@@ -685,7 +685,7 @@ address,size,name,symbol
 0x00444820,619,MidiPlayer::OnTimer,?OnTimer@MidiPlayer@@UAEXXZ
 0x00444a90,1871,MidiPlayer::ProcessEvent,?ProcessEvent@MidiPlayer@@QAEXPAUMidiTrack@@@Z
 0x00445340,187,MidiPlayer::SendVolume,?SendVolume@MidiPlayer@@QAEXH@Z
-0x00445400,22,Func445400,
+0x00445400,22,MidiTimer::OnTimer,?OnTimer@MidiTimer@@UAEXXZ
 0x00445420,25,Func445420,
 0x00445440,19,Func445440,
 0x00445453,1831,Func445453,
@@ -2380,4 +2380,5 @@ address,size,name,symbol
 0x004b4288,4,CoInitialize,__imp__CoInitialize@4
 0x0164d540,,g_Log,?g_Log@@3VLog@@A
 0x0164f598,,g_MemoryManager,?g_MemoryManager@@3VMemoryManager@@A
+0x017ce744,,g_Unknown17ce744,?g_Unknown17ce744@@3T_LARGE_INTEGER@@A
 0x017ce758,,g_App,?g_App@@3VApp@@A
