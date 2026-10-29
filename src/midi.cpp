@@ -74,6 +74,12 @@ MmTimer::MmTimer()
     this->timerId = 0;
 }
 
+MmTimer::~MmTimer()
+{
+    this->Stop();
+    timeEndPeriod(this->caps.wPeriodMin);
+}
+
 void MmTimer::OnTimer()
 {
 }
