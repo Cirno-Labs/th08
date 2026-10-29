@@ -243,3 +243,21 @@ ScreenEffect *ScreenEffect::StartEffect(int type, int duration, int a, int b, in
     effect->drawElem = drawElem;
     return effect;
 }
+
+int ScreenEffect::OnDrawScreen(ScreenEffect *effect)
+{
+    float area[4];
+
+    area[0] = 0.0f;
+    area[1] = 0.0f;
+    area[2] = 640.0f;
+    area[3] = 480.0f;
+    g_SpriteEngine->FlushQuadBatch();
+    g_App.viewport.X = 0;
+    g_App.viewport.Y = 0;
+    g_App.viewport.Width = 640;
+    g_App.viewport.Height = 480;
+    g_App.d3dDevice->SetViewport(&g_App.viewport);
+    DrawColorRect(area, effect->alpha << 24 | effect->color);
+    return 1;
+}
