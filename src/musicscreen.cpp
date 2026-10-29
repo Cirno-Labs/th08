@@ -318,3 +318,139 @@ int MusicScreen::OnDraw(MusicScreen *screen)
     screen->comment[7].color = color;
     return 1;
 }
+
+// sprt/musiccmt.txt lists the tunes. Each starts with a line "@path",
+// then its title on the next line and up to 7 lines of comment.
+int MusicScreen::AddedCallback(MusicScreen *screen)
+{
+    int i;
+    int row;
+    char *rp;
+    int fileSize;
+    int k;
+    char *data;
+
+    if (g_SpriteEngine->LoadSurface(0, "result/music.jpg") != 0)
+    {
+        return -1;
+    }
+    screen->anm = g_SpriteEngine->LoadAnm(0x17, "music00.anm");
+    if (screen->anm == NULL)
+    {
+        return -1;
+    }
+    screen->playing = 0;
+    screen->anm->StartScript(&screen->bgSprite[0], 0);
+    screen->stateFrames = 0;
+    data = rp = (char *)LoadFileData("sprt/musiccmt.txt", &fileSize, 0);
+    if (rp == NULL)
+    {
+        return -1;
+    }
+    screen->tunes =
+        (MusicTune *)g_MemoryManager.Register(new MusicTune[0x20], sizeof(MusicTune) * 0x20, "MusicCmtInf");
+    i = -1;
+    while ((DWORD)(rp - data) < (DWORD)fileSize)
+    {
+        if (*rp == '@')
+        {
+            rp++;
+            i++;
+            k = 0;
+            while (*rp != '\n' && *rp != '\r')
+            {
+                screen->tunes[i].path[k] = *rp;
+                rp++;
+                k++;
+                if ((DWORD)(rp - data) >= (DWORD)fileSize)
+                {
+                    goto done;
+                }
+            }
+            while (*rp == '\n' || *rp == '\r')
+            {
+                rp++;
+                if ((DWORD)(rp - data) >= (DWORD)fileSize)
+                {
+                    goto done;
+                }
+            }
+            k = 0;
+            while (*rp != '\n' && *rp != '\r')
+            {
+                screen->tunes[i].title[k] = *rp;
+                rp++;
+                k++;
+                if ((DWORD)(rp - data) >= (DWORD)fileSize)
+                {
+                    goto done;
+                }
+            }
+            // th07 tested `== '\n' && == '\r'` here, never true.
+            while (*rp == '\n' || *rp == '\r')
+            {
+                rp++;
+                if ((DWORD)(rp - data) >= (DWORD)fileSize)
+                {
+                    goto done;
+                }
+            }
+            for (row = 0; row < 7; row++)
+            {
+                if (*rp == '@')
+                {
+                    break;
+                }
+                memset(screen->tunes[i].comment[row], 0, sizeof(screen->tunes[i].comment[row]));
+                k = 0;
+                while (*rp != '\n' && *rp != '\r')
+                {
+                    screen->tunes[i].comment[row][k] = *rp;
+                    rp++;
+                    k++;
+                    if ((DWORD)(rp - data) >= (DWORD)fileSize)
+                    {
+                        goto done;
+                    }
+                }
+                while (*rp == '\n' || *rp == '\r')
+                {
+                    rp++;
+                    if ((DWORD)(rp - data) >= (DWORD)fileSize)
+                    {
+                        goto done;
+                    }
+                }
+            }
+        }
+        else
+        {
+            rp++;
+        }
+    }
+
+done:
+    screen->tuneCount = i + 1;
+    for (i = 0; i < screen->tuneCount; i++)
+    {
+        screen->bgmHeard[i] = g_GameManager.plst.bgmHeard[i];
+    }
+    for (i = 0; i < screen->tuneCount; i++)
+    {
+        screen->anm->StartScript(&screen->titles[i], i + 1);
+        if (screen->bgmHeard[i] != 0)
+        {
+            g_SpriteEngine->RenderText(&screen->titles[i], 0xc0e0ff, 0x302080, screen->tunes[i].title);
+        }
+        else
+        {
+            g_SpriteEngine->RenderText(&screen->titles[i], 0x80a0c0, 0x100040, "？？？？？？？？");
+        }
+        screen->titles[i].pos.x = 93.0f;
+        screen->titles[i].pos.y = 104.0f + (i + 1) * 18 - 20.0f;
+        screen->titles[i].pos.z = 0.0f;
+        screen->titles[i].flags |= 0x1800;
+    }
+    g_MemoryManager.Free(data);
+    return 0;
+}
