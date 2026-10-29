@@ -515,7 +515,7 @@ address,size,name,symbol
 0x00439810,25,Gui::StartMsg,?StartMsg@Gui@@QAEXH@Z
 0x00439829,45,GameManager::HasClearedStage,?HasClearedStage@GameManager@@QAEHHHH@Z
 0x00439856,45,GameManager::HasClearedStageWithContinues,?HasClearedStageWithContinues@GameManager@@QAEHHHH@Z
-0x00439883,75,Func439883,
+0x00439883,75,GameManager::AddBombs,?AddBombs@GameManager@@QAEXH@Z
 0x004398ce,26,GameManager::GetBombs,?GetBombs@GameManager@@QAEHXZ
 0x004398e8,23,AsciiText::SetColor,?SetColor@AsciiText@@QAEXK@Z
 0x004398ff,23,AsciiText::SetInArena,?SetInArena@AsciiText@@QAEXH@Z
