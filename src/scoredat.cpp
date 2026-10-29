@@ -4,6 +4,7 @@
 
 #include <string.h>
 
+#include "lzss.h"
 #include "resultscreen.h"
 #include "unsorted.h"
 
@@ -41,4 +42,125 @@ void FreeListNodes(ListNode *head)
         g_MemoryManager.Free(head);
         head = next;
     }
+}
+
+ScoreDat *LoadScoreDat(char *path)
+{
+    Vrsm *vrsm2;
+    BOOL found2;
+    Th8k *th8k1;
+    int left2;
+    Th8k *chapterHeader;
+    int remaining0;
+    BYTE *p2;
+    WORD checksumVal0;
+    BYTE key;
+    int n;
+    BYTE *decoded;
+    ScoreDat *dat;
+    int readSize;
+    ScoreDat *unpacked;
+
+    DebugPrint("info : score load\r\n");
+    dat = (ScoreDat *)LoadFileData(path, &readSize, 1);
+    if (dat == NULL)
+    {
+    fail:
+        DebugPrint("info : score recreate\r\n");
+        if (dat != NULL)
+        {
+            g_MemoryManager.Free(dat);
+        }
+        dat = (ScoreDat *)g_MemoryManager.Alloc(sizeof(ScoreDat), "scorefile");
+        dat->dataOffset = sizeof(ScoreDat);
+        dat->fileSize = sizeof(ScoreDat);
+        goto done;
+    }
+    if (readSize < sizeof(ScoreDat))
+    {
+        DebugPrint("warning : score.dat size is short\r\n");
+        g_MemoryManager.Free(dat);
+        goto fail;
+    }
+    decoded = DecryptData((BYTE *)dat, readSize, 0x59, 0x79, 0x100, 0xc00);
+    g_MemoryManager.Free(dat);
+    dat = (ScoreDat *)decoded;
+    remaining0 = readSize - 2;
+    checksumVal0 = 0;
+    key = 0;
+    n = 0;
+    p2 = (BYTE *)dat + 1;
+    while (remaining0 > 0)
+    {
+        key += *p2;
+        key = ((key & 0xe0) >> 5) | ((key & 0x1f) << 3);
+        p2[1] ^= key;
+        if (n >= 2)
+        {
+            checksumVal0 += p2[1];
+        }
+        p2++;
+        remaining0--;
+        n++;
+    }
+    if (dat->checksum != checksumVal0)
+    {
+        DebugPrint("warning : score.dat chksum error\r\n");
+        goto fail;
+    }
+    if (dat->dataOffset != sizeof(ScoreDat))
+    {
+        DebugPrint("warning : header size is mismatch\r\n");
+        goto fail;
+    }
+    if (dat->version != 1)
+    {
+        DebugPrint("warning : score.dat version mismatch\r\n");
+        goto fail;
+    }
+    unpacked = (ScoreDat *)g_MemoryManager.Alloc(sizeof(ScoreDat) + 0xa0000, "scorefile2");
+    memcpy(unpacked, dat, sizeof(ScoreDat));
+    LzssDecompress((BYTE *)dat + sizeof(ScoreDat), dat->packedSize, (BYTE *)unpacked + sizeof(ScoreDat),
+                   dat->dataSize);
+    g_MemoryManager.Free(dat);
+    dat = unpacked;
+    left2 = dat->fileSize;
+    found2 = FALSE;
+    chapterHeader = (Th8k *)((BYTE *)dat + dat->dataOffset);
+    left2 -= dat->dataOffset;
+    while (left2 > 0)
+    {
+        if (chapterHeader->magic == 0x4b384854)
+        {
+            found2 = TRUE;
+            th8k1 = chapterHeader;
+        }
+        if (chapterHeader->magic == 0x4d535256 && chapterHeader->version == 1)
+        {
+            vrsm2 = (Vrsm *)chapterHeader;
+            if (g_App.CheckVersionFile(vrsm2->gameVersion, vrsm2->exeSize, vrsm2->exeChecksum) != 0)
+            {
+                DebugPrint("warning : score.dat exesumcheck error\r\n");
+                goto fail;
+            }
+        }
+        if (chapterHeader->size == 0)
+        {
+            DebugPrint("warning : score.dat chapter size is ZERO\r\n");
+            goto fail;
+        }
+        left2 -= chapterHeader->size;
+        chapterHeader = (Th8k *)((BYTE *)chapterHeader + chapterHeader->size);
+    }
+    if (!found2 || th8k1->version != 1)
+    {
+        DebugPrint("warning : score.dat version mismatch\r\n");
+        goto fail;
+    }
+done:
+    dat->scores = (ListNode *)g_MemoryManager.Alloc(sizeof(ListNode), "result");
+    dat->scores->next = NULL;
+    dat->scores->data = NULL;
+    dat->scores->prev = NULL;
+    return dat;
 }

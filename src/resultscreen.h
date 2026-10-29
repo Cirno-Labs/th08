@@ -119,12 +119,63 @@ struct Pscr
 };
 ASSERT_SIZE(Pscr, 0x178);
 
-// The score file as loaded, with its chunks unpacked. Its layout is not
-// known yet.
-struct ScoreDat;
+// The score file's first chunk ("TH8K", th07's "TH7K").
+struct Th8k
+{
+    DWORD magic;
+    WORD size;
+    WORD size2;
+    BYTE version;
+    BYTE unk_09[0x3];
+};
 
-// Reads "score.dat" at `path`, as th07's, or makes a new one
-// (0x45a5e0).
+// The chunk with the game's version ("VRSM"), as th07's: written from the
+// executable's size and checksum.
+struct Vrsm
+{
+    DWORD magic;
+    WORD size;
+    WORD size2;
+    BYTE version;
+    BYTE unk_09[0x3];
+    char gameVersion[0x8];
+    DWORD exeSize;
+    DWORD exeChecksum;
+};
+ASSERT_SIZE(Vrsm, 0x1c);
+
+// "score.dat" as loaded, th07's: a 0x1c-byte header, then chunks. On disk
+// the chunks are compressed, every byte from the third on is xored with a
+// key that runs over the bytes before it, and the whole file is encrypted
+// with DecryptData's block cipher (new in th08).
+struct ScoreDat
+{
+    BYTE unusedByte00;
+    // Where the key starts; random.
+    BYTE key;
+    // The sum of the bytes from the fifth on.
+    WORD checksum;
+    // 1 (th07 0xb).
+    WORD version;
+    BYTE unk_06[0x2];
+    // Where the chunks start.
+    int dataOffset;
+    // The list of the score entries read from the chunks.
+    ListNode *scores;
+    // The size with the chunks uncompressed, header included.
+    int fileSize;
+    // The size of the chunks, uncompressed and compressed.
+    int dataSize;
+    int packedSize;
+};
+ASSERT_SIZE(ScoreDat, 0x1c);
+
+// Reads "score.dat" at `path`, as th07's: decrypts and decodes it, checks
+// the checksum, the header size and version 1, unpacks the chunks into a
+// new block with room for 0xa0000 bytes, then checks every "VRSM" chunk
+// against the executable, that no chunk has size 0 and that a version 1
+// "TH8K" chunk is there. On any failure it makes a new, empty one. Either
+// way it gives it an empty list.
 ScoreDat *LoadScoreDat(char *path);
 // Copy the score file's chunks of each kind over the given ones, as
 // th07's: LoadClears and LoadPracticeScores first fill theirs with fresh
