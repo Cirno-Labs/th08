@@ -201,3 +201,49 @@ Effect *EffectManager::SpawnReservedWithVelocity(int type, D3DXVECTOR3 *pos, D3D
     g_ReplayManager->frameEvents |= 0x400;
     return effect;
 }
+
+Effect *EffectManager::SpawnEffect2(int type, D3DXVECTOR3 *pos, int count, D3DCOLOR color)
+{
+    Effect *eff;
+    int i;
+
+    eff = &this->effects[0x200];
+    for (i = 0; i < 0x80; i++, eff++)
+    {
+        if (eff->active)
+        {
+            continue;
+        }
+        if (eff->vertices != NULL)
+        {
+            g_MemoryManager.Free(eff->vertices);
+        }
+        eff->vertices = NULL;
+        eff->draw = NULL;
+        eff->drawList = 0;
+        eff->active = 1;
+        eff->type = type;
+        eff->pos = *pos;
+        this->anm->StartScript(&eff->sprite, g_EffectInfos[type].script);
+        eff->sprite.color = color;
+        eff->sprite.posOffset.x = 0.0f;
+        eff->sprite.posOffset.y = 0.0f;
+        eff->sprite.posOffset.z = 0.0f;
+        eff->update = g_EffectInfos[type].update;
+        eff->timer = 0;
+        eff->fadeOut = 0;
+        eff->fadeFrames = 0;
+        eff->velocity = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+        if (g_EffectInfos[type].init != NULL && g_EffectInfos[type].init(eff) != 0)
+        {
+            eff->active = 0;
+        }
+        count--;
+        if (count == 0)
+        {
+            break;
+        }
+    }
+    g_ReplayManager->frameEvents |= 0x400;
+    return i >= 0x80 ? &this->effects[0x28d] : eff;
+}

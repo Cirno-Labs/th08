@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">56.54% (631)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">41.67% (465)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">56.63% (632)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">41.58% (464)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="422.36" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="422.36" y="0" class="decompiled"/>
-<rect width="311.25" height="6" x="435.75" y="0" class="todo"/>
+<rect width="423.03" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="423.03" y="0" class="decompiled"/>
+<rect width="310.58" height="6" x="436.42" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -395,7 +395,7 @@
 <rect width="12" height="12" x="360" y="90" class="named"><title>0x00425650 EffectManager::SpawnEffectWithVelocity (533 bytes)</title></rect>
 <rect width="12" height="12" x="375" y="90" class="named"><title>0x00425870 EffectManager::SpawnReservedEffect (365 bytes)</title></rect>
 <rect width="12" height="12" x="390" y="90" class="named"><title>0x004259e0 EffectManager::SpawnReservedWithVelocity (394 bytes)</title></rect>
-<rect width="12" height="12" x="405" y="90" class="todo"><title>0x00425b70 Func425b70 (509 bytes)</title></rect>
+<rect width="12" height="12" x="405" y="90" class="named"><title>0x00425b70 EffectManager::SpawnEffect2 (509 bytes)</title></rect>
 <rect width="12" height="12" x="420" y="90" class="todo"><title>0x00425d70 Func425d70 (236 bytes)</title></rect>
 <rect width="12" height="12" x="435" y="90" class="todo"><title>0x00425e60 Func425e60 (63 bytes)</title></rect>
 <rect width="12" height="12" x="450" y="90" class="todo"><title>0x00425ea0 Func425ea0 (248 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">51.49%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">47.51%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">51.60%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">47.40%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="384.66" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="384.66" y="0" class="decompiled"/>
-<rect width="354.94" height="6" x="392.06" y="0" class="todo"/>
+<rect width="385.49" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="385.49" y="0" class="decompiled"/>
+<rect width="354.11" height="6" x="392.89" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1410,7 +1410,7 @@
 <rect width="13.71" height="14.35" x="471.21" y="278.69" class="named"><title>0x004442e0 MidiPlayer::ParseFile (511 bytes)</title></rect>
 <rect width="13.71" height="14.35" x="471.21" y="296.04" class="named"><title>0x00451d90 ValidateReplay (511 bytes)</title></rect>
 <rect width="13.71" height="14.32" x="471.21" y="313.40" class="named"><title>0x0046fdc2 DrawFan (510 bytes)</title></rect>
-<rect width="13.71" height="14.29" x="471.21" y="330.71" class="todo"><title>0x00425b70 Func425b70 (509 bytes)</title></rect>
+<rect width="13.71" height="14.29" x="471.21" y="330.71" class="named"><title>0x00425b70 EffectManager::SpawnEffect2 (509 bytes)</title></rect>
 <rect width="14.19" height="13.80" x="487.92" y="83.32" class="named"><title>0x00445fa3 App::AddedCallback (509 bytes)</title></rect>
 <rect width="14.09" height="13.80" x="505.12" y="83.32" class="todo"><title>0x004213f0 Func4213f0 (506 bytes)</title></rect>
 <rect width="14.09" height="13.80" x="522.21" y="83.32" class="named"><title>0x0045c4b0 SoundPlayer::Release (506 bytes)</title></rect>
