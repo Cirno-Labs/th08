@@ -206,6 +206,11 @@ int MainMenu::ReleaseTitleScene()
     return 0;
 }
 
+int MainMenu::AddedCallback(MainMenu *menu)
+{
+    return menu->InitTitleScene();
+}
+
 int MainMenu::DeletedCallback(MainMenu *menu)
 {
     g_App.d3dDevice->ResourceManagerDiscardBytes(0);

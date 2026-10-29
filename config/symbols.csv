@@ -1028,14 +1028,14 @@ address,size,name,symbol
 0x00470424,265,MainMenu::MoveMenuCursorLR,?MoveMenuCursorLR@MainMenu@@QAEHH@Z
 0x0047052d,850,Func47052d,
 0x0047087f,493,Func47087f,
-0x00470a6c,873,Func470a6c,
+0x00470a6c,873,MainMenu::InitTitleScene,?InitTitleScene@MainMenu@@QAEHXZ
 0x00470dd5,59,Func470dd5,
 0x00470e10,881,Func470e10,
 0x00471181,639,Func471181,
 0x00471400,109,MainMenu::ReleaseTitleScene,?ReleaseTitleScene@MainMenu@@QAEHXZ
 0x0047146d,281,SetUpTitleScene,?SetUpTitleScene@@YIHH@Z
 0x00471586,203,Func471586,
-0x00471651,17,Func471651,
+0x00471651,17,MainMenu::AddedCallback,?AddedCallback@MainMenu@@SIHPAV1@@Z
 0x00471662,125,MainMenu::DeletedCallback,?DeletedCallback@MainMenu@@SIHPAV1@@Z
 0x004716e0,23,CSoundManager::CSoundManager,??0CSoundManager@@QAE@XZ ??0DatArchiveEntry@@QAE@XZ
 0x00471700,44,CSoundManager::~CSoundManager,??1CSoundManager@@QAE@XZ
