@@ -77,3 +77,79 @@ HRESULT CSoundManager::SetPrimaryBufferFormat(DWORD dwPrimaryChannels, DWORD dwP
 
     return S_OK;
 }
+
+HRESULT CSoundManager::CreateStreaming(CStreamingSound **ppStreamingSound, LPTSTR strWaveFileName, DWORD dwCreationFlags,
+                                       GUID guid3DAlgorithm, DWORD dwNotifyCount, DWORD dwNotifySize,
+                                       HANDLE hNotifyEvent, BgmFormat *format)
+{
+    HRESULT hr;
+
+    if (m_pDS == NULL)
+        return CO_E_NOTINITIALIZED;
+
+    LPDIRECTSOUNDBUFFER pDSBuffer = NULL;
+    CWaveFile *pWaveFile = NULL;
+    DSBPOSITIONNOTIFY *aPosNotify = NULL;
+    LPDIRECTSOUNDNOTIFY pDSNotify = NULL;
+
+    pWaveFile = new CWaveFile();
+    if (pWaveFile->Open(strWaveFileName, format, WAVEFILE_READ) != S_OK)
+    {
+        delete pWaveFile;
+        return E_FAIL;
+    }
+
+    // Figure out how big the DSound buffer should be
+    DWORD dwDSBufferSize = dwNotifySize * dwNotifyCount;
+
+    // Set up the direct sound buffer.  Request the NOTIFY flag, so
+    // that we are notified as the sound buffer plays.  Note, that using this flag
+    // may limit the amount of hardware acceleration that can occur.
+    DSBUFFERDESC dsbd;
+    ZeroMemory(&dsbd, sizeof(DSBUFFERDESC));
+    dsbd.dwSize = sizeof(DSBUFFERDESC);
+    dsbd.dwFlags = dwCreationFlags | DSBCAPS_CTRLPOSITIONNOTIFY | DSBCAPS_GLOBALFOCUS | DSBCAPS_GETCURRENTPOSITION2 |
+                   DSBCAPS_CTRLVOLUME | DSBCAPS_LOCSOFTWARE;
+    dsbd.dwBufferBytes = dwDSBufferSize;
+    dsbd.guid3DAlgorithm = guid3DAlgorithm;
+    dsbd.lpwfxFormat = &pWaveFile->format->format;
+
+    if (FAILED(hr = m_pDS->CreateSoundBuffer(&dsbd, &pDSBuffer, NULL)))
+        return DXTRACE_ERR(TEXT("CreateSoundBuffer"), E_FAIL);
+
+    // Create the notification events, so that we know when to fill
+    // the buffer as the sound plays.
+    if (FAILED(hr = pDSBuffer->QueryInterface(IID_IDirectSoundNotify, (VOID **)&pDSNotify)))
+        return DXTRACE_ERR(TEXT("QueryInterface"), E_FAIL);
+
+    aPosNotify = new DSBPOSITIONNOTIFY[dwNotifyCount];
+    if (aPosNotify == NULL)
+        return E_OUTOFMEMORY;
+
+    for (DWORD i = 0; i < dwNotifyCount; i++)
+    {
+        aPosNotify[i].dwOffset = (dwNotifySize * i) + dwNotifySize - 1;
+        aPosNotify[i].hEventNotify = hNotifyEvent;
+    }
+
+    // Tell DirectSound when to notify us. The notification will come in the from
+    // of signaled events that are handled in WinMain()
+    if (FAILED(hr = pDSNotify->SetNotificationPositions(dwNotifyCount, aPosNotify)))
+    {
+        SAFE_RELEASE(pDSNotify);
+        SAFE_DELETE(aPosNotify);
+        return DXTRACE_ERR(TEXT("SetNotificationPositions"), E_FAIL);
+    }
+
+    SAFE_RELEASE(pDSNotify);
+    SAFE_DELETE(aPosNotify);
+
+    // Create the sound
+    *ppStreamingSound = new CStreamingSound(pDSBuffer, dwDSBufferSize, pWaveFile, dwNotifySize);
+    (*ppStreamingSound)->dsbd = dsbd;
+    (*ppStreamingSound)->manager = this;
+    (*ppStreamingSound)->hNotifyEvent = hNotifyEvent;
+    (*ppStreamingSound)->unk_74 = 0;
+
+    return S_OK;
+}
