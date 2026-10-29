@@ -375,3 +375,86 @@ int Ending::OnDraw(Ending *ending)
     ending->DrawFade();
     return 1;
 }
+
+int Ending::AddedCallback(Ending *ending)
+{
+    char *script;
+    int j;
+    int si;
+    int bit;
+    // Unused.
+    int unused = g_GameManager.character;
+
+    g_SpriteEngine->ClearTexture();
+    g_SpriteEngine->ClearSpriteData();
+    g_SpriteEngine->ClearBlendMode();
+    g_SpriteEngine->ClearVertexFormat();
+    ClearScreen(0xffffffff);
+    g_App.hideFps = 1;
+    ending->anm = g_SpriteEngine->LoadAnm(0x18, "staff01.anm");
+    if ((g_GameManager.unk_3dbac >> 4) & 1)
+    {
+        si = g_GameManager.character;
+        // Final A (stage 6) and Final B (stage 7) are recorded in bits 15
+        // and 14.
+        bit = g_GameManager.stage != 7 ? 0x8000 : 0x4000;
+        g_GameManager.plst.counts[g_GameManager.difficulty].clears++;
+        g_GameManager.plst.counts[6].clears++;
+        ending->canSkip = 0;
+        ending->nextCanSkip = 0;
+        if ((g_GameManager.stage == 7 && g_GameManager.AnyShotHasExtraOpen()) ||
+            (g_GameManager.stage == 6 && g_GameManager.Func43c2c5()))
+        {
+            ending->nextCanSkip = 1;
+        }
+        if (g_GameManager.stats->continuesUsed == 0)
+        {
+            if ((g_GameManager.clrds[si].stagesClearedNoContinue[0] & bit) ||
+                (g_GameManager.clrds[si].stagesClearedNoContinue[1] & bit) ||
+                (g_GameManager.clrds[si].stagesClearedNoContinue[2] & bit) ||
+                (g_GameManager.clrds[si].stagesClearedNoContinue[3] & bit))
+            {
+                ending->canSkip = 1;
+            }
+            g_GameManager.clrds[si].stagesClearedNoContinue[g_GameManager.difficulty] |= bit;
+            g_GameManager.clrds[12].stagesClearedNoContinue[g_GameManager.difficulty] |= bit;
+        }
+        else if ((g_GameManager.clrds[si].stagesCleared[0] & bit) || (g_GameManager.clrds[si].stagesCleared[1] & bit) ||
+                 (g_GameManager.clrds[si].stagesCleared[2] & bit) || (g_GameManager.clrds[si].stagesCleared[3] & bit))
+        {
+            ending->canSkip = 1;
+        }
+        g_GameManager.clrds[si].stagesCleared[g_GameManager.difficulty] |= bit;
+        g_GameManager.clrds[12].stagesCleared[g_GameManager.difficulty] |= bit;
+        g_GameManager.plst.bgmHeard[0x12] = 1;
+        g_GameManager.plst.bgmHeard[0x13] = 1;
+    }
+    else
+    {
+        ending->canSkip = g_GameManager.clrds[g_GameManager.character].unk_20;
+        g_GameManager.clrds[g_GameManager.character].unk_20 = 0;
+        g_GameManager.plst.bgmHeard[0x12] = 0x12;
+    }
+    for (j = 0; j < 0xf; j++)
+    {
+        g_App.textAnm->StartScriptAtOrigin(&ending->sprites[j], j + 0x12);
+        ending->sprites[j].pos = D3DXVECTOR3(64.0f, (float)j * 16.0f + 400.0f, 0.0f);
+    }
+    if (!((g_GameManager.unk_3dbac >> 4) & 1))
+    {
+        script = g_BadEndingFiles[g_GameManager.character];
+    }
+    else if (g_GameManager.stage != 7)
+    {
+        script = g_EndingFiles[g_GameManager.character];
+    }
+    else
+    {
+        script = g_FinalBEndingFiles[g_GameManager.character];
+    }
+    if (ending->Load(script) != 0)
+    {
+        return -1;
+    }
+    return 0;
+}
