@@ -187,6 +187,9 @@ extern char *g_DemoReplayPaths[4];
 // The character menu's sprites by entry: three shown with interrupt 9,
 // then one with interrupt 0x17.
 extern int g_CharacterMenuSprites[12][4];
+// The names the replay menu shows for shot types and difficulties.
+extern char *g_MenuShotTypeNames[12];
+extern char *g_MenuDifficultyNames[5];
 // The practice menu's stage names.
 extern char *g_PracticeStageNames[8];
 // The help line the key config shows for each entry.

@@ -1145,6 +1145,113 @@ void DrawFan(D3DXVECTOR3 *center, D3DCOLOR color, float arc, float diameter)
     g_SpriteEngine->DrawColoredFan(&sprite, vertices, 0x40);
 }
 
+int MainMenu::DrawReplayMenu()
+{
+    Sprite *text;
+    int top;
+    int entry;
+    D3DXVECTOR3 pos;
+
+    text = &this->sprites[0x4f];
+    g_AsciiText.AddFormat(&text->pos, "No.   Name       Date  Player   Rank");
+    entry = this->replayCursor - this->replayCursor % 15;
+    for (top = entry + 15; entry < top; entry++)
+    {
+        if (entry >= this->replayCount)
+        {
+            break;
+        }
+        text++;
+        g_AsciiText.SetHighlight(entry == this->replayCursor);
+        if (entry == this->replayCursor)
+        {
+            g_AsciiText.SetColor(0xffffffff);
+        }
+        else
+        {
+            g_AsciiText.SetColor(0xff808080);
+        }
+        if (this->replays[entry].spellCardNumber < 0)
+        {
+            g_AsciiText.AddFormat(&text->pos, "%s %8s  %6s %7s  %8s", this->replayLabels[entry], this->replays[entry].name,
+                                  this->replays[entry].date, g_MenuShotTypeNames[this->replays[entry].shotType],
+                                  g_MenuDifficultyNames[this->replays[entry].difficulty]);
+        }
+        else
+        {
+            g_AsciiText.AddFormat(&text->pos, "%s %8s  %6s %7s  Spell No.%3d", this->replayLabels[entry],
+                                  this->replays[entry].name, this->replays[entry].date,
+                                  g_MenuShotTypeNames[this->replays[entry].shotType],
+                                  this->replays[entry].spellCardNumber + 1);
+        }
+    }
+    if ((this->subState == 2 || this->subState == 3) && this->loadedReplay != NULL)
+    {
+        g_AsciiText.SetColor(0xffffffff);
+        g_AsciiText.SetHighlight(0);
+        text = &this->sprites[0x4e];
+        g_AsciiText.AddFormat(&text->pos, "       %2.3f%%", this->loadedReplay->slowdown);
+        text = &this->sprites[0x5f];
+        pos = text->pos;
+        g_AsciiText.AddFormat(&pos, "Stage    LastScore");
+        entry = this->replayCursor - this->replayCursor % 15;
+        if (this->loadedReplay->spellCardNumber < 0)
+        {
+            for (top = 0; top < ARRAY_SIZE(this->loadedReplay->stages); top++, entry++)
+            {
+                text++;
+                if (this->subState != 3)
+                {
+                    g_AsciiText.SetHighlight(top == this->replayStage);
+                    if (top == this->replayStage)
+                    {
+                        g_AsciiText.SetColor(0xffffffff);
+                    }
+                    else
+                    {
+                        g_AsciiText.SetColor(0xff808080);
+                    }
+                }
+                else
+                {
+                    if (top == this->replayStage)
+                    {
+                        g_AsciiText.SetColor(0x60ffffff);
+                    }
+                    else
+                    {
+                        g_AsciiText.SetColor(0x60808080);
+                    }
+                }
+                pos = text->pos;
+                if (this->loadedReplay->stages[top] != NULL)
+                {
+                    g_AsciiText.AddFormat(&pos, "%s %9d0", g_PracticeStageNames[top],
+                                          this->loadedReplay->stages[top]->score);
+                }
+                else
+                {
+                    g_AsciiText.AddFormat(&pos, "%s ----------", g_PracticeStageNames[top]);
+                }
+            }
+        }
+        else
+        {
+            text++;
+            text++;
+            pos = text->pos;
+            g_AsciiText.AddFormat(&pos, "No.%.3d %9d0", this->loadedReplay->spellCardNumber + 1,
+                                  this->loadedReplay->score);
+            this->unkSprites[0].pos = text->pos;
+            this->unkSprites[0].pos.y += 16.0f;
+            g_SpriteEngine->DrawUnrotated(&this->unkSprites[0]);
+        }
+    }
+    g_AsciiText.SetColor(0xffffffff);
+    g_AsciiText.SetHighlight(0);
+    return 1;
+}
+
 int MainMenu::DrawPracticeScores()
 {
     Sprite *text;
