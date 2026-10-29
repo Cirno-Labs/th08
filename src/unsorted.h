@@ -1100,7 +1100,15 @@ public:
     // The update chain callback and its added and deleted callbacks,
     // as th07's GameManager's.
     static int OnUpdate(GameManager *mgr);
+    // The update element's added callback, split as App's: clears or sets
+    // App::unk_164 by the scene, sets unk_38, starts the loading sprites
+    // (and, coming from the title, the loading screen effect), turns the
+    // result screen's mode 2 and 3 into 1 and runs LoadingThread in the
+    // sub thread for th07's AddedCallback proper. Returns 0.
     static int AddedCallback(GameManager *mgr);
+    // The rest of th07's AddedCallback, run in the sub thread (with /Gr,
+    // a fastcall function passed to CreateThread). Works on g_GameManager.
+    static void LoadingThread(GameManager *arg);
     static int DeletedCallback(GameManager *mgr);
     // The draw chain callback: moves isPaused on from 1 to 2. Returns 1,
     // or 3 outside scene 2, in the result screen's mode (bits 5-6 of
@@ -1279,7 +1287,11 @@ public:
         DWORD unk_3dbac;
         struct
         {
-            unsigned int unk_3dbac_0 : 10;
+            unsigned int unk_3dbac_0 : 5;
+            // The result screen's mode: OnDraw returns 3 in mode 1, and
+            // AddedCallback turns 2 and 3 into 1.
+            unsigned int unk_3dbac_5 : 2;
+            unsigned int unk_3dbac_7 : 3;
             // The screen shakes hold still while it is set.
             unsigned int unk_3dbac_10 : 1;
             unsigned int unk_3dbac_11 : 4;

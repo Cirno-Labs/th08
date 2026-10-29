@@ -120,6 +120,36 @@ int RegisterGameManagerChain()
     return 0;
 }
 
+int GameManager::AddedCallback(GameManager *mgr)
+{
+    if (g_App.scene != 3 && g_App.scene != 11 && g_App.scene != 12)
+    {
+        g_App.unk_164 = 1;
+    }
+    else
+    {
+        g_App.unk_164 = 0;
+    }
+    g_GameManager.unk_38 = 1;
+    if (g_App.prevScene == 1)
+    {
+        D3DXVECTOR3 pos(500.0f, 440.0f, 0.0f);
+        g_App.StartLoadingSpritesOverScreen(&pos);
+        g_App.StartLoadingScreenEffect(0);
+    }
+    else
+    {
+        D3DXVECTOR3 pos(280.0f, 430.0f, 0.0f);
+        g_App.StartLoadingSpritesOverScreen(&pos);
+    }
+    if (mgr->unk_3dbac_5 >= 2)
+    {
+        mgr->unk_3dbac_5 = 1;
+    }
+    g_App.StartSubThread((LPTHREAD_START_ROUTINE)GameManager::LoadingThread, NULL);
+    return 0;
+}
+
 void GameManager::SetRankForDifficulty()
 {
     this->rank = g_Ranks[g_GameManager.difficulty].rank;

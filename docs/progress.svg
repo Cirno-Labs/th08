@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">40.32% (450)</tspan> · <tspan class="decompiled">0.36% (4)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">59.32% (662)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">40.41% (451)</tspan> · <tspan class="decompiled">0.36% (4)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">59.23% (661)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="301.21" height="6" x="0" y="0" class="named"/>
-<rect width="2.68" height="6" x="301.21" y="0" class="decompiled"/>
-<rect width="443.11" height="6" x="303.89" y="0" class="todo"/>
+<rect width="301.88" height="6" x="0" y="0" class="named"/>
+<rect width="2.68" height="6" x="301.88" y="0" class="decompiled"/>
+<rect width="442.44" height="6" x="304.56" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -597,8 +597,8 @@
 <rect width="12" height="12" x="390" y="150" class="todo"><title>0x00439bc7 GameManager::OnUpdate (3644 bytes)</title></rect>
 <rect width="12" height="12" x="405" y="150" class="named"><title>0x0043aa03 GameManager::OnDraw (89 bytes)</title></rect>
 <rect width="12" height="12" x="420" y="150" class="named"><title>0x0043aa5c RegisterGameManagerChain (152 bytes)</title></rect>
-<rect width="12" height="12" x="435" y="150" class="todo"><title>0x0043aaf4 GameManager::AddedCallback (227 bytes)</title></rect>
-<rect width="12" height="12" x="450" y="150" class="todo"><title>0x0043abd7 Func43abd7 (3423 bytes)</title></rect>
+<rect width="12" height="12" x="435" y="150" class="named"><title>0x0043aaf4 GameManager::AddedCallback (227 bytes)</title></rect>
+<rect width="12" height="12" x="450" y="150" class="todo"><title>0x0043abd7 GameManager::LoadingThread (3423 bytes)</title></rect>
 <rect width="12" height="12" x="465" y="150" class="named"><title>0x0043b936 GameManager::SetRankForDifficulty (78 bytes)</title></rect>
 <rect width="12" height="12" x="480" y="150" class="named"><title>0x0043b984 RerollStatsChecksumKeys (605 bytes)</title></rect>
 <rect width="12" height="12" x="495" y="150" class="named"><title>0x0043bbe1 LoadScoreFile (552 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">32.32%</tspan> · <tspan class="decompiled">0.15%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">67.53%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">32.37%</tspan> · <tspan class="decompiled">0.15%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">67.48%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="241.42" height="6" x="0" y="0" class="named"/>
-<rect width="1.12" height="6" x="241.42" y="0" class="decompiled"/>
-<rect width="504.46" height="6" x="242.54" y="0" class="todo"/>
+<rect width="241.79" height="6" x="0" y="0" class="named"/>
+<rect width="1.12" height="6" x="241.79" y="0" class="decompiled"/>
+<rect width="504.09" height="6" x="242.91" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1212,7 +1212,7 @@
 <rect width="44.56" height="41.13" x="138.89" y="136.76" class="named"><title>0x0045696f ResultScreen::HandleReplaySaving (3699 bytes)</title></rect>
 <rect width="44.56" height="40.80" x="138.89" y="180.89" class="todo"><title>0x0046e136 Func46e136 (3671 bytes)</title></rect>
 <rect width="44.56" height="40.47" x="138.89" y="224.69" class="todo"><title>0x00439bc7 GameManager::OnUpdate (3644 bytes)</title></rect>
-<rect width="44.56" height="37.84" x="138.89" y="268.16" class="todo"><title>0x0043abd7 Func43abd7 (3423 bytes)</title></rect>
+<rect width="44.56" height="37.84" x="138.89" y="268.16" class="todo"><title>0x0043abd7 GameManager::LoadingThread (3423 bytes)</title></rect>
 <rect width="44.56" height="36" x="138.89" y="309" class="todo"><title>0x00416b90 Func416b90 (3269 bytes)</title></rect>
 <rect width="36.75" height="43.21" x="186.46" y="0" class="todo"><title>0x00414590 Func414590 (3237 bytes)</title></rect>
 <rect width="36.75" height="40.06" x="186.46" y="46.21" class="todo"><title>0x004123d0 Func4123d0 (3016 bytes)</title></rect>
@@ -1607,7 +1607,7 @@
 <rect width="8.38" height="8.37" x="581.22" y="166.35" class="todo"><title>0x00424730 Func424730 (228 bytes)</title></rect>
 <rect width="8.38" height="8.37" x="592.60" y="166.35" class="todo"><title>0x00424820 Func424820 (228 bytes)</title></rect>
 <rect width="8.38" height="8.37" x="603.98" y="166.35" class="todo"><title>0x00424910 Func424910 (228 bytes)</title></rect>
-<rect width="8.33" height="8.37" x="615.36" y="166.35" class="todo"><title>0x0043aaf4 GameManager::AddedCallback (227 bytes)</title></rect>
+<rect width="8.33" height="8.37" x="615.36" y="166.35" class="named"><title>0x0043aaf4 GameManager::AddedCallback (227 bytes)</title></rect>
 <rect width="8.33" height="8.37" x="626.68" y="166.35" class="named"><title>0x0043c960 Chain::AddToDrawChain (227 bytes)</title></rect>
 <rect width="8.28" height="8.37" x="638.01" y="166.35" class="named"><title>0x0045e0f0 BgmNotificationProc (226 bytes)</title></rect>
 <rect width="8.23" height="8.37" x="649.29" y="166.35" class="todo"><title>0x00410300 Func410300 (225 bytes)</title></rect>

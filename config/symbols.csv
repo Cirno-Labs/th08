@@ -529,7 +529,7 @@ address,size,name,symbol
 0x0043aa03,89,GameManager::OnDraw,?OnDraw@GameManager@@SIHPAV1@@Z
 0x0043aa5c,152,RegisterGameManagerChain,?RegisterGameManagerChain@@YIHXZ
 0x0043aaf4,227,GameManager::AddedCallback,?AddedCallback@GameManager@@SIHPAV1@@Z
-0x0043abd7,3423,Func43abd7,
+0x0043abd7,3423,GameManager::LoadingThread,?LoadingThread@GameManager@@SIXPAV1@@Z
 0x0043b936,78,GameManager::SetRankForDifficulty,?SetRankForDifficulty@GameManager@@QAEXXZ
 0x0043b984,605,RerollStatsChecksumKeys,?RerollStatsChecksumKeys@@YIXXZ
 0x0043bbe1,552,LoadScoreFile,?LoadScoreFile@@YIHXZ
