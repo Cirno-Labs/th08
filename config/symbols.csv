@@ -631,7 +631,7 @@ address,size,name,symbol
 0x00441850,77,Func441850,
 0x004418a0,28,Func4418a0,
 0x004418c0,1354,WinMain,_WinMain@16
-0x00441e10,46,Func441e10,
+0x00441e10,46,SpriteEngine::`scalar deleting destructor',??_GSpriteEngine@@QAEPAXI@Z
 0x00441e40,46,Func441e40,
 0x00441e70,482,GameWindow::RunFrame,?RunFrame@GameWindow@@QAEHXZ
 0x00442060,295,Func442060,
