@@ -7,3 +7,8 @@ File::File()
     this->handle = INVALID_HANDLE_VALUE;
     this->access = 0;
 }
+
+File::~File()
+{
+    this->Close();
+}
