@@ -457,3 +457,9 @@ int ScreenEffect::DeletedCallback(ScreenEffect *effect)
     effect = NULL;
     return 0;
 }
+
+void ScreenEffect::Finish()
+{
+    this->finishing = 1;
+    this->timer = 0;
+}
