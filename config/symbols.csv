@@ -162,7 +162,7 @@ address,size,name,symbol
 0x0040e350,58,Timer::HasTickedTo,?HasTickedTo@Timer@@QAEHH@Z
 0x0040e390,27,Timer::operator<=,??NTimer@@QAEHH@Z
 0x0040e3b0,600,UpdateMarisaBomb,?UpdateMarisaBomb@@YIXPAVPlayer@@@Z
-0x0040e610,362,Func40e610,
+0x0040e610,362,DrawMarisaBomb,?DrawMarisaBomb@@YIXPAVPlayer@@@Z
 0x0040e780,968,Func40e780,
 0x0040eb50,112,EffectUpdateBombRing41,?EffectUpdateBombRing41@@YIHPAUEffect@@@Z
 0x0040ebc0,61,Func40ebc0,

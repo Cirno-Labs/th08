@@ -843,6 +843,33 @@ void UpdateMarisaBomb(Player *player)
     g_SpriteEngine->StepSprites(&bomb->parts[0].sprites[0], 5);
 }
 
+void DrawMarisaBomb(Player *player)
+{
+    Sprite *sprite;
+    int k;
+    float delta;
+    float theta;
+
+    DimPlayAreaForBomb(player, 0x80404040);
+    delta = 0.20943952f;
+    for (sprite = &player->bomb.parts[0].sprites[0], k = 0; k < 5; k++, sprite++)
+    {
+        theta = k * delta - 1.5707964f - delta * 2.0f;
+        if (theta < -3.1415927f)
+        {
+            theta += 6.2831855f;
+        }
+        sprite->pos = player->pos;
+        sprite->pos.x += cosf(theta) * sprite->spriteData->width * sprite->scaleY / 2.0f;
+        sprite->pos.y += sinf(theta) * sprite->spriteData->width * sprite->scaleY / 2.0f;
+        sprite->SetRotationZ(theta);
+        sprite->pos.x += g_GameManager.arena[0];
+        sprite->pos.y += g_GameManager.arena[1];
+        sprite->pos.z = 0.0f;
+        g_SpriteEngine->Draw(sprite);
+    }
+}
+
 int EffectUpdateBombRing41(Effect *effect)
 {
     effect->verticesDirty = 1;

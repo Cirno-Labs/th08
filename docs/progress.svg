@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">75.36% (841)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">22.67% (253)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">75.45% (842)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">22.58% (252)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="562.93" height="6" x="0" y="0" class="named"/>
-<rect width="14.73" height="6" x="562.93" y="0" class="decompiled"/>
-<rect width="169.35" height="6" x="577.65" y="0" class="todo"/>
+<rect width="563.60" height="6" x="0" y="0" class="named"/>
+<rect width="14.73" height="6" x="563.60" y="0" class="decompiled"/>
+<rect width="168.68" height="6" x="578.32" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -231,7 +231,7 @@
 <rect width="12" height="12" x="150" y="45" class="named"><title>0x0040e350 Timer::HasTickedTo (58 bytes)</title></rect>
 <rect width="12" height="12" x="165" y="45" class="named"><title>0x0040e390 Timer::operator&lt;= (27 bytes)</title></rect>
 <rect width="12" height="12" x="180" y="45" class="named"><title>0x0040e3b0 UpdateMarisaBomb (600 bytes)</title></rect>
-<rect width="12" height="12" x="195" y="45" class="todo"><title>0x0040e610 Func40e610 (362 bytes)</title></rect>
+<rect width="12" height="12" x="195" y="45" class="named"><title>0x0040e610 DrawMarisaBomb (362 bytes)</title></rect>
 <rect width="12" height="12" x="210" y="45" class="todo"><title>0x0040e780 Func40e780 (968 bytes)</title></rect>
 <rect width="12" height="12" x="225" y="45" class="named"><title>0x0040eb50 EffectUpdateBombRing41 (112 bytes)</title></rect>
 <rect width="12" height="12" x="240" y="45" class="todo"><title>0x0040ebc0 Func40ebc0 (61 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">67.56%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">31.43%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">67.64%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">31.35%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="504.68" height="6" x="0" y="0" class="named"/>
-<rect width="7.57" height="6" x="504.68" y="0" class="decompiled"/>
-<rect width="234.75" height="6" x="512.25" y="0" class="todo"/>
+<rect width="505.27" height="6" x="0" y="0" class="named"/>
+<rect width="7.57" height="6" x="505.27" y="0" class="decompiled"/>
+<rect width="234.16" height="6" x="512.84" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1477,7 +1477,7 @@
 <rect width="11.67" height="11.12" x="504.31" y="333.88" class="todo"><title>0x0041f110 Func41f110 (365 bytes)</title></rect>
 <rect width="11.76" height="11.03" x="518.98" y="115.39" class="named"><title>0x00425870 EffectManager::SpawnReservedEffect (365 bytes)</title></rect>
 <rect width="11.72" height="11.03" x="533.75" y="115.39" class="named"><title>0x004052b0 ContinueMenu::DrawContinueMenu (364 bytes)</title></rect>
-<rect width="11.64" height="11.03" x="548.47" y="115.39" class="todo"><title>0x0040e610 Func40e610 (362 bytes)</title></rect>
+<rect width="11.64" height="11.03" x="548.47" y="115.39" class="named"><title>0x0040e610 DrawMarisaBomb (362 bytes)</title></rect>
 <rect width="11.64" height="11.03" x="563.11" y="115.39" class="named"><title>0x0043cf50 Chain::RemoveLocked (362 bytes)</title></rect>
 <rect width="11.64" height="11.03" x="577.75" y="115.39" class="named"><title>0x00445bd4 App::OnDrawLogo (362 bytes)</title></rect>
 <rect width="11.64" height="11.03" x="592.39" y="115.39" class="named"><title>0x00452550 ReplayManager::PlayOnUpdate (362 bytes)</title></rect>

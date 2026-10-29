@@ -675,6 +675,9 @@ void DrawAliceLastWord(Player *player);
 // Marisa's 恋符「マスタースパーク」: a beam up the play area from the
 // player, who slows to a fifth, with a rising shake (0x40e3b0).
 void UpdateMarisaBomb(Player *player);
+// Its draw callback, also her last word's: dims the play area and draws
+// the beam's five sprites fanned out from the player (0x40e610).
+void DrawMarisaBomb(Player *player);
 // Draw callbacks of the bombs that only tint the play area, by the
 // bomb they follow: Alice's (also Yukari's draw.funcs[0..1], 0x40d950)
 // and Remilia's and her last word's (0x40f550, 0x40fcb0).
