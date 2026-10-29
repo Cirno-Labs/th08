@@ -637,3 +637,158 @@ int CStreamingSound::UpdateFadeDown()
     }
     return 0;
 }
+
+// As th06's, the locked buffer's variables are renamed and declared after
+// the restore; the cursors' names are picked for their stack slots too.
+HRESULT CStreamingSound::HandleWaveStreamNotification(BOOL bLoopedPlay)
+{
+    HRESULT hr;
+    DWORD dwPlayCsr;
+    DWORD dwWriteCsr;
+    DWORD dwCurrentPlayPos;
+    DWORD dwPlayDelta;
+    DWORD dwBytesWrittenToBuffer;
+
+    if (m_apDSBuffer == NULL || m_pWaveFile == NULL)
+        return CO_E_NOTINITIALIZED;
+
+    // Not in th06: skip the notification while the block to fill is
+    // still ahead of the write cursor.
+    m_apDSBuffer[0]->GetCurrentPosition(&dwPlayCsr, &dwWriteCsr);
+    if ((m_dwNextWriteOffset >= dwWriteCsr - m_dwNotifySize && m_dwNextWriteOffset < dwWriteCsr) ||
+        (dwWriteCsr - m_dwNotifySize < 0 && m_dwNextWriteOffset >= m_dwDSBufferSize - m_dwNotifySize))
+    {
+        DebugPrint("Stream Skip\n");
+        return CO_E_NOTINITIALIZED;
+    }
+
+    // Restore the buffer if it was lost
+    BOOL bRestored;
+    if (FAILED(hr = RestoreBuffer(m_apDSBuffer[0], &bRestored)))
+    {
+        DebugPrint("error : RestoreBuffer in HandleWaveStreamNotification\r\n");
+        return DXTRACE_ERR(TEXT("RestoreBuffer"), hr);
+    }
+
+    if (bRestored)
+    {
+        // The buffer was restored, so we need to fill it with new data
+        if (FAILED(hr = FillBufferWithSound(m_apDSBuffer[0], FALSE)))
+        {
+            DebugPrint("error : FillBufferWithSound in HandleWaveStreamNotification\r\n");
+            return DXTRACE_ERR(TEXT("FillBufferWithSound"), hr);
+        }
+        return S_OK;
+    }
+
+    VOID *pLockedBuffer = NULL;
+    VOID *pLockedBuffer2 = NULL;
+    DWORD ulLength1;
+    DWORD ulLength2;
+
+    // Lock the DirectSound buffer
+    if (FAILED(hr = m_apDSBuffer[0]->Lock(m_dwNextWriteOffset, m_dwNotifySize, &pLockedBuffer,
+                                          &ulLength1, &pLockedBuffer2, &ulLength2, 0L)))
+    {
+        DebugPrint("error : Buffer->Lock in HandleWaveStreamNotification\r\n");
+        return DXTRACE_ERR(TEXT("Lock"), hr);
+    }
+
+    // m_dwDSBufferSize and m_dwNextWriteOffset are both multiples of m_dwNotifySize,
+    // it should the second buffer should never be valid
+    if (pLockedBuffer2 != NULL)
+        return E_UNEXPECTED;
+
+    if (!m_bFillNextNotificationWithSilence)
+    {
+        // Fill the DirectSound buffer with wav data
+        if (FAILED(hr = m_pWaveFile->Read((BYTE *)pLockedBuffer, ulLength1, &dwBytesWrittenToBuffer)))
+        {
+            DebugPrint("error : m_pWaveFile->Read in HandleWaveStreamNotification\r\n");
+            return DXTRACE_ERR(TEXT("Read"), hr);
+        }
+    }
+    else
+    {
+        // Fill the DirectSound buffer with silence
+        FillMemory(pLockedBuffer, ulLength1, (BYTE)(m_pWaveFile->format->format.wBitsPerSample == 8 ? 128 : 0));
+        dwBytesWrittenToBuffer = ulLength1;
+    }
+
+    // If the number of bytes written is less than the
+    // amount we requested, we have a short file.
+    if (dwBytesWrittenToBuffer < ulLength1)
+    {
+        if (!bLoopedPlay)
+        {
+            // Fill in silence for the rest of the buffer.
+            FillMemory((BYTE *)pLockedBuffer + dwBytesWrittenToBuffer, ulLength1 - dwBytesWrittenToBuffer,
+                       (BYTE)(m_pWaveFile->format->format.wBitsPerSample == 8 ? 128 : 0));
+
+            // Any future notifications should just fill the buffer with silence
+            m_bFillNextNotificationWithSilence = TRUE;
+        }
+        else
+        {
+            // We are looping, so reset the file and fill the buffer with wav data
+            DWORD dwReadSoFar = dwBytesWrittenToBuffer; // From previous call above.
+            while (dwReadSoFar < ulLength1)
+            {
+                // This will keep reading in until the buffer is full (for very short files).
+                if (FAILED(hr = m_pWaveFile->ResetFile(true)))
+                {
+                    DebugPrint("error : m_pWaveFile->ResetFile in HandleWaveStreamNotification\r\n");
+                    return DXTRACE_ERR(TEXT("ResetFile"), hr);
+                }
+
+                if (FAILED(hr = m_pWaveFile->Read((BYTE *)pLockedBuffer + dwReadSoFar,
+                                                  ulLength1 - dwReadSoFar, &dwBytesWrittenToBuffer)))
+                {
+                    DebugPrint("error : m_pWaveFile->Read(+) in HandleWaveStreamNotification\r\n");
+                    return DXTRACE_ERR(TEXT("Read"), hr);
+                }
+
+                dwReadSoFar += dwBytesWrittenToBuffer;
+            }
+        }
+    }
+
+    // Unlock the DirectSound buffer
+    m_apDSBuffer[0]->Unlock(pLockedBuffer, ulLength1, NULL, 0);
+
+    // Figure out how much data has been played so far.  When we have played
+    // passed the end of the file, we will either need to start filling the
+    // buffer with silence or starting reading from the beginning of the file,
+    // depending if the user wants to loop the sound
+    if (FAILED(hr = m_apDSBuffer[0]->GetCurrentPosition(&dwCurrentPlayPos, NULL)))
+    {
+        DebugPrint("error : m_apDSBuffer[0]->GetCurrentPosition in HandleWaveStreamNotification\r\n");
+        return DXTRACE_ERR(TEXT("GetCurrentPosition"), hr);
+    }
+
+    // Check to see if the position counter looped
+    if (dwCurrentPlayPos < m_dwLastPlayPos)
+        dwPlayDelta = (m_dwDSBufferSize - m_dwLastPlayPos) + dwCurrentPlayPos;
+    else
+        dwPlayDelta = dwCurrentPlayPos - m_dwLastPlayPos;
+
+    m_dwPlayProgress += dwPlayDelta;
+    m_dwLastPlayPos = dwCurrentPlayPos;
+
+    // If we are now filling the buffer with silence, then we have found the end so
+    // check to see if the entire sound has played, if it has then stop the buffer.
+    if (m_bFillNextNotificationWithSilence)
+    {
+        // We don't want to cut off the sound before it's done playing.
+        if (m_dwPlayProgress >= m_pWaveFile->GetSize())
+        {
+            m_apDSBuffer[0]->Stop();
+        }
+    }
+
+    // Update where the buffer will lock (for next time)
+    m_dwNextWriteOffset += ulLength1;
+    m_dwNextWriteOffset %= m_dwDSBufferSize; // Circular buffer
+
+    return S_OK;
+}
