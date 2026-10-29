@@ -163,6 +163,9 @@ public:
     // Set by LogError, the error logger.
     char hasError;
 
+    // Starts empty. Not referenced: the out-of-line copy of an inline
+    // constructor, at the end of the object.
+    Log();
     // Empties the log. th07's WinMain did this in place.
     void Reset();
     // Writes the log to ./log.txt, if anything was logged, after a

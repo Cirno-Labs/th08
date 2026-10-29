@@ -587,7 +587,7 @@ address,size,name,symbol
 0x0043ee30,91,Func43ee30,
 0x0043ee90,27,Func43ee90,
 0x0043eeb0,84,Func43eeb0,
-0x0043ef10,48,Func43ef10,
+0x0043ef10,48,Log::Log,??0Log@@QAE@XZ
 0x0043ef40,11,MmTimer::OnTimer,?OnTimer@MmTimer@@UAEXXZ
 0x0043ef50,21,App::GetShootFocuses,?GetShootFocuses@App@@QAEHXZ
 0x0043ef70,63,App::EnterCriticalSection,?EnterCriticalSection@App@@QAEXH@Z

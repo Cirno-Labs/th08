@@ -678,6 +678,13 @@ float AddNormalizeAngle(float a, float b)
     return a;
 }
 
+Log::Log()
+{
+    this->cursor = this->buffer;
+    *this->cursor = '\0';
+    this->hasError = 0;
+}
+
 int App::GetShootFocuses()
 {
     return this->shootFocuses;
