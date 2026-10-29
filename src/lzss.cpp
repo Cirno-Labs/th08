@@ -341,3 +341,27 @@ int LzssInsertNode(int pos, int *matchPosition)
         test = *child;
     }
 }
+
+void LzssDeleteNode(int pos)
+{
+    int replacement;
+
+    if (g_LzssTree[pos].parent == 0)
+    {
+        return;
+    }
+    if (g_LzssTree[pos].largerChild == 0)
+    {
+        LzssReplaceNode(pos, g_LzssTree[pos].smallerChild);
+    }
+    else if (g_LzssTree[pos].smallerChild == 0)
+    {
+        LzssReplaceNode(pos, g_LzssTree[pos].largerChild);
+    }
+    else
+    {
+        replacement = LzssPredecessor(pos);
+        LzssDeleteNode(replacement);
+        LzssReplaceChild(pos, replacement);
+    }
+}

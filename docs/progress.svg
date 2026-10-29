@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">10.22% (114)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">89.78% (1002)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">10.30% (115)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">89.70% (1001)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="76.31" height="6" x="0" y="0" class="named"/>
-<rect width="670.69" height="6" x="76.31" y="0" class="todo"/>
+<rect width="76.98" height="6" x="0" y="0" class="named"/>
+<rect width="670.02" height="6" x="76.98" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -1164,7 +1164,7 @@
 <rect width="12" height="12" x="660" y="315" class="named"><title>0x00474450 LzssTreeInitNode (67 bytes)</title></rect>
 <rect width="12" height="12" x="675" y="315" class="named"><title>0x004744a0 LzssClearWindow (124 bytes)</title></rect>
 <rect width="12" height="12" x="690" y="315" class="named"><title>0x00474520 LzssInsertNode (284 bytes)</title></rect>
-<rect width="12" height="12" x="705" y="315" class="todo"><title>0x00474640 LzssDeleteNode (134 bytes)</title></rect>
+<rect width="12" height="12" x="705" y="315" class="named"><title>0x00474640 LzssDeleteNode (134 bytes)</title></rect>
 <rect width="12" height="12" x="720" y="315" class="todo"><title>0x004746d0 LzssReplaceNode (132 bytes)</title></rect>
 <rect width="12" height="12" x="735" y="315" class="todo"><title>0x00474760 LzssReplaceChild (183 bytes)</title></rect>
 <rect width="12" height="12" x="0" y="330" class="todo"><title>0x00474820 LzssPredecessor (63 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">5.47%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">94.53%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">5.50%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">94.50%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="40.87" height="6" x="0" y="0" class="named"/>
-<rect width="706.13" height="6" x="40.87" y="0" class="todo"/>
+<rect width="41.09" height="6" x="0" y="0" class="named"/>
+<rect width="705.91" height="6" x="41.09" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1740,7 +1740,7 @@
 <rect width="5.90" height="5.67" x="609.61" y="305.17" class="todo"><title>0x0045ac00 Func45ac00 (136 bytes)</title></rect>
 <rect width="5.90" height="5.60" x="609.61" y="313.84" class="todo"><title>0x00428620 Func428620 (135 bytes)</title></rect>
 <rect width="5.90" height="5.54" x="609.61" y="322.44" class="todo"><title>0x00426b20 Func426b20 (134 bytes)</title></rect>
-<rect width="5.90" height="5.54" x="609.61" y="330.98" class="todo"><title>0x00474640 LzssDeleteNode (134 bytes)</title></rect>
+<rect width="5.90" height="5.54" x="609.61" y="330.98" class="named"><title>0x00474640 LzssDeleteNode (134 bytes)</title></rect>
 <rect width="5.90" height="5.48" x="609.61" y="339.52" class="todo"><title>0x00426bb0 Func426bb0 (133 bytes)</title></rect>
 <rect width="5.93" height="5.45" x="618.51" y="208.04" class="named"><title>0x004439c0 Log::Flush (133 bytes)</title></rect>
 <rect width="5.93" height="5.45" x="627.44" y="208.04" class="todo"><title>0x004501b0 Func4501b0 (133 bytes)</title></rect>
