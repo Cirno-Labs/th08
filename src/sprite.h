@@ -257,6 +257,10 @@ public:
         this->scriptTime.Initialize();
     }
 
+    // Whether the sprite shows a sprite of an ANM file whose textures
+    // are loaded, as th07's: SpriteEngine::HasTexture reading
+    // g_SpriteEngine. Defined after SpriteEngine.
+    __forceinline BOOL HasTexture();
     // The value of `value` as a float argument: the variable it stands
     // for, if any, or itself.
     float ResolveFloatArgument(float value);
@@ -877,6 +881,19 @@ public:
 };
 ASSERT_SIZE(SpriteEngine, 0x2a2570);
 extern SpriteEngine *g_SpriteEngine;
+
+inline BOOL Sprite::HasTexture()
+{
+    if (this->spriteData == NULL)
+    {
+        return FALSE;
+    }
+    if (this->spriteData->sourceFileIndex < 0)
+    {
+        return FALSE;
+    }
+    return g_SpriteEngine->anms[this->spriteData->sourceFileIndex].textures != NULL;
+}
 // The quad Draw draws with a color, without the vertex buffer.
 extern VertexTex1DiffuseXyzrwh g_DiffuseQuad[4];
 // A transformed quad without a color.

@@ -71,6 +71,11 @@ public:
     int UpdateState16();
     int UpdateState17();
     int DrawReplayMenu();
+    // Draws over the character menu (state 5).
+    int DrawCharacterMenu();
+    // Draw states 16 and 17's text.
+    int DrawState16();
+    int DrawState17();
     int DrawPracticeScores();
     // Frees loadedReplay and the sprites. Returns 0.
     int ReleaseTitleScene();

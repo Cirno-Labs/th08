@@ -190,6 +190,60 @@ int MainMenu::MoveMenuCursorLR(int count)
     return 0;
 }
 
+int MainMenu::OnDraw(MainMenu *menu)
+{
+    int i;
+    Sprite *vm;
+
+    if (menu->loadingState != 0)
+    {
+        return 1;
+    }
+    g_SpriteEngine->ClearTexture();
+    g_SpriteEngine->CopySurfaceToBackBuffer(0, 0, 0, 0, 0);
+    vm = menu->sprites;
+    for (i = 0; i < menu->spriteCount; i++, vm++)
+    {
+        if (vm->HasTexture())
+        {
+            D3DXVECTOR3 savedPos = vm->pos;
+            vm->pos += vm->posOffset;
+            if (vm->rotation.z != 0.0f)
+            {
+                g_SpriteEngine->Draw(vm);
+            }
+            else
+            {
+                g_SpriteEngine->DrawUnrotated(vm);
+            }
+            vm->pos = savedPos;
+        }
+    }
+    if (menu->helpSprite != NULL)
+    {
+        g_SpriteEngine->DrawUnrotated(menu->helpSprite);
+    }
+    switch (menu->state)
+    {
+    case 5:
+        menu->DrawCharacterMenu();
+        break;
+    case 7:
+        menu->DrawReplayMenu();
+        break;
+    case 11:
+        menu->DrawPracticeScores();
+        break;
+    case 16:
+        menu->DrawState16();
+        break;
+    case 17:
+        menu->DrawState17();
+        break;
+    }
+    return 1;
+}
+
 int MainMenu::ReleaseTitleScene()
 {
     if (this->loadedReplay != NULL)
