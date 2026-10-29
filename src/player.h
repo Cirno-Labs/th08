@@ -291,6 +291,10 @@ struct PlayerLaser
 };
 ASSERT_SIZE(PlayerLaser, 0x10);
 
+// The options' draw callback: draws the option at its position in the
+// play area (0x44e9e0, every entry of g_OptionDrawFuncs).
+int DrawOption(Player *player, PlayerOption *option);
+
 // Fills `bullet` with shot `sd` and starts it, as th07's (0x44fb70):
 // from the player or its option, its script (from 10) and its panned
 // sound; red while stats->unk_22 is at unk22High1 for shots with

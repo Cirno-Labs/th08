@@ -11,6 +11,15 @@
 #include "sprite.h"
 #include "unsorted.h"
 
+int DrawOption(Player *player, PlayerOption *option)
+{
+    option->sprite.pos.x = g_GameManager.arena[0] + option->pos.x;
+    option->sprite.pos.y = g_GameManager.arena[1] + option->pos.y;
+    option->sprite.pos.z = 0.49f;
+    g_SpriteEngine->Draw(&option->sprite);
+    return 0;
+}
+
 void FireShot(Player *player, PlayerBullet *bullet, ShotData *sd)
 {
     if (sd->option == 0)
