@@ -104,3 +104,12 @@ DWORD File::Tell()
     }
     return SetFilePointer(this->handle, 0, NULL, FILE_CURRENT);
 }
+
+DWORD File::GetSize()
+{
+    if (this->handle == INVALID_HANDLE_VALUE)
+    {
+        return 0;
+    }
+    return GetFileSize(this->handle, NULL);
+}
