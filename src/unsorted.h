@@ -198,3 +198,8 @@ extern WORD g_ShotHeldFrames;
 // them: through DirectInput if there is a device, else joyGetPosEx.
 // Unlike th07's, it does not map DirectInput button 7 to 0x2000.
 WORD ReadJoystick(WORD buttons);
+
+// The pad's buttons as GetPadButtons last read them: 0x80 when down.
+extern BYTE g_PadButtons[0x80];
+// Reads which pad buttons are down into g_PadButtons and returns it.
+BYTE *GetPadButtons();

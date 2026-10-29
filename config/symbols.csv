@@ -568,7 +568,7 @@ address,size,name,symbol
 0x0043d120,1457,ReadJoystick,?ReadJoystick@@YIGG@Z
 0x0043d6e0,122,SetButtonFromDirectInput,?SetButtonFromDirectInput@@YIHPAGFGPAE@Z
 0x0043d760,115,SetButtonFromJoystick,?SetButtonFromJoystick@@YIHPAGFGK@Z
-0x0043d7e0,392,Func43d7e0,
+0x0043d7e0,392,GetPadButtons,?GetPadButtons@@YIPAEXZ
 0x0043d970,2029,Func43d970,
 0x0043e160,110,Func43e160,
 0x0043e1d0,448,Func43e1d0,
@@ -2386,6 +2386,7 @@ address,size,name,symbol
 0x0164d51c,,g_ShotHeldFrames,?g_ShotHeldFrames@@3GA
 0x0164d540,,g_Log,?g_Log@@3VLog@@A
 0x0164f598,,g_MemoryManager,?g_MemoryManager@@3VMemoryManager@@A
+0x016535a0,,g_PadButtons,?g_PadButtons@@3PAEA
 0x017ce6fc,,g_AppMutex,?g_AppMutex@@3PAXA
 0x017ce700,,g_GameWindow,?g_GameWindow@@3UGameWindow@@A
 0x017ce744,,g_Unknown17ce744,?g_Unknown17ce744@@3T_LARGE_INTEGER@@A
