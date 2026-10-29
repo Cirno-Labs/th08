@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">26.88% (300)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">73.12% (816)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">26.97% (301)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">73.03% (815)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="200.81" height="6" x="0" y="0" class="named"/>
-<rect width="546.19" height="6" x="200.81" y="0" class="todo"/>
+<rect width="201.48" height="6" x="0" y="0" class="named"/>
+<rect width="545.52" height="6" x="201.48" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -1067,7 +1067,7 @@
 <rect width="12" height="12" x="705" y="285" class="named"><title>0x00466ae0 SpriteEngine::ReleaseSurface (200 bytes)</title></rect>
 <rect width="12" height="12" x="720" y="285" class="named"><title>0x00466bb0 SpriteEngine::CopySurfaceToBackBuffer (445 bytes)</title></rect>
 <rect width="12" height="12" x="735" y="285" class="named"><title>0x00466d70 SpriteEngine::CopySurfaceRectToBackBuffer (424 bytes)</title></rect>
-<rect width="12" height="12" x="0" y="300" class="todo"><title>0x00466f20 SpriteEngine::CopyBackBufferToTexture (286 bytes)</title></rect>
+<rect width="12" height="12" x="0" y="300" class="named"><title>0x00466f20 SpriteEngine::CopyBackBufferToTexture (286 bytes)</title></rect>
 <rect width="12" height="12" x="15" y="300" class="todo"><title>0x00467040 Func467040 (307 bytes)</title></rect>
 <rect width="12" height="12" x="30" y="300" class="todo"><title>0x00467180 SpriteEngine::CopyBackBufferToSurface (537 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="300" class="todo"><title>0x00467399 Func467399 (269 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">16.47%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">83.53%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">16.53%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">83.47%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="123.04" height="6" x="0" y="0" class="named"/>
-<rect width="623.96" height="6" x="123.04" y="0" class="todo"/>
+<rect width="123.50" height="6" x="0" y="0" class="named"/>
+<rect width="623.50" height="6" x="123.50" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1534,7 +1534,7 @@
 <rect width="9.89" height="9.76" x="532.82" y="272.35" class="todo"><title>0x004281e0 Func4281e0 (290 bytes)</title></rect>
 <rect width="9.89" height="9.67" x="532.82" y="285.11" class="todo"><title>0x0042b370 Func42b370 (288 bytes)</title></rect>
 <rect width="9.89" height="9.63" x="532.82" y="297.79" class="named"><title>0x0045d2d0 SoundPlayer::StopBgm (287 bytes)</title></rect>
-<rect width="9.89" height="9.59" x="532.82" y="310.42" class="todo"><title>0x00466f20 SpriteEngine::CopyBackBufferToTexture (286 bytes)</title></rect>
+<rect width="9.89" height="9.59" x="532.82" y="310.42" class="named"><title>0x00466f20 SpriteEngine::CopyBackBufferToTexture (286 bytes)</title></rect>
 <rect width="9.89" height="9.50" x="532.82" y="323" class="todo"><title>0x0042c290 Func42c290 (284 bytes)</title></rect>
 <rect width="9.89" height="9.50" x="532.82" y="335.50" class="named"><title>0x00465ba0 SpriteEngine::PostloadAnm (284 bytes)</title></rect>
 <rect width="10.19" height="9.22" x="545.71" y="142.35" class="named"><title>0x00474520 LzssInsertNode (284 bytes)</title></rect>

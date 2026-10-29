@@ -784,3 +784,43 @@ void SpriteEngine::CopySurfaceRectToBackBuffer(int surface, int x, int y, int le
     g_App.d3dDevice->CopyRects(this->surfaces[surface], &rect, 1, backBuffer, &point);
     backBuffer->Release();
 }
+
+void SpriteEngine::CopyBackBufferToTexture(int texture, int srcLeft, int srcTop, int srcWidth, int srcHeight,
+                                           int dstLeft, int dstTop, int dstWidth, int dstHeight)
+{
+    IDirect3DSurface8 *backBuffer;
+    IDirect3DSurface8 *dest;
+    RECT rect;
+    RECT destinationRect;
+
+    if (this->anms[texture].textures[0].texture == NULL)
+    {
+        return;
+    }
+    this->FlushQuadBatch();
+    if (g_App.d3dDevice->GetBackBuffer(0, D3DBACKBUFFER_TYPE_MONO, &backBuffer) != D3D_OK)
+    {
+        return;
+    }
+    if (this->anms[texture].textures[0].texture->GetSurfaceLevel(0, &dest) != D3D_OK)
+    {
+        backBuffer->Release();
+        return;
+    }
+    rect.left = srcLeft;
+    rect.top = srcTop;
+    rect.right = srcLeft + srcWidth;
+    rect.bottom = srcTop + srcHeight;
+    destinationRect.left = dstLeft;
+    destinationRect.top = dstTop;
+    destinationRect.right = dstLeft + dstWidth;
+    destinationRect.bottom = dstTop + dstHeight;
+    if (D3DXLoadSurfaceFromSurface(dest, NULL, &destinationRect, backBuffer, NULL, &rect, D3DX_DEFAULT, 0) != D3D_OK)
+    {
+        dest->Release();
+        backBuffer->Release();
+        return;
+    }
+    dest->Release();
+    backBuffer->Release();
+}
