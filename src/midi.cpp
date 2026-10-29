@@ -219,3 +219,49 @@ void MidiPlayer::FreeTracks()
     this->tracks = NULL;
     this->trackCount = 0;
 }
+
+int MidiPlayer::ParseFile(int slot)
+{
+    int i;
+    BYTE *cursor;
+    BYTE *file;
+    BYTE *track;
+    DWORD headerLength;
+    MidiChunk hdr;
+    BYTE *header;
+    DWORD trackLen;
+
+    this->FreeTracks();
+    cursor = (BYTE *)this->fileData[slot];
+    file = cursor;
+    if (cursor == NULL)
+    {
+        DebugPrint("error : まだMIDIが読み込まれていないのに再生しようとしている\r\n");
+        return -1;
+    }
+    memcpy(&hdr, cursor, sizeof(MidiChunk));
+    cursor += sizeof(MidiChunk);
+    headerLength = SwapBytes32(hdr.length);
+    header = cursor;
+    cursor += headerLength;
+    this->format = SwapBytes16(*(WORD *)header);
+    this->division = SwapBytes16(*(WORD *)(header + 4));
+    this->trackCount = SwapBytes16(*(WORD *)(header + 2));
+    this->tracks = (MidiTrack *)g_MemoryManager.Alloc(this->trackCount * sizeof(MidiTrack), "midi");
+    memset(this->tracks, 0, this->trackCount * sizeof(MidiTrack));
+    for (i = 0; i < this->trackCount; i++)
+    {
+        track = cursor;
+        cursor += sizeof(MidiChunk);
+        trackLen = SwapBytes32(((MidiChunk *)track)->length);
+        this->tracks[i].length = trackLen;
+        this->tracks[i].data = (BYTE *)g_MemoryManager.Alloc(trackLen, "midi");
+        this->tracks[i].active = 1;
+        memcpy(this->tracks[i].data, cursor, trackLen);
+        cursor += trackLen;
+    }
+    this->tempo = 1000000;
+    this->playingSlot = slot;
+    DebugPrint(" midi open %d\n", slot);
+    return 0;
+}

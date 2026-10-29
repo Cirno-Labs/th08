@@ -18,6 +18,18 @@ union MidiShortMsg
 // Swaps the bytes of a big-endian 16-bit value from a MIDI file.
 WORD SwapBytes16(WORD value);
 
+// Swaps the bytes of a big-endian 32-bit value from a MIDI file. Inline
+// in th07; a function of its own here, after ParseFile.
+DWORD SwapBytes32(DWORD value);
+
+// The header of a chunk in a MIDI file ("MThd", "MTrk").
+struct MidiChunk
+{
+    char id[4];
+    // Big-endian.
+    DWORD length;
+};
+
 // Reads a MIDI variable-length quantity (7 bits per byte, high bit set on
 // all but the last) and advances the cursor past it.
 DWORD ReadVarLen(BYTE **cursor);

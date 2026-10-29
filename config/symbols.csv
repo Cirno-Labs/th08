@@ -113,7 +113,7 @@ address,size,name,symbol
 0x0040b5a0,292,Func40b5a0,
 0x0040b6d0,283,Func40b6d0,
 0x0040b7f0,132,Func40b7f0,
-0x0040b880,25,Func40b880,
+0x0040b880,25,MemoryManager::Alloc,?Alloc@MemoryManager@@QAEPAXHPBD@Z
 0x0040b8a0,25,MemoryManager::Free,?Free@MemoryManager@@QAEXPAX@Z
 0x0040b8c0,23,Func40b8c0,
 0x0040b8e0,27,Func40b8e0,
@@ -268,7 +268,7 @@ address,size,name,symbol
 0x00421ba0,43,Func421ba0,
 0x00421bd0,214,Func421bd0,
 0x00421cb0,280,Func421cb0,
-0x00421dd0,5,Func421dd0,
+0x00421dd0,5,DebugPrint,?DebugPrint@@YAXPBDZZ
 0x00421de0,112,Func421de0,
 0x00421e50,454,Func421e50,
 0x00422020,650,Func422020,
@@ -674,8 +674,8 @@ address,size,name,symbol
 0x004441a0,114,MidiPlayer::LoadFile,?LoadFile@MidiPlayer@@QAEHHPAD@Z
 0x00444220,54,MidiPlayer::UnloadFile,?UnloadFile@MidiPlayer@@QAEXH@Z
 0x00444260,123,MidiPlayer::FreeTracks,?FreeTracks@MidiPlayer@@QAEXXZ
-0x004442e0,511,Func4442e0,
-0x004444e0,40,Func4444e0,
+0x004442e0,511,MidiPlayer::ParseFile,?ParseFile@MidiPlayer@@QAEHH@Z
+0x004444e0,40,SwapBytes32,?SwapBytes32@@YIKK@Z
 0x00444510,58,Func444510,
 0x00444550,203,Func444550,
 0x00444620,81,Func444620,
