@@ -272,6 +272,13 @@ public:
     // exit) in state 0x12, running only AddedCallback. Returns 0, or -1
     // if adding fails.
     static int RegisterChain(int mode);
+    // Runs the current state's handler: the menu (0, 1), choosing a
+    // difficulty and shot type and showing their high scores (3 to 5),
+    // the same for the spell cards (6 to 8), after a game the name entry
+    // (9), replay saving (10 to 14), waiting after the name entry (15,
+    // 16) and the statistics (0x13 to 0x15). Steps the sprites. Returns
+    // 1, or 0 once it sets the scene back to the title (states 2, 0x11,
+    // 0x16) or in state 0x12.
     static int OnUpdate(ResultScreen *screen);
     static int OnDraw(ResultScreen *screen);
     static int AddedCallback(ResultScreen *screen);
@@ -280,6 +287,25 @@ public:
     // and deletes the screen. Returns 0.
     static int DeletedCallback(ResultScreen *screen);
 
+    // The state handlers OnUpdate runs. New in th08, which split th07's
+    // OnUpdate into them; what each one shows is a guess from where it
+    // goes next and how many items its cursor has.
+    int UpdateMenu();
+    int UpdateScoreDifficultySelect();
+    int UpdateScoreShotSelect();
+    int UpdateScoreList();
+    int UpdateSpellCardDifficultySelect();
+    int UpdateSpellCardShotSelect();
+    int UpdateSpellCardList();
+    // Lets the player enter a name for the score just made, as th07's.
+    int HandleNameEntry();
+    // Offers to save the replay and lists the slots, as th07's.
+    int HandleReplaySaving();
+    // After a name is entered, waits for the shot button, as th07's.
+    int WaitAfterNameEntry();
+    // Runs states 0x13 to 0x15, the statistics, as th07's. Returns
+    // nonzero to go back to the menu.
+    int RunStatisticsMenu();
     // Switches to `state`, keeping the old one in prevState, and clears
     // the frame count and subState. New in th08: th07 set `state` alone.
     void SetState(int state);

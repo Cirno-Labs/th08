@@ -247,6 +247,96 @@ int ResultScreen::RegisterChain(int mode)
     return 0;
 }
 
+int ResultScreen::OnUpdate(ResultScreen *screen)
+{
+    Sprite *vm;
+    int i;
+    Sprite *sprite0;
+
+    switch (screen->state)
+    {
+    case 0x11:
+        g_App.scene = 1;
+        return 0;
+    case 0x16:
+        g_App.scene = 1;
+        return 0;
+    case 0x12:
+        return 0;
+    case 0:
+    menu:
+        screen->SetState(1);
+    case 1:
+        screen->UpdateMenu();
+        break;
+    case 2:
+        if (screen->frame == 1)
+        {
+            D3DXVECTOR3 pos(500.0f, 440.0f, 0.0f);
+
+            g_App.StartLoadingSprites(&pos);
+            sprite0 = screen->sprites;
+            for (i = 0; i < 0x48; i++, sprite0++)
+            {
+                sprite0->pendingInterrupt = 2;
+            }
+        }
+        if (screen->frame < 20)
+        {
+            break;
+        }
+        g_App.scene = 1;
+        return 0;
+    case 4:
+        screen->UpdateScoreShotSelect();
+        break;
+    case 3:
+        screen->UpdateScoreDifficultySelect();
+        break;
+    case 5:
+        screen->UpdateScoreList();
+        break;
+    case 7:
+        screen->UpdateSpellCardShotSelect();
+        break;
+    case 6:
+        screen->UpdateSpellCardDifficultySelect();
+        break;
+    case 8:
+        screen->UpdateSpellCardList();
+        break;
+    case 9:
+        screen->HandleNameEntry();
+        break;
+    case 10:
+    case 11:
+    case 12:
+    case 13:
+    case 14:
+        screen->HandleReplaySaving();
+        break;
+    case 15:
+    case 16:
+        screen->WaitAfterNameEntry();
+        break;
+    case 0x13:
+    case 0x14:
+    case 0x15:
+        if (screen->RunStatisticsMenu())
+        {
+            goto menu;
+        }
+        break;
+    }
+    vm = screen->sprites;
+    for (i = 0; i < 0x48; i++, vm++)
+    {
+        g_SpriteEngine->Step(vm);
+    }
+    screen->frame++;
+    return 1;
+}
+
 int ResultScreen::DeletedCallback(ResultScreen *screen)
 {
     int i;
