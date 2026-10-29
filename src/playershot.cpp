@@ -347,3 +347,38 @@ int UpdateTrailLaserBullet(Player *player, PlayerBullet *bullet)
     }
     return 0;
 }
+
+int DrawTrailLaserBullet(Player *player, PlayerBullet *bullet)
+{
+    int alpha = bullet->sprite.alpha;
+    int i;
+    int savedAlpha;
+
+    savedAlpha = alpha;
+    alpha = alpha * 3 / 4;
+    for (i = 0; i < bullet->trailLength * 2; i += 2)
+    {
+        if (bullet->trail[i].x == -999.0f)
+        {
+            break;
+        }
+        bullet->sprite.pos.x = bullet->trail[i].x;
+        bullet->sprite.pos.y = bullet->trail[i].y;
+        bullet->sprite.pos.z = bullet->trail[i].z;
+        if (i != 0)
+        {
+            bullet->sprite.alpha = alpha - alpha / 2 * i / bullet->trailLength;
+        }
+        bullet->sprite.pos.x = g_GameManager.arena[0] + bullet->sprite.pos.x;
+        bullet->sprite.pos.y = g_GameManager.arena[1] + bullet->sprite.pos.y;
+        if (g_GameManager.IsUnk22AtHigh1())
+        {
+            bullet->sprite.colorRgb[2] = 0xff;
+            bullet->sprite.colorRgb[1] = 0x40;
+            bullet->sprite.colorRgb[0] = 0x40;
+        }
+        g_SpriteEngine->Draw(&bullet->sprite);
+    }
+    bullet->sprite.alpha = savedAlpha;
+    return 0;
+}

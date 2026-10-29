@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">71.51% (798)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">26.52% (296)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">71.59% (799)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">26.43% (295)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="534.15" height="6" x="0" y="0" class="named"/>
-<rect width="14.73" height="6" x="534.15" y="0" class="decompiled"/>
-<rect width="198.13" height="6" x="548.87" y="0" class="todo"/>
+<rect width="534.81" height="6" x="0" y="0" class="named"/>
+<rect width="14.73" height="6" x="534.81" y="0" class="decompiled"/>
+<rect width="197.46" height="6" x="549.54" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -880,7 +880,7 @@
 <rect width="12" height="12" x="135" y="240" class="named"><title>0x00450580 UpdateAcceleratingBullet (72 bytes)</title></rect>
 <rect width="12" height="12" x="150" y="240" class="named"><title>0x004505d0 UpdateLaserBullet (609 bytes)</title></rect>
 <rect width="12" height="12" x="165" y="240" class="named"><title>0x00450840 UpdateTrailLaserBullet (643 bytes)</title></rect>
-<rect width="12" height="12" x="180" y="240" class="todo"><title>0x00450ad0 Func450ad0 (372 bytes)</title></rect>
+<rect width="12" height="12" x="180" y="240" class="named"><title>0x00450ad0 DrawTrailLaserBullet (372 bytes)</title></rect>
 <rect width="12" height="12" x="195" y="240" class="todo"><title>0x00450c50 Func450c50 (611 bytes)</title></rect>
 <rect width="12" height="12" x="210" y="240" class="todo"><title>0x00450ee0 Func450ee0 (128 bytes)</title></rect>
 <rect width="12" height="12" x="225" y="240" class="todo"><title>0x00450f60 Func450f60 (487 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">63.18%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">35.81%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">63.26%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">35.73%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="471.92" height="6" x="0" y="0" class="named"/>
-<rect width="7.57" height="6" x="471.92" y="0" class="decompiled"/>
-<rect width="267.50" height="6" x="479.50" y="0" class="todo"/>
+<rect width="472.53" height="6" x="0" y="0" class="named"/>
+<rect width="7.57" height="6" x="472.53" y="0" class="decompiled"/>
+<rect width="266.90" height="6" x="480.10" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1468,7 +1468,7 @@
 <rect width="11.67" height="11.50" x="504.31" y="205.03" class="named"><title>0x0044fe20 FireLaser (375 bytes)</title></rect>
 <rect width="11.67" height="11.42" x="504.31" y="219.53" class="named"><title>0x00448418 App::AddTotalPlayTime (373 bytes)</title></rect>
 <rect width="11.67" height="11.39" x="504.31" y="233.96" class="named"><title>0x00402600 AsciiText::StartScripts (372 bytes)</title></rect>
-<rect width="11.67" height="11.39" x="504.31" y="248.34" class="todo"><title>0x00450ad0 Func450ad0 (372 bytes)</title></rect>
+<rect width="11.67" height="11.39" x="504.31" y="248.34" class="named"><title>0x00450ad0 DrawTrailLaserBullet (372 bytes)</title></rect>
 <rect width="11.67" height="11.39" x="504.31" y="262.73" class="named"><title>0x00452310 ReplayManager::RecordOnUpdate (372 bytes)</title></rect>
 <rect width="11.67" height="11.23" x="504.31" y="277.12" class="named"><title>0x0045ac90 LoadClears (368 bytes)</title></rect>
 <rect width="11.67" height="11.19" x="504.31" y="291.35" class="todo"><title>0x0042c420 Func42c420 (367 bytes)</title></rect>

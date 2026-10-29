@@ -331,6 +331,15 @@ int UpdateAcceleratingBullet(Player *player, PlayerBullet *bullet);
 int UpdateLaserBullet(Player *player, PlayerBullet *bullet);
 // th07's UpdateTrailLaserBullet, following the first option (0x450840).
 int UpdateTrailLaserBullet(Player *player, PlayerBullet *bullet);
+// th07's DrawTrailLaserBullet: draws every other trail point, at
+// three quarters of the alpha fading out along the trail, red at
+// unk22High1 (0x450ad0).
+int DrawTrailLaserBullet(Player *player, PlayerBullet *bullet);
+// th07's UpdateBombShot, with th08's scripts 12 to 20 and a hit damage
+// drop only every fourth frame during a spell card (0x450c50).
+int UpdateBombShot(Player *player, PlayerBullet *bullet, D3DXVECTOR3 *pos);
+// th07's BurstHitEffect, counting in Player::hitCounter (0x450ee0).
+int BurstHitEffect(Player *player, PlayerBullet *bullet, D3DXVECTOR3 *pos);
 // th07's FireShots: fires the shots of the shot type's table for the
 // player's power into free bullets (0x450f60).
 void FireShots(Player *player, int frame);
