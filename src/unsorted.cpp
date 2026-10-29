@@ -537,3 +537,20 @@ fail:
     g_App.LeaveCriticalSection(2);
     return NULL;
 }
+
+int FileExists(char *path)
+{
+    HANDLE file;
+
+    g_App.EnterCriticalSection(2);
+    file = CreateFileA(path, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING,
+                       FILE_ATTRIBUTE_NORMAL | FILE_FLAG_SEQUENTIAL_SCAN, NULL);
+    if (file != INVALID_HANDLE_VALUE)
+    {
+        CloseHandle(file);
+        g_App.LeaveCriticalSection(2);
+        return 1;
+    }
+    g_App.LeaveCriticalSection(2);
+    return 0;
+}
