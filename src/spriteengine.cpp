@@ -111,6 +111,30 @@ float *Sprite::ResolveFloatArgumentPtr(float *value, WORD mask, int bit)
     return value;
 }
 
+int *Sprite::ResolveIntArgumentPtr(int *value, WORD mask, int bit)
+{
+    if ((mask & 1 << bit) == 0)
+    {
+        return value;
+    }
+    switch (*value)
+    {
+    case 10000:
+        return &this->scriptVar0;
+    case 10001:
+        return &this->scriptVar1;
+    case 10002:
+        return &this->scriptVar2;
+    case 10003:
+        return &this->scriptVar3;
+    case 10008:
+        return &this->scriptVar8;
+    case 10009:
+        return &this->scriptVar9;
+    }
+    return value;
+}
+
 SpriteEngine::SpriteEngine()
 {
     memset(this, 0, sizeof(*this));
