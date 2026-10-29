@@ -749,7 +749,7 @@ address,size,name,symbol
 0x00449ef0,87,PlayerBullet::PlayerBullet,??0PlayerBullet@@QAE@XZ
 0x00449f50,22,PlayerLaser::PlayerLaser,??0PlayerLaser@@QAE@XZ
 0x00449f70,115,PlayerBombPart::PlayerBombPart,??0PlayerBombPart@@QAE@XZ
-0x00449ff0,563,Func449ff0,
+0x00449ff0,563,Player::CheckAreaHit,?CheckAreaHit@Player@@QAEHPAUD3DXVECTOR3@@0@Z
 0x0044a230,302,Func44a230,
 0x0044a360,272,Func44a360,
 0x0044a470,303,Func44a470,

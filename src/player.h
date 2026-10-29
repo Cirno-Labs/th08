@@ -198,6 +198,12 @@ public:
     static int RegisterChain(int arg);
     // Removes the player's chain elements, as th07's (0x44dd10).
     static void RemoveChain();
+    // Whether a `size` box at `pos` meets one of hitAreas: a circle
+    // while its radius is set, else a box, turned by its angle when that
+    // is set. Keeps the area's itemType in areaItemType, counts its hits
+    // and returns 2 if so, else returns 0. As th07's, which tested the
+    // whole box and had no turned ones; `size` is unused now.
+    int CheckAreaHit(D3DXVECTOR3 *pos, D3DXVECTOR3 *size);
     // The angle from `pos` to the player, as th07's (0x44c1b0).
     float AngleFrom(D3DXVECTOR3 *pos);
     // Whether the box of `size` at `pos` touches the player's graze box,
