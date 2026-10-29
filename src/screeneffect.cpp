@@ -327,3 +327,54 @@ int ScreenEffect::OnDrawFlash(ScreenEffect *effect)
     DrawColorRect(area, effect->alpha << 24 | effect->flashColor & 0xffffff);
     return 1;
 }
+
+int ScreenEffect::OnUpdateShake(ScreenEffect *effect)
+{
+    float shake;
+
+    if (g_GameManager.unk_3dbac_10)
+    {
+        return 1;
+    }
+    if (g_GameManager.isFrozen)
+    {
+        return 1;
+    }
+    if (g_Unknown18b8a2c != 0)
+    {
+        return 0;
+    }
+    effect->timer++;
+    if (effect->timer >= effect->duration)
+    {
+        return 0;
+    }
+    shake = effect->timer.AsFloat() * (effect->shakeTo - effect->shakeFrom);
+    shake = shake / effect->duration;
+    shake = effect->shakeFrom + shake;
+    switch (g_Rng.GetRandomU32InRange(3))
+    {
+    case 0:
+        g_SpriteEngine->shakeX = 0.0f;
+        break;
+    case 1:
+        g_SpriteEngine->shakeX = shake;
+        break;
+    case 2:
+        g_SpriteEngine->shakeX = -shake;
+        break;
+    }
+    switch (g_Rng.GetRandomU32InRange(3))
+    {
+    case 0:
+        g_SpriteEngine->shakeY = 0.0f;
+        break;
+    case 1:
+        g_SpriteEngine->shakeY = shake;
+        break;
+    case 2:
+        g_SpriteEngine->shakeY = -shake;
+        break;
+    }
+    return 1;
+}
