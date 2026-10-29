@@ -756,3 +756,11 @@ int EffectInitRing2(Effect *effect)
     effect->unk_355 = 1;
     return 0;
 }
+
+int EffectUpdateRing(Effect *effect)
+{
+    effect->verticesDirty = 1;
+    effect->ringWidth = effect->sprite.scaleY;
+    effect->radius = effect->sprite.pos.x;
+    return 1;
+}
