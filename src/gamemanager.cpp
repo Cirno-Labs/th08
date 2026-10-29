@@ -234,3 +234,51 @@ int GameManager::Func43c35f()
         return 4;
     }
 }
+
+void GameManager::AdvanceStage()
+{
+    switch (this->stage)
+    {
+    case 0:
+        this->stage = 1;
+        break;
+    case 1:
+        this->stage = 2;
+        break;
+    case 2:
+        switch (g_GameManager.character)
+        {
+        case 0:
+        case 4:
+        case 5:
+            this->stage = 4;
+            break;
+        case 1:
+        case 6:
+        case 7:
+            this->stage = 3;
+            break;
+        case 2:
+        case 8:
+        case 9:
+            this->stage = 3;
+            break;
+        case 3:
+        case 10:
+        case 11:
+            this->stage = 4;
+            break;
+        }
+        break;
+    case 3:
+    case 4:
+        this->stage = 5;
+        break;
+    case 5:
+        this->stage = (g_GameManager.unk_3dbac >> 11 & 3) != 0 ? 7 : 6;
+        break;
+    case 6:
+        this->stage = 7;
+        break;
+    }
+}
