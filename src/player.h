@@ -229,7 +229,17 @@ public:
     // Scores a graze of the bullet at `pos` (0x44a930); `isLaser` is
     // set for lasers.
     void Graze(D3DXVECTOR3 *pos, int isLaser);
-    // Starts dying (0x44ab40).
+    // Starts dying, as th07's: unfreezes the game, rerolls the
+    // checksums, bursts effect 6, sets playerState to 2 with unk_e2af4 at
+    // 0, plays sound 4 and marks bit 9 of g_ReplayManager->frameEvents.
+    // With GameManager::unk_3dbac_7 set, just leaves 2 deathbombFrames
+    // and sets unk_6. Otherwise clears stats->unk_22 and, with bombs
+    // left, gives 6 deathbombFrames a bomb (7 more once the time orbs
+    // reach their target), at most 15, doubled up to 30 in a spell card
+    // and times 9/5 for characters 0, 4 and 5; tints the player and
+    // starts the last-words ring effect 0x3b (unk_e2b28), setting
+    // unk_3dbac_10 in a spell card. Without bombs, 2 deathbombFrames.
+    // Then recycles the collected items.
     void Die();
     // The angle from `pos` to the player, as th07's (0x44c1b0).
     float AngleFrom(D3DXVECTOR3 *pos);

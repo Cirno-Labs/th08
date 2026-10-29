@@ -782,7 +782,7 @@ address,size,name,symbol
 0x0044e0e0,15,Func44e0e0,
 0x0044e0f0,35,Func44e0f0,
 0x0044e120,32,Func44e120,
-0x0044e140,27,Func44e140,
+0x0044e140,27,GameManager::SetUnk22,?SetUnk22@GameManager@@QAEXF@Z
 0x0044e160,255,GameManager::RerollLifeChecksumKeys,?RerollLifeChecksumKeys@GameManager@@QAEXXZ
 0x0044e260,113,Func44e260,
 0x0044e2e0,104,Func44e2e0,

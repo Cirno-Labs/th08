@@ -270,3 +270,85 @@ void Player::Graze(D3DXVECTOR3 *pos, int isLaser)
     }
     g_ReplayManager->frameEvents |= 0x2000;
 }
+
+void Player::Die()
+{
+    Effect *effect;
+
+    DebugPrint("player DEAD");
+    g_GameManager.isFrozen = 0;
+    g_GameManager.RerollChecksumKeys();
+    g_EffectManager.SpawnEffect(6, &this->pos, 16, 0xffffffff);
+    this->playerState = 2;
+    this->unk_e2af4 = 0;
+    g_SoundPlayer.QueueSoundPanned(4, this->pos.x);
+    g_ReplayManager->frameEvents |= 0x200;
+    if (g_GameManager.unk_3dbac_7 != 0)
+    {
+        DebugPrint(" desolve\n");
+        this->deathbombFrames = 2;
+        this->unk_6 = 1;
+    }
+    else
+    {
+        g_GameManager.SetUnk22(0);
+        if (g_GameManager.GetBombs() >= 1)
+        {
+            this->deathbombFrames = g_GameManager.GetBombs() * 6;
+            if (g_GameManager.GetUnk3c() >= g_GameManager.GetUnk40())
+            {
+                this->deathbombFrames += 7;
+            }
+            if (this->deathbombFrames > 15)
+            {
+                this->deathbombFrames = 15;
+            }
+            if (g_SpellCard.Func4178a0())
+            {
+                this->deathbombFrames += this->deathbombFrames;
+                if (this->deathbombFrames > 30)
+                {
+                    this->deathbombFrames = 30;
+                }
+            }
+            if (g_GameManager.character == 0 || g_GameManager.character == 4 || g_GameManager.character == 5)
+            {
+                this->deathbombFrames *= 9;
+                this->deathbombFrames /= 5;
+            }
+            DebugPrint(" preDeadCount %d\n", this->deathbombFrames);
+            this->sprite.color2Rgb[2] = 0xff;
+            this->sprite.color2Rgb[1] = 0xff;
+            this->sprite.color2Rgb[0] = 0xff;
+            this->sprite.color2Alpha = this->sprite.alpha;
+            this->sprite.useColor2 = 1;
+            this->unk_e2b28 = g_EffectManager.SpawnReservedEffect(0x3b, &this->pos, 0xb, 1, 0xfff0404f);
+            effect = this->unk_e2b28;
+            effect->sprite.interpDuration[0] = 0;
+            effect->sprite.interpFrame[0] = this->deathbombFrames;
+            effect->sprite.interpEasing = 4;
+            effect->sprite.moveStart.x = 128.0f;
+            effect->sprite.moveEnd.x = 8.0f;
+            effect->sprite.moveStart.y = 32.0f;
+            effect->sprite.moveEnd.y = 0.0f;
+            effect->sprite.pos.x = 128.0f;
+            effect->sprite.pos.y = 32.0f;
+            effect->segmentCount = 0x40;
+            effect->angle = 0.0f;
+            effect->radius = 128.0f;
+            effect->ringWidth = 15.0f;
+            effect->unk_334 = 6.0f;
+            effect->unk_357 = 1;
+            if (g_SpellCard.Func4178a0())
+            {
+                g_GameManager.unk_3dbac_10 = 1;
+            }
+        }
+        else
+        {
+            this->deathbombFrames = 2;
+            DebugPrint(" Miss\n");
+        }
+    }
+    g_ItemManager.RecycleCollectedItems();
+}
