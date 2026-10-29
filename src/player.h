@@ -661,6 +661,10 @@ void UpdateDissolveBomb(Player *player);
 // Its draw callback: tints the play area from 0x404040 up to 0xf0f0f0
 // over its first 60 frames (0x40d310).
 void DrawDissolveBomb(Player *player);
+// Alice's 魔符「アーティフルサクリファイス」: her doll (options[0])
+// flies to the middle of the play area over 60 frames, flashes and
+// bursts at frame 90, and comes back as an option at the end (0x40d430).
+void UpdateAliceBomb(Player *player);
 // Draw callbacks of the bombs that only tint the play area, by the
 // bomb they follow: Alice's (also Yukari's draw.funcs[0..1], 0x40d950)
 // and Remilia's and her last word's (0x40f550, 0x40fcb0).
@@ -685,6 +689,6 @@ void DrawReimuBomb(Player *player);
 // 40 every 20 frames a flash bursts at orbHomingTarget (else at random)
 // in g_BombFlashColors (0x40c910).
 void UpdateReimuLastWord(Player *player);
-// Its draw callback: tints the play area red and draws the orbs and
+// Its draw callback: tints the play area blue and draws the orbs and
 // flashes (0x40d010).
 void DrawReimuLastWord(Player *player);

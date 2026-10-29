@@ -463,6 +463,103 @@ void DrawDissolveBomb(Player *player)
     }
 }
 
+void UpdateAliceBomb(Player *player)
+{
+    PlayerBomb *bomb = &player->bomb;
+    PlayerBombPart *part = bomb->parts;
+
+    if (bomb->timer.HasTicked() && bomb->timer == 0)
+    {
+        StartBomb(player, 1, "\x96\x82\x95\x84\x81\x75\x83\x41\x81\x5b\x83\x65\x83\x42\x83\x74\x83\x8b\x83\x54\x83\x4e\x83\x8a\x83\x74\x83\x40\x83\x43\x83\x58\x81\x76", 210, 250, 0);
+        g_SoundPlayer.QueueSound(0xd, 0);
+        part->pos = player->options[0].pos;
+        g_SoundPlayer.QueueSound(6, 0);
+    }
+    if (bomb->timer < 60)
+    {
+        D3DXVECTOR3 target(192.0f, 224.0f, 0.0f);
+        float progress;
+
+        progress = (progress = bomb->timer.AsFloat() / 60.0f) * progress;
+        player->options[0].pos = (target - part->pos) * progress + part->pos;
+        player->options[0].sprite.rotation.z += -0.31415927f;
+        player->AddHitAreaCircle(&player->options[0].pos, 32.0f, 0.0f, 0, 6);
+        player->AddBombHitboxCircle(&player->options[0].pos, 32.0f, 0.0f, 40, 0);
+    }
+    else
+    {
+        player->options[0].sprite.rotation.z = 0.0f;
+        player->options[0].pos.x = 192.0f;
+        player->options[0].pos.y = 224.0f;
+        if (bomb->timer >= 150)
+        {
+            player->options[0].sprite.alpha = 0;
+        }
+        if (bomb->timer.HasTickedTo(60))
+        {
+            g_EffectManager.SpawnEffect(0x28, &player->options[0].pos, 1, 0xffffffff);
+        }
+        else if (bomb->timer.HasTickedTo(64))
+        {
+            g_EffectManager.SpawnEffect(0x28, &player->options[0].pos, 1, 0xffffd0d0);
+        }
+        else if (bomb->timer.HasTickedTo(68))
+        {
+            g_EffectManager.SpawnEffect(0x28, &player->options[0].pos, 1, 0xffffb0b0);
+        }
+        else if (bomb->timer.HasTickedTo(72))
+        {
+            g_EffectManager.SpawnEffect(0x28, &player->options[0].pos, 1, 0xffff8080);
+        }
+        else if (bomb->timer.HasTickedTo(76))
+        {
+            g_EffectManager.SpawnEffect(0x28, &player->options[0].pos, 1, 0xffff4040);
+        }
+        else if (bomb->timer.HasTickedTo(90))
+        {
+            Effect *effect;
+            PlayerBombHitbox *hitbox;
+
+            g_SoundPlayer.QueueSound(0xf, 0);
+            effect = g_EffectManager.SpawnEffect(0x2a, &player->options[0].pos, 1, 0xffffffff);
+            effect = g_EffectManager.SpawnEffect(0x2b, &player->options[0].pos, 1, 0xffffffff);
+            effect = g_EffectManager.SpawnEffect(0x2c, &player->options[0].pos, 1, 0xffffffff);
+            player->AddHitAreaCircle(&player->options[0].pos, 1.0f, 5.0f, 110, 6);
+            hitbox = player->AddBombHitboxCircle(&player->options[0].pos, 1.0f, 5.0f, 70, 110);
+            hitbox->damageInterval = 5;
+            ScreenEffect::StartEffect(1, 0x18, 8, 0, 0, 0x15);
+            ScreenEffect::StartEffect(3, 8, 1, 0x8fffffff, 0, 0x15);
+        }
+        else if (bomb->timer.HasTickedTo(100))
+        {
+            Effect *effect = g_EffectManager.SpawnEffect(0x2d, &player->options[0].pos, 1, 0xffffffff);
+        }
+        else if (bomb->timer.HasTickedTo(110))
+        {
+            Effect *effect = g_EffectManager.SpawnEffect(0x2d, &player->options[0].pos, 1, 0xffffd0d0);
+        }
+        else if (bomb->timer.HasTickedTo(120))
+        {
+            Effect *effect = g_EffectManager.SpawnEffect(0x2d, &player->options[0].pos, 1, 0xffff8080);
+        }
+        else if (bomb->timer.HasTickedTo(130))
+        {
+            Effect *effect = g_EffectManager.SpawnEffect(0x2d, &player->options[0].pos, 1, 0xffff0000);
+        }
+        else if (bomb->timer.HasTickedTo(150))
+        {
+            ScreenEffect::StartEffect(3, 8, 1, 0x8fffffff, 0, 0x15);
+            ScreenEffect::StartEffect(1, 0x18, 8, 0, 0, 0x15);
+            g_SoundPlayer.QueueSound(0x19, 0);
+        }
+        else if (bomb->timer.HasTickedTo(209))
+        {
+            player->options[0].active = 1;
+            player->options[0].timer = 0;
+        }
+    }
+}
+
 void DrawAliceBomb(Player *player)
 {
     DimPlayAreaForBomb(player, 0x80404040);

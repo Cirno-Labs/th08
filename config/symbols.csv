@@ -151,7 +151,7 @@ address,size,name,symbol
 0x0040d3d0,27,Timer::HasTicked,?HasTicked@Timer@@QAEHXZ
 0x0040d3f0,27,Timer::operator==,??8Timer@@QAEHH@Z
 0x0040d410,25,Timer::operator%,??LTimer@@QAEHH@Z
-0x0040d430,1303,Func40d430,
+0x0040d430,1303,UpdateAliceBomb,?UpdateAliceBomb@@YIXPAVPlayer@@@Z
 0x0040d950,24,DrawAliceBomb,?DrawAliceBomb@@YIXPAVPlayer@@@Z
 0x0040d970,1390,Func40d970,
 0x0040dee0,349,Func40dee0,
@@ -159,7 +159,7 @@ address,size,name,symbol
 0x0040e120,209,EffectUpdateBombRing43,?EffectUpdateBombRing43@@YIHPAUEffect@@@Z
 0x0040e200,196,EffectUpdateBombRing44,?EffectUpdateBombRing44@@YIHPAUEffect@@@Z
 0x0040e2d0,119,EffectUpdateBombRing45,?EffectUpdateBombRing45@@YIHPAUEffect@@@Z
-0x0040e350,58,Func40e350,
+0x0040e350,58,Timer::HasTickedTo,?HasTickedTo@Timer@@QAEHH@Z
 0x0040e390,27,Timer::operator<=,??NTimer@@QAEHH@Z
 0x0040e3b0,600,Func40e3b0,
 0x0040e610,362,Func40e610,
