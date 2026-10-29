@@ -270,7 +270,7 @@ struct PlayerBullet
     // ShotData::script.
     short script;
     // Drawn red (ShotData::unk_1e).
-    BYTE red;
+    char red;
     unsigned char unk_471[0x3];
     // The shot's callbacks, and the shot.
     ShotUpdateFunc update;

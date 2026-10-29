@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">71.95% (803)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">26.08% (291)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">72.04% (804)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">25.99% (290)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="537.49" height="6" x="0" y="0" class="named"/>
-<rect width="14.73" height="6" x="537.49" y="0" class="decompiled"/>
-<rect width="194.78" height="6" x="552.22" y="0" class="todo"/>
+<rect width="538.16" height="6" x="0" y="0" class="named"/>
+<rect width="14.73" height="6" x="538.16" y="0" class="decompiled"/>
+<rect width="194.11" height="6" x="552.89" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -885,7 +885,7 @@
 <rect width="12" height="12" x="210" y="240" class="named"><title>0x00450ee0 BurstHitEffect (128 bytes)</title></rect>
 <rect width="12" height="12" x="225" y="240" class="named"><title>0x00450f60 FireShots (487 bytes)</title></rect>
 <rect width="12" height="12" x="240" y="240" class="named"><title>0x00451150 UpdateBullets (404 bytes)</title></rect>
-<rect width="12" height="12" x="255" y="240" class="todo"><title>0x004512f0 DrawBullets (268 bytes)</title></rect>
+<rect width="12" height="12" x="255" y="240" class="named"><title>0x004512f0 DrawBullets (268 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="240" class="todo"><title>0x00451400 DrawHitBullets (241 bytes)</title></rect>
 <rect width="12" height="12" x="285" y="240" class="todo"><title>0x00451500 UpdateFiring (311 bytes)</title></rect>
 <rect width="12" height="12" x="300" y="240" class="todo"><title>0x00451640 Player::StartFiring (45 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">63.61%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">35.38%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">63.67%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">35.32%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="475.17" height="6" x="0" y="0" class="named"/>
-<rect width="7.57" height="6" x="475.17" y="0" class="decompiled"/>
-<rect width="264.25" height="6" x="482.75" y="0" class="todo"/>
+<rect width="475.61" height="6" x="0" y="0" class="named"/>
+<rect width="7.57" height="6" x="475.61" y="0" class="decompiled"/>
+<rect width="263.82" height="6" x="483.18" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1553,7 +1553,7 @@
 <rect width="9.54" height="9.22" x="687.63" y="142.35" class="named"><title>0x00455925 ResultScreen::UpdateScoreList (270 bytes)</title></rect>
 <rect width="9.49" height="9.22" x="700.17" y="142.35" class="todo"><title>0x0044e8d0 Func44e8d0 (269 bytes)</title></rect>
 <rect width="9.49" height="9.22" x="712.66" y="142.35" class="named"><title>0x00467399 MainMenu::OnUpdate (269 bytes)</title></rect>
-<rect width="9.45" height="9.22" x="725.15" y="142.35" class="todo"><title>0x004512f0 DrawBullets (268 bytes)</title></rect>
+<rect width="9.45" height="9.22" x="725.15" y="142.35" class="named"><title>0x004512f0 DrawBullets (268 bytes)</title></rect>
 <rect width="9.40" height="9.22" x="737.60" y="142.35" class="named"><title>0x0043e8f0 WriteToFile (267 bytes)</title></rect>
 <rect width="9.31" height="9.31" x="545.71" y="154.57" class="named"><title>0x0044d420 ResetHomingAndText (267 bytes)</title></rect>
 <rect width="9.31" height="9.31" x="545.71" y="166.88" class="named"><title>0x0045a2f2 MoveCursorHorizontal (267 bytes)</title></rect>
