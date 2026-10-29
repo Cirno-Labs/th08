@@ -286,3 +286,52 @@ int EffectInitForeground(Effect *effect)
     effect->radius = 0.0f;
     return 0;
 }
+
+int EffectUpdateOrbit(Effect *effect)
+{
+    D3DXVECTOR3 v;
+    float a2;
+    D3DXVECTOR3 n2;
+    float c;
+    D3DXMATRIX m2;
+    float s;
+
+    D3DXVec3Normalize(&n2, &effect->axis);
+    s = sinf(effect->angle);
+    c = cosf(effect->angle);
+    effect->rotation.x = n2.x * s;
+    effect->rotation.y = n2.y * s;
+    effect->rotation.z = n2.z * s;
+    effect->rotation.w = c;
+    D3DXMatrixRotationQuaternion(&m2, &effect->rotation);
+    v.x = n2.y * 1.0f - n2.z * 0.0f;
+    v.y = n2.z * 0.0f - n2.x * 1.0f;
+    v.z = n2.x * 0.0f - n2.y * 0.0f;
+    if (D3DXVec3LengthSq(&v) < 0.00001f)
+    {
+        // Sets the axis, not v: v stays (0, 0, 0).
+        n2 = D3DXVECTOR3(1.0f, 0.0f, 0.0f);
+    }
+    else
+    {
+        D3DXVec3Normalize(&v, &v);
+    }
+    v *= effect->radius;
+    D3DXVec3TransformCoord(&v, &v, &m2);
+    v.z *= 6.0f;
+    effect->pos = v + effect->origin;
+    effect->pos.z = 0.0f;
+    if (effect->fadeOut != 0)
+    {
+        effect->fadeFrames++;
+        if (effect->fadeFrames >= 16)
+        {
+            return 0;
+        }
+        a2 = 1.0f - effect->fadeFrames / 16.0f;
+        effect->sprite.color = (effect->sprite.color & 0xffffff) | ((int)(a2 * 255.0f) << 24);
+        effect->sprite.scaleX = 2.0f - a2;
+        effect->sprite.scaleY = effect->sprite.scaleX;
+    }
+    return 1;
+}
