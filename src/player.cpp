@@ -744,3 +744,31 @@ int UpdateDyingState(Player *player)
     }
     return 0;
 }
+
+void UpdateRespawningState(Player *player)
+{
+    float progress;
+
+    player->respawnClearFrames = 60;
+    progress = 1.0f - player->unk_e2af4.AsFloat() / 30.0f;
+    player->sprite.scaleX = 2.0f * progress + 1.0f;
+    player->sprite.scaleY = 1.0f - 1.0f * progress;
+    player->sprite.SetBlendModeAdd();
+    player->moveScaleY = 1.0f;
+    player->moveScaleX = 1.0f;
+    player->sprite.color = player->unk_e2af4.AsFrames() * 255 / 30 << 24 | 0xffffff;
+    player->deathbombFrames = 0;
+    if (player->unk_e2af4.AsFrames() >= 30)
+    {
+        player->playerState = 3;
+        player->sprite.scaleY = 1.0f;
+        player->sprite.scaleX = 1.0f;
+        player->sprite.color = 0xffffffff;
+        player->sprite.SetBlendModeNormal();
+        if (!g_GameManager.isInSpellCardPractice)
+        {
+            player->unk_e2af4 = 240;
+        }
+        player->deathbombFrames = g_Player.shotType->deathbombFrames;
+    }
+}
