@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">55.47% (619)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">42.74% (477)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">55.56% (620)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">42.65% (476)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="414.33" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="414.33" y="0" class="decompiled"/>
-<rect width="319.28" height="6" x="427.72" y="0" class="todo"/>
+<rect width="415" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="415" y="0" class="decompiled"/>
+<rect width="318.61" height="6" x="428.39" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -1078,7 +1078,7 @@
 <rect width="12" height="12" x="105" y="300" class="named"><title>0x0046950b MainMenu::ReassignButton (299 bytes)</title></rect>
 <rect width="12" height="12" x="120" y="300" class="named"><title>0x00469636 MainMenu::UpdateKeyConfig (2383 bytes)</title></rect>
 <rect width="12" height="12" x="135" y="300" class="named"><title>0x00469fa9 MainMenu::ShowButtonDigits (200 bytes)</title></rect>
-<rect width="12" height="12" x="150" y="300" class="todo"><title>0x0046a071 MainMenu::UpdateDifficultyMenu (1460 bytes)</title></rect>
+<rect width="12" height="12" x="150" y="300" class="named"><title>0x0046a071 MainMenu::UpdateDifficultyMenu (1460 bytes)</title></rect>
 <rect width="12" height="12" x="165" y="300" class="todo"><title>0x0046a625 MainMenu::UpdateCharacterMenu (1931 bytes)</title></rect>
 <rect width="12" height="12" x="180" y="300" class="todo"><title>0x0046adb0 MainMenu::UpdateGameStartMenu (964 bytes)</title></rect>
 <rect width="12" height="12" x="195" y="300" class="todo"><title>0x0046b174 MainMenu::UpdateState16 (2636 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">47.95%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">51.06%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">48.26%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">50.75%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="358.16" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="358.16" y="0" class="decompiled"/>
-<rect width="381.44" height="6" x="365.56" y="0" class="todo"/>
+<rect width="360.53" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="360.53" y="0" class="decompiled"/>
+<rect width="379.07" height="6" x="367.93" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1262,7 +1262,7 @@
 <rect width="27.32" height="25.77" x="326.26" y="182.97" class="todo"><title>0x0044d650 Func44d650 (1537 bytes)</title></rect>
 <rect width="27.32" height="24.74" x="326.26" y="211.73" class="named"><title>0x004390ee Gui::LoadResources (1482 bytes)</title></rect>
 <rect width="27.32" height="24.55" x="326.26" y="239.47" class="named"><title>0x004424c0 InitD3dDevice (1472 bytes)</title></rect>
-<rect width="27.32" height="24.33" x="326.26" y="267.03" class="todo"><title>0x0046a071 MainMenu::UpdateDifficultyMenu (1460 bytes)</title></rect>
+<rect width="27.32" height="24.33" x="326.26" y="267.03" class="named"><title>0x0046a071 MainMenu::UpdateDifficultyMenu (1460 bytes)</title></rect>
 <rect width="27.32" height="24.27" x="326.26" y="294.35" class="named"><title>0x0043d120 ReadJoystick (1457 bytes)</title></rect>
 <rect width="27.32" height="23.37" x="326.26" y="321.63" class="named"><title>0x004550fc ResultScreen::UpdateScoreDifficultySelect (1409 bytes)</title></rect>
 <rect width="25.75" height="24.45" x="356.57" y="0" class="named"><title>0x004464c8 App::LoadingThread (1391 bytes)</title></rect>
