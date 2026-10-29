@@ -1574,6 +1574,16 @@ public:
     // Whether the dialogue holds the timeline: impl is set,
     // msg.timelineRelease is 0 and a script runs, as th07's.
     BOOL MsgHoldsTimeline();
+    // Whether impl->unk_3778 shows a sprite whose script waits for an
+    // interrupt, as th07's IsLoadingShown (0x437d87).
+    BOOL IsLoadingShown();
+    // Show `bonus` in bonusPopup at (416, 48), `points` in fullPowerPopup
+    // at (416, 168) shown as `kind`, and `value` in spellBonusPopup at
+    // (224, 16); each sets g_App.redrawFrames to 2. As th07's (0x437ddd,
+    // 0x437e5d, 0x437edc).
+    void ShowBonusPopup(int bonus);
+    void ShowFullPowerPopup(int points, int kind);
+    void ShowSpellCardBonus(int value);
     // Whether a dialogue runs, and whether it can be skipped, as th07's
     // (0x4358bb, 0x437dc7).
     int IsMsgRunning();

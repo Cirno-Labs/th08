@@ -342,3 +342,8 @@ void Gui::RemoveChain()
     g_Chain.Remove(&g_GuiCalcChain);
     g_Chain.Remove(&g_GuiDrawChain);
 }
+
+BOOL Gui::IsLoadingShown()
+{
+    return this->impl->unk_3778.spriteIndex >= 0 && this->impl->unk_3778.IsStopped();
+}

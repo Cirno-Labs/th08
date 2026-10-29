@@ -95,6 +95,12 @@ public:
     {
         return this->flags & 1;
     }
+    // Whether the script waits for an interrupt. Inline; the copy at
+    // 0x4396f8 is the Gui object's.
+    DWORD IsStopped()
+    {
+        return this->stopped;
+    }
     // Inline; /Os files call the copy at 0x407120.
     void SetPendingInterrupt(short interrupt)
     {
