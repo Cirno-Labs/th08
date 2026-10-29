@@ -241,3 +241,8 @@ int App::GetNoVertexBuffer()
 {
     return this->flags.noVertexBuffer;
 }
+
+int App::GetForce16BitTextures()
+{
+    return this->flags.force16BitTextures;
+}

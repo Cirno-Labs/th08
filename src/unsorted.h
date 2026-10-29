@@ -72,6 +72,7 @@ public:
     // these out-of-line copies (0x443a50..0x443ad0).
     int GetEmulateColorAdd();
     int GetNoVertexBuffer();
+    int GetForce16BitTextures();
 
     HINSTANCE hInstance;
     IDirect3D8 *d3d;
