@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">53.94% (602)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">44.27% (494)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">54.03% (603)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">44.18% (493)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="402.95" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="402.95" y="0" class="decompiled"/>
-<rect width="330.66" height="6" x="416.34" y="0" class="todo"/>
+<rect width="403.62" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="403.62" y="0" class="decompiled"/>
+<rect width="329.99" height="6" x="417.01" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -1105,7 +1105,7 @@
 <rect width="12" height="12" x="510" y="300" class="todo"><title>0x0047146d SetUpTitleScene (281 bytes)</title></rect>
 <rect width="12" height="12" x="525" y="300" class="todo"><title>0x00471586 Func471586 (203 bytes)</title></rect>
 <rect width="12" height="12" x="540" y="300" class="todo"><title>0x00471651 Func471651 (17 bytes)</title></rect>
-<rect width="12" height="12" x="555" y="300" class="todo"><title>0x00471662 Func471662 (125 bytes)</title></rect>
+<rect width="12" height="12" x="555" y="300" class="named"><title>0x00471662 MainMenu::DeletedCallback (125 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="300" class="named"><title>0x004716e0 CSoundManager::CSoundManager (23 bytes)</title></rect>
 <rect width="12" height="12" x="585" y="300" class="named"><title>0x00471700 CSoundManager::~CSoundManager (44 bytes)</title></rect>
 <rect width="12" height="12" x="600" y="300" class="named"><title>0x00471730 CSoundManager::Initialize (142 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">45.43%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">53.58%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">45.46%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">53.55%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="339.38" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="339.38" y="0" class="decompiled"/>
-<rect width="400.21" height="6" x="346.79" y="0" class="todo"/>
+<rect width="339.59" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="339.59" y="0" class="decompiled"/>
+<rect width="400.01" height="6" x="346.99" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1763,7 +1763,7 @@
 <rect width="5.42" height="5.56" x="626.93" y="216.49" class="named"><title>0x0043edb0 AddNormalizeAngle (127 bytes)</title></rect>
 <rect width="5.35" height="5.56" x="635.35" y="216.49" class="named"><title>0x00466a60 SpriteEngine::PreloadSurface (126 bytes)</title></rect>
 <rect width="5.29" height="5.56" x="643.71" y="216.49" class="named"><title>0x0045e960 SpriteEngine::DrawSprite (125 bytes)</title></rect>
-<rect width="5.29" height="5.56" x="652" y="216.49" class="todo"><title>0x00471662 Func471662 (125 bytes)</title></rect>
+<rect width="5.29" height="5.56" x="652" y="216.49" class="named"><title>0x00471662 MainMenu::DeletedCallback (125 bytes)</title></rect>
 <rect width="5.22" height="5.56" x="660.28" y="216.49" class="named"><title>0x0043bfc3 GameManager::AddSubRank (124 bytes)</title></rect>
 <rect width="5.22" height="5.56" x="668.51" y="216.49" class="named"><title>0x0043c03f GameManager::SubSubRank (124 bytes)</title></rect>
 <rect width="5.22" height="5.56" x="676.73" y="216.49" class="named"><title>0x0045b0e0 ClearViewport (124 bytes)</title></rect>

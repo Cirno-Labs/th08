@@ -1036,7 +1036,7 @@ address,size,name,symbol
 0x0047146d,281,SetUpTitleScene,?SetUpTitleScene@@YIHH@Z
 0x00471586,203,Func471586,
 0x00471651,17,Func471651,
-0x00471662,125,Func471662,
+0x00471662,125,MainMenu::DeletedCallback,?DeletedCallback@MainMenu@@SIHPAV1@@Z
 0x004716e0,23,CSoundManager::CSoundManager,??0CSoundManager@@QAE@XZ ??0DatArchiveEntry@@QAE@XZ
 0x00471700,44,CSoundManager::~CSoundManager,??1CSoundManager@@QAE@XZ
 0x00471730,142,CSoundManager::Initialize,?Initialize@CSoundManager@@QAEJPAUHWND__@@KKKK@Z
