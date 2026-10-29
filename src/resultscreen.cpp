@@ -356,7 +356,7 @@ int ResultScreen::UpdateScoreDifficultySelect()
     case 0:
         if (this->unk_18 == 0)
         {
-            this->cursor = this->unk_44;
+            this->cursor = this->difficulty;
             for (i = 4; i <= 8; i++)
             {
                 this->sprites[i].pendingInterrupt = 0x16;
@@ -397,7 +397,7 @@ int ResultScreen::UpdateScoreDifficultySelect()
         {
             this->SetState(1);
             g_SoundPlayer.QueueSound(0xb, 0);
-            this->unk_44 = this->cursor;
+            this->difficulty = this->cursor;
             this->cursor = 0;
             return 1;
         }
@@ -415,7 +415,7 @@ int ResultScreen::UpdateScoreDifficultySelect()
                     this->sprites[i].pendingInterrupt = 1;
                 }
             }
-            this->unk_44 = this->cursor;
+            this->difficulty = this->cursor;
             this->SetState(4);
             this->cursor = 0;
             g_SoundPlayer.QueueSound(0xa, 0);
@@ -508,7 +508,7 @@ int ResultScreen::UpdateScoreShotSelect()
     case 0:
         if (this->unk_18 == 0)
         {
-            this->cursor = this->unk_3c;
+            this->cursor = this->character;
             for (i = 0xf; i <= 0x1a; i++)
             {
                 this->sprites[i].pendingInterrupt = 0x16;
@@ -549,7 +549,7 @@ int ResultScreen::UpdateScoreShotSelect()
         {
             this->SetState(3);
             g_SoundPlayer.QueueSound(0xb, 0);
-            this->unk_3c = this->cursor;
+            this->character = this->cursor;
             for (i = 0xf; i <= 0x1a; i++)
             {
                 this->sprites[i].pendingInterrupt = 1;
@@ -571,7 +571,7 @@ int ResultScreen::UpdateScoreShotSelect()
                 }
             }
             this->sprites[0x28].pendingInterrupt = 3;
-            this->unk_3c = -1;
+            this->character = -1;
             this->SetState(5);
             g_SoundPlayer.QueueSound(0xa, 0);
             return 1;
@@ -586,9 +586,9 @@ int ResultScreen::UpdateScoreList()
 {
     int prevCursor;
 
-    if (this->unk_3c != this->cursor && this->frame == 10)
+    if (this->character != this->cursor && this->frame == 10)
     {
-        this->unk_3c = this->cursor;
+        this->character = this->cursor;
     }
     if (this->frame < 6)
     {
@@ -598,13 +598,13 @@ int ResultScreen::UpdateScoreList()
     if (MoveCursorHorizontal(this, 0xc) != 0)
     {
         this->frame = 0;
-        this->sprites[0x28].pendingInterrupt = this->unk_44 + 3;
+        this->sprites[0x28].pendingInterrupt = this->difficulty + 3;
         this->sprites[prevCursor + 0xf].pendingInterrupt = 0x18;
         this->sprites[this->cursor + 0xf].pendingInterrupt = 0x19;
     }
     if (WAS_PRESSED(0xa))
     {
-        this->unk_3c = this->cursor;
+        this->character = this->cursor;
         this->SetState(4);
         this->sprites[0x28].pendingInterrupt = 1;
         g_SoundPlayer.QueueSound(0xb, 0);
@@ -841,6 +841,201 @@ int ResultScreen::UpdateSpellList()
         return 1;
     }
     this->unk_18++;
+    return 0;
+}
+
+int ResultScreen::HandleNameEntry()
+{
+    int i;
+    Sprite *sprite;
+    float rate;
+
+    if (g_App.IsScoreDisabled() || g_App.GetNoScore())
+    {
+        this->state = 0xf;
+        this->frame = 0;
+        memcpy(g_GameManager.catks, g_GameManager.savedCatks, sizeof(g_GameManager.catks));
+        return 0;
+    }
+    if (this->frame == 0)
+    {
+        this->character = g_GameManager.character + g_GameManager.shotType;
+        this->difficulty = g_GameManager.difficulty;
+        sprite = this->sprites;
+        for (i = 0; i < 0x48; i++, sprite++)
+        {
+            sprite->pendingInterrupt = this->difficulty + 3;
+        }
+        g_SpriteEngine->RenderTextCentered(&this->textSprites[0], 0xffffff, 0, g_ShotNames[this->character]);
+        this->textSprites[0].alpha = 0xff;
+        g_GameManager.hscr.unk_64 = g_GameManager.unk_3db94;
+        g_GameManager.hscr.unk_84 = (float)g_GameManager.unk_3dba0 / g_GameManager.unk_3dba4 * 10000.0f;
+        this->entry = g_GameManager.hscr;
+        this->entry.score = g_GameManager.stats->score;
+        this->entry.continuesUsed = g_GameManager.stats->continuesUsed;
+        this->entry.version = 4;
+        this->entry.magic = 0x52435348;
+        if ((g_GameManager.unk_3dbac >> 4 & 1) == 0)
+        {
+            this->entry.stage = g_GameManager.stage;
+        }
+        else
+        {
+            this->entry.stage = 99;
+        }
+        this->entry.isNew = 1;
+        strcpy(this->entry.name, this->lsnm.name);
+        FormatTodayDate(this->entry.date);
+        rate = (g_App.achievedFrames / g_App.expectedFrames - 0.5f) * 2.0f;
+        if (rate < 0.0f)
+        {
+            rate = 0.0f;
+        }
+        else if (rate >= 1.0f)
+        {
+            rate = 1.0f;
+        }
+        this->entry.slowdown = (1.0f - rate) * 100.0f;
+        if (this->AddScore(&this->entry, this->difficulty, this->character) >= 10)
+        {
+            goto done;
+        }
+        this->cursor = 0;
+        if (this->nameEntryAtEnd)
+        {
+            this->charIndex = 0x5f;
+        }
+        strcpy(this->name, "");
+    }
+    if (this->frame < 10)
+    {
+        return 0;
+    }
+    if (WAS_PRESSED_OR_HELD(0x10))
+    {
+        for (;;)
+        {
+            this->charIndex -= 16;
+            if (this->charIndex < 0)
+            {
+                this->charIndex += 0x60;
+            }
+            if (g_NameAlphabet[this->charIndex] == ' ')
+            {
+                continue;
+            }
+            break;
+        }
+        g_SoundPlayer.QueueSound(0xc, 0);
+    }
+    if (WAS_PRESSED_OR_HELD(0x20))
+    {
+        for (;;)
+        {
+            this->charIndex += 16;
+            if (this->charIndex >= 0x60)
+            {
+                this->charIndex -= 0x60;
+            }
+            if (g_NameAlphabet[this->charIndex] == ' ')
+            {
+                continue;
+            }
+            break;
+        }
+        g_SoundPlayer.QueueSound(0xc, 0);
+    }
+    if (WAS_PRESSED_OR_HELD(0x40))
+    {
+        for (;;)
+        {
+            this->charIndex--;
+            if (this->charIndex % 16 == 15)
+            {
+                this->charIndex += 16;
+            }
+            if (this->charIndex < 0)
+            {
+                this->charIndex = 15;
+            }
+            if (g_NameAlphabet[this->charIndex] == ' ')
+            {
+                continue;
+            }
+            break;
+        }
+        g_SoundPlayer.QueueSound(0xc, 0);
+    }
+    if (WAS_PRESSED_OR_HELD(0x80))
+    {
+        for (;;)
+        {
+            this->charIndex++;
+            if (this->charIndex % 16 == 0)
+            {
+                this->charIndex -= 16;
+            }
+            if (g_NameAlphabet[this->charIndex] == ' ')
+            {
+                continue;
+            }
+            break;
+        }
+        g_SoundPlayer.QueueSound(0xc, 0);
+    }
+    if (WAS_PRESSED_OR_HELD(0x1001))
+    {
+        int pos = this->cursor >= 8 ? 7 : this->cursor;
+
+        if (this->charIndex < 0x5e)
+        {
+            this->entry.name[pos] = g_NameAlphabet[this->charIndex];
+        }
+        else if (this->charIndex == 0x5e)
+        {
+            this->entry.name[pos] = ' ';
+        }
+        else
+        {
+            goto end;
+        }
+        if (this->cursor < 8)
+        {
+            this->cursor++;
+            if (this->cursor == 8)
+            {
+                this->charIndex = 0x5f;
+            }
+        }
+        g_SoundPlayer.QueueSound(10, 0);
+    }
+    if (WAS_PRESSED_OR_HELD(0xa))
+    {
+        int pos2 = this->cursor >= 8 ? 7 : this->cursor;
+
+        if (this->cursor > 0)
+        {
+            this->cursor--;
+            this->entry.name[pos2] = ' ';
+            this->entry.name[this->cursor] = ' ';
+        }
+        g_SoundPlayer.QueueSound(0xb, 0);
+    }
+    if (WAS_PRESSED(8))
+    {
+    end:
+        g_SoundPlayer.QueueSound(0xb, 0);
+    done:
+        this->state = 0xf;
+        this->frame = 0;
+        sprite = this->sprites;
+        for (i = 0; i < 0x48; i++, sprite++)
+        {
+            sprite->pendingInterrupt = 2;
+        }
+        strcpy(this->name, this->entry.name);
+        strcpy(this->lsnm.name, this->name);
+    }
     return 0;
 }
 

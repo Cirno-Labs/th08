@@ -173,6 +173,12 @@ public:
     // Whether g_GameManager.unk_4 is set and its scoreDisabled is not 0.
     // The result screen records no score then.
     int IsScoreDisabled();
+    // Bit 3 of stateFlags: no score is recorded. Inline; the copy at
+    // 0x453c40 is in an /Od object.
+    int GetNoScore()
+    {
+        return this->stateFlags >> 3 & 1;
+    }
     // Flushes the sprites and turns fog on unless fogState is 1 already;
     // returns 0 when it was.
     int EnableFog();
@@ -997,7 +1003,8 @@ struct GameManagerStats
 {
     // The score shown.
     DWORD guiScore;
-    unsigned char unk_04[0x8];
+    unsigned char unk_04[0x4];
+    DWORD score;
     // The game's grazes.
     int grazeTotal;
     unsigned char unk_10[0xc];
@@ -1073,7 +1080,18 @@ public:
     Pscr pscrs[0xc];
     // The play statistics of the score file.
     Plst plst;
-    unsigned char unk_3da2c[0x180];
+    // The score entry of the game being played: HandleNameEntry fills
+    // in the rest and enters a copy. New in th08.
+    Hscr hscr;
+    DWORD unk_3db94;
+    unsigned char unk_3db98[0x8];
+    int unk_3dba0;
+    int unk_3dba4;
+    BYTE unk_3dba8;
+    // As th07's: the shot type is character + shotType.
+    BYTE character;
+    BYTE shotType;
+    BYTE unk_3dbab;
     union
     {
         // Bit 2: the speed is measured; 3: it is shown, as th07's

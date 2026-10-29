@@ -2415,6 +2415,7 @@ address,size,name,symbol
 0x004c7940,,g_CryptMagic,?g_CryptMagic@@3PAEA
 0x004c7948,,g_FormatInfos,?g_FormatInfos@@3PAUFormatInfo@@A
 0x004c7aac,,g_MusicNotHeardComment,?g_MusicNotHeardComment@@3PAPADA
+0x004c7f48,,g_NameAlphabet,?g_NameAlphabet@@3PADA
 0x004c7f4c,,g_ShotNames,?g_ShotNames@@3PAPADA
 0x004c7fac,,g_StageNames,?g_StageNames@@3PAPADA
 0x004c7fe8,,g_SpellCardRatings,?g_SpellCardRatings@@3PAMA

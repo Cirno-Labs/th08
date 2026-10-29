@@ -62,13 +62,25 @@ struct Hscr
     BYTE isNew;
     BYTE unk_0a[0x2];
     DWORD score;
-    unsigned char unk_10[0x4];
+    // How much the game slowed down, in percent.
+    float slowdown;
     // The shot and difficulty of its list.
     BYTE shot;
     BYTE difficulty;
-    unsigned char unk_16[0x10];
+    // The stage reached, 99 for a clear.
+    BYTE stage;
+    // Eight characters and a NUL.
+    char name[9];
+    // "%m/%d" and a NUL.
+    char date[6];
     BYTE continuesUsed;
-    unsigned char unk_27[0x141];
+    unsigned char unk_27[0x3d];
+    // Copied from GameManager::unk_3db94 by HandleNameEntry.
+    DWORD unk_64;
+    unsigned char unk_68[0x1c];
+    // GameManager::unk_3dba0 / unk_3dba4, times 10000.
+    int unk_84;
+    unsigned char unk_88[0xe0];
 };
 ASSERT_SIZE(Hscr, 0x168);
 
@@ -361,28 +373,34 @@ public:
     int unk_18;
     // The menu item selected.
     int cursor;
-    unsigned char unk_20[0x10];
+    unsigned char unk_20[0xc];
+    // The character of g_NameAlphabet selected, as th07's.
+    int charIndex;
     // A second cursor, moved by LoadScreenPlstChunk, as th07's.
     int spellCursor;
     // The spellCursor whose spell cards textSprites show.
     int unk_34;
     int unk_38;
-    // The cursor of the list shown.
-    int unk_3c;
+    // The shot type whose list is shown, as th07's: the score's shot
+    // type in the name entry. -1 to redraw.
+    int character;
     // The spell card page (ten cards each) textSprites show; -1 to
     // redraw.
     int unk_40;
-    int unk_44;
+    // The difficulty whose list is shown, as th07's.
+    int difficulty;
     // The spell card difficulty cursor, kept while away.
     int unk_48;
     // How far the button sequence that marks every stage cleared and
     // every spell card met has got, as th07's: three of 0x80, two of
     // 0x40, two of 0x2000, three of 0x200 while 4 or 0x100 is held.
     int cheatProgress;
-    unsigned char unk_50[0x4];
+    // When set, the name entry starts on the end mark, as th07's.
+    int nameEntryAtEnd;
     // Set to leave the spell card list once its sprites are out.
     int unk_54;
-    unsigned char unk_58[0xc];
+    // The name entered last.
+    char name[0xc];
     // By spell card list and shot type (and all of them): the spell cards
     // captured.
     int capturedSpellCounts[6][0xd];
@@ -397,7 +415,9 @@ public:
     unsigned char unk_11440[0xc];
     // The high score lists, by difficulty and shot.
     ListNode scores[5][0xc];
-    unsigned char unk_1171c[0x34d28];
+    unsigned char unk_1171c[0x34bc0];
+    // The score being entered.
+    Hscr entry;
     // The "TH8K" chunk SaveScoreDat writes.
     Th8k th8k;
     Lsnm lsnm;
@@ -424,6 +444,9 @@ extern char *g_ShotNames[13];
 extern int *g_SpellCardLists[6];
 extern int g_SpellCardListSizes[6];
 
+// The characters a name can be made of, 16 to a row; the last two
+// stand for a space and the end. As th07's.
+extern char *g_NameAlphabet;
 // The difficulties' names ("     Easy", ...), right-aligned, as th07's.
 extern char *g_DifficultyNames[5];
 // By difficulty: what the statistics' rating starts from, and what
