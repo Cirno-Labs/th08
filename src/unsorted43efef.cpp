@@ -17,3 +17,8 @@ GdiSurface::GdiSurface()
     this->oldObject = NULL;
     this->bits = NULL;
 }
+
+GdiSurface::~GdiSurface()
+{
+    this->Release();
+}

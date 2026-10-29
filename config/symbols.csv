@@ -593,8 +593,8 @@ address,size,name,symbol
 0x0043ef70,63,App::EnterCriticalSection,?EnterCriticalSection@App@@QAEXH@Z
 0x0043efb0,63,App::LeaveCriticalSection,?LeaveCriticalSection@App@@QAEXH@Z
 0x0043efef,60,GdiSurface::GdiSurface,??0GdiSurface@@QAE@XZ
-0x0043f02b,17,Func43f02b,
-0x0043f03c,114,Func43f03c,
+0x0043f02b,17,GdiSurface::~GdiSurface,??1GdiSurface@@QAE@XZ
+0x0043f03c,114,GdiSurface::Release,?Release@GdiSurface@@QAE_NXZ
 0x0043f0ae,95,Func43f0ae,
 0x0043f10d,447,Func43f10d,
 0x0043f2cc,80,Func43f2cc,

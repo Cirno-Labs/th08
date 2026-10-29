@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">6.09% (68)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">93.91% (1048)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">6.18% (69)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">93.82% (1047)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="45.52" height="6" x="0" y="0" class="named"/>
-<rect width="701.48" height="6" x="45.52" y="0" class="todo"/>
+<rect width="46.19" height="6" x="0" y="0" class="named"/>
+<rect width="700.81" height="6" x="46.19" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -661,8 +661,8 @@
 <rect width="12" height="12" x="615" y="165" class="named"><title>0x0043ef70 App::EnterCriticalSection (63 bytes)</title></rect>
 <rect width="12" height="12" x="630" y="165" class="named"><title>0x0043efb0 App::LeaveCriticalSection (63 bytes)</title></rect>
 <rect width="12" height="12" x="645" y="165" class="named"><title>0x0043efef GdiSurface::GdiSurface (60 bytes)</title></rect>
-<rect width="12" height="12" x="660" y="165" class="todo"><title>0x0043f02b Func43f02b (17 bytes)</title></rect>
-<rect width="12" height="12" x="675" y="165" class="todo"><title>0x0043f03c Func43f03c (114 bytes)</title></rect>
+<rect width="12" height="12" x="660" y="165" class="named"><title>0x0043f02b GdiSurface::~GdiSurface (17 bytes)</title></rect>
+<rect width="12" height="12" x="675" y="165" class="todo"><title>0x0043f03c GdiSurface::Release (114 bytes)</title></rect>
 <rect width="12" height="12" x="690" y="165" class="todo"><title>0x0043f0ae Func43f0ae (95 bytes)</title></rect>
 <rect width="12" height="12" x="705" y="165" class="todo"><title>0x0043f10d Func43f10d (447 bytes)</title></rect>
 <rect width="12" height="12" x="720" y="165" class="todo"><title>0x0043f2cc Func43f2cc (80 bytes)</title></rect>
@@ -1189,8 +1189,8 @@
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
 <text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">3.50%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">96.50%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="26.14" height="6" x="0" y="0" class="named"/>
-<rect width="720.86" height="6" x="26.14" y="0" class="todo"/>
+<rect width="26.17" height="6" x="0" y="0" class="named"/>
+<rect width="720.83" height="6" x="26.17" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1791,7 +1791,7 @@
 <rect width="4.78" height="5.32" x="626.59" y="225.05" class="todo"><title>0x00427260 Func427260 (114 bytes)</title></rect>
 <rect width="4.78" height="5.32" x="626.59" y="233.37" class="todo"><title>0x00427a60 Func427a60 (114 bytes)</title></rect>
 <rect width="4.78" height="5.32" x="626.59" y="241.68" class="todo"><title>0x0042eb10 Func42eb10 (114 bytes)</title></rect>
-<rect width="4.78" height="5.32" x="626.59" y="250" class="todo"><title>0x0043f03c Func43f03c (114 bytes)</title></rect>
+<rect width="4.78" height="5.32" x="626.59" y="250" class="todo"><title>0x0043f03c GdiSurface::Release (114 bytes)</title></rect>
 <rect width="4.78" height="5.32" x="626.59" y="258.32" class="named"><title>0x004441a0 MidiPlayer::LoadFile (114 bytes)</title></rect>
 <rect width="4.78" height="5.25" x="626.59" y="266.64" class="todo"><title>0x0044e260 Func44e260 (113 bytes)</title></rect>
 <rect width="4.78" height="5.17" x="626.59" y="274.89" class="todo"><title>0x0040eb50 Func40eb50 (112 bytes)</title></rect>
@@ -2280,7 +2280,7 @@
 <rect width="0.10" height="0.22" x="732.87" y="344.78" class="todo"><title>0x0040d3b0 Func40d3b0 (17 bytes)</title></rect>
 <rect width="0.10" height="0.41" x="735.87" y="330.98" class="todo"><title>0x0042f320 Func42f320 (17 bytes)</title></rect>
 <rect width="0.10" height="0.41" x="738.69" y="330.98" class="todo"><title>0x00437a2f Func437a2f (17 bytes)</title></rect>
-<rect width="0.10" height="0.41" x="741.52" y="330.98" class="todo"><title>0x0043f02b Func43f02b (17 bytes)</title></rect>
+<rect width="0.10" height="0.41" x="741.52" y="330.98" class="named"><title>0x0043f02b GdiSurface::~GdiSurface (17 bytes)</title></rect>
 <rect width="0.10" height="0.41" x="744.35" y="330.98" class="todo"><title>0x00446f42 Func446f42 (17 bytes)</title></rect>
 <rect width="0.10" height="0.41" x="747.17" y="330.98" class="todo"><title>0x00453c20 Func453c20 (17 bytes)</title></rect>
 <rect width="0.10" height="0.40" x="735.87" y="334.39" class="todo"><title>0x00453cc0 Func453cc0 (17 bytes)</title></rect>
