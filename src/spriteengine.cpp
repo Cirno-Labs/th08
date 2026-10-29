@@ -523,3 +523,20 @@ void SpriteEngine::RenderTextToTextureIndex(IDirect3DTexture8 *texture, int x, i
         RenderTextToTexture(x, y, width, unused, 8, 8, textColor, shadowColor, text, texture);
     }
 }
+
+void SpriteEngine::RenderText(Sprite *sprite, D3DCOLOR textColor, D3DCOLOR shadowColor, char *fmt, ...)
+{
+    va_list args;
+    char buf[0x80];
+    int fontW;
+
+    fontW = sprite->fontWidth;
+    va_start(args, fmt);
+    vsprintf(buf, fmt, args);
+    va_end(args);
+    this->RenderTextToTextureIndex(sprite->spriteData->texture, sprite->spriteData->startX,
+                                   sprite->spriteData->startY, sprite->spriteData->textureWidth,
+                                   sprite->spriteData->textureHeight, fontW, sprite->fontHeight, textColor, shadowColor,
+                                   buf, sprite->spriteData->scaleX, sprite->spriteData->scaleY);
+    sprite->flags |= 1;
+}
