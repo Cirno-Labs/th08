@@ -359,8 +359,8 @@ address,size,name,symbol
 0x00427bf0,778,EffectManager::OnUpdate,?OnUpdate@EffectManager@@SIHPAV1@@Z
 0x00427f00,501,EffectManager::OnDraw,?OnDraw@EffectManager@@SIHPAV1@@Z
 0x00428100,219,EffectManager::OnDraw3,?OnDraw3@EffectManager@@QAEHXZ
-0x004281e0,290,Func4281e0,
-0x00428310,411,Func428310,
+0x004281e0,290,EffectManager::OnDraw2,?OnDraw2@EffectManager@@QAEHXZ
+0x00428310,411,EffectDrawBossPetal,?EffectDrawBossPetal@@YIXPAVSprite@@PAUD3DXVECTOR3@@@Z
 0x004284b0,216,Func4284b0,
 0x00428590,132,Func428590,
 0x00428620,135,EffectManager::RegisterChain,?RegisterChain@EffectManager@@SIHXZ

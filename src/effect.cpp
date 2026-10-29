@@ -977,3 +977,44 @@ int EffectManager::OnDraw3()
     }
     return 1;
 }
+
+int EffectManager::OnDraw2()
+{
+    Effect *eff = this->drawList1.next;
+    int n = 0;
+
+    if (g_App.effectsQuality == 0)
+    {
+        return 1;
+    }
+    while (eff != NULL)
+    {
+        n++;
+        if (g_App.effectsQuality == 1 && (n & 1) != 0)
+        {
+            return 1;
+        }
+        eff->sprite.pos = eff->pos;
+        if (eff->drawList == 4)
+        {
+            g_SpriteEngine->Draw(&eff->sprite);
+        }
+        else if (eff->drawList == 1)
+        {
+            if (eff->type == 51 || eff->type == 63)
+            {
+                g_SpriteEngine->DrawProjectedWithCallback(&eff->sprite, EffectDrawBossPetal);
+            }
+            else
+            {
+                g_SpriteEngine->DrawProjected(&eff->sprite);
+            }
+        }
+        else
+        {
+            g_SpriteEngine->DrawProjected3D(&eff->sprite);
+        }
+        eff = eff->next;
+    }
+    return 1;
+}
