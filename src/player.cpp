@@ -352,3 +352,17 @@ void Player::Die()
     }
     g_ItemManager.RecycleCollectedItems();
 }
+
+float Player::AngleFrom(D3DXVECTOR3 *pos)
+{
+    float x;
+    float y;
+
+    x = this->pos[0] - pos->x;
+    y = this->pos[1] - pos->y;
+    if (y == 0.0f && x == 0.0f)
+    {
+        return 1.5707964f;
+    }
+    return atan2f(y, x);
+}

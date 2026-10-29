@@ -1732,7 +1732,7 @@ address,size,name,symbol
 0x004a4269,18,_malloc,_malloc
 0x004a427b,104,_free,_free
 0x004a42ce,9,Func4a42ce,
-0x004a42fa,10,Func4a42fa,
+0x004a42fa,10,__CIatan2,__CIatan2
 0x004a431a,10,__CIfmod,__CIfmod
 0x004a4342,136,_atol,
 0x004a43ca,,atoi,_atoi
