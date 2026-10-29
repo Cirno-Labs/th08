@@ -221,8 +221,9 @@ int LoadFlspChunk(void *scoreDat, Flsp *flsp);
 // or 0 if there is none.
 int LoadLsnmChunk(void *scoreDat, Lsnm *lsnm);
 int LoadPracticeScores(void *scoreDat, Pscr *pscrs);
-// Copies the score file's last "PLST" chunk to `plst`. Returns 0.
-int LoadPlstChunk(ScoreDat *scoreDat, Plst *plst);
+// Copies the score file's last version 2 "PLST" chunk to `plst`.
+// Returns 0.
+int LoadPlstChunk(void *scoreDat, Plst *plst);
 // Frees `dat` (0x45afc0).
 void ReleaseScoreDat(ScoreDat *dat);
 

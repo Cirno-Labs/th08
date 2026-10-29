@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">33.15% (370)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">66.85% (746)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">33.24% (371)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">66.76% (745)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="247.66" height="6" x="0" y="0" class="named"/>
-<rect width="499.34" height="6" x="247.66" y="0" class="todo"/>
+<rect width="248.33" height="6" x="0" y="0" class="named"/>
+<rect width="498.67" height="6" x="248.33" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -957,7 +957,7 @@
 <rect width="12" height="12" x="555" y="255" class="named"><title>0x0045ac00 LoadFlspChunk (136 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="255" class="named"><title>0x0045ac90 LoadClears (368 bytes)</title></rect>
 <rect width="12" height="12" x="585" y="255" class="named"><title>0x0045ae00 LoadPracticeScores (295 bytes)</title></rect>
-<rect width="12" height="12" x="600" y="255" class="todo"><title>0x0045af30 LoadPlstChunk (129 bytes)</title></rect>
+<rect width="12" height="12" x="600" y="255" class="named"><title>0x0045af30 LoadPlstChunk (129 bytes)</title></rect>
 <rect width="12" height="12" x="615" y="255" class="todo"><title>0x0045afc0 ReleaseScoreDat (53 bytes)</title></rect>
 <rect width="12" height="12" x="630" y="255" class="named"><title>0x0045b000 ScreenEffect::ScreenEffect (25 bytes)</title></rect>
 <rect width="12" height="12" x="645" y="255" class="named"><title>0x0045b020 ClearScreen (190 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">24.05%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">75.95%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">24.08%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">75.92%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="179.67" height="6" x="0" y="0" class="named"/>
-<rect width="567.33" height="6" x="179.67" y="0" class="todo"/>
+<rect width="179.88" height="6" x="0" y="0" class="named"/>
+<rect width="567.12" height="6" x="179.88" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1752,7 +1752,7 @@
 <rect width="5.80" height="5.45" x="680.70" y="208.04" class="todo"><title>0x004298f0 Func4298f0 (131 bytes)</title></rect>
 <rect width="5.73" height="5.45" x="689.49" y="208.04" class="todo"><title>0x004399ac Func4399ac (130 bytes)</title></rect>
 <rect width="5.66" height="5.45" x="698.22" y="208.04" class="todo"><title>0x0043c686 Func43c686 (129 bytes)</title></rect>
-<rect width="5.66" height="5.45" x="706.89" y="208.04" class="todo"><title>0x0045af30 LoadPlstChunk (129 bytes)</title></rect>
+<rect width="5.66" height="5.45" x="706.89" y="208.04" class="named"><title>0x0045af30 LoadPlstChunk (129 bytes)</title></rect>
 <rect width="5.66" height="5.45" x="715.55" y="208.04" class="named"><title>0x00472b50 CStreamingSound::UpdateFade (129 bytes)</title></rect>
 <rect width="5.60" height="5.45" x="724.21" y="208.04" class="todo"><title>0x00437ddd Func437ddd (128 bytes)</title></rect>
 <rect width="5.60" height="5.45" x="732.81" y="208.04" class="todo"><title>0x00437edc Func437edc (128 bytes)</title></rect>

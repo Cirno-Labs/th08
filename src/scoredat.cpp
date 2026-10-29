@@ -362,3 +362,23 @@ int LoadPracticeScores(void *scoreDat, Pscr *pscrs)
     }
     return 0;
 }
+
+int LoadPlstChunk(void *scoreDat, Plst *plst)
+{
+    Plst *chunk;
+    int rest3;
+    ScoreDat *dat10 = (ScoreDat *)scoreDat;
+
+    chunk = (Plst *)((BYTE *)dat10 + dat10->dataOffset);
+    rest3 = dat10->fileSize - dat10->dataOffset;
+    while (rest3 > 0)
+    {
+        if (chunk->magic == 0x54534c50 && chunk->version == 2)
+        {
+            *plst = *chunk;
+        }
+        rest3 -= chunk->size;
+        chunk = (Plst *)((BYTE *)chunk + chunk->size);
+    }
+    return 0;
+}

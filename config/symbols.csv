@@ -889,7 +889,7 @@ address,size,name,symbol
 0x0045ac00,136,LoadFlspChunk,?LoadFlspChunk@@YIHPAXPAUFlsp@@@Z
 0x0045ac90,368,LoadClears,?LoadClears@@YIHPAXPAUClrd@@@Z
 0x0045ae00,295,LoadPracticeScores,?LoadPracticeScores@@YIHPAXPAUPscr@@@Z
-0x0045af30,129,LoadPlstChunk,?LoadPlstChunk@@YIHPAUScoreDat@@PAUPlst@@@Z
+0x0045af30,129,LoadPlstChunk,?LoadPlstChunk@@YIHPAXPAUPlst@@@Z
 0x0045afc0,53,ReleaseScoreDat,?ReleaseScoreDat@@YIXPAUScoreDat@@@Z
 0x0045b000,25,ScreenEffect::ScreenEffect,??0ScreenEffect@@QAE@XZ
 0x0045b020,190,ClearScreen,?ClearScreen@@YIXK@Z
