@@ -861,7 +861,7 @@ address,size,name,symbol
 0x00455cb0,699,ResultScreen::UpdateSpellCardShotSelect,?UpdateSpellCardShotSelect@ResultScreen@@QAEHXZ
 0x00455f6b,691,ResultScreen::UpdateSpellCardList,?UpdateSpellCardList@ResultScreen@@QAEHXZ
 0x0045621e,1818,ResultScreen::HandleNameEntry,?HandleNameEntry@ResultScreen@@QAEHXZ
-0x00456938,55,Func456938,
+0x00456938,55,FormatTodayDate,?FormatTodayDate@@YIXPAD@Z
 0x0045696f,3699,ResultScreen::HandleReplaySaving,?HandleReplaySaving@ResultScreen@@QAEHXZ
 0x004577e2,200,ResultScreen::WaitAfterNameEntry,?WaitAfterNameEntry@ResultScreen@@QAEHXZ
 0x004578aa,1366,ResultScreen::RunStatisticsMenu,?RunStatisticsMenu@ResultScreen@@QAEHXZ

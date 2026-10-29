@@ -7,6 +7,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
 
 #include "lzss.h"
 #include "resultscreen.h"
@@ -203,6 +204,16 @@ void ResultScreen::SetState(int state)
     this->unk_18 = 0;
     this->frame = 0;
     this->unk_54 = 0;
+}
+
+void FormatTodayDate(char *date)
+{
+    time_t t;
+    struct tm *tm;
+
+    time(&t);
+    tm = localtime(&t);
+    strftime(date, 6, "%m/%d", tm);
 }
 
 int ResultScreen::WaitAfterNameEntry()

@@ -374,6 +374,9 @@ char *GetShotName(int shot);
 // to format the next part there. New in th08.
 char *FormatAndAdvance(char *buf, const char *fmt, ...);
 
+// Writes today's date as "%m/%d" to `date`, as th07's.
+void FormatTodayDate(char *date);
+
 // Moves `screen`'s cursor up or down through `count` items, wrapping.
 // Returns -1 for up, 1 for down, 0 if it did not move.
 int MoveCursorVertical(ResultScreen *screen, int count);
