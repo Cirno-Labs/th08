@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">61.47% (686)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">36.74% (410)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">61.56% (687)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">36.65% (409)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="459.18" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="459.18" y="0" class="decompiled"/>
-<rect width="274.44" height="6" x="472.56" y="0" class="todo"/>
+<rect width="459.85" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="459.85" y="0" class="decompiled"/>
+<rect width="273.77" height="6" x="473.23" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -247,7 +247,7 @@
 <rect width="12" height="12" x="390" y="45" class="todo"><title>0x0040fcd0 Func40fcd0 (1573 bytes)</title></rect>
 <rect width="12" height="12" x="405" y="45" class="todo"><title>0x00410300 Func410300 (225 bytes)</title></rect>
 <rect width="12" height="12" x="420" y="45" class="todo"><title>0x004103f0 Func4103f0 (1655 bytes)</title></rect>
-<rect width="12" height="12" x="435" y="45" class="todo"><title>0x00410a70 Func410a70 (67 bytes)</title></rect>
+<rect width="12" height="12" x="435" y="45" class="named"><title>0x00410a70 D3DXVECTOR3::operator+= (67 bytes)</title></rect>
 <rect width="12" height="12" x="450" y="45" class="todo"><title>0x00410ac0 Func410ac0 (225 bytes)</title></rect>
 <rect width="12" height="12" x="465" y="45" class="todo"><title>0x00410bb0 Func410bb0 (76 bytes)</title></rect>
 <rect width="12" height="12" x="480" y="45" class="todo"><title>0x00410c00 Func410c00 (57 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">53.98%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">45.03%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">54%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">45.01%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="403.26" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="403.26" y="0" class="decompiled"/>
-<rect width="336.34" height="6" x="410.66" y="0" class="todo"/>
+<rect width="403.36" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="403.36" y="0" class="decompiled"/>
+<rect width="336.23" height="6" x="410.77" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1944,7 +1944,7 @@
 <rect width="3.29" height="3.13" x="693.90" y="260.05" class="todo"><title>0x00414540 Func414540 (68 bytes)</title></rect>
 <rect width="3.29" height="3.13" x="700.20" y="260.05" class="todo"><title>0x004246e0 Func4246e0 (68 bytes)</title></rect>
 <rect width="3.29" height="3.13" x="706.49" y="260.05" class="named"><title>0x00473920 File::Read (68 bytes)</title></rect>
-<rect width="3.20" height="3.13" x="712.79" y="260.05" class="todo"><title>0x00410a70 Func410a70 (67 bytes)</title></rect>
+<rect width="3.20" height="3.13" x="712.79" y="260.05" class="named"><title>0x00410a70 D3DXVECTOR3::operator+= (67 bytes)</title></rect>
 <rect width="3.20" height="3.13" x="718.99" y="260.05" class="todo"><title>0x00418130 Func418130 (67 bytes)</title></rect>
 <rect width="3.20" height="3.13" x="725.19" y="260.05" class="todo"><title>0x0041f040 Func41f040 (67 bytes)</title></rect>
 <rect width="3.20" height="3.13" x="731.39" y="260.05" class="todo"><title>0x0042ff70 Func42ff70 (67 bytes)</title></rect>
