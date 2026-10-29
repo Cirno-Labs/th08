@@ -127,3 +127,25 @@ int EffectInitBombRing37(Effect *effect)
     effect->ringWidth = 6.0f;
     return 0;
 }
+
+int EffectUpdateBombRing48(Effect *effect)
+{
+    float t;
+
+    if (effect->timer < 0x1e)
+    {
+        effect->radius = 192.0f;
+        effect->segmentCount = 0x30;
+        effect->ringWidth = 3.0f;
+        effect->unk_32c = 0.0001f;
+        effect->unk_330 = 1.5707964f;
+    }
+    else
+    {
+        t = (t = (t = (effect->timer.AsFloat() - 30.0f) / 30.0f) * t) * t;
+        effect->unk_32c = 192.0f * t + 0.0001f;
+        effect->ringWidth = 80.0f * t + 3.0f;
+    }
+    effect->verticesDirty = 1;
+    return 1;
+}

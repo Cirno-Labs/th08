@@ -238,6 +238,9 @@ int EffectInitBombRing36(Effect *effect);
 int EffectUpdateBombRing36(Effect *effect);
 int EffectUpdateBombRing37(Effect *effect);
 int EffectInitBombRing37(Effect *effect);
+// 48: a flat ellipse of radius 192 turned by pi/2, 0x30 segments, 3
+// wide, for 30 frames; then opening up and widening.
+int EffectUpdateBombRing48(Effect *effect);
 
 // The effects, at 0x4ece60: 0x200 started in turn, 0x80 started in
 // order from 0x200, 0xd reserved slots and a spare.
