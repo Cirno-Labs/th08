@@ -15,6 +15,19 @@
 // the block.
 #define GLOBAL_H "d:\\cygwin\\home\\zun\\prog\\th08\\global.h"
 
+// As FormatAndAdvance, the result screen's copy: formats into `buf` like
+// sprintf and returns the end of what it wrote. Inline; SaveReplay calls
+// the copy at 0x453b80.
+inline char *FormatAndAdvanceInline(char *buf, const char *fmt, ...)
+{
+    va_list args;
+
+    va_start(args, fmt);
+    vsprintf(buf, fmt, args);
+    va_end(args);
+    return buf + strlen(buf);
+}
+
 ReplayHeader *ValidateReplay(void *data, int size)
 {
     BYTE *ptr2;
@@ -548,5 +561,190 @@ void ReplayManager::EndStage()
         *replay->cursor = 0;
         stageIdx = g_GameManager.stage;
         replay->stageEnds[stageIdx] = replay->cursor + 3;
+    }
+}
+
+void SaveReplay(char *path, char *name)
+{
+    BYTE *dp2;
+    BYTE kbVal;
+    BYTE *bpCur;
+    int checksum;
+    char timeStrs[0x100];
+    time_t now;
+    struct tm *localNow2;
+    int offsets;
+    ReplayUserHeader user;
+    HANDLE file;
+    char userInfo[0x400];
+    ReplayHeader hX;
+    BYTE *rpyBytes;
+    int chunk;
+    int compSize;
+    float slowdown2;
+    BYTE *compressedData;
+    DWORD writtenSize;
+    char *p2;
+    ReplayManager *replayTmp;
+    int i;
+
+    if (g_ReplayManager != NULL)
+    {
+        replayTmp = g_ReplayManager;
+        if (replayTmp->GetMode() == 0)
+        {
+            if (!g_GameManager.IsInPractice() && g_GameManager.difficulty < 4)
+            {
+                if (memcmp(&g_App.controllerMapping, replayTmp->data->config, sizeof(replayTmp->data->config)) != 0)
+                {
+                    goto freeStages;
+                }
+            }
+            if (replayTmp->data->config[0x25] != 0)
+            {
+                goto freeStages;
+            }
+            if (path != NULL)
+            {
+                DebugPrint("info : Replay File write %s\r\n", path);
+                rpyBytes = (BYTE *)g_MemoryManager.Alloc(0x400000, "rep tmp");
+                hX = *replayTmp->data;
+                ReplayManager::EndStage();
+                i = g_GameManager.unk_3ddc8;
+                replayTmp->data->stages[i]->score = g_GameManager.stats->score;
+                offsets = 0x68;
+                offsets += 0xcc;
+                for (i = 0; i < 9; i++)
+                {
+                    if (replayTmp->data->stages[i] != NULL)
+                    {
+                        chunk = (int)replayTmp->stageEnds[i] - (int)replayTmp->data->stages[i];
+                        memcpy(rpyBytes + offsets - 0x68, replayTmp->data->stages[i], chunk);
+                        hX.stages[i] = (ReplayStage *)offsets;
+                        offsets += chunk;
+                    }
+                }
+                for (i = 0; i < 9; i++)
+                {
+                    if (replayTmp->data->extras[i] != NULL)
+                    {
+                        chunk = (int)replayTmp->extraEnds[i] - (int)replayTmp->data->extras[i];
+                        memcpy(rpyBytes + offsets - 0x68, replayTmp->data->extras[i], chunk);
+                        hX.extras[i] = (BYTE *)offsets;
+                        offsets += chunk;
+                    }
+                }
+                hX.score = g_GameManager.stats->guiScore;
+                if (hX.spellCardNumber >= 0)
+                {
+                    memcpy(hX.spellCardName, g_GameManager.catks[hX.spellCardNumber].name, sizeof(hX.spellCardName));
+                }
+                slowdown2 = (g_App.achievedFrames / g_App.expectedFrames - 0.5f) * 2.0f;
+                if (slowdown2 < 0.0f)
+                {
+                    slowdown2 = 0.0f;
+                }
+                else if (slowdown2 >= 1.0f)
+                {
+                    slowdown2 = 1.0f;
+                }
+                hX.slowdown = (1.0f - slowdown2) * 100.0f;
+                user.magic = *(DWORD *)"USER";
+                user.type = 0;
+                memset(userInfo, 0, sizeof(userInfo));
+                p2 = userInfo;
+                p2 = FormatAndAdvanceInline(p2, "プレイヤー名\t%s\r\n", name);
+                time(&now);
+                localNow2 = localtime(&now);
+                strftime(timeStrs, 0x14, "%Y/%m/%d %H:%M:%S", localNow2);
+                p2 = FormatAndAdvanceInline(p2, "プレイ時刻\t%s\r\n", timeStrs);
+                p2 = FormatAndAdvanceInline(p2, "キャラ名\t%s\r\n", GetShotName(g_GameManager.character));
+                p2 = FormatAndAdvanceInline(p2, "スコア\t\t%d0\r\n", g_GameManager.stats->guiScore);
+                p2 = FormatAndAdvanceInline(p2, "難易度\t\t%s\r\n", g_ReplayDifficultyNames[g_GameManager.difficulty]);
+                if (hX.spellCardNumber >= 0)
+                {
+                    p2 = FormatAndAdvanceInline(p2, "カード名\tNo.%3d %s\r\n", hX.spellCardNumber + 1, hX.spellCardName);
+                }
+                else
+                {
+                    p2 = FormatAndAdvanceInline(p2, "最終ステージ\t%s\r\n",
+                                               (g_GameManager.unk_3dbac >> 4 & 1) ? "Clear"
+                                                                                  : GetStageName(g_GameManager.stage));
+                }
+                p2 = FormatAndAdvanceInline(p2, "ミス回数\t%d\r\n", g_GameManager.GetDeaths());
+                p2 = FormatAndAdvanceInline(p2, "ボム回数\t%d\r\n", g_GameManager.GetBombsUsed());
+                p2 = FormatAndAdvanceInline(p2, "処理落ち率\t%f%%\r\n", hX.slowdown);
+                g_GameManager.hscr.humanRate = (float)g_GameManager.unk_3dba0 / g_GameManager.unk_3dba4 * 10000.0f;
+                p2 = FormatAndAdvanceInline(p2, "人間率\t\t%3.2f％\r\n", g_GameManager.hscr.humanRate / 100.0f);
+                p2 = FormatAndAdvanceInline(p2, "ゲームのバージョン\t%d.%.2d%c\r\n", 1, 0, 'd');
+                user.size = strlen(userInfo) + 0xc;
+                user.size += user.size & 1;
+                hX.unk_07 = 1;
+                strcpy(hX.name, name);
+                FormatTodayDate(hX.date);
+                hX.key = g_Rng.GetRandomU16InRange(0x80) + 0x40;
+                hX.randomByte = g_Rng.GetRandomU16InRange(0x100);
+                hX.secondaryKey = g_Rng.GetRandomU16InRange(0x100);
+                hX.slowdown2 = hX.slowdown + 1.12f;
+                hX.replayFormatVersion = 30;
+                memcpy(rpyBytes, &hX.randomByte, sizeof(ReplayHeader) - 0x68);
+                DebugPrint("info : original size %d\r\n", offsets);
+                hX.dataSize = offsets - 0x68;
+                compressedData = (BYTE *)LzssCompress(rpyBytes, hX.dataSize, &hX.compressedSize);
+                g_MemoryManager.Free(rpyBytes);
+                compSize = hX.compressedSize;
+                bpCur = &hX.key;
+                checksum = 0x3f000318;
+                for (i = 0; i < 0x53U; i++, bpCur++)
+                {
+                    checksum += *bpCur;
+                }
+                bpCur = compressedData;
+                for (i = 0; i < compSize; i++, bpCur++)
+                {
+                    checksum += *bpCur;
+                }
+                hX.checksum = checksum;
+                dp2 = (BYTE *)&hX.compressedSize;
+                kbVal = hX.key;
+                for (i = 0; i < 0x50U; i++, dp2++)
+                {
+                    *dp2 += kbVal;
+                    kbVal += 7;
+                }
+                dp2 = compressedData;
+                for (i = 0; i < compSize; i++, dp2++)
+                {
+                    *dp2 += kbVal;
+                    kbVal += 7;
+                }
+                hX.size = compSize + 0x68;
+                file = CreateFileA(path, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+                if (file == INVALID_HANDLE_VALUE)
+                {
+                    goto freeStages;
+                }
+                WriteFile(file, &hX, 0x68, &writtenSize, NULL);
+                WriteFile(file, compressedData, compSize, &writtenSize, NULL);
+                WriteFile(file, &user, 0xc, &writtenSize, NULL);
+                WriteFile(file, userInfo, user.size - 0xc, &writtenSize, NULL);
+                CloseHandle(file);
+                DebugPrint("info : Size %d -> %d\r\n", offsets, compSize + 0x68);
+                GlobalFree(compressedData);
+            }
+        freeStages:
+            for (i = 0; i < 9; i++)
+            {
+                if (g_ReplayManager->data->stages[i] != NULL)
+                {
+                    g_MemoryManager.Free(g_ReplayManager->data->stages[i]);
+                }
+                if (replayTmp->data->extras[i] != NULL)
+                {
+                    g_MemoryManager.Free(g_ReplayManager->data->extras[i]);
+                }
+            }
+        }
+        g_Chain.Remove(g_ReplayManager->calcChain);
     }
 }

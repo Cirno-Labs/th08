@@ -836,15 +836,15 @@ address,size,name,symbol
 0x00453160,58,ReplayManager::ReplayManager,??0ReplayManager@@QAE@XZ
 0x004531a0,77,ReplayManager::EndStage,?EndStage@ReplayManager@@SIXXZ
 0x004531f0,2445,SaveReplay,?SaveReplay@@YIXPAD0@Z
-0x00453b80,88,Func453b80,
+0x00453b80,88,FormatAndAdvanceInline,?FormatAndAdvanceInline@@YAPADPADPBDZZ
 0x00453be0,23,Rng::SetSeed,?SetSeed@Rng@@QAEXG@Z
 0x00453c00,21,Rng::ResetGenerated,?ResetGenerated@Rng@@QAEXXZ
 0x00453c20,17,Rng::GetSeed,?GetSeed@Rng@@QAEGXZ
 0x00453c40,26,App::GetNoScore,?GetNoScore@App@@QAEHXZ
 0x00453c60,25,GameManager::SetUnk28,?SetUnk28@GameManager@@QAEXH@Z
-0x00453c80,25,Func453c80,
-0x00453ca0,28,Func453ca0,
-0x00453cc0,17,Func453cc0,
+0x00453c80,25,GameManager::GetDeaths,?GetDeaths@GameManager@@QAEHXZ
+0x00453ca0,28,GameManager::GetBombsUsed,?GetBombsUsed@GameManager@@QAEHXZ
+0x00453cc0,17,ReplayManager::GetMode,?GetMode@ReplayManager@@QAEHXZ
 0x00453cd1,41,GetStageName,?GetStageName@@YIPADH@Z
 0x00453cfa,19,GetShotName,?GetShotName@@YIPADH@Z
 0x00453d0d,1372,SaveScoreDat,?SaveScoreDat@@YIXPAVResultScreen@@@Z
@@ -2415,6 +2415,7 @@ address,size,name,symbol
 0x004c7940,,g_CryptMagic,?g_CryptMagic@@3PAEA
 0x004c7948,,g_FormatInfos,?g_FormatInfos@@3PAUFormatInfo@@A
 0x004c7aac,,g_MusicNotHeardComment,?g_MusicNotHeardComment@@3PAPADA
+0x004c7f30,,g_ReplayDifficultyNames,?g_ReplayDifficultyNames@@3PAPADA
 0x004c7f48,,g_NameAlphabet,?g_NameAlphabet@@3PADA
 0x004c7f4c,,g_ShotNames,?g_ShotNames@@3PAPADA
 0x004c7f80,,g_StageNumbers,?g_StageNumbers@@3PAHA
