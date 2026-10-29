@@ -1137,3 +1137,17 @@ void Vector2::SetPolar(float angle, float radius)
         fstp [eax+4]
     }
 }
+
+void Vector2::SetPolarEllipse(float angle, float radiusX, float radiusY)
+{
+    __asm
+    {
+        mov eax, this
+        fld angle
+        fsincos
+        fmul radiusX
+        fstp [eax]
+        fmul radiusY
+        fstp [eax+4]
+    }
+}
