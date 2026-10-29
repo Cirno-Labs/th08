@@ -1052,6 +1052,17 @@ int App::IsScoreDisabled()
     return g_GameManager.unk_4 != NULL && g_GameManager.unk_4->scoreDisabled != 0;
 }
 
+int App::EnableFog()
+{
+    g_SpriteEngine->FlushQuadBatch();
+    if (this->fogState != 1)
+    {
+        this->fogState = 1;
+        return this->d3dDevice->SetRenderState(D3DRS_FOGENABLE, TRUE);
+    }
+    return 0;
+}
+
 inline void FreeData(void *data)
 {
     free(data);
