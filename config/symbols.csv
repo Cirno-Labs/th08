@@ -900,15 +900,15 @@ address,size,name,symbol
 0x0045b760,155,ScreenEffect::OnUpdateFadeOut,?OnUpdateFadeOut@ScreenEffect@@SIHPAV1@@Z
 0x0045b800,169,ScreenEffect::OnUpdateLoadingFade,?OnUpdateLoadingFade@ScreenEffect@@SIHPAV1@@Z
 0x0045b8b0,628,ScreenEffect::StartEffect,?StartEffect@ScreenEffect@@SIPAV1@HHHHHH@Z
-0x0045bb50,145,Func45bb50,
-0x0045bbf0,69,Func45bbf0,
-0x0045bc40,69,Func45bc40,
-0x0045bc90,210,Func45bc90,
-0x0045bd70,76,Func45bd70,
-0x0045bdc0,332,Func45bdc0,
-0x0045bf10,459,Func45bf10,
-0x0045c0e0,26,Func45c0e0,
-0x0045c100,94,Func45c100,
+0x0045bb50,145,ScreenEffect::OnDrawScreen,?OnDrawScreen@ScreenEffect@@SIHPAV1@@Z
+0x0045bbf0,69,ScreenEffect::OnDrawWholeScreen,?OnDrawWholeScreen@ScreenEffect@@SIHPAV1@@Z
+0x0045bc40,69,ScreenEffect::OnDrawPlayArea,?OnDrawPlayArea@ScreenEffect@@SIHPAV1@@Z
+0x0045bc90,210,ScreenEffect::OnUpdateFlash,?OnUpdateFlash@ScreenEffect@@SIHPAV1@@Z
+0x0045bd70,76,ScreenEffect::OnDrawFlash,?OnDrawFlash@ScreenEffect@@SIHPAV1@@Z
+0x0045bdc0,332,ScreenEffect::OnUpdateShake,?OnUpdateShake@ScreenEffect@@SIHPAV1@@Z
+0x0045bf10,459,ScreenEffect::OnUpdateShakeRamp,?OnUpdateShakeRamp@ScreenEffect@@SIHPAV1@@Z
+0x0045c0e0,26,ScreenEffect::AddedCallback,?AddedCallback@ScreenEffect@@SIHPAV1@@Z
+0x0045c100,94,ScreenEffect::DeletedCallback,?DeletedCallback@ScreenEffect@@SIHPAV1@@Z
 0x0045c160,34,ScreenEffect::Finish,?Finish@ScreenEffect@@QAEXXZ
 0x0045c190,746,SoundPlayer::Initialize,?Initialize@SoundPlayer@@QAEHPAUHWND__@@@Z
 0x0045c480,46,CSoundManager::`scalar deleting destructor',??_GCSoundManager@@QAEPAXI@Z
