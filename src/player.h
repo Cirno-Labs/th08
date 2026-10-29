@@ -685,6 +685,9 @@ void UpdateMarisaLastWord(Player *player);
 // around the player, who stops for 60 frames, then a cross of hit areas
 // and rings of effect 0x35 follow her at double speed (0x40ee10).
 void UpdateRemiliaBomb(Player *player);
+// Her last word 紅魔「スカーレットデビル」: the same, faster, with wider
+// rings (0x40f570).
+void UpdateRemiliaLastWord(Player *player);
 // Draw callbacks of the bombs that only tint the play area, by the
 // bomb they follow: Alice's (also Yukari's draw.funcs[0..1], 0x40d950)
 // and Remilia's and her last word's (0x40f550, 0x40fcb0).
