@@ -67,3 +67,17 @@ void UpdateEasedVector(Stage *stage, int i, D3DXVECTOR3 *out, D3DXVECTOR3 *from,
         out->z = HermiteInterpolate(from->z, to->z, m0->z, m1->z, t);
     }
 }
+
+float HermiteInterpolate(float p0, float p1, float m0, float m1, float t)
+{
+    float f00;
+    float f10;
+    float f01;
+    float f11;
+
+    f00 = (t - 1.0f) * (t - 1.0f) * (2.0f * t + 1.0f);
+    f01 = t * t * (3.0f - 2.0f * t);
+    f10 = (1.0f - t) * (1.0f - t) * t;
+    f11 = (t - 1.0f) * t * t;
+    return f00 * p0 + f01 * p1 + f10 * m0 + f11 * m1;
+}
