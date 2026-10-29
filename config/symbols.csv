@@ -9,7 +9,7 @@ address,size,name,symbol
 0x00402430,24,Func402430,
 0x00402450,426,Func402450,
 0x00402600,372,Func402600,
-0x00402780,168,Func402780,
+0x00402780,168,AsciiText::RegisterChain,?RegisterChain@AsciiText@@SIHXZ
 0x00402830,131,Func402830,
 0x004028c0,39,Func4028c0,
 0x004028f0,35,AsciiText::RemoveChain,?RemoveChain@AsciiText@@SIXXZ
@@ -982,7 +982,7 @@ address,size,name,symbol
 0x004657c0,56,Func4657c0,
 0x00465800,96,SpriteEngine::LoadAnm,?LoadAnm@SpriteEngine@@QAEPAVAnmLoaded@@HPAD@Z
 0x00465860,473,Func465860,
-0x00465a40,115,Func465a40,
+0x00465a40,115,SpriteEngine::PreloadAnm,?PreloadAnm@SpriteEngine@@QAEPAVAnmLoaded@@HPAD@Z
 0x00465ac0,219,Func465ac0,
 0x00465ba0,284,Func465ba0,
 0x00465cc0,829,Func465cc0,
@@ -1751,7 +1751,7 @@ address,size,name,symbol
 0x004a4980,672,_memcpy,_memcpy
 0x004a4cc0,139,_strlen,_strlen
 0x004a4d50,672,_memmove,
-0x004a508d,44,Func4a508d,
+0x004a508d,44,_mkdir,__mkdir
 0x004a50c0,104,__aulldiv,__aulldiv
 0x004a5130,52,__allmul,__allmul
 0x004a5184,121,FID_conflict:__store_num,
@@ -1759,11 +1759,11 @@ address,size,name,symbol
 0x004a543d,1019,Func4a543d,
 0x004a584f,164,Func4a584f,
 0x004a58f3,50,__Strftime,
-0x004a5925,27,_strftime,
-0x004a5940,384,_localtime,
-0x004a5ac0,57,FID_conflict:__time32,
-0x004a5af9,46,Func4a5af9,
-0x004a5b27,156,Func4a5b27,
+0x004a5925,27,_strftime,_strftime
+0x004a5940,384,_localtime,_localtime
+0x004a5ac0,57,_time,_time
+0x004a5af9,46,_rename,_rename
+0x004a5b27,156,_chdir,__chdir
 0x004a5be0,195,_strchr,_strchr
 0x004a5c9e,52,_sscanf,_sscanf
 0x004a5ce0,57,_strncmp,_strncmp
@@ -2408,6 +2408,7 @@ address,size,name,symbol
 0x0160f508,,g_GameManager,?g_GameManager@@3VGameManager@@A
 0x0164d388,,g_JoyCaps,?g_JoyCaps@@3UtagJOYCAPSA@@A
 0x0164d51c,,g_ShotHeldFrames,?g_ShotHeldFrames@@3GA
+0x0164d520,,g_Rng,?g_Rng@@3VRng@@A
 0x0164d540,,g_Log,?g_Log@@3VLog@@A
 0x0164f548,,g_Chain,?g_Chain@@3VChain@@A
 0x0164f588,,g_Archive,?g_Archive@@3VDatArchive@@A

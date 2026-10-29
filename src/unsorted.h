@@ -252,8 +252,8 @@ public:
     BYTE shootFocuses;
     // The music and sound effect volumes in percent: 100 and 80 by
     // default.
-    BYTE bgmVolume;
-    BYTE seVolume;
+    char bgmVolume;
+    char seVolume;
     unsigned char unk_141[0xf];
     // th07's flags, 4 bytes further on.
     GameConfigFlags flags;
@@ -289,7 +289,9 @@ public:
     // The frame rate rounded, as DrawFps shows it with bit 3 of
     // g_GameManager.unk_3dbac.
     short roundedFps;
-    unsigned char unk_19a[0x6];
+    unsigned char unk_19a[0x2];
+    // text.anm, loaded by LoadingThread.
+    AnmLoaded *textAnm;
     // nowloading.anm, with g_LoadingSprites' scripts (AddedCallback).
     AnmLoaded *loadingAnm;
     // As th07's: bit 1: the device does T&L in hardware; 2: the back
@@ -609,6 +611,7 @@ public:
     // How many times the generator was advanced.
     DWORD generated;
 };
+extern Rng g_Rng;
 
 // a + b, brought back into [-pi, pi] (giving up after 17 turns).
 float AddNormalizeAngle(float a, float b);

@@ -8,6 +8,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
+#include <direct.h>
 
 #include "ascii.h"
 #include "chain.h"
@@ -298,6 +300,159 @@ int MeasureRefreshRate()
         }
     }
     return 0;
+}
+
+void App::LoadingThread(App *arg)
+{
+    time_t time2;
+    struct tm *timeinfo;
+    WIN32_FIND_DATAA fd;
+    char *src;
+    char path[0x100];
+    int k;
+    HANDLE findHandle;
+    void *scoreData;
+    int length;
+    float vol;
+
+    g_App.hideFps = 0;
+    g_App.redrawFrames = 0;
+    g_App.lastPlayTimeTick = timeGetTime();
+    g_Rng.SetSeed(g_App.lastPlayTimeTick);
+    InitDirectInput(&g_App);
+    if (g_App.midi == NULL)
+    {
+        g_App.midi = new MidiPlayer();
+    }
+    if (g_App.midi != NULL)
+    {
+        g_App.midi->LoadFile(0x1e, "bgm/init.mid");
+    }
+    g_SoundPlayer.LoadSounds();
+    g_App.textAnm = g_SpriteEngine->PreloadAnm(0, "text.anm");
+    if (g_App.textAnm == NULL)
+    {
+        goto fail;
+    }
+    if (AsciiText::RegisterChain() != 0)
+    {
+        if (g_App.closeSubThread)
+        {
+            return;
+        }
+        LogPrintf(&g_Log, "error : 文字の初期化に失敗しました\r\n");
+        goto fail;
+    }
+    if (g_SoundPlayer.LoadBgmFormat("bgm/thbgm.fmt") != 0)
+    {
+        if (g_App.closeSubThread)
+        {
+            return;
+        }
+        LogPrintf(&g_Log, "error : BGM の初期化に失敗しました\r\n");
+        goto fail;
+    }
+    g_SoundPlayer.bgmVolume = g_App.bgmVolume;
+    g_SoundPlayer.seVolume = g_App.seVolume;
+    vol = g_SoundPlayer.bgmVolume / 100.0f;
+    if (g_SoundPlayer.seVolume != 0)
+    {
+        vol = (vol = (vol = 1.0f - vol) * vol) * vol;
+        vol = 1.0f - vol;
+        g_SoundPlayer.unk_5220 = (int)(5000.0f * vol) - 5000;
+    }
+    else
+    {
+        g_SoundPlayer.unk_5220 = -10000;
+    }
+    if (g_SoundPlayer.unk_5214 == 0)
+    {
+        if (!g_App.flags.preloadBgm)
+        {
+            g_SoundPlayer.LoadBgm("thbgm.dat");
+        }
+        else
+        {
+            strcpy(g_SoundPlayer.bgmPath, "thbgm.dat");
+        }
+    }
+    else
+    {
+        if (!g_App.flags.preloadBgm)
+        {
+            g_SoundPlayer.LoadBgm("th08.dat");
+        }
+        else
+        {
+            strcpy(g_SoundPlayer.bgmPath, "th08.dat");
+        }
+    }
+    // Keeps five dated backups of the score file in ./backup.
+    if (g_App.stateFlags >> 8 & 1)
+    {
+        scoreData = LoadFileData("score.dat", &length, 1);
+        if (scoreData != NULL)
+        {
+            src = "score_4.??????.bak";
+            k = 0;
+            _mkdir("./backup");
+            _chdir("./backup");
+            findHandle = FindFirstFileA("score_5.??????.bak", &fd);
+            while (findHandle != INVALID_HANDLE_VALUE)
+            {
+                DeleteFileA(fd.cFileName);
+                if (!FindNextFileA(findHandle, &fd))
+                {
+                    break;
+                }
+            }
+            FindClose(findHandle);
+            for (k = 4; k > 0; k--)
+            {
+                strcpy(path, src);
+                path[6] = k + '0';
+                findHandle = FindFirstFileA(path, &fd);
+                while (findHandle != INVALID_HANDLE_VALUE)
+                {
+                    strcpy(path, fd.cFileName);
+                    path[6] = k + '1';
+                    rename(fd.cFileName, path);
+                    if (!FindNextFileA(findHandle, &fd))
+                    {
+                        break;
+                    }
+                }
+                FindClose(findHandle);
+            }
+            ::time(&time2);
+            timeinfo = localtime(&time2);
+            strftime(path, 0x80, "score_1.%y%m%d.bak", timeinfo);
+            WriteToFile(path, scoreData, length);
+            free(scoreData);
+            _chdir("../");
+        }
+    }
+    if (g_App.stateFlags >> 6 & 1)
+    {
+        g_App.timer = new MidiTimer();
+        if (g_App.timer != NULL)
+        {
+            g_App.timer->StartTimer();
+        }
+    }
+    g_App.subThread = NULL;
+    g_App.closeSubThread = 0;
+    g_App.subThreadRunning = 0;
+    g_App.unk_294 = 0;
+    g_App.stateFlags &= ~0x100;
+    return;
+
+fail:
+    g_App.subThread = NULL;
+    g_App.closeSubThread = 0;
+    g_App.subThreadRunning = 0;
+    g_App.unk_294 = 2;
+    g_App.stateFlags |= 0x80;
 }
 
 int InitDirectInput(App *game)

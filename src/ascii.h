@@ -8,6 +8,9 @@
 class AsciiText
 {
 public:
+    // Adds AsciiText's update and draw elements, as th07's. Returns 0,
+    // or -1 if adding the update element fails (0x402780).
+    static int RegisterChain();
     // Removes the update element and the first draw element (0x4028f0).
     static void RemoveChain();
     // Queues `text` to be drawn at `pos`, with printf-style formatting

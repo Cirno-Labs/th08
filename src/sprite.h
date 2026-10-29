@@ -88,6 +88,9 @@ public:
     // Loads the ANM file at `path` into slot `slot` (0x465800). Returns
     // it, or NULL on failure.
     AnmLoaded *LoadAnm(int slot, char *path);
+    // LoadAnm for the sub thread: waits until the file is loaded or
+    // g_App.closeSubThread is set, NULL then (0x465a40).
+    AnmLoaded *PreloadAnm(int slot, char *path);
     // Creates the vertex buffer and the quads sprites are drawn with
     // (0x465250).
     void CreateQuad();
