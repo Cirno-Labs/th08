@@ -327,13 +327,18 @@ public:
 ASSERT_SIZE(Sprite, 0x2a4);
 
 // A vertex with a transformed position, a color and texture
-// coordinates.
+// coordinates. uv is no D3DXVECTOR2: the implicit constructor (0x40b580)
+// constructs only pos.
 struct VertexTex1DiffuseXyzrwh
 {
     D3DXVECTOR3 pos;
     float w;
     D3DCOLOR diffuse;
-    D3DXVECTOR2 uv;
+    struct
+    {
+        float x;
+        float y;
+    } uv;
 };
 
 // A vertex with a transformed position and texture coordinates.
