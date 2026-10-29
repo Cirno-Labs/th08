@@ -109,8 +109,8 @@ int EffectInitForeground(Effect *effect);
 int EffectUpdateOrbit(Effect *effect);
 
 // An effect init for petals that drift to the boss, like th07's
-// EffectInitPetal20: starts truePos at g_StageCamera.eye plus half of
-// g_StageCamera.at, scattered at random, with a random step on top of
+// EffectInitPetal20: starts truePos at g_Stage.camera.eye plus half of
+// g_Stage.camera.at, scattered at random, with a random step on top of
 // velocity and a little acceleration, both scaled by App::gameSpeed; puts
 // it in the second draw list. Sets posOffset.x to -9999 (no boss yet)
 // and clears the sprite fields EffectDrawBossPetal uses. Returns 0. New
@@ -154,13 +154,13 @@ void OffsetPetalEffects(D3DXVECTOR3 *offset);
 // An effect update for falling petals, as th07's: moves truePos by step,
 // which changes by acceleration, and draws the effect there, turning it
 // by its x rotation. Ends it (returns 0) once it is out of the view along
-// g_StageCamera.dir from g_StageCamera.eye, or at z 0 and above;
+// g_Stage.camera.dir from g_Stage.camera.eye, or at z 0 and above;
 // otherwise returns 1.
 int EffectUpdatePetal(Effect *effect);
 
 // An effect init for falling petals, as th07's EffectInitPetal20 without
-// its bonus sprite: starts truePos at g_StageCamera.eye plus half of
-// g_StageCamera.at, scattered at random, with a random step on top of
+// its bonus sprite: starts truePos at g_Stage.camera.eye plus half of
+// g_Stage.camera.at, scattered at random, with a random step on top of
 // velocity and a little acceleration, both scaled by App::gameSpeed, and
 // a random spin; puts it in the second draw list. Returns 0.
 int EffectInitPetal(Effect *effect);

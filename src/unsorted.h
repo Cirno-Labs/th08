@@ -2006,6 +2006,17 @@ struct StageData
     char songPaths[3][0x80];
 };
 
+// A camera of the stage, as th07's: where it is, where it looks (relative
+// to eye), its up vector and `at` normalized. g_CameraSizeOffset follows
+// it in Stage.
+struct StageCamera
+{
+    D3DXVECTOR3 eye;
+    D3DXVECTOR3 at;
+    D3DXVECTOR3 up;
+    D3DXVECTOR3 dir;
+};
+
 // The stage's background, th07's Stage. Only what is known so far.
 class Stage
 {
@@ -2038,20 +2049,11 @@ public:
     // Set to 2 by GameManager::LoadingThread unless a stage 6 or Extra
     // spell card is practised.
     int unk_b34;
+    unsigned char unk_b38[0x585c];
+    // The camera, as th07's. Only the effects read it so far.
+    StageCamera camera;
 };
 extern Stage g_Stage;
-
-// The stage's camera, as th07's StageCamera: where it is, where it looks
-// (relative to eye), its up vector and `at` normalized. Only the effects
-// read it so far. g_CameraSizeOffset follows it.
-struct StageCamera
-{
-    D3DXVECTOR3 eye;
-    D3DXVECTOR3 at;
-    D3DXVECTOR3 up;
-    D3DXVECTOR3 dir;
-};
-extern StageCamera g_StageCamera;
 
 // Each stage's music: its BGM numbers for App::PlayMidi, the first for
 // the stage.
