@@ -1061,17 +1061,40 @@ ASSERT_SIZE(GameManagerUnk4, 0x3c);
 class GameManager
 {
 public:
+    // The update chain callback and its added and deleted callbacks,
+    // as th07's GameManager's.
+    static int OnUpdate(GameManager *mgr);
+    static int AddedCallback(GameManager *mgr);
+    static int DeletedCallback(GameManager *mgr);
+    // The draw chain callback: moves isPaused on from 1 to 2. Returns 1,
+    // or 3 outside scene 2, in the result screen's mode (bits 5-6 of
+    // unk_3dbac) 1 or while unk_38 is set.
+    static int OnDraw(GameManager *mgr);
+    // Whether a `width` by `height` box centred on (`x`, `y`) touches the
+    // play area, as th07's.
+    BOOL IsInPlayArea(float x, float y, float width, float height);
+    // Sets the rank and its bounds from g_Ranks for the difficulty.
+    void SetRankForDifficulty();
+    // Adds `amount` hundredths to the rank, as th07's.
+    void AddSubRank(int amount);
+    // Takes `amount` hundredths from the rank, as th07's.
+    void SubSubRank(int amount);
     // Whether shot type `shot` (0 to 3) cleared one of the four main
     // difficulties, as th07's (0x43c15f).
     int HasExtraOpen(int shot);
     // Whether a shot type has Extra open (0x43c1e9).
     int AnyShotHasExtraOpen();
+    // Whether shot type `shot` (0 to 3) has bit 0x8000 set in
+    // stagesCleared of one of the four main difficulties.
+    int Func43c23b(int shot);
     // Whether a shot type has 0x43c23b set (0x43c2c5).
     int Func43c2c5();
     // Whether every shot type has Extra open. In App's object.
     int AllShotsHaveExtraOpen();
     // th07's IsPhantasmOpen, which returns 0 in th08 (0x43c317).
     int IsPhantasmOpen();
+    // Whether a replay (bit 3 of unk_3dbac) of a practice is playing.
+    int IsPracticeReplay();
     // Moves `stage` on to the next stage (0x43c4b3).
     void AdvanceStage();
     // Whether the game is a practice: unk_3dbac's bit 0, which th07 read
@@ -1124,7 +1147,10 @@ public:
     char unk_2d;
     unsigned char unk_2e[0x2];
     int difficulty;
-    unsigned char unk_34[0xc];
+    unsigned char unk_34[0x4];
+    // OnDraw returns 3 while it is set.
+    int unk_38;
+    unsigned char unk_3c[0x4];
     Catk catks[0xde];
     // A copy of catks, as th07's savedCatks.
     Catk savedCatks[0xde];
@@ -1187,13 +1213,45 @@ public:
     int stage;
     // The replay stage being recorded.
     int unk_3ddc8;
-    unsigned char unk_3ddcc[0x38];
+    unsigned char unk_3ddcc[0x8];
+    // The play area: x, y, width and height, and a second rectangle set
+    // with it by SetPlayArea, as th07's.
+    float arena[4];
+    float arena2[4];
+    // As th07's checksumValue: SetBombs sets it.
+    float checksumValue;
+    unsigned char unk_3ddf8[0xc];
     // The frames played, as th07's.
     int progressFrames;
     unsigned char unk_3de08[0x24];
+    // A replay stage keeps it. The rank, as th07's: SetRankForDifficulty
+    // sets it and its bounds from g_Ranks.
     int rank;
+    int maxRank;
+    int minRank;
+    // Hundredths of a rank, moved by AddSubRank and SubSubRank.
+    int subRank;
 };
+ASSERT_SIZE(GameManager, 0x3de3c);
 extern GameManager g_GameManager;
+
+// The update and draw chain elements of g_GameManager, after it.
+extern ChainElem g_GameManagerCalcChain;
+extern ChainElem g_GameManagerDrawChain;
+
+// The rank a game starts at and its bounds, as th07's.
+struct RankSettings
+{
+    int rank;
+    int minRank;
+    int maxRank;
+};
+// By difficulty.
+extern RankSettings g_Ranks[6];
+
+// Adds one to `*count` while it is under 999999. Its callers pass
+// 999999 as `max`, which it ignores.
+void IncrementStatCounter(DWORD *count, DWORD max);
 
 // The game's HUD and dialogue, at 0x160f428. Only what is known so far.
 class Gui
