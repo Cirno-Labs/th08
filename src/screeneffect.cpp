@@ -36,3 +36,21 @@ void ClearViewport(D3DCOLOR color)
     g_App.d3dDevice->SetViewport(&g_App.viewport);
     ClearScreen(color);
 }
+
+int ScreenEffect::OnUpdateFadeIn(ScreenEffect *effect)
+{
+    if (effect->duration != 0)
+    {
+        effect->alpha = 255.0f - effect->timer.AsFloat() * 255.0f / effect->duration;
+        if (effect->alpha < 0)
+        {
+            effect->alpha = 0;
+        }
+    }
+    if (effect->timer >= effect->duration)
+    {
+        return 0;
+    }
+    effect->timer++;
+    return 1;
+}
