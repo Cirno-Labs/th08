@@ -435,3 +435,20 @@ int SpriteEngine::LoadAnmSprites(AnmLoaded *anm, int index, int spriteOffset, in
     }
     return highest + 1;
 }
+
+int SpriteEngine::StepAnmLoading()
+{
+    int i;
+
+    for (i = 0; i < ARRAY_SIZE(this->anms); i++)
+    {
+        if (this->anms[i].loadStep != 0)
+        {
+            if (this->PostloadAnm(&this->anms[i]) == NULL)
+            {
+                return -1;
+            }
+        }
+    }
+    return 0;
+}
