@@ -537,7 +537,7 @@ address,size,name,symbol
 0x0043be2c,322,GameManager::DeletedCallback,?DeletedCallback@GameManager@@SIHPAV1@@Z
 0x0043bf6e,85,RemoveGameManagerChain,?RemoveGameManagerChain@@YIXXZ
 0x0043bfc3,124,GameManager::AddSubRank,?AddSubRank@GameManager@@QAEXH@Z
-0x0043c03f,124,Func43c03f,
+0x0043c03f,124,GameManager::SubSubRank,?SubSubRank@GameManager@@QAEXH@Z
 0x0043c0bb,164,Func43c0bb,
 0x0043c15f,138,GameManager::HasExtraOpen,?HasExtraOpen@GameManager@@QAEHH@Z
 0x0043c1e9,82,GameManager::AnyShotHasExtraOpen,?AnyShotHasExtraOpen@GameManager@@QAEHXZ

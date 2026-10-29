@@ -108,3 +108,17 @@ void GameManager::AddSubRank(int amount)
         this->rank = this->maxRank;
     }
 }
+
+void GameManager::SubSubRank(int amount)
+{
+    this->subRank -= amount;
+    while (this->subRank < 0)
+    {
+        this->rank--;
+        this->subRank += 100;
+    }
+    if (this->rank < this->minRank)
+    {
+        this->rank = this->minRank;
+    }
+}
