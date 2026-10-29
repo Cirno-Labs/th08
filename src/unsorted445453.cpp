@@ -1203,3 +1203,19 @@ int App::StartSubThread(LPTHREAD_START_ROUTINE proc, LPVOID arg)
     this->subThreadRunning = 1;
     return this->subThread != NULL ? 0 : -1;
 }
+
+void App::CloseSubThread()
+{
+    if (this->subThread != NULL)
+    {
+        DebugPrint2("info : Sub Thread Close Request\n");
+        this->closeSubThread = 1;
+        while (WaitForSingleObject(this->subThread, 1000) == WAIT_TIMEOUT)
+        {
+            Sleep(1);
+        }
+        CloseHandle(this->subThread);
+        this->subThread = NULL;
+        this->closeSubThread = 0;
+    }
+}
