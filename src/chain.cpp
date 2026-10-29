@@ -250,3 +250,10 @@ void Chain::ReleaseList(ChainElem *root)
         tail = tmp;
     }
 }
+
+void Chain::Release()
+{
+    g_App.CloseSubThread();
+    this->ReleaseList(&this->calcChain);
+    this->ReleaseList(&this->drawChain);
+}

@@ -43,6 +43,9 @@ public:
     // criticalSectionDepths. New in th08.
     void EnterCriticalSection(int idx);
     void LeaveCriticalSection(int idx);
+    // Asks the sub thread (App+0x284, new in th08) to close and waits for
+    // it (0x44871b).
+    void CloseSubThread();
 
     HINSTANCE hInstance;
     IDirect3D8 *d3d;

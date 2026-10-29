@@ -70,6 +70,8 @@ public:
     // Releases the elements of the list that starts at `root`, going
     // through a copy of the list it allocates.
     void ReleaseList(ChainElem *root);
+    // Closes the App's sub thread, then releases both chains.
+    void Release();
 
     ChainElem calcChain;
     ChainElem drawChain;

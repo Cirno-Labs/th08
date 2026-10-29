@@ -560,7 +560,7 @@ address,size,name,symbol
 0x0043cb60,230,Chain::RunDrawChain,?RunDrawChain@Chain@@QAEHXZ
 0x0043cc60,408,Chain::ReleaseList,?ReleaseList@Chain@@QAEXPAUChainElem@@@Z
 0x0043ce00,46,ChainElem::`scalar deleting destructor',??_GChainElem@@QAEPAXI@Z
-0x0043ce30,48,Func43ce30,
+0x0043ce30,48,Chain::Release,?Release@Chain@@QAEXXZ
 0x0043ce60,162,Func43ce60,
 0x0043cf10,49,Chain::Remove,?Remove@Chain@@QAEXPAUChainElem@@@Z
 0x0043cf50,362,Chain::RemoveLocked,?RemoveLocked@Chain@@QAEXPAUChainElem@@@Z
@@ -725,7 +725,7 @@ address,size,name,symbol
 0x00448418,373,Func448418,
 0x0044858d,301,Func44858d,
 0x004486ba,97,Func4486ba,
-0x0044871b,117,Func44871b,
+0x0044871b,117,App::CloseSubThread,?CloseSubThread@App@@QAEXXZ
 0x00448790,138,Func448790,
 0x0044881a,85,Func44881a,
 0x0044886f,259,Func44886f,

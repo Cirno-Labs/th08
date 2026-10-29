@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">8.87% (99)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">91.13% (1017)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">8.96% (100)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">91.04% (1016)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="66.27" height="6" x="0" y="0" class="named"/>
-<rect width="680.73" height="6" x="66.27" y="0" class="todo"/>
+<rect width="66.94" height="6" x="0" y="0" class="named"/>
+<rect width="680.06" height="6" x="66.94" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -628,7 +628,7 @@
 <rect width="12" height="12" x="120" y="165" class="named"><title>0x0043cb60 Chain::RunDrawChain (230 bytes)</title></rect>
 <rect width="12" height="12" x="135" y="165" class="named"><title>0x0043cc60 Chain::ReleaseList (408 bytes)</title></rect>
 <rect width="12" height="12" x="150" y="165" class="named"><title>0x0043ce00 ChainElem::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
-<rect width="12" height="12" x="165" y="165" class="todo"><title>0x0043ce30 Func43ce30 (48 bytes)</title></rect>
+<rect width="12" height="12" x="165" y="165" class="named"><title>0x0043ce30 Chain::Release (48 bytes)</title></rect>
 <rect width="12" height="12" x="180" y="165" class="todo"><title>0x0043ce60 Func43ce60 (162 bytes)</title></rect>
 <rect width="12" height="12" x="195" y="165" class="todo"><title>0x0043cf10 Chain::Remove (49 bytes)</title></rect>
 <rect width="12" height="12" x="210" y="165" class="todo"><title>0x0043cf50 Chain::RemoveLocked (362 bytes)</title></rect>
@@ -793,7 +793,7 @@
 <rect width="12" height="12" x="345" y="210" class="todo"><title>0x00448418 Func448418 (373 bytes)</title></rect>
 <rect width="12" height="12" x="360" y="210" class="todo"><title>0x0044858d Func44858d (301 bytes)</title></rect>
 <rect width="12" height="12" x="375" y="210" class="todo"><title>0x004486ba Func4486ba (97 bytes)</title></rect>
-<rect width="12" height="12" x="390" y="210" class="todo"><title>0x0044871b Func44871b (117 bytes)</title></rect>
+<rect width="12" height="12" x="390" y="210" class="todo"><title>0x0044871b App::CloseSubThread (117 bytes)</title></rect>
 <rect width="12" height="12" x="405" y="210" class="todo"><title>0x00448790 Func448790 (138 bytes)</title></rect>
 <rect width="12" height="12" x="420" y="210" class="todo"><title>0x0044881a Func44881a (85 bytes)</title></rect>
 <rect width="12" height="12" x="435" y="210" class="todo"><title>0x0044886f Func44886f (259 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">4.78%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">95.22%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">4.79%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">95.21%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="35.69" height="6" x="0" y="0" class="named"/>
-<rect width="711.31" height="6" x="35.69" y="0" class="todo"/>
+<rect width="35.76" height="6" x="0" y="0" class="named"/>
+<rect width="711.24" height="6" x="35.76" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1780,7 +1780,7 @@
 <rect width="5.08" height="5.29" x="618.51" y="258.49" class="todo"><title>0x0044c1b0 Func44c1b0 (118 bytes)</title></rect>
 <rect width="5.08" height="5.22" x="618.51" y="266.78" class="todo"><title>0x0042b2f0 Func42b2f0 (117 bytes)</title></rect>
 <rect width="5.08" height="5.22" x="618.51" y="275" class="todo"><title>0x0042f420 Func42f420 (117 bytes)</title></rect>
-<rect width="5.08" height="5.22" x="618.51" y="283.22" class="todo"><title>0x0044871b Func44871b (117 bytes)</title></rect>
+<rect width="5.08" height="5.22" x="618.51" y="283.22" class="todo"><title>0x0044871b App::CloseSubThread (117 bytes)</title></rect>
 <rect width="5.08" height="5.08" x="618.51" y="291.44" class="todo"><title>0x00428890 Func428890 (115 bytes)</title></rect>
 <rect width="5.08" height="5.08" x="618.51" y="299.52" class="todo"><title>0x0042a820 Func42a820 (115 bytes)</title></rect>
 <rect width="5.08" height="5.08" x="618.51" y="307.60" class="todo"><title>0x0042f500 Func42f500 (115 bytes)</title></rect>
@@ -2031,7 +2031,7 @@
 <rect width="2.30" height="2.24" x="679.79" y="342.76" class="todo"><title>0x0040b500 Func40b500 (49 bytes)</title></rect>
 <rect width="2.18" height="2.37" x="685.10" y="278" class="todo"><title>0x0043cf10 Chain::Remove (49 bytes)</title></rect>
 <rect width="2.18" height="2.37" x="690.28" y="278" class="todo"><title>0x00448270 Func448270 (49 bytes)</title></rect>
-<rect width="2.07" height="2.37" x="695.46" y="278" class="todo"><title>0x0043ce30 Func43ce30 (48 bytes)</title></rect>
+<rect width="2.07" height="2.37" x="695.46" y="278" class="named"><title>0x0043ce30 Chain::Release (48 bytes)</title></rect>
 <rect width="2.07" height="2.37" x="700.53" y="278" class="named"><title>0x0043ef10 Log::Log (48 bytes)</title></rect>
 <rect width="2.07" height="2.37" x="705.60" y="278" class="named"><title>0x00443df0 MmTimer::MmTimer (48 bytes)</title></rect>
 <rect width="2.07" height="2.37" x="710.68" y="278" class="todo"><title>0x004481af Func4481af (48 bytes)</title></rect>
