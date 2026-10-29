@@ -352,3 +352,12 @@ int Gui::IsMsgSkippable()
 {
     return this->impl->msg.skippable;
 }
+
+void Gui::ShowBonusPopup(int bonus)
+{
+    this->impl->bonusPopup.pos = D3DXVECTOR3(416.0f, 48.0f, 0.0f);
+    this->impl->bonusPopup.shown = 1;
+    this->impl->bonusPopup.timer = 0;
+    this->impl->bonusPopup.value = bonus;
+    g_App.redrawFrames = 2;
+}
