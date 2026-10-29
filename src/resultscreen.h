@@ -58,6 +58,8 @@ struct Hscr
 // whose `data` is NULL; the entries after it are sorted.
 struct ListNode
 {
+    // Inline; the ResultScreen constructor's vector constructor calls the
+    // copy at 0x45a4dc.
     ListNode()
     {
         this->prev = NULL;
