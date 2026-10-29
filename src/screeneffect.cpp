@@ -446,3 +446,14 @@ int ScreenEffect::AddedCallback(ScreenEffect *effect)
     effect->timer = 0;
     return 0;
 }
+
+int ScreenEffect::DeletedCallback(ScreenEffect *effect)
+{
+    effect->calcElem->deletedCallback = NULL;
+    g_Chain.Remove(effect->drawElem);
+    effect->drawElem = NULL;
+    g_MemoryManager.Unregister(effect);
+    delete effect;
+    effect = NULL;
+    return 0;
+}
