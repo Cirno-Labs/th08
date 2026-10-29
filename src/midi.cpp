@@ -433,3 +433,200 @@ void MidiPlayer::OnTimer()
         this->Rewind();
     }
 }
+
+void MidiPlayer::ProcessEvent(MidiTrack *track)
+{
+    int deltaTime;
+    int i;
+    BYTE byte2;
+    int newVolume;
+    BYTE channel;
+    BYTE event;
+    BYTE byte1;
+    BYTE runStatus;
+    int numBytes;
+
+    runStatus = *track->cursor;
+    if (runStatus < 0x80)
+    {
+        runStatus = track->runningStatus;
+    }
+    else
+    {
+        track->cursor++;
+    }
+    event = runStatus & 0xf0;
+    channel = runStatus & 0x0f;
+    switch (event)
+    {
+    case 0xf0:
+        if (runStatus == 0xf0)
+        {
+            LPMIDIHDR header;
+
+            if (this->headers[this->nextHeader] != NULL)
+            {
+                this->ReleaseHeader(this->headers[this->nextHeader]);
+            }
+            this->headers[this->nextHeader] = (LPMIDIHDR)g_MemoryManager.Alloc(sizeof(MIDIHDR), "midiHDR");
+            header = this->headers[this->nextHeader];
+            numBytes = ReadVarLen(&track->cursor);
+            memset(header, 0, sizeof(MIDIHDR));
+            header->lpData = (LPSTR)g_MemoryManager.Alloc(numBytes + 1, "midiHDR->lpData");
+            header->lpData[0] = 0xf0;
+            header->dwFlags = 0;
+            header->dwBufferLength = numBytes + 1;
+            for (i = 0; i < numBytes; i++)
+            {
+                header->lpData[i + 1] = *track->cursor;
+                track->cursor++;
+            }
+            if (this->device.SendLongMsg(header) != 0)
+            {
+                g_MemoryManager.Free(header->lpData);
+                g_MemoryManager.Free(header);
+                this->headers[this->nextHeader] = NULL;
+            }
+            this->nextHeader++;
+            this->nextHeader %= 0x20;
+        }
+        else if (runStatus == 0xff)
+        {
+            BYTE metaEvent;
+            int bpm;
+
+            metaEvent = *track->cursor;
+            track->cursor++;
+            numBytes = ReadVarLen(&track->cursor);
+            if (metaEvent == 0x2f)
+            {
+                // End of track.
+                track->active = 0;
+                return;
+            }
+            if (metaEvent == 0x51)
+            {
+                // Set tempo: restart the ticks at the new tempo.
+                this->baseTime += this->ticks * this->division * 1000 / this->tempo;
+                this->ticks = 0;
+                this->tempo = 0;
+                // Adds the old value once too many: a big-endian read would
+                // be (tempo << 8) + byte.
+                for (i = 0; i < numBytes; i++)
+                {
+                    this->tempo = (this->tempo << 8) + *track->cursor + this->tempo;
+                    track->cursor++;
+                }
+                // Computed and never used.
+                bpm = 60000000 / this->tempo;
+                break;
+            }
+            track->cursor += numBytes;
+        }
+        break;
+    case 0x80:
+    case 0x90:
+    case 0xa0:
+    case 0xb0:
+    case 0xe0:
+        byte1 = *track->cursor;
+        track->cursor++;
+        byte2 = *track->cursor;
+        track->cursor++;
+        break;
+    case 0xc0:
+    case 0xd0:
+        byte1 = *track->cursor;
+        track->cursor++;
+        byte2 = 0;
+        break;
+    }
+    switch (event)
+    {
+    case 0x90:
+        if (byte2 != 0)
+        {
+            byte1 += this->transpose;
+            this->channels[channel].notes[byte1 >> 3] |= (BYTE)(1 << (byte1 & 7));
+            break;
+        }
+        // A note on with velocity 0 is a note off.
+    case 0x80:
+        byte1 += this->transpose;
+        this->channels[channel].notes[byte1 >> 3] &= (BYTE)~(1 << (byte1 & 7));
+        break;
+    case 0xc0:
+        this->channels[channel].program = byte1;
+        break;
+    case 0xb0:
+        switch (byte1)
+        {
+        case 0:
+            this->channels[channel].bank = byte2;
+            break;
+        case 7:
+            this->channels[channel].volume = byte2;
+            newVolume = (float)byte2 * this->volumeScale;
+            if (newVolume < 0)
+            {
+                newVolume = 0;
+            }
+            else if (newVolume > 0x7f)
+            {
+                newVolume = 0x7f;
+            }
+            this->channels[channel].scaledVolume = newVolume;
+            byte2 = newVolume;
+            break;
+        case 91:
+            this->channels[channel].reverb = byte2;
+            break;
+        case 93:
+            this->channels[channel].chorus = byte2;
+            break;
+        case 10:
+            this->channels[channel].pan = byte2;
+            break;
+        case 2:
+        {
+            // Loop start.
+            MidiTrack *saved;
+
+            saved = this->tracks;
+            for (i = 0; i < this->trackCount; i++, saved++)
+            {
+                saved->loopCursor = saved->cursor;
+                saved->loopDelta = saved->delta;
+            }
+            this->loopTempo = this->tempo;
+            this->loopTicks = this->ticks;
+            this->loopBaseTime = this->baseTime;
+            break;
+        }
+        case 4:
+        {
+            // Loop end: back to the loop start.
+            MidiTrack *restored;
+
+            restored = this->tracks;
+            for (i = 0; i < this->trackCount; i++, restored++)
+            {
+                restored->cursor = restored->loopCursor;
+                restored->delta = restored->loopDelta;
+            }
+            this->tempo = this->loopTempo;
+            this->ticks = this->loopTicks;
+            this->baseTime = this->loopBaseTime;
+            break;
+        }
+        }
+        break;
+    }
+    if (runStatus < 0xf0)
+    {
+        this->device.SendShortMsg(runStatus, byte1, byte2);
+    }
+    track->runningStatus = runStatus;
+    deltaTime = ReadVarLen(&track->cursor);
+    track->delta += deltaTime;
+}
