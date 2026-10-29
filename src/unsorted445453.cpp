@@ -135,3 +135,27 @@ int App::RegisterChain()
     g_Chain.AddToDrawChain(elem, 2);
     return 0;
 }
+
+int OpenGameArchive()
+{
+    char path[0x80];
+    int size;
+
+    if (g_Archive.Open("th08.dat"))
+    {
+        sprintf(path, "th08_%.4x%c.ver", 0x100, 'd');
+        g_App.verFile = LoadFileData(path, &size, 0);
+        g_App.verFileSize = size;
+        if (g_App.verFile == NULL)
+        {
+            LogError(&g_Log, "error : データのバージョンが違います\r\n");
+            return -1;
+        }
+    }
+    else
+    {
+        LogError(&g_Log, "error : データファイルが存在しません\r\n");
+        return -1;
+    }
+    return 0;
+}

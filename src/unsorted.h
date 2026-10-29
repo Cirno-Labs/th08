@@ -184,6 +184,11 @@ extern App g_App;
 // counter when there is one, and shows it when `draw` is set, as th07's.
 void DrawFps(int draw);
 
+// Opens th08.dat as g_Archive and loads its version file,
+// "th08_0100d.ver", into g_App.verFile. Returns 0, or -1 after logging
+// an error if either is missing.
+int OpenGameArchive();
+
 // Sets up DirectInput as the DirectX 8 SDK's Keyboard and Joystick
 // samples: the keyboard, then the first joystick found, if any. Returns
 // 0, or -1 if DirectInput is off or the keyboard fails.
