@@ -625,7 +625,7 @@ address,size,name,symbol
 0x00441450,209,ItemManager::ConvertPowerItems,?ConvertPowerItems@ItemManager@@QAEXPAUItem@@@Z
 0x00441530,109,ItemManager::RecycleCollectedItems,?RecycleCollectedItems@ItemManager@@QAEXXZ
 0x004415a0,451,ItemManager::DrawItems,?DrawItems@ItemManager@@QAEXXZ
-0x00441770,106,Func441770,
+0x00441770,106,Item::Unlink,?Unlink@Item@@QAEXXZ
 0x004417e0,79,Func4417e0,
 0x00441830,27,Func441830,
 0x00441850,77,Func441850,

@@ -221,3 +221,17 @@ void ItemManager::DrawItems()
         entry = entry->next;
     }
 }
+
+void Item::Unlink()
+{
+    this->active = 0;
+    this->prev->next = this->next;
+    if (this->next != NULL)
+    {
+        this->next->prev = this->prev;
+    }
+    if (g_ItemManager.activeListTail == this)
+    {
+        g_ItemManager.activeListTail = this->prev;
+    }
+}

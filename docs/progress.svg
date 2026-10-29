@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">52.51% (586)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">45.70% (510)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">52.60% (587)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">45.61% (509)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="392.24" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="392.24" y="0" class="decompiled"/>
-<rect width="341.37" height="6" x="405.63" y="0" class="todo"/>
+<rect width="392.91" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="392.91" y="0" class="decompiled"/>
+<rect width="340.70" height="6" x="406.30" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -694,7 +694,7 @@
 <rect width="12" height="12" x="345" y="180" class="named"><title>0x00441450 ItemManager::ConvertPowerItems (209 bytes)</title></rect>
 <rect width="12" height="12" x="360" y="180" class="named"><title>0x00441530 ItemManager::RecycleCollectedItems (109 bytes)</title></rect>
 <rect width="12" height="12" x="375" y="180" class="named"><title>0x004415a0 ItemManager::DrawItems (451 bytes)</title></rect>
-<rect width="12" height="12" x="390" y="180" class="todo"><title>0x00441770 Func441770 (106 bytes)</title></rect>
+<rect width="12" height="12" x="390" y="180" class="named"><title>0x00441770 Item::Unlink (106 bytes)</title></rect>
 <rect width="12" height="12" x="405" y="180" class="todo"><title>0x004417e0 Func4417e0 (79 bytes)</title></rect>
 <rect width="12" height="12" x="420" y="180" class="todo"><title>0x00441830 Func441830 (27 bytes)</title></rect>
 <rect width="12" height="12" x="435" y="180" class="todo"><title>0x00441850 Func441850 (77 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">44.25%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">54.76%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">44.27%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">54.74%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="330.53" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="330.53" y="0" class="decompiled"/>
-<rect width="409.06" height="6" x="337.94" y="0" class="todo"/>
+<rect width="330.71" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="330.71" y="0" class="decompiled"/>
+<rect width="408.89" height="6" x="338.11" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1815,7 +1815,7 @@
 <rect width="4.66" height="4.93" x="689.18" y="225.05" class="named"><title>0x00442ef0 AppendCapsFlagText (107 bytes)</title></rect>
 <rect width="4.66" height="4.93" x="696.83" y="225.05" class="named"><title>0x00463cf0 SpriteEngine::DrawProjected (107 bytes)</title></rect>
 <rect width="4.66" height="4.93" x="704.49" y="225.05" class="named"><title>0x00472cc0 CStreamingSound::UpdateFadeDown (107 bytes)</title></rect>
-<rect width="4.59" height="4.93" x="712.15" y="225.05" class="todo"><title>0x00441770 Func441770 (106 bytes)</title></rect>
+<rect width="4.59" height="4.93" x="712.15" y="225.05" class="named"><title>0x00441770 Item::Unlink (106 bytes)</title></rect>
 <rect width="4.59" height="4.93" x="719.73" y="225.05" class="named"><title>0x00445e3d EnumAxesCallback (106 bytes)</title></rect>
 <rect width="4.59" height="4.93" x="727.32" y="225.05" class="named"><title>0x00472be0 CStreamingSound::UpdateFadeIn (106 bytes)</title></rect>
 <rect width="4.59" height="4.93" x="734.90" y="225.05" class="named"><title>0x00472c50 CStreamingSound::UpdateFadeUp (106 bytes)</title></rect>

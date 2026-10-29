@@ -13,6 +13,10 @@
 // An item (0x2e4 bytes, th07 0x288).
 struct Item
 {
+    // Clears active and takes the item out of g_ItemManager's active
+    // list (0x441770). New in th08.
+    void Unlink();
+
     Sprite sprite;
     D3DXVECTOR3 pos;
     D3DXVECTOR3 velocity;
