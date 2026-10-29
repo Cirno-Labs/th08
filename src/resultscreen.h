@@ -333,7 +333,12 @@ public:
     unsigned char unk_20[0x10];
     // A second cursor, moved by LoadScreenPlstChunk, as th07's.
     int spellCursor;
-    unsigned char unk_34[0x20];
+    unsigned char unk_34[0x8];
+    // The cursor of the list shown.
+    int unk_3c;
+    int unk_40;
+    int unk_44;
+    unsigned char unk_48[0xc];
     int unk_54;
     unsigned char unk_58[0x148];
     Sprite sprites[0x48];

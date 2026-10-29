@@ -206,6 +206,38 @@ void ResultScreen::SetState(int state)
     this->unk_54 = 0;
 }
 
+int ResultScreen::UpdateScoreList()
+{
+    int prevCursor;
+
+    if (this->unk_3c != this->cursor && this->frame == 10)
+    {
+        this->unk_3c = this->cursor;
+    }
+    if (this->frame < 6)
+    {
+        return 0;
+    }
+    prevCursor = this->cursor;
+    if (MoveCursorHorizontal(this, 0xc) != 0)
+    {
+        this->frame = 0;
+        this->sprites[0x28].pendingInterrupt = this->unk_44 + 3;
+        this->sprites[prevCursor + 0xf].pendingInterrupt = 0x18;
+        this->sprites[this->cursor + 0xf].pendingInterrupt = 0x19;
+    }
+    if (WAS_PRESSED(0xa))
+    {
+        this->unk_3c = this->cursor;
+        this->SetState(4);
+        this->sprites[0x28].pendingInterrupt = 1;
+        g_SoundPlayer.QueueSound(0xb, 0);
+        return 1;
+    }
+    this->unk_18++;
+    return 0;
+}
+
 void FormatTodayDate(char *date)
 {
     time_t t;
