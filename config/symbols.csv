@@ -530,7 +530,7 @@ address,size,name,symbol
 0x0043aa5c,152,RegisterGameManagerChain,?RegisterGameManagerChain@@YIHXZ
 0x0043aaf4,227,GameManager::AddedCallback,?AddedCallback@GameManager@@SIHPAV1@@Z
 0x0043abd7,3423,Func43abd7,
-0x0043b936,78,Func43b936,
+0x0043b936,78,GameManager::SetRankForDifficulty,?SetRankForDifficulty@GameManager@@QAEXXZ
 0x0043b984,605,Func43b984,
 0x0043bbe1,552,Func43bbe1,
 0x0043be09,35,Func43be09,
@@ -2410,6 +2410,7 @@ address,size,name,symbol
 0x004bd700,,GUID_NULL,_GUID_NULL
 0x004c67d0,,g_SpellCardLists,?g_SpellCardLists@@3PAPAHA
 0x004c67e8,,g_SpellCardListSizes,?g_SpellCardListSizes@@3PAHA
+0x004c7880,,g_Ranks,?g_Ranks@@3PAURankSettings@@A
 0x004c78c8,,g_DefaultControllerMapping,?g_DefaultControllerMapping@@3UControllerMapping@@A
 0x004c78e0,,g_CryptParams,?g_CryptParams@@3PAUCryptParams@@A
 0x004c7940,,g_CryptMagic,?g_CryptMagic@@3PAEA

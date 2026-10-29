@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">38.71% (432)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">61.29% (684)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">38.80% (433)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">61.20% (683)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="289.16" height="6" x="0" y="0" class="named"/>
-<rect width="457.84" height="6" x="289.16" y="0" class="todo"/>
+<rect width="289.83" height="6" x="0" y="0" class="named"/>
+<rect width="457.17" height="6" x="289.83" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -598,7 +598,7 @@
 <rect width="12" height="12" x="420" y="150" class="named"><title>0x0043aa5c RegisterGameManagerChain (152 bytes)</title></rect>
 <rect width="12" height="12" x="435" y="150" class="todo"><title>0x0043aaf4 GameManager::AddedCallback (227 bytes)</title></rect>
 <rect width="12" height="12" x="450" y="150" class="todo"><title>0x0043abd7 Func43abd7 (3423 bytes)</title></rect>
-<rect width="12" height="12" x="465" y="150" class="todo"><title>0x0043b936 Func43b936 (78 bytes)</title></rect>
+<rect width="12" height="12" x="465" y="150" class="named"><title>0x0043b936 GameManager::SetRankForDifficulty (78 bytes)</title></rect>
 <rect width="12" height="12" x="480" y="150" class="todo"><title>0x0043b984 Func43b984 (605 bytes)</title></rect>
 <rect width="12" height="12" x="495" y="150" class="todo"><title>0x0043bbe1 Func43bbe1 (552 bytes)</title></rect>
 <rect width="12" height="12" x="510" y="150" class="todo"><title>0x0043be09 Func43be09 (35 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">31.65%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">68.35%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">31.67%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">68.33%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="236.44" height="6" x="0" y="0" class="named"/>
-<rect width="510.56" height="6" x="236.44" y="0" class="todo"/>
+<rect width="236.57" height="6" x="0" y="0" class="named"/>
+<rect width="510.43" height="6" x="236.57" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1888,7 +1888,7 @@
 <rect width="3.76" height="3.63" x="649.18" y="301.91" class="todo"><title>0x004417e0 Func4417e0 (79 bytes)</title></rect>
 <rect width="3.76" height="3.63" x="649.18" y="308.54" class="named"><title>0x004447d0 MidiPlayer::FadeOut (79 bytes)</title></rect>
 <rect width="3.76" height="3.63" x="649.18" y="315.17" class="named"><title>0x00472990 CSound::PauseBuffer (79 bytes)</title></rect>
-<rect width="3.76" height="3.55" x="649.18" y="321.81" class="todo"><title>0x0043b936 Func43b936 (78 bytes)</title></rect>
+<rect width="3.76" height="3.55" x="649.18" y="321.81" class="named"><title>0x0043b936 GameManager::SetRankForDifficulty (78 bytes)</title></rect>
 <rect width="3.76" height="3.55" x="649.18" y="328.35" class="named"><title>0x0043c830 Chain::Chain (78 bytes)</title></rect>
 <rect width="3.76" height="3.55" x="649.18" y="334.90" class="todo"><title>0x00440050 Func440050 (78 bytes)</title></rect>
 <rect width="3.76" height="3.55" x="649.18" y="341.45" class="named"><title>0x00443d50 MidiDevice::SendLongMsg (78 bytes)</title></rect>

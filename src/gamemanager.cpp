@@ -67,3 +67,10 @@ int RegisterGameManagerChain()
     g_Chain.AddToDrawChain(&g_GameManagerDrawChain, 5);
     return 0;
 }
+
+void GameManager::SetRankForDifficulty()
+{
+    this->rank = g_Ranks[g_GameManager.difficulty].rank;
+    this->minRank = g_Ranks[g_GameManager.difficulty].minRank;
+    this->maxRank = g_Ranks[g_GameManager.difficulty].maxRank;
+}
