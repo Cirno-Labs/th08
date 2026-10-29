@@ -537,3 +537,25 @@ int EffectUpdatePetal(Effect *effect)
     }
     return 1;
 }
+
+int EffectInitPetal(Effect *effect)
+{
+    D3DXVECTOR3 back;
+
+    back = -g_Stage.camera.at;
+    effect->truePos = g_Stage.camera.at + g_Stage.camera.eye;
+    effect->truePos.x += g_Rng.GetRandomF32InRange(120.0f) - 60.0f + back.x / 2.0f;
+    effect->truePos.y += g_Rng.GetRandomF32InRange(200.0f) - 100.0f + back.y / 2.0f;
+    effect->truePos.z += g_Rng.GetRandomF32InRange(100.0f) - 100.0f + back.z / 2.0f;
+    effect->step.x = g_Rng.GetRandomF32InRange(0.06f) - 0.03f + effect->velocity.x;
+    effect->step.y = g_Rng.GetRandomF32InRange(0.06f) - 0.03f + effect->velocity.y;
+    effect->step.z = g_Rng.GetRandomF32InRange(0.1f) + 0.03f + effect->velocity.z;
+    effect->acceleration.x = g_Rng.GetRandomF32InRange(0.0002f) - 0.0001f;
+    effect->acceleration.y = g_Rng.GetRandomF32InRange(0.0002f) - 0.0001f;
+    effect->step = effect->step * g_App.gameSpeed;
+    effect->acceleration = effect->acceleration * g_App.gameSpeed;
+    effect->drawList = 1;
+    effect->sprite.rotation.z = g_Rng.GetRandomF32InRange(6.2831855f) - 3.1415927f;
+    effect->sprite.rotation.x = g_Rng.GetRandomF32InRange(0.031415928f) - 0.015707964f;
+    return 0;
+}

@@ -343,7 +343,7 @@ address,size,name,symbol
 0x00426c90,120,EffectUpdateConvergeSlow,?EffectUpdateConvergeSlow@@YIHPAUEffect@@@Z
 0x00426d10,94,OffsetPetalEffects,?OffsetPetalEffects@@YIXPAUD3DXVECTOR3@@@Z
 0x00426d70,251,EffectUpdatePetal,?EffectUpdatePetal@@YIHPAUEffect@@@Z
-0x00426e70,587,Func426e70,
+0x00426e70,587,EffectInitPetal,?EffectInitPetal@@YIHPAUEffect@@@Z
 0x004270c0,217,Func4270c0,
 0x004271a0,166,Func4271a0,
 0x00427250,16,Func427250,
