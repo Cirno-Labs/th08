@@ -502,6 +502,66 @@ void SpriteEngine::RotatePoint(float *out, float x, float y, float sine, float c
     out[1] = x * sine + y * cosine + cy;
 }
 
+int SpriteEngine::Draw(Sprite *vm)
+{
+    float x0;
+    float cy;
+    float halfH;
+    float halfWidth;
+    float cosine;
+    float angle;
+    float s;
+
+    if (vm->rotationZ == 0.0f)
+    {
+        return this->DrawUnrotated(vm);
+    }
+    if (!vm->IsShown())
+    {
+        return -1;
+    }
+    if ((vm->flags >> 1 & 1) == 0)
+    {
+        return -1;
+    }
+    if (vm->alpha == 0)
+    {
+        return -1;
+    }
+    angle = vm->rotationZ;
+    __asm
+    {
+        fld angle
+        fsincos
+        fstp cosine
+        fstp s
+    }
+    x0 = vm->pos.x;
+    cy = vm->pos.y;
+    halfWidth = vm->spriteWidth * vm->scaleY / 2.0f;
+    halfH = vm->spriteHeight * vm->scaleX / 2.0f;
+    this->RotatePoint((float *)&g_DiffuseQuad[0].pos, -halfWidth, -halfH, s, cosine, x0, cy);
+    this->RotatePoint((float *)&g_DiffuseQuad[1].pos, halfWidth, -halfH, s, cosine, x0, cy);
+    this->RotatePoint((float *)&g_DiffuseQuad[2].pos, -halfWidth, halfH, s, cosine, x0, cy);
+    this->RotatePoint((float *)&g_DiffuseQuad[3].pos, halfWidth, halfH, s, cosine, x0, cy);
+    g_DiffuseQuad[0].pos.z = g_DiffuseQuad[1].pos.z = g_DiffuseQuad[2].pos.z = g_DiffuseQuad[3].pos.z = vm->pos.z;
+    if ((vm->flags >> 11 & 3) & 1)
+    {
+        g_DiffuseQuad[0].pos.x += halfWidth;
+        g_DiffuseQuad[1].pos.x += halfWidth;
+        g_DiffuseQuad[2].pos.x += halfWidth;
+        g_DiffuseQuad[3].pos.x += halfWidth;
+    }
+    if ((vm->flags >> 11 & 3) & 2)
+    {
+        g_DiffuseQuad[0].pos.y += halfH;
+        g_DiffuseQuad[1].pos.y += halfH;
+        g_DiffuseQuad[2].pos.y += halfH;
+        g_DiffuseQuad[3].pos.y += halfH;
+    }
+    return this->DrawQuad(vm, 0);
+}
+
 SpriteEngine::SpriteEngine()
 {
     memset(this, 0, sizeof(*this));

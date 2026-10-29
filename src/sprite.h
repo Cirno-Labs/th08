@@ -127,7 +127,11 @@ public:
     // The same for an int argument and the int variables.
     int *ResolveIntArgumentPtr(int *value, WORD mask, int bit);
 
-    unsigned char unk_0[0x18];
+    // The sprite's rotations about x, y and z, as th07's.
+    float rotationX;
+    float rotationY;
+    float rotationZ;
+    unsigned char unk_c[0xc];
     // Draw scales the sprite's height and width by these, as th07's.
     float scaleY;
     float scaleX;
