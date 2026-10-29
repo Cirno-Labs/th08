@@ -95,8 +95,12 @@ public:
     // criticalSectionDepths. New in th08.
     void EnterCriticalSection(int idx);
     void LeaveCriticalSection(int idx);
-    // Asks the sub thread (App+0x284, new in th08) to close and waits for
-    // it (0x44871b).
+    // Closes the sub thread first, then runs `proc` with `arg` in a new
+    // one, setting subThreadRunning. Returns 0, or -1 if it could not be
+    // created. New in th08.
+    int StartSubThread(LPTHREAD_START_ROUTINE proc, LPVOID arg);
+    // Asks the sub thread to close (closeSubThread) and waits for it,
+    // then closes its handle. New in th08.
     void CloseSubThread();
     // Advances `frames` by one frame, or by a fraction of one into
     // `subFrame` while the game runs slow.
@@ -264,16 +268,22 @@ public:
     // since; 0x20: Timer::Add steps by whole frames. New in th08: bit
     // 0x40 is set by CheckSingleInstance when the startup info has no
     // title, cleared when it has one; bit 0x80 makes OnUpdate quit once
-    // unk_284 is clear.
+    // subThread is clear.
     DWORD stateFlags;
     // timeGetTime() when AddPlayTime last added to the run time.
     DWORD lastPlayTimeTick;
     // timeGetTime() when AddTotalPlayTime last added to the play time.
     DWORD lastTotalPlayTimeTick;
     D3DCAPS8 caps;
-    unsigned char unk_284[0xc];
-    // OnUpdate returns early while unk_294 is set and unk_290 is.
-    int unk_290;
+    // The sub thread StartSubThread starts (AddedCallback runs the
+    // loading in it), and its id.
+    HANDLE subThread;
+    DWORD subThreadId;
+    // Set by CloseSubThread while it waits for the thread to end.
+    int closeSubThread;
+    // Set by StartSubThread. OnUpdate returns early while unk_294 is set
+    // and this is.
+    int subThreadRunning;
     // OnUpdate quits when it is 2.
     int unk_294;
     // Locked by EnterCriticalSection: 2 around file access, 3 around the

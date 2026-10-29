@@ -1194,3 +1194,12 @@ int App::CheckVersionFile(char *version, DWORD size, DWORD checksum)
     }
     return -1;
 }
+
+int App::StartSubThread(LPTHREAD_START_ROUTINE proc, LPVOID arg)
+{
+    this->CloseSubThread();
+    DebugPrint2("info : Sub Thread Start Request\n");
+    this->subThread = CreateThread(NULL, 0, proc, arg, 0, &this->subThreadId);
+    this->subThreadRunning = 1;
+    return this->subThread != NULL ? 0 : -1;
+}

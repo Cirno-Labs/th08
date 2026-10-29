@@ -724,7 +724,7 @@ address,size,name,symbol
 0x004482a1,375,App::AddPlayTime,?AddPlayTime@App@@QAEXXZ
 0x00448418,373,App::AddTotalPlayTime,?AddTotalPlayTime@App@@QAEXXZ
 0x0044858d,301,App::CheckVersionFile,?CheckVersionFile@App@@QAEHPADKK@Z
-0x004486ba,97,Func4486ba,
+0x004486ba,97,App::StartSubThread,?StartSubThread@App@@QAEHP6GKPAX@Z0@Z
 0x0044871b,117,App::CloseSubThread,?CloseSubThread@App@@QAEXXZ
 0x00448790,138,Func448790,
 0x0044881a,85,Func44881a,
