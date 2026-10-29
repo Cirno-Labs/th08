@@ -749,3 +749,10 @@ int Gui::Func439050()
     this->impl->unk_2156c.SetPendingInterrupt(1);
     return 0;
 }
+
+int Gui::Func439093()
+{
+    this->timesAnm->SetSprite(&this->impl->unk_2156c, g_GameManager.GetUnk28());
+    this->impl->unk_2156c.SetPendingInterrupt(2);
+    return 0;
+}
