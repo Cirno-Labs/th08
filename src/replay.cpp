@@ -436,3 +436,79 @@ int ReplayManager::RecordAddedCallback(ReplayManager *replay)
     replay->clearedAtRecordStart = 0;
     return 0;
 }
+
+int ReplayManager::PlayAddedCallback(ReplayManager *replay)
+{
+    ReplayStage *cur;
+    int idx;
+    int size;
+    BYTE *extras;
+    ReplayStage *earlier;
+
+    replay->frame = 0;
+    if (replay->data == NULL)
+    {
+        replay->data = (ReplayHeader *)LoadFileData(replay->path, &size, !(g_GameManager.unk_3dbac >> 1 & 1));
+        replay->data = ValidateReplay(replay->data, size);
+        if (replay->data == NULL)
+        {
+            return -1;
+        }
+        replay->frameRateBuffer = NULL;
+        for (idx = 0; idx < 9; idx++)
+        {
+            if (replay->data->stages[idx] != NULL)
+            {
+                replay->data->stages[idx] = (ReplayStage *)((int)replay->data->stages[idx] + (int)replay->data);
+            }
+            if (replay->data->extras[idx] != NULL)
+            {
+                replay->data->extras[idx] = (BYTE *)((int)replay->data->extras[idx] + (int)replay->data);
+            }
+        }
+    }
+    idx = g_GameManager.stage;
+    if (replay->data->stages[idx] == NULL)
+    {
+        return -1;
+    }
+    cur = replay->data->stages[idx];
+    extras = replay->data->extras[idx];
+    g_GameManager.character = replay->data->shotType;
+    g_GameManager.shotType = replay->data->shotType % 1;
+    g_GameManager.character = replay->data->shotType;
+    g_GameManager.difficulty = replay->data->difficulty;
+    g_GameManager.stats->pointItemsTotal = cur->pointItemsTotal;
+    g_GameManager.rank = cur->rank;
+    g_GameManager.SetLives(cur->lives);
+    g_GameManager.SetBombs(cur->bombs);
+    g_GameManager.SetPower(cur->power);
+    g_GameManager.stats->grazeTotal = cur->grazeTotal;
+    replay->cursor = cur->frames;
+    replay->seedCursor = (ReplayFrameWithSeed *)replay->cursor;
+    g_GameManager.unk_3dba8 = cur->unk_20;
+    g_GameManager.stats->unk_24 = cur->unk_14;
+    *g_GameManager.unk_4 = *(GameManagerUnk4 *)replay->data->config;
+    g_Rng.SetSeed(cur->rngSeed);
+    g_GameManager.stats->spellCardsCaptured = cur->spellCardsCaptured;
+    g_GameManager.stats->unk_34 = cur->unk_0c;
+    g_GameManager.stats->unk_38 = cur->unk_10;
+    g_GameManager.stats->unk_22 = cur->unk_18;
+    g_GameManager.SetUnk28(cur->unk_22);
+    replay->extraCursor = extras;
+    replay->unk_04 = 0;
+    earlier = NULL;
+    for (idx = 0; idx < g_GameManager.stage; idx++)
+    {
+        if (replay->data->stages[idx] != NULL)
+        {
+            earlier = replay->data->stages[idx];
+        }
+    }
+    if (earlier != NULL)
+    {
+        g_GameManager.stats->score = earlier->score;
+        g_GameManager.stats->guiScore = g_GameManager.stats->score;
+    }
+    return 0;
+}
