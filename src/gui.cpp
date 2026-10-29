@@ -395,3 +395,86 @@ void CopySpriteToTexture(int sprite)
     spriteRect.bottom = g_Gui.anm->GetSprite(sprite)->endY;
     g_SpriteEngine->CopyTextureRect(10, 0, 10, 1, &dstRect, &spriteRect);
 }
+
+void Func438046()
+{
+    switch (g_GameManager.stage)
+    {
+    default:
+        CopySpriteToTexture(0x10);
+        break;
+    case 1:
+        CopySpriteToTexture(0x11);
+        break;
+    case 2:
+        CopySpriteToTexture(0x12);
+        break;
+    case 3:
+        if (!g_GameManager.IsInSpellCardPractice() || g_GameManager.IsPracticingSpellCard(0xd6))
+        {
+            CopySpriteToTexture(0x13);
+        }
+        else if (g_GameManager.IsPracticingSpellCard(0xd8))
+        {
+            CopySpriteToTexture(0x1a);
+        }
+        else if (g_GameManager.IsPracticingSpellCard(0xd9))
+        {
+            CopySpriteToTexture(0x1b);
+        }
+        else if (g_GameManager.IsPracticingSpellCard(0xda))
+        {
+            CopySpriteToTexture(0x1c);
+        }
+        else if (g_GameManager.IsPracticingSpellCard(0xdb))
+        {
+            CopySpriteToTexture(0x1d);
+        }
+        else if (g_GameManager.IsPracticingSpellCard(0xdc))
+        {
+            CopySpriteToTexture(0x1e);
+        }
+        else if (g_GameManager.IsPracticingSpellCard(0xdd))
+        {
+            CopySpriteToTexture(0x1f);
+        }
+        break;
+    case 4:
+        CopySpriteToTexture(0x14);
+        break;
+    case 5:
+        if (!g_GameManager.IsInSpellCardPractice() || g_GameManager.IsPracticingSpellCard(0xd4))
+        {
+            CopySpriteToTexture(0x15);
+        }
+        else
+        {
+            CopySpriteToTexture(0x16);
+        }
+        break;
+    case 6:
+        CopySpriteToTexture(0x17);
+        break;
+    case 7:
+        if (!g_GameManager.IsInSpellCardPractice() || g_GameManager.IsPracticingSpellCardIn(0x93, 0x96))
+        {
+            CopySpriteToTexture(0x17);
+        }
+        else
+        {
+            CopySpriteToTexture(0x18);
+        }
+        break;
+    case 8:
+        if (!g_GameManager.IsInSpellCardPractice() || g_GameManager.IsPracticingSpellCardIn(0xbf, 0xc1) ||
+            g_GameManager.IsPracticingSpellCard(0xd5))
+        {
+            CopySpriteToTexture(0x20);
+        }
+        else
+        {
+            CopySpriteToTexture(0x19);
+        }
+        break;
+    }
+}

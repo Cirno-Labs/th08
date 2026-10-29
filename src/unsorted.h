@@ -399,7 +399,8 @@ extern int g_Unknown17d6ed4;
 // Removes chain elements GameManager::DeletedCallback removes before the
 // stage's; probably a manager th07 did not have (0x4180f0).
 void Func4180f0();
-// Starts the stage's Gui effects by g_GameManager.stage (0x438046).
+// Copies the stage's portrait into the dialogue texture by
+// g_GameManager.stage and, in a spell card practice, the card (0x438046).
 void Func438046();
 
 // Measures the frame rate every half second, with the performance
@@ -1257,6 +1258,12 @@ public:
     void SetUnk28(int value)
     {
         this->stats->unk_28 = value;
+    }
+    // Whether a spell card is practised (bit 14 of unk_3dbac). Inline;
+    // the copy at 0x406c70 is an /Od object's.
+    int IsInSpellCardPractice()
+    {
+        return this->unk_3dbac >> 14 & 1;
     }
     // Whether the spell card practised (bit 14 of unk_3dbac) is `card`,
     // or one from `first` to `last`. Inline.
