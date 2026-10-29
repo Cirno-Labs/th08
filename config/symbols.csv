@@ -43,7 +43,7 @@ address,size,name,symbol
 0x004066a0,27,Func4066a0,
 0x004066c0,27,Timer::operator>,??OTimer@@QAEHH@Z
 0x004066e0,23,Sprite::IsShown,?IsShown@Sprite@@QAEKXZ
-0x00406700,32,Func406700,
+0x00406700,32,Sprite::ClearShown,?ClearShown@Sprite@@QAEXXZ
 0x00406720,146,Sprite::Sprite,??0Sprite@@QAE@XZ
 0x004067c0,142,Func4067c0,
 0x00406850,39,`vector_constructor_iterator',??_H@YGXPAXIHP6EPAX0@Z@Z
