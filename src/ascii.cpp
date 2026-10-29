@@ -220,3 +220,14 @@ void AsciiText::AddString(D3DXVECTOR3 *pos, char *text)
         str->highlight = 0;
     }
 }
+
+void AsciiText::AddFormat(D3DXVECTOR3 *pos, char *fmt, ...)
+{
+    char buf[0x200];
+    va_list args;
+
+    va_start(args, fmt);
+    vsprintf(buf, fmt, args);
+    this->AddString(pos, buf);
+    va_end(args);
+}
