@@ -541,7 +541,7 @@ address,size,name,symbol
 0x0043c0bb,164,Func43c0bb,
 0x0043c15f,138,GameManager::HasExtraOpen,?HasExtraOpen@GameManager@@QAEHH@Z
 0x0043c1e9,82,GameManager::AnyShotHasExtraOpen,?AnyShotHasExtraOpen@GameManager@@QAEHXZ
-0x0043c23b,138,Func43c23b,
+0x0043c23b,138,GameManager::Func43c23b,?Func43c23b@GameManager@@QAEHH@Z
 0x0043c2c5,82,GameManager::Func43c2c5,?Func43c2c5@GameManager@@QAEHXZ
 0x0043c317,11,GameManager::IsPhantasmOpen,?IsPhantasmOpen@GameManager@@QAEHXZ
 0x0043c322,61,Func43c322,

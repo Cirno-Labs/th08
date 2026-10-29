@@ -138,3 +138,11 @@ int GameManager::AnyShotHasExtraOpen()
     return this->HasExtraOpen(0) || this->HasExtraOpen(1) || this->HasExtraOpen(2) || this->HasExtraOpen(3) ? TRUE
                                                                                                            : FALSE;
 }
+
+int GameManager::Func43c23b(int shot)
+{
+    return shot > 3 || this->clrds[shot].stagesCleared[0] & 0x8000 || this->clrds[shot].stagesCleared[1] & 0x8000 ||
+                   this->clrds[shot].stagesCleared[2] & 0x8000 || this->clrds[shot].stagesCleared[3] & 0x8000
+               ? TRUE
+               : FALSE;
+}
