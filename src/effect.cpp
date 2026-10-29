@@ -428,3 +428,33 @@ int EffectInitBossPetal2(Effect *effect)
     effect->sprite.rotateStart.z = 0.0f;
     return 0;
 }
+
+int EffectUpdateBossPetal2(Effect *effect)
+{
+    float cosine;
+
+    effect->step += effect->acceleration;
+    effect->truePos += effect->step;
+    effect->pos = effect->truePos;
+    D3DXVECTOR3 v;
+    v = effect->pos - g_Stage.camera.eye;
+    D3DXVec3Normalize(&v, &v);
+    cosine = D3DXVec3Dot(&g_Stage.camera.dir, &v);
+    if (cosine < 0.94f)
+    {
+        return 0;
+    }
+    if (g_EnemyManager.bosses[0] != NULL && g_EnemyManager.bosses[0]->unk_3324 >> 3 & 1)
+    {
+        if (effect->sprite.posOffset.x <= -9999.0f)
+        {
+            effect->sprite.posOffset = g_EnemyManager.bosses[0]->pos;
+        }
+        else
+        {
+            effect->sprite.posOffset =
+                (g_EnemyManager.bosses[0]->pos - effect->sprite.posOffset) * 0.1f + effect->sprite.posOffset;
+        }
+    }
+    return 1;
+}
