@@ -171,7 +171,7 @@ address,size,name,symbol
 0x0040eca0,174,Sprite::SetColorInterp,?SetColorInterp@Sprite@@QAEXHEKK@Z
 0x0040ed50,80,Sprite::SetAlphaInterp,?SetAlphaInterp@Sprite@@QAEXHEEE@Z
 0x0040eda0,105,Sprite::SetScaleInterp,?SetScaleInterp@Sprite@@QAEXHEPAUD3DXVECTOR2@@0@Z
-0x0040ee10,1853,Func40ee10,
+0x0040ee10,1853,UpdateRemiliaBomb,?UpdateRemiliaBomb@@YIXPAVPlayer@@@Z
 0x0040f550,24,DrawRemiliaBomb,?DrawRemiliaBomb@@YIXPAVPlayer@@@Z
 0x0040f570,1853,Func40f570,
 0x0040fcb0,24,DrawRemiliaLastWord,?DrawRemiliaLastWord@@YIXPAVPlayer@@@Z

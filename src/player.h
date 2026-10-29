@@ -681,6 +681,10 @@ void DrawMarisaBomb(Player *player);
 // Her last word 魔砲「ファイナルスパーク」: the same beam, harder, with
 // a ring of effect 0x35 every 10 frames (0x40e780).
 void UpdateMarisaLastWord(Player *player);
+// Remilia's 紅符「不夜城レッド」: her four options gather in a cross
+// around the player, who stops for 60 frames, then a cross of hit areas
+// and rings of effect 0x35 follow her at double speed (0x40ee10).
+void UpdateRemiliaBomb(Player *player);
 // Draw callbacks of the bombs that only tint the play area, by the
 // bomb they follow: Alice's (also Yukari's draw.funcs[0..1], 0x40d950)
 // and Remilia's and her last word's (0x40f550, 0x40fcb0).
