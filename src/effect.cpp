@@ -514,3 +514,26 @@ void OffsetPetalEffects(D3DXVECTOR3 *offset)
         }
     }
 }
+
+int EffectUpdatePetal(Effect *effect)
+{
+    float cosine;
+
+    effect->step += effect->acceleration;
+    effect->truePos += effect->step;
+    effect->pos = effect->truePos;
+    D3DXVECTOR3 v;
+    v = effect->pos - g_Stage.camera.eye;
+    D3DXVec3Normalize(&v, &v);
+    cosine = D3DXVec3Dot(&g_Stage.camera.dir, &v);
+    if (cosine < 0.94f)
+    {
+        return 0;
+    }
+    effect->sprite.SetRotationZ(AddNormalizeAngle(effect->sprite.rotation.z, effect->sprite.rotation.x));
+    if (effect->pos.z >= 0.0f)
+    {
+        return 0;
+    }
+    return 1;
+}

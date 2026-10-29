@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">57.97% (647)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">40.23% (449)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">58.15% (649)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">40.05% (447)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="433.07" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="433.07" y="0" class="decompiled"/>
-<rect width="300.54" height="6" x="446.46" y="0" class="todo"/>
+<rect width="434.41" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="434.41" y="0" class="decompiled"/>
+<rect width="299.20" height="6" x="447.80" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -235,7 +235,7 @@
 <rect width="12" height="12" x="210" y="45" class="todo"><title>0x0040e780 Func40e780 (968 bytes)</title></rect>
 <rect width="12" height="12" x="225" y="45" class="todo"><title>0x0040eb50 Func40eb50 (112 bytes)</title></rect>
 <rect width="12" height="12" x="240" y="45" class="todo"><title>0x0040ebc0 Func40ebc0 (61 bytes)</title></rect>
-<rect width="12" height="12" x="255" y="45" class="todo"><title>0x0040ec00 Func40ec00 (43 bytes)</title></rect>
+<rect width="12" height="12" x="255" y="45" class="named"><title>0x0040ec00 Sprite::SetRotationZ (43 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="45" class="todo"><title>0x0040ec30 Func40ec30 (112 bytes)</title></rect>
 <rect width="12" height="12" x="285" y="45" class="todo"><title>0x0040eca0 Func40eca0 (174 bytes)</title></rect>
 <rect width="12" height="12" x="300" y="45" class="todo"><title>0x0040ed50 Func40ed50 (80 bytes)</title></rect>
@@ -411,7 +411,7 @@
 <rect width="12" height="12" x="600" y="90" class="named"><title>0x00426c40 EffectUpdateFollowPlayer (66 bytes)</title></rect>
 <rect width="12" height="12" x="615" y="90" class="named"><title>0x00426c90 EffectUpdateConvergeSlow (120 bytes)</title></rect>
 <rect width="12" height="12" x="630" y="90" class="named"><title>0x00426d10 OffsetPetalEffects (94 bytes)</title></rect>
-<rect width="12" height="12" x="645" y="90" class="todo"><title>0x00426d70 Func426d70 (251 bytes)</title></rect>
+<rect width="12" height="12" x="645" y="90" class="named"><title>0x00426d70 EffectUpdatePetal (251 bytes)</title></rect>
 <rect width="12" height="12" x="660" y="90" class="todo"><title>0x00426e70 Func426e70 (587 bytes)</title></rect>
 <rect width="12" height="12" x="675" y="90" class="todo"><title>0x004270c0 Func4270c0 (217 bytes)</title></rect>
 <rect width="12" height="12" x="690" y="90" class="todo"><title>0x004271a0 Func4271a0 (166 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">52.47%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">46.54%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">52.53%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">46.48%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="391.92" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="391.92" y="0" class="decompiled"/>
-<rect width="347.68" height="6" x="399.32" y="0" class="todo"/>
+<rect width="392.40" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="392.40" y="0" class="decompiled"/>
+<rect width="347.20" height="6" x="399.80" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1578,7 +1578,7 @@
 <rect width="9.19" height="8.78" x="607.11" y="154.57" class="named"><title>0x00473b40 MakeFullPath (253 bytes)</title></rect>
 <rect width="9.14" height="8.78" x="619.30" y="154.57" class="todo"><title>0x0042deb0 Func42deb0 (252 bytes)</title></rect>
 <rect width="9.14" height="8.78" x="631.44" y="154.57" class="named"><title>0x00445ea7 App::RegisterChain (252 bytes)</title></rect>
-<rect width="9.09" height="8.78" x="643.58" y="154.57" class="todo"><title>0x00426d70 Func426d70 (251 bytes)</title></rect>
+<rect width="9.09" height="8.78" x="643.58" y="154.57" class="named"><title>0x00426d70 EffectUpdatePetal (251 bytes)</title></rect>
 <rect width="9" height="8.78" x="655.67" y="154.57" class="todo"><title>0x0044a5a0 Player::TouchesGrazeBox (249 bytes)</title></rect>
 <rect width="8.95" height="8.78" x="667.67" y="154.57" class="named"><title>0x00425ea0 EffectInitDriftFast (248 bytes)</title></rect>
 <rect width="8.95" height="8.78" x="679.62" y="154.57" class="named"><title>0x00443b60 SpriteEngine::DoPendingCopy (248 bytes)</title></rect>
@@ -2061,7 +2061,7 @@
 <rect width="2" height="1.88" x="695.40" y="283.37" class="named"><title>0x00406ac0 SoundPlayer::FadeInBgm (43 bytes)</title></rect>
 <rect width="2" height="1.88" x="700.39" y="283.37" class="named"><title>0x00406b40 SoundPlayer::FadeDownBgm (43 bytes)</title></rect>
 <rect width="2" height="1.88" x="705.39" y="283.37" class="named"><title>0x00406bb0 SoundPlayer::FadeUpBgm (43 bytes)</title></rect>
-<rect width="2" height="1.88" x="710.38" y="283.37" class="todo"><title>0x0040ec00 Func40ec00 (43 bytes)</title></rect>
+<rect width="2" height="1.88" x="710.38" y="283.37" class="named"><title>0x0040ec00 Sprite::SetRotationZ (43 bytes)</title></rect>
 <rect width="2" height="1.88" x="715.38" y="283.37" class="todo"><title>0x00421ba0 Func421ba0 (43 bytes)</title></rect>
 <rect width="2" height="1.88" x="720.37" y="283.37" class="named"><title>0x00454c87 ResultScreen::ReleaseScores (43 bytes)</title></rect>
 <rect width="2" height="1.88" x="725.37" y="283.37" class="todo"><title>0x0045e3c0 SoundPlayer::FadeOutBgm (43 bytes)</title></rect>
