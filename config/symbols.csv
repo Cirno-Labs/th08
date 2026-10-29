@@ -867,7 +867,7 @@ address,size,name,symbol
 0x004578aa,1366,Func4578aa,
 0x00457e00,1184,Func457e00,
 0x004582a0,395,ResultScreen::RegisterChain,?RegisterChain@ResultScreen@@SIHH@Z
-0x0045842b,133,Func45842b,
+0x0045842b,133,ResultScreen::ResultScreen,??0ResultScreen@@QAE@XZ
 0x004584b0,424,ResultScreen::OnUpdate,?OnUpdate@ResultScreen@@SIHPAV1@@Z
 0x004586b4,3993,ResultScreen::OnDraw,?OnDraw@ResultScreen@@SIHPAV1@@Z
 0x0045964d,2437,ResultScreen::AddedCallback,?AddedCallback@ResultScreen@@SIHPAV1@@Z
