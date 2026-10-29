@@ -147,7 +147,8 @@ public:
     short spriteIndex;
     // The slot of the ANM file whose script runs. New in th08.
     short anmSlot;
-    unsigned char unk_218[0x2];
+    // The first sprite of the script, as th07's.
+    short baseSpriteIndex;
     // The script AnmLoaded::StartScript started.
     short scriptIndex;
     // The script SetScript started, and the instruction Step runs next.
@@ -269,6 +270,10 @@ class AnmLoaded
 public:
     // Starts `script` on `vm` (0x45e580).
     void SetScript(Sprite *vm, void *script);
+    // Starts script `script` + n of this file on sprite n of the
+    // `count` sprites from `vms`, and makes their sprites their base
+    // sprites, as th07's SpriteEngine::StartSpriteSeries.
+    void StartSpriteSeries(Sprite *vms, int script, int count);
     // Copies `sprite` into sprite `index` and works out its texture
     // coordinates and size, as th07's SpriteEngine::LoadSprite.
     void LoadSprite(int index, SpriteData *sprite);

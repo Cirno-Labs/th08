@@ -186,6 +186,18 @@ void SpriteEngine::StepSprites(Sprite *vms, int count)
     }
 }
 
+void AnmLoaded::StartSpriteSeries(Sprite *vms, int script, int count)
+{
+    while (count != 0)
+    {
+        this->StartScriptAtOrigin(vms, script);
+        vms->baseSpriteIndex = vms->spriteIndex;
+        script++;
+        vms++;
+        count--;
+    }
+}
+
 SpriteEngine::SpriteEngine()
 {
     memset(this, 0, sizeof(*this));

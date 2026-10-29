@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">27.96% (312)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">72.04% (804)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">28.05% (313)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">71.95% (803)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="208.84" height="6" x="0" y="0" class="named"/>
-<rect width="538.16" height="6" x="208.84" y="0" class="todo"/>
+<rect width="209.51" height="6" x="0" y="0" class="named"/>
+<rect width="537.49" height="6" x="209.51" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -1017,7 +1017,7 @@
 <rect width="12" height="12" x="705" y="270" class="named"><title>0x00462270 SpriteEngine::SendInterruptToLoadedSprites (74 bytes)</title></rect>
 <rect width="12" height="12" x="720" y="270" class="named"><title>0x004622c0 SpriteEngine::HasTexture (76 bytes)</title></rect>
 <rect width="12" height="12" x="735" y="270" class="named"><title>0x00462310 SpriteEngine::StepSprites (70 bytes)</title></rect>
-<rect width="12" height="12" x="0" y="285" class="todo"><title>0x00462360 Func462360 (86 bytes)</title></rect>
+<rect width="12" height="12" x="0" y="285" class="named"><title>0x00462360 AnmLoaded::StartSpriteSeries (86 bytes)</title></rect>
 <rect width="12" height="12" x="15" y="285" class="todo"><title>0x004623c0 Func4623c0 (912 bytes)</title></rect>
 <rect width="12" height="12" x="30" y="285" class="todo"><title>0x00462750 Func462750 (52 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="285" class="todo"><title>0x00462790 Func462790 (278 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">16.97%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">83.03%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">16.99%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">83.01%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="126.77" height="6" x="0" y="0" class="named"/>
-<rect width="620.23" height="6" x="126.77" y="0" class="todo"/>
+<rect width="126.91" height="6" x="0" y="0" class="named"/>
+<rect width="620.09" height="6" x="126.91" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1867,7 +1867,7 @@
 <rect width="4.42" height="3.73" x="656.60" y="240.60" class="named"><title>0x00448972 App::FinishLoadingSprites (88 bytes)</title></rect>
 <rect width="4.42" height="3.73" x="664.01" y="240.60" class="todo"><title>0x00453b80 Func453b80 (88 bytes)</title></rect>
 <rect width="4.33" height="3.73" x="671.43" y="240.60" class="todo"><title>0x00449ef0 Func449ef0 (87 bytes)</title></rect>
-<rect width="4.25" height="3.73" x="678.77" y="240.60" class="todo"><title>0x00462360 Func462360 (86 bytes)</title></rect>
+<rect width="4.25" height="3.73" x="678.77" y="240.60" class="named"><title>0x00462360 AnmLoaded::StartSpriteSeries (86 bytes)</title></rect>
 <rect width="4.17" height="3.73" x="686.02" y="240.60" class="todo"><title>0x00415c80 Func415c80 (85 bytes)</title></rect>
 <rect width="4.17" height="3.73" x="693.18" y="240.60" class="todo"><title>0x0043bf6e RemoveGameManagerChain (85 bytes)</title></rect>
 <rect width="4.17" height="3.73" x="700.35" y="240.60" class="named"><title>0x0043d0c0 InitJoystick (85 bytes)</title></rect>

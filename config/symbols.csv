@@ -949,7 +949,7 @@ address,size,name,symbol
 0x00462270,74,SpriteEngine::SendInterruptToLoadedSprites,?SendInterruptToLoadedSprites@SpriteEngine@@QAEXPAVSprite@@HF@Z
 0x004622c0,76,SpriteEngine::HasTexture,?HasTexture@SpriteEngine@@QAEHPAVSprite@@@Z
 0x00462310,70,SpriteEngine::StepSprites,?StepSprites@SpriteEngine@@QAEXPAVSprite@@H@Z
-0x00462360,86,Func462360,
+0x00462360,86,AnmLoaded::StartSpriteSeries,?StartSpriteSeries@AnmLoaded@@QAEXPAVSprite@@HH@Z
 0x004623c0,912,Func4623c0,
 0x00462750,52,Func462750,
 0x00462790,278,Func462790,
