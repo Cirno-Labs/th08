@@ -371,7 +371,7 @@ address,size,name,symbol
 0x00428740,159,Func428740,
 0x004287e0,162,Func4287e0,
 0x00428890,115,Ending::ReadInt,?ReadInt@Ending@@QAEHXZ
-0x00428910,591,Func428910,
+0x00428910,591,Ending::DrawFade,?DrawFade@Ending@@QAEXXZ
 0x00428b80,2428,Func428b80,
 0x004295e0,180,Func4295e0,
 0x004296a0,266,Ending::RegisterChain,?RegisterChain@Ending@@SIHXZ

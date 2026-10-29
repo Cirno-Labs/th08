@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">51.08% (570)</tspan> · <tspan class="decompiled">1.70% (19)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">47.22% (527)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">51.16% (571)</tspan> · <tspan class="decompiled">1.70% (19)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">47.13% (526)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="381.53" height="6" x="0" y="0" class="named"/>
-<rect width="12.72" height="6" x="381.53" y="0" class="decompiled"/>
-<rect width="352.75" height="6" x="394.25" y="0" class="todo"/>
+<rect width="382.20" height="6" x="0" y="0" class="named"/>
+<rect width="12.72" height="6" x="382.20" y="0" class="decompiled"/>
+<rect width="352.08" height="6" x="394.92" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -440,7 +440,7 @@
 <rect width="12" height="12" x="285" y="105" class="todo"><title>0x00428740 Func428740 (159 bytes)</title></rect>
 <rect width="12" height="12" x="300" y="105" class="todo"><title>0x004287e0 Func4287e0 (162 bytes)</title></rect>
 <rect width="12" height="12" x="315" y="105" class="named"><title>0x00428890 Ending::ReadInt (115 bytes)</title></rect>
-<rect width="12" height="12" x="330" y="105" class="todo"><title>0x00428910 Func428910 (591 bytes)</title></rect>
+<rect width="12" height="12" x="330" y="105" class="named"><title>0x00428910 Ending::DrawFade (591 bytes)</title></rect>
 <rect width="12" height="12" x="345" y="105" class="todo"><title>0x00428b80 Func428b80 (2428 bytes)</title></rect>
 <rect width="12" height="12" x="360" y="105" class="todo"><title>0x004295e0 Func4295e0 (180 bytes)</title></rect>
 <rect width="12" height="12" x="375" y="105" class="todo"><title>0x004296a0 Ending::RegisterChain (266 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">42.73%</tspan> · <tspan class="decompiled">0.96%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">56.31%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">42.86%</tspan> · <tspan class="decompiled">0.96%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">56.18%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="319.21" height="6" x="0" y="0" class="named"/>
-<rect width="7.18" height="6" x="319.21" y="0" class="decompiled"/>
-<rect width="420.61" height="6" x="326.39" y="0" class="todo"/>
+<rect width="320.17" height="6" x="0" y="0" class="named"/>
+<rect width="7.18" height="6" x="320.17" y="0" class="decompiled"/>
+<rect width="419.65" height="6" x="327.35" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1379,7 +1379,7 @@
 <rect width="15.31" height="15.56" x="452.90" y="274.03" class="todo"><title>0x00450320 Func450320 (599 bytes)</title></rect>
 <rect width="15.31" height="15.56" x="452.90" y="292.59" class="named"><title>0x00472070 CStreamingSound::RecreateBuffers (599 bytes)</title></rect>
 <rect width="15.31" height="15.53" x="452.90" y="311.16" class="todo"><title>0x00409ce0 Func409ce0 (598 bytes)</title></rect>
-<rect width="15.31" height="15.31" x="452.90" y="329.69" class="todo"><title>0x00428910 Func428910 (591 bytes)</title></rect>
+<rect width="15.31" height="15.31" x="452.90" y="329.69" class="named"><title>0x00428910 Ending::DrawFade (591 bytes)</title></rect>
 <rect width="15.30" height="15.24" x="471.21" y="65.08" class="todo"><title>0x00426030 Func426030 (588 bytes)</title></rect>
 <rect width="15.27" height="15.24" x="489.51" y="65.08" class="todo"><title>0x00426e70 Func426e70 (587 bytes)</title></rect>
 <rect width="14.96" height="15.24" x="507.78" y="65.08" class="todo"><title>0x00408d60 Func408d60 (577 bytes)</title></rect>
