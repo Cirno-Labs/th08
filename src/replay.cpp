@@ -337,3 +337,102 @@ int ReplayManager::PlayOnUpdateWithSeeds(ReplayManager *replay)
     replay->frame++;
     return 1;
 }
+
+int ReplayManager::RecordAddedCallback(ReplayManager *replay)
+{
+    ReplayStage *cur;
+    int idx;
+    BYTE *extras;
+    ReplayStage *earlier;
+
+    replay->frame = 0;
+    replay->frameRateBuffer = NULL;
+    if (replay->data == NULL)
+    {
+        replay->data = (ReplayHeader *)g_MemoryManager.Register(new ReplayHeader, sizeof(ReplayHeader), "ReplayDataInf");
+        memset(replay->data, 0, sizeof(ReplayHeader));
+        *(DWORD *)replay->data->magic = *(DWORD *)"T8RP";
+        replay->data->unk_07 = 0;
+        replay->data->shotType = g_GameManager.character;
+        replay->data->version = 6;
+        replay->data->withSeeds = 0;
+        replay->data->subVersion = 0x100;
+        replay->data->versionByte = 100;
+        strcpy(replay->data->exeVersion, "0100d");
+        replay->data->exeSize = g_App.exeSize;
+        replay->data->exeChecksum = g_App.exeChecksum;
+        replay->data->isPractice = g_GameManager.IsInPractice();
+        replay->data->spellCardNumber = (g_GameManager.unk_3dbac >> 14 & 1) ? g_GameManager.unk_3dbb0 : -1;
+        replay->data->clearLevel =
+            (g_GameManager.HasClearedStage(7, g_GameManager.character, 0) ||
+             g_GameManager.HasClearedStage(7, g_GameManager.character, 1) ||
+             g_GameManager.HasClearedStage(7, g_GameManager.character, 2) ||
+             g_GameManager.HasClearedStage(7, g_GameManager.character, 3) || g_GameManager.character > 3)
+                ? 2
+                : (g_GameManager.HasClearedStage(6, g_GameManager.character, 0) ||
+                           g_GameManager.HasClearedStage(6, g_GameManager.character, 1) ||
+                           g_GameManager.HasClearedStage(6, g_GameManager.character, 2) ||
+                           g_GameManager.HasClearedStage(6, g_GameManager.character, 3)
+                       ? 1
+                       : 0);
+        replay->data->difficulty = g_GameManager.difficulty;
+        *(DWORD *)replay->data->name = *(DWORD *)"NO NAME";
+        *(GameManagerUnk4 *)replay->data->config = *g_GameManager.unk_4;
+        for (idx = 0; idx < 9; idx++)
+        {
+            replay->data->stages[idx] = NULL;
+            replay->data->extras[idx] = NULL;
+        }
+    }
+    else
+    {
+        earlier = NULL;
+        for (idx = 0; idx < g_GameManager.stage; idx++)
+        {
+            if (replay->data->stages[idx] != NULL)
+            {
+                earlier = replay->data->stages[idx];
+            }
+        }
+        if (earlier != NULL)
+        {
+            earlier->score = g_GameManager.stats->score;
+        }
+    }
+    idx = g_GameManager.stage;
+    if (replay->data->stages[idx] != NULL)
+    {
+        g_MemoryManager.Free(replay->data->stages[idx]);
+    }
+    if (replay->data->extras[idx] != NULL)
+    {
+        g_MemoryManager.Free(replay->data->extras[idx]);
+    }
+    replay->data->stages[idx] = (ReplayStage *)g_MemoryManager.Alloc(0xd2f00, "rep data");
+    replay->data->extras[idx] = (BYTE *)g_MemoryManager.Alloc(0xd2f00, "rep data");
+    cur = replay->data->stages[idx];
+    extras = replay->data->extras[idx];
+    cur->grazeTotal = g_GameManager.stats->grazeTotal;
+    cur->bombs = g_GameManager.GetBombs();
+    cur->lives = g_GameManager.GetLives();
+    cur->power = g_GameManager.GetPower();
+    cur->rank = g_GameManager.rank;
+    cur->pointItemsTotal = g_GameManager.stats->pointItemsTotal;
+    cur->rngSeed = g_GameManager.rngSeed;
+    cur->unk_20 = g_GameManager.unk_3dba8;
+    cur->spellCardsCaptured = g_GameManager.stats->spellCardsCaptured;
+    cur->unk_0c = g_GameManager.stats->unk_34;
+    cur->unk_10 = g_GameManager.stats->unk_38;
+    cur->unk_18 = g_GameManager.stats->unk_22;
+    cur->unk_22 = g_GameManager.GetUnk28();
+    cur->unk_14 = g_GameManager.stats->unk_24;
+    replay->cursor = cur->frames;
+    replay->seedCursor = (ReplayFrameWithSeed *)replay->cursor;
+    replay->extraCursor = extras;
+    *replay->cursor = 0;
+    replay->seedCursor->unk_2 = 0;
+    replay->seedCursor->seed = g_Rng.GetSeed();
+    replay->unk_04 = 0;
+    replay->clearedAtRecordStart = 0;
+    return 0;
+}

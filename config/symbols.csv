@@ -70,7 +70,7 @@ address,size,name,symbol
 0x00406d40,38,Func406d40,
 0x00406d70,38,Func406d70,
 0x00406da0,38,Func406da0,
-0x00406dd0,20,Func406dd0,
+0x00406dd0,20,GameManager::GetUnk28,?GetUnk28@GameManager@@QAEEXZ
 0x00406df0,38,Func406df0,
 0x00406e20,33,Func406e20,
 0x00406e50,154,Func406e50,
@@ -273,7 +273,7 @@ address,size,name,symbol
 0x00421e50,454,Func421e50,
 0x00422020,650,Func422020,
 0x004222b0,461,Func4222b0,
-0x00422480,28,Func422480,
+0x00422480,28,GameManager::GetPower,?GetPower@GameManager@@QAEHXZ
 0x004224a0,630,Func4224a0,
 0x00422720,1110,Func422720,
 0x00422b80,39,Func422b80,
@@ -424,7 +424,7 @@ address,size,name,symbol
 0x0042f1f0,64,EnemyManager::AnyBossActive,?AnyBossActive@EnemyManager@@QAEHXZ
 0x0042f230,64,Func42f230,
 0x0042f270,64,Func42f270,
-0x0042f2b0,25,Func42f2b0,
+0x0042f2b0,25,GameManager::GetLives,?GetLives@GameManager@@QAEHXZ
 0x0042f2d0,29,Func42f2d0,
 0x0042f2f0,37,Func42f2f0,
 0x0042f320,17,Func42f320,
@@ -513,10 +513,10 @@ address,size,name,symbol
 0x00439710,197,Func439710,
 0x004397d5,59,Func4397d5,
 0x00439810,25,Func439810,
-0x00439829,45,Func439829,
+0x00439829,45,GameManager::HasClearedStage,?HasClearedStage@GameManager@@QAEHHHH@Z
 0x00439856,45,Func439856,
 0x00439883,75,Func439883,
-0x004398ce,26,Func4398ce,
+0x004398ce,26,GameManager::GetBombs,?GetBombs@GameManager@@QAEHXZ
 0x004398e8,23,Func4398e8,
 0x004398ff,23,Func4398ff,
 0x00439916,75,Func439916,
