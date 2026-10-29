@@ -2016,6 +2016,11 @@ struct SpellCard
 extern SpellCard g_SpellCard;
 // Sets stats->unk_38 from stats->unk_34 by difficulty (0x440470).
 void Func440470();
+// Func440470's tables: stats->unk_38 by stats->unk_34 for the four main
+// difficulties (then 500 more each), and for Extra and Phantasm (then
+// 99999).
+extern int g_Unknown4c7a84[6];
+extern int g_Unknown4c7a9c[3];
 // g_SpellCardBgms' unk_10 and unk_c for the spell card practised; both
 // ignore `card` (0x439916, 0x439961).
 int Func439916(int card);

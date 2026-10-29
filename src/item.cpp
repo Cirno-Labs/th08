@@ -108,3 +108,26 @@ Item *ItemManager::SpawnItem(D3DXVECTOR3 *pos, int type, int state)
     }
     return i < 0x830 ? item : &this->items[0x830];
 }
+
+void Func440470()
+{
+    if (g_GameManager.difficulty < 4)
+    {
+        if ((DWORD)g_GameManager.stats->unk_34 < 6)
+        {
+            g_GameManager.stats->unk_38 = g_Unknown4c7a84[g_GameManager.stats->unk_34];
+        }
+        else
+        {
+            g_GameManager.stats->unk_38 = (g_GameManager.stats->unk_34 - 5) * 500 + g_Unknown4c7a84[5];
+        }
+    }
+    else if ((DWORD)g_GameManager.stats->unk_34 < 3)
+    {
+        g_GameManager.stats->unk_38 = g_Unknown4c7a9c[g_GameManager.stats->unk_34];
+    }
+    else
+    {
+        g_GameManager.stats->unk_38 = 99999;
+    }
+}

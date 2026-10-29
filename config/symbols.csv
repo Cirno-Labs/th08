@@ -2429,6 +2429,8 @@ address,size,name,symbol
 0x004c78e0,,g_CryptParams,?g_CryptParams@@3PAUCryptParams@@A
 0x004c7940,,g_CryptMagic,?g_CryptMagic@@3PAEA
 0x004c7948,,g_FormatInfos,?g_FormatInfos@@3PAUFormatInfo@@A
+0x004c7a84,,g_Unknown4c7a84,?g_Unknown4c7a84@@3PAHA
+0x004c7a9c,,g_Unknown4c7a9c,?g_Unknown4c7a9c@@3PAHA
 0x004c7aac,,g_MusicNotHeardComment,?g_MusicNotHeardComment@@3PAPADA
 0x004c7f30,,g_ReplayDifficultyNames,?g_ReplayDifficultyNames@@3PAPADA
 0x004c7f48,,g_NameAlphabet,?g_NameAlphabet@@3PADA
