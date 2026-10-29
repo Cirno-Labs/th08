@@ -1037,7 +1037,7 @@ address,size,name,symbol
 0x00471586,203,Func471586,
 0x00471651,17,Func471651,
 0x00471662,125,Func471662,
-0x004716e0,23,Func4716e0,
+0x004716e0,23,CSoundManager::CSoundManager,??0CSoundManager@@QAE@XZ ??0DatArchiveEntry@@QAE@XZ
 0x00471700,44,Func471700,
 0x00471730,142,Func471730,
 0x004717c0,265,Func4717c0,
@@ -1100,21 +1100,21 @@ address,size,name,symbol
 0x004746d0,132,LzssReplaceNode,?LzssReplaceNode@@YIXHH@Z
 0x00474760,183,LzssReplaceChild,?LzssReplaceChild@@YIXHH@Z
 0x00474820,63,LzssPredecessor,?LzssPredecessor@@YIHH@Z
-0x00474860,53,Func474860,
-0x004748a0,19,Func4748a0,
-0x004748c0,229,Func4748c0,
-0x004749b0,208,Func4749b0,
-0x00474a80,112,Func474a80,
+0x00474860,53,DatArchive::DatArchive,??0DatArchive@@QAE@XZ
+0x004748a0,19,DatArchive::~DatArchive,??1DatArchive@@QAE@XZ
+0x004748c0,229,DatArchive::Open,?Open@DatArchive@@QAE_NPAD@Z
+0x004749b0,208,DatArchive::Release,?Release@DatArchive@@QAEXXZ
+0x00474a80,112,DatArchiveEntry::`vector deleting destructor',??_EDatArchiveEntry@@QAEPAXI@Z
 0x00474af0,321,DatArchive::Decode,?Decode@DatArchive@@QAEPAXPADPAX@Z
 0x00474c40,46,DatArchive::GetEntrySize,?GetEntrySize@DatArchive@@QAEKPAD@Z
-0x00474c70,101,Func474c70,
-0x00474ce0,701,Func474ce0,
-0x00474fa0,420,Func474fa0,
-0x00475150,139,Func475150,
-0x004751e0,30,Func4751e0,
-0x00475200,31,Func475200,
-0x00475220,76,Func475220,
-0x00475270,40,Func475270,
+0x00474c70,101,DatArchive::FindEntry,?FindEntry@DatArchive@@QAEPAUDatArchiveEntry@@PAD@Z
+0x00474ce0,701,DatArchive::ReadTable,?ReadTable@DatArchive@@QAE_NPAD@Z
+0x00474fa0,420,DatArchive::BuildEntryTable,?BuildEntryTable@DatArchive@@QAEPAUDatArchiveEntry@@PAEHK@Z
+0x00475150,139,DatArchive::DuplicateString,?DuplicateString@DatArchive@@QAEPADPAD@Z
+0x004751e0,30,File::ReadDword,?ReadDword@File@@QAEKPAX@Z
+0x00475200,31,DatArchiveCursor::SkipDword,?SkipDword@DatArchiveCursor@@QAEKXZ
+0x00475220,76,DatArchiveCursor::SkipString,?SkipString@DatArchiveCursor@@QAEPAEXZ
+0x00475270,40,DatArchiveEntry::~DatArchiveEntry,??1DatArchiveEntry@@QAE@XZ
 0x00476cf2,45,Func476cf2,
 0x00476d1f,142,Func476d1f,
 0x00476dad,175,Func476dad,
@@ -1773,10 +1773,10 @@ address,size,name,symbol
 0x004a5f88,125,Func4a5f88,
 0x004a600a,34,_rand,
 0x004a602c,,_purecall,__purecall
-0x004a6035,74,`eh_vector_constructor_iterator',
+0x004a6035,74,`eh_vector_constructor_iterator',??_L@YGXPAXIHP6EX0@Z1@Z
 0x004a607f,24,Func4a607f,
 0x004a6097,47,__ArrayUnwind,
-0x004a60f5,72,`eh_vector_destructor_iterator',
+0x004a60f5,72,`eh_vector_destructor_iterator',??_M@YGXPAXIHP6EX0@Z@Z
 0x004a613d,24,Func4a613d,
 0x004a6155,34,__amsg_exit,
 0x004a617a,36,fast_error_exit,

@@ -1,6 +1,6 @@
 // The game's files: a file interface and its Win32 implementation (from
 // 0x4736c0), and the data archives (from 0x474860), as in th07's
-// archive.h. Only what other files use so far of the archives.
+// archive.h.
 
 #pragma once
 
@@ -67,18 +67,97 @@ extern char *g_FileModes[2];
 // directory unless it has a drive. Not in th06.
 void MakeFullPath(char *dst, char *path);
 
-struct DatArchiveEntry;
+// An entry of an archive's table.
+struct DatArchiveEntry
+{
+    DatArchiveEntry()
+    {
+        this->name = NULL;
+    }
+    ~DatArchiveEntry()
+    {
+        if (this->name != NULL)
+        {
+            GlobalFree(this->name);
+            this->name = NULL;
+        }
+    }
 
-// The game's data archive (th08.dat), at 0x164f588: files are looked up
-// by name (without the directory). The same functions as th07's.
+    // GlobalAlloc'd.
+    char *name;
+    // Where the compressed data starts in the archive; it ends where the
+    // next entry's starts. The table has one more entry, without a name,
+    // whose offset is the table's.
+    DWORD offset;
+    // The decoded size.
+    DWORD size;
+    DWORD unk_0c;
+};
+ASSERT_SIZE(DatArchiveEntry, 0x10);
+
+// The header of th08.dat after the magic: three dwords, encrypted with
+// DecryptData and each offset by a constant. New in th08.
+struct DatArchiveHeader
+{
+    int numEntries;
+    DWORD tableOffset;
+    DWORD decodedSize;
+};
+ASSERT_SIZE(DatArchiveHeader, 0xc);
+
+// Walks the decoded entry table in BuildEntryTable. New in th08; its
+// inline methods are out-of-line copies at 0x475200 and 0x475220.
+struct DatArchiveCursor
+{
+    // Moves past the dword at the cursor and returns the next one.
+    DWORD SkipDword()
+    {
+        this->cur += 4;
+        return *(DWORD *)this->cur;
+    }
+    // Moves past the string at the cursor and its terminator; returns
+    // the new position.
+    BYTE *SkipString()
+    {
+        this->cur += strlen((char *)this->cur) + 1;
+        return this->cur;
+    }
+
+    BYTE *cur;
+};
+
+// The game's data archive (th08.dat, magic "PBGZ"), at 0x164f588: files
+// are looked up by name (without the directory). As th07's, but the
+// header and the table are also encrypted.
 class DatArchive
 {
 public:
+    DatArchive();
+    // Calls Release.
+    ~DatArchive();
+
+    // Opens the archive at `path` and reads its table. Returns true on
+    // success.
+    bool Open(char *path);
+    // Closes the archive and frees its table.
+    void Release();
     // The decoded size of entry `name`; 0 if there is none.
     DWORD GetEntrySize(char *name);
     // Decodes entry `name` into `buffer`, which must hold GetEntrySize
     // bytes.
     void *Decode(char *name, void *buffer);
+    // The entry named `name` (case-insensitive), or NULL.
+    DatArchiveEntry *FindEntry(char *name);
+    // Opens the file at `path` and reads the header and the table, each
+    // decrypted with DecryptData. Returns true on success; on failure
+    // deletes the file.
+    bool ReadTable(char *path);
+    // Builds the entry table from the `count` entries at `table` (each a
+    // name, then offset, size and unk_0c), plus an end entry at
+    // `tableOffset`. Returns a new[]'d array, or NULL.
+    DatArchiveEntry *BuildEntryTable(BYTE *table, int count, DWORD tableOffset);
+    // A GlobalAlloc'd copy of `str`, or NULL.
+    char *DuplicateString(char *str);
 
     DatArchiveEntry *entries;
     int numEntries;
