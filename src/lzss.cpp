@@ -271,3 +271,19 @@ void LzssTreeInitNode(int pos)
     g_LzssTree[pos].largerChild = 0;
     g_LzssTree[pos].smallerChild = 0;
 }
+
+void LzssClearWindow()
+{
+    int i;
+
+    for (i = 0; i < 0x2000; i++)
+    {
+        g_LzssWindow[i] = 0;
+    }
+    for (i = 0; i < 0x2001; i++)
+    {
+        g_LzssTree[i].parent = 0;
+        g_LzssTree[i].smallerChild = 0;
+        g_LzssTree[i].largerChild = 0;
+    }
+}
