@@ -298,3 +298,71 @@ CSound::~CSound()
     SAFE_DELETE_ARRAY(m_apDSBuffer);
     SAFE_DELETE(m_pWaveFile);
 }
+
+HRESULT CSound::FillBufferWithSound(LPDIRECTSOUNDBUFFER pDSB, BOOL bRepeatWavIfBufferLarger)
+{
+    HRESULT hr;
+    VOID *pDSLockedBuffer = NULL; // Pointer to locked buffer memory
+    DWORD dwDSLockedBufferSize = 0; // Size of the locked DirectSound buffer
+    DWORD dwWavDataRead = 0; // Amount of data read from the wav file
+
+    if (pDSB == NULL)
+        return CO_E_NOTINITIALIZED;
+
+    // Make sure we have focus, and we didn't just switch in from
+    // an app which had a DirectSound device
+    if (FAILED(hr = RestoreBuffer(pDSB, NULL)))
+        return DXTRACE_ERR(TEXT("RestoreBuffer"), hr);
+
+    // Lock the buffer down
+    if (FAILED(hr = pDSB->Lock(0, m_dwDSBufferSize, &pDSLockedBuffer, &dwDSLockedBufferSize, NULL, NULL, 0L)))
+        return DXTRACE_ERR(TEXT("Lock"), hr);
+
+    // Reset the wave file to the beginning
+    m_pWaveFile->ResetFile(false);
+
+    if (FAILED(hr = m_pWaveFile->Read((BYTE *)pDSLockedBuffer, dwDSLockedBufferSize, &dwWavDataRead)))
+        return DXTRACE_ERR(TEXT("Read"), hr);
+
+    if (dwWavDataRead == 0)
+    {
+        // Wav is blank, so just fill with silence
+        FillMemory((BYTE *)pDSLockedBuffer, dwDSLockedBufferSize,
+                   (BYTE)(m_pWaveFile->format->format.wBitsPerSample == 8 ? 128 : 0));
+    }
+    else if (dwWavDataRead < dwDSLockedBufferSize)
+    {
+        // If the wav file was smaller than the DirectSound buffer,
+        // we need to fill the remainder of the buffer with data
+        if (bRepeatWavIfBufferLarger)
+        {
+            // Reset the file and fill the buffer with wav data
+            DWORD dwReadSoFar = dwWavDataRead; // From previous call above.
+            while (dwReadSoFar < dwDSLockedBufferSize)
+            {
+                // This will keep reading in until the buffer is full
+                // for very short files
+                if (FAILED(hr = m_pWaveFile->ResetFile(false)))
+                    return DXTRACE_ERR(TEXT("ResetFile"), hr);
+
+                hr = m_pWaveFile->Read((BYTE *)pDSLockedBuffer + dwReadSoFar, dwDSLockedBufferSize - dwReadSoFar,
+                                       &dwWavDataRead);
+                if (FAILED(hr))
+                    return DXTRACE_ERR(TEXT("Read"), hr);
+
+                dwReadSoFar += dwWavDataRead;
+            }
+        }
+        else
+        {
+            // Don't repeat the wav file, just fill in silence
+            FillMemory((BYTE *)pDSLockedBuffer + dwWavDataRead, dwDSLockedBufferSize - dwWavDataRead,
+                       (BYTE)(m_pWaveFile->format->format.wBitsPerSample == 8 ? 128 : 0));
+        }
+    }
+
+    // Unlock the buffer, we don't need it anymore.
+    pDSB->Unlock(pDSLockedBuffer, dwDSLockedBufferSize, NULL, 0);
+
+    return S_OK;
+}
