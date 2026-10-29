@@ -491,3 +491,12 @@ int EffectUpdateFollowPlayer(Effect *effect)
     effect->pos = g_Player.pos;
     return 1;
 }
+
+int EffectUpdateConvergeSlow(Effect *effect)
+{
+    float f;
+
+    f = 256.0f - effect->timer.AsFloat() * 256.0f / 240.0f;
+    effect->pos = effect->axis * f + effect->origin;
+    return 1;
+}
