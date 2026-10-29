@@ -474,3 +474,16 @@ void SpriteEngine::ReleaseAnm(int slot)
         memset(&this->anms[slot], 0, sizeof(AnmLoaded));
     }
 }
+
+void SpriteEngine::ReleaseTexture(AnmTexture *tex)
+{
+    if (tex->texture != NULL)
+    {
+        tex->texture->Release();
+        tex->texture = NULL;
+    }
+    if (tex->data != NULL)
+    {
+        g_MemoryManager.Free(tex->data);
+    }
+}
