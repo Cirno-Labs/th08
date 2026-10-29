@@ -213,6 +213,12 @@ int EffectUpdateRingFade(Effect *effect);
 // All of it, the radius from scriptVarF1, centred on the sprite.
 int EffectUpdateRingAt(Effect *effect);
 
+// Ring effect updates of the bombs (bomb.cpp), placeholder names by
+// effect type: verticesDirty every frame. 42: radius 256 easing out over
+// 40 frames, 0x40 segments, 5 waves of growing height after frame 40, and
+// growing width.
+int EffectUpdateBombRing42(Effect *effect);
+
 // The effects, at 0x4ece60: 0x200 started in turn, 0x80 started in
 // order from 0x200, 0xd reserved slots and a spare.
 class EffectManager
