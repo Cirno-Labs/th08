@@ -1089,6 +1089,46 @@ int SpriteEngine::FillSpriteStripVertices(Sprite *vm, VertexTex1DiffuseXyzrwh *v
     return 0;
 }
 
+int SpriteEngine::FillVerticalStripVertices(Sprite *vm, VertexTex1DiffuseXyzrwh *vertices, int count)
+{
+    float width;
+    float step;
+    float u;
+    float u0;
+    VertexTex1DiffuseXyzrwh *cur;
+    int i;
+    float v;
+
+    // FillSpriteStripVertices turned a quarter: u0 and u run down the
+    // sprite's v coordinates, v is the fixed u coordinate.
+    if (count < 3)
+    {
+        return -1;
+    }
+    u0 = vm->spriteData->uvEndY + vm->uvScrollY;
+    width = vm->spriteData->uvEndY - vm->spriteData->uvStartY;
+    v = vm->spriteData->uvStartX + vm->uvScrollX;
+    cur = vertices;
+    step = width / ((count + 1) / 2 - 1);
+    for (i = 0, u = u0; i < count; i += 2, cur += 2, u -= step)
+    {
+        cur->uv.y = u;
+        cur->uv.x = v;
+        cur->diffuse = vm->color;
+        cur->w = 1.0f;
+    }
+    v = vm->spriteData->uvEndX + vm->uvScrollX;
+    cur = vertices + 1;
+    for (i = 1, u = u0; i < count; i += 2, cur += 2, u -= step)
+    {
+        cur->uv.y = u;
+        cur->uv.x = v;
+        cur->diffuse = vm->color;
+        cur->w = 1.0f;
+    }
+    return 0;
+}
+
 SpriteEngine::SpriteEngine()
 {
     memset(this, 0, sizeof(*this));

@@ -612,6 +612,10 @@ public:
     // even ones along its top, odd ones along its bottom, as th07's.
     // Returns 0, or -1 for fewer than 3.
     int FillSpriteStripVertices(Sprite *vm, VertexTex1DiffuseXyzrwh *vertices, int count);
+    // The same for a strip down the sprite from bottom to top: even
+    // vertices along its left side, odd ones along its right. New in
+    // th08.
+    int FillVerticalStripVertices(Sprite *vm, VertexTex1DiffuseXyzrwh *vertices, int count);
     // Sends interrupt `interrupt` to the `count` sprites from `vms` that
     // show a loaded sprite, as th07's.
     void SendInterruptToLoadedSprites(Sprite *vms, int count, short interrupt);
