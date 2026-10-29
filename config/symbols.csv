@@ -1032,7 +1032,7 @@ address,size,name,symbol
 0x00470dd5,59,Func470dd5,
 0x00470e10,881,Func470e10,
 0x00471181,639,Func471181,
-0x00471400,109,Func471400,
+0x00471400,109,MainMenu::ReleaseTitleScene,?ReleaseTitleScene@MainMenu@@QAEHXZ
 0x0047146d,281,SetUpTitleScene,?SetUpTitleScene@@YIHH@Z
 0x00471586,203,Func471586,
 0x00471651,17,Func471651,
