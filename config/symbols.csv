@@ -660,7 +660,7 @@ address,size,name,symbol
 0x00443c90,19,MidiDevice::~MidiDevice,??1MidiDevice@@QAE@XZ
 0x00443cb0,89,Func443cb0,
 0x00443d10,59,MidiDevice::Close,?Close@MidiDevice@@QAEHXZ
-0x00443d50,78,Func443d50,
+0x00443d50,78,MidiDevice::SendLongMsg,?SendLongMsg@MidiDevice@@QAEHPAUmidihdr_tag@@@Z
 0x00443da0,67,Func443da0,
 0x00443df0,48,Func443df0,
 0x00443e20,41,Func443e20,

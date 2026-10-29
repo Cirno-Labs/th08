@@ -35,3 +35,16 @@ WORD SwapBytes16(WORD value)
     swapped.bytes[1] = ((BYTE *)&value)[0];
     return swapped.word;
 }
+
+int MidiDevice::SendLongMsg(LPMIDIHDR header)
+{
+    if (this->handle == 0)
+    {
+        return 0;
+    }
+    if (midiOutPrepareHeader(this->handle, header, sizeof(MIDIHDR)) != MMSYSERR_NOERROR)
+    {
+        return 1;
+    }
+    return midiOutLongMsg(this->handle, header, sizeof(MIDIHDR)) != MMSYSERR_NOERROR;
+}

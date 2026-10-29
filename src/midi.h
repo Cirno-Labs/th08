@@ -27,6 +27,10 @@ public:
     // Returns -1 if no device is open, 0 once it is closed.
     int Close();
 
+    // Prepares and sends a system-exclusive message. Returns 0 if no
+    // device is open, nonzero if either step fails.
+    int SendLongMsg(LPMIDIHDR header);
+
     HMIDIOUT handle;
     UINT deviceId;
 };
