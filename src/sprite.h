@@ -33,6 +33,10 @@ public:
     void ReleaseSurface(int surface);
     // Draws `vm` at its position (0x463210).
     int Draw(Sprite *vm);
+    // Frees ANM slot `slot` (0x466060).
+    void ReleaseAnm(int slot);
+    // Releases the vertex buffer (0x446f0b, in App's object).
+    void ReleaseVertexBuffer();
 
     IDirect3DSurface8 *GetSurface(int surface)
     {
@@ -41,6 +45,8 @@ public:
 
     unsigned char unk_0[0x2038];
     IDirect3DSurface8 *surfaces[0x20];
+    unsigned char unk_20b8[0x414];
+    IDirect3DVertexBuffer8 *vertexBuffer;
 };
 extern SpriteEngine *g_SpriteEngine;
 

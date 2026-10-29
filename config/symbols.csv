@@ -12,7 +12,7 @@ address,size,name,symbol
 0x00402780,168,Func402780,
 0x00402830,131,Func402830,
 0x004028c0,39,Func4028c0,
-0x004028f0,35,Func4028f0,
+0x004028f0,35,AsciiText::RemoveChain,?RemoveChain@AsciiText@@SIXXZ
 0x00402920,265,Func402920,
 0x00402a30,68,AsciiText::AddFormat,?AddFormat@AsciiText@@QAAXPAUD3DXVECTOR3@@PADZZ
 0x00402a80,146,Func402a80,
@@ -702,7 +702,7 @@ address,size,name,symbol
 0x00446a37,656,InitDirectInput,?InitDirectInput@@YIHPAVApp@@@Z
 0x00446cc7,63,EnumJoysticksCallback,?EnumJoysticksCallback@@YGHPBUDIDEVICEINSTANCEA@@PAX@Z
 0x00446d06,517,App::DeletedCallback,?DeletedCallback@App@@SIHPAV1@@Z
-0x00446f0b,55,Func446f0b,
+0x00446f0b,55,SpriteEngine::ReleaseVertexBuffer,?ReleaseVertexBuffer@SpriteEngine@@QAEXXZ
 0x00446f42,17,Func446f42,
 0x00446f53,834,DrawFps,?DrawFps@@YIXH@Z
 0x00447295,198,Func447295,
@@ -835,7 +835,7 @@ address,size,name,symbol
 0x00453080,209,Func453080,
 0x00453160,58,Func453160,
 0x004531a0,77,Func4531a0,
-0x004531f0,2445,Func4531f0,
+0x004531f0,2445,SaveReplay,?SaveReplay@@YIXPAD0@Z
 0x00453b80,88,Func453b80,
 0x00453be0,23,Func453be0,
 0x00453c00,21,Func453c00,
@@ -987,7 +987,7 @@ address,size,name,symbol
 0x00465ba0,284,Func465ba0,
 0x00465cc0,829,Func465cc0,
 0x00466000,91,Func466000,
-0x00466060,243,Func466060,
+0x00466060,243,SpriteEngine::ReleaseAnm,?ReleaseAnm@SpriteEngine@@QAEXH@Z
 0x00466160,72,Func466160,
 0x004661b0,341,Func4661b0,
 0x00466310,145,Func466310,
@@ -2404,6 +2404,7 @@ address,size,name,symbol
 0x004c81b0,,g_SoundPaths,?g_SoundPaths@@3PAPADA
 0x004c8704,,g_FileModes,?g_FileModes@@3PAPADA
 0x004cce20,,g_AsciiText,?g_AsciiText@@3VAsciiText@@A
+0x0160f508,,g_GameManager,?g_GameManager@@3VGameManager@@A
 0x0164d388,,g_JoyCaps,?g_JoyCaps@@3UtagJOYCAPSA@@A
 0x0164d51c,,g_ShotHeldFrames,?g_ShotHeldFrames@@3GA
 0x0164d540,,g_Log,?g_Log@@3VLog@@A

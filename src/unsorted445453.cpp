@@ -11,6 +11,8 @@
 
 #include "ascii.h"
 #include "chain.h"
+#include "midi.h"
+#include "replay.h"
 #include "sprite.h"
 #include "unsorted.h"
 
@@ -329,4 +331,74 @@ BOOL CALLBACK EnumJoysticksCallback(const DIDEVICEINSTANCE *pdidInstance, VOID *
         }
     }
     return DIENUM_STOP;
+}
+
+inline void FreeData(void *data);
+
+int App::DeletedCallback(App *arg)
+{
+    g_App.CloseSubThread();
+    if (g_App.verFile != NULL)
+    {
+        FreeData(g_App.verFile);
+        g_App.verFile = NULL;
+    }
+    g_SpriteEngine->ReleaseVertexBuffer();
+    g_SpriteEngine->ReleaseAnm(0);
+    g_SpriteEngine->ReleaseAnm(2);
+    g_SpriteEngine->ReleaseSurface(8);
+    AsciiText::RemoveChain();
+    g_SoundPlayer.QueueSoundCommand(4, 0, "dummy");
+    if (g_App.musicMode == 2 && g_App.midi != NULL)
+    {
+        g_App.midi->Restart(0x1e);
+    }
+    SaveReplay(NULL, NULL);
+    ReleaseTextSurface();
+    if (arg->keyboard)
+    {
+        arg->keyboard->Unacquire();
+    }
+    if (arg->keyboard)
+    {
+        arg->keyboard->Release();
+        arg->keyboard = NULL;
+    }
+    if (arg->joystick)
+    {
+        arg->joystick->Unacquire();
+    }
+    if (arg->joystick)
+    {
+        arg->joystick->Release();
+        arg->joystick = NULL;
+    }
+    if (arg->dinput)
+    {
+        arg->dinput->Release();
+        arg->dinput = NULL;
+    }
+    if (g_GameManager.stats != NULL)
+    {
+        delete g_GameManager.stats;
+        g_GameManager.stats = NULL;
+    }
+    if (g_GameManager.unk_4 != NULL)
+    {
+        delete g_GameManager.unk_4;
+        g_GameManager.unk_4 = NULL;
+    }
+    g_Archive.Release();
+    if (g_App.timer != NULL)
+    {
+        g_App.timer->StopTimer();
+        delete g_App.timer;
+        g_App.timer = NULL;
+    }
+    return 0;
+}
+
+inline void FreeData(void *data)
+{
+    free(data);
 }

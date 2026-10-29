@@ -8,6 +8,8 @@
 class AsciiText
 {
 public:
+    // Removes the update element and the first draw element (0x4028f0).
+    static void RemoveChain();
     // Queues `text` to be drawn at `pos`, with printf-style formatting
     // (0x402a30).
     void AddFormat(D3DXVECTOR3 *pos, char *fmt, ...);

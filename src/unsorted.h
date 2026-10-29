@@ -32,6 +32,7 @@ struct ControllerMapping
 };
 ASSERT_SIZE(ControllerMapping, 0x12);
 
+class MidiPlayer;
 class MidiTimer;
 
 // The config's option bits, in th07's order: the bits used so far test
@@ -156,7 +157,10 @@ public:
     int hideFps;
     // Frames are paced by the clock rather than by the presents.
     int presentImmediate;
-    unsigned char unk_180[0x20];
+    unsigned char unk_180[0xc];
+    // The MIDI player; its long messages come back to WindowProc.
+    MidiPlayer *midi;
+    unsigned char unk_190[0x10];
     // The loading screen's sprites, from nowloading.anm (AddedCallback).
     void *loadingAnm;
     // Bit 0x40 is set by CheckSingleInstance when the startup info has
@@ -716,6 +720,22 @@ public:
 };
 ASSERT_SIZE(SoundPlayer, 0x5224);
 extern SoundPlayer g_SoundPlayer;
+
+// What th07's GameManager points to at +0x8 and +0x4. Their layouts are
+// not known yet.
+struct GameManagerStats;
+struct GameManagerUnk4;
+
+// th07's GameManager (g_Unknown626270 there), at 0x160f508. Only the
+// fields known so far.
+class GameManager
+{
+public:
+    DWORD unk_0;
+    GameManagerUnk4 *unk_4;
+    GameManagerStats *stats;
+};
+extern GameManager g_GameManager;
 
 // The thread LoadBgm starts, with the main window: streams the wave music
 // each time notifyEvent is signalled, until WM_QUIT or the music is gone.
