@@ -161,3 +161,76 @@ int GameManager::IsPracticeReplay()
 {
     return (this->unk_3dbac >> 3 & 1) && g_ReplayManager->data->isPractice ? TRUE : FALSE;
 }
+
+int GameManager::Func43c35f()
+{
+    switch (g_GameManager.stage)
+    {
+    case 0:
+    {
+        int value = g_GameManager.stats->unk_3c;
+        int limit = g_GameManager.stats->unk_40;
+        if (value >= limit)
+        {
+            return 1;
+        }
+        return 2;
+    }
+    case 1:
+    {
+        int value = g_GameManager.stats->unk_3c;
+        int limit = g_GameManager.stats->unk_40;
+        if (value >= limit)
+        {
+            return 1;
+        }
+        return 2;
+    }
+    case 2:
+    {
+        int value = g_GameManager.stats->unk_3c;
+        int limit = g_GameManager.stats->unk_40;
+        if (value >= limit)
+        {
+            return 1;
+        }
+        return 2;
+    }
+    case 3:
+    {
+        int value = g_GameManager.stats->unk_3c;
+        int limit = g_GameManager.stats->unk_40;
+        if (value >= limit)
+        {
+            return 1;
+        }
+        return 2;
+    }
+    case 4:
+    {
+        int value = g_GameManager.stats->unk_3c;
+        int limit = g_GameManager.stats->unk_40;
+        if (value >= limit)
+        {
+            return 1;
+        }
+        return 2;
+    }
+    case 5:
+    {
+        int value = g_GameManager.stats->unk_3c;
+        int limit = g_GameManager.stats->unk_40;
+        if (value >= limit)
+        {
+            return 1;
+        }
+        return 2;
+    }
+    case 6:
+        return 0;
+    case 7:
+        return 0;
+    default:
+        return 4;
+    }
+}

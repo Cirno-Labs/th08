@@ -1034,7 +1034,10 @@ struct GameManagerStats
     // Kept in each replay stage.
     int unk_34;
     int unk_38;
-    unsigned char unk_3c[0x28];
+    // Func43c35f compares them.
+    int unk_3c;
+    int unk_40;
+    unsigned char unk_44[0x20];
     // Floats, as th07's.
     float deaths;
     unsigned char unk_68[0xc];
@@ -1095,7 +1098,12 @@ public:
     int IsPhantasmOpen();
     // Whether a replay (bit 3 of unk_3dbac) of a practice is playing.
     int IsPracticeReplay();
-    // Moves `stage` on to the next stage (0x43c4b3).
+    // By stage: 0 for 6 and 7, 4 past them, else 1, or 2 while stats'
+    // unk_3c is below unk_40.
+    int Func43c35f();
+    // Moves `stage` on to the next stage: from stage 3 (index 2) to 4A or
+    // 4B by the shot type, and from 6 to 6B if bits 11-12 of unk_3dbac
+    // are set, else 6A (0x43c4b3).
     void AdvanceStage();
     // Whether the game is a practice: unk_3dbac's bit 0, which th07 read
     // directly. Inline; the copy at 0x406cd0 is in an /Od object.
