@@ -1145,6 +1145,282 @@ void DrawFan(D3DXVECTOR3 *center, D3DCOLOR color, float arc, float diameter)
     g_SpriteEngine->DrawColoredFan(&sprite, vertices, 0x40);
 }
 
+int MainMenu::UpdateReplayMenu()
+{
+    int i;
+    HANDLE findHandle;
+    int loaded;
+    int dataSize;
+    ReplayHeader *data;
+    char path[0x40];
+    WIN32_FIND_DATAA fd;
+
+    switch (this->subState)
+    {
+    case 0:
+        if (this->inputLockout == 0)
+        {
+            if (this->prevState != 7 && g_SpriteEngine->LoadSurface(0, "title/select00.png") != 0)
+            {
+                return 0;
+            }
+            g_SpriteEngine->SendInterruptToLoadedSprites(this->sprites, this->spriteCount, 14);
+            this->cursor = 0;
+            this->subState = 0;
+            this->stateFrames = 0;
+            this->helpSprite = NULL;
+            loaded = 0;
+            for (i = 0; i < 15; i++)
+            {
+                sprintf(path, "./replay/th8_%.2d.rpy", i + 1);
+                data = (ReplayHeader *)LoadFileData(path, &dataSize, 1);
+                if (data == NULL)
+                {
+                    continue;
+                }
+                data = ValidateReplay(data, dataSize);
+                if (data != NULL)
+                {
+                    this->replays[loaded] = *data;
+                    strcpy(this->replayPaths[loaded], path);
+                    sprintf(this->replayLabels[loaded], "No.%.2d", i + 1);
+                    loaded++;
+                    free(data);
+                }
+            }
+            _mkdir("./replay");
+            _chdir("./replay");
+            findHandle = FindFirstFileA("th8_ud????.rpy", &fd);
+            if (findHandle != INVALID_HANDLE_VALUE)
+            {
+                for (i = 0; i < 45; i++)
+                {
+                    data = (ReplayHeader *)LoadFileData(fd.cFileName, &dataSize, 1);
+                    if (data == NULL)
+                    {
+                        continue;
+                    }
+                    data = ValidateReplay(data, dataSize);
+                    if (data != NULL)
+                    {
+                        this->replays[loaded] = *data;
+                        sprintf(this->replayPaths[loaded], "./replay/%s", fd.cFileName);
+                        sprintf(this->replayLabels[loaded], "User ");
+                        free(data);
+                        loaded++;
+                    }
+                    if (!FindNextFileA(findHandle, &fd))
+                    {
+                        break;
+                    }
+                }
+            }
+            FindClose(findHandle);
+            _chdir("../");
+            this->replayCount = loaded;
+            this->clearedInReplayMenu = 0;
+        }
+        if (this->inputLockout >= 8)
+        {
+            this->subState = 1;
+            this->stateFrames = 0;
+        }
+        break;
+    case 1:
+        this->MoveMenuCursor(this->replayCount);
+        if (this->replayCount > 15)
+        {
+            if (WAS_PRESSED_OR_HELD(0x40))
+            {
+                this->cursor -= 15;
+                if (this->cursor < 0)
+                {
+                    this->cursor += this->replayCount;
+                }
+                g_SoundPlayer.QueueSound(12, 0);
+            }
+            if (WAS_PRESSED_OR_HELD(0x80))
+            {
+                this->cursor += 15;
+                if (this->cursor >= this->replayCount)
+                {
+                    this->cursor -= this->replayCount;
+                }
+                g_SoundPlayer.QueueSound(12, 0);
+            }
+        }
+        this->replayCursor = this->cursor;
+        if (this->stateFrames < 10)
+        {
+            break;
+        }
+        if (WAS_PRESSED(0x1001))
+        {
+            int replaySize;
+
+            if (this->replayCount == 0)
+            {
+                break;
+            }
+            g_SoundPlayer.QueueSound(10, 0);
+            this->subState = 2;
+            g_SpriteEngine->SendInterruptToLoadedSprites(this->sprites, this->spriteCount, 15);
+            this->sprites[this->replayCursor % 15 + 0x50].SetPendingInterrupt(17);
+            this->loadedReplay = (ReplayHeader *)LoadFileData(this->replayPaths[this->replayCursor], &replaySize, 1);
+            this->loadedReplay = ValidateReplay(this->loadedReplay, replaySize);
+            for (i = 0; i < 9; i++)
+            {
+                if (this->loadedReplay->stages[i] != NULL)
+                {
+                    this->loadedReplay->stages[i] =
+                        (ReplayStage *)((int)this->loadedReplay + (int)this->loadedReplay->stages[i]);
+                }
+            }
+            this->cursor = 0;
+            while (this->replays[this->replayCursor].stages[this->cursor] == NULL)
+            {
+                this->cursor++;
+                if (this->cursor > 8)
+                {
+                    LogError(&g_Log, "リプレイデータが異常\r\n");
+                    g_App.scene = -1;
+                    return 0;
+                }
+            }
+            this->resultTextAnm->InitSprite(&this->unkSprites[0], i + 2);
+            this->unkSprites[0].pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+            this->unkSprites[0].flags |= 0x1800;
+            this->unkSprites[0].fontWidth = 15;
+            this->unkSprites[0].fontHeight = 15;
+            g_SpriteEngine->RenderText(&this->unkSprites[0], 0xffffff, 0,
+                                       this->replays[this->replayCursor].spellCardName);
+            this->unkSprites[0].alpha = 0xff;
+            this->unkSprites[0].colorRgb[2] = 0xff;
+            this->unkSprites[0].colorRgb[1] = 0xff;
+            this->unkSprites[0].colorRgb[0] = 0xff;
+            break;
+        }
+        if (WAS_PRESSED(0xa))
+        {
+            g_SoundPlayer.QueueSound(11, 0);
+            this->subState = 4;
+            this->stateFrames = 0;
+            g_SpriteEngine->SendInterruptToLoadedSprites(this->sprites, this->spriteCount, 16);
+        }
+        break;
+    case 2:
+        i = this->MoveMenuCursor(9);
+        if (i < 0)
+        {
+            while (this->replays[this->replayCursor].stages[this->cursor] == NULL)
+            {
+                this->cursor--;
+                if (this->cursor < 0)
+                {
+                    this->cursor = 9;
+                }
+            }
+        }
+        else if (i > 0)
+        {
+            while (this->replays[this->replayCursor].stages[this->cursor] == NULL)
+            {
+                this->cursor++;
+                if (this->cursor >= ARRAY_SIZE(this->replays[this->replayCursor].stages))
+                {
+                    this->cursor = 0;
+                }
+            }
+        }
+        this->replayStage = this->cursor;
+        if (WAS_PRESSED(0x1001))
+        {
+            g_SpriteEngine->SendInterruptToLoadedSprites(this->sprites, this->spriteCount, 19);
+            this->sprites[this->replayCursor % 15 + 0x50].SetPendingInterrupt(17);
+            this->subState = 3;
+            this->cursor = 0;
+            this->sprites[0x6c].pendingInterrupt = 21;
+            this->sprites[0x6d].pendingInterrupt = 21;
+            if (this->loadedReplay->spellCardNumber < 0)
+            {
+                this->sprites[0x6e].pendingInterrupt = 21;
+            }
+            else
+            {
+                this->sprites[0x6e].alpha = 0;
+            }
+            this->sprites[this->cursor + 0x6c].pendingInterrupt = 20;
+            break;
+        }
+        if (WAS_PRESSED(0xa))
+        {
+            MemFree(this->loadedReplay);
+            this->loadedReplay = NULL;
+            this->subState = 1;
+            this->inputLockout = 0;
+            g_SpriteEngine->SendInterruptToLoadedSprites(this->sprites, this->spriteCount, 14);
+            this->cursor = this->replayCursor;
+            break;
+        }
+        break;
+    case 3:
+        i = this->MoveMenuCursor((this->loadedReplay->spellCardNumber < 0) + 2);
+        if (i != 0)
+        {
+            this->sprites[0x6c].pendingInterrupt = 21;
+            this->sprites[0x6d].pendingInterrupt = 21;
+            if (this->loadedReplay->spellCardNumber < 0)
+            {
+                this->sprites[0x6e].pendingInterrupt = 21;
+            }
+            else
+            {
+                this->sprites[0x6e].alpha = 0;
+            }
+            this->sprites[this->cursor + 0x6c].pendingInterrupt = 20;
+        }
+        if (WAS_PRESSED(0x1001))
+        {
+            g_GameManager.SetIsReplay(1);
+            strcpy(g_GameManager.replayFile, this->replayPaths[this->replayCursor]);
+            g_GameManager.difficulty = this->loadedReplay->difficulty;
+            g_GameManager.character = this->loadedReplay->shotType;
+            g_GameManager.character = this->loadedReplay->shotType;
+            g_GameManager.isInSpellCardPractice = this->loadedReplay->spellCardNumber >= 0;
+            g_GameManager.unk_3dbb0 = this->loadedReplay->spellCardNumber;
+            MemFree(this->loadedReplay);
+            this->loadedReplay = NULL;
+            g_GameManager.stage = this->replayStage;
+            g_App.scene = 2;
+            g_GameManager.replayMenuChoice = this->cursor;
+            g_App.StopMusic();
+            return 0;
+        }
+        if (WAS_PRESSED(0xa))
+        {
+            this->subState = 2;
+            this->inputLockout = 0;
+            this->cursor = this->replayStage;
+            g_SpriteEngine->SendInterruptToLoadedSprites(this->sprites, this->spriteCount, 15);
+            this->sprites[this->replayCursor % 15 + 0x50].SetPendingInterrupt(17);
+            break;
+        }
+        break;
+    case 4:
+        if (this->stateFrames >= 30)
+        {
+            this->SetState(0);
+            this->cursor = 4;
+            return 1;
+        }
+        break;
+    }
+    this->subMenuIdleFrames++;
+    this->stateFrames++;
+    this->inputLockout++;
+    return 1;
+}
+
 int MainMenu::DrawReplayMenu()
 {
     Sprite *text;

@@ -1532,7 +1532,9 @@ public:
             // The clear level GuiImpl::StartMsgScript picked for the
             // ending dialogue: AdvanceStage goes to 6B unless it is 0.
             unsigned int clearLevel : 2;
-            unsigned int unk_3dbac_13 : 2;
+            unsigned int unk_3dbac_13 : 1;
+            // Set while a spell card is practised (IsInSpellCardPractice).
+            unsigned int isInSpellCardPractice : 1;
             // AnyShotHasExtraOpen, Func43c2c5 and AllShotsHaveExtraOpen
             // as App::AddedCallback found them.
             unsigned int anyShotHasExtraOpen : 1;

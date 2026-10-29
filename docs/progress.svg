@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">55.82% (623)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">42.38% (473)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">55.91% (624)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">42.29% (472)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="417.01" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="417.01" y="0" class="decompiled"/>
-<rect width="316.60" height="6" x="430.40" y="0" class="todo"/>
+<rect width="417.68" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="417.68" y="0" class="decompiled"/>
+<rect width="315.94" height="6" x="431.06" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -1086,7 +1086,7 @@
 <rect width="12" height="12" x="225" y="300" class="todo"><title>0x0046cbbb MainMenu::Func46cbbb (2984 bytes)</title></rect>
 <rect width="12" height="12" x="240" y="300" class="named"><title>0x0046d763 FormatFullWidthNumber (150 bytes)</title></rect>
 <rect width="12" height="12" x="255" y="300" class="todo"><title>0x0046d7f9 Func46d7f9 (2365 bytes)</title></rect>
-<rect width="12" height="12" x="270" y="300" class="todo"><title>0x0046e136 MainMenu::UpdateReplayMenu (3671 bytes)</title></rect>
+<rect width="12" height="12" x="270" y="300" class="named"><title>0x0046e136 MainMenu::UpdateReplayMenu (3671 bytes)</title></rect>
 <rect width="12" height="12" x="285" y="300" class="named"><title>0x0046ef8d MainMenu::DrawReplayMenu (1180 bytes)</title></rect>
 <rect width="12" height="12" x="300" y="300" class="named"><title>0x0046f429 MainMenu::DrawPracticeScores (418 bytes)</title></rect>
 <rect width="12" height="12" x="315" y="300" class="todo"><title>0x0046f5cb MainMenu::DrawState16 (1940 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">49.15%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">49.86%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">49.95%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">49.06%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="367.15" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="367.15" y="0" class="decompiled"/>
-<rect width="372.45" height="6" x="374.55" y="0" class="todo"/>
+<rect width="373.11" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="373.11" y="0" class="decompiled"/>
+<rect width="366.49" height="6" x="380.51" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1210,7 +1210,7 @@
 <rect width="44.56" height="43.08" x="138.89" y="46.50" class="todo"><title>0x00431240 Func431240 (3862 bytes)</title></rect>
 <rect width="44.56" height="41.18" x="138.89" y="92.58" class="named"><title>0x004674e0 MainMenu::StartTitle (3703 bytes)</title></rect>
 <rect width="44.56" height="41.13" x="138.89" y="136.76" class="named"><title>0x0045696f ResultScreen::HandleReplaySaving (3699 bytes)</title></rect>
-<rect width="44.56" height="40.80" x="138.89" y="180.89" class="todo"><title>0x0046e136 MainMenu::UpdateReplayMenu (3671 bytes)</title></rect>
+<rect width="44.56" height="40.80" x="138.89" y="180.89" class="named"><title>0x0046e136 MainMenu::UpdateReplayMenu (3671 bytes)</title></rect>
 <rect width="44.56" height="40.47" x="138.89" y="224.69" class="named"><title>0x00439bc7 GameManager::OnUpdate (3644 bytes)</title></rect>
 <rect width="44.56" height="37.84" x="138.89" y="268.16" class="named"><title>0x0043abd7 GameManager::LoadingThread (3423 bytes)</title></rect>
 <rect width="44.56" height="36" x="138.89" y="309" class="todo"><title>0x00416b90 Func416b90 (3269 bytes)</title></rect>
