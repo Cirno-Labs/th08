@@ -156,3 +156,8 @@ int GameManager::IsPhantasmOpen()
 {
     return 0;
 }
+
+int GameManager::IsPracticeReplay()
+{
+    return (this->unk_3dbac >> 3 & 1) && g_ReplayManager->data->isPractice ? TRUE : FALSE;
+}
