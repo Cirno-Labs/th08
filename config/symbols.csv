@@ -130,7 +130,7 @@ address,size,name,symbol
 0x0040bab0,30,SpriteEngine::ResetColorModulation,?ResetColorModulation@SpriteEngine@@QAEXXZ
 0x0040bad0,31,SpriteEngine::SetColorModulation,?SetColorModulation@SpriteEngine@@QAEXK@Z
 0x0040baf0,33,SpriteEngine::DrawAndFlush,?DrawAndFlush@SpriteEngine@@QAEXPAVSprite@@@Z
-0x0040bb20,51,Func40bb20,
+0x0040bb20,51,SpriteEngine::ClearDrawStats,?ClearDrawStats@SpriteEngine@@QAEXXZ
 0x0040bb60,26,SpriteEngine::GetAnm,?GetAnm@SpriteEngine@@QAEPAVAnmLoaded@@H@Z
 0x0040bb80,145,GameManager::ChecksumMismatch,?ChecksumMismatch@GameManager@@QAEHXZ
 0x0040bc20,23,Player::IsUnk5Clear,?IsUnk5Clear@Player@@QAEHXZ
