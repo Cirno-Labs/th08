@@ -30,6 +30,10 @@ struct Item
     // unk_24 / 1000 per pixel below the line; doubled at unk22Low1. Then
     // counts it and gives the extends it reaches (0x440e40).
     void CollectPoint();
+    // What collecting a type 8 item (a power item at full power) does:
+    // CollectPoint's value in tenths, as points only (0x441020). New in
+    // th08.
+    void CollectFullPowerItem();
 
     Sprite sprite;
     D3DXVECTOR3 pos;

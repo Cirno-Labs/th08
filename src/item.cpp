@@ -234,6 +234,35 @@ void Item::CollectPoint()
     g_GameManager.RerollChecksumKeys();
 }
 
+void Item::CollectFullPowerItem()
+{
+    int maxValue = g_GameManager.stats->unk_24;
+    int amount;
+
+    amount = (this->pos.y < g_Player.shotType->itemAutoCollectLine ? 1 : 0)
+                 ? maxValue
+                 : maxValue / 2 - (int)(this->pos.y - g_Player.shotType->itemAutoCollectLine) *
+                                      (g_GameManager.stats->unk_24 / 1000);
+    if (this->countsFullValue == 1)
+    {
+        amount = maxValue;
+    }
+    maxValue /= 10;
+    maxValue -= maxValue % 10;
+    amount /= 10;
+    amount -= amount % 10;
+    if (g_GameManager.IsUnk22AtLow1())
+    {
+        amount += amount;
+    }
+    g_AsciiText.AddPopup(&this->pos, amount, amount >= maxValue ? 0xffffff00 : 0xffffffff);
+    g_GameManager.AddScore(amount);
+    if (amount >= maxValue)
+    {
+        this->countsFullValue = 1;
+    }
+}
+
 void ItemManager::CollectAll()
 {
     Item *entry = this->activeList.next;
