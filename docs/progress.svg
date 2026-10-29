@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">64.96% (725)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">33.24% (371)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">65.05% (726)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">33.15% (370)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="485.28" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="485.28" y="0" class="decompiled"/>
-<rect width="248.33" height="6" x="498.67" y="0" class="todo"/>
+<rect width="485.95" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="485.95" y="0" class="decompiled"/>
+<rect width="247.66" height="6" x="499.34" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -174,7 +174,7 @@
 <rect width="12" height="12" x="45" y="30" class="named"><title>0x0040a1b0 Stage::DrawLayer (4746 bytes)</title></rect>
 <rect width="12" height="12" x="60" y="30" class="named"><title>0x0040b440 sqrtf (21 bytes)</title></rect>
 <rect width="12" height="12" x="75" y="30" class="todo"><title>0x0040b460 Func40b460 (14 bytes)</title></rect>
-<rect width="12" height="12" x="90" y="30" class="todo"><title>0x0040b470 Func40b470 (73 bytes)</title></rect>
+<rect width="12" height="12" x="90" y="30" class="named"><title>0x0040b470 D3DXVECTOR3::operator/= (73 bytes)</title></rect>
 <rect width="12" height="12" x="105" y="30" class="named"><title>0x0040b4c0 D3DXVec3Length (58 bytes)</title></rect>
 <rect width="12" height="12" x="120" y="30" class="named"><title>0x0040b500 D3DXVec3LengthSq (49 bytes)</title></rect>
 <rect width="12" height="12" x="135" y="30" class="named"><title>0x0040b540 D3DXVec3Dot (54 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">57.89%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">41.12%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">57.91%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">41.10%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="432.46" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="432.46" y="0" class="decompiled"/>
-<rect width="307.14" height="6" x="439.86" y="0" class="todo"/>
+<rect width="432.58" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="432.58" y="0" class="decompiled"/>
+<rect width="307.02" height="6" x="439.98" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1917,7 +1917,7 @@
 <rect width="3.74" height="3.23" x="696.82" y="253.82" class="named"><title>0x004481df App::EnableFog (74 bytes)</title></rect>
 <rect width="3.74" height="3.23" x="703.56" y="253.82" class="named"><title>0x00462270 SpriteEngine::SendInterruptToLoadedSprites (74 bytes)</title></rect>
 <rect width="3.74" height="3.23" x="710.30" y="253.82" class="named"><title>0x00473970 File::Write (74 bytes)</title></rect>
-<rect width="3.65" height="3.23" x="717.04" y="253.82" class="todo"><title>0x0040b470 Func40b470 (73 bytes)</title></rect>
+<rect width="3.65" height="3.23" x="717.04" y="253.82" class="named"><title>0x0040b470 D3DXVECTOR3::operator/= (73 bytes)</title></rect>
 <rect width="3.65" height="3.23" x="723.68" y="253.82" class="decompiled"><title>0x00439007 Gui::Func439007 (73 bytes)</title></rect>
 <rect width="3.56" height="3.23" x="730.33" y="253.82" class="todo"><title>0x00450580 Func450580 (72 bytes)</title></rect>
 <rect width="3.56" height="3.23" x="736.89" y="253.82" class="named"><title>0x00466160 SpriteEngine::ReleaseTexture (72 bytes)</title></rect>
