@@ -160,7 +160,7 @@ address,size,name,symbol
 0x0040e200,196,EffectUpdateBombRing44,?EffectUpdateBombRing44@@YIHPAUEffect@@@Z
 0x0040e2d0,119,EffectUpdateBombRing45,?EffectUpdateBombRing45@@YIHPAUEffect@@@Z
 0x0040e350,58,Func40e350,
-0x0040e390,27,Func40e390,
+0x0040e390,27,Timer::operator<=,??NTimer@@QAEHH@Z
 0x0040e3b0,600,Func40e3b0,
 0x0040e610,362,Func40e610,
 0x0040e780,968,Func40e780,
