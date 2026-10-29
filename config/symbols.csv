@@ -895,7 +895,7 @@ address,size,name,symbol
 0x0045b020,190,ClearScreen,?ClearScreen@@YIXK@Z
 0x0045b0e0,124,ClearViewport,?ClearViewport@@YIXK@Z
 0x0045b160,123,ScreenEffect::OnUpdateFadeIn,?OnUpdateFadeIn@ScreenEffect@@SIHPAV1@@Z
-0x0045b1e0,687,Func45b1e0,
+0x0045b1e0,687,DrawColorRect,?DrawColorRect@@YIXPAMK@Z
 0x0045b490,717,Func45b490,
 0x0045b760,155,Func45b760,
 0x0045b800,169,Func45b800,

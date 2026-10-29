@@ -54,3 +54,37 @@ int ScreenEffect::OnUpdateFadeIn(ScreenEffect *effect)
     effect->timer++;
     return 1;
 }
+
+void DrawColorRect(float *rect, D3DCOLOR color)
+{
+    g_SpriteEngine->FlushQuadBatch();
+    VertexDiffuseXyzrwh vertices[4];
+
+    vertices[0].pos = D3DXVECTOR3(rect[0], rect[1], 0.0f);
+    vertices[1].pos = D3DXVECTOR3(rect[2], rect[1], 0.0f);
+    vertices[2].pos = D3DXVECTOR3(rect[0], rect[3], 0.0f);
+    vertices[3].pos = D3DXVECTOR3(rect[2], rect[3], 0.0f);
+    vertices[0].w = vertices[1].w = vertices[2].w = vertices[3].w = 1.0f;
+    vertices[0].diffuse = vertices[1].diffuse = vertices[2].diffuse = vertices[3].diffuse = color;
+    g_App.d3dDevice->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_SELECTARG1);
+    g_App.d3dDevice->SetTextureStageState(0, D3DTSS_COLOROP, D3DTOP_SELECTARG1);
+    g_App.d3dDevice->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_DIFFUSE);
+    g_App.d3dDevice->SetTextureStageState(0, D3DTSS_COLORARG1, D3DTA_DIFFUSE);
+    if (!g_App.GetNoDepthTest())
+    {
+        g_App.d3dDevice->SetRenderState(D3DRS_ZWRITEENABLE, FALSE);
+    }
+    g_App.d3dDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
+    g_App.d3dDevice->SetVertexShader(D3DFVF_XYZRHW | D3DFVF_DIFFUSE);
+    g_App.d3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLESTRIP, 2, vertices, sizeof(VertexDiffuseXyzrwh));
+    g_SpriteEngine->ClearVertexFormat();
+    g_SpriteEngine->ClearSpriteData();
+    g_SpriteEngine->ClearTexture();
+    g_SpriteEngine->ClearColorOp();
+    g_SpriteEngine->ClearBlendMode();
+    g_SpriteEngine->ClearZWrite();
+    g_App.d3dDevice->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_MODULATE);
+    g_App.d3dDevice->SetTextureStageState(0, D3DTSS_COLOROP, D3DTOP_MODULATE);
+    g_App.d3dDevice->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE);
+    g_App.d3dDevice->SetTextureStageState(0, D3DTSS_COLORARG1, D3DTA_TEXTURE);
+}

@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">30.91% (345)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">69.09% (771)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">31% (346)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">69% (770)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="230.93" height="6" x="0" y="0" class="named"/>
-<rect width="516.07" height="6" x="230.93" y="0" class="todo"/>
+<rect width="231.60" height="6" x="0" y="0" class="named"/>
+<rect width="515.40" height="6" x="231.60" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -963,7 +963,7 @@
 <rect width="12" height="12" x="645" y="255" class="named"><title>0x0045b020 ClearScreen (190 bytes)</title></rect>
 <rect width="12" height="12" x="660" y="255" class="named"><title>0x0045b0e0 ClearViewport (124 bytes)</title></rect>
 <rect width="12" height="12" x="675" y="255" class="named"><title>0x0045b160 ScreenEffect::OnUpdateFadeIn (123 bytes)</title></rect>
-<rect width="12" height="12" x="690" y="255" class="todo"><title>0x0045b1e0 Func45b1e0 (687 bytes)</title></rect>
+<rect width="12" height="12" x="690" y="255" class="named"><title>0x0045b1e0 DrawColorRect (687 bytes)</title></rect>
 <rect width="12" height="12" x="705" y="255" class="todo"><title>0x0045b490 Func45b490 (717 bytes)</title></rect>
 <rect width="12" height="12" x="720" y="255" class="todo"><title>0x0045b760 Func45b760 (155 bytes)</title></rect>
 <rect width="12" height="12" x="735" y="255" class="todo"><title>0x0045b800 Func45b800 (169 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">22.65%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">77.35%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">22.80%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">77.20%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="169.19" height="6" x="0" y="0" class="named"/>
-<rect width="577.81" height="6" x="169.19" y="0" class="todo"/>
+<rect width="170.31" height="6" x="0" y="0" class="named"/>
+<rect width="576.69" height="6" x="170.31" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1346,7 +1346,7 @@
 <rect width="17.14" height="16.69" x="432.76" y="269.88" class="todo"><title>0x00455cb0 Func455cb0 (699 bytes)</title></rect>
 <rect width="17.14" height="16.61" x="432.76" y="289.57" class="todo"><title>0x00420950 Func420950 (696 bytes)</title></rect>
 <rect width="17.14" height="16.47" x="432.76" y="309.18" class="todo"><title>0x00455f6b Func455f6b (691 bytes)</title></rect>
-<rect width="17.14" height="16.35" x="432.76" y="328.65" class="todo"><title>0x0045b1e0 Func45b1e0 (687 bytes)</title></rect>
+<rect width="17.14" height="16.35" x="432.76" y="328.65" class="named"><title>0x0045b1e0 DrawColorRect (687 bytes)</title></rect>
 <rect width="16.52" height="16.77" x="452.90" y="45.31" class="todo"><title>0x0045567d Func45567d (680 bytes)</title></rect>
 <rect width="16.23" height="16.77" x="472.42" y="45.31" class="named"><title>0x004667c0 SpriteEngine::LoadSurface (670 bytes)</title></rect>
 <rect width="16" height="16.77" x="491.65" y="45.31" class="named"><title>0x00446232 MeasureRefreshRate (662 bytes)</title></rect>
