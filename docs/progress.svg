@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">12.01% (134)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">87.99% (982)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">12.10% (135)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">87.90% (981)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="89.69" height="6" x="0" y="0" class="named"/>
-<rect width="657.31" height="6" x="89.69" y="0" class="todo"/>
+<rect width="90.36" height="6" x="0" y="0" class="named"/>
+<rect width="656.64" height="6" x="90.36" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -1169,7 +1169,7 @@
 <rect width="12" height="12" x="735" y="315" class="named"><title>0x00474760 LzssReplaceChild (183 bytes)</title></rect>
 <rect width="12" height="12" x="0" y="330" class="named"><title>0x00474820 LzssPredecessor (63 bytes)</title></rect>
 <rect width="12" height="12" x="15" y="330" class="named"><title>0x00474860 DatArchive::DatArchive (53 bytes)</title></rect>
-<rect width="12" height="12" x="30" y="330" class="todo"><title>0x004748a0 DatArchive::~DatArchive (19 bytes)</title></rect>
+<rect width="12" height="12" x="30" y="330" class="named"><title>0x004748a0 DatArchive::~DatArchive (19 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="330" class="todo"><title>0x004748c0 DatArchive::Open (229 bytes)</title></rect>
 <rect width="12" height="12" x="60" y="330" class="todo"><title>0x004749b0 DatArchive::Release (208 bytes)</title></rect>
 <rect width="12" height="12" x="75" y="330" class="todo"><title>0x00474a80 DatArchiveEntry::`vector deleting destructor&#x27; (112 bytes)</title></rect>
@@ -1189,8 +1189,8 @@
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
 <text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">5.90%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">94.10%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="44.04" height="6" x="0" y="0" class="named"/>
-<rect width="702.96" height="6" x="44.04" y="0" class="todo"/>
+<rect width="44.07" height="6" x="0" y="0" class="named"/>
+<rect width="702.93" height="6" x="44.07" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -2273,7 +2273,7 @@
 <rect width="0.17" height="0.40" x="729.70" y="337.79" class="named"><title>0x00445440 MidiTimer::StopTimer (19 bytes)</title></rect>
 <rect width="0.17" height="0.40" x="729.70" y="341.19" class="todo"><title>0x00453cfa Func453cfa (19 bytes)</title></rect>
 <rect width="0.17" height="0.40" x="729.70" y="344.60" class="todo"><title>0x00473230 Func473230 (19 bytes)</title></rect>
-<rect width="0.10" height="0.59" x="732.87" y="330.98" class="todo"><title>0x004748a0 DatArchive::~DatArchive (19 bytes)</title></rect>
+<rect width="0.10" height="0.59" x="732.87" y="330.98" class="named"><title>0x004748a0 DatArchive::~DatArchive (19 bytes)</title></rect>
 <rect width="0.10" height="0.40" x="732.87" y="334.57" class="todo"><title>0x004031e0 Func4031e0 (18 bytes)</title></rect>
 <rect width="0.10" height="0.40" x="732.87" y="337.98" class="todo"><title>0x0040bc40 Func40bc40 (18 bytes)</title></rect>
 <rect width="0.10" height="0.40" x="732.87" y="341.38" class="todo"><title>0x0044e350 Func44e350 (18 bytes)</title></rect>

@@ -11,3 +11,8 @@ DatArchive::DatArchive()
     this->path = NULL;
     this->file = NULL;
 }
+
+DatArchive::~DatArchive()
+{
+    this->Release();
+}
