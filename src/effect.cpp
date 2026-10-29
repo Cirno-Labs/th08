@@ -1018,3 +1018,35 @@ int EffectManager::OnDraw2()
     }
     return 1;
 }
+
+void EffectDrawBossPetal(Sprite *vm, D3DXVECTOR3 *pos)
+{
+    D3DXVECTOR3 offset;
+    D3DXVECTOR3 target;
+
+    if (!g_GameManager.isPaused && !g_GameManager.isInContinueMenu)
+    {
+        target = *pos + vm->moveEnd;
+        offset = vm->posOffset - target;
+        if (vm->posOffset.x > -9999.0f)
+        {
+            offset.x += 32.0f;
+            offset.y += 16.0f;
+            offset.z = 0.0f;
+            if (D3DXVec3LengthSq(&offset) < 25600.0f)
+            {
+                vm->moveStart.x += 0.0005f;
+                vm->moveEnd += offset * vm->moveStart.x;
+            }
+        }
+        offset = target - g_Player.pos;
+        offset.x -= 32.0f;
+        offset.y -= 16.0f;
+        offset.z = 0.0f;
+        if (D3DXVec3LengthSq(&offset) < 7744.0f)
+        {
+            vm->moveEnd += offset * 0.02f;
+        }
+    }
+    *pos += vm->moveEnd;
+}
