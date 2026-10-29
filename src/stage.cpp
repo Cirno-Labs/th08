@@ -20,6 +20,492 @@ Stage::Stage()
     this->cameraTo = this->camera;
 }
 
+int Stage::OnUpdate(Stage *stage)
+{
+    StageInstr *cmd;
+    D3DXVECTOR3 tmpVec;
+
+    if (stage->data == NULL)
+    {
+        return 1;
+    }
+    if (g_GameManager.unk_3dbac_10)
+    {
+        return 1;
+    }
+    if (g_GameManager.stage == 7)
+    {
+        if (stage->unk_ae8 == NULL)
+        {
+            Sprite *sprite;
+            D3DXVECTOR3 pos(0.0f, 0.0f, 0.0f);
+
+            stage->unk_ae8 = g_EffectManager.SpawnReservedEffect(0x40, &pos, 0xc, 1, 0xffffffff);
+            sprite = &stage->unk_ae8->sprite;
+            stage->anm->StartScript(sprite, 0xb);
+        }
+        else if (stage->waitLabel == 1)
+        {
+            Sprite *sprite = &stage->unk_ae8->sprite;
+
+            stage->anm->StartScript(sprite, 0xb);
+        }
+        else if (stage->waitLabel == 2)
+        {
+            Sprite *sprite = &stage->unk_ae8->sprite;
+            Sprite copy = *sprite;
+
+            stage->anm->StartScript(sprite, 0xc);
+            sprite->SetPendingInterrupt(2);
+            sprite->moveEnd = copy.moveEnd;
+            sprite->moveStart = copy.moveStart;
+            sprite->interpDuration[0] = copy.interpDuration[0];
+            sprite->interpFrame[0] = copy.interpFrame[0];
+            sprite->interpEasing = copy.interpEasing;
+            sprite->color = copy.color;
+        }
+        else if (stage->waitLabel == 3)
+        {
+            Sprite *sprite = &stage->unk_ae8->sprite;
+            Sprite copy = *sprite;
+
+            sprite->SetPendingInterrupt(3);
+            sprite->moveEnd = copy.moveEnd;
+            sprite->moveStart = copy.moveStart;
+            sprite->interpDuration[0] = copy.interpDuration[0];
+            sprite->interpFrame[0] = copy.interpFrame[0];
+            sprite->interpEasing = copy.interpEasing;
+            sprite->color = copy.color;
+        }
+        else if (stage->waitLabel == 4)
+        {
+            Sprite *sprite = &stage->unk_ae8->sprite;
+            Sprite copy = *sprite;
+
+            sprite->SetPendingInterrupt(4);
+            sprite->moveEnd = copy.moveEnd;
+            sprite->moveStart = copy.moveStart;
+            sprite->interpDuration[0] = copy.interpDuration[0];
+            sprite->interpFrame[0] = copy.interpFrame[0];
+            sprite->interpEasing = copy.interpEasing;
+            sprite->color = copy.color;
+        }
+    }
+    if (stage->waitLabel != 0)
+    {
+        int idx;
+
+        idx = 0;
+        cmd = stage->script;
+        stage->scriptIndex = 0;
+        while ((cmd->opcode != 0x1f || stage->waitLabel != *(int *)&cmd->args.x) && cmd->frame != -1)
+        {
+            cmd++;
+            idx++;
+        }
+        if (cmd->frame != -1)
+        {
+            stage->scriptIndex = idx + 1;
+            stage->scriptTime = cmd->frame;
+            stage->waitLabel = 0;
+        }
+    }
+loop:
+    cmd = &stage->script[stage->scriptIndex];
+    if (stage->scriptTime >= cmd->frame && cmd->frame != -1)
+    {
+        switch (cmd->opcode)
+        {
+        case 0:
+            if (cmd->frame == -1)
+            {
+                stage->keyPos = cmd->args;
+                stage->cameraPos.x = stage->keyPos.x;
+                stage->cameraPos.y = stage->keyPos.y;
+                stage->cameraPos.z = stage->keyPos.z;
+            }
+            else
+            {
+                tmpVec = cmd->args;
+                stage->cameraPos.x = tmpVec.x;
+                stage->cameraPos.y = tmpVec.y;
+                stage->cameraPos.z = tmpVec.z;
+                stage->keyPos = tmpVec;
+                stage->keyFrame = cmd->frame;
+                cmd++;
+                stage->nextKeyFrame = cmd->frame;
+                stage->nextKeyPos = cmd->args;
+            }
+            break;
+        case 1:
+            stage->fog.color = *(D3DCOLOR *)&cmd->args.x;
+            stage->fog.nearPlane = cmd->args.y;
+            stage->fog.farPlane = cmd->args.z;
+            stage->fogTarget = stage->fog;
+            break;
+        case 2:
+            stage->fogStart = stage->fog;
+            stage->fogFadeFrames = *(int *)&cmd->args.x;
+            stage->fogFadeTime = 0;
+            break;
+        case 5:
+            if (stage->cameraOffsetChanged)
+            {
+                D3DXVECTOR3 offset = cmd->args - stage->cameraFrom.eye;
+                OffsetPetalEffects(&offset);
+                stage->cameraOffsetChanged = 0;
+            }
+            stage->cameraTo.eye = stage->cameraFrom.eye;
+            stage->cameraFrom.eye = cmd->args;
+            if (stage->cameraFadeFrames[0] == 0)
+            {
+                stage->camera.eye = cmd->args;
+            }
+            break;
+        case 6:
+            stage->cameraFadeFrames[0] = *(int *)&cmd->args.x;
+            stage->cameraFadeTimer[0] = 0;
+            stage->cameraFadeMode[0] = *(int *)&cmd->args.y;
+            break;
+        case 7:
+            stage->cameraTo.at = stage->cameraFrom.at;
+            stage->cameraFrom.at = cmd->args;
+            if (stage->cameraFadeFrames[1] == 0)
+            {
+                stage->camera.at = cmd->args;
+            }
+            break;
+        case 8:
+            stage->cameraFadeFrames[1] = *(int *)&cmd->args.x;
+            stage->cameraFadeTimer[1] = 0;
+            stage->cameraFadeMode[1] = *(int *)&cmd->args.y;
+            break;
+        case 9:
+            stage->cameraTo.up = stage->cameraFrom.up;
+            stage->cameraFrom.up = cmd->args;
+            if (stage->cameraFadeFrames[2] == 0)
+            {
+                stage->camera.up = cmd->args;
+            }
+            break;
+        case 10:
+            stage->cameraFadeFrames[2] = *(int *)&cmd->args.x;
+            stage->cameraFadeMode[2] = *(int *)&cmd->args.y;
+            stage->cameraFadeTimer[2] = 0;
+            break;
+        case 11:
+            stage->cameraTo.fov = stage->cameraFrom.fov;
+            stage->cameraFrom.fov = cmd->args.x;
+            if (stage->cameraFadeFrames[3] == 0)
+            {
+                stage->camera.fov = cmd->args.x;
+            }
+            break;
+        case 12:
+            stage->cameraFadeFrames[3] = *(int *)&cmd->args.x;
+            stage->cameraFadeTimer[3] = 0;
+            stage->cameraFadeMode[3] = *(int *)&cmd->args.y;
+            break;
+        case 13:
+            stage->clearColor = *(D3DCOLOR *)&cmd->args.x;
+            break;
+        case 3:
+            if (stage->waitLabel != 0)
+            {
+                stage->waitLabel = 0;
+                break;
+            }
+            goto done;
+        case 4:
+            stage->scriptIndex = *(int *)&cmd->args.x;
+            stage->scriptTime = *(int *)&cmd->args.y;
+            stage->cameraFadeFrames[0] = 0;
+            stage->cameraOffsetChanged = 1;
+            goto loop;
+        case 14:
+            stage->cameraTo.eye = cmd->args;
+            break;
+        case 15:
+            stage->cameraFrom.eye = cmd->args;
+            break;
+        case 16:
+            stage->cameraFadeStart.eye = cmd->args;
+            break;
+        case 17:
+            stage->cameraFadeTarget.eye = cmd->args;
+            break;
+        case 18:
+            stage->cameraFadeFrames[0] = *(int *)&cmd->args.x;
+            stage->cameraFadeTimer[0] = 0;
+            stage->cameraFadeMode[0] = 7;
+            break;
+        case 19:
+            stage->cameraTo.at = cmd->args;
+            break;
+        case 20:
+            stage->cameraFrom.at = cmd->args;
+            break;
+        case 21:
+            stage->cameraFadeStart.at = cmd->args;
+            break;
+        case 22:
+            stage->cameraFadeTarget.at = cmd->args;
+            break;
+        case 23:
+            stage->cameraFadeFrames[1] = *(int *)&cmd->args.x;
+            stage->cameraFadeTimer[1] = 0;
+            stage->cameraFadeMode[1] = 7;
+            break;
+        case 24:
+            stage->cameraTo.up = cmd->args;
+            break;
+        case 25:
+            stage->cameraFrom.up = cmd->args;
+            break;
+        case 26:
+            stage->cameraFadeStart.up = cmd->args;
+            break;
+        case 27:
+            stage->cameraFadeTarget.up = cmd->args;
+            break;
+        case 28:
+            stage->cameraFadeFrames[2] = *(int *)&cmd->args.x;
+            stage->cameraFadeTimer[2] = 0;
+            stage->cameraFadeMode[2] = 7;
+            break;
+        case 29:
+            if (*(int *)&cmd->args.x >= 0)
+            {
+                stage->anm->StartScriptAtOrigin(&stage->backgroundLayer0, *(int *)&cmd->args.x);
+            }
+            else
+            {
+                stage->backgroundLayer0.spriteIndex = -1;
+            }
+            break;
+        case 30:
+            // Hides backgroundLayer0, not backgroundLayer1, for a negative
+            // script, as th07's.
+            if (*(int *)&cmd->args.x >= 0)
+            {
+                stage->anm->StartScriptAtOrigin(&stage->backgroundLayer1, *(int *)&cmd->args.x);
+            }
+            else
+            {
+                stage->backgroundLayer0.spriteIndex = -1;
+            }
+            break;
+        case 33:
+            stage->shakeMode = *(BYTE *)&cmd->args.x;
+            stage->cameraFadeFrames[4] = 0;
+            stage->cameraFadeTimer[4] = 0;
+            stage->cameraFadeMode[4] = 0;
+            break;
+        case 32:
+            stage->camera.offset = cmd->args;
+            break;
+        case 34:
+            if (*(int *)&cmd->args.x >= 0)
+            {
+                stage->anm->StartScriptAtOrigin(&stage->backgroundLayer2, *(int *)&cmd->args.x);
+            }
+            else
+            {
+                stage->backgroundLayer2.spriteIndex = -1;
+            }
+            break;
+        }
+        stage->scriptIndex++;
+        goto loop;
+    }
+done:
+    {
+        int i;
+        float delta;
+        float t;
+
+        i = 0;
+        if (stage->cameraFadeFrames[i] != 0)
+        {
+            UpdateEasedVector(stage, i, &stage->camera.eye, &stage->cameraTo.eye, &stage->cameraFrom.eye, &stage->cameraFadeStart.eye, &stage->cameraFadeTarget.eye);
+        }
+        i = 1;
+        if (stage->cameraFadeFrames[i] != 0)
+        {
+            UpdateEasedVector(stage, i, &stage->camera.at, &stage->cameraTo.at, &stage->cameraFrom.at, &stage->cameraFadeStart.at, &stage->cameraFadeTarget.at);
+        }
+        i = 2;
+        if (stage->cameraFadeFrames[i] != 0)
+        {
+            UpdateEasedVector(stage, i, &stage->camera.up, &stage->cameraTo.up, &stage->cameraFrom.up, &stage->cameraFadeStart.up, &stage->cameraFadeTarget.up);
+        }
+        i = 3;
+        if (stage->cameraFadeFrames[i] != 0)
+        {
+            if (stage->cameraFadeTimer[i] < stage->cameraFadeFrames[i])
+            {
+                stage->cameraFadeTimer[i]++;
+                t = stage->cameraFadeTimer[i].AsFloat() / stage->cameraFadeFrames[i];
+            }
+            else
+            {
+                stage->cameraFadeTimer[i] = stage->cameraFadeFrames[i];
+                t = 1.0f;
+                stage->cameraFadeFrames[i] = 0;
+            }
+            switch (stage->cameraFadeMode[i])
+            {
+            case 1:
+                t = 1.0f - (t = 1.0f - t) * t;
+                break;
+            case 2:
+                t = 1.0f - (t = 1.0f - t) * t * t;
+                break;
+            case 3:
+                t = 1.0f - (t = 1.0f - t) * t * t * t;
+                break;
+            case 4:
+                t = t * t;
+                break;
+            case 5:
+                t = t * t * t;
+                break;
+            case 6:
+                t = t * t * t * t;
+                break;
+            }
+            stage->camera.fov = (delta = stage->cameraFrom.fov - stage->cameraTo.fov) * t + stage->cameraTo.fov;
+        }
+    }
+    D3DXVec3Normalize(&stage->camera.dir, &stage->camera.at);
+    if (stage->shakeMode)
+    {
+        switch (stage->shakeMode)
+        {
+        case 1:
+        {
+            float angle;
+
+            angle = stage->cameraFadeTimer[4].AsFloat() * 3.1415927f * 2.0f / 480.0f - 3.1415927f;
+            stage->camera.offset.x = sinf(angle) * 40.0f;
+            stage->cameraFadeTimer[4]++;
+            if (stage->cameraFadeTimer[4] >= 480)
+            {
+                stage->cameraFadeTimer[4] = 0;
+            }
+            break;
+        }
+        case 2:
+        {
+            float angle;
+
+            angle = stage->cameraFadeTimer[4].AsFloat() * 3.1415927f * 2.0f / 480.0f - 3.1415927f;
+            stage->camera.offset.x = sinf(angle) * 70.0f;
+            stage->camera.up.x = -sinf(angle) * 0.1f;
+            stage->cameraFadeTimer[4]++;
+            if (stage->cameraFadeTimer[4] >= 480)
+            {
+                stage->cameraFadeTimer[4] = 0;
+            }
+            break;
+        }
+        case 3:
+        {
+            float angle;
+
+            angle = stage->cameraFadeTimer[4].AsFloat() * 3.1415927f * 2.0f / 4800.0f - 3.1415927f;
+            stage->camera.up.x = sinf(angle) * 1.0f;
+            stage->camera.up.z = cosf(angle) * 1.0f;
+            stage->cameraFadeTimer[4]++;
+            if (stage->cameraFadeTimer[4] >= 4800)
+            {
+                stage->cameraFadeTimer[4] = 0;
+            }
+            break;
+        }
+        }
+    }
+    if (stage->fogFadeFrames != 0)
+    {
+        float fogT;
+        int j;
+
+        stage->fogFadeTime++;
+        fogT = stage->fogFadeTime.AsFloat() / stage->fogFadeFrames;
+        if (fogT >= 1.0f)
+        {
+            fogT = 1.0f;
+        }
+        for (j = 0; j < 4; j++)
+        {
+            ((BYTE *)&stage->fog.color)[j] =
+                ((float)((BYTE *)&stage->fogTarget.color)[j] - (float)((BYTE *)&stage->fogStart.color)[j]) * fogT +
+                (float)((BYTE *)&stage->fogStart.color)[j];
+        }
+        stage->fog.nearPlane = (stage->fogTarget.nearPlane - stage->fogStart.nearPlane) * fogT + stage->fogStart.nearPlane;
+        stage->fog.farPlane = (stage->fogTarget.farPlane - stage->fogStart.farPlane) * fogT + stage->fogStart.farPlane;
+        if (stage->fogFadeTime >= stage->fogFadeFrames)
+        {
+            stage->fogFadeFrames = 0;
+        }
+    }
+    if (cmd->opcode != 3)
+    {
+        stage->scriptTime++;
+    }
+    stage->StepObjects();
+    if (stage->spellCardState >= 1)
+    {
+        int k;
+
+        if (stage->spellCardFrames == 60)
+        {
+            stage->spellCardState++;
+        }
+        stage->spellCardFrames++;
+        for (k = 0; k < stage->dialogueSpriteCount; k++)
+        {
+            g_SpriteEngine->Step(&stage->dialogueSprites[k]);
+        }
+    }
+    if (stage->backgroundLayer0.spriteIndex > 0)
+    {
+        g_SpriteEngine->Step(&stage->backgroundLayer0);
+    }
+    if (stage->backgroundLayer1.spriteIndex > 0)
+    {
+        g_SpriteEngine->Step(&stage->backgroundLayer1);
+    }
+    if (stage->backgroundLayer2.spriteIndex > 0)
+    {
+        g_SpriteEngine->Step(&stage->backgroundLayer2);
+        stage->clearColor = stage->backgroundLayer2.color;
+    }
+    if (stage->checksumCheckFrames % 3 == 0 &&
+        (stage->checksumCheckFrames >= 700 || g_GameManager.IsInSpellCardPractice()) && stage->spellCardState < 2)
+    {
+        int l;
+        Effect *effect;
+
+        for (l = 0; l < 0xc; l++)
+        {
+            effect = g_EffectManager.SpawnEffect(0x3e, &stage->unk_6480[l], 1, 0x20ffffff);
+            effect->drawList = 4;
+        }
+    }
+    stage->unk_647c = 1;
+    if (stage->spellCardState >= 2)
+    {
+        stage->unk_6478 = 0;
+    }
+    stage->checksumCheckFrames++;
+    if (stage->checksumCheckFrames % 500 == 250 && g_GameManager.ChecksumMismatch())
+    {
+        return 4;
+    }
+    return 1;
+}
+
 void UpdateEasedVector(Stage *stage, int i, D3DXVECTOR3 *out, D3DXVECTOR3 *from, D3DXVECTOR3 *to, D3DXVECTOR3 *m0, D3DXVECTOR3 *m1)
 {
     float t;

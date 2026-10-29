@@ -2114,9 +2114,15 @@ public:
     // elements (priorities 6 and 7), as th07's (0x409b20). Returns 0, or
     // -1 if adding fails.
     static int RegisterChain(int stage);
-    // Runs the stage script up to the current frame, as th07's (0x407400).
-    // Returns 1, or 4 when ChecksumMismatch finds the player's numbers
-    // tampered with.
+    // Runs the stage script up to the current frame, as th07's, with
+    // th08's opcodes: 32 sets camera.offset, 33 starts a camera shake
+    // (shakeMode), 34 starts backgroundLayer2's script. In stage 7 it
+    // first spawns unk_ae8 and runs its script by waitLabel. Then fades
+    // the cameras and the fog, shakes the camera, runs the sprites and
+    // spawns effect 0x3e at the first 12 of unk_6480 every third frame
+    // from frame 700 (or in spell practice). Returns 1, or 4 when
+    // ChecksumMismatch finds the player's numbers tampered with
+    // (checked every 500 frames).
     static int OnUpdate(Stage *stage);
     // Releases the background ANM (slot 4) and frees the sprites, and
     // the data unless restarting (0x409c20). Returns 0.
@@ -2238,7 +2244,7 @@ public:
     // and 7. New in th08.
     float unk_6470;
     // The camera shake opcode 33 starts: 1 to 3. New in th08.
-    char shakeMode;
+    BYTE shakeMode;
     unsigned char pad_6475[0x3];
     int unk_6478;
     int unk_647c;
