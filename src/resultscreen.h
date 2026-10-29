@@ -9,6 +9,19 @@
 #include "common.h"
 #include "sprite.h"
 
+// One difficulty's line of the play statistics, th07's with 12 shot
+// types.
+struct PlstCounts
+{
+    // The games played: [0] with every shot type, then by shot type.
+    int plays[0xd];
+    int retries;
+    int clears;
+    int continues;
+    int practices;
+};
+ASSERT_SIZE(PlstCounts, 0x44);
+
 // A chunk of the score file ("PLST") with the play statistics, th07's
 // grown to 0x228 bytes (0x160 there).
 struct Plst
@@ -28,7 +41,8 @@ struct Plst
     DWORD playMinutes;
     DWORD playSeconds;
     DWORD playMilliseconds;
-    unsigned char unk_2c[0x1dc];
+    // By difficulty, then the totals.
+    PlstCounts counts[7];
     // Set for each piece of music played (App::PlayMidi's `bgm`), for
     // the music room. New in th08.
     char bgmHeard[0x20];
@@ -372,7 +386,9 @@ public:
     // By spell card list and shot type (and all of them): the spell cards
     // captured.
     int capturedSpellCounts[6][0xd];
-    unsigned char unk_19c[0x4];
+    // The runSeconds RunStatisticsMenu shows, as th07's.
+    BYTE shownRunSeconds;
+    unsigned char unk_19d[0x3];
     Sprite sprites[0x48];
     // Text drawn with RenderText, as th07's.
     Sprite textSprites[0x1e];

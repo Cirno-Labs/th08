@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">35.84% (400)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">64.16% (716)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">35.93% (401)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">64.07% (715)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="267.74" height="6" x="0" y="0" class="named"/>
-<rect width="479.26" height="6" x="267.74" y="0" class="todo"/>
+<rect width="268.41" height="6" x="0" y="0" class="named"/>
+<rect width="478.59" height="6" x="268.41" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -932,7 +932,7 @@
 <rect width="12" height="12" x="180" y="255" class="named"><title>0x00456938 FormatTodayDate (55 bytes)</title></rect>
 <rect width="12" height="12" x="195" y="255" class="todo"><title>0x0045696f ResultScreen::HandleReplaySaving (3699 bytes)</title></rect>
 <rect width="12" height="12" x="210" y="255" class="named"><title>0x004577e2 ResultScreen::WaitAfterNameEntry (200 bytes)</title></rect>
-<rect width="12" height="12" x="225" y="255" class="todo"><title>0x004578aa ResultScreen::RunStatisticsMenu (1366 bytes)</title></rect>
+<rect width="12" height="12" x="225" y="255" class="named"><title>0x004578aa ResultScreen::RunStatisticsMenu (1366 bytes)</title></rect>
 <rect width="12" height="12" x="240" y="255" class="named"><title>0x00457e00 ResultScreen::DrawStatistics (1184 bytes)</title></rect>
 <rect width="12" height="12" x="255" y="255" class="named"><title>0x004582a0 ResultScreen::RegisterChain (395 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="255" class="named"><title>0x0045842b ResultScreen::ResultScreen (133 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">26.42%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">73.58%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">26.72%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">73.28%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="197.35" height="6" x="0" y="0" class="named"/>
-<rect width="549.65" height="6" x="197.35" y="0" class="todo"/>
+<rect width="199.57" height="6" x="0" y="0" class="named"/>
+<rect width="547.43" height="6" x="199.57" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1267,7 +1267,7 @@
 <rect width="25.75" height="24.43" x="356.57" y="27.45" class="todo"><title>0x0040d970 Func40d970 (1390 bytes)</title></rect>
 <rect width="25.75" height="24.10" x="356.57" y="54.89" class="todo"><title>0x0044cbf0 Func44cbf0 (1373 bytes)</title></rect>
 <rect width="25.75" height="24.08" x="356.57" y="81.99" class="named"><title>0x00453d0d SaveScoreDat (1372 bytes)</title></rect>
-<rect width="25.75" height="23.96" x="356.57" y="109.07" class="todo"><title>0x004578aa ResultScreen::RunStatisticsMenu (1366 bytes)</title></rect>
+<rect width="25.75" height="23.96" x="356.57" y="109.07" class="named"><title>0x004578aa ResultScreen::RunStatisticsMenu (1366 bytes)</title></rect>
 <rect width="25.75" height="23.90" x="356.57" y="136.03" class="named"><title>0x004477b1 App::LoadConfig (1363 bytes)</title></rect>
 <rect width="25.75" height="23.82" x="356.57" y="162.93" class="named"><title>0x004628b0 SpriteEngine::DrawQuad (1359 bytes)</title></rect>
 <rect width="25.75" height="23.72" x="356.57" y="189.75" class="named"><title>0x004418c0 WinMain (1354 bytes)</title></rect>

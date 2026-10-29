@@ -885,6 +885,139 @@ int ResultScreen::WaitAfterNameEntry()
     return 0;
 }
 
+int ResultScreen::RunStatisticsMenu()
+{
+    Sprite *sprite0;
+
+    switch (this->state)
+    {
+    case 0x13:
+        if (this->frame == 1)
+        {
+            D3DXVECTOR3 pos2;
+            int i;
+
+            pos2.x = 56.0f;
+            pos2.y = 64.0f;
+            pos2.z = 0.0f;
+            sprite0 = &this->textSprites[0];
+            sprite0->pos = pos2;
+            g_App.AddPlayTime();
+            g_SpriteEngine->RenderText(sprite0, 0xffffff, 0, "総起動時間   %.2d:%.2d:%.2d", g_GameManager.plst.runHours,
+                                       g_GameManager.plst.runMinutes, g_GameManager.plst.runSeconds);
+            g_App.AddPlayTime();
+            this->shownRunSeconds = g_GameManager.plst.runSeconds;
+            sprite0++;
+            pos2.y += 17.0f;
+            sprite0->pos = pos2;
+            g_SpriteEngine->RenderText(sprite0, 0xffffff, 0, "総プレイ時間 %.2d:%.2d:%.2d", g_GameManager.plst.playHours,
+                                       g_GameManager.plst.playMinutes, g_GameManager.plst.playSeconds);
+            sprite0++;
+            pos2.y += 17.0f;
+            sprite0->pos = pos2;
+            g_SpriteEngine->RenderText(sprite0, 0xffffff, 0,
+                                       "プレイ回数　　　 　Easy 　Norm 　Hard 　Luna  Extra  Total");
+            for (i = 0; i < 0xc; i++)
+            {
+                sprite0++;
+                pos2.y += 17.0f;
+                sprite0->pos = pos2;
+                g_SpriteEngine->RenderText(
+                    sprite0, 0xffffff, 0, "%s %6d %6d %6d %6d %6d %6d", g_ShotNames[i],
+                    g_GameManager.plst.counts[0].plays[i + 1], g_GameManager.plst.counts[1].plays[i + 1],
+                    g_GameManager.plst.counts[2].plays[i + 1], g_GameManager.plst.counts[3].plays[i + 1],
+                    g_GameManager.plst.counts[4].plays[i + 1], g_GameManager.plst.counts[6].plays[i + 1]);
+            }
+            sprite0++;
+            pos2.y += 17.0f;
+            sprite0->pos = pos2;
+            g_SpriteEngine->RenderText(sprite0, 0xffffff, 0, "%s %6d %6d %6d %6d %6d %6d", g_ShotNames[0xc],
+                                       g_GameManager.plst.counts[0].plays[0], g_GameManager.plst.counts[1].plays[0],
+                                       g_GameManager.plst.counts[2].plays[0], g_GameManager.plst.counts[3].plays[0],
+                                       g_GameManager.plst.counts[4].plays[0], g_GameManager.plst.counts[6].plays[0]);
+            sprite0++;
+            pos2.y += 34.0f;
+            sprite0->pos = pos2;
+            g_SpriteEngine->RenderText(sprite0, 0xffffff, 0, "クリア回数  　　 %6d %6d %6d %6d %6d %6d",
+                                       g_GameManager.plst.counts[0].clears, g_GameManager.plst.counts[1].clears,
+                                       g_GameManager.plst.counts[2].clears, g_GameManager.plst.counts[3].clears,
+                                       g_GameManager.plst.counts[4].clears, g_GameManager.plst.counts[6].clears);
+            sprite0++;
+            pos2.y += 17.0f;
+            sprite0->pos = pos2;
+            // The total is counts[5]'s, an original bug.
+            g_SpriteEngine->RenderText(sprite0, 0xffffff, 0, "コンティニュー   %6d %6d %6d %6d %6d %6d",
+                                       g_GameManager.plst.counts[0].continues, g_GameManager.plst.counts[1].continues,
+                                       g_GameManager.plst.counts[2].continues, g_GameManager.plst.counts[3].continues,
+                                       g_GameManager.plst.counts[4].continues, g_GameManager.plst.counts[5].continues);
+            sprite0++;
+            pos2.y += 17.0f;
+            sprite0->pos = pos2;
+            g_SpriteEngine->RenderText(sprite0, 0xffffff, 0, "プラクティス　   %6d %6d %6d %6d %6d %6d",
+                                       g_GameManager.plst.counts[0].practices, g_GameManager.plst.counts[1].practices,
+                                       g_GameManager.plst.counts[2].practices, g_GameManager.plst.counts[3].practices,
+                                       g_GameManager.plst.counts[4].practices, g_GameManager.plst.counts[6].practices);
+            // th07's retries line, placed but no longer drawn.
+            sprite0++;
+            pos2.y += 17.0f;
+            sprite0->pos = pos2;
+        }
+        if (this->frame < 40)
+        {
+            int j1;
+
+            sprite0 = &this->textSprites[0];
+            for (j1 = 0; j1 < 0x14; j1++, sprite0++)
+            {
+                sprite0->alpha = this->frame * 0xff / 40;
+            }
+        }
+        else
+        {
+            this->state = 0x14;
+        }
+        break;
+    case 0x14:
+        if (this->frame % 60 == 0)
+        {
+            g_App.AddPlayTime();
+            if (g_GameManager.plst.runSeconds != this->shownRunSeconds)
+            {
+                sprite0 = &this->textSprites[0];
+                g_SpriteEngine->RenderText(sprite0, 0xffffff, 0, "総起動時間   %.2d:%.2d:%.2d",
+                                           g_GameManager.plst.runHours, g_GameManager.plst.runMinutes,
+                                           g_GameManager.plst.runSeconds);
+                this->shownRunSeconds = g_GameManager.plst.runSeconds;
+            }
+        }
+        if (WAS_PRESSED(0x100b))
+        {
+            this->state = 0x15;
+            this->frame = 0;
+        }
+        break;
+    case 0x15:
+        if (this->frame < 20)
+        {
+            int k;
+
+            sprite0 = &this->textSprites[0];
+            for (k = 0; k < 0x14; k++, sprite0++)
+            {
+                sprite0->alpha = 0xff - this->frame * 0xff / 20;
+            }
+        }
+        else
+        {
+            this->state = 0;
+            this->frame = 0;
+            return 1;
+        }
+        break;
+    }
+    return 0;
+}
+
 int ResultScreen::DrawStatistics()
 {
     Sprite *spr;
