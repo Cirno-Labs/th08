@@ -26,7 +26,7 @@ address,size,name,symbol
 0x00404720,42,D3DXVECTOR3::D3DXVECTOR3,??0D3DXVECTOR3@@QAE@MMM@Z
 0x00404750,309,PauseMenu::DrawPauseMenu,?DrawPauseMenu@PauseMenu@@QAEXXZ
 0x00404890,2482,ContinueMenu::UpdateContinueMenu,?UpdateContinueMenu@ContinueMenu@@QAEHXZ
-0x00405260,22,Func405260,
+0x00405260,22,SpellCard::Func405260,?Func405260@SpellCard@@QAEHXZ
 0x00405280,39,IncrementCounterCapped,?IncrementCounterCapped@@YIXPAKK@Z
 0x004052b0,364,ContinueMenu::DrawContinueMenu,?DrawContinueMenu@ContinueMenu@@QAEXXZ
 0x00405420,2538,AsciiText::DrawPopups,?DrawPopups@AsciiText@@QAEXXZ
