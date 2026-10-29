@@ -106,3 +106,62 @@ int SpriteEngine::LoadTexture(AnmTexture *tex, int format, D3DCOLOR colorKey)
     }
     return 0;
 }
+
+int SpriteEngine::CreateTextureFromImage(AnmTexture *tex, AnmImage *image, int format)
+{
+    BYTE *dstRow;
+    BYTE *srcRow;
+    int y;
+    D3DLOCKED_RECT rect;
+    AnmImage *img;
+    IDirect3DSurface8 *level;
+    IDirect3DSurface8 *srcSurface;
+
+    srcSurface = NULL;
+    level = NULL;
+    format = AdjustTextureFormat(format);
+    img = image;
+    g_App.d3dDevice->CreateImageSurface(img->width, img->height, g_TextureFormats[img->format], &srcSurface);
+    srcSurface->LockRect(&rect, NULL, 0);
+    for (y = 0; y < img->height; y++)
+    {
+        dstRow = (BYTE *)rect.pBits + y * rect.Pitch;
+        srcRow = &image->data[y * img->width * g_TextureFormatSizes[img->format]];
+        memcpy(dstRow, srcRow, img->width * g_TextureFormatSizes[img->format]);
+    }
+    srcSurface->UnlockRect();
+    if (D3DXCreateTexture(g_App.d3dDevice, img->width, img->height, 1, 0, g_TextureFormats[format], D3DPOOL_MANAGED,
+                          &tex->texture) != D3D_OK)
+    {
+        goto fail;
+    }
+    tex->texture->GetSurfaceLevel(0, &level);
+    if (D3DXLoadSurfaceFromSurface(level, NULL, NULL, srcSurface, NULL, NULL, D3DX_FILTER_LINEAR, 0) != D3D_OK)
+    {
+        goto fail;
+    }
+    if (srcSurface != NULL)
+    {
+        srcSurface->Release();
+        srcSurface = NULL;
+    }
+    if (level != NULL)
+    {
+        level->Release();
+        level = NULL;
+    }
+    return 0;
+
+fail:
+    if (srcSurface != NULL)
+    {
+        srcSurface->Release();
+        srcSurface = NULL;
+    }
+    if (level != NULL)
+    {
+        level->Release();
+        level = NULL;
+    }
+    return -1;
+}

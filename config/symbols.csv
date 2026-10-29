@@ -978,7 +978,7 @@ address,size,name,symbol
 0x00465250,700,SpriteEngine::CreateQuad,?CreateQuad@SpriteEngine@@QAEXXZ
 0x00465510,83,SpriteEngine::AdjustTextureFormat,?AdjustTextureFormat@SpriteEngine@@SIHH@Z
 0x00465570,98,SpriteEngine::LoadTexture,?LoadTexture@SpriteEngine@@QAEHPAUAnmTexture@@HK@Z
-0x004655e0,476,Func4655e0,
+0x004655e0,476,SpriteEngine::CreateTextureFromImage,?CreateTextureFromImage@SpriteEngine@@QAEHPAUAnmTexture@@PAUAnmImage@@H@Z
 0x004657c0,56,Func4657c0,
 0x00465800,96,SpriteEngine::LoadAnm,?LoadAnm@SpriteEngine@@QAEPAVAnmLoaded@@HPAD@Z
 0x00465860,473,Func465860,
@@ -1211,7 +1211,7 @@ address,size,name,symbol
 0x0047a668,211,Func47a668,
 0x0047a73b,810,Func47a73b,
 0x0047aa65,40,Func47aa65,
-0x0047aa8d,102,Func47aa8d,
+0x0047aa8d,102,D3DXCreateTexture,_D3DXCreateTexture@32
 0x0047aaf3,184,Func47aaf3,
 0x0047abab,422,D3DXLoadSurfaceFromSurface,_D3DXLoadSurfaceFromSurface@32
 0x0047ad51,134,Func47ad51,
