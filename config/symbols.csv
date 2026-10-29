@@ -572,7 +572,7 @@ address,size,name,symbol
 0x0043d970,2029,ReadButtons,?ReadButtons@@YIGXZ
 0x0043e160,110,ResetKeyboard,?ResetKeyboard@@YIXXZ
 0x0043e1d0,448,DecryptData,?DecryptData@@YIPAEPAEHEEHH@Z
-0x0043e390,262,Func43e390,
+0x0043e390,262,DecryptFileData,?DecryptFileData@@YIPAEPAEPAHH@Z
 0x0043e4a0,448,Func43e4a0,
 0x0043e660,531,LoadFileData,?LoadFileData@@YIPAXPADPAHH@Z
 0x0043e880,105,FileExists,?FileExists@@YIHPAD@Z
@@ -2382,6 +2382,8 @@ address,size,name,symbol
 0x004bd6d0,,IID_IShellLinkA,_IID_IShellLinkA
 0x004bd6e0,,CLSID_ShellLink,_CLSID_ShellLink
 0x004bd6f0,,IID_IPersistFile,_IID_IPersistFile
+0x004c78e0,,g_CryptParams,?g_CryptParams@@3PAUCryptParams@@A
+0x004c7940,,g_CryptMagic,?g_CryptMagic@@3PAEA
 0x0164d388,,g_JoyCaps,?g_JoyCaps@@3UtagJOYCAPSA@@A
 0x0164d51c,,g_ShotHeldFrames,?g_ShotHeldFrames@@3GA
 0x0164d540,,g_Log,?g_Log@@3VLog@@A

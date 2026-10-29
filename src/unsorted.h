@@ -222,3 +222,28 @@ void ResetKeyboard();
 // in the gaps. A short tail (and the odd byte) is copied as is. New in
 // th08.
 BYTE *DecryptData(BYTE *data, int size, BYTE key, BYTE step, int blockSize, int limit);
+
+// The DecryptData parameters for one kind of data file.
+struct CryptParams
+{
+    // The kind's letter ('M', 'T', 'A', 'J', 'E', 'W', '-', '*'), stored
+    // plus 0x10 times (its index + 1).
+    BYTE type;
+    BYTE key;
+    BYTE step;
+    BYTE unk_3;
+    int blockSize;
+    int limit;
+};
+ASSERT_SIZE(CryptParams, 0xc);
+extern CryptParams g_CryptParams[8];
+// "edz" plus 0x20, 0x40 and 0x60: the first three bytes of an encrypted
+// data file.
+extern BYTE g_CryptMagic[4];
+
+// If `data` (`fileSize` bytes) starts with the encrypted file header
+// ("edz" and a type letter from g_CryptParams), decrypts the rest into a
+// new buffer, frees `data` and returns the new one; else returns `data`.
+// Leaves `size` alone, so a caller's size still counts the 4-byte
+// header.
+BYTE *DecryptFileData(BYTE *data, int *size, int fileSize);
