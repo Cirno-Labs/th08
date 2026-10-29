@@ -139,7 +139,7 @@ address,size,name,symbol
 0x0040be30,194,StartBomb,?StartBomb@@YIXPAVPlayer@@HPADHHH@Z
 0x0040bf00,264,SpawnBombAura,?SpawnBombAura@@YIXPAVPlayer@@@Z
 0x0040c010,1941,Func40c010,
-0x0040c7b0,24,Func40c7b0,
+0x0040c7b0,24,atan2f,@atan2f@8
 0x0040c7d0,76,D3DXVECTOR3::operator/,??KD3DXVECTOR3@@QBE?AU0@M@Z
 0x0040c820,230,Func40c820,
 0x0040c910,1790,Func40c910,
