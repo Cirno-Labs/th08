@@ -347,6 +347,80 @@ void App::ResetClockDriftCounters()
     this->fastClockCycles = 0;
 }
 
+void MainMenu::LoadingThread(MainMenu *arg)
+{
+    int i;
+
+    while (g_SpriteEngine->pendingCopyTexture >= 0)
+    {
+        Sleep(1);
+    }
+    g_MainMenu->titleAnm = g_SpriteEngine->PreloadAnm(0x14, "title01.anm");
+    if (g_MainMenu->titleAnm == NULL)
+    {
+        g_MainMenu->loadingState = 2;
+        return;
+    }
+    g_MainMenu->resultTextAnm = g_SpriteEngine->PreloadAnm(0x16, "resulttext.anm");
+    if (g_MainMenu->resultTextAnm == NULL)
+    {
+        g_MainMenu->loadingState = 2;
+        return;
+    }
+    if (g_App.closeSubThread != 0)
+    {
+        return;
+    }
+    for (i = 0; i < 0xe; i++)
+    {
+        g_App.textAnm->StartScript(&g_MainMenu->helpSprites[i], 9);
+        g_App.textAnm->SetSprite(&g_MainMenu->helpSprites[i], g_MainMenu->helpSprites[i].spriteIndex + i);
+        g_App.textAnm->SetSprite(&g_MainMenu->unkSprites2[i], i + 0x15);
+        if (i <= 4)
+        {
+            g_MainMenu->unkSprites2[i].pos = D3DXVECTOR3(64.0f, i * 16.0f + 352.0f, 0.0f);
+        }
+        else
+        {
+            g_MainMenu->unkSprites2[i].pos = D3DXVECTOR3(64.0f, i * 16.0f + 352.0f + 10.0f, 0.0f);
+        }
+        g_MainMenu->unkSprites2[i].flags |= 0x1800;
+        g_MainMenu->unkSprites2[i].fontWidth = 15;
+        g_MainMenu->unkSprites2[i].fontHeight = 15;
+        g_MainMenu->unkSprites2[i].flags |= 2;
+    }
+    if (g_App.closeSubThread != 0)
+    {
+        return;
+    }
+    if (g_SpriteEngine->PreloadSurface(0, "title/title00.png") != 0)
+    {
+        g_MainMenu->loadingState = 2;
+        return;
+    }
+    if (!(g_GameManager.unk_3dbac >> 1 & 1))
+    {
+        if (g_App.prevScene != 5)
+        {
+            g_App.LoadMidi(8, "bgm/th08_01.mid");
+        }
+        if (g_App.lastPlayTimeTick == 0)
+        {
+            ScreenEffect::StartEffect(0, 70, 0xffffff, 0, 0, 0x15);
+        }
+        else
+        {
+            ScreenEffect::StartEffect(0, 70, 0xffffff, 0, 0, 0x15);
+        }
+    }
+    g_MainMenu->helpSprite = g_MainMenu->helpSprites;
+    g_MainMenu->loadingState = 0;
+    g_App.StopLoadingSprites();
+    g_App.subThread = NULL;
+    g_App.closeSubThread = 0;
+    g_App.subThreadRunning = 0;
+}
+
 void MainMenu::ShowInfoScreen(char *path)
 {
     int i;
