@@ -239,3 +239,51 @@ CSound::CSound(LPDIRECTSOUNDBUFFER *apDSBuffer, DWORD dwDSBufferSize, DWORD dwNu
 
     this->unk_30 = 0;
 }
+
+HRESULT CStreamingSound::RecreateBuffers()
+{
+    DWORD i;
+    DSBPOSITIONNOTIFY *aPosNotify;
+    LPDIRECTSOUNDNOTIFY pNotify;
+    DWORD j;
+
+    this->unk_30 = 0;
+    for (i = 0; i < m_dwNumBuffers; i++)
+    {
+        SAFE_RELEASE(m_apDSBuffer[i]);
+    }
+    SAFE_DELETE_ARRAY(m_apDSBuffer);
+
+    aPosNotify = NULL;
+    pNotify = NULL;
+    m_apDSBuffer = new LPDIRECTSOUNDBUFFER[m_dwNumBuffers];
+    for (i = 0; i < m_dwNumBuffers; i++)
+    {
+        if (FAILED(this->manager->m_pDS->CreateSoundBuffer(&this->dsbd, &m_apDSBuffer[i], NULL)))
+            return E_FAIL;
+
+        if (FAILED(m_apDSBuffer[i]->QueryInterface(IID_IDirectSoundNotify, (VOID **)&pNotify)))
+            return E_FAIL;
+
+        aPosNotify = new DSBPOSITIONNOTIFY[16];
+        if (aPosNotify == NULL)
+            return E_OUTOFMEMORY;
+
+        for (j = 0; j < 16; j++)
+        {
+            aPosNotify[j].dwOffset = (m_dwNotifySize * j) + m_dwNotifySize - 1;
+            aPosNotify[j].hEventNotify = this->hNotifyEvent;
+        }
+
+        if (FAILED(pNotify->SetNotificationPositions(16, aPosNotify)))
+        {
+            SAFE_RELEASE(pNotify);
+            SAFE_DELETE(aPosNotify);
+            return E_FAIL;
+        }
+
+        SAFE_RELEASE(pNotify);
+        SAFE_DELETE(aPosNotify);
+    }
+    return S_OK;
+}
