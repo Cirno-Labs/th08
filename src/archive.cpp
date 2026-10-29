@@ -291,3 +291,15 @@ fail:
     }
     return NULL;
 }
+
+char *DatArchive::DuplicateString(char *str)
+{
+    char *copy;
+
+    copy = (char *)GlobalAlloc(GMEM_FIXED, strlen(str) + 1);
+    if (copy != NULL)
+    {
+        strcpy(copy, str);
+    }
+    return copy;
+}
