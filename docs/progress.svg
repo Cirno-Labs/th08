@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">1.16% (13)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">98.84% (1103)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">1.25% (14)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">98.75% (1102)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="8.70" height="6" x="0" y="0" class="named"/>
-<rect width="738.30" height="6" x="8.70" y="0" class="todo"/>
+<rect width="9.37" height="6" x="0" y="0" class="named"/>
+<rect width="737.63" height="6" x="9.37" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -734,7 +734,7 @@
 <rect width="12" height="12" x="210" y="195" class="named"><title>0x00443e20 MmTimer::~MmTimer (41 bytes)</title></rect>
 <rect width="12" height="12" x="225" y="195" class="named"><title>0x00443e50 MmTimer::Start (115 bytes)</title></rect>
 <rect width="12" height="12" x="240" y="195" class="named"><title>0x00443ed0 MmTimer::Stop (61 bytes)</title></rect>
-<rect width="12" height="12" x="255" y="195" class="todo"><title>0x00443f10 MmTimer::DefaultCallback (26 bytes)</title></rect>
+<rect width="12" height="12" x="255" y="195" class="named"><title>0x00443f10 MmTimer::DefaultCallback (26 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="195" class="named"><title>0x00443f30 SwapBytes16 (30 bytes)</title></rect>
 <rect width="12" height="12" x="285" y="195" class="named"><title>0x00443f50 ReadVarLen (78 bytes)</title></rect>
 <rect width="12" height="12" x="300" y="195" class="todo"><title>0x00443fa0 Func443fa0 (351 bytes)</title></rect>
@@ -1189,8 +1189,8 @@
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
 <text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">0.16%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">99.84%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="1.18" height="6" x="0" y="0" class="named"/>
-<rect width="745.82" height="6" x="1.18" y="0" class="todo"/>
+<rect width="1.23" height="6" x="0" y="0" class="named"/>
+<rect width="745.77" height="6" x="1.23" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -2170,7 +2170,7 @@
 <rect width="0.83" height="0.85" x="734.69" y="305.89" class="todo"><title>0x004398ce Func4398ce (26 bytes)</title></rect>
 <rect width="0.83" height="0.85" x="738.52" y="305.89" class="todo"><title>0x00443a90 Func443a90 (26 bytes)</title></rect>
 <rect width="0.83" height="0.85" x="742.34" y="305.89" class="todo"><title>0x00443ab0 Func443ab0 (26 bytes)</title></rect>
-<rect width="0.83" height="0.85" x="746.17" y="305.89" class="todo"><title>0x00443f10 MmTimer::DefaultCallback (26 bytes)</title></rect>
+<rect width="0.83" height="0.85" x="746.17" y="305.89" class="named"><title>0x00443f10 MmTimer::DefaultCallback (26 bytes)</title></rect>
 <rect width="0.74" height="0.95" x="707.89" y="309.74" class="todo"><title>0x00453c40 Func453c40 (26 bytes)</title></rect>
 <rect width="0.74" height="0.95" x="707.89" y="313.69" class="todo"><title>0x0045c0e0 Func45c0e0 (26 bytes)</title></rect>
 <rect width="0.74" height="0.80" x="707.89" y="317.64" class="todo"><title>0x00402130 Func402130 (25 bytes)</title></rect>
