@@ -522,3 +522,14 @@ HRESULT CSound::PauseBuffer()
 
     return hr;
 }
+
+HRESULT CSound::ResumeBuffer()
+{
+    if (m_apDSBuffer == NULL)
+        return CO_E_NOTINITIALIZED;
+
+    LPDIRECTSOUNDBUFFER pDSB = m_apDSBuffer[0];
+
+    this->unk_30 = 1;
+    return pDSB->Play(0, this->dwPlayPriority, this->dwPlayFlags);
+}
