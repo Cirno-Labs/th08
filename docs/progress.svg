@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">15.32% (171)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">84.68% (945)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">15.41% (172)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">84.59% (944)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="114.46" height="6" x="0" y="0" class="named"/>
-<rect width="632.54" height="6" x="114.46" y="0" class="todo"/>
+<rect width="115.13" height="6" x="0" y="0" class="named"/>
+<rect width="631.87" height="6" x="115.13" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -1128,7 +1128,7 @@
 <rect width="12" height="12" x="120" y="315" class="named"><title>0x00472a30 CSound::Reset (110 bytes)</title></rect>
 <rect width="12" height="12" x="135" y="315" class="named"><title>0x00472aa0 CStreamingSound::CStreamingSound (96 bytes)</title></rect>
 <rect width="12" height="12" x="150" y="315" class="named"><title>0x00472b00 CStreamingSound::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
-<rect width="12" height="12" x="165" y="315" class="todo"><title>0x00472b30 CStreamingSound::~CStreamingSound (28 bytes)</title></rect>
+<rect width="12" height="12" x="165" y="315" class="named"><title>0x00472b30 CStreamingSound::~CStreamingSound (28 bytes)</title></rect>
 <rect width="12" height="12" x="180" y="315" class="todo"><title>0x00472b50 CStreamingSound::UpdateFade (129 bytes)</title></rect>
 <rect width="12" height="12" x="195" y="315" class="todo"><title>0x00472be0 CStreamingSound::UpdateFadeIn (106 bytes)</title></rect>
 <rect width="12" height="12" x="210" y="315" class="todo"><title>0x00472c50 CStreamingSound::UpdateFadeUp (106 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">7.53%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">92.47%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">7.54%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">92.46%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="56.28" height="6" x="0" y="0" class="named"/>
-<rect width="690.72" height="6" x="56.28" y="0" class="todo"/>
+<rect width="56.32" height="6" x="0" y="0" class="named"/>
+<rect width="690.68" height="6" x="56.32" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -2149,7 +2149,7 @@
 <rect width="0.79" height="1.20" x="738.64" y="301.69" class="todo"><title>0x004418a0 Func4418a0 (28 bytes)</title></rect>
 <rect width="0.79" height="1.20" x="742.43" y="301.69" class="todo"><title>0x00449bee Func449bee (28 bytes)</title></rect>
 <rect width="0.79" height="1.20" x="746.21" y="301.69" class="todo"><title>0x00453ca0 Func453ca0 (28 bytes)</title></rect>
-<rect width="1.02" height="0.96" x="703.88" y="305.89" class="todo"><title>0x00472b30 CStreamingSound::~CStreamingSound (28 bytes)</title></rect>
+<rect width="1.02" height="0.96" x="703.88" y="305.89" class="named"><title>0x00472b30 CStreamingSound::~CStreamingSound (28 bytes)</title></rect>
 <rect width="1.02" height="0.82" x="703.88" y="309.85" class="todo"><title>0x004066a0 Func4066a0 (27 bytes)</title></rect>
 <rect width="1.02" height="0.82" x="703.88" y="313.66" class="todo"><title>0x004066c0 Func4066c0 (27 bytes)</title></rect>
 <rect width="1.02" height="0.82" x="703.88" y="317.48" class="todo"><title>0x00407120 Func407120 (27 bytes)</title></rect>

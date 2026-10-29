@@ -556,3 +556,7 @@ CStreamingSound::CStreamingSound(LPDIRECTSOUNDBUFFER pDSBuffer, DWORD dwDSBuffer
     m_dwNextWriteOffset = 0;
     m_bFillNextNotificationWithSilence = FALSE;
 }
+
+CStreamingSound::~CStreamingSound()
+{
+}
