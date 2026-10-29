@@ -1,0 +1,20 @@
+# Game files are never committed. Bring your own copy.
+/orig/*
+!/orig/README.md
+!/orig/*.sha1
+
+/build/
+/.wine/
+__pycache__/
+
+# Installation media and archives
+*.iso
+*.ISO
+*.img
+*.zip
+*.7z
+*.bin
+*.cue
+*.lzh
+wget-log*
+/*.exe
