@@ -595,8 +595,8 @@ address,size,name,symbol
 0x0043efef,60,GdiSurface::GdiSurface,??0GdiSurface@@QAE@XZ
 0x0043f02b,17,GdiSurface::~GdiSurface,??1GdiSurface@@QAE@XZ
 0x0043f03c,114,GdiSurface::Release,?Release@GdiSurface@@QAE_NXZ
-0x0043f0ae,95,Func43f0ae,
-0x0043f10d,447,Func43f10d,
+0x0043f0ae,95,GdiSurface::Create,?Create@GdiSurface@@QAE_NHHH@Z
+0x0043f10d,447,GdiSurface::CreateInFormat,?CreateInFormat@GdiSurface@@QAE_NHHH@Z
 0x0043f2cc,80,Func43f2cc,
 0x0043f31c,1292,Func43f31c,
 0x0043f828,15,Func43f828,

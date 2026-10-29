@@ -41,3 +41,20 @@ bool GdiSurface::Release()
     }
     return false;
 }
+
+bool GdiSurface::Create(int width, int height, int format)
+{
+    if (this->CreateInFormat(width, height, format))
+    {
+        return true;
+    }
+    if (format == D3DFMT_A1R5G5B5 || format == D3DFMT_A4R4G4B4)
+    {
+        return this->CreateInFormat(width, height, D3DFMT_A8R8G8B8);
+    }
+    if (format == D3DFMT_R5G6B5)
+    {
+        return this->CreateInFormat(width, height, D3DFMT_X8R8G8B8);
+    }
+    return false;
+}
