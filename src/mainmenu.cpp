@@ -67,3 +67,39 @@ int MainMenu::OnUpdate(MainMenu *menu)
     }
     return status;
 }
+int MainMenu::MoveMenuCursor(int count)
+{
+    if (count == 0)
+    {
+        return 0;
+    }
+    if (WAS_PRESSED_OR_HELD(0x10))
+    {
+        this->cursor--;
+        g_SoundPlayer.QueueSound(12, 0);
+        if (this->cursor < 0)
+        {
+            this->cursor = count - 1;
+        }
+        if (this->cursor >= count)
+        {
+            this->cursor = 0;
+        }
+        return -1;
+    }
+    if (WAS_PRESSED_OR_HELD(0x20))
+    {
+        this->cursor++;
+        g_SoundPlayer.QueueSound(12, 0);
+        if (this->cursor < 0)
+        {
+            this->cursor = count - 1;
+        }
+        if (this->cursor >= count)
+        {
+            this->cursor = 0;
+        }
+        return 1;
+    }
+    return 0;
+}
