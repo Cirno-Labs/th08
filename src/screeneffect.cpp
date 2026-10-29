@@ -378,3 +378,65 @@ int ScreenEffect::OnUpdateShake(ScreenEffect *effect)
     }
     return 1;
 }
+
+int ScreenEffect::OnUpdateShakeRamp(ScreenEffect *effect)
+{
+    float shake;
+
+    if (g_GameManager.unk_3dbac_10)
+    {
+        return 1;
+    }
+    if (g_GameManager.isFrozen)
+    {
+        return 1;
+    }
+    if (g_GameManager.stageFrames <= 1)
+    {
+        return 0;
+    }
+    effect->timer++;
+    if (effect->timer < effect->riseFrames)
+    {
+        shake = effect->timer.AsFloat() / effect->riseFrames;
+    }
+    else if (effect->timer < effect->riseFrames + effect->holdFrames)
+    {
+        shake = 1.0f;
+    }
+    else if (effect->timer < effect->riseFrames + effect->holdFrames + effect->fallFrames)
+    {
+        shake = ((float)(effect->riseFrames + effect->holdFrames + effect->fallFrames) - effect->timer.AsFloat()) /
+                effect->fallFrames;
+    }
+    else
+    {
+        return 0;
+    }
+    shake = effect->duration * shake;
+    switch (g_Rng.GetRandomU32InRange(3))
+    {
+    case 0:
+        g_SpriteEngine->shakeX = 0.0f;
+        break;
+    case 1:
+        g_SpriteEngine->shakeX = shake;
+        break;
+    case 2:
+        g_SpriteEngine->shakeX = -shake;
+        break;
+    }
+    switch (g_Rng.GetRandomU32InRange(3))
+    {
+    case 0:
+        g_SpriteEngine->shakeY = 0.0f;
+        break;
+    case 1:
+        g_SpriteEngine->shakeY = shake;
+        break;
+    case 2:
+        g_SpriteEngine->shakeY = -shake;
+        break;
+    }
+    return 1;
+}

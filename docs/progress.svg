@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">31.99% (357)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">68.01% (759)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">32.08% (358)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">67.92% (758)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="238.96" height="6" x="0" y="0" class="named"/>
-<rect width="508.04" height="6" x="238.96" y="0" class="todo"/>
+<rect width="239.63" height="6" x="0" y="0" class="named"/>
+<rect width="507.37" height="6" x="239.63" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -974,7 +974,7 @@
 <rect width="12" height="12" x="60" y="270" class="named"><title>0x0045bc90 ScreenEffect::OnUpdateFlash (210 bytes)</title></rect>
 <rect width="12" height="12" x="75" y="270" class="named"><title>0x0045bd70 ScreenEffect::OnDrawFlash (76 bytes)</title></rect>
 <rect width="12" height="12" x="90" y="270" class="named"><title>0x0045bdc0 ScreenEffect::OnUpdateShake (332 bytes)</title></rect>
-<rect width="12" height="12" x="105" y="270" class="todo"><title>0x0045bf10 ScreenEffect::OnUpdateShakeRamp (459 bytes)</title></rect>
+<rect width="12" height="12" x="105" y="270" class="named"><title>0x0045bf10 ScreenEffect::OnUpdateShakeRamp (459 bytes)</title></rect>
 <rect width="12" height="12" x="120" y="270" class="todo"><title>0x0045c0e0 ScreenEffect::AddedCallback (26 bytes)</title></rect>
 <rect width="12" height="12" x="135" y="270" class="todo"><title>0x0045c100 ScreenEffect::DeletedCallback (94 bytes)</title></rect>
 <rect width="12" height="12" x="150" y="270" class="todo"><title>0x0045c160 ScreenEffect::Finish (34 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">23.36%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">76.64%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">23.46%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">76.54%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="174.52" height="6" x="0" y="0" class="named"/>
-<rect width="572.48" height="6" x="174.52" y="0" class="todo"/>
+<rect width="175.27" height="6" x="0" y="0" class="named"/>
+<rect width="571.73" height="6" x="175.27" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1428,7 +1428,7 @@
 <rect width="13.39" height="13.14" x="487.92" y="100.12" class="named"><title>0x00465070 SpriteEngine::SpriteEngine (466 bytes)</title></rect>
 <rect width="13.39" height="12.96" x="487.92" y="116.25" class="todo"><title>0x004222b0 Func4222b0 (461 bytes)</title></rect>
 <rect width="13.39" height="12.93" x="487.92" y="132.21" class="todo"><title>0x00402200 Func402200 (460 bytes)</title></rect>
-<rect width="13.39" height="12.89" x="487.92" y="148.14" class="todo"><title>0x0045bf10 ScreenEffect::OnUpdateShakeRamp (459 bytes)</title></rect>
+<rect width="13.39" height="12.89" x="487.92" y="148.14" class="named"><title>0x0045bf10 ScreenEffect::OnUpdateShakeRamp (459 bytes)</title></rect>
 <rect width="13.39" height="12.72" x="487.92" y="164.03" class="todo"><title>0x00421e50 Func421e50 (454 bytes)</title></rect>
 <rect width="13.39" height="12.62" x="487.92" y="179.75" class="todo"><title>0x004415a0 Func4415a0 (451 bytes)</title></rect>
 <rect width="13.39" height="12.58" x="487.92" y="195.37" class="todo"><title>0x0040bc60 Func40bc60 (450 bytes)</title></rect>
