@@ -893,7 +893,7 @@ address,size,name,symbol
 0x0045afc0,53,ReleaseScoreDat,?ReleaseScoreDat@@YIXPAUScoreDat@@@Z
 0x0045b000,25,Func45b000,
 0x0045b020,190,Func45b020,
-0x0045b0e0,124,Func45b0e0,
+0x0045b0e0,124,ClearViewport,?ClearViewport@@YIXK@Z
 0x0045b160,123,Func45b160,
 0x0045b1e0,687,Func45b1e0,
 0x0045b490,717,Func45b490,
@@ -1142,8 +1142,8 @@ address,size,name,symbol
 0x004780c5,258,Func4780c5,
 0x004781cd,226,Func4781cd,
 0x004782af,230,Func4782af,
-0x00478395,328,Func478395,
-0x004784dd,148,Func4784dd,
+0x00478395,328,D3DXMatrixLookAtLH,_D3DXMatrixLookAtLH@16
+0x004784dd,148,D3DXMatrixPerspectiveFovLH,_D3DXMatrixPerspectiveFovLH@20
 0x00478571,157,Func478571,
 0x0047860e,308,Func47860e,
 0x00478742,92,Func478742,
@@ -1716,7 +1716,7 @@ address,size,name,symbol
 0x004a3fbd,145,Func4a3fbd,
 0x004a4050,20,Func4a4050,
 0x004a406d,157,Func4a406d,
-0x004a4110,20,Func4a4110,
+0x004a4110,20,__CItan,__CItan
 0x004a412d,149,Func4a412d,
 0x004a41c2,111,__heap_alloc,
 0x004a4234,9,Func4a4234,

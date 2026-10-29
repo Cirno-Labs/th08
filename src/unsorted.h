@@ -287,7 +287,8 @@ public:
     int presentImmediate;
     // Set while the device is created asking for 60 Hz.
     int wants60Hz;
-    int unk_184;
+    // Cleared by InitD3dDevice.
+    int clearedOnD3dInit;
     // The game's speed: 1, or less while it runs slow. Timer::Add counts
     // in fractions of a frame below 0.99.
     float gameSpeed;
@@ -421,6 +422,9 @@ int CreateD3d();
 int CreateGameWindow(HINSTANCE instance);
 // Creates the Direct3D device. Returns 0, or nonzero on failure.
 int InitD3dDevice();
+// Draws the batched quads, then clears the whole back buffer to `color`
+// (0x45b0e0).
+void ClearViewport(D3DCOLOR color);
 // Sets the device's render and texture stage states, as the config
 // flags pick them, and forgets SpriteEngine's cached states.
 void SetDefaultRenderStates();
@@ -462,7 +466,7 @@ struct GameWindow
     DWORD perfFrequency[2];
     // Set when the game was started from a shortcut or another path;
     // paces every frame by the clock, even ones that are early.
-    BYTE unk_1c;
+    BYTE forceClockPacing;
     unsigned char unk_1d[0x3];
     // The screen saver and power settings, put back on exit.
     int screenSaveActive;
@@ -478,8 +482,8 @@ ASSERT_SIZE(GameWindow, 0x44);
 extern GameWindow g_GameWindow;
 
 // Creates g_AppMutex and returns -1 if another instance holds it, as
-// th07's CheckSingleInstance. Also sets g_GameWindow.unk_1c when the
-// game was started through a shortcut or a path other than its own, and
+// th07's CheckSingleInstance. Also sets g_GameWindow.forceClockPacing
+// when the game was started through a shortcut or a path other than its own, and
 // sets bit 0x40 of g_App.stateFlags if the startup info has no title,
 // clearing it otherwise.
 int CheckSingleInstance(HINSTANCE instance);
