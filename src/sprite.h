@@ -137,7 +137,9 @@ public:
     unsigned char unk_1fc[0x2];
     // The interrupt label to jump to on the next Step; 0 for none.
     short pendingInterrupt;
-    unsigned char unk_200[0x4];
+    // Which of SpriteEngine's draw functions DrawSprite uses. New in
+    // th08.
+    int drawMode;
     // The ANM file whose script runs (AnmLoaded::StartScript).
     AnmLoaded *anm;
     // Where it is drawn.
@@ -333,6 +335,19 @@ public:
     int Draw(Sprite *vm);
     // Draws `vm` unrotated, as th07's (0x462ff0).
     int DrawUnrotated(Sprite *vm);
+    // DrawUnrotated without rounding to pixels, as th07's.
+    int DrawNoRound(Sprite *vm);
+    // Draw without rounding to pixels when it is not rotated. New in
+    // th08.
+    int DrawRotatedNoRound(Sprite *vm);
+    // Draws `vm` at its 3D position projected to the screen, as th07's.
+    int DrawProjected(Sprite *vm);
+    // Draws `vm` in 3D, projected by ProjectSprite3D, as th07's.
+    int DrawProjected3D(Sprite *vm);
+    // Draws `vm` with the draw function its drawMode picks: 0
+    // DrawUnrotated, 1 DrawNoRound, 2 Draw, 3 DrawRotatedNoRound, 4
+    // DrawProjected, 5 DrawProjected3D. New in th08.
+    void DrawSprite(Sprite *vm);
     // Runs `vm`'s script for a frame, as th07's (0x45ea00).
     int Step(Sprite *vm);
     // Renders `text` into `texture`, its font sizes 15 when not

@@ -941,7 +941,7 @@ address,size,name,symbol
 0x0045e720,186,Sprite::ResolveIntArgument,?ResolveIntArgument@Sprite@@QAEHH@Z
 0x0045e810,124,Sprite::ResolveFloatArgumentPtr,?ResolveFloatArgumentPtr@Sprite@@QAEPAMPAMGH@Z
 0x0045e8a0,139,Sprite::ResolveIntArgumentPtr,?ResolveIntArgumentPtr@Sprite@@QAEPAHPAHGH@Z
-0x0045e960,125,Func45e960,
+0x0045e960,125,SpriteEngine::DrawSprite,?DrawSprite@SpriteEngine@@QAEXPAVSprite@@@Z
 0x0045ea00,13933,SpriteEngine::Step,?Step@SpriteEngine@@QAEHPAVSprite@@@Z
 0x00462210,21,Func462210,
 0x00462230,21,Func462230,
@@ -960,12 +960,12 @@ address,size,name,symbol
 0x00462ff0,469,SpriteEngine::DrawUnrotated,?DrawUnrotated@SpriteEngine@@QAEHPAVSprite@@@Z
 0x004631d0,58,Func4631d0,
 0x00463210,600,SpriteEngine::Draw,?Draw@SpriteEngine@@QAEHPAVSprite@@@Z
-0x00463470,912,Func463470,
-0x00463800,469,Func463800,
+0x00463470,912,SpriteEngine::DrawRotatedNoRound,?DrawRotatedNoRound@SpriteEngine@@QAEHPAVSprite@@@Z
+0x00463800,469,SpriteEngine::DrawNoRound,?DrawNoRound@SpriteEngine@@QAEHPAVSprite@@@Z
 0x004639e0,771,Func4639e0,
-0x00463cf0,107,Func463cf0,
+0x00463cf0,107,SpriteEngine::DrawProjected,?DrawProjected@SpriteEngine@@QAEHPAVSprite@@@Z
 0x00463d60,779,Func463d60,
-0x00464070,98,Func464070,
+0x00464070,98,SpriteEngine::DrawProjected3D,?DrawProjected3D@SpriteEngine@@QAEHPAVSprite@@@Z
 0x004640e0,786,Func4640e0,
 0x00464400,111,Func464400,
 0x00464470,1318,Func464470,

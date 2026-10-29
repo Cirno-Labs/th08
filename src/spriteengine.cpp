@@ -135,6 +135,31 @@ int *Sprite::ResolveIntArgumentPtr(int *value, WORD mask, int bit)
     return value;
 }
 
+void SpriteEngine::DrawSprite(Sprite *vm)
+{
+    switch (vm->drawMode)
+    {
+    case 0:
+        this->DrawUnrotated(vm);
+        break;
+    case 1:
+        this->DrawNoRound(vm);
+        break;
+    case 2:
+        this->Draw(vm);
+        break;
+    case 3:
+        this->DrawRotatedNoRound(vm);
+        break;
+    case 4:
+        this->DrawProjected(vm);
+        break;
+    case 5:
+        this->DrawProjected3D(vm);
+        break;
+    }
+}
+
 SpriteEngine::SpriteEngine()
 {
     memset(this, 0, sizeof(*this));
