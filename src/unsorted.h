@@ -247,3 +247,7 @@ extern BYTE g_CryptMagic[4];
 // Leaves `size` alone, so a caller's size still counts the 4-byte
 // header.
 BYTE *DecryptFileData(BYTE *data, int *size, int fileSize);
+
+// The inverse of DecryptData: reads each block from its end backwards,
+// every other byte, then the gaps, xoring with the growing key.
+BYTE *EncryptData(BYTE *data, int size, BYTE key, BYTE step, int blockSize, int limit);

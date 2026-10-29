@@ -573,7 +573,7 @@ address,size,name,symbol
 0x0043e160,110,ResetKeyboard,?ResetKeyboard@@YIXXZ
 0x0043e1d0,448,DecryptData,?DecryptData@@YIPAEPAEHEEHH@Z
 0x0043e390,262,DecryptFileData,?DecryptFileData@@YIPAEPAEPAHH@Z
-0x0043e4a0,448,Func43e4a0,
+0x0043e4a0,448,EncryptData,?EncryptData@@YIPAEPAEHEEHH@Z
 0x0043e660,531,LoadFileData,?LoadFileData@@YIPAXPADPAHH@Z
 0x0043e880,105,FileExists,?FileExists@@YIHPAD@Z
 0x0043e8f0,267,WriteToFile,?WriteToFile@@YIHPADPAXH@Z

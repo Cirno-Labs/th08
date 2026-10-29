@@ -401,3 +401,56 @@ BYTE *DecryptFileData(BYTE *data, int *size, int fileSize)
     }
     return p;
 }
+
+BYTE *EncryptData(BYTE *data, int size, BYTE key, BYTE step, int blockSize, int limit)
+{
+    int unused = 0;
+    BYTE *start;
+    int tail;
+    BYTE *wp;
+    BYTE *dest;
+    int i;
+    BYTE *p;
+
+    tail = (size % blockSize < blockSize / 4) ? size % blockSize : 0;
+    p = data;
+    dest = (BYTE *)g_MemoryManager.Alloc(size, GLOBAL_H);
+    wp = dest;
+    if (dest == NULL)
+    {
+        return data;
+    }
+    tail += size & 1;
+    size -= tail;
+    while (size > 0 && limit > 0)
+    {
+        if (size < blockSize)
+        {
+            blockSize = size;
+        }
+        start = p;
+        p = p + blockSize - 1;
+        for (i = (blockSize + 1) / 2; i > 0; i--, wp++)
+        {
+            *wp = *p ^ key;
+            p -= 2;
+            key += step;
+        }
+        p = start + blockSize - 2;
+        for (i = blockSize / 2; i > 0; i--, wp++)
+        {
+            *wp = *p ^ key;
+            p -= 2;
+            key += step;
+        }
+        size -= blockSize;
+        p = start + blockSize;
+        limit -= blockSize;
+    }
+    size += tail;
+    if (size > 0)
+    {
+        memcpy(wp, p, size);
+    }
+    return dest;
+}
