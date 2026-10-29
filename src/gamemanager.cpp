@@ -94,3 +94,17 @@ void RemoveGameManagerChain()
     g_GameManager.stats->guiScore = g_GameManager.stats->score;
     g_App.gameSpeed = 1.0f;
 }
+
+void GameManager::AddSubRank(int amount)
+{
+    this->subRank += amount;
+    while (this->subRank >= 100)
+    {
+        this->rank++;
+        this->subRank -= 100;
+    }
+    if (this->rank > this->maxRank)
+    {
+        this->rank = this->maxRank;
+    }
+}
