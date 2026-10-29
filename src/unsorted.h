@@ -1631,6 +1631,13 @@ public:
     // Called by GameManager::OnUpdate when the result screen's mode ends
     // without a scene to go to (0x438f58).
     void Func438f58();
+    // Restart the clock sprite (impl->unk_2156c) of times.anm on the
+    // hour (GameManager::GetUnk28), show the hour with interrupt 1 or 2,
+    // or hide it (0x439007, 0x439050, 0x439093, 0x4390d6). Return 0.
+    int Func439007();
+    int Func439050();
+    int Func439093();
+    int Func4390d6();
     // Loads the interface's sprites and the stage's portraits and
     // messages, as th07's (0x4390ee). Returns 0, or -1 when a file fails
     // to load.
@@ -1658,9 +1665,14 @@ public:
     unsigned int livesChanged : 2;
     unsigned int bombsChanged : 2;
     GuiImpl *impl;
-    // front.anm, as th07's ANM slot.
+    // front.anm (ANM slot 10), as th07's ANM slot.
     AnmLoaded *anm;
-    unsigned char unk_10[0x8c];
+    int unk_10;
+    // times.anm (ANM slot 0xe), with the clock, and the character's
+    // ANM (slot 0xc).
+    AnmLoaded *timesAnm;
+    AnmLoaded *characterAnm;
+    unsigned char unk_1c[0x80];
 };
 ASSERT_SIZE(Gui, 0x9c);
 extern Gui g_Gui;

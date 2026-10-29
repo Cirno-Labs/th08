@@ -735,3 +735,10 @@ int Func438ffd()
 {
     return g_App.unk_16c;
 }
+
+int Gui::Func439007()
+{
+    this->timesAnm->StartScriptAtOrigin(&this->impl->unk_2156c, 2);
+    this->timesAnm->SetSprite(&this->impl->unk_2156c, g_GameManager.GetUnk28());
+    return 0;
+}
