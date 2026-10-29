@@ -210,3 +210,8 @@ int GdiSurface::GetWidthBytes()
 {
     return this->widthBytes;
 }
+
+int GdiSurface::GetHeight()
+{
+    return this->height;
+}
