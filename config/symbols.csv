@@ -957,7 +957,7 @@ address,size,name,symbol
 0x00462e00,60,Func462e00,
 0x00462e40,198,SpriteEngine::FlushQuadBatch,?FlushQuadBatch@SpriteEngine@@QAEXXZ
 0x00462f10,211,Func462f10,
-0x00462ff0,469,Func462ff0,
+0x00462ff0,469,SpriteEngine::DrawUnrotated,?DrawUnrotated@SpriteEngine@@QAEHPAVSprite@@@Z
 0x004631d0,58,Func4631d0,
 0x00463210,600,SpriteEngine::Draw,?Draw@SpriteEngine@@QAEHPAVSprite@@@Z
 0x00463470,912,Func463470,

@@ -263,3 +263,58 @@ again:
     }
     return 1;
 }
+
+int MusicScreen::OnDraw(MusicScreen *screen)
+{
+    D3DXVECTOR3 pos;
+    char arrow[2] = {0x7f, 0};
+    int i;
+    D3DCOLOR color;
+
+    g_SpriteEngine->ClearTexture();
+    g_SpriteEngine->CopySurfaceToBackBuffer(0, 0, 0, 0, 0);
+    g_SpriteEngine->DrawUnrotated(&screen->bgSprite[0]);
+    for (i = screen->listTop; i < screen->listTop + 10; i++)
+    {
+        if (i >= screen->tuneCount)
+        {
+            break;
+        }
+        g_AsciiText.SetColor(screen->titles[i].color);
+        screen->titles[i].pos.x = 93.0f;
+        screen->titles[i].pos.y = 104.0f + (i + 1 - screen->listTop) * 18 - 20.0f;
+        screen->titles[i].pos.z = 0.0f;
+        g_SpriteEngine->DrawUnrotated(&screen->titles[i]);
+        // The number left of the title, and the arrow left of that.
+        pos = screen->titles[i].pos;
+        pos.x -= 60.0f;
+        if (screen->cursor == i)
+        {
+            g_AsciiText.AddString(&pos, arrow);
+        }
+        pos.x += 15.0f;
+        g_AsciiText.AddFormat(&pos, "%2d.", i + 1);
+    }
+    // Has no effect, but the original increments here.
+    i++;
+    for (i = 0; i < 7; i++)
+    {
+        g_SpriteEngine->DrawUnrotated(&screen->comment[i]);
+    }
+    g_AsciiText.SetColor(0xffffffff);
+    pos.x = 320.0f;
+    pos.y = 32.0f;
+    pos.z = 0.0f;
+    g_AsciiText.AddFormat(&pos, "Now Playing");
+    // The tune playing, drawn under it in white and put back.
+    pos = screen->comment[7].pos;
+    color = screen->comment[7].color;
+    screen->comment[7].pos.x = 320.0f;
+    screen->comment[7].pos.y = 52.0f;
+    screen->comment[7].pos.z = 0.0f;
+    screen->comment[7].color = 0xffffffff;
+    g_SpriteEngine->DrawUnrotated(&screen->comment[7]);
+    screen->comment[7].pos = pos;
+    screen->comment[7].color = color;
+    return 1;
+}
