@@ -5,6 +5,7 @@
 #include <windows.h>
 
 #include "common.h"
+#include "sprite.h"
 
 // The bullets. Only what is known so far.
 class BulletManager
@@ -23,3 +24,5 @@ public:
     int bulletCount;
 };
 extern BulletManager g_BulletManager;
+// etama.anm (slot 6), which BulletManager's added callback loads.
+extern AnmLoaded *g_EtamaAnm;

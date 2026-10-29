@@ -30,7 +30,7 @@ address,size,name,symbol
 0x00405280,39,IncrementCounterCapped,?IncrementCounterCapped@@YIXPAKK@Z
 0x004052b0,364,ContinueMenu::DrawContinueMenu,?DrawContinueMenu@ContinueMenu@@QAEXXZ
 0x00405420,2538,AsciiText::DrawPopups,?DrawPopups@AsciiText@@QAEXXZ
-0x00405e10,1803,Func405e10,
+0x00405e10,1803,AsciiText::Func405e10,?Func405e10@AsciiText@@QAEXPAUD3DXVECTOR3@@HK@Z
 0x00406520,42,ChainElem::SetCallback,?SetCallback@ChainElem@@QAEXP6IHPAX@Z@Z
 0x00406550,40,App::HasFlag0Or8,?HasFlag0Or8@App@@QAEHXZ
 0x00406580,26,App::GetNoFog,?GetNoFog@App@@QAEHXZ
@@ -2447,6 +2447,7 @@ address,size,name,symbol
 0x004e4b50,,g_FogColorChanged,?g_FogColorChanged@@3EA
 0x004ea3f4,,g_CameraSizeOffset,?g_CameraSizeOffset@@3UD3DXVECTOR3@@A
 0x004ea670,,g_SpellCard,?g_SpellCard@@3USpellCard@@A
+0x00577eb4,,g_EtamaAnm,?g_EtamaAnm@@3PAVAnmLoaded@@A
 0x00577f20,,g_EnemyManager,?g_EnemyManager@@3VEnemyManager@@A
 0x00f54e90,,g_BulletManager,?g_BulletManager@@3VBulletManager@@A
 0x0160f428,,g_Gui,?g_Gui@@3VGui@@A

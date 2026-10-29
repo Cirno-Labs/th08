@@ -8,8 +8,10 @@
 #include <string.h>
 
 #include "ascii.h"
+#include "bullet.h"
 #include "chain.h"
 #include "player.h"
+#include "screeneffect.h"
 #include "sprite.h"
 #include "unsorted.h"
 
@@ -1244,6 +1246,234 @@ void ContinueMenu::DrawContinueMenu()
                     g_SpriteEngine->DrawUnrotated(&this->sprites[i]);
                 }
             }
+        }
+    }
+}
+
+void AsciiText::DrawPopups()
+{
+    AsciiPopup *p = this->popups;
+    int count;
+    float dx2;
+    float dy;
+    int alpha;
+    int i;
+    BYTE *digitPtr;
+    D3DXVECTOR3 unusedPos;
+
+    if (!g_App.GetNoFog())
+    {
+        g_App.DisableFog();
+    }
+    g_App.SetRenderState(D3DRS_ZFUNC, D3DCMP_ALWAYS);
+    for (i = 0; i < 0x2d3; i++, p++)
+    {
+        if (!p->active)
+        {
+            continue;
+        }
+        this->digit.pos.x = p->pos.x - (p->digitCount << 2);
+        this->digit.pos.y = p->pos.y;
+        this->digit.color = p->color;
+        dx2 = g_Player.pos.x - p->pos.x;
+        dy = g_Player.pos.y - p->pos.y;
+        alpha = dx2 * dx2 + dy * dy;
+        if (alpha > 0x1000)
+        {
+            alpha = 0xd0;
+        }
+        else if (alpha > 0x400)
+        {
+            alpha = ((alpha - 0x400) * 0x80) / 0xc00 + 0x50;
+        }
+        else
+        {
+            alpha = 0x50;
+        }
+        this->digit.scaleY = this->scaleX;
+        this->digit.scaleX = this->scaleY;
+        digitPtr = p->digits + p->digitCount - 1;
+        for (count = p->digitCount; count > 0; count--)
+        {
+            if (p->timer < 0x34)
+            {
+                this->digit.spriteData = this->anm->GetSprite(*digitPtr);
+                this->digit.alpha = alpha;
+            }
+            else if (p->timer < 0x38)
+            {
+                this->digit.spriteData = this->anm->GetSprite(*digitPtr + 0xb);
+                this->digit.alpha = alpha;
+            }
+            else
+            {
+                this->digit.spriteData = this->anm->GetSprite(*digitPtr + 0x15);
+                this->digit.alpha = alpha;
+            }
+            this->digit.spriteWidth = this->digit.spriteData->width;
+            g_SpriteEngine->DrawUnrotated(&this->digit);
+            this->digit.pos.x += 8.0f;
+            digitPtr--;
+        }
+    }
+    if (this->ringAlpha > 0)
+    {
+        float rect[4];
+        D3DCOLOR tint;
+
+        ((BYTE *)&tint)[3] = this->ringAlpha;
+        ((BYTE *)&tint)[2] = 0;
+        ((BYTE *)&tint)[1] = 0;
+        ((BYTE *)&tint)[0] = 0;
+        rect[0] = 32.0f;
+        rect[1] = 16.0f;
+        rect[2] = g_Player.pos.x + 32.0f - this->ringRadius + g_SpriteEngine->shakeX;
+        rect[3] = 464.0f;
+        if (rect[2] > rect[0])
+        {
+            DrawColorRect(rect, tint);
+        }
+        rect[0] = g_Player.pos.x + 32.0f + this->ringRadius + g_SpriteEngine->shakeX;
+        rect[1] = 16.0f;
+        rect[2] = 416.0f;
+        rect[3] = 464.0f;
+        if (rect[2] > rect[0])
+        {
+            DrawColorRect(rect, tint);
+        }
+        rect[0] = g_Player.pos.x + 32.0f - this->ringRadius + g_SpriteEngine->shakeX;
+        if (rect[0] < 32.0f)
+        {
+            rect[0] = 32.0f;
+        }
+        rect[1] = 16.0f;
+        rect[2] = g_Player.pos.x + 32.0f + this->ringRadius + g_SpriteEngine->shakeX;
+        if (rect[2] > 416.0f)
+        {
+            rect[2] = 416.0f;
+        }
+        rect[3] = g_Player.pos.y + 16.0f - this->ringRadius + g_SpriteEngine->shakeY;
+        if (rect[3] > rect[1])
+        {
+            DrawColorRect(rect, tint);
+        }
+        rect[1] = g_Player.pos.y + 16.0f + this->ringRadius + g_SpriteEngine->shakeY;
+        rect[3] = 464.0f;
+        if (rect[3] > rect[1])
+        {
+            DrawColorRect(rect, tint);
+        }
+        g_EtamaAnm->StartScript(&this->ring, 0x69);
+        this->ring.scaleX = this->ringRadius / 63.0f;
+        this->ring.scaleY = this->ring.scaleX;
+        this->ring.pos = g_Player.pos;
+        this->ring.pos.x += 32.0f;
+        this->ring.pos.y += 16.0f;
+        this->ring.alpha = this->ringAlpha;
+        g_SpriteEngine->DrawUnrotated(&this->ring);
+    }
+    p = this->numberPopups;
+    for (i = 0; i < 0x80; i++, p++)
+    {
+        if (!p->active)
+        {
+            continue;
+        }
+        this->digit2.pos.x = p->pos.x - p->digitCount * 3.5f;
+        this->digit2.pos.y = p->pos.y;
+        this->digit2.color = p->color;
+        dx2 = g_Player.pos.x - p->pos.x;
+        dy = g_Player.pos.y - p->pos.y;
+        alpha = dx2 * dx2 + dy * dy;
+        if (alpha > 0x1000)
+        {
+            alpha = 0xd0;
+        }
+        else if (alpha > 0x400)
+        {
+            alpha = ((alpha - 0x400) * 0x80) / 0xc00 + 0x50;
+        }
+        else
+        {
+            alpha = 0x50;
+        }
+        this->digit2.scaleY = p->scaleX;
+        this->digit2.scaleX = p->scaleY;
+        digitPtr = p->digits + p->digitCount - 1;
+        for (count = p->digitCount; count > 0; count--)
+        {
+            this->digit2.spriteData = this->anm->GetSprite(*digitPtr + 0x88);
+            this->digit2.alpha = alpha;
+            this->digit2.spriteWidth = this->digit2.spriteData->width;
+            g_SpriteEngine->DrawUnrotated(&this->digit2);
+            this->digit2.pos.x += 7.0f * p->scaleX;
+            digitPtr--;
+        }
+    }
+    g_SpriteEngine->shakeY = 0.0f;
+    g_SpriteEngine->shakeX = 0.0f;
+    if (this->summaryPopup.IsShown())
+    {
+        int div;
+
+        this->summaryPopup4.pos.x =
+            g_GameManager.GetUnk22() * 112.0f / 2.0f / 10000.0f + this->summaryPopup.pos.x + 64.0f;
+        g_SpriteEngine->DrawRotatedNoRound(&this->summaryPopup4);
+        this->unk_127c.pos.x = g_GameManager.GetUnk22() * 80.0f / 2.0f / 10000.0f + this->summaryPopup.pos.x + 64.0f;
+        this->unk_127c.pos.y = this->summaryPopup4.pos.y - 7.0f;
+        this->unk_127c.pos.z = this->summaryPopup4.pos.z;
+        this->unk_127c.alpha = this->summaryPopup.alpha;
+        if (g_GameManager.IsUnk22AtLow1())
+        {
+            this->unk_127c.colorRgb[2] = 0x70;
+            this->unk_127c.colorRgb[1] = 0x70;
+            this->unk_127c.colorRgb[0] = 0xff;
+        }
+        else if (g_GameManager.IsUnk22AtLow2())
+        {
+            this->unk_127c.colorRgb[2] = 0xb0;
+            this->unk_127c.colorRgb[1] = 0xb0;
+            this->unk_127c.colorRgb[0] = 0xff;
+        }
+        else if (g_GameManager.IsUnk22AtHigh1())
+        {
+            this->unk_127c.colorRgb[2] = 0xff;
+            this->unk_127c.colorRgb[1] = 0x70;
+            this->unk_127c.colorRgb[0] = 0x70;
+        }
+        else if (g_GameManager.IsUnk22AtHigh2())
+        {
+            this->unk_127c.colorRgb[2] = 0xff;
+            this->unk_127c.colorRgb[1] = 0xb0;
+            this->unk_127c.colorRgb[0] = 0xb0;
+        }
+        else
+        {
+            this->unk_127c.colorRgb[2] = 0xff;
+            this->unk_127c.colorRgb[1] = 0xff;
+            this->unk_127c.colorRgb[0] = 0xff;
+        }
+        this->summaryPopup.color = this->unk_127c.color;
+        g_SpriteEngine->DrawUnrotated(&this->summaryPopup);
+        g_SpriteEngine->DrawUnrotated(&this->summaryPopup2);
+        g_SpriteEngine->DrawUnrotated(&this->summaryPopup3);
+        this->Func405e10(&this->unk_127c.pos, g_GameManager.GetUnk22(), this->unk_127c.color);
+        div = 10000000;
+        count = g_GameManager.stats->unk_24;
+        alpha = 0;
+        this->unk_127c.pos.x = this->summaryPopup.pos.x + 62.0f - 14.0f;
+        this->unk_127c.pos.y = this->summaryPopup.pos.y + 3.0f + 8.0f;
+        for (i = 0; i < 8; i++)
+        {
+            alpha += count / div;
+            if (alpha != 0)
+            {
+                this->anm->SetSprite(&this->unk_127c, count / div + 0x88);
+                g_SpriteEngine->DrawUnrotated(&this->unk_127c);
+                this->unk_127c.pos.x += 7.0f;
+            }
+            count = count % div;
+            div /= 10;
         }
     }
 }

@@ -139,6 +139,9 @@ public:
     void DrawStrings();
     // Draws the popups (0x405420).
     void DrawPopups();
+    // Draws `value` at `pos` in `color`, for DrawPopups (0x405e10). New
+    // in th08.
+    void Func405e10(D3DXVECTOR3 *pos, int value, D3DCOLOR color);
     // Queues `text` to be drawn at `pos` (0x402920).
     void AddString(D3DXVECTOR3 *pos, char *text);
     // Queues `text` to be drawn at `pos`, with printf-style formatting
@@ -263,8 +266,12 @@ public:
     AsciiPopup popups[0x2d3];
     // The strings Func403600 queues. New in th08.
     AsciiPopup numberPopups[0x80];
-    unsigned char unk_16f04[0x8];
-    Sprite unk_16f0c;
+    // While ringAlpha is above 0, DrawPopups darkens the play area
+    // outside a square of ringRadius around the player, by ringAlpha, and
+    // draws ring (etama.anm's script 0x69) scaled to it. New in th08.
+    float ringRadius;
+    int ringAlpha;
+    Sprite ring;
 };
 ASSERT_SIZE(AsciiText, 0x171b0);
 extern AsciiText g_AsciiText;

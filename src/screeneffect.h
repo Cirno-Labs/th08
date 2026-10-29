@@ -108,3 +108,6 @@ ASSERT_SIZE(ScreenEffect, 0x34);
 
 // The loading screen's effect, started by App::StartLoadingScreenEffect.
 extern ScreenEffect *g_LoadingScreenEffect;
+
+// Fills `rect` (left, top, right, bottom) with `color` (0x45b1e0).
+void DrawColorRect(float *rect, D3DCOLOR color);

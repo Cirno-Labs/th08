@@ -1268,6 +1268,29 @@ public:
     // 4B by the shot type, and from 6 to 6B if bits 11-12 of unk_3dbac
     // are set, else 6A (0x43c4b3).
     void AdvanceStage();
+    // stats->unk_22, and whether it reached each of unk22Low1, unk22Low2,
+    // unk22High1 and unk22High2. Inline; the copies at 0x406cf0 and
+    // 0x406d10 to 0x406da0 are in an /Od object.
+    int GetUnk22()
+    {
+        return this->stats->unk_22;
+    }
+    BOOL IsUnk22AtLow1()
+    {
+        return this->stats->unk_22 <= this->unk22Low1;
+    }
+    BOOL IsUnk22AtLow2()
+    {
+        return this->stats->unk_22 <= this->unk22Low2;
+    }
+    BOOL IsUnk22AtHigh1()
+    {
+        return this->stats->unk_22 >= this->unk22High1;
+    }
+    BOOL IsUnk22AtHigh2()
+    {
+        return this->stats->unk_22 >= this->unk22High2;
+    }
     // stats->unk_3c and unk_40, which DrawHud shows as "%d/%d" on its last
     // row, in 0xfffff0c0 once unk_3c reaches unk_40. Inline; the copies at
     // 0x421b60 and 0x421b80 are in an /Od object.
@@ -1493,7 +1516,13 @@ public:
     // The bounds of stats->unk_22.
     short unk_3ddf8;
     short unk_3ddfa;
-    unsigned char unk_3ddfc[0x8];
+    // Where AsciiText::DrawPopups starts tinting the stats->unk_22
+    // gauge: blue at or below unk22Low1 (light blue at unk22Low2), red at
+    // or above unk22High1 (light red at unk22High2).
+    short unk22Low1;
+    short unk22High1;
+    short unk22Low2;
+    short unk22High2;
     // The frames played, as th07's.
     int progressFrames;
     // Counts the frames that slowdown may skip, as th07's.
