@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">70.16% (783)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">27.87% (311)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">70.25% (784)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">27.78% (310)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="524.10" height="6" x="0" y="0" class="named"/>
-<rect width="14.73" height="6" x="524.10" y="0" class="decompiled"/>
-<rect width="208.17" height="6" x="538.83" y="0" class="todo"/>
+<rect width="524.77" height="6" x="0" y="0" class="named"/>
+<rect width="14.73" height="6" x="524.77" y="0" class="decompiled"/>
+<rect width="207.50" height="6" x="539.50" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -847,7 +847,7 @@
 <rect width="12" height="12" x="390" y="225" class="named"><title>0x0044de60 Player::AddHitArea (153 bytes)</title></rect>
 <rect width="12" height="12" x="405" y="225" class="named"><title>0x0044df00 Player::AddHitAreaCircle (153 bytes)</title></rect>
 <rect width="12" height="12" x="420" y="225" class="named"><title>0x0044dfa0 Player::AddBombHitbox (153 bytes)</title></rect>
-<rect width="12" height="12" x="435" y="225" class="todo"><title>0x0044e040 Func44e040 (153 bytes)</title></rect>
+<rect width="12" height="12" x="435" y="225" class="named"><title>0x0044e040 Player::AddBombHitboxCircle (153 bytes)</title></rect>
 <rect width="12" height="12" x="450" y="225" class="named"><title>0x0044e0e0 KeepsResources (15 bytes)</title></rect>
 <rect width="12" height="12" x="465" y="225" class="named"><title>0x0044e0f0 Sprite::SetBlendModeAdd (35 bytes)</title></rect>
 <rect width="12" height="12" x="480" y="225" class="named"><title>0x0044e120 Sprite::SetBlendModeNormal (32 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">61.27%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">37.71%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">61.31%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">37.68%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="457.72" height="6" x="0" y="0" class="named"/>
-<rect width="7.57" height="6" x="457.72" y="0" class="decompiled"/>
-<rect width="281.71" height="6" x="465.29" y="0" class="todo"/>
+<rect width="457.97" height="6" x="0" y="0" class="named"/>
+<rect width="7.57" height="6" x="457.97" y="0" class="decompiled"/>
+<rect width="281.46" height="6" x="465.54" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1704,7 +1704,7 @@
 <rect width="6.37" height="6.26" x="638.75" y="198.78" class="named"><title>0x0044de60 Player::AddHitArea (153 bytes)</title></rect>
 <rect width="6.37" height="6.26" x="648.12" y="198.78" class="named"><title>0x0044df00 Player::AddHitAreaCircle (153 bytes)</title></rect>
 <rect width="6.37" height="6.26" x="657.49" y="198.78" class="named"><title>0x0044dfa0 Player::AddBombHitbox (153 bytes)</title></rect>
-<rect width="6.37" height="6.26" x="666.87" y="198.78" class="todo"><title>0x0044e040 Func44e040 (153 bytes)</title></rect>
+<rect width="6.37" height="6.26" x="666.87" y="198.78" class="named"><title>0x0044e040 Player::AddBombHitboxCircle (153 bytes)</title></rect>
 <rect width="6.31" height="6.26" x="676.24" y="198.78" class="named"><title>0x00408fc0 HermiteInterpolate (152 bytes)</title></rect>
 <rect width="6.31" height="6.26" x="685.55" y="198.78" class="todo"><title>0x0040b910 Func40b910 (152 bytes)</title></rect>
 <rect width="6.31" height="6.26" x="694.86" y="198.78" class="todo"><title>0x004311a0 BulletManager::RegisterChain (152 bytes)</title></rect>

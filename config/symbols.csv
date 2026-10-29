@@ -778,7 +778,7 @@ address,size,name,symbol
 0x0044de60,153,Player::AddHitArea,?AddHitArea@Player@@QAEPAUPlayerBombHitbox@@PAUD3DXVECTOR3@@MMHH@Z
 0x0044df00,153,Player::AddHitAreaCircle,?AddHitAreaCircle@Player@@QAEPAUPlayerBombHitbox@@PAUD3DXVECTOR3@@MMHH@Z
 0x0044dfa0,153,Player::AddBombHitbox,?AddBombHitbox@Player@@QAEPAUPlayerBombHitbox@@PAUD3DXVECTOR3@@MMHH@Z
-0x0044e040,153,Func44e040,
+0x0044e040,153,Player::AddBombHitboxCircle,?AddBombHitboxCircle@Player@@QAEPAUPlayerBombHitbox@@PAUD3DXVECTOR3@@MMHH@Z
 0x0044e0e0,15,KeepsResources,?KeepsResources@@YIHXZ
 0x0044e0f0,35,Sprite::SetBlendModeAdd,?SetBlendModeAdd@Sprite@@QAEXXZ
 0x0044e120,32,Sprite::SetBlendModeNormal,?SetBlendModeNormal@Sprite@@QAEXXZ

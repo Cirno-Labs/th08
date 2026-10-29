@@ -333,8 +333,8 @@ public:
                                        int itemType);
     // The same in bombHitboxes, dealing `damage` (0x44dfa0, 0x44e040).
     PlayerBombHitbox *AddBombHitbox(D3DXVECTOR3 *pos, float width, float height, int damage, int framesLeft);
-    PlayerBombHitbox *AddBombHitboxCircle(D3DXVECTOR3 *pos, float radius, float radiusGrowth, int framesLeft,
-                                          int damage);
+    PlayerBombHitbox *AddBombHitboxCircle(D3DXVECTOR3 *pos, float radius, float radiusGrowth, int damage,
+                                          int framesLeft);
     // Whether unk_5 is set. Inline; the copy is at 0x40bc40.
     int IsUnk5Set()
     {
