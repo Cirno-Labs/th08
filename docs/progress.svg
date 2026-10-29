@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">43.73% (488)</tspan> · <tspan class="decompiled">0.90% (10)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">55.38% (618)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">43.73% (488)</tspan> · <tspan class="decompiled">0.99% (11)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">55.29% (617)</tspan></tspan></text>
 <g transform="translate(0 20)">
 <rect width="326.65" height="6" x="0" y="0" class="named"/>
-<rect width="6.69" height="6" x="326.65" y="0" class="decompiled"/>
-<rect width="413.66" height="6" x="333.34" y="0" class="todo"/>
+<rect width="7.36" height="6" x="326.65" y="0" class="decompiled"/>
+<rect width="412.99" height="6" x="334.01" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -573,7 +573,7 @@
 <rect width="12" height="12" x="30" y="150" class="decompiled"><title>0x00438ff3 Func438ff3 (10 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="150" class="decompiled"><title>0x00438ffd Func438ffd (10 bytes)</title></rect>
 <rect width="12" height="12" x="60" y="150" class="decompiled"><title>0x00439007 Gui::Func439007 (73 bytes)</title></rect>
-<rect width="12" height="12" x="75" y="150" class="todo"><title>0x00439050 Func439050 (67 bytes)</title></rect>
+<rect width="12" height="12" x="75" y="150" class="decompiled"><title>0x00439050 Gui::Func439050 (67 bytes)</title></rect>
 <rect width="12" height="12" x="90" y="150" class="todo"><title>0x00439093 Func439093 (67 bytes)</title></rect>
 <rect width="12" height="12" x="105" y="150" class="todo"><title>0x004390d6 Func4390d6 (24 bytes)</title></rect>
 <rect width="12" height="12" x="120" y="150" class="todo"><title>0x004390ee Gui::LoadResources (1482 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">35.59%</tspan> · <tspan class="decompiled">0.32%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">64.09%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">35.59%</tspan> · <tspan class="decompiled">0.33%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">64.07%</tspan></tspan></text>
 <g transform="translate(0 20)">
 <rect width="265.89" height="6" x="0" y="0" class="named"/>
-<rect width="2.37" height="6" x="265.89" y="0" class="decompiled"/>
-<rect width="478.75" height="6" x="268.25" y="0" class="todo"/>
+<rect width="2.48" height="6" x="265.89" y="0" class="decompiled"/>
+<rect width="478.64" height="6" x="268.36" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1948,7 +1948,7 @@
 <rect width="3.20" height="3.13" x="718.99" y="260.05" class="todo"><title>0x00418130 Func418130 (67 bytes)</title></rect>
 <rect width="3.20" height="3.13" x="725.19" y="260.05" class="todo"><title>0x0041f040 Func41f040 (67 bytes)</title></rect>
 <rect width="3.20" height="3.13" x="731.39" y="260.05" class="todo"><title>0x0042ff70 Func42ff70 (67 bytes)</title></rect>
-<rect width="3.20" height="3.13" x="737.60" y="260.05" class="todo"><title>0x00439050 Func439050 (67 bytes)</title></rect>
+<rect width="3.20" height="3.13" x="737.60" y="260.05" class="decompiled"><title>0x00439050 Gui::Func439050 (67 bytes)</title></rect>
 <rect width="3.20" height="3.13" x="743.80" y="260.05" class="todo"><title>0x00439093 Func439093 (67 bytes)</title></rect>
 <rect width="3.28" height="3.05" x="662.25" y="266.18" class="named"><title>0x00443da0 MidiDevice::SendShortMsg (67 bytes)</title></rect>
 <rect width="3.28" height="3.05" x="662.25" y="272.23" class="named"><title>0x00474450 LzssTreeInitNode (67 bytes)</title></rect>

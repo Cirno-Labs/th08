@@ -504,7 +504,7 @@ address,size,name,symbol
 0x00438ff3,10,Func438ff3,?Func438ff3@@YIHXZ
 0x00438ffd,10,Func438ffd,?Func438ffd@@YIHXZ
 0x00439007,73,Gui::Func439007,?Func439007@Gui@@QAEHXZ
-0x00439050,67,Func439050,
+0x00439050,67,Gui::Func439050,?Func439050@Gui@@QAEHXZ
 0x00439093,67,Func439093,
 0x004390d6,24,Func4390d6,
 0x004390ee,1482,Gui::LoadResources,?LoadResources@Gui@@QAEHXZ
