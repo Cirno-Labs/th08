@@ -118,7 +118,7 @@ address,size,name,symbol
 0x0040b8c0,23,Timer::AsFloat,?AsFloat@Timer@@QAEMXZ
 0x0040b8e0,27,Timer::operator>=,??PTimer@@QAEHH@Z
 0x0040b900,10,IsRestarting,?IsRestarting@@YIHXZ
-0x0040b910,152,Func40b910,
+0x0040b910,152,AnmLoaded::StartScriptAtOrigin,?StartScriptAtOrigin@AnmLoaded@@QAEXPAVSprite@@H@Z
 0x0040b9b0,21,SpriteEngine::ClearBlendMode,?ClearBlendMode@SpriteEngine@@QAEXXZ
 0x0040b9d0,21,Func40b9d0,
 0x0040b9f0,21,SpriteEngine::ClearVertexFormat,?ClearVertexFormat@SpriteEngine@@QAEXXZ
