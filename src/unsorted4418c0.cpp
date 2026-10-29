@@ -1,6 +1,7 @@
 // The file from about 0x4418c0 (WinMain): start-up, the window and the
 // display, as in th07's unsorted433e90.cpp.
 
+#include <direct.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -240,6 +241,41 @@ int GameWindow::RunFrame()
         Sleep(0);
     }
     return 0;
+}
+
+void PresentFrame()
+{
+    int i;
+    char path[0x100];
+
+    if (g_App.d3dDevice->Present(NULL, NULL, NULL, NULL) < 0)
+    {
+        g_SpriteEngine->ReleaseSurfaces();
+        g_App.d3dDevice->Reset(&g_App.presentParams);
+        SetDefaultRenderStates();
+        g_App.redrawFrames = 2;
+    }
+    g_SpriteEngine->DoPendingCopy();
+    if (WAS_PRESSED(0x800))
+    {
+        _mkdir("snapshot");
+        for (i = 0; i < 1000; i++)
+        {
+            sprintf(path, "snapshot/th%.3d.bmp", i);
+            if (!FileExists(path))
+            {
+                break;
+            }
+        }
+        if (i < 1000)
+        {
+            g_App.SaveScreenshot(path);
+        }
+    }
+    if (g_App.redrawFrames != 0 && !g_GameManager.unk_3dbb2)
+    {
+        g_App.redrawFrames--;
+    }
 }
 
 void FormatCapsReport(D3DCAPS8 *caps, char *buffer)

@@ -116,6 +116,9 @@ public:
     // Releases the surfaces before the device is reset. Inline, defined
     // in the WinMain file.
     void ReleaseSurfaces();
+    // Does the copy SetPendingCopy asked for, if any, as th07's. Inline,
+    // defined in the WinMain file.
+    void DoPendingCopy();
     // Releases the vertex buffer (0x446f0b, in App's object).
     void ReleaseVertexBuffer();
     // Starts batching quads for a frame, as th07's (0x462e00).

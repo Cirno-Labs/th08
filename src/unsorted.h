@@ -1031,7 +1031,10 @@ public:
             unsigned int unk_3dbac_18 : 14;
         };
     };
-    unsigned char unk_3dbb0[0x214];
+    unsigned char unk_3dbb0[0x2];
+    // While it is set, PresentFrame keeps redrawFrames.
+    BYTE unk_3dbb2;
+    unsigned char unk_3dbb3[0x211];
     // The stage being played, from 0.
     int stage;
 };

@@ -655,7 +655,7 @@ address,size,name,symbol
 0x00443ab0,26,App::GetReferenceRasterizer,?GetReferenceRasterizer@App@@QAEHXZ
 0x00443ad0,21,App::GetWindowed,?GetWindowed@App@@QAEHXZ
 0x00443af0,104,SpriteEngine::ReleaseSurfaces,?ReleaseSurfaces@SpriteEngine@@QAEXXZ
-0x00443b60,248,Func443b60,
+0x00443b60,248,SpriteEngine::DoPendingCopy,?DoPendingCopy@SpriteEngine@@QAEXXZ
 0x00443c60,33,MidiDevice::MidiDevice,??0MidiDevice@@QAE@XZ
 0x00443c90,19,MidiDevice::~MidiDevice,??1MidiDevice@@QAE@XZ
 0x00443cb0,89,MidiDevice::Open,?Open@MidiDevice@@QAEHI@Z
