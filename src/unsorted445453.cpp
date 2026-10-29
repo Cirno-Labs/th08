@@ -1281,3 +1281,11 @@ void App::FinishLoadingSprites()
         g_LoadingScreenEffect = NULL;
     }
 }
+
+void App::StartLoadingScreenEffect(int type)
+{
+    if (g_LoadingScreenEffect == NULL)
+    {
+        g_LoadingScreenEffect = ScreenEffect::StartEffect(type + 5, 60, 0, 0, 0, 1);
+    }
+}

@@ -730,7 +730,7 @@ address,size,name,symbol
 0x0044881a,85,App::StopLoadingSprites,?StopLoadingSprites@App@@QAEXXZ
 0x0044886f,259,App::StartLoadingSpritesOverScreen,?StartLoadingSpritesOverScreen@App@@QAEXPAUD3DXVECTOR3@@@Z
 0x00448972,88,App::FinishLoadingSprites,?FinishLoadingSprites@App@@QAEXXZ
-0x004489ca,47,Func4489ca,
+0x004489ca,47,App::StartLoadingScreenEffect,?StartLoadingScreenEffect@App@@QAEXH@Z
 0x004489f9,54,Func4489f9,
 0x00448a2f,54,Func448a2f,
 0x00448a65,177,Func448a65,

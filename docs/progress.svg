@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">22.04% (246)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">77.96% (870)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">22.13% (247)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">77.87% (869)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="164.66" height="6" x="0" y="0" class="named"/>
-<rect width="582.34" height="6" x="164.66" y="0" class="todo"/>
+<rect width="165.33" height="6" x="0" y="0" class="named"/>
+<rect width="581.67" height="6" x="165.33" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -798,7 +798,7 @@
 <rect width="12" height="12" x="420" y="210" class="named"><title>0x0044881a App::StopLoadingSprites (85 bytes)</title></rect>
 <rect width="12" height="12" x="435" y="210" class="named"><title>0x0044886f App::StartLoadingSpritesOverScreen (259 bytes)</title></rect>
 <rect width="12" height="12" x="450" y="210" class="named"><title>0x00448972 App::FinishLoadingSprites (88 bytes)</title></rect>
-<rect width="12" height="12" x="465" y="210" class="todo"><title>0x004489ca Func4489ca (47 bytes)</title></rect>
+<rect width="12" height="12" x="465" y="210" class="named"><title>0x004489ca App::StartLoadingScreenEffect (47 bytes)</title></rect>
 <rect width="12" height="12" x="480" y="210" class="todo"><title>0x004489f9 Func4489f9 (54 bytes)</title></rect>
 <rect width="12" height="12" x="495" y="210" class="todo"><title>0x00448a2f Func448a2f (54 bytes)</title></rect>
 <rect width="12" height="12" x="510" y="210" class="todo"><title>0x00448a65 Func448a65 (177 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">11.63%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">88.37%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">11.64%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">88.36%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="86.86" height="6" x="0" y="0" class="named"/>
-<rect width="660.14" height="6" x="86.86" y="0" class="todo"/>
+<rect width="86.94" height="6" x="0" y="0" class="named"/>
+<rect width="660.06" height="6" x="86.94" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -2035,7 +2035,7 @@
 <rect width="2.07" height="2.37" x="700.53" y="278" class="named"><title>0x0043ef10 Log::Log (48 bytes)</title></rect>
 <rect width="2.07" height="2.37" x="705.60" y="278" class="named"><title>0x00443df0 MmTimer::MmTimer (48 bytes)</title></rect>
 <rect width="2.07" height="2.37" x="710.68" y="278" class="named"><title>0x004481af App::IsScoreDisabled (48 bytes)</title></rect>
-<rect width="1.97" height="2.37" x="715.75" y="278" class="todo"><title>0x004489ca Func4489ca (47 bytes)</title></rect>
+<rect width="1.97" height="2.37" x="715.75" y="278" class="named"><title>0x004489ca App::StartLoadingScreenEffect (47 bytes)</title></rect>
 <rect width="1.97" height="2.37" x="720.72" y="278" class="todo"><title>0x00454269 Func454269 (47 bytes)</title></rect>
 <rect width="1.86" height="2.37" x="725.69" y="278" class="todo"><title>0x00424f90 Func424f90 (46 bytes)</title></rect>
 <rect width="1.86" height="2.37" x="730.55" y="278" class="named"><title>0x0043ce00 ChainElem::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
