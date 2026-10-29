@@ -261,3 +261,15 @@ int ScreenEffect::OnDrawScreen(ScreenEffect *effect)
     DrawColorRect(area, effect->alpha << 24 | effect->color);
     return 1;
 }
+
+int ScreenEffect::OnDrawWholeScreen(ScreenEffect *effect)
+{
+    float area[4];
+
+    area[0] = 0.0f;
+    area[1] = 0.0f;
+    area[2] = 640.0f;
+    area[3] = 480.0f;
+    DrawColorRect(area, effect->alpha << 24 | effect->color);
+    return 1;
+}
