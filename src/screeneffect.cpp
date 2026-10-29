@@ -440,3 +440,9 @@ int ScreenEffect::OnUpdateShakeRamp(ScreenEffect *effect)
     }
     return 1;
 }
+
+int ScreenEffect::AddedCallback(ScreenEffect *effect)
+{
+    effect->timer = 0;
+    return 0;
+}
