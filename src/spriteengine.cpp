@@ -500,3 +500,26 @@ void AnmLoaded::LoadSprite(int index, SpriteData *sprite)
     this->sprites[index].width = (this->sprites[index].endX - this->sprites[index].startX) / sprite->scaleX;
     this->sprites[index].height = (this->sprites[index].endY - this->sprites[index].startY) / sprite->scaleY;
 }
+
+void SpriteEngine::RenderTextToTextureIndex(IDirect3DTexture8 *texture, int x, int y, int width, int unused,
+                                            int fontHeight, int destHeight, D3DCOLOR textColor, D3DCOLOR shadowColor,
+                                            char *text, float scaleX, float scaleY)
+{
+    if (fontHeight <= 0)
+    {
+        fontHeight = 15;
+    }
+    if (destHeight <= 0)
+    {
+        destHeight = 15;
+    }
+    if (fontHeight > 8)
+    {
+        RenderTextToTextureBold(x, y, width, unused, fontHeight * scaleX, destHeight * scaleY, textColor, shadowColor,
+                                text, texture);
+    }
+    else
+    {
+        RenderTextToTexture(x, y, width, unused, 8, 8, textColor, shadowColor, text, texture);
+    }
+}

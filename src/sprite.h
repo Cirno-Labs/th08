@@ -254,6 +254,13 @@ public:
     int DrawUnrotated(Sprite *vm);
     // Runs `vm`'s script for a frame, as th07's (0x45ea00).
     int Step(Sprite *vm);
+    // Renders `text` into `texture`, its font sizes 15 when not
+    // positive and scaled by `scaleX` and `scaleY`, as th07's; fonts of
+    // 8 pixels or less are drawn 8 by 8 with RenderTextToTexture. Takes
+    // the texture rather than its index in th08.
+    void RenderTextToTextureIndex(IDirect3DTexture8 *texture, int x, int y, int width, int unused, int fontHeight,
+                                  int destHeight, D3DCOLOR textColor, D3DCOLOR shadowColor, char *text, float scaleX,
+                                  float scaleY);
     // Renders printf-style text into `sprite`'s texture, as th07's
     // (0x4663b0).
     void RenderText(Sprite *sprite, D3DCOLOR textColor, D3DCOLOR shadowColor, char *fmt, ...);
