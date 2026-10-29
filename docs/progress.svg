@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">3.76% (42)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">96.24% (1074)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">3.85% (43)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">96.15% (1073)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="28.11" height="6" x="0" y="0" class="named"/>
-<rect width="718.89" height="6" x="28.11" y="0" class="todo"/>
+<rect width="28.78" height="6" x="0" y="0" class="named"/>
+<rect width="718.22" height="6" x="28.78" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -633,9 +633,9 @@
 <rect width="12" height="12" x="195" y="165" class="todo"><title>0x0043cf10 Func43cf10 (49 bytes)</title></rect>
 <rect width="12" height="12" x="210" y="165" class="todo"><title>0x0043cf50 Func43cf50 (362 bytes)</title></rect>
 <rect width="12" height="12" x="225" y="165" class="named"><title>0x0043d0c0 InitJoystick (85 bytes)</title></rect>
-<rect width="12" height="12" x="240" y="165" class="todo"><title>0x0043d120 Func43d120 (1457 bytes)</title></rect>
-<rect width="12" height="12" x="255" y="165" class="todo"><title>0x0043d6e0 Func43d6e0 (122 bytes)</title></rect>
-<rect width="12" height="12" x="270" y="165" class="todo"><title>0x0043d760 Func43d760 (115 bytes)</title></rect>
+<rect width="12" height="12" x="240" y="165" class="named"><title>0x0043d120 ReadJoystick (1457 bytes)</title></rect>
+<rect width="12" height="12" x="255" y="165" class="todo"><title>0x0043d6e0 SetButtonFromDirectInput (122 bytes)</title></rect>
+<rect width="12" height="12" x="270" y="165" class="todo"><title>0x0043d760 SetButtonFromJoystick (115 bytes)</title></rect>
 <rect width="12" height="12" x="285" y="165" class="todo"><title>0x0043d7e0 Func43d7e0 (392 bytes)</title></rect>
 <rect width="12" height="12" x="300" y="165" class="todo"><title>0x0043d970 Func43d970 (2029 bytes)</title></rect>
 <rect width="12" height="12" x="315" y="165" class="todo"><title>0x0043e160 Func43e160 (110 bytes)</title></rect>
@@ -657,7 +657,7 @@
 <rect width="12" height="12" x="555" y="165" class="todo"><title>0x0043eeb0 Func43eeb0 (84 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="165" class="todo"><title>0x0043ef10 Func43ef10 (48 bytes)</title></rect>
 <rect width="12" height="12" x="585" y="165" class="named"><title>0x0043ef40 MmTimer::OnTimer (11 bytes)</title></rect>
-<rect width="12" height="12" x="600" y="165" class="todo"><title>0x0043ef50 Func43ef50 (21 bytes)</title></rect>
+<rect width="12" height="12" x="600" y="165" class="todo"><title>0x0043ef50 App::GetShootFocuses (21 bytes)</title></rect>
 <rect width="12" height="12" x="615" y="165" class="todo"><title>0x0043ef70 Func43ef70 (63 bytes)</title></rect>
 <rect width="12" height="12" x="630" y="165" class="todo"><title>0x0043efb0 Func43efb0 (63 bytes)</title></rect>
 <rect width="12" height="12" x="645" y="165" class="todo"><title>0x0043efef Func43efef (60 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">1.83%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">98.17%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">2.15%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">97.85%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="13.68" height="6" x="0" y="0" class="named"/>
-<rect width="733.32" height="6" x="13.68" y="0" class="todo"/>
+<rect width="16.05" height="6" x="0" y="0" class="named"/>
+<rect width="730.95" height="6" x="16.05" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1261,7 +1261,7 @@
 <rect width="27.32" height="24.74" x="326.26" y="211.73" class="todo"><title>0x004390ee Func4390ee (1482 bytes)</title></rect>
 <rect width="27.32" height="24.55" x="326.26" y="239.47" class="todo"><title>0x004424c0 Func4424c0 (1472 bytes)</title></rect>
 <rect width="27.32" height="24.33" x="326.26" y="267.03" class="todo"><title>0x0046a071 Func46a071 (1460 bytes)</title></rect>
-<rect width="27.32" height="24.27" x="326.26" y="294.35" class="todo"><title>0x0043d120 Func43d120 (1457 bytes)</title></rect>
+<rect width="27.32" height="24.27" x="326.26" y="294.35" class="named"><title>0x0043d120 ReadJoystick (1457 bytes)</title></rect>
 <rect width="27.32" height="23.37" x="326.26" y="321.63" class="todo"><title>0x004550fc Func4550fc (1409 bytes)</title></rect>
 <rect width="25.75" height="24.45" x="356.57" y="0" class="todo"><title>0x004464c8 Func4464c8 (1391 bytes)</title></rect>
 <rect width="25.75" height="24.43" x="356.57" y="27.45" class="todo"><title>0x0040d970 Func40d970 (1390 bytes)</title></rect>
@@ -1770,7 +1770,7 @@
 <rect width="5.16" height="5.56" x="701.40" y="216.49" class="named"><title>0x00444260 MidiPlayer::FreeTracks (123 bytes)</title></rect>
 <rect width="5.16" height="5.56" x="709.55" y="216.49" class="todo"><title>0x0045b160 Func45b160 (123 bytes)</title></rect>
 <rect width="5.09" height="5.56" x="717.71" y="216.49" class="todo"><title>0x00409c20 Func409c20 (122 bytes)</title></rect>
-<rect width="5.09" height="5.56" x="725.80" y="216.49" class="todo"><title>0x0043d6e0 Func43d6e0 (122 bytes)</title></rect>
+<rect width="5.09" height="5.56" x="725.80" y="216.49" class="todo"><title>0x0043d6e0 SetButtonFromDirectInput (122 bytes)</title></rect>
 <rect width="5.09" height="5.56" x="733.89" y="216.49" class="named"><title>0x00444680 MidiPlayer::Stop (122 bytes)</title></rect>
 <rect width="5.02" height="5.56" x="741.98" y="216.49" class="todo"><title>0x0040d310 Func40d310 (121 bytes)</title></rect>
 <rect width="5.08" height="5.43" x="618.51" y="225.05" class="todo"><title>0x00426c90 Func426c90 (120 bytes)</title></rect>
@@ -1784,7 +1784,7 @@
 <rect width="5.08" height="5.08" x="618.51" y="291.44" class="todo"><title>0x00428890 Func428890 (115 bytes)</title></rect>
 <rect width="5.08" height="5.08" x="618.51" y="299.52" class="todo"><title>0x0042a820 Func42a820 (115 bytes)</title></rect>
 <rect width="5.08" height="5.08" x="618.51" y="307.60" class="todo"><title>0x0042f500 Func42f500 (115 bytes)</title></rect>
-<rect width="5.08" height="5.08" x="618.51" y="315.68" class="todo"><title>0x0043d760 Func43d760 (115 bytes)</title></rect>
+<rect width="5.08" height="5.08" x="618.51" y="315.68" class="todo"><title>0x0043d760 SetButtonFromJoystick (115 bytes)</title></rect>
 <rect width="5.08" height="5.08" x="618.51" y="323.76" class="named"><title>0x00443e50 MmTimer::Start (115 bytes)</title></rect>
 <rect width="5.08" height="5.08" x="618.51" y="331.84" class="todo"><title>0x00449f70 Func449f70 (115 bytes)</title></rect>
 <rect width="5.08" height="5.08" x="618.51" y="339.92" class="todo"><title>0x00465a40 Func465a40 (115 bytes)</title></rect>
@@ -2252,7 +2252,7 @@
 <rect width="0.51" height="0.39" x="726.18" y="324.27" class="todo"><title>0x0040ba30 Func40ba30 (21 bytes)</title></rect>
 <rect width="0.51" height="0.39" x="726.18" y="327.66" class="todo"><title>0x0040ba70 Func40ba70 (21 bytes)</title></rect>
 <rect width="0.51" height="0.39" x="726.18" y="331.05" class="todo"><title>0x00415c60 Func415c60 (21 bytes)</title></rect>
-<rect width="0.51" height="0.39" x="726.18" y="334.44" class="todo"><title>0x0043ef50 Func43ef50 (21 bytes)</title></rect>
+<rect width="0.51" height="0.39" x="726.18" y="334.44" class="todo"><title>0x0043ef50 App::GetShootFocuses (21 bytes)</title></rect>
 <rect width="0.51" height="0.39" x="726.18" y="337.83" class="todo"><title>0x00443ad0 Func443ad0 (21 bytes)</title></rect>
 <rect width="0.51" height="0.39" x="726.18" y="341.22" class="todo"><title>0x00453c00 Func453c00 (21 bytes)</title></rect>
 <rect width="0.51" height="0.39" x="726.18" y="344.61" class="todo"><title>0x00462210 Func462210 (21 bytes)</title></rect>

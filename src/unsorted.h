@@ -3,19 +3,74 @@
 #pragma once
 
 #include <windows.h>
+#include <mmsystem.h>
+#define DIRECTINPUT_VERSION 0x0800
+#include <dinput.h>
 #include <d3d8.h>
+#include <d3dx8math.h>
 
 #include "common.h"
 
 // The application: window, Direct3D, configuration and the main loop.
 // Only the fields known so far. Its start matches th07's App: the same
 // fields are used at the same offsets.
+// The buttons each action is mapped to, as pad button numbers; negative
+// when unmapped. The same as th07's.
+struct ControllerMapping
+{
+    short shootButton;
+    short bombButton;
+    short focusButton;
+    short menuButton;
+    short upButton;
+    short downButton;
+    short leftButton;
+    short rightButton;
+    short skipButton;
+};
+ASSERT_SIZE(ControllerMapping, 0x12);
+
+class MidiTimer;
+
 class App
 {
 public:
-    unsigned char unk_0[0x44];
+    // Whether holding shoot also focuses (shootFocuses). th07 read the
+    // field directly; th08 calls this out-of-line copy.
+    int GetShootFocuses();
+
+    HINSTANCE hInstance;
+    IDirect3D8 *d3d;
+    IDirect3DDevice8 *d3dDevice;
+    IDirectInput8 *dinput;
+    IDirectInputDevice8 *keyboard;
+    IDirectInputDevice8 *joystick;
+    DIDEVCAPS joystickCaps;
     HWND hwnd;
-    unsigned char unk_48[0x15c];
+    D3DXMATRIX viewMatrix;
+    D3DXMATRIX projectionMatrix;
+    D3DVIEWPORT8 viewport;
+    D3DPRESENT_PARAMETERS presentParams;
+    MidiTimer *timer;
+    ControllerMapping controllerMapping;
+    DWORD version;
+    // How far the DirectInput stick must lean to count as a direction.
+    short padThresholdX;
+    short padThresholdY;
+    BYTE lifeCount;
+    BYTE bombCount;
+    BYTE colorMode16Bits;
+    BYTE musicMode;
+    BYTE playSounds;
+    BYTE defaultDifficulty;
+    BYTE windowed;
+    BYTE frameSkip;
+    BYTE unk_13c;
+    BYTE unk_13d;
+    // Whether holding shoot also focuses: ReadJoystick reports focus
+    // once shoot has been held for 10 frames.
+    BYTE shootFocuses;
+    unsigned char unk_13f[0x65];
     // Bit 0x40 is set by CheckSingleInstance when the startup info has
     // no title, cleared when it has one.
     DWORD unk_1a4;
@@ -125,3 +180,21 @@ extern JOYCAPSA g_JoyCaps;
 // Checks that joystick 1 is there and reads its capabilities into
 // g_JoyCaps. Returns 1 when there is none.
 WORD InitJoystick();
+
+// Ors `bit` into `buttons` while button `button` (a bit index into
+// joyGetPosEx's dwButtons) is down, and returns what it ored in. A
+// negative button is unmapped.
+int SetButtonFromJoystick(WORD *buttons, short button, WORD bit, DWORD joyButtons);
+
+// Like SetButtonFromJoystick, for a DirectInput state's rgbButtons:
+// a button is down when its byte has bit 0x80 set.
+int SetButtonFromDirectInput(WORD *buttons, short button, WORD bit, BYTE *rgbButtons);
+
+// How many frames shoot has been held, for App::shootFocuses; at most
+// 20.
+extern WORD g_ShotHeldFrames;
+
+// Adds the joystick's buttons and directions to `buttons` and returns
+// them: through DirectInput if there is a device, else joyGetPosEx.
+// Unlike th07's, it does not map DirectInput button 7 to 0x2000.
+WORD ReadJoystick(WORD buttons);

@@ -565,9 +565,9 @@ address,size,name,symbol
 0x0043cf10,49,Func43cf10,
 0x0043cf50,362,Func43cf50,
 0x0043d0c0,85,InitJoystick,?InitJoystick@@YIGXZ
-0x0043d120,1457,Func43d120,
-0x0043d6e0,122,Func43d6e0,
-0x0043d760,115,Func43d760,
+0x0043d120,1457,ReadJoystick,?ReadJoystick@@YIGG@Z
+0x0043d6e0,122,SetButtonFromDirectInput,?SetButtonFromDirectInput@@YIHPAGFGPAE@Z
+0x0043d760,115,SetButtonFromJoystick,?SetButtonFromJoystick@@YIHPAGFGK@Z
 0x0043d7e0,392,Func43d7e0,
 0x0043d970,2029,Func43d970,
 0x0043e160,110,Func43e160,
@@ -589,7 +589,7 @@ address,size,name,symbol
 0x0043eeb0,84,Func43eeb0,
 0x0043ef10,48,Func43ef10,
 0x0043ef40,11,MmTimer::OnTimer,?OnTimer@MmTimer@@UAEXXZ
-0x0043ef50,21,Func43ef50,
+0x0043ef50,21,App::GetShootFocuses,?GetShootFocuses@App@@QAEHXZ
 0x0043ef70,63,Func43ef70,
 0x0043efb0,63,Func43efb0,
 0x0043efef,60,Func43efef,
@@ -2383,6 +2383,7 @@ address,size,name,symbol
 0x004bd6e0,,CLSID_ShellLink,_CLSID_ShellLink
 0x004bd6f0,,IID_IPersistFile,_IID_IPersistFile
 0x0164d388,,g_JoyCaps,?g_JoyCaps@@3UtagJOYCAPSA@@A
+0x0164d51c,,g_ShotHeldFrames,?g_ShotHeldFrames@@3GA
 0x0164d540,,g_Log,?g_Log@@3VLog@@A
 0x0164f598,,g_MemoryManager,?g_MemoryManager@@3VMemoryManager@@A
 0x017ce6fc,,g_AppMutex,?g_AppMutex@@3PAXA
