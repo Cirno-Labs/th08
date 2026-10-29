@@ -424,6 +424,22 @@ void SpriteEngine::BeginQuadBatch()
     this->batchStart = this->batchCursor;
 }
 
+void SpriteEngine::FlushQuadBatch()
+{
+    if (this->batchQuadCount == 0)
+    {
+        return;
+    }
+    g_App.d3dDevice->SetTextureStageState(0, D3DTSS_ALPHAARG2, D3DTA_DIFFUSE);
+    g_App.d3dDevice->SetTextureStageState(0, D3DTSS_COLORARG2, D3DTA_DIFFUSE);
+    g_App.d3dDevice->SetVertexShader(D3DFVF_XYZRHW | D3DFVF_DIFFUSE | D3DFVF_TEX1);
+    g_App.d3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLELIST, this->batchQuadCount * 2, this->batchStart,
+                                     sizeof(VertexTex1DiffuseXyzrwh));
+    this->batchStart = this->batchCursor;
+    this->batchQuadCount = 0;
+    this->batchDrawCount++;
+}
+
 SpriteEngine::SpriteEngine()
 {
     memset(this, 0, sizeof(*this));
