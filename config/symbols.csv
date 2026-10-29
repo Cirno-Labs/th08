@@ -658,7 +658,7 @@ address,size,name,symbol
 0x00443b60,248,Func443b60,
 0x00443c60,33,MidiDevice::MidiDevice,??0MidiDevice@@QAE@XZ
 0x00443c90,19,MidiDevice::~MidiDevice,??1MidiDevice@@QAE@XZ
-0x00443cb0,89,Func443cb0,
+0x00443cb0,89,MidiDevice::Open,?Open@MidiDevice@@QAEHI@Z
 0x00443d10,59,MidiDevice::Close,?Close@MidiDevice@@QAEHXZ
 0x00443d50,78,MidiDevice::SendLongMsg,?SendLongMsg@MidiDevice@@QAEHPAUmidihdr_tag@@@Z
 0x00443da0,67,MidiDevice::SendShortMsg,?SendShortMsg@MidiDevice@@QAEHEEE@Z
@@ -2378,3 +2378,4 @@ address,size,name,symbol
 0x004b4280,4,CoCreateInstance,__imp__CoCreateInstance@20
 0x004b4284,4,CoUninitialize,__imp__CoUninitialize@0
 0x004b4288,4,CoInitialize,__imp__CoInitialize@4
+0x017ce758,,g_App,?g_App@@3VApp@@A
