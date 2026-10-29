@@ -618,3 +618,8 @@ int App::GetNoFrameItems()
 {
     return this->flags.noFrameItems;
 }
+
+int App::GetNoDepthTest()
+{
+    return this->flags.noDepthTest;
+}
