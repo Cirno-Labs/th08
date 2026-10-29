@@ -670,3 +670,8 @@ void MidiTimer::StartTimer()
 {
     this->Start(16, NULL, 0);
 }
+
+void MidiTimer::StopTimer()
+{
+    this->Stop();
+}
