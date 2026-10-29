@@ -532,3 +532,17 @@ int Stage::StepObjects()
     }
     return 0;
 }
+
+// An inline of unsorted.h, probably, whose out-of-line copy the original
+// keeps with this file's inline copies; defined here so that the other
+// files' calls stay calls, as th07's. checksum has to be
+// lifeChecksumKeys[2] plus checksumKeysE[2] for each byte ComputeChecksum
+// sums (0x1f4 past checksum), computedChecksum plus checksumKeysD[3]
+// checksumValue.
+int GameManager::ChecksumMismatch()
+{
+    return this->stats->checksum == this->stats->lifeChecksumKeys[2] + this->stats->checksumKeysE[2] * ((BYTE *)&this->stats->checksum - (BYTE *)this->stats->lifeChecksumKeys + 0x1f4) &&
+                   this->stats->computedChecksum + this->stats->checksumKeysD[3] == (int)this->checksumValue
+               ? FALSE
+               : TRUE;
+}
