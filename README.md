@@ -32,6 +32,12 @@ follow it, then the DirectX import thunks, D3DX8 and the CRT.
 just analyze   # writes build/functions_100d.csv
 ```
 
+![Progress](docs/progress.svg)
+
+`just progress` renders it: every game function, by address and as a
+treemap by size, coloured by whether it is decompiled and matching.
+`just hooks` makes every commit redraw it and include it.
+
 ## Target
 
 Retail 1.00d, released 2004-09-19, the last official update:
