@@ -287,6 +287,8 @@ public:
     }
     // A random float from 0 up to 1.
     float GetRandomF32ZeroToOne();
+    // A random float from -1 up to 1. New in th08.
+    float GetRandomF32MinusOneToOne();
     // A random float from 0 up to `range`.
     float GetRandomF32InRange(float range)
     {

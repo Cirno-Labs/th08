@@ -648,3 +648,8 @@ float Rng::GetRandomF32ZeroToOne()
 {
     return this->GetRandomU32() / 4294967296.0f;
 }
+
+float Rng::GetRandomF32MinusOneToOne()
+{
+    return this->GetRandomU32() / 2147483648.0f - 1.0f;
+}
