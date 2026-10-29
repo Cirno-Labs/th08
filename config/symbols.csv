@@ -583,7 +583,7 @@ address,size,name,symbol
 0x0043ed20,40,Rng::GetRandomU32,?GetRandomU32@Rng@@QAEKXZ
 0x0043ed50,40,Rng::GetRandomF32ZeroToOne,?GetRandomF32ZeroToOne@Rng@@QAEMXZ
 0x0043ed80,46,Rng::GetRandomF32MinusOneToOne,?GetRandomF32MinusOneToOne@Rng@@QAEMXZ
-0x0043edb0,127,Func43edb0,
+0x0043edb0,127,AddNormalizeAngle,?AddNormalizeAngle@@YIMMM@Z
 0x0043ee30,91,Func43ee30,
 0x0043ee90,27,Func43ee90,
 0x0043eeb0,84,Func43eeb0,
