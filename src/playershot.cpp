@@ -11,6 +11,117 @@
 #include "sprite.h"
 #include "unsorted.h"
 
+int UpdateHomingOption(Player *player, PlayerOption *option)
+{
+    switch (option->active)
+    {
+    case 1:
+        player->anm->StartScript(&option->sprite, 0x12);
+        option->pos = player->pos;
+        option->pos.y -= 96.0f;
+        if (option->pos.y < 32.0f)
+        {
+            option->pos.y = 32.0f;
+        }
+        option->active = 2;
+        player->homingEnemy = NULL;
+        break;
+    case 2:
+        switch (option->state)
+        {
+        case 0:
+            MoveOptionToPlayer(player, option);
+            if (option->velocity.x < 0.0f)
+            {
+                option->sprite.SetPendingInterrupt(2);
+                option->state = 1;
+                if (option->sprite.scaleY < 0.0f)
+                {
+                    option->sprite.scaleY = -option->sprite.scaleY;
+                }
+            }
+            else if (option->velocity.x > 0.0f)
+            {
+                option->sprite.SetPendingInterrupt(2);
+                option->state = 2;
+                if (option->sprite.scaleY > 0.0f)
+                {
+                    option->sprite.scaleY = -option->sprite.scaleY;
+                }
+            }
+            break;
+        case 1:
+            MoveOptionToPlayer(player, option);
+            if (option->velocity.x == 0.0f)
+            {
+                option->sprite.SetPendingInterrupt(1);
+                option->state = 0;
+                if (option->sprite.scaleY < 0.0f)
+                {
+                    option->sprite.scaleY = -option->sprite.scaleY;
+                }
+            }
+            else if (option->velocity.x > 0.0f)
+            {
+                option->sprite.SetPendingInterrupt(2);
+                option->state = 2;
+                if (option->sprite.scaleY > 0.0f)
+                {
+                    option->sprite.scaleY = -option->sprite.scaleY;
+                }
+            }
+            break;
+        case 2:
+            MoveOptionToPlayer(player, option);
+            if (option->velocity.x == 0.0f)
+            {
+                option->sprite.SetPendingInterrupt(1);
+                option->state = 0;
+                if (option->sprite.scaleY < 0.0f)
+                {
+                    option->sprite.scaleY = -option->sprite.scaleY;
+                }
+            }
+            else if (option->velocity.x < 0.0f)
+            {
+                option->sprite.SetPendingInterrupt(2);
+                option->state = 1;
+                if (option->sprite.scaleY < 0.0f)
+                {
+                    option->sprite.scaleY = -option->sprite.scaleY;
+                }
+            }
+            break;
+        case 3:
+            if (player->homingEnemy != NULL)
+            {
+                MoveOptionToEnemy(player, option);
+            }
+            if ((player->fireTimer < 0 && !(g_GameButtons & 1)) || player->homingEnemy == NULL)
+            {
+                player->homingEnemy = NULL;
+                option->sprite.SetPendingInterrupt(1);
+                option->state = 0;
+            }
+            break;
+        }
+        break;
+    case 3:
+        if (option->timer == 0)
+        {
+            option->sprite.SetPendingInterrupt(5);
+        }
+        if (option->timer > 16)
+        {
+            option->active = 0;
+            option->update = NULL;
+            option->draw = NULL;
+        }
+        break;
+    }
+    return 0;
+}
+
 void MoveOptionToPlayer(Player *player, PlayerOption *option)
 {
     D3DXVECTOR3 target;

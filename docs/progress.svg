@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">72.85% (813)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">25.18% (281)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">72.94% (814)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">25.09% (280)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="544.19" height="6" x="0" y="0" class="named"/>
-<rect width="14.73" height="6" x="544.19" y="0" class="decompiled"/>
-<rect width="188.09" height="6" x="558.91" y="0" class="todo"/>
+<rect width="544.85" height="6" x="0" y="0" class="named"/>
+<rect width="14.73" height="6" x="544.85" y="0" class="decompiled"/>
+<rect width="187.42" height="6" x="559.58" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -857,7 +857,7 @@
 <rect width="12" height="12" x="540" y="225" class="named"><title>0x0044e2e0 GameManager::AddBombsUsed (104 bytes)</title></rect>
 <rect width="12" height="12" x="555" y="225" class="named"><title>0x0044e350 PlayerBombHitbox::Deactivate (18 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="225" class="named"><title>0x0044e370 PlayerBombHitbox::Reset (35 bytes)</title></rect>
-<rect width="12" height="12" x="585" y="225" class="todo"><title>0x0044e3a0 Func44e3a0 (949 bytes)</title></rect>
+<rect width="12" height="12" x="585" y="225" class="named"><title>0x0044e3a0 UpdateHomingOption (949 bytes)</title></rect>
 <rect width="12" height="12" x="600" y="225" class="named"><title>0x0044e770 MoveOptionToPlayer (352 bytes)</title></rect>
 <rect width="12" height="12" x="615" y="225" class="named"><title>0x0044e8d0 MoveOptionToEnemy (269 bytes)</title></rect>
 <rect width="12" height="12" x="630" y="225" class="named"><title>0x0044e9e0 DrawOption (94 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">64.35%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">34.64%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">64.55%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">34.43%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="480.68" height="6" x="0" y="0" class="named"/>
-<rect width="7.57" height="6" x="480.68" y="0" class="decompiled"/>
-<rect width="258.75" height="6" x="488.25" y="0" class="todo"/>
+<rect width="482.22" height="6" x="0" y="0" class="named"/>
+<rect width="7.57" height="6" x="482.22" y="0" class="decompiled"/>
+<rect width="257.21" height="6" x="489.79" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1306,7 +1306,7 @@
 <rect width="19.67" height="21.13" x="704.77" y="0" class="named"><title>0x0046adb0 MainMenu::UpdateGameStartMenu (964 bytes)</title></rect>
 <rect width="19.56" height="21.13" x="727.44" y="0" class="todo"><title>0x00410fe0 Func410fe0 (959 bytes)</title></rect>
 <rect width="18.69" height="21.89" x="411.08" y="24.13" class="named"><title>0x00429980 Ending::AddedCallback (951 bytes)</title></rect>
-<rect width="18.69" height="21.83" x="411.08" y="49.01" class="todo"><title>0x0044e3a0 Func44e3a0 (949 bytes)</title></rect>
+<rect width="18.69" height="21.83" x="411.08" y="49.01" class="named"><title>0x0044e3a0 UpdateHomingOption (949 bytes)</title></rect>
 <rect width="18.69" height="21.13" x="411.08" y="73.84" class="todo"><title>0x00410c40 Func410c40 (922 bytes)</title></rect>
 <rect width="18.69" height="20.86" x="411.08" y="97.97" class="named"><title>0x004623c0 SpriteEngine::SetRenderStateForSprite (912 bytes)</title></rect>
 <rect width="18.69" height="20.86" x="411.08" y="121.83" class="named"><title>0x00463470 SpriteEngine::DrawRotatedNoRound (912 bytes)</title></rect>

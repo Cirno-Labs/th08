@@ -292,7 +292,13 @@ struct PlayerLaser
 };
 ASSERT_SIZE(PlayerLaser, 0x10);
 
-// Moves an option of OptionUpdateHomer towards 96 above the player
+// The update callback of the options that home in on enemies
+// (g_OptionUpdateFuncs; 0x44e3a0): starting (active 1), they appear 96
+// above the player; running (2) they follow it, facing their way of
+// travel (state 0 to 2), or, in state 3, Player::homingEnemy while the
+// player fires; leaving (3) they fade out over 16 frames and end.
+int UpdateHomingOption(Player *player, PlayerOption *option);
+// Moves an option of UpdateHomingOption towards 96 above the player
 // (at least y 32), easing its velocity; when the fire timer runs, there
 // is a homingEnemy and the option has run 10 frames, sends it interrupt
 // 3 and state 3, else clears homingEnemy (0x44e770).
