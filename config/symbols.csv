@@ -883,7 +883,7 @@ address,size,name,symbol
 0x0045a500,159,InsertScore,?InsertScore@@YIHPAUListNode@@PAUHscr@@@Z
 0x0045a5a0,59,FreeListNodes,?FreeListNodes@@YIXPAUListNode@@@Z
 0x0045a5e0,865,LoadScoreDat,?LoadScoreDat@@YIPAUScoreDat@@PAD@Z
-0x0045a950,362,Func45a950,
+0x0045a950,362,LoadHighScores,?LoadHighScores@@YIKPAXPAUListNode@@HHPAE@Z
 0x0045aac0,175,LoadSpellCards,?LoadSpellCards@@YIHPAUScoreDat@@PAUCatk@@@Z
 0x0045ab70,136,Func45ab70,
 0x0045ac00,136,LoadFlspChunk,?LoadFlspChunk@@YIHPAUScoreDat@@PAUFlsp@@@Z

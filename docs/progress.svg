@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">32.62% (364)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">67.38% (752)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">32.71% (365)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">67.29% (751)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="243.65" height="6" x="0" y="0" class="named"/>
-<rect width="503.35" height="6" x="243.65" y="0" class="todo"/>
+<rect width="244.31" height="6" x="0" y="0" class="named"/>
+<rect width="502.69" height="6" x="244.31" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -951,7 +951,7 @@
 <rect width="12" height="12" x="465" y="255" class="named"><title>0x0045a500 InsertScore (159 bytes)</title></rect>
 <rect width="12" height="12" x="480" y="255" class="named"><title>0x0045a5a0 FreeListNodes (59 bytes)</title></rect>
 <rect width="12" height="12" x="495" y="255" class="named"><title>0x0045a5e0 LoadScoreDat (865 bytes)</title></rect>
-<rect width="12" height="12" x="510" y="255" class="todo"><title>0x0045a950 Func45a950 (362 bytes)</title></rect>
+<rect width="12" height="12" x="510" y="255" class="named"><title>0x0045a950 LoadHighScores (362 bytes)</title></rect>
 <rect width="12" height="12" x="525" y="255" class="todo"><title>0x0045aac0 LoadSpellCards (175 bytes)</title></rect>
 <rect width="12" height="12" x="540" y="255" class="todo"><title>0x0045ab70 Func45ab70 (136 bytes)</title></rect>
 <rect width="12" height="12" x="555" y="255" class="todo"><title>0x0045ac00 LoadFlspChunk (136 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">23.73%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">76.27%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">23.81%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">76.19%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="177.28" height="6" x="0" y="0" class="named"/>
-<rect width="569.72" height="6" x="177.28" y="0" class="todo"/>
+<rect width="177.86" height="6" x="0" y="0" class="named"/>
+<rect width="569.14" height="6" x="177.86" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1479,7 +1479,7 @@
 <rect width="11.64" height="11.03" x="563.11" y="115.39" class="named"><title>0x0043cf50 Chain::RemoveLocked (362 bytes)</title></rect>
 <rect width="11.64" height="11.03" x="577.75" y="115.39" class="named"><title>0x00445bd4 App::OnDrawLogo (362 bytes)</title></rect>
 <rect width="11.64" height="11.03" x="592.39" y="115.39" class="todo"><title>0x00452550 Func452550 (362 bytes)</title></rect>
-<rect width="11.64" height="11.03" x="607.03" y="115.39" class="todo"><title>0x0045a950 Func45a950 (362 bytes)</title></rect>
+<rect width="11.64" height="11.03" x="607.03" y="115.39" class="named"><title>0x0045a950 LoadHighScores (362 bytes)</title></rect>
 <rect width="11.60" height="11.03" x="621.67" y="115.39" class="todo"><title>0x004526c0 Func4526c0 (361 bytes)</title></rect>
 <rect width="11.28" height="11.03" x="636.27" y="115.39" class="todo"><title>0x004272e0 Func4272e0 (353 bytes)</title></rect>
 <rect width="11.24" height="11.03" x="650.55" y="115.39" class="named"><title>0x00447f21 App::PlayMusic (352 bytes)</title></rect>

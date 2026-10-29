@@ -48,7 +48,7 @@ struct Hscr
     BYTE shot;
     BYTE difficulty;
     unsigned char unk_16[0x10];
-    char continuesUsed;
+    BYTE continuesUsed;
 };
 
 // A node of the score file's lists. Each list starts with a head node
@@ -72,6 +72,11 @@ void FreeListNodes(ListNode *head);
 // Links `entry` in after `head`, before the first entry whose score is no
 // higher. Returns its rank, from 0.
 int InsertScore(ListNode *head, Hscr *entry);
+// Inserts the score file's version 4 high score chunks for `shot` and
+// `difficulty` into `list`, or into the file's own list if `list` is
+// NULL, as th07's. Stores the best entry's continues in `bestContinues`
+// if it is not NULL. Returns the best score, at least 100000.
+DWORD LoadHighScores(void *scoreDat, ListNode *list, int shot, int difficulty, BYTE *bestContinues);
 
 // The score file's other chunks, by their magic. Only their sizes are
 // known so far.

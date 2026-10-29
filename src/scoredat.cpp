@@ -164,3 +164,45 @@ done:
     dat->scores->prev = NULL;
     return dat;
 }
+
+DWORD LoadHighScores(void *scoreDat, ListNode *list, int shot, int difficulty, BYTE *bestContinues)
+{
+    Hscr *chunk;
+    int left;
+    ScoreDat *dat1 = (ScoreDat *)scoreDat;
+
+    if (list == NULL)
+    {
+        FreeListNodes(dat1->scores);
+        dat1->scores->next = NULL;
+        dat1->scores->data = NULL;
+        dat1->scores->prev = NULL;
+    }
+    left = dat1->fileSize;
+    chunk = (Hscr *)((BYTE *)dat1 + dat1->dataOffset);
+    left -= dat1->dataOffset;
+    while (left > 0)
+    {
+        if (chunk->magic == 0x52435348 && chunk->version == 4 && chunk->shot == shot &&
+            chunk->difficulty == difficulty)
+        {
+            if (list != NULL)
+            {
+                InsertScore(list, chunk);
+            }
+            else
+            {
+                InsertScore(dat1->scores, chunk);
+            }
+        }
+        left -= chunk->size;
+        chunk = (Hscr *)((BYTE *)chunk + chunk->size);
+    }
+    if (bestContinues != NULL)
+    {
+        *bestContinues = dat1->scores->next != NULL ? (char)dat1->scores->next->data->continuesUsed : 0;
+    }
+    return dat1->scores->next != NULL
+               ? (dat1->scores->next->data->score > 100000 ? dat1->scores->next->data->score : 100000)
+               : 100000;
+}
