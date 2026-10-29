@@ -1098,3 +1098,22 @@ int EffectManager::DeletedCallback(EffectManager *mgr)
     }
     return 0;
 }
+
+int EffectManager::RegisterChain()
+{
+    EffectManager *mgr = &g_EffectManager;
+
+    mgr->Reset();
+    g_EffectCalcChain.SetCallback((ChainCallback)EffectManager::OnUpdate);
+    g_EffectCalcChain.addedCallback = (ChainCallback)EffectManager::AddedCallback;
+    g_EffectCalcChain.deletedCallback = (ChainCallback)EffectManager::DeletedCallback;
+    g_EffectCalcChain.arg = mgr;
+    if (g_Chain.AddToCalcChain(&g_EffectCalcChain, 13) != 0)
+    {
+        return -1;
+    }
+    g_EffectDrawChain.SetCallback((ChainCallback)EffectManager::OnDraw);
+    g_EffectDrawChain.arg = mgr;
+    g_Chain.AddToDrawChain(&g_EffectDrawChain, 12);
+    return 0;
+}
