@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">43.46% (485)</tspan> · <tspan class="decompiled">0.45% (5)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">56.09% (626)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">43.55% (486)</tspan> · <tspan class="decompiled">0.45% (5)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">56% (625)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="324.64" height="6" x="0" y="0" class="named"/>
-<rect width="3.35" height="6" x="324.64" y="0" class="decompiled"/>
-<rect width="419.02" height="6" x="327.98" y="0" class="todo"/>
+<rect width="325.31" height="6" x="0" y="0" class="named"/>
+<rect width="3.35" height="6" x="325.31" y="0" class="decompiled"/>
+<rect width="418.35" height="6" x="328.65" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -566,7 +566,7 @@
 <rect width="12" height="12" x="675" y="135" class="named"><title>0x00438a29 App::GetNoFrameItems (24 bytes)</title></rect>
 <rect width="12" height="12" x="690" y="135" class="named"><title>0x00438a41 App::GetNoDepthTest (24 bytes)</title></rect>
 <rect width="12" height="12" x="705" y="135" class="named"><title>0x00438a59 App::GetNoColorBlending (24 bytes)</title></rect>
-<rect width="12" height="12" x="720" y="135" class="todo"><title>0x00438a71 App::GetUnk12 (24 bytes)</title></rect>
+<rect width="12" height="12" x="720" y="135" class="named"><title>0x00438a71 App::GetUnk12 (24 bytes)</title></rect>
 <rect width="12" height="12" x="735" y="135" class="todo"><title>0x00438a89 Gui::Func438a89 (1231 bytes)</title></rect>
 <rect width="12" height="12" x="0" y="150" class="todo"><title>0x00438f58 Gui::Func438f58 (145 bytes)</title></rect>
 <rect width="12" height="12" x="15" y="150" class="todo"><title>0x00438fe9 Func438fe9 (10 bytes)</title></rect>
@@ -1190,9 +1190,9 @@
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
 <text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">35.32%</tspan> · <tspan class="decompiled">0.26%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">64.42%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="263.81" height="6" x="0" y="0" class="named"/>
-<rect width="1.96" height="6" x="263.81" y="0" class="decompiled"/>
-<rect width="481.22" height="6" x="265.78" y="0" class="todo"/>
+<rect width="263.85" height="6" x="0" y="0" class="named"/>
+<rect width="1.96" height="6" x="263.85" y="0" class="decompiled"/>
+<rect width="481.19" height="6" x="265.81" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -2214,7 +2214,7 @@
 <rect width="0.89" height="0.50" x="718.88" y="313.38" class="named"><title>0x00438a29 App::GetNoFrameItems (24 bytes)</title></rect>
 <rect width="0.89" height="0.50" x="722.77" y="313.38" class="named"><title>0x00438a41 App::GetNoDepthTest (24 bytes)</title></rect>
 <rect width="0.89" height="0.50" x="726.66" y="313.38" class="named"><title>0x00438a59 App::GetNoColorBlending (24 bytes)</title></rect>
-<rect width="0.89" height="0.50" x="730.55" y="313.38" class="todo"><title>0x00438a71 App::GetUnk12 (24 bytes)</title></rect>
+<rect width="0.89" height="0.50" x="730.55" y="313.38" class="named"><title>0x00438a71 App::GetUnk12 (24 bytes)</title></rect>
 <rect width="0.89" height="0.50" x="734.44" y="313.38" class="todo"><title>0x004390d6 Func4390d6 (24 bytes)</title></rect>
 <rect width="0.89" height="0.50" x="738.33" y="313.38" class="named"><title>0x004396f8 Sprite::IsStopped (24 bytes)</title></rect>
 <rect width="0.89" height="0.50" x="742.22" y="313.38" class="named"><title>0x00449c79 App::GetPreloadBgm (24 bytes)</title></rect>

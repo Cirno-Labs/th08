@@ -628,3 +628,8 @@ int App::GetNoColorBlending()
 {
     return this->flags.noColorBlending;
 }
+
+int App::GetUnk12()
+{
+    return this->flags.unk12;
+}
