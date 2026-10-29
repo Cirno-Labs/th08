@@ -555,6 +555,11 @@ extern WORD g_ButtonRepeat;
 // back to 30.
 extern WORD g_ButtonFrames;
 
+// Whether a button of `mask` went down this frame.
+#define WAS_PRESSED(mask) ((g_Buttons & (mask)) && (g_Buttons & (mask)) != (g_PrevButtons & (mask)))
+// WAS_PRESSED, or held long enough to repeat.
+#define WAS_PRESSED_OR_HELD(mask) (WAS_PRESSED(mask) || ((g_Buttons & (mask)) && g_ButtonRepeat))
+
 // Clears the down bit (0x80) of every key in the thread's keyboard
 // state.
 void ResetKeyboard();

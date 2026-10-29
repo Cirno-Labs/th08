@@ -28,7 +28,7 @@ struct Plst
     unsigned char unk_2c[0x1dc];
     // Set for each piece of music played (App::PlayMidi's `bgm`), for
     // the music room. New in th08.
-    BYTE bgmHeard[0x20];
+    char bgmHeard[0x20];
 };
 ASSERT_SIZE(Plst, 0x228);
 

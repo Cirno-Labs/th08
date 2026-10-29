@@ -7,20 +7,33 @@
 
 #include "common.h"
 
+class AnmLoaded;
+
 // A sprite run by an ANM script, th07's Sprite (0x24c there). Only the
 // fields known so far.
 class Sprite
 {
 public:
+    // Out of line at 0x406720.
+    Sprite();
+
+    // Inline; /Os files call the copy at 0x407120.
     void SetPendingInterrupt(short interrupt)
     {
         this->pendingInterrupt = interrupt;
     }
 
-    unsigned char unk_0[0x1fe];
+    unsigned char unk_0[0x1f0];
+    D3DCOLOR color;
+    unsigned char unk_1f4[0x4];
+    // Bit 1: shown; DrawUnrotated draws nothing without it.
+    DWORD flags;
+    unsigned char unk_1fc[0x2];
     // The interrupt label to jump to on the next Step; 0 for none.
     short pendingInterrupt;
-    unsigned char unk_200[0x8];
+    unsigned char unk_200[0x4];
+    // The ANM file whose script runs (AnmLoaded::StartScript).
+    AnmLoaded *anm;
     // Where it is drawn.
     D3DXVECTOR3 pos;
     unsigned char unk_214[0x6];
@@ -45,17 +58,26 @@ public:
     // Starts `script` on `vm` (0x45e580).
     void SetScript(Sprite *vm, void *script);
     // Starts script `script` of this file on `vm`, at the origin with
-    // no offset. Inline, but too large to expand in /Ob1 files: they
-    // call the copy at 0x40b910 and keep its temporaries' slots. That
-    // copy stays unnamed in symbols.csv: ours comes from the /Os App
-    // object, the original's from an /Od one.
-    void StartScript(Sprite *vm, int script)
+    // no offset, as th07's SpriteEngine::StartScriptAtOrigin. Inline, but
+    // too large to expand in /Ob1 files: they call the copy at 0x40b910
+    // and keep its temporaries' slots. That copy stays unnamed in
+    // symbols.csv: ours comes from the /Os App object, the original's
+    // from an /Od one.
+    void StartScriptAtOrigin(Sprite *vm, int script)
     {
         vm->scriptIndex = script;
         vm->pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
         vm->posOffset = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
         vm->unk_299 = 0xf;
         vm->unk_298 = 0xf;
+        this->SetScript(vm, this->scripts[script]);
+    }
+    // Runs script `script` of this file on `vm`, as th07's
+    // SpriteEngine::StartScript. Inline; the copy is at 0x4069f0.
+    void StartScript(Sprite *vm, int script)
+    {
+        vm->anm = this;
+        vm->scriptIndex = script;
         this->SetScript(vm, this->scripts[script]);
     }
 
@@ -77,6 +99,13 @@ public:
     void ReleaseSurface(int surface);
     // Draws `vm` at its position (0x463210).
     int Draw(Sprite *vm);
+    // Draws `vm` unrotated, as th07's (0x462ff0).
+    int DrawUnrotated(Sprite *vm);
+    // Runs `vm`'s script for a frame, as th07's (0x45ea00).
+    int Step(Sprite *vm);
+    // Renders printf-style text into `sprite`'s texture, as th07's
+    // (0x4663b0).
+    void RenderText(Sprite *sprite, D3DCOLOR textColor, D3DCOLOR shadowColor, char *fmt, ...);
     // Frees ANM slot `slot` (0x466060).
     void ReleaseAnm(int slot);
     // Releases the vertex buffer (0x446f0b, in App's object).

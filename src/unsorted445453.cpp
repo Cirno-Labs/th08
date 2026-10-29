@@ -1692,9 +1692,9 @@ void App::StartLoadingSprites(D3DXVECTOR3 *pos)
 {
     if (this->loadingState == 0)
     {
-        this->loadingAnm->StartScript(&g_LoadingSprites[0], 0);
-        this->loadingAnm->StartScript(&g_LoadingSprites[1], 1);
-        this->loadingAnm->StartScript(&g_LoadingSprites[2], 2);
+        this->loadingAnm->StartScriptAtOrigin(&g_LoadingSprites[0], 0);
+        this->loadingAnm->StartScriptAtOrigin(&g_LoadingSprites[1], 1);
+        this->loadingAnm->StartScriptAtOrigin(&g_LoadingSprites[2], 2);
         this->loadingState = 1;
         g_LoadingSprites[0].pos = *pos;
         g_LoadingSprites[1].pos = *pos;
@@ -1722,9 +1722,9 @@ void App::StartLoadingSpritesOverScreen(D3DXVECTOR3 *pos)
 {
     if (this->loadingState == 0)
     {
-        this->loadingAnm->StartScript(&g_LoadingSprites[0], 0);
-        this->loadingAnm->StartScript(&g_LoadingSprites[1], 1);
-        this->loadingAnm->StartScript(&g_LoadingSprites[2], 2);
+        this->loadingAnm->StartScriptAtOrigin(&g_LoadingSprites[0], 0);
+        this->loadingAnm->StartScriptAtOrigin(&g_LoadingSprites[1], 1);
+        this->loadingAnm->StartScriptAtOrigin(&g_LoadingSprites[2], 2);
         this->loadingState = 1;
         g_LoadingSprites[0].pos = *pos;
         g_LoadingSprites[1].pos = *pos;

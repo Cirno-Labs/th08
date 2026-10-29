@@ -21,6 +21,11 @@ public:
     // Draws the queued strings (0x402b20).
     void DrawStrings();
 
+    // Inline; /Os files call the copy at 0x4398e8.
+    void SetColor(D3DCOLOR color)
+    {
+        this->color = color;
+    }
     void SetAlpha(int alpha)
     {
         this->alpha = alpha;

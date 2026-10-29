@@ -733,7 +733,7 @@ address,size,name,symbol
 0x004489ca,47,App::StartLoadingScreenEffect,?StartLoadingScreenEffect@App@@QAEXH@Z
 0x004489f9,54,App::InitCriticalSections,?InitCriticalSections@App@@QAEXXZ
 0x00448a2f,54,App::DeleteCriticalSections,?DeleteCriticalSections@App@@QAEXXZ
-0x00448a65,177,Func448a65,
+0x00448a65,177,MusicScreen::UpdateIntro,?UpdateIntro@MusicScreen@@QAEHXZ
 0x00448b16,1854,Func448b16,
 0x00449254,221,MusicScreen::RegisterChain,?RegisterChain@MusicScreen@@SIHXZ
 0x00449331,104,Func449331,
