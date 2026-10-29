@@ -347,6 +347,68 @@ void App::ResetClockDriftCounters()
     this->fastClockCycles = 0;
 }
 
+void MainMenu::ShowInfoScreen(char *path)
+{
+    int i;
+
+    i = 0;
+    g_SpriteEngine->LoadSurface(0, path);
+    while (i < 6000)
+    {
+        g_SpriteEngine->ClearVertexFormat();
+        g_SpriteEngine->ClearSpriteData();
+        g_SpriteEngine->ClearTexture();
+        g_SpriteEngine->ClearColorOp();
+        g_SpriteEngine->ClearBlendMode();
+        g_SpriteEngine->ClearZWrite();
+        g_SpriteEngine->ClearUnk8();
+        g_SpriteEngine->ClearUnk2e4d4();
+        g_SpriteEngine->ResetUnk0();
+        g_App.d3dDevice->BeginScene();
+        g_SpriteEngine->CopySurfaceToBackBuffer(0, 0, 0, 0, 0);
+        if (i < 20)
+        {
+            float rect[4];
+            ColorBytes fade;
+
+            rect[0] = 0.0f;
+            rect[1] = 0.0f;
+            rect[2] = 639.0f;
+            rect[3] = 479.0f;
+            fade.a = (60 - i) * 255 / 20;
+            fade.r = fade.g = fade.b = 0;
+            DrawColorRect(rect, fade.color);
+        }
+        else if (i > 5940)
+        {
+            ColorBytes color;
+            float area[4];
+
+            area[0] = 0.0f;
+            area[1] = 0.0f;
+            area[2] = 639.0f;
+            area[3] = 479.0f;
+            color.a = (i - 5980) * 255 / 20;
+            color.r = color.g = color.b = 0;
+            DrawColorRect(area, color.color);
+        }
+        g_Buttons = ReadButtons();
+        g_App.d3dDevice->EndScene();
+        if (g_App.d3dDevice->Present(NULL, NULL, NULL, NULL) < 0)
+        {
+            g_App.d3dDevice->Reset(&g_App.presentParams);
+        }
+        if (i >= 180 && i < 5980 && WAS_PRESSED(0x1003))
+        {
+            i = 5980;
+            g_SoundPlayer.QueueSound(10, 0);
+        }
+        i++;
+        g_SoundPlayer.PlayQueuedSounds();
+    }
+    g_SpriteEngine->ReleaseSurface(0);
+}
+
 int MainMenu::ReleaseTitleScene()
 {
     if (this->loadedReplay != NULL)

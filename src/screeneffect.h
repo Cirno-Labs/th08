@@ -111,3 +111,15 @@ extern ScreenEffect *g_LoadingScreenEffect;
 
 // Fills `rect` (left, top, right, bottom) with `color` (0x45b1e0).
 void DrawColorRect(float *rect, D3DCOLOR color);
+// A color by its bytes, as th07's.
+union ColorBytes
+{
+    D3DCOLOR color;
+    struct
+    {
+        BYTE b;
+        BYTE g;
+        BYTE r;
+        BYTE a;
+    };
+};
