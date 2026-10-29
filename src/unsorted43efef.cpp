@@ -58,3 +58,55 @@ bool GdiSurface::Create(int width, int height, int format)
     }
     return false;
 }
+
+bool GdiSurface::CreateInFormat(int width, int height, int format)
+{
+    int widthBytes;
+    HDC dc;
+    HGDIOBJ oldObject;
+    BITMAPV4HEADER bitmapInfo;
+    FormatInfo *fmt;
+    HBITMAP bitmap;
+    void *data;
+
+    this->Release();
+    memset(&bitmapInfo, 0, sizeof(bitmapInfo));
+    fmt = this->FindFormat(format);
+    if (fmt == NULL)
+    {
+        return false;
+    }
+    widthBytes = (width * fmt->bitCount / 8 + 3) / 4 * 4;
+    bitmapInfo.bV4Size = sizeof(bitmapInfo);
+    bitmapInfo.bV4Width = width;
+    bitmapInfo.bV4Height = -(height + 1);
+    bitmapInfo.bV4Planes = 1;
+    bitmapInfo.bV4BitCount = fmt->bitCount;
+    bitmapInfo.bV4SizeImage = height * widthBytes;
+    if (format != D3DFMT_X1R5G5B5 && format != D3DFMT_X8R8G8B8)
+    {
+        bitmapInfo.bV4V4Compression = BI_BITFIELDS;
+        bitmapInfo.bV4RedMask = fmt->redMask;
+        bitmapInfo.bV4GreenMask = fmt->greenMask;
+        bitmapInfo.bV4BlueMask = fmt->blueMask;
+        bitmapInfo.bV4AlphaMask = fmt->alphaMask;
+    }
+    bitmap = CreateDIBSection(NULL, (BITMAPINFO *)&bitmapInfo, DIB_RGB_COLORS, &data, NULL, 0);
+    if (bitmap == NULL)
+    {
+        return false;
+    }
+    memset(data, 0, bitmapInfo.bV4SizeImage);
+    dc = CreateCompatibleDC(NULL);
+    oldObject = SelectObject(dc, bitmap);
+    this->hdc = dc;
+    this->bitmap = bitmap;
+    this->bits = data;
+    this->imageSize = bitmapInfo.bV4SizeImage;
+    this->oldObject = oldObject;
+    this->width = width;
+    this->height = height;
+    this->format = format;
+    this->widthBytes = widthBytes;
+    return true;
+}
