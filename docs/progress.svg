@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">70.88% (791)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">27.15% (303)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">70.97% (792)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">27.06% (302)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="529.46" height="6" x="0" y="0" class="named"/>
-<rect width="14.73" height="6" x="529.46" y="0" class="decompiled"/>
-<rect width="202.81" height="6" x="544.19" y="0" class="todo"/>
+<rect width="530.13" height="6" x="0" y="0" class="named"/>
+<rect width="14.73" height="6" x="530.13" y="0" class="decompiled"/>
+<rect width="202.15" height="6" x="544.85" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -873,7 +873,7 @@
 <rect width="12" height="12" x="30" y="240" class="named"><title>0x0044fe20 FireLaser (375 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="240" class="named"><title>0x0044ffa0 FireHomingShot (217 bytes)</title></rect>
 <rect width="12" height="12" x="60" y="240" class="named"><title>0x00450080 FireAimedShot (142 bytes)</title></rect>
-<rect width="12" height="12" x="75" y="240" class="todo"><title>0x00450110 Func450110 (145 bytes)</title></rect>
+<rect width="12" height="12" x="75" y="240" class="named"><title>0x00450110 FireOptionAimedShot (145 bytes)</title></rect>
 <rect width="12" height="12" x="90" y="240" class="todo"><title>0x004501b0 Func4501b0 (133 bytes)</title></rect>
 <rect width="12" height="12" x="105" y="240" class="todo"><title>0x00450240 Func450240 (223 bytes)</title></rect>
 <rect width="12" height="12" x="120" y="240" class="todo"><title>0x00450320 Func450320 (599 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">62.65%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">36.34%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">62.68%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">36.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="467.98" height="6" x="0" y="0" class="named"/>
-<rect width="7.57" height="6" x="467.98" y="0" class="decompiled"/>
-<rect width="271.44" height="6" x="475.56" y="0" class="todo"/>
+<rect width="468.22" height="6" x="0" y="0" class="named"/>
+<rect width="7.57" height="6" x="468.22" y="0" class="decompiled"/>
+<rect width="271.21" height="6" x="475.79" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1719,7 +1719,7 @@
 <rect width="5.78" height="6.43" x="600.82" y="236.41" class="named"><title>0x004461a0 OpenGameArchive (146 bytes)</title></rect>
 <rect width="5.78" height="6.37" x="600.82" y="245.84" class="named"><title>0x0040bb80 GameManager::ChecksumMismatch (145 bytes)</title></rect>
 <rect width="5.78" height="6.37" x="600.82" y="255.21" class="decompiled"><title>0x00438f58 Gui::Func438f58 (145 bytes)</title></rect>
-<rect width="5.78" height="6.37" x="600.82" y="264.58" class="todo"><title>0x00450110 Func450110 (145 bytes)</title></rect>
+<rect width="5.78" height="6.37" x="600.82" y="264.58" class="named"><title>0x00450110 FireOptionAimedShot (145 bytes)</title></rect>
 <rect width="5.78" height="6.37" x="600.82" y="273.95" class="named"><title>0x0045bb50 ScreenEffect::OnDrawScreen (145 bytes)</title></rect>
 <rect width="5.78" height="6.37" x="600.82" y="283.32" class="named"><title>0x00466310 SpriteEngine::RenderTextToTextureIndex (145 bytes)</title></rect>
 <rect width="5.78" height="6.30" x="600.82" y="292.69" class="named"><title>0x00437a40 Gui::DeletedCallback (144 bytes)</title></rect>

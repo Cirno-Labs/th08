@@ -143,3 +143,20 @@ int FireAimedShot(Player *player, PlayerBullet *bullet, int frame, ShotData *sd)
     }
     return 0;
 }
+
+int FireOptionAimedShot(Player *player, PlayerBullet *bullet, int frame, ShotData *sd)
+{
+    float angle;
+    float speed;
+
+    if (!player->bomb.running && frame % sd->interval == sd->phase)
+    {
+        FireShot(player, bullet, sd);
+        angle = AddNormalizeAngle(player->options[2].angle, sd->angle);
+        speed = sd->speed;
+        ((Vector2 *)&bullet->velocity)->SetPolar(angle, speed);
+        bullet->angle = angle;
+        return 1;
+    }
+    return 0;
+}
