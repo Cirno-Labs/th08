@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">75.18% (839)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">22.85% (255)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">75.27% (840)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">22.76% (254)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="561.59" height="6" x="0" y="0" class="named"/>
-<rect width="14.73" height="6" x="561.59" y="0" class="decompiled"/>
-<rect width="170.69" height="6" x="576.31" y="0" class="todo"/>
+<rect width="562.26" height="6" x="0" y="0" class="named"/>
+<rect width="14.73" height="6" x="562.26" y="0" class="decompiled"/>
+<rect width="170.02" height="6" x="576.98" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -223,7 +223,7 @@
 <rect width="12" height="12" x="30" y="45" class="named"><title>0x0040d430 UpdateAliceBomb (1303 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="45" class="named"><title>0x0040d950 DrawAliceBomb (24 bytes)</title></rect>
 <rect width="12" height="12" x="60" y="45" class="named"><title>0x0040d970 UpdateAliceLastWord (1390 bytes)</title></rect>
-<rect width="12" height="12" x="75" y="45" class="todo"><title>0x0040dee0 Func40dee0 (349 bytes)</title></rect>
+<rect width="12" height="12" x="75" y="45" class="named"><title>0x0040dee0 DrawAliceLastWord (349 bytes)</title></rect>
 <rect width="12" height="12" x="90" y="45" class="named"><title>0x0040e040 EffectUpdateBombRing42 (209 bytes)</title></rect>
 <rect width="12" height="12" x="105" y="45" class="named"><title>0x0040e120 EffectUpdateBombRing43 (209 bytes)</title></rect>
 <rect width="12" height="12" x="120" y="45" class="named"><title>0x0040e200 EffectUpdateBombRing44 (196 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">67.35%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">31.63%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">67.43%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">31.56%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="503.14" height="6" x="0" y="0" class="named"/>
-<rect width="7.57" height="6" x="503.14" y="0" class="decompiled"/>
-<rect width="236.29" height="6" x="510.71" y="0" class="todo"/>
+<rect width="503.70" height="6" x="0" y="0" class="named"/>
+<rect width="7.57" height="6" x="503.70" y="0" class="decompiled"/>
+<rect width="235.72" height="6" x="511.28" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1490,7 +1490,7 @@
 <rect width="11.24" height="11.03" x="693.26" y="115.39" class="named"><title>0x00464b00 SpriteEngine::FillVerticalStripVertices (352 bytes)</title></rect>
 <rect width="11.20" height="11.03" x="707.49" y="115.39" class="named"><title>0x00443fa0 MidiPlayer::MidiPlayer (351 bytes)</title></rect>
 <rect width="11.20" height="11.03" x="721.69" y="115.39" class="named"><title>0x0044c230 Player::RegisterChain (351 bytes)</title></rect>
-<rect width="11.11" height="11.03" x="735.89" y="115.39" class="todo"><title>0x0040dee0 Func40dee0 (349 bytes)</title></rect>
+<rect width="11.11" height="11.03" x="735.89" y="115.39" class="named"><title>0x0040dee0 DrawAliceLastWord (349 bytes)</title></rect>
 <rect width="10.83" height="11.07" x="518.98" y="129.42" class="named"><title>0x0043eb60 LogError (343 bytes)</title></rect>
 <rect width="10.83" height="11.03" x="518.98" y="143.49" class="named"><title>0x0045d3f0 SoundPlayer::LoadSounds (342 bytes)</title></rect>
 <rect width="10.83" height="10.99" x="518.98" y="157.52" class="named"><title>0x004661b0 AnmLoaded::LoadSprite (341 bytes)</title></rect>

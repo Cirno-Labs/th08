@@ -669,6 +669,9 @@ void UpdateAliceBomb(Player *player);
 // player's position, bursting at frame 120 with four more flashes in the
 // play area's corners (0x40d970).
 void UpdateAliceLastWord(Player *player);
+// Its draw callback: tints the play area blue, flashing it white from
+// frame 90 to 220 (0x40dee0).
+void DrawAliceLastWord(Player *player);
 // Draw callbacks of the bombs that only tint the play area, by the
 // bomb they follow: Alice's (also Yukari's draw.funcs[0..1], 0x40d950)
 // and Remilia's and her last word's (0x40f550, 0x40fcb0).

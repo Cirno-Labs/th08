@@ -667,6 +667,58 @@ void UpdateAliceLastWord(Player *player)
     }
 }
 
+void DrawAliceLastWord(Player *player)
+{
+    PlayerBomb *bomb = &player->bomb;
+    PlayerBombPart *part = player->bomb.parts;
+
+    if (bomb->timer < 90)
+    {
+        DimPlayAreaForBomb(player, 0x802020d0);
+    }
+    else if (bomb->timer <= 120)
+    {
+        float rect[4];
+        int s;
+        ColorBytes tint;
+
+        s = (bomb->timer.AsFrames() - 90) * 0xd0 / 30;
+        tint.r = s / 5 + 0xd0;
+        tint.g = s + 0x20;
+        tint.b = s + 0x20;
+        tint.a = 0x80;
+        DimPlayAreaForBomb(player, tint.color);
+        rect[0] = 32.0f;
+        rect[1] = 16.0f;
+        rect[2] = 416.0f;
+        rect[3] = 464.0f;
+        tint.r = 0xff;
+        tint.g = 0xff;
+        tint.b = 0xff;
+        tint.a = (bomb->timer.AsFrames() - 90) * 0xff / 30;
+        DrawColorRect(rect, tint.color);
+    }
+    else if (bomb->timer <= 220)
+    {
+        float rect[4];
+        ColorBytes color;
+
+        rect[0] = 32.0f;
+        rect[1] = 16.0f;
+        rect[2] = 416.0f;
+        rect[3] = 464.0f;
+        color.r = 0xff;
+        color.g = 0xff;
+        color.b = 0xff;
+        color.a = 0x70;
+        DrawColorRect(rect, color.color);
+    }
+    else
+    {
+        DimPlayAreaForBomb(player, 0x802020d0);
+    }
+}
+
 int EffectUpdateBombRing42(Effect *effect)
 {
     float t;
