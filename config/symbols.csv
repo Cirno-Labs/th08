@@ -1005,7 +1005,7 @@ address,size,name,symbol
 0x00467399,269,MainMenu::OnUpdate,?OnUpdate@MainMenu@@SIHPAV1@@Z
 0x004674e0,3703,MainMenu::StartTitle,?StartTitle@MainMenu@@QAEHXZ
 0x0046837b,4424,MainMenu::UpdateOptions,?UpdateOptions@MainMenu@@QAEHXZ
-0x004694c3,72,Func4694c3,
+0x004694c3,72,MainMenu::SetState,?SetState@MainMenu@@QAEXH@Z
 0x0046950b,299,MainMenu::ReassignButton,?ReassignButton@MainMenu@@QAEXFFH@Z
 0x00469636,2383,MainMenu::UpdateKeyConfig,?UpdateKeyConfig@MainMenu@@QAEHXZ
 0x00469fa9,200,MainMenu::ShowButtonDigits,?ShowButtonDigits@MainMenu@@QAEHPAVSprite@@F@Z
