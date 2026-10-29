@@ -44,7 +44,7 @@ address,size,name,symbol
 0x004066c0,27,Func4066c0,
 0x004066e0,23,Func4066e0,
 0x00406700,32,Func406700,
-0x00406720,146,Func406720,
+0x00406720,146,Sprite::Sprite,??0Sprite@@QAE@XZ
 0x004067c0,142,Func4067c0,
 0x00406850,39,Func406850,
 0x00406880,25,Func406880,
@@ -737,11 +737,11 @@ address,size,name,symbol
 0x00448b16,1854,MusicScreen::UpdateList,?UpdateList@MusicScreen@@QAEHXZ
 0x00449254,221,MusicScreen::RegisterChain,?RegisterChain@MusicScreen@@SIHXZ
 0x00449331,104,Func449331,
-0x00449399,238,Func449399,
-0x00449487,648,Func449487,
-0x0044970f,1247,Func44970f,
+0x00449399,238,MusicScreen::OnUpdate,?OnUpdate@MusicScreen@@SIHPAV1@@Z
+0x00449487,648,MusicScreen::OnDraw,?OnDraw@MusicScreen@@SIHPAV1@@Z
+0x0044970f,1247,MusicScreen::AddedCallback,?AddedCallback@MusicScreen@@SIHPAV1@@Z
 0x00449bee,28,Func449bee,
-0x00449c0a,111,Func449c0a,
+0x00449c0a,111,MusicScreen::DeletedCallback,?DeletedCallback@MusicScreen@@SIHPAV1@@Z
 0x00449c79,24,App::GetPreloadBgm,?GetPreloadBgm@App@@QAEHXZ
 0x00449ca0,422,Func449ca0,
 0x00449e50,78,Func449e50,
