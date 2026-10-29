@@ -161,3 +161,24 @@ void *File::ReadAll(DWORD maxSize)
     this->Seek(pos, g_SeekOrigins[0]);
     return hMem;
 }
+
+void MakeFullPath(char *dst, char *path)
+{
+    char *slash;
+
+    if (strchr(path, ':') != NULL)
+    {
+        strcpy(dst, path);
+    }
+    else
+    {
+        GetModuleFileNameA(NULL, dst, MAX_PATH);
+        slash = strrchr(dst, '\\');
+        if (slash == NULL)
+        {
+            strcpy(dst, "");
+        }
+        slash[1] = '\0';
+        strcat(dst, path);
+    }
+}
