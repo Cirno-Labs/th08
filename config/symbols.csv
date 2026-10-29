@@ -131,7 +131,7 @@ address,size,name,symbol
 0x0040bad0,31,Func40bad0,
 0x0040baf0,33,Func40baf0,
 0x0040bb20,51,Func40bb20,
-0x0040bb60,26,Func40bb60,
+0x0040bb60,26,SpriteEngine::GetAnm,?GetAnm@SpriteEngine@@QAEPAVAnmLoaded@@H@Z
 0x0040bb80,145,GameManager::ChecksumMismatch,?ChecksumMismatch@GameManager@@QAEHXZ
 0x0040bc20,23,Func40bc20,
 0x0040bc40,18,Func40bc40,
