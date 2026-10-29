@@ -35,8 +35,8 @@ struct Plst
 };
 ASSERT_SIZE(Plst, 0x228);
 
-// A high score chunk of the score file ("HSCR", version 4). Only the
-// fields known so far, at th07's offsets; its size is not known yet.
+// A high score chunk of the score file ("HSCR", version 4; th07 0x28
+// bytes). Only the fields known so far, at th07's offsets.
 struct Hscr
 {
     DWORD magic;
@@ -44,7 +44,9 @@ struct Hscr
     // The size again.
     WORD size2;
     BYTE version;
-    BYTE unk_09[0x3];
+    // Set on the entry just added, which is the one being named.
+    BYTE isNew;
+    BYTE unk_0a[0x2];
     DWORD score;
     unsigned char unk_10[0x4];
     // The shot and difficulty of its list.
@@ -52,7 +54,9 @@ struct Hscr
     BYTE difficulty;
     unsigned char unk_16[0x10];
     BYTE continuesUsed;
+    unsigned char unk_27[0x141];
 };
+ASSERT_SIZE(Hscr, 0x168);
 
 // A node of the score file's lists. Each list starts with a head node
 // whose `data` is NULL; the entries after it are sorted.
@@ -152,6 +156,8 @@ struct Pscr
     unsigned char unk_0c[0x168];
     // The shot type.
     BYTE shot;
+    // Set once the shot type has a practice score: SaveScoreDat skips
+    // the chunk while it is 0.
     BYTE unk_175;
     BYTE unk_176[0x2];
 };
@@ -175,7 +181,9 @@ struct Vrsm
     WORD size;
     WORD size2;
     BYTE version;
-    BYTE unk_09[0x3];
+    BYTE clearedOnSave;
+    BYTE unk_0a[0x2];
+    // "0100d".
     char gameVersion[0x8];
     DWORD exeSize;
     DWORD exeChecksum;
@@ -195,7 +203,8 @@ struct ScoreDat
     WORD checksum;
     // 1 (th07 0xb).
     WORD version;
-    BYTE unk_06[0x2];
+    BYTE secondaryKey;
+    BYTE unusedByte07;
     // Where the chunks start.
     int dataOffset;
     // The list of the score entries read from the chunks.
@@ -293,8 +302,8 @@ public:
     Sprite unk_10ef8;
     Sprite unk_1119c;
     unsigned char unk_11440[0xc];
-    // The high score lists.
-    ListNode scores[0x3c];
+    // The high score lists, by difficulty and shot.
+    ListNode scores[5][0xc];
     unsigned char unk_1171c[0x34d28];
     // The "TH8K" chunk SaveScoreDat writes.
     Th8k th8k;

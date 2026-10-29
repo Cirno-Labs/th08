@@ -1774,7 +1774,7 @@ address,size,name,symbol
 0x004a5be0,195,_strchr,_strchr
 0x004a5c9e,52,_sscanf,_sscanf
 0x004a5ce0,57,_strncmp,_strncmp
-0x004a5d20,7,Func4a5d20,
+0x004a5d20,7,_strcpy,_strcpy
 0x004a5d30,232,Func4a5d30,
 0x004a5e20,20,__CIacos,__CIacos
 0x004a5e3d,174,Func4a5e3d,
