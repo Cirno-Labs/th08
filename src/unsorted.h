@@ -77,7 +77,16 @@ public:
     // The main update chain callback and its added and deleted
     // callbacks.
     static int OnUpdate(App *arg);
+    // The update element's added callback: loads the score file's
+    // chunks, notes which shot types have Extra open, opens th08.dat,
+    // shows the logo and the loading sprites, measuring the refresh rate
+    // unless presentImmediate is set, then runs LoadingThread in the sub
+    // thread for the rest. Returns 0, -1 on failure, or -2 when the
+    // refresh rate needs a restart.
     static int AddedCallback(App *arg);
+    // The rest of th07's AddedCallback, run in the sub thread (with /Gr,
+    // a fastcall function passed to CreateThread).
+    static void LoadingThread(App *arg);
     static int DeletedCallback(App *arg);
     // The draw chain callback: draws the frame rate. Returns 1.
     static int OnDraw(App *arg);
@@ -909,22 +918,45 @@ public:
     int HasExtraOpen(int shot);
     // Whether a shot type has Extra open (0x43c1e9).
     int AnyShotHasExtraOpen();
+    // Whether a shot type has 0x43c23b set (0x43c2c5).
+    int Func43c2c5();
     // Whether every shot type has Extra open. In App's object.
     int AllShotsHaveExtraOpen();
 
     DWORD unk_0;
     GameManagerUnk4 *unk_4;
     GameManagerStats *stats;
-    unsigned char unk_c[0x21];
+    // The score file's chunks, loaded by App::AddedCallback.
+    Flsp flsp;
+    BYTE unk_2c;
     // As th07's unk_d: while it is set, the frame rate is not measured
     // and the buttons are only added to.
     char unk_2d;
-    unsigned char unk_2e[0x3d7d6];
+    unsigned char unk_2e[0x12];
+    Catk catks[0xde];
+    // A copy of catks, as th07's savedCatks.
+    Catk savedCatks[0xde];
+    Clrd clrds[0xd];
+    Pscr pscrs[0xc];
     // The play statistics of the score file.
     Plst plst;
     unsigned char unk_3da2c[0x180];
-    // Bit 2: the speed is measured; 3: it is shown, as th07's unk_93d8.
-    DWORD unk_3dbac;
+    union
+    {
+        // Bit 2: the speed is measured; 3: it is shown, as th07's
+        // unk_93d8.
+        DWORD unk_3dbac;
+        struct
+        {
+            unsigned int unk_3dbac_0 : 15;
+            // AnyShotHasExtraOpen, Func43c2c5 and AllShotsHaveExtraOpen
+            // as App::AddedCallback found them.
+            unsigned int anyShotHasExtraOpen : 1;
+            unsigned int unk_3dbac_16 : 1;
+            unsigned int allShotsHaveExtraOpen : 1;
+            unsigned int unk_3dbac_18 : 14;
+        };
+    };
 };
 extern GameManager g_GameManager;
 

@@ -83,6 +83,14 @@ public:
     void ReleaseVertexBuffer();
     // Draws the batched quads (0x462e40).
     void FlushQuadBatch();
+    // Loads the image at `path` as surface `surface` (0x4667c0).
+    int LoadSurface(int surface, char *path);
+    // Loads the ANM file at `path` into slot `slot` (0x465800). Returns
+    // it, or NULL on failure.
+    AnmLoaded *LoadAnm(int slot, char *path);
+    // Creates the vertex buffer and the quads sprites are drawn with
+    // (0x465250).
+    void CreateQuad();
 
     IDirect3DSurface8 *GetSurface(int surface)
     {

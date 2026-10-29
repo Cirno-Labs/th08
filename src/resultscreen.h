@@ -31,3 +31,69 @@ struct Plst
     BYTE bgmHeard[0x20];
 };
 ASSERT_SIZE(Plst, 0x228);
+
+// The score file's other chunks, by their magic. Only their sizes are
+// known so far.
+// "FLSP", new in th08 (version 1).
+struct Flsp
+{
+    DWORD magic;
+    WORD size;
+    WORD size2;
+    BYTE version;
+    unsigned char unk_9[0x17];
+};
+ASSERT_SIZE(Flsp, 0x20);
+
+// "CATK": a spell card's record (version 3), by card number (222).
+struct Catk
+{
+    DWORD magic;
+    WORD size;
+    WORD size2;
+    BYTE version;
+    unsigned char unk_9[0x223];
+};
+ASSERT_SIZE(Catk, 0x22c);
+
+// "CLRD": a shot type's clears (version 4), 13 of them.
+struct Clrd
+{
+    DWORD magic;
+    WORD size;
+    WORD size2;
+    BYTE version;
+    unsigned char unk_9[0x1b];
+};
+ASSERT_SIZE(Clrd, 0x24);
+
+// "PSCR": practice scores (version 2), 12 of them.
+struct Pscr
+{
+    DWORD magic;
+    WORD size;
+    WORD size2;
+    BYTE version;
+    unsigned char unk_9[0x16f];
+};
+ASSERT_SIZE(Pscr, 0x178);
+
+// The score file as loaded, with its chunks unpacked. Its layout is not
+// known yet.
+struct ScoreDat;
+
+// Reads "score.dat" at `path`, as th07's, or makes a new one
+// (0x45a5e0).
+ScoreDat *LoadScoreDat(char *path);
+// Copy the score file's chunks of each kind over the given ones, as
+// th07's: LoadClears and LoadPracticeScores first fill theirs with fresh
+// chunks. Return 0, or -1 if the destination is NULL; LoadFlspChunk
+// returns 1 if it found its chunk, else 0.
+int LoadClears(ScoreDat *scoreDat, Clrd *clrds);
+int LoadSpellCards(ScoreDat *scoreDat, Catk *catks);
+int LoadFlspChunk(ScoreDat *scoreDat, Flsp *flsp);
+int LoadPracticeScores(ScoreDat *scoreDat, Pscr *pscrs);
+// Copies the score file's last "PLST" chunk to `plst`. Returns 0.
+int LoadPlstChunk(ScoreDat *scoreDat, Plst *plst);
+// Frees `dat` (0x45afc0).
+void ReleaseScoreDat(ScoreDat *dat);

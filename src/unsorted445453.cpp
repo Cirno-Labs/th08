@@ -140,6 +140,55 @@ int App::RegisterChain()
     return 0;
 }
 
+int App::AddedCallback(App *arg)
+{
+    ScoreDat *scoreDat;
+    D3DXVECTOR3 position;
+
+    g_App.gameSpeed = 1.0f;
+    scoreDat = LoadScoreDat("score.dat");
+    memset(&g_GameManager.plst, 0, sizeof(Plst));
+    g_GameManager.plst.size = sizeof(Plst);
+    g_GameManager.plst.size2 = g_GameManager.plst.size;
+    g_GameManager.plst.magic = 'TSLP';
+    g_GameManager.plst.version = 2;
+    LoadPlstChunk(scoreDat, &g_GameManager.plst);
+    LoadClears(scoreDat, g_GameManager.clrds);
+    LoadPracticeScores(scoreDat, g_GameManager.pscrs);
+    LoadSpellCards(scoreDat, g_GameManager.catks);
+    LoadFlspChunk(scoreDat, &g_GameManager.flsp);
+    ReleaseScoreDat(scoreDat);
+    g_GameManager.anyShotHasExtraOpen = g_GameManager.AnyShotHasExtraOpen();
+    g_GameManager.unk_3dbac_16 = g_GameManager.Func43c2c5();
+    g_GameManager.allShotsHaveExtraOpen = g_GameManager.AllShotsHaveExtraOpen();
+    if (OpenGameArchive() != 0)
+    {
+        return -1;
+    }
+    g_SpriteEngine->LoadSurface(8, "title/th08logo.jpg");
+    arg->loadingAnm = g_SpriteEngine->LoadAnm(2, "nowloading.anm");
+    if (arg->loadingAnm == NULL)
+    {
+        g_SpriteEngine->ReleaseSurface(0);
+        return -1;
+    }
+    g_App.hideFps = 1;
+    if (g_App.presentImmediate == 0 && MeasureRefreshRate() != 0)
+    {
+        g_SpriteEngine->ReleaseSurface(0);
+        return -2;
+    }
+    g_SpriteEngine->CreateQuad();
+    CreateTextSurface();
+    position.x = 500.0f;
+    position.y = 440.0f;
+    position.z = 0.0f;
+    g_App.StartLoadingSprites(&position);
+    g_App.unk_294 = 1;
+    g_App.StartSubThread((LPTHREAD_START_ROUTINE)App::LoadingThread, arg);
+    return 0;
+}
+
 int OpenGameArchive()
 {
     char path[0x80];
