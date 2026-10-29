@@ -139,8 +139,10 @@ public:
     void DrawStrings();
     // Draws the popups (0x405420).
     void DrawPopups();
-    // Draws `value` at `pos` in `color`, for DrawPopups (0x405e10). New
-    // in th08.
+    // Draws `value` in hundredths at `pos` in `color` with unk_127c: a
+    // minus, the whole part, ascii.anm's sprite 0x93, two smaller
+    // decimals (100.00 for 10000 and more), then sprite 0x92. For
+    // DrawPopups' stats->unk_22 gauge (0x405e10). New in th08.
     void Func405e10(D3DXVECTOR3 *pos, int value, D3DCOLOR color);
     // Queues `text` to be drawn at `pos` (0x402920).
     void AddString(D3DXVECTOR3 *pos, char *text);

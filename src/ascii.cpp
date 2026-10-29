@@ -1477,3 +1477,114 @@ void AsciiText::DrawPopups()
         }
     }
 }
+
+void AsciiText::Func405e10(D3DXVECTOR3 *pos, int value, D3DCOLOR color)
+{
+    int absValue;
+    int len;
+    float offset;
+
+    len = 4;
+    if (value < 0)
+    {
+        len++;
+    }
+    absValue = abs(value);
+    if (absValue >= 10000)
+    {
+        len += 3;
+    }
+    else if (absValue >= 1000)
+    {
+        len += 2;
+    }
+    else
+    {
+        len += 1;
+    }
+    offset = len * 3.5f - 3.5f - 4.0f;
+    this->unk_127c.pos = *pos;
+    this->unk_127c.pos.x -= offset;
+    this->unk_127c.color = color;
+    if (value < 0)
+    {
+        this->anm->SetSprite(&this->unk_127c, 0x94);
+        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
+        this->unk_127c.pos.x += 7.0f;
+    }
+    if (absValue >= 10000)
+    {
+        this->anm->SetSprite(&this->unk_127c, 0x89);
+        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
+        this->unk_127c.pos.x += 7.0f;
+        this->anm->SetSprite(&this->unk_127c, 0x88);
+        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
+        this->unk_127c.pos.x += 7.0f;
+        this->anm->SetSprite(&this->unk_127c, 0x88);
+        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
+        this->unk_127c.pos.x += 7.0f;
+        this->anm->SetSprite(&this->unk_127c, 0x93);
+        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
+        this->unk_127c.pos.x += 5.0f;
+        this->unk_127c.scaleX = 0.8f;
+        this->unk_127c.scaleY = 0.8f;
+        this->unk_127c.pos.y += 2.0f;
+        this->anm->SetSprite(&this->unk_127c, 0x88);
+        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
+        this->unk_127c.pos.x += 5.0f;
+        this->anm->SetSprite(&this->unk_127c, 0x88);
+        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
+        this->unk_127c.pos.x += 7.0f;
+    }
+    else if (absValue >= 1000)
+    {
+        len = absValue;
+        this->anm->SetSprite(&this->unk_127c, len / 1000 + 0x88);
+        len %= 1000;
+        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
+        this->unk_127c.pos.x += 7.0f;
+        this->anm->SetSprite(&this->unk_127c, len / 100 + 0x88);
+        len %= 100;
+        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
+        this->unk_127c.pos.x += 7.0f;
+        this->anm->SetSprite(&this->unk_127c, 0x93);
+        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
+        this->unk_127c.pos.x += 5.0f;
+        this->unk_127c.scaleX = 0.8f;
+        this->unk_127c.scaleY = 0.8f;
+        this->unk_127c.pos.y += 2.0f;
+        this->anm->SetSprite(&this->unk_127c, len / 10 + 0x88);
+        len %= 10;
+        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
+        this->unk_127c.pos.x += 5.0f;
+        this->anm->SetSprite(&this->unk_127c, len + 0x88);
+        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
+        this->unk_127c.pos.x += 7.0f;
+    }
+    else
+    {
+        len = absValue;
+        this->anm->SetSprite(&this->unk_127c, len / 100 + 0x88);
+        len %= 100;
+        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
+        this->unk_127c.pos.x += 7.0f;
+        this->anm->SetSprite(&this->unk_127c, 0x93);
+        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
+        this->unk_127c.pos.x += 5.0f;
+        this->unk_127c.scaleX = 0.8f;
+        this->unk_127c.scaleY = 0.8f;
+        this->unk_127c.pos.y += 2.0f;
+        this->anm->SetSprite(&this->unk_127c, len / 10 + 0x88);
+        len %= 10;
+        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
+        this->unk_127c.pos.x += 5.0f;
+        this->anm->SetSprite(&this->unk_127c, len + 0x88);
+        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
+        this->unk_127c.pos.x += 7.0f;
+    }
+    this->unk_127c.scaleX = 1.0f;
+    this->unk_127c.scaleY = 1.0f;
+    this->unk_127c.pos.y -= 2.0f;
+    this->anm->SetSprite(&this->unk_127c, 0x92);
+    g_SpriteEngine->DrawUnrotated(&this->unk_127c);
+}
