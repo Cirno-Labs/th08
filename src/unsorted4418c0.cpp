@@ -212,3 +212,9 @@ int ResolveShortcut(char *path, char *out, int size)
     CoUninitialize();
     return ok;
 }
+
+void Log::Reset()
+{
+    this->cursor = this->buffer;
+    *this->cursor = '\0';
+}

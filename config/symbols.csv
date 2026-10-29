@@ -647,7 +647,7 @@ address,size,name,symbol
 0x004436a0,143,ForceForegroundWindow,?ForceForegroundWindow@@YIXPAUHWND__@@@Z
 0x00443730,266,ChecksumExecutable,?ChecksumExecutable@@YIHXZ
 0x00443840,322,ResolveShortcut,?ResolveShortcut@@YIHPAD0H@Z
-0x00443990,35,Func443990,
+0x00443990,35,Log::Reset,?Reset@Log@@QAEXXZ
 0x004439c0,133,Func4439c0,
 0x00443a50,23,Func443a50,
 0x00443a70,25,Func443a70,

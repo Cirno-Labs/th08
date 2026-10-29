@@ -87,8 +87,23 @@ void DebugPrint(const char *fmt, ...);
 void *LoadFileData(char *path, int *size, int isExternal);
 
 // The object error messages go to, e.g. "error : MIDI File が読み込めない".
-// The layout is not known yet.
-class Log;
+// The same layout as th07's: Flush uses the same offsets.
+class Log
+{
+public:
+    char buffer[0x2000];
+    // The end of the text in `buffer`.
+    char *cursor;
+    // Set by LogError, the error logger.
+    char hasError;
+
+    // Empties the log. th07's WinMain did this in place.
+    void Reset();
+    // Writes the log to ./log.txt, if anything was logged, after a
+    // closing line; shows it in a message box first if it holds an
+    // error.
+    void Flush();
+};
 extern Log g_Log;
 
 // Logs a printf-style message to a log object.
