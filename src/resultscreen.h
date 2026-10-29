@@ -356,7 +356,11 @@ public:
     int unk_44;
     // The spell card difficulty cursor, kept while away.
     int unk_48;
-    unsigned char unk_4c[0x8];
+    // How far the button sequence that marks every stage cleared and
+    // every spell card met has got, as th07's: three of 0x80, two of
+    // 0x40, two of 0x2000, three of 0x200 while 4 or 0x100 is held.
+    int cheatProgress;
+    unsigned char unk_50[0x4];
     // Set to leave the spell card list once its sprites are out.
     int unk_54;
     unsigned char unk_58[0xc];

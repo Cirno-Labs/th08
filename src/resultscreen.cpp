@@ -343,6 +343,160 @@ void ResultScreen::SetState(int state)
     this->unk_54 = 0;
 }
 
+int ResultScreen::UpdateScoreDifficultySelect()
+{
+    int i;
+    Sprite *sprite;
+    int shot;
+    int k;
+
+    switch (this->subState)
+    {
+    case 0:
+        if (this->unk_18 == 0)
+        {
+            this->cursor = this->unk_44;
+            for (i = 4; i <= 8; i++)
+            {
+                this->sprites[i].pendingInterrupt = 0x16;
+                g_SpriteEngine->Step(&this->sprites[i]);
+                if (i - 4 == this->cursor)
+                {
+                    this->sprites[i].pendingInterrupt = 0x14;
+                }
+                else
+                {
+                    this->sprites[i].pendingInterrupt = 0x15;
+                }
+            }
+        }
+        if (this->unk_18 < 6)
+        {
+            break;
+        }
+        this->subState++;
+        this->unk_18 = 0;
+    case 1:
+        i = MoveCursorVertical(this, 5);
+        if (i != 0)
+        {
+            for (i = 4; i <= 8; i++)
+            {
+                if (i - 4 == this->cursor)
+                {
+                    this->sprites[i].pendingInterrupt = 0x14;
+                }
+                else
+                {
+                    this->sprites[i].pendingInterrupt = 0x15;
+                }
+            }
+        }
+        if (WAS_PRESSED(0xa))
+        {
+            this->SetState(1);
+            g_SoundPlayer.QueueSound(0xb, 0);
+            this->unk_44 = this->cursor;
+            this->cursor = 0;
+            return 1;
+        }
+        if (WAS_PRESSED(0x1001))
+        {
+            sprite = this->sprites;
+            for (i = 4; i <= 8; i++)
+            {
+                if (i - 4 == this->cursor)
+                {
+                    this->sprites[i].pendingInterrupt = 0x17;
+                }
+                else
+                {
+                    this->sprites[i].pendingInterrupt = 1;
+                }
+            }
+            this->unk_44 = this->cursor;
+            this->SetState(4);
+            this->cursor = 0;
+            g_SoundPlayer.QueueSound(0xa, 0);
+            return 1;
+        }
+        break;
+    }
+    if ((g_Buttons & 4) || (g_Buttons & 0x100))
+    {
+        if (this->cheatProgress < 4)
+        {
+            if (WAS_PRESSED(0x80))
+            {
+                this->cheatProgress++;
+            }
+            else if (WAS_PRESSED(0x160b))
+            {
+                this->cheatProgress = 0;
+            }
+        }
+        else if (this->cheatProgress < 5)
+        {
+            if (WAS_PRESSED(0x40))
+            {
+                this->cheatProgress++;
+            }
+            else if (WAS_PRESSED(0x160b))
+            {
+                this->cheatProgress = 0;
+            }
+        }
+        else if (this->cheatProgress < 7)
+        {
+            if (WAS_PRESSED(0x2000))
+            {
+                this->cheatProgress++;
+            }
+            else if (WAS_PRESSED(0x160b))
+            {
+                this->cheatProgress = 0;
+            }
+        }
+        else if (this->cheatProgress < 10)
+        {
+            if (WAS_PRESSED(0x200))
+            {
+                this->cheatProgress++;
+            }
+            else if (WAS_PRESSED(0x160b))
+            {
+                this->cheatProgress = 0;
+            }
+        }
+        else
+        {
+            for (shot = 0; shot < 0xd; shot++)
+            {
+                for (k = 0; k < 5; k++)
+                {
+                    g_GameManager.clrds[shot].stagesClearedNoContinue[k] |= 0xffff;
+                    g_GameManager.clrds[shot].stagesCleared[k] |= 0xffff;
+                }
+            }
+            for (shot = 0; shot < 0xde; shot++)
+            {
+                for (k = 0; k < 0xd; k++)
+                {
+                    g_GameManager.catks[shot].unk_124[k]++;
+                }
+            }
+            this->cheatProgress = 0;
+            g_SoundPlayer.QueueSound(0x1c, 0);
+        }
+    }
+    else
+    {
+        this->cheatProgress = 0;
+    }
+    this->unk_18++;
+    return 0;
+}
+
 int ResultScreen::UpdateScoreShotSelect()
 {
     int i;

@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">35.66% (398)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">64.34% (718)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">35.75% (399)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">64.25% (717)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="266.40" height="6" x="0" y="0" class="named"/>
-<rect width="480.60" height="6" x="266.40" y="0" class="todo"/>
+<rect width="267.07" height="6" x="0" y="0" class="named"/>
+<rect width="479.93" height="6" x="267.07" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -922,7 +922,7 @@
 <rect width="12" height="12" x="30" y="255" class="named"><title>0x00454c87 ResultScreen::ReleaseScores (43 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="255" class="named"><title>0x00454cb2 ResultScreen::UpdateMenu (1029 bytes)</title></rect>
 <rect width="12" height="12" x="60" y="255" class="named"><title>0x004550b7 ResultScreen::SetState (69 bytes)</title></rect>
-<rect width="12" height="12" x="75" y="255" class="todo"><title>0x004550fc ResultScreen::UpdateScoreDifficultySelect (1409 bytes)</title></rect>
+<rect width="12" height="12" x="75" y="255" class="named"><title>0x004550fc ResultScreen::UpdateScoreDifficultySelect (1409 bytes)</title></rect>
 <rect width="12" height="12" x="90" y="255" class="named"><title>0x0045567d ResultScreen::UpdateScoreShotSelect (680 bytes)</title></rect>
 <rect width="12" height="12" x="105" y="255" class="named"><title>0x00455925 ResultScreen::UpdateScoreList (270 bytes)</title></rect>
 <rect width="12" height="12" x="120" y="255" class="named"><title>0x00455a33 ResultScreen::UpdateSpellDifficultySelect (637 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">25.85%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">74.15%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">26.16%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">73.84%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="193.14" height="6" x="0" y="0" class="named"/>
-<rect width="553.86" height="6" x="193.14" y="0" class="todo"/>
+<rect width="195.42" height="6" x="0" y="0" class="named"/>
+<rect width="551.58" height="6" x="195.42" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1262,7 +1262,7 @@
 <rect width="27.32" height="24.55" x="326.26" y="239.47" class="named"><title>0x004424c0 InitD3dDevice (1472 bytes)</title></rect>
 <rect width="27.32" height="24.33" x="326.26" y="267.03" class="todo"><title>0x0046a071 Func46a071 (1460 bytes)</title></rect>
 <rect width="27.32" height="24.27" x="326.26" y="294.35" class="named"><title>0x0043d120 ReadJoystick (1457 bytes)</title></rect>
-<rect width="27.32" height="23.37" x="326.26" y="321.63" class="todo"><title>0x004550fc ResultScreen::UpdateScoreDifficultySelect (1409 bytes)</title></rect>
+<rect width="27.32" height="23.37" x="326.26" y="321.63" class="named"><title>0x004550fc ResultScreen::UpdateScoreDifficultySelect (1409 bytes)</title></rect>
 <rect width="25.75" height="24.45" x="356.57" y="0" class="named"><title>0x004464c8 App::LoadingThread (1391 bytes)</title></rect>
 <rect width="25.75" height="24.43" x="356.57" y="27.45" class="todo"><title>0x0040d970 Func40d970 (1390 bytes)</title></rect>
 <rect width="25.75" height="24.10" x="356.57" y="54.89" class="todo"><title>0x0044cbf0 Func44cbf0 (1373 bytes)</title></rect>
