@@ -1532,7 +1532,19 @@ struct GuiImpl
     // Draws the dialogue, as th07's (0x43542b).
     int DrawMsg();
 
-    unsigned char unk_0[0x21814];
+    Sprite sprites[0x10];
+    int unk_2a40;
+    Sprite unk_2a44[4];
+    Sprite unk_34d4;
+    Sprite unk_3778;
+    Sprite unk_3a1c;
+    Sprite unk_3cc0;
+    Sprite unk_3f64[8];
+    Sprite unk_5484;
+    Sprite unk_5728[0xa8];
+    Sprite unk_212c8;
+    Sprite unk_2156c;
+    int unk_21810;
     GuiMsg msg;
     // Gui::OnDraw runs Func43826b while it is set.
     int unk_22d84;
@@ -1541,7 +1553,8 @@ struct GuiImpl
     GuiPopup bonusPopup;
     GuiPopup fullPowerPopup;
     GuiPopup spellBonusPopup;
-    unsigned char unk_22dec[0x2cc];
+    unsigned char unk_22dec[0x28];
+    Sprite unk_22e14;
 };
 ASSERT_SIZE(GuiImpl, 0x230b8);
 

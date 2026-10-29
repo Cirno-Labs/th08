@@ -481,10 +481,10 @@ address,size,name,symbol
 0x00437a2f,17,Gui::AddedCallback,?AddedCallback@Gui@@SIHPAV1@@Z
 0x00437a40,144,Gui::DeletedCallback,?DeletedCallback@Gui@@SIHPAV1@@Z
 0x00437ad0,244,Gui::RegisterChain,?RegisterChain@Gui@@SIHXZ
-0x00437bc4,281,Func437bc4,
+0x00437bc4,281,GuiImpl::GuiImpl,??0GuiImpl@@QAE@XZ
 0x00437cdd,5,DebugPrint2,?DebugPrint2@@YAXPBDZZ
-0x00437ce2,99,Func437ce2,
-0x00437d45,31,Func437d45,
+0x00437ce2,99,GuiMsg::GuiMsg,??0GuiMsg@@QAE@XZ
+0x00437d45,31,GuiPopup::GuiPopup,??0GuiPopup@@QAE@XZ
 0x00437d64,35,Gui::RemoveChain,?RemoveChain@Gui@@SIXXZ
 0x00437d87,64,Func437d87,
 0x00437dc7,22,Gui::IsMsgSkippable,?IsMsgSkippable@Gui@@QAEHXZ
