@@ -95,7 +95,7 @@ address,size,name,symbol
 0x00409120,62,D3DXVECTOR3::operator*,??DD3DXVECTOR3@@QBE?AU0@M@Z
 0x00409160,157,Stage::SetTintColor,?SetTintColor@Stage@@QAEXK@Z
 0x00409200,1087,Stage::OnDraw,?OnDraw@Stage@@SIHPAV1@@Z
-0x00409640,528,Func409640,
+0x00409640,528,Stage::OnDraw2,?OnDraw2@Stage@@SIHPAV1@@Z
 0x00409850,706,Func409850,
 0x00409b20,254,Stage::RegisterChain,?RegisterChain@Stage@@SIHH@Z
 0x00409c20,122,Func409c20,

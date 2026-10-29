@@ -2127,6 +2127,14 @@ public:
     static int OnDraw(Stage *stage);
     // Draws the objects on `layer` near enough the camera, as th07's
     // (0x40a1b0). Returns 0.
+    // Draws layers 2 and 3 unless spellCardState is above 1 or the Gui's
+    // loading sprite shows, with a rectangle fading in while
+    // spellCardState is 1; then dialogueSprites's first
+    // dialogueSpriteCount sprites and unk_625c, the fixed camera
+    // (SetupFixedCamera) and the fog at 1000 to 2000. Resets the
+    // SpriteEngine's color unless keepTintColor was set, and clears it
+    // and unk_647c. Returns 1. As th07's.
+    static int OnDraw2(Stage *stage);
     int DrawLayer(int layer);
 
     // One Sprite per object sprite in the data.

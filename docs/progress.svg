@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">62.37% (696)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">35.84% (400)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">62.46% (697)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">35.75% (399)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="465.87" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="465.87" y="0" class="decompiled"/>
-<rect width="267.74" height="6" x="479.26" y="0" class="todo"/>
+<rect width="466.54" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="466.54" y="0" class="decompiled"/>
+<rect width="267.07" height="6" x="479.93" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -164,7 +164,7 @@
 <rect width="12" height="12" x="645" y="15" class="named"><title>0x00409120 D3DXVECTOR3::operator* (62 bytes)</title></rect>
 <rect width="12" height="12" x="660" y="15" class="named"><title>0x00409160 Stage::SetTintColor (157 bytes)</title></rect>
 <rect width="12" height="12" x="675" y="15" class="named"><title>0x00409200 Stage::OnDraw (1087 bytes)</title></rect>
-<rect width="12" height="12" x="690" y="15" class="todo"><title>0x00409640 Func409640 (528 bytes)</title></rect>
+<rect width="12" height="12" x="690" y="15" class="named"><title>0x00409640 Stage::OnDraw2 (528 bytes)</title></rect>
 <rect width="12" height="12" x="705" y="15" class="todo"><title>0x00409850 Func409850 (706 bytes)</title></rect>
 <rect width="12" height="12" x="720" y="15" class="todo"><title>0x00409b20 Stage::RegisterChain (254 bytes)</title></rect>
 <rect width="12" height="12" x="735" y="15" class="todo"><title>0x00409c20 Func409c20 (122 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">54.59%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">44.42%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">54.70%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">44.31%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="407.76" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="407.76" y="0" class="decompiled"/>
-<rect width="331.84" height="6" x="415.16" y="0" class="todo"/>
+<rect width="408.62" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="408.62" y="0" class="decompiled"/>
+<rect width="330.98" height="6" x="416.02" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1399,7 +1399,7 @@
 <rect width="13.71" height="15.03" x="471.21" y="83.32" class="named"><title>0x0043e660 LoadFileData (531 bytes)</title></rect>
 <rect width="13.71" height="14.96" x="471.21" y="101.35" class="named"><title>0x00425430 EffectManager::SpawnEffect (529 bytes)</title></rect>
 <rect width="13.71" height="14.96" x="471.21" y="119.32" class="todo"><title>0x0044c390 Func44c390 (529 bytes)</title></rect>
-<rect width="13.71" height="14.93" x="471.21" y="137.28" class="todo"><title>0x00409640 Func409640 (528 bytes)</title></rect>
+<rect width="13.71" height="14.93" x="471.21" y="137.28" class="named"><title>0x00409640 Stage::OnDraw2 (528 bytes)</title></rect>
 <rect width="13.71" height="14.79" x="471.21" y="155.21" class="todo"><title>0x0044fb70 Func44fb70 (524 bytes)</title></rect>
 <rect width="13.71" height="14.76" x="471.21" y="173.01" class="named"><title>0x0045c6b0 SoundPlayer::FindTrackIndex (523 bytes)</title></rect>
 <rect width="13.71" height="14.69" x="471.21" y="190.77" class="todo"><title>0x0040d100 Func40d100 (521 bytes)</title></rect>

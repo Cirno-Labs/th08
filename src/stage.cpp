@@ -213,3 +213,68 @@ int Stage::OnDraw(Stage *stage)
     }
     return 1;
 }
+
+int Stage::OnDraw2(Stage *stage)
+{
+    float fog;
+    int opacity;
+    float area[4];
+    int j;
+
+    if (stage->spellCardState <= 1 && !g_Gui.IsLoadingShown())
+    {
+        stage->DrawLayer(2);
+        stage->DrawLayer(3);
+        if (!g_App.GetNoFog())
+        {
+            g_App.DisableFog();
+        }
+        g_EffectManager.OnDraw2();
+        if (stage->spellCardState == 1)
+        {
+            area[0] = 32.0f;
+            area[1] = 16.0f;
+            area[2] = 416.0f;
+            area[3] = 464.0f;
+            opacity = stage->spellCardFrames * 0xff / 60;
+            g_SpriteEngine->FlushQuadBatch();
+            g_App.SetRenderState(D3DRS_ZFUNC, D3DCMP_ALWAYS);
+            if (!g_App.GetNoFog())
+            {
+                g_App.SetRenderState(D3DRS_FOGENABLE, FALSE);
+            }
+            DrawColorRect(area, opacity << 24);
+        }
+    }
+    g_SpriteEngine->FlushQuadBatch();
+    g_App.SetRenderState(D3DRS_ZFUNC, D3DCMP_ALWAYS);
+    if (!g_App.GetNoFog())
+    {
+        g_App.DisableFog();
+    }
+    if (stage->spellCardState >= 1)
+    {
+        for (j = 0; j < stage->dialogueSpriteCount; j++)
+        {
+            g_SpriteEngine->DrawAndFlush(&stage->dialogueSprites[j]);
+        }
+        if (stage->unk_625c != NULL)
+        {
+            stage->unk_625c();
+        }
+    }
+    g_SpriteEngine->SetLastCameraSetupFlag(0);
+    stage->SetupFixedCamera();
+    g_App.d3dDevice->SetViewport(&g_App.viewport);
+    fog = 1000.0f;
+    g_App.SetRenderState(D3DRS_FOGSTART, *(DWORD *)&fog);
+    fog = 2000.0f;
+    g_App.SetRenderState(D3DRS_FOGEND, *(DWORD *)&fog);
+    if (stage->keepTintColor == 0)
+    {
+        g_SpriteEngine->ResetColorModulation();
+    }
+    stage->keepTintColor = 0;
+    stage->unk_647c = 0;
+    return 1;
+}
