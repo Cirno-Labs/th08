@@ -146,7 +146,9 @@ struct PlayerBombHitbox
     int unk_34;
     int unk_38;
     BYTE active;
-    unsigned char unk_3d[0x3];
+    // Set on the boxes of UpdateTrailLaserBullet's lasers.
+    BYTE unk_3d;
+    unsigned char unk_3e[0x2];
 };
 
 // One of the player's options (0x2f4). New in th08: some shot types

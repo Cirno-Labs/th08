@@ -296,3 +296,54 @@ int UpdateLaserBullet(Player *player, PlayerBullet *bullet)
     }
     return 0;
 }
+
+int UpdateTrailLaserBullet(Player *player, PlayerBullet *bullet)
+{
+    PlayerBombHitbox *area;
+    int j;
+
+    if (player->lasers[bullet->laserIndex].bullet != bullet || g_Gui.IsMsgRunning() ||
+        player->unk_e2ac4.AsFrames() < 0 || player->playerState == 2 || player->bomb.running ||
+        g_GameManager.unk_3dbac_13)
+    {
+        bullet->sprite.pendingInterrupt = 1;
+        player->lasers[bullet->laserIndex].bullet = NULL;
+        bullet->update = NULL;
+    }
+    if (!player->options[0].active)
+    {
+        player->lasers[bullet->laserIndex].bullet = NULL;
+        return 1;
+    }
+    for (j = 0; j < bullet->trailLength; j++)
+    {
+        if (bullet->trail[j * 2].x >= -900.0f)
+        {
+            area = player->AddBombHitbox(&bullet->trail[j * 2], 16.0f, 448.0f, 1, 0);
+            area->unk_3d = 1;
+        }
+    }
+    for (j = 0x1f; j > 0; j--)
+    {
+        bullet->trail[j] = bullet->trail[j - 1];
+        bullet->trail[j].y -= 1.0f;
+    }
+    bullet->trail[0] = bullet->pos;
+    bullet->pos = player->options[0].pos;
+    bullet->pos.z = 0.44f;
+    bullet->size.y = 448.0f;
+    bullet->pos.y -= 208.0f;
+    if (g_GameManager.IsUnk22AtHigh1())
+    {
+        bullet->sprite.colorRgb[2] = 0xff;
+        bullet->sprite.colorRgb[1] = 0xd0;
+        bullet->sprite.colorRgb[0] = 0xb0;
+    }
+    else
+    {
+        bullet->sprite.colorRgb[2] = 0xff;
+        bullet->sprite.colorRgb[1] = 0xff;
+        bullet->sprite.colorRgb[0] = 0xff;
+    }
+    return 0;
+}

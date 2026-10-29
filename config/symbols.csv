@@ -810,7 +810,7 @@ address,size,name,symbol
 0x00450320,599,UpdateHomingOrb,?UpdateHomingOrb@@YIHPAVPlayer@@PAUPlayerBullet@@@Z
 0x00450580,72,UpdateAcceleratingBullet,?UpdateAcceleratingBullet@@YIHPAVPlayer@@PAUPlayerBullet@@@Z
 0x004505d0,609,UpdateLaserBullet,?UpdateLaserBullet@@YIHPAVPlayer@@PAUPlayerBullet@@@Z
-0x00450840,643,Func450840,
+0x00450840,643,UpdateTrailLaserBullet,?UpdateTrailLaserBullet@@YIHPAVPlayer@@PAUPlayerBullet@@@Z
 0x00450ad0,372,Func450ad0,
 0x00450c50,611,Func450c50,
 0x00450ee0,128,Func450ee0,
