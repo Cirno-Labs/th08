@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">62.72% (700)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">35.48% (396)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">62.81% (701)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">35.39% (395)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="468.55" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="468.55" y="0" class="decompiled"/>
-<rect width="265.06" height="6" x="481.94" y="0" class="todo"/>
+<rect width="469.22" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="469.22" y="0" class="decompiled"/>
+<rect width="264.40" height="6" x="482.60" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -168,7 +168,7 @@
 <rect width="12" height="12" x="705" y="15" class="named"><title>0x00409850 Stage::AddedCallback (706 bytes)</title></rect>
 <rect width="12" height="12" x="720" y="15" class="named"><title>0x00409b20 Stage::RegisterChain (254 bytes)</title></rect>
 <rect width="12" height="12" x="735" y="15" class="named"><title>0x00409c20 Stage::DeletedCallback (122 bytes)</title></rect>
-<rect width="12" height="12" x="0" y="30" class="todo"><title>0x00409ca0 Stage::RemoveChain (50 bytes)</title></rect>
+<rect width="12" height="12" x="0" y="30" class="named"><title>0x00409ca0 Stage::RemoveChain (50 bytes)</title></rect>
 <rect width="12" height="12" x="15" y="30" class="todo"><title>0x00409ce0 Stage::Load (598 bytes)</title></rect>
 <rect width="12" height="12" x="30" y="30" class="todo"><title>0x00409f40 Func409f40 (610 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="30" class="todo"><title>0x0040a1b0 Stage::DrawLayer (4746 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">54.94%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">44.07%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">54.95%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">44.06%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="410.37" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="410.37" y="0" class="decompiled"/>
-<rect width="329.22" height="6" x="417.78" y="0" class="todo"/>
+<rect width="410.45" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="410.45" y="0" class="decompiled"/>
+<rect width="329.14" height="6" x="417.86" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -2024,7 +2024,7 @@
 <rect width="2.30" height="2.46" x="679.79" y="294.49" class="named"><title>0x00473680 CWaveFile::Close (51 bytes)</title></rect>
 <rect width="2.30" height="2.46" x="679.79" y="299.95" class="named"><title>0x004736c0 File::File (51 bytes)</title></rect>
 <rect width="2.30" height="2.46" x="679.79" y="305.40" class="named"><title>0x00473a20 File::Seek (51 bytes)</title></rect>
-<rect width="2.30" height="2.35" x="679.79" y="310.86" class="todo"><title>0x00409ca0 Stage::RemoveChain (50 bytes)</title></rect>
+<rect width="2.30" height="2.35" x="679.79" y="310.86" class="named"><title>0x00409ca0 Stage::RemoveChain (50 bytes)</title></rect>
 <rect width="2.30" height="2.35" x="679.79" y="316.21" class="todo"><title>0x0042bc50 Func42bc50 (50 bytes)</title></rect>
 <rect width="2.30" height="2.35" x="679.79" y="321.56" class="todo"><title>0x0042ef70 EnemyManager::RemoveChain (50 bytes)</title></rect>
 <rect width="2.30" height="2.35" x="679.79" y="326.92" class="named"><title>0x0045cc30 SoundPlayer::LoadBgmFormat (50 bytes)</title></rect>

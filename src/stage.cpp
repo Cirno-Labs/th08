@@ -396,3 +396,10 @@ int Stage::DeletedCallback(Stage *stage)
     }
     return 0;
 }
+
+void Stage::RemoveChain()
+{
+    g_Chain.Remove(&g_StageCalcChain);
+    g_Chain.Remove(&g_StageDrawChain);
+    g_Chain.Remove(&g_StageDrawChain2);
+}
