@@ -639,3 +639,8 @@ extern Player g_Player;
 // through Stage::SetTintColor, after resetting the SpriteEngine's color;
 // sets the stage's keepTintColor (0x40bc60).
 void DimPlayAreaForBomb(Player *player, D3DCOLOR tint);
+
+// th07's SpawnBombAura, with effect 0x17: ends invulnerabilityEffect and
+// starts a red aura at the player that runs as long as stateTimer
+// (0x40bf00).
+void SpawnBombAura(Player *player);

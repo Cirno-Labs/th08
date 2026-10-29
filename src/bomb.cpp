@@ -36,6 +36,29 @@ void DimPlayAreaForBomb(Player *player, D3DCOLOR tint)
     g_Stage.keepTintColor = 1;
 }
 
+void SpawnBombAura(Player *player)
+{
+    Effect *effect;
+
+    if (player->invulnerabilityEffect != NULL)
+    {
+        player->invulnerabilityEffect->active = 0;
+    }
+    effect = g_EffectManager.SpawnReservedEffect(0x17, &player->pos, 0, 1, 0xffffffff);
+    effect->sprite.interpDuration[4] = 0;
+    effect->sprite.interpFrame[4] = player->stateTimer;
+    effect->sprite.scaleInterpEasing = 0;
+    *(D3DXVECTOR2 *)&effect->sprite.scaleTween = *(D3DXVECTOR2 *)&effect->sprite.scaleY;
+    effect->sprite.scaleTween.z = 0.0625f;
+    effect->sprite.colorTween.x = 0.0625f;
+    effect->sprite.scriptVar0 = player->stateTimer.AsFrames();
+    effect->sprite.rotationSpeed.z *= -1.0f;
+    effect->sprite.colorRgb[2] = 0xff;
+    effect->sprite.colorRgb[1] = 0x40;
+    effect->sprite.colorRgb[0] = 0x40;
+    player->invulnerabilityEffect = effect;
+}
+
 int EffectUpdateBombRing42(Effect *effect)
 {
     float t;
