@@ -39,9 +39,8 @@ public:
     // Whether holding shoot also focuses (shootFocuses). th07 read the
     // field directly; th08 calls this out-of-line copy.
     int GetShootFocuses();
-    // Enters and leaves critical section `idx` of the app's set (at
-    // +0x298, 0x18 bytes each), counting the depth in a byte per section
-    // (+0x2f8). New in th08; LoadFileData holds section 2.
+    // Enters and leaves criticalSections[idx], counting the depth in
+    // criticalSectionDepths. New in th08.
     void EnterCriticalSection(int idx);
     void LeaveCriticalSection(int idx);
 
@@ -80,7 +79,13 @@ public:
     // Bit 0x40 is set by CheckSingleInstance when the startup info has
     // no title, cleared when it has one.
     DWORD unk_1a4;
-    unsigned char unk_1a8[0x1ac];
+    unsigned char unk_1a8[0xf0];
+    // Locked by EnterCriticalSection: 2 around file access, 3 around the
+    // log.
+    CRITICAL_SECTION criticalSections[4];
+    // How deep each of criticalSections is entered.
+    BYTE criticalSectionDepths[4];
+    unsigned char unk_2fc[0x58];
     // The sum of the executable's dwords and its size, from
     // ChecksumExecutable.
     DWORD exeChecksum;

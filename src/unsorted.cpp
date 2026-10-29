@@ -677,3 +677,8 @@ float AddNormalizeAngle(float a, float b)
     }
     return a;
 }
+
+int App::GetShootFocuses()
+{
+    return this->shootFocuses;
+}
