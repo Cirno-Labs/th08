@@ -10,8 +10,8 @@ address,size,name,symbol
 0x00402450,426,AsciiText::Initialize,?Initialize@AsciiText@@QAEXXZ
 0x00402600,372,AsciiText::StartScripts,?StartScripts@AsciiText@@QAEXXZ
 0x00402780,168,AsciiText::RegisterChain,?RegisterChain@AsciiText@@SIHXZ
-0x00402830,131,Func402830,
-0x004028c0,39,Func4028c0,
+0x00402830,131,AsciiText::AddedCallback,?AddedCallback@AsciiText@@SIHPAV1@@Z
+0x004028c0,39,AsciiText::DeletedCallback,?DeletedCallback@AsciiText@@SIHPAV1@@Z
 0x004028f0,35,AsciiText::RemoveChain,?RemoveChain@AsciiText@@SIXXZ
 0x00402920,265,AsciiText::AddString,?AddString@AsciiText@@QAEXPAUD3DXVECTOR3@@PAD@Z
 0x00402a30,68,AsciiText::AddFormat,?AddFormat@AsciiText@@QAAXPAUD3DXVECTOR3@@PADZZ

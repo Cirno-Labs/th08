@@ -142,3 +142,24 @@ void AsciiText::StartScripts()
     this->summaryPopup3.pos.x += g_GameManager.unk_3ddfa * 56.0f / 10000.0f;
     this->SetSummaryPendingInterrupt(this->GetSummaryPendingInterrupt());
 }
+
+int AsciiText::RegisterChain()
+{
+    AsciiText *text = &g_AsciiText;
+
+    g_AsciiCalcChain.SetCallback((ChainCallback)AsciiText::OnUpdate);
+    g_AsciiCalcChain.addedCallback = (ChainCallback)AsciiText::AddedCallback;
+    g_AsciiCalcChain.deletedCallback = (ChainCallback)AsciiText::DeletedCallback;
+    g_AsciiCalcChain.arg = text;
+    if (g_Chain.AddToCalcChain(&g_AsciiCalcChain, 1) != 0)
+    {
+        return -1;
+    }
+    g_AsciiDrawChain.SetCallback((ChainCallback)AsciiText::OnDraw);
+    g_AsciiDrawChain.arg = text;
+    g_Chain.AddToDrawChain(&g_AsciiDrawChain, 0x14);
+    g_AsciiDrawChain2.SetCallback((ChainCallback)AsciiText::OnDraw2);
+    g_AsciiDrawChain2.arg = text;
+    g_Chain.AddToDrawChain(&g_AsciiDrawChain2, 0xe);
+    return 0;
+}
