@@ -6,6 +6,7 @@
 #include <d3dx8math.h>
 
 #include "common.h"
+#include "timer.h"
 
 // The player. Only what is known so far.
 // A shot type's data, behind Player::shotType, as th07's. Only the
@@ -37,10 +38,21 @@ public:
 
     // 2 while dying, as th07's.
     char playerState;
-    unsigned char unk_1[0x2b3];
+    unsigned char unk_1[0x2];
+    // Picks unk_e2a78 over shotType for the items' pull speed, and the
+    // direction a time orb moves stats->unk_22. Probably the focus.
+    BYTE unk_3;
+    unsigned char unk_4[0x2b0];
     // The player's position.
     D3DXVECTOR3 pos;
     unsigned char unk_2c0[0xe27b4];
     ShotTypeData *shotType;
+    ShotTypeData *unk_e2a78;
+    // A time orb counts 100 points while it is set, as th07's
+    // bombJustStarted did for point items.
+    int unk_e2a7c;
+    unsigned char unk_e2a80[0x5c];
+    // Collecting a time orb moves stats->unk_22 while it is 0.
+    Timer unk_e2adc;
 };
 extern Player g_Player;

@@ -308,6 +308,45 @@ void Item::CollectBigPower()
     }
 }
 
+void Item::CollectTimeOrb()
+{
+    int amount;
+
+    if (g_Player.unk_e2a7c == 0)
+    {
+        if (g_GameManager.stats->unk_2c >= 2000)
+        {
+            amount = 10000;
+        }
+        else
+        {
+            amount = g_GameManager.stats->pointItemsTotal / 2 * 10;
+            if (amount < 100)
+            {
+                amount = 100;
+            }
+        }
+    }
+    else
+    {
+        amount = 100;
+    }
+    if (this != NULL)
+    {
+        g_AsciiText.AddPopup2(&this->pos, amount,
+                              g_GameManager.GetUnk3c() < g_GameManager.GetUnk40() ? 0xdfffffff : 0xdfffef80);
+    }
+    g_Gui.unk_4_10 = 2;
+    g_GameManager.AddScore(amount);
+    g_GameManager.AddTimeOrbs(1);
+    g_SpellCard.Func416b10(8000);
+    if (g_Player.unk_e2adc == 0)
+    {
+        amount = 111;
+        g_GameManager.Func43c0bb(g_Player.unk_3 ? amount : -amount, 0);
+    }
+}
+
 void ItemManager::CollectAll()
 {
     Item *entry = this->activeList.next;

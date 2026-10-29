@@ -215,7 +215,7 @@ address,size,name,symbol
 0x004161b0,2331,Func4161b0,
 0x00416ad0,24,Func416ad0,
 0x00416af0,32,Func416af0,
-0x00416b10,118,Func416b10,
+0x00416b10,118,SpellCard::Func416b10,?Func416b10@SpellCard@@QAEXH@Z
 0x00416b90,3269,Func416b90,
 0x00417860,59,Func417860,
 0x004178a0,19,Func4178a0,
@@ -620,7 +620,7 @@ address,size,name,symbol
 0x00440e40,472,Item::CollectPoint,?CollectPoint@Item@@QAEXXZ
 0x00441020,334,Item::CollectFullPowerItem,?CollectFullPowerItem@Item@@QAEXXZ
 0x00441170,315,Item::CollectBigPower,?CollectBigPower@Item@@QAEXXZ
-0x004412b0,293,Func4412b0,
+0x004412b0,293,Item::CollectTimeOrb,?CollectTimeOrb@Item@@QAEXXZ
 0x004413e0,97,ItemManager::CollectAll,?CollectAll@ItemManager@@QAEXXZ
 0x00441450,209,ItemManager::ConvertPowerItems,?ConvertPowerItems@ItemManager@@QAEXPAUItem@@@Z
 0x00441530,109,ItemManager::RecycleCollectedItems,?RecycleCollectedItems@ItemManager@@QAEXXZ

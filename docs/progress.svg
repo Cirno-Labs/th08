@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">53.14% (593)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">45.07% (503)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">53.23% (594)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">44.98% (502)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="396.93" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="396.93" y="0" class="decompiled"/>
-<rect width="336.69" height="6" x="410.31" y="0" class="todo"/>
+<rect width="397.60" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="397.60" y="0" class="decompiled"/>
+<rect width="336.02" height="6" x="410.98" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -284,7 +284,7 @@
 <rect width="12" height="12" x="195" y="60" class="todo"><title>0x004161b0 Func4161b0 (2331 bytes)</title></rect>
 <rect width="12" height="12" x="210" y="60" class="todo"><title>0x00416ad0 Func416ad0 (24 bytes)</title></rect>
 <rect width="12" height="12" x="225" y="60" class="todo"><title>0x00416af0 Func416af0 (32 bytes)</title></rect>
-<rect width="12" height="12" x="240" y="60" class="todo"><title>0x00416b10 Func416b10 (118 bytes)</title></rect>
+<rect width="12" height="12" x="240" y="60" class="todo"><title>0x00416b10 SpellCard::Func416b10 (118 bytes)</title></rect>
 <rect width="12" height="12" x="255" y="60" class="todo"><title>0x00416b90 Func416b90 (3269 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="60" class="todo"><title>0x00417860 Func417860 (59 bytes)</title></rect>
 <rect width="12" height="12" x="285" y="60" class="todo"><title>0x004178a0 Func4178a0 (19 bytes)</title></rect>
@@ -689,7 +689,7 @@
 <rect width="12" height="12" x="270" y="180" class="named"><title>0x00440e40 Item::CollectPoint (472 bytes)</title></rect>
 <rect width="12" height="12" x="285" y="180" class="named"><title>0x00441020 Item::CollectFullPowerItem (334 bytes)</title></rect>
 <rect width="12" height="12" x="300" y="180" class="named"><title>0x00441170 Item::CollectBigPower (315 bytes)</title></rect>
-<rect width="12" height="12" x="315" y="180" class="todo"><title>0x004412b0 Func4412b0 (293 bytes)</title></rect>
+<rect width="12" height="12" x="315" y="180" class="named"><title>0x004412b0 Item::CollectTimeOrb (293 bytes)</title></rect>
 <rect width="12" height="12" x="330" y="180" class="named"><title>0x004413e0 ItemManager::CollectAll (97 bytes)</title></rect>
 <rect width="12" height="12" x="345" y="180" class="named"><title>0x00441450 ItemManager::ConvertPowerItems (209 bytes)</title></rect>
 <rect width="12" height="12" x="360" y="180" class="named"><title>0x00441530 ItemManager::RecycleCollectedItems (109 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">44.62%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">54.39%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">44.69%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">54.32%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="333.32" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="333.32" y="0" class="decompiled"/>
-<rect width="406.28" height="6" x="340.72" y="0" class="todo"/>
+<rect width="333.80" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="333.80" y="0" class="decompiled"/>
+<rect width="405.80" height="6" x="341.20" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1531,7 +1531,7 @@
 <rect width="9.89" height="9.98" x="532.82" y="207.66" class="named"><title>0x00403200 AsciiText::AddPopup (295 bytes)</title></rect>
 <rect width="9.89" height="9.98" x="532.82" y="220.64" class="named"><title>0x00442060 PresentFrame (295 bytes)</title></rect>
 <rect width="9.89" height="9.98" x="532.82" y="233.62" class="named"><title>0x0045ae00 LoadPracticeScores (295 bytes)</title></rect>
-<rect width="9.89" height="9.89" x="532.82" y="246.61" class="todo"><title>0x004412b0 Func4412b0 (293 bytes)</title></rect>
+<rect width="9.89" height="9.89" x="532.82" y="246.61" class="named"><title>0x004412b0 Item::CollectTimeOrb (293 bytes)</title></rect>
 <rect width="9.89" height="9.85" x="532.82" y="259.50" class="todo"><title>0x0040b5a0 Stage::SetupFixedCamera (292 bytes)</title></rect>
 <rect width="9.89" height="9.76" x="532.82" y="272.35" class="todo"><title>0x004281e0 Func4281e0 (290 bytes)</title></rect>
 <rect width="9.89" height="9.67" x="532.82" y="285.11" class="todo"><title>0x0042b370 Func42b370 (288 bytes)</title></rect>
@@ -1778,7 +1778,7 @@
 <rect width="5.08" height="5.43" x="618.51" y="225.05" class="todo"><title>0x00426c90 Func426c90 (120 bytes)</title></rect>
 <rect width="5.08" height="5.36" x="618.51" y="233.48" class="todo"><title>0x0040e2d0 Func40e2d0 (119 bytes)</title></rect>
 <rect width="5.08" height="5.36" x="618.51" y="241.84" class="named"><title>0x00448081 App::StopMusic (119 bytes)</title></rect>
-<rect width="5.08" height="5.29" x="618.51" y="250.20" class="todo"><title>0x00416b10 Func416b10 (118 bytes)</title></rect>
+<rect width="5.08" height="5.29" x="618.51" y="250.20" class="todo"><title>0x00416b10 SpellCard::Func416b10 (118 bytes)</title></rect>
 <rect width="5.08" height="5.29" x="618.51" y="258.49" class="todo"><title>0x0044c1b0 Func44c1b0 (118 bytes)</title></rect>
 <rect width="5.08" height="5.22" x="618.51" y="266.78" class="todo"><title>0x0042b2f0 Func42b2f0 (117 bytes)</title></rect>
 <rect width="5.08" height="5.22" x="618.51" y="275" class="todo"><title>0x0042f420 Func42f420 (117 bytes)</title></rect>

@@ -1315,6 +1315,30 @@ public:
     {
         return this->stats->unk_3c;
     }
+    // Adds `amount` time orbs (stats->unk_3c; a negative amount larger
+    // than what there is clears them instead) to unk_3c, stats->unk_44
+    // and hscr.timeOrbs; a gain also raises stats->unk_24 by 10 per two,
+    // rounding with unk_44's parity. Inline; the copy at 0x418220 is in
+    // an /Od object.
+    void AddTimeOrbs(int amount)
+    {
+        if (amount >= 0 || this->stats->unk_3c >= -amount)
+        {
+            this->stats->unk_3c += amount;
+            this->stats->unk_44 += amount;
+            this->hscr.timeOrbs += amount;
+            this->RerollChecksumKeys();
+            if (amount > 0)
+            {
+                amount += this->stats->unk_44 & 1;
+                this->stats->unk_24 += amount / 2 * 10;
+            }
+        }
+        else
+        {
+            this->stats->unk_3c = 0;
+        }
+    }
     int GetUnk40()
     {
         return this->stats->unk_40;
@@ -2010,6 +2034,8 @@ struct SpellCard
     {
         return this->unk_0 & 1;
     }
+    // Called with 8000 when a time orb is collected (0x416b10).
+    void Func416b10(int amount);
     // Bit 9 of unk_0. Inline; the copy is at 0x405260.
     int Func405260()
     {

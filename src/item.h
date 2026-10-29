@@ -34,6 +34,13 @@ struct Item
     // CollectPoint's value in tenths, as points only (0x441020). New in
     // th08.
     void CollectFullPowerItem();
+    // What collecting a time orb (type 7) does: points (half the point
+    // items collected, in tens, at least 100; 10000 from 2000 stats->
+    // unk_2c on; 100 while Player::unk_e2a7c is set) with a popup unless
+    // there is no item, a time orb, g_SpellCard.Func416b10(8000), and
+    // stats->unk_22 moved by 111 one way or the other while
+    // Player::unk_e2adc is 0 (0x4412b0). New in th08.
+    void CollectTimeOrb();
 
     Sprite sprite;
     D3DXVECTOR3 pos;
