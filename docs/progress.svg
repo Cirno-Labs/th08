@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">37.90% (423)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">62.10% (693)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">37.99% (424)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">62.01% (692)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="283.14" height="6" x="0" y="0" class="named"/>
-<rect width="463.86" height="6" x="283.14" y="0" class="todo"/>
+<rect width="283.81" height="6" x="0" y="0" class="named"/>
+<rect width="463.19" height="6" x="283.81" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -902,7 +902,7 @@
 <rect width="12" height="12" x="480" y="240" class="named"><title>0x00452d60 ReplayManager::PlayAddedCallback (787 bytes)</title></rect>
 <rect width="12" height="12" x="495" y="240" class="named"><title>0x00453080 ReplayManager::DeletedCallback (209 bytes)</title></rect>
 <rect width="12" height="12" x="510" y="240" class="named"><title>0x00453160 ReplayManager::ReplayManager (58 bytes)</title></rect>
-<rect width="12" height="12" x="525" y="240" class="todo"><title>0x004531a0 Func4531a0 (77 bytes)</title></rect>
+<rect width="12" height="12" x="525" y="240" class="named"><title>0x004531a0 ReplayManager::EndStage (77 bytes)</title></rect>
 <rect width="12" height="12" x="540" y="240" class="todo"><title>0x004531f0 SaveReplay (2445 bytes)</title></rect>
 <rect width="12" height="12" x="555" y="240" class="todo"><title>0x00453b80 Func453b80 (88 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="240" class="named"><title>0x00453be0 Rng::SetSeed (23 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">30.99%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">69.01%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">31.01%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">68.99%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="231.49" height="6" x="0" y="0" class="named"/>
-<rect width="515.51" height="6" x="231.49" y="0" class="todo"/>
+<rect width="231.61" height="6" x="0" y="0" class="named"/>
+<rect width="515.39" height="6" x="231.61" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1899,7 +1899,7 @@
 <rect width="3.74" height="3.48" x="683.15" y="247.34" class="todo"><title>0x00441850 Func441850 (77 bytes)</title></rect>
 <rect width="3.74" height="3.48" x="689.89" y="247.34" class="named"><title>0x00447764 SoundPlayer::UpdateBgmFades (77 bytes)</title></rect>
 <rect width="3.74" height="3.48" x="696.62" y="247.34" class="todo"><title>0x0044fdd0 Func44fdd0 (77 bytes)</title></rect>
-<rect width="3.74" height="3.48" x="703.36" y="247.34" class="todo"><title>0x004531a0 Func4531a0 (77 bytes)</title></rect>
+<rect width="3.74" height="3.48" x="703.36" y="247.34" class="named"><title>0x004531a0 ReplayManager::EndStage (77 bytes)</title></rect>
 <rect width="3.65" height="3.48" x="710.10" y="247.34" class="todo"><title>0x0040c7d0 Func40c7d0 (76 bytes)</title></rect>
 <rect width="3.65" height="3.48" x="716.75" y="247.34" class="todo"><title>0x00410bb0 Func410bb0 (76 bytes)</title></rect>
 <rect width="3.65" height="3.48" x="723.40" y="247.34" class="named"><title>0x0045bd70 ScreenEffect::OnDrawFlash (76 bytes)</title></rect>

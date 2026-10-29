@@ -536,3 +536,17 @@ int ReplayManager::DeletedCallback(ReplayManager *replay)
     g_ReplayManager = NULL;
     return 0;
 }
+
+void ReplayManager::EndStage()
+{
+    int stageIdx;
+    ReplayManager *replay = g_ReplayManager;
+
+    if (replay != NULL)
+    {
+        replay->cursor++;
+        *replay->cursor = 0;
+        stageIdx = g_GameManager.stage;
+        replay->stageEnds[stageIdx] = replay->cursor + 3;
+    }
+}

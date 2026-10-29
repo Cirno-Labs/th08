@@ -834,7 +834,7 @@ address,size,name,symbol
 0x00452d60,787,ReplayManager::PlayAddedCallback,?PlayAddedCallback@ReplayManager@@SIHPAV1@@Z
 0x00453080,209,ReplayManager::DeletedCallback,?DeletedCallback@ReplayManager@@SIHPAV1@@Z
 0x00453160,58,ReplayManager::ReplayManager,??0ReplayManager@@QAE@XZ
-0x004531a0,77,Func4531a0,
+0x004531a0,77,ReplayManager::EndStage,?EndStage@ReplayManager@@SIXXZ
 0x004531f0,2445,SaveReplay,?SaveReplay@@YIXPAD0@Z
 0x00453b80,88,Func453b80,
 0x00453be0,23,Rng::SetSeed,?SetSeed@Rng@@QAEXG@Z
