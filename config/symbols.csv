@@ -556,14 +556,14 @@ address,size,name,symbol
 0x0043c830,78,Chain::Chain,??0Chain@@QAE@XZ
 0x0043c880,224,Chain::AddToCalcChain,?AddToCalcChain@Chain@@QAEHPAUChainElem@@H@Z
 0x0043c960,227,Chain::AddToDrawChain,?AddToDrawChain@Chain@@QAEHPAUChainElem@@H@Z
-0x0043ca50,232,Func43ca50,
+0x0043ca50,232,Chain::RunCalcChain,?RunCalcChain@Chain@@QAEHXZ
 0x0043cb60,230,Func43cb60,
 0x0043cc60,408,Func43cc60,
 0x0043ce00,46,Func43ce00,
 0x0043ce30,48,Func43ce30,
 0x0043ce60,162,Func43ce60,
 0x0043cf10,49,Func43cf10,
-0x0043cf50,362,Func43cf50,
+0x0043cf50,362,Chain::RemoveLocked,?RemoveLocked@Chain@@QAEXPAUChainElem@@@Z
 0x0043d0c0,85,InitJoystick,?InitJoystick@@YIGXZ
 0x0043d120,1457,ReadJoystick,?ReadJoystick@@YIGG@Z
 0x0043d6e0,122,SetButtonFromDirectInput,?SetButtonFromDirectInput@@YIHPAGFGPAE@Z
