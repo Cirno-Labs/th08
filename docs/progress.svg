@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">25.18% (281)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">74.82% (835)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">25.27% (282)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">74.73% (834)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="188.09" height="6" x="0" y="0" class="named"/>
-<rect width="558.91" height="6" x="188.09" y="0" class="todo"/>
+<rect width="188.76" height="6" x="0" y="0" class="named"/>
+<rect width="558.24" height="6" x="188.76" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -1048,11 +1048,11 @@
 <rect width="12" height="12" x="420" y="285" class="named"><title>0x00465570 SpriteEngine::LoadTexture (98 bytes)</title></rect>
 <rect width="12" height="12" x="435" y="285" class="named"><title>0x004655e0 SpriteEngine::CreateTextureFromImage (476 bytes)</title></rect>
 <rect width="12" height="12" x="450" y="285" class="named"><title>0x004657c0 SpriteEngine::CreateTexture (56 bytes)</title></rect>
-<rect width="12" height="12" x="465" y="285" class="todo"><title>0x00465800 SpriteEngine::LoadAnm (96 bytes)</title></rect>
-<rect width="12" height="12" x="480" y="285" class="todo"><title>0x00465860 Func465860 (473 bytes)</title></rect>
+<rect width="12" height="12" x="465" y="285" class="named"><title>0x00465800 SpriteEngine::LoadAnm (96 bytes)</title></rect>
+<rect width="12" height="12" x="480" y="285" class="todo"><title>0x00465860 SpriteEngine::PreloadAnmFile (473 bytes)</title></rect>
 <rect width="12" height="12" x="495" y="285" class="todo"><title>0x00465a40 SpriteEngine::PreloadAnm (115 bytes)</title></rect>
 <rect width="12" height="12" x="510" y="285" class="todo"><title>0x00465ac0 Func465ac0 (219 bytes)</title></rect>
-<rect width="12" height="12" x="525" y="285" class="todo"><title>0x00465ba0 Func465ba0 (284 bytes)</title></rect>
+<rect width="12" height="12" x="525" y="285" class="todo"><title>0x00465ba0 SpriteEngine::PostloadAnm (284 bytes)</title></rect>
 <rect width="12" height="12" x="540" y="285" class="todo"><title>0x00465cc0 Func465cc0 (829 bytes)</title></rect>
 <rect width="12" height="12" x="555" y="285" class="todo"><title>0x00466000 SpriteEngine::StepAnmLoading (91 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="285" class="todo"><title>0x00466060 SpriteEngine::ReleaseAnm (243 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">15.21%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">84.79%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">15.23%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">84.77%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="113.60" height="6" x="0" y="0" class="named"/>
-<rect width="633.40" height="6" x="113.60" y="0" class="todo"/>
+<rect width="113.76" height="6" x="0" y="0" class="named"/>
+<rect width="633.24" height="6" x="113.76" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1419,7 +1419,7 @@
 <rect width="13.35" height="13.80" x="606.02" y="83.32" class="named"><title>0x004723b0 CSound::FillBufferWithSound (484 bytes)</title></rect>
 <rect width="13.28" height="13.80" x="622.37" y="83.32" class="named"><title>0x00441e70 GameWindow::RunFrame (482 bytes)</title></rect>
 <rect width="13.08" height="13.80" x="638.66" y="83.32" class="named"><title>0x004655e0 SpriteEngine::CreateTextureFromImage (476 bytes)</title></rect>
-<rect width="12.98" height="13.80" x="654.74" y="83.32" class="todo"><title>0x00465860 Func465860 (473 bytes)</title></rect>
+<rect width="12.98" height="13.80" x="654.74" y="83.32" class="todo"><title>0x00465860 SpriteEngine::PreloadAnmFile (473 bytes)</title></rect>
 <rect width="12.94" height="13.80" x="670.71" y="83.32" class="todo"><title>0x00440e40 Func440e40 (472 bytes)</title></rect>
 <rect width="12.88" height="13.80" x="686.66" y="83.32" class="named"><title>0x0045d0f0 SoundPlayer::PlayPreloadedBgm (470 bytes)</title></rect>
 <rect width="12.84" height="13.80" x="702.54" y="83.32" class="todo"><title>0x00462ff0 SpriteEngine::DrawUnrotated (469 bytes)</title></rect>
@@ -1536,7 +1536,7 @@
 <rect width="9.89" height="9.63" x="532.82" y="297.79" class="named"><title>0x0045d2d0 SoundPlayer::StopBgm (287 bytes)</title></rect>
 <rect width="9.89" height="9.59" x="532.82" y="310.42" class="todo"><title>0x00466f20 SpriteEngine::CopyBackBufferToTexture (286 bytes)</title></rect>
 <rect width="9.89" height="9.50" x="532.82" y="323" class="todo"><title>0x0042c290 Func42c290 (284 bytes)</title></rect>
-<rect width="9.89" height="9.50" x="532.82" y="335.50" class="todo"><title>0x00465ba0 Func465ba0 (284 bytes)</title></rect>
+<rect width="9.89" height="9.50" x="532.82" y="335.50" class="todo"><title>0x00465ba0 SpriteEngine::PostloadAnm (284 bytes)</title></rect>
 <rect width="10.19" height="9.22" x="545.71" y="142.35" class="named"><title>0x00474520 LzssInsertNode (284 bytes)</title></rect>
 <rect width="10.14" height="9.22" x="558.90" y="142.35" class="todo"><title>0x0040b6d0 Func40b6d0 (283 bytes)</title></rect>
 <rect width="10.05" height="9.22" x="572.04" y="142.35" class="todo"><title>0x00437bc4 Func437bc4 (281 bytes)</title></rect>
@@ -1843,7 +1843,7 @@
 <rect width="4.22" height="4.63" x="693" y="232.98" class="named"><title>0x004486ba App::StartSubThread (97 bytes)</title></rect>
 <rect width="4.14" height="4.63" x="700.22" y="232.98" class="todo"><title>0x0042bc90 Func42bc90 (96 bytes)</title></rect>
 <rect width="4.14" height="4.63" x="707.36" y="232.98" class="todo"><title>0x0043c5e1 Func43c5e1 (96 bytes)</title></rect>
-<rect width="4.14" height="4.63" x="714.51" y="232.98" class="todo"><title>0x00465800 SpriteEngine::LoadAnm (96 bytes)</title></rect>
+<rect width="4.14" height="4.63" x="714.51" y="232.98" class="named"><title>0x00465800 SpriteEngine::LoadAnm (96 bytes)</title></rect>
 <rect width="4.14" height="4.63" x="721.65" y="232.98" class="named"><title>0x00472aa0 CStreamingSound::CStreamingSound (96 bytes)</title></rect>
 <rect width="4.07" height="4.63" x="728.79" y="232.98" class="todo"><title>0x004023d0 Func4023d0 (95 bytes)</title></rect>
 <rect width="4.07" height="4.63" x="735.86" y="232.98" class="todo"><title>0x004068e0 Func4068e0 (95 bytes)</title></rect>

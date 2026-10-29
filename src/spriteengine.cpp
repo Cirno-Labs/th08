@@ -171,3 +171,20 @@ int SpriteEngine::CreateTexture(AnmTexture *tex, int width, int height, int form
     D3DXCreateTexture(g_App.d3dDevice, width, height, 1, 0, g_TextureFormats[format], D3DPOOL_MANAGED, &tex->texture);
     return 0;
 }
+
+AnmLoaded *SpriteEngine::LoadAnm(int slot, char *path)
+{
+    AnmLoaded *anm;
+
+    DebugPrint("::loadAnim : %s\n", path);
+    anm = this->PreloadAnmFile(slot, path);
+    if (anm != NULL)
+    {
+        anm->loadStep = 1;
+        while (anm->loadStep != 0)
+        {
+            anm = this->PostloadAnm(anm);
+        }
+    }
+    return anm;
+}

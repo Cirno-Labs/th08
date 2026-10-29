@@ -300,6 +300,15 @@ public:
     // Creates `tex`'s texture at `width` by `height` in the format
     // g_TextureFormats[`format`]. Returns 0.
     int CreateTexture(AnmTexture *tex, int width, int height, int format);
+    // Reads the ANM file at `path` into slot `slot`, sets up its tables
+    // and reads its image files ("::preloadAnim"). The textures are
+    // created later, by PostloadAnm. Returns the slot's AnmLoaded, or
+    // NULL on failure.
+    AnmLoaded *PreloadAnmFile(int slot, char *path);
+    // Creates the textures and sprites of the next ANM of `anm`
+    // ("::postloadAnim"): one a call, counted by anm->loadStep, which
+    // drops to 0 after the last. Returns `anm`, or NULL on failure.
+    AnmLoaded *PostloadAnm(AnmLoaded *anm);
 
     IDirect3DSurface8 *GetSurface(int surface)
     {

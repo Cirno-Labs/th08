@@ -981,10 +981,10 @@ address,size,name,symbol
 0x004655e0,476,SpriteEngine::CreateTextureFromImage,?CreateTextureFromImage@SpriteEngine@@QAEHPAUAnmTexture@@PAUAnmImage@@H@Z
 0x004657c0,56,SpriteEngine::CreateTexture,?CreateTexture@SpriteEngine@@QAEHPAUAnmTexture@@HHH@Z
 0x00465800,96,SpriteEngine::LoadAnm,?LoadAnm@SpriteEngine@@QAEPAVAnmLoaded@@HPAD@Z
-0x00465860,473,Func465860,
+0x00465860,473,SpriteEngine::PreloadAnmFile,?PreloadAnmFile@SpriteEngine@@QAEPAVAnmLoaded@@HPAD@Z
 0x00465a40,115,SpriteEngine::PreloadAnm,?PreloadAnm@SpriteEngine@@QAEPAVAnmLoaded@@HPAD@Z
 0x00465ac0,219,Func465ac0,
-0x00465ba0,284,Func465ba0,
+0x00465ba0,284,SpriteEngine::PostloadAnm,?PostloadAnm@SpriteEngine@@QAEPAVAnmLoaded@@PAV2@@Z
 0x00465cc0,829,Func465cc0,
 0x00466000,91,SpriteEngine::StepAnmLoading,?StepAnmLoading@SpriteEngine@@QAEHXZ
 0x00466060,243,SpriteEngine::ReleaseAnm,?ReleaseAnm@SpriteEngine@@QAEXH@Z
