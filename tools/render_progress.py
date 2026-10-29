@@ -69,8 +69,6 @@ def built_from_svg(path: str) -> dict[int, bool | None]:
 
 
 def collect_functions(root: str = ROOT, built_svg: dict[int, bool | None] | None = None) -> list[Symbol]:
-    if GAME_END is None:
-        sys.exit("set GAME_END in tools/seed_symbols.py from the analysis first")
     with open(os.path.join(root, "config/symbols.csv")) as f:
         rows = [r for r in csv.DictReader(f) if int(r["address"], 16) < GAME_END]
     if built_svg is None:

@@ -17,9 +17,7 @@ Existing rows are never changed.
 import csv, glob, os, re, struct, subprocess, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# Where the game code ends and D3DX8 and the CRT begin. Not known until
-# the first `just analyze`: find the boundary in build/functions_100d.csv.
-GAME_END = None
+GAME_END = 0x475298  # the game's code ends here; D3DX8's tables, D3DX8 and the CRT follow
 EXE = "build/th08_100d.exe"
 LIBS = [".wine/drive_c/psdk/Lib", ".wine/drive_c/dx8/lib"]
 
@@ -76,8 +74,6 @@ def import_symbols(dlls):
 
 def main():
     os.chdir(ROOT)
-    if GAME_END is None:
-        sys.exit("set GAME_END in tools/seed_symbols.py from the analysis first")
     src = sys.argv[1] if len(sys.argv) > 1 else "build/functions_100d.csv"
     path = "config/symbols.csv"
     rows = {int(r["address"], 16): r for r in csv.DictReader(open(path))}
