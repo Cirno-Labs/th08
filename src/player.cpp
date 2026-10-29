@@ -780,7 +780,7 @@ void UpdateInvulnerability(Player *player)
     {
         player->respawnClearFrames--;
         // A hit area over the whole play area clears the bullets.
-        player->Func44de60(&player->pos, 768.0f, 896.0f, -1, 0);
+        player->AddHitArea(&player->pos, 768.0f, 896.0f, -1, 0);
     }
     if (player->playerState == 3)
     {
@@ -1073,4 +1073,28 @@ int LoadShotTypeFile(ShotTypeData **out, char *path)
         }
     }
     return 0;
+}
+
+PlayerBombHitbox *Player::AddHitArea(D3DXVECTOR3 *pos, float width, float height, int itemType, int framesLeft)
+{
+    PlayerBombHitbox *area;
+    int j;
+
+    area = this->hitAreas;
+    for (j = 0; j < 0xbf; j++, area++)
+    {
+        if (!area->active)
+        {
+            break;
+        }
+    }
+    area->Reset();
+    area->active = 1;
+    area->x = pos->x;
+    area->y = pos->y;
+    area->width = width;
+    area->height = height;
+    area->framesLeft = framesLeft;
+    area->itemType = itemType;
+    return area;
 }

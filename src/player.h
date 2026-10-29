@@ -322,12 +322,19 @@ public:
     // Whether the box of `size` at `pos` touches the player's graze box,
     // as th07's (0x44a5a0).
     int TouchesGrazeBox(D3DXVECTOR3 *pos, D3DXVECTOR3 *size);
-    // Starts the first free hit area of the second array at `pos` (x
-    // and y), `width` by `height`, with unk_2c `a` and unk_24 `b`, and
-    // returns it (0x44de60).
-    PlayerBombHitbox *Func44de60(D3DXVECTOR3 *pos, float width, float height, int a, int b);
-    // The same in the first array (0x44dfa0).
-    PlayerBombHitbox *Func44dfa0(D3DXVECTOR3 *pos, float width, float height, int a, int b);
+    // Takes the first free one of hitAreas's first 0xbf entries, or the
+    // last, and starts it as a `width` by `height` box at `pos` (x and
+    // y) for `framesLeft` frames with `itemType`, as th07's
+    // AddHitboxArea. Returns it (0x44de60).
+    PlayerBombHitbox *AddHitArea(D3DXVECTOR3 *pos, float width, float height, int itemType, int framesLeft);
+    // The same with a circle of `radius`, growing by `radiusGrowth`
+    // (0x44df00).
+    PlayerBombHitbox *AddHitAreaCircle(D3DXVECTOR3 *pos, float radius, float radiusGrowth, int framesLeft,
+                                       int itemType);
+    // The same in bombHitboxes, dealing `damage` (0x44dfa0, 0x44e040).
+    PlayerBombHitbox *AddBombHitbox(D3DXVECTOR3 *pos, float width, float height, int damage, int framesLeft);
+    PlayerBombHitbox *AddBombHitboxCircle(D3DXVECTOR3 *pos, float radius, float radiusGrowth, int framesLeft,
+                                          int damage);
     // Whether unk_5 is set. Inline; the copy is at 0x40bc40.
     int IsUnk5Set()
     {
