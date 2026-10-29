@@ -132,3 +132,9 @@ int GameManager::HasExtraOpen(int shot)
                ? TRUE
                : FALSE;
 }
+
+int GameManager::AnyShotHasExtraOpen()
+{
+    return this->HasExtraOpen(0) || this->HasExtraOpen(1) || this->HasExtraOpen(2) || this->HasExtraOpen(3) ? TRUE
+                                                                                                           : FALSE;
+}
