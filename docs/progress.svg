@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">72.31% (807)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">25.72% (287)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">72.40% (808)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">25.63% (286)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="540.17" height="6" x="0" y="0" class="named"/>
-<rect width="14.73" height="6" x="540.17" y="0" class="decompiled"/>
-<rect width="192.10" height="6" x="554.90" y="0" class="todo"/>
+<rect width="540.84" height="6" x="0" y="0" class="named"/>
+<rect width="14.73" height="6" x="540.84" y="0" class="decompiled"/>
+<rect width="191.44" height="6" x="555.56" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -888,7 +888,7 @@
 <rect width="12" height="12" x="255" y="240" class="named"><title>0x004512f0 DrawBullets (268 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="240" class="named"><title>0x00451400 DrawHitBullets (241 bytes)</title></rect>
 <rect width="12" height="12" x="285" y="240" class="named"><title>0x00451500 UpdateFiring (311 bytes)</title></rect>
-<rect width="12" height="12" x="300" y="240" class="todo"><title>0x00451640 Player::StartFiring (45 bytes)</title></rect>
+<rect width="12" height="12" x="300" y="240" class="named"><title>0x00451640 Player::StartFiring (45 bytes)</title></rect>
 <rect width="12" height="12" x="315" y="240" class="todo"><title>0x00451670 Func451670 (1646 bytes)</title></rect>
 <rect width="12" height="12" x="330" y="240" class="todo"><title>0x00451ce0 Func451ce0 (108 bytes)</title></rect>
 <rect width="12" height="12" x="345" y="240" class="named"><title>0x00451d50 Player::IsSpellCardBombRunning (56 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">63.80%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">35.18%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">63.81%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">35.17%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="476.60" height="6" x="0" y="0" class="named"/>
-<rect width="7.57" height="6" x="476.60" y="0" class="decompiled"/>
-<rect width="262.83" height="6" x="484.17" y="0" class="todo"/>
+<rect width="476.67" height="6" x="0" y="0" class="named"/>
+<rect width="7.57" height="6" x="476.67" y="0" class="decompiled"/>
+<rect width="262.76" height="6" x="484.24" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -2054,7 +2054,7 @@
 <rect width="2.19" height="2.03" x="685.10" y="318.58" class="named"><title>0x00474c40 DatArchive::GetEntrySize (46 bytes)</title></rect>
 <rect width="2.19" height="1.92" x="685.10" y="323.61" class="named"><title>0x00439829 GameManager::HasClearedStage (45 bytes)</title></rect>
 <rect width="2.19" height="1.92" x="685.10" y="328.54" class="named"><title>0x00439856 GameManager::HasClearedStageWithContinues (45 bytes)</title></rect>
-<rect width="2.19" height="1.92" x="685.10" y="333.46" class="todo"><title>0x00451640 Player::StartFiring (45 bytes)</title></rect>
+<rect width="2.19" height="1.92" x="685.10" y="333.46" class="named"><title>0x00451640 Player::StartFiring (45 bytes)</title></rect>
 <rect width="2.19" height="1.81" x="685.10" y="338.38" class="todo"><title>0x004181f0 Func4181f0 (44 bytes)</title></rect>
 <rect width="2.19" height="1.81" x="685.10" y="343.19" class="todo"><title>0x00418420 Func418420 (44 bytes)</title></rect>
 <rect width="2.11" height="1.88" x="690.29" y="283.37" class="named"><title>0x00471700 CSoundManager::~CSoundManager (44 bytes)</title></rect>

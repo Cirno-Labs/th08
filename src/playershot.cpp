@@ -651,3 +651,11 @@ int UpdateFiring(Player *player)
     }
     return 0;
 }
+
+void Player::StartFiring(Player *player)
+{
+    if (player->fireTimer.AsFrames() < 0)
+    {
+        player->fireTimer = 0;
+    }
+}
