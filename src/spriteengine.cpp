@@ -923,6 +923,27 @@ int SpriteEngine::ProjectSpriteWithCallback(Sprite *vm, void (*callback)(Sprite 
     return 0;
 }
 
+int SpriteEngine::DrawProjectedWithCallback(Sprite *vm, void (*callback)(Sprite *vm, D3DXVECTOR3 *pos))
+{
+    if (!vm->IsShown())
+    {
+        return -1;
+    }
+    if ((vm->flags >> 1 & 1) == 0)
+    {
+        return -1;
+    }
+    if (vm->alpha == 0)
+    {
+        return -1;
+    }
+    if (this->ProjectSpriteWithCallback(vm, callback) != 0)
+    {
+        return -1;
+    }
+    return this->DrawQuad(vm, 0);
+}
+
 SpriteEngine::SpriteEngine()
 {
     memset(this, 0, sizeof(*this));
