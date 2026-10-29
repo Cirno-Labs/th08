@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">33.78% (377)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">66.22% (739)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">33.87% (378)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">66.13% (738)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="252.35" height="6" x="0" y="0" class="named"/>
-<rect width="494.65" height="6" x="252.35" y="0" class="todo"/>
+<rect width="253.02" height="6" x="0" y="0" class="named"/>
+<rect width="493.98" height="6" x="253.02" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -945,7 +945,7 @@
 <rect width="12" height="12" x="375" y="255" class="todo"><title>0x0045a0f4 Func45a0f4 (255 bytes)</title></rect>
 <rect width="12" height="12" x="390" y="255" class="todo"><title>0x0045a1f3 Func45a1f3 (255 bytes)</title></rect>
 <rect width="12" height="12" x="405" y="255" class="todo"><title>0x0045a2f2 Func45a2f2 (267 bytes)</title></rect>
-<rect width="12" height="12" x="420" y="255" class="todo"><title>0x0045a3fd Func45a3fd (163 bytes)</title></rect>
+<rect width="12" height="12" x="420" y="255" class="named"><title>0x0045a3fd SpriteEngine::MoveSurface (163 bytes)</title></rect>
 <rect width="12" height="12" x="435" y="255" class="todo"><title>0x0045a4a0 Func45a4a0 (60 bytes)</title></rect>
 <rect width="12" height="12" x="450" y="255" class="todo"><title>0x0045a4dc Func45a4dc (32 bytes)</title></rect>
 <rect width="12" height="12" x="465" y="255" class="named"><title>0x0045a500 InsertScore (159 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">24.27%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">75.73%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">24.30%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">75.70%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="181.29" height="6" x="0" y="0" class="named"/>
-<rect width="565.71" height="6" x="181.29" y="0" class="todo"/>
+<rect width="181.56" height="6" x="0" y="0" class="named"/>
+<rect width="565.44" height="6" x="181.56" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1684,7 +1684,7 @@
 <rect width="6.85" height="6.56" x="590.98" y="217.96" class="named"><title>0x0045e650 Sprite::ResolveFloatArgument (166 bytes)</title></rect>
 <rect width="6.85" height="6.45" x="590.98" y="227.53" class="todo"><title>0x0043c0bb Func43c0bb (164 bytes)</title></rect>
 <rect width="6.85" height="6.45" x="590.98" y="236.98" class="todo"><title>0x0044dc60 Func44dc60 (164 bytes)</title></rect>
-<rect width="6.85" height="6.39" x="590.98" y="246.43" class="todo"><title>0x0045a3fd Func45a3fd (163 bytes)</title></rect>
+<rect width="6.85" height="6.39" x="590.98" y="246.43" class="named"><title>0x0045a3fd SpriteEngine::MoveSurface (163 bytes)</title></rect>
 <rect width="6.85" height="6.39" x="590.98" y="255.82" class="named"><title>0x004725a0 CSound::RestoreBuffer (163 bytes)</title></rect>
 <rect width="6.85" height="6.39" x="590.98" y="265.21" class="named"><title>0x00473250 CWaveFile::Open (163 bytes)</title></rect>
 <rect width="6.85" height="6.33" x="590.98" y="274.60" class="todo"><title>0x004287e0 Func4287e0 (162 bytes)</title></rect>
