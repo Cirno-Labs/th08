@@ -292,6 +292,17 @@ void FireShot(Player *player, PlayerBullet *bullet, ShotData *sd);
 // Fires `sd` into `bullet` on frames where frame % interval is phase,
 // returning 1 if it did, as th07's (0x44fd80).
 int TryFireShot(Player *player, PlayerBullet *bullet, int frame, ShotData *sd);
+// TryFireShot unless a bomb runs (0x44fdd0).
+int TryFireShotNoBomb(Player *player, PlayerBullet *bullet, int frame, ShotData *sd);
+// th07's FireTrailLaser: unless a bomb runs or bit 13 of
+// GameManager::unk_3dbac is set, fires laser sd->phase if it is free,
+// running its timer from 999, keeping sd->interval in trailLength and
+// moving the bullet and its 32 trail points to x = -999; while it flies
+// from another shot, sends its bullet interrupt 1 and frees it
+// (0x44fe20).
+int FireLaser(Player *player, PlayerBullet *bullet, int frame, ShotData *sd);
+// th07's FireHomingShot (0x44ffa0).
+int FireHomingShot(Player *player, PlayerBullet *bullet, int frame, ShotData *sd);
 // th07's FireShots: fires the shots of the shot type's table for the
 // player's power into free bullets (0x450f60).
 void FireShots(Player *player, int frame);
@@ -470,7 +481,9 @@ public:
     // 1 on the frames a bomb starts, else 0, as th07's. A time orb counts
     // 100 points while it is set.
     int bombJustStarted;
-    unsigned char unk_e2a80[0x10];
+    // The shot each laser was fired from, by ShotData::phase, as th07's.
+    ShotData *laserShots[3];
+    unsigned char unk_e2a8c[0x4];
     // The itemType of the area CheckAreaHit met last, as th07's.
     int areaItemType;
     int unk_e2a94;
