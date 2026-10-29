@@ -298,6 +298,12 @@ ASSERT_SIZE(PlayerLaser, 0x10);
 // travel (state 0 to 2), or, in state 3, Player::homingEnemy while the
 // player fires; leaving (3) they fade out over 16 frames and end.
 int UpdateHomingOption(Player *player, PlayerOption *option);
+// The update callback of an option that sits 32 above the player
+// (but stays put during a bomb), script 0x1d (0x44ea40).
+int UpdateFrontOption(Player *player, PlayerOption *option);
+// The update callback of an option circling a point beside the player
+// by its index, script 0x18 (0x44eb70).
+int UpdateCirclingOption(Player *player, PlayerOption *option);
 // Moves an option of UpdateHomingOption towards 96 above the player
 // (at least y 32), easing its velocity; when the fire timer runs, there
 // is a homingEnemy and the option has run 10 frames, sends it interrupt

@@ -173,6 +173,38 @@ void MoveOptionToEnemy(Player *player, PlayerOption *option)
     }
 }
 
+int UpdateFrontOption(Player *player, PlayerOption *option)
+{
+    switch (option->active)
+    {
+    case 1:
+        player->anm->StartScript(&option->sprite, 0x1d);
+        option->active = 2;
+    case 2:
+        if (!player->bomb.running)
+        {
+            option->pos = player->pos;
+            option->pos.y -= 32.0f;
+        }
+        break;
+    case 3:
+        option->pos = player->pos;
+        option->pos.y -= 32.0f;
+        if (option->timer == 0)
+        {
+            option->sprite.SetPendingInterrupt(5);
+        }
+        if (option->timer > 16)
+        {
+            option->active = 0;
+            option->update = NULL;
+            option->draw = NULL;
+        }
+        break;
+    }
+    return 0;
+}
+
 int DrawOption(Player *player, PlayerOption *option)
 {
     option->sprite.pos.x = g_GameManager.arena[0] + option->pos.x;
