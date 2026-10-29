@@ -1215,6 +1215,17 @@ public:
         this->stats->bombs += bombs;
         this->RerollChecksumKeys();
     }
+    // The same for `power` and stats->power, as th07's. Inline; the copy
+    // at 0x441850 is the item object's.
+    void AddPower(int power)
+    {
+        if (this->ChecksumMismatch())
+        {
+            memset(&g_App, 0xff, sizeof(App));
+        }
+        this->stats->power += power;
+        this->RerollChecksumKeys();
+    }
     // Sets arena to the play area (32, 16, 384, 448) and arena2 to (8,
     // 16, 368, 416), as th07's. Inline; the copy at 0x43c686 is the
     // GameManager object's.

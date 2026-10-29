@@ -16,6 +16,14 @@ struct Item
     // Clears active and takes the item out of g_ItemManager's active
     // list (0x441770). New in th08.
     void Unlink();
+    // What collecting a power item (type 0) and a big power item (type 2)
+    // does, as th07's UpdateItems: unless at full power, adds 1 or 8
+    // power (converting the other power items when it reaches 128) and
+    // 10 points, with a popup of the points or of the new power level.
+    // The small one also resets the power item combo and adds subrank
+    // (0x440cf0, 0x441170). New in th08 as functions.
+    void CollectPower();
+    void CollectBigPower();
 
     Sprite sprite;
     D3DXVECTOR3 pos;
@@ -79,3 +87,6 @@ public:
 };
 ASSERT_SIZE(ItemManager, 0x17b094);
 extern ItemManager g_ItemManager;
+
+// The power levels, which play a sound when crossed, as th07's.
+extern int g_PowerLevels[];

@@ -616,7 +616,7 @@ address,size,name,symbol
 0x004400a0,970,ItemManager::SpawnItem,?SpawnItem@ItemManager@@QAEPAUItem@@PAUD3DXVECTOR3@@HH@Z
 0x00440470,137,Func440470,?Func440470@@YIXXZ
 0x00440500,1989,Func440500,
-0x00440cf0,334,Func440cf0,
+0x00440cf0,334,Item::CollectPower,?CollectPower@Item@@QAEXXZ
 0x00440e40,472,Func440e40,
 0x00441020,334,Func441020,
 0x00441170,315,Func441170,
@@ -2429,6 +2429,7 @@ address,size,name,symbol
 0x004c78e0,,g_CryptParams,?g_CryptParams@@3PAUCryptParams@@A
 0x004c7940,,g_CryptMagic,?g_CryptMagic@@3PAEA
 0x004c7948,,g_FormatInfos,?g_FormatInfos@@3PAUFormatInfo@@A
+0x004c7a6c,,g_PowerLevels,?g_PowerLevels@@3PAHA
 0x004c7a84,,g_Unknown4c7a84,?g_Unknown4c7a84@@3PAHA
 0x004c7a9c,,g_Unknown4c7a9c,?g_Unknown4c7a9c@@3PAHA
 0x004c7aac,,g_MusicNotHeardComment,?g_MusicNotHeardComment@@3PAPADA

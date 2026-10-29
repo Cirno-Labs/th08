@@ -1,5 +1,6 @@
 // The items, 0x440010 to 0x4418bb, as th07's item.cpp.
 
+#include "ascii.h"
 #include "bullet.h"
 #include "effect.h"
 #include "item.h"
@@ -131,6 +132,53 @@ void Func440470()
     {
         g_GameManager.stats->unk_38 = 99999;
     }
+}
+
+void Item::CollectPower()
+{
+    int prevLevel;
+    int level;
+
+    if (g_GameManager.GetPower() >= 128)
+    {
+    }
+    else
+    {
+        level = 0;
+        while (g_GameManager.GetPower() >= g_PowerLevels[level])
+        {
+            level++;
+        }
+        prevLevel = level;
+        g_GameManager.unk_3dba8 = 0;
+        g_GameManager.AddPower(1);
+        if (g_GameManager.GetPower() >= 128)
+        {
+            g_GameManager.SetPower(128);
+            if (!g_SpellCard.Func4178a0())
+            {
+                g_BulletManager.Func415c60();
+            }
+            g_Gui.ShowFullPowerPopup(0, 1);
+            g_ItemManager.ConvertPowerItems(this);
+        }
+        g_GameManager.AddScore(10);
+        g_Gui.powerChanged = 2;
+        while (g_GameManager.GetPower() >= g_PowerLevels[level])
+        {
+            level++;
+        }
+        if (level != prevLevel)
+        {
+            g_AsciiText.AddPopup(&this->pos, -1, 0xffffc0a0);
+            g_SoundPlayer.QueueSound(0x1f, 0);
+        }
+        else
+        {
+            g_AsciiText.AddPopup(&this->pos, 10, 0xffffffff);
+        }
+    }
+    g_GameManager.AddSubRank(1);
 }
 
 void ItemManager::CollectAll()
