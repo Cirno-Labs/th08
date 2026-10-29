@@ -246,3 +246,53 @@ int UpdateAcceleratingBullet(Player *player, PlayerBullet *bullet)
     }
     return 0;
 }
+
+int UpdateLaserBullet(Player *player, PlayerBullet *bullet)
+{
+    if (player->lasers[bullet->laserIndex].bullet != bullet && bullet->sprite.IsStopped())
+    {
+        bullet->sprite.pendingInterrupt = 1;
+    }
+    if ((g_Gui.IsMsgRunning() || player->bomb.running || g_GameManager.unk_3dbac_13) &&
+        player->lasers[bullet->laserIndex].timer.AsFrames() > 20)
+    {
+        player->lasers[bullet->laserIndex].timer = 20;
+    }
+    if (player->lasers[bullet->laserIndex].timer <= 0)
+    {
+        player->lasers[bullet->laserIndex].timer = 0;
+        player->lasers[bullet->laserIndex].bullet = NULL;
+        bullet->state = 0;
+        return 1;
+    }
+    if (player->lasers[bullet->laserIndex].timer <= 70 && bullet->sprite.IsStopped())
+    {
+        bullet->sprite.pendingInterrupt = 1;
+    }
+    bullet->pos.x += bullet->velocity.z;
+    bullet->pos.z = 0.44f;
+    if (player->playerState == 2)
+    {
+        return 1;
+    }
+    bullet->sprite.scaleX = bullet->pos.y / 14.0f;
+    bullet->size.y = bullet->pos.y;
+    bullet->pos.y /= 2.0f;
+    if (player->lasers[bullet->laserIndex].timer < 100)
+    {
+        player->lasers[bullet->laserIndex].timer--;
+    }
+    if (g_GameManager.IsUnk22AtHigh1())
+    {
+        bullet->sprite.colorRgb[2] = 0xff;
+        bullet->sprite.colorRgb[1] = 0xd0;
+        bullet->sprite.colorRgb[0] = 0xb0;
+    }
+    else
+    {
+        bullet->sprite.colorRgb[2] = 0xff;
+        bullet->sprite.colorRgb[1] = 0xff;
+        bullet->sprite.colorRgb[0] = 0xff;
+    }
+    return 0;
+}

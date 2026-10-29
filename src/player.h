@@ -320,6 +320,15 @@ int FireEnemyHomingShot(Player *player, PlayerBullet *bullet, int frame, ShotDat
 int UpdateHomingOrb(Player *player, PlayerBullet *bullet);
 // th07's UpdateAcceleratingBullet (0x450580).
 int UpdateAcceleratingBullet(Player *player, PlayerBullet *bullet);
+// th07's UpdateLaserBullet: its laser is ended once its timer runs out
+// (cut to 20 frames in dialogue, during a bomb or while bit 13 of
+// GameManager::unk_3dbac is set), else it keeps to its x offset,
+// stretches to the top unless the player is dying and turns blue while
+// stats->unk_22 is at unk22High1; below 100 frames its timer runs
+// twice as fast (0x4505d0).
+int UpdateLaserBullet(Player *player, PlayerBullet *bullet);
+// th07's UpdateTrailLaserBullet, following the first option (0x450840).
+int UpdateTrailLaserBullet(Player *player, PlayerBullet *bullet);
 // th07's FireShots: fires the shots of the shot type's table for the
 // player's power into free bullets (0x450f60).
 void FireShots(Player *player, int frame);
