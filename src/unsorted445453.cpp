@@ -882,6 +882,12 @@ int App::LoadConfig(char *path)
     return 0;
 }
 
+int GameManager::AllShotsHaveExtraOpen()
+{
+    return this->HasExtraOpen(0) && this->HasExtraOpen(1) && this->HasExtraOpen(2) && this->HasExtraOpen(3) ? TRUE
+                                                                                                         : FALSE;
+}
+
 inline void FreeData(void *data)
 {
     free(data);

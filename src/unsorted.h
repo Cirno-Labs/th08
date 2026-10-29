@@ -805,6 +805,14 @@ struct GameManagerUnk4;
 class GameManager
 {
 public:
+    // Whether shot type `shot` (0 to 3) cleared one of the four main
+    // difficulties, as th07's (0x43c15f).
+    int HasExtraOpen(int shot);
+    // Whether a shot type has Extra open (0x43c1e9).
+    int AnyShotHasExtraOpen();
+    // Whether every shot type has Extra open. In App's object.
+    int AllShotsHaveExtraOpen();
+
     DWORD unk_0;
     GameManagerUnk4 *unk_4;
     GameManagerStats *stats;

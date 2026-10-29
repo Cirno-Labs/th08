@@ -539,8 +539,8 @@ address,size,name,symbol
 0x0043bfc3,124,Func43bfc3,
 0x0043c03f,124,Func43c03f,
 0x0043c0bb,164,Func43c0bb,
-0x0043c15f,138,Func43c15f,
-0x0043c1e9,82,Func43c1e9,
+0x0043c15f,138,GameManager::HasExtraOpen,?HasExtraOpen@GameManager@@QAEHH@Z
+0x0043c1e9,82,GameManager::AnyShotHasExtraOpen,?AnyShotHasExtraOpen@GameManager@@QAEHXZ
 0x0043c23b,138,Func43c23b,
 0x0043c2c5,82,Func43c2c5,
 0x0043c317,11,Func43c317,
@@ -711,7 +711,7 @@ address,size,name,symbol
 0x0044748f,725,App::SaveScreenshot,?SaveScreenshot@App@@QAEHPAD@Z
 0x00447764,77,SoundPlayer::UpdateBgmFades,?UpdateBgmFades@SoundPlayer@@QAEXXZ
 0x004477b1,1363,App::LoadConfig,?LoadConfig@App@@QAEHPAD@Z
-0x00447d04,82,Func447d04,
+0x00447d04,82,GameManager::AllShotsHaveExtraOpen,?AllShotsHaveExtraOpen@GameManager@@QAEHXZ
 0x00447d56,241,Func447d56,
 0x00447e47,218,Func447e47,
 0x00447f21,352,Func447f21,
