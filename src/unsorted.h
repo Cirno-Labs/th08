@@ -257,3 +257,43 @@ BYTE *DecryptFileData(BYTE *data, int *size, int fileSize);
 // The inverse of DecryptData: reads each block from its end backwards,
 // every other byte, then the gaps, xoring with the growing key.
 BYTE *EncryptData(BYTE *data, int size, BYTE key, BYTE step, int blockSize, int limit);
+
+// The game's random number generator: a 16-bit state stepped with a xor,
+// a subtraction and a rotation, as in th06.
+class Rng
+{
+public:
+    // Advances the generator and returns 16 random bits.
+    WORD GetRandomU16();
+    // `generated`, read through a temporary.
+    DWORD GetGenerated()
+    {
+        return this->generated;
+    }
+    // Unlike th06's, leaves `generated` alone.
+    void SetSeed(WORD seed)
+    {
+        this->seed = seed;
+    }
+    // 32 random bits, from two GetRandomU16 calls.
+    DWORD GetRandomU32();
+    WORD GetRandomU16InRange(WORD range)
+    {
+        return range != 0 ? this->GetRandomU16() % range : 0;
+    }
+    DWORD GetRandomU32InRange(DWORD range)
+    {
+        return range != 0 ? this->GetRandomU32() % range : 0;
+    }
+    // A random float from 0 up to 1.
+    float GetRandomF32ZeroToOne();
+    // A random float from 0 up to `range`.
+    float GetRandomF32InRange(float range)
+    {
+        return this->GetRandomF32ZeroToOne() * range;
+    }
+
+    WORD seed;
+    // How many times the generator was advanced.
+    DWORD generated;
+};
