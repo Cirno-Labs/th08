@@ -935,7 +935,7 @@ address,size,name,symbol
 0x0045e370,70,SoundPlayer::FreePreloadedBgm,?FreePreloadedBgm@SoundPlayer@@QAEXH@Z
 0x0045e3c0,43,SoundPlayer::FadeOutBgm,?FadeOutBgm@SoundPlayer@@QAEXM@Z
 0x0045e3f0,55,CStreamingSound::FadeOut,?FadeOut@CStreamingSound@@QAEXM@Z
-0x0045e430,333,Func45e430,
+0x0045e430,333,AnmLoaded::SetSprite,?SetSprite@AnmLoaded@@QAEHPAVSprite@@H@Z
 0x0045e580,206,AnmLoaded::SetScript,?SetScript@AnmLoaded@@QAEXPAVSprite@@PAX@Z
 0x0045e650,166,Sprite::ResolveFloatArgument,?ResolveFloatArgument@Sprite@@QAEMM@Z
 0x0045e720,186,Sprite::ResolveIntArgument,?ResolveIntArgument@Sprite@@QAEHH@Z
@@ -1730,7 +1730,7 @@ address,size,name,symbol
 0x004a427b,104,_free,_free
 0x004a42ce,9,Func4a42ce,
 0x004a42fa,10,Func4a42fa,
-0x004a431a,10,Func4a431a,
+0x004a431a,10,__CIfmod,__CIfmod
 0x004a4342,136,_atol,
 0x004a43cf,,operator delete,??3@YAXPAX@Z
 0x004a43d4,14,operator new,??2@YAPAXI@Z
@@ -1776,9 +1776,9 @@ address,size,name,symbol
 0x004a5ce0,57,_strncmp,_strncmp
 0x004a5d20,7,Func4a5d20,
 0x004a5d30,232,Func4a5d30,
-0x004a5e20,20,Func4a5e20,
+0x004a5e20,20,__CIacos,__CIacos
 0x004a5e3d,174,Func4a5e3d,
-0x004a5f30,79,Func4a5f30,
+0x004a5f30,79,__CIatan,__CIatan
 0x004a5f88,125,Func4a5f88,
 0x004a600a,34,_rand,_rand
 0x004a602c,,_purecall,__purecall

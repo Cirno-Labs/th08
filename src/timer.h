@@ -51,12 +51,22 @@ struct Timer
     // Advances by one frame through App::TickTimer. Inline; defined in
     // unsorted.h.
     void Tick();
-    // Tick, returning the new count. Out of line in ascii.cpp, as th06's
-    // in its Gui file.
+    // Tick, returning the new count. Inline in th08, defined in
+    // unsorted.h; the copy is at 0x406660.
     int NextTick();
     void operator++()
     {
         this->NextTick();
+    }
+    // The same as a postfix. Inline; the copy is at 0x406640.
+    void operator++(int)
+    {
+        this->NextTick();
+    }
+    // Sub(1), as a postfix. Inline; the copy is at 0x418110.
+    void operator--(int)
+    {
+        this->Sub(1);
     }
 
     // The count with its fraction.

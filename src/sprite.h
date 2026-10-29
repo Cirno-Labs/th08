@@ -131,11 +131,16 @@ public:
     float rotationX;
     float rotationY;
     float rotationZ;
-    unsigned char unk_c[0xc];
+    // The rotation speeds about x, y and z, which Step adds each frame.
+    float rotationSpeedX;
+    float rotationSpeedY;
+    float rotationSpeedZ;
     // Draw scales the sprite's height and width by these, as th07's.
     float scaleY;
     float scaleX;
-    unsigned char unk_20[0x8];
+    // The scale speeds, which Step adds to scaleY and scaleX each frame.
+    float scaleSpeedY;
+    float scaleSpeedX;
     // The size the draw functions draw the sprite at before scaling;
     // th07's used spriteData->width and height.
     float spriteWidth;
@@ -145,7 +150,21 @@ public:
     float uvScrollY;
     // The script's frame.
     Timer scriptTime;
-    unsigned char unk_44[0xbc];
+    Timer waitTimer;
+    // The interpolations' frames so far and their lengths: position,
+    // color, alpha, rotation, scale, as th07's, then color2 and color2's
+    // alpha, new in th08.
+    Timer interpDuration[7];
+    Timer interpFrame[7];
+    // How Step eases each of them.
+    BYTE interpEasing;
+    BYTE colorInterpEasing;
+    BYTE alphaInterpEasing;
+    BYTE rotationInterpEasing;
+    BYTE scaleInterpEasing;
+    BYTE color2InterpEasing;
+    BYTE color2AlphaInterpEasing;
+    unsigned char pad_ff[0x1];
     // The script's variables: an argument of 10000 to 10009 stands for
     // one of them. 10000-10003 and 10008-10009 are ints, 10004-10007
     // floats.
@@ -159,7 +178,9 @@ public:
     float scriptVarF3;
     int scriptVar8;
     int scriptVar9;
-    unsigned char unk_128[0x8];
+    // The texture scroll speeds, added to uvScrollX and uvScrollY.
+    float uvScrollSpeedX;
+    float uvScrollSpeedY;
     D3DXMATRIX matrix;
     // A copy of matrix, scaled and rotated by ProjectSprite3D.
     D3DXMATRIX drawMatrix;
@@ -176,10 +197,50 @@ public:
         };
     };
     // The color drawn instead of color while flag bit 17 is set.
-    D3DCOLOR color2;
+    union
+    {
+        D3DCOLOR color2;
+        struct
+        {
+            BYTE color2Rgb[3];
+            BYTE color2Alpha;
+        };
+    };
     // Bit 1: shown; DrawUnrotated draws nothing without it.
-    DWORD flags;
-    unsigned char unk_1fc[0x2];
+    union
+    {
+        DWORD flags;
+        struct
+        {
+            // Bits 0 and 1, for bitfield stores.
+            DWORD shown : 1;
+            DWORD visible : 1;
+            DWORD unusedFlag2 : 1;
+            DWORD unusedFlag3 : 1;
+            DWORD blendMode : 2;
+            DWORD unusedFlag6 : 1;
+            DWORD unusedFlag7 : 1;
+            // Step's position instructions move posOffset instead of
+            // pos.
+            DWORD usePosOffset : 1;
+            DWORD flip : 2;
+            DWORD anchor : 2;
+            DWORD zWriteDisabled : 1;
+            // Set while the script waits for an interrupt.
+            DWORD stopped : 1;
+            // SetRenderStateForSprite sets the camera up again when it
+            // changes; Step's instruction 31 sets it.
+            DWORD cameraSetup : 1;
+            DWORD freezeMatrix : 1;
+            DWORD useColor2 : 1;
+            DWORD unusedFlag18 : 1;
+            // Step does nothing while it is set. New in th08.
+            DWORD scriptPaused : 1;
+        };
+    };
+    // Whether the bullets' draw functions turn it along their angle, as
+    // th07's.
+    short autoRotate;
     // The interrupt label to jump to on the next Step; 0 for none.
     short pendingInterrupt;
     // Which of SpriteEngine's draw functions DrawSprite uses. New in
@@ -201,10 +262,23 @@ public:
     AnmInstr *scriptPos;
     // The entry SetSprite chose.
     SpriteData *spriteData;
-    unsigned char unk_228[0x60];
+    // Where an interrupt was taken, for instruction 89 to return to. New
+    // in th08.
+    Timer interruptReturnTime;
+    AnmInstr *interruptReturnPos;
+    D3DXVECTOR3 moveStart;
+    D3DXVECTOR3 moveEnd;
+    D3DXVECTOR3 rotateStart;
+    D3DXVECTOR3 rotateEnd;
+    D3DXVECTOR3 scaleTween;
+    D3DXVECTOR3 colorTween;
+    // color2's interpolation, from and to. New in th08.
+    D3DCOLOR color2TweenStart;
+    D3DCOLOR color2TweenEnd;
     // Added to pos when it is drawn.
     D3DXVECTOR3 posOffset;
-    unsigned char unk_294[0x4];
+    // The script frame of the last sprite change, as th07's.
+    int spriteTime;
     // The size of the characters RenderText draws; 15 from
     // AnmLoaded::StartScriptAtOrigin.
     BYTE fontWidth;
@@ -322,6 +396,10 @@ struct AnmTexture
 class AnmLoaded
 {
 public:
+    // Shows sprite `sprite` of this file on `vm`, as th07's
+    // SpriteEngine::SetSprite (0x45e430). Returns 0, or -1 while the
+    // file is not loaded.
+    int SetSprite(Sprite *vm, int sprite);
     // Starts `script` on `vm` (0x45e580).
     void SetScript(Sprite *vm, void *script);
     // Starts script `script` + n of this file on sprite n of the

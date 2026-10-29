@@ -449,6 +449,13 @@ inline void Timer::Tick()
     g_App.TickTimer(&this->current, &this->subFrame);
 }
 
+inline int Timer::NextTick()
+{
+    this->previous = this->current;
+    g_App.TickTimer(&this->current, &this->subFrame);
+    return this->current;
+}
+
 // The game window (at 0x17ce700), as in th07: the fields used so far are
 // at the same offsets. Its 8-byte fields are only 4-aligned.
 #pragma pack(push, 4)
