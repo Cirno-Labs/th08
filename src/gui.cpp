@@ -549,6 +549,250 @@ void Gui::UpdateInterface()
     }
 }
 
+void Gui::DrawHud()
+{
+    float y;
+    float xx;
+    int idx;
+    Sprite *vm;
+
+    g_SpriteEngine->FlushQuadBatch();
+    g_App.viewport.X = 0;
+    g_App.viewport.Y = 0;
+    g_App.viewport.Width = 640;
+    g_App.viewport.Height = 480;
+    g_App.d3dDevice->SetViewport(&g_App.viewport);
+    if (!g_App.GetNoFrameItems())
+    {
+        vm = &this->impl->sprites[15];
+        xx = 480.0f;
+        vm->pos = D3DXVECTOR3(xx, 40.0f, 0.49f);
+        g_SpriteEngine->DrawUnrotated(vm);
+        vm->pos = D3DXVECTOR3(xx, 56.0f, 0.49f);
+        g_SpriteEngine->DrawUnrotated(vm);
+        if (this->livesChanged)
+        {
+            vm->pos = D3DXVECTOR3(xx, 88.0f, 0.48f);
+            g_SpriteEngine->DrawUnrotated(vm);
+        }
+        if (this->bombsChanged)
+        {
+            vm->pos = D3DXVECTOR3(xx, 104.0f, 0.48f);
+            g_SpriteEngine->DrawUnrotated(vm);
+        }
+        if (this->powerChanged)
+        {
+            vm->pos = D3DXVECTOR3(xx, 136.0f, 0.48f);
+            g_SpriteEngine->DrawUnrotated(vm);
+        }
+        if (this->grazeChanged)
+        {
+            vm->pos = D3DXVECTOR3(xx, 152.0f, 0.48f);
+            g_SpriteEngine->DrawUnrotated(vm);
+        }
+        if (this->frameItemsHideTimer)
+        {
+            vm->pos = D3DXVECTOR3(xx, 168.0f, 0.48f);
+            g_SpriteEngine->DrawUnrotated(vm);
+        }
+        if (this->unk_4_10)
+        {
+            vm->pos = D3DXVECTOR3(xx, 184.0f, 0.48f);
+            g_SpriteEngine->DrawUnrotated(vm);
+        }
+        vm->pos = D3DXVECTOR3(512.0f, 464.0f, 0.48f);
+        g_SpriteEngine->DrawUnrotated(vm);
+    }
+    vm = &this->impl->sprites[13];
+    if (g_App.GetUnk12() || vm->scriptPos != NULL || g_App.redrawFrames != 0)
+    {
+        for (y = 0.0f; y < 464.0f; y += 32.0f)
+        {
+            vm->pos = D3DXVECTOR3(0.0f, y, 0.49f);
+            g_SpriteEngine->DrawUnrotated(vm);
+        }
+        for (xx = 416.0f; xx < 624.0f; xx += 32.0f)
+        {
+            for (y = 16.0f; y < 464.0f; y += 32.0f)
+            {
+                vm->pos = D3DXVECTOR3(xx, y, 0.49f);
+                g_SpriteEngine->DrawUnrotated(vm);
+            }
+        }
+        vm = &this->impl->sprites[14];
+        for (xx = 0.0f; xx < 624.0f; xx += 128.0f)
+        {
+            vm->pos = D3DXVECTOR3(xx, 0.0f, 0.49f);
+            g_SpriteEngine->DrawUnrotated(vm);
+            vm->pos = D3DXVECTOR3(xx, 464.0f, 0.49f);
+            g_SpriteEngine->DrawUnrotated(vm);
+        }
+        g_SpriteEngine->DrawUnrotated(&this->impl->sprites[0]);
+        g_SpriteEngine->Draw(&this->impl->sprites[1]);
+        g_SpriteEngine->DrawUnrotated(&this->impl->sprites[2]);
+        g_SpriteEngine->DrawUnrotated(&this->impl->sprites[3]);
+        g_SpriteEngine->DrawUnrotated(&this->impl->sprites[4]);
+        g_SpriteEngine->DrawUnrotated(&this->impl->sprites[5]);
+        g_SpriteEngine->DrawUnrotated(&this->impl->sprites[6]);
+        g_SpriteEngine->DrawUnrotated(&this->impl->sprites[7]);
+        g_SpriteEngine->DrawUnrotated(&this->impl->sprites[8]);
+        g_SpriteEngine->DrawUnrotated(&this->impl->sprites[9]);
+        g_SpriteEngine->DrawUnrotated(&this->impl->unk_22e14);
+        this->livesChanged = 2;
+        this->bombsChanged = 2;
+        this->grazeChanged = 2;
+        this->frameItemsHideTimer = 2;
+        this->powerChanged = 2;
+        this->unk_4_10 = 2;
+    }
+    if (this->livesChanged)
+    {
+        vm = &this->impl->sprites[10];
+        for (idx = 0, xx = 488.0f; idx < g_GameManager.GetLives(); idx++, xx += 16.0f)
+        {
+            vm->pos = D3DXVECTOR3(xx, 88.0f, 0.46f);
+            g_SpriteEngine->DrawUnrotated(vm);
+        }
+    }
+    if (this->bombsChanged)
+    {
+        vm = &this->impl->sprites[11];
+        for (idx = 0, xx = 488.0f; idx < g_GameManager.GetBombs(); idx++, xx += 16.0f)
+        {
+            vm->pos = D3DXVECTOR3(xx, 104.0f, 0.46f);
+            g_SpriteEngine->DrawUnrotated(vm);
+        }
+    }
+    if ((this->bombsChanged || this->livesChanged) && g_GameManager.unk_3dbac_7 == 1 && g_SpellCard.Func4178a0())
+    {
+        g_SpriteEngine->DrawUnrotated(&this->impl->unk_5484);
+    }
+    vm = &this->impl->sprites[14];
+    for (xx = 32.0f; xx < 368.0f; xx += 128.0f)
+    {
+        vm->pos = D3DXVECTOR3(xx, 464.0f, 0.49f);
+        g_SpriteEngine->DrawUnrotated(vm);
+    }
+    {
+        D3DXVECTOR3 scorePos(488.0f, 56.0f, 0.0f);
+
+        g_AsciiText.AddFormat(&scorePos, "%.9d", g_GameManager.stats->guiScore);
+        scorePos.x += 117.0f;
+        g_AsciiText.AddFormat(&scorePos, "%1d",
+                              g_GameManager.stats->continuesUsed > 9 ? 9 : g_GameManager.stats->continuesUsed);
+        g_AsciiText.SetScale(1.0f, 1.0f);
+        scorePos = D3DXVECTOR3(488.0f, 40.0f, 0.0f);
+        g_AsciiText.AddFormat(&scorePos, "%.9d", g_GameManager.stats->highScore);
+        scorePos.x += 117.0f;
+        g_AsciiText.AddFormat(&scorePos, "%1d",
+                              g_GameManager.stats->bestContinuesUsed > 9 ? 9
+                                                                         : g_GameManager.stats->bestContinuesUsed);
+        g_AsciiText.SetScale(1.0f, 1.0f);
+        if (this->grazeChanged || g_App.GetNoFrameItems())
+        {
+            scorePos = D3DXVECTOR3(488.0f, 152.0f, 0.0f);
+            g_AsciiText.AddFormat(&scorePos, "%d", g_GameManager.stats->grazeTotal);
+        }
+        if (this->frameItemsHideTimer || g_App.GetNoFrameItems())
+        {
+            scorePos = D3DXVECTOR3(488.0f, 168.0f, 0.0f);
+            scorePos.x += g_AsciiText.AddFormatLen(&scorePos, "%d", g_GameManager.stats->pointItemsTotal) * 13;
+            g_AsciiText.SetScale(0.5f, 1.0f);
+            g_AsciiText.AddFormat(&scorePos, "/");
+            g_AsciiText.SetScale(1.0f, 1.0f);
+            scorePos.x += 6.0f;
+            g_AsciiText.AddFormat(&scorePos, "%d", g_GameManager.stats->unk_38);
+        }
+        if (this->unk_4_10 || g_App.GetNoFrameItems())
+        {
+            if (g_GameManager.GetUnk3c() >= g_GameManager.GetUnk40())
+            {
+                g_AsciiText.SetColor(0xfffff0c0);
+            }
+            scorePos = D3DXVECTOR3(488.0f, 184.0f, 0.0f);
+            scorePos.x += g_AsciiText.AddFormatLen(&scorePos, "%d", g_GameManager.GetUnk3c()) * 13;
+            g_AsciiText.SetScale(0.5f, 1.0f);
+            g_AsciiText.AddFormat(&scorePos, "/");
+            g_AsciiText.SetScale(1.0f, 1.0f);
+            scorePos.x += 6.0f;
+            g_AsciiText.AddFormat(&scorePos, "%d", g_GameManager.GetUnk40());
+            g_AsciiText.SetColor(0xffffffff);
+        }
+    }
+    g_SpriteEngine->FlushQuadBatch();
+    if (this->powerChanged || g_App.GetNoFrameItems())
+    {
+        VertexDiffuseXyzrwh vertices[4];
+
+        if (g_GameManager.GetPower() > 0)
+        {
+            vertices[0].pos = D3DXVECTOR3(488.0f, 136.0f, 0.1f);
+            vertices[1].pos = D3DXVECTOR3(g_GameManager.GetPower() + 488 + 0.0f, 136.0f, 0.1f);
+            vertices[2].pos = D3DXVECTOR3(488.0f, 152.0f, 0.1f);
+            vertices[3].pos = D3DXVECTOR3(g_GameManager.GetPower() + 488 + 0.0f, 152.0f, 0.1f);
+            vertices[0].diffuse = vertices[2].diffuse = 0xe0e0e0ff;
+            vertices[1].diffuse = vertices[3].diffuse = 0x80e0e0ff;
+            vertices[0].w = vertices[1].w = vertices[2].w = vertices[3].w = 1.0f;
+            if (!g_App.GetNoColorBlending())
+            {
+                g_App.d3dDevice->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_SELECTARG1);
+                g_App.d3dDevice->SetTextureStageState(0, D3DTSS_COLOROP, D3DTOP_SELECTARG1);
+            }
+            g_App.d3dDevice->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_DIFFUSE);
+            g_App.d3dDevice->SetTextureStageState(0, D3DTSS_COLORARG1, D3DTA_DIFFUSE);
+            if (!g_App.GetNoDepthTest())
+            {
+                g_App.SetRenderState(D3DRS_ZWRITEENABLE, FALSE);
+            }
+            g_App.d3dDevice->SetVertexShader(D3DFVF_XYZRHW | D3DFVF_DIFFUSE);
+            g_App.d3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLESTRIP, 2, vertices, sizeof(VertexDiffuseXyzrwh));
+            g_SpriteEngine->ClearVertexFormat();
+            g_SpriteEngine->ClearColorOp();
+            g_SpriteEngine->ClearBlendMode();
+            g_SpriteEngine->ClearZWrite();
+            if (!g_App.GetNoColorBlending())
+            {
+                g_App.d3dDevice->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_MODULATE);
+                g_App.d3dDevice->SetTextureStageState(0, D3DTSS_COLOROP, D3DTOP_MODULATE);
+            }
+            g_App.d3dDevice->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE);
+            g_App.d3dDevice->SetTextureStageState(0, D3DTSS_COLORARG1, D3DTA_TEXTURE);
+        }
+        if (g_GameManager.GetPower() < 128)
+        {
+            g_AsciiText.AddFormat(&D3DXVECTOR3(488.0f, 136.0f, 0.0f), "%d", g_GameManager.GetPower());
+        }
+        else
+        {
+            g_AsciiText.AddFormat(&D3DXVECTOR3(488.0f, 136.0f, 0.0f), "MAX");
+        }
+    }
+    if (this->livesChanged)
+    {
+        this->livesChanged--;
+    }
+    if (this->powerChanged)
+    {
+        this->powerChanged--;
+    }
+    if (this->bombsChanged)
+    {
+        this->bombsChanged--;
+    }
+    if (this->grazeChanged)
+    {
+        this->grazeChanged--;
+    }
+    if (this->frameItemsHideTimer)
+    {
+        this->frameItemsHideTimer--;
+    }
+    if (this->unk_4_10)
+    {
+        this->unk_4_10--;
+    }
+}
+
 void Gui::DrawBanners()
 {
     int i;
@@ -1270,7 +1514,7 @@ int Gui::LoadResources()
     this->livesChanged = 2;
     this->bombsChanged = 2;
     this->grazeChanged = 2;
-    this->unk_4_8 = 2;
+    this->frameItemsHideTimer = 2;
     this->powerChanged = 2;
     this->unk_4_10 = 2;
     g_AsciiText.anm->StartScript(&this->impl->unk_212c8, 3);

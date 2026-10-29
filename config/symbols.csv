@@ -15,7 +15,7 @@ address,size,name,symbol
 0x004028f0,35,AsciiText::RemoveChain,?RemoveChain@AsciiText@@SIXXZ
 0x00402920,265,AsciiText::AddString,?AddString@AsciiText@@QAEXPAUD3DXVECTOR3@@PAD@Z
 0x00402a30,68,AsciiText::AddFormat,?AddFormat@AsciiText@@QAAXPAUD3DXVECTOR3@@PADZZ
-0x00402a80,146,Func402a80,
+0x00402a80,146,AsciiText::AddFormatLen,?AddFormatLen@AsciiText@@QAAHPAUD3DXVECTOR3@@PADZZ
 0x00402b20,1698,AsciiText::DrawStrings,?DrawStrings@AsciiText@@QAEXXZ
 0x004031e0,18,Func4031e0,
 0x00403200,295,Func403200,
@@ -2443,6 +2443,7 @@ address,size,name,symbol
 0x004e4030,,g_Stage,?g_Stage@@3VStage@@A
 0x004e4b50,,g_FogColorChanged,?g_FogColorChanged@@3EA
 0x004ea3f4,,g_CameraSizeOffset,?g_CameraSizeOffset@@3UD3DXVECTOR3@@A
+0x004ea670,,g_SpellCard,?g_SpellCard@@3USpellCard@@A
 0x004ecc9c,,g_Unknown4ecc9c,?g_Unknown4ecc9c@@3HA
 0x004ecca0,,g_Unknown4ecca0,?g_Unknown4ecca0@@3HA
 0x00577f20,,g_EnemyManager,?g_EnemyManager@@3VEnemyManager@@A

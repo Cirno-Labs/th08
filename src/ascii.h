@@ -18,6 +18,8 @@ public:
     // Queues `text` to be drawn at `pos`, with printf-style formatting
     // (0x402a30).
     void AddFormat(D3DXVECTOR3 *pos, char *fmt, ...);
+    // AddFormat that returns the length of the formatted text (0x402a80).
+    int AddFormatLen(D3DXVECTOR3 *pos, char *fmt, ...);
     // Queues `text` to be drawn at `pos` (0x402920).
     void AddString(D3DXVECTOR3 *pos, char *text);
     // Draws the queued strings (0x402b20).

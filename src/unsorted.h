@@ -1225,6 +1225,17 @@ public:
     // 4B by the shot type, and from 6 to 6B if bits 11-12 of unk_3dbac
     // are set, else 6A (0x43c4b3).
     void AdvanceStage();
+    // stats->unk_3c and unk_40, which DrawHud shows as "%d/%d" on its last
+    // row, in 0xfffff0c0 once unk_3c reaches unk_40. Inline; the copies at
+    // 0x421b60 and 0x421b80 are in an /Od object.
+    int GetUnk3c()
+    {
+        return this->stats->unk_3c;
+    }
+    int GetUnk40()
+    {
+        return this->stats->unk_40;
+    }
     // Whether the game is a practice: unk_3dbac's bit 0, which th07 read
     // directly. Inline; the copy at 0x406cd0 is in an /Od object.
     int IsInPractice()
@@ -1369,7 +1380,10 @@ public:
             // The result screen's mode: OnDraw returns 3 in mode 1, and
             // AddedCallback turns 2 and 3 into 1.
             unsigned int unk_3dbac_5 : 2;
-            unsigned int unk_3dbac_7 : 3;
+            // Gui::DrawHud draws GuiImpl::unk_5484 with the lives and
+            // bombs while it is 1 and g_SpellCard.Func4178a0().
+            unsigned int unk_3dbac_7 : 2;
+            unsigned int unk_3dbac_9 : 1;
             // The screen shakes hold still while it is set.
             unsigned int unk_3dbac_10 : 1;
             // The clear level GuiImpl::StartMsgScript picked for the
@@ -1687,7 +1701,7 @@ public:
     unsigned int bombsChanged : 2;
     unsigned int powerChanged : 2;
     unsigned int grazeChanged : 2;
-    unsigned int unk_4_8 : 2;
+    unsigned int frameItemsHideTimer : 2;
     unsigned int unk_4_10 : 2;
     GuiImpl *impl;
     // front.anm (ANM slot 10), as th07's ANM slot.
@@ -1837,6 +1851,19 @@ extern int g_Unknown4c77f0[][4];
 // The spell card manager's RegisterChain (0x417f60), the counterpart of
 // Func4180f0.
 int Func417f60();
+// The spell card manager, at 0x4ea670 (Func417f60 registers it). Only
+// what is known so far.
+struct SpellCard
+{
+    // Bit 0 of unk_0. Inline; the copy at 0x4178a0 is in an /Od object.
+    int Func4178a0()
+    {
+        return this->unk_0 & 1;
+    }
+
+    DWORD unk_0;
+};
+extern SpellCard g_SpellCard;
 // Sets stats->unk_38 from stats->unk_34 by difficulty (0x440470).
 void Func440470();
 // g_SpellCardBgms' unk_10 and unk_c for the spell card practised; both
