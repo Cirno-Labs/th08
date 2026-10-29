@@ -193,9 +193,18 @@ public:
     // Empty, and defined out of line: constructs the members (0x449ca0).
     Player();
 
-    // Adds the player's chain elements, as th07's (0x44c230). Returns 0,
-    // or -1 on failure.
+    // Clears the player, keeping the shot types while KeepsResources(),
+    // and adds it to the chains (update priority 9, draw 9 and 10),
+    // keeping `arg` in registerChainArg, as th07's. Returns 0, or -1 if
+    // adding fails.
     static int RegisterChain(int arg);
+    // The chain callbacks (0x44c390, 0x44d530, 0x44d630, 0x44d650,
+    // 0x44dc60).
+    static int OnUpdate(Player *player);
+    static int OnDraw(Player *player);
+    static int OnDraw2(Player *player);
+    static int AddedCallback(Player *player);
+    static int DeletedCallback(Player *player);
     // Removes the player's chain elements, as th07's (0x44dd10).
     static void RemoveChain();
     // Whether a `size` box at `pos` meets one of hitAreas: a circle

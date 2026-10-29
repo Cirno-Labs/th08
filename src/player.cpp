@@ -366,3 +366,39 @@ float Player::AngleFrom(D3DXVECTOR3 *pos)
     }
     return atan2f(y, x);
 }
+
+int Player::RegisterChain(int arg)
+{
+    Player *player = &g_Player;
+    ShotTypeData *oldShotType;
+    ShotTypeData *oldShotType2;
+
+    if (KeepsResources())
+    {
+        oldShotType = player->shotType;
+        oldShotType2 = player->unk_e2a78;
+    }
+    memset(player, 0, sizeof(Player));
+    if (KeepsResources())
+    {
+        player->shotType = oldShotType;
+        player->unk_e2a78 = oldShotType2;
+    }
+    player->unk_e2af4 = 0;
+    player->registerChainArg = arg;
+    player->calcChain = g_Chain.CreateElem((ChainCallback)Player::OnUpdate);
+    player->calcChain->arg = player;
+    player->calcChain->addedCallback = (ChainCallback)Player::AddedCallback;
+    player->calcChain->deletedCallback = (ChainCallback)Player::DeletedCallback;
+    if (g_Chain.AddToCalcChain(player->calcChain, 9) != 0)
+    {
+        return -1;
+    }
+    player->drawChain = g_Chain.CreateElem((ChainCallback)Player::OnDraw);
+    player->drawChain2 = g_Chain.CreateElem((ChainCallback)Player::OnDraw2);
+    player->drawChain->arg = player;
+    player->drawChain2->arg = player;
+    g_Chain.AddToDrawChain(player->drawChain, 9);
+    g_Chain.AddToDrawChain(player->drawChain2, 10);
+    return 0;
+}

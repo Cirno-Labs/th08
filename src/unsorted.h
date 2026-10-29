@@ -2007,6 +2007,26 @@ inline int IsRestarting()
     return g_App.unk_16c;
 }
 
+// App::unk_164 and unk_168: whether the scene's objects load their
+// files as they are added, and free them as they are deleted. Inline;
+// the copies at 0x4338b0 and 0x4338c0 are an /Od object's.
+inline int IsLoadingResources()
+{
+    return g_App.unk_164;
+}
+inline int IsFreeingResources()
+{
+    return g_App.unk_168;
+}
+
+// Whether the scene's objects keep the files they loaded
+// (!IsLoadingResources()). Inline; the copy at 0x44e0e0 is the player
+// object's.
+inline int KeepsResources()
+{
+    return !IsLoadingResources();
+}
+
 // App::unk_164, unk_168 and unk_16c (0x438fe9, 0x438ff3, 0x438ffd).
 int Func438fe9();
 int Func438ff3();
