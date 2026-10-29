@@ -1115,6 +1115,43 @@ void App::AddPlayTime()
     this->lastPlayTimeTick = now;
 }
 
+
+
+void App::AddTotalPlayTime()
+{
+    DWORD now = timeGetTime();
+    DWORD delta;
+
+    if (now < this->lastTotalPlayTimeTick)
+    {
+        this->lastTotalPlayTimeTick = 0;
+    }
+    delta = now - this->lastTotalPlayTimeTick;
+    g_GameManager.plst.playHours += delta / 3600000;
+    delta %= 3600000;
+    g_GameManager.plst.playMinutes += delta / 60000;
+    delta %= 60000;
+    g_GameManager.plst.playSeconds += delta / 1000;
+    delta %= 1000;
+    g_GameManager.plst.playMilliseconds += delta;
+    if (g_GameManager.plst.playMilliseconds >= 1000)
+    {
+        g_GameManager.plst.playSeconds += g_GameManager.plst.playMilliseconds / 1000;
+        g_GameManager.plst.playMilliseconds %= 1000;
+    }
+    if (g_GameManager.plst.playSeconds >= 60)
+    {
+        g_GameManager.plst.playMinutes += g_GameManager.plst.playSeconds / 60;
+        g_GameManager.plst.playSeconds %= 60;
+    }
+    if (g_GameManager.plst.playMinutes >= 60)
+    {
+        g_GameManager.plst.playHours += g_GameManager.plst.playMinutes / 60;
+        g_GameManager.plst.playMinutes %= 60;
+    }
+    this->lastTotalPlayTimeTick = now;
+}
+
 inline void FreeData(void *data)
 {
     free(data);
