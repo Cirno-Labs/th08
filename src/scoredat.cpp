@@ -320,3 +320,45 @@ int LoadClears(void *scoreDat, Clrd *clrds)
     }
     return 0;
 }
+
+int LoadPracticeScores(void *scoreDat, Pscr *pscrs)
+{
+    Pscr *p;
+    Pscr *chunk;
+    int i3;
+    int rest3;
+    ScoreDat *dat10 = (ScoreDat *)scoreDat;
+
+    if (pscrs == NULL)
+    {
+        return -1;
+    }
+    p = pscrs;
+    for (i3 = 0; i3 < 12; i3++, p++)
+    {
+        memset(p, 0, sizeof(Pscr));
+        p->magic = 0x52435350;
+        p->size2 = sizeof(Pscr);
+        p->size = sizeof(Pscr);
+        p->version = 2;
+        p->shot = i3;
+        p->unk_175 = 0;
+    }
+    chunk = (Pscr *)((BYTE *)dat10 + dat10->dataOffset);
+    rest3 = dat10->fileSize - dat10->dataOffset;
+    while (rest3 > 0)
+    {
+        if (chunk->magic == 0x52435350 && chunk->version == 2)
+        {
+            p = chunk;
+            if (p->shot >= 12)
+            {
+                break;
+            }
+            pscrs[p->shot] = *p;
+        }
+        rest3 -= chunk->size;
+        chunk = (Pscr *)((BYTE *)chunk + chunk->size);
+    }
+    return 0;
+}

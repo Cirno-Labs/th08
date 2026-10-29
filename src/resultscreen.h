@@ -143,7 +143,12 @@ struct Pscr
     WORD size;
     WORD size2;
     BYTE version;
-    unsigned char unk_9[0x16f];
+    BYTE unk_09[0x3];
+    unsigned char unk_0c[0x168];
+    // The shot type.
+    BYTE shot;
+    BYTE unk_175;
+    BYTE unk_176[0x2];
 };
 ASSERT_SIZE(Pscr, 0x178);
 
@@ -215,7 +220,7 @@ int LoadFlspChunk(void *scoreDat, Flsp *flsp);
 // Copies the score file's version 1 "LSNM" chunk to `lsnm`. Returns 1,
 // or 0 if there is none.
 int LoadLsnmChunk(void *scoreDat, Lsnm *lsnm);
-int LoadPracticeScores(ScoreDat *scoreDat, Pscr *pscrs);
+int LoadPracticeScores(void *scoreDat, Pscr *pscrs);
 // Copies the score file's last "PLST" chunk to `plst`. Returns 0.
 int LoadPlstChunk(ScoreDat *scoreDat, Plst *plst);
 // Frees `dat` (0x45afc0).
