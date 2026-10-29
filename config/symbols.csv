@@ -588,7 +588,7 @@ address,size,name,symbol
 0x0043ee90,27,MemoryManager::MemoryManager,??0MemoryManager@@QAE@XZ
 0x0043eeb0,84,MemoryManager::~MemoryManager,??1MemoryManager@@QAE@XZ
 0x0043ef10,48,Log::Log,??0Log@@QAE@XZ
-0x0043ef40,11,MmTimer::OnTimer,?OnTimer@MmTimer@@UAEXXZ
+0x0043ef40,11,MmTimer::OnTimer,?OnTimer@MmTimer@@UAEXXZ ??1SpriteEngine@@QAE@XZ
 0x0043ef50,21,App::GetShootFocuses,?GetShootFocuses@App@@QAEHXZ
 0x0043ef70,63,App::EnterCriticalSection,?EnterCriticalSection@App@@QAEXH@Z
 0x0043efb0,63,App::LeaveCriticalSection,?LeaveCriticalSection@App@@QAEXH@Z
@@ -630,19 +630,19 @@ address,size,name,symbol
 0x00441830,27,Func441830,
 0x00441850,77,Func441850,
 0x004418a0,28,Func4418a0,
-0x004418c0,1354,Func4418c0,
+0x004418c0,1354,WinMain,_WinMain@16
 0x00441e10,46,Func441e10,
 0x00441e40,46,Func441e40,
-0x00441e70,482,Func441e70,
+0x00441e70,482,GameWindow::RunFrame,?RunFrame@GameWindow@@QAEHXZ
 0x00442060,295,Func442060,
 0x00442190,112,Func442190,
-0x00442200,56,Func442200,
-0x00442240,329,Func442240,
+0x00442200,56,CreateD3d,?CreateD3d@@YIHXZ
+0x00442240,329,CreateGameWindow,?CreateGameWindow@@YIHPAUHINSTANCE__@@@Z
 0x00442390,303,Func442390,
-0x004424c0,1472,Func4424c0,
+0x004424c0,1472,InitD3dDevice,?InitD3dDevice@@YIHXZ
 0x00442a80,1130,FormatCapsReport,?FormatCapsReport@@YIXPAU_D3DCAPS8@@PAD@Z
 0x00442ef0,107,AppendCapsFlagText,?AppendCapsFlagText@@YIPADPADKK0@Z
-0x00442f60,1201,Func442f60,
+0x00442f60,1201,SetDefaultRenderStates,?SetDefaultRenderStates@@YIXXZ
 0x00443420,625,CheckSingleInstance,?CheckSingleInstance@@YIHPAUHINSTANCE__@@@Z
 0x004436a0,143,ForceForegroundWindow,?ForceForegroundWindow@@YIXPAUHWND__@@@Z
 0x00443730,266,ChecksumExecutable,?ChecksumExecutable@@YIHXZ
@@ -654,7 +654,7 @@ address,size,name,symbol
 0x00443a90,26,App::GetForce16BitTextures,?GetForce16BitTextures@App@@QAEHXZ
 0x00443ab0,26,App::GetReferenceRasterizer,?GetReferenceRasterizer@App@@QAEHXZ
 0x00443ad0,21,App::GetWindowed,?GetWindowed@App@@QAEHXZ
-0x00443af0,104,Func443af0,
+0x00443af0,104,SpriteEngine::ReleaseSurfaces,?ReleaseSurfaces@SpriteEngine@@QAEXXZ
 0x00443b60,248,Func443b60,
 0x00443c60,33,MidiDevice::MidiDevice,??0MidiDevice@@QAE@XZ
 0x00443c90,19,MidiDevice::~MidiDevice,??1MidiDevice@@QAE@XZ
@@ -974,7 +974,7 @@ address,size,name,symbol
 0x00464c60,367,Func464c60,
 0x00464dd0,225,Func464dd0,
 0x00464ec0,427,Func464ec0,
-0x00465070,466,Func465070,
+0x00465070,466,SpriteEngine::SpriteEngine,??0SpriteEngine@@QAE@XZ
 0x00465250,700,SpriteEngine::CreateQuad,?CreateQuad@SpriteEngine@@QAEXXZ
 0x00465510,83,Func465510,
 0x00465570,98,Func465570,
@@ -1699,6 +1699,7 @@ address,size,name,symbol
 0x004a28ed,859,Func4a28ed,
 0x004a2c48,3539,Func4a2c48,
 0x004a3a1b,693,Func4a3a1b,
+0x004a3cd0,,WINNLSEnableIME,_WINNLSEnableIME@8
 0x004a3cd6,128,__onexit_lk,
 0x004a3d56,40,___onexitinit,
 0x004a3d7e,50,__onexit,

@@ -92,6 +92,11 @@ class ScreenEffect;
 class SpriteEngine
 {
 public:
+    // 0x465070.
+    SpriteEngine();
+    // Empty; folded with MmTimer::OnTimer (0x43ef40).
+    ~SpriteEngine();
+
     // Copies surface `surface` to the back buffer at (`left`, `top`), as
     // th07's (0x466bb0).
     void CopySurfaceToBackBuffer(int surface, int left, int top, int x, int y);
@@ -108,6 +113,9 @@ public:
     void RenderText(Sprite *sprite, D3DCOLOR textColor, D3DCOLOR shadowColor, char *fmt, ...);
     // Frees ANM slot `slot` (0x466060).
     void ReleaseAnm(int slot);
+    // Releases the surfaces before the device is reset. Inline, defined
+    // in the WinMain file.
+    void ReleaseSurfaces();
     // Releases the vertex buffer (0x446f0b, in App's object).
     void ReleaseVertexBuffer();
     // Draws the batched quads (0x462e40).

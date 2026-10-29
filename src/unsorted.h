@@ -408,6 +408,22 @@ BOOL CALLBACK EnumJoysticksCallback(const DIDEVICEINSTANCE *pdidInstance, VOID *
 // range to -1000 to 1000.
 BOOL CALLBACK EnumAxesCallback(const DIDEVICEOBJECTINSTANCE *pdidoi, VOID *pContext);
 
+// Hands finished MIDI long messages back to g_App.midi, keeps the
+// cursor shown only in a window or while inactive, swallows
+// WM_ERASEBKGND, and has WM_CLOSE end the main loop.
+LRESULT CALLBACK WindowProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+// Presents the frame, resetting the device if that fails; does the
+// pending texture copy; saves a screenshot when button 0x800 is pressed.
+void PresentFrame();
+// Creates g_App.d3d. Returns 0, or 1 on failure.
+int CreateD3d();
+// Creates the game window. Returns 0, or nonzero on failure.
+int CreateGameWindow(HINSTANCE instance);
+// Creates the Direct3D device. Returns 0, or nonzero on failure.
+int InitD3dDevice();
+// Sets the device's render and texture stage states, as the config
+// flags pick them, and forgets SpriteEngine's cached states.
+void SetDefaultRenderStates();
 // Prints `name` and then 可 or 不可 (yes or no), by whether `caps` has
 // any of `flag`, at `out`; returns the end of the text.
 char *AppendCapsFlagText(char *name, DWORD caps, DWORD flag, char *out);
@@ -422,9 +438,14 @@ inline void Timer::Tick()
 }
 
 // The game window (at 0x17ce700), as in th07: the fields used so far are
-// at the same offsets.
+// at the same offsets. Its 8-byte fields are only 4-aligned.
+#pragma pack(push, 4)
 struct GameWindow
 {
+    // Runs one frame of the main loop. Returns 0 to go on, else what
+    // App::RegisterChain's result means.
+    int RunFrame();
+
     HWND hwnd;
     // Set when the window is being closed: the main loop ends.
     int isClosing;
@@ -442,7 +463,13 @@ struct GameWindow
     int screenSaveActive;
     int lowPowerActive;
     int powerOffActive;
+    // New in th08: RunFrame paces the frames by these times.
+    double now;
+    double lastTime;
+    double nextFrameTime;
 };
+#pragma pack(pop)
+ASSERT_SIZE(GameWindow, 0x44);
 extern GameWindow g_GameWindow;
 
 // Creates g_AppMutex and returns -1 if another instance holds it, as
