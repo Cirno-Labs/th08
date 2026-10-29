@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">12.90% (144)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">87.10% (972)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">13.26% (148)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">86.74% (968)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="96.39" height="6" x="0" y="0" class="named"/>
-<rect width="650.61" height="6" x="96.39" y="0" class="todo"/>
+<rect width="99.06" height="6" x="0" y="0" class="named"/>
+<rect width="647.94" height="6" x="99.06" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -1105,7 +1105,7 @@
 <rect width="12" height="12" x="525" y="300" class="todo"><title>0x00471586 Func471586 (203 bytes)</title></rect>
 <rect width="12" height="12" x="540" y="300" class="todo"><title>0x00471651 Func471651 (17 bytes)</title></rect>
 <rect width="12" height="12" x="555" y="300" class="todo"><title>0x00471662 Func471662 (125 bytes)</title></rect>
-<rect width="12" height="12" x="570" y="300" class="todo"><title>0x004716e0 CSoundManager::CSoundManager (23 bytes)</title></rect>
+<rect width="12" height="12" x="570" y="300" class="named"><title>0x004716e0 CSoundManager::CSoundManager (23 bytes)</title></rect>
 <rect width="12" height="12" x="585" y="300" class="todo"><title>0x00471700 Func471700 (44 bytes)</title></rect>
 <rect width="12" height="12" x="600" y="300" class="todo"><title>0x00471730 Func471730 (142 bytes)</title></rect>
 <rect width="12" height="12" x="615" y="300" class="todo"><title>0x004717c0 Func4717c0 (265 bytes)</title></rect>
@@ -1177,20 +1177,20 @@
 <rect width="12" height="12" x="105" y="330" class="named"><title>0x00474c40 DatArchive::GetEntrySize (46 bytes)</title></rect>
 <rect width="12" height="12" x="120" y="330" class="named"><title>0x00474c70 DatArchive::FindEntry (101 bytes)</title></rect>
 <rect width="12" height="12" x="135" y="330" class="named"><title>0x00474ce0 DatArchive::ReadTable (701 bytes)</title></rect>
-<rect width="12" height="12" x="150" y="330" class="todo"><title>0x00474fa0 DatArchive::BuildEntryTable (420 bytes)</title></rect>
+<rect width="12" height="12" x="150" y="330" class="named"><title>0x00474fa0 DatArchive::BuildEntryTable (420 bytes)</title></rect>
 <rect width="12" height="12" x="165" y="330" class="todo"><title>0x00475150 DatArchive::DuplicateString (139 bytes)</title></rect>
 <rect width="12" height="12" x="180" y="330" class="named"><title>0x004751e0 File::ReadDword (30 bytes)</title></rect>
-<rect width="12" height="12" x="195" y="330" class="todo"><title>0x00475200 DatArchiveCursor::SkipDword (31 bytes)</title></rect>
-<rect width="12" height="12" x="210" y="330" class="todo"><title>0x00475220 DatArchiveCursor::SkipString (76 bytes)</title></rect>
+<rect width="12" height="12" x="195" y="330" class="named"><title>0x00475200 DatArchiveCursor::SkipDword (31 bytes)</title></rect>
+<rect width="12" height="12" x="210" y="330" class="named"><title>0x00475220 DatArchiveCursor::SkipString (76 bytes)</title></rect>
 <rect width="12" height="12" x="225" y="330" class="named"><title>0x00475270 DatArchiveEntry::~DatArchiveEntry (40 bytes)</title></rect>
 </g>
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">6.29%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">93.71%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">6.41%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">93.59%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="46.98" height="6" x="0" y="0" class="named"/>
-<rect width="700.02" height="6" x="46.98" y="0" class="todo"/>
+<rect width="47.87" height="6" x="0" y="0" class="named"/>
+<rect width="699.13" height="6" x="47.87" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1446,7 +1446,7 @@
 <rect width="12.75" height="12.28" x="535.89" y="100.12" class="todo"><title>0x00466d70 Func466d70 (424 bytes)</title></rect>
 <rect width="12.68" height="12.28" x="551.64" y="100.12" class="todo"><title>0x00449ca0 Func449ca0 (422 bytes)</title></rect>
 <rect width="12.60" height="12.28" x="567.31" y="100.12" class="todo"><title>0x00403600 Func403600 (420 bytes)</title></rect>
-<rect width="12.60" height="12.28" x="582.91" y="100.12" class="todo"><title>0x00474fa0 DatArchive::BuildEntryTable (420 bytes)</title></rect>
+<rect width="12.60" height="12.28" x="582.91" y="100.12" class="named"><title>0x00474fa0 DatArchive::BuildEntryTable (420 bytes)</title></rect>
 <rect width="12.53" height="12.28" x="598.52" y="100.12" class="todo"><title>0x0046f429 Func46f429 (418 bytes)</title></rect>
 <rect width="12.42" height="12.28" x="614.04" y="100.12" class="todo"><title>0x00415d60 Func415d60 (415 bytes)</title></rect>
 <rect width="12.34" height="12.28" x="629.46" y="100.12" class="todo"><title>0x0042a680 Func42a680 (413 bytes)</title></rect>
@@ -1905,7 +1905,7 @@
 <rect width="3.65" height="3.48" x="723.40" y="247.34" class="todo"><title>0x0045bd70 Func45bd70 (76 bytes)</title></rect>
 <rect width="3.65" height="3.48" x="730.05" y="247.34" class="todo"><title>0x0045e320 Func45e320 (76 bytes)</title></rect>
 <rect width="3.65" height="3.48" x="736.70" y="247.34" class="todo"><title>0x004622c0 Func4622c0 (76 bytes)</title></rect>
-<rect width="3.65" height="3.48" x="743.35" y="247.34" class="todo"><title>0x00475220 DatArchiveCursor::SkipString (76 bytes)</title></rect>
+<rect width="3.65" height="3.48" x="743.35" y="247.34" class="named"><title>0x00475220 DatArchiveCursor::SkipString (76 bytes)</title></rect>
 <rect width="3.83" height="3.23" x="655.94" y="253.82" class="todo"><title>0x00425fe0 Func425fe0 (75 bytes)</title></rect>
 <rect width="3.83" height="3.23" x="662.77" y="253.82" class="todo"><title>0x00439883 Func439883 (75 bytes)</title></rect>
 <rect width="3.83" height="3.23" x="669.59" y="253.82" class="todo"><title>0x00439916 Func439916 (75 bytes)</title></rect>
@@ -2134,7 +2134,7 @@
 <rect width="1.17" height="1.22" x="725.26" y="297.47" class="todo"><title>0x00424e00 Func424e00 (31 bytes)</title></rect>
 <rect width="1.17" height="1.22" x="729.43" y="297.47" class="todo"><title>0x00427970 Func427970 (31 bytes)</title></rect>
 <rect width="1.17" height="1.22" x="733.59" y="297.47" class="todo"><title>0x00437d45 Func437d45 (31 bytes)</title></rect>
-<rect width="1.17" height="1.22" x="737.76" y="297.47" class="todo"><title>0x00475200 DatArchiveCursor::SkipDword (31 bytes)</title></rect>
+<rect width="1.17" height="1.22" x="737.76" y="297.47" class="named"><title>0x00475200 DatArchiveCursor::SkipDword (31 bytes)</title></rect>
 <rect width="1.03" height="1.22" x="741.93" y="297.47" class="todo"><title>0x0040bab0 Func40bab0 (30 bytes)</title></rect>
 <rect width="1.03" height="1.22" x="745.97" y="297.47" class="todo"><title>0x004180f0 Func4180f0 (30 bytes)</title></rect>
 <rect width="1.06" height="1.20" x="703.88" y="301.69" class="named"><title>0x00443f30 SwapBytes16 (30 bytes)</title></rect>
@@ -2229,7 +2229,7 @@
 <rect width="0.47" height="0.76" x="722.67" y="316.88" class="named"><title>0x0043f881 GdiSurface::IsCreated (23 bytes)</title></rect>
 <rect width="0.47" height="0.76" x="726.14" y="316.88" class="named"><title>0x00443a50 App::GetEmulateColorAdd (23 bytes)</title></rect>
 <rect width="0.47" height="0.76" x="729.62" y="316.88" class="todo"><title>0x00453be0 Func453be0 (23 bytes)</title></rect>
-<rect width="0.47" height="0.76" x="733.09" y="316.88" class="todo"><title>0x004716e0 CSoundManager::CSoundManager (23 bytes)</title></rect>
+<rect width="0.47" height="0.76" x="733.09" y="316.88" class="named"><title>0x004716e0 CSoundManager::CSoundManager (23 bytes)</title></rect>
 <rect width="0.47" height="0.76" x="736.56" y="316.88" class="named"><title>0x00473c40 FileBase::FileBase (23 bytes)</title></rect>
 <rect width="0.32" height="0.76" x="740.03" y="316.88" class="todo"><title>0x00405260 Func405260 (22 bytes)</title></rect>
 <rect width="0.32" height="0.76" x="743.36" y="316.88" class="todo"><title>0x004065a0 Func4065a0 (22 bytes)</title></rect>
