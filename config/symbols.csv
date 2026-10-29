@@ -588,7 +588,7 @@ address,size,name,symbol
 0x0043ee90,27,Func43ee90,
 0x0043eeb0,84,Func43eeb0,
 0x0043ef10,48,Func43ef10,
-0x0043ef40,11,Func43ef40,
+0x0043ef40,11,MmTimer::OnTimer,?OnTimer@MmTimer@@UAEXXZ
 0x0043ef50,21,Func43ef50,
 0x0043ef70,63,Func43ef70,
 0x0043efb0,63,Func43efb0,

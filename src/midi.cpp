@@ -68,6 +68,10 @@ int MidiDevice::SendShortMsg(BYTE status, BYTE data1, BYTE data2)
     return midiOutShortMsg(this->handle, msg.dword) != MMSYSERR_NOERROR;
 }
 
+void MmTimer::OnTimer()
+{
+}
+
 WORD SwapBytes16(WORD value)
 {
     union
