@@ -278,7 +278,13 @@ public:
     // Counts the frames in the current state.
     int frame;
     int state;
-    unsigned char unk_0c[0x194];
+    unsigned char unk_0c[0x10];
+    // The menu item selected.
+    int cursor;
+    unsigned char unk_20[0x10];
+    // A second cursor, moved by LoadScreenPlstChunk, as th07's.
+    int spellCursor;
+    unsigned char unk_34[0x16c];
     Sprite sprites[0x48];
     // Text drawn with RenderText, as th07's.
     Sprite textSprites[0x1e];
@@ -300,3 +306,11 @@ ASSERT_SIZE(ResultScreen, 0x477b0);
 // Writes "score.dat" from `screen`'s file header, the "TH8K" chunk, the
 // lists and g_GameManager's chunks, as th07's (0x453d0d).
 void SaveScoreDat(ResultScreen *screen);
+
+// Moves `screen`'s cursor up or down through `count` items, wrapping.
+// Returns -1 for up, 1 for down, 0 if it did not move.
+int MoveCursorVertical(ResultScreen *screen, int count);
+// The same for `screen`'s spellCursor.
+int LoadScreenPlstChunk(ResultScreen *screen, int count);
+// The same with left and right.
+int MoveCursorHorizontal(ResultScreen *screen, int count);
