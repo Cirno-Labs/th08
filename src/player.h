@@ -647,6 +647,16 @@ void DimPlayAreaForBomb(Player *player, D3DCOLOR tint);
 // aura, clears the bomb's parts, collects all items and keeps the
 // player's position in startPos (0x40be30).
 void StartBomb(Player *player, int face, char *name, int duration, int stateFrames, int sprite);
+// The bomb every character has in g_BombFuncs[..].update.funcs[4],
+// the Dissolve Spell (「ディゾルブスペル」) of a death while
+// GameManager::unk_3dbac_7 is set: on its first frame starts it (120
+// frames, 40 in spell practice), bursts effect 0xc and a shrinking ring
+// 0x32 (90 frames, 30 in practice), plays sound 0xd, stops the player and
+// clears bit 6 of the bosses' unk_3324 (0x40d100).
+void UpdateDissolveBomb(Player *player);
+// Its draw callback: tints the play area from 0x404040 up to 0xf0f0f0
+// over its first 60 frames (0x40d310).
+void DrawDissolveBomb(Player *player);
 // th07's SpawnBombAura, with effect 0x17: ends invulnerabilityEffect and
 // starts a red aura at the player that runs as long as stateTimer
 // (0x40bf00).

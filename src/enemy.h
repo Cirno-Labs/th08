@@ -62,7 +62,10 @@ struct Enemy
         DWORD unk_3324;
         struct
         {
-            DWORD unk_3324_0 : 30;
+            DWORD unk_3324_0 : 6;
+            // Cleared for the bosses as a Dissolve Spell starts.
+            DWORD unk_3324_6 : 1;
+            DWORD unk_3324_7 : 23;
             DWORD unk_3324_30 : 1;
         };
     };

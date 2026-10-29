@@ -3,6 +3,7 @@
 // g_EffectInfos. Only part of it so far.
 
 #include "effect.h"
+#include "enemy.h"
 #include "item.h"
 #include "player.h"
 #include "screeneffect.h"
@@ -77,6 +78,58 @@ void SpawnBombAura(Player *player)
     effect->sprite.colorRgb[1] = 0x40;
     effect->sprite.colorRgb[0] = 0x40;
     player->invulnerabilityEffect = effect;
+}
+
+void UpdateDissolveBomb(Player *player)
+{
+    PlayerBomb *bomb = &player->bomb;
+    Effect *effect;
+    DWORD j;
+
+    if (bomb->timer.HasTicked() && bomb->timer == 0)
+    {
+        if (!g_GameManager.IsInSpellCardPractice())
+        {
+            StartBomb(player, -1, "\x81\x75\x83\x66\x83\x42\x83\x5d\x83\x8b\x83\x75\x83\x58\x83\x79\x83\x8b\x81\x76", 120, 200, 0);
+        }
+        else
+        {
+            StartBomb(player, -1, "\x81\x75\x83\x66\x83\x42\x83\x5d\x83\x8b\x83\x75\x83\x58\x83\x79\x83\x8b\x81\x76", 40, 200, 0);
+        }
+        g_EffectManager.SpawnEffect(0xc, &player->pos, 1, 0xff4040ff);
+        effect = g_EffectManager.SpawnReservedEffect(0x32, &player->pos, 4, 1, 0xff4040ff);
+        effect->sprite.interpDuration[0] = 0;
+        if (!g_GameManager.IsInSpellCardPractice())
+        {
+            effect->sprite.interpFrame[0] = 90;
+        }
+        else
+        {
+            effect->sprite.interpFrame[0] = 30;
+        }
+        effect->sprite.interpEasing = 5;
+        effect->sprite.moveStart.x = 8.0f;
+        effect->sprite.moveEnd.x = 128.0f;
+        effect->sprite.moveStart.y = 64.0f;
+        effect->sprite.moveEnd.y = 0.0f;
+        effect->sprite.pos.x = 8.0f;
+        effect->sprite.pos.y = 64.0f;
+        effect->segmentCount = 0x40;
+        effect->angle = 0.0f;
+        effect->radius = 8.0f;
+        effect->ringWidth = 15.0f;
+        effect->unk_334 = 6.0f;
+        g_SoundPlayer.QueueSound(0xd, 0);
+        player->moveScaleY = 0.0f;
+        player->moveScaleX = 0.0f;
+        for (j = 0; j < 8; j++)
+        {
+            if (g_EnemyManager.bosses[j] != NULL)
+            {
+                g_EnemyManager.bosses[j]->unk_3324_6 = 0;
+            }
+        }
+    }
 }
 
 int EffectUpdateBombRing42(Effect *effect)
