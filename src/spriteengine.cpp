@@ -198,6 +198,100 @@ void AnmLoaded::StartSpriteSeries(Sprite *vms, int script, int count)
     }
 }
 
+void SpriteEngine::SetRenderStateForSprite(Sprite *vm)
+{
+    D3DCOLOR color;
+
+    if (this->blendMode != (vm->flags >> 4 & 3))
+    {
+        this->FlushQuadBatch();
+        this->blendMode = vm->flags >> 4 & 3;
+        switch (this->blendMode)
+        {
+        case 0:
+            g_App.d3dDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
+            break;
+        case 1:
+            g_App.d3dDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ONE);
+            break;
+        }
+    }
+    color = (vm->flags >> 17 & 1) ? vm->color2 : vm->color;
+    if (this->resetTextureArgs != 0)
+    {
+        this->resetTextureArgs = 0;
+        if (!g_App.GetNoVertexBuffer())
+        {
+            this->FlushQuadBatch();
+            g_App.d3dDevice->SetTextureStageState(0, D3DTSS_ALPHAARG2, D3DTA_TFACTOR);
+            g_App.d3dDevice->SetTextureStageState(0, D3DTSS_COLORARG2, D3DTA_TFACTOR);
+        }
+    }
+    if (!g_App.GetNoVertexBuffer())
+    {
+        if (this->modulateColorEnabled != 0)
+        {
+            MODULATE_CHANNEL(color, this->modulateColor, 2);
+            MODULATE_CHANNEL(color, this->modulateColor, 1);
+            MODULATE_CHANNEL(color, this->modulateColor, 0);
+            MODULATE_CHANNEL(color, this->modulateColor, 3);
+        }
+        if (this->currentColor != color)
+        {
+            this->FlushQuadBatch();
+            this->currentColor = color;
+            g_App.d3dDevice->SetRenderState(D3DRS_TEXTUREFACTOR, this->currentColor);
+        }
+    }
+    else
+    {
+        if (this->modulateColorEnabled != 0)
+        {
+            MODULATE_CHANNEL(color, this->modulateColor, 2);
+            MODULATE_CHANNEL(color, this->modulateColor, 1);
+            MODULATE_CHANNEL(color, this->modulateColor, 0);
+            MODULATE_CHANNEL(color, this->modulateColor, 3);
+        }
+        g_DiffuseQuad[0].diffuse = color;
+        g_DiffuseQuad[1].diffuse = color;
+        g_DiffuseQuad[2].diffuse = color;
+        g_DiffuseQuad[3].diffuse = color;
+        g_DiffuseQuadXyz[0].diffuse = color;
+        g_DiffuseQuadXyz[1].diffuse = color;
+        g_DiffuseQuadXyz[2].diffuse = color;
+        g_DiffuseQuadXyz[3].diffuse = color;
+    }
+    if (!g_App.GetNoDepthTest() && this->zWriteDisabled != (vm->flags >> 13 & 1))
+    {
+        this->FlushQuadBatch();
+        this->zWriteDisabled = vm->flags >> 13 & 1;
+        if (this->zWriteDisabled == 0)
+        {
+            g_App.d3dDevice->SetRenderState(D3DRS_ZWRITEENABLE, TRUE);
+        }
+        else
+        {
+            g_App.d3dDevice->SetRenderState(D3DRS_ZWRITEENABLE, FALSE);
+        }
+    }
+    if (this->lastCameraSetupFlag != (vm->flags >> 15 & 1))
+    {
+        this->FlushQuadBatch();
+        this->lastCameraSetupFlag = vm->flags >> 15 & 1;
+        if (this->lastCameraSetupFlag == 0)
+        {
+            g_Stage.SetupFixedCamera();
+            g_App.d3dDevice->SetViewport(&g_App.viewport);
+        }
+        else
+        {
+            g_Stage.SetupCamera();
+            g_App.d3dDevice->SetViewport(&g_App.viewport);
+        }
+    }
+    this->renderStateSetCount++;
+}
+
 SpriteEngine::SpriteEngine()
 {
     memset(this, 0, sizeof(*this));

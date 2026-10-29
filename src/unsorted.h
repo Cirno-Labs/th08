@@ -1067,3 +1067,15 @@ struct SoundInfo
 extern SoundInfo g_SoundInfos[0x2e];
 // The sound files LoadSounds loads, by index: 0x24 (th07 0x1e).
 extern char *g_SoundPaths[];
+
+// The stage's background, th07's Stage. Only what is known so far.
+class Stage
+{
+public:
+    // Sets the view and projection for things drawn on the screen
+    // rather than in the stage (0x40b5a0).
+    void SetupFixedCamera();
+    // Sets the stage's view and projection (0x40b6d0).
+    void SetupCamera();
+};
+extern Stage g_Stage;

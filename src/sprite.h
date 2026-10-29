@@ -13,6 +13,22 @@
 
 class AnmLoaded;
 
+// Channel `c` scaled by `factor`, 0x80 for 1, up to 0xff, as th07's.
+// Inline; the copy is at 0x462750.
+inline BYTE ModulateChannel(BYTE c, BYTE factor)
+{
+    DWORD channel = (DWORD)c * factor >> 7;
+    if (channel >= 0x100)
+    {
+        channel = 0xff;
+    }
+    return channel;
+}
+
+// Scales byte `i` of `color` by byte `i` of `factor`.
+#define MODULATE_CHANNEL(color, factor, i) \
+    ((BYTE *)&(color))[i] = ModulateChannel(((BYTE *)&(color))[i], ((BYTE *)&(factor))[i])
+
 // An argument of an ANM instruction.
 union AnmArg
 {
@@ -131,7 +147,8 @@ public:
     D3DXMATRIX matrix;
     unsigned char unk_170[0x80];
     D3DCOLOR color;
-    unsigned char unk_1f4[0x4];
+    // The color drawn instead of color while flag bit 17 is set.
+    D3DCOLOR color2;
     // Bit 1: shown; DrawUnrotated draws nothing without it.
     DWORD flags;
     unsigned char unk_1fc[0x2];
@@ -393,6 +410,8 @@ public:
     void DoPendingCopy();
     // Releases the vertex buffer (0x446f0b, in App's object).
     void ReleaseVertexBuffer();
+    // Sets the render states `vm` wants on the device, as th07's.
+    void SetRenderStateForSprite(Sprite *vm);
     // Starts batching quads for a frame, as th07's (0x462e00).
     void BeginQuadBatch();
     // Draws the batched quads (0x462e40).
@@ -574,7 +593,10 @@ public:
     BYTE vertexFormat;
     BYTE zWriteDisabled;
     BYTE lastCameraSetupFlag;
-    unsigned char unk_24c5[0x3];
+    // Set to have SetRenderStateForSprite set the texture factor as
+    // texture stage 0's second color and alpha arguments again.
+    BYTE resetTextureArgs;
+    unsigned char unk_24c6[0x2];
     void *currentSpriteData;
     IDirect3DVertexBuffer8 *vertexBuffer;
     // The quad the vertex buffer holds, 256 pixels across.

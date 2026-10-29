@@ -110,8 +110,8 @@ address,size,name,symbol
 0x0040b500,49,Func40b500,
 0x0040b540,54,Func40b540,
 0x0040b580,22,Func40b580,
-0x0040b5a0,292,Func40b5a0,
-0x0040b6d0,283,Func40b6d0,
+0x0040b5a0,292,Stage::SetupFixedCamera,?SetupFixedCamera@Stage@@QAEXXZ
+0x0040b6d0,283,Stage::SetupCamera,?SetupCamera@Stage@@QAEXXZ
 0x0040b7f0,132,Func40b7f0,
 0x0040b880,25,MemoryManager::Alloc,?Alloc@MemoryManager@@QAEPAXHPBD@Z
 0x0040b8a0,25,MemoryManager::Free,?Free@MemoryManager@@QAEXPAX@Z
@@ -950,8 +950,8 @@ address,size,name,symbol
 0x004622c0,76,SpriteEngine::HasTexture,?HasTexture@SpriteEngine@@QAEHPAVSprite@@@Z
 0x00462310,70,SpriteEngine::StepSprites,?StepSprites@SpriteEngine@@QAEXPAVSprite@@H@Z
 0x00462360,86,AnmLoaded::StartSpriteSeries,?StartSpriteSeries@AnmLoaded@@QAEXPAVSprite@@HH@Z
-0x004623c0,912,Func4623c0,
-0x00462750,52,Func462750,
+0x004623c0,912,SpriteEngine::SetRenderStateForSprite,?SetRenderStateForSprite@SpriteEngine@@QAEXPAVSprite@@@Z
+0x00462750,52,ModulateChannel,?ModulateChannel@@YIEEE@Z
 0x00462790,278,Func462790,
 0x004628b0,1359,Func4628b0,
 0x00462e00,60,SpriteEngine::BeginQuadBatch,?BeginQuadBatch@SpriteEngine@@QAEXXZ
@@ -2410,6 +2410,7 @@ address,size,name,symbol
 0x004c81b0,,g_SoundPaths,?g_SoundPaths@@3PAPADA
 0x004c8704,,g_FileModes,?g_FileModes@@3PAPADA
 0x004cce20,,g_AsciiText,?g_AsciiText@@3VAsciiText@@A
+0x004e4030,,g_Stage,?g_Stage@@3VStage@@A
 0x004e4b50,,g_FogColorChanged,?g_FogColorChanged@@3EA
 0x0160f508,,g_GameManager,?g_GameManager@@3VGameManager@@A
 0x0164d388,,g_JoyCaps,?g_JoyCaps@@3UtagJOYCAPSA@@A
