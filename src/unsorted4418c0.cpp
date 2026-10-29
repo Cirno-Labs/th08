@@ -311,6 +311,45 @@ int CreateD3d()
     return 0;
 }
 
+int CreateGameWindow(HINSTANCE instance)
+{
+    WNDCLASSA wc;
+    int width;
+    int height;
+
+    memset(&wc, 0, sizeof(wc));
+    wc.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
+    wc.hCursor = LoadCursorA(NULL, IDC_ARROW);
+    wc.hInstance = instance;
+    wc.lpfnWndProc = WindowProc;
+    g_GameWindow.isAppActive = 1;
+    g_GameWindow.isAppInactive = 0;
+    wc.lpszClassName = "BASE";
+    RegisterClassA(&wc);
+    if (!g_App.GetWindowed())
+    {
+        width = 640;
+        height = 480;
+        g_GameWindow.hwnd = CreateWindowExA(0, "BASE", "東方永夜抄　～ Imperishable Night. ver 1.00d",
+                                            WS_OVERLAPPEDWINDOW, 0, 0, width, height, NULL, NULL, instance, NULL);
+    }
+    else
+    {
+        width = GetSystemMetrics(SM_CXDLGFRAME) * 2 + 640;
+        height = GetSystemMetrics(SM_CYDLGFRAME) * 2 + 480 + GetSystemMetrics(SM_CYCAPTION);
+        g_GameWindow.hwnd = CreateWindowExA(0, "BASE", "東方永夜抄　～ Imperishable Night. ver 1.00d",
+                                            WS_VISIBLE | WS_SYSMENU | WS_MINIMIZEBOX, CW_USEDEFAULT, CW_USEDEFAULT,
+                                            width, height, NULL, NULL, instance, NULL);
+    }
+    g_App.hwnd = g_GameWindow.hwnd;
+    if (g_GameWindow.hwnd == NULL)
+    {
+        return 1;
+    }
+    ForceForegroundWindow(g_GameWindow.hwnd);
+    return 0;
+}
+
 void FormatCapsReport(D3DCAPS8 *caps, char *buffer)
 {
     char *p = buffer;
