@@ -343,6 +343,438 @@ int MainMenu::StartTitle()
     return 1;
 }
 
+int MainMenu::UpdateOptions()
+{
+    int i;
+
+    switch (this->subState)
+    {
+    case 0:
+        if (this->inputLockout == 0)
+        {
+            g_SpriteEngine->SendInterruptToLoadedSprites(this->sprites, this->spriteCount, 3);
+            for (i = 0; i < 10; i++)
+            {
+                this->titleAnm->SetSprite(&this->sprites[i + 10], this->sprites[i + 10].baseSpriteIndex + 1);
+            }
+            this->titleAnm->SetSprite(&this->sprites[this->cursor + 10],
+                                      this->sprites[this->cursor + 10].baseSpriteIndex);
+            this->subState = 0;
+            this->stateFrames = 0;
+            this->prevCursor = -1;
+        }
+        this->subState = 1;
+        for (i = 0; i < ARRAY_SIZE(g_OptionsHelpTexts); i++)
+        {
+            g_SpriteEngine->RenderTextCentered(&this->helpSprites[i], 0xfff0e0, 0x300000, g_OptionsHelpTexts[i]);
+        }
+    case 1:
+        if (this->MoveMenuCursor(10))
+        {
+            for (i = 0; i < 10; i++)
+            {
+                this->titleAnm->SetSprite(&this->sprites[i + 10], this->sprites[i + 10].baseSpriteIndex + 1);
+            }
+            this->titleAnm->SetSprite(&this->sprites[this->cursor + 10],
+                                      this->sprites[this->cursor + 10].baseSpriteIndex);
+        }
+        if (this->prevCursor != this->cursor)
+        {
+            this->helpSprite = &this->helpSprites[this->cursor];
+            this->helpSprite->SetPendingInterrupt(1);
+        }
+        this->prevCursor = this->cursor;
+        for (i = 0x14; i <= 0x1a; i++)
+        {
+            this->titleAnm->SetSprite(&this->sprites[i], this->sprites[i].baseSpriteIndex + 1);
+        }
+        if ((DWORD)g_GameManager.plst.counts[6].plays[0] < 30)
+        {
+            this->sprites[0x19].flags &= ~2;
+        }
+        if ((DWORD)g_GameManager.plst.counts[6].plays[0] < 60)
+        {
+            this->sprites[0x1a].flags &= ~2;
+        }
+        i = g_App.lifeCount + 0x14;
+        this->titleAnm->SetSprite(&this->sprites[i], this->sprites[i].baseSpriteIndex);
+        for (i = 0x1b; i <= 0x1c; i++)
+        {
+            this->titleAnm->SetSprite(&this->sprites[i], this->sprites[i].baseSpriteIndex + 1);
+        }
+        i = g_App.colorMode16Bits + 0x1b;
+        this->titleAnm->SetSprite(&this->sprites[i], this->sprites[i].baseSpriteIndex);
+        for (i = 0x1d; i <= 0x1f; i++)
+        {
+            this->titleAnm->SetSprite(&this->sprites[i], this->sprites[i].baseSpriteIndex + 1);
+        }
+        i = g_App.musicMode + 0x1d;
+        this->titleAnm->SetSprite(&this->sprites[i], this->sprites[i].baseSpriteIndex);
+        if (g_App.bgmVolume >= 100)
+        {
+            this->titleAnm->SetSprite(&this->sprites[0x20], this->sprites[0x20].baseSpriteIndex);
+            this->sprites[0x20].alpha = 0xff;
+        }
+        else
+        {
+            this->sprites[0x20].alpha = 0;
+        }
+        if (g_App.bgmVolume >= 10)
+        {
+            this->titleAnm->SetSprite(&this->sprites[0x21],
+                                      this->sprites[0x21].baseSpriteIndex + g_App.bgmVolume / 10 % 10 * 2);
+            this->sprites[0x21].alpha = 0xff;
+        }
+        else
+        {
+            this->sprites[0x21].alpha = 0;
+        }
+        this->titleAnm->SetSprite(&this->sprites[0x22], this->sprites[0x22].baseSpriteIndex + g_App.bgmVolume % 10 * 2);
+        this->titleAnm->SetSprite(&this->sprites[0x23], this->sprites[0x23].baseSpriteIndex);
+        if (g_App.seVolume >= 100)
+        {
+            this->titleAnm->SetSprite(&this->sprites[0x24], this->sprites[0x24].baseSpriteIndex);
+            this->sprites[0x24].alpha = 0xff;
+        }
+        else
+        {
+            this->sprites[0x24].alpha = 0;
+        }
+        if (g_App.seVolume >= 10)
+        {
+            this->titleAnm->SetSprite(&this->sprites[0x25],
+                                      this->sprites[0x25].baseSpriteIndex + g_App.seVolume / 10 % 10 * 2);
+            this->sprites[0x25].alpha = 0xff;
+        }
+        else
+        {
+            this->sprites[0x25].alpha = 0;
+        }
+        this->titleAnm->SetSprite(&this->sprites[0x26], this->sprites[0x26].baseSpriteIndex + g_App.seVolume % 10 * 2);
+        this->titleAnm->SetSprite(&this->sprites[0x27], this->sprites[0x27].baseSpriteIndex);
+        for (i = 0x28; i <= 0x29; i++)
+        {
+            this->titleAnm->SetSprite(&this->sprites[i], this->sprites[i].baseSpriteIndex + 1);
+        }
+        i = g_App.windowed + 0x28;
+        this->titleAnm->SetSprite(&this->sprites[i], this->sprites[i].baseSpriteIndex);
+        for (i = 0x2a; i <= 0x2b; i++)
+        {
+            this->titleAnm->SetSprite(&this->sprites[i], this->sprites[i].baseSpriteIndex + 1);
+        }
+        i = g_App.optionsMenuCursor + 0x2a;
+        this->titleAnm->SetSprite(&this->sprites[i], this->sprites[i].baseSpriteIndex);
+        if (this->inputLockout < 4)
+        {
+            break;
+        }
+        if (WAS_PRESSED_OR_HELD(0x40))
+        {
+            switch (this->cursor)
+            {
+            case 0:
+                i = 7;
+                if ((DWORD)g_GameManager.plst.counts[6].plays[0] < 30)
+                {
+                    i--;
+                }
+                if ((DWORD)g_GameManager.plst.counts[6].plays[0] < 60)
+                {
+                    i--;
+                }
+                if (g_App.lifeCount == 0)
+                {
+                    g_App.lifeCount = i - 1;
+                }
+                else
+                {
+                    g_App.lifeCount--;
+                }
+                break;
+            case 1:
+                if (g_App.colorMode16Bits == 0)
+                {
+                    g_App.colorMode16Bits = 1;
+                }
+                else
+                {
+                    g_App.colorMode16Bits--;
+                }
+                break;
+            case 2:
+                g_App.StopMusic();
+                if (g_App.musicMode == 2)
+                {
+                    g_App.midi->Restart(30);
+                }
+                if (g_App.musicMode == 0)
+                {
+                    g_App.musicMode = 2;
+                }
+                else
+                {
+                    g_App.musicMode--;
+                }
+                g_App.LoadMidi(8, "bgm/th08_01.mid");
+                g_App.PlayMidi(8, 0);
+                break;
+            case 5:
+                if (g_App.windowed == 0)
+                {
+                    g_App.windowed = 1;
+                }
+                else
+                {
+                    g_App.windowed--;
+                }
+                break;
+            case 6:
+                if (g_App.optionsMenuCursor == 0)
+                {
+                    g_App.optionsMenuCursor = 1;
+                }
+                else
+                {
+                    g_App.optionsMenuCursor--;
+                }
+                break;
+            default:
+                goto volume;
+            }
+            g_SoundPlayer.QueueSound(12, 0);
+            g_SoundPlayer.PlayQueuedSounds();
+        }
+    volume:
+        if (WAS_PRESSED(0x40))
+        {
+            switch (this->cursor)
+            {
+            case 3:
+                g_App.bgmVolume -= 4;
+                if (g_App.bgmVolume < 0)
+                {
+                    g_App.bgmVolume = 0;
+                }
+                g_SoundPlayer.QueueSoundCommand(8, 0, "SetVol");
+                break;
+            case 4:
+                g_App.seVolume -= 4;
+                if (g_App.seVolume < 0)
+                {
+                    g_App.seVolume = 0;
+                }
+                g_SoundPlayer.QueueSoundCommand(8, 0, "SetVol");
+                break;
+            }
+        }
+        if (WAS_PRESSED(0x80))
+        {
+            switch (this->cursor)
+            {
+            case 3:
+                g_App.bgmVolume += 4;
+                if (g_App.bgmVolume > 100)
+                {
+                    g_App.bgmVolume = 100;
+                }
+                g_SoundPlayer.QueueSoundCommand(8, 0, "SetVol");
+                break;
+            case 4:
+                g_App.seVolume += 4;
+                if (g_App.seVolume > 100)
+                {
+                    g_App.seVolume = 100;
+                }
+                g_SoundPlayer.QueueSoundCommand(8, 0, "SetVol");
+                break;
+            }
+        }
+        if (WAS_PRESSED(0x40) || g_ButtonFrames >= 30 && (g_Buttons & 0x40))
+        {
+            switch (this->cursor)
+            {
+            case 3:
+                if (g_App.bgmVolume > 0)
+                {
+                    g_App.bgmVolume--;
+                }
+                g_SoundPlayer.QueueSoundCommand(8, 0, "SetVol");
+                break;
+            case 4:
+                if (g_App.seVolume > 0)
+                {
+                    g_App.seVolume--;
+                }
+                g_SoundPlayer.QueueSoundCommand(8, 0, "SetVol");
+                break;
+            }
+        }
+        if (WAS_PRESSED(0x80) || g_ButtonFrames >= 30 && (g_Buttons & 0x80))
+        {
+            switch (this->cursor)
+            {
+            case 3:
+                if (g_App.bgmVolume < 100)
+                {
+                    g_App.bgmVolume++;
+                }
+                g_SoundPlayer.QueueSoundCommand(8, 0, "SetVol");
+                break;
+            case 4:
+                if (g_App.seVolume < 100)
+                {
+                    g_App.seVolume++;
+                }
+                g_SoundPlayer.QueueSoundCommand(8, 0, "SetVol");
+                break;
+            }
+        }
+        g_SoundPlayer.bgmVolume = g_App.bgmVolume;
+        g_SoundPlayer.seVolume = g_App.seVolume;
+        if (WAS_PRESSED_OR_HELD(0x80))
+        {
+            switch (this->cursor)
+            {
+            case 0:
+                i = 7;
+                if ((DWORD)g_GameManager.plst.counts[6].plays[0] < 30)
+                {
+                    i--;
+                }
+                if ((DWORD)g_GameManager.plst.counts[6].plays[0] < 60)
+                {
+                    i--;
+                }
+                if (g_App.lifeCount >= i - 1)
+                {
+                    g_App.lifeCount = 0;
+                }
+                else
+                {
+                    g_App.lifeCount++;
+                }
+                break;
+            case 1:
+                if (g_App.colorMode16Bits >= 1)
+                {
+                    g_App.colorMode16Bits = 0;
+                }
+                else
+                {
+                    g_App.colorMode16Bits++;
+                }
+                break;
+            case 2:
+                g_App.StopMusic();
+                if (g_App.musicMode >= 2)
+                {
+                    g_App.musicMode = 0;
+                }
+                else
+                {
+                    g_App.musicMode++;
+                }
+                g_App.LoadMidi(8, "bgm/th08_01.mid");
+                g_App.PlayMidi(8, 0);
+                break;
+            case 5:
+                if (g_App.windowed >= 1)
+                {
+                    g_App.windowed = 0;
+                }
+                else
+                {
+                    g_App.windowed++;
+                }
+                break;
+            case 6:
+                if (g_App.optionsMenuCursor >= 1)
+                {
+                    g_App.optionsMenuCursor = 0;
+                }
+                else
+                {
+                    g_App.optionsMenuCursor++;
+                }
+                break;
+            default:
+                goto idle;
+            }
+            g_SoundPlayer.QueueSound(12, 0);
+            g_SoundPlayer.PlayQueuedSounds();
+        }
+    idle:
+        switch (this->cursor)
+        {
+        case 3:
+        case 4:
+            if (this->inputLockout % 50 == 0)
+            {
+                g_SoundPlayer.QueueSound(0x1d, 0);
+            }
+        }
+        if (g_Buttons != 0)
+        {
+            this->subMenuIdleFrames = 0;
+        }
+        if (this->subMenuIdleFrames >= 3600)
+        {
+            goto leave;
+        }
+        if (WAS_PRESSED(0x1001))
+        {
+            switch (this->cursor)
+            {
+            case 7:
+                g_App.lifeCount = 2;
+                g_App.bombCount = 3;
+                g_App.musicMode = 1;
+                g_App.playSounds = 1;
+                g_App.optionsMenuCursor = 0;
+                g_SoundPlayer.QueueSound(10, 0);
+                g_SoundPlayer.PlayQueuedSounds();
+                break;
+            case 8:
+                this->cursor = 0;
+                this->SetState(3);
+                g_SoundPlayer.QueueSound(10, 0);
+                g_SoundPlayer.PlayQueuedSounds();
+                return 1;
+            case 9:
+            leave:
+                this->cursor = 7;
+                this->SetState(0);
+                g_SoundPlayer.QueueSound(11, 0);
+                g_SoundPlayer.PlayQueuedSounds();
+                if (this->savedConfig.colorMode16Bits != g_App.colorMode16Bits ||
+                    this->savedConfig.windowed != g_App.windowed)
+                {
+                    return 5;
+                }
+                return 1;
+            }
+        }
+        if (WAS_PRESSED(10))
+        {
+            if (this->cursor == 9)
+            {
+                goto leave;
+            }
+            this->titleAnm->SetSprite(&this->sprites[this->cursor + 10],
+                                      this->sprites[this->cursor + 10].baseSpriteIndex + 1);
+            this->cursor = 9;
+            this->titleAnm->SetSprite(&this->sprites[this->cursor + 10],
+                                      this->sprites[this->cursor + 10].baseSpriteIndex);
+            g_SoundPlayer.QueueSound(11, 0);
+            g_SoundPlayer.PlayQueuedSounds();
+        }
+    }
+    this->subMenuIdleFrames++;
+    this->stateFrames++;
+    this->inputLockout++;
+    return 1;
+}
+
 void MainMenu::ReassignButton(short button, short replacement, int unused)
 {
     if (this->controllerMapping.shootButton == button)

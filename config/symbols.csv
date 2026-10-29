@@ -2449,6 +2449,7 @@ address,size,name,symbol
 0x004c8250,,g_PracticeStageNames,?g_PracticeStageNames@@3PAPADA
 0x004c829c,,g_FullWidthDigits,?g_FullWidthDigits@@3PAPADA
 0x004c8640,,g_TitleHelpTexts,?g_TitleHelpTexts@@3PAPADA
+0x004c8664,,g_OptionsHelpTexts,?g_OptionsHelpTexts@@3PAPADA
 0x004c868c,,g_LastPressedKey,?g_LastPressedKey@@3FA
 0x004c8690,,g_KeyConfigHelpTexts,?g_KeyConfigHelpTexts@@3PAPADA
 0x004c86c0,,g_MenuShotTypeNames,?g_MenuShotTypeNames@@3PAPADA

@@ -192,6 +192,8 @@ extern char *g_MenuShotTypeNames[12];
 extern char *g_MenuDifficultyNames[5];
 // The practice menu's stage names.
 extern char *g_PracticeStageNames[8];
+// The help line the options screen shows for each entry.
+extern char *g_OptionsHelpTexts[10];
 // The help line the key config shows for each entry.
 extern char *g_KeyConfigHelpTexts[12];
 // The button the key config saw pressed last frame, so that a held
