@@ -1020,6 +1020,315 @@ int Stage::StepObjects()
     return 0;
 }
 
+int Stage::DrawLayer(int layer)
+{
+    int fog;
+    StageQuad *quad;
+    float range;
+    StageInstance *placement = this->instances;
+    int objCount = 0;
+    int any = 0;
+    D3DXVECTOR3 centre;
+    D3DXVECTOR3 rightValue;
+    float dotVal;
+    StageObject *objData;
+    D3DXVECTOR3 diff2;
+    Sprite *spr;
+    D3DXVECTOR3 origin(0.0f, 0.0f, 0.0f);
+    D3DCOLOR colVal;
+    float w2;
+    D3DXMATRIX mat;
+    StageLineQuad *altQuad;
+
+    fog = 0xff;
+    this->SetupCamera();
+    g_SpriteEngine->SetLastCameraSetupFlag(1);
+    D3DXMatrixIdentity(&mat);
+    rightValue.x = g_App.viewMatrix._11;
+    rightValue.y = g_App.viewMatrix._12;
+    rightValue.z = g_App.viewMatrix._13;
+    D3DXVec3Normalize(&rightValue, &rightValue);
+    while (placement->id >= 0)
+    {
+        objData = this->objects[placement->id];
+        if (objData->layer == layer)
+        {
+            quad = objData->quads;
+            centre.x = objData->pos.x + placement->pos.x - this->cameraPos.x + objData->size.x / 2.0f;
+            centre.y = objData->pos.y + placement->pos.y - this->cameraPos.y + objData->size.y / 2.0f;
+            centre.z = objData->pos.z + placement->pos.z - this->cameraPos.z + objData->size.z / 2.0f;
+            centre = centre - (this->camera.eye + this->camera.offset);
+            if (D3DXVec3LengthSq(&centre) > this->unk_6470)
+            {
+                goto next;
+            }
+            dotVal = D3DXVec3Dot(&centre, &this->camera.dir);
+            range = D3DXVec3Length(&objData->size) / 2.0f + 960.0f;
+            if (dotVal > range || dotVal < 80.0f)
+            {
+                goto next;
+            }
+            objData->flags |= 2;
+            any = 1;
+            while (quad->type >= 0)
+            {
+                spr = &this->sprites[quad->spriteIndex];
+                switch (quad->type)
+                {
+                case 0:
+                    spr->pos.x = spr->posOffset.x + quad->pos.x + placement->pos.x - this->cameraPos.x;
+                    spr->pos.y = spr->posOffset.y + quad->pos.y + placement->pos.y - this->cameraPos.y;
+                    spr->pos.z = spr->posOffset.z + quad->pos.z + placement->pos.z - this->cameraPos.z;
+                    // scaleY and scaleX are SpriteBase's +0x18 and +0x1c,
+                    // really the horizontal and vertical scales.
+                    if (quad->width != 0.0f)
+                    {
+                        spr->scaleY = quad->width / spr->spriteData->width;
+                    }
+                    if (quad->height != 0.0f)
+                    {
+                        spr->scaleX = quad->height / spr->spriteData->height;
+                    }
+                    if ((spr->autoRotate & 0xf) == 2)
+                    {
+                        mat._41 = spr->pos[0];
+                        mat._42 = spr->pos[1];
+                        mat._43 = spr->pos[2];
+                        D3DXVec3Project(&centre, &origin, &g_App.viewport, (D3DXMATRIX *)&g_App.projectionMatrix,
+                                        (D3DXMATRIX *)&g_App.viewMatrix, &mat);
+                        if (quad->width != 0.0f)
+                        {
+                            w2 = quad->width;
+                        }
+                        else
+                        {
+                            w2 = spr->spriteData->width;
+                        }
+                        mat._41 += rightValue.x * w2 * spr->scaleY;
+                        mat._42 += rightValue.y * w2 * spr->scaleY;
+                        mat._43 += rightValue.z * w2 * spr->scaleY;
+                        D3DXVec3Project(&diff2, &origin, &g_App.viewport, (D3DXMATRIX *)&g_App.projectionMatrix,
+                                        (D3DXMATRIX *)&g_App.viewMatrix, &mat);
+                        diff2 = diff2 - centre;
+                        spr->scaleY = D3DXVec3Length(&diff2) / w2;
+                        spr->scaleX = spr->scaleY;
+                        if (w2 < 0.0f)
+                        {
+                            spr->scaleX = -spr->scaleX;
+                        }
+                        diff2 = spr->pos - (this->camera.eye + this->camera.offset);
+                        w2 = D3DXVec3Length(&diff2);
+                        colVal = spr->color;
+                        if (this->fog.nearPlane < w2)
+                        {
+                            w2 = (this->fog.nearPlane - w2) / (this->fog.nearPlane - this->fog.farPlane);
+                            if (w2 >= 1.0f)
+                            {
+                                goto nextQuad;
+                            }
+                            ((BYTE *)&spr->color)[0] = ((BYTE *)&spr->color)[0] - (BYTE)((((BYTE *)&spr->color)[0] - ((BYTE *)&this->fog.color)[0]) * w2);
+                            ((BYTE *)&spr->color)[1] = ((BYTE *)&spr->color)[1] - (BYTE)((((BYTE *)&spr->color)[1] - ((BYTE *)&this->fog.color)[1]) * w2);
+                            ((BYTE *)&spr->color)[2] = ((BYTE *)&spr->color)[2] - (BYTE)((((BYTE *)&spr->color)[2] - ((BYTE *)&this->fog.color)[2]) * w2);
+                            ((BYTE *)&spr->color)[3] = ((BYTE *)&spr->color)[3] * (1.0f - w2);
+                        }
+                        spr->pos = centre;
+                        if (spr->pos.z < 0.0f || spr->pos.z > 1.0f)
+                        {
+                        }
+                        else
+                        {
+                            if (fog != 0)
+                            {
+                                if (!g_App.GetNoFog())
+                                {
+                                    g_App.DisableFog();
+                                }
+                                fog = 0;
+                            }
+                            g_SpriteEngine->DrawNoRound(spr);
+                            if ((spr->autoRotate & 0xf0) == 0x10 && this->fog.nearPlane > w2 && this->unk_647c != 0)
+                            {
+                                this->unk_6480[this->unk_6478] = centre;
+                                this->unk_6480[this->unk_6478].z = 0.0f;
+                                this->unk_6478++;
+                            }
+                        }
+                        spr->color = colVal;
+                    }
+                    else
+                    {
+                        if (!g_App.GetNoFog() && fog != 1)
+                        {
+                            if (!g_App.GetNoFog())
+                            {
+                                g_App.EnableFog();
+                            }
+                            fog = 1;
+                        }
+                        g_SpriteEngine->Draw3D(spr);
+                    }
+                    break;
+                case 1:
+                {
+                    altQuad = (StageLineQuad *)quad;
+                    D3DXVECTOR3 begin;
+                    D3DXVECTOR3 endPos;
+                    VertexTex1DiffuseXyzrwh vertices[4];
+                    float halfW;
+                    float halfW2;
+                    float dist;
+
+                    begin.x = altQuad->start.x + placement->pos.x - this->cameraPos.x;
+                    begin.y = altQuad->start.y + placement->pos.y - this->cameraPos.y;
+                    begin.z = altQuad->start.z + placement->pos.z - this->cameraPos.z;
+                    mat._41 = begin.x;
+                    mat._42 = begin.y;
+                    mat._43 = begin.z;
+                    D3DXVec3Project(&centre, &origin, &g_App.viewport, (D3DXMATRIX *)&g_App.projectionMatrix,
+                                    (D3DXMATRIX *)&g_App.viewMatrix, &mat);
+                    if (altQuad->width != 0.0f)
+                    {
+                        dist = altQuad->width;
+                    }
+                    else
+                    {
+                        dist = spr->spriteData->width;
+                    }
+                    mat._41 += rightValue.x * dist;
+                    mat._42 += rightValue.y * dist;
+                    mat._43 += rightValue.z * dist;
+                    D3DXVec3Project(&diff2, &origin, &g_App.viewport, (D3DXMATRIX *)&g_App.projectionMatrix,
+                                    (D3DXMATRIX *)&g_App.viewMatrix, &mat);
+                    diff2 = diff2 - centre;
+                    halfW = D3DXVec3Length(&diff2) / 2.0f;
+                    diff2 = begin - (this->camera.eye + this->camera.offset);
+                    dist = D3DXVec3Length(&diff2);
+                    if (this->fog.nearPlane < dist)
+                    {
+                        dist = (this->fog.nearPlane - dist) / (this->fog.nearPlane - this->fog.farPlane);
+                        if (dist < 1.0f)
+                        {
+                            ((BYTE *)&vertices[0].diffuse)[0] = ((BYTE *)&vertices[1].diffuse)[0] =
+                                ((BYTE *)&spr->color)[0] - (BYTE)((((BYTE *)&spr->color)[0] - ((BYTE *)&this->fog.color)[0]) * dist);
+                            ((BYTE *)&vertices[0].diffuse)[1] = ((BYTE *)&vertices[1].diffuse)[1] =
+                                ((BYTE *)&spr->color)[1] - (BYTE)((((BYTE *)&spr->color)[1] - ((BYTE *)&this->fog.color)[1]) * dist);
+                            ((BYTE *)&vertices[0].diffuse)[2] = ((BYTE *)&vertices[1].diffuse)[2] =
+                                ((BYTE *)&spr->color)[2] - (BYTE)((((BYTE *)&spr->color)[2] - ((BYTE *)&this->fog.color)[2]) * dist);
+                            ((BYTE *)&vertices[0].diffuse)[3] = ((BYTE *)&vertices[1].diffuse)[3] =
+                                ((BYTE *)&spr->color)[3] * (1.0f - dist);
+                        }
+                        else
+                        {
+                            ((BYTE *)&vertices[0].diffuse)[3] = ((BYTE *)&vertices[1].diffuse)[3] = 0;
+                        }
+                    }
+                    else
+                    {
+                        vertices[0].diffuse = vertices[1].diffuse = spr->color;
+                    }
+                    begin.x = altQuad->end.x + placement->pos.x - this->cameraPos.x;
+                    begin.y = altQuad->end.y + placement->pos.y - this->cameraPos.y;
+                    begin.z = altQuad->end.z + placement->pos.z - this->cameraPos.z;
+                    mat._41 = begin.x;
+                    mat._42 = begin.y;
+                    mat._43 = begin.z;
+                    D3DXVec3Project(&endPos, &origin, &g_App.viewport, (D3DXMATRIX *)&g_App.projectionMatrix,
+                                    (D3DXMATRIX *)&g_App.viewMatrix, &mat);
+                    if (altQuad->width != 0.0f)
+                    {
+                        dist = altQuad->width;
+                    }
+                    else
+                    {
+                        dist = spr->spriteData->width;
+                    }
+                    mat._41 += rightValue.x * dist;
+                    mat._42 += rightValue.y * dist;
+                    mat._43 += rightValue.z * dist;
+                    D3DXVec3Project(&diff2, &origin, &g_App.viewport, (D3DXMATRIX *)&g_App.projectionMatrix,
+                                    (D3DXMATRIX *)&g_App.viewMatrix, &mat);
+                    diff2 = diff2 - endPos;
+                    halfW2 = D3DXVec3Length(&diff2) / 2.0f;
+                    diff2 = begin - (this->camera.eye + this->camera.offset);
+                    dist = D3DXVec3Length(&diff2);
+                    if (this->fog.nearPlane < dist)
+                    {
+                        dist = (this->fog.nearPlane - dist) / (this->fog.nearPlane - this->fog.farPlane);
+                        if (dist < 1.0f)
+                        {
+                            ((BYTE *)&vertices[2].diffuse)[0] = ((BYTE *)&vertices[3].diffuse)[0] =
+                                ((BYTE *)&spr->color)[0] - (BYTE)((((BYTE *)&spr->color)[0] - ((BYTE *)&this->fog.color)[0]) * dist);
+                            ((BYTE *)&vertices[2].diffuse)[1] = ((BYTE *)&vertices[3].diffuse)[1] =
+                                ((BYTE *)&spr->color)[1] - (BYTE)((((BYTE *)&spr->color)[1] - ((BYTE *)&this->fog.color)[1]) * dist);
+                            ((BYTE *)&vertices[2].diffuse)[2] = ((BYTE *)&vertices[3].diffuse)[2] =
+                                ((BYTE *)&spr->color)[2] - (BYTE)((((BYTE *)&spr->color)[2] - ((BYTE *)&this->fog.color)[2]) * dist);
+                            ((BYTE *)&vertices[2].diffuse)[3] = ((BYTE *)&vertices[3].diffuse)[3] =
+                                ((BYTE *)&spr->color)[3] * (1.0f - dist);
+                        }
+                        else
+                        {
+                            ((BYTE *)&vertices[2].diffuse)[3] = ((BYTE *)&vertices[3].diffuse)[3] = 0;
+                        }
+                    }
+                    else
+                    {
+                        vertices[2].diffuse = vertices[3].diffuse = spr->color;
+                    }
+                    origin = endPos - centre;
+                    dist = sqrtf(origin.x * origin.x + origin.y * origin.y);
+                    if (dist < 0.00001f)
+                    {
+                        goto nextQuad;
+                    }
+                    origin /= dist;
+                    if (centre.z < 0.0f || centre.z > 1.0f)
+                    {
+                        goto nextQuad;
+                    }
+                    if (endPos.z < 0.0f || endPos.z > 1.0f)
+                    {
+                        goto nextQuad;
+                    }
+                    vertices[0].pos.x = origin.y * halfW + centre.x;
+                    vertices[0].pos.y = centre.y - origin.x * halfW;
+                    vertices[0].pos.z = centre.z;
+                    vertices[1].pos.x = centre.x - origin.y * halfW;
+                    vertices[1].pos.y = origin.x * halfW + centre.y;
+                    vertices[1].pos.z = centre.z;
+                    vertices[2].pos.x = origin.y * halfW2 + endPos.x;
+                    vertices[2].pos.y = endPos.y - origin.x * halfW2;
+                    vertices[2].pos.z = endPos.z;
+                    vertices[3].pos.x = endPos.x - origin.y * halfW2;
+                    vertices[3].pos.y = origin.x * halfW2 + endPos.y;
+                    vertices[3].pos.z = endPos.z;
+                    vertices[0].uv.x = vertices[2].uv.x = spr->spriteData->uvStartX + spr->uvScrollX;
+                    vertices[1].uv.x = vertices[3].uv.x = spr->spriteData->uvEndX + spr->uvScrollX;
+                    vertices[0].uv.y = vertices[1].uv.y = spr->spriteData->uvStartY + spr->uvScrollY;
+                    vertices[2].uv.y = vertices[3].uv.y = spr->spriteData->uvEndY + spr->uvScrollY;
+                    vertices[0].w = vertices[1].w = vertices[2].w = vertices[3].w = 1.0f;
+                    if (fog != 0)
+                    {
+                        if (!g_App.GetNoFog())
+                        {
+                            g_App.DisableFog();
+                        }
+                        fog = 0;
+                    }
+                    g_SpriteEngine->DrawVertexQuad(spr, vertices);
+                    break;
+                }
+                }
+            nextQuad:
+                quad = (StageQuad *)((char *)quad + quad->size);
+            }
+            objCount++;
+        }
+    next:
+        placement++;
+    }
+    return 0;
+}
+
 void Stage::SetupFixedCamera()
 {
     float midX;

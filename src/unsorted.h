@@ -2010,6 +2010,19 @@ struct StageQuad
     float height;
 };
 
+// A quad of type 1: a strip from `start` to `end`, `width` wide (or
+// its sprite's width). New in th08.
+struct StageLineQuad
+{
+    short type;
+    short size;
+    short script;
+    short spriteIndex;
+    D3DXVECTOR3 start;
+    D3DXVECTOR3 end;
+    float width;
+};
+
 // An instruction of the stage script: at `frame`, `opcode` acts on
 // `args`. As th07's, with more opcodes.
 struct StageInstr
