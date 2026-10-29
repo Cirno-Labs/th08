@@ -377,3 +377,22 @@ int Stage::RegisterChain(int stage)
     g_Chain.AddToDrawChain(&g_StageDrawChain2, 7);
     return 0;
 }
+
+int Stage::DeletedCallback(Stage *stage)
+{
+    if (!IsRestarting())
+    {
+        g_SpriteEngine->ReleaseAnm(4);
+    }
+    if (stage->sprites != NULL)
+    {
+        g_MemoryManager.Free(stage->sprites);
+        stage->sprites = NULL;
+    }
+    if (!IsRestarting() && stage->data != NULL)
+    {
+        g_MemoryManager.Free(stage->data);
+        stage->data = NULL;
+    }
+    return 0;
+}
