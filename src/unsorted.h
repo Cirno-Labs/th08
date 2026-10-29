@@ -1102,7 +1102,7 @@ struct GameManagerStats
     short unk_20;
     short unk_22;
     int unk_24;
-    BYTE unk_28;
+    char unk_28;
     BYTE continuesUsed;
     unsigned char unk_2a[0x2];
     int unk_2c;
