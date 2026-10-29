@@ -125,3 +125,20 @@ void AsciiText::Initialize()
     this->highlight = 0;
     this->SetGlyphWidth(13);
 }
+
+void AsciiText::StartScripts()
+{
+    this->anm->StartScript(&this->summaryPopup, 5);
+    this->anm->StartScript(&this->summaryPopup3, 7);
+    this->anm->StartScript(&this->summaryPopup2, 6);
+    this->anm->StartScript(&this->summaryPopup4, 8);
+    this->anm->StartScript(&this->unk_127c, 4);
+    this->anm->StartScript(&this->unk_1520, 9);
+    this->anm->StartScript(&this->nearbyLabels[0], 10);
+    this->anm->StartScript(&this->nearbyLabels[1], 10);
+    this->anm->StartScript(&this->nearbyLabels[2], 10);
+    this->anm->StartScript(&this->nearbyLabels[3], 10);
+    this->summaryPopup2.pos.x -= g_GameManager.unk_3ddf8 * 56.0f / -10000.0f;
+    this->summaryPopup3.pos.x += g_GameManager.unk_3ddfa * 56.0f / 10000.0f;
+    this->SetSummaryPendingInterrupt(this->GetSummaryPendingInterrupt());
+}
