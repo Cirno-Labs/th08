@@ -225,3 +225,8 @@ int GdiSurface::GetWidth()
 {
     return this->width;
 }
+
+int GdiSurface::GetFormat()
+{
+    return this->format;
+}
