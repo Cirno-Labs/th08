@@ -69,6 +69,11 @@ public:
     static int DeletedCallback(App *arg);
     // The draw chain callback: draws the frame rate. Returns 1.
     static int OnDraw(App *arg);
+    // The first draw chain callback, new in th08: from logoFrames 2 on,
+    // counts it up and blinks "Press Shot Button" from 5 to 64, then
+    // shows the logo in surface 8 while logoFrames is nonzero, or
+    // releases it. Returns 1.
+    static int OnDrawLogo(App *arg);
     // Whether holding shoot also focuses (shootFocuses). th07 read the
     // field directly; th08 calls this out-of-line copy.
     int GetShootFocuses();
@@ -147,7 +152,10 @@ public:
     CRITICAL_SECTION criticalSections[4];
     // How deep each of criticalSections is entered.
     BYTE criticalSectionDepths[4];
-    unsigned char unk_2fc[0x58];
+    // The logo screen's frame counter: OnDrawLogo shows the logo while
+    // it is nonzero, and blinks "Press Shot Button" from 2 on.
+    int logoFrames;
+    unsigned char unk_300[0x54];
     // The sum of the executable's dwords and its size, from
     // ChecksumExecutable.
     DWORD exeChecksum;

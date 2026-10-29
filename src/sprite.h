@@ -1,0 +1,26 @@
+// Sprites and the engine that draws them. Only what is known so far.
+
+#pragma once
+
+#include <d3d8.h>
+#include <d3dx8math.h>
+
+// The sprite engine, th07's SpriteEngine. Only the fields known so far.
+class SpriteEngine
+{
+public:
+    // Copies surface `surface` to the back buffer at (`left`, `top`), as
+    // th07's (0x466bb0).
+    void CopySurfaceToBackBuffer(int surface, int left, int top, int x, int y);
+    // Releases surface `surface` (0x466ae0).
+    void ReleaseSurface(int surface);
+
+    IDirect3DSurface8 *GetSurface(int surface)
+    {
+        return this->surfaces[surface];
+    }
+
+    unsigned char unk_0[0x2038];
+    IDirect3DSurface8 *surfaces[0x20];
+};
+extern SpriteEngine *g_SpriteEngine;
