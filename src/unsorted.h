@@ -1285,6 +1285,12 @@ public:
     {
         this->stats->unk_28 = value;
     }
+    // Adds `amount` to stats->unk_28. Inline; the copy at 0x406df0 is in
+    // an /Od object.
+    void AddUnk28(char amount)
+    {
+        this->stats->unk_28 += amount;
+    }
     // Whether a spell card is practised (bit 14 of unk_3dbac). Inline;
     // the copy at 0x406c70 is an /Od object's.
     int IsInSpellCardPractice()
@@ -1509,17 +1515,59 @@ struct MsgFile
     void *scripts[1];
 };
 
+// The arguments of a message instruction, as th07's: who it is for (a
+// portrait 0 to 3; for opcode 3 the speaker, whose colours it takes) and a
+// sprite, script or line number, then the text. Opcodes 16, 19 and 20
+// have only the text.
+struct MsgArgs
+{
+    short who;
+    union
+    {
+        short index;
+        BYTE value;
+    };
+    char text[1];
+};
+
+// The arguments of opcodes 15 and 17: the portrait that speaks, then a
+// sprite for each portrait (negative to keep it). New in th08.
+struct MsgPortraitArgs
+{
+    int who;
+    int sprites[4];
+};
+
+// One instruction of a message script, as th07's.
+struct MsgInstr
+{
+    // The frame it runs on.
+    WORD time;
+    BYTE opcode;
+    // The size of the arguments, in bytes.
+    BYTE argsSize;
+    union
+    {
+        MsgArgs args;
+        MsgPortraitArgs portraitArgs;
+        int i;
+        BYTE b;
+    };
+};
+
 // The dialogue state, as th07's GuiMsg (0x1570 bytes now).
 struct GuiMsg
 {
     MsgFile *msgFile;
     // The instruction being run.
-    void *instr;
+    MsgInstr *instr;
     // The script running, -1 for none.
     int scriptIndex;
     Timer timer;
     int waitFrames;
-    int unk_1c;
+    // How long opcodes 4 and 21 wait before the shot button ends them: 30
+    // once a wait ran out, 8 once the button ended one. New in th08.
+    int minWaitFrames;
     Sprite portraits[4];
     Sprite text[2];
     Sprite nameplates[2];
@@ -1531,14 +1579,22 @@ struct GuiMsg
     DWORD timelineRelease;
     // Whether the dialogue can be skipped.
     BYTE skippable;
-    BYTE unk_1569;
-    BYTE unk_156a;
-    BYTE unk_156b;
-    BYTE unk_156c;
+    // The portrait that speaks (opcodes 15 and 17): opcode 16 draws its
+    // text in its colours.
+    BYTE speaker;
+    // Set when the speaker changes or a wait ends: opcode 16 then clears
+    // the second line and starts again from the first.
+    BYTE newPage;
+    // The line opcode 16 writes next.
+    BYTE nextLine;
+    // The portrait shown in front (interrupt 3), 0xff for none.
+    BYTE activePortrait;
+    // Set by opcode 18; DrawMsg tests it.
     BYTE unk_156d;
     // The Extra/clear level StartMsgScript picks for the ending dialogue
     // (index 10 of stage 6), kept in bits 11-12 of
-    // GameManager::unk_3dbac.
+    // GameManager::unk_3dbac. Opcode 21 lets the player pick it (up and
+    // down) and opcode 22 keeps it and starts script 1 or 2.
     BYTE clearLevel;
     unsigned char pad_156f[0x1];
 };
@@ -1755,9 +1811,6 @@ void DecodeMsgString(char *dst, char *src);
 // Has the back buffer's play area copied to texture 10 at sprite
 // `sprite` of ANM slot 10 (0x437f5c).
 void CopySpriteToTexture(int sprite);
-// Swapped by GuiImpl::StartMsgScript for stages 6B and Extra.
-extern int g_Unknown4ecc9c;
-extern int g_Unknown4ecca0;
 // The character's loading ANM, the stages' text ANMs (the last for
 // Extra's last spell cards) and the dialogue files by stage and
 // character.
@@ -1769,6 +1822,8 @@ extern char *g_AmPmNames[2];
 // The colors of the boss timer: 20 seconds and more, 10, 5 and under 5,
 // as th07's.
 extern D3DCOLOR g_BossTimerColors[4];
+// The stage clear bonus, by stage.
+extern int g_StageClearBonuses[];
 // The dialogue's text colours, by character.
 extern D3DCOLOR g_MsgColors[][4];
 
@@ -1862,6 +1917,12 @@ struct SpellCard
     }
 
     DWORD unk_0;
+    unsigned char unk_4[0x2620];
+    // The face ANMs (slots 0x10 to 0x13) of the dialogue's four portraits.
+    // GuiImpl::StartMsgScript swaps the last two for stages 6B and Extra.
+    AnmLoaded *faceAnms[4];
+    // face_cdbg.anm (slot 0xf).
+    AnmLoaded *backgroundAnm;
 };
 extern SpellCard g_SpellCard;
 // Sets stats->unk_38 from stats->unk_34 by difficulty (0x440470).

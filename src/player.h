@@ -26,7 +26,9 @@ public:
     // Removes the player's chain elements, as th07's (0x44dd10).
     static void RemoveChain();
 
-    unsigned char unk_0[0x2b4];
+    // 2 while dying, as th07's.
+    char playerState;
+    unsigned char unk_1[0x2b3];
     // The player's position.
     D3DXVECTOR3 pos;
     unsigned char unk_2c0[0xe27b4];

@@ -2410,6 +2410,7 @@ address,size,name,symbol
 0x004bd700,,GUID_NULL,_GUID_NULL
 0x004c67d0,,g_SpellCardLists,?g_SpellCardLists@@3PAPAHA
 0x004c67e8,,g_SpellCardListSizes,?g_SpellCardListSizes@@3PAHA
+0x004c7158,,g_StageClearBonuses,?g_StageClearBonuses@@3PAHA
 0x004c7180,,g_MsgColors,?g_MsgColors@@3PAY03KA
 0x004c7240,,g_StageBgms,?g_StageBgms@@3PAUStageBgm@@A
 0x004c72ac,,g_BossTimerColors,?g_BossTimerColors@@3PAKA
@@ -2444,8 +2445,6 @@ address,size,name,symbol
 0x004e4b50,,g_FogColorChanged,?g_FogColorChanged@@3EA
 0x004ea3f4,,g_CameraSizeOffset,?g_CameraSizeOffset@@3UD3DXVECTOR3@@A
 0x004ea670,,g_SpellCard,?g_SpellCard@@3USpellCard@@A
-0x004ecc9c,,g_Unknown4ecc9c,?g_Unknown4ecc9c@@3HA
-0x004ecca0,,g_Unknown4ecca0,?g_Unknown4ecca0@@3HA
 0x00577f20,,g_EnemyManager,?g_EnemyManager@@3VEnemyManager@@A
 0x00f54e90,,g_BulletManager,?g_BulletManager@@3VBulletManager@@A
 0x0160f428,,g_Gui,?g_Gui@@3VGui@@A

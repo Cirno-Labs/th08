@@ -12,6 +12,7 @@
 #include "item.h"
 #include "player.h"
 #include "replay.h"
+#include "screeneffect.h"
 #include "sprite.h"
 #include "unsorted.h"
 
@@ -64,18 +65,18 @@ void GuiImpl::StartMsgScript(int index)
             break;
         case 7:
         {
-            int tmp = g_Unknown4ecc9c;
-            g_Unknown4ecc9c = g_Unknown4ecca0;
-            g_Unknown4ecca0 = tmp;
+            AnmLoaded *tmp = g_SpellCard.faceAnms[2];
+            g_SpellCard.faceAnms[2] = g_SpellCard.faceAnms[3];
+            g_SpellCard.faceAnms[3] = tmp;
             g_Stage.unk_b34 = 2;
             CopySpriteToTexture(0x18);
             break;
         }
         case 8:
         {
-            int tmp = g_Unknown4ecc9c;
-            g_Unknown4ecc9c = g_Unknown4ecca0;
-            g_Unknown4ecca0 = tmp;
+            AnmLoaded *tmp = g_SpellCard.faceAnms[2];
+            g_SpellCard.faceAnms[2] = g_SpellCard.faceAnms[3];
+            g_SpellCard.faceAnms[3] = tmp;
             g_Stage.unk_b34 = 2;
             CopySpriteToTexture(0x19);
             break;
@@ -148,7 +149,7 @@ void GuiImpl::StartMsgScript(int index)
         }
     }
     this->msg.scriptIndex = index;
-    this->msg.instr = this->msg.msgFile->scripts[index];
+    this->msg.instr = (MsgInstr *)this->msg.msgFile->scripts[index];
     this->msg.text[0].scriptIndex = -1;
     this->msg.text[1].scriptIndex = -1;
     this->msg.unk_156d = 1;
@@ -162,14 +163,449 @@ void GuiImpl::StartMsgScript(int index)
     this->msg.shadowColors[2] = 0;
     this->msg.shadowColors[3] = 0;
     this->msg.skippable = 1;
-    this->msg.unk_1c = 6;
-    this->msg.unk_1569 = 0;
-    this->msg.unk_156a = 1;
-    this->msg.unk_156b = 0;
-    this->msg.unk_156c = 0xff;
+    this->msg.minWaitFrames = 6;
+    this->msg.speaker = 0;
+    this->msg.newPage = 1;
+    this->msg.nextLine = 0;
+    this->msg.activePortrait = 0xff;
     g_BulletManager.Func415c60();
     g_EnemyManager.ClearEnemiesForBonus(0, 0);
     g_ItemManager.CollectAll();
+}
+
+int GuiImpl::RunMsg()
+{
+    MsgArgs *args;
+
+    if (this->msg.scriptIndex < 0)
+    {
+        return -1;
+    }
+    if (this->msg.timelineRelease > 0)
+    {
+        this->msg.timelineRelease--;
+    }
+    if (this->msg.skippable && (g_GameButtons & 0x100))
+    {
+        this->msg.timer = this->msg.instr->time;
+    }
+    if (g_Player.playerState != 2)
+    {
+        g_ItemManager.CollectAll();
+    }
+    while (this->msg.timer >= this->msg.instr->time)
+    {
+        switch (this->msg.instr->opcode)
+        {
+        case 0:
+            this->msg.scriptIndex = -1;
+            return -1;
+        case 15:
+        {
+            MsgPortraitArgs *portraitArgs;
+            int i;
+
+            portraitArgs = &this->msg.instr->portraitArgs;
+            if (this->msg.activePortrait != portraitArgs->who)
+            {
+                for (i = 0; i < ARRAY_SIZE(this->msg.portraits); i++)
+                {
+                    if (this->msg.activePortrait == i)
+                    {
+                        if (this->msg.activePortrait / 2 != portraitArgs->who / 2)
+                        {
+                            this->msg.portraits[i].pendingInterrupt = 6;
+                        }
+                        else
+                        {
+                            this->msg.portraits[i].pendingInterrupt = 4;
+                        }
+                    }
+                    else
+                    {
+                        this->msg.portraits[i].pendingInterrupt = 4;
+                    }
+                }
+            }
+            this->msg.portraits[portraitArgs->who].pendingInterrupt = 3;
+            this->msg.activePortrait = portraitArgs->who;
+            if (portraitArgs->sprites[0] >= 0)
+            {
+                g_SpellCard.faceAnms[0]->SetSprite(&this->msg.portraits[0], portraitArgs->sprites[0]);
+            }
+            if (portraitArgs->sprites[1] >= 0)
+            {
+                g_SpellCard.faceAnms[1]->SetSprite(&this->msg.portraits[1], portraitArgs->sprites[1]);
+            }
+            if (portraitArgs->sprites[2] >= 0)
+            {
+                g_SpellCard.faceAnms[2]->SetSprite(&this->msg.portraits[2], portraitArgs->sprites[2]);
+            }
+            if (portraitArgs->sprites[3] >= 0)
+            {
+                g_SpellCard.faceAnms[3]->SetSprite(&this->msg.portraits[3], portraitArgs->sprites[3]);
+            }
+            this->msg.speaker = portraitArgs->who;
+            this->msg.newPage = 1;
+            break;
+        }
+        case 17:
+        {
+            MsgPortraitArgs *portraitArgs2;
+            int i;
+
+            portraitArgs2 = &this->msg.instr->portraitArgs;
+            if (this->msg.activePortrait != portraitArgs2->who)
+            {
+                for (i = 0; i < ARRAY_SIZE(this->msg.portraits); i++)
+                {
+                    if (this->msg.activePortrait == i)
+                    {
+                        if (this->msg.activePortrait / 2 != portraitArgs2->who / 2)
+                        {
+                            this->msg.portraits[i].pendingInterrupt = 6;
+                        }
+                        else
+                        {
+                            this->msg.portraits[i].pendingInterrupt = 4;
+                        }
+                    }
+                    else
+                    {
+                        this->msg.portraits[i].pendingInterrupt = 4;
+                    }
+                }
+            }
+            this->msg.portraits[portraitArgs2->who].pendingInterrupt = 3;
+            this->msg.activePortrait = portraitArgs2->who;
+            if (portraitArgs2->sprites[0] >= 0)
+            {
+                switch (portraitArgs2->who)
+                {
+                case 0:
+                    g_SpellCard.faceAnms[0]->SetSprite(&this->msg.portraits[0], portraitArgs2->sprites[0]);
+                    break;
+                case 1:
+                    g_SpellCard.faceAnms[1]->SetSprite(&this->msg.portraits[1], portraitArgs2->sprites[0]);
+                    break;
+                case 2:
+                    g_SpellCard.faceAnms[2]->SetSprite(&this->msg.portraits[2], portraitArgs2->sprites[0]);
+                    break;
+                case 3:
+                    g_SpellCard.faceAnms[3]->SetSprite(&this->msg.portraits[3], portraitArgs2->sprites[0]);
+                    break;
+                }
+            }
+            this->msg.speaker = portraitArgs2->who;
+            this->msg.newPage = 1;
+            break;
+        }
+        case 1:
+            args = &this->msg.instr->args;
+            switch (args->who)
+            {
+            case 0:
+                g_SpellCard.faceAnms[0]->StartScript(&this->msg.portraits[0], args->index);
+                break;
+            case 1:
+                g_SpellCard.faceAnms[1]->StartScript(&this->msg.portraits[1], args->index);
+                break;
+            case 2:
+                g_SpellCard.faceAnms[2]->StartScript(&this->msg.portraits[2], args->index);
+                break;
+            case 3:
+                g_SpellCard.faceAnms[3]->StartScript(&this->msg.portraits[3], args->index);
+                break;
+            }
+            if (this->msg.portraits[args->who].spriteData->width > 128.0f)
+            {
+                this->msg.portraits[args->who].posOffset.x = -112.0f;
+            }
+            else
+            {
+                this->msg.portraits[args->who].posOffset.x = 0.0f;
+            }
+            break;
+        case 2:
+            args = &this->msg.instr->args;
+            switch (args->who)
+            {
+            case 0:
+                g_SpellCard.faceAnms[0]->SetSprite(&this->msg.portraits[0], args->index);
+                break;
+            case 1:
+                g_SpellCard.faceAnms[1]->SetSprite(&this->msg.portraits[1], args->index);
+                break;
+            case 2:
+                g_SpellCard.faceAnms[2]->SetSprite(&this->msg.portraits[2], args->index);
+                break;
+            case 3:
+                g_SpellCard.faceAnms[3]->SetSprite(&this->msg.portraits[3], args->index);
+                break;
+            }
+            if (this->msg.portraits[args->who].spriteData->width > 256.0f)
+            {
+                this->msg.portraits[args->who].posOffset.x = -208.0f;
+                this->msg.portraits[args->who].posOffset.y = -50.0f;
+            }
+            else if (this->msg.portraits[args->who].spriteData->width > 128.0f)
+            {
+                this->msg.portraits[args->who].posOffset.x = -80.0f;
+            }
+            else
+            {
+                this->msg.portraits[args->who].posOffset.x = 0.0f;
+            }
+            break;
+        case 3:
+        {
+            char text[0x40];
+
+            args = &this->msg.instr->args;
+            if (args->index == 0 && this->msg.text[1].scriptIndex >= 0)
+            {
+                g_SpriteEngine->RenderText(&this->msg.text[1], this->msg.textColors[args->who],
+                                           this->msg.shadowColors[args->who], " ");
+            }
+            g_App.textAnm->StartScript(&this->msg.text[args->index], args->index);
+            this->msg.text[args->index].fontHeight = this->msg.fontSize;
+            this->msg.text[args->index].fontWidth = this->msg.text[args->index].fontHeight;
+            DecodeMsgString(text, args->text);
+            g_SpriteEngine->RenderText(&this->msg.text[args->index], this->msg.textColors[args->who],
+                                       this->msg.shadowColors[args->who], text);
+            this->msg.waitFrames = 0;
+            break;
+        }
+        case 16:
+        {
+            char text2[0x40];
+
+            args = &this->msg.instr->args;
+            if (this->msg.newPage)
+            {
+                if (this->msg.text[1].scriptIndex >= 0)
+                {
+                    g_SpriteEngine->RenderText(&this->msg.text[1], this->msg.textColors[this->msg.speaker],
+                                               this->msg.shadowColors[this->msg.speaker], " ");
+                }
+                this->msg.nextLine = 0;
+            }
+            g_App.textAnm->StartScript(&this->msg.text[this->msg.nextLine], this->msg.nextLine);
+            this->msg.text[this->msg.nextLine].fontHeight = this->msg.fontSize;
+            this->msg.text[this->msg.nextLine].fontWidth = this->msg.text[this->msg.nextLine].fontHeight;
+            DecodeMsgString(text2, (char *)args);
+            g_SpriteEngine->RenderText(&this->msg.text[this->msg.nextLine], this->msg.textColors[this->msg.speaker],
+                                       this->msg.shadowColors[this->msg.speaker], text2);
+            this->msg.waitFrames = 0;
+            this->msg.newPage = 0;
+            this->msg.nextLine++;
+            break;
+        }
+        case 19:
+        {
+            char text3[0x40];
+
+            args = &this->msg.instr->args;
+            g_App.textAnm->StartScript(&this->msg.text[0], 0);
+            this->msg.text[0].fontHeight = this->msg.fontSize;
+            this->msg.text[0].fontWidth = this->msg.text[0].fontHeight;
+            DecodeMsgString(text3, (char *)args);
+            g_SpriteEngine->RenderText(&this->msg.text[0], this->msg.textColors[0], this->msg.shadowColors[0], text3);
+            this->msg.waitFrames = 0;
+            break;
+        }
+        case 20:
+        {
+            char text4[0x40];
+
+            args = &this->msg.instr->args;
+            g_App.textAnm->StartScript(&this->msg.text[1], 1);
+            this->msg.text[1].fontHeight = this->msg.fontSize;
+            this->msg.text[1].fontWidth = this->msg.text[1].fontHeight;
+            DecodeMsgString(text4, (char *)args);
+            g_SpriteEngine->RenderText(&this->msg.text[1], this->msg.textColors[0], this->msg.shadowColors[0], text4);
+            this->msg.waitFrames = 0;
+            break;
+        }
+        case 21:
+            if ((g_GameButtons & 0x10) && (g_GameButtons & 0x10) != (g_PrevGameButtons & 0x10))
+            {
+                if (this->msg.clearLevel == 1)
+                {
+                    g_SoundPlayer.QueueSound(0xc, 0);
+                }
+                this->msg.clearLevel = 0;
+            }
+            if ((g_GameButtons & 0x20) && (g_GameButtons & 0x20) != (g_PrevGameButtons & 0x20))
+            {
+                if (this->msg.clearLevel == 0)
+                {
+                    g_SoundPlayer.QueueSound(0xc, 0);
+                }
+                this->msg.clearLevel = 1;
+            }
+            this->msg.text[this->msg.clearLevel].color = 0xffffffff;
+            this->msg.text[1 - this->msg.clearLevel].color = 0xe0606060;
+            if (!(g_GameButtons & 1) || (g_GameButtons & 1) == (g_PrevGameButtons & 1) || this->msg.waitFrames < 60)
+            {
+                if (this->msg.waitFrames >= this->msg.instr->i)
+                {
+                    this->msg.newPage = 1;
+                    this->msg.minWaitFrames = 30;
+                    break;
+                }
+                this->msg.waitFrames++;
+                goto stepSprites;
+            }
+            g_SoundPlayer.QueueSound(10, 0);
+            break;
+        case 22:
+            g_GameManager.clearLevel = this->msg.clearLevel;
+            g_Gui.StartMsg(this->msg.clearLevel + 1);
+            continue;
+        case 4:
+            if (!this->msg.skippable || !(g_GameButtons & 0x100))
+            {
+                if (!(g_GameButtons & 1) || (g_GameButtons & 1) == (g_PrevGameButtons & 1) ||
+                    this->msg.waitFrames < this->msg.minWaitFrames)
+                {
+                    if (this->msg.waitFrames >= this->msg.instr->i)
+                    {
+                        this->msg.newPage = 1;
+                        this->msg.minWaitFrames = 30;
+                        break;
+                    }
+                    this->msg.waitFrames++;
+                    goto stepSprites;
+                }
+                this->msg.newPage = 1;
+                this->msg.minWaitFrames = 8;
+            }
+            break;
+        case 5:
+            args = &this->msg.instr->args;
+            this->msg.portraits[args->who].pendingInterrupt = args->value;
+            break;
+        case 6:
+            this->msg.timelineRelease++;
+            break;
+        case 7:
+            if (this->msg.instr->i < 0)
+            {
+                g_App.StopMusic();
+            }
+            else
+            {
+                g_Gui.textAnm->StartScript(&this->unk_2a44[3], 3);
+                g_Gui.textAnm->SetSprite(&this->unk_2a44[3], this->msg.instr->i + 3);
+                if (g_App.PlayMidi(this->msg.instr->i,
+                                   (&g_StageBgms[g_GameManager.stage].stageBgm)[this->msg.instr->i]) != 0)
+                {
+                    g_App.PlayMusic(g_Stage.data->songPaths[this->msg.instr->i],
+                                    (&g_StageBgms[g_GameManager.stage].stageBgm)[this->msg.instr->i]);
+                }
+            }
+            break;
+        case 8:
+            args = &this->msg.instr->args;
+            g_SpellCard.faceAnms[2]->StartScript(&this->msg.nameplates[0], 1);
+            this->msg.waitFrames = 0;
+            break;
+        case 9:
+        {
+            int k;
+
+            this->unk_22df0 = g_GameManager.GetPower();
+            this->stageClearPoints = g_GameManager.stats->unk_2c;
+            this->stageClearTime = g_GameManager.GetUnk3c();
+            this->stageClearGraze = g_GameManager.stats->graze;
+            this->stageClearClock = g_GameManager.GetUnk28() * 30 + 660;
+            this->unk_22e00 = g_GameManager.Func43c35f();
+            g_GameManager.AddUnk28(this->unk_22e00);
+            this->stageClearBonus = g_StageClearBonuses[g_GameManager.stage];
+            this->stageClearLastTime = g_GameManager.GetUnk28() * 30 + 660;
+            this->stageClearClock2 = this->stageClearClock;
+            this->unk_22e10 = 0;
+            this->stageClearShown = 1;
+            g_GameManager.unk_3dbac_9 = 1;
+            if (g_GameManager.stage != 6 && g_GameManager.stage != 7 && g_GameManager.stage != 8)
+            {
+                g_AsciiText.anm->StartScript(&this->unk_212c8, 3);
+                g_AsciiText.anm->SetSprite(&this->unk_212c8, this->unk_22e00 + 0x80);
+            }
+            else
+            {
+                this->unk_212c8.scriptPos = NULL;
+            }
+            this->unk_212c8.SetPendingInterrupt(1);
+            if (g_GameManager.stage != 6 && g_GameManager.stage != 7 && g_GameManager.stage != 8)
+            {
+                g_Gui.characterAnm->StartScript(&this->loadingIcon, 0);
+                g_AsciiText.anm2->StartScript(&this->loadingBar, 1);
+                g_SpriteEngine->SetPendingCopy(3, 0x20, 0x10, 0x180, 0x1c0, this->loadingBar.spriteData->startX,
+                                               this->loadingBar.spriteData->startY,
+                                               this->loadingBar.spriteData->width,
+                                               this->loadingBar.spriteData->height);
+                for (k = 0; k < ARRAY_SIZE(this->unk_3f64); k++)
+                {
+                    g_AsciiText.anm2->StartScript(&this->unk_3f64[k], 2);
+                    this->unk_3f64[k].scriptVar8 = k * 4 + 3;
+                    this->unk_3f64[k].alpha = 0x40 - k * 2;
+                }
+            }
+            else
+            {
+                g_GameManager.stats->unk_34 = -1;
+            }
+            if (g_GameManager.stage != 7 && g_GameManager.stage != 6 && g_GameManager.stage != 8 &&
+                g_GameManager.GetBombs() < 3 &&
+                (g_GameManager.character == 3 || g_GameManager.character == 10 || g_GameManager.character == 11))
+            {
+                g_GameManager.AddBombs(1);
+                g_SoundPlayer.QueueSound(0x23, 0);
+                g_Gui.bombsChanged = 2;
+            }
+            break;
+        }
+        case 10:
+            goto stepSprites;
+        case 12:
+            g_App.FadeOutMusic(4.0f);
+            break;
+        case 14:
+            ScreenEffect::StartEffect(4, 0x1ba, 0xffffff, 0, 0, 0x15);
+            g_App.redrawFrames = 0x1ba;
+            break;
+        case 11:
+            if (g_GameManager.stage == 6 || g_GameManager.stage == 7 || g_GameManager.stage == 8)
+            {
+                g_GameManager.unk_3dbac_5 = 2;
+            }
+            goto stepSprites;
+        case 13:
+            this->msg.skippable = this->msg.instr->b;
+            break;
+        case 18:
+            this->msg.unk_156d = this->msg.instr->b;
+            break;
+        }
+        this->msg.instr = (MsgInstr *)((BYTE *)this->msg.instr + 4 + this->msg.instr->argsSize);
+    }
+    this->msg.timer++;
+stepSprites:
+    g_SpriteEngine->Step(&this->msg.portraits[0]);
+    g_SpriteEngine->Step(&this->msg.portraits[1]);
+    g_SpriteEngine->Step(&this->msg.portraits[2]);
+    g_SpriteEngine->Step(&this->msg.portraits[3]);
+    g_SpriteEngine->Step(&this->msg.text[0]);
+    g_SpriteEngine->Step(&this->msg.text[1]);
+    g_SpriteEngine->Step(&this->msg.nameplates[0]);
+    g_SpriteEngine->Step(&this->msg.nameplates[1]);
+    if (this->msg.timer < 60 && this->msg.skippable && (g_GameButtons & 0x100))
+    {
+        this->msg.timer = 60;
+    }
+    return 0;
 }
 
 void DecodeMsgString(char *dst, char *src)
