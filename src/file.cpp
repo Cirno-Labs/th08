@@ -71,3 +71,15 @@ void File::Close()
         this->access = 0;
     }
 }
+
+DWORD File::Read(void *buffer, DWORD size)
+{
+    DWORD read = 0;
+
+    if (this->access != GENERIC_READ)
+    {
+        return 0;
+    }
+    ReadFile(this->handle, buffer, size, &read, NULL);
+    return read;
+}
