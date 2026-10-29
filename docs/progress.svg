@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">57.89% (646)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">40.32% (450)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">57.97% (647)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">40.23% (449)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="432.40" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="432.40" y="0" class="decompiled"/>
-<rect width="301.21" height="6" x="445.79" y="0" class="todo"/>
+<rect width="433.07" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="433.07" y="0" class="decompiled"/>
+<rect width="300.54" height="6" x="446.46" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -410,7 +410,7 @@
 <rect width="12" height="12" x="585" y="90" class="named"><title>0x00426bb0 EffectUpdateConverge (133 bytes)</title></rect>
 <rect width="12" height="12" x="600" y="90" class="named"><title>0x00426c40 EffectUpdateFollowPlayer (66 bytes)</title></rect>
 <rect width="12" height="12" x="615" y="90" class="named"><title>0x00426c90 EffectUpdateConvergeSlow (120 bytes)</title></rect>
-<rect width="12" height="12" x="630" y="90" class="todo"><title>0x00426d10 Func426d10 (94 bytes)</title></rect>
+<rect width="12" height="12" x="630" y="90" class="named"><title>0x00426d10 OffsetPetalEffects (94 bytes)</title></rect>
 <rect width="12" height="12" x="645" y="90" class="todo"><title>0x00426d70 Func426d70 (251 bytes)</title></rect>
 <rect width="12" height="12" x="660" y="90" class="todo"><title>0x00426e70 Func426e70 (587 bytes)</title></rect>
 <rect width="12" height="12" x="675" y="90" class="todo"><title>0x004270c0 Func4270c0 (217 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">52.45%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">46.56%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">52.47%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">46.54%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="391.77" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="391.77" y="0" class="decompiled"/>
-<rect width="347.83" height="6" x="399.17" y="0" class="todo"/>
+<rect width="391.92" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="391.92" y="0" class="decompiled"/>
+<rect width="347.68" height="6" x="399.32" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1850,7 +1850,7 @@
 <rect width="4.07" height="4.63" x="728.79" y="232.98" class="named"><title>0x004023d0 AsciiText::OnDraw (95 bytes)</title></rect>
 <rect width="4.07" height="4.63" x="735.86" y="232.98" class="named"><title>0x004068e0 Sprite::Initialize (95 bytes)</title></rect>
 <rect width="4.07" height="4.63" x="742.93" y="232.98" class="named"><title>0x0043f0ae GdiSurface::Create (95 bytes)</title></rect>
-<rect width="4.22" height="4.39" x="641.96" y="240.60" class="todo"><title>0x00426d10 Func426d10 (94 bytes)</title></rect>
+<rect width="4.22" height="4.39" x="641.96" y="240.60" class="named"><title>0x00426d10 OffsetPetalEffects (94 bytes)</title></rect>
 <rect width="4.22" height="4.39" x="641.96" y="247.99" class="todo"><title>0x0044e9e0 Func44e9e0 (94 bytes)</title></rect>
 <rect width="4.22" height="4.39" x="641.96" y="255.38" class="named"><title>0x0045c100 ScreenEffect::DeletedCallback (94 bytes)</title></rect>
 <rect width="4.22" height="4.31" x="641.96" y="262.78" class="named"><title>0x004338ca Gui::OnUpdate (93 bytes)</title></rect>

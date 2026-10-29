@@ -500,3 +500,17 @@ int EffectUpdateConvergeSlow(Effect *effect)
     effect->pos = effect->axis * f + effect->origin;
     return 1;
 }
+
+void OffsetPetalEffects(D3DXVECTOR3 *offset)
+{
+    Effect *eff = g_EffectManager.effects;
+    int i;
+
+    for (i = 0; i < 0x200; i++, eff++)
+    {
+        if (eff->type == 51)
+        {
+            eff->truePos += *offset;
+        }
+    }
+}
