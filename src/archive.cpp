@@ -148,3 +148,109 @@ DatArchiveEntry *DatArchive::FindEntry(char *name)
     }
     return NULL;
 }
+
+bool DatArchive::ReadTable(char *path)
+{
+    BYTE *unpacked;
+    DWORD decodedSize;
+    DWORD magic;
+    DWORD size;
+    DWORD tableOffset;
+    DatArchiveHeader archiveHeader;
+    HGLOBAL packed;
+    DatArchiveHeader *decryptedHeader;
+    BYTE *decryptedTable;
+
+    packed = NULL;
+    unpacked = NULL;
+    if (this->file == NULL)
+    {
+        return false;
+    }
+    if (!this->file->Open(path, g_FileModes[0]))
+    {
+        goto fail;
+    }
+    if (!this->file->ReadDword(&magic))
+    {
+        goto fail;
+    }
+    if (magic != 0x5a474250)
+    {
+        goto fail;
+    }
+    if (!this->file->Read(&archiveHeader, sizeof(archiveHeader)))
+    {
+        goto fail;
+    }
+    decryptedHeader = (DatArchiveHeader *)DecryptData((BYTE *)&archiveHeader, sizeof(archiveHeader), 0x1b, 0x37,
+                                                      sizeof(archiveHeader), 0x400);
+    archiveHeader = *decryptedHeader;
+    g_MemoryManager.Free(decryptedHeader);
+    this->numEntries = archiveHeader.numEntries - 123456;
+    tableOffset = archiveHeader.tableOffset - 345678;
+    decodedSize = archiveHeader.decodedSize - 567891;
+    if (this->numEntries <= 0)
+    {
+        goto fail;
+    }
+    size = this->file->GetSize();
+    if (tableOffset >= size)
+    {
+        goto fail;
+    }
+    size -= tableOffset;
+    this->file->Seek(tableOffset, g_SeekOrigins[0]);
+    packed = GlobalAlloc(GMEM_FIXED, size);
+    if (packed == NULL)
+    {
+        goto fail;
+    }
+    if (this->file->Read(packed, size) == 0)
+    {
+        goto fail;
+    }
+    decryptedTable = DecryptData((BYTE *)packed, size, 0x3e, 0x9b, 0x80, 0x400);
+    if (packed != NULL)
+    {
+        GlobalFree(packed);
+        packed = NULL;
+    }
+    // From here on, packed is g_MemoryManager's.
+    packed = decryptedTable;
+    unpacked = (BYTE *)LzssDecompress((BYTE *)packed, size, NULL, decodedSize);
+    if (unpacked == NULL)
+    {
+        goto fail;
+    }
+    this->entries = this->BuildEntryTable(unpacked, this->numEntries, tableOffset);
+    if (this->entries == NULL)
+    {
+        goto fail;
+    }
+    g_MemoryManager.Free(packed);
+    if (unpacked != NULL)
+    {
+        GlobalFree(unpacked);
+        unpacked = NULL;
+    }
+    return true;
+
+fail:
+    g_MemoryManager.Free(packed);
+    if (unpacked != NULL)
+    {
+        GlobalFree(unpacked);
+        unpacked = NULL;
+    }
+    if (this->file != NULL)
+    {
+        delete this->file;
+        this->file = NULL;
+    }
+    DebugPrint("ファイル %s のオープン中にエラーが発生しました\r\n", path);
+    while (0)
+    {
+    }
+    return false;
+}
