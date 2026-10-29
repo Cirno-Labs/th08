@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">15.86% (177)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">84.14% (939)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">15.95% (178)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">84.05% (938)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="118.48" height="6" x="0" y="0" class="named"/>
-<rect width="628.52" height="6" x="118.48" y="0" class="todo"/>
+<rect width="119.15" height="6" x="0" y="0" class="named"/>
+<rect width="627.85" height="6" x="119.15" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -1134,7 +1134,7 @@
 <rect width="12" height="12" x="210" y="315" class="named"><title>0x00472c50 CStreamingSound::UpdateFadeUp (106 bytes)</title></rect>
 <rect width="12" height="12" x="225" y="315" class="named"><title>0x00472cc0 CStreamingSound::UpdateFadeDown (107 bytes)</title></rect>
 <rect width="12" height="12" x="240" y="315" class="named"><title>0x00472d30 CStreamingSound::HandleWaveStreamNotification (1000 bytes)</title></rect>
-<rect width="12" height="12" x="255" y="315" class="todo"><title>0x00473120 CStreamingSound::Reset (194 bytes)</title></rect>
+<rect width="12" height="12" x="255" y="315" class="named"><title>0x00473120 CStreamingSound::Reset (194 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="315" class="todo"><title>0x004731f0 CWaveFile::CWaveFile (56 bytes)</title></rect>
 <rect width="12" height="12" x="285" y="315" class="todo"><title>0x00473230 CWaveFile::~CWaveFile (19 bytes)</title></rect>
 <rect width="12" height="12" x="300" y="315" class="todo"><title>0x00473250 CWaveFile::Open (163 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">7.85%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">92.15%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">7.90%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">92.10%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="58.68" height="6" x="0" y="0" class="named"/>
-<rect width="688.32" height="6" x="58.68" y="0" class="todo"/>
+<rect width="58.99" height="6" x="0" y="0" class="named"/>
+<rect width="688.01" height="6" x="58.99" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1658,7 +1658,7 @@
 <rect width="7.39" height="7.76" x="580.58" y="264.57" class="named"><title>0x00444700 MidiPlayer::ReleaseHeader (197 bytes)</title></rect>
 <rect width="7.39" height="7.70" x="580.58" y="275.32" class="todo"><title>0x0040e200 Func40e200 (196 bytes)</title></rect>
 <rect width="7.39" height="7.59" x="580.58" y="286.03" class="todo"><title>0x0040be30 Func40be30 (194 bytes)</title></rect>
-<rect width="7.39" height="7.59" x="580.58" y="296.62" class="todo"><title>0x00473120 CStreamingSound::Reset (194 bytes)</title></rect>
+<rect width="7.39" height="7.59" x="580.58" y="296.62" class="named"><title>0x00473120 CStreamingSound::Reset (194 bytes)</title></rect>
 <rect width="7.39" height="7.37" x="580.58" y="307.21" class="todo"><title>0x0045b020 Func45b020 (190 bytes)</title></rect>
 <rect width="7.39" height="7.21" x="580.58" y="317.59" class="named"><title>0x00445340 MidiPlayer::SendVolume (187 bytes)</title></rect>
 <rect width="7.39" height="7.16" x="580.58" y="327.80" class="todo"><title>0x0045e720 Func45e720 (186 bytes)</title></rect>

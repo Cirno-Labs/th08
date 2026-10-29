@@ -792,3 +792,32 @@ HRESULT CStreamingSound::HandleWaveStreamNotification(BOOL bLoopedPlay)
 
     return S_OK;
 }
+
+HRESULT CStreamingSound::Reset()
+{
+    HRESULT hr;
+
+    if (m_apDSBuffer[0] == NULL || m_pWaveFile == NULL)
+        return CO_E_NOTINITIALIZED;
+
+    m_dwLastPlayPos = 0;
+    m_dwPlayProgress = 0;
+    m_dwNextWriteOffset = 0;
+    m_bFillNextNotificationWithSilence = FALSE;
+
+    // Restore the buffer if it was lost
+    BOOL bRestored;
+    if (FAILED(hr = RestoreBuffer(m_apDSBuffer[0], &bRestored)))
+        return DXTRACE_ERR(TEXT("RestoreBuffer"), hr);
+
+    if (bRestored)
+    {
+        // The buffer was restored, so we need to fill it with new data
+        if (FAILED(hr = FillBufferWithSound(m_apDSBuffer[0], FALSE)))
+            return DXTRACE_ERR(TEXT("FillBufferWithSound"), hr);
+    }
+
+    m_pWaveFile->ResetFile(false);
+
+    return m_apDSBuffer[0]->SetCurrentPosition(0L);
+}
