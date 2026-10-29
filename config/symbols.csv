@@ -878,7 +878,7 @@ address,size,name,symbol
 0x0045a1f3,255,LoadScreenPlstChunk,?LoadScreenPlstChunk@@YIHPAVResultScreen@@H@Z
 0x0045a2f2,267,MoveCursorHorizontal,?MoveCursorHorizontal@@YIHPAVResultScreen@@H@Z
 0x0045a3fd,163,SpriteEngine::MoveSurface,?MoveSurface@SpriteEngine@@QAEXHH@Z
-0x0045a4a0,60,Func45a4a0,
+0x0045a4a0,60,Catk::WasAttempted,?WasAttempted@Catk@@QAEHH@Z
 0x0045a4dc,32,ListNode::ListNode,??0ListNode@@QAE@XZ
 0x0045a500,159,InsertScore,?InsertScore@@YIHPAUListNode@@PAUHscr@@@Z
 0x0045a5a0,59,FreeListNodes,?FreeListNodes@@YIXPAUListNode@@@Z
