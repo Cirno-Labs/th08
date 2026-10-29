@@ -1,5 +1,11 @@
 #include "midi.h"
 
+MidiDevice::MidiDevice()
+{
+    this->handle = 0;
+    this->deviceId = 0;
+}
+
 WORD SwapBytes16(WORD value)
 {
     union

@@ -656,7 +656,7 @@ address,size,name,symbol
 0x00443ad0,21,Func443ad0,
 0x00443af0,104,Func443af0,
 0x00443b60,248,Func443b60,
-0x00443c60,33,Func443c60,
+0x00443c60,33,MidiDevice::MidiDevice,??0MidiDevice@@QAE@XZ
 0x00443c90,19,Func443c90,
 0x00443cb0,89,Func443cb0,
 0x00443d10,59,Func443d10,
