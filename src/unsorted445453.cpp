@@ -550,6 +550,34 @@ void Timer::Add(int frames)
     }
 }
 
+void Timer::Sub(int frames)
+{
+    if (g_App.unk_1a4 >> 5 & 1)
+    {
+        this->current--;
+        this->subFrame = 0.0f;
+        this->previous = -999;
+    }
+    if (g_App.unk_188 > 0.99f)
+    {
+        this->current -= frames;
+    }
+    else if (frames < 0)
+    {
+        this->Add(-frames);
+    }
+    else
+    {
+        this->previous = this->current;
+        this->subFrame -= g_App.unk_188 * frames;
+        while (this->subFrame < 0.0f)
+        {
+            this->current--;
+            this->subFrame += 1.0f;
+        }
+    }
+}
+
 inline void FreeData(void *data)
 {
     free(data);
