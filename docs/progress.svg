@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">27.33% (305)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">72.67% (811)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">27.42% (306)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">72.58% (810)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="204.15" height="6" x="0" y="0" class="named"/>
-<rect width="542.85" height="6" x="204.15" y="0" class="todo"/>
+<rect width="204.82" height="6" x="0" y="0" class="named"/>
+<rect width="542.18" height="6" x="204.82" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -1006,7 +1006,7 @@
 <rect width="12" height="12" x="540" y="270" class="todo"><title>0x0045e430 Func45e430 (333 bytes)</title></rect>
 <rect width="12" height="12" x="555" y="270" class="named"><title>0x0045e580 AnmLoaded::SetScript (206 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="270" class="named"><title>0x0045e650 Sprite::ResolveFloatArgument (166 bytes)</title></rect>
-<rect width="12" height="12" x="585" y="270" class="todo"><title>0x0045e720 Func45e720 (186 bytes)</title></rect>
+<rect width="12" height="12" x="585" y="270" class="named"><title>0x0045e720 Sprite::ResolveIntArgument (186 bytes)</title></rect>
 <rect width="12" height="12" x="600" y="270" class="todo"><title>0x0045e810 Func45e810 (124 bytes)</title></rect>
 <rect width="12" height="12" x="615" y="270" class="todo"><title>0x0045e8a0 Func45e8a0 (139 bytes)</title></rect>
 <rect width="12" height="12" x="630" y="270" class="todo"><title>0x0045e960 Func45e960 (125 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">16.80%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">83.20%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">16.84%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">83.16%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="125.48" height="6" x="0" y="0" class="named"/>
-<rect width="621.52" height="6" x="125.48" y="0" class="todo"/>
+<rect width="125.78" height="6" x="0" y="0" class="named"/>
+<rect width="621.22" height="6" x="125.78" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1661,7 +1661,7 @@
 <rect width="7.39" height="7.59" x="580.58" y="296.62" class="named"><title>0x00473120 CStreamingSound::Reset (194 bytes)</title></rect>
 <rect width="7.39" height="7.37" x="580.58" y="307.21" class="todo"><title>0x0045b020 Func45b020 (190 bytes)</title></rect>
 <rect width="7.39" height="7.21" x="580.58" y="317.59" class="named"><title>0x00445340 MidiPlayer::SendVolume (187 bytes)</title></rect>
-<rect width="7.39" height="7.16" x="580.58" y="327.80" class="todo"><title>0x0045e720 Func45e720 (186 bytes)</title></rect>
+<rect width="7.39" height="7.16" x="580.58" y="327.80" class="named"><title>0x0045e720 Sprite::ResolveIntArgument (186 bytes)</title></rect>
 <rect width="7.39" height="7.05" x="580.58" y="337.95" class="todo"><title>0x00452490 Func452490 (184 bytes)</title></rect>
 <rect width="7.38" height="7" x="590.98" y="188.78" class="named"><title>0x004480f8 App::FadeOutMusic (183 bytes)</title></rect>
 <rect width="7.38" height="7" x="601.36" y="188.78" class="named"><title>0x00474760 LzssReplaceChild (183 bytes)</title></rect>
