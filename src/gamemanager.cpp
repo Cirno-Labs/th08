@@ -830,7 +830,7 @@ void GameManager::LoadingThread(GameManager *arg)
     mgr->stats->score = 0;
     mgr->unk_3dbac &= ~0x10;
     g_AsciiText.Initialize();
-    g_AsciiText.Func402600();
+    g_AsciiText.StartScripts();
     g_GameManager.unk_2d = 0;
     g_Unknown4e3d28 = 0;
     DrawFps(0);
