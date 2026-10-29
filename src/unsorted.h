@@ -148,7 +148,15 @@ public:
     int scene;
     // The scene the game came from.
     int prevScene;
-    unsigned char unk_164[0x3c];
+    unsigned char unk_164[0x10];
+    // How many more frames to draw in full, after the device was reset.
+    int redrawFrames;
+    // DrawFps shows the frame rate while it is 0; AddedCallback sets it
+    // while the refresh rate is measured.
+    int hideFps;
+    // Frames are paced by the clock rather than by the presents.
+    int presentImmediate;
+    unsigned char unk_180[0x20];
     // The loading screen's sprites, from nowloading.anm (AddedCallback).
     void *loadingAnm;
     // Bit 0x40 is set by CheckSingleInstance when the startup info has
@@ -188,6 +196,13 @@ void DrawFps(int draw);
 // "th08_0100d.ver", into g_App.verFile. Returns 0, or -1 after logging
 // an error if either is missing.
 int OpenGameArchive();
+
+// Measures the refresh rate by presenting surface 8, up to 1800 times
+// or until it has eight rates of 57 Hz or more, each over half a second
+// or so. Unless g_App.flags.unk14 is set, it turns presentImmediate on
+// and returns -2 when their average is over 160 Hz (or there are fewer
+// than two), or 65 Hz or more. Otherwise returns 0.
+int MeasureRefreshRate();
 
 // Sets up DirectInput as the DirectX 8 SDK's Keyboard and Joystick
 // samples: the keyboard, then the first joystick found, if any. Returns
