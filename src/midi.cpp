@@ -388,3 +388,48 @@ int MidiPlayer::FadeOut(int duration)
     this->fading = 1;
     return 0;
 }
+
+void MidiPlayer::OnTimer()
+{
+    int i;
+    unsigned __int64 time;
+    int anyPlaying;
+
+    anyPlaying = 0;
+    time = this->baseTime + this->ticks * this->division * 1000 / this->tempo;
+    if (this->fading != 0)
+    {
+        if (this->fadeElapsed < this->fadeDuration)
+        {
+            this->volumeScale = 1.0f - (float)this->fadeElapsed / (float)this->fadeDuration;
+            if ((int)(this->volumeScale * 128.0f) != this->lastVolume)
+            {
+                this->SendVolume(0);
+            }
+            this->lastVolume = (int)(this->volumeScale * 128.0f);
+            this->fadeElapsed++;
+        }
+        else
+        {
+            this->volumeScale = 0.0f;
+            return;
+        }
+    }
+    for (i = 0; i < this->trackCount; i++)
+    {
+        if (this->tracks[i].active)
+        {
+            anyPlaying = 1;
+            while (this->tracks[i].active && this->tracks[i].delta <= time)
+            {
+                this->ProcessEvent(&this->tracks[i]);
+                time = this->baseTime + this->ticks * this->division * 1000 / this->tempo;
+            }
+        }
+    }
+    this->ticks++;
+    if (!anyPlaying)
+    {
+        this->Rewind();
+    }
+}

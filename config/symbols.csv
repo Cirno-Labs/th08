@@ -683,8 +683,8 @@ address,size,name,symbol
 0x00444700,197,MidiPlayer::ReleaseHeader,?ReleaseHeader@MidiPlayer@@QAEHPAUmidihdr_tag@@@Z
 0x004447d0,79,MidiPlayer::FadeOut,?FadeOut@MidiPlayer@@QAEHH@Z
 0x00444820,619,MidiPlayer::OnTimer,?OnTimer@MidiPlayer@@UAEXXZ
-0x00444a90,1871,Func444a90,
-0x00445340,187,Func445340,
+0x00444a90,1871,MidiPlayer::ProcessEvent,?ProcessEvent@MidiPlayer@@QAEXPAUMidiTrack@@@Z
+0x00445340,187,MidiPlayer::SendVolume,?SendVolume@MidiPlayer@@QAEXH@Z
 0x00445400,22,Func445400,
 0x00445420,25,Func445420,
 0x00445440,19,Func445440,
@@ -1705,7 +1705,7 @@ address,size,name,symbol
 0x004a3dc8,56,Func4a3dc8,
 0x004a3e00,23,Func4a3e00,
 0x004a3e17,87,Func4a3e17,
-0x004a3e70,117,Func4a3e70,
+0x004a3e70,117,__ftol2,__ftol2
 0x004a3ef0,20,Func4a3ef0,
 0x004a3f0d,145,Func4a3f0d,
 0x004a3fa0,20,Func4a3fa0,
@@ -1749,8 +1749,8 @@ address,size,name,symbol
 0x004a4cc0,139,_strlen,
 0x004a4d50,672,_memmove,
 0x004a508d,44,Func4a508d,
-0x004a50c0,104,__aulldiv,
-0x004a5130,52,__allmul,
+0x004a50c0,104,__aulldiv,__aulldiv
+0x004a5130,52,__allmul,__allmul
 0x004a5184,121,FID_conflict:__store_num,
 0x004a51fd,608,Func4a51fd,
 0x004a543d,1019,Func4a543d,
