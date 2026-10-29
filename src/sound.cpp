@@ -538,3 +538,44 @@ void SoundPlayer::QueueSoundPanned(int idx, float x)
     this->queueArgs[i][0] = pan;
     this->queueArgCounts[i]++;
 }
+
+DWORD WINAPI BgmNotificationProc(LPVOID lpParameter)
+{
+    HRESULT hr;
+    HWND hDlg = (HWND)lpParameter;
+    MSG msg;
+    DWORD dwResult;
+    BOOL bDone = FALSE;
+    BOOL bLooped = TRUE;
+
+    while (!bDone)
+    {
+        dwResult = MsgWaitForMultipleObjects(1, &g_SoundPlayer.notifyEvent, FALSE, INFINITE, QS_ALLEVENTS);
+        if (g_SoundPlayer.bgm == NULL)
+        {
+            bDone = TRUE;
+        }
+        switch (dwResult)
+        {
+        case WAIT_OBJECT_0 + 0:
+            if (g_SoundPlayer.bgm != NULL && g_SoundPlayer.bgm->unk_30)
+            {
+                g_SoundPlayer.bgm->unk_74 = 1;
+                hr = g_SoundPlayer.bgm->HandleWaveStreamNotification(bLooped);
+                g_SoundPlayer.bgm->unk_74 = 0;
+            }
+            break;
+        case WAIT_OBJECT_0 + 1:
+            while (PeekMessageA(&msg, NULL, 0, 0, PM_REMOVE))
+            {
+                if (msg.message == WM_QUIT)
+                {
+                    bDone = TRUE;
+                }
+            }
+            break;
+        }
+    }
+    DebugPrint("atention : ストリーミング用スレッドは終了しました。\r\n");
+    return 0;
+}
