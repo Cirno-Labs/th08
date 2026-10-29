@@ -272,3 +272,67 @@ void Chain::Remove(ChainElem *elem)
     this->RemoveLocked(elem);
     g_App.LeaveCriticalSection(0);
 }
+
+void Chain::RemoveLocked(ChainElem *elem)
+{
+    BOOL isDraw = FALSE;
+    ChainElem *cur;
+    ChainCallback callback;
+
+    if (elem == NULL)
+    {
+        return;
+    }
+    cur = &this->calcChain;
+    while (cur != NULL)
+    {
+        if (cur == elem)
+        {
+            goto found;
+        }
+        cur = cur->next;
+    }
+    isDraw = TRUE;
+    cur = &this->drawChain;
+    while (cur != NULL)
+    {
+        if (cur == elem)
+        {
+            goto found;
+        }
+        cur = cur->next;
+    }
+    return;
+
+found:
+    // isDraw is set but no longer used: th06 logged which chain the
+    // element was cut from.
+    if (elem->prev != NULL)
+    {
+        elem->callback = NULL;
+        elem->prev->next = elem->next;
+        if (elem->next != NULL)
+        {
+            elem->next->prev = elem->prev;
+        }
+        elem->prev = NULL;
+        elem->next = NULL;
+        if (elem->allocated)
+        {
+            // The element's deleted callback runs outside the section.
+            g_App.LeaveCriticalSection(0);
+            g_MemoryManager.Unregister(elem);
+            delete elem;
+            elem = NULL;
+            g_App.EnterCriticalSection(0);
+        }
+        else if (elem->deletedCallback != NULL)
+        {
+            callback = elem->deletedCallback;
+            elem->deletedCallback = NULL;
+            g_App.LeaveCriticalSection(0);
+            callback(elem->arg);
+            g_App.EnterCriticalSection(0);
+        }
+    }
+}
