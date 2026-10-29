@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">74.10% (827)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">23.92% (267)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">74.19% (828)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">23.84% (266)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="553.56" height="6" x="0" y="0" class="named"/>
-<rect width="14.73" height="6" x="553.56" y="0" class="decompiled"/>
-<rect width="178.72" height="6" x="568.28" y="0" class="todo"/>
+<rect width="554.23" height="6" x="0" y="0" class="named"/>
+<rect width="14.73" height="6" x="554.23" y="0" class="decompiled"/>
+<rect width="178.05" height="6" x="568.95" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -243,7 +243,7 @@
 <rect width="12" height="12" x="330" y="45" class="todo"><title>0x0040ee10 Func40ee10 (1853 bytes)</title></rect>
 <rect width="12" height="12" x="345" y="45" class="named"><title>0x0040f550 DrawRemiliaBomb (24 bytes)</title></rect>
 <rect width="12" height="12" x="360" y="45" class="todo"><title>0x0040f570 Func40f570 (1853 bytes)</title></rect>
-<rect width="12" height="12" x="375" y="45" class="todo"><title>0x0040fcb0 Func40fcb0 (24 bytes)</title></rect>
+<rect width="12" height="12" x="375" y="45" class="named"><title>0x0040fcb0 DrawRemiliaLastWord (24 bytes)</title></rect>
 <rect width="12" height="12" x="390" y="45" class="todo"><title>0x0040fcd0 Func40fcd0 (1573 bytes)</title></rect>
 <rect width="12" height="12" x="405" y="45" class="todo"><title>0x00410300 Func410300 (225 bytes)</title></rect>
 <rect width="12" height="12" x="420" y="45" class="todo"><title>0x004103f0 Func4103f0 (1655 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">65.82%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">33.17%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">65.82%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">33.16%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="491.65" height="6" x="0" y="0" class="named"/>
-<rect width="7.57" height="6" x="491.65" y="0" class="decompiled"/>
-<rect width="247.77" height="6" x="499.23" y="0" class="todo"/>
+<rect width="491.69" height="6" x="0" y="0" class="named"/>
+<rect width="7.57" height="6" x="491.69" y="0" class="decompiled"/>
+<rect width="247.73" height="6" x="499.27" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -2207,7 +2207,7 @@
 <rect width="0.54" height="0.85" x="715.34" y="321.07" class="named"><title>0x0040d390 Rng::GetRandomF32InRange (24 bytes)</title></rect>
 <rect width="0.54" height="0.85" x="715.34" y="324.92" class="named"><title>0x0040d950 DrawAliceBomb (24 bytes)</title></rect>
 <rect width="0.54" height="0.85" x="715.34" y="328.76" class="named"><title>0x0040f550 DrawRemiliaBomb (24 bytes)</title></rect>
-<rect width="0.54" height="0.85" x="715.34" y="332.61" class="todo"><title>0x0040fcb0 Func40fcb0 (24 bytes)</title></rect>
+<rect width="0.54" height="0.85" x="715.34" y="332.61" class="named"><title>0x0040fcb0 DrawRemiliaLastWord (24 bytes)</title></rect>
 <rect width="0.54" height="0.85" x="715.34" y="336.46" class="named"><title>0x004143c0 Rng::GetRandomF32SignedInRange (24 bytes)</title></rect>
 <rect width="0.54" height="0.85" x="715.34" y="340.31" class="todo"><title>0x00416ad0 Func416ad0 (24 bytes)</title></rect>
 <rect width="0.54" height="0.85" x="715.34" y="344.15" class="todo"><title>0x0041f090 Func41f090 (24 bytes)</title></rect>

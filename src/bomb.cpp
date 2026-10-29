@@ -249,6 +249,11 @@ void DrawRemiliaBomb(Player *player)
     DimPlayAreaForBomb(player, 0x80d02020);
 }
 
+void DrawRemiliaLastWord(Player *player)
+{
+    DimPlayAreaForBomb(player, 0x80f00000);
+}
+
 int EffectUpdateBombRing46(Effect *effect)
 {
     effect->radius += 8.0f;

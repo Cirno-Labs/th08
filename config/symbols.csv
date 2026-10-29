@@ -174,7 +174,7 @@ address,size,name,symbol
 0x0040ee10,1853,Func40ee10,
 0x0040f550,24,DrawRemiliaBomb,?DrawRemiliaBomb@@YIXPAVPlayer@@@Z
 0x0040f570,1853,Func40f570,
-0x0040fcb0,24,Func40fcb0,
+0x0040fcb0,24,DrawRemiliaLastWord,?DrawRemiliaLastWord@@YIXPAVPlayer@@@Z
 0x0040fcd0,1573,Func40fcd0,
 0x00410300,225,Func410300,
 0x004103f0,1655,Func4103f0,
