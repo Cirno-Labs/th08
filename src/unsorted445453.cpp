@@ -1219,3 +1219,17 @@ void App::CloseSubThread()
         this->closeSubThread = 0;
     }
 }
+
+void App::StartLoadingSprites(D3DXVECTOR3 *pos)
+{
+    if (this->logoFrames == 0)
+    {
+        this->loadingAnm->StartScript(&g_LoadingSprites[0], 0);
+        this->loadingAnm->StartScript(&g_LoadingSprites[1], 1);
+        this->loadingAnm->StartScript(&g_LoadingSprites[2], 2);
+        this->logoFrames = 1;
+        g_LoadingSprites[0].pos = *pos;
+        g_LoadingSprites[1].pos = *pos;
+        g_LoadingSprites[2].pos = *pos;
+    }
+}

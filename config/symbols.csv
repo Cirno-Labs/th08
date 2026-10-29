@@ -726,7 +726,7 @@ address,size,name,symbol
 0x0044858d,301,App::CheckVersionFile,?CheckVersionFile@App@@QAEHPADKK@Z
 0x004486ba,97,App::StartSubThread,?StartSubThread@App@@QAEHP6GKPAX@Z0@Z
 0x0044871b,117,App::CloseSubThread,?CloseSubThread@App@@QAEXXZ
-0x00448790,138,Func448790,
+0x00448790,138,App::StartLoadingSprites,?StartLoadingSprites@App@@QAEXPAUD3DXVECTOR3@@@Z
 0x0044881a,85,Func44881a,
 0x0044886f,259,Func44886f,
 0x00448972,88,Func448972,
@@ -936,7 +936,7 @@ address,size,name,symbol
 0x0045e3c0,43,SoundPlayer::FadeOutBgm,?FadeOutBgm@SoundPlayer@@QAEXM@Z
 0x0045e3f0,55,CStreamingSound::FadeOut,?FadeOut@CStreamingSound@@QAEXM@Z
 0x0045e430,333,Func45e430,
-0x0045e580,206,Func45e580,
+0x0045e580,206,AnmLoaded::SetScript,?SetScript@AnmLoaded@@QAEXPAVSprite@@PAX@Z
 0x0045e650,166,Func45e650,
 0x0045e720,186,Func45e720,
 0x0045e810,124,Func45e810,

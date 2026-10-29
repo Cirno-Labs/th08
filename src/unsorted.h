@@ -34,6 +34,7 @@ struct ControllerMapping
 };
 ASSERT_SIZE(ControllerMapping, 0x12);
 
+class AnmLoaded;
 class MidiPlayer;
 class MidiTimer;
 
@@ -102,6 +103,10 @@ public:
     // Asks the sub thread to close (closeSubThread) and waits for it,
     // then closes its handle. New in th08.
     void CloseSubThread();
+    // Unless the loading screen shows (logoFrames), starts
+    // g_LoadingSprites on scripts 0 to 2 of loadingAnm at `pos` and sets
+    // logoFrames to 1. New in th08.
+    void StartLoadingSprites(D3DXVECTOR3 *pos);
     // Advances `frames` by one frame, or by a fraction of one into
     // `subFrame` while the game runs slow.
     // Reads the config file at `path` into the config, resetting it to
@@ -260,8 +265,8 @@ public:
     // g_GameManager.unk_3dbac.
     short roundedFps;
     unsigned char unk_19a[0x6];
-    // The loading screen's sprites, from nowloading.anm (AddedCallback).
-    void *loadingAnm;
+    // nowloading.anm, with g_LoadingSprites' scripts (AddedCallback).
+    AnmLoaded *loadingAnm;
     // As th07's: bit 1: the device does T&L in hardware; 2: the back
     // buffer is lockable; 4: A8R8G8B8 textures work; 8: no score is
     // recorded; 0x10: the device was reset and no frame has been drawn

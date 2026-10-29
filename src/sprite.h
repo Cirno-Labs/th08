@@ -12,15 +12,57 @@
 class Sprite
 {
 public:
-    unsigned char unk_0[0x208];
+    void SetPendingInterrupt(short interrupt)
+    {
+        this->pendingInterrupt = interrupt;
+    }
+
+    unsigned char unk_0[0x1fe];
+    // The interrupt label to jump to on the next Step; 0 for none.
+    short pendingInterrupt;
+    unsigned char unk_200[0x8];
     // Where it is drawn.
     D3DXVECTOR3 pos;
-    unsigned char unk_214[0x74];
+    unsigned char unk_214[0x6];
+    // The script AnmLoaded::StartScript started.
+    short scriptIndex;
+    unsigned char unk_21c[0x6c];
     // Added to pos when it is drawn.
     D3DXVECTOR3 posOffset;
-    unsigned char unk_294[0x10];
+    unsigned char unk_294[0x4];
+    // Set to 0xf by AnmLoaded::StartScript.
+    BYTE unk_298;
+    BYTE unk_299;
+    unsigned char unk_29a[0xa];
 };
 ASSERT_SIZE(Sprite, 0x2a4);
+
+// An ANM file loaded by SpriteEngine::LoadAnm (0x465800), with its
+// scripts. New in th08: th07 kept the loaded files in SpriteEngine.
+class AnmLoaded
+{
+public:
+    // Starts `script` on `vm` (0x45e580).
+    void SetScript(Sprite *vm, void *script);
+    // Starts script `script` of this file on `vm`, at the origin with
+    // no offset. Inline, but too large to expand in /Ob1 files: they
+    // call the copy at 0x40b910 and keep its temporaries' slots. That
+    // copy stays unnamed in symbols.csv: ours comes from the /Os App
+    // object, the original's from an /Od one.
+    void StartScript(Sprite *vm, int script)
+    {
+        vm->scriptIndex = script;
+        vm->pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+        vm->posOffset = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+        vm->unk_299 = 0xf;
+        vm->unk_298 = 0xf;
+        this->SetScript(vm, this->scripts[script]);
+    }
+
+    short index;
+    unsigned char unk_2[0xe];
+    void **scripts;
+};
 
 // The sprite engine, th07's SpriteEngine. Only the fields known so far.
 class SpriteEngine
