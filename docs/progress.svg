@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">76.88% (858)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">21.15% (236)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">76.97% (859)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">21.06% (235)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="574.31" height="6" x="0" y="0" class="named"/>
-<rect width="14.73" height="6" x="574.31" y="0" class="decompiled"/>
-<rect width="157.97" height="6" x="589.03" y="0" class="todo"/>
+<rect width="574.98" height="6" x="0" y="0" class="named"/>
+<rect width="14.73" height="6" x="574.98" y="0" class="decompiled"/>
+<rect width="157.30" height="6" x="589.70" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -253,7 +253,7 @@
 <rect width="12" height="12" x="480" y="45" class="named"><title>0x00410c00 Rng::GetRandomU16InRange (57 bytes)</title></rect>
 <rect width="12" height="12" x="495" y="45" class="named"><title>0x00410c40 UpdateYukariBomb (922 bytes)</title></rect>
 <rect width="12" height="12" x="510" y="45" class="named"><title>0x00410fe0 UpdateYukariLastWord (959 bytes)</title></rect>
-<rect width="12" height="12" x="525" y="45" class="todo"><title>0x004113a0 Func4113a0 (313 bytes)</title></rect>
+<rect width="12" height="12" x="525" y="45" class="named"><title>0x004113a0 DrawYukariLastWord (313 bytes)</title></rect>
 <rect width="12" height="12" x="540" y="45" class="named"><title>0x004114e0 EffectUpdateBombRing36 (567 bytes)</title></rect>
 <rect width="12" height="12" x="555" y="45" class="named"><title>0x00411720 EffectInitBombRing36 (139 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="45" class="named"><title>0x004117b0 EffectUpdateBombRing37 (708 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">70.03%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">28.96%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">70.09%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">28.89%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="523.09" height="6" x="0" y="0" class="named"/>
-<rect width="7.57" height="6" x="523.09" y="0" class="decompiled"/>
-<rect width="216.34" height="6" x="530.66" y="0" class="todo"/>
+<rect width="523.60" height="6" x="0" y="0" class="named"/>
+<rect width="7.57" height="6" x="523.60" y="0" class="decompiled"/>
+<rect width="215.83" height="6" x="531.17" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1511,7 +1511,7 @@
 <rect width="11.04" height="9.93" x="546.91" y="129.42" class="todo"><title>0x00432f20 Func432f20 (320 bytes)</title></rect>
 <rect width="10.82" height="9.93" x="560.95" y="129.42" class="named"><title>0x00441170 Item::CollectBigPower (315 bytes)</title></rect>
 <rect width="10.78" height="9.93" x="574.77" y="129.42" class="named"><title>0x0044d180 UpdateRespawningState (314 bytes)</title></rect>
-<rect width="10.74" height="9.93" x="588.55" y="129.42" class="todo"><title>0x004113a0 Func4113a0 (313 bytes)</title></rect>
+<rect width="10.74" height="9.93" x="588.55" y="129.42" class="named"><title>0x004113a0 DrawYukariLastWord (313 bytes)</title></rect>
 <rect width="10.74" height="9.93" x="602.29" y="129.42" class="todo"><title>0x00432460 Func432460 (313 bytes)</title></rect>
 <rect width="10.65" height="9.93" x="616.02" y="129.42" class="named"><title>0x00451500 UpdateFiring (311 bytes)</title></rect>
 <rect width="10.56" height="9.93" x="629.67" y="129.42" class="named"><title>0x00404750 PauseMenu::DrawPauseMenu (309 bytes)</title></rect>

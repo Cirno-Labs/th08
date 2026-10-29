@@ -1593,6 +1593,26 @@ void UpdateYukariLastWord(Player *player)
     g_SpriteEngine->StepSprites(&bomb->parts[0].sprites[0], 2);
 }
 
+void DrawYukariLastWord(Player *player)
+{
+    PlayerBombPart *part = player->bomb.parts;
+    Sprite *sprite;
+
+    DimPlayAreaForBomb(player, 0x802020d0);
+    sprite = &part->sprites[0];
+    sprite->pos = part->pos + sprite->posOffset;
+    sprite->pos.x += g_GameManager.arena[0];
+    sprite->pos.y += g_GameManager.arena[1];
+    sprite->pos.z = 0.01f;
+    g_SpriteEngine->Draw(sprite);
+    sprite++;
+    sprite->pos = part->pos + sprite->posOffset;
+    sprite->pos.x += g_GameManager.arena[0];
+    sprite->pos.y += g_GameManager.arena[1];
+    sprite->pos.z = 0.0f;
+    g_SpriteEngine->Draw(sprite);
+}
+
 int EffectUpdateBombRing36(Effect *effect)
 {
     if (effect->timer < 0x28)

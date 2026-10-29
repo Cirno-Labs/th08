@@ -708,6 +708,9 @@ void UpdateYukariBomb(Player *player);
 // Her last word 境界「永夜四重結界」: the same with longer-lived hit
 // areas and rings of effect 0x25 (0x410fe0).
 void UpdateYukariLastWord(Player *player);
+// Its draw callback: tints the play area blue and draws the last word's
+// two sprites at the player's starting position (0x4113a0).
+void DrawYukariLastWord(Player *player);
 // Draw callbacks of the bombs that only tint the play area, by the
 // bomb they follow: Alice's (also Yukari's draw.funcs[0..1], 0x40d950)
 // and Remilia's and her last word's (0x40f550, 0x40fcb0).
