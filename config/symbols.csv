@@ -7,7 +7,7 @@ address,size,name,symbol
 0x00402200,460,Func402200,
 0x004023d0,95,Func4023d0,
 0x00402430,24,Func402430,
-0x00402450,426,Func402450,
+0x00402450,426,AsciiText::Initialize,?Initialize@AsciiText@@QAEXXZ
 0x00402600,372,Func402600,
 0x00402780,168,AsciiText::RegisterChain,?RegisterChain@AsciiText@@SIHXZ
 0x00402830,131,Func402830,
@@ -99,7 +99,7 @@ address,size,name,symbol
 0x00409850,706,Func409850,
 0x00409b20,254,Func409b20,
 0x00409c20,122,Func409c20,
-0x00409ca0,50,Func409ca0,
+0x00409ca0,50,Stage::RemoveChain,?RemoveChain@Stage@@SIXXZ
 0x00409ce0,598,Func409ce0,
 0x00409f40,610,Func409f40,
 0x0040a1b0,4746,Func40a1b0,
@@ -224,7 +224,7 @@ address,size,name,symbol
 0x00418010,19,Func418010,
 0x00418030,19,Func418030,
 0x00418050,157,Func418050,
-0x004180f0,30,Func4180f0,
+0x004180f0,30,Func4180f0,?Func4180f0@@YIXXZ
 0x00418110,23,Func418110,
 0x00418130,67,Func418130,
 0x00418180,98,Func418180,
@@ -364,7 +364,7 @@ address,size,name,symbol
 0x004284b0,216,Func4284b0,
 0x00428590,132,Func428590,
 0x00428620,135,Func428620,
-0x004286b0,35,Func4286b0,
+0x004286b0,35,EffectManager::RemoveChain,?RemoveChain@EffectManager@@SIXXZ
 0x004286e0,32,Func4286e0,
 0x00428700,32,Func428700,
 0x00428720,28,Func428720,
@@ -419,7 +419,7 @@ address,size,name,symbol
 0x0042eb90,92,Func42eb90,
 0x0042ebf0,642,Func42ebf0,
 0x0042ee80,225,Func42ee80,
-0x0042ef70,50,Func42ef70,
+0x0042ef70,50,EnemyManager::RemoveChain,?RemoveChain@EnemyManager@@SIXXZ
 0x0042efb0,575,Func42efb0,
 0x0042f1f0,64,EnemyManager::AnyBossActive,?AnyBossActive@EnemyManager@@QAEHXZ
 0x0042f230,64,Func42f230,
@@ -463,7 +463,7 @@ address,size,name,symbol
 0x00433070,1662,Func433070,
 0x004337f0,42,Func4337f0,
 0x00433820,35,Func433820,
-0x00433850,35,Func433850,
+0x00433850,35,BulletManager::RemoveChain,?RemoveChain@BulletManager@@SIXXZ
 0x00433880,33,Func433880,
 0x004338b0,10,Func4338b0,
 0x004338c0,10,Func4338c0,
@@ -485,7 +485,7 @@ address,size,name,symbol
 0x00437cdd,5,DebugPrint2,?DebugPrint2@@YAXPBDZZ
 0x00437ce2,99,Func437ce2,
 0x00437d45,31,Func437d45,
-0x00437d64,35,Func437d64,
+0x00437d64,35,Gui::RemoveChain,?RemoveChain@Gui@@SIXXZ
 0x00437d87,64,Func437d87,
 0x00437dc7,22,Gui::IsMsgSkippable,?IsMsgSkippable@Gui@@QAEHXZ
 0x00437ddd,128,Func437ddd,
@@ -773,7 +773,7 @@ address,size,name,symbol
 0x0044d630,24,Func44d630,
 0x0044d650,1537,Func44d650,
 0x0044dc60,164,Func44dc60,
-0x0044dd10,85,Func44dd10,
+0x0044dd10,85,Player::RemoveChain,?RemoveChain@Player@@SIXXZ
 0x0044dd70,233,Func44dd70,
 0x0044de60,153,Func44de60,
 0x0044df00,153,Func44df00,
@@ -2430,6 +2430,7 @@ address,size,name,symbol
 0x004c8704,,g_FileModes,?g_FileModes@@3PAPADA
 0x004cce20,,g_AsciiText,?g_AsciiText@@3VAsciiText@@A
 0x004d50a0,,g_StatisticsColumnWidth,?g_StatisticsColumnWidth@@3HA
+0x004e3d28,,g_Unknown4e3d28,?g_Unknown4e3d28@@3HA
 0x004e4030,,g_Stage,?g_Stage@@3VStage@@A
 0x004e4b50,,g_FogColorChanged,?g_FogColorChanged@@3EA
 0x004ea3f4,,g_CameraSizeOffset,?g_CameraSizeOffset@@3UD3DXVECTOR3@@A

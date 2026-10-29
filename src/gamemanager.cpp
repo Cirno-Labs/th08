@@ -227,6 +227,53 @@ void IncrementStatCounter(DWORD *count, DWORD max)
     }
 }
 
+int GameManager::DeletedCallback(GameManager *mgr)
+{
+    g_Unknown18b8a2c = 1;
+    g_Unknown4e3d28 = 0;
+    if (g_App.scene != 3 && g_App.scene != 11 && g_App.scene != 12)
+    {
+        g_App.unk_168 = 1;
+    }
+    else
+    {
+        g_App.unk_168 = 0;
+    }
+    if (!(g_GameManager.unk_3dbac >> 14 & 1) || g_App.unk_168 != 0)
+    {
+        g_App.StopMusic();
+        if (g_App.musicMode == 2 && g_App.midi != NULL)
+        {
+            g_App.midi->Restart(0x1e);
+        }
+    }
+    while (g_SoundPlayer.PlayQueuedSounds())
+    {
+    }
+    Func4180f0();
+    Stage::RemoveChain();
+    BulletManager::RemoveChain();
+    Player::RemoveChain();
+    EnemyManager::RemoveChain();
+    EffectManager::RemoveChain();
+    Gui::RemoveChain();
+    if (!(g_GameManager.unk_3dbac >> 3 & 1))
+    {
+        ReplayManager::EndStage();
+    }
+    if (!(g_GameManager.unk_3dbac >> 3 & 1))
+    {
+        g_App.AddTotalPlayTime();
+    }
+    g_App.lastTotalPlayTimeTick = 0;
+    g_App.AddPlayTime();
+    mgr->unk_3dbac &= ~4;
+    g_AsciiText.Initialize();
+    g_GameManager.unk_2d = 0;
+    g_GameManager.stageFrames = 0;
+    return 0;
+}
+
 void RemoveGameManagerChain()
 {
     g_Chain.Remove(&g_GameManagerCalcChain);

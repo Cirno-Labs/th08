@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">40.23% (449)</tspan> · <tspan class="decompiled">0.27% (3)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">59.50% (664)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">40.32% (450)</tspan> · <tspan class="decompiled">0.27% (3)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">59.41% (663)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="300.54" height="6" x="0" y="0" class="named"/>
-<rect width="2.01" height="6" x="300.54" y="0" class="decompiled"/>
-<rect width="444.45" height="6" x="302.55" y="0" class="todo"/>
+<rect width="301.21" height="6" x="0" y="0" class="named"/>
+<rect width="2.01" height="6" x="301.21" y="0" class="decompiled"/>
+<rect width="443.78" height="6" x="303.22" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -76,7 +76,7 @@
 <rect width="12" height="12" x="75" y="0" class="todo"><title>0x00402200 Func402200 (460 bytes)</title></rect>
 <rect width="12" height="12" x="90" y="0" class="todo"><title>0x004023d0 Func4023d0 (95 bytes)</title></rect>
 <rect width="12" height="12" x="105" y="0" class="todo"><title>0x00402430 Func402430 (24 bytes)</title></rect>
-<rect width="12" height="12" x="120" y="0" class="todo"><title>0x00402450 Func402450 (426 bytes)</title></rect>
+<rect width="12" height="12" x="120" y="0" class="todo"><title>0x00402450 AsciiText::Initialize (426 bytes)</title></rect>
 <rect width="12" height="12" x="135" y="0" class="todo"><title>0x00402600 Func402600 (372 bytes)</title></rect>
 <rect width="12" height="12" x="150" y="0" class="todo"><title>0x00402780 AsciiText::RegisterChain (168 bytes)</title></rect>
 <rect width="12" height="12" x="165" y="0" class="todo"><title>0x00402830 Func402830 (131 bytes)</title></rect>
@@ -168,7 +168,7 @@
 <rect width="12" height="12" x="705" y="15" class="todo"><title>0x00409850 Func409850 (706 bytes)</title></rect>
 <rect width="12" height="12" x="720" y="15" class="todo"><title>0x00409b20 Func409b20 (254 bytes)</title></rect>
 <rect width="12" height="12" x="735" y="15" class="todo"><title>0x00409c20 Func409c20 (122 bytes)</title></rect>
-<rect width="12" height="12" x="0" y="30" class="todo"><title>0x00409ca0 Func409ca0 (50 bytes)</title></rect>
+<rect width="12" height="12" x="0" y="30" class="todo"><title>0x00409ca0 Stage::RemoveChain (50 bytes)</title></rect>
 <rect width="12" height="12" x="15" y="30" class="todo"><title>0x00409ce0 Func409ce0 (598 bytes)</title></rect>
 <rect width="12" height="12" x="30" y="30" class="todo"><title>0x00409f40 Func409f40 (610 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="30" class="todo"><title>0x0040a1b0 Func40a1b0 (4746 bytes)</title></rect>
@@ -433,7 +433,7 @@
 <rect width="12" height="12" x="180" y="105" class="todo"><title>0x004284b0 Func4284b0 (216 bytes)</title></rect>
 <rect width="12" height="12" x="195" y="105" class="todo"><title>0x00428590 Func428590 (132 bytes)</title></rect>
 <rect width="12" height="12" x="210" y="105" class="todo"><title>0x00428620 Func428620 (135 bytes)</title></rect>
-<rect width="12" height="12" x="225" y="105" class="todo"><title>0x004286b0 Func4286b0 (35 bytes)</title></rect>
+<rect width="12" height="12" x="225" y="105" class="todo"><title>0x004286b0 EffectManager::RemoveChain (35 bytes)</title></rect>
 <rect width="12" height="12" x="240" y="105" class="todo"><title>0x004286e0 Func4286e0 (32 bytes)</title></rect>
 <rect width="12" height="12" x="255" y="105" class="todo"><title>0x00428700 Func428700 (32 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="105" class="todo"><title>0x00428720 Func428720 (28 bytes)</title></rect>
@@ -488,7 +488,7 @@
 <rect width="12" height="12" x="255" y="120" class="todo"><title>0x0042eb90 Func42eb90 (92 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="120" class="todo"><title>0x0042ebf0 Func42ebf0 (642 bytes)</title></rect>
 <rect width="12" height="12" x="285" y="120" class="todo"><title>0x0042ee80 Func42ee80 (225 bytes)</title></rect>
-<rect width="12" height="12" x="300" y="120" class="todo"><title>0x0042ef70 Func42ef70 (50 bytes)</title></rect>
+<rect width="12" height="12" x="300" y="120" class="todo"><title>0x0042ef70 EnemyManager::RemoveChain (50 bytes)</title></rect>
 <rect width="12" height="12" x="315" y="120" class="todo"><title>0x0042efb0 Func42efb0 (575 bytes)</title></rect>
 <rect width="12" height="12" x="330" y="120" class="todo"><title>0x0042f1f0 EnemyManager::AnyBossActive (64 bytes)</title></rect>
 <rect width="12" height="12" x="345" y="120" class="todo"><title>0x0042f230 Func42f230 (64 bytes)</title></rect>
@@ -532,7 +532,7 @@
 <rect width="12" height="12" x="165" y="135" class="todo"><title>0x00433070 Func433070 (1662 bytes)</title></rect>
 <rect width="12" height="12" x="180" y="135" class="todo"><title>0x004337f0 Func4337f0 (42 bytes)</title></rect>
 <rect width="12" height="12" x="195" y="135" class="todo"><title>0x00433820 Func433820 (35 bytes)</title></rect>
-<rect width="12" height="12" x="210" y="135" class="todo"><title>0x00433850 Func433850 (35 bytes)</title></rect>
+<rect width="12" height="12" x="210" y="135" class="todo"><title>0x00433850 BulletManager::RemoveChain (35 bytes)</title></rect>
 <rect width="12" height="12" x="225" y="135" class="todo"><title>0x00433880 Func433880 (33 bytes)</title></rect>
 <rect width="12" height="12" x="240" y="135" class="todo"><title>0x004338b0 Func4338b0 (10 bytes)</title></rect>
 <rect width="12" height="12" x="255" y="135" class="todo"><title>0x004338c0 Func4338c0 (10 bytes)</title></rect>
@@ -554,7 +554,7 @@
 <rect width="12" height="12" x="495" y="135" class="todo"><title>0x00437cdd DebugPrint2 (5 bytes)</title></rect>
 <rect width="12" height="12" x="510" y="135" class="todo"><title>0x00437ce2 Func437ce2 (99 bytes)</title></rect>
 <rect width="12" height="12" x="525" y="135" class="todo"><title>0x00437d45 Func437d45 (31 bytes)</title></rect>
-<rect width="12" height="12" x="540" y="135" class="todo"><title>0x00437d64 Func437d64 (35 bytes)</title></rect>
+<rect width="12" height="12" x="540" y="135" class="todo"><title>0x00437d64 Gui::RemoveChain (35 bytes)</title></rect>
 <rect width="12" height="12" x="555" y="135" class="todo"><title>0x00437d87 Func437d87 (64 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="135" class="todo"><title>0x00437dc7 Gui::IsMsgSkippable (22 bytes)</title></rect>
 <rect width="12" height="12" x="585" y="135" class="todo"><title>0x00437ddd Func437ddd (128 bytes)</title></rect>
@@ -603,7 +603,7 @@
 <rect width="12" height="12" x="480" y="150" class="named"><title>0x0043b984 RerollStatsChecksumKeys (605 bytes)</title></rect>
 <rect width="12" height="12" x="495" y="150" class="named"><title>0x0043bbe1 LoadScoreFile (552 bytes)</title></rect>
 <rect width="12" height="12" x="510" y="150" class="named"><title>0x0043be09 IncrementStatCounter (35 bytes)</title></rect>
-<rect width="12" height="12" x="525" y="150" class="todo"><title>0x0043be2c GameManager::DeletedCallback (322 bytes)</title></rect>
+<rect width="12" height="12" x="525" y="150" class="named"><title>0x0043be2c GameManager::DeletedCallback (322 bytes)</title></rect>
 <rect width="12" height="12" x="540" y="150" class="named"><title>0x0043bf6e RemoveGameManagerChain (85 bytes)</title></rect>
 <rect width="12" height="12" x="555" y="150" class="named"><title>0x0043bfc3 GameManager::AddSubRank (124 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="150" class="named"><title>0x0043c03f GameManager::SubSubRank (124 bytes)</title></rect>
@@ -842,7 +842,7 @@
 <rect width="12" height="12" x="315" y="225" class="todo"><title>0x0044d630 Func44d630 (24 bytes)</title></rect>
 <rect width="12" height="12" x="330" y="225" class="todo"><title>0x0044d650 Func44d650 (1537 bytes)</title></rect>
 <rect width="12" height="12" x="345" y="225" class="todo"><title>0x0044dc60 Func44dc60 (164 bytes)</title></rect>
-<rect width="12" height="12" x="360" y="225" class="todo"><title>0x0044dd10 Func44dd10 (85 bytes)</title></rect>
+<rect width="12" height="12" x="360" y="225" class="todo"><title>0x0044dd10 Player::RemoveChain (85 bytes)</title></rect>
 <rect width="12" height="12" x="375" y="225" class="todo"><title>0x0044dd70 Func44dd70 (233 bytes)</title></rect>
 <rect width="12" height="12" x="390" y="225" class="todo"><title>0x0044de60 Func44de60 (153 bytes)</title></rect>
 <rect width="12" height="12" x="405" y="225" class="todo"><title>0x0044df00 Func44df00 (153 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">32.25%</tspan> · <tspan class="decompiled">0.11%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">67.64%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">32.32%</tspan> · <tspan class="decompiled">0.11%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">67.57%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="240.90" height="6" x="0" y="0" class="named"/>
-<rect width="0.86" height="6" x="240.90" y="0" class="decompiled"/>
-<rect width="505.25" height="6" x="241.75" y="0" class="todo"/>
+<rect width="241.42" height="6" x="0" y="0" class="named"/>
+<rect width="0.86" height="6" x="241.42" y="0" class="decompiled"/>
+<rect width="504.72" height="6" x="242.28" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1443,7 +1443,7 @@
 <rect width="13.39" height="11.96" x="487.92" y="303.30" class="todo"><title>0x0042bcf0 Func42bcf0 (432 bytes)</title></rect>
 <rect width="13.39" height="11.96" x="487.92" y="318.26" class="named"><title>0x004664a0 SpriteEngine::RenderTextRightAligned (432 bytes)</title></rect>
 <rect width="13.39" height="11.79" x="487.92" y="333.21" class="named"><title>0x00464ec0 SpriteEngine::DrawColoredFan (427 bytes)</title></rect>
-<rect width="12.82" height="12.28" x="504.31" y="100.12" class="todo"><title>0x00402450 Func402450 (426 bytes)</title></rect>
+<rect width="12.82" height="12.28" x="504.31" y="100.12" class="todo"><title>0x00402450 AsciiText::Initialize (426 bytes)</title></rect>
 <rect width="12.75" height="12.28" x="520.14" y="100.12" class="named"><title>0x004584b0 ResultScreen::OnUpdate (424 bytes)</title></rect>
 <rect width="12.75" height="12.28" x="535.89" y="100.12" class="named"><title>0x00466d70 SpriteEngine::CopySurfaceRectToBackBuffer (424 bytes)</title></rect>
 <rect width="12.68" height="12.28" x="551.64" y="100.12" class="todo"><title>0x00449ca0 Func449ca0 (422 bytes)</title></rect>
@@ -1505,7 +1505,7 @@
 <rect width="10.83" height="10.49" x="518.98" y="281.18" class="named"><title>0x00442240 CreateGameWindow (329 bytes)</title></rect>
 <rect width="10.83" height="10.45" x="518.98" y="294.68" class="named"><title>0x004733e0 CWaveFile::ResetFile (328 bytes)</title></rect>
 <rect width="10.83" height="10.45" x="518.98" y="308.13" class="named"><title>0x00473530 CWaveFile::Read (328 bytes)</title></rect>
-<rect width="10.83" height="10.21" x="518.98" y="321.59" class="todo"><title>0x0043be2c GameManager::DeletedCallback (322 bytes)</title></rect>
+<rect width="10.83" height="10.21" x="518.98" y="321.59" class="named"><title>0x0043be2c GameManager::DeletedCallback (322 bytes)</title></rect>
 <rect width="10.83" height="10.21" x="518.98" y="334.79" class="named"><title>0x00443840 ResolveShortcut (322 bytes)</title></rect>
 <rect width="11.09" height="9.93" x="532.82" y="129.42" class="named"><title>0x00474af0 DatArchive::Decode (321 bytes)</title></rect>
 <rect width="11.04" height="9.93" x="546.91" y="129.42" class="todo"><title>0x00432f20 Func432f20 (320 bytes)</title></rect>
@@ -1874,7 +1874,7 @@
 <rect width="4.17" height="3.73" x="693.18" y="240.60" class="named"><title>0x0043bf6e RemoveGameManagerChain (85 bytes)</title></rect>
 <rect width="4.17" height="3.73" x="700.35" y="240.60" class="named"><title>0x0043d0c0 InitJoystick (85 bytes)</title></rect>
 <rect width="4.17" height="3.73" x="707.51" y="240.60" class="named"><title>0x0044881a App::StopLoadingSprites (85 bytes)</title></rect>
-<rect width="4.17" height="3.73" x="714.68" y="240.60" class="todo"><title>0x0044dd10 Func44dd10 (85 bytes)</title></rect>
+<rect width="4.17" height="3.73" x="714.68" y="240.60" class="todo"><title>0x0044dd10 Player::RemoveChain (85 bytes)</title></rect>
 <rect width="4.08" height="3.73" x="721.84" y="240.60" class="named"><title>0x0043eeb0 MemoryManager::~MemoryManager (84 bytes)</title></rect>
 <rect width="4.08" height="3.73" x="728.93" y="240.60" class="named"><title>0x00473300 CWaveFile::SwitchTrack (84 bytes)</title></rect>
 <rect width="4" height="3.73" x="736.01" y="240.60" class="todo"><title>0x00421280 Func421280 (83 bytes)</title></rect>
@@ -2024,9 +2024,9 @@
 <rect width="2.30" height="2.46" x="679.79" y="294.49" class="named"><title>0x00473680 CWaveFile::Close (51 bytes)</title></rect>
 <rect width="2.30" height="2.46" x="679.79" y="299.95" class="named"><title>0x004736c0 File::File (51 bytes)</title></rect>
 <rect width="2.30" height="2.46" x="679.79" y="305.40" class="named"><title>0x00473a20 File::Seek (51 bytes)</title></rect>
-<rect width="2.30" height="2.35" x="679.79" y="310.86" class="todo"><title>0x00409ca0 Func409ca0 (50 bytes)</title></rect>
+<rect width="2.30" height="2.35" x="679.79" y="310.86" class="todo"><title>0x00409ca0 Stage::RemoveChain (50 bytes)</title></rect>
 <rect width="2.30" height="2.35" x="679.79" y="316.21" class="todo"><title>0x0042bc50 Func42bc50 (50 bytes)</title></rect>
-<rect width="2.30" height="2.35" x="679.79" y="321.56" class="todo"><title>0x0042ef70 Func42ef70 (50 bytes)</title></rect>
+<rect width="2.30" height="2.35" x="679.79" y="321.56" class="todo"><title>0x0042ef70 EnemyManager::RemoveChain (50 bytes)</title></rect>
 <rect width="2.30" height="2.35" x="679.79" y="326.92" class="named"><title>0x0045cc30 SoundPlayer::LoadBgmFormat (50 bytes)</title></rect>
 <rect width="2.30" height="2.24" x="679.79" y="332.27" class="todo"><title>0x004068a0 Func4068a0 (49 bytes)</title></rect>
 <rect width="2.30" height="2.24" x="679.79" y="337.51" class="todo"><title>0x00406ef0 Func406ef0 (49 bytes)</title></rect>
@@ -2108,10 +2108,10 @@
 <rect width="1.32" height="1.59" x="695.08" y="297.47" class="todo"><title>0x004028f0 AsciiText::RemoveChain (35 bytes)</title></rect>
 <rect width="1.32" height="1.59" x="695.08" y="302.07" class="todo"><title>0x00424fc0 Func424fc0 (35 bytes)</title></rect>
 <rect width="1.32" height="1.59" x="695.08" y="306.66" class="todo"><title>0x00424ff0 Func424ff0 (35 bytes)</title></rect>
-<rect width="1.32" height="1.59" x="695.08" y="311.25" class="todo"><title>0x004286b0 Func4286b0 (35 bytes)</title></rect>
+<rect width="1.32" height="1.59" x="695.08" y="311.25" class="todo"><title>0x004286b0 EffectManager::RemoveChain (35 bytes)</title></rect>
 <rect width="1.32" height="1.59" x="695.08" y="315.85" class="todo"><title>0x00433820 Func433820 (35 bytes)</title></rect>
-<rect width="1.32" height="1.59" x="695.08" y="320.44" class="todo"><title>0x00433850 Func433850 (35 bytes)</title></rect>
-<rect width="1.32" height="1.59" x="695.08" y="325.03" class="todo"><title>0x00437d64 Func437d64 (35 bytes)</title></rect>
+<rect width="1.32" height="1.59" x="695.08" y="320.44" class="todo"><title>0x00433850 BulletManager::RemoveChain (35 bytes)</title></rect>
+<rect width="1.32" height="1.59" x="695.08" y="325.03" class="todo"><title>0x00437d64 Gui::RemoveChain (35 bytes)</title></rect>
 <rect width="1.32" height="1.59" x="695.08" y="329.63" class="named"><title>0x0043be09 IncrementStatCounter (35 bytes)</title></rect>
 <rect width="1.32" height="1.59" x="695.08" y="334.22" class="named"><title>0x0043f980 CreateTextSurface (35 bytes)</title></rect>
 <rect width="1.32" height="1.59" x="695.08" y="338.81" class="named"><title>0x00443990 Log::Reset (35 bytes)</title></rect>
