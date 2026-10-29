@@ -454,3 +454,86 @@ BYTE *EncryptData(BYTE *data, int size, BYTE key, BYTE step, int blockSize, int 
     }
     return dest;
 }
+
+void *LoadFileData(char *path, int *size, int isExternal)
+{
+    int idx = -1;
+    char *name;
+    DWORD dataSize;
+    void *buffer;
+    HANDLE handle;
+
+    g_App.EnterCriticalSection(2);
+    if (isExternal == 0)
+    {
+        name = strrchr(path, '\\');
+        if (name == NULL)
+        {
+            name = path;
+        }
+        else
+        {
+            name++;
+        }
+        name = strrchr(name, '/');
+        if (name == NULL)
+        {
+            name = path;
+        }
+        else
+        {
+            name++;
+        }
+        dataSize = g_Archive.GetEntrySize(name);
+        if (size != NULL)
+        {
+            *size = dataSize;
+        }
+        if (dataSize == 0)
+        {
+            LogError(&g_Log, "error : %s is not found in arcfile.\r\n", name);
+            goto fail;
+        }
+        if (dataSize != 0)
+        {
+            DebugPrint("%s Decode ... \r\n", name);
+            buffer = g_MemoryManager.Alloc(dataSize, path);
+            if (buffer == NULL)
+            {
+                goto fail;
+            }
+            g_Archive.Decode(name, buffer);
+            buffer = DecryptFileData((BYTE *)buffer, size, dataSize);
+            goto done;
+        }
+    }
+    DebugPrint("%s Load ... \r\n", path);
+    handle = CreateFileA(path, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING,
+                         FILE_ATTRIBUTE_NORMAL | FILE_FLAG_SEQUENTIAL_SCAN, NULL);
+    if (handle == INVALID_HANDLE_VALUE)
+    {
+        DebugPrint("error : %s is not found.\r\n", path);
+        goto fail;
+    }
+    dataSize = GetFileSize(handle, NULL);
+    buffer = g_MemoryManager.Alloc(dataSize, path);
+    if (buffer == NULL)
+    {
+        DebugPrint("error : %s allocation error.\r\n", path);
+        CloseHandle(handle);
+        goto fail;
+    }
+    ReadFile(handle, buffer, dataSize, &dataSize, NULL);
+    if (size != NULL)
+    {
+        *size = dataSize;
+    }
+    CloseHandle(handle);
+    buffer = DecryptFileData((BYTE *)buffer, size, dataSize);
+done:
+    g_App.LeaveCriticalSection(2);
+    return buffer;
+fail:
+    g_App.LeaveCriticalSection(2);
+    return NULL;
+}

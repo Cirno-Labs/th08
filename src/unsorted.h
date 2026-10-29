@@ -9,6 +9,7 @@
 #include <d3d8.h>
 #include <d3dx8math.h>
 
+#include "archive.h"
 #include "common.h"
 
 // The application: window, Direct3D, configuration and the main loop.
@@ -38,6 +39,11 @@ public:
     // Whether holding shoot also focuses (shootFocuses). th07 read the
     // field directly; th08 calls this out-of-line copy.
     int GetShootFocuses();
+    // Enters and leaves critical section `idx` of the app's set (at
+    // +0x298, 0x18 bytes each), counting the depth in a byte per section
+    // (+0x2f8). New in th08; LoadFileData holds section 2.
+    void EnterCriticalSection(int idx);
+    void LeaveCriticalSection(int idx);
 
     HINSTANCE hInstance;
     IDirect3D8 *d3d;

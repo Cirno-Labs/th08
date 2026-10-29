@@ -590,8 +590,8 @@ address,size,name,symbol
 0x0043ef10,48,Func43ef10,
 0x0043ef40,11,MmTimer::OnTimer,?OnTimer@MmTimer@@UAEXXZ
 0x0043ef50,21,App::GetShootFocuses,?GetShootFocuses@App@@QAEHXZ
-0x0043ef70,63,Func43ef70,
-0x0043efb0,63,Func43efb0,
+0x0043ef70,63,App::EnterCriticalSection,?EnterCriticalSection@App@@QAEXH@Z
+0x0043efb0,63,App::LeaveCriticalSection,?LeaveCriticalSection@App@@QAEXH@Z
 0x0043efef,60,Func43efef,
 0x0043f02b,17,Func43f02b,
 0x0043f03c,114,Func43f03c,
@@ -1105,8 +1105,8 @@ address,size,name,symbol
 0x004748c0,229,Func4748c0,
 0x004749b0,208,Func4749b0,
 0x00474a80,112,Func474a80,
-0x00474af0,321,Func474af0,
-0x00474c40,46,Func474c40,
+0x00474af0,321,DatArchive::Decode,?Decode@DatArchive@@QAEPAXPADPAX@Z
+0x00474c40,46,DatArchive::GetEntrySize,?GetEntrySize@DatArchive@@QAEKPAD@Z
 0x00474c70,101,Func474c70,
 0x00474ce0,701,Func474ce0,
 0x00474fa0,420,Func474fa0,
@@ -2387,6 +2387,7 @@ address,size,name,symbol
 0x0164d388,,g_JoyCaps,?g_JoyCaps@@3UtagJOYCAPSA@@A
 0x0164d51c,,g_ShotHeldFrames,?g_ShotHeldFrames@@3GA
 0x0164d540,,g_Log,?g_Log@@3VLog@@A
+0x0164f588,,g_Archive,?g_Archive@@3VDatArchive@@A
 0x0164f598,,g_MemoryManager,?g_MemoryManager@@3VMemoryManager@@A
 0x016535a0,,g_PadButtons,?g_PadButtons@@3PAEA
 0x017ce6fc,,g_AppMutex,?g_AppMutex@@3PAXA
