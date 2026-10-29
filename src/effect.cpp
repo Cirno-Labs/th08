@@ -805,3 +805,16 @@ int EffectUpdateRingFade(Effect *effect)
     }
     return 1;
 }
+
+int EffectUpdateRingAt(Effect *effect)
+{
+    effect->segmentCount = effect->sprite.scriptVar0;
+    effect->unk_334 = effect->sprite.scriptVar1;
+    effect->ringWidth = effect->sprite.scaleY;
+    effect->radius = effect->sprite.scriptVarF1;
+    effect->angle = effect->sprite.rotation.z;
+    effect->unk_330 = effect->sprite.rotation.y;
+    effect->verticesDirty = 1;
+    effect->origin = effect->sprite.pos;
+    return 1;
+}
