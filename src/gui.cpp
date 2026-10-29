@@ -925,3 +925,19 @@ void Gui::StartMsg(int index)
 {
     this->impl->StartMsgScript(index);
 }
+
+int Func439916(int card)
+{
+    int i;
+
+    i = 0;
+    while (g_SpellCardBgms[i].lastCard >= 0)
+    {
+        if (g_GameManager.unk_3dbb0 <= g_SpellCardBgms[i].lastCard)
+        {
+            return g_SpellCardBgms[i].unk_10;
+        }
+        i++;
+    }
+    return 0;
+}
