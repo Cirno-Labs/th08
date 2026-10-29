@@ -1185,6 +1185,118 @@ void DrawRemiliaLastWord(Player *player)
     DimPlayAreaForBomb(player, 0x80f00000);
 }
 
+void UpdateSakuyaBomb(Player *player)
+{
+    PlayerBomb *pb = &player->bomb;
+    PlayerBombPart *blade;
+    int i;
+
+    if (pb->timer.HasTicked() && pb->timer == 0)
+    {
+        StartBomb(player, 0, "\x8c\xb6\x95\x84\x81\x75\x8e\x45\x90\x6c\x83\x68\x81\x5b\x83\x8b\x81\x76", 250, 290, 0);
+        for (blade = pb->parts, i = 0; i < 0x60; i++, blade++)
+        {
+            blade->state = 0;
+        }
+        player->moveScaleY = 0.5f;
+        player->moveScaleX = 0.5f;
+        pb->parts[0].effect = g_EffectManager.SpawnEffect(0x14, &player->pos, 1, 0xffffffff);
+        g_SoundPlayer.QueueSound(5, 0);
+    }
+    if (pb->timer >= 0 && pb->timer <= 60)
+    {
+        pb->parts[0].effect->pos = player->pos;
+    }
+    if (pb->timer >= 20 && pb->timer < 116)
+    {
+        for (blade = player->bomb.parts, i = 0; i < 0x60; i++, blade++)
+        {
+            Sprite *s;
+            float angle;
+
+            if (!player->bomb.timer.HasTickedTo(i % 48 * 2 + 20))
+            {
+                continue;
+            }
+            if (blade->state != 0)
+            {
+                return;
+            }
+            blade->state = 1;
+            s = &blade->sprites[0];
+            player->anm->StartScriptAtOrigin(s, 0x16);
+            angle = i * 6.2831855f / 96.0f - 3.1415927f;
+            blade->angle = angle;
+            blade->speed = g_Rng.GetRandomF32InRange(1.0f) + g_Half;
+            blade->unk_8 = g_Rng.GetRandomF32InRange(0.1f) + 0.03f;
+            blade->acceleration.x = g_Rng.GetRandomU16InRange(1) ? 0.15707964f : -0.15707964f;
+            blade->velocity.x = cosf(blade->angle) * 24.0f;
+            blade->velocity.y = sinf(blade->angle) * 24.0f;
+            blade->pos = player->pos + blade->velocity;
+            blade->timer = 0;
+            blade->velocity.z = 0.0f;
+            blade->hitArea = player->AddHitAreaCircle(&blade->pos, 32.0f, 0.0f, 500, 6);
+            blade->hitbox = player->AddBombHitboxCircle(&blade->pos, 32.0f, 0.0f, 20, 500);
+        }
+        g_SoundPlayer.QueueSound(6, 0);
+        ScreenEffect::StartEffect(1, 0x78, 4, 1, 0, 0x15);
+    }
+    for (blade = pb->parts, i = 0; i < 0x60; i++, blade++)
+    {
+        if (blade->state == 0)
+        {
+            continue;
+        }
+        if (blade->timer.AsFrames() < 30 || blade->timer.AsFrames() >= 70)
+        {
+            if (blade->timer.HasTickedTo(70))
+            {
+                if (player->orbHomingTarget.x > -100.0f)
+                {
+                    blade->angle = AddNormalizeAngle(atan2f(player->orbHomingTarget.y - blade->pos.y, player->orbHomingTarget.x - blade->pos.x), 0.0f);
+                }
+                blade->speed = 14.0f;
+            }
+            blade->speed += blade->unk_8;
+            blade->velocity.x = cosf(blade->angle) * blade->speed;
+            blade->velocity.y = sinf(blade->angle) * blade->speed;
+        }
+        else
+        {
+            blade->angle = AddNormalizeAngle(blade->angle, blade->acceleration.x);
+            blade->velocity.x = 0.0f;
+            blade->velocity.y = 0.0f;
+        }
+        if (blade->hitbox != NULL)
+        {
+            blade->hitbox->x = blade->pos.x;
+            blade->hitbox->y = blade->pos.y;
+            blade->hitArea->x = blade->pos.x;
+            blade->hitArea->y = blade->pos.y;
+            if (blade->timer >= 120)
+            {
+                blade->hitbox->active = 0;
+                blade->hitArea->active = 0;
+                blade->hitArea = NULL;
+                blade->hitbox = NULL;
+            }
+            else if (blade->hitbox->hits > 0)
+            {
+                player->anm->StartScriptAtOrigin(&blade->sprites[0], 0x17);
+                g_EffectManager.SpawnEffect(0, &pb->parts[i].pos, 1, 0xffff80ff);
+                blade->hitbox->active = 0;
+                blade->hitArea->active = 0;
+                blade->hitArea = NULL;
+                blade->hitbox = NULL;
+                g_SoundPlayer.QueueSoundPanned(0x2b, blade->pos.x);
+            }
+        }
+        blade->pos += blade->velocity;
+        g_SpriteEngine->Step(&blade->sprites[0]);
+        blade->timer++;
+    }
+}
+
 int EffectUpdateBombRing46(Effect *effect)
 {
     effect->radius += 8.0f;
