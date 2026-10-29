@@ -126,7 +126,10 @@ public:
     // Draw scales the sprite's height and width by these, as th07's.
     float scaleY;
     float scaleX;
-    unsigned char unk_20[0x18];
+    unsigned char unk_20[0x10];
+    // Added to the sprite's texture coordinates.
+    float uvScrollX;
+    float uvScrollY;
     // The script's frame.
     Timer scriptTime;
     unsigned char unk_44[0xbc];
@@ -415,6 +418,14 @@ public:
     // Sets the blend mode and z writes `vm` wants, as th07's; the z
     // writes through App::SetRenderState, which flushes the batch first.
     void SetBlendModeForSprite(Sprite *vm);
+    // Adds g_DiffuseQuad to the batch with `vm`'s texture coordinates,
+    // shaken, rounded to pixels with flag 1, with `vm`'s color unless
+    // flag 2 is set, unless it is outside the viewport, as th07's.
+    // Returns 0.
+    int DrawQuad(Sprite *vm, int flags);
+    // Adds `quad`, a triangle strip, to the batch as two triangles, as
+    // th07's. Returns 0.
+    int AddQuadToBatch(VertexTex1DiffuseXyzrwh *quad);
     // Starts batching quads for a frame, as th07's (0x462e00).
     void BeginQuadBatch();
     // Draws the batched quads (0x462e40).
@@ -638,6 +649,8 @@ extern SpriteEngine *g_SpriteEngine;
 extern VertexTex1DiffuseXyzrwh g_DiffuseQuad[4];
 // A transformed quad without a color.
 extern VertexTex1Xyzrwh g_Quad[4];
+// 0.5, for DrawQuad's rounding.
+extern float g_Half;
 // CreateQuad's quad with a color, for drawing without the vertex
 // buffer.
 extern VertexTex1DiffuseXyz g_DiffuseQuadXyz[4];

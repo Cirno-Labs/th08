@@ -323,6 +323,100 @@ void SpriteEngine::SetBlendModeForSprite(Sprite *vm)
     this->renderStateSetCount++;
 }
 
+int SpriteEngine::DrawQuad(Sprite *vm, int flags)
+{
+    float bottom;
+    float minY;
+    float minX;
+    float maxX;
+    D3DCOLOR diffuse;
+
+    g_DiffuseQuad[0].pos.x += this->shakeX;
+    g_DiffuseQuad[0].pos.y += this->shakeY;
+    g_DiffuseQuad[1].pos.x += this->shakeX;
+    g_DiffuseQuad[1].pos.y += this->shakeY;
+    g_DiffuseQuad[2].pos.x += this->shakeX;
+    g_DiffuseQuad[2].pos.y += this->shakeY;
+    g_DiffuseQuad[3].pos.x += this->shakeX;
+    g_DiffuseQuad[3].pos.y += this->shakeY;
+    if (flags & 1)
+    {
+        __asm
+        {
+            fld dword ptr [g_DiffuseQuad + 0x00]
+            frndint
+            fsub g_Half
+            fld dword ptr [g_DiffuseQuad + 0x1c]
+            frndint
+            fsub g_Half
+            fld dword ptr [g_DiffuseQuad + 0x04]
+            frndint
+            fsub g_Half
+            fld dword ptr [g_DiffuseQuad + 0x3c]
+            frndint
+            fsub g_Half
+            fst dword ptr [g_DiffuseQuad + 0x3c]
+            fstp dword ptr [g_DiffuseQuad + 0x58]
+            fst dword ptr [g_DiffuseQuad + 0x04]
+            fstp dword ptr [g_DiffuseQuad + 0x20]
+            fst dword ptr [g_DiffuseQuad + 0x1c]
+            fstp dword ptr [g_DiffuseQuad + 0x54]
+            fst dword ptr [g_DiffuseQuad + 0x00]
+            fstp dword ptr [g_DiffuseQuad + 0x38]
+        }
+    }
+    g_DiffuseQuad[0].uv.x = g_DiffuseQuad[2].uv.x = vm->spriteData->uvStartX + vm->uvScrollX;
+    g_DiffuseQuad[1].uv.x = g_DiffuseQuad[3].uv.x = vm->spriteData->uvEndX + vm->uvScrollX;
+    g_DiffuseQuad[0].uv.y = g_DiffuseQuad[1].uv.y = vm->spriteData->uvStartY + vm->uvScrollY;
+    g_DiffuseQuad[2].uv.y = g_DiffuseQuad[3].uv.y = vm->spriteData->uvEndY + vm->uvScrollY;
+    maxX = g_DiffuseQuad[0].pos.x > g_DiffuseQuad[1].pos.x ? g_DiffuseQuad[0].pos.x : g_DiffuseQuad[1].pos.x;
+    maxX = g_DiffuseQuad[2].pos.x > maxX ? g_DiffuseQuad[2].pos.x : maxX;
+    maxX = g_DiffuseQuad[3].pos.x > maxX ? g_DiffuseQuad[3].pos.x : maxX;
+    bottom = g_DiffuseQuad[0].pos.y > g_DiffuseQuad[1].pos.y ? g_DiffuseQuad[0].pos.y : g_DiffuseQuad[1].pos.y;
+    bottom = g_DiffuseQuad[2].pos.y > bottom ? g_DiffuseQuad[2].pos.y : bottom;
+    bottom = g_DiffuseQuad[3].pos.y > bottom ? g_DiffuseQuad[3].pos.y : bottom;
+    minX = g_DiffuseQuad[0].pos.x < g_DiffuseQuad[1].pos.x ? g_DiffuseQuad[0].pos.x : g_DiffuseQuad[1].pos.x;
+    minX = g_DiffuseQuad[2].pos.x < minX ? g_DiffuseQuad[2].pos.x : minX;
+    minX = g_DiffuseQuad[3].pos.x < minX ? g_DiffuseQuad[3].pos.x : minX;
+    minY = g_DiffuseQuad[0].pos.y < g_DiffuseQuad[1].pos.y ? g_DiffuseQuad[0].pos.y : g_DiffuseQuad[1].pos.y;
+    minY = g_DiffuseQuad[2].pos.y < minY ? g_DiffuseQuad[2].pos.y : minY;
+    minY = g_DiffuseQuad[3].pos.y < minY ? g_DiffuseQuad[3].pos.y : minY;
+    if (g_App.viewport.X > maxX || g_App.viewport.Y > bottom || g_App.viewport.X + g_App.viewport.Width < minX ||
+        g_App.viewport.Y + g_App.viewport.Height < minY)
+    {
+        return 0;
+    }
+    if (this->currentTexture != vm->spriteData->texture)
+    {
+        this->currentTexture = vm->spriteData->texture;
+        this->FlushQuadBatch();
+        g_App.d3dDevice->SetTexture(0, this->currentTexture);
+    }
+    if (this->vertexFormat != 1)
+    {
+        this->FlushQuadBatch();
+        this->vertexFormat = 1;
+    }
+    if ((flags & 2) == 0)
+    {
+        diffuse = (vm->flags >> 17 & 1) ? vm->color2 : vm->color;
+        if (this->modulateColorEnabled != 0)
+        {
+            MODULATE_CHANNEL(diffuse, this->modulateColor, 2);
+            MODULATE_CHANNEL(diffuse, this->modulateColor, 1);
+            MODULATE_CHANNEL(diffuse, this->modulateColor, 0);
+            MODULATE_CHANNEL(diffuse, this->modulateColor, 3);
+        }
+        g_DiffuseQuad[0].diffuse = diffuse;
+        g_DiffuseQuad[1].diffuse = diffuse;
+        g_DiffuseQuad[2].diffuse = diffuse;
+        g_DiffuseQuad[3].diffuse = diffuse;
+    }
+    this->SetBlendModeForSprite(vm);
+    this->AddQuadToBatch(g_DiffuseQuad);
+    return 0;
+}
+
 SpriteEngine::SpriteEngine()
 {
     memset(this, 0, sizeof(*this));
