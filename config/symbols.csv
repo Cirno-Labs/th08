@@ -690,7 +690,7 @@ address,size,name,symbol
 0x00445440,19,MidiTimer::StopTimer,?StopTimer@MidiTimer@@QAEXXZ
 0x00445453,1831,Func445453,
 0x00445b7a,70,App::App,??0App@@QAE@XZ
-0x00445bc0,20,Func445bc0,
+0x00445bc0,20,App::OnDraw,?OnDraw@App@@SIHPAV1@@Z
 0x00445bd4,362,Func445bd4,
 0x00445d3e,255,Func445d3e,
 0x00445e3d,106,Func445e3d,
@@ -704,7 +704,7 @@ address,size,name,symbol
 0x00446d06,517,Func446d06,
 0x00446f0b,55,Func446f0b,
 0x00446f42,17,Func446f42,
-0x00446f53,834,Func446f53,
+0x00446f53,834,DrawFps,?DrawFps@@YIXH@Z
 0x00447295,198,Func447295,
 0x0044735b,198,Func44735b,
 0x00447421,110,Func447421,

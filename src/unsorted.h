@@ -62,6 +62,13 @@ public:
     // Zeroes the whole App and sets bits 0x40 and 0x100 of unk_1a4.
     // Emitted where g_App is defined (0x445b7a).
     App();
+    // The main update chain callback and its added and deleted
+    // callbacks.
+    static int OnUpdate(App *arg);
+    static int AddedCallback(App *arg);
+    static int DeletedCallback(App *arg);
+    // The draw chain callback: draws the frame rate. Returns 1.
+    static int OnDraw(App *arg);
     // Whether holding shoot also focuses (shootFocuses). th07 read the
     // field directly; th08 calls this out-of-line copy.
     int GetShootFocuses();
@@ -91,6 +98,8 @@ public:
     IDirectInputDevice8 *joystick;
     DIDEVCAPS joystickCaps;
     HWND hwnd;
+    // D3DMATRIX, not D3DXMATRIX: App::App would call D3DXMATRIX's
+    // constructor (not inlined without /Ob1).
     D3DMATRIX viewMatrix;
     D3DMATRIX projectionMatrix;
     D3DVIEWPORT8 viewport;
@@ -150,6 +159,10 @@ public:
 ASSERT_SIZE(App, 0x364);
 
 extern App g_App;
+
+// Measures the frame rate every half second, with the performance
+// counter when there is one, and shows it when `draw` is set, as th07's.
+void DrawFps(int draw);
 
 // Prints `name` and then 可 or 不可 (yes or no), by whether `caps` has
 // any of `flag`, at `out`; returns the end of the text.

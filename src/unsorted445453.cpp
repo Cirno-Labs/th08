@@ -16,3 +16,9 @@ App::App()
     this->unk_1a4 |= 0x40;
     this->unk_1a4 |= 0x100;
 }
+
+int App::OnDraw(App *arg)
+{
+    DrawFps(1);
+    return 1;
+}
