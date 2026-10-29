@@ -226,3 +226,83 @@ BYTE *GetPadButtons()
         return g_PadButtons;
     }
 }
+
+// Sets `bit` in `buttons` while key `key` of `keyState` is down.
+#define KEY(key, bit) buttons |= ((keyState[key] & 0x80) ? (bit) : 0)
+
+WORD ReadButtons()
+{
+    WORD buttons = 0;
+    BYTE keyState[0x100];
+
+    if (g_App.keyboard == NULL)
+    {
+        GetKeyboardState(keyState);
+        KEY(VK_UP, 0x10);
+        KEY(VK_DOWN, 0x20);
+        KEY(VK_LEFT, 0x40);
+        KEY(VK_RIGHT, 0x80);
+        KEY(VK_NUMPAD8, 0x10);
+        KEY(VK_NUMPAD2, 0x20);
+        KEY(VK_NUMPAD4, 0x40);
+        KEY(VK_NUMPAD6, 0x80);
+        KEY(VK_NUMPAD7, 0x50);
+        KEY(VK_NUMPAD9, 0x90);
+        KEY(VK_NUMPAD1, 0x60);
+        KEY(VK_NUMPAD3, 0xa0);
+        KEY(VK_HOME, 0x800);
+        KEY('P', 0x800);
+        KEY('D', 0x2000);
+        KEY('Z', 0x1);
+        KEY('X', 0x2);
+        KEY(VK_SHIFT, 0x4);
+        KEY(VK_ESCAPE, 0x8);
+        KEY(VK_CONTROL, 0x100);
+        KEY('Q', 0x200);
+        KEY('S', 0x400);
+        KEY('R', 0x4000);
+        KEY(VK_RETURN, 0x1000);
+    }
+    else
+    {
+        HRESULT hr = g_App.keyboard->GetDeviceState(sizeof(keyState), keyState);
+        buttons = 0;
+        if (hr == DIERR_INPUTLOST)
+        {
+            g_App.keyboard->Acquire();
+            return ReadJoystick(buttons);
+        }
+        if (hr != DI_OK)
+        {
+            g_App.keyboard->Acquire();
+            return ReadJoystick(buttons);
+        }
+        KEY(DIK_UP, 0x10);
+        KEY(DIK_DOWN, 0x20);
+        KEY(DIK_LEFT, 0x40);
+        KEY(DIK_RIGHT, 0x80);
+        KEY(DIK_NUMPAD8, 0x10);
+        KEY(DIK_NUMPAD2, 0x20);
+        KEY(DIK_NUMPAD4, 0x40);
+        KEY(DIK_NUMPAD6, 0x80);
+        KEY(DIK_NUMPAD7, 0x50);
+        KEY(DIK_NUMPAD9, 0x90);
+        KEY(DIK_NUMPAD1, 0x60);
+        KEY(DIK_NUMPAD3, 0xa0);
+        KEY(DIK_HOME, 0x800);
+        KEY(DIK_P, 0x800);
+        KEY(DIK_D, 0x2000);
+        KEY(DIK_Z, 0x1);
+        KEY(DIK_X, 0x2);
+        KEY(DIK_LSHIFT, 0x4);
+        KEY(DIK_RSHIFT, 0x4);
+        KEY(DIK_ESCAPE, 0x8);
+        KEY(DIK_LCONTROL, 0x100);
+        KEY(DIK_RCONTROL, 0x100);
+        KEY(DIK_Q, 0x200);
+        KEY(DIK_S, 0x400);
+        KEY(DIK_RETURN, 0x1000);
+        KEY(DIK_R, 0x4000);
+    }
+    return ReadJoystick(buttons);
+}

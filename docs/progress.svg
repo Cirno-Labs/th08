@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">4.12% (46)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">95.88% (1070)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">4.21% (47)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">95.79% (1069)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="30.79" height="6" x="0" y="0" class="named"/>
-<rect width="716.21" height="6" x="30.79" y="0" class="todo"/>
+<rect width="31.46" height="6" x="0" y="0" class="named"/>
+<rect width="715.54" height="6" x="31.46" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -637,7 +637,7 @@
 <rect width="12" height="12" x="255" y="165" class="named"><title>0x0043d6e0 SetButtonFromDirectInput (122 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="165" class="named"><title>0x0043d760 SetButtonFromJoystick (115 bytes)</title></rect>
 <rect width="12" height="12" x="285" y="165" class="named"><title>0x0043d7e0 GetPadButtons (392 bytes)</title></rect>
-<rect width="12" height="12" x="300" y="165" class="todo"><title>0x0043d970 Func43d970 (2029 bytes)</title></rect>
+<rect width="12" height="12" x="300" y="165" class="named"><title>0x0043d970 ReadButtons (2029 bytes)</title></rect>
 <rect width="12" height="12" x="315" y="165" class="todo"><title>0x0043e160 Func43e160 (110 bytes)</title></rect>
 <rect width="12" height="12" x="330" y="165" class="todo"><title>0x0043e1d0 Func43e1d0 (448 bytes)</title></rect>
 <rect width="12" height="12" x="345" y="165" class="todo"><title>0x0043e390 Func43e390 (262 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">2.28%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">97.72%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">2.73%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">97.27%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="17.07" height="6" x="0" y="0" class="named"/>
-<rect width="729.93" height="6" x="17.07" y="0" class="todo"/>
+<rect width="20.36" height="6" x="0" y="0" class="named"/>
+<rect width="726.64" height="6" x="20.36" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1233,7 +1233,7 @@
 <rect width="29.54" height="34.28" x="261.24" y="0" class="todo"><title>0x0042f5f0 Func42f5f0 (2138 bytes)</title></rect>
 <rect width="29.54" height="33.18" x="261.24" y="37.28" class="todo"><title>0x0042ffc0 Func42ffc0 (2075 bytes)</title></rect>
 <rect width="29.54" height="32.43" x="261.24" y="73.47" class="todo"><title>0x00411b10 Func411b10 (2032 bytes)</title></rect>
-<rect width="29.54" height="32.38" x="261.24" y="108.90" class="todo"><title>0x0043d970 Func43d970 (2029 bytes)</title></rect>
+<rect width="29.54" height="32.38" x="261.24" y="108.90" class="named"><title>0x0043d970 ReadButtons (2029 bytes)</title></rect>
 <rect width="29.54" height="31.68" x="261.24" y="144.29" class="todo"><title>0x00440500 Func440500 (1989 bytes)</title></rect>
 <rect width="29.54" height="31.56" x="261.24" y="178.97" class="todo"><title>0x0043826b Func43826b (1982 bytes)</title></rect>
 <rect width="29.54" height="30.85" x="261.24" y="213.53" class="todo"><title>0x0040c010 Func40c010 (1941 bytes)</title></rect>
