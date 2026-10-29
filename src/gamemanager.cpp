@@ -42,6 +42,20 @@ int GameManager::ComputeChecksum()
     return sum;
 }
 
+int ChecksumBytes(BYTE *data, int size)
+{
+    int i;
+    int sum;
+
+    sum = 0;
+    for (i = 0; i < size; i++, data++)
+    {
+        sum += *data;
+        g_GameManager.stats->checksum += g_GameManager.stats->checksumKeysE[2];
+    }
+    return sum;
+}
+
 void GameManager::AddLifeOrBomb()
 {
     if ((int)this->stats->lives < 8)
