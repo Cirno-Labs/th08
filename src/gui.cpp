@@ -8,6 +8,7 @@
 #include "enemy.h"
 #include "item.h"
 #include "replay.h"
+#include "sprite.h"
 #include "unsorted.h"
 
 int Gui::OnUpdate(Gui *gui)
@@ -180,6 +181,85 @@ void DecodeMsgString(char *dst, char *src)
         i++;
         src++;
     } while (c != 0);
+}
+
+int GuiImpl::DrawMsg()
+{
+    float height;
+
+    if (this->msg.scriptIndex < 0)
+    {
+        return -1;
+    }
+    if (this->msg.timer < 60)
+    {
+        height = this->msg.timer.AsFloat() * 48.0f / 60.0f;
+    }
+    else
+    {
+        height = 48.0f;
+    }
+    VertexDiffuseXyzrwh vertices[4];
+    vertices[0].pos = D3DXVECTOR3(g_GameManager.arena[0] + 16.0f, 384.0f, 0.0f);
+    vertices[1].pos = D3DXVECTOR3(g_GameManager.arena[0] + 384.0f - 16.0f, 384.0f, 0.0f);
+    vertices[2].pos = D3DXVECTOR3(g_GameManager.arena[0] + 16.0f, 384.0f + height, 0.0f);
+    vertices[3].pos = D3DXVECTOR3(g_GameManager.arena[0] + 384.0f - 16.0f, 384.0f + height, 0.0f);
+    vertices[0].diffuse = vertices[1].diffuse = 0xd0000000;
+    vertices[2].diffuse = vertices[3].diffuse = 0x90000000;
+    vertices[0].w = vertices[1].w = vertices[2].w = vertices[3].w = 1.0f;
+    if (this->msg.portraits[0].pos.z >= this->msg.portraits[1].pos.z)
+    {
+        g_SpriteEngine->DrawUnrotated(&this->msg.portraits[0]);
+        g_SpriteEngine->DrawUnrotated(&this->msg.portraits[1]);
+    }
+    else
+    {
+        g_SpriteEngine->DrawUnrotated(&this->msg.portraits[1]);
+        g_SpriteEngine->DrawUnrotated(&this->msg.portraits[0]);
+    }
+    if (this->msg.portraits[2].pos.z >= this->msg.portraits[3].pos.z)
+    {
+        g_SpriteEngine->DrawUnrotated(&this->msg.portraits[2]);
+        g_SpriteEngine->DrawUnrotated(&this->msg.portraits[3]);
+    }
+    else
+    {
+        g_SpriteEngine->DrawUnrotated(&this->msg.portraits[3]);
+        g_SpriteEngine->DrawUnrotated(&this->msg.portraits[2]);
+    }
+    g_SpriteEngine->FlushQuadBatch();
+    if (this->msg.unk_156d)
+    {
+        if (!g_App.GetNoColorBlending())
+        {
+            g_App.d3dDevice->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_SELECTARG1);
+            g_App.d3dDevice->SetTextureStageState(0, D3DTSS_COLOROP, D3DTOP_SELECTARG1);
+        }
+        g_App.d3dDevice->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_DIFFUSE);
+        g_App.d3dDevice->SetTextureStageState(0, D3DTSS_COLORARG1, D3DTA_DIFFUSE);
+        if (!g_App.GetNoDepthTest())
+        {
+            g_App.SetRenderState(D3DRS_ZWRITEENABLE, FALSE);
+        }
+        g_App.d3dDevice->SetVertexShader(D3DFVF_XYZRHW | D3DFVF_DIFFUSE);
+        g_App.d3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLESTRIP, 2, vertices, sizeof(VertexDiffuseXyzrwh));
+        g_SpriteEngine->ClearVertexFormat();
+        g_SpriteEngine->ClearColorOp();
+        g_SpriteEngine->ClearBlendMode();
+        g_SpriteEngine->ClearZWrite();
+        if (!g_App.GetNoColorBlending())
+        {
+            g_App.d3dDevice->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_MODULATE);
+            g_App.d3dDevice->SetTextureStageState(0, D3DTSS_COLOROP, D3DTOP_MODULATE);
+        }
+        g_App.d3dDevice->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE);
+        g_App.d3dDevice->SetTextureStageState(0, D3DTSS_COLORARG1, D3DTA_TEXTURE);
+    }
+    g_SpriteEngine->DrawUnrotated(&this->msg.text[0]);
+    g_SpriteEngine->DrawUnrotated(&this->msg.text[1]);
+    g_SpriteEngine->DrawUnrotated(&this->msg.nameplates[0]);
+    g_SpriteEngine->DrawUnrotated(&this->msg.nameplates[1]);
+    return 0;
 }
 
 BOOL Gui::MsgHoldsTimeline()
