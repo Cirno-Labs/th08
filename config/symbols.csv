@@ -61,7 +61,7 @@ address,size,name,symbol
 0x00406be0,68,Func406be0,
 0x00406c30,28,Func406c30,
 0x00406c50,28,Func406c50,
-0x00406c70,26,Func406c70,
+0x00406c70,26,GameManager::IsInSpellCardPractice,?IsInSpellCardPractice@GameManager@@QAEHXZ
 0x00406c90,26,Func406c90,
 0x00406cb0,25,Func406cb0,
 0x00406cd0,23,Func406cd0,
