@@ -379,3 +379,22 @@ void LzssReplaceNode(int oldNode, int newNode)
     }
     g_LzssTree[oldNode].parent = 0;
 }
+
+void LzssReplaceChild(int oldNode, int newNode)
+{
+    int parent;
+
+    parent = g_LzssTree[oldNode].parent;
+    if (g_LzssTree[parent].smallerChild == oldNode)
+    {
+        g_LzssTree[parent].smallerChild = newNode;
+    }
+    else
+    {
+        g_LzssTree[parent].largerChild = newNode;
+    }
+    g_LzssTree[newNode] = g_LzssTree[oldNode];
+    g_LzssTree[g_LzssTree[newNode].smallerChild].parent = newNode;
+    g_LzssTree[g_LzssTree[newNode].largerChild].parent = newNode;
+    g_LzssTree[oldNode].parent = 0;
+}
