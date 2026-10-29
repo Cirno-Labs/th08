@@ -728,7 +728,7 @@ address,size,name,symbol
 0x0044871b,117,App::CloseSubThread,?CloseSubThread@App@@QAEXXZ
 0x00448790,138,App::StartLoadingSprites,?StartLoadingSprites@App@@QAEXPAUD3DXVECTOR3@@@Z
 0x0044881a,85,App::StopLoadingSprites,?StopLoadingSprites@App@@QAEXXZ
-0x0044886f,259,Func44886f,
+0x0044886f,259,App::StartLoadingSpritesOverScreen,?StartLoadingSpritesOverScreen@App@@QAEXPAUD3DXVECTOR3@@@Z
 0x00448972,88,Func448972,
 0x004489ca,47,Func4489ca,
 0x004489f9,54,Func4489f9,
