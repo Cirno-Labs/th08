@@ -848,7 +848,7 @@ address,size,name,symbol
 0x00453cd1,41,GetStageName,?GetStageName@@YIPADH@Z
 0x00453cfa,19,GetShotName,?GetShotName@@YIPADH@Z
 0x00453d0d,1372,SaveScoreDat,?SaveScoreDat@@YIXPAVResultScreen@@@Z
-0x00454269,47,Func454269,
+0x00454269,47,FormatAndAdvance,?FormatAndAdvance@@YAPADPADPBDZZ
 0x00454298,2497,Func454298,
 0x00454c59,46,Func454c59,
 0x00454c87,43,ResultScreen::ReleaseScores,?ReleaseScores@ResultScreen@@QAEXHH@Z

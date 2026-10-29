@@ -4,6 +4,8 @@
 // constructors are called). The score file's loading is an /Od object of
 // its own after it (scoredat.cpp).
 
+#include <stdarg.h>
+#include <stdio.h>
 #include <string.h>
 
 #include "lzss.h"
@@ -170,6 +172,16 @@ void SaveScoreDat(ResultScreen *screen)
     WriteToFile("score.dat", encrypted, size0);
     g_MemoryManager.Free(buf);
     g_MemoryManager.Free(encrypted);
+}
+
+char *FormatAndAdvance(char *buf, const char *fmt, ...)
+{
+    va_list args;
+
+    va_start(args, fmt);
+    vsprintf(buf, fmt, args);
+    va_end(args);
+    return buf + strlen(buf);
 }
 
 int ResultScreen::RegisterChain(int mode)
