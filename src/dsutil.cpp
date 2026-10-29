@@ -366,3 +366,40 @@ HRESULT CSound::FillBufferWithSound(LPDIRECTSOUNDBUFFER pDSB, BOOL bRepeatWavIfB
 
     return S_OK;
 }
+
+HRESULT CSound::RestoreBuffer(LPDIRECTSOUNDBUFFER pDSB, BOOL *pbWasRestored)
+{
+    HRESULT hr;
+
+    if (pDSB == NULL)
+        return CO_E_NOTINITIALIZED;
+    if (pbWasRestored)
+        *pbWasRestored = FALSE;
+
+    DWORD dwStatus;
+    if (FAILED(hr = pDSB->GetStatus(&dwStatus)))
+        return DXTRACE_ERR(TEXT("GetStatus"), hr);
+
+    if (dwStatus & DSBSTATUS_BUFFERLOST)
+    {
+        // Since the app could have just been activated, then
+        // DirectSound may not be giving us control yet, so
+        // the restoring the buffer may fail.
+        // If it does, sleep until DirectSound gives us control.
+        do
+        {
+            hr = pDSB->Restore();
+            if (hr == DSERR_BUFFERLOST)
+                Sleep(10);
+        } while (hr = pDSB->Restore());
+
+        if (pbWasRestored != NULL)
+            *pbWasRestored = TRUE;
+
+        return S_OK;
+    }
+    else
+    {
+        return S_FALSE;
+    }
+}
