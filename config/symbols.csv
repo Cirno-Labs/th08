@@ -1025,7 +1025,7 @@ address,size,name,symbol
 0x0046fdc2,510,Func46fdc2,
 0x0046ffc0,843,Func46ffc0,
 0x0047030b,281,MainMenu::MoveMenuCursor,?MoveMenuCursor@MainMenu@@QAEHH@Z
-0x00470424,265,Func470424,
+0x00470424,265,MainMenu::MoveMenuCursorLR,?MoveMenuCursorLR@MainMenu@@QAEHH@Z
 0x0047052d,850,Func47052d,
 0x0047087f,493,Func47087f,
 0x00470a6c,873,Func470a6c,

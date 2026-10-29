@@ -103,3 +103,32 @@ int MainMenu::MoveMenuCursor(int count)
     }
     return 0;
 }
+
+int MainMenu::MoveMenuCursorLR(int count)
+{
+    if (count == 0)
+    {
+        return 0;
+    }
+    if (WAS_PRESSED_OR_HELD(0x40))
+    {
+        this->cursor--;
+        if (this->cursor < 0)
+        {
+            this->cursor += count;
+        }
+        g_SoundPlayer.QueueSound(12, 0);
+        return -1;
+    }
+    if (WAS_PRESSED_OR_HELD(0x80))
+    {
+        this->cursor++;
+        if (this->cursor >= count)
+        {
+            this->cursor -= count;
+        }
+        g_SoundPlayer.QueueSound(12, 0);
+        return 1;
+    }
+    return 0;
+}

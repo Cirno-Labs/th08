@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">53.58% (598)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">44.62% (498)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">53.67% (599)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">44.53% (497)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="400.27" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="400.27" y="0" class="decompiled"/>
-<rect width="333.34" height="6" x="413.66" y="0" class="todo"/>
+<rect width="400.94" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="400.94" y="0" class="decompiled"/>
+<rect width="332.67" height="6" x="414.33" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -1094,7 +1094,7 @@
 <rect width="12" height="12" x="345" y="300" class="todo"><title>0x0046fdc2 Func46fdc2 (510 bytes)</title></rect>
 <rect width="12" height="12" x="360" y="300" class="todo"><title>0x0046ffc0 Func46ffc0 (843 bytes)</title></rect>
 <rect width="12" height="12" x="375" y="300" class="named"><title>0x0047030b MainMenu::MoveMenuCursor (281 bytes)</title></rect>
-<rect width="12" height="12" x="390" y="300" class="todo"><title>0x00470424 Func470424 (265 bytes)</title></rect>
+<rect width="12" height="12" x="390" y="300" class="named"><title>0x00470424 MainMenu::MoveMenuCursorLR (265 bytes)</title></rect>
 <rect width="12" height="12" x="405" y="300" class="todo"><title>0x0047052d Func47052d (850 bytes)</title></rect>
 <rect width="12" height="12" x="420" y="300" class="todo"><title>0x0047087f Func47087f (493 bytes)</title></rect>
 <rect width="12" height="12" x="435" y="300" class="todo"><title>0x00470a6c Func470a6c (873 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">45.24%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">53.77%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">45.30%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">53.71%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="337.97" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="337.97" y="0" class="decompiled"/>
-<rect width="401.63" height="6" x="345.37" y="0" class="todo"/>
+<rect width="338.40" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="338.40" y="0" class="decompiled"/>
+<rect width="401.20" height="6" x="345.80" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1561,7 +1561,7 @@
 <rect width="9.31" height="9.27" x="545.71" y="191.50" class="named"><title>0x004296a0 Ending::RegisterChain (266 bytes)</title></rect>
 <rect width="9.31" height="9.27" x="545.71" y="203.77" class="named"><title>0x00443730 ChecksumExecutable (266 bytes)</title></rect>
 <rect width="9.31" height="9.22" x="545.71" y="216.03" class="named"><title>0x00402920 AsciiText::AddString (265 bytes)</title></rect>
-<rect width="9.31" height="9.22" x="545.71" y="228.25" class="todo"><title>0x00470424 Func470424 (265 bytes)</title></rect>
+<rect width="9.31" height="9.22" x="545.71" y="228.25" class="named"><title>0x00470424 MainMenu::MoveMenuCursorLR (265 bytes)</title></rect>
 <rect width="9.31" height="9.22" x="545.71" y="240.47" class="named"><title>0x004717c0 CSoundManager::SetPrimaryBufferFormat (265 bytes)</title></rect>
 <rect width="9.31" height="9.17" x="545.71" y="252.69" class="todo"><title>0x0040bf00 Func40bf00 (264 bytes)</title></rect>
 <rect width="9.31" height="9.08" x="545.71" y="264.86" class="named"><title>0x0043e390 DecryptFileData (262 bytes)</title></rect>
