@@ -675,3 +675,22 @@ int SpriteEngine::PreloadSurface(int surface, char *path)
     this->surfaceFileSizes[surface] = size;
     return 0;
 }
+
+void SpriteEngine::ReleaseSurface(int surface)
+{
+    if (this->surfaces[surface] != NULL)
+    {
+        this->surfaces[surface]->Release();
+        this->surfaces[surface] = NULL;
+    }
+    if (this->surfacesBackup[surface] != NULL)
+    {
+        this->surfacesBackup[surface]->Release();
+        this->surfacesBackup[surface] = NULL;
+    }
+    if (this->surfaceFiles[surface] != NULL)
+    {
+        g_MemoryManager.Free(this->surfaceFiles[surface]);
+    }
+    this->surfaceFiles[surface] = NULL;
+}

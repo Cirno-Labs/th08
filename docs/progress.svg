@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">26.61% (297)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">73.39% (819)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">26.70% (298)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">73.30% (818)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="198.80" height="6" x="0" y="0" class="named"/>
-<rect width="548.20" height="6" x="198.80" y="0" class="todo"/>
+<rect width="199.47" height="6" x="0" y="0" class="named"/>
+<rect width="547.53" height="6" x="199.47" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -1064,7 +1064,7 @@
 <rect width="12" height="12" x="660" y="285" class="named"><title>0x00466650 SpriteEngine::RenderTextCentered (366 bytes)</title></rect>
 <rect width="12" height="12" x="675" y="285" class="named"><title>0x004667c0 SpriteEngine::LoadSurface (670 bytes)</title></rect>
 <rect width="12" height="12" x="690" y="285" class="named"><title>0x00466a60 SpriteEngine::PreloadSurface (126 bytes)</title></rect>
-<rect width="12" height="12" x="705" y="285" class="todo"><title>0x00466ae0 SpriteEngine::ReleaseSurface (200 bytes)</title></rect>
+<rect width="12" height="12" x="705" y="285" class="named"><title>0x00466ae0 SpriteEngine::ReleaseSurface (200 bytes)</title></rect>
 <rect width="12" height="12" x="720" y="285" class="todo"><title>0x00466bb0 SpriteEngine::CopySurfaceToBackBuffer (445 bytes)</title></rect>
 <rect width="12" height="12" x="735" y="285" class="todo"><title>0x00466d70 Func466d70 (424 bytes)</title></rect>
 <rect width="12" height="12" x="0" y="300" class="todo"><title>0x00466f20 SpriteEngine::CopyBackBufferToTexture (286 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">16.24%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">83.76%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">16.28%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">83.72%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="121.30" height="6" x="0" y="0" class="named"/>
-<rect width="625.70" height="6" x="121.30" y="0" class="todo"/>
+<rect width="121.63" height="6" x="0" y="0" class="named"/>
+<rect width="625.37" height="6" x="121.63" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1648,7 +1648,7 @@
 <rect width="7.42" height="8.06" x="718.90" y="177.72" class="named"><title>0x00444550 MidiPlayer::Rewind (203 bytes)</title></rect>
 <rect width="7.42" height="8.06" x="729.32" y="177.72" class="todo"><title>0x00471586 Func471586 (203 bytes)</title></rect>
 <rect width="7.26" height="8.06" x="739.74" y="177.72" class="todo"><title>0x004577e2 Func4577e2 (200 bytes)</title></rect>
-<rect width="7.39" height="7.92" x="580.58" y="188.78" class="todo"><title>0x00466ae0 SpriteEngine::ReleaseSurface (200 bytes)</title></rect>
+<rect width="7.39" height="7.92" x="580.58" y="188.78" class="named"><title>0x00466ae0 SpriteEngine::ReleaseSurface (200 bytes)</title></rect>
 <rect width="7.39" height="7.92" x="580.58" y="199.70" class="todo"><title>0x00469fa9 Func469fa9 (200 bytes)</title></rect>
 <rect width="7.39" height="7.81" x="580.58" y="210.62" class="named"><title>0x00447295 Timer::Add (198 bytes)</title></rect>
 <rect width="7.39" height="7.81" x="580.58" y="221.43" class="named"><title>0x0044735b Timer::Sub (198 bytes)</title></rect>
