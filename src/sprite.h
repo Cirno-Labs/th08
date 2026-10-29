@@ -391,6 +391,11 @@ public:
     // th08.
     int DrawRotatedNoRound(Sprite *vm);
     // Draws `vm` at its 3D position projected to the screen, as th07's.
+    // Sets g_DiffuseQuad to `vm` projected from its 3D position, rotated,
+    // its size scaled by how far g_CameraSizeOffset from it reaches on
+    // the screen, as th07's. Returns 0, or -1 when it is outside the
+    // depth range.
+    int ProjectSprite(Sprite *vm);
     int DrawProjected(Sprite *vm);
     // Draws `vm` in 3D, projected by ProjectSprite3D, as th07's.
     int DrawProjected3D(Sprite *vm);
@@ -676,6 +681,9 @@ extern VertexTex1DiffuseXyzrwh g_DiffuseQuad[4];
 extern VertexTex1Xyzrwh g_Quad[4];
 // 0.5, for DrawQuad's rounding.
 extern float g_Half;
+// The offset from a sprite's position whose projection sets the size
+// ProjectSprite draws it at.
+extern D3DXVECTOR3 g_CameraSizeOffset;
 // CreateQuad's quad with a color, for drawing without the vertex
 // buffer.
 extern VertexTex1DiffuseXyz g_DiffuseQuadXyz[4];

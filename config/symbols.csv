@@ -962,7 +962,7 @@ address,size,name,symbol
 0x00463210,600,SpriteEngine::Draw,?Draw@SpriteEngine@@QAEHPAVSprite@@@Z
 0x00463470,912,SpriteEngine::DrawRotatedNoRound,?DrawRotatedNoRound@SpriteEngine@@QAEHPAVSprite@@@Z
 0x00463800,469,SpriteEngine::DrawNoRound,?DrawNoRound@SpriteEngine@@QAEHPAVSprite@@@Z
-0x004639e0,771,Func4639e0,
+0x004639e0,771,SpriteEngine::ProjectSprite,?ProjectSprite@SpriteEngine@@QAEHPAVSprite@@@Z
 0x00463cf0,107,SpriteEngine::DrawProjected,?DrawProjected@SpriteEngine@@QAEHPAVSprite@@@Z
 0x00463d60,779,Func463d60,
 0x00464070,98,SpriteEngine::DrawProjected3D,?DrawProjected3D@SpriteEngine@@QAEHPAVSprite@@@Z
@@ -1126,6 +1126,7 @@ address,size,name,symbol
 0x00476f53,209,Func476f53,
 0x00477024,93,Func477024,
 0x00477081,139,Func477081,
+0x00477178,,D3DXVec3Project,_D3DXVec3Project@24
 0x0047726e,209,Func47726e,
 0x0047733f,243,Func47733f,
 0x00477432,119,Func477432,
@@ -1714,7 +1715,7 @@ address,size,name,symbol
 0x004a3f0d,145,Func4a3f0d,
 0x004a3fa0,20,__CIsin,__CIsin
 0x004a3fbd,145,Func4a3fbd,
-0x004a4050,20,Func4a4050,
+0x004a4050,20,__CIsqrt,__CIsqrt
 0x004a406d,157,Func4a406d,
 0x004a4110,20,__CItan,__CItan
 0x004a412d,149,Func4a412d,
@@ -2413,6 +2414,7 @@ address,size,name,symbol
 0x004cce20,,g_AsciiText,?g_AsciiText@@3VAsciiText@@A
 0x004e4030,,g_Stage,?g_Stage@@3VStage@@A
 0x004e4b50,,g_FogColorChanged,?g_FogColorChanged@@3EA
+0x004ea3f4,,g_CameraSizeOffset,?g_CameraSizeOffset@@3UD3DXVECTOR3@@A
 0x0160f508,,g_GameManager,?g_GameManager@@3VGameManager@@A
 0x0164d388,,g_JoyCaps,?g_JoyCaps@@3UtagJOYCAPSA@@A
 0x0164d51c,,g_ShotHeldFrames,?g_ShotHeldFrames@@3GA
