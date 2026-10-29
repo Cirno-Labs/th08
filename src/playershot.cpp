@@ -382,3 +382,64 @@ int DrawTrailLaserBullet(Player *player, PlayerBullet *bullet)
     bullet->sprite.alpha = savedAlpha;
     return 0;
 }
+
+int UpdateBombShot(Player *player, PlayerBullet *bullet, D3DXVECTOR3 *pos)
+{
+    float angle;
+
+    if (bullet->state == 2)
+    {
+        if (bullet->timer.AsFrames() % 2 != 0)
+        {
+            return 1;
+        }
+        if (g_SpellCard.Func4178a0() && bullet->timer.AsFrames() % 4 != 0)
+        {
+            return 1;
+        }
+        bullet->damage /= 3;
+        if (bullet->damage == 0)
+        {
+            bullet->damage = 1;
+        }
+        bullet->velocity.x *= 0.88f;
+        bullet->velocity.y *= 0.88f;
+    }
+    else
+    {
+        angle = g_Rng.GetRandomF32InRange(1.5707964f) - 2.3561945f;
+        switch (bullet->sprite.scriptIndex)
+        {
+        case 0xc:
+            bullet->size.x = 48.0f;
+            bullet->size.y = 48.0f;
+            ((Vector2 *)&bullet->velocity)->SetPolar(angle, 6.0f);
+            break;
+        case 0xe:
+            bullet->size.x = 64.0f;
+            bullet->size.y = 64.0f;
+            ((Vector2 *)&bullet->velocity)->SetPolar(angle, 6.0f);
+            break;
+        case 0x10:
+            bullet->size.x = 80.0f;
+            bullet->size.y = 80.0f;
+            ((Vector2 *)&bullet->velocity)->SetPolar(angle, 6.0f);
+            break;
+        case 0x12:
+            bullet->size.x = 96.0f;
+            bullet->size.y = 96.0f;
+            ((Vector2 *)&bullet->velocity)->SetPolar(angle, 6.0f);
+            break;
+        case 0x14:
+            bullet->size.x = 128.0f;
+            bullet->size.y = 128.0f;
+            ((Vector2 *)&bullet->velocity)->SetPolar(angle, 6.0f);
+            break;
+        }
+    }
+    if (bullet->timer.AsFrames() % 6 == 0)
+    {
+        g_EffectManager.SpawnEffect(5, pos, 1, 0xffffffff);
+    }
+    return 0;
+}
