@@ -612,3 +612,42 @@ void PauseMenu::DrawPauseMenu()
         }
     }
 }
+
+void ContinueMenu::DrawContinueMenu()
+{
+    int i;
+
+    if (g_GameManager.isInContinueMenu)
+    {
+        g_SpriteEngine->FlushQuadBatch();
+        g_App.viewport.X = g_GameManager.arena[0];
+        g_App.viewport.Y = g_GameManager.arena[1];
+        g_App.viewport.Width = g_GameManager.arena[2];
+        g_App.viewport.Height = g_GameManager.arena[3];
+        g_App.d3dDevice->SetViewport(&g_App.viewport);
+        if ((g_App.stateFlags >> 1) & 1 && (this->state != 0 || this->stateFrames > 2))
+        {
+            g_SpriteEngine->DrawUnrotated(&this->background);
+        }
+        if (!g_GameManager.IsInSpellCardPractice() && g_GameManager.difficulty < 4)
+        {
+            for (i = 0; i < 4; i++)
+            {
+                if (this->sprites[i].IsShown())
+                {
+                    g_SpriteEngine->DrawUnrotated(&this->sprites[i]);
+                }
+            }
+        }
+        else
+        {
+            for (i = 0; i < 3; i++)
+            {
+                if (this->sprites[i].IsShown())
+                {
+                    g_SpriteEngine->DrawUnrotated(&this->sprites[i]);
+                }
+            }
+        }
+    }
+}
