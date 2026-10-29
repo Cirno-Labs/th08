@@ -114,3 +114,7 @@ int LogError(Log *log, const char *fmt, ...);
 // Whether the file at `path` exists and can be opened for reading: 1 or
 // 0.
 int FileExists(char *path);
+
+// Writes `size` bytes of `data` to the file at `path`. Returns 0, -1 if
+// the file cannot be created, -2 if writing fails.
+int WriteToFile(char *path, void *data, int size);

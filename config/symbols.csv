@@ -576,7 +576,7 @@ address,size,name,symbol
 0x0043e4a0,448,Func43e4a0,
 0x0043e660,531,LoadFileData,?LoadFileData@@YIPAXPADPAHH@Z
 0x0043e880,105,FileExists,?FileExists@@YIHPAD@Z
-0x0043e8f0,267,Func43e8f0,
+0x0043e8f0,267,WriteToFile,?WriteToFile@@YIHPADPAXH@Z
 0x0043ea00,337,LogPrintf,?LogPrintf@@YAHPAVLog@@PBDZZ
 0x0043eb60,343,LogError,?LogError@@YAHPAVLog@@PBDZZ
 0x0043ecc0,88,Func43ecc0,
@@ -648,7 +648,7 @@ address,size,name,symbol
 0x00443730,266,ChecksumExecutable,?ChecksumExecutable@@YIHXZ
 0x00443840,322,ResolveShortcut,?ResolveShortcut@@YIHPAD0H@Z
 0x00443990,35,Log::Reset,?Reset@Log@@QAEXXZ
-0x004439c0,133,Func4439c0,
+0x004439c0,133,Log::Flush,?Flush@Log@@QAEXXZ
 0x00443a50,23,Func443a50,
 0x00443a70,25,Func443a70,
 0x00443a90,26,Func443a90,

@@ -218,3 +218,16 @@ void Log::Reset()
     this->cursor = this->buffer;
     *this->cursor = '\0';
 }
+
+void Log::Flush()
+{
+    if (this->cursor != this->buffer)
+    {
+        LogPrintf(this, "---------------------------------------------------------- \r\n");
+        if (this->hasError)
+        {
+            MessageBoxA(NULL, this->buffer, "log", MB_ICONERROR);
+        }
+        WriteToFile("./log.txt", this->buffer, strlen(this->buffer));
+    }
+}

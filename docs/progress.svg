@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">3.58% (40)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">96.42% (1076)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">3.67% (41)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">96.33% (1075)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="26.77" height="6" x="0" y="0" class="named"/>
-<rect width="720.23" height="6" x="26.77" y="0" class="todo"/>
+<rect width="27.44" height="6" x="0" y="0" class="named"/>
+<rect width="719.56" height="6" x="27.44" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -644,7 +644,7 @@
 <rect width="12" height="12" x="360" y="165" class="todo"><title>0x0043e4a0 Func43e4a0 (448 bytes)</title></rect>
 <rect width="12" height="12" x="375" y="165" class="todo"><title>0x0043e660 LoadFileData (531 bytes)</title></rect>
 <rect width="12" height="12" x="390" y="165" class="todo"><title>0x0043e880 FileExists (105 bytes)</title></rect>
-<rect width="12" height="12" x="405" y="165" class="todo"><title>0x0043e8f0 Func43e8f0 (267 bytes)</title></rect>
+<rect width="12" height="12" x="405" y="165" class="todo"><title>0x0043e8f0 WriteToFile (267 bytes)</title></rect>
 <rect width="12" height="12" x="420" y="165" class="todo"><title>0x0043ea00 LogPrintf (337 bytes)</title></rect>
 <rect width="12" height="12" x="435" y="165" class="todo"><title>0x0043eb60 LogError (343 bytes)</title></rect>
 <rect width="12" height="12" x="450" y="165" class="todo"><title>0x0043ecc0 Func43ecc0 (88 bytes)</title></rect>
@@ -716,7 +716,7 @@
 <rect width="12" height="12" x="690" y="180" class="named"><title>0x00443730 ChecksumExecutable (266 bytes)</title></rect>
 <rect width="12" height="12" x="705" y="180" class="named"><title>0x00443840 ResolveShortcut (322 bytes)</title></rect>
 <rect width="12" height="12" x="720" y="180" class="named"><title>0x00443990 Log::Reset (35 bytes)</title></rect>
-<rect width="12" height="12" x="735" y="180" class="todo"><title>0x004439c0 Func4439c0 (133 bytes)</title></rect>
+<rect width="12" height="12" x="735" y="180" class="named"><title>0x004439c0 Log::Flush (133 bytes)</title></rect>
 <rect width="12" height="12" x="0" y="195" class="todo"><title>0x00443a50 Func443a50 (23 bytes)</title></rect>
 <rect width="12" height="12" x="15" y="195" class="todo"><title>0x00443a70 Func443a70 (25 bytes)</title></rect>
 <rect width="12" height="12" x="30" y="195" class="todo"><title>0x00443a90 Func443a90 (26 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">1.78%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">98.22%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">1.81%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">98.19%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="13.33" height="6" x="0" y="0" class="named"/>
-<rect width="733.67" height="6" x="13.33" y="0" class="todo"/>
+<rect width="13.54" height="6" x="0" y="0" class="named"/>
+<rect width="733.46" height="6" x="13.54" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1552,7 +1552,7 @@
 <rect width="9.49" height="9.22" x="700.17" y="142.35" class="todo"><title>0x0044e8d0 Func44e8d0 (269 bytes)</title></rect>
 <rect width="9.49" height="9.22" x="712.66" y="142.35" class="todo"><title>0x00467399 Func467399 (269 bytes)</title></rect>
 <rect width="9.45" height="9.22" x="725.15" y="142.35" class="todo"><title>0x004512f0 Func4512f0 (268 bytes)</title></rect>
-<rect width="9.40" height="9.22" x="737.60" y="142.35" class="todo"><title>0x0043e8f0 Func43e8f0 (267 bytes)</title></rect>
+<rect width="9.40" height="9.22" x="737.60" y="142.35" class="todo"><title>0x0043e8f0 WriteToFile (267 bytes)</title></rect>
 <rect width="9.31" height="9.31" x="545.71" y="154.57" class="todo"><title>0x0044d420 Func44d420 (267 bytes)</title></rect>
 <rect width="9.31" height="9.31" x="545.71" y="166.88" class="todo"><title>0x0045a2f2 Func45a2f2 (267 bytes)</title></rect>
 <rect width="9.31" height="9.31" x="545.71" y="179.19" class="todo"><title>0x0045d550 Func45d550 (267 bytes)</title></rect>
@@ -1742,7 +1742,7 @@
 <rect width="5.90" height="5.54" x="609.61" y="322.44" class="todo"><title>0x00426b20 Func426b20 (134 bytes)</title></rect>
 <rect width="5.90" height="5.54" x="609.61" y="330.98" class="todo"><title>0x00474640 Func474640 (134 bytes)</title></rect>
 <rect width="5.90" height="5.48" x="609.61" y="339.52" class="todo"><title>0x00426bb0 Func426bb0 (133 bytes)</title></rect>
-<rect width="5.93" height="5.45" x="618.51" y="208.04" class="todo"><title>0x004439c0 Func4439c0 (133 bytes)</title></rect>
+<rect width="5.93" height="5.45" x="618.51" y="208.04" class="named"><title>0x004439c0 Log::Flush (133 bytes)</title></rect>
 <rect width="5.93" height="5.45" x="627.44" y="208.04" class="todo"><title>0x004501b0 Func4501b0 (133 bytes)</title></rect>
 <rect width="5.93" height="5.45" x="636.37" y="208.04" class="todo"><title>0x0045842b Func45842b (133 bytes)</title></rect>
 <rect width="5.86" height="5.45" x="645.30" y="208.04" class="todo"><title>0x0040b7f0 Func40b7f0 (132 bytes)</title></rect>
