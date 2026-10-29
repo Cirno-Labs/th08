@@ -41,7 +41,10 @@ public:
     {
         return malloc(size);
     }
-    void Free(void *p);
+    void Free(void *p)
+    {
+        free(p);
+    }
     // Records `p`, a block of `size` bytes allocated with new, under
     // `name` and returns it; a no-op in the release build. Out-of-line
     // copy at 0x429de0.
