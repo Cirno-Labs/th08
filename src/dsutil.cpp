@@ -533,3 +533,16 @@ HRESULT CSound::ResumeBuffer()
     this->unk_30 = 1;
     return pDSB->Play(0, this->dwPlayPriority, this->dwPlayFlags);
 }
+
+HRESULT CSound::Reset()
+{
+    if (m_apDSBuffer == NULL)
+        return CO_E_NOTINITIALIZED;
+
+    HRESULT hr = 0;
+
+    for (DWORD i = 0; i < m_dwNumBuffers; i++)
+        hr |= m_apDSBuffer[i]->SetCurrentPosition(0);
+
+    return hr;
+}
