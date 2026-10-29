@@ -1078,3 +1078,23 @@ int EffectManager::AddedCallback(EffectManager *mgr)
     }
     return 0;
 }
+
+int EffectManager::DeletedCallback(EffectManager *mgr)
+{
+    Effect *eff = mgr->effects;
+    int i;
+
+    for (i = 0; i < 0x28d; i++, eff++)
+    {
+        if (eff->vertices != NULL)
+        {
+            g_MemoryManager.Free(eff->vertices);
+            eff->vertices = NULL;
+        }
+    }
+    if (!IsRestarting())
+    {
+        g_SpriteEngine->ReleaseAnm(9);
+    }
+    return 0;
+}

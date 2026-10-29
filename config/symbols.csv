@@ -362,7 +362,7 @@ address,size,name,symbol
 0x004281e0,290,EffectManager::OnDraw2,?OnDraw2@EffectManager@@QAEHXZ
 0x00428310,411,EffectDrawBossPetal,?EffectDrawBossPetal@@YIXPAVSprite@@PAUD3DXVECTOR3@@@Z
 0x004284b0,216,EffectManager::AddedCallback,?AddedCallback@EffectManager@@SIHPAV1@@Z
-0x00428590,132,Func428590,
+0x00428590,132,EffectManager::DeletedCallback,?DeletedCallback@EffectManager@@SIHPAV1@@Z
 0x00428620,135,EffectManager::RegisterChain,?RegisterChain@EffectManager@@SIHXZ
 0x004286b0,35,EffectManager::RemoveChain,?RemoveChain@EffectManager@@SIXXZ
 0x004286e0,32,Vector2::SetPolar,?SetPolar@Vector2@@QAEXMM@Z
