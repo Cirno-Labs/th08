@@ -94,6 +94,18 @@ public:
         this->scriptTime.Initialize();
     }
 
+    // The value of `value` as a float argument: the variable it stands
+    // for, if any, or itself.
+    float ResolveFloatArgument(float value);
+    // The same for an int argument; float variables are truncated.
+    int ResolveIntArgument(int value);
+    // Where a float script argument is read from or written to: when bit
+    // `bit` of `mask` is set and `*value` is 10004 to 10007, the float
+    // variable it stands for, else `value`.
+    float *ResolveFloatArgumentPtr(float *value, WORD mask, int bit);
+    // The same for an int argument and the int variables.
+    int *ResolveIntArgumentPtr(int *value, WORD mask, int bit);
+
     unsigned char unk_0[0x18];
     // Draw scales the sprite's height and width by these, as th07's.
     float scaleY;
@@ -101,7 +113,21 @@ public:
     unsigned char unk_20[0x18];
     // The script's frame.
     Timer scriptTime;
-    unsigned char unk_44[0xec];
+    unsigned char unk_44[0xbc];
+    // The script's variables: an argument of 10000 to 10009 stands for
+    // one of them. 10000-10003 and 10008-10009 are ints, 10004-10007
+    // floats.
+    int scriptVar0;
+    int scriptVar1;
+    int scriptVar2;
+    int scriptVar3;
+    float scriptVarF0;
+    float scriptVarF1;
+    float scriptVarF2;
+    float scriptVarF3;
+    int scriptVar8;
+    int scriptVar9;
+    unsigned char unk_128[0x8];
     D3DXMATRIX matrix;
     unsigned char unk_170[0x80];
     D3DCOLOR color;

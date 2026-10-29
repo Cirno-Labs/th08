@@ -35,6 +35,34 @@ void AnmLoaded::SetScript(Sprite *vm, void *script)
     }
 }
 
+float Sprite::ResolveFloatArgument(float value)
+{
+    switch ((int)value)
+    {
+    case 10000:
+        return this->scriptVar0;
+    case 10001:
+        return this->scriptVar1;
+    case 10002:
+        return this->scriptVar2;
+    case 10003:
+        return this->scriptVar3;
+    case 10004:
+        return this->scriptVarF0;
+    case 10005:
+        return this->scriptVarF1;
+    case 10006:
+        return this->scriptVarF2;
+    case 10007:
+        return this->scriptVarF3;
+    case 10008:
+        return this->scriptVar8;
+    case 10009:
+        return this->scriptVar9;
+    }
+    return value;
+}
+
 SpriteEngine::SpriteEngine()
 {
     memset(this, 0, sizeof(*this));

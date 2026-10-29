@@ -937,7 +937,7 @@ address,size,name,symbol
 0x0045e3f0,55,CStreamingSound::FadeOut,?FadeOut@CStreamingSound@@QAEXM@Z
 0x0045e430,333,Func45e430,
 0x0045e580,206,AnmLoaded::SetScript,?SetScript@AnmLoaded@@QAEXPAVSprite@@PAX@Z
-0x0045e650,166,Func45e650,
+0x0045e650,166,Sprite::ResolveFloatArgument,?ResolveFloatArgument@Sprite@@QAEMM@Z
 0x0045e720,186,Func45e720,
 0x0045e810,124,Func45e810,
 0x0045e8a0,139,Func45e8a0,
