@@ -210,21 +210,28 @@ ASSERT_SIZE(ScoreDat, 0x1c);
 // "TH8K" chunk is there. On any failure it makes a new, empty one. Either
 // way it gives it an empty list.
 ScoreDat *LoadScoreDat(char *path);
-// Copy the score file's chunks of each kind over the given ones, as
-// th07's: LoadClears and LoadPracticeScores first fill theirs with fresh
-// chunks. Return 0, or -1 if the destination is NULL; LoadFlspChunk
-// returns 1 if it found its chunk, else 0.
+// Fills `clrds` (by shot type, 13) with fresh version 4 chunks, then
+// copies the score file's "CLRD" chunks over them, stopping at one out of
+// range. Returns 0, or -1 if `clrds` is NULL.
 int LoadClears(void *scoreDat, Clrd *clrds);
+// Copies the score file's version 3 "CATK" chunks to `catks`, by card
+// number, stopping at one numbered 0xde or more. Returns 0, or -1 if
+// `catks` is NULL.
 int LoadSpellCards(void *scoreDat, Catk *catks);
+// Copies the score file's version 1 "FLSP" chunk to `flsp`. Returns 1, or
+// 0 if there is none. New in th08.
 int LoadFlspChunk(void *scoreDat, Flsp *flsp);
 // Copies the score file's version 1 "LSNM" chunk to `lsnm`. Returns 1,
 // or 0 if there is none.
 int LoadLsnmChunk(void *scoreDat, Lsnm *lsnm);
+// Fills `pscrs` (by shot type, 12) with fresh version 2 chunks, then
+// copies the score file's "PSCR" chunks over them, stopping at one out of
+// range. Returns 0, or -1 if `pscrs` is NULL.
 int LoadPracticeScores(void *scoreDat, Pscr *pscrs);
 // Copies the score file's last version 2 "PLST" chunk to `plst`.
 // Returns 0.
 int LoadPlstChunk(void *scoreDat, Plst *plst);
-// Frees `dat` (0x45afc0).
+// Frees `dat` and its list.
 void ReleaseScoreDat(ScoreDat *dat);
 
 class ResultScreen

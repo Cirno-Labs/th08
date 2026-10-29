@@ -382,3 +382,10 @@ int LoadPlstChunk(void *scoreDat, Plst *plst)
     }
     return 0;
 }
+
+void ReleaseScoreDat(ScoreDat *dat)
+{
+    FreeListNodes(dat->scores);
+    g_MemoryManager.Free(dat->scores);
+    g_MemoryManager.Free(dat);
+}

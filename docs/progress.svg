@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">33.24% (371)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">66.76% (745)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">33.33% (372)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">66.67% (744)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="248.33" height="6" x="0" y="0" class="named"/>
-<rect width="498.67" height="6" x="248.33" y="0" class="todo"/>
+<rect width="249" height="6" x="0" y="0" class="named"/>
+<rect width="498" height="6" x="249" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -958,7 +958,7 @@
 <rect width="12" height="12" x="570" y="255" class="named"><title>0x0045ac90 LoadClears (368 bytes)</title></rect>
 <rect width="12" height="12" x="585" y="255" class="named"><title>0x0045ae00 LoadPracticeScores (295 bytes)</title></rect>
 <rect width="12" height="12" x="600" y="255" class="named"><title>0x0045af30 LoadPlstChunk (129 bytes)</title></rect>
-<rect width="12" height="12" x="615" y="255" class="todo"><title>0x0045afc0 ReleaseScoreDat (53 bytes)</title></rect>
+<rect width="12" height="12" x="615" y="255" class="named"><title>0x0045afc0 ReleaseScoreDat (53 bytes)</title></rect>
 <rect width="12" height="12" x="630" y="255" class="named"><title>0x0045b000 ScreenEffect::ScreenEffect (25 bytes)</title></rect>
 <rect width="12" height="12" x="645" y="255" class="named"><title>0x0045b020 ClearScreen (190 bytes)</title></rect>
 <rect width="12" height="12" x="660" y="255" class="named"><title>0x0045b0e0 ClearViewport (124 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">24.08%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">75.92%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">24.09%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">75.91%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="179.88" height="6" x="0" y="0" class="named"/>
-<rect width="567.12" height="6" x="179.88" y="0" class="todo"/>
+<rect width="179.96" height="6" x="0" y="0" class="named"/>
+<rect width="567.04" height="6" x="179.96" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -2006,7 +2006,7 @@
 <rect width="2.55" height="2.52" x="674.24" y="278" class="named"><title>0x004489f9 App::InitCriticalSections (54 bytes)</title></rect>
 <rect width="2.55" height="2.52" x="674.24" y="283.52" class="named"><title>0x00448a2f App::DeleteCriticalSections (54 bytes)</title></rect>
 <rect width="2.55" height="2.42" x="674.24" y="289.04" class="todo"><title>0x0041f000 Func41f000 (53 bytes)</title></rect>
-<rect width="2.55" height="2.42" x="674.24" y="294.46" class="todo"><title>0x0045afc0 ReleaseScoreDat (53 bytes)</title></rect>
+<rect width="2.55" height="2.42" x="674.24" y="294.46" class="named"><title>0x0045afc0 ReleaseScoreDat (53 bytes)</title></rect>
 <rect width="2.55" height="2.42" x="674.24" y="299.87" class="named"><title>0x00472710 CSound::GetBuffer (53 bytes)</title></rect>
 <rect width="2.55" height="2.42" x="674.24" y="305.29" class="named"><title>0x004738e0 File::Close (53 bytes)</title></rect>
 <rect width="2.55" height="2.42" x="674.24" y="310.70" class="named"><title>0x00474860 DatArchive::DatArchive (53 bytes)</title></rect>
