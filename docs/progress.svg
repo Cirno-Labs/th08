@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">9.77% (109)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">90.23% (1007)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">9.86% (110)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">90.14% (1006)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="72.96" height="6" x="0" y="0" class="named"/>
-<rect width="674.04" height="6" x="72.96" y="0" class="todo"/>
+<rect width="73.63" height="6" x="0" y="0" class="named"/>
+<rect width="673.37" height="6" x="73.63" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -1159,15 +1159,15 @@
 <rect width="12" height="12" x="585" y="315" class="todo"><title>0x00473c40 Func473c40 (23 bytes)</title></rect>
 <rect width="12" height="12" x="600" y="315" class="todo"><title>0x00473c60 Func473c60 (20 bytes)</title></rect>
 <rect width="12" height="12" x="615" y="315" class="todo"><title>0x00473c80 Func473c80 (46 bytes)</title></rect>
-<rect width="12" height="12" x="630" y="315" class="todo"><title>0x00473cb0 Func473cb0 (1065 bytes)</title></rect>
-<rect width="12" height="12" x="645" y="315" class="todo"><title>0x004740e0 Func4740e0 (868 bytes)</title></rect>
-<rect width="12" height="12" x="660" y="315" class="todo"><title>0x00474450 Func474450 (67 bytes)</title></rect>
-<rect width="12" height="12" x="675" y="315" class="todo"><title>0x004744a0 Func4744a0 (124 bytes)</title></rect>
-<rect width="12" height="12" x="690" y="315" class="todo"><title>0x00474520 Func474520 (284 bytes)</title></rect>
-<rect width="12" height="12" x="705" y="315" class="todo"><title>0x00474640 Func474640 (134 bytes)</title></rect>
-<rect width="12" height="12" x="720" y="315" class="todo"><title>0x004746d0 Func4746d0 (132 bytes)</title></rect>
-<rect width="12" height="12" x="735" y="315" class="todo"><title>0x00474760 Func474760 (183 bytes)</title></rect>
-<rect width="12" height="12" x="0" y="330" class="todo"><title>0x00474820 Func474820 (63 bytes)</title></rect>
+<rect width="12" height="12" x="630" y="315" class="named"><title>0x00473cb0 LzssCompress (1065 bytes)</title></rect>
+<rect width="12" height="12" x="645" y="315" class="todo"><title>0x004740e0 LzssDecompress (868 bytes)</title></rect>
+<rect width="12" height="12" x="660" y="315" class="todo"><title>0x00474450 LzssTreeInitNode (67 bytes)</title></rect>
+<rect width="12" height="12" x="675" y="315" class="todo"><title>0x004744a0 LzssClearWindow (124 bytes)</title></rect>
+<rect width="12" height="12" x="690" y="315" class="todo"><title>0x00474520 LzssInsertNode (284 bytes)</title></rect>
+<rect width="12" height="12" x="705" y="315" class="todo"><title>0x00474640 LzssDeleteNode (134 bytes)</title></rect>
+<rect width="12" height="12" x="720" y="315" class="todo"><title>0x004746d0 LzssReplaceNode (132 bytes)</title></rect>
+<rect width="12" height="12" x="735" y="315" class="todo"><title>0x00474760 LzssReplaceChild (183 bytes)</title></rect>
+<rect width="12" height="12" x="0" y="330" class="todo"><title>0x00474820 LzssPredecessor (63 bytes)</title></rect>
 <rect width="12" height="12" x="15" y="330" class="todo"><title>0x00474860 Func474860 (53 bytes)</title></rect>
 <rect width="12" height="12" x="30" y="330" class="todo"><title>0x004748a0 Func4748a0 (19 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="330" class="todo"><title>0x004748c0 Func4748c0 (229 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">4.95%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">95.05%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">5.18%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">94.82%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="36.96" height="6" x="0" y="0" class="named"/>
-<rect width="710.04" height="6" x="36.96" y="0" class="todo"/>
+<rect width="38.69" height="6" x="0" y="0" class="named"/>
+<rect width="708.31" height="6" x="38.69" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1293,7 +1293,7 @@
 <rect width="23.04" height="21.13" x="437.18" y="0" class="todo"><title>0x0043542b Func43542b (1107 bytes)</title></rect>
 <rect width="22.73" height="21.13" x="463.22" y="0" class="todo"><title>0x0043396d Func43396d (1094 bytes)</title></rect>
 <rect width="22.57" height="21.13" x="488.95" y="0" class="todo"><title>0x00409200 Func409200 (1087 bytes)</title></rect>
-<rect width="22.05" height="21.13" x="514.52" y="0" class="todo"><title>0x00473cb0 Func473cb0 (1065 bytes)</title></rect>
+<rect width="22.05" height="21.13" x="514.52" y="0" class="named"><title>0x00473cb0 LzssCompress (1065 bytes)</title></rect>
 <rect width="21.91" height="21.13" x="539.57" y="0" class="todo"><title>0x0044ee70 Func44ee70 (1059 bytes)</title></rect>
 <rect width="21.20" height="21.13" x="564.47" y="0" class="todo"><title>0x00429e00 Func429e00 (1029 bytes)</title></rect>
 <rect width="21.20" height="21.13" x="588.68" y="0" class="todo"><title>0x00454cb2 Func454cb2 (1029 bytes)</title></rect>
@@ -1311,7 +1311,7 @@
 <rect width="18.69" height="20.24" x="411.08" y="145.70" class="todo"><title>0x0044ab40 Func44ab40 (888 bytes)</title></rect>
 <rect width="18.69" height="20.05" x="411.08" y="168.94" class="todo"><title>0x00470e10 Func470e10 (881 bytes)</title></rect>
 <rect width="18.69" height="19.84" x="411.08" y="191.99" class="todo"><title>0x00470a6c Func470a6c (873 bytes)</title></rect>
-<rect width="18.69" height="19.71" x="411.08" y="214.83" class="todo"><title>0x004740e0 Func4740e0 (868 bytes)</title></rect>
+<rect width="18.69" height="19.71" x="411.08" y="214.83" class="todo"><title>0x004740e0 LzssDecompress (868 bytes)</title></rect>
 <rect width="18.69" height="19.63" x="411.08" y="237.55" class="todo"><title>0x0045a5e0 Func45a5e0 (865 bytes)</title></rect>
 <rect width="18.69" height="19.24" x="411.08" y="260.18" class="todo"><title>0x0047052d Func47052d (850 bytes)</title></rect>
 <rect width="18.69" height="19.06" x="411.08" y="282.42" class="todo"><title>0x0046ffc0 Func46ffc0 (843 bytes)</title></rect>
@@ -1537,7 +1537,7 @@
 <rect width="9.89" height="9.59" x="532.82" y="310.42" class="todo"><title>0x00466f20 Func466f20 (286 bytes)</title></rect>
 <rect width="9.89" height="9.50" x="532.82" y="323" class="todo"><title>0x0042c290 Func42c290 (284 bytes)</title></rect>
 <rect width="9.89" height="9.50" x="532.82" y="335.50" class="todo"><title>0x00465ba0 Func465ba0 (284 bytes)</title></rect>
-<rect width="10.19" height="9.22" x="545.71" y="142.35" class="todo"><title>0x00474520 Func474520 (284 bytes)</title></rect>
+<rect width="10.19" height="9.22" x="545.71" y="142.35" class="todo"><title>0x00474520 LzssInsertNode (284 bytes)</title></rect>
 <rect width="10.14" height="9.22" x="558.90" y="142.35" class="todo"><title>0x0040b6d0 Func40b6d0 (283 bytes)</title></rect>
 <rect width="10.05" height="9.22" x="572.04" y="142.35" class="todo"><title>0x00437bc4 Func437bc4 (281 bytes)</title></rect>
 <rect width="10.05" height="9.22" x="585.09" y="142.35" class="todo"><title>0x0047030b Func47030b (281 bytes)</title></rect>
@@ -1664,7 +1664,7 @@
 <rect width="7.39" height="7.16" x="580.58" y="327.80" class="todo"><title>0x0045e720 Func45e720 (186 bytes)</title></rect>
 <rect width="7.39" height="7.05" x="580.58" y="337.95" class="todo"><title>0x00452490 Func452490 (184 bytes)</title></rect>
 <rect width="7.38" height="7" x="590.98" y="188.78" class="todo"><title>0x004480f8 Func4480f8 (183 bytes)</title></rect>
-<rect width="7.38" height="7" x="601.36" y="188.78" class="todo"><title>0x00474760 Func474760 (183 bytes)</title></rect>
+<rect width="7.38" height="7" x="601.36" y="188.78" class="todo"><title>0x00474760 LzssReplaceChild (183 bytes)</title></rect>
 <rect width="7.33" height="7" x="611.74" y="188.78" class="todo"><title>0x00472650 Func472650 (182 bytes)</title></rect>
 <rect width="7.21" height="7" x="622.07" y="188.78" class="todo"><title>0x00418220 Func418220 (180 bytes)</title></rect>
 <rect width="7.21" height="7" x="632.28" y="188.78" class="todo"><title>0x004295e0 Func4295e0 (180 bytes)</title></rect>
@@ -1740,14 +1740,14 @@
 <rect width="5.90" height="5.67" x="609.61" y="305.17" class="todo"><title>0x0045ac00 Func45ac00 (136 bytes)</title></rect>
 <rect width="5.90" height="5.60" x="609.61" y="313.84" class="todo"><title>0x00428620 Func428620 (135 bytes)</title></rect>
 <rect width="5.90" height="5.54" x="609.61" y="322.44" class="todo"><title>0x00426b20 Func426b20 (134 bytes)</title></rect>
-<rect width="5.90" height="5.54" x="609.61" y="330.98" class="todo"><title>0x00474640 Func474640 (134 bytes)</title></rect>
+<rect width="5.90" height="5.54" x="609.61" y="330.98" class="todo"><title>0x00474640 LzssDeleteNode (134 bytes)</title></rect>
 <rect width="5.90" height="5.48" x="609.61" y="339.52" class="todo"><title>0x00426bb0 Func426bb0 (133 bytes)</title></rect>
 <rect width="5.93" height="5.45" x="618.51" y="208.04" class="named"><title>0x004439c0 Log::Flush (133 bytes)</title></rect>
 <rect width="5.93" height="5.45" x="627.44" y="208.04" class="todo"><title>0x004501b0 Func4501b0 (133 bytes)</title></rect>
 <rect width="5.93" height="5.45" x="636.37" y="208.04" class="todo"><title>0x0045842b Func45842b (133 bytes)</title></rect>
 <rect width="5.86" height="5.45" x="645.30" y="208.04" class="todo"><title>0x0040b7f0 Func40b7f0 (132 bytes)</title></rect>
 <rect width="5.86" height="5.45" x="654.17" y="208.04" class="todo"><title>0x00428590 Func428590 (132 bytes)</title></rect>
-<rect width="5.86" height="5.45" x="663.03" y="208.04" class="todo"><title>0x004746d0 Func4746d0 (132 bytes)</title></rect>
+<rect width="5.86" height="5.45" x="663.03" y="208.04" class="todo"><title>0x004746d0 LzssReplaceNode (132 bytes)</title></rect>
 <rect width="5.80" height="5.45" x="671.90" y="208.04" class="todo"><title>0x00402830 Func402830 (131 bytes)</title></rect>
 <rect width="5.80" height="5.45" x="680.70" y="208.04" class="todo"><title>0x004298f0 Func4298f0 (131 bytes)</title></rect>
 <rect width="5.73" height="5.45" x="689.49" y="208.04" class="todo"><title>0x004399ac Func4399ac (130 bytes)</title></rect>
@@ -1766,7 +1766,7 @@
 <rect width="5.22" height="5.56" x="668.51" y="216.49" class="todo"><title>0x0043c03f Func43c03f (124 bytes)</title></rect>
 <rect width="5.22" height="5.56" x="676.73" y="216.49" class="todo"><title>0x0045b0e0 Func45b0e0 (124 bytes)</title></rect>
 <rect width="5.22" height="5.56" x="684.95" y="216.49" class="todo"><title>0x0045e810 Func45e810 (124 bytes)</title></rect>
-<rect width="5.22" height="5.56" x="693.17" y="216.49" class="todo"><title>0x004744a0 Func4744a0 (124 bytes)</title></rect>
+<rect width="5.22" height="5.56" x="693.17" y="216.49" class="todo"><title>0x004744a0 LzssClearWindow (124 bytes)</title></rect>
 <rect width="5.16" height="5.56" x="701.40" y="216.49" class="named"><title>0x00444260 MidiPlayer::FreeTracks (123 bytes)</title></rect>
 <rect width="5.16" height="5.56" x="709.55" y="216.49" class="todo"><title>0x0045b160 Func45b160 (123 bytes)</title></rect>
 <rect width="5.09" height="5.56" x="717.71" y="216.49" class="todo"><title>0x00409c20 Func409c20 (122 bytes)</title></rect>
@@ -1949,7 +1949,7 @@
 <rect width="3.20" height="3.13" x="737.60" y="260.05" class="todo"><title>0x00439050 Func439050 (67 bytes)</title></rect>
 <rect width="3.20" height="3.13" x="743.80" y="260.05" class="todo"><title>0x00439093 Func439093 (67 bytes)</title></rect>
 <rect width="3.28" height="3.05" x="662.25" y="266.18" class="named"><title>0x00443da0 MidiDevice::SendShortMsg (67 bytes)</title></rect>
-<rect width="3.28" height="3.05" x="662.25" y="272.23" class="todo"><title>0x00474450 Func474450 (67 bytes)</title></rect>
+<rect width="3.28" height="3.05" x="662.25" y="272.23" class="todo"><title>0x00474450 LzssTreeInitNode (67 bytes)</title></rect>
 <rect width="3.28" height="2.96" x="662.25" y="278.28" class="todo"><title>0x00426c40 Func426c40 (66 bytes)</title></rect>
 <rect width="3.28" height="2.96" x="662.25" y="284.24" class="todo"><title>0x00449ea0 Func449ea0 (66 bytes)</title></rect>
 <rect width="3.28" height="2.87" x="662.25" y="290.20" class="todo"><title>0x0044fd80 Func44fd80 (65 bytes)</title></rect>
@@ -1966,7 +1966,7 @@
 <rect width="2.95" height="3.01" x="674.48" y="266.18" class="named"><title>0x0043ef70 App::EnterCriticalSection (63 bytes)</title></rect>
 <rect width="2.95" height="3.01" x="680.42" y="266.18" class="named"><title>0x0043efb0 App::LeaveCriticalSection (63 bytes)</title></rect>
 <rect width="2.95" height="3.01" x="686.37" y="266.18" class="todo"><title>0x00446cc7 Func446cc7 (63 bytes)</title></rect>
-<rect width="2.95" height="3.01" x="692.32" y="266.18" class="todo"><title>0x00474820 Func474820 (63 bytes)</title></rect>
+<rect width="2.95" height="3.01" x="692.32" y="266.18" class="todo"><title>0x00474820 LzssPredecessor (63 bytes)</title></rect>
 <rect width="2.85" height="3.01" x="698.27" y="266.18" class="todo"><title>0x00409120 Func409120 (62 bytes)</title></rect>
 <rect width="2.85" height="3.01" x="704.12" y="266.18" class="todo"><title>0x0042a450 Func42a450 (62 bytes)</title></rect>
 <rect width="2.76" height="3.01" x="709.97" y="266.18" class="todo"><title>0x0040ebc0 Func40ebc0 (61 bytes)</title></rect>
