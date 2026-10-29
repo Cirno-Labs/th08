@@ -31,6 +31,10 @@ public:
     // device is open, nonzero if either step fails.
     int SendLongMsg(LPMIDIHDR header);
 
+    // Sends a channel message. Returns 0 if no device is open, nonzero on
+    // failure.
+    int SendShortMsg(BYTE status, BYTE data1, BYTE data2);
+
     HMIDIOUT handle;
     UINT deviceId;
 };
