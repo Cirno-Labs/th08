@@ -313,6 +313,10 @@ public:
     // ("::postloadAnim"): one a call, counted by anm->loadStep, which
     // drops to 0 after the last. Returns `anm`, or NULL on failure.
     AnmLoaded *PostloadAnm(AnmLoaded *anm);
+    // Creates the texture of `file`, ANM `index` of `anm`, and loads its
+    // sprites from `spriteOffset` and scripts from `scriptOffset` on,
+    // as th07's LoadAnmSprites. Returns 1, or -1 on failure.
+    int LoadAnmSprites(AnmLoaded *anm, int index, int spriteOffset, int scriptOffset, AnmFile *file);
 
     IDirect3DSurface8 *GetSurface(int surface)
     {

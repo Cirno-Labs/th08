@@ -316,3 +316,51 @@ int SpriteEngine::PreloadAnmTexture(AnmLoaded *anm, int index, int *spriteIndex,
     }
     return highest + 1;
 }
+
+AnmLoaded *SpriteEngine::PostloadAnm(AnmLoaded *anm)
+{
+    AnmFile *header;
+    int scriptOffset;
+    int result;
+    AnmFile *data;
+    int done;
+    int spriteOffset;
+    int index;
+
+    DebugPrint("::postloadAnim : %d, %d\n", anm->slot, anm->loadStep);
+    data = anm->file;
+    done = 0;
+    scriptOffset = 0;
+    spriteOffset = 0;
+    index = 0;
+    anm->file = data;
+    header = data;
+    while (1)
+    {
+        if (done == anm->loadStep - 1)
+        {
+            result = this->LoadAnmSprites(anm, index, spriteOffset, scriptOffset, header);
+            if (result < 0)
+            {
+                anm->loadStep = 0;
+                return NULL;
+            }
+        }
+        spriteOffset += header->numSprites;
+        scriptOffset += header->numScripts;
+        index++;
+        if (header->nextOffset == 0)
+        {
+            break;
+        }
+        header = (AnmFile *)((BYTE *)header + header->nextOffset);
+        done++;
+        if (done == anm->loadStep)
+        {
+            anm->loadStep++;
+            return anm;
+        }
+    }
+    anm->loadStep = 0;
+    return anm;
+}
