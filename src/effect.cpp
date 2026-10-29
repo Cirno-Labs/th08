@@ -902,3 +902,53 @@ int EffectManager::OnUpdate(EffectManager *mgr)
     }
     return 1;
 }
+
+int EffectManager::OnDraw(EffectManager *mgr)
+{
+    Effect *eff;
+
+    eff = mgr->drawList0.next;
+    while (eff != NULL)
+    {
+        if (eff->draw != NULL)
+        {
+            eff->draw(eff);
+        }
+        else
+        {
+            eff->sprite.pos = eff->pos;
+            eff->sprite.pos.x = g_GameManager.arena[0] + eff->sprite.pos.x;
+            eff->sprite.pos.y = g_GameManager.arena[1] + eff->sprite.pos.y;
+            eff->sprite.pos.z = 0.07f;
+            eff->sprite.pos += eff->sprite.posOffset;
+            g_SpriteEngine->Draw(&eff->sprite);
+        }
+        eff = eff->next;
+    }
+    eff = mgr->drawList2.next;
+    while (eff != NULL)
+    {
+        eff->sprite.pos = eff->pos;
+        g_SpriteEngine->DrawProjected(&eff->sprite);
+        eff = eff->next;
+    }
+    eff = mgr->drawList4.next;
+    while (eff != NULL)
+    {
+        if (eff->draw != NULL)
+        {
+            eff->draw(eff);
+        }
+        else
+        {
+            eff->sprite.pos = eff->pos;
+            eff->sprite.pos.x = g_GameManager.arena[0] + eff->sprite.pos.x;
+            eff->sprite.pos.y = g_GameManager.arena[1] + eff->sprite.pos.y;
+            eff->sprite.pos.z = 0.07f;
+            eff->sprite.pos += eff->sprite.posOffset;
+            g_SpriteEngine->Draw(&eff->sprite);
+        }
+        eff = eff->next;
+    }
+    return 1;
+}
