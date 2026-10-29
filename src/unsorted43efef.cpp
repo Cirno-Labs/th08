@@ -220,3 +220,8 @@ HDC GdiSurface::GetHdc()
 {
     return this->hdc;
 }
+
+int GdiSurface::GetWidth()
+{
+    return this->width;
+}

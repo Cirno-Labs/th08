@@ -603,7 +603,7 @@ address,size,name,symbol
 0x0043f837,15,GdiSurface::GetWidthBytes,?GetWidthBytes@GdiSurface@@QAEHXZ
 0x0043f846,15,GdiSurface::GetHeight,?GetHeight@GdiSurface@@QAEHXZ
 0x0043f855,15,GdiSurface::GetHdc,?GetHdc@GdiSurface@@QAEPAUHDC__@@XZ
-0x0043f864,15,Func43f864,
+0x0043f864,15,GdiSurface::GetWidth,?GetWidth@GdiSurface@@QAEHXZ
 0x0043f873,14,Func43f873,
 0x0043f881,23,Func43f881,
 0x0043f898,232,Func43f898,

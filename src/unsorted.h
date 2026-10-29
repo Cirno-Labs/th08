@@ -365,6 +365,7 @@ public:
     int GetWidthBytes();
     int GetHeight();
     HDC GetHdc();
+    int GetWidth();
 
     int format;
     int width;
