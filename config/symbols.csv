@@ -847,11 +847,11 @@ address,size,name,symbol
 0x00453cc0,17,Func453cc0,
 0x00453cd1,41,Func453cd1,
 0x00453cfa,19,Func453cfa,
-0x00453d0d,1372,Func453d0d,
+0x00453d0d,1372,SaveScoreDat,?SaveScoreDat@@YIXPAVResultScreen@@@Z
 0x00454269,47,Func454269,
 0x00454298,2497,Func454298,
 0x00454c59,46,Func454c59,
-0x00454c87,43,Func454c87,
+0x00454c87,43,ResultScreen::ReleaseScores,?ReleaseScores@ResultScreen@@QAEXHH@Z
 0x00454cb2,1029,Func454cb2,
 0x004550b7,69,Func4550b7,
 0x004550fc,1409,Func4550fc,
@@ -872,8 +872,8 @@ address,size,name,symbol
 0x004586b4,3993,ResultScreen::OnDraw,?OnDraw@ResultScreen@@SIHPAV1@@Z
 0x0045964d,2437,ResultScreen::AddedCallback,?AddedCallback@ResultScreen@@SIHPAV1@@Z
 0x00459fd2,225,ResultScreen::DeletedCallback,?DeletedCallback@ResultScreen@@SIHPAV1@@Z
-0x0045a0b3,41,Func45a0b3,
-0x0045a0dc,24,Func45a0dc,
+0x0045a0b3,41,ResultScreen::`scalar deleting destructor',??_GResultScreen@@QAEPAXI@Z
+0x0045a0dc,24,ResultScreen::~ResultScreen,??1ResultScreen@@QAE@XZ
 0x0045a0f4,255,Func45a0f4,
 0x0045a1f3,255,Func45a1f3,
 0x0045a2f2,267,Func45a2f2,

@@ -614,6 +614,21 @@ public:
     {
         return this->surfaces[surface];
     }
+    // Moves surface `src`, its backup and size to slot `dst`, releasing
+    // what `dst` held, if `src` is loaded. New in th08; inline, the copy
+    // is at 0x45a3fd.
+    void MoveSurface(int dst, int src)
+    {
+        if (this->surfaces[src] != NULL)
+        {
+            this->ReleaseSurface(dst);
+            this->surfaces[dst] = this->surfaces[src];
+            this->surfacesBackup[dst] = this->surfacesBackup[src];
+            this->surfaces[src] = NULL;
+            this->surfacesBackup[src] = NULL;
+            this->surfaceInfos[dst] = this->surfaceInfos[src];
+        }
+    }
 
     // Has a copy of the back buffer done after the frame is drawn, as
     // th07's, unless one is already pending: then returns -1, else 0. In

@@ -50,3 +50,32 @@ int ResultScreen::RegisterChain(int mode)
     g_Chain.AddToDrawChain(screen->drawChain, 0x12);
     return 0;
 }
+
+int ResultScreen::DeletedCallback(ResultScreen *screen)
+{
+    int i;
+    int j;
+
+    if (screen->scoreDat != NULL)
+    {
+        SaveScoreDat(screen);
+        ReleaseScoreDat(screen->scoreDat);
+    }
+    screen->scoreDat = NULL;
+    for (i = 0; i < 5; i++)
+    {
+        for (j = 0; j < 0xc; j++)
+        {
+            screen->ReleaseScores(i, j);
+        }
+    }
+    g_SpriteEngine->ReleaseAnm(0x15);
+    g_SpriteEngine->ReleaseAnm(0x16);
+    g_SpriteEngine->MoveSurface(8, 0);
+    g_Chain.Remove(screen->drawChain);
+    screen->drawChain = NULL;
+    g_MemoryManager.Unregister(screen);
+    delete screen;
+    screen = NULL;
+    return 0;
+}

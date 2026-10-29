@@ -248,6 +248,12 @@ public:
     {
         memset(this, 0, sizeof(ResultScreen));
     }
+    // Frees the score file. Inline; DeletedCallback's delete calls the
+    // copy at 0x45a0dc.
+    ~ResultScreen()
+    {
+        g_MemoryManager.Free(this->scoreDat);
+    }
 
     // Allocates the screen and adds it to the chains (update priority
     // 0x10, draw 0x12). With `mode` 1 it starts in state 9 after a game,
@@ -258,7 +264,14 @@ public:
     static int OnUpdate(ResultScreen *screen);
     static int OnDraw(ResultScreen *screen);
     static int AddedCallback(ResultScreen *screen);
+    // Saves and frees the score file, empties the lists, releases ANMs
+    // 0x15 and 0x16, moves surface 0 to slot 8, removes the draw element
+    // and deletes the screen. Returns 0.
     static int DeletedCallback(ResultScreen *screen);
+
+    // Frees the entries of the high score list for `difficulty` and
+    // `shot` (0x454c87).
+    void ReleaseScores(int difficulty, int shot);
 
     // The score file, as loaded.
     ScoreDat *scoreDat;
@@ -283,3 +296,7 @@ public:
     unsigned char unk_46470[0x1340];
 };
 ASSERT_SIZE(ResultScreen, 0x477b0);
+
+// Writes "score.dat" from `screen`'s file header, the "TH8K" chunk, the
+// lists and g_GameManager's chunks, as th07's (0x453d0d).
+void SaveScoreDat(ResultScreen *screen);
