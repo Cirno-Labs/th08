@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">65.41% (730)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">32.80% (366)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">65.50% (731)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">32.71% (365)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="488.63" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="488.63" y="0" class="decompiled"/>
-<rect width="244.98" height="6" x="502.02" y="0" class="todo"/>
+<rect width="489.30" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="489.30" y="0" class="decompiled"/>
+<rect width="244.31" height="6" x="502.69" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -227,7 +227,7 @@
 <rect width="12" height="12" x="90" y="45" class="named"><title>0x0040e040 EffectUpdateBombRing42 (209 bytes)</title></rect>
 <rect width="12" height="12" x="105" y="45" class="named"><title>0x0040e120 EffectUpdateBombRing43 (209 bytes)</title></rect>
 <rect width="12" height="12" x="120" y="45" class="named"><title>0x0040e200 EffectUpdateBombRing44 (196 bytes)</title></rect>
-<rect width="12" height="12" x="135" y="45" class="todo"><title>0x0040e2d0 Func40e2d0 (119 bytes)</title></rect>
+<rect width="12" height="12" x="135" y="45" class="named"><title>0x0040e2d0 EffectUpdateBombRing45 (119 bytes)</title></rect>
 <rect width="12" height="12" x="150" y="45" class="todo"><title>0x0040e350 Func40e350 (58 bytes)</title></rect>
 <rect width="12" height="12" x="165" y="45" class="todo"><title>0x0040e390 Func40e390 (27 bytes)</title></rect>
 <rect width="12" height="12" x="180" y="45" class="todo"><title>0x0040e3b0 Func40e3b0 (600 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">58.05%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">40.96%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">58.07%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">40.94%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="433.61" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="433.61" y="0" class="decompiled"/>
-<rect width="305.99" height="6" x="441.01" y="0" class="todo"/>
+<rect width="433.80" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="433.80" y="0" class="decompiled"/>
+<rect width="305.80" height="6" x="441.20" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1776,7 +1776,7 @@
 <rect width="5.09" height="5.56" x="733.89" y="216.49" class="named"><title>0x00444680 MidiPlayer::Stop (122 bytes)</title></rect>
 <rect width="5.02" height="5.56" x="741.98" y="216.49" class="todo"><title>0x0040d310 Func40d310 (121 bytes)</title></rect>
 <rect width="5.08" height="5.43" x="618.51" y="225.05" class="named"><title>0x00426c90 EffectUpdateConvergeSlow (120 bytes)</title></rect>
-<rect width="5.08" height="5.36" x="618.51" y="233.48" class="todo"><title>0x0040e2d0 Func40e2d0 (119 bytes)</title></rect>
+<rect width="5.08" height="5.36" x="618.51" y="233.48" class="named"><title>0x0040e2d0 EffectUpdateBombRing45 (119 bytes)</title></rect>
 <rect width="5.08" height="5.36" x="618.51" y="241.84" class="named"><title>0x00448081 App::StopMusic (119 bytes)</title></rect>
 <rect width="5.08" height="5.29" x="618.51" y="250.20" class="todo"><title>0x00416b10 SpellCard::Func416b10 (118 bytes)</title></rect>
 <rect width="5.08" height="5.29" x="618.51" y="258.49" class="todo"><title>0x0044c1b0 Player::AngleFrom (118 bytes)</title></rect>

@@ -158,7 +158,7 @@ address,size,name,symbol
 0x0040e040,209,EffectUpdateBombRing42,?EffectUpdateBombRing42@@YIHPAUEffect@@@Z
 0x0040e120,209,EffectUpdateBombRing43,?EffectUpdateBombRing43@@YIHPAUEffect@@@Z
 0x0040e200,196,EffectUpdateBombRing44,?EffectUpdateBombRing44@@YIHPAUEffect@@@Z
-0x0040e2d0,119,Func40e2d0,
+0x0040e2d0,119,EffectUpdateBombRing45,?EffectUpdateBombRing45@@YIHPAUEffect@@@Z
 0x0040e350,58,Func40e350,
 0x0040e390,27,Func40e390,
 0x0040e3b0,600,Func40e3b0,

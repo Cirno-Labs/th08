@@ -223,6 +223,8 @@ int EffectUpdateBombRing42(Effect *effect);
 int EffectUpdateBombRing43(Effect *effect);
 // 44: 43 turned the other way (and keeping unk_334).
 int EffectUpdateBombRing44(Effect *effect);
+// 45: radius 192 easing out over 40 frames, 8 segments, 8 wide.
+int EffectUpdateBombRing45(Effect *effect);
 
 // The effects, at 0x4ece60: 0x200 started in turn, 0x80 started in
 // order from 0x200, 0xd reserved slots and a spare.

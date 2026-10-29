@@ -71,3 +71,16 @@ int EffectUpdateBombRing44(Effect *effect)
     }
     return 1;
 }
+
+int EffectUpdateBombRing45(Effect *effect)
+{
+    float t;
+
+    t = (t = 1.0f - effect->timer.AsFloat() / 40.0f) * t;
+    t = 1.0f - t;
+    effect->radius = 192.0f * t;
+    effect->segmentCount = 8;
+    effect->verticesDirty = 1;
+    effect->ringWidth = 8.0f;
+    return 1;
+}
