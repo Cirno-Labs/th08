@@ -99,6 +99,17 @@ UINT MmTimer::Start(UINT delay, LPTIMECALLBACK callback, DWORD_PTR user)
     return this->timerId;
 }
 
+int MmTimer::Stop()
+{
+    if (this->timerId != 0)
+    {
+        timeKillEvent(this->timerId);
+    }
+    timeEndPeriod(this->caps.wPeriodMin);
+    this->timerId = 0;
+    return 1;
+}
+
 WORD SwapBytes16(WORD value)
 {
     union
