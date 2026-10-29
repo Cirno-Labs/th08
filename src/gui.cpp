@@ -712,3 +712,11 @@ void Gui::DrawPopups()
     }
     g_AsciiText.SetInArena(0);
 }
+
+void Gui::Func438f58()
+{
+    g_AsciiText.anm2->StartScript(&this->impl->unk_3cc0, 1);
+    g_SpriteEngine->SetPendingCopy(3, 32, 16, 384, 448, this->impl->unk_3cc0.spriteData->startX,
+                                   this->impl->unk_3cc0.spriteData->startY, this->impl->unk_3cc0.spriteData->width,
+                                   this->impl->unk_3cc0.spriteData->height);
+}

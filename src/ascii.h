@@ -5,6 +5,8 @@
 #include <d3d8.h>
 #include <d3dx8math.h>
 
+class AnmLoaded;
+
 class AsciiText
 {
 public:
@@ -71,7 +73,12 @@ public:
     int inArena;
     int unk_8278;
     int unk_827c;
-    // The advance of a character, in pixels, as th07's.
+    // The advance of a character, in pixels, as th07's. (Named
+    // g_StatisticsColumnWidth 0x4d50a0 when only its address was known.)
     int glyphWidth;
+    int unk_8284;
+    // ascii.anm and a second ANM, which the Gui also runs scripts from.
+    AnmLoaded *anm;
+    AnmLoaded *anm2;
 };
 extern AsciiText g_AsciiText;
