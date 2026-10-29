@@ -1299,3 +1299,13 @@ void App::InitCriticalSections()
         InitializeCriticalSection(&this->criticalSections[i]);
     }
 }
+
+void App::DeleteCriticalSections()
+{
+    DWORD i;
+
+    for (i = 0; i < 4; i++)
+    {
+        DeleteCriticalSection(&this->criticalSections[i]);
+    }
+}
