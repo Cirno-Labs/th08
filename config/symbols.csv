@@ -703,7 +703,7 @@ address,size,name,symbol
 0x00446cc7,63,EnumJoysticksCallback,?EnumJoysticksCallback@@YGHPBUDIDEVICEINSTANCEA@@PAX@Z
 0x00446d06,517,App::DeletedCallback,?DeletedCallback@App@@SIHPAV1@@Z
 0x00446f0b,55,SpriteEngine::ReleaseVertexBuffer,?ReleaseVertexBuffer@SpriteEngine@@QAEXXZ
-0x00446f42,17,Func446f42,
+0x00446f42,17,MidiTimer::~MidiTimer,??1MidiTimer@@QAE@XZ
 0x00446f53,834,DrawFps,?DrawFps@@YIXH@Z
 0x00447295,198,Func447295,
 0x0044735b,198,Func44735b,

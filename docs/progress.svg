@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">19.62% (219)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">80.38% (897)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">19.71% (220)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">80.29% (896)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="146.59" height="6" x="0" y="0" class="named"/>
-<rect width="600.41" height="6" x="146.59" y="0" class="todo"/>
+<rect width="147.26" height="6" x="0" y="0" class="named"/>
+<rect width="599.74" height="6" x="147.26" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -771,7 +771,7 @@
 <rect width="12" height="12" x="15" y="210" class="named"><title>0x00446cc7 EnumJoysticksCallback (63 bytes)</title></rect>
 <rect width="12" height="12" x="30" y="210" class="named"><title>0x00446d06 App::DeletedCallback (517 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="210" class="named"><title>0x00446f0b SpriteEngine::ReleaseVertexBuffer (55 bytes)</title></rect>
-<rect width="12" height="12" x="60" y="210" class="todo"><title>0x00446f42 Func446f42 (17 bytes)</title></rect>
+<rect width="12" height="12" x="60" y="210" class="named"><title>0x00446f42 MidiTimer::~MidiTimer (17 bytes)</title></rect>
 <rect width="12" height="12" x="75" y="210" class="todo"><title>0x00446f53 DrawFps (834 bytes)</title></rect>
 <rect width="12" height="12" x="90" y="210" class="todo"><title>0x00447295 Func447295 (198 bytes)</title></rect>
 <rect width="12" height="12" x="105" y="210" class="todo"><title>0x0044735b Func44735b (198 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">10.15%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">89.85%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">10.16%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">89.84%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="75.83" height="6" x="0" y="0" class="named"/>
-<rect width="671.17" height="6" x="75.83" y="0" class="todo"/>
+<rect width="75.86" height="6" x="0" y="0" class="named"/>
+<rect width="671.14" height="6" x="75.86" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -2281,7 +2281,7 @@
 <rect width="0.10" height="0.41" x="735.87" y="330.98" class="todo"><title>0x0042f320 Func42f320 (17 bytes)</title></rect>
 <rect width="0.10" height="0.41" x="738.69" y="330.98" class="todo"><title>0x00437a2f Func437a2f (17 bytes)</title></rect>
 <rect width="0.10" height="0.41" x="741.52" y="330.98" class="named"><title>0x0043f02b GdiSurface::~GdiSurface (17 bytes)</title></rect>
-<rect width="0.10" height="0.41" x="744.35" y="330.98" class="todo"><title>0x00446f42 Func446f42 (17 bytes)</title></rect>
+<rect width="0.10" height="0.41" x="744.35" y="330.98" class="named"><title>0x00446f42 MidiTimer::~MidiTimer (17 bytes)</title></rect>
 <rect width="0.10" height="0.41" x="747.17" y="330.98" class="todo"><title>0x00453c20 Func453c20 (17 bytes)</title></rect>
 <rect width="0.10" height="0.40" x="735.87" y="334.39" class="todo"><title>0x00453cc0 Func453cc0 (17 bytes)</title></rect>
 <rect width="0.10" height="0.40" x="735.87" y="337.79" class="named"><title>0x0045e300 CSound::GetWaveFile (17 bytes)</title></rect>

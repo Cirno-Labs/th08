@@ -234,6 +234,8 @@ extern LARGE_INTEGER g_Unknown17ce744;
 
 // A 16 ms MmTimer that keeps the performance counter of its last tick in
 // g_Unknown17ce744. Not in th06.
+// Its implicit destructor is emitted at 0x446f42, after the first
+// function that deletes one (App::DeletedCallback).
 class MidiTimer : public MmTimer
 {
 public:
