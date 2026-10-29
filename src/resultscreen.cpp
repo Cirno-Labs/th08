@@ -2125,6 +2125,174 @@ int ResultScreen::OnDraw(ResultScreen *screen)
     return 1;
 }
 
+int ResultScreen::AddedCallback(ResultScreen *screen)
+{
+    int i;
+    Sprite *sprite;
+    int shot;
+    int k;
+    int listNo;
+    Catk *card;
+    int j;
+
+    g_GameManager.IsPhantasmOpen();
+    for (i = 0; i < 5; i++)
+    {
+        for (shot = 0; shot < 0xc; shot++)
+        {
+            for (k = 0; k < 10; k++)
+            {
+                screen->defaultScores[i][shot][k].score = 100000 - k * 10000;
+                screen->defaultScores[i][shot][k].slowdown = 0.0f;
+                screen->defaultScores[i][shot][k].magic = *(DWORD *)"DMYS";
+                screen->defaultScores[i][shot][k].difficulty = i;
+                screen->defaultScores[i][shot][k].version = 4;
+                screen->defaultScores[i][shot][k].size2 = sizeof(Hscr);
+                screen->defaultScores[i][shot][k].size = sizeof(Hscr);
+                screen->defaultScores[i][shot][k].stage = 0;
+                screen->defaultScores[i][shot][k].isNew = 0;
+                screen->defaultScores[i][shot][k].continuesUsed = 0;
+                screen->defaultScores[i][shot][k].unk_166 = 1;
+                screen->AddScore(&screen->defaultScores[i][shot][k], i, shot);
+                strcpy(screen->defaultScores[i][shot][k].name, "--------");
+                strcpy(screen->defaultScores[i][shot][k].date, "--/--");
+            }
+        }
+    }
+    if (screen->state != 0x12)
+    {
+        if (g_SpriteEngine->LoadSurface(0, "result/result.jpg") != 0)
+        {
+            return -1;
+        }
+        screen->resultAnm = g_SpriteEngine->LoadAnm(0x15, "result00.anm");
+        if (screen->resultAnm == NULL)
+        {
+            return -1;
+        }
+        screen->resultTextAnm = g_SpriteEngine->LoadAnm(0x16, "resulttext.anm");
+        if (screen->resultTextAnm == NULL)
+        {
+            return -1;
+        }
+        sprite = screen->sprites;
+        for (i = 0; i < 0x48; i++, sprite++)
+        {
+            sprite->pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+            sprite->posOffset = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+            screen->resultAnm->StartScript(sprite, i);
+        }
+        screen->resultAnm->InitSprite(&screen->spellCardRowDivider, 0x20);
+        sprite = screen->textSprites;
+        for (i = 0; i < 0xe; i++, sprite++)
+        {
+            g_App.textAnm->InitSprite(sprite, i + 0x15);
+            sprite->pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+            sprite->flags |= 0x1800;
+            sprite->fontWidth = 15;
+            sprite->fontHeight = 15;
+        }
+        for (i = 0; i < 0xe; i++, sprite++)
+        {
+            screen->resultTextAnm->InitSprite(sprite, i + 2);
+            sprite->pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+            sprite->flags |= 0x1800;
+            sprite->fontWidth = 15;
+            sprite->fontHeight = 15;
+        }
+    }
+    screen->savedCursor = 0;
+    screen->scoreDat = LoadScoreDat("score.dat");
+    for (i = 0; i < 5; i++)
+    {
+        for (shot = 0; shot < 0xc; shot++)
+        {
+            LoadHighScores(screen->scoreDat, &screen->scores[i][shot], shot, i, NULL);
+        }
+    }
+    screen->lsnm.magic = 0x4d4e534c;
+    screen->lsnm.version = 1;
+    screen->lsnm.size2 = sizeof(Lsnm);
+    screen->lsnm.size = sizeof(Lsnm);
+    strcpy(screen->lsnm.name, "        ");
+    screen->nameEntryAtEnd = LoadLsnmChunk(screen->scoreDat, &screen->lsnm);
+    if (screen->state != 9 && screen->state != 0x11 && screen->state != 0x16 && screen->state != 0x12)
+    {
+        LoadSpellCards(screen->scoreDat, g_GameManager.catks);
+        LoadClears(screen->scoreDat, g_GameManager.clrds);
+        g_GameManager.IsPhantasmOpen();
+        LoadPracticeScores(screen->scoreDat, g_GameManager.pscrs);
+    }
+    if (screen->state == 0x11)
+    {
+        if (g_GameManager.pscrs[g_GameManager.character + g_GameManager.shotType]
+                .scores[g_GameManager.stage][g_GameManager.difficulty] < g_GameManager.stats->score)
+        {
+            g_GameManager.pscrs[g_GameManager.character + g_GameManager.shotType]
+                .scores[g_GameManager.stage][g_GameManager.difficulty] = g_GameManager.stats->score;
+        }
+        screen->state = 10;
+        strcpy(screen->name, screen->lsnm.name);
+        if (g_App.IsScoreDisabled() || g_App.GetNoScore())
+        {
+            memcpy(g_GameManager.catks, g_GameManager.savedCatks, sizeof(g_GameManager.catks));
+        }
+    }
+    if (screen->state == 0x16)
+    {
+        screen->state = 10;
+        strcpy(screen->name, screen->lsnm.name);
+        if (g_App.IsScoreDisabled() || g_App.GetNoScore())
+        {
+            memcpy(g_GameManager.catks, g_GameManager.savedCatks, sizeof(g_GameManager.catks));
+        }
+    }
+    listNo = 0;
+    for (listNo = 0; listNo < 6; listNo++)
+    {
+        for (i = 0; i < 0xd; i++)
+        {
+            screen->capturedSpellCounts[listNo][i] = 0;
+            for (j = 0; j < g_SpellCardListSizes[listNo]; j++, card++)
+            {
+                card = &g_GameManager.catks[g_SpellCardLists[listNo][j]];
+                if (card->magic != 0x4b544143 || card->version != 3)
+                {
+                    continue;
+                }
+                if (card->captures[i] != 0 || card->practiceCaptures[i] != 0)
+                {
+                    screen->capturedSpellCounts[listNo][i]++;
+                }
+            }
+        }
+    }
+    screen->spellList = 5;
+    screen->spellCursor = 0xc;
+    screen->shownShotType = 0xc;
+    screen->spellInfoSliding = 0;
+    screen->unusedSprite10ef8.spriteIndex = -1;
+    g_GameManager.plst.counts[6].continues =
+        g_GameManager.plst.counts[0].continues + g_GameManager.plst.counts[1].continues +
+        g_GameManager.plst.counts[2].continues + g_GameManager.plst.counts[3].continues +
+        g_GameManager.plst.counts[4].continues;
+    g_GameManager.plst.counts[6].clears = g_GameManager.plst.counts[0].clears + g_GameManager.plst.counts[1].clears +
+                                          g_GameManager.plst.counts[2].clears + g_GameManager.plst.counts[3].clears +
+                                          g_GameManager.plst.counts[4].clears;
+    if (screen->state == 0x12)
+    {
+        if (g_App.IsScoreDisabled() || g_App.GetNoScore())
+        {
+            LoadSpellCards(screen->scoreDat, g_GameManager.catks);
+        }
+        ResultScreen::DeletedCallback(screen);
+        return -1;
+    }
+    screen->difficulty = 1;
+    screen->character = 0;
+    return 0;
+}
+
 int ResultScreen::DeletedCallback(ResultScreen *screen)
 {
     int i;

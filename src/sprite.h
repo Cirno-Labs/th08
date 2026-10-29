@@ -424,6 +424,14 @@ public:
         vm->fontWidth = 15;
         this->SetScript(vm, this->scripts[script]);
     }
+    // Initializes `vm` and shows sprite `sprite` of this file on it, as
+    // th07's SpriteEngine::InitSprite. Inline; the copy is at 0x4068a0.
+    void InitSprite(Sprite *vm, int sprite)
+    {
+        vm->Initialize();
+        vm->anm = this;
+        this->SetSprite(vm, sprite);
+    }
     // Runs script `script` of this file on `vm`, as th07's
     // SpriteEngine::StartScript. Inline; the copy is at 0x4069f0.
     void StartScript(Sprite *vm, int script)

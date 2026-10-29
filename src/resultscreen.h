@@ -81,7 +81,10 @@ struct Hscr
     unsigned char unk_68[0x1c];
     // GameManager::unk_3dba0 / unk_3dba4, times 10000.
     int unk_84;
-    unsigned char unk_88[0xe0];
+    unsigned char unk_88[0xde];
+    // 1 in the entries the lists start with.
+    BYTE unk_166;
+    BYTE unk_167;
 };
 ASSERT_SIZE(Hscr, 0x168);
 
@@ -195,7 +198,9 @@ struct Pscr
     WORD size2;
     BYTE version;
     BYTE unk_09[0x3];
-    unsigned char unk_0c[0x168];
+    DWORD unk_0c[9][5];
+    // The best score, by stage and difficulty.
+    DWORD scores[9][5];
     // The shot type.
     BYTE shot;
     // Set once the shot type has a practice score: SaveScoreDat skips
@@ -326,6 +331,15 @@ public:
     // entry's alphabet, the replay slots, then DrawStatistics, as
     // th07's. Returns 1.
     static int OnDraw(ResultScreen *screen);
+    // Fills the lists with "--------" entries, loads the background,
+    // the ANMs and the sprites (unless in state 0x12), the score file
+    // and its lists, the last name and, outside a game, the spell cards,
+    // clears and practice scores, as th07's. After a practice (0x11) it
+    // keeps the practice score; after a practice or a spell card
+    // practice (0x16) it goes on to state 10. Counts the captured spell
+    // cards and adds up the clears and continues. In state 0x12 it
+    // deletes the screen and returns -1, else returns 0, or -1 if a file
+    // fails to load.
     static int AddedCallback(ResultScreen *screen);
     // Saves and frees the score file, empties the lists, releases ANMs
     // 0x15 and 0x16, moves surface 0 to slot 8, removes the draw element
@@ -384,7 +398,9 @@ public:
     int unk_18;
     // The menu item selected.
     int cursor;
-    unsigned char unk_20[0x8];
+    // The menu cursor, kept while away, as th07's.
+    int savedCursor;
+    int unk_24;
     // The replay slot chosen, 0 to 14, as th07's.
     int replaySlot;
     // The character of g_NameAlphabet selected, as th07's.
@@ -425,12 +441,17 @@ public:
     Sprite sprites[0x48];
     // Text drawn with RenderText, as th07's.
     Sprite textSprites[0x1e];
-    Sprite unk_10ef8;
+    // Never drawn; AddedCallback clears its spriteIndex, as th07's.
+    Sprite unusedSprite10ef8;
     Sprite spellCardRowDivider;
-    unsigned char unk_11440[0xc];
+    // "result00.anm" and "resulttext.anm".
+    AnmLoaded *resultAnm;
+    AnmLoaded *resultTextAnm;
+    unsigned char unk_11448[0x4];
     // The high score lists, by difficulty and shot.
     ListNode scores[5][0xc];
-    unsigned char unk_1171c[0x34bc0];
+    // The entries the lists start with, by difficulty, shot and rank.
+    Hscr defaultScores[5][0xc][10];
     // The score being entered.
     Hscr entry;
     // The "TH8K" chunk SaveScoreDat writes.

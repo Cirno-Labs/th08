@@ -1040,6 +1040,8 @@ public:
     int Func43c2c5();
     // Whether every shot type has Extra open. In App's object.
     int AllShotsHaveExtraOpen();
+    // th07's IsPhantasmOpen, which returns 0 in th08 (0x43c317).
+    int IsPhantasmOpen();
     // Moves `stage` on to the next stage (0x43c4b3).
     void AdvanceStage();
     // Whether the game is a practice: unk_3dbac's bit 0, which th07 read
