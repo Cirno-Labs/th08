@@ -121,6 +121,46 @@ void GameManager::SetRankForDifficulty()
     this->maxRank = g_Ranks[g_GameManager.difficulty].maxRank;
 }
 
+void RerollStatsChecksumKeys()
+{
+    int sum;
+    int j;
+
+    g_GameManager.stats->grazeCount = g_Rng.GetRandomU32InRange(100000) + 6543;
+    for (j = 0; j < ARRAY_SIZE(g_GameManager.stats->lifeChecksumKeys); j++)
+    {
+        g_GameManager.stats->lifeChecksumKeys[j] = g_Rng.GetRandomU32InRange(100000) + 6543;
+    }
+    for (j = 0; j < ARRAY_SIZE(g_GameManager.stats->checksumKeysD); j++)
+    {
+        g_GameManager.stats->checksumKeysD[j] = g_Rng.GetRandomU32InRange(100000) + 6543;
+    }
+    for (j = 0; j < ARRAY_SIZE(g_GameManager.stats->statsChecksumKeysA); j++)
+    {
+        g_GameManager.stats->statsChecksumKeysA[j] = g_Rng.GetRandomF32ZeroToOne() * 100000.0f + 6543.0f;
+    }
+    for (j = 0; j < ARRAY_SIZE(g_GameManager.stats->statsChecksumKeysB); j++)
+    {
+        g_GameManager.stats->statsChecksumKeysB[j] = g_Rng.GetRandomF32ZeroToOne() * 100000.0f + 6543.0f;
+    }
+    for (j = 0; j < ARRAY_SIZE(g_GameManager.stats->lifeChecksumKeysF); j++)
+    {
+        g_GameManager.stats->lifeChecksumKeysF[j] = g_Rng.GetRandomF32ZeroToOne() * 100000.0f + 6543.0f;
+    }
+    for (j = 0; j < ARRAY_SIZE(g_GameManager.stats->statsChecksumKeysC); j++)
+    {
+        g_GameManager.stats->statsChecksumKeysC[j] = g_Rng.GetRandomF32ZeroToOne() * 100000.0f + 6543.0f;
+    }
+    for (j = 0; j < ARRAY_SIZE(g_GameManager.stats->checksumKeysE); j++)
+    {
+        g_GameManager.stats->checksumKeysE[j] = g_Rng.GetRandomU32InRange(100000) + 6543;
+    }
+    g_GameManager.stats->checksum = g_GameManager.stats->lifeChecksumKeys[2];
+    sum = g_GameManager.ComputeChecksum();
+    g_GameManager.stats->computedChecksum = sum;
+    g_GameManager.checksumValue = (float)sum + g_GameManager.stats->checksumKeysD[3];
+}
+
 void IncrementStatCounter(DWORD *count, DWORD max)
 {
     if (*count < 999999)

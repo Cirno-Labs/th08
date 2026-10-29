@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">40.05% (447)</tspan> · <tspan class="decompiled">0.27% (3)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">59.68% (666)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">40.14% (448)</tspan> · <tspan class="decompiled">0.27% (3)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">59.59% (665)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="299.20" height="6" x="0" y="0" class="named"/>
-<rect width="2.01" height="6" x="299.20" y="0" class="decompiled"/>
-<rect width="445.79" height="6" x="301.21" y="0" class="todo"/>
+<rect width="299.87" height="6" x="0" y="0" class="named"/>
+<rect width="2.01" height="6" x="299.87" y="0" class="decompiled"/>
+<rect width="445.12" height="6" x="301.88" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -600,7 +600,7 @@
 <rect width="12" height="12" x="435" y="150" class="todo"><title>0x0043aaf4 GameManager::AddedCallback (227 bytes)</title></rect>
 <rect width="12" height="12" x="450" y="150" class="todo"><title>0x0043abd7 Func43abd7 (3423 bytes)</title></rect>
 <rect width="12" height="12" x="465" y="150" class="named"><title>0x0043b936 GameManager::SetRankForDifficulty (78 bytes)</title></rect>
-<rect width="12" height="12" x="480" y="150" class="todo"><title>0x0043b984 Func43b984 (605 bytes)</title></rect>
+<rect width="12" height="12" x="480" y="150" class="named"><title>0x0043b984 RerollStatsChecksumKeys (605 bytes)</title></rect>
 <rect width="12" height="12" x="495" y="150" class="todo"><title>0x0043bbe1 Func43bbe1 (552 bytes)</title></rect>
 <rect width="12" height="12" x="510" y="150" class="named"><title>0x0043be09 IncrementStatCounter (35 bytes)</title></rect>
 <rect width="12" height="12" x="525" y="150" class="todo"><title>0x0043be2c GameManager::DeletedCallback (322 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">32%</tspan> · <tspan class="decompiled">0.11%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">67.89%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">32.13%</tspan> · <tspan class="decompiled">0.11%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">67.76%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="239.02" height="6" x="0" y="0" class="named"/>
-<rect width="0.86" height="6" x="239.02" y="0" class="decompiled"/>
-<rect width="507.13" height="6" x="239.87" y="0" class="todo"/>
+<rect width="240" height="6" x="0" y="0" class="named"/>
+<rect width="0.86" height="6" x="240" y="0" class="decompiled"/>
+<rect width="506.14" height="6" x="240.86" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1373,7 +1373,7 @@
 <rect width="15.31" height="15.93" x="452.90" y="161.39" class="todo"><title>0x00450c50 Func450c50 (611 bytes)</title></rect>
 <rect width="15.31" height="15.90" x="452.90" y="180.33" class="todo"><title>0x00409f40 Func409f40 (610 bytes)</title></rect>
 <rect width="15.31" height="15.87" x="452.90" y="199.23" class="todo"><title>0x004505d0 Func4505d0 (609 bytes)</title></rect>
-<rect width="15.31" height="15.75" x="452.90" y="218.10" class="todo"><title>0x0043b984 Func43b984 (605 bytes)</title></rect>
+<rect width="15.31" height="15.75" x="452.90" y="218.10" class="named"><title>0x0043b984 RerollStatsChecksumKeys (605 bytes)</title></rect>
 <rect width="15.31" height="15.59" x="452.90" y="236.85" class="todo"><title>0x0040e3b0 Func40e3b0 (600 bytes)</title></rect>
 <rect width="15.31" height="15.59" x="452.90" y="255.44" class="named"><title>0x00463210 SpriteEngine::Draw (600 bytes)</title></rect>
 <rect width="15.31" height="15.56" x="452.90" y="274.03" class="todo"><title>0x00450320 Func450320 (599 bytes)</title></rect>
