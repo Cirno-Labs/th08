@@ -455,3 +455,35 @@ int SoundPlayer::LoadSounds()
     }
     return 0;
 }
+
+void SoundPlayer::QueueSound(int idx, int arg)
+{
+    int i;
+    int unk;
+
+    unk = g_SoundInfos[idx].unk_6;
+    for (i = 0; i < 0xc; i++)
+    {
+        if (this->queue[i] < 0)
+        {
+            break;
+        }
+        if (this->queue[i] == idx)
+        {
+            if (this->queueArgCounts[i] < 0x80)
+            {
+                this->queueArgs[i][this->queueArgCounts[i]] = arg;
+                this->queueArgCounts[i]++;
+            }
+            return;
+        }
+    }
+    if (i >= 0xc)
+    {
+        return;
+    }
+    this->queue[i] = idx;
+    this->unk_408[idx] = unk;
+    this->queueArgs[i][0] = arg;
+    this->queueArgCounts[i]++;
+}
