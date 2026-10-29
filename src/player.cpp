@@ -837,3 +837,29 @@ void ResetHomingAndText(Player *player)
         g_AsciiText.SetSummaryPendingInterrupt(3);
     }
 }
+
+int Player::OnDraw(Player *player)
+{
+    DWORD i;
+
+    DrawBullets(player);
+    if (player->bomb.running)
+    {
+        player->bomb.draw.funcs[player->bomb.type](player);
+    }
+    if (!g_GameManager.isInContinueMenu)
+    {
+        player->sprite.pos.x = g_GameManager.arena[0] + player->pos.x;
+        player->sprite.pos.y = g_GameManager.arena[1] + player->pos.y;
+        player->sprite.pos.z = 0.1f;
+        g_SpriteEngine->DrawUnrotated(&player->sprite);
+    }
+    for (i = 0; i < 4; i++)
+    {
+        if (player->options[i].draw != NULL)
+        {
+            player->options[i].draw(player, &player->options[i]);
+        }
+    }
+    return 1;
+}
