@@ -575,10 +575,10 @@ address,size,name,symbol
 0x0043e390,262,Func43e390,
 0x0043e4a0,448,Func43e4a0,
 0x0043e660,531,LoadFileData,?LoadFileData@@YIPAXPADPAKH@Z
-0x0043e880,105,Func43e880,
+0x0043e880,105,FileExists,?FileExists@@YIHPAD@Z
 0x0043e8f0,267,Func43e8f0,
 0x0043ea00,337,LogPrintf,?LogPrintf@@YAHPAVLog@@PBDZZ
-0x0043eb60,343,Func43eb60,
+0x0043eb60,343,LogError,?LogError@@YAHPAVLog@@PBDZZ
 0x0043ecc0,88,Func43ecc0,
 0x0043ed20,40,Func43ed20,
 0x0043ed50,40,Func43ed50,
@@ -643,10 +643,10 @@ address,size,name,symbol
 0x00442a80,1130,FormatCapsReport,?FormatCapsReport@@YIXPAU_D3DCAPS8@@PAD@Z
 0x00442ef0,107,AppendCapsFlagText,?AppendCapsFlagText@@YIPADPADKK0@Z
 0x00442f60,1201,Func442f60,
-0x00443420,625,Func443420,
+0x00443420,625,CheckSingleInstance,?CheckSingleInstance@@YIHPAUHINSTANCE__@@@Z
 0x004436a0,143,Func4436a0,
 0x00443730,266,Func443730,
-0x00443840,322,Func443840,
+0x00443840,322,ResolveShortcut,?ResolveShortcut@@YIHPAD0H@Z
 0x00443990,35,Func443990,
 0x004439c0,133,Func4439c0,
 0x00443a50,23,Func443a50,
@@ -1742,7 +1742,7 @@ address,size,name,symbol
 0x004a481e,24,Func4a481e,
 0x004a4838,31,Func4a4838,
 0x004a4857,88,_sprintf,_sprintf
-0x004a48b0,45,_strrchr,
+0x004a48b0,45,_strrchr,_strrchr
 0x004a48e0,61,__chkstk,
 0x004a4920,96,_memset,
 0x004a4980,672,_memcpy,
@@ -2037,7 +2037,7 @@ address,size,name,symbol
 0x004b1d3e,9,__flushall,
 0x004b1d47,73,Func4b1d47,
 0x004b1d90,440,Func4b1d90,
-0x004b1f5f,105,__stricmp,
+0x004b1f5f,105,__stricmp,__stricmp
 0x004b1fc8,78,__mbsnbicoll,
 0x004b2016,107,Func4b2016,
 0x004b2081,461,Func4b2081,
@@ -2380,5 +2380,7 @@ address,size,name,symbol
 0x004b4288,4,CoInitialize,__imp__CoInitialize@4
 0x0164d540,,g_Log,?g_Log@@3VLog@@A
 0x0164f598,,g_MemoryManager,?g_MemoryManager@@3VMemoryManager@@A
+0x017ce6fc,,g_AppMutex,?g_AppMutex@@3PAXA
+0x017ce700,,g_GameWindow,?g_GameWindow@@3UGameWindow@@A
 0x017ce744,,g_Unknown17ce744,?g_Unknown17ce744@@3T_LARGE_INTEGER@@A
 0x017ce758,,g_App,?g_App@@3VApp@@A
