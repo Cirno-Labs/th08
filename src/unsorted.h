@@ -209,3 +209,7 @@ BYTE *GetPadButtons();
 // th08 adds P as a second 0x800 key, and reacquires the keyboard on any
 // DirectInput failure, not only a lost device.
 WORD ReadButtons();
+
+// Clears the down bit (0x80) of every key in the thread's keyboard
+// state.
+void ResetKeyboard();

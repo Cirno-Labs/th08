@@ -306,3 +306,16 @@ WORD ReadButtons()
     }
     return ReadJoystick(buttons);
 }
+
+void ResetKeyboard()
+{
+    BYTE keyState[0x100];
+    int i;
+
+    GetKeyboardState(keyState);
+    for (i = 0; i < 0x100; i++)
+    {
+        keyState[i] &= 0x7f;
+    }
+    SetKeyboardState(keyState);
+}
