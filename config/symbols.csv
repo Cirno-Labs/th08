@@ -638,7 +638,7 @@ address,size,name,symbol
 0x00442190,112,GameWindow::GetTime,?GetTime@GameWindow@@QAENXZ
 0x00442200,56,CreateD3d,?CreateD3d@@YIHXZ
 0x00442240,329,CreateGameWindow,?CreateGameWindow@@YIHPAUHINSTANCE__@@@Z
-0x00442390,303,Func442390,
+0x00442390,303,WindowProc,?WindowProc@@YGJPAUHWND__@@IIJ@Z
 0x004424c0,1472,InitD3dDevice,?InitD3dDevice@@YIHXZ
 0x00442a80,1130,FormatCapsReport,?FormatCapsReport@@YIXPAU_D3DCAPS8@@PAD@Z
 0x00442ef0,107,AppendCapsFlagText,?AppendCapsFlagText@@YIPADPADKK0@Z
@@ -1117,6 +1117,7 @@ address,size,name,symbol
 0x00475270,40,DatArchiveEntry::~DatArchiveEntry,??1DatArchiveEntry@@QAE@XZ
 0x00476ce0,,DirectInput8Create,_DirectInput8Create@20
 0x00476ce6,,DirectSoundCreate8,_DirectSoundCreate8@12
+0x00476cec,,Direct3DCreate8,_Direct3DCreate8@4
 0x00476cf2,45,Func476cf2,
 0x00476d1f,142,Func476d1f,
 0x00476dad,175,Func476dad,

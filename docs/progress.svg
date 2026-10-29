@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">24.01% (268)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">75.99% (848)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">24.10% (269)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">75.90% (847)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="179.39" height="6" x="0" y="0" class="named"/>
-<rect width="567.61" height="6" x="179.39" y="0" class="todo"/>
+<rect width="180.06" height="6" x="0" y="0" class="named"/>
+<rect width="566.94" height="6" x="180.06" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -704,9 +704,9 @@
 <rect width="12" height="12" x="510" y="180" class="named"><title>0x00441e70 GameWindow::RunFrame (482 bytes)</title></rect>
 <rect width="12" height="12" x="525" y="180" class="named"><title>0x00442060 PresentFrame (295 bytes)</title></rect>
 <rect width="12" height="12" x="540" y="180" class="named"><title>0x00442190 GameWindow::GetTime (112 bytes)</title></rect>
-<rect width="12" height="12" x="555" y="180" class="todo"><title>0x00442200 CreateD3d (56 bytes)</title></rect>
+<rect width="12" height="12" x="555" y="180" class="named"><title>0x00442200 CreateD3d (56 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="180" class="todo"><title>0x00442240 CreateGameWindow (329 bytes)</title></rect>
-<rect width="12" height="12" x="585" y="180" class="todo"><title>0x00442390 Func442390 (303 bytes)</title></rect>
+<rect width="12" height="12" x="585" y="180" class="todo"><title>0x00442390 WindowProc (303 bytes)</title></rect>
 <rect width="12" height="12" x="600" y="180" class="todo"><title>0x004424c0 InitD3dDevice (1472 bytes)</title></rect>
 <rect width="12" height="12" x="615" y="180" class="named"><title>0x00442a80 FormatCapsReport (1130 bytes)</title></rect>
 <rect width="12" height="12" x="630" y="180" class="named"><title>0x00442ef0 AppendCapsFlagText (107 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">13.99%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">86.01%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">14%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">86%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="104.52" height="6" x="0" y="0" class="named"/>
-<rect width="642.48" height="6" x="104.52" y="0" class="todo"/>
+<rect width="104.61" height="6" x="0" y="0" class="named"/>
+<rect width="642.39" height="6" x="104.61" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1516,7 +1516,7 @@
 <rect width="10.52" height="9.93" x="643.23" y="129.42" class="todo"><title>0x0043c35f Func43c35f (308 bytes)</title></rect>
 <rect width="10.47" height="9.93" x="656.75" y="129.42" class="todo"><title>0x00467040 Func467040 (307 bytes)</title></rect>
 <rect width="10.43" height="9.93" x="670.22" y="129.42" class="todo"><title>0x004325a0 Func4325a0 (306 bytes)</title></rect>
-<rect width="10.30" height="9.93" x="683.65" y="129.42" class="todo"><title>0x00442390 Func442390 (303 bytes)</title></rect>
+<rect width="10.30" height="9.93" x="683.65" y="129.42" class="todo"><title>0x00442390 WindowProc (303 bytes)</title></rect>
 <rect width="10.30" height="9.93" x="696.94" y="129.42" class="todo"><title>0x0044a470 Func44a470 (303 bytes)</title></rect>
 <rect width="10.30" height="9.93" x="710.24" y="129.42" class="todo"><title>0x0044ea40 Func44ea40 (303 bytes)</title></rect>
 <rect width="10.25" height="9.93" x="723.54" y="129.42" class="todo"><title>0x0044a230 Func44a230 (302 bytes)</title></rect>
@@ -1991,7 +1991,7 @@
 <rect width="2.71" height="2.76" x="668.53" y="342.24" class="todo"><title>0x00453160 Func453160 (58 bytes)</title></rect>
 <rect width="2.66" height="2.81" x="674.24" y="272.19" class="todo"><title>0x004631d0 Func4631d0 (58 bytes)</title></rect>
 <rect width="2.56" height="2.81" x="679.90" y="272.19" class="todo"><title>0x00410c00 Func410c00 (57 bytes)</title></rect>
-<rect width="2.47" height="2.81" x="685.47" y="272.19" class="todo"><title>0x00442200 CreateD3d (56 bytes)</title></rect>
+<rect width="2.47" height="2.81" x="685.47" y="272.19" class="named"><title>0x00442200 CreateD3d (56 bytes)</title></rect>
 <rect width="2.47" height="2.81" x="690.94" y="272.19" class="todo"><title>0x00451d50 Func451d50 (56 bytes)</title></rect>
 <rect width="2.47" height="2.81" x="696.40" y="272.19" class="todo"><title>0x004657c0 Func4657c0 (56 bytes)</title></rect>
 <rect width="2.47" height="2.81" x="701.87" y="272.19" class="named"><title>0x004731f0 CWaveFile::CWaveFile (56 bytes)</title></rect>

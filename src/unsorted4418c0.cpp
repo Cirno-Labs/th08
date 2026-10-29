@@ -298,6 +298,19 @@ double GameWindow::GetTime()
     }
 }
 
+int CreateD3d()
+{
+    // 220 is the DirectX 8.1 SDK's D3D_SDK_VERSION; our headers are 8.0's
+    // (120).
+    g_App.d3d = Direct3DCreate8(220);
+    if (g_App.d3d == NULL)
+    {
+        LogError(&g_Log, "Direct3D オブジェクトは何故か作成出来なかった\r\n");
+        return 1;
+    }
+    return 0;
+}
+
 void FormatCapsReport(D3DCAPS8 *caps, char *buffer)
 {
     char *p = buffer;
