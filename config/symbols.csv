@@ -101,7 +101,7 @@ address,size,name,symbol
 0x00409c20,122,Stage::DeletedCallback,?DeletedCallback@Stage@@SIHPAV1@@Z
 0x00409ca0,50,Stage::RemoveChain,?RemoveChain@Stage@@SIXXZ
 0x00409ce0,598,Stage::Load,?Load@Stage@@QAEHPAD@Z
-0x00409f40,610,Func409f40,
+0x00409f40,610,Stage::StepObjects,?StepObjects@Stage@@QAEHXZ
 0x0040a1b0,4746,Stage::DrawLayer,?DrawLayer@Stage@@QAEHH@Z
 0x0040b440,21,Func40b440,
 0x0040b460,14,Func40b460,

@@ -460,3 +460,75 @@ int Stage::Load(char *dataPath)
     this->unk_838 = 0;
     return 0;
 }
+
+int Stage::StepObjects()
+{
+    StageQuad *altQuad;
+    int busy;
+    int i;
+    Sprite *sprite;
+    StageObject *obj;
+    StageQuad *piece;
+
+    if (this->unk_834)
+    {
+        if (g_Player.IsUnk5Clear())
+        {
+            this->unk_834 = 0;
+            this->unk_838 = 0;
+            this->unk_844.SetPendingInterrupt(2);
+        }
+    }
+    else
+    {
+        if (g_Player.IsUnk5Set())
+        {
+            this->unk_834 = 1;
+            this->unk_838 = 0;
+            this->unk_844.SetPendingInterrupt(1);
+        }
+    }
+    this->unk_838++;
+    g_SpriteEngine->Step(&this->unk_844);
+    for (i = 0; i < this->objectCount; i++)
+    {
+        obj = this->objects[i];
+        if (obj->flags & 1)
+        {
+            busy = 0;
+            piece = obj->quads;
+            while (piece->type >= 0)
+            {
+                sprite = &this->sprites[piece->spriteIndex];
+                switch (piece->type)
+                {
+                case 0:
+                    g_SpriteEngine->Step(sprite);
+                    break;
+                case 1:
+                    altQuad = piece;
+                    g_SpriteEngine->Step(sprite);
+                    break;
+                }
+                if (sprite->scriptPos != NULL)
+                {
+                    busy++;
+                }
+                piece = (StageQuad *)((char *)piece + piece->size);
+            }
+            if (sprite->autoRotate == 1)
+            {
+                sprite->flags |= 0x20000;
+                sprite->color2Rgb[2] = (DWORD)sprite->colorRgb[2] * this->unk_844.colorRgb[2] >> 8;
+                sprite->color2Rgb[1] = (DWORD)sprite->colorRgb[1] * this->unk_844.colorRgb[1] >> 8;
+                sprite->color2Rgb[0] = (DWORD)sprite->colorRgb[0] * this->unk_844.colorRgb[0] >> 8;
+                sprite->color2Alpha = (DWORD)sprite->alpha * this->unk_844.alpha >> 8;
+            }
+            if (busy == 0)
+            {
+                obj->flags &= ~1;
+            }
+        }
+    }
+    return 0;
+}

@@ -2156,6 +2156,11 @@ public:
     // th07's, then starts unk_844 (0x409ce0). Returns 0, or -1 on
     // failure.
     int Load(char *dataPath);
+    // Sends unk_844 interrupt 1 or 2 as g_Player.unk_5 is set or
+    // cleared, runs it, then runs one frame of the scripts of each
+    // animated object's sprites, as th07's; objects whose last sprite has
+    // autoRotate 1 get unk_844's color as color2 (0x409f40). Returns 0.
+    int StepObjects();
 
     // One Sprite per object sprite in the data.
     Sprite *sprites;
@@ -2185,8 +2190,8 @@ public:
     unsigned char pad_835[0x3];
     // Restarted whenever unk_834 changes. New in th08.
     Timer unk_838;
-    // Script 0x21 of the background ANM. Its color scales the color of
-    // the petals and of some of the stage's sprites. New in th08.
+    // Script 0x21 of g_App.textAnm. Its color scales the color of the
+    // petals and of some of the stage's sprites. New in th08.
     Sprite unk_844;
     // Stage 7's effect. New in th08.
     Effect *unk_ae8;

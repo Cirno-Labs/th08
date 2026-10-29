@@ -43,6 +43,16 @@ public:
     // Whether the box of `size` at `pos` touches the player's graze box,
     // as th07's (0x44a5a0).
     int TouchesGrazeBox(D3DXVECTOR3 *pos, D3DXVECTOR3 *size);
+    // Whether unk_5 is set. Inline; the copy is at 0x40bc40.
+    int IsUnk5Set()
+    {
+        return this->unk_5;
+    }
+    // Whether unk_5 is clear. Inline; the copy is at 0x40bc20.
+    int IsUnk5Clear()
+    {
+        return !this->unk_5;
+    }
 
     // 2 while dying, as th07's.
     char playerState;
@@ -50,7 +60,11 @@ public:
     // Picks unk_e2a78 over shotType for the items' pull speed, and the
     // direction a time orb moves stats->unk_22. Probably the focus.
     BYTE unk_3;
-    unsigned char unk_4[0x2b0];
+    unsigned char unk_4;
+    // Stage::StepObjects sends interrupt 1 to g_Stage.unk_844 as it is
+    // set, 2 as it is cleared.
+    BYTE unk_5;
+    unsigned char unk_6[0x2ae];
     // The player's position.
     D3DXVECTOR3 pos;
     unsigned char unk_2c0[0xe27b4];
