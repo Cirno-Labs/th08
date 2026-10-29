@@ -301,3 +301,50 @@ int SoundPlayer::SwitchBgmTrack(char *path)
     DebugPrint("Streming BGM Reopen %d\r\n", i);
     return 0;
 }
+
+int SoundPlayer::PreloadBgm(int slot, char *path)
+{
+    int i;
+    DWORD sizeRead;
+    HANDLE file;
+    void *data;
+
+    if (this->bgmPreloadData[slot] != NULL && strcmp(path, this->bgmNames[slot]) == 0)
+    {
+        return 0;
+    }
+    strcpy(g_SoundPlayer.bgmNames[slot], path);
+    if (!g_App.GetPreloadBgm())
+    {
+        return 0;
+    }
+    if (!this->manager)
+    {
+        return 0;
+    }
+    this->FreePreloadedBgm(slot);
+    DebugPrint("Streming BGM PreLoad %d\r\n", slot);
+    file = CreateFileA(this->bgmPath, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING,
+                       FILE_ATTRIBUTE_NORMAL | FILE_FLAG_SEQUENTIAL_SCAN, NULL);
+    if (file == INVALID_HANDLE_VALUE)
+    {
+        DebugPrint("error : bgmfile is not find %s\r\n", this->bgmPath);
+        return -1;
+    }
+    i = this->FindTrackIndex(path);
+    SetFilePointer(file, this->bgmFormat[i].offset, NULL, FILE_BEGIN);
+    data = g_MemoryManager.Alloc(this->bgmFormat[i].size, GLOBAL_H);
+    if (data == NULL)
+    {
+        CloseHandle(file);
+        DebugPrint("error : bgmfile is not find %s\r\n", this->bgmPath);
+        return -1;
+    }
+    ReadFile(file, data, this->bgmFormat[i].size, &sizeRead, NULL);
+    CloseHandle(file);
+    this->bgmEntries[slot] = &this->bgmFormat[i];
+    this->bgmPreloadData[slot] = data;
+    this->bgmPreloadCursor[slot] = data;
+    this->bgmPreloadSize[slot] = this->bgmEntries[slot]->size;
+    return 0;
+}
