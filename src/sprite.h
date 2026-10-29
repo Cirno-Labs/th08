@@ -294,6 +294,12 @@ public:
     // g_TextureFormats[`format`], with `colorKey` transparent. Returns 0,
     // or -1 on failure.
     int LoadTexture(AnmTexture *tex, int format, D3DCOLOR colorKey);
+    // Creates `tex`'s texture from the pixels of `image`, in the format
+    // g_TextureFormats[`format`]. Returns 0, or -1 on failure.
+    int CreateTextureFromImage(AnmTexture *tex, AnmImage *image, int format);
+    // Creates `tex`'s texture at `width` by `height` in the format
+    // g_TextureFormats[`format`]. Returns 0.
+    int CreateTexture(AnmTexture *tex, int width, int height, int format);
 
     IDirect3DSurface8 *GetSurface(int surface)
     {

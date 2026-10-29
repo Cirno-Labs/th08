@@ -94,3 +94,15 @@ int SpriteEngine::AdjustTextureFormat(int format)
     }
     return format;
 }
+
+int SpriteEngine::LoadTexture(AnmTexture *tex, int format, D3DCOLOR colorKey)
+{
+    format = AdjustTextureFormat(format);
+    if (D3DXCreateTextureFromFileInMemoryEx(g_App.d3dDevice, tex->data, tex->size, 0, 0, 0, 0, g_TextureFormats[format],
+                                            D3DPOOL_MANAGED, D3DX_FILTER_LINEAR, D3DX_DEFAULT, colorKey, NULL, NULL,
+                                            &tex->texture) != D3D_OK)
+    {
+        return -1;
+    }
+    return 0;
+}
