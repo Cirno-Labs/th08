@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">63.71% (711)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">34.50% (385)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">63.80% (712)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">34.41% (384)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="475.91" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="475.91" y="0" class="decompiled"/>
-<rect width="257.70" height="6" x="489.30" y="0" class="todo"/>
+<rect width="476.58" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="476.58" y="0" class="decompiled"/>
+<rect width="257.03" height="6" x="489.97" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -190,7 +190,7 @@
 <rect width="12" height="12" x="285" y="30" class="todo"><title>0x0040b910 Func40b910 (152 bytes)</title></rect>
 <rect width="12" height="12" x="300" y="30" class="named"><title>0x0040b9b0 SpriteEngine::ClearBlendMode (21 bytes)</title></rect>
 <rect width="12" height="12" x="315" y="30" class="todo"><title>0x0040b9d0 Func40b9d0 (21 bytes)</title></rect>
-<rect width="12" height="12" x="330" y="30" class="todo"><title>0x0040b9f0 Func40b9f0 (21 bytes)</title></rect>
+<rect width="12" height="12" x="330" y="30" class="named"><title>0x0040b9f0 SpriteEngine::ClearVertexFormat (21 bytes)</title></rect>
 <rect width="12" height="12" x="345" y="30" class="todo"><title>0x0040ba10 Func40ba10 (24 bytes)</title></rect>
 <rect width="12" height="12" x="360" y="30" class="todo"><title>0x0040ba30 Func40ba30 (21 bytes)</title></rect>
 <rect width="12" height="12" x="375" y="30" class="todo"><title>0x0040ba50 Func40ba50 (24 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">55.26%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">43.75%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">55.26%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">43.74%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="412.79" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="412.79" y="0" class="decompiled"/>
-<rect width="326.80" height="6" x="420.20" y="0" class="todo"/>
+<rect width="412.83" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="412.83" y="0" class="decompiled"/>
+<rect width="326.77" height="6" x="420.23" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -2250,7 +2250,7 @@
 <rect width="0.51" height="0.39" x="722.67" y="334.44" class="todo"><title>0x0040b440 Func40b440 (21 bytes)</title></rect>
 <rect width="0.51" height="0.39" x="722.67" y="337.83" class="named"><title>0x0040b9b0 SpriteEngine::ClearBlendMode (21 bytes)</title></rect>
 <rect width="0.51" height="0.39" x="722.67" y="341.22" class="todo"><title>0x0040b9d0 Func40b9d0 (21 bytes)</title></rect>
-<rect width="0.51" height="0.39" x="722.67" y="344.61" class="todo"><title>0x0040b9f0 Func40b9f0 (21 bytes)</title></rect>
+<rect width="0.51" height="0.39" x="722.67" y="344.61" class="named"><title>0x0040b9f0 SpriteEngine::ClearVertexFormat (21 bytes)</title></rect>
 <rect width="0.51" height="0.39" x="726.18" y="324.27" class="todo"><title>0x0040ba30 Func40ba30 (21 bytes)</title></rect>
 <rect width="0.51" height="0.39" x="726.18" y="327.66" class="todo"><title>0x0040ba70 Func40ba70 (21 bytes)</title></rect>
 <rect width="0.51" height="0.39" x="726.18" y="331.05" class="todo"><title>0x00415c60 BulletManager::Func415c60 (21 bytes)</title></rect>
