@@ -107,7 +107,7 @@ address,size,name,symbol
 0x0040b460,14,Func40b460,
 0x0040b470,73,Func40b470,
 0x0040b4c0,58,Func40b4c0,
-0x0040b500,49,Func40b500,
+0x0040b500,49,D3DXVec3LengthSq,?D3DXVec3LengthSq@@YIMPBUD3DXVECTOR3@@@Z
 0x0040b540,54,Func40b540,
 0x0040b580,22,Func40b580,
 0x0040b5a0,292,Stage::SetupFixedCamera,?SetupFixedCamera@Stage@@QAEXXZ

@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">60.75% (678)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">37.46% (418)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">60.84% (679)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">37.37% (417)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="453.82" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="453.82" y="0" class="decompiled"/>
-<rect width="279.79" height="6" x="467.21" y="0" class="todo"/>
+<rect width="454.49" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="454.49" y="0" class="decompiled"/>
+<rect width="279.12" height="6" x="467.88" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -176,7 +176,7 @@
 <rect width="12" height="12" x="75" y="30" class="todo"><title>0x0040b460 Func40b460 (14 bytes)</title></rect>
 <rect width="12" height="12" x="90" y="30" class="todo"><title>0x0040b470 Func40b470 (73 bytes)</title></rect>
 <rect width="12" height="12" x="105" y="30" class="todo"><title>0x0040b4c0 Func40b4c0 (58 bytes)</title></rect>
-<rect width="12" height="12" x="120" y="30" class="todo"><title>0x0040b500 Func40b500 (49 bytes)</title></rect>
+<rect width="12" height="12" x="120" y="30" class="named"><title>0x0040b500 D3DXVec3LengthSq (49 bytes)</title></rect>
 <rect width="12" height="12" x="135" y="30" class="todo"><title>0x0040b540 Func40b540 (54 bytes)</title></rect>
 <rect width="12" height="12" x="150" y="30" class="todo"><title>0x0040b580 Func40b580 (22 bytes)</title></rect>
 <rect width="12" height="12" x="165" y="30" class="todo"><title>0x0040b5a0 Stage::SetupFixedCamera (292 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">53.92%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">45.09%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">53.93%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">45.08%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="402.79" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="402.79" y="0" class="decompiled"/>
-<rect width="336.81" height="6" x="410.19" y="0" class="todo"/>
+<rect width="402.87" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="402.87" y="0" class="decompiled"/>
+<rect width="336.73" height="6" x="410.27" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -2030,7 +2030,7 @@
 <rect width="2.30" height="2.35" x="679.79" y="326.92" class="named"><title>0x0045cc30 SoundPlayer::LoadBgmFormat (50 bytes)</title></rect>
 <rect width="2.30" height="2.24" x="679.79" y="332.27" class="named"><title>0x004068a0 AnmLoaded::InitSprite (49 bytes)</title></rect>
 <rect width="2.30" height="2.24" x="679.79" y="337.51" class="todo"><title>0x00406ef0 Func406ef0 (49 bytes)</title></rect>
-<rect width="2.30" height="2.24" x="679.79" y="342.76" class="todo"><title>0x0040b500 Func40b500 (49 bytes)</title></rect>
+<rect width="2.30" height="2.24" x="679.79" y="342.76" class="named"><title>0x0040b500 D3DXVec3LengthSq (49 bytes)</title></rect>
 <rect width="2.18" height="2.37" x="685.10" y="278" class="named"><title>0x0043cf10 Chain::Remove (49 bytes)</title></rect>
 <rect width="2.18" height="2.37" x="690.28" y="278" class="named"><title>0x00448270 App::SetRenderState (49 bytes)</title></rect>
 <rect width="2.07" height="2.37" x="695.46" y="278" class="named"><title>0x0043ce30 Chain::Release (48 bytes)</title></rect>
