@@ -757,21 +757,38 @@ public:
     {
         this->currentSpriteData = NULL;
     }
-    void ClearUnk2e4d4()
+    void ClearLastCameraSetupFlag()
     {
         this->lastCameraSetupFlag = 0xff;
     }
-    void ClearUnk8()
+    void ClearDrawStats()
     {
         this->stepCount = 0;
         this->renderStateSetCount = 0;
         this->scriptStartCount = 0;
         this->batchDrawCount = 0;
     }
-    void ResetUnk0()
+    void ResetColorModulation()
     {
         this->modulateColorEnabled = 0;
         this->modulateColor = 0x80808080;
+    }
+    // Modulates sprites by `color` (sets modulateColorEnabled), as
+    // th07's.
+    void SetColorModulation(D3DCOLOR color)
+    {
+        this->modulateColorEnabled = 1;
+        this->modulateColor = color;
+    }
+    void SetLastCameraSetupFlag(BYTE value)
+    {
+        this->lastCameraSetupFlag = value;
+    }
+    // Draws `vm`, then the batched quads, as th07's.
+    void DrawAndFlush(Sprite *vm)
+    {
+        this->Draw(vm);
+        this->FlushQuadBatch();
     }
     // Whether `vm` shows a sprite of an ANM file whose textures are
     // loaded: th07's Sprite::HasTexture. Inline; the copy is at

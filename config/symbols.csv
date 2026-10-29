@@ -94,7 +94,7 @@ address,size,name,symbol
 0x004090d0,70,D3DXVECTOR3::operator-,??GD3DXVECTOR3@@QBE?AU0@ABU0@@Z
 0x00409120,62,D3DXVECTOR3::operator*,??DD3DXVECTOR3@@QBE?AU0@M@Z
 0x00409160,157,Stage::SetTintColor,?SetTintColor@Stage@@QAEXK@Z
-0x00409200,1087,Func409200,
+0x00409200,1087,Stage::OnDraw,?OnDraw@Stage@@SIHPAV1@@Z
 0x00409640,528,Func409640,
 0x00409850,706,Func409850,
 0x00409b20,254,Stage::RegisterChain,?RegisterChain@Stage@@SIHH@Z
@@ -102,7 +102,7 @@ address,size,name,symbol
 0x00409ca0,50,Stage::RemoveChain,?RemoveChain@Stage@@SIXXZ
 0x00409ce0,598,Func409ce0,
 0x00409f40,610,Func409f40,
-0x0040a1b0,4746,Func40a1b0,
+0x0040a1b0,4746,Stage::DrawLayer,?DrawLayer@Stage@@QAEHH@Z
 0x0040b440,21,Func40b440,
 0x0040b460,14,Func40b460,
 0x0040b470,73,Func40b470,

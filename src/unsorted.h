@@ -2115,6 +2115,19 @@ public:
     // Sets tintColor to `color`, or to the average of the two while its
     // alpha byte is set, as th07's.
     void SetTintColor(D3DCOLOR color);
+    // Clears unk_6478 and the first 0x10 of unk_6480, sets the play area
+    // viewport, resets the SpriteEngine's render state, clears the play
+    // area to black once if clearScreenOnce is set, makes the
+    // SpriteEngine modulate by tintColor if its alpha is set (and resets
+    // it to gray), draws backgroundLayer0, backgroundLayer1 and
+    // unk_ae8, clears to clearColor (through DrawColorRect unless it is
+    // opaque), sets the fog (its color modulated as the SpriteEngine's)
+    // and draws layers 0 and 1 under the same conditions as OnDraw2.
+    // Returns 1. As th07's, with th08's additions.
+    static int OnDraw(Stage *stage);
+    // Draws the objects on `layer` near enough the camera, as th07's
+    // (0x40a1b0). Returns 0.
+    int DrawLayer(int layer);
 
     // One Sprite per object sprite in the data.
     Sprite *sprites;

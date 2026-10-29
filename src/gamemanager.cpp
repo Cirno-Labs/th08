@@ -250,7 +250,7 @@ int GameManager::OnUpdate(GameManager *mgr)
     g_App.viewport.Height = mgr->arena[3];
     g_App.viewport.MinZ = 0.0f;
     g_App.viewport.MaxZ = 1.0f;
-    g_SpriteEngine->ClearUnk2e4d4();
+    g_SpriteEngine->ClearLastCameraSetupFlag();
     if (g_GameManager.unk_3dbac >> 3 & 1 && g_GameManager.replayMenuChoice == 1 && !g_Gui.IsMsgRunning())
     {
         mgr->slowdownCounter++;

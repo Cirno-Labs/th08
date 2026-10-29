@@ -2425,9 +2425,9 @@ void MainMenu::ShowInfoScreen(char *path)
         g_SpriteEngine->ClearColorOp();
         g_SpriteEngine->ClearBlendMode();
         g_SpriteEngine->ClearZWrite();
-        g_SpriteEngine->ClearUnk8();
-        g_SpriteEngine->ClearUnk2e4d4();
-        g_SpriteEngine->ResetUnk0();
+        g_SpriteEngine->ClearDrawStats();
+        g_SpriteEngine->ClearLastCameraSetupFlag();
+        g_SpriteEngine->ResetColorModulation();
         g_App.d3dDevice->BeginScene();
         g_SpriteEngine->CopySurfaceToBackBuffer(0, 0, 0, 0, 0);
         if (i < 20)

@@ -35,9 +35,9 @@ int App::OnUpdate(App *arg)
     g_SpriteEngine->ClearColorOp();
     g_SpriteEngine->ClearBlendMode();
     g_SpriteEngine->ClearZWrite();
-    g_SpriteEngine->ClearUnk8();
-    g_SpriteEngine->ClearUnk2e4d4();
-    g_SpriteEngine->ResetUnk0();
+    g_SpriteEngine->ClearDrawStats();
+    g_SpriteEngine->ClearLastCameraSetupFlag();
+    g_SpriteEngine->ResetColorModulation();
     g_SpriteEngine->shakeY = 0.0f;
     g_SpriteEngine->shakeX = 0.0f;
     g_SpriteEngine->StepSprites(g_LoadingSprites, 3);
