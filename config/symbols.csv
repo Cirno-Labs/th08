@@ -116,7 +116,7 @@ address,size,name,symbol
 0x0040b880,25,MemoryManager::Alloc,?Alloc@MemoryManager@@QAEPAXHPBD@Z
 0x0040b8a0,25,MemoryManager::Free,?Free@MemoryManager@@QAEXPAX@Z
 0x0040b8c0,23,Timer::AsFloat,?AsFloat@Timer@@QAEMXZ
-0x0040b8e0,27,Func40b8e0,
+0x0040b8e0,27,Timer::operator>=,??PTimer@@QAEHH@Z
 0x0040b900,10,Func40b900,
 0x0040b910,152,Func40b910,
 0x0040b9b0,21,Func40b9b0,
