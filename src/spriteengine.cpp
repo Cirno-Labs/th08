@@ -78,3 +78,19 @@ void SpriteEngine::CreateQuad()
         g_App.d3dDevice->SetStreamSource(0, g_SpriteEngine->vertexBuffer, sizeof(VertexTex1Xyz));
     }
 }
+
+int SpriteEngine::AdjustTextureFormat(int format)
+{
+    if (g_App.GetForce16BitTextures())
+    {
+        if (g_TextureFormats[format] == D3DFMT_A8R8G8B8 || g_TextureFormats[format] == D3DFMT_UNKNOWN)
+        {
+            format = 5;
+        }
+        else if (g_TextureFormats[format] == D3DFMT_R8G8B8)
+        {
+            format = 3;
+        }
+    }
+    return format;
+}

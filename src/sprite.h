@@ -287,6 +287,13 @@ public:
     // Creates the vertex buffer and the quads sprites are drawn with
     // (0x465250).
     void CreateQuad();
+    // `format`, or the 16-bit format to use instead of it when
+    // g_App forces 16-bit textures. th07 did this in each texture loader.
+    static int AdjustTextureFormat(int format);
+    // Creates `tex`'s texture from its image file, in the format
+    // g_TextureFormats[`format`], with `colorKey` transparent. Returns 0,
+    // or -1 on failure.
+    int LoadTexture(AnmTexture *tex, int format, D3DCOLOR colorKey);
 
     IDirect3DSurface8 *GetSurface(int surface)
     {

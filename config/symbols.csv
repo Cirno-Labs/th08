@@ -976,7 +976,7 @@ address,size,name,symbol
 0x00464ec0,427,Func464ec0,
 0x00465070,466,SpriteEngine::SpriteEngine,??0SpriteEngine@@QAE@XZ
 0x00465250,700,SpriteEngine::CreateQuad,?CreateQuad@SpriteEngine@@QAEXXZ
-0x00465510,83,Func465510,
+0x00465510,83,SpriteEngine::AdjustTextureFormat,?AdjustTextureFormat@SpriteEngine@@SIHH@Z
 0x00465570,98,Func465570,
 0x004655e0,476,Func4655e0,
 0x004657c0,56,Func4657c0,
@@ -2385,6 +2385,8 @@ address,size,name,symbol
 0x004b4280,4,CoCreateInstance,__imp__CoCreateInstance@20
 0x004b4284,4,CoUninitialize,__imp__CoUninitialize@0
 0x004b4288,4,CoInitialize,__imp__CoInitialize@4
+0x004b8480,,g_TextureFormats,?g_TextureFormats@@3PAW4_D3DFORMAT@@A
+0x004b8498,,g_TextureFormatSizes,?g_TextureFormatSizes@@3PAHA
 0x004b96bc,4,CSound::`vftable',??_7CSound@@6B@
 0x004b96c0,4,CStreamingSound::`vftable',??_7CStreamingSound@@6B@
 0x004b98b4,36,File::`vftable',??_7File@@6B@
