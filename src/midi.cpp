@@ -630,3 +630,33 @@ void MidiPlayer::ProcessEvent(MidiTrack *track)
     deltaTime = ReadVarLen(&track->cursor);
     track->delta += deltaTime;
 }
+
+void MidiPlayer::SendVolume(int offset)
+{
+    int cc;
+    int i;
+    int chStatus;
+    int data2;
+    int volume;
+
+    if (this->unk_2d4 != 0)
+    {
+        return;
+    }
+    cc = 7;
+    for (i = 0; i < 0x10; i++)
+    {
+        chStatus = (BYTE)(i + 0xb0);
+        volume = (int)(this->channels[i].volume * this->volumeScale) + offset;
+        if (volume < 0)
+        {
+            volume = 0;
+        }
+        else if (volume > 0x7f)
+        {
+            volume = 0x7f;
+        }
+        data2 = (BYTE)volume;
+        this->device.SendShortMsg(chStatus, cc, data2);
+    }
+}
