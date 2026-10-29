@@ -61,3 +61,13 @@ bool File::Open(char *path, char *mode)
     }
     return true;
 }
+
+void File::Close()
+{
+    if (this->handle != INVALID_HANDLE_VALUE)
+    {
+        CloseHandle(this->handle);
+        this->handle = INVALID_HANDLE_VALUE;
+        this->access = 0;
+    }
+}
