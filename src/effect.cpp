@@ -247,3 +247,14 @@ Effect *EffectManager::SpawnEffect2(int type, D3DXVECTOR3 *pos, int count, D3DCO
     g_ReplayManager->frameEvents |= 0x400;
     return i >= 0x80 ? &this->effects[0x28d] : eff;
 }
+
+int EffectInitDrift(Effect *effect)
+{
+    effect->step[0] = (g_Rng.GetRandomF32InRange(256.0f) - 128.0f) / 12.0f;
+    effect->step[1] = (g_Rng.GetRandomF32InRange(256.0f) - 128.0f) / 12.0f;
+    effect->step[2] = 0.0f;
+    effect->acceleration = -effect->step / 19.0f;
+    effect->step *= g_App.gameSpeed;
+    effect->acceleration *= g_App.gameSpeed;
+    return 0;
+}
