@@ -968,7 +968,7 @@ address,size,name,symbol
 0x00464070,98,SpriteEngine::DrawProjected3D,?DrawProjected3D@SpriteEngine@@QAEHPAVSprite@@@Z
 0x004640e0,786,SpriteEngine::ProjectSpriteWithCallback,?ProjectSpriteWithCallback@SpriteEngine@@QAEHPAVSprite@@P6IX0PAUD3DXVECTOR3@@@Z@Z
 0x00464400,111,SpriteEngine::DrawProjectedWithCallback,?DrawProjectedWithCallback@SpriteEngine@@QAEHPAVSprite@@P6IX0PAUD3DXVECTOR3@@@Z@Z
-0x00464470,1318,Func464470,
+0x00464470,1318,SpriteEngine::Draw3D,?Draw3D@SpriteEngine@@QAEHPAVSprite@@@Z
 0x004649a0,352,Func4649a0,
 0x00464b00,352,Func464b00,
 0x00464c60,367,Func464c60,

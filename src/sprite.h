@@ -411,6 +411,10 @@ public:
     // position, if not NULL, before the quad is placed there: it can
     // move it. New in th08.
     int ProjectSpriteWithCallback(Sprite *vm, void (*callback)(Sprite *vm, D3DXVECTOR3 *pos));
+    // Draws `vm` in 3D with the vertex buffer's quad, after the pending
+    // batch, as th07's. The texture matrix is set again while the
+    // texture scrolls.
+    int Draw3D(Sprite *vm);
     // DrawProjected with ProjectSpriteWithCallback. New in th08.
     int DrawProjectedWithCallback(Sprite *vm, void (*callback)(Sprite *vm, D3DXVECTOR3 *pos));
     // Draws `vm` with the draw function its drawMode picks: 0
