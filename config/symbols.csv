@@ -38,7 +38,7 @@ address,size,name,symbol
 0x004065c0,40,Timer::Initialize,?Initialize@Timer@@QAEXXZ
 0x004065f0,25,Timer::operator=,??4Timer@@QAEXH@Z
 0x00406610,41,Timer::Set,?Set@Timer@@QAEXH@Z
-0x00406640,21,Func406640,
+0x00406640,21,Timer::operator++,??ETimer@@QAEXH@Z
 0x00406660,52,Func406660,
 0x004066a0,27,Func4066a0,
 0x004066c0,27,Func4066c0,
