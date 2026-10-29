@@ -160,7 +160,8 @@ struct PlayerOption
 {
     Sprite sprite;
     D3DXVECTOR3 pos;
-    D3DXVECTOR3 unk_2b0;
+    // The point UpdateCirclingOption circles.
+    D3DXVECTOR3 center;
     D3DXVECTOR3 velocity;
     // 0 unused, 1 starting, 2 running, 3 leaving (it then ends).
     int active;
@@ -168,7 +169,9 @@ struct PlayerOption
     int state;
     // Its index among the four.
     int index;
-    unsigned char unk_2d4[0x8];
+    int unk_2d4;
+    // Where it is on its circle (UpdateCirclingOption).
+    float orbitAngle;
     // The direction it aims (FireOptionAimedShot).
     float angle;
     Timer timer;

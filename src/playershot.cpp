@@ -205,6 +205,75 @@ int UpdateFrontOption(Player *player, PlayerOption *option)
     return 0;
 }
 
+int UpdateCirclingOption(Player *player, PlayerOption *option)
+{
+    switch (option->active)
+    {
+    case 1:
+        player->anm->StartScript(&option->sprite, 0x18);
+        option->active = 2;
+        option->center = player->pos;
+        switch (option->index)
+        {
+        case 0:
+            option->center.x -= 30.0f;
+            option->center.y -= 16.0f;
+            option->orbitAngle = 0.0f;
+            break;
+        case 1:
+            option->center.x -= 10.0f;
+            option->center.y -= 32.0f;
+            option->orbitAngle = 3.1415927f;
+            break;
+        case 2:
+            option->center.x += 10.0f;
+            option->center.y -= 32.0f;
+            option->orbitAngle = 0.0f;
+            break;
+        case 3:
+            option->center.x += 30.0f;
+            option->center.y -= 16.0f;
+            option->orbitAngle = 3.1415927f;
+            break;
+        }
+    case 2:
+        if (option->timer > 12)
+        {
+            switch (option->index)
+            {
+            case 0:
+                option->orbitAngle = AddNormalizeAngle(option->orbitAngle, 0.02617994f);
+                break;
+            case 1:
+                option->orbitAngle = AddNormalizeAngle(option->orbitAngle, -0.034906585f);
+                break;
+            case 2:
+                option->orbitAngle = AddNormalizeAngle(option->orbitAngle, 0.034906585f);
+                break;
+            case 3:
+                option->orbitAngle = AddNormalizeAngle(option->orbitAngle, -0.02617994f);
+                break;
+            }
+        }
+        ((Vector2 *)&option->pos)->SetPolar(option->orbitAngle, 8.0f);
+        option->pos += option->center;
+        break;
+    case 3:
+        if (option->timer == 0)
+        {
+            option->sprite.SetPendingInterrupt(5);
+        }
+        if (option->timer > 16)
+        {
+            option->active = 0;
+            option->update = NULL;
+            option->draw = NULL;
+        }
+        break;
+    }
+    return 0;
+}
+
 int DrawOption(Player *player, PlayerOption *option)
 {
     option->sprite.pos.x = g_GameManager.arena[0] + option->pos.x;
