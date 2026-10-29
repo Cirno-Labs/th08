@@ -972,7 +972,7 @@ address,size,name,symbol
 0x004649a0,352,SpriteEngine::FillSpriteStripVertices,?FillSpriteStripVertices@SpriteEngine@@QAEHPAVSprite@@PAUVertexTex1DiffuseXyzrwh@@H@Z
 0x00464b00,352,SpriteEngine::FillVerticalStripVertices,?FillVerticalStripVertices@SpriteEngine@@QAEHPAVSprite@@PAUVertexTex1DiffuseXyzrwh@@H@Z
 0x00464c60,367,SpriteEngine::DrawVertexStrip,?DrawVertexStrip@SpriteEngine@@QAEHPAVSprite@@PAUVertexTex1DiffuseXyzrwh@@H@Z
-0x00464dd0,225,Func464dd0,
+0x00464dd0,225,SpriteEngine::DrawVertexQuad,?DrawVertexQuad@SpriteEngine@@QAEHPAVSprite@@PAUVertexTex1DiffuseXyzrwh@@@Z
 0x00464ec0,427,Func464ec0,
 0x00465070,466,SpriteEngine::SpriteEngine,??0SpriteEngine@@QAE@XZ
 0x00465250,700,SpriteEngine::CreateQuad,?CreateQuad@SpriteEngine@@QAEXXZ

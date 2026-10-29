@@ -622,6 +622,10 @@ public:
     // SetRenderStateForSprite resets it. Returns 0, or -1 when `vm` is
     // hidden or transparent.
     int DrawVertexStrip(Sprite *vm, VertexTex1DiffuseXyzrwh *vertices, int count);
+    // Adds `quad`, set up by the caller, to the batch with `vm`'s
+    // texture and blend mode, as DrawQuad's end. Returns 0, or -1 when
+    // `vm` is hidden or transparent. New in th08.
+    int DrawVertexQuad(Sprite *vm, VertexTex1DiffuseXyzrwh *quad);
     // Sends interrupt `interrupt` to the `count` sprites from `vms` that
     // show a loaded sprite, as th07's.
     void SendInterruptToLoadedSprites(Sprite *vms, int count, short interrupt);

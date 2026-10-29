@@ -1171,6 +1171,36 @@ int SpriteEngine::DrawVertexStrip(Sprite *vm, VertexTex1DiffuseXyzrwh *vertices,
     return 0;
 }
 
+int SpriteEngine::DrawVertexQuad(Sprite *vm, VertexTex1DiffuseXyzrwh *quad)
+{
+    if (!vm->IsShown())
+    {
+        return -1;
+    }
+    if ((vm->flags >> 1 & 1) == 0)
+    {
+        return -1;
+    }
+    if (vm->alpha == 0)
+    {
+        return -1;
+    }
+    if (this->currentTexture != vm->spriteData->texture)
+    {
+        this->currentTexture = vm->spriteData->texture;
+        this->FlushQuadBatch();
+        g_App.d3dDevice->SetTexture(0, this->currentTexture);
+    }
+    if (this->vertexFormat != 1)
+    {
+        this->FlushQuadBatch();
+        this->vertexFormat = 1;
+    }
+    this->SetBlendModeForSprite(vm);
+    this->AddQuadToBatch(quad);
+    return 0;
+}
+
 SpriteEngine::SpriteEngine()
 {
     memset(this, 0, sizeof(*this));
