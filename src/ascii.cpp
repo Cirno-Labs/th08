@@ -90,3 +90,9 @@ int AsciiText::OnDraw(AsciiText *text)
     }
     return 1;
 }
+
+int AsciiText::OnDraw2(AsciiText *text)
+{
+    text->DrawPopups();
+    return 1;
+}
