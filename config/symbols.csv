@@ -48,7 +48,7 @@ address,size,name,symbol
 0x004067c0,142,Func4067c0,
 0x00406850,39,`vector_constructor_iterator',??_H@YGXPAXIHP6EPAX0@Z@Z
 0x00406880,25,AnmLoaded::GetSprite,?GetSprite@AnmLoaded@@QAEPAUSpriteData@@H@Z
-0x004068a0,49,Func4068a0,
+0x004068a0,49,AnmLoaded::InitSprite,?InitSprite@AnmLoaded@@QAEXPAVSprite@@H@Z
 0x004068e0,95,Func4068e0,
 0x00406940,173,Func406940,
 0x004069f0,64,Func4069f0,
