@@ -62,3 +62,58 @@ void DatArchive::Release()
     }
     this->numEntries = 0;
 }
+
+void *DatArchive::Decode(char *name, void *buffer)
+{
+    DatArchiveEntry *found;
+    DWORD decodedSize;
+    void *decoded;
+    HGLOBAL packed;
+    DWORD packedSize;
+
+    packed = NULL;
+    if (this->file == NULL)
+    {
+        return NULL;
+    }
+    found = this->FindEntry(name);
+    if (found == NULL)
+    {
+        goto fail;
+    }
+    if (!this->file->Open(this->path, g_FileModes[0]))
+    {
+        goto fail;
+    }
+    packedSize = found[1].offset - found->offset;
+    decodedSize = found->size;
+    packed = GlobalAlloc(GMEM_FIXED, packedSize);
+    if (packed == NULL)
+    {
+        goto fail;
+    }
+    if (!this->file->Seek(found->offset, g_SeekOrigins[0]))
+    {
+        goto fail;
+    }
+    if (this->file->Read(packed, packedSize) == 0)
+    {
+        goto fail;
+    }
+    decoded = LzssDecompress((BYTE *)packed, packedSize, (BYTE *)buffer, decodedSize);
+    if (packed != NULL)
+    {
+        GlobalFree(packed);
+        packed = NULL;
+    }
+    return decoded;
+
+fail:
+    DebugPrint("info : %s error\r\n", this->path);
+    if (packed != NULL)
+    {
+        GlobalFree(packed);
+        packed = NULL;
+    }
+    return NULL;
+}
