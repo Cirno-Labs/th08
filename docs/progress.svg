@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">62.01% (692)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">36.20% (404)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">62.10% (693)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">36.11% (403)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="463.19" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="463.19" y="0" class="decompiled"/>
-<rect width="270.42" height="6" x="476.58" y="0" class="todo"/>
+<rect width="463.86" height="6" x="0" y="0" class="named"/>
+<rect width="13.39" height="6" x="463.86" y="0" class="decompiled"/>
+<rect width="269.75" height="6" x="477.25" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -156,8 +156,8 @@
 <rect width="12" height="12" x="525" y="15" class="named"><title>0x004073b0 StageCamera::StageCamera (77 bytes)</title></rect>
 <rect width="12" height="12" x="540" y="15" class="todo"><title>0x00407400 Func407400 (6291 bytes)</title></rect>
 <rect width="12" height="12" x="555" y="15" class="named"><title>0x00408d40 cosf (21 bytes)</title></rect>
-<rect width="12" height="12" x="570" y="15" class="todo"><title>0x00408d60 Func408d60 (577 bytes)</title></rect>
-<rect width="12" height="12" x="585" y="15" class="todo"><title>0x00408fc0 Func408fc0 (152 bytes)</title></rect>
+<rect width="12" height="12" x="570" y="15" class="named"><title>0x00408d60 UpdateEasedVector (577 bytes)</title></rect>
+<rect width="12" height="12" x="585" y="15" class="todo"><title>0x00408fc0 HermiteInterpolate (152 bytes)</title></rect>
 <rect width="12" height="12" x="600" y="15" class="named"><title>0x00409060 sinf (21 bytes)</title></rect>
 <rect width="12" height="12" x="615" y="15" class="named"><title>0x00409080 D3DXVECTOR3::operator+ (70 bytes)</title></rect>
 <rect width="12" height="12" x="630" y="15" class="named"><title>0x004090d0 D3DXVECTOR3::operator- (70 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">54.16%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">44.85%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">54.28%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">44.73%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="404.55" height="6" x="0" y="0" class="named"/>
-<rect width="7.40" height="6" x="404.55" y="0" class="decompiled"/>
-<rect width="335.04" height="6" x="411.96" y="0" class="todo"/>
+<rect width="405.49" height="6" x="0" y="0" class="named"/>
+<rect width="7.40" height="6" x="405.49" y="0" class="decompiled"/>
+<rect width="334.11" height="6" x="412.89" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1382,7 +1382,7 @@
 <rect width="15.31" height="15.31" x="452.90" y="329.69" class="named"><title>0x00428910 Ending::DrawFade (591 bytes)</title></rect>
 <rect width="15.30" height="15.24" x="471.21" y="65.08" class="named"><title>0x00426030 EffectUpdateOrbit (588 bytes)</title></rect>
 <rect width="15.27" height="15.24" x="489.51" y="65.08" class="named"><title>0x00426e70 EffectInitPetal (587 bytes)</title></rect>
-<rect width="14.96" height="15.24" x="507.78" y="65.08" class="todo"><title>0x00408d60 Func408d60 (577 bytes)</title></rect>
+<rect width="14.96" height="15.24" x="507.78" y="65.08" class="named"><title>0x00408d60 UpdateEasedVector (577 bytes)</title></rect>
 <rect width="14.89" height="15.24" x="525.73" y="65.08" class="todo"><title>0x0042efb0 EnemyManager::ClearEnemiesForBonus (575 bytes)</title></rect>
 <rect width="14.74" height="15.24" x="543.63" y="65.08" class="todo"><title>0x0044f930 Func44f930 (570 bytes)</title></rect>
 <rect width="14.64" height="15.24" x="561.36" y="65.08" class="todo"><title>0x004114e0 Func4114e0 (567 bytes)</title></rect>
@@ -1705,7 +1705,7 @@
 <rect width="6.37" height="6.26" x="648.12" y="198.78" class="todo"><title>0x0044df00 Func44df00 (153 bytes)</title></rect>
 <rect width="6.37" height="6.26" x="657.49" y="198.78" class="todo"><title>0x0044dfa0 Func44dfa0 (153 bytes)</title></rect>
 <rect width="6.37" height="6.26" x="666.87" y="198.78" class="todo"><title>0x0044e040 Func44e040 (153 bytes)</title></rect>
-<rect width="6.31" height="6.26" x="676.24" y="198.78" class="todo"><title>0x00408fc0 Func408fc0 (152 bytes)</title></rect>
+<rect width="6.31" height="6.26" x="676.24" y="198.78" class="todo"><title>0x00408fc0 HermiteInterpolate (152 bytes)</title></rect>
 <rect width="6.31" height="6.26" x="685.55" y="198.78" class="todo"><title>0x0040b910 Func40b910 (152 bytes)</title></rect>
 <rect width="6.31" height="6.26" x="694.86" y="198.78" class="todo"><title>0x004311a0 BulletManager::RegisterChain (152 bytes)</title></rect>
 <rect width="6.31" height="6.26" x="704.18" y="198.78" class="named"><title>0x0043aa5c RegisterGameManagerChain (152 bytes)</title></rect>
