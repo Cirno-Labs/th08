@@ -194,6 +194,17 @@ void ResultScreen::ReleaseScores(int difficulty, int shot)
     FreeListNodes(&this->scores[difficulty][shot]);
 }
 
+void ResultScreen::SetState(int state)
+{
+    this->prevState = this->state;
+    this->state = state;
+    this->unk_0c = state;
+    this->subState = 0;
+    this->unk_18 = 0;
+    this->frame = 0;
+    this->unk_54 = 0;
+}
+
 int ResultScreen::RegisterChain(int mode)
 {
     ResultScreen *screen = (ResultScreen *)g_MemoryManager.Register(new ResultScreen, sizeof(ResultScreen),

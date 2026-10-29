@@ -280,6 +280,9 @@ public:
     // and deletes the screen. Returns 0.
     static int DeletedCallback(ResultScreen *screen);
 
+    // Switches to `state`, keeping the old one in prevState, and clears
+    // the frame count and subState. New in th08: th07 set `state` alone.
+    void SetState(int state);
     // Inserts `entry` into the high score list for `difficulty` and
     // `shot`.
     int AddScore(Hscr *entry, int difficulty, int shot);
@@ -292,13 +295,21 @@ public:
     // Counts the frames in the current state.
     int frame;
     int state;
-    unsigned char unk_0c[0x10];
+    // The state SetState set last.
+    int unk_0c;
+    // A step within the state; SetState clears it.
+    int subState;
+    // The state before.
+    int prevState;
+    int unk_18;
     // The menu item selected.
     int cursor;
     unsigned char unk_20[0x10];
     // A second cursor, moved by LoadScreenPlstChunk, as th07's.
     int spellCursor;
-    unsigned char unk_34[0x16c];
+    unsigned char unk_34[0x20];
+    int unk_54;
+    unsigned char unk_58[0x148];
     Sprite sprites[0x48];
     // Text drawn with RenderText, as th07's.
     Sprite textSprites[0x1e];

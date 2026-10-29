@@ -853,7 +853,7 @@ address,size,name,symbol
 0x00454c59,46,ResultScreen::AddScore,?AddScore@ResultScreen@@QAEHPAUHscr@@HH@Z
 0x00454c87,43,ResultScreen::ReleaseScores,?ReleaseScores@ResultScreen@@QAEXHH@Z
 0x00454cb2,1029,Func454cb2,
-0x004550b7,69,Func4550b7,
+0x004550b7,69,ResultScreen::SetState,?SetState@ResultScreen@@QAEXH@Z
 0x004550fc,1409,Func4550fc,
 0x0045567d,680,Func45567d,
 0x00455925,270,Func455925,
