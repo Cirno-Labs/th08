@@ -264,6 +264,10 @@ public:
     // Renders printf-style text into `sprite`'s texture, as th07's
     // (0x4663b0).
     void RenderText(Sprite *sprite, D3DCOLOR textColor, D3DCOLOR shadowColor, char *fmt, ...);
+    // RenderText, aligned to the right of the sprite.
+    void RenderTextRightAligned(Sprite *vm, D3DCOLOR color, D3DCOLOR shadowColor, char *fmt, ...);
+    // RenderText, centered on the sprite.
+    void RenderTextCentered(Sprite *vm, D3DCOLOR color, D3DCOLOR shadowColor, char *fmt, ...);
     // Frees ANM slot `slot` (0x466060).
     void ReleaseAnm(int slot);
     // Releases `tex`'s texture and frees its image file.

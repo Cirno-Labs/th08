@@ -992,7 +992,7 @@ address,size,name,symbol
 0x004661b0,341,AnmLoaded::LoadSprite,?LoadSprite@AnmLoaded@@QAEXHPAUSpriteData@@@Z
 0x00466310,145,SpriteEngine::RenderTextToTextureIndex,?RenderTextToTextureIndex@SpriteEngine@@QAEXPAUIDirect3DTexture8@@HHHHHHKKPADMM@Z
 0x004663b0,238,SpriteEngine::RenderText,?RenderText@SpriteEngine@@QAAXPAVSprite@@KKPADZZ
-0x004664a0,432,Func4664a0,
+0x004664a0,432,SpriteEngine::RenderTextRightAligned,?RenderTextRightAligned@SpriteEngine@@QAAXPAVSprite@@KKPADZZ
 0x00466650,366,Func466650,
 0x004667c0,670,SpriteEngine::LoadSurface,?LoadSurface@SpriteEngine@@QAEHHPAD@Z
 0x00466a60,126,Func466a60,
