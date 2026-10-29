@@ -96,3 +96,32 @@ int AsciiText::OnDraw2(AsciiText *text)
     text->DrawPopups();
     return 1;
 }
+
+void AsciiText::Initialize()
+{
+    memset(&this->digit, 0, sizeof(this->digit));
+    memset(&this->digit2, 0, sizeof(this->digit2));
+    memset(&this->glyph, 0, sizeof(this->glyph));
+    memset(this->strings, 0, sizeof(this->strings));
+    memset(&this->pauseMenu, 0, sizeof(this->pauseMenu));
+    memset(&this->continueMenu, 0, sizeof(this->continueMenu));
+    memset(this->popups, 0, sizeof(this->popups));
+    memset(this->numberPopups, 0, sizeof(this->numberPopups));
+    this->stringCount = 0;
+    this->inArena = 0;
+    this->highlight = 0;
+    this->nextPopup = 0;
+    this->nextPopup2 = 0;
+    this->unusedAfterInit829c = 0;
+    this->color = 0xffffffff;
+    this->scaleX = 1.0f;
+    this->scaleY = 1.0f;
+    this->digit.flags |= 0x1800;
+    this->digit2.flags |= 0x1800;
+    this->anm->InitSprite(&this->digit, 0);
+    this->anm->InitSprite(&this->digit2, 0x88);
+    this->anm->InitSprite(&this->glyph, 0x20);
+    this->digit.pos.z = 0.1f;
+    this->highlight = 0;
+    this->SetGlyphWidth(13);
+}
