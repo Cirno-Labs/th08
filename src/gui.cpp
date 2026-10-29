@@ -347,3 +347,8 @@ BOOL Gui::IsLoadingShown()
 {
     return this->impl->unk_3778.spriteIndex >= 0 && this->impl->unk_3778.IsStopped();
 }
+
+int Gui::IsMsgSkippable()
+{
+    return this->impl->msg.skippable;
+}
