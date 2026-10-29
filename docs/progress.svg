@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">9.14% (102)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">90.86% (1014)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">9.23% (103)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">90.77% (1013)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="68.27" height="6" x="0" y="0" class="named"/>
-<rect width="678.73" height="6" x="68.27" y="0" class="todo"/>
+<rect width="68.94" height="6" x="0" y="0" class="named"/>
+<rect width="678.06" height="6" x="68.94" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -630,7 +630,7 @@
 <rect width="12" height="12" x="150" y="165" class="named"><title>0x0043ce00 ChainElem::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
 <rect width="12" height="12" x="165" y="165" class="named"><title>0x0043ce30 Chain::Release (48 bytes)</title></rect>
 <rect width="12" height="12" x="180" y="165" class="named"><title>0x0043ce60 Chain::CreateElem (162 bytes)</title></rect>
-<rect width="12" height="12" x="195" y="165" class="todo"><title>0x0043cf10 Chain::Remove (49 bytes)</title></rect>
+<rect width="12" height="12" x="195" y="165" class="named"><title>0x0043cf10 Chain::Remove (49 bytes)</title></rect>
 <rect width="12" height="12" x="210" y="165" class="todo"><title>0x0043cf50 Chain::RemoveLocked (362 bytes)</title></rect>
 <rect width="12" height="12" x="225" y="165" class="named"><title>0x0043d0c0 InitJoystick (85 bytes)</title></rect>
 <rect width="12" height="12" x="240" y="165" class="named"><title>0x0043d120 ReadJoystick (1457 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">4.83%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">95.17%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">4.84%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">95.16%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="36.09" height="6" x="0" y="0" class="named"/>
-<rect width="710.91" height="6" x="36.09" y="0" class="todo"/>
+<rect width="36.17" height="6" x="0" y="0" class="named"/>
+<rect width="710.83" height="6" x="36.17" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -2029,7 +2029,7 @@
 <rect width="2.30" height="2.24" x="679.79" y="332.27" class="todo"><title>0x004068a0 Func4068a0 (49 bytes)</title></rect>
 <rect width="2.30" height="2.24" x="679.79" y="337.51" class="todo"><title>0x00406ef0 Func406ef0 (49 bytes)</title></rect>
 <rect width="2.30" height="2.24" x="679.79" y="342.76" class="todo"><title>0x0040b500 Func40b500 (49 bytes)</title></rect>
-<rect width="2.18" height="2.37" x="685.10" y="278" class="todo"><title>0x0043cf10 Chain::Remove (49 bytes)</title></rect>
+<rect width="2.18" height="2.37" x="685.10" y="278" class="named"><title>0x0043cf10 Chain::Remove (49 bytes)</title></rect>
 <rect width="2.18" height="2.37" x="690.28" y="278" class="todo"><title>0x00448270 Func448270 (49 bytes)</title></rect>
 <rect width="2.07" height="2.37" x="695.46" y="278" class="named"><title>0x0043ce30 Chain::Release (48 bytes)</title></rect>
 <rect width="2.07" height="2.37" x="700.53" y="278" class="named"><title>0x0043ef10 Log::Log (48 bytes)</title></rect>

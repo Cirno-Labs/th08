@@ -265,3 +265,10 @@ ChainElem *Chain::CreateElem(ChainCallback callback)
     elem->allocated = 1;
     return elem;
 }
+
+void Chain::Remove(ChainElem *elem)
+{
+    g_App.EnterCriticalSection(0);
+    this->RemoveLocked(elem);
+    g_App.LeaveCriticalSection(0);
+}
