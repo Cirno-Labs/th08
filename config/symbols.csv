@@ -574,7 +574,7 @@ address,size,name,symbol
 0x0043e1d0,448,Func43e1d0,
 0x0043e390,262,Func43e390,
 0x0043e4a0,448,Func43e4a0,
-0x0043e660,531,LoadFileData,?LoadFileData@@YIPAXPADPAKH@Z
+0x0043e660,531,LoadFileData,?LoadFileData@@YIPAXPADPAHH@Z
 0x0043e880,105,FileExists,?FileExists@@YIHPAD@Z
 0x0043e8f0,267,Func43e8f0,
 0x0043ea00,337,LogPrintf,?LogPrintf@@YAHPAVLog@@PBDZZ
@@ -645,7 +645,7 @@ address,size,name,symbol
 0x00442f60,1201,Func442f60,
 0x00443420,625,CheckSingleInstance,?CheckSingleInstance@@YIHPAUHINSTANCE__@@@Z
 0x004436a0,143,ForceForegroundWindow,?ForceForegroundWindow@@YIXPAUHWND__@@@Z
-0x00443730,266,Func443730,
+0x00443730,266,ChecksumExecutable,?ChecksumExecutable@@YIHXZ
 0x00443840,322,ResolveShortcut,?ResolveShortcut@@YIHPAD0H@Z
 0x00443990,35,Func443990,
 0x004439c0,133,Func4439c0,

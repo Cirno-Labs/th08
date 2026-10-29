@@ -133,3 +133,33 @@ void ForceForegroundWindow(HWND hwnd)
     SystemParametersInfoA(SPI_SETFOREGROUNDLOCKTIMEOUT, 0, &lockTime, 0);
     AttachThreadInput(thread, activeThread, FALSE);
 }
+
+int ChecksumExecutable()
+{
+    char exePath[0x105];
+    int sum;
+    int *data;
+    int idx;
+    int *words;
+    int fileSize;
+
+    if (GetModuleFileNameA(NULL, exePath, sizeof(exePath)) != 0)
+    {
+        sum = 0;
+        data = words = (int *)LoadFileData(exePath, &fileSize, 1);
+        if (words == NULL)
+        {
+            return -1;
+        }
+        for (idx = 0; idx < fileSize / 4 - 1; idx++, words++)
+        {
+            sum += *words;
+        }
+        DebugPrint("main sum %d\r\n", sum);
+        g_MemoryManager.Free(data);
+        g_App.exeChecksum = sum;
+        g_App.exeSize = fileSize;
+        return sum;
+    }
+    return -1;
+}

@@ -5,6 +5,8 @@
 #include <windows.h>
 #include <d3d8.h>
 
+#include "common.h"
+
 // The application: window, Direct3D, configuration and the main loop.
 // Only the fields known so far. Its start matches th07's App: the same
 // fields are used at the same offsets.
@@ -17,6 +19,11 @@ public:
     // Bit 0x40 is set by CheckSingleInstance when the startup info has
     // no title, cleared when it has one.
     DWORD unk_1a4;
+    unsigned char unk_1a8[0x1ac];
+    // The sum of the executable's dwords and its size, from
+    // ChecksumExecutable.
+    DWORD exeChecksum;
+    DWORD exeSize;
 };
 
 extern App g_App;
@@ -61,6 +68,9 @@ int CheckSingleInstance(HINSTANCE instance);
 // Brings `hwnd` to the foreground, lifting the foreground lock timeout
 // for the time.
 void ForceForegroundWindow(HWND hwnd);
+// Sums the executable's dwords into g_App.exeChecksum and returns the
+// sum, or -1 on failure.
+int ChecksumExecutable();
 // The mutex that keeps a second instance from starting.
 extern HANDLE g_AppMutex;
 // Resolves the shortcut at `path` into `out`, `size` bytes long.
@@ -72,9 +82,9 @@ void DebugPrint(const char *fmt, ...);
 
 // Loads a whole file into a buffer from g_MemoryManager; NULL on
 // failure. Unlike th07's, it stores the file's size in `size` if that is
-// not NULL; the last argument says whether the file is read from disk
-// rather than from the archives.
-void *LoadFileData(char *path, DWORD *size, int isExternal);
+// not NULL, where th07 kept it in g_FileSize; the last argument says
+// whether the file is read from disk rather than from the archives.
+void *LoadFileData(char *path, int *size, int isExternal);
 
 // The object error messages go to, e.g. "error : MIDI File が読み込めない".
 // The layout is not known yet.
