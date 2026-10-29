@@ -538,7 +538,7 @@ address,size,name,symbol
 0x0043bf6e,85,RemoveGameManagerChain,?RemoveGameManagerChain@@YIXXZ
 0x0043bfc3,124,GameManager::AddSubRank,?AddSubRank@GameManager@@QAEXH@Z
 0x0043c03f,124,GameManager::SubSubRank,?SubSubRank@GameManager@@QAEXH@Z
-0x0043c0bb,164,Func43c0bb,
+0x0043c0bb,164,GameManager::Func43c0bb,?Func43c0bb@GameManager@@QAEXHH@Z
 0x0043c15f,138,GameManager::HasExtraOpen,?HasExtraOpen@GameManager@@QAEHH@Z
 0x0043c1e9,82,GameManager::AnyShotHasExtraOpen,?AnyShotHasExtraOpen@GameManager@@QAEHXZ
 0x0043c23b,138,GameManager::Func43c23b,?Func43c23b@GameManager@@QAEHH@Z
@@ -2460,6 +2460,7 @@ address,size,name,symbol
 0x017ce750,,g_LoadingScreenEffect,?g_LoadingScreenEffect@@3PAVScreenEffect@@A
 0x017ce758,,g_App,?g_App@@3VApp@@A
 0x017ceac0,,g_LoadingSprites,?g_LoadingSprites@@3PAVSprite@@A
+0x017d6ed4,,g_Unknown17d6ed4,?g_Unknown17d6ed4@@3HA
 0x018b8a28,,g_ReplayManager,?g_ReplayManager@@3PAVReplayManager@@A
 0x018b8a2c,,g_Unknown18b8a2c,?g_Unknown18b8a2c@@3HA
 0x018b8a68,,g_SoundPlayer,?g_SoundPlayer@@3VSoundPlayer@@A

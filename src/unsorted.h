@@ -393,6 +393,8 @@ void RemoveGameManagerChain();
 extern int g_Unknown18b8a2c;
 // Cleared by GameManager::DeletedCallback.
 extern int g_Unknown4e3d28;
+// GameManager::Func43c0bb only applies while it is clear, unless forced.
+extern int g_Unknown17d6ed4;
 // Removes chain elements GameManager::DeletedCallback removes before the
 // stage's; probably a manager th07 did not have (0x4180f0).
 void Func4180f0();
@@ -1036,9 +1038,10 @@ struct GameManagerStats
     BYTE bestContinuesUsed;
     unsigned char unk_19[0x3];
     int spellCardsCaptured;
-    unsigned char unk_20[0x2];
-    // Kept in each replay stage.
-    WORD unk_22;
+    // A copy of unk_22, which is kept in each replay stage; Func43c0bb
+    // moves it.
+    short unk_20;
+    short unk_22;
     int unk_24;
     BYTE unk_28;
     BYTE continuesUsed;
@@ -1167,6 +1170,10 @@ public:
     void AddSubRank(int amount);
     // Takes `amount` hundredths from the rank, as th07's.
     void SubSubRank(int amount);
+    // Unless g_Unknown17d6ed4 is set and `force` is not, adds `amount` to
+    // stats->unk_22, within unk_3ddf8 and unk_3ddfa, and copies it to
+    // stats->unk_20.
+    void Func43c0bb(int amount, int force);
     // Whether shot type `shot` (0 to 3) cleared one of the four main
     // difficulties, as th07's (0x43c15f).
     int HasExtraOpen(int shot);
@@ -1313,7 +1320,10 @@ public:
     float arena2[4];
     // As th07's checksumValue: SetBombs sets it.
     float checksumValue;
-    unsigned char unk_3ddf8[0xc];
+    // The bounds of stats->unk_22.
+    short unk_3ddf8;
+    short unk_3ddfa;
+    unsigned char unk_3ddfc[0x8];
     // The frames played, as th07's.
     int progressFrames;
     unsigned char unk_3de08[0x24];

@@ -314,6 +314,24 @@ void GameManager::SubSubRank(int amount)
     }
 }
 
+void GameManager::Func43c0bb(int amount, int force)
+{
+    if (g_Unknown17d6ed4 != 0 && force == 0)
+    {
+        return;
+    }
+    this->stats->unk_22 += amount;
+    if (this->stats->unk_22 < this->unk_3ddf8)
+    {
+        this->stats->unk_22 = this->unk_3ddf8;
+    }
+    else if (this->stats->unk_22 > this->unk_3ddfa)
+    {
+        this->stats->unk_22 = this->unk_3ddfa;
+    }
+    this->stats->unk_20 = this->stats->unk_22;
+}
+
 int GameManager::HasExtraOpen(int shot)
 {
     return shot > 3 || this->clrds[shot].stagesClearedNoContinue[0] & 0x4000 ||
