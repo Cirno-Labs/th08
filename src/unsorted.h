@@ -2136,6 +2136,17 @@ public:
     // and unk_647c. Returns 1. As th07's.
     static int OnDraw2(Stage *stage);
     int DrawLayer(int layer);
+    // Resets the script, loads the stage's background ANM into slot 4
+    // (or takes the one already there when restarting) and its data
+    // (the spell practice version in spell practice), and sets the fog
+    // and the cameras up as the constructor, with draw distance
+    // unk_6470 by stage. Returns 0, or -1 if loading fails. As th07's.
+    static int AddedCallback(Stage *stage);
+    // Loads the stage data from `dataPath` (keeping the old data when
+    // restarting) and starts the background sprites' scripts, as
+    // th07's, then starts unk_844 (0x409ce0). Returns 0, or -1 on
+    // failure.
+    int Load(char *dataPath);
 
     // One Sprite per object sprite in the data.
     Sprite *sprites;
@@ -2221,6 +2232,12 @@ public:
 };
 ASSERT_SIZE(Stage, 0x6600);
 extern Stage g_Stage;
+// The background ANM of each stage (4A and 4B share one).
+extern char *g_StageAnmPaths[9];
+// The stage data file of each stage.
+extern char *g_StageDataFiles[9];
+// The same in spell practice ("stage1_s.std", ...). New in th08.
+extern char *g_SpellPracticeStageDataFiles[9];
 
 // Each stage's music: its BGM numbers for App::PlayMidi, the first for
 // the stage.

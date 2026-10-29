@@ -278,3 +278,69 @@ int Stage::OnDraw2(Stage *stage)
     stage->unk_647c = 0;
     return 1;
 }
+
+int Stage::AddedCallback(Stage *stage)
+{
+    int i;
+
+    stage->scriptTime = 0;
+    stage->scriptIndex = 0;
+    stage->cameraPos.x = 0.0f;
+    stage->cameraPos.y = 0.0f;
+    stage->cameraPos.z = 0.0f;
+    stage->spellCardState = 0;
+    stage->fogFadeFrames = 0;
+    if (!IsRestarting())
+    {
+        stage->anm = g_SpriteEngine->PreloadAnm(4, g_StageAnmPaths[g_GameManager.stage]);
+        if (stage->anm == NULL)
+        {
+            return -1;
+        }
+    }
+    else
+    {
+        stage->anm = g_SpriteEngine->GetAnm(4);
+    }
+    if (!g_GameManager.IsInSpellCardPractice())
+    {
+        if (stage->Load(g_StageDataFiles[g_GameManager.stage]) != 0)
+        {
+            return -1;
+        }
+    }
+    else
+    {
+        if (stage->Load(g_SpellPracticeStageDataFiles[g_GameManager.stage]) != 0)
+        {
+            return -1;
+        }
+    }
+    stage->fog.color = 0xff000000;
+    stage->fog.nearPlane = 200.0f;
+    stage->fog.farPlane = 500.0f;
+    stage->camera.eye = D3DXVECTOR3(0.0f, 0.0f, 1000.0f);
+    stage->camera.at = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+    stage->camera.offset = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+    stage->camera.up = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+    stage->camera.fov = 0.5235988f;
+    stage->cameraFrom = stage->camera;
+    stage->cameraTo = stage->camera;
+    stage->shakeMode = 0;
+    for (i = 0; i < 4; i++)
+    {
+        stage->cameraFadeFrames[i] = 0;
+        stage->cameraFadeTimer[i] = 0;
+    }
+    stage->waitLabel = 0;
+    stage->unk_6470 = 1322500.0f;
+    if (g_GameManager.stage == 5)
+    {
+        stage->unk_6470 = 1822500.0f;
+    }
+    else if (g_GameManager.stage == 6 || g_GameManager.stage == 7)
+    {
+        stage->unk_6470 = 3240000.0f;
+    }
+    return 0;
+}

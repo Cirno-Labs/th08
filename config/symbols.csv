@@ -96,11 +96,11 @@ address,size,name,symbol
 0x00409160,157,Stage::SetTintColor,?SetTintColor@Stage@@QAEXK@Z
 0x00409200,1087,Stage::OnDraw,?OnDraw@Stage@@SIHPAV1@@Z
 0x00409640,528,Stage::OnDraw2,?OnDraw2@Stage@@SIHPAV1@@Z
-0x00409850,706,Func409850,
+0x00409850,706,Stage::AddedCallback,?AddedCallback@Stage@@SIHPAV1@@Z
 0x00409b20,254,Stage::RegisterChain,?RegisterChain@Stage@@SIHH@Z
 0x00409c20,122,Func409c20,
 0x00409ca0,50,Stage::RemoveChain,?RemoveChain@Stage@@SIXXZ
-0x00409ce0,598,Func409ce0,
+0x00409ce0,598,Stage::Load,?Load@Stage@@QAEHPAD@Z
 0x00409f40,610,Func409f40,
 0x0040a1b0,4746,Stage::DrawLayer,?DrawLayer@Stage@@QAEHH@Z
 0x0040b440,21,Func40b440,
@@ -2426,6 +2426,9 @@ address,size,name,symbol
 0x004c72ac,,g_BossTimerColors,?g_BossTimerColors@@3PAKA
 0x004c72bc,,g_AmPmNames,?g_AmPmNames@@3PAPADA
 0x004c72c4,,g_LoadingAnmPaths,?g_LoadingAnmPaths@@3PAPADA
+0x004c72f8,,g_StageAnmPaths,?g_StageAnmPaths@@3PAPADA
+0x004c731c,,g_StageDataFiles,?g_StageDataFiles@@3PAPADA
+0x004c7340,,g_SpellPracticeStageDataFiles,?g_SpellPracticeStageDataFiles@@3PAPADA
 0x004c745c,,g_StageTextAnmPaths,?g_StageTextAnmPaths@@3PAPADA
 0x004c7480,,g_EffectAnmPaths,?g_EffectAnmPaths@@3PAPADA
 0x004c74c0,,g_MsgPaths,?g_MsgPaths@@3PAY0M@PADA
