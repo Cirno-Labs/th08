@@ -188,3 +188,9 @@ int AsciiText::DeletedCallback(AsciiText *text)
     g_SpriteEngine->ReleaseAnm(3);
     return 0;
 }
+
+void AsciiText::RemoveChain()
+{
+    g_Chain.Remove(&g_AsciiCalcChain);
+    g_Chain.Remove(&g_AsciiDrawChain);
+}
