@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">34.05% (380)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">65.95% (736)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">34.14% (381)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">65.86% (735)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="254.35" height="6" x="0" y="0" class="named"/>
-<rect width="492.65" height="6" x="254.35" y="0" class="todo"/>
+<rect width="255.02" height="6" x="0" y="0" class="named"/>
+<rect width="491.98" height="6" x="255.02" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="todo"><title>0x00402000 Func402000 (296 bytes)</title></rect>
@@ -944,7 +944,7 @@
 <rect width="12" height="12" x="360" y="255" class="named"><title>0x0045a0dc ResultScreen::~ResultScreen (24 bytes)</title></rect>
 <rect width="12" height="12" x="375" y="255" class="named"><title>0x0045a0f4 MoveCursorVertical (255 bytes)</title></rect>
 <rect width="12" height="12" x="390" y="255" class="named"><title>0x0045a1f3 LoadScreenPlstChunk (255 bytes)</title></rect>
-<rect width="12" height="12" x="405" y="255" class="todo"><title>0x0045a2f2 Func45a2f2 (267 bytes)</title></rect>
+<rect width="12" height="12" x="405" y="255" class="named"><title>0x0045a2f2 MoveCursorHorizontal (267 bytes)</title></rect>
 <rect width="12" height="12" x="420" y="255" class="named"><title>0x0045a3fd SpriteEngine::MoveSurface (163 bytes)</title></rect>
 <rect width="12" height="12" x="435" y="255" class="todo"><title>0x0045a4a0 Func45a4a0 (60 bytes)</title></rect>
 <rect width="12" height="12" x="450" y="255" class="todo"><title>0x0045a4dc Func45a4dc (32 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">24.42%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">75.58%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">24.47%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">75.53%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="182.38" height="6" x="0" y="0" class="named"/>
-<rect width="564.62" height="6" x="182.38" y="0" class="todo"/>
+<rect width="182.82" height="6" x="0" y="0" class="named"/>
+<rect width="564.18" height="6" x="182.82" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1554,7 +1554,7 @@
 <rect width="9.45" height="9.22" x="725.15" y="142.35" class="todo"><title>0x004512f0 Func4512f0 (268 bytes)</title></rect>
 <rect width="9.40" height="9.22" x="737.60" y="142.35" class="named"><title>0x0043e8f0 WriteToFile (267 bytes)</title></rect>
 <rect width="9.31" height="9.31" x="545.71" y="154.57" class="todo"><title>0x0044d420 Func44d420 (267 bytes)</title></rect>
-<rect width="9.31" height="9.31" x="545.71" y="166.88" class="todo"><title>0x0045a2f2 Func45a2f2 (267 bytes)</title></rect>
+<rect width="9.31" height="9.31" x="545.71" y="166.88" class="named"><title>0x0045a2f2 MoveCursorHorizontal (267 bytes)</title></rect>
 <rect width="9.31" height="9.31" x="545.71" y="179.19" class="named"><title>0x0045d550 SoundPlayer::QueueSound (267 bytes)</title></rect>
 <rect width="9.31" height="9.27" x="545.71" y="191.50" class="todo"><title>0x004296a0 Ending::RegisterChain (266 bytes)</title></rect>
 <rect width="9.31" height="9.27" x="545.71" y="203.77" class="named"><title>0x00443730 ChecksumExecutable (266 bytes)</title></rect>
