@@ -195,6 +195,143 @@ void ResultScreen::ReleaseScores(int difficulty, int shot)
     FreeListNodes(&this->scores[difficulty][shot]);
 }
 
+int ResultScreen::UpdateMenu()
+{
+    int i;
+    Sprite *sprite;
+
+    switch (this->subState)
+    {
+    case 0:
+        if (this->unk_18 == 0)
+        {
+            sprite = this->sprites;
+            for (i = 0; i < 0x48; i++, sprite++)
+            {
+                sprite->pendingInterrupt = 1;
+            }
+            for (i = 0; i <= 3; i++)
+            {
+                this->sprites[i].pendingInterrupt = 0x16;
+                g_SpriteEngine->Step(&this->sprites[i]);
+                if (i == this->cursor)
+                {
+                    this->sprites[i].pendingInterrupt = 0x14;
+                }
+                else
+                {
+                    this->sprites[i].pendingInterrupt = 0x15;
+                }
+            }
+        }
+        if (this->unk_18 < 20)
+        {
+            break;
+        }
+        this->subState++;
+        this->unk_18 = 0;
+    case 1:
+        i = MoveCursorVertical(this, 4);
+        if (i != 0)
+        {
+            for (i = 0; i <= 3; i++)
+            {
+                if (i == this->cursor)
+                {
+                    this->sprites[i].pendingInterrupt = 0x14;
+                }
+                else
+                {
+                    this->sprites[i].pendingInterrupt = 0x15;
+                }
+            }
+        }
+        if (WAS_PRESSED(0x2000))
+        {
+            this->WriteScoreText();
+        }
+        if (WAS_PRESSED(0xa))
+        {
+            if (this->cursor == 3)
+            {
+                goto quit;
+            }
+            this->cursor = 3;
+            g_SoundPlayer.QueueSound(0xb, 0);
+            for (i = 0; i <= 3; i++)
+            {
+                if (i == this->cursor)
+                {
+                    this->sprites[i].pendingInterrupt = 0x14;
+                }
+                else
+                {
+                    this->sprites[i].pendingInterrupt = 0x15;
+                }
+            }
+        }
+        if (WAS_PRESSED(0x1001))
+        {
+            sprite = this->sprites;
+            switch (this->cursor)
+            {
+            case 0:
+                this->SetState(3);
+                for (i = 0; i <= 3; i++)
+                {
+                    if (i == this->cursor)
+                    {
+                        this->sprites[i].pendingInterrupt = 0x17;
+                    }
+                    else
+                    {
+                        this->sprites[i].pendingInterrupt = 1;
+                    }
+                }
+                break;
+            case 1:
+                this->SetState(6);
+                for (i = 0; i <= 3; i++)
+                {
+                    if (i == this->cursor)
+                    {
+                        this->sprites[i].pendingInterrupt = 0x17;
+                    }
+                    else
+                    {
+                        this->sprites[i].pendingInterrupt = 1;
+                    }
+                }
+                break;
+            case 2:
+                for (i = 0; i <= 3; i++)
+                {
+                    if (i == this->cursor)
+                    {
+                        this->sprites[i].pendingInterrupt = 0x17;
+                    }
+                    else
+                    {
+                        this->sprites[i].pendingInterrupt = 1;
+                    }
+                }
+                this->SetState(0x13);
+                break;
+            case 3:
+            quit:
+                this->SetState(2);
+                g_SoundPlayer.QueueSound(0xb, 0);
+                return 1;
+            }
+            g_SoundPlayer.QueueSound(0xa, 0);
+            return 1;
+        }
+        break;
+    }
+    this->unk_18++;
+    return 0;
+}
+
 void ResultScreen::SetState(int state)
 {
     this->prevState = this->state;

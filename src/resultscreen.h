@@ -295,6 +295,10 @@ public:
     // and deletes the screen. Returns 0.
     static int DeletedCallback(ResultScreen *screen);
 
+    // Dumps the records as text to "score.txt": the high scores, spell
+    // cards and play statistics (0x454298). New in th08; the menu runs it
+    // on button 0x2000.
+    void WriteScoreText();
     // The state handlers OnUpdate runs. New in th08, which split th07's
     // OnUpdate into them; what each one shows is a guess from where it
     // goes next and how many items its cursor has.
