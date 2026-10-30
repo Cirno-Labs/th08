@@ -201,11 +201,11 @@ int ReplayManager::RecordOnUpdate(ReplayManager *replay)
     }
     if (g_GameManager.unk_3dbac >> 9 & 1)
     {
-        if (replay->unk_04 >= 3)
+        if (replay->framesAfterStageClear >= 3)
         {
             return 1;
         }
-        replay->unk_04++;
+        replay->framesAfterStageClear++;
     }
     idx = g_GameManager.unk_3ddc8;
     buttons = g_Buttons;
@@ -445,7 +445,7 @@ int ReplayManager::RecordAddedCallback(ReplayManager *replay)
     *replay->cursor = 0;
     replay->seedCursor->events = 0;
     replay->seedCursor->seed = g_Rng.GetSeed();
-    replay->unk_04 = 0;
+    replay->framesAfterStageClear = 0;
     replay->clearedAtRecordStart = 0;
     return 0;
 }
@@ -509,7 +509,7 @@ int ReplayManager::PlayAddedCallback(ReplayManager *replay)
     g_GameManager.stats->unk_22 = cur->unk_18;
     g_GameManager.SetUnk28(cur->unk_22);
     replay->extraCursor = extras;
-    replay->unk_04 = 0;
+    replay->framesAfterStageClear = 0;
     earlier = NULL;
     for (idx = 0; idx < g_GameManager.stage; idx++)
     {

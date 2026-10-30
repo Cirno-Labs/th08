@@ -213,7 +213,7 @@ public:
     int frame;
     // While bit 9 of GameManager::unk_3dbac is set, how many frames were
     // recorded.
-    int unk_04;
+    int framesAfterStageClear;
     // The replay data.
     ReplayHeader *data;
     // Freed by DeletedCallback; never allocated.
@@ -222,11 +222,11 @@ public:
     int mode;
     char *path;
     // Constructed and zeroed, never used.
-    D3DXVECTOR3 unk_18;
-    D3DXVECTOR3 unk_24;
-    D3DXVECTOR3 unk_30;
-    D3DXVECTOR3 unk_3c;
-    unsigned char unk_48[0x6];
+    D3DXVECTOR3 unusedVector18;
+    D3DXVECTOR3 unusedVector24;
+    D3DXVECTOR3 unusedVector30;
+    D3DXVECTOR3 unusedVector3c;
+    unsigned char pad_48[0x6];
     WORD clearedAtRecordStart;
     // The last frame recorded or played; [stage] is where that stage's
     // frames end.
@@ -241,7 +241,7 @@ public:
     // The update element, an unused one, the second update element when
     // playing and when recording.
     ChainElem *calcChain;
-    ChainElem *unk_cc;
+    ChainElem *drawChain;
     ChainElem *calcChain2;
     ChainElem *calcChain3;
     // The random seed at the start of the frame.
