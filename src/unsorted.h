@@ -1462,11 +1462,11 @@ public:
     // /Od object's.
     int RankLerp(int lo, int hi)
     {
-        return (hi - lo) * this->rank / 32 + lo;
+        return this->rank * (hi - lo) / 32 + lo;
     }
     float RankLerpF(float lo, float hi)
     {
-        return (hi - lo) * this->rank / 32.0f + lo;
+        return this->rank * (hi - lo) / 32.0f + lo;
     }
     int GetLives()
     {

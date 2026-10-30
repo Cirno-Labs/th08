@@ -265,7 +265,7 @@ address,size,name,symbol
 0x004215f0,1343,ScriptJumpIf,?ScriptJumpIf@@YIPAUEnemyScriptInstr@@PAUEnemy@@PAU1@@Z
 0x00421b60,20,GameManager::GetUnk3c,?GetUnk3c@GameManager@@QAEHXZ
 0x00421b80,20,GameManager::GetUnk40,?GetUnk40@GameManager@@QAEHXZ
-0x00421ba0,43,Func421ba0,
+0x00421ba0,43,GameManager::RankLerp,?RankLerp@GameManager@@QAEHHH@Z
 0x00421bd0,214,ScriptCallSub,?ScriptCallSub@@YIXPAUEnemy@@PAUEnemyScriptInstr@@F@Z
 0x00421cb0,280,ScriptReturn,?ScriptReturn@@YIHPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00421dd0,5,DebugPrint,?DebugPrint@@YAXPBDZZ
