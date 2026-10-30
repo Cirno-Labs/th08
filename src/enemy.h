@@ -557,6 +557,11 @@ void ScriptMovePos(Enemy *enemy, EnemyScriptInstr *instr);
 // tangents of arguments 6 and 7 (0x421180).
 void ScriptMoveLinear(Enemy *enemy, EnemyScriptInstr *instr, float t);
 void ScriptMoveHermite(Enemy *enemy, EnemyScriptInstr *instr, float t);
+// Start and end a spell card, as th07's, now through SpellCard::Start
+// (card number in the high half of argument 0, the name from argument
+// 2, three more texts) and SpellCard::End (0x421280, 0x4212e0).
+void StartSpellCard(Enemy *enemy, EnemyScriptInstr *instr);
+void EndSpellCard(Enemy *enemy, EnemyScriptInstr *instr);
 
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];

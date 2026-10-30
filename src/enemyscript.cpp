@@ -731,3 +731,10 @@ void ScriptMoveHermite(Enemy *enemy, EnemyScriptInstr *instr, float t)
     *ResolveFloatOperand(enemy, &instr->args[8].f, 0, -1) =
         hStart * start + wEnd * end + weightIn * slopeIn + outWeight * tangentOut;
 }
+
+void StartSpellCard(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    g_SpellCard.Start(*((WORD *)&instr->args[0] + 1), (char *)&instr->args[2], *(short *)&instr->args[0],
+                      instr->args[1].i, enemy, (char *)&instr->args[14], (char *)&instr->args[26],
+                      (char *)&instr->args[42]);
+}

@@ -2416,6 +2416,13 @@ struct SpellCard
     {
         return this->unk_0 & 1;
     }
+    // Starts spell card `card` named `name` for `enemy`, from an enemy
+    // script instruction (StartSpellCard; th07's was the script's own
+    // code) (0x4152a0).
+    void Start(int card, char *name, int face, int unk, struct Enemy *enemy, char *text1, char *text2,
+               char *text3);
+    // Ends the spell card, as th07's EndSpellCard did (0x4161b0).
+    void End();
     // Called with 8000 when a time orb is collected (0x416b10).
     void Func416b10(int amount);
     // Shows the name of a bomb's spell card as the bomb starts
