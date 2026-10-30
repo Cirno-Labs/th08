@@ -206,7 +206,7 @@ address,size,name,symbol
 0x004152a0,2483,SpellCard::Start,?Start@SpellCard@@QAEXHPADHKPAUEnemy@@000@Z
 0x00415c60,21,BulletManager::ClearAllToItems,?ClearAllToItems@BulletManager@@QAEXXZ
 0x00415c80,85,Enemy::ResetRankSpeeds,?ResetRankSpeeds@Enemy@@QAEXXZ
-0x00415ce0,37,Func415ce0,
+0x00415ce0,37,Stage::StartSpellCard,?StartSpellCard@Stage@@QAEXXZ
 0x00415d10,71,SpellCard::Func415d10,?Func415d10@SpellCard@@QAEXPADPAUEnemy@@@Z
 0x00415d60,415,SpellCard::StartBombCard,?StartBombCard@SpellCard@@QAEXHPADH@Z
 0x00415f00,558,SpellCard::ShowName,?ShowName@SpellCard@@QAEXHPADH@Z
