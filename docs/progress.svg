@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">90.23% (1007)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">6.54% (73)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">90.32% (1008)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">6.45% (72)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="674.04" height="6" x="0" y="0" class="named"/>
-<rect width="24.10" height="6" x="674.04" y="0" class="decompiled"/>
-<rect width="48.86" height="6" x="698.14" y="0" class="todo"/>
+<rect width="674.71" height="6" x="0" y="0" class="named"/>
+<rect width="24.10" height="6" x="674.71" y="0" class="decompiled"/>
+<rect width="48.19" height="6" x="698.81" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -520,7 +520,7 @@
 <rect width="12" height="12" x="735" y="120" class="named"><title>0x004321b0 BulletManager::ClearDrawLists (89 bytes)</title></rect>
 <rect width="12" height="12" x="0" y="135" class="named"><title>0x00432210 SlowBulletStart (153 bytes)</title></rect>
 <rect width="12" height="12" x="15" y="135" class="named"><title>0x004322b0 AccelerateAlongVelocity (213 bytes)</title></rect>
-<rect width="12" height="12" x="30" y="135" class="todo"><title>0x00432390 TurnAndAccelerate (197 bytes)</title></rect>
+<rect width="12" height="12" x="30" y="135" class="named"><title>0x00432390 TurnAndAccelerate (197 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="135" class="todo"><title>0x00432460 StopTurnAndRestart (313 bytes)</title></rect>
 <rect width="12" height="12" x="60" y="135" class="todo"><title>0x004325a0 StopTurnToAngle (306 bytes)</title></rect>
 <rect width="12" height="12" x="75" y="135" class="todo"><title>0x004326e0 StopTurnToPlayer (336 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">84.22%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">14.20%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">84.27%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">14.16%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="629.15" height="6" x="0" y="0" class="named"/>
-<rect width="11.78" height="6" x="629.15" y="0" class="decompiled"/>
-<rect width="106.07" height="6" x="640.93" y="0" class="todo"/>
+<rect width="629.47" height="6" x="0" y="0" class="named"/>
+<rect width="11.78" height="6" x="629.47" y="0" class="decompiled"/>
+<rect width="105.75" height="6" x="641.25" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -1655,7 +1655,7 @@
 <rect width="7.39" height="7.81" x="580.58" y="210.62" class="named"><title>0x00447295 Timer::Add (198 bytes)</title></rect>
 <rect width="7.39" height="7.81" x="580.58" y="221.43" class="named"><title>0x0044735b Timer::Sub (198 bytes)</title></rect>
 <rect width="7.39" height="7.81" x="580.58" y="232.24" class="named"><title>0x00462e40 SpriteEngine::FlushQuadBatch (198 bytes)</title></rect>
-<rect width="7.39" height="7.76" x="580.58" y="243.05" class="todo"><title>0x00432390 TurnAndAccelerate (197 bytes)</title></rect>
+<rect width="7.39" height="7.76" x="580.58" y="243.05" class="named"><title>0x00432390 TurnAndAccelerate (197 bytes)</title></rect>
 <rect width="7.39" height="7.76" x="580.58" y="253.81" class="named"><title>0x00439710 Gui::LoadMsg (197 bytes)</title></rect>
 <rect width="7.39" height="7.76" x="580.58" y="264.57" class="named"><title>0x00444700 MidiPlayer::ReleaseHeader (197 bytes)</title></rect>
 <rect width="7.39" height="7.70" x="580.58" y="275.32" class="named"><title>0x0040e200 EffectUpdateBombRing44 (196 bytes)</title></rect>

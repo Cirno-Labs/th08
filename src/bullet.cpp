@@ -1038,3 +1038,18 @@ void AccelerateAlongVelocity(Bullet *bullet)
     }
     bullet->ex[1].timer++;
 }
+
+void TurnAndAccelerate(Bullet *bullet)
+{
+    if (bullet->ex[2].timer >= bullet->ex[2].duration)
+    {
+        bullet->activeFlags &= ~0x20;
+    }
+    else
+    {
+        bullet->angle = AddNormalizeAngle(bullet->angle, g_App.gameSpeed * bullet->ex[2].turnAngle);
+        bullet->speed = g_App.gameSpeed * bullet->ex[2].turnSpeed + bullet->speed;
+        ((Vector2 *)&bullet->velocity)->SetPolar(bullet->angle, g_App.gameSpeed * bullet->speed);
+    }
+    bullet->ex[2].timer++;
+}
