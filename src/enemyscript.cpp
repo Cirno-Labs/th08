@@ -1160,3 +1160,8 @@ void TintStageRed(Enemy *enemy, EnemyScriptInstr *instr)
 {
     g_Stage.SetTintColor(0xffc03030);
 }
+
+void ShakeScreenRamp(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    ScreenEffect::StartEffect(7, 16, 20, 20, 20, 0x15);
+}

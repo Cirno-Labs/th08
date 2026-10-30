@@ -684,6 +684,10 @@ void SetUnknown18b8a2c(Enemy *enemy, EnemyScriptInstr *instr);
 // Script function 13: tints the stage 0xffc03030 (0x424e00).
 void TintStageRed(Enemy *enemy, EnemyScriptInstr *instr);
 
+// Script function 15: a shake of strength 16 that rises, holds and
+// falls for 20 frames each (0x424e20).
+void ShakeScreenRamp(Enemy *enemy, EnemyScriptInstr *instr);
+
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
 // The enemy scripts by stage, by stage in spell practice (stage + 9),
