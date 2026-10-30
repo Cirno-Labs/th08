@@ -8,6 +8,7 @@
 #include "chain.h"
 #include "effect.h"
 #include "enemy.h"
+#include "player.h"
 #include "resultscreen.h"
 #include "sprite.h"
 #include "unsorted.h"
@@ -314,7 +315,7 @@ void SpellCard::Start(int card, char *name, int face, DWORD bonus, Enemy *enemy,
     this->unk_2620 = 0x80808080;
     if (this->unk_0_8)
     {
-        this->unk_f8 = 0;
+        this->unk_f8 = NULL;
         g_Gui.ShowSpellCardBonus(this->unk_104);
         g_GameManager.AddScore(this->unk_104);
         this->unk_0_8 = 0;
@@ -376,7 +377,7 @@ void SpellCard::Start(int card, char *name, int face, DWORD bonus, Enemy *enemy,
             sum += catk->maxBonus[k];
             sum += catk->practiceCaptures[k];
             sum += catk->practiceAttempts[k];
-            sum += catk->unk_18c[k];
+            sum += catk->practiceMaxBonus[k];
         }
         if (catk->checksum != (BYTE)sum)
         {
@@ -387,7 +388,7 @@ void SpellCard::Start(int card, char *name, int face, DWORD bonus, Enemy *enemy,
                 catk->maxBonus[k] = 0;
                 catk->practiceCaptures[k] = 0;
                 catk->practiceAttempts[k] = 0;
-                catk->unk_18c[k] = 0;
+                catk->practiceMaxBonus[k] = 0;
             }
         }
         if (!g_GameManager.isInSpellCardPractice)
@@ -419,7 +420,7 @@ void SpellCard::Start(int card, char *name, int face, DWORD bonus, Enemy *enemy,
             nameSum += catk->maxBonus[k];
             nameSum += catk->practiceCaptures[k];
             nameSum += catk->practiceAttempts[k];
-            nameSum += catk->unk_18c[k];
+            nameSum += catk->practiceMaxBonus[k];
         }
         catk->difficulty = g_GameManager.difficulty;
         catk->checksum = nameSum;
@@ -505,6 +506,216 @@ void SpellCard::Func416160()
     {
         this->unk_2374.SetPendingInterrupt(2);
     }
+}
+
+void SpellCard::End()
+{
+    int k;
+    Catk *catk;
+    int captured;
+    int bonus;
+
+    g_Unknown4e3d28 = 0;
+    if (this->unk_0_0)
+    {
+        captured = FALSE;
+        this->unk_0_0 = 0;
+        this->Func416160();
+        if (!this->unk_0_3)
+        {
+            bonus = g_BulletManager.ClearAllWithBonus(8000, 1);
+            bonus = g_EnemyManager.ClearEnemiesForBonus(8000, bonus);
+            if (bonus != 0)
+            {
+                g_GameManager.AddScore(bonus);
+                g_Gui.ShowBonusPopup(bonus);
+            }
+            if (this->unk_0_2)
+            {
+                catk = &g_GameManager.catks[this->card];
+                this->unk_104 = this->unk_fc;
+                if (this->enemy->keepSpellCard)
+                {
+                    this->unk_10 = 700;
+                }
+                else
+                {
+                    k = this->unk_114.AsFrames() - this->unk_114.AsFrames() / 7;
+                    if (this->unk_108.AsFrames() >= k)
+                    {
+                        this->unk_10 = 1000;
+                    }
+                    else if (this->unk_108.AsFrames() >= 180)
+                    {
+                        this->unk_10 = (this->unk_108.AsFrames() - 180) * 900 / (k - 180) + 100;
+                    }
+                    else
+                    {
+                        this->unk_10 = 100;
+                    }
+                }
+                this->unk_0_9 = 1;
+                if (!g_GameManager.IsReplay())
+                {
+                    int nameSum;
+                    int sum;
+                    int shot;
+
+                    sum = 0;
+                    k = strlen(catk->name);
+                    while (k > 0)
+                    {
+                        k--;
+                        sum += catk->name[k];
+                    }
+                    nameSum = sum;
+                    for (k = 0; k < 13; k++)
+                    {
+                        sum += catk->captures[k];
+                        sum += catk->attempts[k];
+                        sum += catk->maxBonus[k];
+                        sum += catk->practiceCaptures[k];
+                        sum += catk->practiceAttempts[k];
+                        sum += catk->practiceMaxBonus[k];
+                    }
+                    if (catk->checksum != (BYTE)sum)
+                    {
+                        for (k = 0; k < 13; k++)
+                        {
+                            catk->captures[k] = 0;
+                            catk->attempts[k] = 0;
+                            catk->maxBonus[k] = 0;
+                            catk->practiceCaptures[k] = 0;
+                            catk->practiceAttempts[k] = 0;
+                            catk->practiceMaxBonus[k] = 0;
+                        }
+                    }
+                    catk->difficulty = g_GameManager.difficulty;
+                    if (!g_GameManager.IsInSpellCardPractice())
+                    {
+                        shot = g_GameManager.character;
+                        if (catk->maxBonus[shot] < this->unk_fc)
+                        {
+                            catk->maxBonus[shot] = this->unk_fc;
+                        }
+                        if (catk->maxBonus[12] < this->unk_fc)
+                        {
+                            catk->maxBonus[12] = this->unk_fc;
+                        }
+                        if (catk->captures[shot] < 9999)
+                        {
+                            catk->captures[shot]++;
+                        }
+                        if (catk->captures[12] < 9999)
+                        {
+                            catk->captures[12]++;
+                        }
+                    }
+                    else
+                    {
+                        for (k = 0; k < sizeof(catk->unk_70); k++)
+                        {
+                            catk->unk_70[k] = (BYTE)this->unk_74[k] ^ 0xdd;
+                        }
+                        for (k = 0; k < sizeof(catk->unk_b0); k++)
+                        {
+                            catk->unk_b0[k] = (BYTE)this->unk_b4[k] ^ 0xee;
+                        }
+                        shot = g_GameManager.character;
+                        if (catk->practiceMaxBonus[shot] < this->unk_fc)
+                        {
+                            catk->practiceMaxBonus[shot] = this->unk_fc;
+                        }
+                        if (catk->practiceMaxBonus[12] < this->unk_fc)
+                        {
+                            catk->practiceMaxBonus[12] = this->unk_fc;
+                        }
+                        if (catk->practiceCaptures[shot] < 9999)
+                        {
+                            catk->practiceCaptures[shot]++;
+                        }
+                        if (catk->practiceCaptures[12] < 9999)
+                        {
+                            catk->practiceCaptures[12]++;
+                        }
+                    }
+                    for (k = 0; k < 13; k++)
+                    {
+                        nameSum += catk->captures[k];
+                        nameSum += catk->attempts[k];
+                        nameSum += catk->maxBonus[k];
+                        nameSum += catk->practiceCaptures[k];
+                        nameSum += catk->practiceAttempts[k];
+                        nameSum += catk->practiceMaxBonus[k];
+                    }
+                    catk->checksum = nameSum;
+                    g_GameManager.hscr.spellCards[this->card]++;
+                }
+                g_GameManager.stats->spellCardsCaptured++;
+                captured = TRUE;
+                g_GameManager.RerollChecksumKeys();
+            }
+        }
+        if (this->effect != NULL)
+        {
+            if (!captured)
+            {
+                if (g_GameManager.unk_3dbac_7)
+                {
+                    g_GameManager.unk_3dbac_7 = 0;
+                }
+                this->effect->active = 0;
+                this->effect = NULL;
+                g_Gui.ShowFullPowerPopup(0, this->unk_0_5 ? 6 : 5);
+            }
+            else
+            {
+                this->unk_0_8 = 1;
+                if (g_GameManager.unk_3dbac_7)
+                {
+                    g_GameManager.unk_3dbac_7 = 2;
+                }
+                this->effect->sprite.interpDuration[0] = 0;
+                this->effect->sprite.interpFrame[0] = 30;
+                this->effect->sprite.interpEasing = 6;
+                this->effect->sprite.moveStart.x = this->effect->radius;
+                this->effect->sprite.moveEnd.x = 256.0f;
+                this->effect->sprite.moveStart.y = this->effect->unk_32c;
+                this->effect->sprite.moveEnd.y = 0.0f;
+                this->effect->sprite.pos.x = this->effect->radius;
+                this->effect->sprite.pos.y = this->effect->unk_32c;
+                this->effect->sprite.interpDuration[1] = 0;
+                this->effect->sprite.interpFrame[1] = 60;
+                this->effect->sprite.colorInterpEasing = 3;
+                *(ColorBytes *)&this->effect->sprite.colorTween.y = *(ColorBytes *)&this->effect->sprite.color;
+                ((BYTE *)&this->effect->sprite.colorTween.z)[2] = 0xd0;
+                ((BYTE *)&this->effect->sprite.colorTween.z)[1] = 0x80;
+                ((BYTE *)&this->effect->sprite.colorTween.z)[0] = 0xa0;
+                ((BYTE *)&this->effect->sprite.colorTween.z)[3] = 0x20;
+                this->effect->unk_334 = 6.0f;
+                this->effect->timer = 0;
+                this->unk_f8 = this->effect;
+                this->effect = NULL;
+                g_SoundPlayer.QueueSound(0x23, 0);
+            }
+        }
+        g_Player.bombCooldown = 0x10;
+        if (g_Player.playerState == 0)
+        {
+            g_Player.stateTimer = 0x46;
+            g_Player.playerState = 3;
+        }
+        g_Gui.bombsChanged = 3;
+        g_Gui.livesChanged = 3;
+        g_SoundPlayer.QueueSound(0xf, 0);
+        g_Stage.EndSpellCard();
+    }
+    if (this->enemy != NULL)
+    {
+        this->enemy->keepSpellCard = 0;
+    }
+    this->enemy = NULL;
+    this->unk_0_11 = 0;
 }
 
 void SpellCard::Func416af0()

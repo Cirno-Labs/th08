@@ -2617,7 +2617,8 @@ struct SpellCard
     char unk_74[0x40];
     char unk_b4[0x40];
     struct Effect *effect;
-    int unk_f8;
+    // The ring effect after a capture, which End hands over from effect.
+    struct Effect *unk_f8;
     // The bonus left, and what it loses each second.
     DWORD unk_fc;
     DWORD unk_100;

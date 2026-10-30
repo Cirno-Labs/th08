@@ -188,14 +188,17 @@ struct Catk
     // The card's name.
     char name[0x30];
     // The card's comment, set with the name as the card starts.
-    char comment[0x80];
-    unsigned char unk_c0[0x30];
+    char comment[0x30];
+    // SpellCard::unk_74 and unk_b4 (xor 0xdd and 0xee), set as a
+    // practised card is captured.
+    char unk_70[0x40];
+    char unk_b0[0x40];
     // By shot type, then with every shot type, as th07's (DWORDs now):
     // the best bonus, the attempts and the captures.
     DWORD maxBonus[0xd];
     DWORD attempts[0xd];
     DWORD captures[0xd];
-    DWORD unk_18c[0xd];
+    DWORD practiceMaxBonus[0xd];
     // The same in spell card practice.
     DWORD practiceAttempts[0xd];
     DWORD practiceCaptures[0xd];
