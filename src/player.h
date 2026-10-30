@@ -618,7 +618,7 @@ public:
     Timer gaugeShiftTimer;
     // Runs through the player states, as th07's.
     Timer stateTimer;
-    Timer unusedTimere2b00;
+    Timer unusedTimerE2b00;
     // The angle the aimed shots fly at, as th07's.
     float aimedShotAngle;
     // The update element and the two draw elements, as th07's.
