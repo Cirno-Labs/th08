@@ -925,9 +925,9 @@ public:
     WORD dropIndex;
     // The active enemies, as th07's.
     int enemyCount;
-    unsigned char unk_9dcdc8[0x4];
+    unsigned char pad_9dcdc8[0x4];
     // Set by opcode 163, as th07's scriptArg147.
-    int unk_9dcdcc;
+    int scriptArg163;
     EnemyTimeline timelines[16];
     // Counts the frames, as th07's.
     Timer frameTimer;
@@ -936,13 +936,13 @@ public:
     // enemy.anm (slot 7) and the stage's enemy ANM (slot 8).
     AnmLoaded *anm;
     AnmLoaded *stageAnm;
-    int unk_9dcef4;
+    int unusedInt9dcef4;
     // Whether the last Spawn found no free enemy.
     int spawnFailed;
     // -1 after Initialize; timeline instructions 13 and 14 use them.
-    int unk_9dcefc[4];
+    int timelineSignals[4];
     // While set, the timelines spawn nothing.
-    int unk_9dcf0c;
+    int holdTimelineSpawns;
 };
 ASSERT_SIZE(EnemyManager, 0x9dcf10);
 extern EnemyManager g_EnemyManager;

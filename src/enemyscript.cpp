@@ -814,7 +814,7 @@ loop:
             }
             break;
         case 163:
-            g_EnemyManager.unk_9dcdcc = INT_ARG(0);
+            g_EnemyManager.scriptArg163 = INT_ARG(0);
             break;
         case 127:
             if (INT_ARG(0) >= 0)
@@ -1224,7 +1224,7 @@ loop:
             }
             break;
         case 175:
-            g_EnemyManager.unk_9dcf0c = INT_ARG(0);
+            g_EnemyManager.holdTimelineSpawns = INT_ARG(0);
             break;
         case 177:
             enemy->phaseStartLife = INT_ARG(0);

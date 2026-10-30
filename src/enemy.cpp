@@ -16,9 +16,9 @@ void EnemyManager::Initialize()
     Enemy *enemy = this->enemies;
 
     memset(this, 0, sizeof(EnemyManager));
-    for (i = 0; i < ARRAY_SIZE(this->unk_9dcefc); i++)
+    for (i = 0; i < ARRAY_SIZE(this->timelineSignals); i++)
     {
-        this->unk_9dcefc[i] = -1;
+        this->timelineSignals[i] = -1;
     }
     enemy = &this->enemyTemplate;
     memset(enemy, 0, sizeof(Enemy));
@@ -212,7 +212,7 @@ void EnemyTimeline::RunTimeline()
             case 1:
                 mirror = 1;
             case 0:
-                if (!g_Gui.IsBossPresent() && g_EnemyManager.unk_9dcf0c == 0)
+                if (!g_Gui.IsBossPresent() && g_EnemyManager.holdTimelineSpawns == 0)
             {
                 EnemyTimelineSpawn *args = (EnemyTimelineSpawn *)this->pos->args;
                 D3DXVECTOR3 pos;
@@ -237,7 +237,7 @@ void EnemyTimeline::RunTimeline()
             case 12:
                 mirror = 1;
             case 11:
-                if (!g_Gui.IsBossPresent() && g_EnemyManager.unk_9dcf0c == 0)
+                if (!g_Gui.IsBossPresent() && g_EnemyManager.holdTimelineSpawns == 0)
                 {
                     EnemyTimelineSpawnWithArgs *args = (EnemyTimelineSpawnWithArgs *)this->pos->args;
                     D3DXVECTOR3 pos;
@@ -254,7 +254,7 @@ void EnemyTimeline::RunTimeline()
             case 4:
                 mirror = 1;
             case 2:
-                if (!g_Gui.IsBossPresent() && g_EnemyManager.unk_9dcf0c == 0)
+                if (!g_Gui.IsBossPresent() && g_EnemyManager.holdTimelineSpawns == 0)
                 {
                     EnemyTimelineSpawnRandomX *args = (EnemyTimelineSpawnRandomX *)this->pos->args;
                     D3DXVECTOR3 pos;
@@ -268,7 +268,7 @@ void EnemyTimeline::RunTimeline()
             case 5:
                 mirror = 1;
             case 3:
-                if (!g_Gui.IsBossPresent() && g_EnemyManager.unk_9dcf0c == 0)
+                if (!g_Gui.IsBossPresent() && g_EnemyManager.holdTimelineSpawns == 0)
                 {
                     EnemyTimelineSpawnAnyX *args = (EnemyTimelineSpawnAnyX *)this->pos->args;
                     D3DXVECTOR3 pos;
@@ -309,12 +309,12 @@ void EnemyTimeline::RunTimeline()
                 int j;
 
                 count = 0;
-                for (j = 0; j < ARRAY_SIZE(g_EnemyManager.unk_9dcefc); j++)
+                for (j = 0; j < ARRAY_SIZE(g_EnemyManager.timelineSignals); j++)
                 {
-                    if (g_EnemyManager.unk_9dcefc[j] == this->pos->args[0])
+                    if (g_EnemyManager.timelineSignals[j] == this->pos->args[0])
                     {
                         count++;
-                        g_EnemyManager.unk_9dcefc[j] = -1;
+                        g_EnemyManager.timelineSignals[j] = -1;
                     }
                 }
                 if (count == 0)
@@ -328,13 +328,13 @@ void EnemyTimeline::RunTimeline()
             {
                 int k;
 
-                for (k = 0; k < ARRAY_SIZE(g_EnemyManager.unk_9dcefc); k++)
+                for (k = 0; k < ARRAY_SIZE(g_EnemyManager.timelineSignals); k++)
                 {
-                    if (g_EnemyManager.unk_9dcefc[k] >= 0)
+                    if (g_EnemyManager.timelineSignals[k] >= 0)
                     {
                         continue;
                     }
-                    g_EnemyManager.unk_9dcefc[k] = this->pos->args[0];
+                    g_EnemyManager.timelineSignals[k] = this->pos->args[0];
                 }
                 break;
             }
