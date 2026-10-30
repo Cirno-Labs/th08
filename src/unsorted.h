@@ -1451,7 +1451,10 @@ public:
     // they also update what depends on them). Copies in other objects:
     // GetPower 0x422480, GetLives 0x42f2b0, GetBombs 0x4398ce, SetLives
     // 0x406e20, SetBombs 0x406f30, SetPower 0x406fa0.
-    int GetPower();
+    int GetPower()
+    {
+        return this->stats->power;
+    }
     int GetLives()
     {
         return this->stats->lives;
