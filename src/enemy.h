@@ -6,6 +6,7 @@
 #include <d3dx8math.h>
 
 #include "bullet.h"
+#include "chain.h"
 #include "common.h"
 #include "sprite.h"
 #include "timer.h"
@@ -333,9 +334,14 @@ public:
     int AnyBossActive();
     // Removes the enemies' chain elements, as th07's (0x42ef70).
     static void RemoveChain();
-    // Adds the enemies' chain elements, as th07's (0x42c590). Returns 0,
-    // or -1 on failure.
+    // Initializes the enemies and adds their chain elements, as th07's
+    // (0x42c590): update priority 11, draw 8 and 11. Returns 0, or -1 on
+    // failure.
     static int RegisterChain();
+    // The chain callbacks (0x42c660, 0x42ebf0, 0x42ee80).
+    static int OnUpdate(EnemyManager *mgr);
+    static int AddedCallback(EnemyManager *mgr);
+    static int DeletedCallback(EnemyManager *mgr);
     // Clears the enemies for a bonus, as th07's (0x42efb0).
     int ClearEnemiesForBonus(int maxBonus, int start);
 
@@ -357,3 +363,6 @@ public:
 };
 ASSERT_SIZE(EnemyManager, 0x9dcf10);
 extern EnemyManager g_EnemyManager;
+extern ChainElem g_EnemyManagerCalcChain;
+extern ChainElem g_EnemyManagerDrawChain;
+extern ChainElem g_EnemyManagerDrawChain2;

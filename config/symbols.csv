@@ -407,7 +407,7 @@ address,size,name,symbol
 0x0042c3b0,110,Func42c3b0,
 0x0042c420,367,Func42c420,
 0x0042c590,203,EnemyManager::RegisterChain,?RegisterChain@EnemyManager@@SIHXZ
-0x0042c660,6198,Func42c660,
+0x0042c660,6198,EnemyManager::OnUpdate,?OnUpdate@EnemyManager@@SIHPAV1@@Z
 0x0042deb0,252,Func42deb0,
 0x0042dfb0,20,Func42dfb0,
 0x0042dfd0,25,Func42dfd0,
@@ -417,8 +417,8 @@ address,size,name,symbol
 0x0042e140,2504,EnemyManager::DrawEnemies,?DrawEnemies@EnemyManager@@SIHPAV1@HH@Z
 0x0042eb10,114,LerpAngle,?LerpAngle@@YIMMMM@Z
 0x0042eb90,92,EnemyManager::OnDraw2,?OnDraw2@EnemyManager@@SIHPAV1@@Z
-0x0042ebf0,642,Func42ebf0,
-0x0042ee80,225,Func42ee80,
+0x0042ebf0,642,EnemyManager::AddedCallback,?AddedCallback@EnemyManager@@SIHPAV1@@Z
+0x0042ee80,225,EnemyManager::DeletedCallback,?DeletedCallback@EnemyManager@@SIHPAV1@@Z
 0x0042ef70,50,EnemyManager::RemoveChain,?RemoveChain@EnemyManager@@SIXXZ
 0x0042efb0,575,EnemyManager::ClearEnemiesForBonus,?ClearEnemiesForBonus@EnemyManager@@QAEHHH@Z
 0x0042f1f0,64,EnemyManager::AnyBossActive,?AnyBossActive@EnemyManager@@QAEHXZ
@@ -2490,7 +2490,10 @@ address,size,name,symbol
 0x00577eb4,,g_EtamaAnm,?g_EtamaAnm@@3PAVAnmLoaded@@A
 0x00577ebc,,g_EffectCalcChain,?g_EffectCalcChain@@3UChainElem@@A
 0x00577edc,,g_EffectDrawChain,?g_EffectDrawChain@@3UChainElem@@A
+0x00577f00,,g_EnemyManagerDrawChain,?g_EnemyManagerDrawChain@@3UChainElem@@A
 0x00577f20,,g_EnemyManager,?g_EnemyManager@@3VEnemyManager@@A
+0x00f54e30,,g_EnemyManagerCalcChain,?g_EnemyManagerCalcChain@@3UChainElem@@A
+0x00f54e50,,g_EnemyManagerDrawChain2,?g_EnemyManagerDrawChain2@@3UChainElem@@A
 0x00f54e90,,g_BulletManager,?g_BulletManager@@3VBulletManager@@A
 0x0160f428,,g_Gui,?g_Gui@@3VGui@@A
 0x0160f4c4,,g_GuiDrawChain,?g_GuiDrawChain@@3UChainElem@@A

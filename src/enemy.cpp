@@ -421,3 +421,32 @@ int EnemyManager::OnDraw2(EnemyManager *mgr)
     }
     return result;
 }
+
+int EnemyManager::RegisterChain()
+{
+    EnemyManager *em = &g_EnemyManager;
+    int unused = 0;
+
+    em->Initialize();
+    g_EnemyManagerCalcChain.SetCallback((ChainCallback)EnemyManager::OnUpdate);
+    g_EnemyManagerCalcChain.addedCallback = (ChainCallback)EnemyManager::AddedCallback;
+    g_EnemyManagerCalcChain.deletedCallback = (ChainCallback)EnemyManager::DeletedCallback;
+    g_EnemyManagerCalcChain.arg = em;
+    if (g_Chain.AddToCalcChain(&g_EnemyManagerCalcChain, 11) != 0)
+    {
+        return -1;
+    }
+    g_EnemyManagerDrawChain.SetCallback((ChainCallback)EnemyManager::OnDraw);
+    g_EnemyManagerDrawChain.arg = em;
+    if (g_Chain.AddToDrawChain(&g_EnemyManagerDrawChain, 8) != 0)
+    {
+        return -1;
+    }
+    g_EnemyManagerDrawChain2.SetCallback((ChainCallback)EnemyManager::OnDraw2);
+    g_EnemyManagerDrawChain2.arg = em;
+    if (g_Chain.AddToDrawChain(&g_EnemyManagerDrawChain2, 11) != 0)
+    {
+        return -1;
+    }
+    return 0;
+}
