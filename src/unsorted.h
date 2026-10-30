@@ -1185,13 +1185,13 @@ struct GameManagerStats
 };
 struct GameManagerUnk4
 {
-    unsigned char unk_0[0x1c];
+    unsigned char pad_0[0x1c];
     // The lives a game starts with, as th07's.
     BYTE lifeCount;
-    unsigned char unk_1d[0x8];
+    unsigned char pad_1d[0x8];
     // App::IsScoreDisabled tests it.
     BYTE scoreDisabled;
-    unsigned char unk_26[0x16];
+    unsigned char pad_26[0x16];
 };
 ASSERT_SIZE(GameManagerUnk4, 0x3c);
 
