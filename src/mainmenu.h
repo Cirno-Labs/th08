@@ -196,6 +196,9 @@ extern LastSpellCondition g_LastSpellConditions[18][2];
 // The difficulty names the spell card list shows, by
 // GetSpellCardDifficulty.
 extern char *g_SpellPracticeDifficultyNames[6];
+// The stage names the spell card practice's score page shows, with
+// "Extra" and "Last Word".
+extern char *g_SpellPracticeStageNames[10];
 // FormatFullWidthNumber's result.
 extern char g_FullWidthNumber[0x40];
 // "０" to "９".

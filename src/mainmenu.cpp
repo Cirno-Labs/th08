@@ -2823,6 +2823,188 @@ int MainMenu::DrawPracticeScores()
     return 1;
 }
 
+int MainMenu::DrawState16()
+{
+    D3DXVECTOR3 gaugePos;
+    float rate;
+    float mainRate;
+    int stageGameCapturedAny;
+    D3DXVECTOR3 pos;
+    int totalGameAll;
+    int j;
+    int stageSeenEveryone;
+    int totalPracticeAny;
+    int totalSeenEveryone;
+    int totalStory;
+    int stageGame;
+    int stagePractice;
+    int totalPractice;
+    int totalSeen;
+    int stageKnown;
+    DWORD i;
+    int id;
+    Sprite *title;
+    int stagePracticeAll;
+
+    totalPractice = 0;
+    totalPracticeAny = 0;
+    totalStory = 0;
+    totalGameAll = 0;
+    totalSeen = 0;
+    totalSeenEveryone = 0;
+    g_AsciiText.SetColor(0xffffffff);
+    g_AsciiText.SetHighlight(0);
+    title = &this->sprites[0x8d];
+    pos = title->pos;
+    pos.y -= 152.0f;
+    pos.x -= 32.0f;
+    this->unkSprites[0].pos = pos;
+    g_SpriteEngine->DrawUnrotated(&this->unkSprites[0]);
+    pos.y += 16.0f;
+    for (i = 0; i < 10; i++)
+    {
+        g_AsciiText.SetHighlight(i == this->cursor);
+        if (i == this->cursor)
+        {
+            g_AsciiText.SetColor(0xffffffff);
+        }
+        else
+        {
+            g_AsciiText.SetColor(0xffa0a0a0);
+        }
+        stagePractice = 0;
+        stageGame = 0;
+        stageGameCapturedAny = 0;
+        stageKnown = 0;
+        stagePracticeAll = 0;
+        stageSeenEveryone = 0;
+        for (j = 0; j < g_StageSpellCardCounts[i]; j++)
+        {
+            id = g_StageSpellCards[i][j];
+            if (g_GameManager.catks[id].practiceCaptures[g_GameManager.character] > 0)
+            {
+                stagePractice++;
+            }
+            if (g_GameManager.catks[id].captures[g_GameManager.character] > 0)
+            {
+                stageGame++;
+            }
+            if (g_GameManager.catks[id].attempts[g_GameManager.character] > 0 ||
+                g_GameManager.catks[id].practiceAttempts[g_GameManager.character] > 0 ||
+                (i >= 9 && g_GameManager.IsSpellCardSeen(id)))
+            {
+                stageKnown++;
+            }
+            if (g_GameManager.catks[id].practiceCaptures[12] > 0)
+            {
+                stagePracticeAll++;
+            }
+            if (g_GameManager.catks[id].captures[12] > 0)
+            {
+                stageGameCapturedAny++;
+            }
+            if (g_GameManager.catks[id].attempts[12] > 0 || g_GameManager.catks[id].practiceAttempts[12] > 0 ||
+                (i >= 9 && g_GameManager.IsSpellCardSeen(id)))
+            {
+                stageSeenEveryone++;
+            }
+        }
+        totalPractice += stagePractice;
+        totalPracticeAny += stagePracticeAll;
+        totalStory += stageGame;
+        totalGameAll += stageGameCapturedAny;
+        totalSeen += stageKnown;
+        totalSeenEveryone += stageSeenEveryone;
+        g_AsciiText.AddFormat(&pos, "%s%s",
+                              stagePractice >= g_StageSpellCardCounts[i]      ? "@"
+                              : stagePracticeAll >= g_StageSpellCardCounts[i] ? "*"
+                                                                             : " ",
+                              g_SpellPracticeStageNames[i]);
+        pos.x += 182.0f;
+        g_AsciiText.SetScale(0.75f, 1.0f);
+        g_AsciiText.AddFormat(&pos, "%3d(%3d)/%3d/%3d", stagePractice, stagePracticeAll, stageSeenEveryone,
+                              g_StageSpellCardCounts[i]);
+        pos.x -= 182.0f;
+        pos.y += 16.0f;
+        g_AsciiText.SetScale(1.0f, 1.0f);
+    }
+    pos.y += 5.0f;
+    g_AsciiText.SetHighlight(0);
+    g_AsciiText.SetColor(0xffd06060);
+    g_AsciiText.AddFormat(&pos, "%sTotal", totalPractice >= 0xde ? "@" : totalPracticeAny >= 0xde ? "*" : " ");
+    pos.x += 182.0f;
+    g_AsciiText.SetScale(0.75f, 1.0f);
+    g_AsciiText.AddFormat(&pos, "%3d(%3d)/%3d/%3d", totalPractice, totalPracticeAny, totalSeenEveryone, 0xde);
+    pos.x -= 182.0f;
+    g_AsciiText.SetScale(1.0f, 1.0f);
+    g_AsciiText.SetColor(0xffffffff);
+    g_AsciiText.SetHighlight(0);
+    this->unkSprites[1].pos.x = 400.0f;
+    this->unkSprites[1].pos.y = 376.0f;
+    this->unkSprites[1].pos.z = 0.0f;
+    g_SpriteEngine->DrawUnrotated(&this->unkSprites[1]);
+    this->unkSprites[2].pos.x = 552.0f;
+    this->unkSprites[2].pos.y = 426.0f;
+    this->unkSprites[2].pos.z = 0.0f;
+    g_SpriteEngine->DrawUnrotated(&this->unkSprites[2]);
+    gaugePos.x = 530.0f;
+    gaugePos.y = 420.0f;
+    rate = totalPractice / 222.0f;
+    mainRate = totalStory / 205.0f;
+    // The gauges fill over the first 50 frames.
+    if (this->inputLockout < 50)
+    {
+        if (this->unk_c2a0[0] != rate)
+        {
+            rate = (rate - this->unk_c2a0[0]) * this->inputLockout / 50.0f + this->unk_c2a0[0];
+        }
+        if (this->unk_c2a0[1] != mainRate)
+        {
+            mainRate = (mainRate - this->unk_c2a0[1]) * this->inputLockout / 50.0f + this->unk_c2a0[1];
+        }
+    }
+    this->unk_c2a0[0] = rate;
+    this->unk_c2a0[1] = mainRate;
+    gaugePos.z = 0.02f;
+    DrawFan(&gaugePos, 0x60c0c0f0, rate, 48.0f);
+    gaugePos.z = 0.01f;
+    DrawFan(&gaugePos, 0x80c0c0f0, mainRate, 24.0f);
+    gaugePos.x = 514.0f;
+    gaugePos.y = 404.0f;
+    g_AsciiText.Func405e10(&gaugePos, rate * 10000.0f, 0xffffffff);
+    gaugePos.y += 8.0f;
+    g_AsciiText.Func405e10(&gaugePos, mainRate * 10000.0f, 0x80c0c080);
+    gaugePos.x = 530.0f;
+    gaugePos.y = 420.0f;
+    gaugePos.x += 32.0f;
+    gaugePos.y += 18.0f;
+    rate = totalPracticeAny / 222.0f;
+    mainRate = totalGameAll / 205.0f;
+    if (this->inputLockout < 50)
+    {
+        if (this->unk_c2a0[2] != rate)
+        {
+            rate = (rate - this->unk_c2a0[2]) * this->inputLockout / 50.0f + this->unk_c2a0[2];
+        }
+        if (this->unk_c2a0[3] != mainRate)
+        {
+            mainRate = (mainRate - this->unk_c2a0[3]) * this->inputLockout / 50.0f + this->unk_c2a0[3];
+        }
+    }
+    this->unk_c2a0[2] = rate;
+    this->unk_c2a0[3] = mainRate;
+    gaugePos.z = 0.02f;
+    DrawFan(&gaugePos, 0x6080c0c0, rate, 32.0f);
+    gaugePos.z = 0.01f;
+    DrawFan(&gaugePos, 0x8080c0c0, mainRate, 16.0f);
+    gaugePos.x = 580.0f;
+    gaugePos.y = 451.0f;
+    g_AsciiText.Func405e10(&gaugePos, rate * 10000.0f, 0xffffffff);
+    gaugePos.y -= 8.0f;
+    g_AsciiText.Func405e10(&gaugePos, mainRate * 10000.0f, 0x80c0c080);
+    return 1;
+}
+
 int MainMenu::DrawState17()
 {
     int cardId;
