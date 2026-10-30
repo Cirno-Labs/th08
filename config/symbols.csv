@@ -207,11 +207,11 @@ address,size,name,symbol
 0x00415c60,21,BulletManager::Func415c60,?Func415c60@BulletManager@@QAEXXZ
 0x00415c80,85,Enemy::ResetRankSpeeds,?ResetRankSpeeds@Enemy@@QAEXXZ
 0x00415ce0,37,Func415ce0,
-0x00415d10,71,Func415d10,
+0x00415d10,71,SpellCard::Func415d10,?Func415d10@SpellCard@@QAEXPADPAUEnemy@@@Z
 0x00415d60,415,SpellCard::StartBombCard,?StartBombCard@SpellCard@@QAEXHPADH@Z
 0x00415f00,558,Func415f00,
 0x00416130,39,Func416130,
-0x00416160,70,Func416160,
+0x00416160,70,SpellCard::Func416160,?Func416160@SpellCard@@QAEXXZ
 0x004161b0,2331,SpellCard::End,?End@SpellCard@@QAEXXZ
 0x00416ad0,24,Func416ad0,
 0x00416af0,32,Func416af0,
@@ -299,7 +299,7 @@ address,size,name,symbol
 0x00424170,104,SpawnTwinEffects3A,?SpawnTwinEffects3A@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x004241e0,784,Func4241e0,
 0x004244f0,494,Func4244f0,
-0x004246e0,68,Func4246e0,
+0x004246e0,68,FlashAndShakeScreen,?FlashAndShakeScreen@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00424730,228,Func424730,
 0x00424820,228,Func424820,
 0x00424910,228,Func424910,

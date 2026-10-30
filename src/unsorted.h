@@ -2428,6 +2428,11 @@ struct SpellCard
                char *text3);
     // Ends the spell card, as th07's EndSpellCard did (0x4161b0).
     void End();
+    // Starts the card named `name` (「リザレクション」) for `enemy` without a
+    // capture: sets bit 10, clears bits 0 and 4 (0x415d10).
+    void Func415d10(char *name, struct Enemy *enemy);
+    // Sets unk_159a and sends interrupt 2 to two sprites (0x416160).
+    void Func416160();
     // Called with 8000 when a time orb is collected (0x416b10).
     void Func416b10(int amount);
     // Shows the name of a bomb's spell card as the bomb starts

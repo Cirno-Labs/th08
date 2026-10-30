@@ -674,6 +674,10 @@ void EndTwinEffects(Enemy *enemy, EnemyScriptInstr *instr);
 // stage draw them through DrawTwinEffects (0x424170).
 void SpawnTwinEffects3A(Enemy *enemy, EnemyScriptInstr *instr);
 
+// Script function 10: a dim white flash of 30 frames and a shake that
+// rises over 120 frames, holds for 190 and falls over 60 (0x4246e0).
+void FlashAndShakeScreen(Enemy *enemy, EnemyScriptInstr *instr);
+
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
 // The enemy scripts by stage, by stage in spell practice (stage + 9),

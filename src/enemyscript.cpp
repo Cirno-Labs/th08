@@ -1144,3 +1144,9 @@ void SpawnTwinEffects3A(Enemy *enemy, EnemyScriptInstr *instr)
     g_EtamaAnm->StartScript(&effect->sprite, 0x65);
     g_Stage.unk_625c = DrawTwinEffects;
 }
+
+void FlashAndShakeScreen(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    ScreenEffect::StartEffect(3, 30, 5, 0x40ffffff, 0, 0x15);
+    ScreenEffect::StartEffect(7, 4, 120, 190, 60, 0x15);
+}
