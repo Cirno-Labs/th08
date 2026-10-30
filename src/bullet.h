@@ -2,10 +2,35 @@
 
 #pragma once
 
+#include <string.h>
 #include <windows.h>
+#include <d3dx8math.h>
 
 #include "common.h"
 #include "sprite.h"
+
+// What an enemy fires bullets with, as th07's (0x210). Only what is
+// known so far.
+struct BulletShooter
+{
+    // Inline; the copy is at 0x42a410.
+    BulletShooter()
+    {
+        memset(this, 0, sizeof(BulletShooter));
+        this->bulletSound = -1;
+    }
+
+    // The bullet type, and its color, as th07's.
+    short sprite;
+    short color;
+    D3DXVECTOR3 pos;
+    unsigned char unk_10[0x1f0];
+    int sound;
+    // Bullet::sound, as th07's.
+    int bulletSound;
+    unsigned char unk_208[0x8];
+};
+ASSERT_SIZE(BulletShooter, 0x210);
 
 // The bullets. Only what is known so far.
 class BulletManager

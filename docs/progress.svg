@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">77.69% (867)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">20.34% (227)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">77.78% (868)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">20.25% (226)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="580.33" height="6" x="0" y="0" class="named"/>
-<rect width="14.73" height="6" x="580.33" y="0" class="decompiled"/>
-<rect width="151.94" height="6" x="595.06" y="0" class="todo"/>
+<rect width="581" height="6" x="0" y="0" class="named"/>
+<rect width="14.73" height="6" x="581" y="0" class="decompiled"/>
+<rect width="151.27" height="6" x="595.73" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -451,7 +451,7 @@
 <rect width="12" height="12" x="450" y="105" class="named"><title>0x00429d40 Ending::DeletedCallback (147 bytes)</title></rect>
 <rect width="12" height="12" x="465" y="105" class="named"><title>0x00429de0 MemoryManager::Register (16 bytes)</title></rect>
 <rect width="12" height="12" x="480" y="105" class="named"><title>0x00429df0 MemoryManager::Unregister (13 bytes)</title></rect>
-<rect width="12" height="12" x="495" y="105" class="todo"><title>0x00429e00 Func429e00 (1029 bytes)</title></rect>
+<rect width="12" height="12" x="495" y="105" class="named"><title>0x00429e00 EnemyManager::Initialize (1029 bytes)</title></rect>
 <rect width="12" height="12" x="510" y="105" class="todo"><title>0x0042a210 Func42a210 (97 bytes)</title></rect>
 <rect width="12" height="12" x="525" y="105" class="todo"><title>0x0042a280 Func42a280 (394 bytes)</title></rect>
 <rect width="12" height="12" x="540" y="105" class="todo"><title>0x0042a410 Func42a410 (52 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">72.30%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">26.69%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">72.52%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">26.46%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="540.08" height="6" x="0" y="0" class="named"/>
-<rect width="7.57" height="6" x="540.08" y="0" class="decompiled"/>
-<rect width="199.34" height="6" x="547.66" y="0" class="todo"/>
+<rect width="541.75" height="6" x="0" y="0" class="named"/>
+<rect width="7.57" height="6" x="541.75" y="0" class="decompiled"/>
+<rect width="197.67" height="6" x="549.33" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1297,7 +1297,7 @@
 <rect width="22.57" height="21.13" x="488.95" y="0" class="named"><title>0x00409200 Stage::OnDraw (1087 bytes)</title></rect>
 <rect width="22.05" height="21.13" x="514.52" y="0" class="named"><title>0x00473cb0 LzssCompress (1065 bytes)</title></rect>
 <rect width="21.91" height="21.13" x="539.57" y="0" class="named"><title>0x0044ee70 UpdateFollowingCirclingOption (1059 bytes)</title></rect>
-<rect width="21.20" height="21.13" x="564.47" y="0" class="todo"><title>0x00429e00 Func429e00 (1029 bytes)</title></rect>
+<rect width="21.20" height="21.13" x="564.47" y="0" class="named"><title>0x00429e00 EnemyManager::Initialize (1029 bytes)</title></rect>
 <rect width="21.20" height="21.13" x="588.68" y="0" class="named"><title>0x00454cb2 ResultScreen::UpdateMenu (1029 bytes)</title></rect>
 <rect width="20.52" height="21.13" x="612.88" y="0" class="named"><title>0x00472d30 CStreamingSound::HandleWaveStreamNotification (1000 bytes)</title></rect>
 <rect width="19.81" height="21.13" x="636.40" y="0" class="named"><title>0x004400a0 ItemManager::SpawnItem (970 bytes)</title></rect>

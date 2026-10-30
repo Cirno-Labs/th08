@@ -1481,7 +1481,7 @@ int Player::AddedCallback(Player *player)
     {
         player->unk_e2b2c = 0x28;
     }
-    g_EnemyManager.unk_2e10 = player->unk_e2b2c;
+    g_EnemyManager.enemyTemplate.unk_2e10 = player->unk_e2b2c;
     return 0;
 }
 

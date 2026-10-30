@@ -382,7 +382,7 @@ address,size,name,symbol
 0x00429d40,147,Ending::DeletedCallback,?DeletedCallback@Ending@@SIHPAV1@@Z
 0x00429de0,16,MemoryManager::Register,?Register@MemoryManager@@QAEPAXPAXHPBD@Z
 0x00429df0,13,MemoryManager::Unregister,?Unregister@MemoryManager@@QAEXPAX@Z
-0x00429e00,1029,Func429e00,
+0x00429e00,1029,EnemyManager::Initialize,?Initialize@EnemyManager@@QAEXXZ
 0x0042a210,97,Func42a210,
 0x0042a280,394,Func42a280,
 0x0042a410,52,Func42a410,
