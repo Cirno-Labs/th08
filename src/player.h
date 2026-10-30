@@ -277,12 +277,12 @@ struct PlayerBullet
     short trailLength;
     // Player::focused when it was fired.
     BYTE focused;
-    unsigned char unk_46d[0x1];
+    unsigned char pad_46d[0x1];
     // ShotData::script.
     short script;
     // Drawn red (ShotData::unk_1e).
     char red;
-    unsigned char unk_471[0x3];
+    unsigned char pad_471[0x3];
     // The shot's callbacks, and the shot.
     ShotUpdateFunc update;
     ShotUpdateFunc draw;
