@@ -438,7 +438,7 @@ void Enemy::Func42adb0(int collect)
                 g_ItemManager.SpawnItem(&pos, 7, 1);
             }
             g_Player.AddHitAreaCircle(&this->unk_2d88, 32.0f, 1.0f, 16, 7);
-            g_Player.unk_e2adc = 0;
+            g_Player.orbGaugeCooldown = 0;
         }
     }
     if (this->Func41fd20() && collect)
@@ -446,9 +446,9 @@ void Enemy::Func42adb0(int collect)
         D3DXVECTOR3 unused;
 
         g_GameManager.Func43c0bb(-g_GameManager.GetUnk22() / 12, 0);
-        g_Player.unk_e2ae8 = 0;
-        g_Player.unk_e2ad0 = 30;
-        g_Player.unk_e2adc = 50;
+        g_Player.gaugeShiftTimer = 0;
+        g_Player.gaugeIdleTimer = 30;
+        g_Player.orbGaugeCooldown = 50;
         this->unk_2d88 = this->pos + this->unk_2d40;
         g_AsciiText.Func403460(&this->unk_2d88, 1, 0, 0xffffffff);
         g_ItemManager.SpawnItem(&this->unk_2d88, 7, 1);

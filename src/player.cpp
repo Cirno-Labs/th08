@@ -288,7 +288,7 @@ void Player::Die()
     {
         DebugPrint(" desolve\n");
         this->deathbombFrames = 2;
-        this->unk_6 = 1;
+        this->dissolveBombPending = 1;
     }
     else
     {
@@ -323,8 +323,8 @@ void Player::Die()
             this->sprite.color2Rgb[0] = 0xff;
             this->sprite.color2Alpha = this->sprite.alpha;
             this->sprite.useColor2 = 1;
-            this->unk_e2b28 = g_EffectManager.SpawnReservedEffect(0x3b, &this->pos, 0xb, 1, 0xfff0404f);
-            effect = this->unk_e2b28;
+            this->lastWordEffect = g_EffectManager.SpawnReservedEffect(0x3b, &this->pos, 0xb, 1, 0xfff0404f);
+            effect = this->lastWordEffect;
             effect->sprite.interpDuration[0] = 0;
             effect->sprite.interpFrame[0] = this->deathbombFrames;
             effect->sprite.interpEasing = 4;
@@ -437,12 +437,12 @@ int HandleInput(Player *player)
                     g_EffectManager.SpawnEffect(0x1d, &player->pos, 1, 0x80ff8080);
                 }
             }
-            if (player->unk_be834 == NULL)
+            if (player->optionEffect == NULL)
             {
-                player->unk_be834 = g_EffectManager.SpawnReservedEffect(0x16, &player->pos, 2, 1, 0xffffffff);
+                player->optionEffect = g_EffectManager.SpawnReservedEffect(0x16, &player->pos, 2, 1, 0xffffffff);
             }
             player->focusFrames = 0;
-            player->unk_e2ae8 = 0;
+            player->gaugeShiftTimer = 0;
         }
         else
         {
@@ -450,7 +450,7 @@ int HandleInput(Player *player)
         }
         if (player->focusFrames >= 7)
         {
-            player->unk_5 = 1;
+            player->isYoukai = 1;
         }
         player->focused = 1;
     }
@@ -505,13 +505,13 @@ int HandleInput(Player *player)
                     g_EffectManager.SpawnEffect(0x1c, &player->pos, 1, 0x808080ff);
                 }
             }
-            if (player->unk_be834 != NULL)
+            if (player->optionEffect != NULL)
             {
-                player->unk_be834->sprite.SetPendingInterrupt(1);
+                player->optionEffect->sprite.SetPendingInterrupt(1);
             }
-            player->unk_be834 = NULL;
+            player->optionEffect = NULL;
             player->focusFrames = 0;
-            player->unk_e2ae8 = 0;
+            player->gaugeShiftTimer = 0;
         }
         else
         {
@@ -519,7 +519,7 @@ int HandleInput(Player *player)
         }
         if (player->focusFrames >= 7)
         {
-            player->unk_5 = 0;
+            player->isYoukai = 0;
         }
         player->focused = 0;
     }
@@ -527,11 +527,11 @@ int HandleInput(Player *player)
     {
         if (g_GameManager.character & 1)
         {
-            player->unk_5 = 1;
+            player->isYoukai = 1;
         }
         else
         {
-            player->unk_5 = 0;
+            player->isYoukai = 0;
         }
     }
     if (player->focused)
@@ -685,10 +685,10 @@ int HandleInput(Player *player)
     }
     player->velocityX = deltaX;
     player->velocityY = deltaY;
-    player->unk_3f8.x = deltaX * g_App.gameSpeed;
-    player->unk_3f8.y = deltaY * g_App.gameSpeed;
-    player->pos[0] += player->unk_3f8.x;
-    player->pos[1] += player->unk_3f8.y;
+    player->moveDelta.x = deltaX * g_App.gameSpeed;
+    player->moveDelta.y = deltaY * g_App.gameSpeed;
+    player->pos[0] += player->moveDelta.x;
+    player->pos[1] += player->moveDelta.y;
     if (player->pos[0] < g_GameManager.arena2[0])
     {
         player->pos[0] = g_GameManager.arena2[0];
@@ -735,28 +735,28 @@ int HandleInput(Player *player)
         amount = 0;
         if (player->fireTimer >= 0)
         {
-            if (player->unk_e2ad0 > 0)
+            if (player->gaugeIdleTimer > 0)
             {
-                player->unk_e2ad0--;
+                player->gaugeIdleTimer--;
             }
             else
             {
-                amount = player->unk_e2ae8.AsFloat() > 300.0f ? 21.0f : player->unk_e2ae8.AsFloat() / 15.0f;
+                amount = player->gaugeShiftTimer.AsFloat() > 300.0f ? 21.0f : player->gaugeShiftTimer.AsFloat() / 15.0f;
                 if (!player->focused)
                 {
                     amount = -amount;
                 }
                 g_GameManager.Func43c0bb(amount * g_App.gameSpeed, 0);
-                player->unk_e2ae8++;
+                player->gaugeShiftTimer++;
             }
         }
         else
         {
-            if (player->unk_e2ad0 >= 4)
+            if (player->gaugeIdleTimer >= 4)
             {
-                player->unk_e2ae8 = 0;
+                player->gaugeShiftTimer = 0;
             }
-            if (player->unk_e2ad0 >= 30)
+            if (player->gaugeIdleTimer >= 30)
             {
                 if (fabs((double)g_GameManager.GetUnk22()) <= 9.0)
                 {
@@ -793,21 +793,21 @@ int HandleInput(Player *player)
             }
             else
             {
-                player->unk_e2ad0++;
+                player->gaugeIdleTimer++;
             }
         }
     }
-    if ((g_GameManager.IsUnk22AtLow1() || g_GameManager.IsUnk22AtHigh1()) && player->unk_e2b24 == NULL)
+    if ((g_GameManager.IsUnk22AtLow1() || g_GameManager.IsUnk22AtHigh1()) && player->gaugeFullEffect == NULL)
     {
-        player->unk_e2b24 = g_EffectManager.SpawnReservedEffect(0x19, &player->pos, 8, 1, 0xffffffff);
+        player->gaugeFullEffect = g_EffectManager.SpawnReservedEffect(0x19, &player->pos, 8, 1, 0xffffffff);
     }
-    if (player->unk_e2b24 != NULL)
+    if (player->gaugeFullEffect != NULL)
     {
-        player->unk_e2b24->pos = player->pos;
+        player->gaugeFullEffect->pos = player->pos;
         if (!g_GameManager.IsUnk22AtLow1() && !g_GameManager.IsUnk22AtHigh1())
         {
-            player->unk_e2b24->active = 0;
-            player->unk_e2b24 = NULL;
+            player->gaugeFullEffect->active = 0;
+            player->gaugeFullEffect = NULL;
         }
     }
     if (deltaY != 0.0f || deltaX != 0.0f)
@@ -877,23 +877,23 @@ int Player::OnUpdate(Player *player)
 {
     if (g_GameManager.isFrozen)
     {
-        if (player->unk_be834 != NULL)
+        if (player->optionEffect != NULL)
         {
-            player->unk_be834->sprite.scriptPaused = 1;
+            player->optionEffect->sprite.scriptPaused = 1;
         }
-        if (player->unk_e2b24 != NULL)
+        if (player->gaugeFullEffect != NULL)
         {
-            player->unk_e2b24->sprite.scriptPaused = 1;
+            player->gaugeFullEffect->sprite.scriptPaused = 1;
         }
         return 1;
     }
-    if (player->unk_be834 != NULL)
+    if (player->optionEffect != NULL)
     {
-        player->unk_be834->sprite.scriptPaused = 0;
+        player->optionEffect->sprite.scriptPaused = 0;
     }
-    if (player->unk_e2b24 != NULL)
+    if (player->gaugeFullEffect != NULL)
     {
-        player->unk_e2b24->sprite.scriptPaused = 0;
+        player->gaugeFullEffect->sprite.scriptPaused = 0;
     }
     UpdateHitboxAreas(player);
     UpdateBombState(player);
@@ -968,7 +968,7 @@ void UpdateBombState(Player *player)
     DWORD i;
 
     forced = 0;
-    if (player->unk_6 && player->deathbombFrames == 1)
+    if (player->dissolveBombPending && player->deathbombFrames == 1)
     {
         // The last words run out: a bomb starts on its own.
         forced = 1;
@@ -1035,7 +1035,7 @@ void UpdateBombState(Player *player)
         }
     start:
         g_ReplayManager->frameEvents |= 1;
-        player->unk_6 = 0;
+        player->dissolveBombPending = 0;
         if (g_GameManager.unk_3dbac_7 != 0)
         {
             player->bomb.type = 4;
@@ -1043,19 +1043,19 @@ void UpdateBombState(Player *player)
         else
         {
             player->sprite.useColor2 = 0;
-            if (player->unk_e2b28 != NULL)
+            if (player->lastWordEffect != NULL)
             {
-                player->unk_e2b28->active = 0;
-                player->unk_e2b28 = NULL;
+                player->lastWordEffect->active = 0;
+                player->lastWordEffect = NULL;
             }
             g_GameManager.unk_3dbac_10 = 0;
             g_SpriteEngine->ResetColorModulation();
             player->bomb.type = player->focused;
-            if (player->unk_4)
+            if (player->lastWordReady)
             {
                 player->bomb.type = 1 - player->bomb.type;
             }
-            if (player->unk_4)
+            if (player->lastWordReady)
             {
                 // Last words: up to two bombs.
                 player->bomb.type += 2;
@@ -1083,7 +1083,7 @@ void UpdateBombState(Player *player)
             }
             g_GameManager.AddBombsUsed(1);
         }
-        player->unk_4 = 0;
+        player->lastWordReady = 0;
         g_Gui.bombsChanged = 2;
         player->bomb.running = 1;
         player->bombJustStarted = 1;
@@ -1114,13 +1114,13 @@ int UpdateDyingState(Player *player)
         // The last words: they cost time orbs while they run.
         g_GameManager.AddTimeOrbs(-15);
         player->deathbombFrames--;
-        player->unk_4 = 1;
+        player->lastWordReady = 1;
         if (player->deathbombFrames == 0)
         {
-            if (player->unk_e2b28 != NULL)
+            if (player->lastWordEffect != NULL)
             {
-                player->unk_e2b28->active = 0;
-                player->unk_e2b28 = NULL;
+                player->lastWordEffect->active = 0;
+                player->lastWordEffect = NULL;
             }
             g_EffectManager.SpawnReservedEffect(0xc, &player->pos, 3, 1, 0xff4040ff);
             g_EffectManager.SpawnEffect(6, &player->pos, 16, 0xffffffff);
@@ -1130,7 +1130,7 @@ int UpdateDyingState(Player *player)
             player->sprite.useColor2 = 0;
             g_ReplayManager->frameEvents |= 4;
             g_GameManager.unk_3dba8 = 0;
-            player->unk_4 = 0;
+            player->lastWordReady = 0;
             g_SpellCard.Func44d150();
             g_GameManager.AddDeaths(1);
             g_Gui.unk_4_10 = 2;
@@ -1253,7 +1253,7 @@ void UpdateInvulnerability(Player *player)
     }
     if (player->playerState == 3)
     {
-        player->unk_4 = 0;
+        player->lastWordReady = 0;
         if (player->invulnerabilityEffect != NULL)
         {
             player->invulnerabilityEffect->pos = player->pos;
@@ -1390,15 +1390,15 @@ int Player::AddedCallback(Player *player)
     player->direction = 0;
     player->playerState = 1;
     player->stateTimer = g_GameManager.IsInSpellCardPractice() ? 10 : 120;
-    player->unk_2 = 1;
+    player->optionState = 1;
     cur = player->bullets;
     for (i = 0; i < 0x80; i++, cur++)
     {
         cur->state = 0;
     }
     player->fireTimer = -1;
-    player->unk_e2ad0 = 0;
-    player->unk_e2ae8 = 0;
+    player->gaugeIdleTimer = 0;
+    player->gaugeShiftTimer = 0;
     player->bomb.update = g_BombFuncs[g_GameManager.character * 2];
     player->bomb.draw = g_BombFuncs[g_GameManager.character * 2 + 1];
     player->bomb.running = 0;
@@ -1447,7 +1447,7 @@ int Player::AddedCallback(Player *player)
         g_GameManager.unk22Low1 = -8000;
         g_GameManager.unk22Low2 = -2001;
     }
-    player->unk_e2b24 = NULL;
+    player->gaugeFullEffect = NULL;
     for (i = 0; i < ARRAY_SIZE(player->posHistory); i++)
     {
         player->posHistory[i] = player->pos;
@@ -1475,13 +1475,13 @@ int Player::AddedCallback(Player *player)
     }
     if (g_GameManager.IsSoloHuman())
     {
-        player->unk_e2b2c = 0x1b;
+        player->damagePerTimeOrb = 0x1b;
     }
     else
     {
-        player->unk_e2b2c = 0x28;
+        player->damagePerTimeOrb = 0x28;
     }
-    g_EnemyManager.enemyTemplate.unk_2e10 = player->unk_e2b2c;
+    g_EnemyManager.enemyTemplate.unk_2e10 = player->damagePerTimeOrb;
     return 0;
 }
 

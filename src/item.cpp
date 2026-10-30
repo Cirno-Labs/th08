@@ -326,12 +326,12 @@ void ItemManager::UpdateItems()
     {
         g_SoundPlayer.QueueSound(pickupSe, 0);
     }
-    if (g_Player.unk_e2adc != 0)
+    if (g_Player.orbGaugeCooldown != 0)
     {
-        g_Player.unk_e2adc--;
-        if (g_Player.unk_e2adc <= 0)
+        g_Player.orbGaugeCooldown--;
+        if (g_Player.orbGaugeCooldown <= 0)
         {
-            g_Player.unk_e2adc = 0;
+            g_Player.orbGaugeCooldown = 0;
         }
     }
 }
@@ -542,7 +542,7 @@ void Item::CollectTimeOrb()
     g_GameManager.AddScore(amount);
     g_GameManager.AddTimeOrbs(1);
     g_SpellCard.Func416b10(8000);
-    if (g_Player.unk_e2adc == 0)
+    if (g_Player.orbGaugeCooldown == 0)
     {
         amount = 111;
         g_GameManager.Func43c0bb(g_Player.focused ? amount : -amount, 0);

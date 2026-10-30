@@ -518,31 +518,31 @@ public:
     // Whether unk_5 is set. Inline; the copy is at 0x40bc40.
     int IsUnk5Set()
     {
-        return this->unk_5;
+        return this->isYoukai;
     }
     // Whether unk_5 is clear. Inline; the copy is at 0x40bc20.
     int IsUnk5Clear()
     {
-        return !this->unk_5;
+        return !this->isYoukai;
     }
 
     // 0 normally, 1 respawning, 2 dying, 3 invulnerable, as th07's.
     char playerState;
     // RegisterChain's argument, as th07's.
     BYTE registerChainArg;
-    char unk_2;
+    char optionState;
     // Whether the player is focused (HandleInput; 2 until the first
     // frame), as th07's. Picks shotTypeFocused over shotType and the
     // direction a time orb moves stats->unk_22.
     BYTE focused;
     // Set while the last words run (UpdateDyingState): a bomb then
     // starts as the other character's last word.
-    BYTE unk_4;
+    BYTE lastWordReady;
     // Stage::StepObjects sends interrupt 1 to g_Stage.unk_844 as it is
     // set, 2 as it is cleared.
-    BYTE unk_5;
-    BYTE unk_6;
-    unsigned char unk_7[0x1];
+    BYTE isYoukai;
+    BYTE dissolveBombPending;
+    unsigned char pad_7[0x1];
     // The frames since the player last switched focus.
     int focusFrames;
     // The character's ANM, in slot 5.
@@ -550,7 +550,7 @@ public:
     Sprite sprite;
     // The player's position.
     D3DXVECTOR3 pos;
-    D3DXVECTOR3 unk_2c0;
+    D3DXVECTOR3 unusedVector2c0;
     // The player's last positions.
     D3DXVECTOR3 posHistory[0x10];
     // The corners of the hitbox and of the graze box, as th07's.
@@ -565,7 +565,7 @@ public:
     D3DXVECTOR3 hitboxSize;
     D3DXVECTOR3 grazeSize;
     D3DXVECTOR3 grazeTestHalfSize;
-    D3DXVECTOR3 unk_3f8;
+    D3DXVECTOR3 moveDelta;
     // Scale the player's movement, as th07's.
     float moveScaleX;
     float moveScaleY;
@@ -573,7 +573,7 @@ public:
     PlayerBomb bomb;
     PlayerBombHitbox bombHitboxes[0xc0];
     PlayerBombHitbox hitAreas[0xc0];
-    Effect *unk_be834;
+    Effect *optionEffect;
     PlayerBullet bullets[0x80];
     PlayerLaser lasers[3];
     // As th07's: while the player dies, the frames left to bomb.
@@ -589,12 +589,12 @@ public:
     int bombJustStarted;
     // The shot each laser was fired from, by ShotData::phase, as th07's.
     ShotData *laserShots[3];
-    unsigned char unk_e2a8c[0x4];
+    unsigned char pad_e2a8c[0x4];
     // The itemType of the area CheckAreaHit met last, as th07's.
     int areaItemType;
     // Counts hits on enemies, to burst an effect every few, as th07's.
     BYTE hitCounter;
-    unsigned char unk_e2a95[0x3];
+    unsigned char pad_e2a95[0x3];
     // 0 still, 1 up, 2 down, 3 left, 4 right, 5 to 8 diagonal, as
     // th07's.
     int direction;
@@ -612,13 +612,13 @@ public:
     // frames. While it is below 0, items flying up (state 3) are drawn
     // in.
     Timer fireTimer;
-    Timer unk_e2ad0;
+    Timer gaugeIdleTimer;
     // Collecting a time orb moves stats->unk_22 while it is 0.
-    Timer unk_e2adc;
-    Timer unk_e2ae8;
+    Timer orbGaugeCooldown;
+    Timer gaugeShiftTimer;
     // Runs through the player states, as th07's.
     Timer stateTimer;
-    Timer unk_e2b00;
+    Timer unusedTimere2b00;
     // The angle the aimed shots fly at, as th07's.
     float aimedShotAngle;
     // The update element and the two draw elements, as th07's.
@@ -628,10 +628,10 @@ public:
     // Effects that follow the player, as th07's.
     Effect *invulnerabilityEffect;
     Effect *bombInvulnerabilityEffect;
-    Effect *unk_e2b24;
+    Effect *gaugeFullEffect;
     // The effect of the player's last words, started as it dies.
-    Effect *unk_e2b28;
-    int unk_e2b2c;
+    Effect *lastWordEffect;
+    int damagePerTimeOrb;
 };
 ASSERT_SIZE(Player, 0xe2b30);
 extern Player g_Player;
