@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">92.29% (1030)</tspan> · <tspan class="decompiled">3.76% (42)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">3.94% (44)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">92.38% (1031)</tspan> · <tspan class="decompiled">3.76% (42)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">3.85% (43)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="689.44" height="6" x="0" y="0" class="named"/>
-<rect width="28.11" height="6" x="689.44" y="0" class="decompiled"/>
-<rect width="29.45" height="6" x="717.55" y="0" class="todo"/>
+<rect width="690.10" height="6" x="0" y="0" class="named"/>
+<rect width="28.11" height="6" x="690.10" y="0" class="decompiled"/>
+<rect width="28.78" height="6" x="718.22" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -290,7 +290,7 @@
 <rect width="12" height="12" x="285" y="60" class="decompiled"><title>0x004178a0 SpellCard::Func4178a0 (19 bytes)</title></rect>
 <rect width="12" height="12" x="300" y="60" class="todo"><title>0x004178c0 SpellCard::Draw (1685 bytes)</title></rect>
 <rect width="12" height="12" x="315" y="60" class="named"><title>0x00417f60 SpellCard::RegisterChain (175 bytes)</title></rect>
-<rect width="12" height="12" x="330" y="60" class="todo"><title>0x00418010 SpellCard::OnUpdate (19 bytes)</title></rect>
+<rect width="12" height="12" x="330" y="60" class="named"><title>0x00418010 SpellCard::OnUpdate (19 bytes)</title></rect>
 <rect width="12" height="12" x="345" y="60" class="todo"><title>0x00418030 SpellCard::OnDraw (19 bytes)</title></rect>
 <rect width="12" height="12" x="360" y="60" class="todo"><title>0x00418050 SpellCard::DeletedCallback (157 bytes)</title></rect>
 <rect width="12" height="12" x="375" y="60" class="todo"><title>0x004180f0 SpellCard::RemoveChain (30 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">86.88%</tspan> · <tspan class="decompiled">1.65%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">11.46%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">86.89%</tspan> · <tspan class="decompiled">1.65%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">11.46%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="649.02" height="6" x="0" y="0" class="named"/>
-<rect width="12.35" height="6" x="649.02" y="0" class="decompiled"/>
-<rect width="85.63" height="6" x="661.37" y="0" class="todo"/>
+<rect width="649.05" height="6" x="0" y="0" class="named"/>
+<rect width="12.35" height="6" x="649.05" y="0" class="decompiled"/>
+<rect width="85.60" height="6" x="661.40" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -2269,7 +2269,7 @@
 <rect width="0.44" height="0.30" x="736.58" y="327.68" class="todo"><title>0x0045e2d0 CWaveFile::GetFormat (20 bytes)</title></rect>
 <rect width="0.44" height="0.30" x="740.02" y="327.68" class="named"><title>0x00473c60 FileBase::~FileBase (20 bytes)</title></rect>
 <rect width="0.27" height="0.30" x="743.46" y="327.68" class="decompiled"><title>0x004178a0 SpellCard::Func4178a0 (19 bytes)</title></rect>
-<rect width="0.27" height="0.30" x="746.73" y="327.68" class="todo"><title>0x00418010 SpellCard::OnUpdate (19 bytes)</title></rect>
+<rect width="0.27" height="0.30" x="746.73" y="327.68" class="named"><title>0x00418010 SpellCard::OnUpdate (19 bytes)</title></rect>
 <rect width="0.17" height="0.40" x="729.70" y="330.98" class="todo"><title>0x00418030 SpellCard::OnDraw (19 bytes)</title></rect>
 <rect width="0.17" height="0.40" x="729.70" y="334.38" class="named"><title>0x00443c90 MidiDevice::~MidiDevice (19 bytes)</title></rect>
 <rect width="0.17" height="0.40" x="729.70" y="337.79" class="named"><title>0x00445440 MidiTimer::StopTimer (19 bytes)</title></rect>

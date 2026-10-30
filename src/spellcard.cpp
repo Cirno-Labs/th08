@@ -546,3 +546,8 @@ int SpellCard::RegisterChain()
     g_Chain.AddToDrawChain(sc->drawChain, 0xf);
     return 0;
 }
+
+int SpellCard::OnUpdate(SpellCard *sc)
+{
+    return sc->Update();
+}
