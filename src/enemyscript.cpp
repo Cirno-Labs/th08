@@ -31,3 +31,12 @@ int EnemyScripts::Load(char *path)
     }
     return 0;
 }
+
+void EnemyScripts::Release()
+{
+    if (this->file != NULL)
+    {
+        g_MemoryManager.Free(this->file);
+    }
+    this->file = NULL;
+}
