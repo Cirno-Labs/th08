@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">90.50% (1010)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">6.27% (70)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">90.59% (1011)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">6.18% (69)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="676.05" height="6" x="0" y="0" class="named"/>
-<rect width="24.10" height="6" x="676.05" y="0" class="decompiled"/>
-<rect width="46.85" height="6" x="700.15" y="0" class="todo"/>
+<rect width="676.72" height="6" x="0" y="0" class="named"/>
+<rect width="24.10" height="6" x="676.72" y="0" class="decompiled"/>
+<rect width="46.19" height="6" x="700.81" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -523,7 +523,7 @@
 <rect width="12" height="12" x="30" y="135" class="named"><title>0x00432390 TurnAndAccelerate (197 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="135" class="named"><title>0x00432460 StopTurnAndRestart (313 bytes)</title></rect>
 <rect width="12" height="12" x="60" y="135" class="named"><title>0x004325a0 StopTurnToAngle (306 bytes)</title></rect>
-<rect width="12" height="12" x="75" y="135" class="todo"><title>0x004326e0 StopTurnToPlayer (336 bytes)</title></rect>
+<rect width="12" height="12" x="75" y="135" class="named"><title>0x004326e0 StopTurnToPlayer (336 bytes)</title></rect>
 <rect width="12" height="12" x="90" y="135" class="todo"><title>0x00432830 BounceOffWalls (436 bytes)</title></rect>
 <rect width="12" height="12" x="105" y="135" class="todo"><title>0x004329f0 WrapAroundX (167 bytes)</title></rect>
 <rect width="12" height="12" x="120" y="135" class="todo"><title>0x00432aa0 WrapAroundY (167 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">84.40%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">14.02%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">84.47%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">13.95%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="630.47" height="6" x="0" y="0" class="named"/>
-<rect width="11.78" height="6" x="630.47" y="0" class="decompiled"/>
-<rect width="104.75" height="6" x="642.25" y="0" class="todo"/>
+<rect width="631.02" height="6" x="0" y="0" class="named"/>
+<rect width="11.78" height="6" x="631.02" y="0" class="decompiled"/>
+<rect width="104.20" height="6" x="642.80" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -1496,7 +1496,7 @@
 <rect width="10.83" height="10.99" x="518.98" y="157.52" class="named"><title>0x004661b0 AnmLoaded::LoadSprite (341 bytes)</title></rect>
 <rect width="10.83" height="10.86" x="518.98" y="171.50" class="named"><title>0x0044d2c0 UpdateInvulnerability (338 bytes)</title></rect>
 <rect width="10.83" height="10.82" x="518.98" y="185.37" class="named"><title>0x0043ea00 LogPrintf (337 bytes)</title></rect>
-<rect width="10.83" height="10.78" x="518.98" y="199.19" class="todo"><title>0x004326e0 StopTurnToPlayer (336 bytes)</title></rect>
+<rect width="10.83" height="10.78" x="518.98" y="199.19" class="named"><title>0x004326e0 StopTurnToPlayer (336 bytes)</title></rect>
 <rect width="10.83" height="10.70" x="518.98" y="212.97" class="named"><title>0x00440cf0 Item::CollectPower (334 bytes)</title></rect>
 <rect width="10.83" height="10.70" x="518.98" y="226.67" class="named"><title>0x00441020 Item::CollectFullPowerItem (334 bytes)</title></rect>
 <rect width="10.83" height="10.66" x="518.98" y="240.37" class="named"><title>0x0045e430 AnmLoaded::SetSprite (333 bytes)</title></rect>
