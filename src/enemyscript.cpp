@@ -916,3 +916,26 @@ void ScriptSetTurnSprites(Enemy *enemy, EnemyScriptInstr *instr, short still, sh
     enemy->unk_333c = unk;
     enemy->spriteDirection = 0xff;
 }
+
+void ScriptSetSubSprite(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    if (INT_ARG(0) >= 2)
+    {
+        DebugPrint("error : sub anim overflow\r\n");
+    }
+    if (INT_ARG(1) >= 0)
+    {
+        if (enemy->useStageAnm)
+        {
+            g_EnemyManager.stageAnm->StartScript(&enemy->sprites[INT_ARG(0)], INT_ARG(1));
+        }
+        else
+        {
+            g_EnemyManager.anm->StartScript(&enemy->sprites[INT_ARG(0)], INT_ARG(1));
+        }
+    }
+    else
+    {
+        enemy->sprites[INT_ARG(0)].scriptIndex = -1;
+    }
+}

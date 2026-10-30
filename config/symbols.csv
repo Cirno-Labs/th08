@@ -270,7 +270,7 @@ address,size,name,symbol
 0x00421cb0,280,ScriptReturn,?ScriptReturn@@YIHPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00421dd0,5,DebugPrint,?DebugPrint@@YAXPBDZZ
 0x00421de0,112,ScriptSetTurnSprites,?ScriptSetTurnSprites@@YIXPAUEnemy@@PAUEnemyScriptInstr@@FFFFFF@Z
-0x00421e50,454,Func421e50,
+0x00421e50,454,ScriptSetSubSprite,?ScriptSetSubSprite@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00422020,650,Func422020,
 0x004222b0,461,Func4222b0,
 0x00422480,28,GameManager::GetPower,?GetPower@GameManager@@QAEHXZ

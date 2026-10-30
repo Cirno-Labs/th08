@@ -367,7 +367,9 @@ struct Enemy
             DWORD unk_3328_0 : 1;
             // Func42c420 bursts effect 0x26 every other frame while set.
             DWORD unk_3328_1 : 1;
-            DWORD unk_3328_2 : 1;
+            // Its sprites run their scripts from the stage's enemy ANM
+            // (EnemyManager::stageAnm) while set, else from enemy.anm.
+            DWORD useStageAnm : 1;
             // Set once OnUpdate has run its death; cleared while its life
             // is above 0.
             DWORD unk_3328_3 : 1;
@@ -622,6 +624,9 @@ int ScriptReturn(Enemy *enemy, EnemyScriptInstr *instr);
 // clears spriteDirection (0x421de0).
 void ScriptSetTurnSprites(Enemy *enemy, EnemyScriptInstr *instr, short still, short left, short right,
                           short stillFromLeft, short stillFromRight, short unk);
+// Starts script argument 1 on sprites[argument 0] (from stageAnm with
+// useStageAnm, else anm), or stops it for a negative script (0x421e50).
+void ScriptSetSubSprite(Enemy *enemy, EnemyScriptInstr *instr);
 
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
