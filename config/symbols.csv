@@ -291,7 +291,7 @@ address,size,name,symbol
 0x00423400,296,BounceOffSides,?BounceOffSides@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00423530,104,SpawnTwinEffects38,?SpawnTwinEffects38@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x004235a0,1203,DrawTwinEffects,?DrawTwinEffects@@YIXXZ
-0x00423a60,784,Func423a60,
+0x00423a60,784,BounceBulletsAtZones,?BounceBulletsAtZones@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00423d70,59,D3DXVECTOR3::operator*=,??XD3DXVECTOR3@@QAEAAU0@M@Z
 0x00423db0,104,SpawnTwinEffects41,?SpawnTwinEffects41@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00423e20,784,Func423e20,

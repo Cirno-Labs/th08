@@ -62,7 +62,10 @@ struct Bullet
     unsigned char unk_db4[0x4];
     // 0 while the slot is free, as th07's.
     WORD state;
-    unsigned char unk_dba[0x2fa];
+    unsigned char unk_dba[0xa];
+    // Frames left before the zone script functions may turn it again.
+    int unk_dc4;
+    unsigned char unk_dc8[0x2ec];
     // Set as the toggling script functions switch it to its additive
     // sprite.
     BYTE unk_10b4;
