@@ -548,6 +548,9 @@ float *ResolveFloatOperand(Enemy *enemy, float *operand, WORD mask, int bit);
 // Starts a timed move at an angle (argument 2, normalized), as th07's:
 // moveDelta is argument 3 times argument 0, from unk_2d88 (0x420d10).
 void ScriptMoveAngle(Enemy *enemy, EnemyScriptInstr *instr);
+// Starts a timed move from unk_2d88 to (argument 2, argument 3), as
+// th07's, with moveStart at pos (0x420f40).
+void ScriptMovePos(Enemy *enemy, EnemyScriptInstr *instr);
 
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];

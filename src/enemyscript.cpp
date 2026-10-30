@@ -679,3 +679,22 @@ void ScriptMoveAngle(Enemy *enemy, EnemyScriptInstr *instr)
         enemy->moveDelta.x = -enemy->moveDelta.x;
     }
 }
+
+void ScriptMovePos(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    D3DXVECTOR3 target;
+
+    target.x = FLOAT_ARG(2);
+    target.y = FLOAT_ARG(3);
+    target.z = 0.0f;
+    enemy->moveDelta = target - enemy->unk_2d88;
+    enemy->moveStart = enemy->pos;
+    enemy->moveTimer = (enemy->moveDuration = INT_ARG(0));
+    enemy->moveEasing = INT_ARG(1);
+    enemy->moveMode = 2;
+    enemy->velocity = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+    if (enemy->mirrored)
+    {
+        enemy->moveDelta.x = -enemy->moveDelta.x;
+    }
+}
