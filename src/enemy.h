@@ -583,11 +583,25 @@ struct EnemyScriptHeader
     void *timelines[16];
 };
 
+// What EnemyScripts has between subs and callArgs, as th07's: nothing
+// uses it, but it ends with eight vectors, whose (empty) constructors
+// the constructor runs (0x418300).
+struct EnemyScriptsUnusedBlock
+{
+    EnemyScriptsUnusedBlock();
+
+    unsigned char pad_0[0x100];
+    D3DXVECTOR3 vectors[8];
+};
+
 // The enemy scripts (ECL), at 0x4eccb8, as th07's. Only what is known
 // so far.
 class EnemyScripts
 {
 public:
+    // Constructs unused8 (0x4182e0).
+    EnemyScripts();
+
     // Starts subroutine `sub` in `ctx`, as th07's (0x418450). Returns 0.
     int StartSub(EnemyScriptState *ctx, short sub);
     // Runs `enemy`'s script for a frame, as th07's (0x4184b0): its main
@@ -617,7 +631,7 @@ public:
 
     EnemyScriptHeader *file;
     void **subs;
-    unsigned char unused8[0x160];
+    EnemyScriptsUnusedBlock unused8;
     // The arguments of the next subroutine call, as th07's shared
     // variables: ints 10061 to 10064 and floats 10065 to 10068.
     // ScriptCallSub copies them into the called context.

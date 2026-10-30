@@ -230,8 +230,8 @@ address,size,name,symbol
 0x00418180,98,GameManager::IsPracticingSpellCardIn,?IsPracticingSpellCardIn@GameManager@@QAEHHH@Z
 0x004181f0,44,GameManager::AddScore,?AddScore@GameManager@@QAEXH@Z
 0x00418220,180,GameManager::AddTimeOrbs,?AddTimeOrbs@GameManager@@QAEXH@Z
-0x004182e0,25,EnemyScripts::EnemyScripts,
-0x00418300,37,EnemyScriptsUnusedBlock::EnemyScriptsUnusedBlock,
+0x004182e0,25,EnemyScripts::EnemyScripts,??0EnemyScripts@@QAE@XZ
+0x00418300,37,EnemyScriptsUnusedBlock::EnemyScriptsUnusedBlock,??0EnemyScriptsUnusedBlock@@QAE@XZ
 0x00418330,239,EnemyScripts::Load,?Load@EnemyScripts@@QAEHPAD@Z
 0x00418420,44,EnemyScripts::Release,?Release@EnemyScripts@@QAEXXZ
 0x00418450,88,EnemyScripts::StartSub,?StartSub@EnemyScripts@@QAEHPAUEnemyScriptState@@F@Z

@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">99.10% (1106)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">0.90% (10)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">99.28% (1108)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">0.72% (8)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="740.31" height="6" x="0" y="0" class="named"/>
-<rect width="6.69" height="6" x="740.31" y="0" class="todo"/>
+<rect width="741.65" height="6" x="0" y="0" class="named"/>
+<rect width="5.35" height="6" x="741.65" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -298,8 +298,8 @@
 <rect width="12" height="12" x="420" y="60" class="named"><title>0x00418180 GameManager::IsPracticingSpellCardIn (98 bytes)</title></rect>
 <rect width="12" height="12" x="435" y="60" class="named"><title>0x004181f0 GameManager::AddScore (44 bytes)</title></rect>
 <rect width="12" height="12" x="450" y="60" class="named"><title>0x00418220 GameManager::AddTimeOrbs (180 bytes)</title></rect>
-<rect width="12" height="12" x="465" y="60" class="todo"><title>0x004182e0 EnemyScripts::EnemyScripts (25 bytes)</title></rect>
-<rect width="12" height="12" x="480" y="60" class="todo"><title>0x00418300 EnemyScriptsUnusedBlock::EnemyScriptsUnusedBlock (37 bytes)</title></rect>
+<rect width="12" height="12" x="465" y="60" class="named"><title>0x004182e0 EnemyScripts::EnemyScripts (25 bytes)</title></rect>
+<rect width="12" height="12" x="480" y="60" class="named"><title>0x00418300 EnemyScriptsUnusedBlock::EnemyScriptsUnusedBlock (37 bytes)</title></rect>
 <rect width="12" height="12" x="495" y="60" class="named"><title>0x00418330 EnemyScripts::Load (239 bytes)</title></rect>
 <rect width="12" height="12" x="510" y="60" class="named"><title>0x00418420 EnemyScripts::Release (44 bytes)</title></rect>
 <rect width="12" height="12" x="525" y="60" class="named"><title>0x00418450 EnemyScripts::StartSub (88 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">99.36%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">0.64%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">99.37%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">0.63%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="742.19" height="6" x="0" y="0" class="named"/>
-<rect width="4.81" height="6" x="742.19" y="0" class="todo"/>
+<rect width="742.29" height="6" x="0" y="0" class="named"/>
+<rect width="4.71" height="6" x="742.29" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="named"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -2095,7 +2095,7 @@
 <rect width="1.69" height="1.60" x="699.77" y="292.88" class="named"><title>0x00406da0 GameManager::IsGaugeAtHigh2 (38 bytes)</title></rect>
 <rect width="1.69" height="1.60" x="704.46" y="292.88" class="named"><title>0x00406df0 GameManager::AddClock (38 bytes)</title></rect>
 <rect width="1.57" height="1.60" x="709.15" y="292.88" class="named"><title>0x00415ce0 Stage::StartSpellCard (37 bytes)</title></rect>
-<rect width="1.57" height="1.60" x="713.72" y="292.88" class="todo"><title>0x00418300 EnemyScriptsUnusedBlock::EnemyScriptsUnusedBlock (37 bytes)</title></rect>
+<rect width="1.57" height="1.60" x="713.72" y="292.88" class="named"><title>0x00418300 EnemyScriptsUnusedBlock::EnemyScriptsUnusedBlock (37 bytes)</title></rect>
 <rect width="1.57" height="1.60" x="718.28" y="292.88" class="named"><title>0x0041f0b0 SpellCard::SetEffectFixed (37 bytes)</title></rect>
 <rect width="1.57" height="1.60" x="722.85" y="292.88" class="named"><title>0x00425040 GetSpellCardsCaptured (37 bytes)</title></rect>
 <rect width="1.57" height="1.60" x="727.42" y="292.88" class="named"><title>0x0042f2f0 AsciiText::SetScale (37 bytes)</title></rect>
@@ -2182,7 +2182,7 @@
 <rect width="0.74" height="0.80" x="707.89" y="340.41" class="named"><title>0x0040b8a0 MemoryManager::Free (25 bytes)</title></rect>
 <rect width="0.74" height="0.80" x="707.89" y="344.20" class="named"><title>0x0040ba90 SpriteEngine::SetLastCameraSetupFlag (25 bytes)</title></rect>
 <rect width="0.71" height="0.83" x="711.63" y="309.74" class="named"><title>0x0040d410 Timer::operator% (25 bytes)</title></rect>
-<rect width="0.71" height="0.83" x="711.63" y="313.57" class="todo"><title>0x004182e0 EnemyScripts::EnemyScripts (25 bytes)</title></rect>
+<rect width="0.71" height="0.83" x="711.63" y="313.57" class="named"><title>0x004182e0 EnemyScripts::EnemyScripts (25 bytes)</title></rect>
 <rect width="0.71" height="0.83" x="711.63" y="317.39" class="named"><title>0x0041f400 EnemySpawnArgs::EnemySpawnArgs (25 bytes)</title></rect>
 <rect width="0.71" height="0.83" x="711.63" y="321.22" class="named"><title>0x0041fdd0 SpellCard::GetTimeLeft (25 bytes)</title></rect>
 <rect width="0.71" height="0.83" x="711.63" y="325.05" class="named"><title>0x0041fdf0 Timer::operator+= (25 bytes)</title></rect>

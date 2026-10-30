@@ -23,6 +23,14 @@
 #define INT_OP(v, bit) ((instr->paramMask & (bit)) ? GetIntOperand(enemy, v) : v)
 #define FLOAT_OP(v, bit) ((instr->paramMask & (bit)) ? GetFloatOperand(enemy, v) : v)
 
+EXE_INLINE EnemyScripts::EnemyScripts()
+{
+}
+
+EXE_INLINE EnemyScriptsUnusedBlock::EnemyScriptsUnusedBlock()
+{
+}
+
 int EnemyScripts::Load(char *path)
 {
     int i;
