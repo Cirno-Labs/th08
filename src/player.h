@@ -516,12 +516,12 @@ public:
         return this->bomb.running && this->bomb.type == 4 ? TRUE : FALSE;
     }
     // Whether unk_5 is set. Inline; the copy is at 0x40bc40.
-    int IsUnk5Set()
+    int IsYoukai()
     {
         return this->isYoukai;
     }
     // Whether unk_5 is clear. Inline; the copy is at 0x40bc20.
-    int IsUnk5Clear()
+    int IsHuman()
     {
         return !this->isYoukai;
     }

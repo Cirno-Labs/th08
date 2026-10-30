@@ -252,7 +252,7 @@ void Player::Graze(D3DXVECTOR3 *pos, int isLaser)
     g_SoundPlayer.QueueSoundPanned(0x1e, pos->x);
     points = g_GameManager.IsUnk22AtHigh2() ? 4000 : 2000;
     g_GameManager.AddScore(points);
-    if (this->IsUnk5Set())
+    if (this->IsYoukai())
     {
         g_GameManager.Func43c0bb(100, 0);
     }

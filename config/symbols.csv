@@ -133,8 +133,8 @@ address,size,name,symbol
 0x0040bb20,51,SpriteEngine::ClearDrawStats,?ClearDrawStats@SpriteEngine@@QAEXXZ
 0x0040bb60,26,SpriteEngine::GetAnm,?GetAnm@SpriteEngine@@QAEPAVAnmLoaded@@H@Z
 0x0040bb80,145,GameManager::ChecksumMismatch,?ChecksumMismatch@GameManager@@QAEHXZ
-0x0040bc20,23,Player::IsUnk5Clear,?IsUnk5Clear@Player@@QAEHXZ
-0x0040bc40,18,Player::IsUnk5Set,?IsUnk5Set@Player@@QAEHXZ
+0x0040bc20,23,Player::IsHuman,?IsHuman@Player@@QAEHXZ
+0x0040bc40,18,Player::IsYoukai,?IsYoukai@Player@@QAEHXZ
 0x0040bc60,450,DimPlayAreaForBomb,?DimPlayAreaForBomb@@YIXPAVPlayer@@K@Z
 0x0040be30,194,StartBomb,?StartBomb@@YIXPAVPlayer@@HPADHHH@Z
 0x0040bf00,264,SpawnBombAura,?SpawnBombAura@@YIXPAVPlayer@@@Z

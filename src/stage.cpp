@@ -959,7 +959,7 @@ int Stage::StepObjects()
 
     if (this->colorScaleOn)
     {
-        if (g_Player.IsUnk5Clear())
+        if (g_Player.IsHuman())
         {
             this->colorScaleOn = 0;
             this->colorScaleTimer = 0;
@@ -968,7 +968,7 @@ int Stage::StepObjects()
     }
     else
     {
-        if (g_Player.IsUnk5Set())
+        if (g_Player.IsYoukai())
         {
             this->colorScaleOn = 1;
             this->colorScaleTimer = 0;

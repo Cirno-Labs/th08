@@ -534,13 +534,13 @@ loop:
             if (!g_EnemyManager.spawnFailed)
             {
                 child->followsYoukaiState = 1;
-                child->isYoukai = g_Player.IsUnk5Set();
-                child->drawListIndex = g_Player.IsUnk5Set() ? 0 : 2;
+                child->isYoukai = g_Player.IsYoukai();
+                child->drawListIndex = g_Player.IsYoukai() ? 0 : 2;
                 child->shootable = 0;
                 if (child->attachedEffect == NULL)
                 {
                     child->attachedEffect = g_EffectManager.SpawnEffect2(0x20, &child->pos, 1, 0xffffffff);
-                    child->attachedEffect->sprite.SetPendingInterrupt(g_Player.IsUnk5Set() ? 2 : 1);
+                    child->attachedEffect->sprite.SetPendingInterrupt(g_Player.IsYoukai() ? 2 : 1);
                     child->attachedEffect->sprite.useColor2 = child->shootable != 0;
                     if (child->index & 1)
                     {
@@ -565,13 +565,13 @@ loop:
             if (!g_EnemyManager.spawnFailed)
             {
                 child->followsYoukaiState = 1;
-                child->isYoukai = g_Player.IsUnk5Set();
-                child->drawListIndex = g_Player.IsUnk5Set() ? 0 : 2;
+                child->isYoukai = g_Player.IsYoukai();
+                child->drawListIndex = g_Player.IsYoukai() ? 0 : 2;
                 child->shootable = 0;
                 if (child->attachedEffect == NULL)
                 {
                     child->attachedEffect = g_EffectManager.SpawnEffect2(0x20, &child->pos, 1, 0xffffffff);
-                    child->attachedEffect->sprite.SetPendingInterrupt(g_Player.IsUnk5Set() ? 2 : 1);
+                    child->attachedEffect->sprite.SetPendingInterrupt(g_Player.IsYoukai() ? 2 : 1);
                     child->attachedEffect->sprite.useColor2 = child->shootable != 0;
                     if (child->index & 1)
                     {
@@ -596,15 +596,15 @@ loop:
             if (!g_EnemyManager.spawnFailed)
             {
                 child->followsYoukaiState = 1;
-                child->isYoukai = g_Player.IsUnk5Set();
-                child->drawListIndex = g_Player.IsUnk5Set() ? 0 : 2;
+                child->isYoukai = g_Player.IsYoukai();
+                child->drawListIndex = g_Player.IsYoukai() ? 0 : 2;
                 child->posOrigin = enemy->pos;
                 child->absPos = child->posOrigin + child->pos;
                 child->shootable = 0;
                 if (child->attachedEffect == NULL)
                 {
                     child->attachedEffect = g_EffectManager.SpawnEffect2(0x20, &child->absPos, 1, 0xffffffff);
-                    child->attachedEffect->sprite.SetPendingInterrupt(g_Player.IsUnk5Set() ? 2 : 1);
+                    child->attachedEffect->sprite.SetPendingInterrupt(g_Player.IsYoukai() ? 2 : 1);
                     child->attachedEffect->sprite.useColor2 = child->shootable != 0;
                     if (child->index & 1)
                     {
@@ -1217,7 +1217,7 @@ loop:
                 enemy->attachedEffect->active = 0;
             }
             enemy->attachedEffect = g_EffectManager.SpawnEffect2(INT_ARG(0) + 0x20, &enemy->absPos, 1, 0xffffffff);
-            enemy->attachedEffect->sprite.SetPendingInterrupt(g_Player.IsUnk5Set() ? 2 : 1);
+            enemy->attachedEffect->sprite.SetPendingInterrupt(g_Player.IsYoukai() ? 2 : 1);
             if (enemy->index & 1)
             {
                 enemy->attachedEffect->sprite.rotationSpeed.z = -enemy->attachedEffect->sprite.rotationSpeed.z;
@@ -1606,7 +1606,7 @@ int GetIntOperand(Enemy *enemy, int id)
         return D3DXVec3Length(&diff);
     }
     case 10097:
-        return g_Player.IsUnk5Set();
+        return g_Player.IsYoukai();
     case 10098:
         return g_GameManager.GetUnk3c() + g_SpellCard.GetTimeOrbBonus() + g_ItemManager.CountType7Items() < g_GameManager.GetUnk40() ? 0 : 2;
     case 10099:
@@ -1900,7 +1900,7 @@ float GetFloatOperand(Enemy *enemy, float id)
         return D3DXVec3Length(&diff);
     }
     case 10097:
-        return g_Player.IsUnk5Set();
+        return g_Player.IsYoukai();
     case 10099:
         return g_SpellCard.IsActive() ? g_SpellCard.IsCapturable() : g_SpellCard.IsCaptured();
     }

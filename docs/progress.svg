@@ -202,8 +202,8 @@
 <rect width="12" height="12" x="465" y="30" class="named"><title>0x0040bb20 SpriteEngine::ClearDrawStats (51 bytes)</title></rect>
 <rect width="12" height="12" x="480" y="30" class="named"><title>0x0040bb60 SpriteEngine::GetAnm (26 bytes)</title></rect>
 <rect width="12" height="12" x="495" y="30" class="named"><title>0x0040bb80 GameManager::ChecksumMismatch (145 bytes)</title></rect>
-<rect width="12" height="12" x="510" y="30" class="named"><title>0x0040bc20 Player::IsUnk5Clear (23 bytes)</title></rect>
-<rect width="12" height="12" x="525" y="30" class="named"><title>0x0040bc40 Player::IsUnk5Set (18 bytes)</title></rect>
+<rect width="12" height="12" x="510" y="30" class="named"><title>0x0040bc20 Player::IsHuman (23 bytes)</title></rect>
+<rect width="12" height="12" x="525" y="30" class="named"><title>0x0040bc40 Player::IsYoukai (18 bytes)</title></rect>
 <rect width="12" height="12" x="540" y="30" class="named"><title>0x0040bc60 DimPlayAreaForBomb (450 bytes)</title></rect>
 <rect width="12" height="12" x="555" y="30" class="named"><title>0x0040be30 StartBomb (194 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="30" class="named"><title>0x0040bf00 SpawnBombAura (264 bytes)</title></rect>
@@ -2223,7 +2223,7 @@
 <rect width="0.79" height="0.44" x="718.88" y="320.47" class="named"><title>0x004066e0 Sprite::IsShown (23 bytes)</title></rect>
 <rect width="0.79" height="0.44" x="718.88" y="323.91" class="named"><title>0x00406cd0 GameManager::IsInPractice (23 bytes)</title></rect>
 <rect width="0.79" height="0.44" x="718.88" y="327.35" class="named"><title>0x0040b8c0 Timer::AsFloat (23 bytes)</title></rect>
-<rect width="0.79" height="0.44" x="718.88" y="330.79" class="named"><title>0x0040bc20 Player::IsUnk5Clear (23 bytes)</title></rect>
+<rect width="0.79" height="0.44" x="718.88" y="330.79" class="named"><title>0x0040bc20 Player::IsHuman (23 bytes)</title></rect>
 <rect width="0.79" height="0.44" x="718.88" y="334.23" class="named"><title>0x00418110 Timer::operator-- (23 bytes)</title></rect>
 <rect width="0.79" height="0.44" x="718.88" y="337.68" class="named"><title>0x0042e120 EnemyManager::OnDraw (23 bytes)</title></rect>
 <rect width="0.79" height="0.44" x="718.88" y="341.12" class="named"><title>0x004398e8 AsciiText::SetColor (23 bytes)</title></rect>
@@ -2277,7 +2277,7 @@
 <rect width="0.17" height="0.40" x="729.70" y="344.60" class="named"><title>0x00473230 CWaveFile::~CWaveFile (19 bytes)</title></rect>
 <rect width="0.10" height="0.59" x="732.87" y="330.98" class="named"><title>0x004748a0 DatArchive::~DatArchive (19 bytes)</title></rect>
 <rect width="0.10" height="0.40" x="732.87" y="334.57" class="named"><title>0x004031e0 fabsf (18 bytes)</title></rect>
-<rect width="0.10" height="0.40" x="732.87" y="337.98" class="named"><title>0x0040bc40 Player::IsUnk5Set (18 bytes)</title></rect>
+<rect width="0.10" height="0.40" x="732.87" y="337.98" class="named"><title>0x0040bc40 Player::IsYoukai (18 bytes)</title></rect>
 <rect width="0.10" height="0.40" x="732.87" y="341.38" class="named"><title>0x0044e350 PlayerBombHitbox::Deactivate (18 bytes)</title></rect>
 <rect width="0.10" height="0.22" x="732.87" y="344.78" class="named"><title>0x0040d3b0 Timer::AsFrames (17 bytes)</title></rect>
 <rect width="0.10" height="0.41" x="735.87" y="330.98" class="named"><title>0x0042f320 Gui::IsBossPresent (17 bytes)</title></rect>

@@ -971,7 +971,7 @@ void Enemy::UpdateYoukaiState()
 {
     if (!this->isYoukai)
     {
-        if (g_Player.IsUnk5Set())
+        if (g_Player.IsYoukai())
         {
             g_EffectManager.SpawnEffect(0x1f, &this->absPos, 1, 0x80303080);
             if (this->attachedEffect != NULL)
@@ -986,7 +986,7 @@ void Enemy::UpdateYoukaiState()
             g_EffectManager.SpawnEffect(0x26, &this->absPos, 1, 0xffffffff);
         }
     }
-    else if (!g_Player.IsUnk5Set())
+    else if (!g_Player.IsYoukai())
     {
         g_EffectManager.SpawnEffect(0x1e, &this->absPos, 1, 0x80803030);
         if (this->attachedEffect != NULL)
@@ -996,8 +996,8 @@ void Enemy::UpdateYoukaiState()
         g_SoundPlayer.QueueSound(0x27, 0);
         this->drawListIndex = 2;
     }
-    this->isYoukai = g_Player.IsUnk5Set();
-    this->difficultyMaskExtra = g_Player.IsUnk5Set() ? 0x40 : 0x20;
+    this->isYoukai = g_Player.IsYoukai();
+    this->difficultyMaskExtra = g_Player.IsYoukai() ? 0x40 : 0x20;
 }
 
 int EnemyManager::RegisterChain()
