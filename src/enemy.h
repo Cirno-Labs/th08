@@ -745,6 +745,11 @@ void ScriptUpdateMovement(Enemy *enemy);
 // shootInterval frames and turns the sprite by velocity.x (0x423150).
 void ScriptUpdateShooting(Enemy *enemy);
 
+// Script function 28: slows the game to 1 / argument 1 speed, as th07's:
+// sends the stage's first two dialogue sprites interrupt 2, scales the
+// bullets' velocities and shows sprites 0x60 to 0x6f as 0x6f (0x4251b0).
+void StartSlowdown(Enemy *enemy, EnemyScriptInstr *instr);
+
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
 // The enemy scripts by stage, by stage in spell practice (stage + 9),

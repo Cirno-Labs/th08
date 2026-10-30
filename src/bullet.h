@@ -45,6 +45,25 @@ struct BulletShooter
 };
 ASSERT_SIZE(BulletShooter, 0x210);
 
+// One enemy bullet (0x10b8), as th07's. Only what is known so far.
+struct Bullet
+{
+    // Its sprite, as th07's sprites.sprite0.
+    Sprite sprite;
+    unsigned char unk_2a4[0xaa0];
+    D3DXVECTOR3 pos;
+    D3DXVECTOR3 velocity;
+    unsigned char unk_d5c[0x18];
+    float angle;
+    unsigned char unk_d78[0x38];
+    DWORD activeFlags;
+    unsigned char unk_db4[0x4];
+    // 0 while the slot is free, as th07's.
+    WORD state;
+    unsigned char unk_dba[0x2fe];
+};
+ASSERT_SIZE(Bullet, 0x10b8);
+
 // The bullets. Only what is known so far.
 class BulletManager
 {
@@ -65,7 +84,10 @@ public:
     // Fires `shooter`'s pattern, as th07's (0x430e10).
     int FirePattern(struct BulletShooter *shooter);
 
-    unsigned char unk_0[0x6ba538];
+    unsigned char unk_0[0x1a880];
+    // The bullets, as th07's; the last is a spare.
+    Bullet bullets[0x601];
+    unsigned char unk_660938[0x59c00];
     // The bullets alive, as th07's.
     int bulletCount;
     unsigned char unk_6ba53c[0x38];

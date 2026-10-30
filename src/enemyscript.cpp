@@ -1500,3 +1500,27 @@ void DropBombOrLifeItem(Enemy *enemy, EnemyScriptInstr *instr)
         g_ItemManager.SpawnItem(&enemy->pos, 5, 0);
     }
 }
+
+void StartSlowdown(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    Bullet *bullet;
+    int i;
+
+    g_App.gameSpeed = 1.0f / instr->args[1].i;
+    g_Stage.dialogueSprites[0].SetPendingInterrupt(2);
+    g_Stage.dialogueSprites[1].SetPendingInterrupt(2);
+    bullet = g_BulletManager.bullets;
+    for (i = 0; i < 0x600; i++, bullet++)
+    {
+        if (bullet->state == 0)
+        {
+            continue;
+        }
+        bullet->velocity *= g_App.gameSpeed;
+        bullet->sprite.baseSpriteIndex = bullet->sprite.spriteIndex;
+        if (bullet->sprite.spriteIndex >= 0x60 && bullet->sprite.spriteIndex <= 0x6f)
+        {
+            g_BulletManager.etamaAnm->SetSprite(&bullet->sprite, 0x6f);
+        }
+    }
+}
