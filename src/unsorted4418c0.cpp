@@ -850,6 +850,14 @@ int ChecksumExecutable()
         }
         DebugPrint("main sum %d\r\n", sum);
         g_MemoryManager.Free(data);
+#if FEAT_ORIG_CHECKSUM
+        // Claims to be the 1.00d exe, the only one th08_0100d.ver lists:
+        // for any other, CheckVersionFile runs off the end of the file,
+        // whose last line has no line break, and crashes when the game
+        // loads score.dat.
+        sum = 0xa26861b9;
+        fileSize = 840704;
+#endif
         g_App.exeChecksum = sum;
         g_App.exeSize = fileSize;
         return sum;

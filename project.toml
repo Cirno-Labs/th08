@@ -45,5 +45,11 @@ libs = ["dinput8.lib", "dsound.lib", "d3d8.lib", "d3dx8.lib", "dxguid.lib", "win
         "kernel32.lib", "user32.lib", "gdi32.lib", "advapi32.lib", "ole32.lib", "uuid.lib",
         "libcmt.lib"]
 
+[exe.features]
+# FEAT=orig_checksum: the exe claims the original's size and checksum.
+# Any other exe crashes when it loads score.dat (App::CheckVersionFile),
+# as the original does when modified.
+orig_checksum = "FEAT_ORIG_CHECKSUM"
+
 [hooks]
 progress = true
