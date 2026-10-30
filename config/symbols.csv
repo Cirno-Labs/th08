@@ -281,7 +281,7 @@ address,size,name,symbol
 0x00422be0,51,AsciiText::SetNearbyLabelPos,?SetNearbyLabelPos@AsciiText@@QAEXHPAUD3DXVECTOR3@@@Z
 0x00422c20,25,Gui::SetBossPresent,?SetBossPresent@Gui@@QAEEE@Z
 0x00422c40,1122,Func422c40,
-0x004230c0,22,Func4230c0,
+0x004230c0,22,Gui::SetBossHealth,?SetBossHealth@Gui@@QAEXM@Z
 0x004230e0,39,Func4230e0,
 0x00423110,26,Func423110,
 0x00423130,22,Func423130,
