@@ -78,7 +78,7 @@ struct SpriteData
     // rectangle's size is divided by these.
     float scaleX;
     float scaleY;
-    int unk_40;
+    int unusedInt40;
 };
 ASSERT_SIZE(SpriteData, 0x44);
 
