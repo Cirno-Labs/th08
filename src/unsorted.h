@@ -2590,6 +2590,12 @@ struct SpellCard
     {
         return this->unk_10;
     }
+    // Whether unk_0_0 and unk_0_5 are set. Inline; the copy is at
+    // 0x417860.
+    int Func417860()
+    {
+        return this->Func4178a0() && this->unk_0_5 ? TRUE : FALSE;
+    }
     // Whether unk_0_0 and unk_0_2 are set. Inline; the copy is at
     // 0x41fd90.
     int Func41fd90()

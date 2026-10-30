@@ -8,6 +8,7 @@
 #include "chain.h"
 #include "effect.h"
 #include "enemy.h"
+#include "item.h"
 #include "player.h"
 #include "resultscreen.h"
 #include "sprite.h"
@@ -738,6 +739,177 @@ void SpellCard::Func416b10(int amount)
             this->unk_100 += amount / 120;
         }
     }
+}
+
+int SpellCard::Update()
+{
+    if (g_GameManager.unk_3dbac_10 || g_GameManager.isFrozen)
+    {
+        return 1;
+    }
+    if (this->unk_0_0)
+    {
+        if (!this->enemy->active || this->enemyIndex != this->enemy->index)
+        {
+            this->Func416af0();
+        }
+        if (g_Player.pos.x >= 64.0f && g_Player.pos.y < 64.0f)
+        {
+            if (((BYTE *)&this->unk_2620)[3] > 0x20)
+            {
+                ((BYTE *)&this->unk_2620)[3] -= 4;
+            }
+        }
+        else if (((BYTE *)&this->unk_2620)[3] < 0x80)
+        {
+            ((BYTE *)&this->unk_2620)[3] += 4;
+        }
+        if (this->unk_0_2)
+        {
+            if (!this->unk_0_11 && !this->enemy->keepSpellCard)
+            {
+                this->unk_fc -= (int)(this->unk_100 / 60 * g_App.gameSpeed);
+                this->unk_fc -= this->unk_fc % 10;
+            }
+        }
+        else if (this->effect->sprite.spriteIndex == 0xdd)
+        {
+            g_EtamaAnm->SetSprite(&this->effect->sprite, 0xde);
+            this->effect->sprite.scaleTween.z = 4.0f;
+            this->effect->sprite.scaleY = 4.0f;
+        }
+        if (this->effect->unk_334 != 0.0f)
+        {
+            this->effect->unk_32c = this->effect->sprite.pos.y;
+            if (this->effect->unk_32c == 0.0f)
+            {
+                this->effect->unk_334 = 0.0f;
+            }
+        }
+        if (this->effect->sprite.interpFrame[0].AsFrames() == 0)
+        {
+            this->effect->sprite.interpDuration[0] = 0;
+            this->effect->sprite.interpFrame[0] = this->enemy->timerCallbackTime - 100;
+            this->effect->sprite.interpEasing = 0;
+            this->effect->sprite.moveStart.x = 256.0f;
+            this->effect->sprite.moveEnd.x = 8.0f;
+            this->effect->sprite.moveStart.y = 0.0f;
+            this->effect->sprite.moveEnd.y = 0.0f;
+        }
+        if (!this->unk_0_6)
+        {
+            this->effect->origin =
+                (this->enemy->pos + this->enemy->unk_2d40 - this->effect->origin) / 16.0f + this->effect->origin;
+            this->effect->origin.z = 0.0f;
+        }
+        this->effect->angle = AddNormalizeAngle(this->effect->angle, this->Func417860() ? -0.031415928f : 0.015707964f);
+    }
+    else if (this->unk_f8 != NULL)
+    {
+        if (this->unk_f8->timer == 30)
+        {
+            this->unk_f8->sprite.interpDuration[4] = 0;
+            this->unk_f8->sprite.interpFrame[4] = 20;
+            this->unk_f8->sprite.scaleInterpEasing = 1;
+            this->unk_f8->sprite.scaleTween.x = this->unk_f8->ringWidth;
+            this->unk_f8->sprite.scaleTween.z = 64.0f;
+            this->unk_f8->sprite.interpDuration[0] = 0;
+            this->unk_f8->sprite.interpFrame[0] = 100;
+            this->unk_f8->sprite.interpEasing = 4;
+            this->unk_f8->sprite.moveStart.x = this->unk_f8->radius;
+            this->unk_f8->sprite.moveEnd.x = 0.0f;
+            this->unk_f8->sprite.moveStart.y = this->unk_f8->unk_32c;
+            this->unk_f8->sprite.moveEnd.y = 60.0f;
+            this->unk_f8->sprite.pos.x = this->unk_f8->radius;
+            this->unk_f8->sprite.pos.y = this->unk_f8->unk_32c;
+        }
+        else if (this->unk_f8->timer == 60)
+        {
+            this->unk_f8->sprite.interpDuration[4] = 0;
+            this->unk_f8->sprite.interpFrame[4] = 70;
+            this->unk_f8->sprite.scaleInterpEasing = 1;
+            this->unk_f8->sprite.scaleTween.x = this->unk_f8->ringWidth;
+            this->unk_f8->sprite.scaleTween.z = 0.0f;
+        }
+        else if (this->unk_f8->timer == 130)
+        {
+            this->unk_f8->active = 0;
+            this->unk_f8 = NULL;
+            g_Gui.ShowSpellCardBonus(this->unk_104);
+            g_GameManager.AddScore(this->unk_104);
+            this->unk_0_8 = 0;
+            if (this->unk_10 > 0)
+            {
+                g_GameManager.AddTimeOrbs(this->unk_10);
+                g_GameManager.stats->unk_24 += this->unk_10 * 10;
+                this->unk_10 = 0;
+            }
+        }
+        if (this->unk_f8 != NULL)
+        {
+            if (this->unk_f8->timer <= 80)
+            {
+                this->unk_f8->origin = (g_Player.pos - this->unk_f8->origin) / 16.0f + this->unk_f8->origin;
+                this->unk_f8->origin.z = 0.0f;
+                this->unk_f8->angle = AddNormalizeAngle(this->unk_f8->angle, -0.015707964f);
+            }
+            else
+            {
+                this->unk_f8->origin = (g_Player.pos - this->unk_f8->origin) / 4.0f + this->unk_f8->origin;
+                this->unk_f8->origin.z = 0.0f;
+                this->unk_f8->angle = AddNormalizeAngle(this->unk_f8->angle, -0.05235988f);
+            }
+            this->unk_f8->unk_32c = this->unk_f8->sprite.pos.y;
+            if (this->unk_f8->timer > 8 && this->unk_10 > 0)
+            {
+                D3DXVECTOR3 itemPos;
+                float angle;
+                int i;
+                int count;
+
+                angle = (this->unk_f8->timer.AsFloat() - 10.0f) * 6.2831855f / 40.0f - 1.5707964f;
+                angle = AddNormalizeAngle(angle, 0.0f);
+                ((Vector2 *)&itemPos)->SetPolar(angle, 128.0f);
+                itemPos += this->unk_f8->origin;
+                itemPos.z = 0.0f;
+                count = this->unk_10 > 7 ? 7 : this->unk_10;
+                for (i = 0; i < count; i++)
+                {
+                    g_ItemManager.SpawnItem(&itemPos, 10, 0);
+                }
+                this->unk_10 -= count;
+                angle = AddNormalizeAngle(angle, 3.1415927f);
+                ((Vector2 *)&itemPos)->SetPolar(angle, 128.0f);
+                itemPos += this->unk_f8->origin;
+                itemPos.z = 0.0f;
+                count = this->unk_10 > 7 ? 7 : this->unk_10;
+                for (i = 0; i < 6; i++)
+                {
+                    g_ItemManager.SpawnItem(&itemPos, 10, 0);
+                }
+                this->unk_10 -= count;
+                if (this->unk_10 < 0)
+                {
+                    this->unk_10 = 0;
+                }
+            }
+        }
+    }
+    g_SpriteEngine->Step(&this->unk_120);
+    g_SpriteEngine->Step(&this->unk_668);
+    g_SpriteEngine->Step(&this->unk_bb0);
+    g_SpriteEngine->Step(&this->unk_10f8);
+    g_SpriteEngine->Step(&this->unk_1b88);
+    g_SpriteEngine->Step(&this->unk_3c4);
+    g_SpriteEngine->Step(&this->unk_90c);
+    g_SpriteEngine->Step(&this->unk_e54);
+    g_SpriteEngine->Step(&this->unk_139c);
+    g_SpriteEngine->Step(&this->unk_1640);
+    g_SpriteEngine->Step(&this->unk_18e4);
+    g_SpriteEngine->Step(&this->unk_1e2c);
+    g_SpriteEngine->Step(&this->unk_2374);
+    this->unk_108--;
+    return 1;
 }
 
 int SpellCard::RegisterChain()

@@ -217,7 +217,7 @@ address,size,name,symbol
 0x00416af0,32,SpellCard::Func416af0,?Func416af0@SpellCard@@QAEXXZ
 0x00416b10,118,SpellCard::Func416b10,?Func416b10@SpellCard@@QAEXH@Z
 0x00416b90,3269,SpellCard::Update,?Update@SpellCard@@QAEHXZ
-0x00417860,59,Func417860,
+0x00417860,59,SpellCard::Func417860,?Func417860@SpellCard@@QAEHXZ
 0x004178a0,19,SpellCard::Func4178a0,?Func4178a0@SpellCard@@QAEHXZ
 0x004178c0,1685,SpellCard::Draw,?Draw@SpellCard@@QAEHXZ
 0x00417f60,175,SpellCard::RegisterChain,?RegisterChain@SpellCard@@SIHXZ
