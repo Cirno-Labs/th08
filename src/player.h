@@ -726,6 +726,9 @@ void DrawYoumuLastWord(Player *player);
 // Yuyuko's 死符「ギャストリドリーム」: four rings of sixteen butterflies
 // spiral out from the player (0x413140).
 void UpdateYuyukoBomb(Player *player);
+// Its draw callback: dims the play area and draws the first 96
+// butterflies, turned the way they move (0x413890).
+void DrawYuyukoBomb(Player *player);
 // Draw callbacks of the bombs that only tint the play area, by the
 // bomb they follow: Alice's (also Yukari's draw.funcs[0..1], 0x40d950)
 // and Remilia's and her last word's (0x40f550, 0x40fcb0).
