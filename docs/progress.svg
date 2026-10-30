@@ -267,7 +267,7 @@
 <rect width="12" height="12" x="705" y="45" class="named"><title>0x00413990 UpdateYuyukoLastWord (2344 bytes)</title></rect>
 <rect width="12" height="12" x="720" y="45" class="named"><title>0x004142c0 DrawYuyukoLastWord (244 bytes)</title></rect>
 <rect width="12" height="12" x="735" y="45" class="named"><title>0x004143c0 Rng::GetRandomF32SignedInRange (24 bytes)</title></rect>
-<rect width="12" height="12" x="0" y="60" class="todo"><title>0x004143e0 Func4143e0 (238 bytes)</title></rect>
+<rect width="12" height="12" x="0" y="60" class="todo"><title>0x004143e0 SpellCard::SpellCard (238 bytes)</title></rect>
 <rect width="12" height="12" x="15" y="60" class="named"><title>0x004144d0 GetSpellCardDifficulty (105 bytes)</title></rect>
 <rect width="12" height="12" x="30" y="60" class="named"><title>0x00414540 IsListedSpellCard (68 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="60" class="named"><title>0x00414590 SpellCard::Initialize (3237 bytes)</title></rect>
@@ -298,8 +298,8 @@
 <rect width="12" height="12" x="420" y="60" class="named"><title>0x00418180 GameManager::IsPracticingSpellCardIn (98 bytes)</title></rect>
 <rect width="12" height="12" x="435" y="60" class="named"><title>0x004181f0 GameManager::AddScore (44 bytes)</title></rect>
 <rect width="12" height="12" x="450" y="60" class="named"><title>0x00418220 GameManager::AddTimeOrbs (180 bytes)</title></rect>
-<rect width="12" height="12" x="465" y="60" class="todo"><title>0x004182e0 Func4182e0 (25 bytes)</title></rect>
-<rect width="12" height="12" x="480" y="60" class="todo"><title>0x00418300 Func418300 (37 bytes)</title></rect>
+<rect width="12" height="12" x="465" y="60" class="todo"><title>0x004182e0 EnemyScripts::EnemyScripts (25 bytes)</title></rect>
+<rect width="12" height="12" x="480" y="60" class="todo"><title>0x00418300 EnemyScriptsUnusedBlock::EnemyScriptsUnusedBlock (37 bytes)</title></rect>
 <rect width="12" height="12" x="495" y="60" class="named"><title>0x00418330 EnemyScripts::Load (239 bytes)</title></rect>
 <rect width="12" height="12" x="510" y="60" class="named"><title>0x00418420 EnemyScripts::Release (44 bytes)</title></rect>
 <rect width="12" height="12" x="525" y="60" class="named"><title>0x00418450 EnemyScripts::StartSub (88 bytes)</title></rect>
@@ -436,8 +436,8 @@
 <rect width="12" height="12" x="240" y="105" class="named"><title>0x004286e0 Vector2::SetPolar (32 bytes)</title></rect>
 <rect width="12" height="12" x="255" y="105" class="named"><title>0x00428700 Vector2::SetPolarEllipse (32 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="105" class="named"><title>0x00428720 Sprite::IsScriptDone (28 bytes)</title></rect>
-<rect width="12" height="12" x="285" y="105" class="todo"><title>0x00428740 Func428740 (159 bytes)</title></rect>
-<rect width="12" height="12" x="300" y="105" class="todo"><title>0x004287e0 Func4287e0 (162 bytes)</title></rect>
+<rect width="12" height="12" x="285" y="105" class="todo"><title>0x00428740 EffectManager::EffectManager (159 bytes)</title></rect>
+<rect width="12" height="12" x="300" y="105" class="todo"><title>0x004287e0 Effect::Effect (162 bytes)</title></rect>
 <rect width="12" height="12" x="315" y="105" class="named"><title>0x00428890 Ending::ReadInt (115 bytes)</title></rect>
 <rect width="12" height="12" x="330" y="105" class="named"><title>0x00428910 Ending::DrawFade (591 bytes)</title></rect>
 <rect width="12" height="12" x="345" y="105" class="named"><title>0x00428b80 Ending::RunScript (2428 bytes)</title></rect>
@@ -697,7 +697,7 @@
 <rect width="12" height="12" x="405" y="180" class="named"><title>0x004417e0 ItemManager::CountType7Items (79 bytes)</title></rect>
 <rect width="12" height="12" x="420" y="180" class="named"><title>0x00441830 Timer::operator!= (27 bytes)</title></rect>
 <rect width="12" height="12" x="435" y="180" class="named"><title>0x00441850 GameManager::AddPower (77 bytes)</title></rect>
-<rect width="12" height="12" x="450" y="180" class="todo"><title>0x004418a0 Func4418a0 (28 bytes)</title></rect>
+<rect width="12" height="12" x="450" y="180" class="todo"><title>0x004418a0 GameWindow::GameWindow (28 bytes)</title></rect>
 <rect width="12" height="12" x="465" y="180" class="named"><title>0x004418c0 WinMain (1354 bytes)</title></rect>
 <rect width="12" height="12" x="480" y="180" class="named"><title>0x00441e10 SpriteEngine::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
 <rect width="12" height="12" x="495" y="180" class="named"><title>0x00441e40 MidiPlayer::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
@@ -1588,7 +1588,7 @@
 <rect width="8.77" height="8.62" x="558.02" y="166.35" class="named"><title>0x0044d530 Player::OnDraw (241 bytes)</title></rect>
 <rect width="8.77" height="8.62" x="558.02" y="177.96" class="named"><title>0x00451400 DrawHitBullets (241 bytes)</title></rect>
 <rect width="8.77" height="8.52" x="558.02" y="189.58" class="named"><title>0x00418330 EnemyScripts::Load (239 bytes)</title></rect>
-<rect width="8.77" height="8.47" x="558.02" y="201.10" class="todo"><title>0x004143e0 Func4143e0 (238 bytes)</title></rect>
+<rect width="8.77" height="8.47" x="558.02" y="201.10" class="todo"><title>0x004143e0 SpellCard::SpellCard (238 bytes)</title></rect>
 <rect width="8.77" height="8.47" x="558.02" y="212.57" class="named"><title>0x00421300 ScriptLerp (238 bytes)</title></rect>
 <rect width="8.77" height="8.47" x="558.02" y="224.04" class="named"><title>0x00449399 MusicScreen::OnUpdate (238 bytes)</title></rect>
 <rect width="8.77" height="8.47" x="558.02" y="235.51" class="named"><title>0x004663b0 SpriteEngine::RenderText (238 bytes)</title></rect>
@@ -1687,9 +1687,9 @@
 <rect width="6.85" height="6.39" x="590.98" y="246.43" class="named"><title>0x0045a3fd SpriteEngine::MoveSurface (163 bytes)</title></rect>
 <rect width="6.85" height="6.39" x="590.98" y="255.82" class="named"><title>0x004725a0 CSound::RestoreBuffer (163 bytes)</title></rect>
 <rect width="6.85" height="6.39" x="590.98" y="265.21" class="named"><title>0x00473250 CWaveFile::Open (163 bytes)</title></rect>
-<rect width="6.85" height="6.33" x="590.98" y="274.60" class="todo"><title>0x004287e0 Func4287e0 (162 bytes)</title></rect>
+<rect width="6.85" height="6.33" x="590.98" y="274.60" class="todo"><title>0x004287e0 Effect::Effect (162 bytes)</title></rect>
 <rect width="6.85" height="6.33" x="590.98" y="283.93" class="named"><title>0x0043ce60 Chain::CreateElem (162 bytes)</title></rect>
-<rect width="6.85" height="6.16" x="590.98" y="293.27" class="todo"><title>0x00428740 Func428740 (159 bytes)</title></rect>
+<rect width="6.85" height="6.16" x="590.98" y="293.27" class="todo"><title>0x00428740 EffectManager::EffectManager (159 bytes)</title></rect>
 <rect width="6.85" height="6.16" x="590.98" y="302.43" class="named"><title>0x0044c5b0 UpdateHitboxAreas (159 bytes)</title></rect>
 <rect width="6.85" height="6.16" x="590.98" y="311.59" class="named"><title>0x0045a500 InsertScore (159 bytes)</title></rect>
 <rect width="6.85" height="6.10" x="590.98" y="320.75" class="named"><title>0x00427b50 EffectUpdateRingAt (158 bytes)</title></rect>
@@ -2095,7 +2095,7 @@
 <rect width="1.69" height="1.60" x="699.77" y="292.88" class="named"><title>0x00406da0 GameManager::IsGaugeAtHigh2 (38 bytes)</title></rect>
 <rect width="1.69" height="1.60" x="704.46" y="292.88" class="named"><title>0x00406df0 GameManager::AddClock (38 bytes)</title></rect>
 <rect width="1.57" height="1.60" x="709.15" y="292.88" class="named"><title>0x00415ce0 Stage::StartSpellCard (37 bytes)</title></rect>
-<rect width="1.57" height="1.60" x="713.72" y="292.88" class="todo"><title>0x00418300 Func418300 (37 bytes)</title></rect>
+<rect width="1.57" height="1.60" x="713.72" y="292.88" class="todo"><title>0x00418300 EnemyScriptsUnusedBlock::EnemyScriptsUnusedBlock (37 bytes)</title></rect>
 <rect width="1.57" height="1.60" x="718.28" y="292.88" class="named"><title>0x0041f0b0 SpellCard::SetEffectFixed (37 bytes)</title></rect>
 <rect width="1.57" height="1.60" x="722.85" y="292.88" class="named"><title>0x00425040 GetSpellCardsCaptured (37 bytes)</title></rect>
 <rect width="1.57" height="1.60" x="727.42" y="292.88" class="named"><title>0x0042f2f0 AsciiText::SetScale (37 bytes)</title></rect>
@@ -2146,7 +2146,7 @@
 <rect width="0.79" height="1.20" x="727.28" y="301.69" class="named"><title>0x00422480 GameManager::GetPower (28 bytes)</title></rect>
 <rect width="0.79" height="1.20" x="731.06" y="301.69" class="named"><title>0x00424a00 SetScreenEffectHoldFrames (28 bytes)</title></rect>
 <rect width="0.79" height="1.20" x="734.85" y="301.69" class="named"><title>0x00428720 Sprite::IsScriptDone (28 bytes)</title></rect>
-<rect width="0.79" height="1.20" x="738.64" y="301.69" class="todo"><title>0x004418a0 Func4418a0 (28 bytes)</title></rect>
+<rect width="0.79" height="1.20" x="738.64" y="301.69" class="todo"><title>0x004418a0 GameWindow::GameWindow (28 bytes)</title></rect>
 <rect width="0.79" height="1.20" x="742.43" y="301.69" class="named"><title>0x00449bee MusicTune::MusicTune (28 bytes)</title></rect>
 <rect width="0.79" height="1.20" x="746.21" y="301.69" class="named"><title>0x00453ca0 GameManager::GetBombsUsed (28 bytes)</title></rect>
 <rect width="1.02" height="0.96" x="703.88" y="305.89" class="named"><title>0x00472b30 CStreamingSound::~CStreamingSound (28 bytes)</title></rect>
@@ -2182,7 +2182,7 @@
 <rect width="0.74" height="0.80" x="707.89" y="340.41" class="named"><title>0x0040b8a0 MemoryManager::Free (25 bytes)</title></rect>
 <rect width="0.74" height="0.80" x="707.89" y="344.20" class="named"><title>0x0040ba90 SpriteEngine::SetLastCameraSetupFlag (25 bytes)</title></rect>
 <rect width="0.71" height="0.83" x="711.63" y="309.74" class="named"><title>0x0040d410 Timer::operator% (25 bytes)</title></rect>
-<rect width="0.71" height="0.83" x="711.63" y="313.57" class="todo"><title>0x004182e0 Func4182e0 (25 bytes)</title></rect>
+<rect width="0.71" height="0.83" x="711.63" y="313.57" class="todo"><title>0x004182e0 EnemyScripts::EnemyScripts (25 bytes)</title></rect>
 <rect width="0.71" height="0.83" x="711.63" y="317.39" class="named"><title>0x0041f400 EnemySpawnArgs::EnemySpawnArgs (25 bytes)</title></rect>
 <rect width="0.71" height="0.83" x="711.63" y="321.22" class="named"><title>0x0041fdd0 SpellCard::GetTimeLeft (25 bytes)</title></rect>
 <rect width="0.71" height="0.83" x="711.63" y="325.05" class="named"><title>0x0041fdf0 Timer::operator+= (25 bytes)</title></rect>

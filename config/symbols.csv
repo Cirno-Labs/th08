@@ -199,7 +199,7 @@ address,size,name,symbol
 0x00413990,2344,UpdateYuyukoLastWord,?UpdateYuyukoLastWord@@YIXPAVPlayer@@@Z
 0x004142c0,244,DrawYuyukoLastWord,?DrawYuyukoLastWord@@YIXPAVPlayer@@@Z
 0x004143c0,24,Rng::GetRandomF32SignedInRange,?GetRandomF32SignedInRange@Rng@@QAEMM@Z
-0x004143e0,238,Func4143e0,
+0x004143e0,238,SpellCard::SpellCard,
 0x004144d0,105,GetSpellCardDifficulty,?GetSpellCardDifficulty@@YIHH@Z
 0x00414540,68,IsListedSpellCard,?IsListedSpellCard@@YIHH@Z
 0x00414590,3237,SpellCard::Initialize,?Initialize@SpellCard@@QAEHXZ
@@ -230,8 +230,8 @@ address,size,name,symbol
 0x00418180,98,GameManager::IsPracticingSpellCardIn,?IsPracticingSpellCardIn@GameManager@@QAEHHH@Z
 0x004181f0,44,GameManager::AddScore,?AddScore@GameManager@@QAEXH@Z
 0x00418220,180,GameManager::AddTimeOrbs,?AddTimeOrbs@GameManager@@QAEXH@Z
-0x004182e0,25,Func4182e0,
-0x00418300,37,Func418300,
+0x004182e0,25,EnemyScripts::EnemyScripts,
+0x00418300,37,EnemyScriptsUnusedBlock::EnemyScriptsUnusedBlock,
 0x00418330,239,EnemyScripts::Load,?Load@EnemyScripts@@QAEHPAD@Z
 0x00418420,44,EnemyScripts::Release,?Release@EnemyScripts@@QAEXXZ
 0x00418450,88,EnemyScripts::StartSub,?StartSub@EnemyScripts@@QAEHPAUEnemyScriptState@@F@Z
@@ -368,8 +368,8 @@ address,size,name,symbol
 0x004286e0,32,Vector2::SetPolar,?SetPolar@Vector2@@QAEXMM@Z
 0x00428700,32,Vector2::SetPolarEllipse,?SetPolarEllipse@Vector2@@QAEXMMM@Z
 0x00428720,28,Sprite::IsScriptDone,?IsScriptDone@Sprite@@QAEHXZ
-0x00428740,159,Func428740,
-0x004287e0,162,Func4287e0,
+0x00428740,159,EffectManager::EffectManager,
+0x004287e0,162,Effect::Effect,
 0x00428890,115,Ending::ReadInt,?ReadInt@Ending@@QAEHXZ
 0x00428910,591,Ending::DrawFade,?DrawFade@Ending@@QAEXXZ
 0x00428b80,2428,Ending::RunScript,?RunScript@Ending@@QAEHXZ
@@ -629,7 +629,7 @@ address,size,name,symbol
 0x004417e0,79,ItemManager::CountType7Items,?CountType7Items@ItemManager@@QAEHXZ
 0x00441830,27,Timer::operator!=,??9Timer@@QAEHH@Z
 0x00441850,77,GameManager::AddPower,?AddPower@GameManager@@QAEXH@Z
-0x004418a0,28,Func4418a0,
+0x004418a0,28,GameWindow::GameWindow,
 0x004418c0,1354,WinMain,_WinMain@16
 0x00441e10,46,SpriteEngine::`scalar deleting destructor',??_GSpriteEngine@@QAEPAXI@Z
 0x00441e40,46,MidiPlayer::`scalar deleting destructor',??_GMidiPlayer@@QAEPAXI@Z
