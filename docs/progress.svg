@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">84.05% (938)</tspan> · <tspan class="decompiled">3.05% (34)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">12.90% (144)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">84.05% (938)</tspan> · <tspan class="decompiled">3.14% (35)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">12.81% (143)</tspan></tspan></text>
 <g transform="translate(0 20)">
 <rect width="627.85" height="6" x="0" y="0" class="named"/>
-<rect width="22.76" height="6" x="627.85" y="0" class="decompiled"/>
-<rect width="96.39" height="6" x="650.61" y="0" class="todo"/>
+<rect width="23.43" height="6" x="627.85" y="0" class="decompiled"/>
+<rect width="95.72" height="6" x="651.28" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -355,7 +355,7 @@
 <rect width="12" height="12" x="510" y="75" class="todo"><title>0x00423110 Func423110 (26 bytes)</title></rect>
 <rect width="12" height="12" x="525" y="75" class="todo"><title>0x00423130 Func423130 (22 bytes)</title></rect>
 <rect width="12" height="12" x="540" y="75" class="todo"><title>0x00423150 Func423150 (567 bytes)</title></rect>
-<rect width="12" height="12" x="555" y="75" class="todo"><title>0x00423390 Func423390 (52 bytes)</title></rect>
+<rect width="12" height="12" x="555" y="75" class="decompiled"><title>0x00423390 ScriptSetUnknown4e3d28 (52 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="75" class="todo"><title>0x004233d0 Func4233d0 (39 bytes)</title></rect>
 <rect width="12" height="12" x="585" y="75" class="todo"><title>0x00423400 Func423400 (296 bytes)</title></rect>
 <rect width="12" height="12" x="600" y="75" class="todo"><title>0x00423530 Func423530 (104 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">79.04%</tspan> · <tspan class="decompiled">1.56%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">19.40%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">79.04%</tspan> · <tspan class="decompiled">1.57%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">19.39%</tspan></tspan></text>
 <g transform="translate(0 20)">
 <rect width="590.42" height="6" x="0" y="0" class="named"/>
-<rect width="11.65" height="6" x="590.42" y="0" class="decompiled"/>
-<rect width="144.93" height="6" x="602.07" y="0" class="todo"/>
+<rect width="11.74" height="6" x="590.42" y="0" class="decompiled"/>
+<rect width="144.84" height="6" x="602.16" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -2015,7 +2015,7 @@
 <rect width="2.55" height="2.31" x="674.24" y="316.12" class="named"><title>0x00402150 PauseMenu::PauseMenu (52 bytes)</title></rect>
 <rect width="2.55" height="2.31" x="674.24" y="321.43" class="named"><title>0x00402190 ContinueMenu::ContinueMenu (52 bytes)</title></rect>
 <rect width="2.55" height="2.31" x="674.24" y="326.75" class="named"><title>0x00406660 Timer::NextTick (52 bytes)</title></rect>
-<rect width="2.55" height="2.31" x="674.24" y="332.06" class="todo"><title>0x00423390 Func423390 (52 bytes)</title></rect>
+<rect width="2.55" height="2.31" x="674.24" y="332.06" class="decompiled"><title>0x00423390 ScriptSetUnknown4e3d28 (52 bytes)</title></rect>
 <rect width="2.55" height="2.31" x="674.24" y="337.37" class="named"><title>0x0042a410 BulletShooter::BulletShooter (52 bytes)</title></rect>
 <rect width="2.55" height="2.31" x="674.24" y="342.69" class="named"><title>0x00440010 ItemManager::ItemManager (52 bytes)</title></rect>
 <rect width="2.30" height="2.57" x="679.79" y="278" class="named"><title>0x00462750 ModulateChannel (52 bytes)</title></rect>

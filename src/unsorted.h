@@ -409,6 +409,8 @@ void RemoveGameManagerChain();
 extern int g_Unknown18b8a2c;
 // Cleared by GameManager::DeletedCallback.
 extern int g_Unknown4e3d28;
+// Set with g_Unknown4e3d28 by ScriptSetUnknown4e3d28.
+extern float g_Unknown4e3d24;
 // GameManager::Func43c0bb only applies while it is clear, unless forced.
 extern int g_Unknown17d6ed4;
 // The damage an enemy takes per time orb Player::CalcDamage spawns.

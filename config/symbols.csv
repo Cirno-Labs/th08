@@ -286,7 +286,7 @@ address,size,name,symbol
 0x00423110,26,Func423110,
 0x00423130,22,Func423130,
 0x00423150,567,Func423150,
-0x00423390,52,Func423390,
+0x00423390,52,ScriptSetUnknown4e3d28,?ScriptSetUnknown4e3d28@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x004233d0,39,Func4233d0,
 0x00423400,296,Func423400,
 0x00423530,104,Func423530,
@@ -2481,6 +2481,7 @@ address,size,name,symbol
 0x004c8704,,g_FileModes,?g_FileModes@@3PAPADA
 0x004cce00,,g_AsciiDrawChain,?g_AsciiDrawChain@@3UChainElem@@A
 0x004cce20,,g_AsciiText,?g_AsciiText@@3VAsciiText@@A
+0x004e3d24,,g_Unknown4e3d24,?g_Unknown4e3d24@@3MA
 0x004e3d28,,g_Unknown4e3d28,?g_Unknown4e3d28@@3HA
 0x004e3fd0,,g_AsciiCalcChain,?g_AsciiCalcChain@@3UChainElem@@A
 0x004e3ff0,,g_AsciiDrawChain2,?g_AsciiDrawChain2@@3UChainElem@@A

@@ -1064,3 +1064,9 @@ void ScriptMoveRandom2(Enemy *enemy, EnemyScriptInstr *instr)
         ScriptMoveAngleTimed(enemy, instr, angle);
     }
 }
+
+void ScriptSetUnknown4e3d28(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    g_Unknown4e3d28 = enemy->currentCtx->vars.ints[0];
+    g_Unknown4e3d24 = enemy->currentCtx->vars.floats[0];
+}

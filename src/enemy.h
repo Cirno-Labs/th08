@@ -639,6 +639,10 @@ void ScriptMoveAngleTimed(Enemy *enemy, EnemyScriptInstr *instr, float angle);
 // turned back only near the top and bottom bounds (0x4224a0).
 void ScriptMoveRandom2(Enemy *enemy, EnemyScriptInstr *instr);
 
+// Script function 0: sets g_Unknown4e3d28 and g_Unknown4e3d24 from
+// the first int and float variables (0x423390).
+void ScriptSetUnknown4e3d28(Enemy *enemy, EnemyScriptInstr *instr);
+
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
 // The enemy scripts by stage, by stage in spell practice (stage + 9),
