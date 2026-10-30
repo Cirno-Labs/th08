@@ -311,7 +311,7 @@ address,size,name,symbol
 0x00424e50,272,Func424e50,
 0x00424f60,39,FlashScreen180,?FlashScreen180@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00424f90,46,StartSlowdown,?StartSlowdown@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
-0x00424fc0,35,Func424fc0,
+0x00424fc0,35,GetPracticeCard,?GetPracticeCard@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00424ff0,35,Func424ff0,
 0x00425020,26,Func425020,
 0x00425040,37,Func425040,

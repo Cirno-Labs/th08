@@ -695,6 +695,10 @@ void FlashScreen180(Enemy *enemy, EnemyScriptInstr *instr);
 // StartSlowdown without its bullet handling (0x424f90).
 void StartSlowdown(Enemy *enemy, EnemyScriptInstr *instr);
 
+// Script function 19: sets the first int variable to the practised
+// spell card (GameManager::unk_3dbb0) (0x424fc0).
+void GetPracticeCard(Enemy *enemy, EnemyScriptInstr *instr);
+
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
 // The enemy scripts by stage, by stage in spell practice (stage + 9),

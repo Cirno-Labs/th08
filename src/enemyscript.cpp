@@ -1180,3 +1180,8 @@ void StartSlowdown(Enemy *enemy, EnemyScriptInstr *instr)
     newSpeed = 1.0f / divisor;
     g_App.gameSpeed = newSpeed;
 }
+
+void GetPracticeCard(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    enemy->currentCtx->vars.ints[0] = g_GameManager.unk_3dbb0;
+}
