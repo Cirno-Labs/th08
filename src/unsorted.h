@@ -2494,7 +2494,13 @@ struct SpellCard
     // interrupt directly and sends unk_1e2c (and unk_2374 unless
     // unk_0_10) interrupt 2 (0x416160).
     void Func416160();
-    // Called with 8000 when a time orb is collected (0x416b10).
+    // Hides the boss's card: clears unk_0_0 and ends the name banners
+    // (0x416af0).
+    void Func416af0();
+    // Called with 8000 when a time orb is collected: unless unk_0_11 is
+    // set, adds `amount` to the bonus, up to the bonus the card started
+    // with, and below that `amount` / 120 to what it loses a second
+    // (0x416b10).
     void Func416b10(int amount);
     // Shows the name of a bomb's spell card as the bomb starts
     // (StartBomb): the portrait for `face` (0 or 1, else none), `name`

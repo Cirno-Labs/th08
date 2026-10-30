@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">92.20% (1029)</tspan> · <tspan class="decompiled">3.49% (39)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">4.30% (48)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">92.20% (1029)</tspan> · <tspan class="decompiled">3.58% (40)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">4.21% (47)</tspan></tspan></text>
 <g transform="translate(0 20)">
 <rect width="688.77" height="6" x="0" y="0" class="named"/>
-<rect width="26.10" height="6" x="688.77" y="0" class="decompiled"/>
-<rect width="32.13" height="6" x="714.87" y="0" class="todo"/>
+<rect width="26.77" height="6" x="688.77" y="0" class="decompiled"/>
+<rect width="31.46" height="6" x="715.54" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -283,7 +283,7 @@
 <rect width="12" height="12" x="180" y="60" class="decompiled"><title>0x00416160 SpellCard::Func416160 (70 bytes)</title></rect>
 <rect width="12" height="12" x="195" y="60" class="todo"><title>0x004161b0 SpellCard::End (2331 bytes)</title></rect>
 <rect width="12" height="12" x="210" y="60" class="todo"><title>0x00416ad0 Func416ad0 (24 bytes)</title></rect>
-<rect width="12" height="12" x="225" y="60" class="todo"><title>0x00416af0 Func416af0 (32 bytes)</title></rect>
+<rect width="12" height="12" x="225" y="60" class="decompiled"><title>0x00416af0 SpellCard::Func416af0 (32 bytes)</title></rect>
 <rect width="12" height="12" x="240" y="60" class="todo"><title>0x00416b10 SpellCard::Func416b10 (118 bytes)</title></rect>
 <rect width="12" height="12" x="255" y="60" class="todo"><title>0x00416b90 Func416b90 (3269 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="60" class="todo"><title>0x00417860 Func417860 (59 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">86.85%</tspan> · <tspan class="decompiled">1.62%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">11.54%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">86.85%</tspan> · <tspan class="decompiled">1.62%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">11.53%</tspan></tspan></text>
 <g transform="translate(0 20)">
 <rect width="648.74" height="6" x="0" y="0" class="named"/>
-<rect width="12.07" height="6" x="648.74" y="0" class="decompiled"/>
-<rect width="86.19" height="6" x="660.81" y="0" class="todo"/>
+<rect width="12.12" height="6" x="648.74" y="0" class="decompiled"/>
+<rect width="86.14" height="6" x="660.86" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -2127,7 +2127,7 @@
 <rect width="1.47" height="1.19" x="699.41" y="331.50" class="named"><title>0x00433880 SinCos (33 bytes)</title></rect>
 <rect width="1.47" height="1.19" x="699.41" y="335.69" class="named"><title>0x00443c60 MidiDevice::MidiDevice (33 bytes)</title></rect>
 <rect width="1.47" height="1.06" x="699.41" y="339.88" class="named"><title>0x00406700 Sprite::ClearShown (32 bytes)</title></rect>
-<rect width="1.47" height="1.06" x="699.41" y="343.94" class="todo"><title>0x00416af0 Func416af0 (32 bytes)</title></rect>
+<rect width="1.47" height="1.06" x="699.41" y="343.94" class="decompiled"><title>0x00416af0 SpellCard::Func416af0 (32 bytes)</title></rect>
 <rect width="1.30" height="1.22" x="703.88" y="297.47" class="named"><title>0x004286e0 Vector2::SetPolar (32 bytes)</title></rect>
 <rect width="1.30" height="1.22" x="708.18" y="297.47" class="named"><title>0x00428700 Vector2::SetPolarEllipse (32 bytes)</title></rect>
 <rect width="1.30" height="1.22" x="712.48" y="297.47" class="named"><title>0x0044e120 Sprite::SetBlendModeNormal (32 bytes)</title></rect>

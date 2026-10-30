@@ -505,3 +505,9 @@ void SpellCard::Func416160()
         this->unk_2374.SetPendingInterrupt(2);
     }
 }
+
+void SpellCard::Func416af0()
+{
+    this->unk_0_0 = 0;
+    this->Func416160();
+}

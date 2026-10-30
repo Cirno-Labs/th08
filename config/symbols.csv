@@ -214,7 +214,7 @@ address,size,name,symbol
 0x00416160,70,SpellCard::Func416160,?Func416160@SpellCard@@QAEXXZ
 0x004161b0,2331,SpellCard::End,?End@SpellCard@@QAEXXZ
 0x00416ad0,24,Func416ad0,
-0x00416af0,32,Func416af0,
+0x00416af0,32,SpellCard::Func416af0,?Func416af0@SpellCard@@QAEXXZ
 0x00416b10,118,SpellCard::Func416b10,?Func416b10@SpellCard@@QAEXH@Z
 0x00416b90,3269,Func416b90,
 0x00417860,59,Func417860,
