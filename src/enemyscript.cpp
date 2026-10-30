@@ -1127,3 +1127,10 @@ void SpawnTwinEffects41(Enemy *enemy, EnemyScriptInstr *instr)
     g_EtamaAnm->StartScript(&effect->sprite, 0x63);
     g_Stage.unk_625c = DrawTwinEffects;
 }
+
+void EndTwinEffects(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    g_EffectManager.GetReservedEffect(9)->active = 0;
+    g_EffectManager.GetReservedEffect(10)->active = 0;
+    g_Stage.dialogueSpriteCount = 2;
+}

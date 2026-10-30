@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">84.41% (942)</tspan> · <tspan class="decompiled">3.14% (35)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">12.46% (139)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">84.50% (943)</tspan> · <tspan class="decompiled">3.14% (35)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">12.37% (138)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="630.53" height="6" x="0" y="0" class="named"/>
-<rect width="23.43" height="6" x="630.53" y="0" class="decompiled"/>
-<rect width="93.04" height="6" x="653.96" y="0" class="todo"/>
+<rect width="631.20" height="6" x="0" y="0" class="named"/>
+<rect width="23.43" height="6" x="631.20" y="0" class="decompiled"/>
+<rect width="92.37" height="6" x="654.63" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -364,7 +364,7 @@
 <rect width="12" height="12" x="645" y="75" class="named"><title>0x00423d70 D3DXVECTOR3::operator*= (59 bytes)</title></rect>
 <rect width="12" height="12" x="660" y="75" class="named"><title>0x00423db0 SpawnTwinEffects41 (104 bytes)</title></rect>
 <rect width="12" height="12" x="675" y="75" class="todo"><title>0x00423e20 Func423e20 (784 bytes)</title></rect>
-<rect width="12" height="12" x="690" y="75" class="todo"><title>0x00424130 Func424130 (64 bytes)</title></rect>
+<rect width="12" height="12" x="690" y="75" class="named"><title>0x00424130 EndTwinEffects (64 bytes)</title></rect>
 <rect width="12" height="12" x="705" y="75" class="todo"><title>0x00424170 Func424170 (104 bytes)</title></rect>
 <rect width="12" height="12" x="720" y="75" class="todo"><title>0x004241e0 Func4241e0 (784 bytes)</title></rect>
 <rect width="12" height="12" x="735" y="75" class="todo"><title>0x004244f0 Func4244f0 (494 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">79.16%</tspan> · <tspan class="decompiled">1.57%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">19.27%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">79.17%</tspan> · <tspan class="decompiled">1.57%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">19.26%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="591.30" height="6" x="0" y="0" class="named"/>
-<rect width="11.74" height="6" x="591.30" y="0" class="decompiled"/>
-<rect width="143.96" height="6" x="603.04" y="0" class="todo"/>
+<rect width="591.41" height="6" x="0" y="0" class="named"/>
+<rect width="11.74" height="6" x="591.41" y="0" class="decompiled"/>
+<rect width="143.86" height="6" x="603.14" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -1956,7 +1956,7 @@
 <rect width="3.28" height="2.96" x="662.25" y="284.24" class="named"><title>0x00449ea0 PlayerBomb::PlayerBomb (66 bytes)</title></rect>
 <rect width="3.28" height="2.87" x="662.25" y="290.20" class="named"><title>0x0044fd80 TryFireShot (65 bytes)</title></rect>
 <rect width="3.28" height="2.78" x="662.25" y="296.07" class="named"><title>0x004069f0 AnmLoaded::StartScript (64 bytes)</title></rect>
-<rect width="3.28" height="2.78" x="662.25" y="301.85" class="todo"><title>0x00424130 Func424130 (64 bytes)</title></rect>
+<rect width="3.28" height="2.78" x="662.25" y="301.85" class="named"><title>0x00424130 EndTwinEffects (64 bytes)</title></rect>
 <rect width="3.28" height="2.78" x="662.25" y="307.63" class="named"><title>0x0042f1f0 EnemyManager::AnyBossActive (64 bytes)</title></rect>
 <rect width="3.28" height="2.78" x="662.25" y="313.41" class="named"><title>0x0042f230 GameManager::IsSoloHuman (64 bytes)</title></rect>
 <rect width="3.28" height="2.78" x="662.25" y="319.19" class="named"><title>0x0042f270 GameManager::IsSoloYoukai (64 bytes)</title></rect>

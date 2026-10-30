@@ -665,6 +665,10 @@ void SpawnTwinEffects38(Enemy *enemy, EnemyScriptInstr *instr);
 // stage draw them through DrawTwinEffects (0x423db0).
 void SpawnTwinEffects41(Enemy *enemy, EnemyScriptInstr *instr);
 
+// Script function 5: ends reserved effects 9 and 10 and sets the
+// stage's dialogueSpriteCount to 2 (0x424130).
+void EndTwinEffects(Enemy *enemy, EnemyScriptInstr *instr);
+
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
 // The enemy scripts by stage, by stage in spell practice (stage + 9),
