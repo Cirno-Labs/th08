@@ -391,7 +391,7 @@ address,size,name,symbol
 0x0042a4c0,25,EnemyScriptLoop::EnemyScriptLoop,??0EnemyScriptLoop@@QAE@XZ
 0x0042a4e0,409,EnemyManager::Spawn,?Spawn@EnemyManager@@QAEPAUEnemy@@FPAUD3DXVECTOR3@@HDHH@Z
 0x0042a680,413,EnemyManager::SpawnWithVars,?SpawnWithVars@EnemyManager@@QAEPAUEnemy@@FPAUD3DXVECTOR3@@HDHPAUEnemyScriptVars@@@Z
-0x0042a820,115,Func42a820,
+0x0042a820,115,ReleaseEnemyEffects,?ReleaseEnemyEffects@@YIXPAUEnemy@@@Z
 0x0042a8a0,1216,Func42a8a0,
 0x0042adb0,1336,Enemy::Func42adb0,?Func42adb0@Enemy@@QAEXH@Z
 0x0042b2f0,117,Func42b2f0,

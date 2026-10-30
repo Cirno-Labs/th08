@@ -2,6 +2,7 @@
 
 #include <string.h>
 
+#include "effect.h"
 #include "enemy.h"
 #include "player.h"
 #include "unsorted.h"
@@ -169,4 +170,20 @@ Enemy *EnemyManager::SpawnWithVars(short sub, D3DXVECTOR3 *pos, int life, char i
     }
     this->spawnFailed = i == 0x1e0;
     return enemy;
+}
+
+void ReleaseEnemyEffects(Enemy *enemy)
+{
+    int i;
+
+    for (i = 0; i < enemy->effectCount; i++)
+    {
+        if (enemy->effects[i] == NULL)
+        {
+            continue;
+        }
+        enemy->effects[i]->fadeOut = 1;
+        enemy->effects[i] = NULL;
+    }
+    enemy->effectCount = 0;
 }
