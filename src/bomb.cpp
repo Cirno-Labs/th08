@@ -1,6 +1,6 @@
 // The bombs, from 0x40bc60, as th07's bomb.cpp: the shared helpers, the
-// per-shot bomb callbacks of g_BombFuncs and the effect callbacks of
-// g_EffectInfos. Only part of it so far.
+// per-character bomb callbacks of g_BombFuncs and the effect callbacks of
+// g_EffectInfos.
 
 #include "bullet.h"
 #include "effect.h"

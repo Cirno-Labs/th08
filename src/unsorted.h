@@ -1452,7 +1452,10 @@ public:
     // GetPower 0x422480, GetLives 0x42f2b0, GetBombs 0x4398ce, SetLives
     // 0x406e20, SetBombs 0x406f30, SetPower 0x406fa0.
     int GetPower();
-    int GetLives();
+    int GetLives()
+    {
+        return this->stats->lives;
+    }
     int GetBombs()
     {
         return this->stats->bombs;
