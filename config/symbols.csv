@@ -319,7 +319,7 @@ address,size,name,symbol
 0x004250d0,213,Func4250d0,
 0x004251b0,213,Func4251b0,
 0x00425290,255,Func425290,
-0x00425390,74,Func425390,
+0x00425390,74,DropBombOrLifeItem,?DropBombOrLifeItem@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x004253e0,34,EffectManager::GetReservedEffect,?GetReservedEffect@EffectManager@@QAEPAUEffect@@H@Z
 0x00425410,25,EffectManager::Reset,?Reset@EffectManager@@QAEXXZ
 0x00425430,529,EffectManager::SpawnEffect,?SpawnEffect@EffectManager@@QAEPAUEffect@@HPAUD3DXVECTOR3@@HK@Z

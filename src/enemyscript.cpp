@@ -1215,3 +1215,15 @@ void SetFrozen(Enemy *enemy, EnemyScriptInstr *instr)
         g_Stage.dialogueSprites[1].SetPendingInterrupt(1);
     }
 }
+
+void DropBombOrLifeItem(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    if (g_Unknown17d6ed4)
+    {
+        g_ItemManager.SpawnItem(&enemy->pos, 3, 0);
+    }
+    else
+    {
+        g_ItemManager.SpawnItem(&enemy->pos, 5, 0);
+    }
+}

@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">85.57% (955)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">11.20% (125)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">85.66% (956)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">11.11% (124)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="639.23" height="6" x="0" y="0" class="named"/>
-<rect width="24.10" height="6" x="639.23" y="0" class="decompiled"/>
-<rect width="83.67" height="6" x="663.33" y="0" class="todo"/>
+<rect width="639.90" height="6" x="0" y="0" class="named"/>
+<rect width="24.10" height="6" x="639.90" y="0" class="decompiled"/>
+<rect width="83" height="6" x="664" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -388,7 +388,7 @@
 <rect width="12" height="12" x="255" y="90" class="todo"><title>0x004250d0 Func4250d0 (213 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="90" class="todo"><title>0x004251b0 Func4251b0 (213 bytes)</title></rect>
 <rect width="12" height="12" x="285" y="90" class="todo"><title>0x00425290 Func425290 (255 bytes)</title></rect>
-<rect width="12" height="12" x="300" y="90" class="todo"><title>0x00425390 Func425390 (74 bytes)</title></rect>
+<rect width="12" height="12" x="300" y="90" class="named"><title>0x00425390 DropBombOrLifeItem (74 bytes)</title></rect>
 <rect width="12" height="12" x="315" y="90" class="named"><title>0x004253e0 EffectManager::GetReservedEffect (34 bytes)</title></rect>
 <rect width="12" height="12" x="330" y="90" class="named"><title>0x00425410 EffectManager::Reset (25 bytes)</title></rect>
 <rect width="12" height="12" x="345" y="90" class="named"><title>0x00425430 EffectManager::SpawnEffect (529 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">79.30%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">19.13%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">79.31%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">19.11%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="592.36" height="6" x="0" y="0" class="named"/>
-<rect width="11.78" height="6" x="592.36" y="0" class="decompiled"/>
-<rect width="142.87" height="6" x="604.13" y="0" class="todo"/>
+<rect width="592.48" height="6" x="0" y="0" class="named"/>
+<rect width="11.78" height="6" x="592.48" y="0" class="decompiled"/>
+<rect width="142.75" height="6" x="604.25" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -1913,7 +1913,7 @@
 <rect width="3.83" height="3.23" x="669.59" y="253.82" class="decompiled"><title>0x00439916 Func439916 (75 bytes)</title></rect>
 <rect width="3.83" height="3.23" x="676.42" y="253.82" class="decompiled"><title>0x00439961 Func439961 (75 bytes)</title></rect>
 <rect width="3.83" height="3.23" x="683.25" y="253.82" class="named"><title>0x0043c710 Chain::~Chain (75 bytes)</title></rect>
-<rect width="3.74" height="3.23" x="690.08" y="253.82" class="todo"><title>0x00425390 Func425390 (74 bytes)</title></rect>
+<rect width="3.74" height="3.23" x="690.08" y="253.82" class="named"><title>0x00425390 DropBombOrLifeItem (74 bytes)</title></rect>
 <rect width="3.74" height="3.23" x="696.82" y="253.82" class="named"><title>0x004481df App::EnableFog (74 bytes)</title></rect>
 <rect width="3.74" height="3.23" x="703.56" y="253.82" class="named"><title>0x00462270 SpriteEngine::SendInterruptToLoadedSprites (74 bytes)</title></rect>
 <rect width="3.74" height="3.23" x="710.30" y="253.82" class="named"><title>0x00473970 File::Write (74 bytes)</title></rect>

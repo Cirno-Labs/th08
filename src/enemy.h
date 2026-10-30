@@ -714,6 +714,10 @@ void GetSpellCardsCaptured(Enemy *enemy, EnemyScriptInstr *instr);
 // sends the stage's first two dialogue sprites interrupt 2 (frozen) or 1 (0x425070).
 void SetFrozen(Enemy *enemy, EnemyScriptInstr *instr);
 
+// Script function 31: drops item 3 at the enemy while a bomb runs,
+// else item 5 (0x425390).
+void DropBombOrLifeItem(Enemy *enemy, EnemyScriptInstr *instr);
+
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
 // The enemy scripts by stage, by stage in spell practice (stage + 9),
