@@ -385,6 +385,49 @@ void Enemy::Func42bc90()
     }
 }
 
+void Enemy::Despawn()
+{
+    int i;
+
+    this->Func42adb0(0);
+    if (this->deathMode == 0)
+    {
+        this->active = 0;
+    }
+    if (this->isBoss && this->bossIndex < 4)
+    {
+        g_Gui.SetBossPresent(0);
+        g_EnemyManager.bosses[this->bossIndex] = NULL;
+        this->isBoss = 0;
+        g_AsciiText.SetNearbyLabelInterrupt(this->bossIndex, 2);
+        g_AsciiText.SetNearbyLabelPos(this->bossIndex, &D3DXVECTOR3(-999.0f, -999.0f, 0.0f));
+    }
+    if (this->effectCount != 0)
+    {
+        ReleaseEnemyEffects(this);
+    }
+    if (this->isBoss)
+    {
+        g_EnemyManager.bosses[this->bossIndex] = NULL;
+    }
+    g_ReplayManager->frameEvents |= 0x20;
+    if (this->unk_53c8 != NULL)
+    {
+        this->unk_53c8->sprite.SetPendingInterrupt(3);
+        this->unk_53c8 = NULL;
+    }
+    for (i = 0; i < 4; i++)
+    {
+        this->lifeCallbackLife[i] = -1;
+    }
+    this->timerCallbackTime = -1;
+    this->Func42bc90();
+    if (g_Unknown18b89b4 == this)
+    {
+        g_Unknown18b89b4 = NULL;
+    }
+}
+
 int EnemyManager::RegisterChain()
 {
     EnemyManager *em = &g_EnemyManager;

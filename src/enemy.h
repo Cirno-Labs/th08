@@ -93,6 +93,11 @@ struct Enemy
 
     // Called on the bosses with 0 as a spell card bomb ends (0x42adb0).
     void Func42adb0(int arg);
+    // Ends it, as th07's: Func42adb0(0) first; unless deathMode is set,
+    // deactivates it; a boss leaves its slot, hides its nearby label and
+    // ends the boss fight; drops its effects, sends unk_53c8 interrupt
+    // 3, clears its callbacks and frees unk_3384 (0x42bcf0).
+    void Despawn();
     // Takes it out of the list through unk_4 and unk_8 while Func41fd20,
     // clearing unk_2da4; else just clears both links (0x42b2f0).
     void Func42b2f0();
@@ -168,7 +173,8 @@ struct Enemy
     char deathEffect;
     BYTE deathEffectIndex;
     BYTE deathEffectVariant;
-    BYTE unk_3313;
+    // Its index in EnemyManager::bosses while isBoss is set.
+    BYTE bossIndex;
     BYTE hitFlashTimer;
     unsigned char unk_3315[0x3];
     Timer unk_3318;
@@ -242,7 +248,9 @@ struct Enemy
     int effectCount;
     // How far the effects circle it, as th07's.
     float effectRadius;
-    unsigned char unk_53c8[0x8];
+    // Sent interrupt 3 as it despawns.
+    struct Effect *unk_53c8;
+    unsigned char unk_53cc[0x4];
 };
 ASSERT_SIZE(Enemy, 0x53d0);
 
@@ -413,6 +421,8 @@ public:
 };
 ASSERT_SIZE(EnemyManager, 0x9dcf10);
 extern EnemyManager g_EnemyManager;
+// Cleared when this enemy despawns.
+extern Enemy *g_Unknown18b89b4;
 extern ChainElem g_EnemyManagerCalcChain;
 extern ChainElem g_EnemyManagerDrawChain;
 extern ChainElem g_EnemyManagerDrawChain2;

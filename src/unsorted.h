@@ -1938,6 +1938,13 @@ public:
     void FreeMsgFile();
     // Starts dialogue script `index`, as th07's (0x439810).
     void StartMsg(int index);
+    // Sets bossPresent and returns `present`. New in th08. Inline; the
+    // copy at 0x422c20 is an /Od object's.
+    BYTE SetBossPresent(BYTE present)
+    {
+        this->bossPresent = present;
+        return present;
+    }
     // Whether a boss fight runs, as th07's. Inline; the copy at
     // 0x42f320 is an /Od object's.
     BYTE IsBossPresent()

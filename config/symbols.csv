@@ -277,9 +277,9 @@ address,size,name,symbol
 0x004224a0,630,Func4224a0,
 0x00422720,1110,Func422720,
 0x00422b80,39,Func422b80,
-0x00422bb0,42,Func422bb0,
+0x00422bb0,42,AsciiText::SetNearbyLabelInterrupt,?SetNearbyLabelInterrupt@AsciiText@@QAEXHF@Z
 0x00422be0,51,AsciiText::SetNearbyLabelPos,?SetNearbyLabelPos@AsciiText@@QAEXHPAUD3DXVECTOR3@@@Z
-0x00422c20,25,Func422c20,
+0x00422c20,25,Gui::SetBossPresent,?SetBossPresent@Gui@@QAEEE@Z
 0x00422c40,1122,Func422c40,
 0x004230c0,22,Func4230c0,
 0x004230e0,39,Func4230e0,
@@ -400,7 +400,7 @@ address,size,name,symbol
 0x0042b930,796,Func42b930,
 0x0042bc50,50,Func42bc50,
 0x0042bc90,96,Enemy::Func42bc90,?Func42bc90@Enemy@@QAEXXZ
-0x0042bcf0,432,Func42bcf0,
+0x0042bcf0,432,Enemy::Despawn,?Despawn@Enemy@@QAEXXZ
 0x0042bea0,734,Func42bea0,
 0x0042c180,270,Func42c180,
 0x0042c290,284,Func42c290,
@@ -2527,6 +2527,7 @@ address,size,name,symbol
 0x017ceac0,,g_LoadingSprites,?g_LoadingSprites@@3PAVSprite@@A
 0x017d5ef8,,g_Player,?g_Player@@3VPlayer@@A
 0x017d6ed4,,g_Unknown17d6ed4,?g_Unknown17d6ed4@@3HA
+0x018b89b4,,g_Unknown18b89b4,?g_Unknown18b89b4@@3PAUEnemy@@A
 0x018b8a24,,g_Unknown18b8a24,?g_Unknown18b8a24@@3HA
 0x018b8a28,,g_ReplayManager,?g_ReplayManager@@3PAVReplayManager@@A
 0x018b8a2c,,g_Unknown18b8a2c,?g_Unknown18b8a2c@@3HA
