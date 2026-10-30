@@ -918,13 +918,13 @@ HRESULT CWaveFile::ResetFile(bool bLoop)
         // Seek to the track's data, or past its intro when looping
         if (bLoop && this->format->loopStart > 0)
         {
-            dwPos = SetFilePointer(this->hFile, g_SoundPlayer.unk_5214 + this->format->loopStart + this->format->offset,
+            dwPos = SetFilePointer(this->hFile, g_SoundPlayer.bgmFileOffset + this->format->loopStart + this->format->offset,
                                    NULL, FILE_BEGIN);
             m_ck.cksize = this->format->loopEnd - this->format->loopStart;
         }
         else
         {
-            dwPos = SetFilePointer(this->hFile, g_SoundPlayer.unk_5214 + this->format->offset, NULL, FILE_BEGIN);
+            dwPos = SetFilePointer(this->hFile, g_SoundPlayer.bgmFileOffset + this->format->offset, NULL, FILE_BEGIN);
             m_ck.cksize = this->format->loopEnd;
         }
     }

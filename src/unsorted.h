@@ -947,7 +947,7 @@ public:
         memset(this, 0, sizeof(*this));
         for (i = 0; i < 0x80; i++)
         {
-            this->unk_408[i] = -1;
+            this->queuedSound[i] = -1;
         }
     }
     // Creates the DirectSound objects for `hwnd`. Returns 0, or -1 on
@@ -1059,13 +1059,13 @@ public:
     void UpdateBgmFades();
 
     IDirectSound8 *dsound;
-    DWORD unk_004;
+    DWORD unusedDword004;
     // The loaded sound files' buffers.
     IDirectSoundBuffer *soundBuffers[0x80];
     // Each sound effect's own buffer.
     IDirectSoundBuffer *sounds[0x80];
     // Set when a sound is queued; -1 at first.
-    int unk_408[0x80];
+    int queuedSound[0x80];
     // A silent buffer, looping from start-up.
     IDirectSoundBuffer *silence;
     // The window the sound timer posts to.
@@ -1075,7 +1075,7 @@ public:
     // The thread streaming the wave music and its ID.
     DWORD notifyThreadId;
     HANDLE notifyThread;
-    DWORD unk_61c;
+    DWORD unusedDword61c;
     // The sound effects to play, or -1.
     int queue[0xc];
     // How many arguments each queued sound has, and the arguments. Not
@@ -1102,16 +1102,16 @@ public:
     CStreamingSound *bgm;
     // Signalled as the wave music plays.
     HANDLE notifyEvent;
-    DWORD unk_5210;
+    DWORD unusedDword5210;
     // Added to every BgmFormat offset by CWaveFile::ResetFile (th07's
     // unk_39c8).
-    DWORD unk_5214;
+    DWORD bgmFileOffset;
     // The music and sound effect volumes in percent, 100 at first, then
     // copied from the config (App+0x13f, App+0x140). Not in th07:
     // CSound::SetVolume scales by bgmVolume.
     int bgmVolume;
     int seVolume;
-    DWORD unk_5220;
+    DWORD bgmBufferVolume;
 };
 ASSERT_SIZE(SoundPlayer, 0x5224);
 extern SoundPlayer g_SoundPlayer;

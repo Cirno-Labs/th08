@@ -622,13 +622,13 @@ void App::LoadingThread(App *arg)
     {
         vol = (vol = (vol = 1.0f - vol) * vol) * vol;
         vol = 1.0f - vol;
-        g_SoundPlayer.unk_5220 = (int)(5000.0f * vol) - 5000;
+        g_SoundPlayer.bgmBufferVolume = (int)(5000.0f * vol) - 5000;
     }
     else
     {
-        g_SoundPlayer.unk_5220 = -10000;
+        g_SoundPlayer.bgmBufferVolume = -10000;
     }
-    if (g_SoundPlayer.unk_5214 == 0)
+    if (g_SoundPlayer.bgmFileOffset == 0)
     {
         if (!g_App.flags.preloadBgm)
         {
