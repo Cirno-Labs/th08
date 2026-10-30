@@ -151,7 +151,7 @@ struct Flsp
     WORD size;
     WORD size2;
     BYTE version;
-    unsigned char unk_9[0x3];
+    unsigned char pad_9[0x3];
     // The last spells (cards 0xcd on) seen: entry i holds 0xcd + i once
     // it was.
     BYTE lastSpellsSeen[0x14];
