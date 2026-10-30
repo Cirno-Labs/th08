@@ -24,6 +24,7 @@ cflags = ["/Od", "/Gr", "/GX", "/Oi"]
 # Implib700/9210), but its C++ objects say 9178 where the original's say
 # 9177: the original's SDK was a slightly different build.
 lib = ['C:\dx81\lib', 'C:\msvc7\lib', 'C:\psdk\Lib']
+hook = "scripts/build_hook.py"  # the standalone exe's DOS stub
 
 [exe]
 # The exe's objects are compiled with TH08_EXE, which defines the
@@ -33,7 +34,10 @@ lib = ['C:\dx81\lib', 'C:\msvc7\lib', 'C:\psdk\Lib']
 obj_dir = "build/obj_exe"
 defines = ["TH08_EXE=1"]
 link_order = "median"
-ldflags = ["/SUBSYSTEM:WINDOWS", "/FIXED", "/OPT:REF", "/OPT:ICF", "/OPT:NOWIN98", "/NODEFAULTLIB:libc.lib"]
+# The stub stands in for the original's header space; see
+# scripts/build_hook.py.
+ldflags = ["/SUBSYSTEM:WINDOWS", "/FIXED", "/OPT:REF", "/OPT:ICF", "/OPT:NOWIN98", "/STUB:build\\stub.bin",
+           "/NODEFAULTLIB:libc.lib"]
 # The original's import table lists DINPUT8, DSOUND and d3d8 first and
 # ADVAPI32 and ole32 last; D3DX8 follows the game code and the CRT comes
 # last.
