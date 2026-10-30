@@ -15,7 +15,7 @@ project = "th08_100d"
 functions = "build/functions_100d.csv"
 
 [build]
-cflags = ["/Od", "/Gr", "/GX", "/Oi", "/Gy"]
+cflags = ["/Od", "/Gr", "/GX", "/Oi", "/Gy", "/GF"]
 # The game's code was compiled with DirectX 8.0's headers (its
 # D3DXIMAGE_INFO has 8.0's 20 bytes, not 8.1's 28) but linked with
 # DirectX 8.1's libraries: C:\dx81\lib is DXF/DXSDK/lib from the
