@@ -634,6 +634,10 @@ void ScriptMoveRandom(Enemy *enemy, EnemyScriptInstr *instr);
 // ScriptMoveAngle at `angle` with speed argument 2, without mirroring
 // (0x4222b0).
 void ScriptMoveAngleTimed(Enemy *enemy, EnemyScriptInstr *instr, float angle);
+// Like ScriptMoveRandom, but three times in four towards the side with
+// more room within 384 pixels of the player, else in any direction;
+// turned back only near the top and bottom bounds (0x4224a0).
+void ScriptMoveRandom2(Enemy *enemy, EnemyScriptInstr *instr);
 
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];

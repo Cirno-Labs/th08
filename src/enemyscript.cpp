@@ -1006,3 +1006,61 @@ void ScriptMoveAngleTimed(Enemy *enemy, EnemyScriptInstr *instr, float angle)
     enemy->moveEasing = INT_ARG(1);
     enemy->moveMode = 2;
 }
+
+void ScriptMoveRandom2(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    float bound;
+    float angle;
+
+    if (g_Rng.GetRandomU32InRange(4))
+    {
+        if (g_Player.pos.x < enemy->pos.x)
+        {
+            bound = g_Player.pos.x + 384.0f;
+            if (enemy->pos.x - g_Player.pos.x < bound - enemy->pos.x)
+            {
+                angle = AddNormalizeAngle(g_Rng.GetRandomF32InRange(1.5707964f) + 2.3561945f, 0.0f);
+            }
+            else
+            {
+                angle = AddNormalizeAngle(g_Rng.GetRandomF32InRange(1.5707964f) - 0.7853982f, 0.0f);
+            }
+        }
+        else
+        {
+            bound = g_Player.pos.x - 384.0f;
+            if (g_Player.pos.x - enemy->pos.x < enemy->pos.x - bound)
+            {
+                angle = g_Rng.GetRandomF32InRange(1.5707964f) - 0.7853982f;
+            }
+            else
+            {
+                angle = AddNormalizeAngle(g_Rng.GetRandomF32InRange(1.5707964f) + 2.3561945f, 0.0f);
+            }
+        }
+    }
+    else
+    {
+        angle = g_Rng.GetRandomF32SignedInRange(3.1415927f);
+    }
+    if (enemy->pos[1] < enemy->lowerBound[1] + 48.0f && angle < 0.0f)
+    {
+        angle = -angle;
+    }
+    if (enemy->pos[1] > enemy->upperBound[1] - 48.0f && angle > 0.0f)
+    {
+        angle = -angle;
+    }
+    if (INT_ARG(0) <= 0)
+    {
+        enemy->angle = angle;
+        enemy->speed = FLOAT_ARG(2);
+        enemy->moveMode = 1;
+        enemy->moveDuration = 0;
+        enemy->moveTimer = 0;
+    }
+    else
+    {
+        ScriptMoveAngleTimed(enemy, instr, angle);
+    }
+}

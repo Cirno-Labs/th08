@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">83.87% (936)</tspan> · <tspan class="decompiled">3.05% (34)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">13.08% (146)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">83.96% (937)</tspan> · <tspan class="decompiled">3.05% (34)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">12.99% (145)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="626.52" height="6" x="0" y="0" class="named"/>
-<rect width="22.76" height="6" x="626.52" y="0" class="decompiled"/>
-<rect width="97.73" height="6" x="649.27" y="0" class="todo"/>
+<rect width="627.19" height="6" x="0" y="0" class="named"/>
+<rect width="22.76" height="6" x="627.19" y="0" class="decompiled"/>
+<rect width="97.06" height="6" x="649.94" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -343,7 +343,7 @@
 <rect width="12" height="12" x="330" y="75" class="named"><title>0x00422020 ScriptMoveRandom (650 bytes)</title></rect>
 <rect width="12" height="12" x="345" y="75" class="named"><title>0x004222b0 ScriptMoveAngleTimed (461 bytes)</title></rect>
 <rect width="12" height="12" x="360" y="75" class="todo"><title>0x00422480 GameManager::GetPower (28 bytes)</title></rect>
-<rect width="12" height="12" x="375" y="75" class="todo"><title>0x004224a0 Func4224a0 (630 bytes)</title></rect>
+<rect width="12" height="12" x="375" y="75" class="named"><title>0x004224a0 ScriptMoveRandom2 (630 bytes)</title></rect>
 <rect width="12" height="12" x="390" y="75" class="todo"><title>0x00422720 Func422720 (1110 bytes)</title></rect>
 <rect width="12" height="12" x="405" y="75" class="todo"><title>0x00422b80 Func422b80 (39 bytes)</title></rect>
 <rect width="12" height="12" x="420" y="75" class="named"><title>0x00422bb0 AsciiText::SetNearbyLabelInterrupt (42 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">78.90%</tspan> · <tspan class="decompiled">1.56%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">19.54%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">79.03%</tspan> · <tspan class="decompiled">1.56%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">19.41%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="589.35" height="6" x="0" y="0" class="named"/>
-<rect width="11.65" height="6" x="589.35" y="0" class="decompiled"/>
-<rect width="146" height="6" x="601" y="0" class="todo"/>
+<rect width="590.37" height="6" x="0" y="0" class="named"/>
+<rect width="11.65" height="6" x="590.37" y="0" class="decompiled"/>
+<rect width="144.97" height="6" x="602.03" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -1362,7 +1362,7 @@
 <rect width="15.34" height="16.77" x="640.97" y="45.31" class="todo"><title>0x00430f20 Func430f20 (639 bytes)</title></rect>
 <rect width="15.34" height="16.77" x="659.31" y="45.31" class="named"><title>0x00471181 MainMenu::ShowInfoScreen (639 bytes)</title></rect>
 <rect width="15.28" height="16.77" x="677.65" y="45.31" class="named"><title>0x00455a33 ResultScreen::UpdateSpellDifficultySelect (637 bytes)</title></rect>
-<rect width="15.08" height="16.77" x="695.93" y="45.31" class="todo"><title>0x004224a0 Func4224a0 (630 bytes)</title></rect>
+<rect width="15.08" height="16.77" x="695.93" y="45.31" class="named"><title>0x004224a0 ScriptMoveRandom2 (630 bytes)</title></rect>
 <rect width="15.02" height="16.77" x="714.01" y="45.31" class="named"><title>0x0045b8b0 ScreenEffect::StartEffect (628 bytes)</title></rect>
 <rect width="14.97" height="16.77" x="732.03" y="45.31" class="named"><title>0x0045ce70 SoundPlayer::PreloadBgm (626 bytes)</title></rect>
 <rect width="15.31" height="16.37" x="452.90" y="65.08" class="named"><title>0x00443420 CheckSingleInstance (625 bytes)</title></rect>

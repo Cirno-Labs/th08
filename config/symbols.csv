@@ -274,7 +274,7 @@ address,size,name,symbol
 0x00422020,650,ScriptMoveRandom,?ScriptMoveRandom@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x004222b0,461,ScriptMoveAngleTimed,?ScriptMoveAngleTimed@@YIXPAUEnemy@@PAUEnemyScriptInstr@@M@Z
 0x00422480,28,GameManager::GetPower,?GetPower@GameManager@@QAEHXZ
-0x004224a0,630,Func4224a0,
+0x004224a0,630,ScriptMoveRandom2,?ScriptMoveRandom2@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00422720,1110,Func422720,
 0x00422b80,39,Func422b80,
 0x00422bb0,42,AsciiText::SetNearbyLabelInterrupt,?SetNearbyLabelInterrupt@AsciiText@@QAEXHF@Z
