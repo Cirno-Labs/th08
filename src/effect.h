@@ -300,6 +300,12 @@ public:
     static int RegisterChain();
     // Removes the two chain elements, as th07's (0x4286b0).
     static void RemoveChain();
+    // Reserved effect `slot` (0x280 + slot). Inline; the copy is at
+    // 0x4253e0.
+    Effect *GetReservedEffect(int slot)
+    {
+        return &this->effects[slot + 0x280];
+    }
 
     // Where SpawnEffect looks for a free effect next.
     int next;

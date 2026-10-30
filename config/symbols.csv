@@ -289,8 +289,8 @@ address,size,name,symbol
 0x00423390,52,ScriptSetUnknown4e3d28,?ScriptSetUnknown4e3d28@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x004233d0,39,FlashScreen60,?FlashScreen60@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00423400,296,BounceOffSides,?BounceOffSides@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
-0x00423530,104,Func423530,
-0x004235a0,1203,Func4235a0,
+0x00423530,104,SpawnTwinEffects38,?SpawnTwinEffects38@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
+0x004235a0,1203,DrawTwinEffects,?DrawTwinEffects@@YIXXZ
 0x00423a60,784,Func423a60,
 0x00423d70,59,D3DXVECTOR3::operator*=,??XD3DXVECTOR3@@QAEAAU0@M@Z
 0x00423db0,104,Func423db0,

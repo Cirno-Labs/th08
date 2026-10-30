@@ -651,6 +651,15 @@ void FlashScreen60(Enemy *enemy, EnemyScriptInstr *instr);
 // ends below y 480 (0x423400).
 void BounceOffSides(Enemy *enemy, EnemyScriptInstr *instr);
 
+// Draws reserved effects 9 and 10 as the stage's unk_625c callback
+// (0x4235a0).
+void DrawTwinEffects();
+
+// Script function 3: starts effect 0x38 in reserved slots 9 and 10
+// at the enemy, slot 10's sprite on etama script 0x61, and has the
+// stage draw them through DrawTwinEffects (0x423530).
+void SpawnTwinEffects38(Enemy *enemy, EnemyScriptInstr *instr);
+
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
 // The enemy scripts by stage, by stage in spell practice (stage + 9),

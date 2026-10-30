@@ -3,9 +3,12 @@
 #include <math.h>
 #include <string.h>
 
+#include "bullet.h"
+#include "effect.h"
 #include "enemy.h"
 #include "item.h"
 #include "player.h"
+#include "screeneffect.h"
 #include "unsorted.h"
 
 // Argument `n` of `instr`, or the value of the variable it names, as
@@ -1103,4 +1106,14 @@ void BounceOffSides(Enemy *enemy, EnemyScriptInstr *instr)
     {
         enemy->angle = atan2f(enemy->velocity.y, enemy->velocity.x);
     }
+}
+
+void SpawnTwinEffects38(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    Effect *effect;
+
+    effect = g_EffectManager.SpawnReservedEffect(0x38, &enemy->pos, 9, 1, 0xffffffff);
+    effect = g_EffectManager.SpawnReservedEffect(0x38, &enemy->pos, 10, 1, 0xffffffff);
+    g_EtamaAnm->StartScript(&effect->sprite, 0x61);
+    g_Stage.unk_625c = DrawTwinEffects;
 }
