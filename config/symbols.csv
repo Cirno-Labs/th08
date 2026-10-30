@@ -210,7 +210,7 @@ address,size,name,symbol
 0x00415d10,71,SpellCard::Func415d10,?Func415d10@SpellCard@@QAEXPADPAUEnemy@@@Z
 0x00415d60,415,SpellCard::StartBombCard,?StartBombCard@SpellCard@@QAEXHPADH@Z
 0x00415f00,558,SpellCard::ShowName,?ShowName@SpellCard@@QAEXHPADH@Z
-0x00416130,39,Func416130,
+0x00416130,39,SpellCard::Func416130,?Func416130@SpellCard@@QAEXXZ
 0x00416160,70,SpellCard::Func416160,?Func416160@SpellCard@@QAEXXZ
 0x004161b0,2331,SpellCard::End,?End@SpellCard@@QAEXXZ
 0x00416ad0,24,Func416ad0,
