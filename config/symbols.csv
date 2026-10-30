@@ -402,7 +402,7 @@ address,size,name,symbol
 0x0042bc90,96,Enemy::Func42bc90,?Func42bc90@Enemy@@QAEXXZ
 0x0042bcf0,432,Enemy::Despawn,?Despawn@Enemy@@QAEXXZ
 0x0042bea0,734,Enemy::DropItems,?DropItems@Enemy@@QAEXH@Z
-0x0042c180,270,Func42c180,
+0x0042c180,270,Enemy::ClampPos,?ClampPos@Enemy@@QAEXXZ
 0x0042c290,284,Func42c290,
 0x0042c3b0,110,Func42c3b0,
 0x0042c420,367,Func42c420,

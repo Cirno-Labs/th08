@@ -101,6 +101,14 @@ struct Enemy
     // Takes it out of the list through unk_4 and unk_8 while Func41fd20,
     // clearing unk_2da4; else just clears both links (0x42b2f0).
     void Func42b2f0();
+    // Keeps pos within lowerBound and upperBound while clampPos is set,
+    // as th07's (0x42c180).
+    void ClampPos();
+    // Grazes the player every sixth frame while grazeable, and takes 10
+    // damage when its body (a box of size / 1.5) hits the player, unless
+    // it is a boss or grazeable or a damage-sharing part of character 0
+    // or 4. As th07's (0x42c290).
+    void CheckPlayerContact(D3DXVECTOR3 *pos, D3DXVECTOR3 *size);
     // Passes half of `damage` on to unk_2da4 while Func41fd20 (a ninth
     // while unk_2da4, a boss, is invulnerable; none for others then),
     // keeping its life above its life callbacks (0x42b370).
@@ -236,7 +244,10 @@ struct Enemy
     unsigned char unk_3334[0x4];
     short turnLeft;
     short turnRight;
-    unsigned char unk_333c[0x14];
+    unsigned char unk_333c[0x4];
+    // Where ClampPos keeps it, as th07's.
+    float lowerBound[2];
+    float upperBound[2];
     float unk_3350;
     unsigned char unk_3354[0x4];
     int lifeCallbackLife[4];
@@ -393,6 +404,9 @@ public:
     // 0x42eb90).
     static int OnDraw(EnemyManager *mgr);
     static int OnDraw2(EnemyManager *mgr);
+    // Outside dialogue, raises the rank by 1 every 2400 frames, 240
+    // fewer per life left (0x42c3b0).
+    void AddRankOverTime();
     // Whether any of the bosses is set, as th07's (0x42f1f0).
     int AnyBossActive();
     // Removes the enemies' chain elements, as th07's (0x42ef70).
@@ -418,7 +432,8 @@ public:
     WORD dropIndex;
     unsigned char unk_9dcdc4[0xc];
     EnemyTimeline timelines[16];
-    Timer unk_9dced0;
+    // Counts the frames, as th07's.
+    Timer frameTimer;
     unsigned char unk_9dcedc[0x10];
     // enemy.anm (slot 7) and the stage's enemy ANM (slot 8).
     AnmLoaded *anm;

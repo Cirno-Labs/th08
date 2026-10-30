@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">80.11% (894)</tspan> · <tspan class="decompiled">2.33% (26)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">17.56% (196)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">80.20% (895)</tspan> · <tspan class="decompiled">2.33% (26)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">17.47% (195)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="598.40" height="6" x="0" y="0" class="named"/>
-<rect width="17.40" height="6" x="598.40" y="0" class="decompiled"/>
-<rect width="131.19" height="6" x="615.81" y="0" class="todo"/>
+<rect width="599.07" height="6" x="0" y="0" class="named"/>
+<rect width="17.40" height="6" x="599.07" y="0" class="decompiled"/>
+<rect width="130.52" height="6" x="616.48" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -471,7 +471,7 @@
 <rect width="12" height="12" x="0" y="120" class="decompiled"><title>0x0042bc90 Enemy::Func42bc90 (96 bytes)</title></rect>
 <rect width="12" height="12" x="15" y="120" class="named"><title>0x0042bcf0 Enemy::Despawn (432 bytes)</title></rect>
 <rect width="12" height="12" x="30" y="120" class="named"><title>0x0042bea0 Enemy::DropItems (734 bytes)</title></rect>
-<rect width="12" height="12" x="45" y="120" class="todo"><title>0x0042c180 Func42c180 (270 bytes)</title></rect>
+<rect width="12" height="12" x="45" y="120" class="named"><title>0x0042c180 Enemy::ClampPos (270 bytes)</title></rect>
 <rect width="12" height="12" x="60" y="120" class="todo"><title>0x0042c290 Func42c290 (284 bytes)</title></rect>
 <rect width="12" height="12" x="75" y="120" class="todo"><title>0x0042c3b0 Func42c3b0 (110 bytes)</title></rect>
 <rect width="12" height="12" x="90" y="120" class="todo"><title>0x0042c420 Func42c420 (367 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">73.91%</tspan> · <tspan class="decompiled">1.13%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">24.96%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">73.97%</tspan> · <tspan class="decompiled">1.13%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">24.91%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="552.09" height="6" x="0" y="0" class="named"/>
-<rect width="8.43" height="6" x="552.09" y="0" class="decompiled"/>
-<rect width="186.48" height="6" x="560.52" y="0" class="todo"/>
+<rect width="552.52" height="6" x="0" y="0" class="named"/>
+<rect width="8.43" height="6" x="552.52" y="0" class="decompiled"/>
+<rect width="186.04" height="6" x="560.96" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -1549,7 +1549,7 @@
 <rect width="9.72" height="9.22" x="637.11" y="142.35" class="named"><title>0x0043c4b3 GameManager::AdvanceStage (274 bytes)</title></rect>
 <rect width="9.63" height="9.22" x="649.83" y="142.35" class="todo"><title>0x00424e50 Func424e50 (272 bytes)</title></rect>
 <rect width="9.63" height="9.22" x="662.46" y="142.35" class="named"><title>0x0044a360 Player::CheckHitIgnoringAreas (272 bytes)</title></rect>
-<rect width="9.54" height="9.22" x="675.09" y="142.35" class="todo"><title>0x0042c180 Func42c180 (270 bytes)</title></rect>
+<rect width="9.54" height="9.22" x="675.09" y="142.35" class="named"><title>0x0042c180 Enemy::ClampPos (270 bytes)</title></rect>
 <rect width="9.54" height="9.22" x="687.63" y="142.35" class="named"><title>0x00455925 ResultScreen::UpdateScoreList (270 bytes)</title></rect>
 <rect width="9.49" height="9.22" x="700.17" y="142.35" class="named"><title>0x0044e8d0 MoveOptionToEnemy (269 bytes)</title></rect>
 <rect width="9.49" height="9.22" x="712.66" y="142.35" class="named"><title>0x00467399 MainMenu::OnUpdate (269 bytes)</title></rect>

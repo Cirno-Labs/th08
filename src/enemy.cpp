@@ -528,6 +528,29 @@ void Enemy::DropItems(int byBomb)
     }
 }
 
+void Enemy::ClampPos()
+{
+    if (this->clampPos)
+    {
+        if (this->pos[0] < this->lowerBound[0])
+        {
+            this->pos[0] = this->lowerBound[0];
+        }
+        else if (this->pos[0] > this->upperBound[0])
+        {
+            this->pos[0] = this->upperBound[0];
+        }
+        if (this->pos[1] < this->lowerBound[1])
+        {
+            this->pos[1] = this->lowerBound[1];
+        }
+        else if (this->pos[1] > this->upperBound[1])
+        {
+            this->pos[1] = this->upperBound[1];
+        }
+    }
+}
+
 int EnemyManager::RegisterChain()
 {
     EnemyManager *em = &g_EnemyManager;
