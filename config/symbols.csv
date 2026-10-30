@@ -201,7 +201,7 @@ address,size,name,symbol
 0x004143c0,24,Rng::GetRandomF32SignedInRange,?GetRandomF32SignedInRange@Rng@@QAEMM@Z
 0x004143e0,238,Func4143e0,
 0x004144d0,105,GetSpellCardDifficulty,?GetSpellCardDifficulty@@YIHH@Z
-0x00414540,68,Func414540,
+0x00414540,68,IsListedSpellCard,?IsListedSpellCard@@YIHH@Z
 0x00414590,3237,Func414590,
 0x004152a0,2483,SpellCard::Start,?Start@SpellCard@@QAEXHPADHHPAUEnemy@@000@Z
 0x00415c60,21,BulletManager::Func415c60,?Func415c60@BulletManager@@QAEXXZ
@@ -2417,6 +2417,8 @@ address,size,name,symbol
 0x004c6100,,g_BombFlashColors,?g_BombFlashColors@@3PAKA
 0x004c67d0,,g_SpellCardLists,?g_SpellCardLists@@3PAPAHA
 0x004c67e8,,g_SpellCardListSizes,?g_SpellCardListSizes@@3PAHA
+0x004c6b90,,g_ListedSpellCards,?g_ListedSpellCards@@3PAHA
+0x004c6c3c,,g_ListedSpellCardCount,?g_ListedSpellCardCount@@3HA
 0x004c6c40,,g_StageSpellCards,?g_StageSpellCards@@3PAPAHA
 0x004c6c90,,g_EnemyScriptInterps,?g_EnemyScriptInterps@@3PAP6IXPAUEnemy@@PAUEnemyScriptInstr@@M@ZA
 0x004c6d30,,g_EffectInfos,?g_EffectInfos@@3PAUEffectInfo@@A

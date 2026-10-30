@@ -21,3 +21,17 @@ int GetSpellCardDifficulty(int card)
     }
     return 5;
 }
+
+int IsListedSpellCard(int card)
+{
+    int i;
+
+    for (i = 0; i < g_ListedSpellCardCount; i++)
+    {
+        if (g_ListedSpellCards[i] == card)
+        {
+            return 1;
+        }
+    }
+    return 0;
+}
