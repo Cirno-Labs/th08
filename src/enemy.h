@@ -120,7 +120,7 @@ ASSERT_SIZE(EnemyBox, 0x1c);
 struct EnemyScriptThread
 {
     int sub;
-    short unk_4;
+    short unusedShort4;
     // Enemy::stackDepth while the thread runs.
     short stackDepth;
     EnemyScriptState ctx;
