@@ -698,3 +698,13 @@ void ScriptMovePos(Enemy *enemy, EnemyScriptInstr *instr)
         enemy->moveDelta.x = -enemy->moveDelta.x;
     }
 }
+
+void ScriptMoveLinear(Enemy *enemy, EnemyScriptInstr *instr, float t)
+{
+    float start;
+    float end;
+
+    start = GetFloatOperand(enemy, instr->args[4].f);
+    end = GetFloatOperand(enemy, instr->args[5].f);
+    *ResolveFloatOperand(enemy, &instr->args[8].f, 0, -1) = (end - start) * t + start;
+}

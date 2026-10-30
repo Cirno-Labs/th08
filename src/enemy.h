@@ -551,6 +551,12 @@ void ScriptMoveAngle(Enemy *enemy, EnemyScriptInstr *instr);
 // Starts a timed move from unk_2d88 to (argument 2, argument 3), as
 // th07's, with moveStart at pos (0x420f40).
 void ScriptMovePos(Enemy *enemy, EnemyScriptInstr *instr);
+// The interpolations of an instruction's loop, as th07's: writes to
+// the variable argument 8 names, `t` of the way from argument 4 to
+// argument 5, linearly (0x421120) or along a Hermite curve with the
+// tangents of arguments 6 and 7 (0x421180).
+void ScriptMoveLinear(Enemy *enemy, EnemyScriptInstr *instr, float t);
+void ScriptMoveHermite(Enemy *enemy, EnemyScriptInstr *instr, float t);
 
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
