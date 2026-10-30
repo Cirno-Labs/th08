@@ -3486,6 +3486,29 @@ int MainMenu::ReleaseTitleScene()
     return 0;
 }
 
+int SetUpTitleScene(int unused)
+{
+    MainMenu *menu;
+
+    menu = new MainMenu;
+    g_MainMenu = menu;
+
+    memset(menu, 0, sizeof(MainMenu));
+    g_GameManager.SetIsPaused(0);
+    menu->calcChain = g_Chain.CreateElem((ChainCallback)MainMenu::OnUpdate);
+    menu->calcChain->arg = menu;
+    menu->calcChain->addedCallback = (ChainCallback)MainMenu::AddedCallback;
+    menu->calcChain->deletedCallback = (ChainCallback)MainMenu::DeletedCallback;
+    if (g_Chain.AddToCalcChain(menu->calcChain, 4) != 0)
+    {
+        return -1;
+    }
+    menu->drawChain = g_Chain.CreateElem((ChainCallback)MainMenu::OnDraw);
+    menu->drawChain->arg = menu;
+    g_Chain.AddToDrawChain(menu->drawChain, 3);
+    return 0;
+}
+
 int MainMenu::AddedCallback(MainMenu *menu)
 {
     return menu->InitTitleScene();

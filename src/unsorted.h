@@ -1330,6 +1330,13 @@ public:
     {
         this->stats->unk_22 = value;
     }
+    // Sets isPaused. Inline and expanded where it is used (SetUpTitleScene,
+    // in the MainMenu object): that expansion is what leaves the 11 slots
+    // MainMenu's too-large inline constructor reserves there.
+    void SetIsPaused(BYTE value)
+    {
+        this->isPaused = value;
+    }
     // Gives a life, or a bomb when the lives are full (8). Either one
     // plays sound 0x1c, adds 200 to the subrank and marks the Gui's
     // count changed, as th07's.

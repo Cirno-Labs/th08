@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">94.27% (1052)</tspan> · <tspan class="decompiled">3.94% (44)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">1.79% (20)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">94.44% (1054)</tspan> · <tspan class="decompiled">3.94% (44)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">1.61% (18)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="704.16" height="6" x="0" y="0" class="named"/>
-<rect width="29.45" height="6" x="704.16" y="0" class="decompiled"/>
-<rect width="13.39" height="6" x="733.61" y="0" class="todo"/>
+<rect width="705.50" height="6" x="0" y="0" class="named"/>
+<rect width="29.45" height="6" x="705.50" y="0" class="decompiled"/>
+<rect width="12.05" height="6" x="734.95" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -1102,8 +1102,8 @@
 <rect width="12" height="12" x="465" y="300" class="named"><title>0x00470e10 MainMenu::LoadingThread (881 bytes)</title></rect>
 <rect width="12" height="12" x="480" y="300" class="named"><title>0x00471181 MainMenu::ShowInfoScreen (639 bytes)</title></rect>
 <rect width="12" height="12" x="495" y="300" class="named"><title>0x00471400 MainMenu::ReleaseTitleScene (109 bytes)</title></rect>
-<rect width="12" height="12" x="510" y="300" class="todo"><title>0x0047146d SetUpTitleScene (281 bytes)</title></rect>
-<rect width="12" height="12" x="525" y="300" class="todo"><title>0x00471586 MainMenu::MainMenu (203 bytes)</title></rect>
+<rect width="12" height="12" x="510" y="300" class="named"><title>0x0047146d SetUpTitleScene (281 bytes)</title></rect>
+<rect width="12" height="12" x="525" y="300" class="named"><title>0x00471586 MainMenu::MainMenu (203 bytes)</title></rect>
 <rect width="12" height="12" x="540" y="300" class="named"><title>0x00471651 MainMenu::AddedCallback (17 bytes)</title></rect>
 <rect width="12" height="12" x="555" y="300" class="named"><title>0x00471662 MainMenu::DeletedCallback (125 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="300" class="named"><title>0x004716e0 CSoundManager::CSoundManager (23 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">97.41%</tspan> · <tspan class="decompiled">1.68%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">0.91%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">97.52%</tspan> · <tspan class="decompiled">1.68%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">0.81%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="727.67" height="6" x="0" y="0" class="named"/>
-<rect width="12.53" height="6" x="727.67" y="0" class="decompiled"/>
-<rect width="6.80" height="6" x="740.20" y="0" class="todo"/>
+<rect width="728.45" height="6" x="0" y="0" class="named"/>
+<rect width="12.53" height="6" x="728.45" y="0" class="decompiled"/>
+<rect width="6.02" height="6" x="740.98" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="named"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -1543,7 +1543,7 @@
 <rect width="10.14" height="9.22" x="558.90" y="142.35" class="named"><title>0x0040b6d0 Stage::SetupCamera (283 bytes)</title></rect>
 <rect width="10.05" height="9.22" x="572.04" y="142.35" class="named"><title>0x00437bc4 GuiImpl::GuiImpl (281 bytes)</title></rect>
 <rect width="10.05" height="9.22" x="585.09" y="142.35" class="named"><title>0x0047030b MainMenu::MoveMenuCursor (281 bytes)</title></rect>
-<rect width="10.05" height="9.22" x="598.14" y="142.35" class="todo"><title>0x0047146d SetUpTitleScene (281 bytes)</title></rect>
+<rect width="10.05" height="9.22" x="598.14" y="142.35" class="named"><title>0x0047146d SetUpTitleScene (281 bytes)</title></rect>
 <rect width="10" height="9.22" x="611.19" y="142.35" class="named"><title>0x00421cb0 ScriptReturn (280 bytes)</title></rect>
 <rect width="9.91" height="9.22" x="624.20" y="142.35" class="named"><title>0x00462790 SpriteEngine::SetBlendModeForSprite (278 bytes)</title></rect>
 <rect width="9.72" height="9.22" x="637.11" y="142.35" class="named"><title>0x0043c4b3 GameManager::AdvanceStage (274 bytes)</title></rect>
@@ -1648,7 +1648,7 @@
 <rect width="7.47" height="8.06" x="698.01" y="177.72" class="named"><title>0x0042fea0 ShowSpawnSprite (204 bytes)</title></rect>
 <rect width="7.42" height="8.06" x="708.48" y="177.72" class="named"><title>0x0042c590 EnemyManager::RegisterChain (203 bytes)</title></rect>
 <rect width="7.42" height="8.06" x="718.90" y="177.72" class="named"><title>0x00444550 MidiPlayer::Rewind (203 bytes)</title></rect>
-<rect width="7.42" height="8.06" x="729.32" y="177.72" class="todo"><title>0x00471586 MainMenu::MainMenu (203 bytes)</title></rect>
+<rect width="7.42" height="8.06" x="729.32" y="177.72" class="named"><title>0x00471586 MainMenu::MainMenu (203 bytes)</title></rect>
 <rect width="7.26" height="8.06" x="739.74" y="177.72" class="named"><title>0x004577e2 ResultScreen::WaitAfterNameEntry (200 bytes)</title></rect>
 <rect width="7.39" height="7.92" x="580.58" y="188.78" class="named"><title>0x00466ae0 SpriteEngine::ReleaseSurface (200 bytes)</title></rect>
 <rect width="7.39" height="7.92" x="580.58" y="199.70" class="named"><title>0x00469fa9 MainMenu::ShowButtonDigits (200 bytes)</title></rect>
