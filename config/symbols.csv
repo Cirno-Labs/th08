@@ -461,7 +461,7 @@ address,size,name,symbol
 0x00432b50,969,BulletManager::OnDraw,?OnDraw@BulletManager@@SIHPAV1@@Z
 0x00432f20,320,DrawBullet,?DrawBullet@@YIXPAUBullet@@@Z
 0x00433070,1662,BulletManager::AddedCallback,?AddedCallback@BulletManager@@SIHPAV1@@Z
-0x004337f0,42,Func4337f0,
+0x004337f0,42,ItemManager::Reset,?Reset@ItemManager@@QAEXXZ
 0x00433820,35,Func433820,
 0x00433850,35,BulletManager::RemoveChain,?RemoveChain@BulletManager@@SIXXZ
 0x00433880,33,SinCos,?SinCos@@YIXPAM0M@Z
