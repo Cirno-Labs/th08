@@ -1438,6 +1438,20 @@ void BeamHitsPlayer160(Enemy *enemy, EnemyScriptInstr *instr)
     g_Player.CheckLaserHit(&center, &size, &origin, enemy->sprite.rotation.z, 0);
 }
 
+void BeamHitsPlayer240(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    D3DXVECTOR3 origin(enemy->pos.x - enemy->currentCtx->vars.floats[0], enemy->pos.y - enemy->currentCtx->vars.floats[1], 0.0f);
+    D3DXVECTOR3 size(590.0f, 240.0f, 0.0f);
+    D3DXVECTOR3 size2(590.0f, 192.0f, 0.0f);
+    D3DXVECTOR3 center(size.x / 2.0f + origin.x, origin.y, 0.0f);
+
+    if (enemy->callbackTimer.HasTickedEvery(12))
+    {
+        g_Player.CheckLaserHit(&center, &size2, &origin, enemy->sprite.rotation.z, 1);
+    }
+    g_Player.CheckLaserHit(&center, &size, &origin, enemy->sprite.rotation.z, 0);
+}
+
 void SetUnknown18b8a2c(Enemy *enemy, EnemyScriptInstr *instr)
 {
     g_Unknown18b8a2c = instr->args[1].i;

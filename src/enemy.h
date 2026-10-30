@@ -769,6 +769,11 @@ void SpawnEnemiesAtMarkedBullets(Enemy *enemy, EnemyScriptInstr *instr);
 // player; every 12 frames a 128-wide box grazes (0x424730).
 void BeamHitsPlayer160(Enemy *enemy, EnemyScriptInstr *instr);
 
+// Script function 11: a beam 590 long and 240 wide from pos minus
+// floats[0] and floats[1], turned by the sprite's rotation, hits the
+// player; every 12 frames a 192-wide box grazes (0x424820).
+void BeamHitsPlayer240(Enemy *enemy, EnemyScriptInstr *instr);
+
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
 // The enemy scripts by stage, by stage in spell practice (stage + 9),
