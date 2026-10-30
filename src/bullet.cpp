@@ -1005,3 +1005,19 @@ inline void BulletManager::ClearDrawLists()
     this->drawLists[0] = this->drawLists[1] = this->drawLists[2] = this->drawLists[3] = this->drawLists[4] =
         this->drawLists[5] = NULL;
 }
+
+void SlowBulletStart(Bullet *bullet)
+{
+    float speed;
+
+    if (bullet->ex[0].timer <= 16)
+    {
+        speed = 5.0f - bullet->ex[0].timer.AsFloat() * 5.0f / 16.0f;
+        ((Vector2 *)&bullet->velocity)->SetPolar(bullet->angle, (speed + bullet->speed) * g_App.gameSpeed);
+    }
+    else
+    {
+        bullet->activeFlags ^= 1;
+    }
+    bullet->ex[0].timer++;
+}
