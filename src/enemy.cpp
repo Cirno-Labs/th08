@@ -373,3 +373,8 @@ void MoveEnemyEffects(Enemy *enemy)
         eff->angle = AddNormalizeAngle(eff->angle, 0.031415928f);
     }
 }
+
+int EnemyManager::OnDraw(EnemyManager *mgr)
+{
+    return EnemyManager::DrawEnemies(mgr, 0, 2);
+}
