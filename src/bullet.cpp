@@ -570,3 +570,57 @@ done:
     }
     return 0;
 }
+
+Laser *BulletManager::SpawnLaser(BulletShooter *shooter)
+{
+    int i;
+    Laser *laser;
+
+    laser = this->lasers;
+    if (this->clearAllFrames != 0 && !(shooter->flags & 4))
+    {
+        return laser;
+    }
+    for (i = 0; i < 0x100; i++, laser++)
+    {
+        if (laser->active != 0)
+        {
+            continue;
+        }
+        this->etamaAnm->StartScript(&laser->sprite0, shooter->sprite + 10);
+        this->etamaAnm->SetSprite(&laser->sprite0, laser->sprite0.spriteIndex + shooter->color);
+        this->etamaAnm->InitSprite(&laser->sprite1, g_BulletColorOffsets16[shooter->color] + 0x92);
+        laser->sprite1.blendMode = 1;
+        laser->pos = shooter->pos;
+        laser->color = shooter->color;
+        laser->active = 1;
+        laser->angle = shooter->angle1;
+        if (shooter->aimMode == 0)
+        {
+            laser->angle += g_Player.AngleFrom(&shooter->pos);
+        }
+        laser->flags = shooter->flags;
+        laser->timer = 0;
+        laser->startOffset = shooter->exFloats[0];
+        laser->endOffset = shooter->exFloats[1];
+        laser->maxLength = shooter->exFloats[2];
+        laser->width = shooter->exFloats[3];
+        laser->speed = shooter->speed1;
+        laser->startFrames = shooter->exInts[0];
+        laser->durationFrames = shooter->exInts[1];
+        laser->endFrames = shooter->exInts[2];
+        laser->hitStartFrame = shooter->exInts[3];
+        laser->endHitFrames = shooter->laserEndHitFrames;
+        laser->drawDelayFlag = 0;
+        if (laser->startFrames == 0)
+        {
+            laser->state = 1;
+        }
+        else
+        {
+            laser->state = 0;
+        }
+        break;
+    }
+    return laser;
+}

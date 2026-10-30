@@ -444,7 +444,7 @@ address,size,name,symbol
 0x00430aa0,651,BulletManager::ClearAllWithBonus,?ClearAllWithBonus@BulletManager@@QAEHHH@Z
 0x00430d30,214,BulletManager::ConvertBulletsToItems,?ConvertBulletsToItems@BulletManager@@QAEXPAUD3DXVECTOR3@@M@Z
 0x00430e10,259,BulletManager::FirePattern,?FirePattern@BulletManager@@QAEHPAUBulletShooter@@@Z
-0x00430f20,639,Func430f20,
+0x00430f20,639,BulletManager::SpawnLaser,?SpawnLaser@BulletManager@@QAEPAULaser@@PAUBulletShooter@@@Z
 0x004311a0,152,BulletManager::RegisterChain,?RegisterChain@BulletManager@@SIHPAD@Z
 0x00431240,3862,Func431240,
 0x00432170,55,Func432170,

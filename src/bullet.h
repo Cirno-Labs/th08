@@ -215,6 +215,11 @@ public:
     void ConvertBulletsToItems(D3DXVECTOR3 *pos, float radius);
     // Fires `shooter`'s pattern, as th07's (0x430e10).
     int FirePattern(BulletShooter *shooter);
+    // Starts a laser from `shooter` in a free slot, as th07's: exFloats
+    // give its start and end offsets, length and width, exInts its
+    // timings. Returns it, or the first laser while clearAllFrames is set
+    // and flag 4 is not, or past the last one if none is free.
+    Laser *SpawnLaser(BulletShooter *shooter);
 
     // Loads the bullet sprites and adds the bullets' chain elements, as
     // th07's (0x4311a0). Returns 0, or -1 on failure.
