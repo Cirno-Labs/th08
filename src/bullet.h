@@ -243,6 +243,12 @@ public:
     // then the effects of EffectManager::OnDraw3, as th07's; tinted
     // while g_GameManager.unk_3dbac_10 is set. Returns 1.
     static int OnDraw(BulletManager *mgr);
+    // Loads etama.anm (slot 6) into etamaAnm and g_EtamaAnm, or takes the
+    // loaded one while the scene keeps its files; starts each bullet
+    // type's five sprite scripts and sizes its hitbox and draw list by
+    // its sprite's height and script, as th07's; then resets
+    // g_ItemManager. Returns 0, or -1 if loading fails.
+    static int AddedCallback(BulletManager *mgr);
     // Removes the bullets' chain elements, as th07's (0x433850).
     static void RemoveChain();
 
@@ -270,6 +276,9 @@ public:
 };
 ASSERT_SIZE(BulletManager, 0x6ba578);
 extern BulletManager g_BulletManager;
+
+// The scripts of each bullet type's five sprites, as th07's.
+extern const int g_BulletTypeScripts[21][5];
 
 // Sprite offsets by color, for bullets up to 16 and up to 32 high, as
 // th07's.

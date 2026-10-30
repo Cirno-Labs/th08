@@ -460,7 +460,7 @@ address,size,name,symbol
 0x00432aa0,167,WrapAroundY,?WrapAroundY@@YIXPAUBullet@@@Z
 0x00432b50,969,BulletManager::OnDraw,?OnDraw@BulletManager@@SIHPAV1@@Z
 0x00432f20,320,DrawBullet,?DrawBullet@@YIXPAUBullet@@@Z
-0x00433070,1662,Func433070,
+0x00433070,1662,BulletManager::AddedCallback,?AddedCallback@BulletManager@@SIHPAV1@@Z
 0x004337f0,42,Func4337f0,
 0x00433820,35,Func433820,
 0x00433850,35,BulletManager::RemoveChain,?RemoveChain@BulletManager@@SIXXZ
@@ -2394,6 +2394,7 @@ address,size,name,symbol
 0x004b4280,4,CoCreateInstance,__imp__CoCreateInstance@20
 0x004b4284,4,CoUninitialize,__imp__CoUninitialize@0
 0x004b4288,4,CoInitialize,__imp__CoInitialize@4
+0x004b4ad8,,g_BulletTypeScripts,?g_BulletTypeScripts@@3QAY04$$CBHA
 0x004b7b14,,g_DifficultyRatings,?g_DifficultyRatings@@3PAMA
 0x004b847c,,g_Half,?g_Half@@3MA
 0x004b8480,,g_TextureFormats,?g_TextureFormats@@3PAW4_D3DFORMAT@@A

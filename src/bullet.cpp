@@ -1307,3 +1307,113 @@ void DrawBullet(Bullet *bullet)
     }
     g_SpriteEngine->Draw(sprite);
 }
+
+int BulletManager::AddedCallback(BulletManager *mgr)
+{
+    DWORD i;
+
+    if (IsLoadingResources())
+    {
+        mgr->etamaAnm = g_EtamaAnm = g_SpriteEngine->PreloadAnm(6, "etama.anm");
+        if (mgr->etamaAnm == NULL)
+        {
+            return -1;
+        }
+    }
+    else
+    {
+        mgr->etamaAnm = g_SpriteEngine->GetAnm(6);
+    }
+    for (i = 0; i < ARRAY_SIZE(g_BulletTypeScripts); i++)
+    {
+        mgr->etamaAnm->StartScript(&mgr->typeSprites[i].sprite0, g_BulletTypeScripts[i][0]);
+        mgr->etamaAnm->StartScript(&mgr->typeSprites[i].sprite1, g_BulletTypeScripts[i][1]);
+        mgr->etamaAnm->StartScript(&mgr->typeSprites[i].sprite2, g_BulletTypeScripts[i][2]);
+        mgr->etamaAnm->StartScript(&mgr->typeSprites[i].sprite3, g_BulletTypeScripts[i][3]);
+        mgr->etamaAnm->StartScript(&mgr->typeSprites[i].sprite4, g_BulletTypeScripts[i][4]);
+        mgr->typeSprites[i].sprite0.flags |= 0x2000;
+        mgr->typeSprites[i].sprite1.flags |= 0x2000;
+        mgr->typeSprites[i].sprite2.flags |= 0x2000;
+        mgr->typeSprites[i].sprite3.flags |= 0x2000;
+        mgr->typeSprites[i].sprite4.flags |= 0x2000;
+        mgr->typeSprites[i].sprite0.baseSpriteIndex = mgr->typeSprites[i].sprite0.spriteIndex;
+        mgr->typeSprites[i].height = mgr->typeSprites[i].sprite0.spriteData->height;
+        if (mgr->typeSprites[i].sprite0.spriteData->height <= 8.0f)
+        {
+            mgr->typeSprites[i].hitboxSize.x = 4.0f;
+            mgr->typeSprites[i].hitboxSize.y = 4.0f;
+            mgr->typeSprites[i].sizeClass = 5;
+        }
+        else if (mgr->typeSprites[i].sprite0.spriteData->height <= 16.0f)
+        {
+            switch (g_BulletTypeScripts[i][0])
+            {
+            case 2:
+            case 0x6f:
+            case 0x70:
+                mgr->typeSprites[i].hitboxSize.x = 4.0f;
+                mgr->typeSprites[i].hitboxSize.y = 4.0f;
+                mgr->typeSprites[i].sizeClass = 4;
+                break;
+            case 4:
+            case 6:
+                mgr->typeSprites[i].hitboxSize.x = 4.0f;
+                mgr->typeSprites[i].hitboxSize.y = 4.0f;
+                mgr->typeSprites[i].sizeClass = 4;
+                break;
+            case 5:
+                mgr->typeSprites[i].hitboxSize.x = 4.0f;
+                mgr->typeSprites[i].hitboxSize.y = 4.0f;
+                mgr->typeSprites[i].sizeClass = 3;
+            case 0x6a:
+                mgr->typeSprites[i].hitboxSize.x = 4.0f;
+                mgr->typeSprites[i].hitboxSize.y = 4.0f;
+                mgr->typeSprites[i].sizeClass = 4;
+                break;
+            case 0x6b:
+            case 0x6c:
+                mgr->typeSprites[i].hitboxSize.x = 4.0f;
+                mgr->typeSprites[i].hitboxSize.y = 4.0f;
+                mgr->typeSprites[i].sizeClass = 4;
+                break;
+            default:
+                mgr->typeSprites[i].hitboxSize.x = 6.0f;
+                mgr->typeSprites[i].hitboxSize.y = 6.0f;
+                mgr->typeSprites[i].sizeClass = 3;
+            }
+        }
+        else if (mgr->typeSprites[i].sprite0.spriteData->height <= 32.0f)
+        {
+            switch (g_BulletTypeScripts[i][0])
+            {
+            case 8:
+            case 0x71:
+            case 0x72:
+            case 0x73:
+                mgr->typeSprites[i].hitboxSize.x = 5.0f;
+                mgr->typeSprites[i].hitboxSize.y = 5.0f;
+                mgr->typeSprites[i].sizeClass = 2;
+                break;
+            case 9:
+            case 0x6d:
+            case 0x6e:
+                mgr->typeSprites[i].hitboxSize.x = 8.0f;
+                mgr->typeSprites[i].hitboxSize.y = 8.0f;
+                mgr->typeSprites[i].sizeClass = 1;
+                break;
+            default:
+                mgr->typeSprites[i].hitboxSize.x = 10.0f;
+                mgr->typeSprites[i].hitboxSize.y = 10.0f;
+                mgr->typeSprites[i].sizeClass = 1;
+            }
+        }
+        else
+        {
+            mgr->typeSprites[i].sizeClass = 0;
+            mgr->typeSprites[i].hitboxSize.x = 24.0f;
+            mgr->typeSprites[i].hitboxSize.y = 24.0f;
+        }
+    }
+    g_ItemManager.Reset();
+    return 0;
+}

@@ -100,6 +100,13 @@ public:
     void DrawItems();
     // The active items of type 7 (0x4417e0). New in th08.
     int CountType7Items();
+    // Zeroes everything and empties the active list. Inline; the copy
+    // is BulletManager's added callback's.
+    void Reset()
+    {
+        memset(this, 0, sizeof(ItemManager));
+        this->activeListTail = &this->activeList;
+    }
 
     // The last one is what SpawnItem returns when all others are taken.
     Item items[0x831];
