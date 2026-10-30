@@ -1031,7 +1031,7 @@ void Gui::DrawHud()
             vm->pos = D3DXVECTOR3(xx, 168.0f, 0.48f);
             g_SpriteEngine->DrawUnrotated(vm);
         }
-        if (this->unk_4_10)
+        if (this->timeOrbsChanged)
         {
             vm->pos = D3DXVECTOR3(xx, 184.0f, 0.48f);
             g_SpriteEngine->DrawUnrotated(vm);
@@ -1079,7 +1079,7 @@ void Gui::DrawHud()
         this->grazeChanged = 2;
         this->frameItemsHideTimer = 2;
         this->powerChanged = 2;
-        this->unk_4_10 = 2;
+        this->timeOrbsChanged = 2;
     }
     if (this->livesChanged)
     {
@@ -1139,7 +1139,7 @@ void Gui::DrawHud()
             scorePos.x += 6.0f;
             g_AsciiText.AddFormat(&scorePos, "%d", g_GameManager.stats->checksumKeyPoints);
         }
-        if (this->unk_4_10 || g_App.GetNoFrameItems())
+        if (this->timeOrbsChanged || g_App.GetNoFrameItems())
         {
             if (g_GameManager.GetUnk3c() >= g_GameManager.GetUnk40())
             {
@@ -1223,9 +1223,9 @@ void Gui::DrawHud()
     {
         this->frameItemsHideTimer--;
     }
-    if (this->unk_4_10)
+    if (this->timeOrbsChanged)
     {
-        this->unk_4_10--;
+        this->timeOrbsChanged--;
     }
 }
 
@@ -1952,7 +1952,7 @@ int Gui::LoadResources()
     this->grazeChanged = 2;
     this->frameItemsHideTimer = 2;
     this->powerChanged = 2;
-    this->unk_4_10 = 2;
+    this->timeOrbsChanged = 2;
     g_AsciiText.anm->StartScript(&this->impl->timePassedDigit, 3);
     g_App.redrawFrames = 0x10;
     this->impl->stageClearClock2 = 0;

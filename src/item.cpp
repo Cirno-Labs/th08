@@ -538,7 +538,7 @@ void Item::CollectTimeOrb()
         g_AsciiText.AddPopup2(&this->pos, amount,
                               g_GameManager.GetUnk3c() < g_GameManager.GetUnk40() ? 0xdfffffff : 0xdfffef80);
     }
-    g_Gui.unk_4_10 = 2;
+    g_Gui.timeOrbsChanged = 2;
     g_GameManager.AddScore(amount);
     g_GameManager.AddTimeOrbs(1);
     g_SpellCard.Func416b10(8000);

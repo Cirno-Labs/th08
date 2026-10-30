@@ -1133,7 +1133,7 @@ int UpdateDyingState(Player *player)
             player->lastWordReady = 0;
             g_SpellCard.Func44d150();
             g_GameManager.AddDeaths(1);
-            g_Gui.unk_4_10 = 2;
+            g_Gui.timeOrbsChanged = 2;
             g_GameManager.AddTimeOrbs(g_GameManager.stats->timeOrbs > 5000 ? -500 : -g_GameManager.stats->timeOrbs / 10);
             if (g_GameManager.GetLives() > 0)
             {
