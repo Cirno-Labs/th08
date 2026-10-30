@@ -351,7 +351,7 @@ tick:
     this->timer++;
 }
 
-void Enemy::Func42adb0(int collect)
+void Enemy::ReleaseFollowers(int collect)
 {
     int count;
     Enemy *nxt;
@@ -359,7 +359,7 @@ void Enemy::Func42adb0(int collect)
     D3DCOLOR tint;
     int k;
 
-    count = this->Func41fd40();
+    count = this->CountFollowers();
     if (count != 0)
     {
         k = 0;
@@ -441,7 +441,7 @@ void Enemy::Func42adb0(int collect)
             g_Player.orbGaugeCooldown = 0;
         }
     }
-    if (this->Func41fd20() && collect)
+    if (this->IsFollower() && collect)
     {
         D3DXVECTOR3 unused;
 
@@ -456,12 +456,12 @@ void Enemy::Func42adb0(int collect)
         this->pointItems = 0;
         this->item = -2;
     }
-    this->Func42b2f0();
+    this->LeaveFollowerList();
 }
 
-void Enemy::Func42b2f0()
+void Enemy::LeaveFollowerList()
 {
-    if (this->Func41fd20())
+    if (this->IsFollower())
     {
         this->prevFollower->nextFollower = this->nextFollower;
         if (this->nextFollower != NULL)
@@ -479,13 +479,13 @@ void Enemy::Func42b2f0()
     }
 }
 
-void Enemy::Func42b370(int damage)
+void Enemy::ShareDamageWithLeader(int damage)
 {
     int share;
     int i;
     int threshold;
 
-    if (!this->Func41fd20())
+    if (!this->IsFollower())
     {
         return;
     }
@@ -524,7 +524,7 @@ void Enemy::Func42b370(int damage)
     }
 }
 
-void Enemy::Func42bc90()
+void Enemy::FreeThreads()
 {
     int i;
 
@@ -542,7 +542,7 @@ void Enemy::Despawn()
 {
     int i;
 
-    this->Func42adb0(0);
+    this->ReleaseFollowers(0);
     if (this->deathMode == 0)
     {
         this->active = 0;
@@ -574,7 +574,7 @@ void Enemy::Despawn()
         this->lifeCallbackLife[i] = -1;
     }
     this->timerCallbackTime = -1;
-    this->Func42bc90();
+    this->FreeThreads();
     if (g_Unknown18b89b4 == this)
     {
         g_Unknown18b89b4 = NULL;
@@ -621,7 +621,7 @@ int Enemy::CheckLifeCallback()
             this->lifeCallbackProximity = 0;
             this->shooter = g_EnemyManager.enemyTemplate.shooter;
             this->shootInterval = 0;
-            this->Func42adb0(1);
+            this->ReleaseFollowers(1);
             for (enemy = g_EnemyManager.enemies, k = 0; k < 0x1e0; k++, enemy++)
             {
                 if (!enemy->active)
@@ -815,7 +815,7 @@ int Enemy::CheckTimerCallback()
             g_Player.stateTimer = 70;
             g_Player.playerState = 3;
         }
-        this->Func42adb0(0);
+        this->ReleaseFollowers(0);
         for (enemy = g_EnemyManager.enemies, j = 0; j < 0x1e0; j++, enemy++)
         {
             if (!enemy->active)
@@ -941,7 +941,7 @@ void Enemy::CheckPlayerContact(D3DXVECTOR3 *pos, D3DXVECTOR3 *size)
     {
         g_Player.CheckGraze(pos, &box);
     }
-    if ((g_GameManager.character == 0 || g_GameManager.character == 4) && this->Func41fd20())
+    if ((g_GameManager.character == 0 || g_GameManager.character == 4) && this->IsFollower())
     {
         return;
     }
@@ -967,7 +967,7 @@ void EnemyManager::AddRankOverTime()
     }
 }
 
-void Enemy::Func42c420()
+void Enemy::UpdateYoukaiState()
 {
     if (!this->isYoukai)
     {
@@ -1108,7 +1108,7 @@ int EnemyManager::OnUpdate(EnemyManager *mgr)
         }
         if (enemy->followsYoukaiState)
         {
-            enemy->Func42c420();
+            enemy->UpdateYoukaiState();
         }
     again:
         if (g_EnemyScripts.RunEnemy(enemy) == -1)
@@ -1220,7 +1220,7 @@ int EnemyManager::OnUpdate(EnemyManager *mgr)
             enemy->lastDamage = 0;
             if (enemy->hitByShots)
             {
-                if (!g_SpellCard.IsActive() || !enemy->Func41fd20() || !g_Unknown17d6ed4)
+                if (!g_SpellCard.IsActive() || !enemy->IsFollower() || !g_Unknown17d6ed4)
                 {
                     hurt = g_Player.CalcDamage(&enemy->absPos, &enemy->hitboxSize, &enemy->timeOrbDamage, &bomb);
                 }
@@ -1284,7 +1284,7 @@ int EnemyManager::OnUpdate(EnemyManager *mgr)
                                     hurt = 1;
                                 }
                             }
-                            else if (g_SpellCard.WasBombed() && !enemy->Func41fd20())
+                            else if (g_SpellCard.WasBombed() && !enemy->IsFollower())
                             {
                                 if (hurt > 2)
                                 {
@@ -1313,7 +1313,7 @@ int EnemyManager::OnUpdate(EnemyManager *mgr)
                         }
                         enemy->life -= hurt;
                         enemy->lastDamage = hurt;
-                        enemy->Func42b370(hurt);
+                        enemy->ShareDamageWithLeader(hurt);
                     }
                     hit = 1;
                 }
@@ -1334,7 +1334,7 @@ int EnemyManager::OnUpdate(EnemyManager *mgr)
                         g_OrbHomingTarget = enemy->absPos;
                     }
                 }
-                if (fabsf(enemy->absPos.x - g_Player.pos.x) < 64.0f && !enemy->Func41fd20() &&
+                if (fabsf(enemy->absPos.x - g_Player.pos.x) < 64.0f && !enemy->IsFollower() &&
                     (g_Unknown18b89b4 == NULL || g_Unknown18b89b4->pos.y > enemy->absPos.y))
                 {
                     g_Unknown18b89b4 = enemy;
@@ -1367,11 +1367,11 @@ int EnemyManager::OnUpdate(EnemyManager *mgr)
                     enemy->threads[k] = NULL;
                 }
             }
-            if (enemy->Func41fd20())
+            if (enemy->IsFollower())
             {
                 enemy->leader->followerCount--;
             }
-            enemy->Func42adb0(1);
+            enemy->ReleaseFollowers(1);
             if (!g_Player.focused)
             {
                 k = -200;
@@ -1471,7 +1471,7 @@ int EnemyManager::OnUpdate(EnemyManager *mgr)
                     enemy->lifeCallbackLife[l] = -1;
                 }
                 enemy->timerCallbackTime = -1;
-                enemy->Func42bc90();
+                enemy->FreeThreads();
                 enemy->shooter = g_EnemyManager.enemyTemplate.shooter;
                 enemy->shootInterval = 0;
                 g_EnemyScripts.StartSub(&enemy->ctx, enemy->deathSub);
@@ -1960,7 +1960,7 @@ int EnemyManager::DeletedCallback(EnemyManager *mgr)
 
     for (i = 0; i < 0x1e0; i++, enemy++)
     {
-        enemy->Func42bc90();
+        enemy->FreeThreads();
     }
     if (!IsRestarting())
     {
@@ -2039,7 +2039,7 @@ int EnemyManager::ClearEnemiesForBonus(int maxBonus, int start)
                 }
             }
         }
-        enemy->Func42b2f0();
+        enemy->LeaveFollowerList();
         if (enemy->deathSub >= 0)
         {
             g_EnemyScripts.StartSub(&enemy->ctx, enemy->deathSub);

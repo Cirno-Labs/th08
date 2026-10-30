@@ -146,21 +146,21 @@ struct Enemy
 {
     // Whether unk_2da4 is clear and unk_8 is set. Inline; the copy at
     // 0x41f000 is in an /Od object.
-    BOOL Func41f000()
+    BOOL IsLeader()
     {
         return this->leader == 0 && this->nextFollower != NULL ? TRUE : FALSE;
     }
-    // How many enemies follow it through unk_8, when Func41f000. Inline;
+    // How many enemies follow it through unk_8, when IsLeader. Inline;
     // the copy at 0x41fd40 is in an /Od object. DrawBanners shows it
     // for the first boss.
-    int Func41fd40()
+    int CountFollowers()
     {
         Enemy *enemy;
         int count;
 
         enemy = this;
         count = 0;
-        if (this->Func41f000())
+        if (this->IsLeader())
         {
             while (enemy->nextFollower != NULL)
             {
@@ -171,14 +171,14 @@ struct Enemy
         return count;
     }
 
-    // The last enemy following it through unk_8, when Func41f000, else
+    // The last enemy following it through unk_8, when IsLeader, else
     // itself. Inline; the copy at 0x41efc0 is in an /Od object.
-    Enemy *Func41efc0()
+    Enemy *GetLastFollower()
     {
         Enemy *enemy;
 
         enemy = this;
-        if (this->Func41f000())
+        if (this->IsLeader())
         {
             while (enemy->nextFollower != NULL)
             {
@@ -190,7 +190,7 @@ struct Enemy
 
     // Whether unk_2da4 is set. Inline; the copy at 0x41fd20 is in an
     // /Od object.
-    BOOL Func41fd20()
+    BOOL IsFollower()
     {
         return this->leader != 0;
     }
@@ -203,19 +203,19 @@ struct Enemy
     // it shows unk_3380 and bursts twice as many orbs. A follower with
     // `collect` also lowers stats->unk_22 by a twelfth and drops an orb.
     // Called with 0 on the bosses as a spell card bomb ends (0x42adb0).
-    void Func42adb0(int collect);
-    // Ends it, as th07's: Func42adb0(0) first; unless deathMode is set,
+    void ReleaseFollowers(int collect);
+    // Ends it, as th07's: ReleaseFollowers(0) first; unless deathMode is set,
     // deactivates it; a boss leaves its slot, hides its nearby label and
     // ends the boss fight; drops its effects, sends unk_53c8 interrupt
     // 3, clears its callbacks and frees threads (0x42bcf0).
     void Despawn();
-    // Takes it out of the list through unk_4 and unk_8 while Func41fd20,
+    // Takes it out of the list through unk_4 and unk_8 while IsFollower,
     // clearing unk_2da4; else just clears both links (0x42b2f0).
-    void Func42b2f0();
+    void LeaveFollowerList();
     // Follows Player::unk_5 (the human/youkai side?): as it changes,
     // bursts effect 0x1f or 0x1e, sends unk_53c8 interrupt 2 or 1 and
     // plays sound 0x28 or 0x27 (0x42c420).
-    void Func42c420();
+    void UpdateYoukaiState();
     // Moves it by velocity (x mirrored while mirrored is set), keeping
     // prevPos and posDelta, as th07's inline (0x42deb0).
     void Move();
@@ -233,7 +233,7 @@ struct Enemy
     }
     // Runs the first life callback whose life the enemy dropped below,
     // as th07's: restarts its script there, ends its timer callback,
-    // frees threads, Func42adb0(1), kills the other non-boss enemies and
+    // frees threads, ReleaseFollowers(1), kills the other non-boss enemies and
     // makes the player invulnerable for 70 frames after a boss's.
     // Returns 1 then, else 0 after setting unk_3328_4 by how close the
     // life is to the next callback (or to 0) (0x42b490).
@@ -243,7 +243,7 @@ struct Enemy
     // the life to the highest life callback, restarts the script at
     // timerCallbackSub, ends the spell card (unless keepSpellCard),
     // makes the player invulnerable for 70 frames after a boss's,
-    // Func42adb0(0), kills the other non-boss enemies and frees threads.
+    // ReleaseFollowers(0), kills the other non-boss enemies and frees threads.
     // Returns 1 then, else 0 (0x42b930).
     int CheckTimerCallback();
     // Keeps pos within lowerBound and upperBound while clampPos is set,
@@ -254,10 +254,10 @@ struct Enemy
     // it is a boss or grazeable or a damage-sharing part of character 0
     // or 4. As th07's (0x42c290).
     void CheckPlayerContact(D3DXVECTOR3 *pos, D3DXVECTOR3 *size);
-    // Passes half of `damage` on to unk_2da4 while Func41fd20 (a ninth
+    // Passes half of `damage` on to unk_2da4 while IsFollower (a ninth
     // while unk_2da4, a boss, is invulnerable; none for others then),
     // keeping its life above its life callbacks (0x42b370).
-    void Func42b370(int damage);
+    void ShareDamageWithLeader(int damage);
     // Drops its items, as th07's OnUpdate did: its item (or, at -1,
     // every third enemy one of g_EnemyItemDrops) with effect
     // deathEffectIndex + 4, then unk_330c power items (big ones at full
@@ -265,12 +265,12 @@ struct Enemy
     // them fly to the player (0x42bea0).
     void DropItems(int byBomb);
     // Frees and clears threads (0x42bc90).
-    void Func42bc90();
+    void FreeThreads();
 
     // The next enemy in its draw list (EnemyManager::drawListHeads), as
     // th07's.
     Enemy *nextInDrawList;
-    // The enemies before and after it in a list (Func42b2f0).
+    // The enemies before and after it in a list (LeaveFollowerList).
     Enemy *prevFollower;
     Enemy *nextFollower;
     Sprite sprite;
@@ -311,7 +311,7 @@ struct Enemy
     float angularVelocity;
     float orbitAngle;
     float orbitAngularVelocity;
-    // The enemy it shares its damage with (Func42b370).
+    // The enemy it shares its damage with (ShareDamageWithLeader).
     Enemy *leader;
     float speed;
     float acceleration;
@@ -382,11 +382,11 @@ struct Enemy
             DWORD hitByShots : 1;
             DWORD grazeable : 1;
             DWORD followsYoukaiState : 1;
-            // Func42adb0 moves unk_2d40 to its leader's pos while set.
+            // ReleaseFollowers moves unk_2d40 to its leader's pos while set.
             DWORD posRelativeToLeader : 1;
-            // Set by Func42adb0 as it leaves its leader's list.
+            // Set by ReleaseFollowers as it leaves its leader's list.
             DWORD releasedFromLeader : 1;
-            // Player::unk_5 as Func42c420 last saw it.
+            // Player::unk_5 as UpdateYoukaiState last saw it.
             DWORD isYoukai : 1;
             DWORD moveMode : 2;
             DWORD moveEasing : 3;
@@ -420,7 +420,7 @@ struct Enemy
         struct
         {
             DWORD unusedFlag3328_0 : 1;
-            // Func42c420 bursts effect 0x26 every other frame while set.
+            // UpdateYoukaiState bursts effect 0x26 every other frame while set.
             DWORD emitsEffect26 : 1;
             // Its sprites run their scripts from the stage's enemy ANM
             // (EnemyManager::stageAnm) while set, else from enemy.anm.
@@ -446,9 +446,9 @@ struct Enemy
     // left, 2 right, 0xff none yet.
     BYTE spriteDirection;
     // The draw list OnUpdate puts it in, as th07's: 0 or 2 by
-    // Func42c420 as Player::unk_5 changes.
+    // UpdateYoukaiState as Player::unk_5 changes.
     BYTE drawListIndex;
-    // 0x40 while Player::unk_5 is set, else 0x20 (Func42c420).
+    // 0x40 while Player::unk_5 is set, else 0x20 (UpdateYoukaiState).
     BYTE difficultyMaskExtra;
     unsigned char pad_3331[0x1];
     // The sprite scripts for turning, as th07's, and a sixth one.
@@ -469,9 +469,9 @@ struct Enemy
     int lifeCallbackSub[4];
     int timerCallbackTime;
     int timerCallbackSub;
-    // Shown by DrawBanners next to Func41fd40.
+    // Shown by DrawBanners next to CountFollowers.
     int followerCount;
-    // Freed by Func42bc90.
+    // Freed by FreeThreads.
     EnemyScriptThread *threads[4];
     EnemyBox trailBoxes[0x60];
     VertexTex1DiffuseXyzrwh spriteStripVertices[0xc2];

@@ -1355,7 +1355,7 @@ void Gui::DrawBanners()
         {
             pos = D3DXVECTOR3(2.0f, 29.0f, 0.0f);
             g_AsciiText.SetScale(1.0f, 1.0f);
-            g_AsciiText.Func403600(&pos, g_EnemyManager.bosses[0]->Func41fd40(), g_EnemyManager.bosses[0]->followerCount,
+            g_AsciiText.Func403600(&pos, g_EnemyManager.bosses[0]->CountFollowers(), g_EnemyManager.bosses[0]->followerCount,
                                    0xfff0f00f);
         }
     }

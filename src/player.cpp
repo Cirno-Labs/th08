@@ -996,7 +996,7 @@ void UpdateBombState(Player *player)
                 {
                     if (g_EnemyManager.bosses[i] != NULL)
                     {
-                        g_EnemyManager.bosses[i]->Func42adb0(0);
+                        g_EnemyManager.bosses[i]->ReleaseFollowers(0);
                         g_EnemyManager.bosses[i]->life = 0;
                         g_EnemyManager.bosses[i]->haltedByBomb = 0;
                     }

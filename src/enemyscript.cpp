@@ -529,7 +529,7 @@ loop:
             Enemy *child;
             Enemy *tail;
 
-            tail = enemy->Func41efc0();
+            tail = enemy->GetLastFollower();
             child = ScriptSpawnEnemy(enemy, instr);
             if (!g_EnemyManager.spawnFailed)
             {
@@ -560,7 +560,7 @@ loop:
             Enemy *child;
             Enemy *tail;
 
-            tail = enemy->Func41efc0();
+            tail = enemy->GetLastFollower();
             child = ScriptSpawnEnemyRel(enemy, instr);
             if (!g_EnemyManager.spawnFailed)
             {
@@ -591,7 +591,7 @@ loop:
             Enemy *child;
             Enemy *tail;
 
-            tail = enemy->Func41efc0();
+            tail = enemy->GetLastFollower();
             child = ScriptSpawnEnemy(enemy, instr);
             if (!g_EnemyManager.spawnFailed)
             {
@@ -1596,7 +1596,7 @@ int GetIntOperand(Enemy *enemy, int id)
     case 10093:
         return enemy->score;
     case 10096:
-        return enemy->Func41f000() ? enemy->Func41fd40() : (enemy->Func41fd20() ? enemy->leader->Func41fd40() : 0);
+        return enemy->IsLeader() ? enemy->CountFollowers() : (enemy->IsFollower() ? enemy->leader->CountFollowers() : 0);
     case 10048:
         return g_Player.AngleFrom(&enemy->absPos);
     case 10050:
@@ -1892,7 +1892,7 @@ float GetFloatOperand(Enemy *enemy, float id)
     case 10083:
         return enemy->lastDamage;
     case 10096:
-        return enemy->Func41f000() ? enemy->Func41fd40() : (enemy->Func41fd20() ? enemy->leader->Func41fd40() : 0);
+        return enemy->IsLeader() ? enemy->CountFollowers() : (enemy->IsFollower() ? enemy->leader->CountFollowers() : 0);
     case 10050:
     {
         D3DXVECTOR3 diff = g_Player.pos - enemy->absPos;
