@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">94.80% (1058)</tspan> · <tspan class="decompiled">3.94% (44)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">1.25% (14)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">94.89% (1059)</tspan> · <tspan class="decompiled">3.94% (44)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">1.16% (13)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="708.18" height="6" x="0" y="0" class="named"/>
-<rect width="29.45" height="6" x="708.18" y="0" class="decompiled"/>
-<rect width="9.37" height="6" x="737.63" y="0" class="todo"/>
+<rect width="708.85" height="6" x="0" y="0" class="named"/>
+<rect width="29.45" height="6" x="708.85" y="0" class="decompiled"/>
+<rect width="8.70" height="6" x="738.30" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -173,7 +173,7 @@
 <rect width="12" height="12" x="30" y="30" class="named"><title>0x00409f40 Stage::StepObjects (610 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="30" class="named"><title>0x0040a1b0 Stage::DrawLayer (4746 bytes)</title></rect>
 <rect width="12" height="12" x="60" y="30" class="named"><title>0x0040b440 sqrtf (21 bytes)</title></rect>
-<rect width="12" height="12" x="75" y="30" class="todo"><title>0x0040b460 Func40b460 (14 bytes)</title></rect>
+<rect width="12" height="12" x="75" y="30" class="named"><title>0x0040b460 D3DXVECTOR3::D3DXVECTOR3 (14 bytes)</title></rect>
 <rect width="12" height="12" x="90" y="30" class="named"><title>0x0040b470 D3DXVECTOR3::operator/= (73 bytes)</title></rect>
 <rect width="12" height="12" x="105" y="30" class="named"><title>0x0040b4c0 D3DXVec3Length (58 bytes)</title></rect>
 <rect width="12" height="12" x="120" y="30" class="named"><title>0x0040b500 D3DXVec3LengthSq (49 bytes)</title></rect>
@@ -1190,9 +1190,9 @@
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
 <text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">97.59%</tspan> · <tspan class="decompiled">1.68%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">0.73%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="728.98" height="6" x="0" y="0" class="named"/>
-<rect width="12.53" height="6" x="728.98" y="0" class="decompiled"/>
-<rect width="5.49" height="6" x="741.51" y="0" class="todo"/>
+<rect width="729" height="6" x="0" y="0" class="named"/>
+<rect width="12.53" height="6" x="729" y="0" class="decompiled"/>
+<rect width="5.47" height="6" x="741.53" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="named"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -2298,7 +2298,7 @@
 <rect width="0.26" height="0.10" x="738.70" y="342.78" class="named"><title>0x0043f855 GdiSurface::GetHdc (15 bytes)</title></rect>
 <rect width="0.26" height="0.10" x="738.70" y="345.39" class="named"><title>0x0043f864 GdiSurface::GetWidth (15 bytes)</title></rect>
 <rect width="0.10" height="0.10" x="741.96" y="337.55" class="named"><title>0x0044e0e0 KeepsResources (15 bytes)</title></rect>
-<rect width="0.10" height="0.10" x="744.77" y="337.55" class="todo"><title>0x0040b460 Func40b460 (14 bytes)</title></rect>
+<rect width="0.10" height="0.10" x="744.77" y="337.55" class="named"><title>0x0040b460 D3DXVECTOR3::D3DXVECTOR3 (14 bytes)</title></rect>
 <rect width="0.10" height="0.10" x="747.38" y="337.55" class="named"><title>0x0043f873 GdiSurface::GetFormat (14 bytes)</title></rect>
 <rect width="0.10" height="0.10" x="741.96" y="340.59" class="named"><title>0x00429df0 MemoryManager::Unregister (13 bytes)</title></rect>
 <rect width="0.10" height="0.10" x="741.96" y="343.34" class="named"><title>0x0043c317 GameManager::IsPhantasmOpen (11 bytes)</title></rect>
