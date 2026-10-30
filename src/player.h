@@ -711,6 +711,10 @@ void UpdateYukariLastWord(Player *player);
 // Its draw callback: tints the play area blue and draws the last word's
 // two sprites at the player's starting position (0x4113a0).
 void DrawYukariLastWord(Player *player);
+// Youmu's 人符「現世斬」: the player dashes to the top of the play area,
+// slashes the whole height there and to both sides, and comes back
+// (0x411b10).
+void UpdateYoumuBomb(Player *player);
 // Draw callbacks of the bombs that only tint the play area, by the
 // bomb they follow: Alice's (also Yukari's draw.funcs[0..1], 0x40d950)
 // and Remilia's and her last word's (0x40f550, 0x40fcb0).

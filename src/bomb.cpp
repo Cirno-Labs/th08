@@ -1735,6 +1735,121 @@ int EffectInitBombRing37(Effect *effect)
     return 0;
 }
 
+void UpdateYoumuBomb(Player *player)
+{
+    PlayerBomb *b = &player->bomb;
+    int x = 0;
+    int y = 0;
+    PlayerBombPart *part = b->parts;
+    float t;
+
+    if (b->timer.HasTicked() && b->timer == 0)
+    {
+        StartBomb(player, 0, "\x90\x6c\x95\x84\x81\x75\x8c\xbb\x90\xa2\x8e\x61\x81\x76", 220, 270, 0);
+        g_SoundPlayer.QueueSound(0xd, 0);
+        player->moveScaleY = 0.0f;
+        player->moveScaleX = 0.0f;
+        player->anm->StartScript(&player->sprite, 0);
+        g_SoundPlayer.QueueSound(6, 0);
+        part->pos = player->pos;
+        part->velocity = part->pos;
+        part->velocity.y = 416.0f;
+    }
+    if (b->timer < 40)
+    {
+        t = b->timer.AsFloat() / 40.0f;
+        t = (t = 1.0f - t) * t;
+        t = 1.0f - t;
+        player->pos = (part->velocity - part->pos) * t + part->pos;
+    }
+    else if (b->timer.HasTickedTo(40))
+    {
+        g_EffectManager.SpawnEffect(0x28, &player->pos, 1, 0xff8080ff);
+    }
+    else if (b->timer.HasTickedTo(70))
+    {
+        D3DVECTOR pos;
+
+        player->pos.y = 32.0f;
+        pos = player->pos;
+        pos.y = 224.0f;
+        ScreenEffect::StartEffect(3, 8, 1, 0xefffffff, 0, 0x15);
+        g_SoundPlayer.QueueSound(0x2a, 0);
+        part->hitArea = player->AddHitArea((D3DXVECTOR3 *)&pos, 96.0f, 448.0f, 6, 60);
+        part->hitbox = player->AddBombHitbox((D3DXVECTOR3 *)&pos, 96.0f, 448.0f, 300, 10);
+        part->hitbox = player->AddBombHitbox((D3DXVECTOR3 *)&pos, 96.0f, 448.0f, 80, 60);
+        part->hitbox->damageInterval = 5;
+        g_EffectManager.SpawnEffect(0x30, (D3DXVECTOR3 *)&pos, 1, 0xff8080ff);
+    }
+    else if (b->timer.HasTickedTo(80))
+    {
+        D3DVECTOR pos;
+
+        pos = player->pos;
+        pos.y = 224.0f;
+        pos.x -= 32.0f;
+        player->AddHitArea((D3DXVECTOR3 *)&pos, 96.0f, 448.0f, 6, 60);
+        part->hitbox = player->AddBombHitbox((D3DXVECTOR3 *)&pos, 96.0f, 448.0f, 100, 40);
+        part->hitbox->damageInterval = 2;
+        g_EffectManager.SpawnEffect(0x30, (D3DXVECTOR3 *)&pos, 1, 0xff8080ff);
+        pos.x += 64.0f;
+        player->AddHitArea((D3DXVECTOR3 *)&pos, 96.0f, 448.0f, 6, 60);
+        part->hitbox = player->AddBombHitbox((D3DXVECTOR3 *)&pos, 96.0f, 448.0f, 100, 40);
+        part->hitbox->damageInterval = 3;
+        g_EffectManager.SpawnEffect(0x30, (D3DXVECTOR3 *)&pos, 1, 0xff8080ff);
+        ScreenEffect::StartEffect(3, 8, 1, 0xcfffffff, 0, 0x15);
+    }
+    else if (b->timer.HasTickedTo(90))
+    {
+        D3DVECTOR pos;
+
+        pos = player->pos;
+        pos.y = 224.0f;
+        pos.x -= 64.0f;
+        player->AddHitArea((D3DXVECTOR3 *)&pos, 96.0f, 448.0f, 6, 60);
+        part->hitbox = player->AddBombHitbox((D3DXVECTOR3 *)&pos, 96.0f, 448.0f, 100, 40);
+        part->hitbox->damageInterval = 2;
+        g_EffectManager.SpawnEffect(0x30, (D3DXVECTOR3 *)&pos, 1, 0xff8080ff);
+        pos.x += 128.0f;
+        player->AddHitArea((D3DXVECTOR3 *)&pos, 96.0f, 448.0f, 6, 60);
+        part->hitbox = player->AddBombHitbox((D3DXVECTOR3 *)&pos, 96.0f, 448.0f, 100, 40);
+        part->hitbox->damageInterval = 3;
+        g_EffectManager.SpawnEffect(0x30, (D3DXVECTOR3 *)&pos, 1, 0xff8080ff);
+        ScreenEffect::StartEffect(3, 8, 1, 0xbfffffff, 0, 0x15);
+    }
+    else if (b->timer.HasTickedTo(100))
+    {
+        D3DVECTOR pos;
+
+        pos = player->pos;
+        pos.y = 224.0f;
+        pos.x -= 96.0f;
+        player->AddHitArea((D3DXVECTOR3 *)&pos, 96.0f, 448.0f, 6, 60);
+        part->hitbox = player->AddBombHitbox((D3DXVECTOR3 *)&pos, 96.0f, 448.0f, 80, 40);
+        part->hitbox->damageInterval = 2;
+        g_EffectManager.SpawnEffect(0x30, (D3DXVECTOR3 *)&pos, 1, 0xff8080ff);
+        pos.x += 192.0f;
+        player->AddHitArea((D3DXVECTOR3 *)&pos, 96.0f, 448.0f, 6, 60);
+        part->hitbox = player->AddBombHitbox((D3DXVECTOR3 *)&pos, 96.0f, 448.0f, 80, 40);
+        part->hitbox->damageInterval = 3;
+        g_EffectManager.SpawnEffect(0x30, (D3DXVECTOR3 *)&pos, 1, 0xff8080ff);
+        ScreenEffect::StartEffect(3, 8, 1, 0x8fffffff, 0, 0x15);
+        part->velocity = player->pos;
+    }
+    else if (b->timer >= 120 && b->timer < 150)
+    {
+        t = (b->timer.AsFloat() - 120.0f) / 30.0f;
+        t = (t = 1.0f - t) * t;
+        t = 1.0f - t;
+        player->pos = (part->pos - part->velocity) * t + part->velocity;
+    }
+    else if (b->timer.HasTickedTo(150))
+    {
+        player->moveScaleY = 1.0f;
+        player->moveScaleX = 1.0f;
+    }
+}
+
 int EffectUpdateBombRing48(Effect *effect)
 {
     float t;

@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">76.97% (859)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">21.06% (235)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">77.06% (860)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">20.97% (234)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="574.98" height="6" x="0" y="0" class="named"/>
-<rect width="14.73" height="6" x="574.98" y="0" class="decompiled"/>
-<rect width="157.30" height="6" x="589.70" y="0" class="todo"/>
+<rect width="575.65" height="6" x="0" y="0" class="named"/>
+<rect width="14.73" height="6" x="575.65" y="0" class="decompiled"/>
+<rect width="156.63" height="6" x="590.37" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -258,7 +258,7 @@
 <rect width="12" height="12" x="555" y="45" class="named"><title>0x00411720 EffectInitBombRing36 (139 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="45" class="named"><title>0x004117b0 EffectUpdateBombRing37 (708 bytes)</title></rect>
 <rect width="12" height="12" x="585" y="45" class="named"><title>0x00411a80 EffectInitBombRing37 (139 bytes)</title></rect>
-<rect width="12" height="12" x="600" y="45" class="todo"><title>0x00411b10 Func411b10 (2032 bytes)</title></rect>
+<rect width="12" height="12" x="600" y="45" class="named"><title>0x00411b10 UpdateYoumuBomb (2032 bytes)</title></rect>
 <rect width="12" height="12" x="615" y="45" class="todo"><title>0x00412300 Func412300 (207 bytes)</title></rect>
 <rect width="12" height="12" x="630" y="45" class="todo"><title>0x004123d0 Func4123d0 (3016 bytes)</title></rect>
 <rect width="12" height="12" x="645" y="45" class="todo"><title>0x00412fa0 Func412fa0 (207 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">70.09%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">28.89%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">70.54%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">28.45%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="523.60" height="6" x="0" y="0" class="named"/>
-<rect width="7.57" height="6" x="523.60" y="0" class="decompiled"/>
-<rect width="215.83" height="6" x="531.17" y="0" class="todo"/>
+<rect width="526.90" height="6" x="0" y="0" class="named"/>
+<rect width="7.57" height="6" x="526.90" y="0" class="decompiled"/>
+<rect width="212.53" height="6" x="534.47" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 Func4184b0 (26638 bytes)</title></rect>
@@ -1234,7 +1234,7 @@
 <rect width="32.04" height="34.75" x="226.20" y="310.25" class="todo"><title>0x004161b0 Func4161b0 (2331 bytes)</title></rect>
 <rect width="29.54" height="34.28" x="261.24" y="0" class="todo"><title>0x0042f5f0 Func42f5f0 (2138 bytes)</title></rect>
 <rect width="29.54" height="33.18" x="261.24" y="37.28" class="todo"><title>0x0042ffc0 Func42ffc0 (2075 bytes)</title></rect>
-<rect width="29.54" height="32.43" x="261.24" y="73.47" class="todo"><title>0x00411b10 Func411b10 (2032 bytes)</title></rect>
+<rect width="29.54" height="32.43" x="261.24" y="73.47" class="named"><title>0x00411b10 UpdateYoumuBomb (2032 bytes)</title></rect>
 <rect width="29.54" height="32.38" x="261.24" y="108.90" class="named"><title>0x0043d970 ReadButtons (2029 bytes)</title></rect>
 <rect width="29.54" height="31.68" x="261.24" y="144.29" class="named"><title>0x00440500 ItemManager::UpdateItems (1989 bytes)</title></rect>
 <rect width="29.54" height="31.56" x="261.24" y="178.97" class="named"><title>0x0043826b Gui::DrawStageClear (1982 bytes)</title></rect>
