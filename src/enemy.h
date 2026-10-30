@@ -791,6 +791,12 @@ void ToggleMarkedBullets(Enemy *enemy, EnemyScriptInstr *instr);
 // 0 fade in over 15 frames as 2, the others go back (0x424c40).
 void CycleMarkedBullets(Enemy *enemy, EnemyScriptInstr *instr);
 
+// Script function 8: numbers the followers of unk_2da4 with the same
+// ints2[2] (into their ints2[1]), counts them into ints[6] (ints[5] set
+// when the count changed) and, for all but the leader, eases orbitAngle
+// towards an even share of the circle from the leader's (0x4244f0).
+void KeepFormation(Enemy *enemy, EnemyScriptInstr *instr);
+
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
 // The enemy scripts by stage, by stage in spell practice (stage + 9),

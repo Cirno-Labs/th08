@@ -298,7 +298,7 @@ address,size,name,symbol
 0x00424130,64,EndTwinEffects,?EndTwinEffects@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00424170,104,SpawnTwinEffects3A,?SpawnTwinEffects3A@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x004241e0,784,Func4241e0,
-0x004244f0,494,Func4244f0,
+0x004244f0,494,KeepFormation,?KeepFormation@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x004246e0,68,FlashAndShakeScreen,?FlashAndShakeScreen@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00424730,228,BeamHitsPlayer160,?BeamHitsPlayer160@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00424820,228,BeamHitsPlayer240,?BeamHitsPlayer240@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z

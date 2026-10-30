@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">87.46% (976)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">9.32% (104)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">87.54% (977)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">9.23% (103)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="653.29" height="6" x="0" y="0" class="named"/>
-<rect width="24.10" height="6" x="653.29" y="0" class="decompiled"/>
-<rect width="69.61" height="6" x="677.39" y="0" class="todo"/>
+<rect width="653.96" height="6" x="0" y="0" class="named"/>
+<rect width="24.10" height="6" x="653.96" y="0" class="decompiled"/>
+<rect width="68.94" height="6" x="678.06" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -367,7 +367,7 @@
 <rect width="12" height="12" x="690" y="75" class="named"><title>0x00424130 EndTwinEffects (64 bytes)</title></rect>
 <rect width="12" height="12" x="705" y="75" class="named"><title>0x00424170 SpawnTwinEffects3A (104 bytes)</title></rect>
 <rect width="12" height="12" x="720" y="75" class="todo"><title>0x004241e0 Func4241e0 (784 bytes)</title></rect>
-<rect width="12" height="12" x="735" y="75" class="todo"><title>0x004244f0 Func4244f0 (494 bytes)</title></rect>
+<rect width="12" height="12" x="735" y="75" class="named"><title>0x004244f0 KeepFormation (494 bytes)</title></rect>
 <rect width="12" height="12" x="0" y="90" class="named"><title>0x004246e0 FlashAndShakeScreen (68 bytes)</title></rect>
 <rect width="12" height="12" x="15" y="90" class="named"><title>0x00424730 BeamHitsPlayer160 (228 bytes)</title></rect>
 <rect width="12" height="12" x="30" y="90" class="named"><title>0x00424820 BeamHitsPlayer240 (228 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">80.73%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">17.69%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">80.84%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">17.59%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="603.05" height="6" x="0" y="0" class="named"/>
-<rect width="11.78" height="6" x="603.05" y="0" class="decompiled"/>
-<rect width="132.17" height="6" x="614.83" y="0" class="todo"/>
+<rect width="603.86" height="6" x="0" y="0" class="named"/>
+<rect width="11.78" height="6" x="603.86" y="0" class="decompiled"/>
+<rect width="131.36" height="6" x="615.64" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -1415,7 +1415,7 @@
 <rect width="14.09" height="13.80" x="505.12" y="83.32" class="named"><title>0x004213f0 ScriptStartInterp (506 bytes)</title></rect>
 <rect width="14.09" height="13.80" x="522.21" y="83.32" class="named"><title>0x0045c4b0 SoundPlayer::Release (506 bytes)</title></rect>
 <rect width="13.92" height="13.80" x="539.30" y="83.32" class="named"><title>0x00427f00 EffectManager::OnDraw (501 bytes)</title></rect>
-<rect width="13.69" height="13.80" x="556.23" y="83.32" class="todo"><title>0x004244f0 Func4244f0 (494 bytes)</title></rect>
+<rect width="13.69" height="13.80" x="556.23" y="83.32" class="named"><title>0x004244f0 KeepFormation (494 bytes)</title></rect>
 <rect width="13.65" height="13.80" x="572.92" y="83.32" class="named"><title>0x0047087f MainMenu::OnDraw (493 bytes)</title></rect>
 <rect width="13.45" height="13.80" x="589.57" y="83.32" class="named"><title>0x00450f60 FireShots (487 bytes)</title></rect>
 <rect width="13.35" height="13.80" x="606.02" y="83.32" class="named"><title>0x004723b0 CSound::FillBufferWithSound (484 bytes)</title></rect>

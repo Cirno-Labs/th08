@@ -1418,6 +1418,64 @@ void SpawnTwinEffects3A(Enemy *enemy, EnemyScriptInstr *instr)
     g_Stage.unk_625c = DrawTwinEffects;
 }
 
+void KeepFormation(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    int count;
+    int key;
+    Enemy *leader;
+    Enemy *member;
+    float targ;
+    float diff;
+
+    key = enemy->currentCtx->vars.ints2[2];
+    member = enemy->unk_2da4;
+    if (member == NULL)
+    {
+        return;
+    }
+    count = 0;
+    while (member->unk_8 != NULL)
+    {
+        member = member->unk_8;
+        if (member->currentCtx->vars.ints2[2] == key)
+        {
+            member->currentCtx->vars.ints2[1] = count;
+            if (count == 0)
+            {
+                leader = member;
+            }
+            count++;
+        }
+    }
+    enemy->currentCtx->vars.ints[5] = 0;
+    if (enemy->currentCtx->vars.ints[6] != count)
+    {
+        if (enemy->currentCtx->vars.ints[6] != 0)
+        {
+            enemy->currentCtx->vars.ints[5] = 1;
+        }
+        enemy->currentCtx->vars.ints[6] = count;
+    }
+    key = enemy->currentCtx->vars.ints2[1];
+    enemy->currentCtx->vars.ints[7]++;
+    if (key != 0)
+    {
+        targ = AddNormalizeAngle(leader->orbitAngle, key * 6.2831855f / count);
+        if (leader->currentCtx->vars.ints[7] != enemy->currentCtx->vars.ints[7])
+        {
+            targ = AddNormalizeAngle(targ, leader->orbitAngularVelocity);
+        }
+        diff = AddNormalizeAngle(enemy->orbitAngle, enemy->orbitAngularVelocity);
+        diff = targ - diff;
+        if (fabsf(diff) > 3.1415927f)
+        {
+            diff = diff > 0.0f ? -6.2831855f + diff : 6.2831855f + diff;
+        }
+        diff = diff * 0.02f;
+        enemy->orbitAngle = AddNormalizeAngle(enemy->orbitAngle, diff);
+    }
+}
+
 void FlashAndShakeScreen(Enemy *enemy, EnemyScriptInstr *instr)
 {
     ScreenEffect::StartEffect(3, 30, 5, 0x40ffffff, 0, 0x15);
