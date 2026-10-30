@@ -237,7 +237,7 @@ address,size,name,symbol
 0x00418450,88,EnemyScripts::StartSub,?StartSub@EnemyScripts@@QAEHPAUEnemyScriptState@@F@Z
 0x004184b0,26638,EnemyScripts::RunEnemy,?RunEnemy@EnemyScripts@@QAEHPAUEnemy@@@Z
 0x0041efc0,54,Func41efc0,
-0x0041f000,53,Func41f000,
+0x0041f000,53,Enemy::Func41f000,?Func41f000@Enemy@@QAEHXZ
 0x0041f040,67,Func41f040,
 0x0041f090,24,Func41f090,
 0x0041f0b0,37,Func41f0b0,
@@ -247,7 +247,7 @@ address,size,name,symbol
 0x0041f400,25,Func41f400,
 0x0041f420,1899,Func41f420,
 0x0041fd20,28,Enemy::Func41fd20,?Func41fd20@Enemy@@QAEHXZ
-0x0041fd40,70,Func41fd40,
+0x0041fd40,70,Enemy::Func41fd40,?Func41fd40@Enemy@@QAEHXZ
 0x0041fd90,59,Func41fd90,
 0x0041fdd0,25,Func41fdd0,
 0x0041fdf0,25,Func41fdf0,
@@ -422,11 +422,11 @@ address,size,name,symbol
 0x0042ef70,50,EnemyManager::RemoveChain,?RemoveChain@EnemyManager@@SIXXZ
 0x0042efb0,575,EnemyManager::ClearEnemiesForBonus,?ClearEnemiesForBonus@EnemyManager@@QAEHHH@Z
 0x0042f1f0,64,EnemyManager::AnyBossActive,?AnyBossActive@EnemyManager@@QAEHXZ
-0x0042f230,64,Func42f230,
-0x0042f270,64,Func42f270,
+0x0042f230,64,GameManager::IsSoloHuman,?IsSoloHuman@GameManager@@QAEHXZ
+0x0042f270,64,GameManager::IsSoloYoukai,?IsSoloYoukai@GameManager@@QAEHXZ
 0x0042f2b0,25,GameManager::GetLives,?GetLives@GameManager@@QAEHXZ
 0x0042f2d0,29,Func42f2d0,
-0x0042f2f0,37,Func42f2f0,
+0x0042f2f0,37,AsciiText::SetScale,?SetScale@AsciiText@@QAEXMM@Z
 0x0042f320,17,Gui::IsBossPresent,?IsBossPresent@Gui@@QAEEXZ
 0x0042f340,22,Gui::SetBossTimer,?SetBossTimer@Gui@@QAEXH@Z
 0x0042f360,177,Func42f360,

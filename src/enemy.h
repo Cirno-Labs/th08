@@ -91,8 +91,15 @@ struct Enemy
         return this->unk_2da4 != 0;
     }
 
-    // Called on the bosses with 0 as a spell card bomb ends (0x42adb0).
-    void Func42adb0(int arg);
+    // Breaks up the list of enemies following it through unk_8 (and
+    // takes it out of its own leader's): with `collect`, each counts
+    // as a kill shown by AsciiText::Func403460, bursts time orbs (more
+    // for solo characters) and a hit area, drops items unless a boss
+    // fight runs outside a spell card, and plays sound 2 or 3; then
+    // it shows unk_3380 and bursts twice as many orbs. A follower with
+    // `collect` also lowers stats->unk_22 by a twelfth and drops an orb.
+    // Called with 0 on the bosses as a spell card bomb ends (0x42adb0).
+    void Func42adb0(int collect);
     // Ends it, as th07's: Func42adb0(0) first; unless deathMode is set,
     // deactivates it; a boss leaves its slot, hides its nearby label and
     // ends the boss fight; drops its effects, sends unk_53c8 interrupt
@@ -251,7 +258,11 @@ struct Enemy
             // Cleared for the bosses as a Dissolve Spell starts.
             DWORD unk_3324_6 : 1;
             DWORD grazeable : 1;
-            DWORD unk_3324_8 : 3;
+            DWORD unk_3324_8 : 1;
+            // Func42adb0 moves unk_2d40 to its leader's pos while set.
+            DWORD unk_3324_9 : 1;
+            // Set by Func42adb0 as it leaves its leader's list.
+            DWORD unk_3324_10 : 1;
             // Player::unk_5 as Func42c420 last saw it.
             DWORD unk_3324_11 : 1;
             DWORD moveMode : 2;

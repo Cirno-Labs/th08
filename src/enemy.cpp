@@ -351,6 +351,114 @@ tick:
     this->timer++;
 }
 
+void Enemy::Func42adb0(int collect)
+{
+    int count;
+    Enemy *nxt;
+    Enemy *cur;
+    D3DCOLOR tint;
+    int k;
+
+    count = this->Func41fd40();
+    if (count != 0)
+    {
+        k = 0;
+        D3DXVECTOR3 pos;
+        cur = this->unk_8;
+        tint = count < 2 ? 0xffffffff : (count < 6 ? 0xffffffd0 : (count < 10 ? 0xffffffb0 : 0xffffff80));
+        while (cur != NULL)
+        {
+            if (cur->unk_3324_9)
+            {
+                cur->unk_2d40 = this->pos;
+            }
+            nxt = cur->unk_8;
+            cur->unk_3324_10 = 1;
+            cur->unk_2da4 = NULL;
+            cur->unk_8 = NULL;
+            cur->unk_4 = NULL;
+            if (collect)
+            {
+                int areaType;
+                int i;
+                int items;
+
+                areaType = this->isBoss ? 7 : 9;
+                if (g_GameManager.IsSoloYoukai())
+                {
+                    items = count >= 10 ? 26 : count * 2 + 6;
+                }
+                else if (g_GameManager.IsSoloHuman())
+                {
+                    items = count >= 4 ? 40 : count * 6 + 16;
+                }
+                else
+                {
+                    items = count >= 8 ? 26 : count * 2 + 10;
+                }
+                if (g_Unknown17d6ed4 != 0)
+                {
+                    count /= 3;
+                }
+                g_AsciiText.Func403460(&cur->unk_2d88, count, 0, tint);
+                cur->unk_2d88 = cur->pos + cur->unk_2d40;
+                g_Player.AddHitAreaCircle(&cur->unk_2d88, 32.0f, 2.0f, 8, areaType);
+                for (i = 0; i < items; i++)
+                {
+                    ((Vector2 *)&pos)->SetPolar(g_Rng.GetRandomF32SignedInRange(3.1415927f),
+                                                g_Rng.GetRandomF32InRange(items * 2.0f));
+                    pos.z = 0.0f;
+                    pos += cur->unk_2d88;
+                    g_ItemManager.SpawnItem(&pos, 7, 3);
+                }
+                if (!g_EnemyManager.AnyBossActive() || g_SpellCard.Func4178a0())
+                {
+                    cur->item = 8;
+                    cur->DropItems(0);
+                }
+                g_SoundPlayer.QueueSoundPanned(k % 2 + 2, cur->unk_2d88.x);
+            }
+            cur->unk_330c = 0;
+            cur->unk_3308 = 0;
+            cur->item = -2;
+            cur = nxt;
+            k++;
+        }
+        if (collect)
+        {
+            g_AsciiText.SetScale(2.0f, 2.0f);
+            g_AsciiText.Func403460(&this->unk_2d88, this->unk_3380, 0, 0xfff0f00f);
+            g_AsciiText.SetScale(1.0f, 1.0f);
+            for (count = 0; count < this->unk_3380 * 2; count++)
+            {
+                ((Vector2 *)&pos)->SetPolar(g_Rng.GetRandomF32SignedInRange(3.1415927f),
+                                            g_Rng.GetRandomF32InRange(128.0f));
+                pos.z = 0.0f;
+                pos += this->unk_2d88;
+                g_ItemManager.SpawnItem(&pos, 7, 1);
+            }
+            g_Player.AddHitAreaCircle(&this->unk_2d88, 32.0f, 1.0f, 16, 7);
+            g_Player.unk_e2adc = 0;
+        }
+    }
+    if (this->Func41fd20() && collect)
+    {
+        D3DXVECTOR3 unused;
+
+        g_GameManager.Func43c0bb(-g_GameManager.GetUnk22() / 12, 0);
+        g_Player.unk_e2ae8 = 0;
+        g_Player.unk_e2ad0 = 30;
+        g_Player.unk_e2adc = 50;
+        this->unk_2d88 = this->pos + this->unk_2d40;
+        g_AsciiText.Func403460(&this->unk_2d88, 1, 0, 0xffffffff);
+        g_ItemManager.SpawnItem(&this->unk_2d88, 7, 1);
+        this->unk_330c = 0;
+        this->unk_3308 = 0;
+        this->item = -2;
+    }
+    this->Func42b2f0();
+}
+
 void Enemy::Func42b2f0()
 {
     if (this->Func41fd20())
