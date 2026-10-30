@@ -123,3 +123,50 @@ Enemy *EnemyManager::Spawn(short sub, D3DXVECTOR3 *pos, int life, char item, int
     this->spawnFailed = i == 0x1e0;
     return enemy;
 }
+
+Enemy *EnemyManager::SpawnWithVars(short sub, D3DXVECTOR3 *pos, int life, char item, int score,
+                                   EnemyScriptVars *vars)
+{
+    Enemy *enemy;
+    int i;
+
+    enemy = this->enemies;
+    g_ReplayManager->frameEvents |= 0x1000;
+    for (i = 0; i < 0x1e0; i++, enemy++)
+    {
+        if (enemy->active)
+        {
+            continue;
+        }
+        *enemy = this->enemyTemplate;
+        enemy->index = i;
+        if (life >= 0)
+        {
+            enemy->life = life;
+        }
+        enemy->pos = *pos;
+        g_EnemyScripts.StartSub(&enemy->ctx, sub);
+        enemy->ctx.vars = *vars;
+        if (g_EnemyScripts.RunEnemy(enemy) == -1)
+        {
+            enemy->active = 0;
+            i = 0x1e0;
+            break;
+        }
+        enemy->color = enemy->sprite.color;
+        enemy->item = item;
+        if (life >= 0)
+        {
+            enemy->life = life;
+        }
+        if (score >= 0)
+        {
+            enemy->score = score;
+        }
+        enemy->maxLife = enemy->life;
+        enemy->unk_2e04 = enemy->maxLife;
+        break;
+    }
+    this->spawnFailed = i == 0x1e0;
+    return enemy;
+}
