@@ -2373,3 +2373,24 @@ void UpdateYuyukoLastWord(Player *player)
         }
     }
 }
+
+void DrawYuyukoLastWord(Player *player)
+{
+    PlayerBombPart *butterfly;
+    int i;
+
+    DimPlayAreaForBomb(player, 0x80802020);
+    for (butterfly = player->bomb.parts, i = 0; i < 0x80; i++, butterfly++)
+    {
+        if (butterfly->state == 0)
+        {
+            continue;
+        }
+        butterfly->sprites[0].SetRotationZ(atan2f(butterfly->trail[1].y, butterfly->trail[1].x));
+        butterfly->sprites[0].pos = butterfly->pos;
+        butterfly->sprites[0].pos.x += g_GameManager.arena[0];
+        butterfly->sprites[0].pos.y += g_GameManager.arena[1];
+        butterfly->sprites[0].pos.z = 0.0f;
+        g_SpriteEngine->Draw(&butterfly->sprites[0]);
+    }
+}

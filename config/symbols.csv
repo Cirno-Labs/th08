@@ -197,7 +197,7 @@ address,size,name,symbol
 0x00413140,1859,UpdateYuyukoBomb,?UpdateYuyukoBomb@@YIXPAVPlayer@@@Z
 0x00413890,241,DrawYuyukoBomb,?DrawYuyukoBomb@@YIXPAVPlayer@@@Z
 0x00413990,2344,UpdateYuyukoLastWord,?UpdateYuyukoLastWord@@YIXPAVPlayer@@@Z
-0x004142c0,244,Func4142c0,
+0x004142c0,244,DrawYuyukoLastWord,?DrawYuyukoLastWord@@YIXPAVPlayer@@@Z
 0x004143c0,24,Rng::GetRandomF32SignedInRange,?GetRandomF32SignedInRange@Rng@@QAEMM@Z
 0x004143e0,238,Func4143e0,
 0x004144d0,105,Func4144d0,
