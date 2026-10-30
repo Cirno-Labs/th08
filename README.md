@@ -18,8 +18,19 @@ our own analysis or, for library code, from the libraries themselves.
 
 ## Status
 
-The toolchain and workflow are up, taken from the th07 project, and the
-first function matches.
+All 1116 game functions are decompiled and match the original byte for
+byte (`just compare`: 1127/1127, counting the copies of inline functions
+the original keeps in more than one place).
+
+The standalone executable (`just exe`) is built from this source alone,
+boots and plays (with `FEAT=orig_checksum`, see below). It is not yet
+identical to the original as a file: every function matches with
+addresses masked, but only 149 of 1116 sit at their original address, so
+`just compare-exe` finds 16.7% of the file and 16.2% of `.text`
+identical (`.rdata` 71.5%, `.data` 88.7%, resources 100%). Most of the
+difference is where each object puts the header's inline functions: the
+original was compiled with a precompiled header, which the tools support
+(`exe.pch`) but whose layout we have yet to reconstruct.
 
 Ghidra finds 2225 functions. As in th06 and th07, the game code is mostly
 compiled without optimization, so its functions start with `push ebp;
