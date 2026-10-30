@@ -339,7 +339,7 @@ extern EffectManager g_EffectManager;
 
 // EffectManager's statically allocated chain elements.
 extern ChainElem g_EffectCalcChain;
-extern ChainElem g_EffectDrawChain;
+extern ChainElem g_EffectDrawElement;
 
 // The stages' effect ANMs, then those of the last spell cards (from card
 // 0xd8).

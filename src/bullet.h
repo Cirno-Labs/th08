@@ -336,5 +336,5 @@ void DrawBullet(Bullet *bullet);
 // changes, bounds delays, firing) go on to the next.
 void RunBulletCommands(Bullet *bullet);
 // BulletManager's statically allocated chain elements.
-extern ChainElem g_BulletCalcChain;
-extern ChainElem g_BulletDrawChain;
+extern ChainElem g_BulletCalcChainElem;
+extern ChainElem g_BulletDrawElem;

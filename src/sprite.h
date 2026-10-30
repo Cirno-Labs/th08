@@ -392,7 +392,7 @@ struct VertexTex1DiffuseXyzrwh
 };
 
 // A vertex with a transformed position and texture coordinates. uv is
-// no D3DXVECTOR2: g_Quad's constructor is VertexTex1DiffuseXyzrwh's
+// no D3DXVECTOR2: g_TexQuad's constructor is VertexTex1DiffuseXyzrwh's
 // (0x40b580), which constructs only pos.
 struct VertexTex1Xyzrwh
 {
@@ -996,7 +996,7 @@ inline BOOL Sprite::HasTexture()
 // The quad Draw draws with a color, without the vertex buffer.
 extern VertexTex1DiffuseXyzrwh g_DiffuseQuad[4];
 // A transformed quad without a color.
-extern VertexTex1Xyzrwh g_Quad[4];
+extern VertexTex1Xyzrwh g_TexQuad[4];
 // 0.5, for DrawQuad's rounding.
 extern const float g_Half;
 // CreateQuad's quad with a color, for drawing without the vertex

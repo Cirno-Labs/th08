@@ -17,8 +17,8 @@ BYTE g_EnemyItemDrops[0x20] = {
     0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0,
     1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0,
 };
-ChainElem g_EnemyManagerCalcChain;
-ChainElem g_EnemyManagerDrawChain;
+ChainElem g_EnemyCalcChainElem;
+ChainElem g_EnemyDrawElem;
 ChainElem g_EnemyManagerDrawChain2;
 EnemyManager g_EnemyManager;
 #endif // TH08_EXE
@@ -1019,17 +1019,17 @@ int EnemyManager::RegisterChain()
     int unused = 0;
 
     em->Initialize();
-    g_EnemyManagerCalcChain.SetCallback((ChainCallback)EnemyManager::OnUpdate);
-    g_EnemyManagerCalcChain.addedCallback = (ChainCallback)EnemyManager::AddedCallback;
-    g_EnemyManagerCalcChain.deletedCallback = (ChainCallback)EnemyManager::DeletedCallback;
-    g_EnemyManagerCalcChain.arg = em;
-    if (g_Chain.AddToCalcChain(&g_EnemyManagerCalcChain, 11) != 0)
+    g_EnemyCalcChainElem.SetCallback((ChainCallback)EnemyManager::OnUpdate);
+    g_EnemyCalcChainElem.addedCallback = (ChainCallback)EnemyManager::AddedCallback;
+    g_EnemyCalcChainElem.deletedCallback = (ChainCallback)EnemyManager::DeletedCallback;
+    g_EnemyCalcChainElem.arg = em;
+    if (g_Chain.AddToCalcChain(&g_EnemyCalcChainElem, 11) != 0)
     {
         return -1;
     }
-    g_EnemyManagerDrawChain.SetCallback((ChainCallback)EnemyManager::OnDraw);
-    g_EnemyManagerDrawChain.arg = em;
-    if (g_Chain.AddToDrawChain(&g_EnemyManagerDrawChain, 8) != 0)
+    g_EnemyDrawElem.SetCallback((ChainCallback)EnemyManager::OnDraw);
+    g_EnemyDrawElem.arg = em;
+    if (g_Chain.AddToDrawChain(&g_EnemyDrawElem, 8) != 0)
     {
         return -1;
     }
@@ -1997,8 +1997,8 @@ int EnemyManager::DeletedCallback(EnemyManager *mgr)
 
 void EnemyManager::RemoveChain()
 {
-    g_Chain.Remove(&g_EnemyManagerCalcChain);
-    g_Chain.Remove(&g_EnemyManagerDrawChain);
+    g_Chain.Remove(&g_EnemyCalcChainElem);
+    g_Chain.Remove(&g_EnemyDrawElem);
     g_Chain.Remove(&g_EnemyManagerDrawChain2);
 }
 

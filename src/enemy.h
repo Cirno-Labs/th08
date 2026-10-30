@@ -966,6 +966,6 @@ ASSERT_SIZE(EnemyManager, 0x9dcf10);
 extern EnemyManager g_EnemyManager;
 // What the enemies with item -1 drop, in turn, as th07's.
 extern BYTE g_EnemyItemDrops[0x20];
-extern ChainElem g_EnemyManagerCalcChain;
-extern ChainElem g_EnemyManagerDrawChain;
+extern ChainElem g_EnemyCalcChainElem;
+extern ChainElem g_EnemyDrawElem;
 extern ChainElem g_EnemyManagerDrawChain2;

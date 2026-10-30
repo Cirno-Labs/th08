@@ -43,8 +43,8 @@ const int g_BulletTypeScripts[21][5] = {
     {114, 24, 24, 24, 17},
     {115, 24, 24, 24, 17},
 };
-ChainElem g_BulletCalcChain;
-ChainElem g_BulletDrawChain;
+ChainElem g_BulletCalcChainElem;
+ChainElem g_BulletDrawElem;
 BulletManager g_BulletManager;
 #endif // TH08_EXE
 
@@ -669,17 +669,17 @@ int BulletManager::RegisterChain(char *anmPath)
 
     mgr->Reset();
     mgr->anmPath = anmPath;
-    g_BulletCalcChain.SetCallback((ChainCallback)BulletManager::OnUpdate);
-    g_BulletCalcChain.addedCallback = (ChainCallback)BulletManager::AddedCallback;
-    g_BulletCalcChain.deletedCallback = (ChainCallback)BulletManager::DeletedCallback;
-    g_BulletCalcChain.arg = mgr;
-    if (g_Chain.AddToCalcChain(&g_BulletCalcChain, 0xe) != 0)
+    g_BulletCalcChainElem.SetCallback((ChainCallback)BulletManager::OnUpdate);
+    g_BulletCalcChainElem.addedCallback = (ChainCallback)BulletManager::AddedCallback;
+    g_BulletCalcChainElem.deletedCallback = (ChainCallback)BulletManager::DeletedCallback;
+    g_BulletCalcChainElem.arg = mgr;
+    if (g_Chain.AddToCalcChain(&g_BulletCalcChainElem, 0xe) != 0)
     {
         return -1;
     }
-    g_BulletDrawChain.SetCallback((ChainCallback)BulletManager::OnDraw);
-    g_BulletDrawChain.arg = mgr;
-    g_Chain.AddToDrawChain(&g_BulletDrawChain, 0xd);
+    g_BulletDrawElem.SetCallback((ChainCallback)BulletManager::OnDraw);
+    g_BulletDrawElem.arg = mgr;
+    g_Chain.AddToDrawChain(&g_BulletDrawElem, 0xd);
     return 0;
 }
 
@@ -1486,6 +1486,6 @@ int BulletManager::DeletedCallback(BulletManager *mgr)
 
 void BulletManager::RemoveChain()
 {
-    g_Chain.Remove(&g_BulletCalcChain);
-    g_Chain.Remove(&g_BulletDrawChain);
+    g_Chain.Remove(&g_BulletCalcChainElem);
+    g_Chain.Remove(&g_BulletDrawElem);
 }

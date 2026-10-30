@@ -81,7 +81,7 @@ EffectInfo g_EffectInfos[66] = {
 };
 EffectManager g_EffectManager;
 ChainElem g_EffectCalcChain;
-ChainElem g_EffectDrawChain;
+ChainElem g_EffectDrawElement;
 #endif // TH08_EXE
 
 void EffectManager::Reset()
@@ -1188,16 +1188,16 @@ int EffectManager::RegisterChain()
     {
         return -1;
     }
-    g_EffectDrawChain.SetCallback((ChainCallback)EffectManager::OnDraw);
-    g_EffectDrawChain.arg = mgr;
-    g_Chain.AddToDrawChain(&g_EffectDrawChain, 12);
+    g_EffectDrawElement.SetCallback((ChainCallback)EffectManager::OnDraw);
+    g_EffectDrawElement.arg = mgr;
+    g_Chain.AddToDrawChain(&g_EffectDrawElement, 12);
     return 0;
 }
 
 void EffectManager::RemoveChain()
 {
     g_Chain.Remove(&g_EffectCalcChain);
-    g_Chain.Remove(&g_EffectDrawChain);
+    g_Chain.Remove(&g_EffectDrawElement);
 }
 
 void Vector2::SetPolar(float angle, float radius)

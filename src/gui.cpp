@@ -62,8 +62,8 @@ char *g_LoadingAnmPaths[12] = {
     "loading03h.anm",
     "loading03a.anm",
 };
-ChainElem g_GuiCalcChain;
-ChainElem g_GuiDrawChain;
+ChainElem g_GuiCalcElem;
+ChainElem g_GuiDrawElement;
 Gui g_Gui;
 #endif // TH08_EXE
 
@@ -1447,17 +1447,17 @@ int Gui::RegisterChain()
         memset(gui, 0, sizeof(Gui));
         gui->impl = (GuiImpl *)g_MemoryManager.Register(new GuiImpl, sizeof(GuiImpl), "FRScreenImplInf");
     }
-    g_GuiCalcChain.SetCallback((ChainCallback)Gui::OnUpdate);
-    g_GuiCalcChain.addedCallback = (ChainCallback)Gui::AddedCallback;
-    g_GuiCalcChain.deletedCallback = (ChainCallback)Gui::DeletedCallback;
-    g_GuiCalcChain.arg = gui;
-    if (g_Chain.AddToCalcChain(&g_GuiCalcChain, 15) != 0)
+    g_GuiCalcElem.SetCallback((ChainCallback)Gui::OnUpdate);
+    g_GuiCalcElem.addedCallback = (ChainCallback)Gui::AddedCallback;
+    g_GuiCalcElem.deletedCallback = (ChainCallback)Gui::DeletedCallback;
+    g_GuiCalcElem.arg = gui;
+    if (g_Chain.AddToCalcChain(&g_GuiCalcElem, 15) != 0)
     {
         return -1;
     }
-    g_GuiDrawChain.SetCallback((ChainCallback)Gui::OnDraw);
-    g_GuiDrawChain.arg = gui;
-    g_Chain.AddToDrawChain(&g_GuiDrawChain, 17);
+    g_GuiDrawElement.SetCallback((ChainCallback)Gui::OnDraw);
+    g_GuiDrawElement.arg = gui;
+    g_Chain.AddToDrawChain(&g_GuiDrawElement, 17);
     return 0;
 }
 
@@ -1467,8 +1467,8 @@ void DebugPrint2(const char *fmt, ...)
 
 void Gui::RemoveChain()
 {
-    g_Chain.Remove(&g_GuiCalcChain);
-    g_Chain.Remove(&g_GuiDrawChain);
+    g_Chain.Remove(&g_GuiCalcElem);
+    g_Chain.Remove(&g_GuiDrawElement);
 }
 
 BOOL Gui::IsLoadingShown()

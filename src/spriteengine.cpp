@@ -27,7 +27,7 @@ const int g_TextureFormatSizes[7] = {
     4, 4, 2, 2, 3, 2, 1869363770,
 };
 SpriteEngine *g_SpriteEngine;
-VertexTex1Xyzrwh g_Quad[4];
+VertexTex1Xyzrwh g_TexQuad[4];
 VertexTex1DiffuseXyzrwh g_DiffuseQuad[4];
 VertexTex1DiffuseXyz g_DiffuseQuadXyz[4];
 #endif // TH08_EXE
@@ -1938,15 +1938,15 @@ int SpriteEngine::DrawColoredFan(Sprite *vm, VertexDiffuseXyzrwh *vertices, int 
 SpriteEngine::SpriteEngine()
 {
     memset(this, 0, sizeof(*this));
-    g_Quad[0].w = g_Quad[1].w = g_Quad[2].w = g_Quad[3].w = 1.0f;
-    g_Quad[0].uv.x = 0.0f;
-    g_Quad[0].uv.y = 0.0f;
-    g_Quad[1].uv.x = 1.0f;
-    g_Quad[1].uv.y = 0.0f;
-    g_Quad[2].uv.x = 0.0f;
-    g_Quad[2].uv.y = 1.0f;
-    g_Quad[3].uv.x = 1.0f;
-    g_Quad[3].uv.y = 1.0f;
+    g_TexQuad[0].w = g_TexQuad[1].w = g_TexQuad[2].w = g_TexQuad[3].w = 1.0f;
+    g_TexQuad[0].uv.x = 0.0f;
+    g_TexQuad[0].uv.y = 0.0f;
+    g_TexQuad[1].uv.x = 1.0f;
+    g_TexQuad[1].uv.y = 0.0f;
+    g_TexQuad[2].uv.x = 0.0f;
+    g_TexQuad[2].uv.y = 1.0f;
+    g_TexQuad[3].uv.x = 1.0f;
+    g_TexQuad[3].uv.y = 1.0f;
     g_DiffuseQuad[0].w = g_DiffuseQuad[1].w = g_DiffuseQuad[2].w = g_DiffuseQuad[3].w = 1.0f;
     g_DiffuseQuad[0].uv.x = 0.0f;
     g_DiffuseQuad[0].uv.y = 0.0f;

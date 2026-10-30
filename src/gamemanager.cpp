@@ -198,8 +198,8 @@ RankSettings g_Ranks[6] = {
     {8, 8, 12}, {16, 15, 16}, {16, 15, 16},
 };
 GameManager g_GameManager;
-ChainElem g_GameManagerCalcChain;
-ChainElem g_GameManagerDrawChain;
+ChainElem g_GameManagerCalcChainElem;
+ChainElem g_GameManagerDrawProc;
 #endif // TH08_EXE
 
 BOOL GameManager::IsInPlayArea(float x, float y, float width, float height)
@@ -611,18 +611,18 @@ int RegisterGameManagerChain()
 {
     GameManager *mgr = &g_GameManager;
 
-    g_GameManagerCalcChain.SetCallback((ChainCallback)GameManager::OnUpdate);
-    g_GameManagerCalcChain.addedCallback = (ChainCallback)GameManager::AddedCallback;
-    g_GameManagerCalcChain.deletedCallback = (ChainCallback)GameManager::DeletedCallback;
-    g_GameManagerCalcChain.arg = mgr;
+    g_GameManagerCalcChainElem.SetCallback((ChainCallback)GameManager::OnUpdate);
+    g_GameManagerCalcChainElem.addedCallback = (ChainCallback)GameManager::AddedCallback;
+    g_GameManagerCalcChainElem.deletedCallback = (ChainCallback)GameManager::DeletedCallback;
+    g_GameManagerCalcChainElem.arg = mgr;
     mgr->stageFrames = 0;
-    if (g_Chain.AddToCalcChain(&g_GameManagerCalcChain, 2) != 0)
+    if (g_Chain.AddToCalcChain(&g_GameManagerCalcChainElem, 2) != 0)
     {
         return -1;
     }
-    g_GameManagerDrawChain.SetCallback((ChainCallback)GameManager::OnDraw);
-    g_GameManagerDrawChain.arg = mgr;
-    g_Chain.AddToDrawChain(&g_GameManagerDrawChain, 5);
+    g_GameManagerDrawProc.SetCallback((ChainCallback)GameManager::OnDraw);
+    g_GameManagerDrawProc.arg = mgr;
+    g_Chain.AddToDrawChain(&g_GameManagerDrawProc, 5);
     return 0;
 }
 
@@ -1215,8 +1215,8 @@ int GameManager::DeletedCallback(GameManager *mgr)
 
 void RemoveGameManagerChain()
 {
-    g_Chain.Remove(&g_GameManagerCalcChain);
-    g_Chain.Remove(&g_GameManagerDrawChain);
+    g_Chain.Remove(&g_GameManagerCalcChainElem);
+    g_Chain.Remove(&g_GameManagerDrawProc);
     if (g_GameManager.stats->score >= 1000000000)
     {
         g_GameManager.stats->score = 999999999;

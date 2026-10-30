@@ -21,7 +21,7 @@
 #ifdef TH08_EXE
 AsciiText g_AsciiText;
 ChainElem g_AsciiCalcChain;
-ChainElem g_AsciiDrawChain;
+ChainElem g_AsciiTextElemDraw;
 ChainElem g_AsciiDrawChain2;
 #endif // TH08_EXE
 
@@ -169,9 +169,9 @@ int AsciiText::RegisterChain()
     {
         return -1;
     }
-    g_AsciiDrawChain.SetCallback((ChainCallback)AsciiText::OnDraw);
-    g_AsciiDrawChain.arg = text;
-    g_Chain.AddToDrawChain(&g_AsciiDrawChain, 0x14);
+    g_AsciiTextElemDraw.SetCallback((ChainCallback)AsciiText::OnDraw);
+    g_AsciiTextElemDraw.arg = text;
+    g_Chain.AddToDrawChain(&g_AsciiTextElemDraw, 0x14);
     g_AsciiDrawChain2.SetCallback((ChainCallback)AsciiText::OnDraw2);
     g_AsciiDrawChain2.arg = text;
     g_Chain.AddToDrawChain(&g_AsciiDrawChain2, 0xe);
@@ -206,7 +206,7 @@ int AsciiText::DeletedCallback(AsciiText *text)
 void AsciiText::RemoveChain()
 {
     g_Chain.Remove(&g_AsciiCalcChain);
-    g_Chain.Remove(&g_AsciiDrawChain);
+    g_Chain.Remove(&g_AsciiTextElemDraw);
 }
 
 void AsciiText::AddString(D3DXVECTOR3 *pos, char *text)

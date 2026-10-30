@@ -1732,8 +1732,8 @@ ASSERT_SIZE(GameManager, 0x3de3c);
 extern GameManager g_GameManager;
 
 // The update and draw chain elements of g_GameManager, after it.
-extern ChainElem g_GameManagerCalcChain;
-extern ChainElem g_GameManagerDrawChain;
+extern ChainElem g_GameManagerCalcChainElem;
+extern ChainElem g_GameManagerDrawProc;
 
 // The rank a game starts at and its bounds, as th07's.
 struct RankSettings
@@ -2099,8 +2099,8 @@ ASSERT_SIZE(Gui, 0x9c);
 extern Gui g_Gui;
 
 // The update and draw chain elements of g_Gui.
-extern ChainElem g_GuiCalcChain;
-extern ChainElem g_GuiDrawChain;
+extern ChainElem g_GuiCalcElem;
+extern ChainElem g_GuiDrawElement;
 
 // Whether the game restarts (App::isRestarting), so the stage keeps its
 // loaded ANMs. Inline; the copy at 0x40b900 is an /Od object's.
@@ -2459,7 +2459,7 @@ extern Stage g_Stage;
 // Stage's statically allocated chain elements.
 extern ChainElem g_StageCalcChain;
 extern ChainElem g_StageDrawChain;
-extern ChainElem g_StageDrawChain2;
+extern ChainElem g_StageElementDraw2;
 // The background ANM of each stage (4A and 4B share one).
 extern char *g_StageAnmPaths[9];
 // The stage data file of each stage.

@@ -150,7 +150,7 @@ const int g_CharacterMenuSprites[12][4] = {
     {125, 114, -1, 113}, {126, 113, -1, 114}, {127, 115, -1, 116},
     {128, 116, -1, 115}, {129, 118, -1, 117}, {130, 117, -1, 118},
 };
-char g_FullWidthNumber[0x40];
+char g_FullWidthString[0x40];
 MainMenu *g_MainMenu;
 #endif // TH08_EXE
 
@@ -2337,7 +2337,7 @@ char *FormatFullWidthNumber(int value, int digits)
     int i;
     int divisor = 1;
 
-    memset(g_FullWidthNumber, 0, sizeof(g_FullWidthNumber));
+    memset(g_FullWidthString, 0, sizeof(g_FullWidthString));
     for (i = 1; i < digits; i++)
     {
         divisor *= 10;
@@ -2345,12 +2345,12 @@ char *FormatFullWidthNumber(int value, int digits)
     i = 0;
     while (divisor > 0)
     {
-        strcpy(&g_FullWidthNumber[i], g_FullWidthDigits[value / divisor]);
+        strcpy(&g_FullWidthString[i], g_FullWidthDigits[value / divisor]);
         value %= divisor;
         divisor /= 10;
         i += 2;
     }
-    return g_FullWidthNumber;
+    return g_FullWidthString;
 }
 
 int GameManager::IsSpellCardSeen(int card)

@@ -178,7 +178,7 @@ ASSERT_SIZE(MainMenu, 0x14490);
 // element cannot be added. The argument is unused.
 int SetUpTitleScene(int unused);
 
-// Writes `value` as `digits` full-width digits into g_FullWidthNumber
+// Writes `value` as `digits` full-width digits into g_FullWidthString
 // and returns it. New in th08.
 char *FormatFullWidthNumber(int value, int digits);
 // Draws a fan of 63 triangles around `center`, `diameter` wide, from
@@ -200,7 +200,7 @@ extern char *g_SpellPracticeDifficultyNames[6];
 // "Extra" and "Last Word".
 extern char *g_SpellPracticeStageNames[10];
 // FormatFullWidthNumber's result.
-extern char g_FullWidthNumber[0x40];
+extern char g_FullWidthString[0x40];
 // "０" to "９".
 extern char *g_FullWidthDigits[10];
 
