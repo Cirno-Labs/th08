@@ -233,7 +233,7 @@ address,size,name,symbol
 0x004182e0,25,Func4182e0,
 0x00418300,37,Func418300,
 0x00418330,239,Func418330,
-0x00418420,44,Func418420,
+0x00418420,44,EnemyScripts::Release,?Release@EnemyScripts@@QAEXXZ
 0x00418450,88,EnemyScripts::StartSub,?StartSub@EnemyScripts@@QAEHPAUEnemyScriptState@@F@Z
 0x004184b0,26638,EnemyScripts::RunEnemy,?RunEnemy@EnemyScripts@@QAEHPAUEnemy@@@Z
 0x0041efc0,54,Func41efc0,
@@ -278,7 +278,7 @@ address,size,name,symbol
 0x00422720,1110,Func422720,
 0x00422b80,39,Func422b80,
 0x00422bb0,42,Func422bb0,
-0x00422be0,51,Func422be0,
+0x00422be0,51,AsciiText::SetNearbyLabelPos,?SetNearbyLabelPos@AsciiText@@QAEXHPAUD3DXVECTOR3@@@Z
 0x00422c20,25,Func422c20,
 0x00422c40,1122,Func422c40,
 0x004230c0,22,Func4230c0,
@@ -399,7 +399,7 @@ address,size,name,symbol
 0x0042b490,1180,Func42b490,
 0x0042b930,796,Func42b930,
 0x0042bc50,50,Func42bc50,
-0x0042bc90,96,Func42bc90,
+0x0042bc90,96,Enemy::Func42bc90,?Func42bc90@Enemy@@QAEXXZ
 0x0042bcf0,432,Func42bcf0,
 0x0042bea0,734,Func42bea0,
 0x0042c180,270,Func42c180,

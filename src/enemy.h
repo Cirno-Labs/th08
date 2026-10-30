@@ -86,6 +86,8 @@ struct Enemy
 
     // Called on the bosses with 0 as a spell card bomb ends (0x42adb0).
     void Func42adb0(int arg);
+    // Frees and clears unk_3384 (0x42bc90).
+    void Func42bc90();
 
     unsigned char unk_0[0x8];
     Enemy *unk_8;
@@ -202,7 +204,8 @@ struct Enemy
     int timerCallbackSub;
     // Shown by DrawBanners next to Func41fd40.
     int unk_3380;
-    unsigned char unk_3384[0x10];
+    // Freed by Func42bc90.
+    void *unk_3384[4];
     EnemyBox trailBoxes[0x60];
     VertexTex1DiffuseXyzrwh spriteStripVertices[0xc2];
     unsigned char unk_534c[0x8];
@@ -301,6 +304,8 @@ public:
     // Runs `enemy`'s script for a frame, as th07's (0x4184b0). Returns
     // -1 once the script ends, else 0.
     int RunEnemy(Enemy *enemy);
+    // Frees the script file, as th07's (0x418420).
+    void Release();
 
     void *file;
     void **subs;

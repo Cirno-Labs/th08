@@ -2,6 +2,7 @@
 
 #include <string.h>
 
+#include "ascii.h"
 #include "effect.h"
 #include "enemy.h"
 #include "player.h"
@@ -449,6 +450,35 @@ int EnemyManager::OnDraw2(EnemyManager *mgr)
         g_SpriteEngine->ResetColorModulation();
     }
     return result;
+}
+
+int EnemyManager::DeletedCallback(EnemyManager *mgr)
+{
+    int i;
+    Enemy *enemy = mgr->enemies;
+
+    for (i = 0; i < 0x1e0; i++, enemy++)
+    {
+        enemy->Func42bc90();
+    }
+    if (!IsRestarting())
+    {
+        g_SpriteEngine->ReleaseAnm(8);
+    }
+    if (IsFreeingResources())
+    {
+        g_SpriteEngine->ReleaseAnm(7);
+    }
+    if (!IsRestarting())
+    {
+        g_EnemyScripts.Release();
+    }
+    D3DXVECTOR3 nowhere(-999.0f, -999.0f, -999.0f);
+    g_AsciiText.SetNearbyLabelPos(0, &nowhere);
+    g_AsciiText.SetNearbyLabelPos(1, &nowhere);
+    g_AsciiText.SetNearbyLabelPos(2, &nowhere);
+    g_AsciiText.SetNearbyLabelPos(3, &nowhere);
+    return 0;
 }
 
 void EnemyManager::RemoveChain()

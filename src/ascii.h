@@ -216,6 +216,12 @@ public:
         this->summaryPendingInterrupt = value;
     }
 
+    // Moves nearbyLabels[i] to `pos`, as th07's. Inline; the copy at
+    // 0x422be0 is in an /Od object.
+    void SetNearbyLabelPos(int i, D3DXVECTOR3 *pos)
+    {
+        this->nearbyLabels[i].pos = *pos;
+    }
     // Sends nearbyLabels[i] `interrupt`. Inline; the copy at 0x422bb0
     // is in an /Od object.
     void SetNearbyLabelInterrupt(int i, short interrupt)
