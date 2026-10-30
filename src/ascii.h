@@ -101,12 +101,12 @@ public:
         g_SpriteEngine->Step(&this->summaryPopup2);
         g_SpriteEngine->Step(&this->summaryPopup3);
         g_SpriteEngine->Step(&this->summaryPopup4);
-        g_SpriteEngine->Step(&this->unk_127c);
+        g_SpriteEngine->Step(&this->summaryDigit);
         g_SpriteEngine->Step(&this->nearbyLabels[0]);
         g_SpriteEngine->Step(&this->nearbyLabels[1]);
         g_SpriteEngine->Step(&this->nearbyLabels[2]);
         g_SpriteEngine->Step(&this->nearbyLabels[3]);
-        g_SpriteEngine->Step(&this->unk_1520);
+        g_SpriteEngine->Step(&this->summaryBombIcon);
     }
     // Starts the scripts of the summary sprites (5 to 9, 4 for unk_127c)
     // and nearbyLabels[] (10), moves summaryPopup2 and summaryPopup3 by
@@ -247,8 +247,8 @@ public:
     Sprite summaryPopup2;
     Sprite summaryPopup3;
     Sprite summaryPopup4;
-    Sprite unk_127c;
-    Sprite unk_1520;
+    Sprite summaryDigit;
+    Sprite summaryBombIcon;
     Sprite nearbyLabels[4];
     // Whether nearbyLabels[i] is drawn dimmed, as th07's.
     int nearbyLabelDimmed[4];
@@ -261,7 +261,7 @@ public:
         D3DCOLOR color;
         struct
         {
-            BYTE unk_rgb[3];
+            BYTE colorRgb[3];
             BYTE alpha;
         };
     };

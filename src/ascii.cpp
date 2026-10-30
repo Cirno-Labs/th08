@@ -136,8 +136,8 @@ void AsciiText::StartScripts()
     this->anm->StartScript(&this->summaryPopup3, 7);
     this->anm->StartScript(&this->summaryPopup2, 6);
     this->anm->StartScript(&this->summaryPopup4, 8);
-    this->anm->StartScript(&this->unk_127c, 4);
-    this->anm->StartScript(&this->unk_1520, 9);
+    this->anm->StartScript(&this->summaryDigit, 4);
+    this->anm->StartScript(&this->summaryBombIcon, 9);
     this->anm->StartScript(&this->nearbyLabels[0], 10);
     this->anm->StartScript(&this->nearbyLabels[1], 10);
     this->anm->StartScript(&this->nearbyLabels[2], 10);
@@ -1419,58 +1419,58 @@ void AsciiText::DrawPopups()
         this->summaryPopup4.pos.x =
             g_GameManager.GetUnk22() * 112.0f / 2.0f / 10000.0f + this->summaryPopup.pos.x + 64.0f;
         g_SpriteEngine->DrawRotatedNoRound(&this->summaryPopup4);
-        this->unk_127c.pos.x = g_GameManager.GetUnk22() * 80.0f / 2.0f / 10000.0f + this->summaryPopup.pos.x + 64.0f;
-        this->unk_127c.pos.y = this->summaryPopup4.pos.y - 7.0f;
-        this->unk_127c.pos.z = this->summaryPopup4.pos.z;
-        this->unk_127c.alpha = this->summaryPopup.alpha;
+        this->summaryDigit.pos.x = g_GameManager.GetUnk22() * 80.0f / 2.0f / 10000.0f + this->summaryPopup.pos.x + 64.0f;
+        this->summaryDigit.pos.y = this->summaryPopup4.pos.y - 7.0f;
+        this->summaryDigit.pos.z = this->summaryPopup4.pos.z;
+        this->summaryDigit.alpha = this->summaryPopup.alpha;
         if (g_GameManager.IsUnk22AtLow1())
         {
-            this->unk_127c.colorRgb[2] = 0x70;
-            this->unk_127c.colorRgb[1] = 0x70;
-            this->unk_127c.colorRgb[0] = 0xff;
+            this->summaryDigit.colorRgb[2] = 0x70;
+            this->summaryDigit.colorRgb[1] = 0x70;
+            this->summaryDigit.colorRgb[0] = 0xff;
         }
         else if (g_GameManager.IsUnk22AtLow2())
         {
-            this->unk_127c.colorRgb[2] = 0xb0;
-            this->unk_127c.colorRgb[1] = 0xb0;
-            this->unk_127c.colorRgb[0] = 0xff;
+            this->summaryDigit.colorRgb[2] = 0xb0;
+            this->summaryDigit.colorRgb[1] = 0xb0;
+            this->summaryDigit.colorRgb[0] = 0xff;
         }
         else if (g_GameManager.IsUnk22AtHigh1())
         {
-            this->unk_127c.colorRgb[2] = 0xff;
-            this->unk_127c.colorRgb[1] = 0x70;
-            this->unk_127c.colorRgb[0] = 0x70;
+            this->summaryDigit.colorRgb[2] = 0xff;
+            this->summaryDigit.colorRgb[1] = 0x70;
+            this->summaryDigit.colorRgb[0] = 0x70;
         }
         else if (g_GameManager.IsUnk22AtHigh2())
         {
-            this->unk_127c.colorRgb[2] = 0xff;
-            this->unk_127c.colorRgb[1] = 0xb0;
-            this->unk_127c.colorRgb[0] = 0xb0;
+            this->summaryDigit.colorRgb[2] = 0xff;
+            this->summaryDigit.colorRgb[1] = 0xb0;
+            this->summaryDigit.colorRgb[0] = 0xb0;
         }
         else
         {
-            this->unk_127c.colorRgb[2] = 0xff;
-            this->unk_127c.colorRgb[1] = 0xff;
-            this->unk_127c.colorRgb[0] = 0xff;
+            this->summaryDigit.colorRgb[2] = 0xff;
+            this->summaryDigit.colorRgb[1] = 0xff;
+            this->summaryDigit.colorRgb[0] = 0xff;
         }
-        this->summaryPopup.color = this->unk_127c.color;
+        this->summaryPopup.color = this->summaryDigit.color;
         g_SpriteEngine->DrawUnrotated(&this->summaryPopup);
         g_SpriteEngine->DrawUnrotated(&this->summaryPopup2);
         g_SpriteEngine->DrawUnrotated(&this->summaryPopup3);
-        this->Func405e10(&this->unk_127c.pos, g_GameManager.GetUnk22(), this->unk_127c.color);
+        this->Func405e10(&this->summaryDigit.pos, g_GameManager.GetUnk22(), this->summaryDigit.color);
         div = 10000000;
         count = g_GameManager.stats->maxPointValue;
         alpha = 0;
-        this->unk_127c.pos.x = this->summaryPopup.pos.x + 62.0f - 14.0f;
-        this->unk_127c.pos.y = this->summaryPopup.pos.y + 3.0f + 8.0f;
+        this->summaryDigit.pos.x = this->summaryPopup.pos.x + 62.0f - 14.0f;
+        this->summaryDigit.pos.y = this->summaryPopup.pos.y + 3.0f + 8.0f;
         for (i = 0; i < 8; i++)
         {
             alpha += count / div;
             if (alpha != 0)
             {
-                this->anm->SetSprite(&this->unk_127c, count / div + 0x88);
-                g_SpriteEngine->DrawUnrotated(&this->unk_127c);
-                this->unk_127c.pos.x += 7.0f;
+                this->anm->SetSprite(&this->summaryDigit, count / div + 0x88);
+                g_SpriteEngine->DrawUnrotated(&this->summaryDigit);
+                this->summaryDigit.pos.x += 7.0f;
             }
             count = count % div;
             div /= 10;
@@ -1503,88 +1503,88 @@ void AsciiText::Func405e10(D3DXVECTOR3 *pos, int value, D3DCOLOR color)
         len += 1;
     }
     offset = len * 3.5f - 3.5f - 4.0f;
-    this->unk_127c.pos = *pos;
-    this->unk_127c.pos.x -= offset;
-    this->unk_127c.color = color;
+    this->summaryDigit.pos = *pos;
+    this->summaryDigit.pos.x -= offset;
+    this->summaryDigit.color = color;
     if (value < 0)
     {
-        this->anm->SetSprite(&this->unk_127c, 0x94);
-        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
-        this->unk_127c.pos.x += 7.0f;
+        this->anm->SetSprite(&this->summaryDigit, 0x94);
+        g_SpriteEngine->DrawUnrotated(&this->summaryDigit);
+        this->summaryDigit.pos.x += 7.0f;
     }
     if (absValue >= 10000)
     {
-        this->anm->SetSprite(&this->unk_127c, 0x89);
-        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
-        this->unk_127c.pos.x += 7.0f;
-        this->anm->SetSprite(&this->unk_127c, 0x88);
-        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
-        this->unk_127c.pos.x += 7.0f;
-        this->anm->SetSprite(&this->unk_127c, 0x88);
-        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
-        this->unk_127c.pos.x += 7.0f;
-        this->anm->SetSprite(&this->unk_127c, 0x93);
-        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
-        this->unk_127c.pos.x += 5.0f;
-        this->unk_127c.scaleX = 0.8f;
-        this->unk_127c.scaleY = 0.8f;
-        this->unk_127c.pos.y += 2.0f;
-        this->anm->SetSprite(&this->unk_127c, 0x88);
-        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
-        this->unk_127c.pos.x += 5.0f;
-        this->anm->SetSprite(&this->unk_127c, 0x88);
-        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
-        this->unk_127c.pos.x += 7.0f;
+        this->anm->SetSprite(&this->summaryDigit, 0x89);
+        g_SpriteEngine->DrawUnrotated(&this->summaryDigit);
+        this->summaryDigit.pos.x += 7.0f;
+        this->anm->SetSprite(&this->summaryDigit, 0x88);
+        g_SpriteEngine->DrawUnrotated(&this->summaryDigit);
+        this->summaryDigit.pos.x += 7.0f;
+        this->anm->SetSprite(&this->summaryDigit, 0x88);
+        g_SpriteEngine->DrawUnrotated(&this->summaryDigit);
+        this->summaryDigit.pos.x += 7.0f;
+        this->anm->SetSprite(&this->summaryDigit, 0x93);
+        g_SpriteEngine->DrawUnrotated(&this->summaryDigit);
+        this->summaryDigit.pos.x += 5.0f;
+        this->summaryDigit.scaleX = 0.8f;
+        this->summaryDigit.scaleY = 0.8f;
+        this->summaryDigit.pos.y += 2.0f;
+        this->anm->SetSprite(&this->summaryDigit, 0x88);
+        g_SpriteEngine->DrawUnrotated(&this->summaryDigit);
+        this->summaryDigit.pos.x += 5.0f;
+        this->anm->SetSprite(&this->summaryDigit, 0x88);
+        g_SpriteEngine->DrawUnrotated(&this->summaryDigit);
+        this->summaryDigit.pos.x += 7.0f;
     }
     else if (absValue >= 1000)
     {
         len = absValue;
-        this->anm->SetSprite(&this->unk_127c, len / 1000 + 0x88);
+        this->anm->SetSprite(&this->summaryDigit, len / 1000 + 0x88);
         len %= 1000;
-        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
-        this->unk_127c.pos.x += 7.0f;
-        this->anm->SetSprite(&this->unk_127c, len / 100 + 0x88);
+        g_SpriteEngine->DrawUnrotated(&this->summaryDigit);
+        this->summaryDigit.pos.x += 7.0f;
+        this->anm->SetSprite(&this->summaryDigit, len / 100 + 0x88);
         len %= 100;
-        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
-        this->unk_127c.pos.x += 7.0f;
-        this->anm->SetSprite(&this->unk_127c, 0x93);
-        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
-        this->unk_127c.pos.x += 5.0f;
-        this->unk_127c.scaleX = 0.8f;
-        this->unk_127c.scaleY = 0.8f;
-        this->unk_127c.pos.y += 2.0f;
-        this->anm->SetSprite(&this->unk_127c, len / 10 + 0x88);
+        g_SpriteEngine->DrawUnrotated(&this->summaryDigit);
+        this->summaryDigit.pos.x += 7.0f;
+        this->anm->SetSprite(&this->summaryDigit, 0x93);
+        g_SpriteEngine->DrawUnrotated(&this->summaryDigit);
+        this->summaryDigit.pos.x += 5.0f;
+        this->summaryDigit.scaleX = 0.8f;
+        this->summaryDigit.scaleY = 0.8f;
+        this->summaryDigit.pos.y += 2.0f;
+        this->anm->SetSprite(&this->summaryDigit, len / 10 + 0x88);
         len %= 10;
-        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
-        this->unk_127c.pos.x += 5.0f;
-        this->anm->SetSprite(&this->unk_127c, len + 0x88);
-        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
-        this->unk_127c.pos.x += 7.0f;
+        g_SpriteEngine->DrawUnrotated(&this->summaryDigit);
+        this->summaryDigit.pos.x += 5.0f;
+        this->anm->SetSprite(&this->summaryDigit, len + 0x88);
+        g_SpriteEngine->DrawUnrotated(&this->summaryDigit);
+        this->summaryDigit.pos.x += 7.0f;
     }
     else
     {
         len = absValue;
-        this->anm->SetSprite(&this->unk_127c, len / 100 + 0x88);
+        this->anm->SetSprite(&this->summaryDigit, len / 100 + 0x88);
         len %= 100;
-        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
-        this->unk_127c.pos.x += 7.0f;
-        this->anm->SetSprite(&this->unk_127c, 0x93);
-        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
-        this->unk_127c.pos.x += 5.0f;
-        this->unk_127c.scaleX = 0.8f;
-        this->unk_127c.scaleY = 0.8f;
-        this->unk_127c.pos.y += 2.0f;
-        this->anm->SetSprite(&this->unk_127c, len / 10 + 0x88);
+        g_SpriteEngine->DrawUnrotated(&this->summaryDigit);
+        this->summaryDigit.pos.x += 7.0f;
+        this->anm->SetSprite(&this->summaryDigit, 0x93);
+        g_SpriteEngine->DrawUnrotated(&this->summaryDigit);
+        this->summaryDigit.pos.x += 5.0f;
+        this->summaryDigit.scaleX = 0.8f;
+        this->summaryDigit.scaleY = 0.8f;
+        this->summaryDigit.pos.y += 2.0f;
+        this->anm->SetSprite(&this->summaryDigit, len / 10 + 0x88);
         len %= 10;
-        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
-        this->unk_127c.pos.x += 5.0f;
-        this->anm->SetSprite(&this->unk_127c, len + 0x88);
-        g_SpriteEngine->DrawUnrotated(&this->unk_127c);
-        this->unk_127c.pos.x += 7.0f;
+        g_SpriteEngine->DrawUnrotated(&this->summaryDigit);
+        this->summaryDigit.pos.x += 5.0f;
+        this->anm->SetSprite(&this->summaryDigit, len + 0x88);
+        g_SpriteEngine->DrawUnrotated(&this->summaryDigit);
+        this->summaryDigit.pos.x += 7.0f;
     }
-    this->unk_127c.scaleX = 1.0f;
-    this->unk_127c.scaleY = 1.0f;
-    this->unk_127c.pos.y -= 2.0f;
-    this->anm->SetSprite(&this->unk_127c, 0x92);
-    g_SpriteEngine->DrawUnrotated(&this->unk_127c);
+    this->summaryDigit.scaleX = 1.0f;
+    this->summaryDigit.scaleY = 1.0f;
+    this->summaryDigit.pos.y -= 2.0f;
+    this->anm->SetSprite(&this->summaryDigit, 0x92);
+    g_SpriteEngine->DrawUnrotated(&this->summaryDigit);
 }
