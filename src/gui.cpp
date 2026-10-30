@@ -168,7 +168,7 @@ void GuiImpl::StartMsgScript(int index)
     this->msg.newPage = 1;
     this->msg.nextLine = 0;
     this->msg.activePortrait = 0xff;
-    g_BulletManager.Func415c60();
+    g_BulletManager.ClearAllToItems();
     g_EnemyManager.ClearEnemiesForBonus(0, 0);
     g_ItemManager.CollectAll();
 }

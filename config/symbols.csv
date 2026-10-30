@@ -204,7 +204,7 @@ address,size,name,symbol
 0x00414540,68,IsListedSpellCard,?IsListedSpellCard@@YIHH@Z
 0x00414590,3237,SpellCard::Initialize,?Initialize@SpellCard@@QAEHXZ
 0x004152a0,2483,SpellCard::Start,?Start@SpellCard@@QAEXHPADHKPAUEnemy@@000@Z
-0x00415c60,21,BulletManager::Func415c60,?Func415c60@BulletManager@@QAEXXZ
+0x00415c60,21,BulletManager::ClearAllToItems,?ClearAllToItems@BulletManager@@QAEXXZ
 0x00415c80,85,Enemy::ResetRankSpeeds,?ResetRankSpeeds@Enemy@@QAEXXZ
 0x00415ce0,37,Func415ce0,
 0x00415d10,71,SpellCard::Func415d10,?Func415d10@SpellCard@@QAEXPADPAUEnemy@@@Z

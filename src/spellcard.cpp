@@ -302,7 +302,7 @@ void SpellCard::Start(int card, char *name, int face, DWORD bonus, Enemy *enemy,
         this->name[i] = (BYTE)name[i] ^ 0xaa;
     }
     this->ShowName(face, this->name, 0);
-    g_BulletManager.Func415c60();
+    g_BulletManager.ClearAllToItems();
     g_Stage.StartSpellCard();
     for (i = 0; i < g_Stage.dialogueSpriteCount; i++)
     {
@@ -423,4 +423,9 @@ void SpellCard::Start(int card, char *name, int face, DWORD bonus, Enemy *enemy,
         catk->difficulty = g_GameManager.difficulty;
         catk->checksum = nameSum;
     }
+}
+
+void BulletManager::ClearAllToItems()
+{
+    this->ClearAll(1);
 }

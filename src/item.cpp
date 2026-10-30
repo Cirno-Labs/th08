@@ -275,7 +275,7 @@ void ItemManager::UpdateItems()
             case 4:
                 if (g_GameManager.GetPower() < 128)
                 {
-                    g_BulletManager.Func415c60();
+                    g_BulletManager.ClearAllToItems();
                     g_Gui.ShowFullPowerPopup(0, 1);
                     g_SoundPlayer.QueueSound(0x1f, 0);
                     g_AsciiText.AddPopup(&entry->pos, -1, 0xffffc0a0);
@@ -359,7 +359,7 @@ void Item::CollectPower()
             g_GameManager.SetPower(128);
             if (!g_SpellCard.Func4178a0())
             {
-                g_BulletManager.Func415c60();
+                g_BulletManager.ClearAllToItems();
             }
             g_Gui.ShowFullPowerPopup(0, 1);
             g_ItemManager.ConvertPowerItems(this);
@@ -487,7 +487,7 @@ void Item::CollectBigPower()
             g_GameManager.SetPower(128);
             if (!g_SpellCard.Func4178a0())
             {
-                g_BulletManager.Func415c60();
+                g_BulletManager.ClearAllToItems();
             }
             g_Gui.ShowFullPowerPopup(0, 1);
             g_ItemManager.ConvertPowerItems(this);

@@ -206,8 +206,9 @@ public:
     // into `mode` items of type clearItemType. Then sets clearAllFrames
     // to 10. A timer callback ending a spell card calls it with 4.
     void ClearAll(int mode);
-    // Clears the bullets, as th07's ClearAll (0x415c60).
-    void Func415c60();
+    // ClearAll(1): every bullet and laser turns into items, as th06's.
+    // Defined in spellcard.cpp, after SpellCard::Start (0x415c60).
+    void ClearAllToItems();
     // Clears the bullets for a bonus of up to `maxBonus`, as th07's
     // (0x430aa0). Returns the total.
     int ClearAllWithBonus(int maxBonus, int toItems);
