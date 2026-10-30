@@ -1155,3 +1155,8 @@ void SetUnknown18b8a2c(Enemy *enemy, EnemyScriptInstr *instr)
 {
     g_Unknown18b8a2c = instr->args[1].i;
 }
+
+void TintStageRed(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    g_Stage.SetTintColor(0xffc03030);
+}

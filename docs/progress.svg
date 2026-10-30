@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">84.86% (947)</tspan> · <tspan class="decompiled">3.14% (35)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">12.01% (134)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">84.95% (948)</tspan> · <tspan class="decompiled">3.14% (35)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">11.92% (133)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="633.88" height="6" x="0" y="0" class="named"/>
-<rect width="23.43" height="6" x="633.88" y="0" class="decompiled"/>
-<rect width="89.69" height="6" x="657.31" y="0" class="todo"/>
+<rect width="634.55" height="6" x="0" y="0" class="named"/>
+<rect width="23.43" height="6" x="634.55" y="0" class="decompiled"/>
+<rect width="89.02" height="6" x="657.98" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -375,7 +375,7 @@
 <rect width="12" height="12" x="60" y="90" class="named"><title>0x00424a00 SetUnknown18b8a2c (28 bytes)</title></rect>
 <rect width="12" height="12" x="75" y="90" class="todo"><title>0x00424a20 Func424a20 (536 bytes)</title></rect>
 <rect width="12" height="12" x="90" y="90" class="todo"><title>0x00424c40 Func424c40 (443 bytes)</title></rect>
-<rect width="12" height="12" x="105" y="90" class="todo"><title>0x00424e00 Func424e00 (31 bytes)</title></rect>
+<rect width="12" height="12" x="105" y="90" class="named"><title>0x00424e00 TintStageRed (31 bytes)</title></rect>
 <rect width="12" height="12" x="120" y="90" class="todo"><title>0x00424e20 Func424e20 (39 bytes)</title></rect>
 <rect width="12" height="12" x="135" y="90" class="todo"><title>0x00424e50 Func424e50 (272 bytes)</title></rect>
 <rect width="12" height="12" x="150" y="90" class="todo"><title>0x00424f60 Func424f60 (39 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">79.22%</tspan> · <tspan class="decompiled">1.57%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">19.21%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">79.23%</tspan> · <tspan class="decompiled">1.57%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">19.20%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="591.79" height="6" x="0" y="0" class="named"/>
-<rect width="11.74" height="6" x="591.79" y="0" class="decompiled"/>
-<rect width="143.48" height="6" x="603.52" y="0" class="todo"/>
+<rect width="591.84" height="6" x="0" y="0" class="named"/>
+<rect width="11.74" height="6" x="591.84" y="0" class="decompiled"/>
+<rect width="143.43" height="6" x="603.57" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -2133,7 +2133,7 @@
 <rect width="1.30" height="1.22" x="712.48" y="297.47" class="named"><title>0x0044e120 Sprite::SetBlendModeNormal (32 bytes)</title></rect>
 <rect width="1.30" height="1.22" x="716.79" y="297.47" class="named"><title>0x0045a4dc ListNode::ListNode (32 bytes)</title></rect>
 <rect width="1.17" height="1.22" x="721.09" y="297.47" class="named"><title>0x0040bad0 SpriteEngine::SetColorModulation (31 bytes)</title></rect>
-<rect width="1.17" height="1.22" x="725.26" y="297.47" class="todo"><title>0x00424e00 Func424e00 (31 bytes)</title></rect>
+<rect width="1.17" height="1.22" x="725.26" y="297.47" class="named"><title>0x00424e00 TintStageRed (31 bytes)</title></rect>
 <rect width="1.17" height="1.22" x="729.43" y="297.47" class="named"><title>0x00427970 EffectInitRing2 (31 bytes)</title></rect>
 <rect width="1.17" height="1.22" x="733.59" y="297.47" class="named"><title>0x00437d45 GuiPopup::GuiPopup (31 bytes)</title></rect>
 <rect width="1.17" height="1.22" x="737.76" y="297.47" class="named"><title>0x00475200 DatArchiveCursor::SkipDword (31 bytes)</title></rect>
