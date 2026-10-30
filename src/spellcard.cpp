@@ -437,3 +437,27 @@ void SpellCard::Func415d10(char *name, Enemy *enemy)
     this->unk_0_4 = 0;
     this->ShowName(-1, name, 1);
 }
+
+void SpellCard::StartBombCard(int face, char *name, int sprite)
+{
+    if (face == 0)
+    {
+        this->faceAnms[0]->StartScript(&this->unk_120, 0);
+        this->faceAnms[0]->SetSprite(&this->unk_120, 0);
+    }
+    else if (face == 1)
+    {
+        this->faceAnms[1]->StartScript(&this->unk_120, 0);
+        this->faceAnms[1]->SetSprite(&this->unk_120, 0);
+    }
+    this->backgroundAnm->StartScript(&this->unk_668, 0);
+    this->backgroundAnm->StartScript(&this->unk_bb0, 2);
+    this->backgroundAnm->SetSprite(&this->unk_668, sprite);
+    this->backgroundAnm->SetSprite(&this->unk_bb0, sprite);
+    g_App.textAnm->StartScript(&this->unk_10f8, 4);
+    g_SpriteEngine->RenderText(&this->unk_10f8, 0xf0f0ff, 0, name);
+    this->unk_2618 = (float)(strlen(name) * 15) / 2.0f + 16.0f;
+    this->unk_1b88.SetPendingInterrupt(1);
+    g_SoundPlayer.QueueSound(0xe, 0);
+    g_App.redrawFrames = 2;
+}
