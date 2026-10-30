@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">84.14% (939)</tspan> · <tspan class="decompiled">3.14% (35)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">12.72% (142)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">84.23% (940)</tspan> · <tspan class="decompiled">3.14% (35)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">12.63% (141)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="628.52" height="6" x="0" y="0" class="named"/>
-<rect width="23.43" height="6" x="628.52" y="0" class="decompiled"/>
-<rect width="95.05" height="6" x="651.95" y="0" class="todo"/>
+<rect width="629.19" height="6" x="0" y="0" class="named"/>
+<rect width="23.43" height="6" x="629.19" y="0" class="decompiled"/>
+<rect width="94.38" height="6" x="652.62" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -357,7 +357,7 @@
 <rect width="12" height="12" x="540" y="75" class="todo"><title>0x00423150 Func423150 (567 bytes)</title></rect>
 <rect width="12" height="12" x="555" y="75" class="decompiled"><title>0x00423390 ScriptSetUnknown4e3d28 (52 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="75" class="named"><title>0x004233d0 FlashScreen60 (39 bytes)</title></rect>
-<rect width="12" height="12" x="585" y="75" class="todo"><title>0x00423400 Func423400 (296 bytes)</title></rect>
+<rect width="12" height="12" x="585" y="75" class="named"><title>0x00423400 BounceOffSides (296 bytes)</title></rect>
 <rect width="12" height="12" x="600" y="75" class="todo"><title>0x00423530 Func423530 (104 bytes)</title></rect>
 <rect width="12" height="12" x="615" y="75" class="todo"><title>0x004235a0 Func4235a0 (1203 bytes)</title></rect>
 <rect width="12" height="12" x="630" y="75" class="todo"><title>0x00423a60 Func423a60 (784 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">79.05%</tspan> · <tspan class="decompiled">1.57%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">19.38%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">79.11%</tspan> · <tspan class="decompiled">1.57%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">19.32%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="590.48" height="6" x="0" y="0" class="named"/>
-<rect width="11.74" height="6" x="590.48" y="0" class="decompiled"/>
-<rect width="144.78" height="6" x="602.22" y="0" class="todo"/>
+<rect width="590.96" height="6" x="0" y="0" class="named"/>
+<rect width="11.74" height="6" x="590.96" y="0" class="decompiled"/>
+<rect width="144.30" height="6" x="602.70" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -1526,7 +1526,7 @@
 <rect width="9.89" height="10.16" x="532.82" y="142.35" class="named"><title>0x0046950b MainMenu::ReassignButton (299 bytes)</title></rect>
 <rect width="9.89" height="10.07" x="532.82" y="155.51" class="named"><title>0x00403330 AsciiText::AddPopup2 (297 bytes)</title></rect>
 <rect width="9.89" height="10.03" x="532.82" y="168.58" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
-<rect width="9.89" height="10.03" x="532.82" y="181.61" class="todo"><title>0x00423400 Func423400 (296 bytes)</title></rect>
+<rect width="9.89" height="10.03" x="532.82" y="181.61" class="named"><title>0x00423400 BounceOffSides (296 bytes)</title></rect>
 <rect width="9.89" height="10.03" x="532.82" y="194.63" class="named"><title>0x0045d660 SoundPlayer::QueueSoundPanned (296 bytes)</title></rect>
 <rect width="9.89" height="9.98" x="532.82" y="207.66" class="named"><title>0x00403200 AsciiText::AddPopup (295 bytes)</title></rect>
 <rect width="9.89" height="9.98" x="532.82" y="220.64" class="named"><title>0x00442060 PresentFrame (295 bytes)</title></rect>

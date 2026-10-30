@@ -1075,3 +1075,32 @@ void FlashScreen60(Enemy *enemy, EnemyScriptInstr *instr)
 {
     ScreenEffect::StartEffect(3, 60, 1, 0xffffffff, 0, 0x15);
 }
+
+void BounceOffSides(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    int bounced = 0;
+
+    if (enemy->pos.x <= 0.0f || enemy->pos.x >= 384.0f)
+    {
+        enemy->velocity.x = -enemy->velocity.x;
+        bounced = 1;
+    }
+    if (enemy->velocity.y < enemy->currentCtx->vars.floats[7])
+    {
+        enemy->velocity.y += enemy->currentCtx->vars.floats[6];
+        bounced = 1;
+    }
+    if (enemy->pos.y < -64.0f)
+    {
+        enemy->velocity.y = -enemy->velocity.y;
+        bounced = 1;
+    }
+    else if (enemy->pos.y >= 480.0f)
+    {
+        enemy->staysOffscreen = 0;
+    }
+    if (bounced)
+    {
+        enemy->angle = atan2f(enemy->velocity.y, enemy->velocity.x);
+    }
+}

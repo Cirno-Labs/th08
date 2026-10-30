@@ -646,6 +646,11 @@ void ScriptSetUnknown4e3d28(Enemy *enemy, EnemyScriptInstr *instr);
 // Script function 1: a white flash of 60 frames, as th07's FlashScreen (0x4233d0).
 void FlashScreen60(Enemy *enemy, EnemyScriptInstr *instr);
 
+// Script function 2: bounces the enemy off the sides and the top,
+// falling with gravity floats[6] down to speed floats[7]; staysOffscreen
+// ends below y 480 (0x423400).
+void BounceOffSides(Enemy *enemy, EnemyScriptInstr *instr);
+
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
 // The enemy scripts by stage, by stage in spell practice (stage + 9),

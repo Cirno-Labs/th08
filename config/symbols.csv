@@ -288,7 +288,7 @@ address,size,name,symbol
 0x00423150,567,Func423150,
 0x00423390,52,ScriptSetUnknown4e3d28,?ScriptSetUnknown4e3d28@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x004233d0,39,FlashScreen60,?FlashScreen60@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
-0x00423400,296,Func423400,
+0x00423400,296,BounceOffSides,?BounceOffSides@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00423530,104,Func423530,
 0x004235a0,1203,Func4235a0,
 0x00423a60,784,Func423a60,
