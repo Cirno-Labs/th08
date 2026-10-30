@@ -194,7 +194,7 @@ address,size,name,symbol
 0x004123d0,3016,UpdateYoumuLastWord,?UpdateYoumuLastWord@@YIXPAVPlayer@@@Z
 0x00412fa0,207,DrawYoumuLastWord,?DrawYoumuLastWord@@YIXPAVPlayer@@@Z
 0x00413070,204,EffectUpdateBombRing48,?EffectUpdateBombRing48@@YIHPAUEffect@@@Z
-0x00413140,1859,Func413140,
+0x00413140,1859,UpdateYuyukoBomb,?UpdateYuyukoBomb@@YIXPAVPlayer@@@Z
 0x00413890,241,Func413890,
 0x00413990,2344,Func413990,
 0x004142c0,244,Func4142c0,
