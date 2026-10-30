@@ -400,7 +400,7 @@ void Enemy::ReleaseFollowers(int collect)
                 {
                     count /= 3;
                 }
-                g_AsciiText.Func403460(&cur->absPos, count, 0, tint);
+                g_AsciiText.AddNumberPopup(&cur->absPos, count, 0, tint);
                 cur->absPos = cur->pos + cur->posOrigin;
                 g_Player.AddHitAreaCircle(&cur->absPos, 32.0f, 2.0f, 8, areaType);
                 for (i = 0; i < items; i++)
@@ -427,7 +427,7 @@ void Enemy::ReleaseFollowers(int collect)
         if (collect)
         {
             g_AsciiText.SetScale(2.0f, 2.0f);
-            g_AsciiText.Func403460(&this->absPos, this->followerCount, 0, 0xfff0f00f);
+            g_AsciiText.AddNumberPopup(&this->absPos, this->followerCount, 0, 0xfff0f00f);
             g_AsciiText.SetScale(1.0f, 1.0f);
             for (count = 0; count < this->followerCount * 2; count++)
             {
@@ -450,7 +450,7 @@ void Enemy::ReleaseFollowers(int collect)
         g_Player.gaugeIdleTimer = 30;
         g_Player.orbGaugeCooldown = 50;
         this->absPos = this->pos + this->posOrigin;
-        g_AsciiText.Func403460(&this->absPos, 1, 0, 0xffffffff);
+        g_AsciiText.AddNumberPopup(&this->absPos, 1, 0, 0xffffffff);
         g_ItemManager.SpawnItem(&this->absPos, 7, 1);
         this->powerItems = 0;
         this->pointItems = 0;

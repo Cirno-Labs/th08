@@ -422,7 +422,7 @@ extern int g_PlayerBombRunning;
 extern int g_DamagePerTimeOrb;
 // Copies the stage's portrait into the dialogue texture by
 // g_GameManager.stage and, in a spell card practice, the card (0x438046).
-void Func438046();
+void CopyStageSprite();
 
 // Measures the frame rate every half second, with the performance
 // counter when there is one, and shows it when `draw` is set, as th07's.
@@ -1979,14 +1979,14 @@ public:
     void DrawPopups();
     // Called by GameManager::OnUpdate when the result screen's mode ends
     // without a scene to go to (0x438f58).
-    void Func438f58();
+    void StartLoadingBar();
     // Restart the clock sprite (impl->unk_2156c) of times.anm on the
     // hour (GameManager::GetClock), show the hour with interrupt 1 or 2,
     // or hide it (0x439007, 0x439050, 0x439093, 0x4390d6). Return 0.
-    int Func439007();
-    int Func439050();
-    int Func439093();
-    int Func4390d6();
+    int StartClock();
+    int AdvanceClock();
+    int AdvanceClockToEnd();
+    int HideClock();
     // Loads the interface's sprites and the stage's portraits and
     // messages, as th07's (0x4390ee). Returns 0, or -1 when a file fails
     // to load.
@@ -2048,12 +2048,12 @@ public:
     }
     // The update element's added callback: runs LoadResources.
     static int AddedCallback(Gui *gui);
-    // Releases ANM slot 0xd unless Func438ffd, frees the dialogue file
-    // and, if Func438ff3, releases ANM slots 0xa to 0xe and frees impl.
+    // Releases ANM slot 0xd unless GuiIsRestarting, frees the dialogue file
+    // and, if GuiIsFreeingResources, releases ANM slots 0xa to 0xe and frees impl.
     // Returns 0.
     static int DeletedCallback(Gui *gui);
     // Adds the Gui's chain elements, as th07's (0x437ad0): if
-    // Func438fe9, zeroes the Gui and allocates impl
+    // GuiIsLoadingResources, zeroes the Gui and allocates impl
     // ("FRScreenImplInf"); then adds the update element (priority 15)
     // and the draw element (priority 17). Returns 0, or -1 if adding
     // fails.
@@ -2138,9 +2138,9 @@ inline int KeepsResources()
 }
 
 // App::unk_164, unk_168 and unk_16c (0x438fe9, 0x438ff3, 0x438ffd).
-int Func438fe9();
-int Func438ff3();
-int Func438ffd();
+int GuiIsLoadingResources();
+int GuiIsFreeingResources();
+int GuiIsRestarting();
 
 // Decodes a dialogue string (each byte xor 0x77) from `src` into `dst`,
 // up to and including the terminating 0 (0x4353ec).
@@ -2735,5 +2735,5 @@ extern int g_ExtendPointItems[6];
 extern int g_ExtendPointItemsExtra[3];
 // g_SpellCardBgms' unk_10 and unk_c for the spell card practised; both
 // ignore `card` (0x439916, 0x439961).
-int Func439916(int card);
-int Func439961(int card);
+int GetPracticeBgmRestarts(int card);
+int GetPracticeBgmTitleIndex(int card);

@@ -1355,7 +1355,7 @@ void Gui::DrawBanners()
         {
             pos = D3DXVECTOR3(2.0f, 29.0f, 0.0f);
             g_AsciiText.SetScale(1.0f, 1.0f);
-            g_AsciiText.Func403600(&pos, g_EnemyManager.bosses[0]->CountFollowers(), g_EnemyManager.bosses[0]->followerCount,
+            g_AsciiText.AddNumberPopupBrief(&pos, g_EnemyManager.bosses[0]->CountFollowers(), g_EnemyManager.bosses[0]->followerCount,
                                    0xfff0f00f);
         }
     }
@@ -1369,12 +1369,12 @@ int Gui::AddedCallback(Gui *gui)
 
 int Gui::DeletedCallback(Gui *gui)
 {
-    if (!Func438ffd())
+    if (!GuiIsRestarting())
     {
         g_SpriteEngine->ReleaseAnm(0xd);
     }
     gui->FreeMsgFile();
-    if (Func438ff3())
+    if (GuiIsFreeingResources())
     {
         g_SpriteEngine->ReleaseAnm(0xa);
         g_SpriteEngine->ReleaseAnm(0xc);
@@ -1391,7 +1391,7 @@ int Gui::RegisterChain()
 {
     Gui *gui = &g_Gui;
 
-    if (Func438fe9())
+    if (GuiIsLoadingResources())
     {
         memset(gui, 0, sizeof(Gui));
         gui->impl = (GuiImpl *)g_MemoryManager.Register(new GuiImpl, sizeof(GuiImpl), "FRScreenImplInf");
@@ -1473,7 +1473,7 @@ void CopySpriteToTexture(int sprite)
     g_SpriteEngine->CopyTextureRect(10, 0, 10, 1, &dstRect, &spriteRect);
 }
 
-void Func438046()
+void CopyStageSprite()
 {
     switch (g_GameManager.stage)
     {
@@ -1788,7 +1788,7 @@ void Gui::DrawPopups()
     g_AsciiText.SetInArena(0);
 }
 
-void Gui::Func438f58()
+void Gui::StartLoadingBar()
 {
     g_AsciiText.anm2->StartScript(&this->impl->loadingBar, 1);
     g_SpriteEngine->SetPendingCopy(3, 32, 16, 384, 448, this->impl->loadingBar.spriteData->startX,
@@ -1796,43 +1796,43 @@ void Gui::Func438f58()
                                    this->impl->loadingBar.spriteData->height);
 }
 
-int Func438fe9()
+int GuiIsLoadingResources()
 {
     return g_App.loadsResources;
 }
 
-int Func438ff3()
+int GuiIsFreeingResources()
 {
     return g_App.freesResources;
 }
 
-int Func438ffd()
+int GuiIsRestarting()
 {
     return g_App.isRestarting;
 }
 
-int Gui::Func439007()
+int Gui::StartClock()
 {
     this->timesAnm->StartScriptAtOrigin(&this->impl->clock, 2);
     this->timesAnm->SetSprite(&this->impl->clock, g_GameManager.GetClock());
     return 0;
 }
 
-int Gui::Func439050()
+int Gui::AdvanceClock()
 {
     this->timesAnm->SetSprite(&this->impl->clock, g_GameManager.GetClock());
     this->impl->clock.SetPendingInterrupt(1);
     return 0;
 }
 
-int Gui::Func439093()
+int Gui::AdvanceClockToEnd()
 {
     this->timesAnm->SetSprite(&this->impl->clock, g_GameManager.GetClock());
     this->impl->clock.SetPendingInterrupt(2);
     return 0;
 }
 
-int Gui::Func4390d6()
+int Gui::HideClock()
 {
     this->impl->clock.alpha = 0;
     return 0;
@@ -1844,7 +1844,7 @@ int Gui::LoadResources()
     int y;
     DWORD i;
 
-    if (Func438fe9())
+    if (GuiIsLoadingResources())
     {
         memset(this->impl, 0, sizeof(GuiImpl));
         this->anm = g_SpriteEngine->PreloadAnm(10, "front.anm");
@@ -1894,7 +1894,7 @@ int Gui::LoadResources()
         }
         this->impl->backgroundTileCount = 0xa8;
     }
-    g_Gui.Func4390d6();
+    g_Gui.HideClock();
     this->timesAnm->StartScriptAtOrigin(&this->impl->stageTitleTime, 0);
     this->timesAnm->SetSprite(&this->impl->stageTitleTime, g_GameManager.GetClock());
     if (!g_GameManager.IsInSpellCardPractice() &&
@@ -1902,7 +1902,7 @@ int Gui::LoadResources()
     {
         return -1;
     }
-    if (!Func438ffd())
+    if (!GuiIsRestarting())
     {
         if (!(g_GameManager.stateFlags >> 14 & 1) || g_GameManager.practiceSpellCard < 0xcd)
         {
@@ -1921,7 +1921,7 @@ int Gui::LoadResources()
             }
         }
     }
-    if (Func438fe9())
+    if (GuiIsLoadingResources())
     {
         for (i = 0; i < 0x10; i++)
         {
@@ -1937,10 +1937,10 @@ int Gui::LoadResources()
     {
         this->textAnm->StartSpriteSeries(this->impl->trackNumberSprites, 0, 4);
     }
-    else if (!Func438ffd() || Func439916(g_GameManager.practiceSpellCard))
+    else if (!GuiIsRestarting() || GetPracticeBgmRestarts(g_GameManager.practiceSpellCard))
     {
         this->textAnm->StartSpriteSeries(this->impl->trackNumberSprites, 3, 1);
-        this->textAnm->SetSprite(this->impl->trackNumberSprites, Func439961(g_GameManager.practiceSpellCard) + 3);
+        this->textAnm->SetSprite(this->impl->trackNumberSprites, GetPracticeBgmTitleIndex(g_GameManager.practiceSpellCard) + 3);
     }
     this->impl->msg.scriptIndex = -1;
     this->impl->stageClearShown = 0;
@@ -2001,7 +2001,7 @@ void Gui::StartMsg(int index)
     this->impl->StartMsgScript(index);
 }
 
-int Func439916(int card)
+int GetPracticeBgmRestarts(int card)
 {
     int i;
 
@@ -2017,7 +2017,7 @@ int Func439916(int card)
     return 0;
 }
 
-int Func439961(int card)
+int GetPracticeBgmTitleIndex(int card)
 {
     int i;
 

@@ -2971,9 +2971,9 @@ int MainMenu::DrawState16()
     DrawFan(&gaugePos, 0x80c0c0f0, mainRate, 24.0f);
     gaugePos.x = 514.0f;
     gaugePos.y = 404.0f;
-    g_AsciiText.Func405e10(&gaugePos, rate * 10000.0f, 0xffffffff);
+    g_AsciiText.DrawPercent(&gaugePos, rate * 10000.0f, 0xffffffff);
     gaugePos.y += 8.0f;
-    g_AsciiText.Func405e10(&gaugePos, mainRate * 10000.0f, 0x80c0c080);
+    g_AsciiText.DrawPercent(&gaugePos, mainRate * 10000.0f, 0x80c0c080);
     gaugePos.x = 530.0f;
     gaugePos.y = 420.0f;
     gaugePos.x += 32.0f;
@@ -2999,9 +2999,9 @@ int MainMenu::DrawState16()
     DrawFan(&gaugePos, 0x8080c0c0, mainRate, 16.0f);
     gaugePos.x = 580.0f;
     gaugePos.y = 451.0f;
-    g_AsciiText.Func405e10(&gaugePos, rate * 10000.0f, 0xffffffff);
+    g_AsciiText.DrawPercent(&gaugePos, rate * 10000.0f, 0xffffffff);
     gaugePos.y -= 8.0f;
-    g_AsciiText.Func405e10(&gaugePos, mainRate * 10000.0f, 0x80c0c080);
+    g_AsciiText.DrawPercent(&gaugePos, mainRate * 10000.0f, 0x80c0c080);
     return 1;
 }
 

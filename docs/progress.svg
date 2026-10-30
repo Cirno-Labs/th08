@@ -61,10 +61,9 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">97.76% (1091)</tspan> · <tspan class="decompiled">1.25% (14)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">0.99% (11)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">99.01% (1105)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">0.99% (11)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="730.27" height="6" x="0" y="0" class="named"/>
-<rect width="9.37" height="6" x="730.27" y="0" class="decompiled"/>
+<rect width="739.64" height="6" x="0" y="0" class="named"/>
 <rect width="7.36" height="6" x="739.64" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
@@ -89,8 +88,8 @@
 <rect width="12" height="12" x="270" y="0" class="named"><title>0x004031e0 fabsf (18 bytes)</title></rect>
 <rect width="12" height="12" x="285" y="0" class="named"><title>0x00403200 AsciiText::AddPopup (295 bytes)</title></rect>
 <rect width="12" height="12" x="300" y="0" class="named"><title>0x00403330 AsciiText::AddPopup2 (297 bytes)</title></rect>
-<rect width="12" height="12" x="315" y="0" class="decompiled"><title>0x00403460 AsciiText::Func403460 (411 bytes)</title></rect>
-<rect width="12" height="12" x="330" y="0" class="decompiled"><title>0x00403600 AsciiText::Func403600 (420 bytes)</title></rect>
+<rect width="12" height="12" x="315" y="0" class="named"><title>0x00403460 AsciiText::AddNumberPopup (411 bytes)</title></rect>
+<rect width="12" height="12" x="330" y="0" class="named"><title>0x00403600 AsciiText::AddNumberPopupBrief (420 bytes)</title></rect>
 <rect width="12" height="12" x="345" y="0" class="named"><title>0x004037b0 PauseMenu::UpdatePauseMenu (3898 bytes)</title></rect>
 <rect width="12" height="12" x="360" y="0" class="named"><title>0x00404720 D3DXVECTOR3::D3DXVECTOR3 (42 bytes)</title></rect>
 <rect width="12" height="12" x="375" y="0" class="named"><title>0x00404750 PauseMenu::DrawPauseMenu (309 bytes)</title></rect>
@@ -99,7 +98,7 @@
 <rect width="12" height="12" x="420" y="0" class="named"><title>0x00405280 IncrementCounterCapped (39 bytes)</title></rect>
 <rect width="12" height="12" x="435" y="0" class="named"><title>0x004052b0 ContinueMenu::DrawContinueMenu (364 bytes)</title></rect>
 <rect width="12" height="12" x="450" y="0" class="named"><title>0x00405420 AsciiText::DrawPopups (2538 bytes)</title></rect>
-<rect width="12" height="12" x="465" y="0" class="decompiled"><title>0x00405e10 AsciiText::Func405e10 (1803 bytes)</title></rect>
+<rect width="12" height="12" x="465" y="0" class="named"><title>0x00405e10 AsciiText::DrawPercent (1803 bytes)</title></rect>
 <rect width="12" height="12" x="480" y="0" class="named"><title>0x00406520 ChainElem::SetCallback (42 bytes)</title></rect>
 <rect width="12" height="12" x="495" y="0" class="named"><title>0x00406550 App::HasFlag0Or8 (40 bytes)</title></rect>
 <rect width="12" height="12" x="510" y="0" class="named"><title>0x00406580 App::GetNoFog (26 bytes)</title></rect>
@@ -561,21 +560,21 @@
 <rect width="12" height="12" x="600" y="135" class="named"><title>0x00437e5d Gui::ShowFullPowerPopup (127 bytes)</title></rect>
 <rect width="12" height="12" x="615" y="135" class="named"><title>0x00437edc Gui::ShowSpellCardBonus (128 bytes)</title></rect>
 <rect width="12" height="12" x="630" y="135" class="named"><title>0x00437f5c CopySpriteToTexture (234 bytes)</title></rect>
-<rect width="12" height="12" x="645" y="135" class="decompiled"><title>0x00438046 Func438046 (517 bytes)</title></rect>
+<rect width="12" height="12" x="645" y="135" class="named"><title>0x00438046 CopyStageSprite (517 bytes)</title></rect>
 <rect width="12" height="12" x="660" y="135" class="named"><title>0x0043826b Gui::DrawStageClear (1982 bytes)</title></rect>
 <rect width="12" height="12" x="675" y="135" class="named"><title>0x00438a29 App::GetNoFrameItems (24 bytes)</title></rect>
 <rect width="12" height="12" x="690" y="135" class="named"><title>0x00438a41 App::GetNoDepthTest (24 bytes)</title></rect>
 <rect width="12" height="12" x="705" y="135" class="named"><title>0x00438a59 App::GetNoColorBlending (24 bytes)</title></rect>
 <rect width="12" height="12" x="720" y="135" class="named"><title>0x00438a71 App::GetRedrawHudEveryFrame (24 bytes)</title></rect>
 <rect width="12" height="12" x="735" y="135" class="named"><title>0x00438a89 Gui::DrawPopups (1231 bytes)</title></rect>
-<rect width="12" height="12" x="0" y="150" class="decompiled"><title>0x00438f58 Gui::Func438f58 (145 bytes)</title></rect>
-<rect width="12" height="12" x="15" y="150" class="decompiled"><title>0x00438fe9 Func438fe9 (10 bytes)</title></rect>
-<rect width="12" height="12" x="30" y="150" class="decompiled"><title>0x00438ff3 Func438ff3 (10 bytes)</title></rect>
-<rect width="12" height="12" x="45" y="150" class="decompiled"><title>0x00438ffd Func438ffd (10 bytes)</title></rect>
-<rect width="12" height="12" x="60" y="150" class="decompiled"><title>0x00439007 Gui::Func439007 (73 bytes)</title></rect>
-<rect width="12" height="12" x="75" y="150" class="decompiled"><title>0x00439050 Gui::Func439050 (67 bytes)</title></rect>
-<rect width="12" height="12" x="90" y="150" class="decompiled"><title>0x00439093 Gui::Func439093 (67 bytes)</title></rect>
-<rect width="12" height="12" x="105" y="150" class="decompiled"><title>0x004390d6 Gui::Func4390d6 (24 bytes)</title></rect>
+<rect width="12" height="12" x="0" y="150" class="named"><title>0x00438f58 Gui::StartLoadingBar (145 bytes)</title></rect>
+<rect width="12" height="12" x="15" y="150" class="named"><title>0x00438fe9 GuiIsLoadingResources (10 bytes)</title></rect>
+<rect width="12" height="12" x="30" y="150" class="named"><title>0x00438ff3 GuiIsFreeingResources (10 bytes)</title></rect>
+<rect width="12" height="12" x="45" y="150" class="named"><title>0x00438ffd GuiIsRestarting (10 bytes)</title></rect>
+<rect width="12" height="12" x="60" y="150" class="named"><title>0x00439007 Gui::StartClock (73 bytes)</title></rect>
+<rect width="12" height="12" x="75" y="150" class="named"><title>0x00439050 Gui::AdvanceClock (67 bytes)</title></rect>
+<rect width="12" height="12" x="90" y="150" class="named"><title>0x00439093 Gui::AdvanceClockToEnd (67 bytes)</title></rect>
+<rect width="12" height="12" x="105" y="150" class="named"><title>0x004390d6 Gui::HideClock (24 bytes)</title></rect>
 <rect width="12" height="12" x="120" y="150" class="named"><title>0x004390ee Gui::LoadResources (1482 bytes)</title></rect>
 <rect width="12" height="12" x="135" y="150" class="named"><title>0x004396b8 Gui::HideInterface (64 bytes)</title></rect>
 <rect width="12" height="12" x="150" y="150" class="named"><title>0x004396f8 Sprite::IsStopped (24 bytes)</title></rect>
@@ -588,8 +587,8 @@
 <rect width="12" height="12" x="255" y="150" class="named"><title>0x004398ce GameManager::GetBombs (26 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="150" class="named"><title>0x004398e8 AsciiText::SetColor (23 bytes)</title></rect>
 <rect width="12" height="12" x="285" y="150" class="named"><title>0x004398ff AsciiText::SetInArena (23 bytes)</title></rect>
-<rect width="12" height="12" x="300" y="150" class="decompiled"><title>0x00439916 Func439916 (75 bytes)</title></rect>
-<rect width="12" height="12" x="315" y="150" class="decompiled"><title>0x00439961 Func439961 (75 bytes)</title></rect>
+<rect width="12" height="12" x="300" y="150" class="named"><title>0x00439916 GetPracticeBgmRestarts (75 bytes)</title></rect>
+<rect width="12" height="12" x="315" y="150" class="named"><title>0x00439961 GetPracticeBgmTitleIndex (75 bytes)</title></rect>
 <rect width="12" height="12" x="330" y="150" class="named"><title>0x004399ac GameManager::IsInPlayArea (130 bytes)</title></rect>
 <rect width="12" height="12" x="345" y="150" class="named"><title>0x00439a2e GameManager::ComputeChecksum (151 bytes)</title></rect>
 <rect width="12" height="12" x="360" y="150" class="named"><title>0x00439ac5 ChecksumBytes (100 bytes)</title></rect>
@@ -1188,10 +1187,9 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">98.50%</tspan> · <tspan class="decompiled">0.81%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">0.70%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">99.30%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">0.70%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="735.78" height="6" x="0" y="0" class="named"/>
-<rect width="6.02" height="6" x="735.78" y="0" class="decompiled"/>
+<rect width="741.80" height="6" x="0" y="0" class="named"/>
 <rect width="5.20" height="6" x="741.80" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
@@ -1249,7 +1247,7 @@
 <rect width="29.48" height="29.38" x="293.78" y="129.94" class="named"><title>0x0040f570 UpdateRemiliaLastWord (1853 bytes)</title></rect>
 <rect width="29.48" height="28.99" x="293.78" y="162.32" class="named"><title>0x00445453 App::OnUpdate (1831 bytes)</title></rect>
 <rect width="29.48" height="28.77" x="293.78" y="194.31" class="named"><title>0x0045621e ResultScreen::HandleNameEntry (1818 bytes)</title></rect>
-<rect width="29.48" height="28.50" x="293.78" y="226.08" class="decompiled"><title>0x00405e10 AsciiText::Func405e10 (1803 bytes)</title></rect>
+<rect width="29.48" height="28.50" x="293.78" y="226.08" class="named"><title>0x00405e10 AsciiText::DrawPercent (1803 bytes)</title></rect>
 <rect width="29.48" height="28.28" x="293.78" y="257.58" class="named"><title>0x0040c910 UpdateReimuLastWord (1790 bytes)</title></rect>
 <rect width="29.48" height="26.67" x="293.78" y="288.86" class="named"><title>0x00402b20 AsciiText::DrawStrings (1698 bytes)</title></rect>
 <rect width="29.48" height="26.48" x="293.78" y="318.52" class="named"><title>0x00420120 GetFloatOperand (1687 bytes)</title></rect>
@@ -1404,7 +1402,7 @@
 <rect width="13.71" height="14.76" x="471.21" y="173.01" class="named"><title>0x0045c6b0 SoundPlayer::FindTrackIndex (523 bytes)</title></rect>
 <rect width="13.71" height="14.69" x="471.21" y="190.77" class="named"><title>0x0040d100 UpdateDissolveBomb (521 bytes)</title></rect>
 <rect width="13.71" height="14.69" x="471.21" y="208.46" class="named"><title>0x0044a930 Player::Graze (521 bytes)</title></rect>
-<rect width="13.71" height="14.56" x="471.21" y="226.15" class="decompiled"><title>0x00438046 Func438046 (517 bytes)</title></rect>
+<rect width="13.71" height="14.56" x="471.21" y="226.15" class="named"><title>0x00438046 CopyStageSprite (517 bytes)</title></rect>
 <rect width="13.71" height="14.56" x="471.21" y="243.71" class="named"><title>0x00446d06 App::DeletedCallback (517 bytes)</title></rect>
 <rect width="13.71" height="14.42" x="471.21" y="261.27" class="named"><title>0x004071a0 Stage::Stage (513 bytes)</title></rect>
 <rect width="13.71" height="14.35" x="471.21" y="278.69" class="named"><title>0x004442e0 MidiPlayer::ParseFile (511 bytes)</title></rect>
@@ -1447,12 +1445,12 @@
 <rect width="12.75" height="12.28" x="520.14" y="100.12" class="named"><title>0x004584b0 ResultScreen::OnUpdate (424 bytes)</title></rect>
 <rect width="12.75" height="12.28" x="535.89" y="100.12" class="named"><title>0x00466d70 SpriteEngine::CopySurfaceRectToBackBuffer (424 bytes)</title></rect>
 <rect width="12.68" height="12.28" x="551.64" y="100.12" class="named"><title>0x00449ca0 Player::Player (422 bytes)</title></rect>
-<rect width="12.60" height="12.28" x="567.31" y="100.12" class="decompiled"><title>0x00403600 AsciiText::Func403600 (420 bytes)</title></rect>
+<rect width="12.60" height="12.28" x="567.31" y="100.12" class="named"><title>0x00403600 AsciiText::AddNumberPopupBrief (420 bytes)</title></rect>
 <rect width="12.60" height="12.28" x="582.91" y="100.12" class="named"><title>0x00474fa0 DatArchive::BuildEntryTable (420 bytes)</title></rect>
 <rect width="12.53" height="12.28" x="598.52" y="100.12" class="named"><title>0x0046f429 MainMenu::DrawPracticeScores (418 bytes)</title></rect>
 <rect width="12.42" height="12.28" x="614.04" y="100.12" class="named"><title>0x00415d60 SpellCard::StartBombCard (415 bytes)</title></rect>
 <rect width="12.34" height="12.28" x="629.46" y="100.12" class="named"><title>0x0042a680 EnemyManager::SpawnWithVars (413 bytes)</title></rect>
-<rect width="12.27" height="12.28" x="644.80" y="100.12" class="decompiled"><title>0x00403460 AsciiText::Func403460 (411 bytes)</title></rect>
+<rect width="12.27" height="12.28" x="644.80" y="100.12" class="named"><title>0x00403460 AsciiText::AddNumberPopup (411 bytes)</title></rect>
 <rect width="12.27" height="12.28" x="660.07" y="100.12" class="named"><title>0x00428310 EffectDrawBossPetal (411 bytes)</title></rect>
 <rect width="12.19" height="12.28" x="675.33" y="100.12" class="named"><title>0x0042a4e0 EnemyManager::Spawn (409 bytes)</title></rect>
 <rect width="12.16" height="12.28" x="690.53" y="100.12" class="named"><title>0x0043cc60 Chain::ReleaseList (408 bytes)</title></rect>
@@ -1718,7 +1716,7 @@
 <rect width="5.78" height="6.43" x="600.82" y="226.97" class="named"><title>0x00406720 Sprite::Sprite (146 bytes)</title></rect>
 <rect width="5.78" height="6.43" x="600.82" y="236.41" class="named"><title>0x004461a0 OpenGameArchive (146 bytes)</title></rect>
 <rect width="5.78" height="6.37" x="600.82" y="245.84" class="named"><title>0x0040bb80 GameManager::ChecksumMismatch (145 bytes)</title></rect>
-<rect width="5.78" height="6.37" x="600.82" y="255.21" class="decompiled"><title>0x00438f58 Gui::Func438f58 (145 bytes)</title></rect>
+<rect width="5.78" height="6.37" x="600.82" y="255.21" class="named"><title>0x00438f58 Gui::StartLoadingBar (145 bytes)</title></rect>
 <rect width="5.78" height="6.37" x="600.82" y="264.58" class="named"><title>0x00450110 FireOptionAimedShot (145 bytes)</title></rect>
 <rect width="5.78" height="6.37" x="600.82" y="273.95" class="named"><title>0x0045bb50 ScreenEffect::OnDrawScreen (145 bytes)</title></rect>
 <rect width="5.78" height="6.37" x="600.82" y="283.32" class="named"><title>0x00466310 SpriteEngine::RenderTextToTextureIndex (145 bytes)</title></rect>
@@ -1910,15 +1908,15 @@
 <rect width="3.65" height="3.48" x="743.35" y="247.34" class="named"><title>0x00475220 DatArchiveCursor::SkipString (76 bytes)</title></rect>
 <rect width="3.83" height="3.23" x="655.94" y="253.82" class="named"><title>0x00425fe0 EffectInitForeground (75 bytes)</title></rect>
 <rect width="3.83" height="3.23" x="662.77" y="253.82" class="named"><title>0x00439883 GameManager::AddBombs (75 bytes)</title></rect>
-<rect width="3.83" height="3.23" x="669.59" y="253.82" class="decompiled"><title>0x00439916 Func439916 (75 bytes)</title></rect>
-<rect width="3.83" height="3.23" x="676.42" y="253.82" class="decompiled"><title>0x00439961 Func439961 (75 bytes)</title></rect>
+<rect width="3.83" height="3.23" x="669.59" y="253.82" class="named"><title>0x00439916 GetPracticeBgmRestarts (75 bytes)</title></rect>
+<rect width="3.83" height="3.23" x="676.42" y="253.82" class="named"><title>0x00439961 GetPracticeBgmTitleIndex (75 bytes)</title></rect>
 <rect width="3.83" height="3.23" x="683.25" y="253.82" class="named"><title>0x0043c710 Chain::~Chain (75 bytes)</title></rect>
 <rect width="3.74" height="3.23" x="690.08" y="253.82" class="named"><title>0x00425390 DropBombOrLifeItem (74 bytes)</title></rect>
 <rect width="3.74" height="3.23" x="696.82" y="253.82" class="named"><title>0x004481df App::EnableFog (74 bytes)</title></rect>
 <rect width="3.74" height="3.23" x="703.56" y="253.82" class="named"><title>0x00462270 SpriteEngine::SendInterruptToLoadedSprites (74 bytes)</title></rect>
 <rect width="3.74" height="3.23" x="710.30" y="253.82" class="named"><title>0x00473970 File::Write (74 bytes)</title></rect>
 <rect width="3.65" height="3.23" x="717.04" y="253.82" class="named"><title>0x0040b470 D3DXVECTOR3::operator/= (73 bytes)</title></rect>
-<rect width="3.65" height="3.23" x="723.68" y="253.82" class="decompiled"><title>0x00439007 Gui::Func439007 (73 bytes)</title></rect>
+<rect width="3.65" height="3.23" x="723.68" y="253.82" class="named"><title>0x00439007 Gui::StartClock (73 bytes)</title></rect>
 <rect width="3.56" height="3.23" x="730.33" y="253.82" class="named"><title>0x00450580 UpdateAcceleratingBullet (72 bytes)</title></rect>
 <rect width="3.56" height="3.23" x="736.89" y="253.82" class="named"><title>0x00466160 SpriteEngine::ReleaseTexture (72 bytes)</title></rect>
 <rect width="3.56" height="3.23" x="743.44" y="253.82" class="named"><title>0x004694c3 MainMenu::SetState (72 bytes)</title></rect>
@@ -1948,8 +1946,8 @@
 <rect width="3.20" height="3.13" x="718.99" y="260.05" class="named"><title>0x00418130 GameManager::IsPracticingSpellCard (67 bytes)</title></rect>
 <rect width="3.20" height="3.13" x="725.19" y="260.05" class="named"><title>0x0041f040 SpellCard::SetEffectPos (67 bytes)</title></rect>
 <rect width="3.20" height="3.13" x="731.39" y="260.05" class="named"><title>0x0042ff70 D3DXVECTOR3::operator-= (67 bytes)</title></rect>
-<rect width="3.20" height="3.13" x="737.60" y="260.05" class="decompiled"><title>0x00439050 Gui::Func439050 (67 bytes)</title></rect>
-<rect width="3.20" height="3.13" x="743.80" y="260.05" class="decompiled"><title>0x00439093 Gui::Func439093 (67 bytes)</title></rect>
+<rect width="3.20" height="3.13" x="737.60" y="260.05" class="named"><title>0x00439050 Gui::AdvanceClock (67 bytes)</title></rect>
+<rect width="3.20" height="3.13" x="743.80" y="260.05" class="named"><title>0x00439093 Gui::AdvanceClockToEnd (67 bytes)</title></rect>
 <rect width="3.28" height="3.05" x="662.25" y="266.18" class="named"><title>0x00443da0 MidiDevice::SendShortMsg (67 bytes)</title></rect>
 <rect width="3.28" height="3.05" x="662.25" y="272.23" class="named"><title>0x00474450 LzssTreeInitNode (67 bytes)</title></rect>
 <rect width="3.28" height="2.96" x="662.25" y="278.28" class="named"><title>0x00426c40 EffectUpdateFollowPlayer (66 bytes)</title></rect>
@@ -2215,7 +2213,7 @@
 <rect width="0.89" height="0.50" x="722.77" y="313.38" class="named"><title>0x00438a41 App::GetNoDepthTest (24 bytes)</title></rect>
 <rect width="0.89" height="0.50" x="726.66" y="313.38" class="named"><title>0x00438a59 App::GetNoColorBlending (24 bytes)</title></rect>
 <rect width="0.89" height="0.50" x="730.55" y="313.38" class="named"><title>0x00438a71 App::GetRedrawHudEveryFrame (24 bytes)</title></rect>
-<rect width="0.89" height="0.50" x="734.44" y="313.38" class="decompiled"><title>0x004390d6 Gui::Func4390d6 (24 bytes)</title></rect>
+<rect width="0.89" height="0.50" x="734.44" y="313.38" class="named"><title>0x004390d6 Gui::HideClock (24 bytes)</title></rect>
 <rect width="0.89" height="0.50" x="738.33" y="313.38" class="named"><title>0x004396f8 Sprite::IsStopped (24 bytes)</title></rect>
 <rect width="0.89" height="0.50" x="742.22" y="313.38" class="named"><title>0x00449c79 App::GetPreloadBgm (24 bytes)</title></rect>
 <rect width="0.89" height="0.50" x="746.11" y="313.38" class="named"><title>0x0044d630 Player::OnDraw2 (24 bytes)</title></rect>
@@ -2306,9 +2304,9 @@
 <rect width="0.10" height="0.10" x="744.64" y="340.59" class="named"><title>0x0040b900 IsRestarting (10 bytes)</title></rect>
 <rect width="0.10" height="0.10" x="747.32" y="340.59" class="named"><title>0x004338b0 IsLoadingResources (10 bytes)</title></rect>
 <rect width="0.10" height="0.10" x="744.64" y="342.71" class="named"><title>0x004338c0 IsFreeingResources (10 bytes)</title></rect>
-<rect width="0.10" height="0.10" x="744.64" y="345.35" class="decompiled"><title>0x00438fe9 Func438fe9 (10 bytes)</title></rect>
-<rect width="0.22" height="0.10" x="746.78" y="342.71" class="decompiled"><title>0x00438ff3 Func438ff3 (10 bytes)</title></rect>
-<rect width="0.22" height="0.10" x="746.78" y="344.47" class="decompiled"><title>0x00438ffd Func438ffd (10 bytes)</title></rect>
+<rect width="0.10" height="0.10" x="744.64" y="345.35" class="named"><title>0x00438fe9 GuiIsLoadingResources (10 bytes)</title></rect>
+<rect width="0.22" height="0.10" x="746.78" y="342.71" class="named"><title>0x00438ff3 GuiIsFreeingResources (10 bytes)</title></rect>
+<rect width="0.22" height="0.10" x="746.78" y="344.47" class="named"><title>0x00438ffd GuiIsRestarting (10 bytes)</title></rect>
 <rect width="0.10" height="0.10" x="746.78" y="346.24" class="named"><title>0x00421dd0 DebugPrint (5 bytes)</title></rect>
 <rect width="0.10" height="0.10" x="748.39" y="346.24" class="named"><title>0x00437cdd DebugPrint2 (5 bytes)</title></rect>
 </g>

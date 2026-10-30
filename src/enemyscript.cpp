@@ -1230,10 +1230,10 @@ loop:
             enemy->phaseStartLife = INT_ARG(0);
             break;
         case 179:
-            g_Gui.Func439007();
+            g_Gui.StartClock();
             break;
         case 180:
-            g_Gui.Func4390d6();
+            g_Gui.HideClock();
             break;
         case 181:
             if (g_GameManager.GetClock() < 12)
@@ -1242,11 +1242,11 @@ loop:
                 g_GameManager.AddClock(1);
                 if (g_GameManager.GetClock() == 12)
                 {
-                    g_Gui.Func439093();
+                    g_Gui.AdvanceClockToEnd();
                 }
                 else
                 {
-                    g_Gui.Func439050();
+                    g_Gui.AdvanceClock();
                 }
             }
             break;

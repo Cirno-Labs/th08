@@ -179,7 +179,7 @@ int GameManager::OnUpdate(GameManager *mgr)
             }
             if (g_GameManager.nextScene < 0)
             {
-                g_Gui.Func438f58();
+                g_Gui.StartLoadingBar();
             }
         }
         if (WAS_PRESSED(0x1001) || g_GameManager.stateFlags >> 3 & 1 || g_GameManager.stage == 6 ||
@@ -203,7 +203,7 @@ int GameManager::OnUpdate(GameManager *mgr)
     }
     if (mgr->pendingMusicStart != 0)
     {
-        Func438046();
+        CopyStageSprite();
         g_SpriteEngine->ReleaseSurface(8);
         g_App.loadingState = 0;
         if (mgr->pendingMusicStart == 1)
@@ -813,7 +813,7 @@ void GameManager::LoadingThread(GameManager *arg)
     }
     mgr->isInContinueMenu = 0;
     mgr->stateFlags |= 4;
-    if (g_App.isRestarting != 0 && g_GameManager.stateFlags >> 14 & 1 && !Func439916(g_GameManager.practiceSpellCard))
+    if (g_App.isRestarting != 0 && g_GameManager.stateFlags >> 14 & 1 && !GetPracticeBgmRestarts(g_GameManager.practiceSpellCard))
     {
         mgr->pendingMusicStart = 2;
     }

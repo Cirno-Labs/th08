@@ -143,7 +143,7 @@ public:
     // minus, the whole part, ascii.anm's sprite 0x93, two smaller
     // decimals (100.00 for 10000 and more), then sprite 0x92. For
     // DrawPopups' stats->unk_22 gauge (0x405e10). New in th08.
-    void Func405e10(D3DXVECTOR3 *pos, int value, D3DCOLOR color);
+    void DrawPercent(D3DXVECTOR3 *pos, int value, D3DCOLOR color);
     // Queues `text` to be drawn at `pos` (0x402920).
     void AddString(D3DXVECTOR3 *pos, char *text);
     // Queues `text` to be drawn at `pos`, with printf-style formatting
@@ -157,14 +157,14 @@ public:
     void AddPopup(D3DXVECTOR3 *pos, int value, D3DCOLOR color);
     // Like AddPopup, in the last three popups, as th07's (0x403330).
     void AddPopup2(D3DXVECTOR3 *pos, int value, D3DCOLOR color);
-    // Func403600 at `pos` in play-area coordinates, in the scale text is
+    // AddNumberPopupBrief at `pos` in play-area coordinates, in the scale text is
     // added with (0x403460). New in th08.
-    void Func403460(D3DXVECTOR3 *pos, int count, int value, D3DCOLOR color);
+    void AddNumberPopup(D3DXVECTOR3 *pos, int count, int value, D3DCOLOR color);
     // Queues `count` and `value` as a string of glyphs 0xf, `value`'s
     // digits, 0xe, `count`'s digits and 0xd at `pos`, in `color`, in the
     // next of numberPopups (0x403600). New in th08; DrawBanners shows the
     // first boss's with it.
-    void Func403600(D3DXVECTOR3 *pos, int count, int value, D3DCOLOR color);
+    void AddNumberPopupBrief(D3DXVECTOR3 *pos, int count, int value, D3DCOLOR color);
 
     // Inline; /Os files call the copy at 0x4398e8.
     void SetColor(D3DCOLOR color)
@@ -290,7 +290,7 @@ public:
     ContinueMenu continueMenu;
     Sprite demoIcon;
     AsciiPopup popups[0x2d3];
-    // The strings Func403600 queues. New in th08.
+    // The strings AddNumberPopupBrief queues. New in th08.
     AsciiPopup numberPopups[0x80];
     // While ringAlpha is above 0, DrawPopups darkens the play area
     // outside a square of ringRadius around the player, by ringAlpha, and

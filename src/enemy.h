@@ -197,7 +197,7 @@ struct Enemy
 
     // Breaks up the list of enemies following it through unk_8 (and
     // takes it out of its own leader's): with `collect`, each counts
-    // as a kill shown by AsciiText::Func403460, bursts time orbs (more
+    // as a kill shown by AsciiText::AddNumberPopup, bursts time orbs (more
     // for solo characters) and a hit area, drops items unless a boss
     // fight runs outside a spell card, and plays sound 2 or 3; then
     // it shows unk_3380 and bursts twice as many orbs. A follower with

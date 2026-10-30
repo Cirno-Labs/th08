@@ -482,7 +482,7 @@ void AsciiText::AddPopup2(D3DXVECTOR3 *pos, int value, D3DCOLOR color)
     this->nextPopup2++;
 }
 
-void AsciiText::Func403460(D3DXVECTOR3 *pos, int count, int value, D3DCOLOR color)
+void AsciiText::AddNumberPopup(D3DXVECTOR3 *pos, int count, int value, D3DCOLOR color)
 {
     AsciiPopup *popup;
     int n;
@@ -534,7 +534,7 @@ void AsciiText::Func403460(D3DXVECTOR3 *pos, int count, int value, D3DCOLOR colo
     this->nextNumberPopup++;
 }
 
-void AsciiText::Func403600(D3DXVECTOR3 *pos, int count, int value, D3DCOLOR color)
+void AsciiText::AddNumberPopupBrief(D3DXVECTOR3 *pos, int count, int value, D3DCOLOR color)
 {
     AsciiPopup *popup;
     int n;
@@ -910,7 +910,7 @@ int PauseMenu::UpdatePauseMenu()
             }
             else
             {
-                if (g_GameManager.IsInSpellCardPractice() && !Func439916(g_GameManager.practiceSpellCard))
+                if (g_GameManager.IsInSpellCardPractice() && !GetPracticeBgmRestarts(g_GameManager.practiceSpellCard))
                 {
                     g_SoundPlayer.UnPause();
                     g_SoundPlayer.FadeInBgm(2.0f);
@@ -920,7 +920,7 @@ int PauseMenu::UpdatePauseMenu()
                     g_App.StopMusic();
                 }
                 g_App.scene = 11;
-                g_Gui.Func438f58();
+                g_Gui.StartLoadingBar();
                 g_GameManager.isPaused = 0;
                 g_App.lastTotalPlayTimeTick = timeGetTime();
                 return 0;
@@ -1007,7 +1007,7 @@ int ContinueMenu::UpdateContinueMenu()
                 }
                 return 1;
             }
-            if (g_GameManager.IsInSpellCardPractice() && !Func439916(g_GameManager.practiceSpellCard))
+            if (g_GameManager.IsInSpellCardPractice() && !GetPracticeBgmRestarts(g_GameManager.practiceSpellCard))
             {
                 g_SoundPlayer.FadeDownBgm(1.0f);
             }
@@ -1079,7 +1079,7 @@ int ContinueMenu::UpdateContinueMenu()
                 }
                 else
                 {
-                    if (g_GameManager.IsInSpellCardPractice() && !Func439916(g_GameManager.practiceSpellCard))
+                    if (g_GameManager.IsInSpellCardPractice() && !GetPracticeBgmRestarts(g_GameManager.practiceSpellCard))
                     {
                         g_GameManager.isInContinueMenu = 0;
                         g_SoundPlayer.UnPause();
@@ -1090,7 +1090,7 @@ int ContinueMenu::UpdateContinueMenu()
                         g_App.StopMusic();
                     }
                     g_App.scene = 11;
-                    g_Gui.Func438f58();
+                    g_Gui.StartLoadingBar();
                     g_GameManager.isInContinueMenu = 0;
                     g_App.lastTotalPlayTimeTick = timeGetTime();
                     return 0;
@@ -1457,7 +1457,7 @@ void AsciiText::DrawPopups()
         g_SpriteEngine->DrawUnrotated(&this->summaryPopup);
         g_SpriteEngine->DrawUnrotated(&this->summaryPopup2);
         g_SpriteEngine->DrawUnrotated(&this->summaryPopup3);
-        this->Func405e10(&this->summaryDigit.pos, g_GameManager.GetGauge(), this->summaryDigit.color);
+        this->DrawPercent(&this->summaryDigit.pos, g_GameManager.GetGauge(), this->summaryDigit.color);
         div = 10000000;
         count = g_GameManager.stats->maxPointValue;
         alpha = 0;
@@ -1478,7 +1478,7 @@ void AsciiText::DrawPopups()
     }
 }
 
-void AsciiText::Func405e10(D3DXVECTOR3 *pos, int value, D3DCOLOR color)
+void AsciiText::DrawPercent(D3DXVECTOR3 *pos, int value, D3DCOLOR color)
 {
     int absValue;
     int len;
