@@ -450,3 +450,10 @@ int EnemyManager::RegisterChain()
     }
     return 0;
 }
+
+void EnemyManager::RemoveChain()
+{
+    g_Chain.Remove(&g_EnemyManagerCalcChain);
+    g_Chain.Remove(&g_EnemyManagerDrawChain);
+    g_Chain.Remove(&g_EnemyManagerDrawChain2);
+}

@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">79.21% (884)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">18.82% (210)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">79.30% (885)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">18.73% (209)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="591.71" height="6" x="0" y="0" class="named"/>
-<rect width="14.73" height="6" x="591.71" y="0" class="decompiled"/>
-<rect width="140.56" height="6" x="606.44" y="0" class="todo"/>
+<rect width="592.38" height="6" x="0" y="0" class="named"/>
+<rect width="14.73" height="6" x="592.38" y="0" class="decompiled"/>
+<rect width="139.90" height="6" x="607.10" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -488,7 +488,7 @@
 <rect width="12" height="12" x="255" y="120" class="named"><title>0x0042eb90 EnemyManager::OnDraw2 (92 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="120" class="todo"><title>0x0042ebf0 EnemyManager::AddedCallback (642 bytes)</title></rect>
 <rect width="12" height="12" x="285" y="120" class="todo"><title>0x0042ee80 EnemyManager::DeletedCallback (225 bytes)</title></rect>
-<rect width="12" height="12" x="300" y="120" class="todo"><title>0x0042ef70 EnemyManager::RemoveChain (50 bytes)</title></rect>
+<rect width="12" height="12" x="300" y="120" class="named"><title>0x0042ef70 EnemyManager::RemoveChain (50 bytes)</title></rect>
 <rect width="12" height="12" x="315" y="120" class="todo"><title>0x0042efb0 EnemyManager::ClearEnemiesForBonus (575 bytes)</title></rect>
 <rect width="12" height="12" x="330" y="120" class="todo"><title>0x0042f1f0 EnemyManager::AnyBossActive (64 bytes)</title></rect>
 <rect width="12" height="12" x="345" y="120" class="todo"><title>0x0042f230 Func42f230 (64 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">73.29%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">25.70%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">73.30%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">25.69%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="547.47" height="6" x="0" y="0" class="named"/>
-<rect width="7.57" height="6" x="547.47" y="0" class="decompiled"/>
-<rect width="191.95" height="6" x="555.05" y="0" class="todo"/>
+<rect width="547.55" height="6" x="0" y="0" class="named"/>
+<rect width="7.57" height="6" x="547.55" y="0" class="decompiled"/>
+<rect width="191.87" height="6" x="555.13" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -2026,7 +2026,7 @@
 <rect width="2.30" height="2.46" x="679.79" y="305.40" class="named"><title>0x00473a20 File::Seek (51 bytes)</title></rect>
 <rect width="2.30" height="2.35" x="679.79" y="310.86" class="named"><title>0x00409ca0 Stage::RemoveChain (50 bytes)</title></rect>
 <rect width="2.30" height="2.35" x="679.79" y="316.21" class="todo"><title>0x0042bc50 Func42bc50 (50 bytes)</title></rect>
-<rect width="2.30" height="2.35" x="679.79" y="321.56" class="todo"><title>0x0042ef70 EnemyManager::RemoveChain (50 bytes)</title></rect>
+<rect width="2.30" height="2.35" x="679.79" y="321.56" class="named"><title>0x0042ef70 EnemyManager::RemoveChain (50 bytes)</title></rect>
 <rect width="2.30" height="2.35" x="679.79" y="326.92" class="named"><title>0x0045cc30 SoundPlayer::LoadBgmFormat (50 bytes)</title></rect>
 <rect width="2.30" height="2.24" x="679.79" y="332.27" class="named"><title>0x004068a0 AnmLoaded::InitSprite (49 bytes)</title></rect>
 <rect width="2.30" height="2.24" x="679.79" y="337.51" class="todo"><title>0x00406ef0 Func406ef0 (49 bytes)</title></rect>
