@@ -194,9 +194,13 @@ public:
     // Zeroes everything, marks the spare bullet and clears the script
     // index of every bullet's sprites (0x42f360).
     void Reset();
-    // Called with 4 as a timer callback ends a spell card, as th07's
-    // ClearAll(10) was (0x430830).
-    void Func430830(int mode);
+    // Ends every bullet and every laser without flag 4 (all of them for
+    // `mode` 4), as th07's: bullets in one of the player's hit areas turn
+    // into items of Player::areaItemType; otherwise with `mode` 4 they
+    // fade out, else they, and points every 32 along each laser, turn
+    // into `mode` items of type clearItemType. Then sets clearAllFrames
+    // to 10. A timer callback ending a spell card calls it with 4.
+    void ClearAll(int mode);
     // Clears the bullets, as th07's ClearAll (0x415c60).
     void Func415c60();
     // Clears the bullets for a bonus of up to `maxBonus`, as th07's

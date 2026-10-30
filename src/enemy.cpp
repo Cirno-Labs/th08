@@ -808,7 +808,7 @@ int Enemy::CheckTimerCallback()
         if (!this->keepSpellCard)
         {
             g_SpellCard.Func42bc50();
-            g_BulletManager.Func430830(4);
+            g_BulletManager.ClearAll(4);
         }
         if (this->isBoss && g_Player.playerState == 0)
         {

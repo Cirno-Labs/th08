@@ -440,7 +440,7 @@ address,size,name,symbol
 0x0042fea0,204,ShowSpawnSprite,?ShowSpawnSprite@@YIXPAVSprite@@0PAUBullet@@H@Z
 0x0042ff70,67,D3DXVECTOR3::operator-=,??ZD3DXVECTOR3@@QAEAAU0@ABU0@@Z
 0x0042ffc0,2075,RunBulletCommands,?RunBulletCommands@@YIXPAUBullet@@@Z
-0x00430830,620,BulletManager::Func430830,?Func430830@BulletManager@@QAEXH@Z
+0x00430830,620,BulletManager::ClearAll,?ClearAll@BulletManager@@QAEXH@Z
 0x00430aa0,651,BulletManager::ClearAllWithBonus,?ClearAllWithBonus@BulletManager@@QAEHHH@Z
 0x00430d30,214,Func430d30,
 0x00430e10,259,BulletManager::FirePattern,?FirePattern@BulletManager@@QAEHPAUBulletShooter@@@Z

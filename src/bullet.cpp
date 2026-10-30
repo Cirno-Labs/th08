@@ -371,3 +371,73 @@ void RunBulletCommands(Bullet *bullet)
         return;
     }
 }
+
+void BulletManager::ClearAll(int mode)
+{
+    int i;
+    float s;
+    Bullet *curBullet;
+    Laser *beam;
+    float c;
+    float t;
+    // Set and never read.
+    int areaResult;
+
+    curBullet = g_BulletManager.bullets;
+    for (i = 0; i < 0x600; i++, curBullet++)
+    {
+        if (curBullet->state == 0 || curBullet->state == 5)
+        {
+            continue;
+        }
+        areaResult = g_Player.CheckAreaHit(&curBullet->pos, &curBullet->sprites.hitboxSize);
+        if (g_Player.CheckAreaHit(&curBullet->pos, &curBullet->sprites.hitboxSize) == 2)
+        {
+            g_ItemManager.SpawnItem(&curBullet->pos, g_Player.areaItemType, 1);
+            memset(curBullet, 0, sizeof(Bullet));
+        }
+        else if (mode != 4)
+        {
+            g_ItemManager.SpawnItem(&curBullet->pos, this->clearItemType, mode);
+            memset(curBullet, 0, sizeof(Bullet));
+        }
+        else
+        {
+            curBullet->state = 5;
+        }
+    }
+    beam = this->lasers;
+    D3DXVECTOR3 p;
+    for (i = 0; i < 0x100; i++, beam++)
+    {
+        if (!beam->active)
+        {
+            continue;
+        }
+        if ((beam->flags & 4) && mode != 4)
+        {
+            continue;
+        }
+        if (beam->state < 2)
+        {
+            beam->state = 2;
+            beam->timer = 0;
+            beam->width = beam->baseWidth;
+            if (mode != 4)
+            {
+                t = beam->startOffset;
+                SinCos(&s, &c, beam->angle);
+                while (beam->endOffset > t)
+                {
+                    p.x = c * t + beam->pos.x;
+                    p.y = s * t + beam->pos.y;
+                    p.z = 0.0f;
+                    g_ItemManager.SpawnItem(&p, this->clearItemType, mode);
+                    t += 32.0f;
+                }
+            }
+        }
+        beam->endHitFrames = 0;
+    }
+    this->clearAllFrames = 10;
+}
