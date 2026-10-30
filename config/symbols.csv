@@ -2504,7 +2504,7 @@ address,size,name,symbol
 0x004eccb8,,g_EnemyScripts,?g_EnemyScripts@@3VEnemyScripts@@A
 0x004ece60,,g_EffectManager,?g_EffectManager@@3VEffectManager@@A
 0x00577eb4,,g_EtamaAnm,?g_EtamaAnm@@3PAVAnmLoaded@@A
-0x00577eb8,,g_Unknown577eb8,?g_Unknown577eb8@@3PAVAnmLoaded@@A
+0x00577eb8,,g_DialogueSpritesAnm,?g_DialogueSpritesAnm@@3PAVAnmLoaded@@A
 0x00577ebc,,g_EffectCalcChain,?g_EffectCalcChain@@3UChainElem@@A
 0x00577edc,,g_EffectDrawChain,?g_EffectDrawChain@@3UChainElem@@A
 0x00577f00,,g_EnemyManagerDrawChain,?g_EnemyManagerDrawChain@@3UChainElem@@A
@@ -2538,7 +2538,7 @@ address,size,name,symbol
 0x01653648,,g_ItemManager,?g_ItemManager@@3VItemManager@@A
 0x017ce6fc,,g_AppMutex,?g_AppMutex@@3PAXA
 0x017ce700,,g_GameWindow,?g_GameWindow@@3UGameWindow@@A
-0x017ce744,,g_Unknown17ce744,?g_Unknown17ce744@@3T_LARGE_INTEGER@@A
+0x017ce744,,g_MidiTimerLastCounter,?g_MidiTimerLastCounter@@3T_LARGE_INTEGER@@A
 0x017ce750,,g_LoadingScreenEffect,?g_LoadingScreenEffect@@3PAVScreenEffect@@A
 0x017ce758,,g_App,?g_App@@3VApp@@A
 0x017ceac0,,g_LoadingSprites,?g_LoadingSprites@@3PAVSprite@@A

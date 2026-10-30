@@ -309,7 +309,7 @@ void SpellCard::Start(int card, char *name, int face, DWORD bonus, Enemy *enemy,
     g_Stage.StartSpellCard();
     for (i = 0; i < g_Stage.dialogueSpriteCount; i++)
     {
-        g_Unknown577eb8->StartScript(&g_Stage.dialogueSprites[i], i + g_Stage.dialogueScriptOffset);
+        g_DialogueSpritesAnm->StartScript(&g_Stage.dialogueSprites[i], i + g_Stage.dialogueScriptOffset);
     }
     g_Stage.spellCardDrawCallback = NULL;
     this->enemy->ResetRankSpeeds();

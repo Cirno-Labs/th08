@@ -663,7 +663,7 @@ void MidiPlayer::SendVolume(int offset)
 
 void MidiTimer::OnTimer()
 {
-    QueryPerformanceCounter(&g_Unknown17ce744);
+    QueryPerformanceCounter(&g_MidiTimerLastCounter);
 }
 
 void MidiTimer::StartTimer()

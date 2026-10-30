@@ -2503,7 +2503,7 @@ int GetSpellCardDifficulty(int card);
 int IsListedSpellCard(int card);
 // Read by SpellCard::Start to start the stage's dialogue sprites;
 // nothing sets it.
-extern AnmLoaded *g_Unknown577eb8;
+extern AnmLoaded *g_DialogueSpritesAnm;
 // 43 spell cards (the 3 or 4 difficulties of several bosses' cards, and
 // 171 to 190), and how many.
 extern int g_ListedSpellCards[];
