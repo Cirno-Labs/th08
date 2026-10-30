@@ -378,3 +378,29 @@ int EnemyManager::OnDraw(EnemyManager *mgr)
 {
     return EnemyManager::DrawEnemies(mgr, 0, 2);
 }
+
+float LerpAngle(float a, float b, float t)
+{
+    float diff;
+    float wrap;
+
+    if (a < b)
+    {
+        diff = b - a;
+        wrap = a + 6.2831855f - b;
+    }
+    else
+    {
+        diff = a - b;
+        wrap = b + 6.2831855f - a;
+        a = b;
+    }
+    if (diff < wrap)
+    {
+        return diff * t + a;
+    }
+    else
+    {
+        return wrap * t + a;
+    }
+}

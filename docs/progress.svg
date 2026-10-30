@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">78.94% (881)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">19.09% (213)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">79.03% (882)</tspan> · <tspan class="decompiled">1.97% (22)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">19% (212)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="589.70" height="6" x="0" y="0" class="named"/>
-<rect width="14.73" height="6" x="589.70" y="0" class="decompiled"/>
-<rect width="142.57" height="6" x="604.43" y="0" class="todo"/>
+<rect width="590.37" height="6" x="0" y="0" class="named"/>
+<rect width="14.73" height="6" x="590.37" y="0" class="decompiled"/>
+<rect width="141.90" height="6" x="605.10" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -484,7 +484,7 @@
 <rect width="12" height="12" x="195" y="120" class="named"><title>0x0042e010 MoveEnemyEffects (257 bytes)</title></rect>
 <rect width="12" height="12" x="210" y="120" class="named"><title>0x0042e120 EnemyManager::OnDraw (23 bytes)</title></rect>
 <rect width="12" height="12" x="225" y="120" class="todo"><title>0x0042e140 EnemyManager::DrawEnemies (2504 bytes)</title></rect>
-<rect width="12" height="12" x="240" y="120" class="todo"><title>0x0042eb10 Func42eb10 (114 bytes)</title></rect>
+<rect width="12" height="12" x="240" y="120" class="named"><title>0x0042eb10 LerpAngle (114 bytes)</title></rect>
 <rect width="12" height="12" x="255" y="120" class="todo"><title>0x0042eb90 Func42eb90 (92 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="120" class="todo"><title>0x0042ebf0 Func42ebf0 (642 bytes)</title></rect>
 <rect width="12" height="12" x="285" y="120" class="todo"><title>0x0042ee80 Func42ee80 (225 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">73.20%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">25.79%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">73.23%</tspan> · <tspan class="decompiled">1.01%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">25.76%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="546.81" height="6" x="0" y="0" class="named"/>
-<rect width="7.57" height="6" x="546.81" y="0" class="decompiled"/>
-<rect width="192.62" height="6" x="554.38" y="0" class="todo"/>
+<rect width="546.99" height="6" x="0" y="0" class="named"/>
+<rect width="7.57" height="6" x="546.99" y="0" class="decompiled"/>
+<rect width="192.43" height="6" x="554.57" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -1792,7 +1792,7 @@
 <rect width="5.08" height="5.08" x="618.51" y="339.92" class="named"><title>0x00465a40 SpriteEngine::PreloadAnm (115 bytes)</title></rect>
 <rect width="4.78" height="5.32" x="626.59" y="225.05" class="named"><title>0x00427260 EffectInitMoveOut (114 bytes)</title></rect>
 <rect width="4.78" height="5.32" x="626.59" y="233.37" class="named"><title>0x00427a60 EffectUpdateRingTimed (114 bytes)</title></rect>
-<rect width="4.78" height="5.32" x="626.59" y="241.68" class="todo"><title>0x0042eb10 Func42eb10 (114 bytes)</title></rect>
+<rect width="4.78" height="5.32" x="626.59" y="241.68" class="named"><title>0x0042eb10 LerpAngle (114 bytes)</title></rect>
 <rect width="4.78" height="5.32" x="626.59" y="250" class="named"><title>0x0043f03c GdiSurface::Release (114 bytes)</title></rect>
 <rect width="4.78" height="5.32" x="626.59" y="258.32" class="named"><title>0x004441a0 MidiPlayer::LoadFile (114 bytes)</title></rect>
 <rect width="4.78" height="5.25" x="626.59" y="266.64" class="named"><title>0x0044e260 GameManager::AddDeaths (113 bytes)</title></rect>

@@ -415,7 +415,7 @@ address,size,name,symbol
 0x0042e010,257,MoveEnemyEffects,?MoveEnemyEffects@@YIXPAUEnemy@@@Z
 0x0042e120,23,EnemyManager::OnDraw,?OnDraw@EnemyManager@@SIHPAV1@@Z
 0x0042e140,2504,EnemyManager::DrawEnemies,?DrawEnemies@EnemyManager@@SIHPAV1@HH@Z
-0x0042eb10,114,Func42eb10,
+0x0042eb10,114,LerpAngle,?LerpAngle@@YIMMMM@Z
 0x0042eb90,92,Func42eb90,
 0x0042ebf0,642,Func42ebf0,
 0x0042ee80,225,Func42ee80,
