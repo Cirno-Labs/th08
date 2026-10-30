@@ -847,7 +847,7 @@ int EffectManager::OnUpdate(EffectManager *mgr)
             continue;
         }
         mgr->activeCount++;
-        if (!(g_GameManager.unk_3dbac >> 10 & 1) || eff->alwaysUpdates)
+        if (!(g_GameManager.stateFlags >> 10 & 1) || eff->alwaysUpdates)
         {
             if (eff->update != NULL && eff->update(eff) != 1)
             {
@@ -1059,13 +1059,13 @@ int EffectManager::AddedCallback(EffectManager *mgr)
     g_Stage.dialogueSpriteCount = 2;
     if (!IsRestarting())
     {
-        if (!g_GameManager.IsInSpellCardPractice() || g_GameManager.unk_3dbb0 < 0xd8)
+        if (!g_GameManager.IsInSpellCardPractice() || g_GameManager.practiceSpellCard < 0xd8)
         {
             mgr->stageAnm = g_SpriteEngine->PreloadAnm(9, g_EffectAnmPaths[g_GameManager.stage]);
         }
         else
         {
-            mgr->stageAnm = g_SpriteEngine->PreloadAnm(9, g_EffectAnmPaths[g_GameManager.unk_3dbb0 - 0xcf]);
+            mgr->stageAnm = g_SpriteEngine->PreloadAnm(9, g_EffectAnmPaths[g_GameManager.practiceSpellCard - 0xcf]);
         }
         if (mgr->stageAnm == NULL)
         {

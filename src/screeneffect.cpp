@@ -332,7 +332,7 @@ int ScreenEffect::OnUpdateShake(ScreenEffect *effect)
 {
     float shake;
 
-    if (g_GameManager.unk_3dbac_10)
+    if (g_GameManager.deathbombFreeze)
     {
         return 1;
     }
@@ -383,7 +383,7 @@ int ScreenEffect::OnUpdateShakeRamp(ScreenEffect *effect)
 {
     float shake;
 
-    if (g_GameManager.unk_3dbac_10)
+    if (g_GameManager.deathbombFreeze)
     {
         return 1;
     }

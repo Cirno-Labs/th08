@@ -106,7 +106,7 @@ int MainMenu::StartTitle()
             {
                 if (this->returningFromPractice == 2)
                 {
-                    g_GameManager.unk_3dbac |= 0x4000;
+                    g_GameManager.stateFlags |= 0x4000;
                 }
                 this->SetState(g_GameManager.IsInSpellCardPractice() ? 15 : 8);
                 g_SpriteEngine->SendInterruptToLoadedSprites(this->sprites, this->spriteCount, 5);
@@ -190,7 +190,7 @@ int MainMenu::StartTitle()
             else
             {
                 g_GameManager.SetIsReplay(1);
-                g_GameManager.unk_3dbac |= 2;
+                g_GameManager.stateFlags |= 2;
                 g_GameManager.demoFrames = 0;
                 g_GameManager.difficulty = this->loadedReplay->difficulty;
                 g_GameManager.character = this->loadedReplay->shotType / 2;
@@ -206,7 +206,7 @@ int MainMenu::StartTitle()
                 this->loadedReplay = NULL;
                 g_App.scene = 2;
                 g_GameManager.replayMenuChoice = 0;
-                g_GameManager.unk_3dbac &= ~0x4000;
+                g_GameManager.stateFlags &= ~0x4000;
                 return 0;
             }
         }
@@ -227,8 +227,8 @@ int MainMenu::StartTitle()
             switch (this->cursor)
             {
             case 0:
-                g_GameManager.unk_3dbac &= ~1;
-                g_GameManager.unk_3dbac &= ~0x4000;
+                g_GameManager.stateFlags &= ~1;
+                g_GameManager.stateFlags &= ~0x4000;
                 this->cursor = g_App.defaultDifficulty;
                 if (this->cursor >= 4)
                 {
@@ -239,8 +239,8 @@ int MainMenu::StartTitle()
                 this->helpSprite->SetPendingInterrupt(2);
                 return 1;
             case 3:
-                g_GameManager.unk_3dbac |= 1;
-                g_GameManager.unk_3dbac &= ~0x4000;
+                g_GameManager.stateFlags |= 1;
+                g_GameManager.stateFlags &= ~0x4000;
                 this->cursor = g_App.defaultDifficulty;
                 if (this->cursor >= 4)
                 {
@@ -253,8 +253,8 @@ int MainMenu::StartTitle()
             case 1:
                 if (g_GameManager.AnyShotHasExtraOpen())
                 {
-                    g_GameManager.unk_3dbac &= ~1;
-                    g_GameManager.unk_3dbac &= ~0x4000;
+                    g_GameManager.stateFlags &= ~1;
+                    g_GameManager.stateFlags &= ~0x4000;
                     this->cursor = 0;
                     this->SetState(12);
                     g_SpriteEngine->SendInterruptToLoadedSprites(this->sprites, this->spriteCount, 5);
@@ -264,8 +264,8 @@ int MainMenu::StartTitle()
             case 2:
                 if (g_GameManager.Func43c2c5())
                 {
-                    g_GameManager.unk_3dbac |= 1;
-                    g_GameManager.unk_3dbac |= 0x4000;
+                    g_GameManager.stateFlags |= 1;
+                    g_GameManager.stateFlags |= 0x4000;
                     this->cursor = g_GameManager.character;
                     this->SetState(16);
                     g_SpriteEngine->SendInterruptToLoadedSprites(this->sprites, this->spriteCount, 5);
@@ -273,8 +273,8 @@ int MainMenu::StartTitle()
                     return 1;
                 }
             case 4:
-                g_GameManager.unk_3dbac &= ~1;
-                g_GameManager.unk_3dbac &= ~0x4000;
+                g_GameManager.stateFlags &= ~1;
+                g_GameManager.stateFlags &= ~0x4000;
                 this->SetState(7);
                 g_SpriteEngine->SendInterruptToLoadedSprites(this->sprites, this->spriteCount, 13);
                 this->helpSprite->SetPendingInterrupt(2);
@@ -1106,7 +1106,7 @@ int MainMenu::UpdateDifficultyMenu()
             g_SoundPlayer.PlayQueuedSounds();
             if (this->state != 12)
             {
-                if (!(g_GameManager.unk_3dbac & 1))
+                if (!(g_GameManager.stateFlags & 1))
                 {
                     this->SetState(5);
                 }
@@ -1146,7 +1146,7 @@ int MainMenu::UpdateDifficultyMenu()
             this->SetState(0);
             if (state != 12)
             {
-                if (!(g_GameManager.unk_3dbac & 1))
+                if (!(g_GameManager.stateFlags & 1))
                 {
                     this->cursor = 0;
                 }
@@ -1159,7 +1159,7 @@ int MainMenu::UpdateDifficultyMenu()
             {
                 this->cursor = 1;
             }
-            g_GameManager.unk_3dbac &= ~1;
+            g_GameManager.stateFlags &= ~1;
             return 1;
         }
         break;
@@ -1364,7 +1364,7 @@ int MainMenu::UpdateCharacterMenu()
             {
                 if (this->state != 13)
                 {
-                    if (!(g_GameManager.unk_3dbac & 1))
+                    if (!(g_GameManager.stateFlags & 1))
                     {
                         this->SetState(4);
                     }
@@ -1389,7 +1389,7 @@ int MainMenu::UpdateCharacterMenu()
 
             this->SetState(0);
             this->cursor = 2;
-            g_GameManager.unk_3dbac &= ~1;
+            g_GameManager.stateFlags &= ~1;
             return 1;
         }
         break;
@@ -1434,7 +1434,7 @@ int MainMenu::UpdateGameStartMenu()
             }
             this->subState = 0;
             this->stateFrames = 0;
-            g_GameManager.unk_3dbac |= 1;
+            g_GameManager.stateFlags |= 1;
         }
         if (this->inputLockout == 8)
         {
@@ -1579,14 +1579,14 @@ int MainMenu::UpdateState16()
             this->unkSprites[1].colorRgb[0] = 0xff;
             this->subState = 0;
             this->stateFrames = 0;
-            g_GameManager.unk_3dbac |= 1;
-            g_GameManager.unk_3dbac |= 0x4000;
+            g_GameManager.stateFlags |= 1;
+            g_GameManager.stateFlags |= 0x4000;
         }
         if (this->returningFromPractice != 0)
         {
             this->cursor = 0;
             this->SetState(17);
-            if (g_GameManager.unk_3dbb0 >= 0xcd)
+            if (g_GameManager.practiceSpellCard >= 0xcd)
             {
                 g_GameManager.stage = 9;
             }
@@ -1676,7 +1676,7 @@ int MainMenu::UpdateState16()
 
             this->SetState(0);
             this->cursor = 2;
-            g_GameManager.unk_3dbac &= ~1;
+            g_GameManager.stateFlags &= ~1;
             return 1;
         }
         break;
@@ -1701,14 +1701,14 @@ int MainMenu::UpdateState17()
             this->returningFromPractice = 0;
             this->subState = 0;
             this->stateFrames = 0;
-            g_GameManager.unk_3dbac |= 1;
-            g_GameManager.unk_3dbac |= 0x4000;
+            g_GameManager.stateFlags |= 1;
+            g_GameManager.stateFlags |= 0x4000;
             this->unk_c298 = g_StageSpellCardCounts[g_GameManager.stage];
             this->UnlockLastSpells();
             this->cursor = 0;
             for (i = 0; i < this->unk_c298; i++)
             {
-                if (g_StageSpellCards[g_GameManager.stage][i] == g_GameManager.unk_3dbb0)
+                if (g_StageSpellCards[g_GameManager.stage][i] == g_GameManager.practiceSpellCard)
                 {
                     this->cursor = i;
                     break;
@@ -1896,14 +1896,14 @@ int MainMenu::UpdateState17()
                 (card >= 0xcd && g_GameManager.IsSpellCardSeen(card)))
             {
                 g_SoundPlayer.QueueSound(10, 0);
-                g_GameManager.unk_3dbac |= 0x4000;
-                g_GameManager.unk_3dbb0 = g_StageSpellCards[g_GameManager.stage][this->cursor];
-                g_GameManager.difficulty = GetSpellCardDifficulty(g_GameManager.unk_3dbb0);
+                g_GameManager.stateFlags |= 0x4000;
+                g_GameManager.practiceSpellCard = g_StageSpellCards[g_GameManager.stage][this->cursor];
+                g_GameManager.difficulty = GetSpellCardDifficulty(g_GameManager.practiceSpellCard);
                 if (g_GameManager.difficulty > 4)
                 {
                     // Last spells play on their stage's (or a later) card
                     // list, as Normal.
-                    switch (g_GameManager.unk_3dbb0)
+                    switch (g_GameManager.practiceSpellCard)
                     {
                     case 0xcd:
                         g_GameManager.stage = 0;
@@ -1952,7 +1952,7 @@ int MainMenu::UpdateState17()
         }
         if (WAS_PRESSED(0xa))
         {
-            g_GameManager.unk_3dbb0 = g_StageSpellCards[g_GameManager.stage][this->cursor];
+            g_GameManager.practiceSpellCard = g_StageSpellCards[g_GameManager.stage][this->cursor];
             g_SoundPlayer.QueueSound(11, 0);
             this->cursor = g_GameManager.stage;
             this->SetState(16);
@@ -2634,7 +2634,7 @@ int MainMenu::UpdateReplayMenu()
             g_GameManager.character = this->loadedReplay->shotType;
             g_GameManager.character = this->loadedReplay->shotType;
             g_GameManager.isInSpellCardPractice = this->loadedReplay->spellCardNumber >= 0;
-            g_GameManager.unk_3dbb0 = this->loadedReplay->spellCardNumber;
+            g_GameManager.practiceSpellCard = this->loadedReplay->spellCardNumber;
             MemFree(this->loadedReplay);
             this->loadedReplay = NULL;
             g_GameManager.stage = this->replayStage;
@@ -3238,12 +3238,12 @@ int MainMenu::InitTitleScene()
     g_Unknown18b8a2c = 0;
     g_AsciiText.Initialize();
     g_AsciiText.StartScripts();
-    if (g_GameManager.unk_4 != NULL)
+    if (g_GameManager.savedConfig != NULL)
     {
-        delete g_GameManager.unk_4;
-        g_GameManager.unk_4 = NULL;
+        delete g_GameManager.savedConfig;
+        g_GameManager.savedConfig = NULL;
     }
-    g_GameManager.unk_4 = new GameManagerUnk4;
+    g_GameManager.savedConfig = new GameManagerUnk4;
     if (g_GameManager.stats != NULL)
     {
         delete g_GameManager.stats;
@@ -3251,19 +3251,19 @@ int MainMenu::InitTitleScene()
     }
     g_GameManager.stats = new GameManagerStats;
     g_App.gameSpeed = 1.0f;
-    if (g_GameManager.unk_3dbac >> 3 & 1)
+    if (g_GameManager.stateFlags >> 3 & 1)
     {
         g_GameManager.character = g_GameManager.character = 0;
     }
-    if (g_GameManager.unk_3dbac >> 1 & 1)
+    if (g_GameManager.stateFlags >> 1 & 1)
     {
-        g_GameManager.unk_3dbac &= ~8;
+        g_GameManager.stateFlags &= ~8;
     }
     if (g_GameManager.AnyShotHasExtraOpen() && !g_GameManager.anyShotHasExtraOpen)
     {
         ShowInfoScreen("title/info00.jpg");
     }
-    if (g_GameManager.Func43c2c5() && !g_GameManager.unk_3dbac_16)
+    if (g_GameManager.Func43c2c5() && !g_GameManager.anyShotHasClearedFinalA)
     {
         ShowInfoScreen("title/info02.jpg");
     }
@@ -3278,7 +3278,7 @@ int MainMenu::InitTitleScene()
     LoadFlspChunk(dat, &g_GameManager.flsp);
     ReleaseScoreDat(dat);
     g_GameManager.anyShotHasExtraOpen = g_GameManager.AnyShotHasExtraOpen();
-    g_GameManager.unk_3dbac_16 = g_GameManager.Func43c2c5();
+    g_GameManager.anyShotHasClearedFinalA = g_GameManager.Func43c2c5();
     g_GameManager.allShotsHaveExtraOpen = g_GameManager.AllShotsHaveExtraOpen();
     this->UnlockLastSpells();
     this->state = 0;
@@ -3301,13 +3301,13 @@ int MainMenu::InitTitleScene()
         break;
     }
     this->returningFromPractice = 0;
-    if (g_GameManager.unk_3dbac & 1)
+    if (g_GameManager.stateFlags & 1)
     {
-        this->cursor = (g_GameManager.unk_3dbac >> 14 & 1) ? 2 : 3;
-        this->returningFromPractice = (g_GameManager.unk_3dbac >> 14 & 1) ? 2 : 1;
+        this->cursor = (g_GameManager.stateFlags >> 14 & 1) ? 2 : 3;
+        this->returningFromPractice = (g_GameManager.stateFlags >> 14 & 1) ? 2 : 1;
     }
-    g_GameManager.unk_3dbac &= ~1;
-    g_GameManager.unk_3dbac &= ~0x4000;
+    g_GameManager.stateFlags &= ~1;
+    g_GameManager.stateFlags &= ~0x4000;
     D3DXVECTOR3 pos(500.0f, 440.0f, 0.0f);
     if (g_App.prevScene == 2)
     {
@@ -3318,7 +3318,7 @@ int MainMenu::InitTitleScene()
     {
         g_App.StartLoadingSprites(&pos);
     }
-    g_GameManager.unk_3dbac &= ~2;
+    g_GameManager.stateFlags &= ~2;
     g_GameManager.demoFrames = 0;
     this->loadingState = 1;
     g_App.StartSubThread((LPTHREAD_START_ROUTINE)LoadingThread, NULL);
@@ -3385,7 +3385,7 @@ void MainMenu::LoadingThread(MainMenu *arg)
         g_MainMenu->loadingState = 2;
         return;
     }
-    if (!(g_GameManager.unk_3dbac >> 1 & 1))
+    if (!(g_GameManager.stateFlags >> 1 & 1))
     {
         if (g_App.prevScene != 5)
         {

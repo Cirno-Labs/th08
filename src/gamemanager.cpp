@@ -44,7 +44,7 @@ int GameManager::ComputeChecksum()
     sum = ChecksumBytes((BYTE *)g_GameManager.stats->lifeChecksumKeys,
                         (BYTE *)&this->stats->checksum - (BYTE *)this->stats->lifeChecksumKeys);
     sum += ChecksumBytes((BYTE *)g_GameManager.stats->checksumKeysE, sizeof(g_GameManager.stats->checksumKeysE));
-    sum += ChecksumBytes((BYTE *)g_GameManager.unk_4, 0x3c);
+    sum += ChecksumBytes((BYTE *)g_GameManager.savedConfig, 0x3c);
     sum += ChecksumBytes((BYTE *)&g_App.controllerMapping, 0x3c);
     sum += ChecksumBytes((BYTE *)&this->hscr, sizeof(this->hscr));
     return sum;
@@ -91,36 +91,36 @@ int GameManager::OnUpdate(GameManager *mgr)
     int stage;
     int j;
 
-    g_GameManager.unk_3db94++;
-    if ((mgr->unk_3dbac >> 5 & 3) != 0)
+    g_GameManager.playFrames++;
+    if ((mgr->stateFlags >> 5 & 3) != 0)
     {
-        if ((mgr->unk_3dbac >> 5 & 3) == 2)
+        if ((mgr->stateFlags >> 5 & 3) == 2)
         {
-            mgr->unk_3dbac |= 0x60;
-            g_GameManager.unk_38 = 1;
-            g_GameManager.unk_3db9c = -1;
-            if (!(g_GameManager.unk_3dbac >> 3 & 1))
+            mgr->stateFlags |= 0x60;
+            g_GameManager.loadingThreadState = 1;
+            g_GameManager.nextScene = -1;
+            if (!(g_GameManager.stateFlags >> 3 & 1))
             {
                 if (!g_GameManager.stats->continuesUsed)
                 {
                     g_GameManager.clrds[g_GameManager.character].stagesClearedNoContinue[g_GameManager.difficulty] |=
-                        g_GameManager.unk_3ddd0;
-                    g_GameManager.clrds[12].stagesClearedNoContinue[g_GameManager.difficulty] |= g_GameManager.unk_3ddd0;
+                        g_GameManager.stageBit;
+                    g_GameManager.clrds[12].stagesClearedNoContinue[g_GameManager.difficulty] |= g_GameManager.stageBit;
                 }
                 g_GameManager.clrds[g_GameManager.character].stagesCleared[g_GameManager.difficulty] |=
-                    g_GameManager.unk_3ddd0;
-                g_GameManager.clrds[12].stagesCleared[g_GameManager.difficulty] |= g_GameManager.unk_3ddd0;
+                    g_GameManager.stageBit;
+                g_GameManager.clrds[12].stagesCleared[g_GameManager.difficulty] |= g_GameManager.stageBit;
             }
             mgr->stats->guiScore = mgr->stats->score;
-            if (mgr->unk_3dbac & 1)
+            if (mgr->stateFlags & 1)
             {
                 g_GameManager.stats->guiScore = g_GameManager.stats->score;
-                g_GameManager.unk_3db9c = 6;
+                g_GameManager.nextScene = 6;
                 return 3;
             }
             if (g_GameManager.stage != 6 && g_GameManager.stage != 7 && g_GameManager.stage != 8)
             {
-                if (g_GameManager.unk_3dbac >> 3 & 1)
+                if (g_GameManager.stateFlags >> 3 & 1)
                 {
                     next = 0;
                     for (stage = g_GameManager.stage + 1; stage < 9; stage++)
@@ -145,17 +145,17 @@ int GameManager::OnUpdate(GameManager *mgr)
                 {
                     if (g_GameManager.GetUnk28() >= 12)
                     {
-                        g_GameManager.unk_3dbac &= ~0x10;
-                        g_GameManager.unk_3db9c = 9;
+                        g_GameManager.stateFlags &= ~0x10;
+                        g_GameManager.nextScene = 9;
                         return 3;
                     }
                     g_GameManager.AdvanceStage();
                     g_App.scene = 3;
                 }
             }
-            else if (g_GameManager.unk_3dbac >> 3 & 1)
+            else if (g_GameManager.stateFlags >> 3 & 1)
             {
-                g_GameManager.unk_3db9c = 7;
+                g_GameManager.nextScene = 7;
             }
             else
             {
@@ -168,47 +168,47 @@ int GameManager::OnUpdate(GameManager *mgr)
                         g_GameManager.clrds[12].stagesCleared[g_GameManager.difficulty] |= 0x8000;
                     }
                     g_GameManager.plst.counts[g_GameManager.difficulty].clears++;
-                    g_GameManager.unk_3dbac |= 0x10;
+                    g_GameManager.stateFlags |= 0x10;
                     g_GameManager.stats->guiScore = g_GameManager.stats->score;
-                    g_GameManager.unk_3db9c = 6;
+                    g_GameManager.nextScene = 6;
                     return 3;
                 }
-                g_GameManager.unk_3dbac |= 0x10;
-                g_GameManager.unk_3db9c = 9;
+                g_GameManager.stateFlags |= 0x10;
+                g_GameManager.nextScene = 9;
                 return 3;
             }
-            if (g_GameManager.unk_3db9c < 0)
+            if (g_GameManager.nextScene < 0)
             {
                 g_Gui.Func438f58();
             }
         }
-        if (WAS_PRESSED(0x1001) || g_GameManager.unk_3dbac >> 3 & 1 || g_GameManager.stage == 6 ||
+        if (WAS_PRESSED(0x1001) || g_GameManager.stateFlags >> 3 & 1 || g_GameManager.stage == 6 ||
             g_GameManager.stage == 7 || g_GameManager.stage == 8)
         {
-            mgr->unk_3dbac &= ~0x60;
-            if (g_GameManager.unk_3db9c >= 0)
+            mgr->stateFlags &= ~0x60;
+            if (g_GameManager.nextScene >= 0)
             {
-                g_App.scene = g_GameManager.unk_3db9c;
+                g_App.scene = g_GameManager.nextScene;
             }
         }
     }
-    if (mgr->unk_38 != 0)
+    if (mgr->loadingThreadState != 0)
     {
-        if (mgr->unk_38 == 2)
+        if (mgr->loadingThreadState == 2)
         {
             return 4;
         }
-        mgr->unk_3c++;
+        mgr->loadingFrames++;
         return 3;
     }
-    if (mgr->unk_3de28 != 0)
+    if (mgr->pendingMusicStart != 0)
     {
         Func438046();
         g_SpriteEngine->ReleaseSurface(8);
         g_App.loadingState = 0;
-        if (mgr->unk_3de28 == 1)
+        if (mgr->pendingMusicStart == 1)
         {
-            if (!(g_GameManager.unk_3dbac >> 14 & 1))
+            if (!(g_GameManager.stateFlags >> 14 & 1))
             {
                 g_App.PlayMidi(0, g_StageBgms[g_GameManager.stage].stageBgm);
             }
@@ -217,7 +217,7 @@ int GameManager::OnUpdate(GameManager *mgr)
                 j = 0;
                 while (g_SpellCardBgms[j].lastCard >= 0)
                 {
-                    if (g_GameManager.unk_3dbb0 <= g_SpellCardBgms[j].lastCard)
+                    if (g_GameManager.practiceSpellCard <= g_SpellCardBgms[j].lastCard)
                     {
                         g_App.PlayMidi(0, g_SpellCardBgms[j].bgm);
                         break;
@@ -226,9 +226,9 @@ int GameManager::OnUpdate(GameManager *mgr)
                 }
             }
         }
-        mgr->unk_3de28 = 0;
+        mgr->pendingMusicStart = 0;
     }
-    if (!mgr->isInContinueMenu && !mgr->isPaused && !(mgr->unk_3dbac >> 1 & 1) && !mgr->unk_2d && WAS_PRESSED(8))
+    if (!mgr->isInContinueMenu && !mgr->isPaused && !(mgr->stateFlags >> 1 & 1) && !mgr->skipFpsMeasure && WAS_PRESSED(8))
     {
         mgr->isPaused = 1;
         g_GameManager.arena[0] = 32.0f;
@@ -251,7 +251,7 @@ int GameManager::OnUpdate(GameManager *mgr)
     g_App.viewport.MinZ = 0.0f;
     g_App.viewport.MaxZ = 1.0f;
     g_SpriteEngine->ClearLastCameraSetupFlag();
-    if (g_GameManager.unk_3dbac >> 3 & 1 && g_GameManager.replayMenuChoice == 1 && !g_Gui.IsMsgRunning())
+    if (g_GameManager.stateFlags >> 3 & 1 && g_GameManager.replayMenuChoice == 1 && !g_Gui.IsMsgRunning())
     {
         mgr->slowdownCounter++;
         if ((g_App.roundedFps < 20 && mgr->slowdownCounter % 3 != 0) ||
@@ -262,7 +262,7 @@ int GameManager::OnUpdate(GameManager *mgr)
             return 3;
         }
     }
-    if (mgr->unk_3dbac >> 1 & 1)
+    if (mgr->stateFlags >> 1 & 1)
     {
         if (WAS_PRESSED(0xffff))
         {
@@ -379,15 +379,15 @@ int GameManager::OnUpdate(GameManager *mgr)
             g_GameManager.checksumValue = -9999.0f;
         }
     }
-    if (g_GameManager.unk_4->scoreDisabled)
+    if (g_GameManager.savedConfig->scoreDisabled)
     {
-        g_GameManager.unk_2d = 0;
+        g_GameManager.skipFpsMeasure = 0;
         mgr->slowdownCounter++;
         if ((g_BulletManager.bulletCount >= 320 && mgr->slowdownCounter % 3 == 0) ||
             (g_BulletManager.bulletCount < 320 && g_BulletManager.bulletCount >= 224 && mgr->slowdownCounter % 4 == 0) ||
             (g_BulletManager.bulletCount < 224 && g_BulletManager.bulletCount >= 128 && mgr->slowdownCounter % 5 == 0))
         {
-            g_GameManager.unk_2d = 1;
+            g_GameManager.skipFpsMeasure = 1;
             return 3;
         }
         if (g_BulletManager.bulletCount < 128)
@@ -410,11 +410,11 @@ int GameManager::OnDraw(GameManager *mgr)
     {
         return 3;
     }
-    if ((mgr->unk_3dbac >> 5 & 3) == 1)
+    if ((mgr->stateFlags >> 5 & 3) == 1)
     {
         return 3;
     }
-    if (mgr->unk_38 != 0)
+    if (mgr->loadingThreadState != 0)
     {
         return 3;
     }
@@ -450,7 +450,7 @@ int GameManager::AddedCallback(GameManager *mgr)
     {
         g_App.unk_164 = 0;
     }
-    g_GameManager.unk_38 = 1;
+    g_GameManager.loadingThreadState = 1;
     if (g_App.prevScene == 1)
     {
         D3DXVECTOR3 pos(500.0f, 440.0f, 0.0f);
@@ -462,9 +462,9 @@ int GameManager::AddedCallback(GameManager *mgr)
         D3DXVECTOR3 pos(280.0f, 430.0f, 0.0f);
         g_App.StartLoadingSpritesOverScreen(&pos);
     }
-    if (mgr->unk_3dbac_5 >= 2)
+    if (mgr->stageEndState >= 2)
     {
-        mgr->unk_3dbac_5 = 1;
+        mgr->stageEndState = 1;
     }
     g_App.StartSubThread((LPTHREAD_START_ROUTINE)GameManager::LoadingThread, NULL);
     return 0;
@@ -477,10 +477,10 @@ void GameManager::LoadingThread(GameManager *arg)
     WORD seed;
     int j;
 
-    mgr->unk_3c = 0;
+    mgr->loadingFrames = 0;
     g_App.lastTotalPlayTimeTick = timeGetTime();
-    mgr->unk_3ddd0 = 1 << mgr->stage;
-    mgr->unk_3ddc8 = mgr->stage;
+    mgr->stageBit = 1 << mgr->stage;
+    mgr->replayStage = mgr->stage;
     if (mgr->difficulty < 4)
     {
         mgr->difficultyMask = 1 << mgr->difficulty;
@@ -491,13 +491,13 @@ void GameManager::LoadingThread(GameManager *arg)
     }
     mgr->shotIndex = mgr->character + mgr->shotType;
     g_App.gameSpeed = 1.0f;
-    mgr->unk_3dbac &= ~0x400;
-    if (g_App.unk_164 != 0 || mgr->unk_3dbac >> 14 & 1 || g_GameManager.unk_3dbac & 1 || g_GameManager.difficulty >= 4)
+    mgr->stateFlags &= ~0x400;
+    if (g_App.unk_164 != 0 || mgr->stateFlags >> 14 & 1 || g_GameManager.stateFlags & 1 || g_GameManager.difficulty >= 4)
     {
-        if (mgr->unk_4 != NULL)
+        if (mgr->savedConfig != NULL)
         {
-            delete mgr->unk_4;
-            mgr->unk_4 = NULL;
+            delete mgr->savedConfig;
+            mgr->savedConfig = NULL;
         }
         if (mgr->stats != NULL)
         {
@@ -505,22 +505,22 @@ void GameManager::LoadingThread(GameManager *arg)
             mgr->stats = NULL;
         }
         size = g_Rng.GetRandomU32InRange(0xffff) + 0x10;
-        mgr->unk_0 = malloc(size);
-        mgr->unk_4 = new GameManagerUnk4;
+        mgr->tempBuffer = malloc(size);
+        mgr->savedConfig = new GameManagerUnk4;
         mgr->stats = new GameManagerStats;
         RerollStatsChecksumKeys();
-        *mgr->unk_4 = *(GameManagerUnk4 *)&g_App.controllerMapping;
-        MemFree(mgr->unk_0);
-        mgr->unk_3dba8 = 0;
+        *mgr->savedConfig = *(GameManagerUnk4 *)&g_App.controllerMapping;
+        MemFree(mgr->tempBuffer);
+        mgr->powerItemCombo = 0;
         mgr->stats->unk_22 = 0;
         mgr->SetUnk28(g_GameManager.stage == 8 ? 6 : 0);
         if (g_GameManager.difficulty >= 4)
         {
-            mgr->unk_4->lifeCount = 2;
+            mgr->savedConfig->lifeCount = 2;
         }
-        if (g_GameManager.unk_3dbac & 1)
+        if (g_GameManager.stateFlags & 1)
         {
-            mgr->unk_4->lifeCount = 8;
+            mgr->savedConfig->lifeCount = 8;
         }
         if (Player::RegisterChain(0) != 0)
         {
@@ -531,17 +531,17 @@ void GameManager::LoadingThread(GameManager *arg)
             LogPrintf(&g_Log, "error : プレイヤーの初期化に失敗しました\r\n");
             goto fail;
         }
-        if (!(g_GameManager.unk_3dbac >> 3 & 1))
+        if (!(g_GameManager.stateFlags >> 3 & 1))
         {
-            g_GameManager.SetLives(mgr->unk_4->lifeCount);
+            g_GameManager.SetLives(mgr->savedConfig->lifeCount);
             g_GameManager.SetBombs(g_Player.shotType->bombs);
         }
         mgr->SetPlayArea();
         mgr->stats->power = 0.0f;
         mgr->RerollChecksumKeys();
         mgr->progressFrames = 0;
-        g_GameManager.unk_3dba4 = 0;
-        g_GameManager.unk_3dba0 = 0;
+        g_GameManager.humanRateFrames = 0;
+        g_GameManager.humanFrames = 0;
         mgr->stats->guiScore = 0;
         mgr->stats->score = 0;
         mgr->stats->scoreIncrement = 0;
@@ -549,9 +549,9 @@ void GameManager::LoadingThread(GameManager *arg)
         mgr->stats->continuesUsed = 0;
         mgr->stats->grazeTotal = 0;
         mgr->stats->pointItemsTotal = 0;
-        if (mgr->difficulty >= 4 || mgr->unk_3dbac & 1 || mgr->unk_3dbac >> 14 & 1)
+        if (mgr->difficulty >= 4 || mgr->stateFlags & 1 || mgr->stateFlags >> 14 & 1)
         {
-            mgr->unk_4->scoreDisabled = 0;
+            mgr->savedConfig->scoreDisabled = 0;
         }
         switch (g_GameManager.difficulty)
         {
@@ -585,12 +585,12 @@ void GameManager::LoadingThread(GameManager *arg)
         mgr->stats->unk_88 = 0.0f;
         mgr->RerollChecksumKeys();
         mgr->stats->spellCardsCaptured = 0;
-        mgr->unk_3de10 = 0;
-        mgr->unk_3de18 = 0;
-        mgr->unk_3de1c = 0;
-        if (!(g_GameManager.unk_3dbac >> 3 & 1) && !(g_GameManager.unk_3dbac >> 14 & 1))
+        mgr->gaugeFramesTotal = 0;
+        mgr->highGaugeFramesTotal = 0;
+        mgr->lowGaugeFramesTotal = 0;
+        if (!(g_GameManager.stateFlags >> 3 & 1) && !(g_GameManager.stateFlags >> 14 & 1))
         {
-            if (!mgr->unk_4->scoreDisabled)
+            if (!mgr->savedConfig->scoreDisabled)
             {
                 IncrementStatCounter((DWORD *)&g_GameManager.plst.counts[g_GameManager.difficulty].plays[0], 999999);
                 IncrementStatCounter((DWORD *)&g_GameManager.plst.counts[6].plays[0], 999999);
@@ -602,7 +602,7 @@ void GameManager::LoadingThread(GameManager *arg)
                     IncrementStatCounter((DWORD *)&g_GameManager.plst.counts[g_GameManager.difficulty].retries, 999999);
                     IncrementStatCounter((DWORD *)&g_GameManager.plst.counts[6].retries, 999999);
                 }
-                if (g_GameManager.unk_3dbac & 1 && !(g_GameManager.unk_3dbac >> 14 & 1))
+                if (g_GameManager.stateFlags & 1 && !(g_GameManager.stateFlags >> 14 & 1))
                 {
                     IncrementStatCounter((DWORD *)&g_GameManager.plst.counts[g_GameManager.difficulty].practices, 999999);
                     IncrementStatCounter((DWORD *)&g_GameManager.plst.counts[6].practices, 999999);
@@ -611,7 +611,7 @@ void GameManager::LoadingThread(GameManager *arg)
         }
         else
         {
-            mgr->unk_4->scoreDisabled = 0;
+            mgr->savedConfig->scoreDisabled = 0;
         }
     }
     else
@@ -636,15 +636,15 @@ void GameManager::LoadingThread(GameManager *arg)
     mgr->stats->unk_2c = 0;
     mgr->stats->graze = 0;
     mgr->isPaused = 0;
-    mgr->unk_3dbac &= ~0x180;
-    mgr->unk_3dbac &= ~0x2000;
-    mgr->unk_3de14 = 0;
-    mgr->unk_3de20 = 0;
-    mgr->unk_3de24 = 0;
+    mgr->stateFlags &= ~0x180;
+    mgr->stateFlags &= ~0x2000;
+    mgr->gaugeFrames = 0;
+    mgr->highGaugeFrames = 0;
+    mgr->lowGaugeFrames = 0;
     mgr->stats->unk_20 = mgr->stats->unk_22;
     mgr->stats->unk_3c = 0;
     mgr->stats->unk_44 = 0;
-    if (!(g_GameManager.unk_3dbac >> 14 & 1))
+    if (!(g_GameManager.stateFlags >> 14 & 1))
     {
         mgr->stats->unk_40 = g_Unknown4c77f0[mgr->stage][g_GameManager.difficulty];
     }
@@ -652,9 +652,9 @@ void GameManager::LoadingThread(GameManager *arg)
     {
         mgr->stats->unk_40 = 0;
     }
-    if (mgr->unk_3dbac & 1)
+    if (mgr->stateFlags & 1)
     {
-        if (!(mgr->unk_3dbac >> 14 & 1))
+        if (!(mgr->stateFlags >> 14 & 1))
         {
             switch (mgr->stage)
             {
@@ -672,12 +672,12 @@ void GameManager::LoadingThread(GameManager *arg)
                 break;
             }
         }
-        else if (mgr->unk_3dbb0 <= 1)
+        else if (mgr->practiceSpellCard <= 1)
         {
             mgr->stats->power = 30.0f;
             mgr->RerollChecksumKeys();
         }
-        else if (mgr->unk_3dbb0 <= 12)
+        else if (mgr->practiceSpellCard <= 12)
         {
             mgr->stats->power = 80.0f;
             mgr->RerollChecksumKeys();
@@ -688,7 +688,7 @@ void GameManager::LoadingThread(GameManager *arg)
             mgr->RerollChecksumKeys();
         }
     }
-    if (g_GameManager.unk_3dbac >> 3 & 1)
+    if (g_GameManager.stateFlags >> 3 & 1)
     {
         mgr->SetRankForDifficulty();
         ReplayManager::RegisterChain(1, g_GameManager.replayFile);
@@ -751,11 +751,11 @@ void GameManager::LoadingThread(GameManager *arg)
         LogPrintf(&g_Log, "error : スペルカードの初期化に失敗しました\r\n");
         goto fail;
     }
-    if (!(g_GameManager.unk_3dbac >> 3 & 1))
+    if (!(g_GameManager.stateFlags >> 3 & 1))
     {
         ReplayManager::RegisterChain(0, "replay/th8_00.rpy");
     }
-    if (g_GameManager.unk_3dbac >> 14 & 1)
+    if (g_GameManager.stateFlags >> 14 & 1)
     {
         switch (g_GameManager.stage)
         {
@@ -785,12 +785,12 @@ void GameManager::LoadingThread(GameManager *arg)
     }
     if (g_App.unk_16c == 0)
     {
-        if (g_GameManager.unk_3dbac >> 14 & 1)
+        if (g_GameManager.stateFlags >> 14 & 1)
         {
             j = 0;
             while (g_SpellCardBgms[j].lastCard >= 0)
             {
-                if (g_GameManager.unk_3dbb0 <= g_SpellCardBgms[j].lastCard)
+                if (g_GameManager.practiceSpellCard <= g_SpellCardBgms[j].lastCard)
                 {
                     g_App.LoadMidi(0, g_SpellCardBgms[j].midiPath);
                     break;
@@ -812,14 +812,14 @@ void GameManager::LoadingThread(GameManager *arg)
         }
     }
     mgr->isInContinueMenu = 0;
-    mgr->unk_3dbac |= 4;
-    if (g_App.unk_16c != 0 && g_GameManager.unk_3dbac >> 14 & 1 && !Func439916(g_GameManager.unk_3dbb0))
+    mgr->stateFlags |= 4;
+    if (g_App.unk_16c != 0 && g_GameManager.stateFlags >> 14 & 1 && !Func439916(g_GameManager.practiceSpellCard))
     {
-        mgr->unk_3de28 = 2;
+        mgr->pendingMusicStart = 2;
     }
     else
     {
-        mgr->unk_3de28 = 1;
+        mgr->pendingMusicStart = 1;
     }
     if (g_App.scene != 3)
     {
@@ -828,43 +828,43 @@ void GameManager::LoadingThread(GameManager *arg)
     }
     mgr->isFrozen = 0;
     mgr->stats->score = 0;
-    mgr->unk_3dbac &= ~0x10;
+    mgr->stateFlags &= ~0x10;
     g_AsciiText.Initialize();
     g_AsciiText.StartScripts();
-    g_GameManager.unk_2d = 0;
+    g_GameManager.skipFpsMeasure = 0;
     g_Unknown4e3d28 = 0;
     DrawFps(0);
-    if (g_GameManager.unk_3dbac >> 3 & 1)
+    if (g_GameManager.stateFlags >> 3 & 1)
     {
-        while (mgr->unk_3c < 0x50)
+        while (mgr->loadingFrames < 0x50)
         {
             Sleep(0x11);
         }
     }
     else
     {
-        while (mgr->unk_3c < 0x1e)
+        while (mgr->loadingFrames < 0x1e)
         {
             Sleep(0x11);
         }
     }
     g_App.FinishLoadingSprites();
-    while ((mgr->unk_3dbac >> 5 & 3) != 0)
+    while ((mgr->stateFlags >> 5 & 3) != 0)
     {
         Sleep(0x11);
     }
-    g_GameManager.unk_38 = 0;
+    g_GameManager.loadingThreadState = 0;
     g_App.subThread = NULL;
     g_App.closeSubThread = 0;
     g_App.subThreadRunning = 0;
     g_App.redrawFrames = 60;
-    mgr->unk_3dbac &= ~0x200;
+    mgr->stateFlags &= ~0x200;
     g_App.unk_16c = 0;
     g_Unknown18b8a2c = 2;
     return;
 
 fail:
-    g_GameManager.unk_38 = 2;
+    g_GameManager.loadingThreadState = 2;
     g_App.FinishLoadingSprites();
     g_App.subThread = NULL;
     g_App.closeSubThread = 0;
@@ -955,7 +955,7 @@ int LoadScoreFile()
     LoadSpellCards(data, g_GameManager.catks);
     LoadClears(data, g_GameManager.clrds);
     LoadPracticeScores(data, g_GameManager.pscrs);
-    if (g_GameManager.unk_3dbac & 1)
+    if (g_GameManager.stateFlags & 1)
     {
         g_GameManager.stats->highScore =
             g_GameManager.pscrs[g_GameManager.character].scores[g_GameManager.stage][g_GameManager.difficulty];
@@ -968,7 +968,7 @@ int LoadScoreFile()
     g_GameManager.hscr.shot = g_GameManager.character;
     g_GameManager.hscr.difficulty = g_GameManager.difficulty;
     memcpy(g_GameManager.hscr.config, &g_App.controllerMapping, sizeof(g_GameManager.hscr.config));
-    g_GameManager.unk_3db94 = 0;
+    g_GameManager.playFrames = 0;
     return 0;
 }
 
@@ -992,7 +992,7 @@ int GameManager::DeletedCallback(GameManager *mgr)
     {
         g_App.unk_168 = 0;
     }
-    if (!(g_GameManager.unk_3dbac >> 14 & 1) || g_App.unk_168 != 0)
+    if (!(g_GameManager.stateFlags >> 14 & 1) || g_App.unk_168 != 0)
     {
         g_App.StopMusic();
         if (g_App.musicMode == 2 && g_App.midi != NULL)
@@ -1010,19 +1010,19 @@ int GameManager::DeletedCallback(GameManager *mgr)
     EnemyManager::RemoveChain();
     EffectManager::RemoveChain();
     Gui::RemoveChain();
-    if (!(g_GameManager.unk_3dbac >> 3 & 1))
+    if (!(g_GameManager.stateFlags >> 3 & 1))
     {
         ReplayManager::EndStage();
     }
-    if (!(g_GameManager.unk_3dbac >> 3 & 1))
+    if (!(g_GameManager.stateFlags >> 3 & 1))
     {
         g_App.AddTotalPlayTime();
     }
     g_App.lastTotalPlayTimeTick = 0;
     g_App.AddPlayTime();
-    mgr->unk_3dbac &= ~4;
+    mgr->stateFlags &= ~4;
     g_AsciiText.Initialize();
-    g_GameManager.unk_2d = 0;
+    g_GameManager.skipFpsMeasure = 0;
     g_GameManager.stageFrames = 0;
     return 0;
 }
@@ -1074,13 +1074,13 @@ void GameManager::Func43c0bb(int amount, int force)
         return;
     }
     this->stats->unk_22 += amount;
-    if (this->stats->unk_22 < this->unk_3ddf8)
+    if (this->stats->unk_22 < this->gaugeMin)
     {
-        this->stats->unk_22 = this->unk_3ddf8;
+        this->stats->unk_22 = this->gaugeMin;
     }
-    else if (this->stats->unk_22 > this->unk_3ddfa)
+    else if (this->stats->unk_22 > this->gaugeMax)
     {
-        this->stats->unk_22 = this->unk_3ddfa;
+        this->stats->unk_22 = this->gaugeMax;
     }
     this->stats->unk_20 = this->stats->unk_22;
 }
@@ -1121,7 +1121,7 @@ int GameManager::IsPhantasmOpen()
 
 int GameManager::IsPracticeReplay()
 {
-    return (this->unk_3dbac >> 3 & 1) && g_ReplayManager->data->isPractice ? TRUE : FALSE;
+    return (this->stateFlags >> 3 & 1) && g_ReplayManager->data->isPractice ? TRUE : FALSE;
 }
 
 int GameManager::Func43c35f()
@@ -1237,7 +1237,7 @@ void GameManager::AdvanceStage()
         this->stage = 5;
         break;
     case 5:
-        this->stage = (g_GameManager.unk_3dbac >> 11 & 3) != 0 ? 7 : 6;
+        this->stage = (g_GameManager.stateFlags >> 11 & 3) != 0 ? 7 : 6;
         break;
     case 6:
         this->stage = 7;

@@ -674,7 +674,7 @@ int FireLaser(Player *player, PlayerBullet *bullet, int frame, ShotData *sd)
     {
         return 0;
     }
-    if (g_GameManager.unk_3dbac_13)
+    if (g_GameManager.bossHitAnywhere)
     {
         return 0;
     }
@@ -851,7 +851,7 @@ int UpdateLaserBullet(Player *player, PlayerBullet *bullet)
     {
         bullet->sprite.pendingInterrupt = 1;
     }
-    if ((g_Gui.IsMsgRunning() || player->bomb.running || g_GameManager.unk_3dbac_13) &&
+    if ((g_Gui.IsMsgRunning() || player->bomb.running || g_GameManager.bossHitAnywhere) &&
         player->lasers[bullet->laserIndex].timer.AsFrames() > 20)
     {
         player->lasers[bullet->laserIndex].timer = 20;
@@ -902,7 +902,7 @@ int UpdateTrailLaserBullet(Player *player, PlayerBullet *bullet)
 
     if (player->lasers[bullet->laserIndex].bullet != bullet || g_Gui.IsMsgRunning() ||
         player->fireTimer.AsFrames() < 0 || player->playerState == 2 || player->bomb.running ||
-        g_GameManager.unk_3dbac_13)
+        g_GameManager.bossHitAnywhere)
     {
         bullet->sprite.pendingInterrupt = 1;
         player->lasers[bullet->laserIndex].bullet = NULL;
@@ -1122,7 +1122,7 @@ void UpdateBullets(Player *player)
     int i;
     PlayerBullet *bullet;
 
-    if (g_GameManager.unk_3dbac_10)
+    if (g_GameManager.deathbombFreeze)
     {
         return;
     }

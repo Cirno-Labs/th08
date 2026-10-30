@@ -392,7 +392,7 @@ int Ending::AddedCallback(Ending *ending)
     ClearScreen(0xffffffff);
     g_App.hideFps = 1;
     ending->anm = g_SpriteEngine->LoadAnm(0x18, "staff01.anm");
-    if ((g_GameManager.unk_3dbac >> 4) & 1)
+    if ((g_GameManager.stateFlags >> 4) & 1)
     {
         si = g_GameManager.character;
         // Final A (stage 6) and Final B (stage 7) are recorded in bits 15
@@ -440,7 +440,7 @@ int Ending::AddedCallback(Ending *ending)
         g_App.textAnm->StartScriptAtOrigin(&ending->sprites[j], j + 0x12);
         ending->sprites[j].pos = D3DXVECTOR3(64.0f, (float)j * 16.0f + 400.0f, 0.0f);
     }
-    if (!((g_GameManager.unk_3dbac >> 4) & 1))
+    if (!((g_GameManager.stateFlags >> 4) & 1))
     {
         script = g_BadEndingFiles[g_GameManager.character];
     }

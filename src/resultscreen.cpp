@@ -1046,14 +1046,14 @@ int ResultScreen::HandleNameEntry()
         }
         g_SpriteEngine->RenderTextCentered(&this->textSprites[0], 0xffffff, 0, g_ShotNames[this->character]);
         this->textSprites[0].alpha = 0xff;
-        g_GameManager.hscr.playFrames = g_GameManager.unk_3db94;
-        g_GameManager.hscr.humanRate = (float)g_GameManager.unk_3dba0 / g_GameManager.unk_3dba4 * 10000.0f;
+        g_GameManager.hscr.playFrames = g_GameManager.playFrames;
+        g_GameManager.hscr.humanRate = (float)g_GameManager.humanFrames / g_GameManager.humanRateFrames * 10000.0f;
         this->entry = g_GameManager.hscr;
         this->entry.score = g_GameManager.stats->score;
         this->entry.continuesUsed = g_GameManager.stats->continuesUsed;
         this->entry.version = 4;
         this->entry.magic = 0x52435348;
-        if ((g_GameManager.unk_3dbac >> 4 & 1) == 0)
+        if ((g_GameManager.stateFlags >> 4 & 1) == 0)
         {
             this->entry.stage = g_GameManager.stage;
         }
@@ -1792,7 +1792,7 @@ int ResultScreen::DrawStatistics()
         rating += g_DifficultyRatings[g_GameManager.difficulty];
         cursorPos.x += g_AsciiText.glyphWidth;
         cursorPos.y += 22.0f;
-        if ((g_GameManager.unk_3dbac >> 4 & 1) == 0)
+        if ((g_GameManager.stateFlags >> 4 & 1) == 0)
         {
             if (progress >= 1.0f)
             {
@@ -1873,7 +1873,7 @@ int ResultScreen::RegisterChain(int mode)
         {
             screen->state = 9;
         }
-        else if (g_GameManager.unk_3dbac >> 14 & 1)
+        else if (g_GameManager.stateFlags >> 14 & 1)
         {
             screen->state = 0x16;
         }

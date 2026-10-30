@@ -27,7 +27,7 @@ int AsciiText::OnUpdate(AsciiText *text)
     if (!g_GameManager.isPaused && !g_GameManager.isInContinueMenu)
     {
         entry = text->popups;
-        if (!g_GameManager.unk_3dbac_10)
+        if (!g_GameManager.deathbombFreeze)
         {
             for (i = 0; i < 0x2d3; i++, entry++)
             {
@@ -142,8 +142,8 @@ void AsciiText::StartScripts()
     this->anm->StartScript(&this->nearbyLabels[1], 10);
     this->anm->StartScript(&this->nearbyLabels[2], 10);
     this->anm->StartScript(&this->nearbyLabels[3], 10);
-    this->summaryPopup2.pos.x -= g_GameManager.unk_3ddf8 * 56.0f / -10000.0f;
-    this->summaryPopup3.pos.x += g_GameManager.unk_3ddfa * 56.0f / 10000.0f;
+    this->summaryPopup2.pos.x -= g_GameManager.gaugeMin * 56.0f / -10000.0f;
+    this->summaryPopup3.pos.x += g_GameManager.gaugeMax * 56.0f / 10000.0f;
     this->SetSummaryPendingInterrupt(this->GetSummaryPendingInterrupt());
 }
 
@@ -641,7 +641,7 @@ int PauseMenu::UpdatePauseMenu()
         {
             this->sprites[i].pendingInterrupt = 1;
         }
-        if (g_GameManager.IsInSpellCardPractice() && g_GameManager.unk_3dbb0 >= 0xcd)
+        if (g_GameManager.IsInSpellCardPractice() && g_GameManager.practiceSpellCard >= 0xcd)
         {
             g_AsciiText.anm->SetSprite(&this->sprites[7], 0x120);
         }
@@ -653,7 +653,7 @@ int PauseMenu::UpdatePauseMenu()
         {
             this->sprites[8].ClearShown();
         }
-        if (!g_GameManager.unk_4->scoreDisabled)
+        if (!g_GameManager.savedConfig->scoreDisabled)
         {
             this->sprites[9].ClearShown();
         }
@@ -910,7 +910,7 @@ int PauseMenu::UpdatePauseMenu()
             }
             else
             {
-                if (g_GameManager.IsInSpellCardPractice() && !Func439916(g_GameManager.unk_3dbb0))
+                if (g_GameManager.IsInSpellCardPractice() && !Func439916(g_GameManager.practiceSpellCard))
                 {
                     g_SoundPlayer.UnPause();
                     g_SoundPlayer.FadeInBgm(2.0f);
@@ -972,7 +972,7 @@ int ContinueMenu::UpdateContinueMenu()
 {
     int i;
 
-    if (g_GameManager.IsInPractice() && !((g_GameManager.unk_3dbac >> 14) & 1))
+    if (g_GameManager.IsInPractice() && !((g_GameManager.stateFlags >> 14) & 1))
     {
         g_GameManager.isInContinueMenu = 0;
         g_GameManager.stats->guiScore = g_GameManager.stats->score;
@@ -1002,12 +1002,12 @@ int ContinueMenu::UpdateContinueMenu()
                 }
                 else
                 {
-                    g_GameManager.unk_3dbac &= ~0x10;
+                    g_GameManager.stateFlags &= ~0x10;
                     g_App.scene = 9;
                 }
                 return 1;
             }
-            if (g_GameManager.IsInSpellCardPractice() && !Func439916(g_GameManager.unk_3dbb0))
+            if (g_GameManager.IsInSpellCardPractice() && !Func439916(g_GameManager.practiceSpellCard))
             {
                 g_SoundPlayer.FadeDownBgm(1.0f);
             }
@@ -1079,7 +1079,7 @@ int ContinueMenu::UpdateContinueMenu()
                 }
                 else
                 {
-                    if (g_GameManager.IsInSpellCardPractice() && !Func439916(g_GameManager.unk_3dbb0))
+                    if (g_GameManager.IsInSpellCardPractice() && !Func439916(g_GameManager.practiceSpellCard))
                     {
                         g_GameManager.isInContinueMenu = 0;
                         g_SoundPlayer.UnPause();
@@ -1166,7 +1166,7 @@ int ContinueMenu::UpdateContinueMenu()
             g_GameManager.stats->guiScore = g_GameManager.stats->continuesUsed;
             g_GameManager.stats->scoreIncrement = 0;
             g_GameManager.stats->score = g_GameManager.stats->guiScore;
-            g_GameManager.SetLives(g_GameManager.unk_4->lifeCount);
+            g_GameManager.SetLives(g_GameManager.savedConfig->lifeCount);
             g_GameManager.SetBombs(g_Player.shotType->bombs);
             g_GameManager.stats->graze = 0;
             g_GameManager.stats->unk_2c = 0;

@@ -62,7 +62,7 @@ int App::OnUpdate(App *arg)
     }
     g_App.fogState = 0xff;
     g_SoundPlayer.UpdateBgmFades();
-    if (g_GameManager.unk_2d == 0)
+    if (g_GameManager.skipFpsMeasure == 0)
     {
         g_PrevButtons = g_Buttons;
         g_Buttons = ReadButtons();
@@ -169,7 +169,7 @@ int App::OnUpdate(App *arg)
                 break;
             case 10:
                 RemoveGameManagerChain();
-                if (!(g_GameManager.unk_3dbac & 1) && g_GameManager.difficulty < 4)
+                if (!(g_GameManager.stateFlags & 1) && g_GameManager.difficulty < 4)
                 {
                     g_GameManager.stage = 0;
                 }
@@ -424,7 +424,7 @@ int App::AddedCallback(App *arg)
     LoadFlspChunk(scoreDat, &g_GameManager.flsp);
     ReleaseScoreDat(scoreDat);
     g_GameManager.anyShotHasExtraOpen = g_GameManager.AnyShotHasExtraOpen();
-    g_GameManager.unk_3dbac_16 = g_GameManager.Func43c2c5();
+    g_GameManager.anyShotHasClearedFinalA = g_GameManager.Func43c2c5();
     g_GameManager.allShotsHaveExtraOpen = g_GameManager.AllShotsHaveExtraOpen();
     if (OpenGameArchive() != 0)
     {
@@ -852,10 +852,10 @@ int App::DeletedCallback(App *arg)
         delete g_GameManager.stats;
         g_GameManager.stats = NULL;
     }
-    if (g_GameManager.unk_4 != NULL)
+    if (g_GameManager.savedConfig != NULL)
     {
-        delete g_GameManager.unk_4;
-        g_GameManager.unk_4 = NULL;
+        delete g_GameManager.savedConfig;
+        g_GameManager.savedConfig = NULL;
     }
     g_Archive.Release();
     if (g_App.timer != NULL)
@@ -886,7 +886,7 @@ void DrawFps(int draw)
     float fps;
     float duration;
 
-    if (g_GameManager.unk_2d == 0)
+    if (g_GameManager.skipFpsMeasure == 0)
     {
         frames += 1 + g_App.frameSkip;
         if (g_App.perfFrequency[0] == 0)
@@ -907,7 +907,7 @@ void DrawFps(int draw)
                 fps = frames / duration;
                 frames = 0;
                 sprintf(fpsText, "%.02ffps", fps);
-                if ((g_GameManager.unk_3dbac >> 2 & 1) && draw)
+                if ((g_GameManager.stateFlags >> 2 & 1) && draw)
                 {
                     float target = 60.0f;
 
@@ -928,7 +928,7 @@ void DrawFps(int draw)
                     {
                         g_App.achievedFrames += target * 0.5f;
                     }
-                    if (!(g_GameManager.unk_3dbac >> 3 & 1))
+                    if (!(g_GameManager.stateFlags >> 3 & 1))
                     {
                         g_App.roundedFps = fps + 0.5f;
                     }
@@ -970,7 +970,7 @@ void DrawFps(int draw)
         pos.y = 464.0f;
         pos.z = 0.0f;
         g_AsciiText.AddString(&pos, fpsText);
-        if ((g_GameManager.unk_3dbac >> 3 & 1) && (g_GameManager.unk_3dbac >> 2 & 1))
+        if ((g_GameManager.stateFlags >> 3 & 1) && (g_GameManager.stateFlags >> 2 & 1))
         {
             D3DXVECTOR3 speedPos;
 
@@ -1392,7 +1392,7 @@ int App::PlayMidi(int slot, int bgm)
             midi->ParseFile(slot);
             midi->Play();
         }
-        if (!(g_GameManager.unk_3dbac >> 3 & 1) && !(g_GameManager.unk_3dbac >> 1 & 1))
+        if (!(g_GameManager.stateFlags >> 3 & 1) && !(g_GameManager.stateFlags >> 1 & 1))
         {
             g_GameManager.plst.bgmHeard[bgm] = 1;
         }
@@ -1405,7 +1405,7 @@ int App::PlayMidi(int slot, int bgm)
             g_SoundPlayer.QueueSoundCommand(4, 0, "dummy");
         }
         g_SoundPlayer.QueueSoundCommand(2, slot, "dummy");
-        if (!(g_GameManager.unk_3dbac >> 3 & 1) && !(g_GameManager.unk_3dbac >> 1 & 1))
+        if (!(g_GameManager.stateFlags >> 3 & 1) && !(g_GameManager.stateFlags >> 1 & 1))
         {
             g_GameManager.plst.bgmHeard[bgm] = 1;
         }
@@ -1427,7 +1427,7 @@ int App::PlayMusic(char *path, int bgm)
             midi->Load(path);
             midi->Play();
         }
-        if (!(g_GameManager.unk_3dbac >> 3 & 1) && !(g_GameManager.unk_3dbac >> 1 & 1))
+        if (!(g_GameManager.stateFlags >> 3 & 1) && !(g_GameManager.stateFlags >> 1 & 1))
         {
             g_GameManager.plst.bgmHeard[bgm] = 1;
         }
@@ -1440,7 +1440,7 @@ int App::PlayMusic(char *path, int bgm)
         dot[2] = 'a';
         dot[3] = 'v';
         g_SoundPlayer.QueueSoundCommand(2, -1, wavFile);
-        if (!(g_GameManager.unk_3dbac >> 3 & 1) && !(g_GameManager.unk_3dbac >> 1 & 1))
+        if (!(g_GameManager.stateFlags >> 3 & 1) && !(g_GameManager.stateFlags >> 1 & 1))
         {
             g_GameManager.plst.bgmHeard[bgm] = 1;
         }
@@ -1517,7 +1517,7 @@ int App::FadeOutMusic(float seconds)
 
 int App::IsScoreDisabled()
 {
-    return g_GameManager.unk_4 != NULL && g_GameManager.unk_4->scoreDisabled != 0;
+    return g_GameManager.savedConfig != NULL && g_GameManager.savedConfig->scoreDisabled != 0;
 }
 
 int App::EnableFog()

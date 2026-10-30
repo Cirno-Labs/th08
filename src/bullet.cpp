@@ -673,7 +673,7 @@ int BulletManager::OnUpdate(BulletManager *mgr)
 
     walk = 0;
     bullet = mgr->bullets;
-    if (g_GameManager.unk_3dbac_10)
+    if (g_GameManager.deathbombFreeze)
     {
         return 1;
     }
@@ -1238,7 +1238,7 @@ int BulletManager::OnDraw(BulletManager *mgr)
     float ca;
     Bullet *blt;
 
-    if (g_GameManager.unk_3dbac_10)
+    if (g_GameManager.deathbombFreeze)
     {
         g_SpriteEngine->SetColorModulation(0xfff01010);
     }
@@ -1289,7 +1289,7 @@ int BulletManager::OnDraw(BulletManager *mgr)
         }
     }
     g_EffectManager.OnDraw3();
-    if (g_GameManager.unk_3dbac_10)
+    if (g_GameManager.deathbombFreeze)
     {
         g_SpriteEngine->ResetColorModulation();
     }

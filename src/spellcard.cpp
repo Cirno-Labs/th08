@@ -327,7 +327,7 @@ void SpellCard::Start(int card, char *name, int face, DWORD bonus, Enemy *enemy,
         }
     }
     this->bonusFrozen = 0;
-    this->effect = g_EffectManager.SpawnReservedEffect(g_GameManager.unk_3dbac_7 ? 0x34 : 0x27, &this->enemy->pos, 1, 1, 0xffffffff);
+    this->effect = g_EffectManager.SpawnReservedEffect(g_GameManager.lastSpellState ? 0x34 : 0x27, &this->enemy->pos, 1, 1, 0xffffffff);
     this->effect->sprite.interpDuration[0] = 0;
     this->effect->sprite.interpFrame[0] = 100;
     this->effect->sprite.interpEasing = 6;
@@ -342,7 +342,7 @@ void SpellCard::Start(int card, char *name, int face, DWORD bonus, Enemy *enemy,
     this->effect->radius = 256.0f;
     this->effect->ringWidth = 15.0f;
     this->effect->waveCount = 6.0f;
-    this->lastSpell = g_GameManager.unk_3dbac_7;
+    this->lastSpell = g_GameManager.lastSpellState;
     g_Gui.bombsChanged = 3;
     g_Gui.livesChanged = 3;
     this->effectFixed = 0;
@@ -661,9 +661,9 @@ void SpellCard::End()
         {
             if (!captured)
             {
-                if (g_GameManager.unk_3dbac_7)
+                if (g_GameManager.lastSpellState)
                 {
-                    g_GameManager.unk_3dbac_7 = 0;
+                    g_GameManager.lastSpellState = 0;
                 }
                 this->effect->active = 0;
                 this->effect = NULL;
@@ -672,9 +672,9 @@ void SpellCard::End()
             else
             {
                 this->bonusPending = 1;
-                if (g_GameManager.unk_3dbac_7)
+                if (g_GameManager.lastSpellState)
                 {
-                    g_GameManager.unk_3dbac_7 = 2;
+                    g_GameManager.lastSpellState = 2;
                 }
                 this->effect->sprite.interpDuration[0] = 0;
                 this->effect->sprite.interpFrame[0] = 30;
@@ -743,7 +743,7 @@ void SpellCard::Func416b10(int amount)
 
 int SpellCard::Update()
 {
-    if (g_GameManager.unk_3dbac_10 || g_GameManager.isFrozen)
+    if (g_GameManager.deathbombFreeze || g_GameManager.isFrozen)
     {
         return 1;
     }

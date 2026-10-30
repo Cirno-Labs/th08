@@ -352,7 +352,7 @@ void Item::CollectPower()
             level++;
         }
         prevLevel = level;
-        g_GameManager.unk_3dba8 = 0;
+        g_GameManager.powerItemCombo = 0;
         g_GameManager.AddPower(1);
         if (g_GameManager.GetPower() >= 128)
         {

@@ -284,7 +284,7 @@ void Player::Die()
     this->stateTimer = 0;
     g_SoundPlayer.QueueSoundPanned(4, this->pos.x);
     g_ReplayManager->frameEvents |= 0x200;
-    if (g_GameManager.unk_3dbac_7 != 0)
+    if (g_GameManager.lastSpellState != 0)
     {
         DebugPrint(" desolve\n");
         this->deathbombFrames = 2;
@@ -342,7 +342,7 @@ void Player::Die()
             effect->alwaysUpdates = 1;
             if (g_SpellCard.Func4178a0())
             {
-                g_GameManager.unk_3dbac_10 = 1;
+                g_GameManager.deathbombFreeze = 1;
             }
         }
         else
@@ -920,18 +920,18 @@ int Player::OnUpdate(Player *player)
     ResetHomingAndText(player);
     if (!g_Gui.IsMsgRunning())
     {
-        g_GameManager.unk_3de10++;
-        g_GameManager.unk_3de14++;
+        g_GameManager.gaugeFramesTotal++;
+        g_GameManager.gaugeFrames++;
         if (g_GameManager.IsUnk22AtLow1())
         {
-            g_GameManager.unk_3de1c++;
-            g_GameManager.unk_3de24++;
+            g_GameManager.lowGaugeFramesTotal++;
+            g_GameManager.lowGaugeFrames++;
             g_GameManager.AddScore(100);
         }
         else if (g_GameManager.IsUnk22AtHigh1())
         {
-            g_GameManager.unk_3de18++;
-            g_GameManager.unk_3de20++;
+            g_GameManager.highGaugeFramesTotal++;
+            g_GameManager.highGaugeFrames++;
             g_GameManager.AddScore(100);
         }
     }
@@ -991,7 +991,7 @@ void UpdateBombState(Player *player)
             player->moveScaleX = player->moveScaleY = 1.0f;
             if (player->bomb.type == 4)
             {
-                g_GameManager.unk_3dbac_7 = 0;
+                g_GameManager.lastSpellState = 0;
                 for (i = 0; i < 8; i++)
                 {
                     if (g_EnemyManager.bosses[i] != NULL)
@@ -1025,7 +1025,7 @@ void UpdateBombState(Player *player)
     if ((g_GameButtons & 2) && !g_GameManager.ChecksumMismatch() && !g_Gui.IsMsgRunning() &&
         player->deathbombFrames != 0 && g_GameManager.GetBombs() > 0 && player->bombCooldown == 0)
     {
-        if (g_GameManager.unk_3dbac_7 != 0 || g_GameManager.isInSpellCardPractice)
+        if (g_GameManager.lastSpellState != 0 || g_GameManager.isInSpellCardPractice)
         {
             if ((g_GameButtons & 2) && (g_GameButtons & 2) != (g_PrevGameButtons & 2))
             {
@@ -1036,7 +1036,7 @@ void UpdateBombState(Player *player)
     start:
         g_ReplayManager->frameEvents |= 1;
         player->dissolveBombPending = 0;
-        if (g_GameManager.unk_3dbac_7 != 0)
+        if (g_GameManager.lastSpellState != 0)
         {
             player->bomb.type = 4;
         }
@@ -1048,7 +1048,7 @@ void UpdateBombState(Player *player)
                 player->lastWordEffect->active = 0;
                 player->lastWordEffect = NULL;
             }
-            g_GameManager.unk_3dbac_10 = 0;
+            g_GameManager.deathbombFreeze = 0;
             g_SpriteEngine->ResetColorModulation();
             player->bomb.type = player->focused;
             if (player->lastWordReady)
@@ -1125,11 +1125,11 @@ int UpdateDyingState(Player *player)
             g_EffectManager.SpawnReservedEffect(0xc, &player->pos, 3, 1, 0xff4040ff);
             g_EffectManager.SpawnEffect(6, &player->pos, 16, 0xffffffff);
             g_SoundPlayer.QueueSoundPanned(0xf, player->pos.x);
-            g_GameManager.unk_3dbac_10 = 0;
+            g_GameManager.deathbombFreeze = 0;
             g_SpriteEngine->ResetColorModulation();
             player->sprite.useColor2 = 0;
             g_ReplayManager->frameEvents |= 4;
-            g_GameManager.unk_3dba8 = 0;
+            g_GameManager.powerItemCombo = 0;
             player->lastWordReady = 0;
             g_SpellCard.Func44d150();
             g_GameManager.AddDeaths(1);
@@ -1414,36 +1414,36 @@ int Player::AddedCallback(Player *player)
     g_AsciiText.SetNearbyLabelInterrupt(1, 2);
     g_AsciiText.SetNearbyLabelInterrupt(2, 2);
     // The bounds of stats->unk_22 and where its gauge changes color.
-    g_GameManager.unk_3ddf8 = -10000;
+    g_GameManager.gaugeMin = -10000;
     g_GameManager.unk22Low1 = -8000;
     g_GameManager.unk22Low2 = -2000;
-    g_GameManager.unk_3ddfa = 10000;
+    g_GameManager.gaugeMax = 10000;
     g_GameManager.unk22High1 = 8000;
     g_GameManager.unk22High2 = 2000;
     if (g_GameManager.character == 3)
     {
-        g_GameManager.unk_3ddf8 = -5000;
+        g_GameManager.gaugeMin = -5000;
         g_GameManager.unk22Low1 = -3000;
         g_GameManager.unk22Low2 = -2000;
     }
     else if (g_GameManager.character == 10)
     {
-        g_GameManager.unk_3ddf8 = -5000;
+        g_GameManager.gaugeMin = -5000;
         g_GameManager.unk22Low1 = -3000;
         g_GameManager.unk22Low2 = -2000;
-        g_GameManager.unk_3ddfa = 5000;
+        g_GameManager.gaugeMax = 5000;
         g_GameManager.unk22High1 = 3000;
         g_GameManager.unk22High2 = 2000;
     }
     else if (g_GameManager.IsSoloHuman())
     {
-        g_GameManager.unk_3ddfa = 2000;
+        g_GameManager.gaugeMax = 2000;
         g_GameManager.unk22High1 = 8000;
         g_GameManager.unk22High2 = 2001;
     }
     else if (g_GameManager.IsSoloYoukai())
     {
-        g_GameManager.unk_3ddf8 = -2000;
+        g_GameManager.gaugeMin = -2000;
         g_GameManager.unk22Low1 = -8000;
         g_GameManager.unk22Low2 = -2001;
     }

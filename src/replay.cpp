@@ -185,13 +185,13 @@ int ReplayManager::RecordOnUpdate(ReplayManager *replay)
     int idx;
     WORD buttons;
 
-    if (!(g_GameManager.unk_3dbac >> 2 & 1))
+    if (!(g_GameManager.stateFlags >> 2 & 1))
     {
         return 1;
     }
     g_PrevGameButtons = g_GameButtons;
     g_GameButtons = g_Buttons;
-    if (g_GameManager.unk_4->scoreDisabled != 0)
+    if (g_GameManager.savedConfig->scoreDisabled != 0)
     {
         return 1;
     }
@@ -199,7 +199,7 @@ int ReplayManager::RecordOnUpdate(ReplayManager *replay)
     {
         return 1;
     }
-    if (g_GameManager.unk_3dbac >> 9 & 1)
+    if (g_GameManager.stateFlags >> 9 & 1)
     {
         if (replay->framesAfterStageClear >= 3)
         {
@@ -207,7 +207,7 @@ int ReplayManager::RecordOnUpdate(ReplayManager *replay)
         }
         replay->framesAfterStageClear++;
     }
-    idx = g_GameManager.unk_3ddc8;
+    idx = g_GameManager.replayStage;
     buttons = g_Buttons;
     g_GameButtons = buttons;
     replay->cursor++;
@@ -226,11 +226,11 @@ int ReplayManager::RecordOnUpdate(ReplayManager *replay)
 
 int ReplayManager::PlayOnUpdate2(ReplayManager *replay)
 {
-    if (!(g_GameManager.unk_3dbac >> 2 & 1))
+    if (!(g_GameManager.stateFlags >> 2 & 1))
     {
         return 1;
     }
-    if (g_GameManager.unk_3dbac >> 9 & 1)
+    if (g_GameManager.stateFlags >> 9 & 1)
     {
         return 1;
     }
@@ -238,7 +238,7 @@ int ReplayManager::PlayOnUpdate2(ReplayManager *replay)
     {
         return 6;
     }
-    if (!(g_GameManager.unk_3dbac >> 9 & 1) && g_GameManager.replayMenuChoice == 2 &&
+    if (!(g_GameManager.stateFlags >> 9 & 1) && g_GameManager.replayMenuChoice == 2 &&
         !g_EnemyManager.AnyBossActive() && replay->frame % 5 != 4)
     {
         return 6;
@@ -250,15 +250,15 @@ int ReplayManager::PlayOnUpdate(ReplayManager *replay)
 {
     int unused;
 
-    if (!(g_GameManager.unk_3dbac >> 2 & 1))
+    if (!(g_GameManager.stateFlags >> 2 & 1))
     {
         return 1;
     }
-    if (g_GameManager.unk_4->scoreDisabled != 0)
+    if (g_GameManager.savedConfig->scoreDisabled != 0)
     {
         return 1;
     }
-    if (g_GameManager.unk_3dbac >> 9 & 1)
+    if (g_GameManager.stateFlags >> 9 & 1)
     {
         return 1;
     }
@@ -300,15 +300,15 @@ int ReplayManager::PlayOnUpdateWithSeeds(ReplayManager *replay)
 {
     int unused;
 
-    if (!(g_GameManager.unk_3dbac >> 2 & 1))
+    if (!(g_GameManager.stateFlags >> 2 & 1))
     {
         return 1;
     }
-    if (g_GameManager.unk_4->scoreDisabled != 0)
+    if (g_GameManager.savedConfig->scoreDisabled != 0)
     {
         return 1;
     }
-    if (g_GameManager.unk_3dbac >> 9 & 1)
+    if (g_GameManager.stateFlags >> 9 & 1)
     {
         return 1;
     }
@@ -375,7 +375,7 @@ int ReplayManager::RecordAddedCallback(ReplayManager *replay)
         replay->data->exeSize = g_App.exeSize;
         replay->data->exeChecksum = g_App.exeChecksum;
         replay->data->isPractice = g_GameManager.IsInPractice();
-        replay->data->spellCardNumber = (g_GameManager.unk_3dbac >> 14 & 1) ? g_GameManager.unk_3dbb0 : -1;
+        replay->data->spellCardNumber = (g_GameManager.stateFlags >> 14 & 1) ? g_GameManager.practiceSpellCard : -1;
         replay->data->clearLevel =
             (g_GameManager.HasClearedStage(7, g_GameManager.character, 0) ||
              g_GameManager.HasClearedStage(7, g_GameManager.character, 1) ||
@@ -390,7 +390,7 @@ int ReplayManager::RecordAddedCallback(ReplayManager *replay)
                        : 0);
         replay->data->difficulty = g_GameManager.difficulty;
         *(DWORD *)replay->data->name = *(DWORD *)"NO NAME";
-        *(GameManagerUnk4 *)replay->data->config = *g_GameManager.unk_4;
+        *(GameManagerUnk4 *)replay->data->config = *g_GameManager.savedConfig;
         for (idx = 0; idx < 9; idx++)
         {
             replay->data->stages[idx] = NULL;
@@ -432,7 +432,7 @@ int ReplayManager::RecordAddedCallback(ReplayManager *replay)
     cur->rank = g_GameManager.rank;
     cur->pointItemsTotal = g_GameManager.stats->pointItemsTotal;
     cur->rngSeed = g_GameManager.rngSeed;
-    cur->unk_20 = g_GameManager.unk_3dba8;
+    cur->unk_20 = g_GameManager.powerItemCombo;
     cur->spellCardsCaptured = g_GameManager.stats->spellCardsCaptured;
     cur->unk_0c = g_GameManager.stats->unk_34;
     cur->unk_10 = g_GameManager.stats->unk_38;
@@ -461,7 +461,7 @@ int ReplayManager::PlayAddedCallback(ReplayManager *replay)
     replay->frame = 0;
     if (replay->data == NULL)
     {
-        replay->data = (ReplayHeader *)LoadFileData(replay->path, &size, !(g_GameManager.unk_3dbac >> 1 & 1));
+        replay->data = (ReplayHeader *)LoadFileData(replay->path, &size, !(g_GameManager.stateFlags >> 1 & 1));
         replay->data = ValidateReplay(replay->data, size);
         if (replay->data == NULL)
         {
@@ -499,9 +499,9 @@ int ReplayManager::PlayAddedCallback(ReplayManager *replay)
     g_GameManager.stats->grazeTotal = cur->grazeTotal;
     replay->cursor = cur->frames;
     replay->seedCursor = (ReplayFrameWithSeed *)replay->cursor;
-    g_GameManager.unk_3dba8 = cur->unk_20;
+    g_GameManager.powerItemCombo = cur->unk_20;
     g_GameManager.stats->unk_24 = cur->unk_14;
-    *g_GameManager.unk_4 = *(GameManagerUnk4 *)replay->data->config;
+    *g_GameManager.savedConfig = *(GameManagerUnk4 *)replay->data->config;
     g_Rng.SetSeed(cur->rngSeed);
     g_GameManager.stats->spellCardsCaptured = cur->spellCardsCaptured;
     g_GameManager.stats->unk_34 = cur->unk_0c;
@@ -610,7 +610,7 @@ void SaveReplay(char *path, char *name)
                 rpyBytes = (BYTE *)g_MemoryManager.Alloc(0x400000, "rep tmp");
                 hX = *replayTmp->data;
                 ReplayManager::EndStage();
-                i = g_GameManager.unk_3ddc8;
+                i = g_GameManager.replayStage;
                 replayTmp->data->stages[i]->score = g_GameManager.stats->score;
                 offsets = 0x68;
                 offsets += 0xcc;
@@ -668,13 +668,13 @@ void SaveReplay(char *path, char *name)
                 else
                 {
                     p2 = FormatAndAdvanceInline(p2, "最終ステージ\t%s\r\n",
-                                               (g_GameManager.unk_3dbac >> 4 & 1) ? "Clear"
+                                               (g_GameManager.stateFlags >> 4 & 1) ? "Clear"
                                                                                   : GetStageName(g_GameManager.stage));
                 }
                 p2 = FormatAndAdvanceInline(p2, "ミス回数\t%d\r\n", g_GameManager.GetDeaths());
                 p2 = FormatAndAdvanceInline(p2, "ボム回数\t%d\r\n", g_GameManager.GetBombsUsed());
                 p2 = FormatAndAdvanceInline(p2, "処理落ち率\t%f%%\r\n", hX.slowdown);
-                g_GameManager.hscr.humanRate = (float)g_GameManager.unk_3dba0 / g_GameManager.unk_3dba4 * 10000.0f;
+                g_GameManager.hscr.humanRate = (float)g_GameManager.humanFrames / g_GameManager.humanRateFrames * 10000.0f;
                 p2 = FormatAndAdvanceInline(p2, "人間率\t\t%3.2f％\r\n", g_GameManager.hscr.humanRate / 100.0f);
                 p2 = FormatAndAdvanceInline(p2, "ゲームのバージョン\t%d.%.2d%c\r\n", 1, 0, 'd');
                 user.size = strlen(userInfo) + 0xc;

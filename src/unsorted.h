@@ -1456,13 +1456,13 @@ public:
     // Inline; the copy at 0x406cb0 is in an /Od object.
     int IsDemo()
     {
-        return this->unk_3dbac >> 1 & 1;
+        return this->stateFlags >> 1 & 1;
     }
     // Whether the game is a practice: unk_3dbac's bit 0, which th07 read
     // directly. Inline; the copy at 0x406cd0 is in an /Od object.
     int IsInPractice()
     {
-        return this->unk_3dbac & 1;
+        return this->stateFlags & 1;
     }
     // The deaths and bombs used, as ints. New in th08; inline, the copies
     // at 0x453c80 and 0x453ca0 are the replay object's.
@@ -1548,17 +1548,17 @@ public:
     // the copy at 0x406c70 is an /Od object's.
     int IsInSpellCardPractice()
     {
-        return this->unk_3dbac >> 14 & 1;
+        return this->stateFlags >> 14 & 1;
     }
     // Whether the spell card practised (bit 14 of unk_3dbac) is `card`,
     // or one from `first` to `last`. Inline.
     int IsPracticingSpellCard(int card)
     {
-        return this->unk_3dbac >> 14 & 1 ? this->unk_3dbb0 == card : FALSE;
+        return this->stateFlags >> 14 & 1 ? this->practiceSpellCard == card : FALSE;
     }
     int IsPracticingSpellCardIn(int first, int last)
     {
-        return this->unk_3dbac >> 14 & 1 ? (this->unk_3dbb0 >= first && this->unk_3dbb0 <= last ? TRUE : FALSE)
+        return this->stateFlags >> 14 & 1 ? (this->practiceSpellCard >= first && this->practiceSpellCard <= last ? TRUE : FALSE)
                                          : FALSE;
     }
     // Whether shot type `shot` cleared stage bit `stage` of `difficulty`
@@ -1580,13 +1580,13 @@ public:
     }
     int IsReplay()
     {
-        return this->unk_3dbac >> 3 & 1;
+        return this->stateFlags >> 3 & 1;
     }
 
     // A block of random size LoadingThread allocates and frees at once,
     // as th07's tempBuffer.
-    void *unk_0;
-    GameManagerUnk4 *unk_4;
+    void *tempBuffer;
+    GameManagerUnk4 *savedConfig;
     GameManagerStats *stats;
     // The score file's chunks, loaded by App::AddedCallback.
     Flsp flsp;
@@ -1595,15 +1595,15 @@ public:
     char isFrozen;
     // As th07's unk_d: while it is set, the frame rate is not measured
     // and the buttons are only added to.
-    char unk_2d;
-    unsigned char unk_2e[0x2];
+    char skipFpsMeasure;
+    unsigned char pad_2e[0x2];
     int difficulty;
     // 1 << difficulty, or 0xf from Extra on, as th07's.
     int difficultyMask;
     // OnDraw returns 3 while it is set; OnUpdate returns 4 while it is 2
     // and counts unk_3c up while it is otherwise set.
-    int unk_38;
-    int unk_3c;
+    int loadingThreadState;
+    int loadingFrames;
     Catk catks[0xde];
     // A copy of catks, as th07's savedCatks.
     Catk savedCatks[0xde];
@@ -1614,15 +1614,15 @@ public:
     // The score entry of the game being played: HandleNameEntry fills
     // in the rest and enters a copy. New in th08.
     Hscr hscr;
-    DWORD unk_3db94;
+    DWORD playFrames;
     // Set when the game is paused; the replay records it (as th07's).
     int pauseRequested;
     // The scene OnUpdate switches to when the result screen's mode ends,
     // or -1.
-    int unk_3db9c;
-    int unk_3dba0;
-    int unk_3dba4;
-    BYTE unk_3dba8;
+    int nextScene;
+    int humanFrames;
+    int humanRateFrames;
+    BYTE powerItemCombo;
     // As th07's: the shot type is character + shotType.
     BYTE character;
     BYTE shotType;
@@ -1632,42 +1632,42 @@ public:
     {
         // Bit 2: the speed is measured; 3: it is shown, as th07's
         // unk_93d8.
-        DWORD unk_3dbac;
+        DWORD stateFlags;
         struct
         {
-            unsigned int unk_3dbac_0 : 2;
+            unsigned int unusedBits3dbac_0 : 2;
             // Set while neither paused nor in the continue menu, as
             // th07's isPlaying.
             unsigned int isPlaying : 1;
             // IsReplay, as th07's isInReplay.
             unsigned int isReplay : 1;
-            unsigned int unk_3dbac_4 : 1;
+            unsigned int isGameCleared : 1;
             // The result screen's mode: OnDraw returns 3 in mode 1, and
             // AddedCallback turns 2 and 3 into 1.
-            unsigned int unk_3dbac_5 : 2;
+            unsigned int stageEndState : 2;
             // Gui::DrawHud draws GuiImpl::unk_5484 with the lives and
             // bombs while it is 1 and g_SpellCard.Func4178a0().
-            unsigned int unk_3dbac_7 : 2;
-            unsigned int unk_3dbac_9 : 1;
+            unsigned int lastSpellState : 2;
+            unsigned int stageClearStarted : 1;
             // The screen shakes hold still while it is set.
-            unsigned int unk_3dbac_10 : 1;
+            unsigned int deathbombFreeze : 1;
             // The clear level GuiImpl::StartMsgScript picked for the
             // ending dialogue: AdvanceStage goes to 6B unless it is 0.
             unsigned int clearLevel : 2;
-            unsigned int unk_3dbac_13 : 1;
+            unsigned int bossHitAnywhere : 1;
             // Set while a spell card is practised (IsInSpellCardPractice).
             unsigned int isInSpellCardPractice : 1;
             // AnyShotHasExtraOpen, Func43c2c5 and AllShotsHaveExtraOpen
             // as App::AddedCallback found them.
             unsigned int anyShotHasExtraOpen : 1;
-            unsigned int unk_3dbac_16 : 1;
+            unsigned int anyShotHasClearedFinalA : 1;
             unsigned int allShotsHaveExtraOpen : 1;
-            unsigned int unk_3dbac_18 : 14;
+            unsigned int unusedBits3dbac_18 : 14;
         };
     };
     // The spell card being practised, kept in the replay when bit 14 of
     // unk_3dbac is set.
-    short unk_3dbb0;
+    short practiceSpellCard;
     // While it is set, PresentFrame keeps redrawFrames and fade outs
     // hold still. As th07's isPaused.
     BYTE isPaused;
@@ -1678,24 +1678,24 @@ public:
     BYTE demoIndex;
     // 2 while a replay is fast-forwarded, as th07's.
     BYTE replayMenuChoice;
-    unsigned char unk_3dbb6[0x2];
+    unsigned char pad_3dbb6[0x2];
     // The frames a demo has played, as th07's.
     int demoFrames;
     // The replay file to play, as th07's.
     char replayFile[0x200];
     // The random seed each replay stage starts with, as th07's.
     WORD rngSeed;
-    unsigned char unk_3ddbe[0x2];
+    unsigned char pad_3ddbe[0x2];
     // The screen shakes end at once while this is 1 or less, as th07's.
     int stageFrames;
     // The stage being played, from 0.
     int stage;
     // The replay stage being recorded.
-    int unk_3ddc8;
-    unsigned char unk_3ddcc[0x4];
+    int replayStage;
+    unsigned char pad_3ddcc[0x4];
     // ORed into the shot type's stage clear flags when a game ends.
-    WORD unk_3ddd0;
-    unsigned char unk_3ddd2[0x2];
+    WORD stageBit;
+    unsigned char pad_3ddd2[0x2];
     // The play area: x, y, width and height, and a second rectangle set
     // with it by SetPlayArea, as th07's.
     float arena[4];
@@ -1703,8 +1703,8 @@ public:
     // As th07's checksumValue: SetBombs sets it.
     float checksumValue;
     // The bounds of stats->unk_22.
-    short unk_3ddf8;
-    short unk_3ddfa;
+    short gaugeMin;
+    short gaugeMax;
     // Where AsciiText::DrawPopups starts tinting the stats->unk_22
     // gauge: blue at or below unk22Low1 (light blue at unk22Low2), red at
     // or above unk22High1 (light red at unk22High2).
@@ -1716,19 +1716,19 @@ public:
     int progressFrames;
     // Counts the frames that slowdown may skip, as th07's.
     DWORD slowdownCounter;
-    unsigned char unk_3de0c[0x4];
+    unsigned char pad_3de0c[0x4];
     // Cleared by LoadingThread.
-    int unk_3de10;
+    int gaugeFramesTotal;
     // Frames counted for the stage clear screen's "over 80%" lines:
     // all of them, and the two kinds counted.
-    int unk_3de14;
-    int unk_3de18;
-    int unk_3de1c;
-    int unk_3de20;
-    int unk_3de24;
+    int gaugeFrames;
+    int highGaugeFramesTotal;
+    int lowGaugeFramesTotal;
+    int highGaugeFrames;
+    int lowGaugeFrames;
     // Set when the stage music is to start: OnUpdate stops the loading
     // screen and, while it is 1, plays the stage's music.
-    int unk_3de28;
+    int pendingMusicStart;
     // A replay stage keeps it. The rank, as th07's: SetRankForDifficulty
     // sets it and its bounds from g_Ranks.
     int rank;

@@ -1050,18 +1050,18 @@ int EnemyManager::OnUpdate(EnemyManager *mgr)
         g_GameManager.progressFrames++;
         if (mgr->frameTimer.AsFrames() >= 16)
         {
-            g_GameManager.unk_3dba4++;
+            g_GameManager.humanRateFrames++;
             if (!g_Player.focused)
             {
-                g_GameManager.unk_3dba0++;
+                g_GameManager.humanFrames++;
             }
         }
     }
-    if (g_GameManager.unk_3dbac_10)
+    if (g_GameManager.deathbombFreeze)
     {
         return 1;
     }
-    if (g_GameManager.unk_3dbac_13 && mgr->bosses[0] != NULL)
+    if (g_GameManager.bossHitAnywhere && mgr->bosses[0] != NULL)
     {
         D3DXVECTOR3 size(384.0f, 448.0f, 0.0f);
         D3DXVECTOR3 center(192.0f, 224.0f, 0.0f);
@@ -1857,12 +1857,12 @@ int EnemyManager::OnDraw2(EnemyManager *mgr)
 {
     int result;
 
-    if (g_GameManager.unk_3dbac_10)
+    if (g_GameManager.deathbombFreeze)
     {
         g_SpriteEngine->SetColorModulation(0xfff01010);
     }
     result = EnemyManager::DrawEnemies(mgr, 2, 4);
-    if (g_GameManager.unk_3dbac_10)
+    if (g_GameManager.deathbombFreeze)
     {
         g_SpriteEngine->ResetColorModulation();
     }
@@ -1889,7 +1889,7 @@ int EnemyManager::AddedCallback(EnemyManager *mgr)
     }
     if (!IsRestarting())
     {
-        if (!g_GameManager.isInSpellCardPractice || g_GameManager.unk_3dbb0 < 0xcd)
+        if (!g_GameManager.isInSpellCardPractice || g_GameManager.practiceSpellCard < 0xcd)
         {
             mgr->stageAnm = g_SpriteEngine->PreloadAnm(8, g_EnemyAnmPaths[g_GameManager.stage]);
             if (mgr->stageAnm == NULL)
@@ -1899,7 +1899,7 @@ int EnemyManager::AddedCallback(EnemyManager *mgr)
         }
         else
         {
-            mgr->stageAnm = g_SpriteEngine->PreloadAnm(8, g_EnemyAnmPaths[g_GameManager.unk_3dbb0 - 0xc4]);
+            mgr->stageAnm = g_SpriteEngine->PreloadAnm(8, g_EnemyAnmPaths[g_GameManager.practiceSpellCard - 0xc4]);
             if (mgr->stageAnm == NULL)
             {
                 return -1;
@@ -1920,9 +1920,9 @@ int EnemyManager::AddedCallback(EnemyManager *mgr)
                 return -1;
             }
         }
-        else if (g_GameManager.unk_3dbb0 >= 0xcd)
+        else if (g_GameManager.practiceSpellCard >= 0xcd)
         {
-            if (g_EnemyScripts.Load(g_EclPaths[g_GameManager.unk_3dbb0 - 0xba]) != 0)
+            if (g_EnemyScripts.Load(g_EclPaths[g_GameManager.practiceSpellCard - 0xba]) != 0)
             {
                 return -1;
             }

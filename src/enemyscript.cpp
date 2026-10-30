@@ -861,13 +861,13 @@ loop:
             g_SoundPlayer.QueueSoundPanned(INT_ARG(0), enemy->pos.x);
             break;
         case 129:
-            if (!g_GameManager.isInSpellCardPractice || !g_GameManager.unk_3dbac_7)
+            if (!g_GameManager.isInSpellCardPractice || !g_GameManager.lastSpellState)
             {
                 enemy->deathMode = *(BYTE *)instr->args;
             }
             break;
         case 130:
-            if (!g_GameManager.isInSpellCardPractice || !g_GameManager.unk_3dbac_7)
+            if (!g_GameManager.isInSpellCardPractice || !g_GameManager.lastSpellState)
             {
                 enemy->deathSub = *(short *)instr->args;
             }
@@ -921,7 +921,7 @@ loop:
             enemy->callbackTimer = INT_ARG(0);
             break;
         case 133:
-            if (!g_GameManager.isInSpellCardPractice || !g_GameManager.unk_3dbac_7)
+            if (!g_GameManager.isInSpellCardPractice || !g_GameManager.lastSpellState)
             {
                 enemy->lifeCallbackLife[INT_ARG(0)] = INT_ARG(1);
                 enemy->lifeCallbackSub[INT_ARG(0)] = INT_ARG(2);
@@ -932,7 +932,7 @@ loop:
             }
             break;
         case 134:
-            if (!g_GameManager.isInSpellCardPractice || !g_GameManager.unk_3dbac_7)
+            if (!g_GameManager.isInSpellCardPractice || !g_GameManager.lastSpellState)
             {
                 enemy->timerCallbackTime = INT_ARG(0);
                 enemy->timerCallbackSub = INT_ARG(1);
@@ -1188,19 +1188,19 @@ loop:
             enemy->intangibleDuringBomb = INT_ARG(0);
             break;
         case 176:
-            g_GameManager.unk_3dbac_7 = 1;
-            g_GameManager.unk_3dbac_13 = 0;
+            g_GameManager.lastSpellState = 1;
+            g_GameManager.bossHitAnywhere = 0;
             if (!g_GameManager.isInSpellCardPractice)
             {
                 if (g_GameManager.stage == 6 || g_GameManager.stage == 7)
                 {
-                    g_GameManager.unk_3dbac_13 = 1;
+                    g_GameManager.bossHitAnywhere = 1;
                 }
             }
-            else if ((g_GameManager.unk_3dbb0 >= 0x8f && g_GameManager.unk_3dbb0 <= 0x92) ||
-                     (g_GameManager.unk_3dbb0 >= 0xab && g_GameManager.unk_3dbb0 <= 0xbe))
+            else if ((g_GameManager.practiceSpellCard >= 0x8f && g_GameManager.practiceSpellCard <= 0x92) ||
+                     (g_GameManager.practiceSpellCard >= 0xab && g_GameManager.practiceSpellCard <= 0xbe))
             {
-                g_GameManager.unk_3dbac_13 = 1;
+                g_GameManager.bossHitAnywhere = 1;
             }
             enemy->haltedByBomb = 1;
             break;
@@ -3255,7 +3255,7 @@ void SetGameSpeed(Enemy *enemy, EnemyScriptInstr *instr)
 
 void GetPracticeCard(Enemy *enemy, EnemyScriptInstr *instr)
 {
-    enemy->currentCtx->vars.ints[0] = g_GameManager.unk_3dbb0;
+    enemy->currentCtx->vars.ints[0] = g_GameManager.practiceSpellCard;
 }
 
 void StartResurrection(Enemy *enemy, EnemyScriptInstr *instr)

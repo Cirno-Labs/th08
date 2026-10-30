@@ -29,7 +29,7 @@ int Stage::OnUpdate(Stage *stage)
     {
         return 1;
     }
-    if (g_GameManager.unk_3dbac_10)
+    if (g_GameManager.deathbombFreeze)
     {
         return 1;
     }
