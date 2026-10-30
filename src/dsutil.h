@@ -213,5 +213,5 @@ public:
     // Not in th06: the event the buffer signals.
     HANDLE hNotifyEvent;
     // Set by BgmNotificationProc while it fills the buffer.
-    int unk_74;
+    int isBuffering;
 };

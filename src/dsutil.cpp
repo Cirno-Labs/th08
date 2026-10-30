@@ -149,7 +149,7 @@ HRESULT CSoundManager::CreateStreaming(CStreamingSound **ppStreamingSound, LPTST
     (*ppStreamingSound)->dsbd = dsbd;
     (*ppStreamingSound)->manager = this;
     (*ppStreamingSound)->hNotifyEvent = hNotifyEvent;
-    (*ppStreamingSound)->unk_74 = 0;
+    (*ppStreamingSound)->isBuffering = 0;
 
     return S_OK;
 }
@@ -213,7 +213,7 @@ HRESULT CSoundManager::CreateStreamingFromMemory(CStreamingSound **ppStreamingSo
     (*ppStreamingSound)->dsbd = dsbd;
     (*ppStreamingSound)->manager = this;
     (*ppStreamingSound)->hNotifyEvent = hNotifyEvent;
-    (*ppStreamingSound)->unk_74 = 0;
+    (*ppStreamingSound)->isBuffering = 0;
     DebugPrint("Success \r\n");
 
     return S_OK;
