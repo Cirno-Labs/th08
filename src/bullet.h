@@ -245,7 +245,7 @@ public:
     // then the effects of EffectManager::OnDraw3, as th07's; tinted
     // while g_GameManager.deathbombFreeze is set. Returns 1.
     static int OnDraw(BulletManager *mgr);
-    // Loads etama.anm (slot 6) into etamaAnm and g_EtamaAnm, or takes the
+    // Loads etama.anm (slot 6) into etamaAnm and g_EffectManager.anm, or takes the
     // loaded one while the scene keeps its files; starts each bullet
     // type's five sprite scripts and sizes its hitbox and draw list by
     // its sprite's height and script, as th07's; then resets
@@ -277,7 +277,7 @@ public:
     Bullet *nextBullet;
     // The item type cleared bullets turn into.
     int clearItemType;
-    // A copy of g_EtamaAnm, which the items also run their scripts from.
+    // A copy of g_EffectManager.anm, which the items also run their scripts from.
     AnmLoaded *etamaAnm;
 };
 ASSERT_SIZE(BulletManager, 0x6ba578);
@@ -335,9 +335,6 @@ void DrawBullet(Bullet *bullet);
 // starting one behavior in its BulletEx; some commands (sounds, sprite
 // changes, bounds delays, firing) go on to the next.
 void RunBulletCommands(Bullet *bullet);
-// etama.anm (slot 6), which BulletManager's added callback loads.
-extern AnmLoaded *g_EtamaAnm;
-
 // BulletManager's statically allocated chain elements.
 extern ChainElem g_BulletCalcChain;
 extern ChainElem g_BulletDrawChain;

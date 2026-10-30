@@ -2492,8 +2492,6 @@ address,size,name,symbol
 0x004c8704,,g_FileModes,?g_FileModes@@3PAPADA
 0x004cce00,,g_AsciiDrawChain,?g_AsciiDrawChain@@3UChainElem@@A
 0x004cce20,,g_AsciiText,?g_AsciiText@@3VAsciiText@@A
-0x004e3d24,,g_ScriptFunc0Float,?g_ScriptFunc0Float@@3MA
-0x004e3d28,,g_ScriptFunc0Int,?g_ScriptFunc0Int@@3HA
 0x004e3fd0,,g_AsciiCalcChain,?g_AsciiCalcChain@@3UChainElem@@A
 0x004e3ff0,,g_AsciiDrawChain2,?g_AsciiDrawChain2@@3UChainElem@@A
 0x004e4010,,g_StageDrawChain,?g_StageDrawChain@@3UChainElem@@A
@@ -2503,8 +2501,6 @@ address,size,name,symbol
 0x004ea670,,g_SpellCard,?g_SpellCard@@3USpellCard@@A
 0x004eccb8,,g_EnemyScripts,?g_EnemyScripts@@3VEnemyScripts@@A
 0x004ece60,,g_EffectManager,?g_EffectManager@@3VEffectManager@@A
-0x00577eb4,,g_EtamaAnm,?g_EtamaAnm@@3PAVAnmLoaded@@A
-0x00577eb8,,g_DialogueSpritesAnm,?g_DialogueSpritesAnm@@3PAVAnmLoaded@@A
 0x00577ebc,,g_EffectCalcChain,?g_EffectCalcChain@@3UChainElem@@A
 0x00577edc,,g_EffectDrawChain,?g_EffectDrawChain@@3UChainElem@@A
 0x00577f00,,g_EnemyManagerDrawChain,?g_EnemyManagerDrawChain@@3UChainElem@@A
@@ -2543,10 +2539,6 @@ address,size,name,symbol
 0x017ce758,,g_App,?g_App@@3VApp@@A
 0x017ceac0,,g_LoadingSprites,?g_LoadingSprites@@3PAVSprite@@A
 0x017d5ef8,,g_Player,?g_Player@@3VPlayer@@A
-0x018b899c,,g_OrbHomingTarget,?g_OrbHomingTarget@@3UD3DXVECTOR3@@A
-0x018b89b4,,g_EnemyAbovePlayer,?g_EnemyAbovePlayer@@3PAUEnemy@@A
-0x018b89b8,,g_HomingTargetSet,?g_HomingTargetSet@@3HA
-0x018b8a24,,g_DamagePerTimeOrb,?g_DamagePerTimeOrb@@3HA
 0x018b8a28,,g_ReplayManager,?g_ReplayManager@@3PAVReplayManager@@A
 0x018b8a2c,,g_ScreenEffectHoldFrames,?g_ScreenEffectHoldFrames@@3HA
 0x018b8a68,,g_SoundPlayer,?g_SoundPlayer@@3VSoundPlayer@@A

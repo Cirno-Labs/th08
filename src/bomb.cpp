@@ -905,7 +905,7 @@ void UpdateMarisaLastWord(Player *player)
         eff = g_EffectManager.SpawnReservedEffect(0x35, &player->pos, bomb->spawnCount % 4 + 4, 1, 0xffffffff);
         if (bomb->spawnCount & 1)
         {
-            g_EtamaAnm->StartScript(&eff->sprite, 0x5c);
+            g_EffectManager.anm->StartScript(&eff->sprite, 0x5c);
         }
         eff->segmentCount = 0x20;
         eff->waveCount = 0.0f;
@@ -1496,7 +1496,7 @@ void UpdateYukariBomb(Player *player)
         hitbox->damageInterval = 5;
         D3DXVECTOR3 velocity(1.1780972f, 1.0f, 4.0f);
         eff = g_EffectManager.SpawnReservedWithVelocity(0x24, &player->pos, &velocity, 5, 1, 0xffffffff);
-        g_EtamaAnm->StartScript(&eff->sprite, 0x59);
+        g_EffectManager.anm->StartScript(&eff->sprite, 0x59);
         bomb->parts[1].pos = player->pos;
     }
     if (bomb->timer.HasTickedTo(20))
@@ -1509,7 +1509,7 @@ void UpdateYukariBomb(Player *player)
         hitbox->damageInterval = 5;
         D3DXVECTOR3 velocity(1.5707964f, 1.0f, 4.0f);
         eff = g_EffectManager.SpawnReservedWithVelocity(0x24, &player->pos, &velocity, 6, 1, 0xffffffff);
-        g_EtamaAnm->StartScript(&eff->sprite, 0x5a);
+        g_EffectManager.anm->StartScript(&eff->sprite, 0x5a);
         bomb->parts[2].pos = player->pos;
     }
     if (bomb->timer.HasTickedTo(30))
@@ -1522,7 +1522,7 @@ void UpdateYukariBomb(Player *player)
         hitbox->damageInterval = 5;
         D3DXVECTOR3 velocity(1.9634955f, 1.0f, 4.0f);
         eff = g_EffectManager.SpawnReservedWithVelocity(0x24, &player->pos, &velocity, 7, 1, 0xffffffff);
-        g_EtamaAnm->StartScript(&eff->sprite, 0x5b);
+        g_EffectManager.anm->StartScript(&eff->sprite, 0x5b);
         bomb->parts[3].pos = player->pos;
     }
     g_SpriteEngine->StepSprites(&bomb->parts[0].sprites[0], 2);
@@ -1561,7 +1561,7 @@ void UpdateYukariLastWord(Player *player)
         hitbox->damageInterval = 5;
         D3DXVECTOR3 velocity(1.1780972f, 1.0f, 4.0f);
         eff = g_EffectManager.SpawnReservedWithVelocity(0x25, &bomb->parts[0].pos, &velocity, 5, 1, 0xffffffff);
-        g_EtamaAnm->StartScript(&eff->sprite, 0x5d);
+        g_EffectManager.anm->StartScript(&eff->sprite, 0x5d);
         bomb->parts[1].pos = player->pos;
     }
     if (bomb->timer.HasTickedTo(20))
@@ -1574,7 +1574,7 @@ void UpdateYukariLastWord(Player *player)
         hitbox->damageInterval = 5;
         D3DXVECTOR3 velocity(1.5707964f, 1.0f, 4.0f);
         eff = g_EffectManager.SpawnReservedWithVelocity(0x25, &bomb->parts[0].pos, &velocity, 6, 1, 0xffffffff);
-        g_EtamaAnm->StartScript(&eff->sprite, 0x5e);
+        g_EffectManager.anm->StartScript(&eff->sprite, 0x5e);
         bomb->parts[2].pos = player->pos;
     }
     if (bomb->timer.HasTickedTo(30))
@@ -1587,7 +1587,7 @@ void UpdateYukariLastWord(Player *player)
         hitbox->damageInterval = 5;
         D3DXVECTOR3 velocity(1.9634955f, 1.0f, 4.0f);
         eff = g_EffectManager.SpawnReservedWithVelocity(0x25, &bomb->parts[0].pos, &velocity, 7, 1, 0xffffffff);
-        g_EtamaAnm->StartScript(&eff->sprite, 0x5f);
+        g_EffectManager.anm->StartScript(&eff->sprite, 0x5f);
         bomb->parts[3].pos = player->pos;
     }
     g_SpriteEngine->StepSprites(&bomb->parts[0].sprites[0], 2);

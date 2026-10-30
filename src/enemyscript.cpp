@@ -2640,8 +2640,8 @@ void ScriptUpdateShooting(Enemy *enemy)
 
 void SetScriptFunc0Vars(Enemy *enemy, EnemyScriptInstr *instr)
 {
-    g_ScriptFunc0Int = enemy->currentCtx->vars.ints[0];
-    g_ScriptFunc0Float = enemy->currentCtx->vars.floats[0];
+    g_AsciiText.ringAlpha = enemy->currentCtx->vars.ints[0];
+    g_AsciiText.ringRadius = enemy->currentCtx->vars.floats[0];
 }
 
 void FlashScreen60(Enemy *enemy, EnemyScriptInstr *instr)
@@ -2684,7 +2684,7 @@ void SpawnTwinEffects38(Enemy *enemy, EnemyScriptInstr *instr)
 
     effect = g_EffectManager.SpawnReservedEffect(0x38, &enemy->pos, 9, 1, 0xffffffff);
     effect = g_EffectManager.SpawnReservedEffect(0x38, &enemy->pos, 10, 1, 0xffffffff);
-    g_EtamaAnm->StartScript(&effect->sprite, 0x61);
+    g_EffectManager.anm->StartScript(&effect->sprite, 0x61);
     g_Stage.spellCardDrawCallback = DrawTwinEffects;
 }
 
@@ -2838,7 +2838,7 @@ void SpawnTwinEffects41(Enemy *enemy, EnemyScriptInstr *instr)
 
     effect = g_EffectManager.SpawnReservedEffect(0x41, &enemy->pos, 9, 1, 0xffffffff);
     effect = g_EffectManager.SpawnReservedEffect(0x41, &enemy->pos, 10, 1, 0xffffffff);
-    g_EtamaAnm->StartScript(&effect->sprite, 0x63);
+    g_EffectManager.anm->StartScript(&effect->sprite, 0x63);
     g_Stage.spellCardDrawCallback = DrawTwinEffects;
 }
 
@@ -2918,7 +2918,7 @@ void SpawnTwinEffects3A(Enemy *enemy, EnemyScriptInstr *instr)
 
     effect = g_EffectManager.SpawnReservedEffect(0x3a, &enemy->pos, 9, 1, 0xffffffff);
     effect = g_EffectManager.SpawnReservedEffect(0x3a, &enemy->pos, 10, 1, 0xffffffff);
-    g_EtamaAnm->StartScript(&effect->sprite, 0x65);
+    g_EffectManager.anm->StartScript(&effect->sprite, 0x65);
     g_Stage.spellCardDrawCallback = DrawTwinEffects;
 }
 

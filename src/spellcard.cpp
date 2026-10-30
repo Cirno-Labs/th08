@@ -309,7 +309,7 @@ void SpellCard::Start(int card, char *name, int face, DWORD bonus, Enemy *enemy,
     g_Stage.StartSpellCard();
     for (i = 0; i < g_Stage.dialogueSpriteCount; i++)
     {
-        g_DialogueSpritesAnm->StartScript(&g_Stage.dialogueSprites[i], i + g_Stage.dialogueScriptOffset);
+        g_EffectManager.stageAnm->StartScript(&g_Stage.dialogueSprites[i], i + g_Stage.dialogueScriptOffset);
     }
     g_Stage.spellCardDrawCallback = NULL;
     this->enemy->ResetRankSpeeds();
@@ -516,7 +516,7 @@ void SpellCard::End()
     int captured;
     int bonus;
 
-    g_ScriptFunc0Int = 0;
+    g_AsciiText.ringAlpha = 0;
     if (this->active)
     {
         captured = FALSE;
@@ -774,7 +774,7 @@ int SpellCard::Update()
         }
         else if (this->effect->sprite.spriteIndex == 0xdd)
         {
-            g_EtamaAnm->SetSprite(&this->effect->sprite, 0xde);
+            g_EffectManager.anm->SetSprite(&this->effect->sprite, 0xde);
             this->effect->sprite.scaleTween.z = 4.0f;
             this->effect->sprite.scaleY = 4.0f;
         }

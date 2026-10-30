@@ -832,7 +832,7 @@ void GameManager::LoadingThread(GameManager *arg)
     g_AsciiText.Initialize();
     g_AsciiText.StartScripts();
     g_GameManager.skipFpsMeasure = 0;
-    g_ScriptFunc0Int = 0;
+    g_AsciiText.ringAlpha = 0;
     DrawFps(0);
     if (g_GameManager.stateFlags >> 3 & 1)
     {
@@ -983,7 +983,7 @@ void IncrementStatCounter(DWORD *count, DWORD max)
 int GameManager::DeletedCallback(GameManager *mgr)
 {
     g_ScreenEffectHoldFrames = 1;
-    g_ScriptFunc0Int = 0;
+    g_AsciiText.ringAlpha = 0;
     if (g_App.scene != 3 && g_App.scene != 11 && g_App.scene != 12)
     {
         g_App.freesResources = 1;

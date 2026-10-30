@@ -454,7 +454,7 @@ public:
     // enemy's `size` box at `pos`, as th07's: none until stateTimer has
     // ticked. Bullets deal their damage (a fifth during a bomb), at most
     // 50 a frame, which also goes to `*damageTaken`; every
-    // g_DamagePerTimeOrb of it there spawns a time orb at bullets whose
+    // damagePerTimeOrb of it there spawns a time orb at bullets whose
     // shot has side below 0 while stats->gauge is at gaugeLow1. Then
     // every bombHitboxes box or circle (turned by its angle) that meets
     // it on its damage frames, up to its maxDamage; during a bomb that

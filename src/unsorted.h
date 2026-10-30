@@ -412,12 +412,6 @@ void RemoveGameManagerChain();
 
 // Counted down by App::OnUpdate every frame while nonzero.
 extern int g_ScreenEffectHoldFrames;
-// Cleared by GameManager::DeletedCallback.
-extern int g_ScriptFunc0Int;
-// Set with g_ScriptFunc0Int by SetScriptFunc0Vars.
-extern float g_ScriptFunc0Float;
-// The damage an enemy takes per time orb Player::CalcDamage spawns.
-extern int g_DamagePerTimeOrb;
 // Copies the stage's portrait into the dialogue texture by
 // g_GameManager.stage and, in a spell card practice, the card (0x438046).
 void CopyStageSprite();
@@ -2502,9 +2496,6 @@ extern int g_TimeOrbsNeeded[][4];
 int GetSpellCardDifficulty(int card);
 // Whether spell card `card` is one of g_ListedSpellCards.
 int IsListedSpellCard(int card);
-// Read by SpellCard::Start to start the stage's dialogue sprites;
-// nothing sets it.
-extern AnmLoaded *g_DialogueSpritesAnm;
 // 43 spell cards (the 3 or 4 difficulties of several bosses' cards, and
 // 171 to 190), and how many.
 extern int g_ListedSpellCards[];

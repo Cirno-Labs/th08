@@ -78,7 +78,7 @@ void EnemyManager::Initialize()
     enemy->shooter.sound = 7;
     enemy->shooter.bulletSound = 0x19;
     enemy->minShootDistSq = 1024.0f;
-    enemy->timeOrbDamage = g_DamagePerTimeOrb;
+    enemy->timeOrbDamage = g_Player.damagePerTimeOrb;
 }
 
 EnemyManager::EnemyManager()
@@ -575,9 +575,9 @@ void Enemy::Despawn()
     }
     this->timerCallbackTime = -1;
     this->FreeThreads();
-    if (g_EnemyAbovePlayer == this)
+    if (g_Player.homingEnemy == this)
     {
-        g_EnemyAbovePlayer = NULL;
+        g_Player.homingEnemy = NULL;
     }
 }
 
@@ -1087,9 +1087,9 @@ int EnemyManager::OnUpdate(EnemyManager *mgr)
     {
         if (!enemy->active)
         {
-            if (g_EnemyAbovePlayer == enemy)
+            if (g_Player.homingEnemy == enemy)
             {
-                g_EnemyAbovePlayer = NULL;
+                g_Player.homingEnemy = NULL;
             }
             continue;
         }
@@ -1319,25 +1319,25 @@ int EnemyManager::OnUpdate(EnemyManager *mgr)
                 }
                 if (enemy->isBoss)
                 {
-                    targetDiff = g_OrbHomingTarget - g_Player.pos;
+                    targetDiff = g_Player.orbHomingTarget - g_Player.pos;
                     toward = enemy->absPos - g_Player.pos;
-                    if (!g_HomingTargetSet || fabsf(targetDiff.x) > fabsf(toward.x))
+                    if (!g_Player.homingTargetSet || fabsf(targetDiff.x) > fabsf(toward.x))
                     {
-                        g_OrbHomingTarget = enemy->absPos;
+                        g_Player.orbHomingTarget = enemy->absPos;
                     }
-                    g_HomingTargetSet = 1;
+                    g_Player.homingTargetSet = 1;
                 }
-                if (!g_HomingTargetSet)
+                if (!g_Player.homingTargetSet)
                 {
-                    if (g_OrbHomingTarget[1] < enemy->absPos[1])
+                    if (g_Player.orbHomingTarget[1] < enemy->absPos[1])
                     {
-                        g_OrbHomingTarget = enemy->absPos;
+                        g_Player.orbHomingTarget = enemy->absPos;
                     }
                 }
                 if (fabsf(enemy->absPos.x - g_Player.pos.x) < 64.0f && !enemy->IsFollower() &&
-                    (g_EnemyAbovePlayer == NULL || g_EnemyAbovePlayer->pos.y > enemy->absPos.y))
+                    (g_Player.homingEnemy == NULL || g_Player.homingEnemy->pos.y > enemy->absPos.y))
                 {
-                    g_EnemyAbovePlayer = enemy;
+                    g_Player.homingEnemy = enemy;
                 }
             }
         }

@@ -10,6 +10,7 @@
 #include "ascii.h"
 #include "bullet.h"
 #include "chain.h"
+#include "effect.h"
 #include "player.h"
 #include "screeneffect.h"
 #include "sprite.h"
@@ -1363,7 +1364,7 @@ void AsciiText::DrawPopups()
         {
             DrawColorRect(rect, tint);
         }
-        g_EtamaAnm->StartScript(&this->ring, 0x69);
+        g_EffectManager.anm->StartScript(&this->ring, 0x69);
         this->ring.scaleX = this->ringRadius / 63.0f;
         this->ring.scaleY = this->ring.scaleX;
         this->ring.pos = g_Player.pos;

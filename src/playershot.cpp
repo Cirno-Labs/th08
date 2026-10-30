@@ -1319,13 +1319,13 @@ int Player::CalcDamage(D3DXVECTOR3 *pos, D3DXVECTOR3 *size, int *damageTaken, in
         {
             damage2 += (cur->damage / 5 != 0) ? cur->damage / 5 : 1;
         }
-        while (*damageTaken >= g_DamagePerTimeOrb)
+        while (*damageTaken >= g_Player.damagePerTimeOrb)
         {
             if (g_GameManager.IsGaugeAtLow1() && cur->shot->side < 0)
             {
                 g_ItemManager.SpawnItem(&cur->pos, 7, 3);
             }
-            *damageTaken -= g_DamagePerTimeOrb;
+            *damageTaken -= g_Player.damagePerTimeOrb;
         }
         if (cur->type != 4 && cur->type != 5 && cur->type != 6)
         {

@@ -1334,7 +1334,7 @@ int BulletManager::AddedCallback(BulletManager *mgr)
 
     if (IsLoadingResources())
     {
-        mgr->etamaAnm = g_EtamaAnm = g_SpriteEngine->PreloadAnm(6, "etama.anm");
+        mgr->etamaAnm = g_EffectManager.anm = g_SpriteEngine->PreloadAnm(6, "etama.anm");
         if (mgr->etamaAnm == NULL)
         {
             return -1;

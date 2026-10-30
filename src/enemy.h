@@ -338,8 +338,8 @@ struct Enemy
     int score;
     // Its index in EnemyManager::enemies.
     int index;
-    // g_DamagePerTimeOrb in EnemyManager's template; Player::AddedCallback
-    // sets the template's from Player::damagePerTimeOrb.
+    // Player::damagePerTimeOrb in EnemyManager's template, which
+    // Player::AddedCallback sets.
     int timeOrbDamage;
     Timer callbackTimer;
     D3DCOLOR color;
@@ -697,7 +697,7 @@ void ScriptMoveAngleTimed(Enemy *enemy, EnemyScriptInstr *instr, float angle);
 // turned back only near the top and bottom bounds (0x4224a0).
 void ScriptMoveRandom2(Enemy *enemy, EnemyScriptInstr *instr);
 
-// Script function 0: sets g_ScriptFunc0Int and g_ScriptFunc0Float from
+// Script function 0: sets g_AsciiText.ringAlpha and g_AsciiText.ringRadius from
 // the first int and float variables (0x423390).
 void SetScriptFunc0Vars(Enemy *enemy, EnemyScriptInstr *instr);
 
@@ -950,13 +950,6 @@ ASSERT_SIZE(EnemyManager, 0x9dcf10);
 extern EnemyManager g_EnemyManager;
 // What the enemies with item -1 drop, in turn, as th07's.
 extern BYTE g_EnemyItemDrops[0x20];
-// Cleared when this enemy despawns.
-extern Enemy *g_EnemyAbovePlayer;
-// Where the player's homing shots go, as th07's Player::orbHomingTarget:
-// the first boss, else the lowest enemy shot at; g_HomingTargetSet once
-// a boss is shot at.
-extern D3DXVECTOR3 g_OrbHomingTarget;
-extern int g_HomingTargetSet;
 extern ChainElem g_EnemyManagerCalcChain;
 extern ChainElem g_EnemyManagerDrawChain;
 extern ChainElem g_EnemyManagerDrawChain2;
