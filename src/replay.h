@@ -14,7 +14,7 @@
 struct ReplayFrameWithSeed
 {
     WORD input;
-    WORD unk_2;
+    WORD events;
     WORD seed;
 };
 

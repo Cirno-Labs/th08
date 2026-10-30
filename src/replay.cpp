@@ -443,7 +443,7 @@ int ReplayManager::RecordAddedCallback(ReplayManager *replay)
     replay->seedCursor = (ReplayFrameWithSeed *)replay->cursor;
     replay->extraCursor = extras;
     *replay->cursor = 0;
-    replay->seedCursor->unk_2 = 0;
+    replay->seedCursor->events = 0;
     replay->seedCursor->seed = g_Rng.GetSeed();
     replay->unk_04 = 0;
     replay->clearedAtRecordStart = 0;
