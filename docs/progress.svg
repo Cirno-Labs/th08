@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">90.41% (1009)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">6.36% (71)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">90.50% (1010)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">6.27% (70)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="675.38" height="6" x="0" y="0" class="named"/>
-<rect width="24.10" height="6" x="675.38" y="0" class="decompiled"/>
-<rect width="47.52" height="6" x="699.48" y="0" class="todo"/>
+<rect width="676.05" height="6" x="0" y="0" class="named"/>
+<rect width="24.10" height="6" x="676.05" y="0" class="decompiled"/>
+<rect width="46.85" height="6" x="700.15" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -522,7 +522,7 @@
 <rect width="12" height="12" x="15" y="135" class="named"><title>0x004322b0 AccelerateAlongVelocity (213 bytes)</title></rect>
 <rect width="12" height="12" x="30" y="135" class="named"><title>0x00432390 TurnAndAccelerate (197 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="135" class="named"><title>0x00432460 StopTurnAndRestart (313 bytes)</title></rect>
-<rect width="12" height="12" x="60" y="135" class="todo"><title>0x004325a0 StopTurnToAngle (306 bytes)</title></rect>
+<rect width="12" height="12" x="60" y="135" class="named"><title>0x004325a0 StopTurnToAngle (306 bytes)</title></rect>
 <rect width="12" height="12" x="75" y="135" class="todo"><title>0x004326e0 StopTurnToPlayer (336 bytes)</title></rect>
 <rect width="12" height="12" x="90" y="135" class="todo"><title>0x00432830 BounceOffWalls (436 bytes)</title></rect>
 <rect width="12" height="12" x="105" y="135" class="todo"><title>0x004329f0 WrapAroundX (167 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">84.33%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">14.09%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">84.40%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">14.02%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="629.98" height="6" x="0" y="0" class="named"/>
-<rect width="11.78" height="6" x="629.98" y="0" class="decompiled"/>
-<rect width="105.24" height="6" x="641.76" y="0" class="todo"/>
+<rect width="630.47" height="6" x="0" y="0" class="named"/>
+<rect width="11.78" height="6" x="630.47" y="0" class="decompiled"/>
+<rect width="104.75" height="6" x="642.25" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -1517,7 +1517,7 @@
 <rect width="10.56" height="9.93" x="629.67" y="129.42" class="named"><title>0x00404750 PauseMenu::DrawPauseMenu (309 bytes)</title></rect>
 <rect width="10.52" height="9.93" x="643.23" y="129.42" class="decompiled"><title>0x0043c35f GameManager::Func43c35f (308 bytes)</title></rect>
 <rect width="10.47" height="9.93" x="656.75" y="129.42" class="named"><title>0x00467040 SpriteEngine::CopyTextureRect (307 bytes)</title></rect>
-<rect width="10.43" height="9.93" x="670.22" y="129.42" class="todo"><title>0x004325a0 StopTurnToAngle (306 bytes)</title></rect>
+<rect width="10.43" height="9.93" x="670.22" y="129.42" class="named"><title>0x004325a0 StopTurnToAngle (306 bytes)</title></rect>
 <rect width="10.30" height="9.93" x="683.65" y="129.42" class="named"><title>0x00442390 WindowProc (303 bytes)</title></rect>
 <rect width="10.30" height="9.93" x="696.94" y="129.42" class="named"><title>0x0044a470 Player::CheckGraze (303 bytes)</title></rect>
 <rect width="10.30" height="9.93" x="710.24" y="129.42" class="named"><title>0x0044ea40 UpdateFrontOption (303 bytes)</title></rect>
