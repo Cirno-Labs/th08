@@ -391,12 +391,18 @@ struct VertexTex1DiffuseXyzrwh
     } uv;
 };
 
-// A vertex with a transformed position and texture coordinates.
+// A vertex with a transformed position and texture coordinates. uv is
+// no D3DXVECTOR2: g_Quad's constructor is VertexTex1DiffuseXyzrwh's
+// (0x40b580), which constructs only pos.
 struct VertexTex1Xyzrwh
 {
     D3DXVECTOR3 pos;
     float w;
-    D3DXVECTOR2 uv;
+    struct
+    {
+        float x;
+        float y;
+    } uv;
 };
 
 // A vertex with a position and texture coordinates.
@@ -406,12 +412,17 @@ struct VertexTex1Xyz
     D3DXVECTOR2 uv;
 };
 
-// A vertex with a position, a color and texture coordinates.
+// A vertex with a position, a color and texture coordinates. uv is no
+// D3DXVECTOR2, as in VertexTex1Xyzrwh.
 struct VertexTex1DiffuseXyz
 {
     D3DXVECTOR3 pos;
     D3DCOLOR diffuse;
-    D3DXVECTOR2 uv;
+    struct
+    {
+        float x;
+        float y;
+    } uv;
 };
 
 // A vertex with a transformed position and a color, as

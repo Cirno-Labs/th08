@@ -109,7 +109,7 @@ address,size,name,symbol
 0x0040b4c0,58,D3DXVec3Length,?D3DXVec3Length@@YIMPBUD3DXVECTOR3@@@Z
 0x0040b500,49,D3DXVec3LengthSq,?D3DXVec3LengthSq@@YIMPBUD3DXVECTOR3@@@Z
 0x0040b540,54,D3DXVec3Dot,?D3DXVec3Dot@@YIMPBUD3DXVECTOR3@@0@Z
-0x0040b580,22,VertexTex1DiffuseXyzrwh::VertexTex1DiffuseXyzrwh,??0VertexTex1DiffuseXyzrwh@@QAE@XZ
+0x0040b580,22,VertexTex1DiffuseXyzrwh::VertexTex1DiffuseXyzrwh,??0VertexTex1DiffuseXyzrwh@@QAE@XZ ??0VertexTex1Xyzrwh@@QAE@XZ ??0VertexTex1DiffuseXyz@@QAE@XZ
 0x0040b5a0,292,Stage::SetupFixedCamera,?SetupFixedCamera@Stage@@QAEXXZ
 0x0040b6d0,283,Stage::SetupCamera,?SetupCamera@Stage@@QAEXXZ
 0x0040b7f0,132,D3DXVec3Cross,?D3DXVec3Cross@@YIPAUD3DXVECTOR3@@PAU1@PBU1@1@Z
