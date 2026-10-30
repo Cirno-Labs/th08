@@ -33,17 +33,24 @@ struct EnemyScriptInstr
     EnemyScriptArg args[1];
 };
 
+// The arguments a subroutine call passes (th07's ints3 and floats3).
+struct EnemyScriptCallArgs
+{
+    int ints[4];
+    float floats[4];
+};
+
 // An enemy script's variables, as th07's, by operand number: ints
 // 10000 to 10007, floats 10016 to 10023, ints2 10036 to 10039, floats2
-// 10094 and 10095, ints3 10053 to 10056, floats3 10057 to 10060.
+// 10094 and 10095, then the call's arguments: ints 10053 to 10056 and
+// floats 10057 to 10060.
 struct EnemyScriptVars
 {
     int ints[8];
     float floats[8];
     int ints2[4];
     float floats2[2];
-    int ints3[4];
-    float floats3[4];
+    EnemyScriptCallArgs args;
 };
 ASSERT_SIZE(EnemyScriptVars, 0x78);
 
@@ -221,12 +228,15 @@ struct Enemy
     EnemyScriptState savedCtx[16];
     // The context the script runs in: ctx, or one of savedCtx.
     EnemyScriptState *currentCtx;
-    int unk_2ca4;
+    // Where calls save their caller's context: savedCtx, or (on another
+    // context set) a buffer of unk_3384.
+    EnemyScriptState *callStack;
     // Variables of the enemy itself, which all its subroutines share:
     // ints 10008 to 10015 and floats 10024 to 10031. New in th08.
     int enemyInts[8];
     float enemyFloats[8];
-    unsigned char unk_2ce8[0x2];
+    // stackDepth to go back to as ScriptReturn leaves a context set.
+    short savedStackDepth;
     short stackDepth;
     short unk_2cec;
     short deathSub;
@@ -332,7 +342,8 @@ struct Enemy
             DWORD unk_3324_23 : 1;
             DWORD onScreen : 1;
             DWORD rotateSprite : 1;
-            DWORD unk_3324_26 : 1;
+            // Calls save no context while set, as th07's.
+            DWORD disableCallStack : 1;
             // A timer callback leaves the spell card running while set,
             // as th07's.
             DWORD keepSpellCard : 1;
@@ -541,10 +552,10 @@ public:
     EnemyScriptHeader *file;
     void **subs;
     unsigned char unk_8[0x160];
-    // The scripts' shared variables, as th07's: ints 10061 to 10064 and
-    // floats 10065 to 10068.
-    int globalInts[4];
-    float globalFloats[4];
+    // The arguments of the next subroutine call, as th07's shared
+    // variables: ints 10061 to 10064 and floats 10065 to 10068.
+    // ScriptCallSub copies them into the called context.
+    EnemyScriptCallArgs callArgs;
 };
 ASSERT_SIZE(EnemyScripts, 0x188);
 extern EnemyScripts g_EnemyScripts;
@@ -591,6 +602,10 @@ void ScriptStartInterp(Enemy *enemy, EnemyScriptInstr *instr);
 // current context's time to argument 2 and returns the instruction
 // argument 3 bytes on, else NULL (0x4215f0).
 EnemyScriptInstr *ScriptJumpIf(Enemy *enemy, EnemyScriptInstr *instr);
+// Calls subroutine `sub` from `instr`, as th07's call instruction:
+// saves the current context on callStack (unless disableCallStack),
+// starts `sub` in it with callArgs (0x421bd0).
+void ScriptCallSub(Enemy *enemy, EnemyScriptInstr *instr, short sub);
 
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];

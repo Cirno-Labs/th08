@@ -101,13 +101,13 @@ int GetIntOperand(Enemy *enemy, int id)
     case 10015:
         return enemy->enemyInts[7];
     case 10053:
-        return enemy->currentCtx->vars.ints3[0];
+        return enemy->currentCtx->vars.args.ints[0];
     case 10054:
-        return enemy->currentCtx->vars.ints3[1];
+        return enemy->currentCtx->vars.args.ints[1];
     case 10055:
-        return enemy->currentCtx->vars.ints3[2];
+        return enemy->currentCtx->vars.args.ints[2];
     case 10056:
-        return enemy->currentCtx->vars.ints3[3];
+        return enemy->currentCtx->vars.args.ints[3];
     case 10036:
         return enemy->currentCtx->vars.ints2[0];
     case 10037:
@@ -171,29 +171,29 @@ int GetIntOperand(Enemy *enemy, int id)
     case 10031:
         return enemy->enemyFloats[7];
     case 10057:
-        return enemy->currentCtx->vars.floats3[0];
+        return enemy->currentCtx->vars.args.floats[0];
     case 10058:
-        return enemy->currentCtx->vars.floats3[1];
+        return enemy->currentCtx->vars.args.floats[1];
     case 10059:
-        return enemy->currentCtx->vars.floats3[2];
+        return enemy->currentCtx->vars.args.floats[2];
     case 10060:
-        return enemy->currentCtx->vars.floats3[3];
+        return enemy->currentCtx->vars.args.floats[3];
     case 10061:
-        return g_EnemyScripts.globalInts[0];
+        return g_EnemyScripts.callArgs.ints[0];
     case 10062:
-        return g_EnemyScripts.globalInts[1];
+        return g_EnemyScripts.callArgs.ints[1];
     case 10063:
-        return g_EnemyScripts.globalInts[2];
+        return g_EnemyScripts.callArgs.ints[2];
     case 10064:
-        return g_EnemyScripts.globalInts[3];
+        return g_EnemyScripts.callArgs.ints[3];
     case 10065:
-        return g_EnemyScripts.globalFloats[0];
+        return g_EnemyScripts.callArgs.floats[0];
     case 10066:
-        return g_EnemyScripts.globalFloats[1];
+        return g_EnemyScripts.callArgs.floats[1];
     case 10067:
-        return g_EnemyScripts.globalFloats[2];
+        return g_EnemyScripts.callArgs.floats[2];
     case 10068:
-        return g_EnemyScripts.globalFloats[3];
+        return g_EnemyScripts.callArgs.floats[3];
     case 10042:
         return enemy->unk_2d88.x;
     case 10043:
@@ -311,13 +311,13 @@ int *ResolveOperand(Enemy *enemy, int *operand, WORD mask, int bit)
     case 10015:
         return &enemy->enemyInts[7];
     case 10053:
-        return &enemy->currentCtx->vars.ints3[0];
+        return &enemy->currentCtx->vars.args.ints[0];
     case 10054:
-        return &enemy->currentCtx->vars.ints3[1];
+        return &enemy->currentCtx->vars.args.ints[1];
     case 10055:
-        return &enemy->currentCtx->vars.ints3[2];
+        return &enemy->currentCtx->vars.args.ints[2];
     case 10056:
-        return &enemy->currentCtx->vars.ints3[3];
+        return &enemy->currentCtx->vars.args.ints[3];
     case 10036:
         return &enemy->currentCtx->vars.ints2[0];
     case 10037:
@@ -339,13 +339,13 @@ int *ResolveOperand(Enemy *enemy, int *operand, WORD mask, int bit)
     case 10093:
         return &enemy->score;
     case 10061:
-        return &g_EnemyScripts.globalInts[0];
+        return &g_EnemyScripts.callArgs.ints[0];
     case 10062:
-        return &g_EnemyScripts.globalInts[1];
+        return &g_EnemyScripts.callArgs.ints[1];
     case 10063:
-        return &g_EnemyScripts.globalInts[2];
+        return &g_EnemyScripts.callArgs.ints[2];
     case 10064:
-        return &g_EnemyScripts.globalInts[3];
+        return &g_EnemyScripts.callArgs.ints[3];
     }
     return operand;
 }
@@ -387,13 +387,13 @@ float GetFloatOperand(Enemy *enemy, float id)
     case 10015:
         return enemy->enemyInts[7];
     case 10053:
-        return enemy->currentCtx->vars.ints3[0];
+        return enemy->currentCtx->vars.args.ints[0];
     case 10054:
-        return enemy->currentCtx->vars.ints3[1];
+        return enemy->currentCtx->vars.args.ints[1];
     case 10055:
-        return enemy->currentCtx->vars.ints3[2];
+        return enemy->currentCtx->vars.args.ints[2];
     case 10056:
-        return enemy->currentCtx->vars.ints3[3];
+        return enemy->currentCtx->vars.args.ints[3];
     case 10036:
         return enemy->currentCtx->vars.ints2[0];
     case 10037:
@@ -427,21 +427,21 @@ float GetFloatOperand(Enemy *enemy, float id)
     case 10093:
         return enemy->score;
     case 10061:
-        return g_EnemyScripts.globalInts[0];
+        return g_EnemyScripts.callArgs.ints[0];
     case 10062:
-        return g_EnemyScripts.globalInts[1];
+        return g_EnemyScripts.callArgs.ints[1];
     case 10063:
-        return g_EnemyScripts.globalInts[2];
+        return g_EnemyScripts.callArgs.ints[2];
     case 10064:
-        return g_EnemyScripts.globalInts[3];
+        return g_EnemyScripts.callArgs.ints[3];
     case 10065:
-        return g_EnemyScripts.globalFloats[0];
+        return g_EnemyScripts.callArgs.floats[0];
     case 10066:
-        return g_EnemyScripts.globalFloats[1];
+        return g_EnemyScripts.callArgs.floats[1];
     case 10067:
-        return g_EnemyScripts.globalFloats[2];
+        return g_EnemyScripts.callArgs.floats[2];
     case 10068:
-        return g_EnemyScripts.globalFloats[3];
+        return g_EnemyScripts.callArgs.floats[3];
     case 10016:
         return enemy->currentCtx->vars.floats[0];
     case 10017:
@@ -475,13 +475,13 @@ float GetFloatOperand(Enemy *enemy, float id)
     case 10031:
         return enemy->enemyFloats[7];
     case 10057:
-        return enemy->currentCtx->vars.floats3[0];
+        return enemy->currentCtx->vars.args.floats[0];
     case 10058:
-        return enemy->currentCtx->vars.floats3[1];
+        return enemy->currentCtx->vars.args.floats[1];
     case 10059:
-        return enemy->currentCtx->vars.floats3[2];
+        return enemy->currentCtx->vars.args.floats[2];
     case 10060:
-        return enemy->currentCtx->vars.floats3[3];
+        return enemy->currentCtx->vars.args.floats[3];
     case 10042:
         return enemy->unk_2d88.x;
     case 10043:
@@ -601,13 +601,13 @@ float *ResolveFloatOperand(Enemy *enemy, float *operand, WORD mask, int bit)
     case 10031:
         return &enemy->enemyFloats[7];
     case 10057:
-        return &enemy->currentCtx->vars.floats3[0];
+        return &enemy->currentCtx->vars.args.floats[0];
     case 10058:
-        return &enemy->currentCtx->vars.floats3[1];
+        return &enemy->currentCtx->vars.args.floats[1];
     case 10059:
-        return &enemy->currentCtx->vars.floats3[2];
+        return &enemy->currentCtx->vars.args.floats[2];
     case 10060:
-        return &enemy->currentCtx->vars.floats3[3];
+        return &enemy->currentCtx->vars.args.floats[3];
     case 10042:
         return &enemy->pos.x;
     case 10043:
@@ -625,13 +625,13 @@ float *ResolveFloatOperand(Enemy *enemy, float *operand, WORD mask, int bit)
     case 10095:
         return &enemy->currentCtx->vars.floats2[1];
     case 10065:
-        return &g_EnemyScripts.globalFloats[0];
+        return &g_EnemyScripts.callArgs.floats[0];
     case 10066:
-        return &g_EnemyScripts.globalFloats[1];
+        return &g_EnemyScripts.callArgs.floats[1];
     case 10067:
-        return &g_EnemyScripts.globalFloats[2];
+        return &g_EnemyScripts.callArgs.floats[2];
     case 10068:
-        return &g_EnemyScripts.globalFloats[3];
+        return &g_EnemyScripts.callArgs.floats[3];
     case 10074:
         return &enemy->moveStart.x;
     case 10075:
@@ -858,4 +858,19 @@ EnemyScriptInstr *ScriptJumpIf(Enemy *enemy, EnemyScriptInstr *instr)
         return (EnemyScriptInstr *)((char *)instr + instr->args[3].i);
     }
     return NULL;
+}
+
+void ScriptCallSub(Enemy *enemy, EnemyScriptInstr *instr, short sub)
+{
+    enemy->currentCtx->code = (char *)instr + instr->size;
+    if (!enemy->disableCallStack)
+    {
+        enemy->callStack[enemy->stackDepth] = *enemy->currentCtx;
+    }
+    g_EnemyScripts.StartSub(enemy->currentCtx, sub);
+    enemy->currentCtx->vars.args = g_EnemyScripts.callArgs;
+    if (!enemy->disableCallStack && enemy->stackDepth < 15)
+    {
+        enemy->stackDepth++;
+    }
 }
