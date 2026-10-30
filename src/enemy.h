@@ -518,6 +518,9 @@ int *ResolveOperand(Enemy *enemy, int *operand, WORD mask, int bit);
 // GetIntOperand for float operands, as th07's, with a random angle for
 // 10082 (0x420120).
 float GetFloatOperand(Enemy *enemy, float id);
+// ResolveOperand for float variables, as th07's; 10042 to 10044 name
+// pos, which GetFloatOperand reads from unk_2d88 (0x420950).
+float *ResolveFloatOperand(Enemy *enemy, float *operand, WORD mask, int bit);
 
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];

@@ -253,7 +253,7 @@ address,size,name,symbol
 0x0041fdf0,25,Func41fdf0,
 0x0041fe10,548,ResolveOperand,?ResolveOperand@@YIPAHPAUEnemy@@PAHGH@Z
 0x00420120,1687,GetFloatOperand,?GetFloatOperand@@YIMPAUEnemy@@M@Z
-0x00420950,696,Func420950,
+0x00420950,696,ResolveFloatOperand,?ResolveFloatOperand@@YIPAMPAUEnemy@@PAMGH@Z
 0x00420d10,556,Func420d10,
 0x00420f40,467,Func420f40,
 0x00421120,89,Func421120,

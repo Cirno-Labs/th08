@@ -551,3 +551,105 @@ float GetFloatOperand(Enemy *enemy, float id)
     }
     return id;
 }
+
+float *ResolveFloatOperand(Enemy *enemy, float *operand, WORD mask, int bit)
+{
+    if (bit >= 0 && (mask & (1 << bit)) == 0)
+    {
+        return operand;
+    }
+    switch ((int)*operand)
+    {
+    case 10016:
+        return &enemy->currentCtx->vars.floats[0];
+    case 10017:
+        return &enemy->currentCtx->vars.floats[1];
+    case 10018:
+        return &enemy->currentCtx->vars.floats[2];
+    case 10019:
+        return &enemy->currentCtx->vars.floats[3];
+    case 10020:
+        return &enemy->currentCtx->vars.floats[4];
+    case 10021:
+        return &enemy->currentCtx->vars.floats[5];
+    case 10022:
+        return &enemy->currentCtx->vars.floats[6];
+    case 10023:
+        return &enemy->currentCtx->vars.floats[7];
+    case 10024:
+        return &enemy->enemyFloats[0];
+    case 10025:
+        return &enemy->enemyFloats[1];
+    case 10026:
+        return &enemy->enemyFloats[2];
+    case 10027:
+        return &enemy->enemyFloats[3];
+    case 10028:
+        return &enemy->enemyFloats[4];
+    case 10029:
+        return &enemy->enemyFloats[5];
+    case 10030:
+        return &enemy->enemyFloats[6];
+    case 10031:
+        return &enemy->enemyFloats[7];
+    case 10057:
+        return &enemy->currentCtx->vars.floats3[0];
+    case 10058:
+        return &enemy->currentCtx->vars.floats3[1];
+    case 10059:
+        return &enemy->currentCtx->vars.floats3[2];
+    case 10060:
+        return &enemy->currentCtx->vars.floats3[3];
+    case 10042:
+        return &enemy->pos.x;
+    case 10043:
+        return &enemy->pos.y;
+    case 10044:
+        return &enemy->pos.z;
+    case 10045:
+        return &g_Player.pos.x;
+    case 10046:
+        return &g_Player.pos.y;
+    case 10047:
+        return &g_Player.pos.z;
+    case 10094:
+        return &enemy->currentCtx->vars.floats2[0];
+    case 10095:
+        return &enemy->currentCtx->vars.floats2[1];
+    case 10065:
+        return &g_EnemyScripts.globalFloats[0];
+    case 10066:
+        return &g_EnemyScripts.globalFloats[1];
+    case 10067:
+        return &g_EnemyScripts.globalFloats[2];
+    case 10068:
+        return &g_EnemyScripts.globalFloats[3];
+    case 10074:
+        return &enemy->unk_2dd0.x;
+    case 10075:
+        return &enemy->unk_2dd0.y;
+    case 10076:
+        return &enemy->unk_2dd0.z;
+    case 10079:
+        return &enemy->unk_2dc4.x;
+    case 10080:
+        return &enemy->unk_2dc4.y;
+    case 10081:
+        return &enemy->unk_2dc4.z;
+    case 10069:
+        return &enemy->angle;
+    case 10070:
+        return &enemy->angularVelocity;
+    case 10071:
+        return &enemy->speed;
+    case 10072:
+        return &enemy->acceleration;
+    case 10073:
+        return &enemy->unk_2db0;
+    case 10077:
+        return &enemy->unk_2d9c;
+    case 10078:
+        return &enemy->unk_2da0;
+    }
+    return operand;
+}
