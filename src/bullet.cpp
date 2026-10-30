@@ -7,6 +7,7 @@
 #include "bullet.h"
 #include "item.h"
 #include "player.h"
+#include "replay.h"
 #include "unsorted.h"
 
 void BulletManager::Reset()
@@ -537,4 +538,35 @@ void BulletManager::ConvertBulletsToItems(D3DXVECTOR3 *pos, float radius)
         g_ItemManager.SpawnItem(&bullet->pos, 6, 1);
         memset(bullet, 0, sizeof(Bullet));
     }
+}
+
+int BulletManager::FirePattern(BulletShooter *shooter)
+{
+    int col;
+    float playerAngle;
+    int row;
+
+    g_ReplayManager->frameEvents |= 0x800;
+    if (g_BulletManager.bulletCount >= 0x600)
+    {
+        return 0;
+    }
+    shooter->typeSprites = &this->typeSprites[shooter->sprite];
+    playerAngle = g_Player.AngleFrom(&shooter->pos);
+    for (row = 0; row < shooter->count2; row++)
+    {
+        for (col = 0; col < shooter->count1; col++)
+        {
+            if (this->SpawnBullet(shooter, col, row, playerAngle))
+            {
+                goto done;
+            }
+        }
+    }
+done:
+    if (shooter->flags & 0x200)
+    {
+        g_SoundPlayer.QueueSoundPanned(shooter->sound, shooter->pos.x);
+    }
+    return 0;
 }
