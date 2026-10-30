@@ -84,12 +84,24 @@ struct Enemy
         return count;
     }
 
+    // Whether unk_2da4 is set. Inline; the copy at 0x41fd20 is in an
+    // /Od object.
+    BOOL Func41fd20()
+    {
+        return this->unk_2da4 != 0;
+    }
+
     // Called on the bosses with 0 as a spell card bomb ends (0x42adb0).
     void Func42adb0(int arg);
+    // Takes it out of the list through unk_4 and unk_8 while Func41fd20,
+    // clearing unk_2da4; else just clears both links (0x42b2f0).
+    void Func42b2f0();
     // Frees and clears unk_3384 (0x42bc90).
     void Func42bc90();
 
-    unsigned char unk_0[0x8];
+    int unk_0;
+    // The enemies before and after it in a list (Func42b2f0).
+    Enemy *unk_4;
     Enemy *unk_8;
     Sprite sprite;
     Sprite sprites[2];

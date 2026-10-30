@@ -350,6 +350,26 @@ tick:
     this->timer++;
 }
 
+void Enemy::Func42b2f0()
+{
+    if (this->Func41fd20())
+    {
+        this->unk_4->unk_8 = this->unk_8;
+        if (this->unk_8 != NULL)
+        {
+            this->unk_8->unk_4 = this->unk_4;
+        }
+        this->unk_2da4 = 0;
+        this->unk_8 = NULL;
+        this->unk_4 = NULL;
+    }
+    else
+    {
+        this->unk_4 = NULL;
+        this->unk_8 = NULL;
+    }
+}
+
 void Enemy::Func42bc90()
 {
     int i;

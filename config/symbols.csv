@@ -246,7 +246,7 @@ address,size,name,symbol
 0x0041f280,383,Func41f280,
 0x0041f400,25,Func41f400,
 0x0041f420,1899,Func41f420,
-0x0041fd20,28,Func41fd20,
+0x0041fd20,28,Enemy::Func41fd20,?Func41fd20@Enemy@@QAEHXZ
 0x0041fd40,70,Func41fd40,
 0x0041fd90,59,Func41fd90,
 0x0041fdd0,25,Func41fdd0,
@@ -394,7 +394,7 @@ address,size,name,symbol
 0x0042a820,115,ReleaseEnemyEffects,?ReleaseEnemyEffects@@YIXPAUEnemy@@@Z
 0x0042a8a0,1216,EnemyTimeline::RunTimeline,?RunTimeline@EnemyTimeline@@QAEXXZ
 0x0042adb0,1336,Enemy::Func42adb0,?Func42adb0@Enemy@@QAEXH@Z
-0x0042b2f0,117,Func42b2f0,
+0x0042b2f0,117,Enemy::Func42b2f0,?Func42b2f0@Enemy@@QAEXXZ
 0x0042b370,288,Func42b370,
 0x0042b490,1180,Func42b490,
 0x0042b930,796,Func42b930,
