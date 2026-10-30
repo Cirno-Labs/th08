@@ -312,7 +312,10 @@ struct Enemy
             DWORD unk_3328_6 : 1;
             // Like haltedByBomb, but always.
             DWORD unk_3328_7 : 1;
-            DWORD unk_3328_8 : 24;
+            // DrawEnemies puts sprites[] at sprite's posOffset instead of
+            // their own while set.
+            DWORD unk_3328_8 : 1;
+            DWORD unk_3328_9 : 23;
         };
     };
     unsigned char unk_332c[0x3];
@@ -349,7 +352,8 @@ struct Enemy
     short trailSegmentCount;
     // How many trail boxes touch the player, every sixth, as th07's.
     short trailContactSegments;
-    unsigned char unk_5352[0x2];
+    // DrawEnemies draws every trailSegmentStep-th trail box, as th07's.
+    short trailSegmentStep;
     Timer invulnTimer;
     // Effects that follow it, as th07's.
     struct Effect *effects[0x18];
