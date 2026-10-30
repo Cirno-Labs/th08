@@ -718,6 +718,9 @@ void UpdateYoumuBomb(Player *player);
 // Its draw callback: dims the play area, darker from frame 70, with a
 // white flash fading out from frame 100 to 160 (0x412300).
 void DrawYoumuBomb(Player *player);
+// Her last word 人鬼「未来永劫斬」: the same with three more pairs of
+// slashes, wider each time (0x4123d0).
+void UpdateYoumuLastWord(Player *player);
 // Draw callbacks of the bombs that only tint the play area, by the
 // bomb they follow: Alice's (also Yukari's draw.funcs[0..1], 0x40d950)
 // and Remilia's and her last word's (0x40f550, 0x40fcb0).

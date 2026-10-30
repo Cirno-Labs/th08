@@ -191,7 +191,7 @@ address,size,name,symbol
 0x00411a80,139,EffectInitBombRing37,?EffectInitBombRing37@@YIHPAUEffect@@@Z
 0x00411b10,2032,UpdateYoumuBomb,?UpdateYoumuBomb@@YIXPAVPlayer@@@Z
 0x00412300,207,DrawYoumuBomb,?DrawYoumuBomb@@YIXPAVPlayer@@@Z
-0x004123d0,3016,Func4123d0,
+0x004123d0,3016,UpdateYoumuLastWord,?UpdateYoumuLastWord@@YIXPAVPlayer@@@Z
 0x00412fa0,207,Func412fa0,
 0x00413070,204,EffectUpdateBombRing48,?EffectUpdateBombRing48@@YIHPAUEffect@@@Z
 0x00413140,1859,Func413140,
