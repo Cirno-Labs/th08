@@ -939,3 +939,59 @@ void ScriptSetSubSprite(Enemy *enemy, EnemyScriptInstr *instr)
         enemy->sprites[INT_ARG(0)].scriptIndex = -1;
     }
 }
+
+void ScriptMoveRandom(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    float angle;
+
+    if (g_Player.pos.x < enemy->pos.x)
+    {
+        angle = AddNormalizeAngle(g_Rng.GetRandomF32InRange(1.5707964f) + 2.3561945f, 0.0f);
+    }
+    else
+    {
+        angle = g_Rng.GetRandomF32InRange(1.5707964f) - 0.7853982f;
+    }
+    if (enemy->pos[0] < enemy->lowerBound[0] + 96.0f)
+    {
+        if (angle > 1.5707964f)
+        {
+            angle = 3.1415927f - angle;
+        }
+        else if (angle < -1.5707964f)
+        {
+            angle = -3.1415927f - angle;
+        }
+    }
+    if (enemy->pos[0] > enemy->upperBound[0] - 96.0f)
+    {
+        if (angle < 1.5707964f && angle >= 0.0f)
+        {
+            angle = 3.1415927f - enemy->angle;
+        }
+        else if (angle > -1.5707964f && angle <= 0.0f)
+        {
+            angle = -3.1415927f - angle;
+        }
+    }
+    if (enemy->pos[1] < enemy->lowerBound[1] + 48.0f && angle < 0.0f)
+    {
+        angle = -angle;
+    }
+    if (enemy->pos[1] > enemy->upperBound[1] - 48.0f && angle > 0.0f)
+    {
+        angle = -angle;
+    }
+    if (INT_ARG(0) <= 0)
+    {
+        enemy->angle = angle;
+        enemy->speed = FLOAT_ARG(2);
+        enemy->moveMode = 1;
+        enemy->moveDuration = 0;
+        enemy->moveTimer = 0;
+    }
+    else
+    {
+        ScriptMoveAngleTimed(enemy, instr, angle);
+    }
+}

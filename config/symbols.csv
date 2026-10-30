@@ -271,8 +271,8 @@ address,size,name,symbol
 0x00421dd0,5,DebugPrint,?DebugPrint@@YAXPBDZZ
 0x00421de0,112,ScriptSetTurnSprites,?ScriptSetTurnSprites@@YIXPAUEnemy@@PAUEnemyScriptInstr@@FFFFFF@Z
 0x00421e50,454,ScriptSetSubSprite,?ScriptSetSubSprite@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
-0x00422020,650,Func422020,
-0x004222b0,461,Func4222b0,
+0x00422020,650,ScriptMoveRandom,?ScriptMoveRandom@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
+0x004222b0,461,ScriptMoveAngleTimed,?ScriptMoveAngleTimed@@YIXPAUEnemy@@PAUEnemyScriptInstr@@M@Z
 0x00422480,28,GameManager::GetPower,?GetPower@GameManager@@QAEHXZ
 0x004224a0,630,Func4224a0,
 0x00422720,1110,Func422720,

@@ -627,6 +627,13 @@ void ScriptSetTurnSprites(Enemy *enemy, EnemyScriptInstr *instr, short still, sh
 // Starts script argument 1 on sprites[argument 0] (from stageAnm with
 // useStageAnm, else anm), or stops it for a negative script (0x421e50).
 void ScriptSetSubSprite(Enemy *enemy, EnemyScriptInstr *instr);
+// Moves in a random direction away from the player's side, turned back
+// near the bounds, as th07's instruction 52: at speed argument 2, or
+// over argument 0 frames through ScriptMoveAngleTimed (0x422020).
+void ScriptMoveRandom(Enemy *enemy, EnemyScriptInstr *instr);
+// ScriptMoveAngle at `angle` with speed argument 2, without mirroring
+// (0x4222b0).
+void ScriptMoveAngleTimed(Enemy *enemy, EnemyScriptInstr *instr, float angle);
 
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
