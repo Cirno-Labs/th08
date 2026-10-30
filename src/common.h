@@ -60,6 +60,6 @@ public:
     // Allocated blocks, for a debug build's leak tracking: the release
     // Alloc and Free leave it alone.
     void *blocks[0x1000];
-    int unk_4000;
+    int freeBlocksOnExit;
 };
 extern MemoryManager g_MemoryManager;

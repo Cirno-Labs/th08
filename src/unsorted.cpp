@@ -689,14 +689,14 @@ void Rotate2D(D3DXVECTOR3 *out, D3DXVECTOR3 *in, float angle)
 
 MemoryManager::MemoryManager()
 {
-    this->unk_4000 = 0;
+    this->freeBlocksOnExit = 0;
 }
 
 MemoryManager::~MemoryManager()
 {
     int i;
 
-    if (this->unk_4000 != 0)
+    if (this->freeBlocksOnExit != 0)
     {
         for (i = 0; i < 0x1000; i++)
         {
