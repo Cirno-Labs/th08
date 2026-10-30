@@ -279,7 +279,7 @@ struct Th8k
     WORD size;
     WORD size2;
     BYTE version;
-    BYTE unk_09[0x3];
+    BYTE pad_09[0x3];
 };
 
 // The chunk with the game's version ("VRSM"), as th07's: written from the
