@@ -530,10 +530,10 @@ void Enemy::Func42bc90()
 
     for (i = 0; i < 4; i++)
     {
-        if (this->unk_3384[i] != NULL)
+        if (this->threads[i] != NULL)
         {
-            g_MemoryManager.Free(this->unk_3384[i]);
-            this->unk_3384[i] = NULL;
+            g_MemoryManager.Free(this->threads[i]);
+            this->threads[i] = NULL;
         }
     }
 }
@@ -610,10 +610,10 @@ int Enemy::CheckLifeCallback()
             this->timerCallbackTime = -1;
             for (tmp = 0; tmp < 4; tmp++)
             {
-                if (this->unk_3384[tmp] != NULL)
+                if (this->threads[tmp] != NULL)
                 {
-                    g_MemoryManager.Free(this->unk_3384[tmp]);
-                    this->unk_3384[tmp] = NULL;
+                    g_MemoryManager.Free(this->threads[tmp]);
+                    this->threads[tmp] = NULL;
                 }
             }
             this->ResetRankSpeeds();
@@ -835,10 +835,10 @@ int Enemy::CheckTimerCallback()
         }
         for (idx = 0; idx < 4; idx++)
         {
-            if (this->unk_3384[idx] != NULL)
+            if (this->threads[idx] != NULL)
             {
-                g_MemoryManager.Free(this->unk_3384[idx]);
-                this->unk_3384[idx] = NULL;
+                g_MemoryManager.Free(this->threads[idx]);
+                this->threads[idx] = NULL;
             }
         }
         this->shooter = g_EnemyManager.enemyTemplate.shooter;
@@ -1361,10 +1361,10 @@ int EnemyManager::OnUpdate(EnemyManager *mgr)
             }
             for (k = 0; k < 4; k++)
             {
-                if (enemy->unk_3384[k] != NULL)
+                if (enemy->threads[k] != NULL)
                 {
-                    g_MemoryManager.Free(enemy->unk_3384[k]);
-                    enemy->unk_3384[k] = NULL;
+                    g_MemoryManager.Free(enemy->threads[k]);
+                    enemy->threads[k] = NULL;
                 }
             }
             if (enemy->Func41fd20())

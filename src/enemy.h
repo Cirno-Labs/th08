@@ -57,6 +57,13 @@ ASSERT_SIZE(EnemyScriptVars, 0x78);
 struct Enemy;
 struct EnemyScriptInstr;
 
+// A function of g_EnemyScriptFuncs, as th07's: runs with the instruction
+// that started it, from opcode 136, or each frame from RunEnemy after
+// opcode 137.
+typedef void (*EnemyScriptFunc)(Enemy *enemy, EnemyScriptInstr *instr);
+// The functions opcodes 136 and 137 run (0x4c6cb0).
+extern EnemyScriptFunc g_EnemyScriptFuncs[32];
+
 // What an interpolation loop runs each frame, as th07's: ScriptMoveLinear
 // or ScriptMoveHermite.
 typedef void (*EnemyScriptInterp)(Enemy *enemy, EnemyScriptInstr *instr, float t);
@@ -85,8 +92,9 @@ struct EnemyScriptState
 {
     void *code;
     Timer timer;
-    void *func;
-    void *funcInstr;
+    // Runs each frame with funcInstr, from opcode 137, as th07's.
+    EnemyScriptFunc func;
+    EnemyScriptInstr *funcInstr;
     EnemyScriptVars vars;
     Timer waitTimer;
     EnemyScriptLoop loops[8];
@@ -105,6 +113,32 @@ struct EnemyBox
     float angle;
 };
 ASSERT_SIZE(EnemyBox, 0x1c);
+
+// One of an enemy's four extra script threads ("ECLInt"), which RunEnemy
+// runs after its main context each frame: opcode 135 starts subroutine
+// `sub` in one with the current variables. New in th08.
+struct EnemyScriptThread
+{
+    int sub;
+    short unk_4;
+    // Enemy::stackDepth while the thread runs.
+    short stackDepth;
+    EnemyScriptState ctx;
+    // Its call stack (Enemy::callStack while it runs).
+    EnemyScriptState callStack[16];
+};
+ASSERT_SIZE(EnemyScriptThread, 0x24b0);
+
+// The arguments of the spawn instructions (90 to 94), as th07's. Its
+// implicit constructor is 0x41f400.
+struct EnemySpawnArgs
+{
+    int sub;
+    D3DXVECTOR3 pos;
+    int life;
+    int item;
+    int score;
+};
 
 // An enemy. Only what is known so far; th07's fields where they
 // correspond.
@@ -137,6 +171,23 @@ struct Enemy
         return count;
     }
 
+    // The last enemy following it through unk_8, when Func41f000, else
+    // itself. Inline; the copy at 0x41efc0 is in an /Od object.
+    Enemy *Func41efc0()
+    {
+        Enemy *enemy;
+
+        enemy = this;
+        if (this->Func41f000())
+        {
+            while (enemy->unk_8 != NULL)
+            {
+                enemy = enemy->unk_8;
+            }
+        }
+        return enemy;
+    }
+
     // Whether unk_2da4 is set. Inline; the copy at 0x41fd20 is in an
     // /Od object.
     BOOL Func41fd20()
@@ -156,7 +207,7 @@ struct Enemy
     // Ends it, as th07's: Func42adb0(0) first; unless deathMode is set,
     // deactivates it; a boss leaves its slot, hides its nearby label and
     // ends the boss fight; drops its effects, sends unk_53c8 interrupt
-    // 3, clears its callbacks and frees unk_3384 (0x42bcf0).
+    // 3, clears its callbacks and frees threads (0x42bcf0).
     void Despawn();
     // Takes it out of the list through unk_4 and unk_8 while Func41fd20,
     // clearing unk_2da4; else just clears both links (0x42b2f0).
@@ -182,7 +233,7 @@ struct Enemy
     }
     // Runs the first life callback whose life the enemy dropped below,
     // as th07's: restarts its script there, ends its timer callback,
-    // frees unk_3384, Func42adb0(1), kills the other non-boss enemies and
+    // frees threads, Func42adb0(1), kills the other non-boss enemies and
     // makes the player invulnerable for 70 frames after a boss's.
     // Returns 1 then, else 0 after setting unk_3328_4 by how close the
     // life is to the next callback (or to 0) (0x42b490).
@@ -192,7 +243,7 @@ struct Enemy
     // the life to the highest life callback, restarts the script at
     // timerCallbackSub, ends the spell card (unless keepSpellCard),
     // makes the player invulnerable for 70 frames after a boss's,
-    // Func42adb0(0), kills the other non-boss enemies and frees unk_3384.
+    // Func42adb0(0), kills the other non-boss enemies and frees threads.
     // Returns 1 then, else 0 (0x42b930).
     int CheckTimerCallback();
     // Keeps pos within lowerBound and upperBound while clampPos is set,
@@ -213,7 +264,7 @@ struct Enemy
     // power) and unk_3308 point items around unk_2d88; `byBomb` makes
     // them fly to the player (0x42bea0).
     void DropItems(int byBomb);
-    // Frees and clears unk_3384 (0x42bc90).
+    // Frees and clears threads (0x42bc90).
     void Func42bc90();
 
     // The next enemy in its draw list (EnemyManager::drawListHeads), as
@@ -226,10 +277,10 @@ struct Enemy
     Sprite sprites[2];
     EnemyScriptState ctx;
     EnemyScriptState savedCtx[16];
-    // The context the script runs in: ctx, or one of savedCtx.
+    // The context the script runs in: ctx, or a thread's.
     EnemyScriptState *currentCtx;
-    // Where calls save their caller's context: savedCtx, or (on another
-    // context set) a buffer of unk_3384.
+    // Where calls save their caller's context: savedCtx, or a thread's
+    // callStack while it runs.
     EnemyScriptState *callStack;
     // Variables of the enemy itself, which all its subroutines share:
     // ints 10008 to 10015 and floats 10024 to 10031. New in th08.
@@ -240,7 +291,9 @@ struct Enemy
     short stackDepth;
     short unk_2cec;
     short deathSub;
-    unsigned char unk_2cf0[0x40];
+    // The subroutines of the interrupts opcode 125 (or another enemy's
+    // 89) starts, set by opcode 126, as th07's.
+    short interrupts[0x20];
     short pendingInterrupt;
     short unk_2d32;
     // Where it is.
@@ -419,7 +472,7 @@ struct Enemy
     // Shown by DrawBanners next to Func41fd40.
     int unk_3380;
     // Freed by Func42bc90.
-    void *unk_3384[4];
+    EnemyScriptThread *threads[4];
     EnemyBox trailBoxes[0x60];
     VertexTex1DiffuseXyzrwh spriteStripVertices[0xc2];
     // Whether it has a trail, and how long it is, as th07's.
@@ -537,8 +590,11 @@ class EnemyScripts
 public:
     // Starts subroutine `sub` in `ctx`, as th07's (0x418450). Returns 0.
     int StartSub(EnemyScriptState *ctx, short sub);
-    // Runs `enemy`'s script for a frame, as th07's (0x4184b0). Returns
-    // -1 once the script ends, else 0.
+    // Runs `enemy`'s script for a frame, as th07's (0x4184b0): its main
+    // context, then each of its threads in turn, each followed by the
+    // current context's function and interpolation loops while alive;
+    // then the movement and the periodic shots. Returns -1 once the
+    // script ends, else 0.
     int RunEnemy(Enemy *enemy);
     // Frees the script file, as th07's (0x418420).
     void Release();
@@ -615,17 +671,17 @@ EnemyScriptInstr *ScriptJumpIf(Enemy *enemy, EnemyScriptInstr *instr);
 // Calls subroutine `sub` from `instr`, as th07's call instruction:
 // saves the current context on callStack (unless disableCallStack),
 // starts `sub` in it with callArgs (0x421bd0).
-void ScriptCallSub(Enemy *enemy, EnemyScriptInstr *instr, short sub);
+void ScriptCallSub(Enemy *enemy, EnemyScriptInstr *instr, int sub);
 // Returns from a subroutine call, as th07's return instruction: takes
 // the caller's context back from callStack and returns 0; past the
-// bottom of the stack, frees buffer timedCallActive - 1 of unk_3384,
+// bottom of the stack, frees thread timedCallActive - 1,
 // goes back to ctx, savedCtx and savedStackDepth and returns 1. Prints
 // an error under disableCallStack (0x421cb0).
 int ScriptReturn(Enemy *enemy, EnemyScriptInstr *instr);
 // Sets the turning sprite scripts, as th07's instruction 96, and
 // clears spriteDirection (0x421de0).
-void ScriptSetTurnSprites(Enemy *enemy, EnemyScriptInstr *instr, short still, short left, short right,
-                          short stillFromLeft, short stillFromRight, short unk);
+void ScriptSetTurnSprites(Enemy *enemy, EnemyScriptInstr *instr, int still, int left, int right,
+                          int stillFromLeft, int stillFromRight, int unk);
 // Starts script argument 1 on sprites[argument 0] (from stageAnm with
 // useStageAnm, else anm), or stops it for a negative script (0x421e50).
 void ScriptSetSubSprite(Enemy *enemy, EnemyScriptInstr *instr);
@@ -869,7 +925,9 @@ public:
     WORD dropIndex;
     // The active enemies, as th07's.
     int enemyCount;
-    unsigned char unk_9dcdc8[0x8];
+    unsigned char unk_9dcdc8[0x4];
+    // Set by opcode 163, as th07's scriptArg147.
+    int unk_9dcdcc;
     EnemyTimeline timelines[16];
     // Counts the frames, as th07's.
     Timer frameTimer;

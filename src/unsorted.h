@@ -1980,6 +1980,25 @@ public:
     {
         this->bossTimer = seconds;
     }
+    // Sets section `idx` of the boss bar, as th07's. Inline; the copy at
+    // 0x4230e0 is an /Od object's.
+    void SetBossSection(int idx, float end, float start)
+    {
+        this->sectionEnds[idx] = end;
+        this->sectionStarts[idx] = start;
+    }
+    // Sets the color of boss bar section `idx`, as th07's. Inline; the
+    // copy at 0x423110 is an /Od object's.
+    void SetBossSectionColor(int idx, int color)
+    {
+        this->sectionColors[idx] = color;
+    }
+    // Sets bossLives, as th07's. Inline; the copy at 0x423130 is an /Od
+    // object's.
+    void SetBossLives(int lives)
+    {
+        this->bossLives = lives;
+    }
     // Sets bossPresent and returns `present`. New in th08. Inline; the
     // copy at 0x422c20 is an /Od object's.
     BYTE SetBossPresent(BYTE present)
@@ -2602,6 +2621,19 @@ struct SpellCard
     {
         return this->Func4178a0() && this->unk_0_2 ? TRUE : FALSE;
     }
+    // Set unk_0_6 and unk_0_11 (opcodes 164 and 184). Inline; the copies
+    // at 0x41f0b0 and 0x41f0e0 are an /Od object's.
+    void SetUnk0_6(int value)
+    {
+        this->unk_0_6 = value;
+    }
+    void SetUnk0_11(int value)
+    {
+        this->unk_0_11 = value;
+    }
+    // Puts the card's effect at (x, y, z). Inline; the copy at 0x41f040
+    // is an /Od object's.
+    void SetEffectPos(float x, float y, float z);
     // unk_108 in frames. Inline; the copy is at 0x41fdd0.
     int Func41fdd0()
     {
