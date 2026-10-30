@@ -291,7 +291,9 @@ struct Enemy
     Timer callbackTimer;
     D3DCOLOR color;
     BulletShooter shooter;
-    unsigned char unk_3034[0x2c];
+    // The fire instruction (header and eight arguments) the periodic
+    // shots repeat every shootInterval frames.
+    unsigned char shootInstr[0x2c];
     int shootInterval;
     Timer shootTimer;
     BulletShooter laserShooter;
@@ -737,6 +739,11 @@ void ScriptFireBullets(Enemy *enemy, EnemyScriptInstr *instr);
 // instructions: 1 by angle and speed, 2 a timed eased move by moveDelta,
 // 3 around moveStart at orbitRadius (0x422c40).
 void ScriptUpdateMovement(Enemy *enemy);
+
+// The periodic shots and the turning sprite scripts, as th07's
+// RunEnemy did after the movement: repeats shootInstr every
+// shootInterval frames and turns the sprite by velocity.x (0x423150).
+void ScriptUpdateShooting(Enemy *enemy);
 
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];

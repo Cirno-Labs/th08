@@ -1268,6 +1268,79 @@ void ScriptUpdateMovement(Enemy *enemy)
     }
 }
 
+void ScriptUpdateShooting(Enemy *enemy)
+{
+    if (enemy->life > 0)
+    {
+        if (enemy->shootInterval > 0)
+        {
+            enemy->shootTimer++;
+            if (enemy->shootTimer >= enemy->shootInterval)
+            {
+                ScriptFireBullets(enemy, (EnemyScriptInstr *)enemy->shootInstr);
+                enemy->shootTimer = 0;
+            }
+        }
+        if (enemy->turnLeft >= 0)
+        {
+            int dir;
+
+            dir = 0;
+            if (!enemy->mirrored)
+            {
+                if (enemy->velocity.x < -0.01f)
+                {
+                    dir = 1;
+                }
+                else if (enemy->velocity.x > 0.01f)
+                {
+                    dir = 2;
+                }
+            }
+            else
+            {
+                if (enemy->velocity.x < -0.01f)
+                {
+                    dir = 2;
+                }
+                else if (enemy->velocity.x > 0.01f)
+                {
+                    dir = 1;
+                }
+            }
+            if (enemy->spriteDirection != dir)
+            {
+                AnmLoaded *anm = enemy->useStageAnm ? g_EnemyManager.stageAnm : g_EnemyManager.anm;
+
+                switch (dir)
+                {
+                case 0:
+                    if (enemy->spriteDirection == 0xff)
+                    {
+                        anm->StartScript(&enemy->sprite, enemy->turnStill);
+                    }
+                    else if (enemy->spriteDirection == 1)
+                    {
+                        anm->StartScript(&enemy->sprite, enemy->turnStillFromLeft);
+                    }
+                    else
+                    {
+                        anm->StartScript(&enemy->sprite, enemy->turnStillFromRight);
+                    }
+                    break;
+                case 1:
+                    anm->StartScript(&enemy->sprite, enemy->turnLeft);
+                    break;
+                case 2:
+                    anm->StartScript(&enemy->sprite, enemy->turnRight);
+                    break;
+                }
+                enemy->spriteDirection = dir;
+            }
+        }
+    }
+}
+
 void ScriptSetUnknown4e3d28(Enemy *enemy, EnemyScriptInstr *instr)
 {
     g_Unknown4e3d28 = enemy->currentCtx->vars.ints[0];
