@@ -3243,7 +3243,7 @@ int MainMenu::InitTitleScene()
         delete g_GameManager.savedConfig;
         g_GameManager.savedConfig = NULL;
     }
-    g_GameManager.savedConfig = new GameManagerUnk4;
+    g_GameManager.savedConfig = new GameConfig;
     if (g_GameManager.stats != NULL)
     {
         delete g_GameManager.stats;

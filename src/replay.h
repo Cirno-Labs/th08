@@ -100,7 +100,7 @@ struct ReplayHeader
     // 0x100.
     WORD subVersion;
     DWORD score;
-    // The config the game was played with, a GameManagerUnk4.
+    // The config the game was played with, a GameConfig.
     BYTE config[0x3c];
     unsigned char pad_f0[0x24];
     // How far the game ran below full speed, in percent, plus 1.12, and

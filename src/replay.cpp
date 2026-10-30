@@ -390,7 +390,7 @@ int ReplayManager::RecordAddedCallback(ReplayManager *replay)
                        : 0);
         replay->data->difficulty = g_GameManager.difficulty;
         *(DWORD *)replay->data->name = *(DWORD *)"NO NAME";
-        *(GameManagerUnk4 *)replay->data->config = *g_GameManager.savedConfig;
+        *(GameConfig *)replay->data->config = *g_GameManager.savedConfig;
         for (idx = 0; idx < 9; idx++)
         {
             replay->data->stages[idx] = NULL;
@@ -501,7 +501,7 @@ int ReplayManager::PlayAddedCallback(ReplayManager *replay)
     replay->seedCursor = (ReplayFrameWithSeed *)replay->cursor;
     g_GameManager.powerItemCombo = cur->powerItemCombo;
     g_GameManager.stats->maxPointValue = cur->maxPointValue;
-    *g_GameManager.savedConfig = *(GameManagerUnk4 *)replay->data->config;
+    *g_GameManager.savedConfig = *(GameConfig *)replay->data->config;
     g_Rng.SetSeed(cur->rngSeed);
     g_GameManager.stats->spellCardsCaptured = cur->spellCardsCaptured;
     g_GameManager.stats->checksumKeyStage = cur->checksumKeyStage;

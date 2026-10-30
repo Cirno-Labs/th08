@@ -506,10 +506,10 @@ void GameManager::LoadingThread(GameManager *arg)
         }
         size = g_Rng.GetRandomU32InRange(0xffff) + 0x10;
         mgr->tempBuffer = malloc(size);
-        mgr->savedConfig = new GameManagerUnk4;
+        mgr->savedConfig = new GameConfig;
         mgr->stats = new GameManagerStats;
         RerollStatsChecksumKeys();
-        *mgr->savedConfig = *(GameManagerUnk4 *)&g_App.controllerMapping;
+        *mgr->savedConfig = *(GameConfig *)&g_App.controllerMapping;
         MemFree(mgr->tempBuffer);
         mgr->powerItemCombo = 0;
         mgr->stats->gauge = 0;
@@ -1069,7 +1069,7 @@ void GameManager::SubSubRank(int amount)
 
 void GameManager::AddGauge(int amount, int force)
 {
-    if (g_Unknown17d6ed4 != 0 && force == 0)
+    if (g_PlayerBombRunning != 0 && force == 0)
     {
         return;
     }

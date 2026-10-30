@@ -3365,7 +3365,7 @@ void EndSlowdown(Enemy *enemy, EnemyScriptInstr *instr)
 
 void DropBombOrLifeItem(Enemy *enemy, EnemyScriptInstr *instr)
 {
-    if (g_Unknown17d6ed4)
+    if (g_PlayerBombRunning)
     {
         g_ItemManager.SpawnItem(&enemy->pos, 3, 0);
     }

@@ -78,7 +78,7 @@ struct Hscr
     unsigned char unusedByte27;
     union
     {
-        // The config it was played with, in GameManagerUnk4's layout:
+        // The config it was played with, in GameConfig's layout:
         // GameManager's copy takes App's (LoadScoreFile).
         BYTE config[0x3c];
         struct

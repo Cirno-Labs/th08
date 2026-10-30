@@ -417,7 +417,7 @@ extern int g_ScriptFunc0Int;
 // Set with g_ScriptFunc0Int by SetScriptFunc0Vars.
 extern float g_ScriptFunc0Float;
 // GameManager::AddGauge only applies while it is clear, unless forced.
-extern int g_Unknown17d6ed4;
+extern int g_PlayerBombRunning;
 // The damage an enemy takes per time orb Player::CalcDamage spawns.
 extern int g_DamagePerTimeOrb;
 // Copies the stage's portrait into the dialogue texture by
@@ -1183,7 +1183,7 @@ struct GameManagerStats
     int computedChecksum;
     DWORD checksumKeysE[5];
 };
-struct GameManagerUnk4
+struct GameConfig
 {
     unsigned char pad_0[0x1c];
     // The lives a game starts with, as th07's.
@@ -1193,7 +1193,7 @@ struct GameManagerUnk4
     BYTE scoreDisabled;
     unsigned char pad_26[0x16];
 };
-ASSERT_SIZE(GameManagerUnk4, 0x3c);
+ASSERT_SIZE(GameConfig, 0x3c);
 
 // th07's GameManager (g_Unknown626270 there), at 0x160f508. Only the
 // fields known so far.
@@ -1363,7 +1363,7 @@ public:
     void AddSubRank(int amount);
     // Takes `amount` hundredths from the rank, as th07's.
     void SubSubRank(int amount);
-    // Unless g_Unknown17d6ed4 is set and `force` is not, adds `amount` to
+    // Unless g_PlayerBombRunning is set and `force` is not, adds `amount` to
     // stats->unk_22, within unk_3ddf8 and unk_3ddfa, and copies it to
     // stats->unk_20.
     void AddGauge(int amount, int force);
@@ -1586,7 +1586,7 @@ public:
     // A block of random size LoadingThread allocates and frees at once,
     // as th07's tempBuffer.
     void *tempBuffer;
-    GameManagerUnk4 *savedConfig;
+    GameConfig *savedConfig;
     GameManagerStats *stats;
     // The score file's chunks, loaded by App::AddedCallback.
     Flsp flsp;
