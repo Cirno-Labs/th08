@@ -1186,8 +1186,8 @@ struct BgmDatHeader
     // 1.
     int version;
     // 0x800 (0x700 in th07).
-    int unk_8;
-    int unk_c;
+    int gameVersion;
+    int reserved;
 };
 
 int App::LoadConfig(char *path)
@@ -1219,7 +1219,7 @@ int App::LoadConfig(char *path)
             {
                 ReadFile(bgmFile, &bgmHeader, sizeof(BgmDatHeader), &read, NULL);
                 CloseHandle(bgmFile);
-                if (bgmHeader.magic != 'VAWZ' || bgmHeader.version != 1 || bgmHeader.unk_8 != 0x800)
+                if (bgmHeader.magic != 'VAWZ' || bgmHeader.version != 1 || bgmHeader.gameVersion != 0x800)
                 {
                     LogError(&g_Log, "BGM データのバージョンが違います\r\n");
                     return -1;
@@ -1258,7 +1258,7 @@ int App::LoadConfig(char *path)
             {
                 ReadFile(bgmFile, &bgmHeader, sizeof(BgmDatHeader), &read, NULL);
                 CloseHandle(bgmFile);
-                if (bgmHeader.magic != 'VAWZ' || bgmHeader.version != 1 || bgmHeader.unk_8 != 0x800)
+                if (bgmHeader.magic != 'VAWZ' || bgmHeader.version != 1 || bgmHeader.gameVersion != 0x800)
                 {
                     LogError(&g_Log, "BGM データのバージョンが違います\r\n");
                     return -1;
