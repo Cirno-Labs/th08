@@ -350,6 +350,20 @@ tick:
     this->timer++;
 }
 
+void Enemy::Func42bc90()
+{
+    int i;
+
+    for (i = 0; i < 4; i++)
+    {
+        if (this->unk_3384[i] != NULL)
+        {
+            g_MemoryManager.Free(this->unk_3384[i]);
+            this->unk_3384[i] = NULL;
+        }
+    }
+}
+
 int EnemyManager::RegisterChain()
 {
     EnemyManager *em = &g_EnemyManager;
