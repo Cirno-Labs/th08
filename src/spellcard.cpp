@@ -551,3 +551,8 @@ int SpellCard::OnUpdate(SpellCard *sc)
 {
     return sc->Update();
 }
+
+int SpellCard::OnDraw(SpellCard *sc)
+{
+    return sc->Draw();
+}
