@@ -434,7 +434,7 @@ void UpdateDissolveBomb(Player *player)
         effect->angle = 0.0f;
         effect->radius = 8.0f;
         effect->ringWidth = 15.0f;
-        effect->unk_334 = 6.0f;
+        effect->waveCount = 6.0f;
         g_SoundPlayer.QueueSound(0xd, 0);
         player->moveScaleY = 0.0f;
         player->moveScaleX = 0.0f;
@@ -729,15 +729,15 @@ int EffectUpdateBombRing42(Effect *effect)
     effect->radius = 256.0f * t;
     effect->segmentCount = 0x40;
     effect->verticesDirty = 1;
-    effect->unk_334 = 5.0f;
-    effect->unk_330 = 0.0f;
+    effect->waveCount = 5.0f;
+    effect->ellipseAngle = 0.0f;
     if (effect->timer < 0x28)
     {
         effect->ringWidth = 8.0f;
     }
     else
     {
-        effect->unk_32c = 64.0f * t;
+        effect->radiusY = 64.0f * t;
         effect->ringWidth += 2.0f;
     }
     return 1;
@@ -752,9 +752,9 @@ int EffectUpdateBombRing43(Effect *effect)
     effect->radius = 256.0f * t;
     effect->segmentCount = 0x30;
     effect->verticesDirty = 1;
-    effect->unk_334 = 0.0f;
-    effect->unk_32c = 128.0f * t;
-    effect->unk_330 = 0.7853982f;
+    effect->waveCount = 0.0f;
+    effect->radiusY = 128.0f * t;
+    effect->ellipseAngle = 0.7853982f;
     if (effect->timer < 0x28)
     {
         effect->ringWidth = 8.0f;
@@ -775,8 +775,8 @@ int EffectUpdateBombRing44(Effect *effect)
     effect->radius = 256.0f * t;
     effect->segmentCount = 0x30;
     effect->verticesDirty = 1;
-    effect->unk_32c = 128.0f * t;
-    effect->unk_330 = -0.7853982f;
+    effect->radiusY = 128.0f * t;
+    effect->ellipseAngle = -0.7853982f;
     if (effect->timer < 0x28)
     {
         effect->ringWidth = 8.0f;
@@ -908,7 +908,7 @@ void UpdateMarisaLastWord(Player *player)
             g_EtamaAnm->StartScript(&eff->sprite, 0x5c);
         }
         eff->segmentCount = 0x20;
-        eff->unk_334 = 0.0f;
+        eff->waveCount = 0.0f;
         D3DXVECTOR3 start;
         D3DXVECTOR3 to;
         start.x = 0.0f;
@@ -1027,7 +1027,7 @@ void UpdateRemiliaBomb(Player *player)
 
             eff = g_EffectManager.SpawnReservedEffect(0x35, &player->pos, bomb->spawnCount % 4 + 4, 1, 0xffffffff);
             eff->segmentCount = 0x20;
-            eff->unk_334 = 4.0f;
+            eff->waveCount = 4.0f;
             D3DXVECTOR3 start;
             D3DXVECTOR3 to;
             start.x = 0.0f;
@@ -1140,7 +1140,7 @@ void UpdateRemiliaLastWord(Player *player)
 
             eff = g_EffectManager.SpawnReservedEffect(0x35, &player->pos, bomb->spawnCount % 4 + 4, 1, 0xffffffff);
             eff->segmentCount = 0x20;
-            eff->unk_334 = 4.0f;
+            eff->waveCount = 4.0f;
             D3DXVECTOR3 start;
             D3DXVECTOR3 to;
             start.x = 0.0f;
@@ -2096,13 +2096,13 @@ int EffectUpdateBombRing48(Effect *effect)
         effect->radius = 192.0f;
         effect->segmentCount = 0x30;
         effect->ringWidth = 3.0f;
-        effect->unk_32c = 0.0001f;
-        effect->unk_330 = 1.5707964f;
+        effect->radiusY = 0.0001f;
+        effect->ellipseAngle = 1.5707964f;
     }
     else
     {
         t = (t = (t = (effect->timer.AsFloat() - 30.0f) / 30.0f) * t) * t;
-        effect->unk_32c = 192.0f * t + 0.0001f;
+        effect->radiusY = 192.0f * t + 0.0001f;
         effect->ringWidth = 80.0f * t + 3.0f;
     }
     effect->verticesDirty = 1;

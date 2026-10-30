@@ -341,7 +341,7 @@ void SpellCard::Start(int card, char *name, int face, DWORD bonus, Enemy *enemy,
     this->effect->angle = 0.0f;
     this->effect->radius = 256.0f;
     this->effect->ringWidth = 15.0f;
-    this->effect->unk_334 = 6.0f;
+    this->effect->waveCount = 6.0f;
     this->unk_0_5 = g_GameManager.unk_3dbac_7;
     g_Gui.bombsChanged = 3;
     g_Gui.livesChanged = 3;
@@ -681,10 +681,10 @@ void SpellCard::End()
                 this->effect->sprite.interpEasing = 6;
                 this->effect->sprite.moveStart.x = this->effect->radius;
                 this->effect->sprite.moveEnd.x = 256.0f;
-                this->effect->sprite.moveStart.y = this->effect->unk_32c;
+                this->effect->sprite.moveStart.y = this->effect->radiusY;
                 this->effect->sprite.moveEnd.y = 0.0f;
                 this->effect->sprite.pos.x = this->effect->radius;
-                this->effect->sprite.pos.y = this->effect->unk_32c;
+                this->effect->sprite.pos.y = this->effect->radiusY;
                 this->effect->sprite.interpDuration[1] = 0;
                 this->effect->sprite.interpFrame[1] = 60;
                 this->effect->sprite.colorInterpEasing = 3;
@@ -693,7 +693,7 @@ void SpellCard::End()
                 ((BYTE *)&this->effect->sprite.colorTween.z)[1] = 0x80;
                 ((BYTE *)&this->effect->sprite.colorTween.z)[0] = 0xa0;
                 ((BYTE *)&this->effect->sprite.colorTween.z)[3] = 0x20;
-                this->effect->unk_334 = 6.0f;
+                this->effect->waveCount = 6.0f;
                 this->effect->timer = 0;
                 this->unk_f8 = this->effect;
                 this->effect = NULL;
@@ -778,12 +778,12 @@ int SpellCard::Update()
             this->effect->sprite.scaleTween.z = 4.0f;
             this->effect->sprite.scaleY = 4.0f;
         }
-        if (this->effect->unk_334 != 0.0f)
+        if (this->effect->waveCount != 0.0f)
         {
-            this->effect->unk_32c = this->effect->sprite.pos.y;
-            if (this->effect->unk_32c == 0.0f)
+            this->effect->radiusY = this->effect->sprite.pos.y;
+            if (this->effect->radiusY == 0.0f)
             {
-                this->effect->unk_334 = 0.0f;
+                this->effect->waveCount = 0.0f;
             }
         }
         if (this->effect->sprite.interpFrame[0].AsFrames() == 0)
@@ -818,10 +818,10 @@ int SpellCard::Update()
             this->unk_f8->sprite.interpEasing = 4;
             this->unk_f8->sprite.moveStart.x = this->unk_f8->radius;
             this->unk_f8->sprite.moveEnd.x = 0.0f;
-            this->unk_f8->sprite.moveStart.y = this->unk_f8->unk_32c;
+            this->unk_f8->sprite.moveStart.y = this->unk_f8->radiusY;
             this->unk_f8->sprite.moveEnd.y = 60.0f;
             this->unk_f8->sprite.pos.x = this->unk_f8->radius;
-            this->unk_f8->sprite.pos.y = this->unk_f8->unk_32c;
+            this->unk_f8->sprite.pos.y = this->unk_f8->radiusY;
         }
         else if (this->unk_f8->timer == 60)
         {
@@ -859,7 +859,7 @@ int SpellCard::Update()
                 this->unk_f8->origin.z = 0.0f;
                 this->unk_f8->angle = AddNormalizeAngle(this->unk_f8->angle, -0.05235988f);
             }
-            this->unk_f8->unk_32c = this->unk_f8->sprite.pos.y;
+            this->unk_f8->radiusY = this->unk_f8->sprite.pos.y;
             if (this->unk_f8->timer > 8 && this->unk_10 > 0)
             {
                 D3DXVECTOR3 itemPos;

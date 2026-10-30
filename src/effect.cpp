@@ -620,18 +620,18 @@ int EffectInitRing(Effect *effect)
     effect->axis.x = 0.0f;
     effect->axis.y = 0.0f;
     effect->axis.z = 1.0f;
-    effect->unk_2f8.x = 0.0f;
-    effect->unk_2f8.y = -1.0f;
-    effect->unk_2f8.z = 0.0f;
+    effect->unusedVector2f8.x = 0.0f;
+    effect->unusedVector2f8.y = -1.0f;
+    effect->unusedVector2f8.z = 0.0f;
     effect->angle = effect->velocity.x;
     effect->radius = effect->velocity.y;
     effect->ringWidth = effect->velocity.z;
     g_SpriteEngine->FillSpriteStripVertices(&effect->sprite, effect->vertices, effect->segmentCount * 2);
     effect->verticesDirty = 1;
     effect->draw = EffectDrawRing;
-    effect->unk_32c = 0.0f;
-    effect->unk_330 = 0.0f;
-    effect->unk_334 = 0.0f;
+    effect->radiusY = 0.0f;
+    effect->ellipseAngle = 0.0f;
+    effect->waveCount = 0.0f;
     effect->segmentCount = 0x18;
     return 0;
 }
@@ -650,7 +650,7 @@ int EffectDrawRing(Effect *effect)
         outer = effect->ringWidth / sinf((3.1415927f - delta) / 2.0f);
         vtx = effect->vertices;
         g_SpriteEngine->FillVerticalStripVertices(&effect->sprite, effect->vertices, effect->segmentCount * 2 + 2);
-        if (effect->unk_32c == 0.0f)
+        if (effect->radiusY == 0.0f)
         {
             float angle = effect->angle;
 
@@ -677,28 +677,28 @@ int EffectDrawRing(Effect *effect)
                 angle += delta;
             }
         }
-        else if (effect->unk_334 == 0.0f)
+        else if (effect->waveCount == 0.0f)
         {
             float angle = 0.0f;
             D3DXVECTOR3 pos;
             float outerY;
             float ryInner;
 
-            outerY = outer + effect->unk_32c;
-            ryInner = effect->unk_32c - outer;
+            outerY = outer + effect->radiusY;
+            ryInner = effect->radiusY - outer;
             inner = effect->radius - outer;
             outer += effect->radius;
             for (i = effect->segmentCount + 1; i > 0; i--)
             {
                 ((Vector2 *)&pos)->SetPolarEllipse(angle, outer, outerY);
-                Rotate2D(&vtx->pos, &pos, effect->unk_330);
+                Rotate2D(&vtx->pos, &pos, effect->ellipseAngle);
                 vtx->pos += effect->origin;
                 vtx->pos.x = g_GameManager.arena[0] + vtx->pos.x;
                 vtx->pos.y = g_GameManager.arena[1] + vtx->pos.y;
                 vtx->pos.z = 0.0f;
                 vtx++;
                 ((Vector2 *)&pos)->SetPolarEllipse(angle, inner, ryInner);
-                Rotate2D(&vtx->pos, &pos, effect->unk_330);
+                Rotate2D(&vtx->pos, &pos, effect->ellipseAngle);
                 vtx->pos += effect->origin;
                 vtx->pos.x = g_GameManager.arena[0] + vtx->pos.x;
                 vtx->pos.y = g_GameManager.arena[1] + vtx->pos.y;
@@ -709,9 +709,9 @@ int EffectDrawRing(Effect *effect)
         }
         else
         {
-            float wobbleAngle = effect->unk_330;
+            float wobbleAngle = effect->ellipseAngle;
             float angle = effect->angle;
-            float phaseStep = 6.2831855f * effect->unk_334 / effect->segmentCount;
+            float phaseStep = 6.2831855f * effect->waveCount / effect->segmentCount;
             D3DXVECTOR3 unused;
             float wobble;
 
@@ -727,7 +727,7 @@ int EffectDrawRing(Effect *effect)
                 {
                     wobbleAngle -= 6.2831855f;
                 }
-                wobble = cosf(wobbleAngle) * effect->unk_32c;
+                wobble = cosf(wobbleAngle) * effect->radiusY;
                 ((Vector2 *)&vtx->pos)->SetPolar(angle, outer + wobble);
                 vtx->pos += effect->origin;
                 vtx->pos.x = g_GameManager.arena[0] + vtx->pos.x;
@@ -753,7 +753,7 @@ int EffectDrawRing(Effect *effect)
 int EffectInitRing2(Effect *effect)
 {
     EffectInitRing(effect);
-    effect->unk_355 = 1;
+    effect->useDrawList3 = 1;
     return 0;
 }
 
@@ -768,12 +768,12 @@ int EffectUpdateRing(Effect *effect)
 int EffectUpdateRingFull(Effect *effect)
 {
     effect->segmentCount = effect->sprite.scriptVar0;
-    effect->unk_334 = effect->sprite.scriptVar1;
+    effect->waveCount = effect->sprite.scriptVar1;
     effect->ringWidth = effect->sprite.scaleY;
     effect->radius = effect->sprite.pos.x;
-    effect->unk_32c = effect->sprite.pos.y;
+    effect->radiusY = effect->sprite.pos.y;
     effect->angle = effect->sprite.rotation.z;
-    effect->unk_330 = effect->sprite.rotation.y;
+    effect->ellipseAngle = effect->sprite.rotation.y;
     effect->verticesDirty = 1;
     return 1;
 }
@@ -783,7 +783,7 @@ int EffectUpdateRingTimed(Effect *effect)
     effect->segmentCount = 0x20;
     effect->ringWidth = effect->sprite.scaleY;
     effect->radius = effect->sprite.pos.x;
-    effect->unk_32c = effect->sprite.pos.y;
+    effect->radiusY = effect->sprite.pos.y;
     effect->verticesDirty = 1;
     if (effect->timer >= 120)
     {
@@ -797,7 +797,7 @@ int EffectUpdateRingFade(Effect *effect)
     effect->verticesDirty = 1;
     effect->ringWidth = effect->sprite.scaleY;
     effect->radius = effect->sprite.pos.x;
-    effect->unk_32c = effect->sprite.pos.y;
+    effect->radiusY = effect->sprite.pos.y;
     effect->angle = effect->sprite.rotation.z;
     if (effect->sprite.alpha == 0)
     {
@@ -809,11 +809,11 @@ int EffectUpdateRingFade(Effect *effect)
 int EffectUpdateRingAt(Effect *effect)
 {
     effect->segmentCount = effect->sprite.scriptVar0;
-    effect->unk_334 = effect->sprite.scriptVar1;
+    effect->waveCount = effect->sprite.scriptVar1;
     effect->ringWidth = effect->sprite.scaleY;
     effect->radius = effect->sprite.scriptVarF1;
     effect->angle = effect->sprite.rotation.z;
-    effect->unk_330 = effect->sprite.rotation.y;
+    effect->ellipseAngle = effect->sprite.rotation.y;
     effect->verticesDirty = 1;
     effect->origin = effect->sprite.pos;
     return 1;
@@ -847,7 +847,7 @@ int EffectManager::OnUpdate(EffectManager *mgr)
             continue;
         }
         mgr->activeCount++;
-        if (!(g_GameManager.unk_3dbac >> 10 & 1) || eff->unk_357)
+        if (!(g_GameManager.unk_3dbac >> 10 & 1) || eff->alwaysUpdates)
         {
             if (eff->update != NULL && eff->update(eff) != 1)
             {
@@ -873,7 +873,7 @@ int EffectManager::OnUpdate(EffectManager *mgr)
         }
         else if (eff->drawList == 0)
         {
-            if (eff->unk_355)
+            if (eff->useDrawList3)
             {
                 mgr->drawListTails[3]->next = eff;
                 mgr->drawListTails[3] = eff;

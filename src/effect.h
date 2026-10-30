@@ -28,7 +28,7 @@ struct Effect
     D3DXVECTOR3 origin;
     D3DXVECTOR3 axis;
     // Set to (0, -1, 0) by EffectInitRing, as axis to (0, 0, 1).
-    D3DXVECTOR3 unk_2f8;
+    D3DXVECTOR3 unusedVector2f8;
     D3DXQUATERNION rotation;
     float radius;
     float angle;
@@ -41,11 +41,11 @@ struct Effect
     int reservedSlot;
     // A ring's y radius (an ellipse) when unk_334 is 0, else how far its
     // radius waves.
-    float unk_32c;
+    float radiusY;
     // A ring ellipse's rotation, or where its wave starts.
-    float unk_330;
+    float ellipseAngle;
     // How many waves go round a ring.
-    float unk_334;
+    float waveCount;
     Timer timer;
     unsigned char pad_344[0x4];
     // From g_EffectInfos. Called every frame while set; the effect ends
@@ -64,11 +64,11 @@ struct Effect
     // fourth with unk_355, the fifth with sprite blend mode 1), 2 the
     // third, others the second.
     char drawList;
-    char unk_355;
+    char useDrawList3;
     // Whether a ring's vertices are to be worked out again.
     char verticesDirty;
     // Runs while bit 10 of GameManager::unk_3dbac stops the others.
-    char unk_357;
+    char alwaysUpdates;
     // Memory the effect allocated, freed when its slot is reused.
     VertexTex1DiffuseXyzrwh *vertices;
     // The next effect in its draw list.

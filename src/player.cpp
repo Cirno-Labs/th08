@@ -338,8 +338,8 @@ void Player::Die()
             effect->angle = 0.0f;
             effect->radius = 128.0f;
             effect->ringWidth = 15.0f;
-            effect->unk_334 = 6.0f;
-            effect->unk_357 = 1;
+            effect->waveCount = 6.0f;
+            effect->alwaysUpdates = 1;
             if (g_SpellCard.Func4178a0())
             {
                 g_GameManager.unk_3dbac_10 = 1;
