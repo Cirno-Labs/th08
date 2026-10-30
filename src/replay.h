@@ -62,8 +62,8 @@ struct ReplayHeader
     // Set for the format with seeds: its frames are ReplayFrameWithSeed,
     // and playing it back records the seeds too. 0 when recording.
     BYTE withSeeds;
-    BYTE unk_07;
-    BYTE unk_08[0x4];
+    BYTE isSaved;
+    BYTE pad_08[0x4];
     // The size of the file up to the user section.
     int size;
     // 0x3f000318 plus the bytes from `key` on.
@@ -72,7 +72,7 @@ struct ReplayHeader
     // The bytes from `compressedSize` on are stored plus key, key + 7,
     // key + 14, ...
     BYTE key;
-    BYTE unk_16[0x2];
+    BYTE pad_16[0x2];
     // In the file, the size of the compressed data after the first 0x68
     // bytes, and its size decompressed.
     int compressedSize;
@@ -102,7 +102,7 @@ struct ReplayHeader
     DWORD score;
     // The config the game was played with, a GameManagerUnk4.
     BYTE config[0x3c];
-    unsigned char unk_f0[0x24];
+    unsigned char pad_f0[0x24];
     // How far the game ran below full speed, in percent, plus 1.12, and
     // as is.
     float slowdown2;
@@ -110,7 +110,7 @@ struct ReplayHeader
     // 2 if the shot type has cleared Extra or Phantasm, 1 if the final
     // stage, else 0.
     char clearLevel;
-    BYTE unk_11d[0x3];
+    BYTE pad_11d[0x3];
     // 30.
     int replayFormatVersion;
     // App::exeSize and exeChecksum, and "0100d".

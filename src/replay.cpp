@@ -365,7 +365,7 @@ int ReplayManager::RecordAddedCallback(ReplayManager *replay)
         replay->data = (ReplayHeader *)g_MemoryManager.Register(new ReplayHeader, sizeof(ReplayHeader), "ReplayDataInf");
         memset(replay->data, 0, sizeof(ReplayHeader));
         *(DWORD *)replay->data->magic = *(DWORD *)"T8RP";
-        replay->data->unk_07 = 0;
+        replay->data->isSaved = 0;
         replay->data->shotType = g_GameManager.character;
         replay->data->version = 6;
         replay->data->withSeeds = 0;
@@ -679,7 +679,7 @@ void SaveReplay(char *path, char *name)
                 p2 = FormatAndAdvanceInline(p2, "ゲームのバージョン\t%d.%.2d%c\r\n", 1, 0, 'd');
                 user.size = strlen(userInfo) + 0xc;
                 user.size += user.size & 1;
-                hX.unk_07 = 1;
+                hX.isSaved = 1;
                 strcpy(hX.name, name);
                 FormatTodayDate(hX.date);
                 hX.key = g_Rng.GetRandomU16InRange(0x80) + 0x40;
