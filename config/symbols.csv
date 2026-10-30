@@ -276,7 +276,7 @@ address,size,name,symbol
 0x00422480,28,GameManager::GetPower,?GetPower@GameManager@@QAEHXZ
 0x004224a0,630,ScriptMoveRandom2,?ScriptMoveRandom2@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00422720,1110,ScriptFireBullets,?ScriptFireBullets@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
-0x00422b80,39,Func422b80,
+0x00422b80,39,GameManager::RankLerpF,?RankLerpF@GameManager@@QAEMMM@Z
 0x00422bb0,42,AsciiText::SetNearbyLabelInterrupt,?SetNearbyLabelInterrupt@AsciiText@@QAEXHF@Z
 0x00422be0,51,AsciiText::SetNearbyLabelPos,?SetNearbyLabelPos@AsciiText@@QAEXHPAUD3DXVECTOR3@@@Z
 0x00422c20,25,Gui::SetBossPresent,?SetBossPresent@Gui@@QAEEE@Z
