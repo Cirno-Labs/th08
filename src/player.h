@@ -186,7 +186,7 @@ struct PlayerBombPart
 {
     int state;
     int burstTimer;
-    float unk_8;
+    float homingSpeed;
     float speed;
     float angle;
     D3DXVECTOR3 pos;

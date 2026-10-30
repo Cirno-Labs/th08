@@ -101,7 +101,7 @@ void UpdateReimuBomb(Player *player)
             angle += 0.3926991f;
             orbs->pos = player->pos;
             orbs->trail[0] = orbs->pos;
-            orbs->unk_8 = 0.0f;
+            orbs->homingSpeed = 0.0f;
             orbs->state = 1;
             orbs->hitArea = player->AddHitAreaCircle(&player->pos, 96.0f, 0.0f, 200, 6);
             orbs->hitbox = player->AddBombHitboxCircle(&orbs->pos, 64.0f, 0.0f, 5, 200);
@@ -119,9 +119,9 @@ void UpdateReimuBomb(Player *player)
         {
             orbs->angle = AddNormalizeAngle(orbs->angle, i & 1 ? 0.05235988f : -0.05235988f);
             oldPos = orbs->pos;
-            orbs->pos.x = sinf(orbs->angle) * orbs->unk_8 + orbs->trail[0].x;
-            orbs->pos.y = cosf(orbs->angle) * orbs->unk_8 + orbs->trail[0].y;
-            orbs->unk_8 += 3.2f;
+            orbs->pos.x = sinf(orbs->angle) * orbs->homingSpeed + orbs->trail[0].x;
+            orbs->pos.y = cosf(orbs->angle) * orbs->homingSpeed + orbs->trail[0].y;
+            orbs->homingSpeed += 3.2f;
             orbs->velocity = orbs->pos - oldPos;
         }
     }
@@ -140,7 +140,7 @@ void UpdateReimuBomb(Player *player)
                 orbs->speed = sqrtf(orbs->velocity.x * orbs->velocity.x + orbs->velocity.y * orbs->velocity.y);
                 orbs->angle = atan2f(orbs->velocity.x, orbs->velocity.y);
                 orbs->burstTimer = 0;
-                orbs->unk_8 = 8.0f;
+                orbs->homingSpeed = 8.0f;
             }
         }
         for (i = 0, orbs = pb->parts; (int)i < 0x10; i++, orbs++)
@@ -161,7 +161,7 @@ void UpdateReimuBomb(Player *player)
                 }
                 x = target[0] - orbs->pos.x;
                 y = target[1] - orbs->pos.y;
-                len = sqrtf(x * x + y * y) / (orbs->unk_8 / 8.0f);
+                len = sqrtf(x * x + y * y) / (orbs->homingSpeed / 8.0f);
                 if (len < 1.0f)
                 {
                     len = 1.0f;
@@ -169,13 +169,13 @@ void UpdateReimuBomb(Player *player)
                 x = x / len + orbs->velocity.x;
                 y = y / len + orbs->velocity.y;
                 len = sqrtf(x * x + y * y);
-                orbs->unk_8 = (len > 10.0f) ? 10.0f : len;
-                if (orbs->unk_8 < 1.0f)
+                orbs->homingSpeed = (len > 10.0f) ? 10.0f : len;
+                if (orbs->homingSpeed < 1.0f)
                 {
-                    orbs->unk_8 = 1.0f;
+                    orbs->homingSpeed = 1.0f;
                 }
-                orbs->velocity.x = x * orbs->unk_8 / len;
-                orbs->velocity.y = y * orbs->unk_8 / len;
+                orbs->velocity.x = x * orbs->homingSpeed / len;
+                orbs->velocity.y = y * orbs->homingSpeed / len;
                 player->AddHitAreaCircle(&orbs->pos, 128.0f, 0.0f, 0, 6);
                 if (orbs->hitbox->hits >= orbs->hitbox->maxDamage || pb->timer >= pb->duration - 30)
                 {
@@ -264,7 +264,7 @@ void UpdateReimuLastWord(Player *player)
             angle += 0.3926991f;
             orbs->pos = player->pos;
             orbs->trail[0] = orbs->pos;
-            orbs->unk_8 = 0.0f;
+            orbs->homingSpeed = 0.0f;
             orbs->state = 1;
             orbs->hitArea = player->AddHitAreaCircle(&player->pos, 96.0f, 0.0f, 200, 6);
             orbs->hitbox = player->AddBombHitboxCircle(&orbs->pos, 64.0f, 0.0f, 5, 200);
@@ -285,17 +285,17 @@ void UpdateReimuLastWord(Player *player)
             {
                 orbs->angle = AddNormalizeAngle(orbs->angle, i & 1 ? 0.05235988f : -0.05235988f);
                 oldPos = orbs->pos;
-                orbs->pos.x = sinf(orbs->angle) * orbs->unk_8 + orbs->trail[0].x;
-                orbs->pos.y = cosf(orbs->angle) * orbs->unk_8 + orbs->trail[0].y;
+                orbs->pos.x = sinf(orbs->angle) * orbs->homingSpeed + orbs->trail[0].x;
+                orbs->pos.y = cosf(orbs->angle) * orbs->homingSpeed + orbs->trail[0].y;
                 if (pb->timer < 40)
                 {
                     if (i & 1)
                     {
-                        orbs->unk_8 += 1.2f;
+                        orbs->homingSpeed += 1.2f;
                     }
                     else
                     {
-                        orbs->unk_8 += 2.4f;
+                        orbs->homingSpeed += 2.4f;
                     }
                 }
                 orbs->velocity = orbs->pos - oldPos;
@@ -1228,7 +1228,7 @@ void UpdateSakuyaBomb(Player *player)
             angle = i * 6.2831855f / 96.0f - 3.1415927f;
             blade->angle = angle;
             blade->speed = g_Rng.GetRandomF32InRange(1.0f) + g_Half;
-            blade->unk_8 = g_Rng.GetRandomF32InRange(0.1f) + 0.03f;
+            blade->homingSpeed = g_Rng.GetRandomF32InRange(0.1f) + 0.03f;
             blade->acceleration.x = g_Rng.GetRandomU16InRange(1) ? 0.15707964f : -0.15707964f;
             blade->velocity.x = cosf(blade->angle) * 24.0f;
             blade->velocity.y = sinf(blade->angle) * 24.0f;
@@ -1257,7 +1257,7 @@ void UpdateSakuyaBomb(Player *player)
                 }
                 blade->speed = 14.0f;
             }
-            blade->speed += blade->unk_8;
+            blade->speed += blade->homingSpeed;
             blade->velocity.x = cosf(blade->angle) * blade->speed;
             blade->velocity.y = sinf(blade->angle) * blade->speed;
         }
@@ -1362,7 +1362,7 @@ void UpdateSakuyaLastWord(Player *player)
             angle = AddNormalizeAngle(i * 6.2831855f / 64.0f - 3.1415927f, 0.0f);
             blade->angle = angle;
             blade->speed = g_Rng.GetRandomF32InRange(1.0f) + g_Half;
-            blade->unk_8 = g_Rng.GetRandomF32InRange(0.1f) + 0.03f;
+            blade->homingSpeed = g_Rng.GetRandomF32InRange(0.1f) + 0.03f;
             blade->acceleration.x = g_Rng.GetRandomU16InRange(1) ? 0.15707964f : -0.15707964f;
             blade->velocity.x = cosf(blade->angle) * 24.0f;
             blade->velocity.y = sinf(blade->angle) * 24.0f;
@@ -1391,7 +1391,7 @@ void UpdateSakuyaLastWord(Player *player)
                 blade->speed = 14.0f;
                 g_EffectManager.SpawnEffect(0x2e, &blade->pos, 1, 0xffffffff);
             }
-            blade->speed += blade->unk_8;
+            blade->speed += blade->homingSpeed;
             blade->velocity.x = cosf(blade->angle) * blade->speed;
             blade->velocity.y = sinf(blade->angle) * blade->speed;
         }
@@ -2127,7 +2127,7 @@ void UpdateYuyukoBomb(Player *player)
             butterfly->state = 1;
             player->anm->StartScript(&butterfly->sprites[0], 0x12);
             butterfly->angle = i * 3.1415927f / 8.0f - 3.1415927f;
-            butterfly->unk_8 = 0.01308997f;
+            butterfly->homingSpeed = 0.01308997f;
             butterfly->pos = butterfly->trail[0] = player->pos;
             butterfly->hitbox = player->AddBombHitboxCircle(&butterfly->pos, 24.0f, 0.0f, 50, 500);
             butterfly->hitArea = player->AddHitAreaCircle(&butterfly->pos, 24.0f, 0.0f, 500, 6);
@@ -2140,7 +2140,7 @@ void UpdateYuyukoBomb(Player *player)
             butterfly->state = 1;
             player->anm->StartScript(&butterfly->sprites[0], 0x13);
             butterfly->angle = i * 3.1415927f / 8.0f - 3.1415927f;
-            butterfly->unk_8 = -0.01308997f;
+            butterfly->homingSpeed = -0.01308997f;
             butterfly->pos = butterfly->trail[0] = player->pos;
             butterfly->hitbox = player->AddBombHitboxCircle(&butterfly->pos, 24.0f, 0.0f, 50, 500);
             butterfly->hitArea = player->AddHitAreaCircle(&butterfly->pos, 24.0f, 0.0f, 500, 6);
@@ -2153,7 +2153,7 @@ void UpdateYuyukoBomb(Player *player)
             butterfly->state = 1;
             player->anm->StartScript(&butterfly->sprites[0], 0x12);
             butterfly->angle = i * 3.1415927f / 8.0f - 3.1415927f;
-            butterfly->unk_8 = 0.015707964f;
+            butterfly->homingSpeed = 0.015707964f;
             butterfly->pos = butterfly->trail[0] = player->pos;
             butterfly->hitbox = player->AddBombHitboxCircle(&butterfly->pos, 24.0f, 0.0f, 50, 500);
             butterfly->hitArea = player->AddHitAreaCircle(&butterfly->pos, 24.0f, 0.0f, 500, 6);
@@ -2166,7 +2166,7 @@ void UpdateYuyukoBomb(Player *player)
             butterfly->state = 1;
             player->anm->StartScript(&butterfly->sprites[0], 0x13);
             butterfly->angle = i * 3.1415927f / 8.0f - 3.1415927f;
-            butterfly->unk_8 = -0.015707964f;
+            butterfly->homingSpeed = -0.015707964f;
             butterfly->pos = butterfly->trail[0] = player->pos;
             butterfly->hitbox = player->AddBombHitboxCircle(&butterfly->pos, 24.0f, 0.0f, 50, 500);
             butterfly->hitArea = player->AddHitAreaCircle(&butterfly->pos, 24.0f, 0.0f, 500, 6);
@@ -2188,7 +2188,7 @@ void UpdateYuyukoBomb(Player *player)
         }
         butterfly->trail[1] = butterfly->pos;
         butterfly->velocity.x += butterfly->velocity.y;
-        butterfly->angle = AddNormalizeAngle(butterfly->angle, butterfly->unk_8);
+        butterfly->angle = AddNormalizeAngle(butterfly->angle, butterfly->homingSpeed);
         ((Vector2 *)&butterfly->pos)->SetPolar(butterfly->angle, butterfly->velocity.x);
         butterfly->pos += butterfly->trail[0];
         butterfly->trail[1] = butterfly->pos - butterfly->trail[1];
@@ -2254,7 +2254,7 @@ void UpdateYuyukoLastWord(Player *player)
             butterfly->state = 1;
             player->anm->StartScript(&butterfly->sprites[0], 0x12);
             butterfly->angle = i * 3.1415927f / 8.0f - 3.1415927f;
-            butterfly->unk_8 = 0.01308997f;
+            butterfly->homingSpeed = 0.01308997f;
             butterfly->pos = butterfly->trail[0] = player->pos;
             butterfly->hitbox = player->AddBombHitboxCircle(&butterfly->pos, 24.0f, 0.0f, 50, 500);
             butterfly->hitArea = player->AddHitAreaCircle(&butterfly->pos, 24.0f, 0.0f, 500, 6);
@@ -2267,7 +2267,7 @@ void UpdateYuyukoLastWord(Player *player)
             butterfly->state = 1;
             player->anm->StartScript(&butterfly->sprites[0], 0x13);
             butterfly->angle = i * 3.1415927f / 8.0f - 3.1415927f;
-            butterfly->unk_8 = -0.01308997f;
+            butterfly->homingSpeed = -0.01308997f;
             butterfly->pos = butterfly->trail[0] = player->pos;
             butterfly->hitbox = player->AddBombHitboxCircle(&butterfly->pos, 24.0f, 0.0f, 50, 500);
             butterfly->hitArea = player->AddHitAreaCircle(&butterfly->pos, 24.0f, 0.0f, 500, 6);
@@ -2280,7 +2280,7 @@ void UpdateYuyukoLastWord(Player *player)
             butterfly->state = 1;
             player->anm->StartScript(&butterfly->sprites[0], 0x12);
             butterfly->angle = i * 3.1415927f / 8.0f - 3.1415927f;
-            butterfly->unk_8 = 0.015707964f;
+            butterfly->homingSpeed = 0.015707964f;
             butterfly->pos = butterfly->trail[0] = player->pos;
             butterfly->hitbox = player->AddBombHitboxCircle(&butterfly->pos, 24.0f, 0.0f, 50, 500);
             butterfly->hitArea = player->AddHitAreaCircle(&butterfly->pos, 24.0f, 0.0f, 500, 6);
@@ -2293,7 +2293,7 @@ void UpdateYuyukoLastWord(Player *player)
             butterfly->state = 1;
             player->anm->StartScript(&butterfly->sprites[0], 0x13);
             butterfly->angle = i * 3.1415927f / 8.0f - 3.1415927f;
-            butterfly->unk_8 = -0.015707964f;
+            butterfly->homingSpeed = -0.015707964f;
             butterfly->pos = butterfly->trail[0] = player->pos;
             butterfly->hitbox = player->AddBombHitboxCircle(&butterfly->pos, 24.0f, 0.0f, 50, 500);
             butterfly->hitArea = player->AddHitAreaCircle(&butterfly->pos, 24.0f, 0.0f, 500, 6);
@@ -2347,7 +2347,7 @@ void UpdateYuyukoLastWord(Player *player)
         }
         butterfly->trail[1] = butterfly->pos;
         butterfly->velocity.x += butterfly->velocity.y;
-        butterfly->angle = AddNormalizeAngle(butterfly->angle, butterfly->unk_8);
+        butterfly->angle = AddNormalizeAngle(butterfly->angle, butterfly->homingSpeed);
         ((Vector2 *)&butterfly->pos)->SetPolar(butterfly->angle, butterfly->velocity.x);
         butterfly->pos += butterfly->trail[0];
         butterfly->trail[1] = butterfly->pos - butterfly->trail[1];
