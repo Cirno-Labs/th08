@@ -29,11 +29,11 @@ struct ReplayStage
     // GameManagerStats::grazeTotal.
     int grazeTotal;
     // GameManagerStats's unk_34, unk_38 and unk_24.
-    int unk_0c;
-    int unk_10;
-    int unk_14;
+    int checksumKeyStage;
+    int checksumKeyPoints;
+    int maxPointValue;
     // GameManagerStats::unk_22.
-    WORD unk_18;
+    WORD gauge;
     // GameManager::rngSeed.
     WORD rngSeed;
     BYTE power;
@@ -42,12 +42,12 @@ struct ReplayStage
     // GameManager::rank.
     BYTE rank;
     // GameManager::unk_3dba8.
-    BYTE unk_20;
+    BYTE powerItemCombo;
     // GameManagerStats::spellCardsCaptured.
     BYTE spellCardsCaptured;
     // GameManagerStats::unk_28.
-    char unk_22;
-    BYTE unk_23;
+    char clock;
+    BYTE unusedByte23;
     WORD frames[1];
 };
 
