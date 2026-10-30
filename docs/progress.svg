@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">88.53% (988)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">8.24% (92)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">88.62% (989)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">8.15% (91)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="661.32" height="6" x="0" y="0" class="named"/>
-<rect width="24.10" height="6" x="661.32" y="0" class="decompiled"/>
-<rect width="61.58" height="6" x="685.42" y="0" class="todo"/>
+<rect width="661.99" height="6" x="0" y="0" class="named"/>
+<rect width="24.10" height="6" x="661.99" y="0" class="decompiled"/>
+<rect width="60.91" height="6" x="686.09" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -501,7 +501,7 @@
 <rect width="12" height="12" x="450" y="120" class="named"><title>0x0042f360 BulletManager::Reset (177 bytes)</title></rect>
 <rect width="12" height="12" x="465" y="120" class="named"><title>0x0042f420 BulletManager::BulletManager (117 bytes)</title></rect>
 <rect width="12" height="12" x="480" y="120" class="named"><title>0x0042f4a0 BulletTypeSprites::BulletTypeSprites (92 bytes)</title></rect>
-<rect width="12" height="12" x="495" y="120" class="todo"><title>0x0042f500 Func42f500 (115 bytes)</title></rect>
+<rect width="12" height="12" x="495" y="120" class="named"><title>0x0042f500 Bullet::Bullet (115 bytes)</title></rect>
 <rect width="12" height="12" x="510" y="120" class="todo"><title>0x0042f580 Func42f580 (64 bytes)</title></rect>
 <rect width="12" height="12" x="525" y="120" class="todo"><title>0x0042f5c0 Func42f5c0 (33 bytes)</title></rect>
 <rect width="12" height="12" x="540" y="120" class="todo"><title>0x0042f5f0 Func42f5f0 (2138 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">81.72%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">16.70%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">81.74%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">16.68%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="610.44" height="6" x="0" y="0" class="named"/>
-<rect width="11.78" height="6" x="610.44" y="0" class="decompiled"/>
-<rect width="124.78" height="6" x="622.22" y="0" class="todo"/>
+<rect width="610.63" height="6" x="0" y="0" class="named"/>
+<rect width="11.78" height="6" x="610.63" y="0" class="decompiled"/>
+<rect width="124.59" height="6" x="622.41" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -1785,7 +1785,7 @@
 <rect width="5.08" height="5.22" x="618.51" y="283.22" class="named"><title>0x0044871b App::CloseSubThread (117 bytes)</title></rect>
 <rect width="5.08" height="5.08" x="618.51" y="291.44" class="named"><title>0x00428890 Ending::ReadInt (115 bytes)</title></rect>
 <rect width="5.08" height="5.08" x="618.51" y="299.52" class="named"><title>0x0042a820 ReleaseEnemyEffects (115 bytes)</title></rect>
-<rect width="5.08" height="5.08" x="618.51" y="307.60" class="todo"><title>0x0042f500 Func42f500 (115 bytes)</title></rect>
+<rect width="5.08" height="5.08" x="618.51" y="307.60" class="named"><title>0x0042f500 Bullet::Bullet (115 bytes)</title></rect>
 <rect width="5.08" height="5.08" x="618.51" y="315.68" class="named"><title>0x0043d760 SetButtonFromJoystick (115 bytes)</title></rect>
 <rect width="5.08" height="5.08" x="618.51" y="323.76" class="named"><title>0x00443e50 MmTimer::Start (115 bytes)</title></rect>
 <rect width="5.08" height="5.08" x="618.51" y="331.84" class="named"><title>0x00449f70 PlayerBombPart::PlayerBombPart (115 bytes)</title></rect>
