@@ -245,7 +245,7 @@ address,size,name,symbol
 0x0041f110,365,Func41f110,
 0x0041f280,383,Func41f280,
 0x0041f400,25,Func41f400,
-0x0041f420,1899,Func41f420,
+0x0041f420,1899,GetIntOperand,?GetIntOperand@@YIHPAUEnemy@@H@Z
 0x0041fd20,28,Enemy::Func41fd20,?Func41fd20@Enemy@@QAEHXZ
 0x0041fd40,70,Enemy::Func41fd40,?Func41fd40@Enemy@@QAEHXZ
 0x0041fd90,59,Func41fd90,
@@ -844,7 +844,7 @@ address,size,name,symbol
 0x00453c60,25,GameManager::SetUnk28,?SetUnk28@GameManager@@QAEXH@Z
 0x00453c80,25,GameManager::GetDeaths,?GetDeaths@GameManager@@QAEHXZ
 0x00453ca0,28,GameManager::GetBombsUsed,?GetBombsUsed@GameManager@@QAEHXZ
-0x00453cc0,17,ReplayManager::GetMode,?GetMode@ReplayManager@@QAEHXZ
+0x00453cc0,17,ReplayManager::GetMode,?GetMode@ReplayManager@@QAEHXZ ?GetUnk10@SpellCard@@QAEHXZ
 0x00453cd1,41,GetStageName,?GetStageName@@YIPADH@Z
 0x00453cfa,19,GetShotName,?GetShotName@@YIPADH@Z
 0x00453d0d,1372,SaveScoreDat,?SaveScoreDat@@YIXPAVResultScreen@@@Z

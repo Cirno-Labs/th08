@@ -11,12 +11,19 @@
 #include "sprite.h"
 #include "timer.h"
 
-// An enemy script's variables. Only its size is known so far (th07's
-// was 0x68).
+// An enemy script's variables, as th07's, by operand number: ints
+// 10000 to 10007, floats 10016 to 10023, ints2 10036 to 10039, floats2
+// 10094 and 10095, ints3 10053 to 10056, floats3 10057 to 10060.
 struct EnemyScriptVars
 {
-    unsigned char unk_0[0x78];
+    int ints[8];
+    float floats[8];
+    int ints2[4];
+    float floats2[2];
+    int ints3[4];
+    float floats3[4];
 };
+ASSERT_SIZE(EnemyScriptVars, 0x78);
 
 // One of an enemy script's interpolation loops, as th07's.
 struct EnemyScriptLoop
@@ -173,7 +180,14 @@ struct Enemy
     Sprite sprites[2];
     EnemyScriptState ctx;
     EnemyScriptState savedCtx[16];
-    unsigned char unk_2ca0[0x4a];
+    // The context the script runs in: ctx, or one of savedCtx.
+    EnemyScriptState *currentCtx;
+    int unk_2ca4;
+    // Variables of the enemy itself, which all its subroutines share:
+    // ints 10008 to 10015 and floats 10024 to 10031. New in th08.
+    int enemyInts[8];
+    float enemyFloats[8];
+    unsigned char unk_2ce8[0x2];
     short stackDepth;
     short unk_2cec;
     short deathSub;
@@ -485,10 +499,19 @@ public:
 
     EnemyScriptHeader *file;
     void **subs;
-    unsigned char unk_8[0x180];
+    unsigned char unk_8[0x160];
+    // The scripts' shared variables, as th07's: ints 10061 to 10064 and
+    // floats 10065 to 10068.
+    int globalInts[4];
+    float globalFloats[4];
 };
 ASSERT_SIZE(EnemyScripts, 0x188);
 extern EnemyScripts g_EnemyScripts;
+// The value of script operand `id` for `enemy`, as th07's: a variable
+// (floats truncated) or another value the scripts read by number from
+// 10000 to 10100; any other number is its own value (0x41f420).
+int GetIntOperand(Enemy *enemy, int id);
+
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
 // The enemy scripts by stage, by stage in spell practice (stage + 9),

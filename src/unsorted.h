@@ -2478,9 +2478,31 @@ struct SpellCard
             DWORD unk_0_7 : 1;
         };
     };
-    unsigned char unk_4[0xf8];
+    // unk_10. Inline; its copy is folded with ReplayManager::GetMode
+    // (0x453cc0).
+    int GetUnk10()
+    {
+        return this->unk_10;
+    }
+    // Whether unk_0_0 and unk_0_2 are set. Inline; the copy is at
+    // 0x41fd90.
+    int Func41fd90()
+    {
+        return this->Func4178a0() && this->unk_0_2 ? TRUE : FALSE;
+    }
+    // unk_108 in frames. Inline; the copy is at 0x41fdd0.
+    int Func41fdd0()
+    {
+        return this->unk_108.AsFrames();
+    }
+
+    unsigned char unk_4[0xc];
+    int unk_10;
+    unsigned char unk_14[0xe8];
     int unk_fc;
-    unsigned char unk_100[0x11f6];
+    unsigned char unk_100[0x8];
+    Timer unk_108;
+    unsigned char unk_114[0x11e2];
     short unk_12f6;
     unsigned char unk_12f8[0x890];
     Sprite unk_1b88;
