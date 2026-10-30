@@ -1151,3 +1151,7 @@ void Vector2::SetPolarEllipse(float angle, float radiusX, float radiusY)
         fstp [eax+4]
     }
 }
+
+EXE_INLINE Effect::Effect()
+{
+}

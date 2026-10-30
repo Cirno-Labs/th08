@@ -104,7 +104,7 @@ address,size,name,symbol
 0x00409f40,610,Stage::StepObjects,?StepObjects@Stage@@QAEHXZ
 0x0040a1b0,4746,Stage::DrawLayer,?DrawLayer@Stage@@QAEHH@Z
 0x0040b440,21,sqrtf,@sqrtf@4
-0x0040b460,14,D3DXVECTOR3::D3DXVECTOR3,??0D3DXVECTOR3@@QAE@XZ ??0D3DXMATRIX@@QAE@XZ ??BD3DXVECTOR3@@QAEPAMXZ
+0x0040b460,14,D3DXVECTOR3::D3DXVECTOR3,??0D3DXVECTOR3@@QAE@XZ ??0D3DXMATRIX@@QAE@XZ ??BD3DXVECTOR3@@QAEPAMXZ ??0D3DXQUATERNION@@QAE@XZ
 0x0040b470,73,D3DXVECTOR3::operator/=,??_0D3DXVECTOR3@@QAEAAU0@M@Z
 0x0040b4c0,58,D3DXVec3Length,?D3DXVec3Length@@YIMPBUD3DXVECTOR3@@@Z
 0x0040b500,49,D3DXVec3LengthSq,?D3DXVec3LengthSq@@YIMPBUD3DXVECTOR3@@@Z
@@ -369,7 +369,7 @@ address,size,name,symbol
 0x00428700,32,Vector2::SetPolarEllipse,?SetPolarEllipse@Vector2@@QAEXMMM@Z
 0x00428720,28,Sprite::IsScriptDone,?IsScriptDone@Sprite@@QAEHXZ
 0x00428740,159,EffectManager::EffectManager,
-0x004287e0,162,Effect::Effect,
+0x004287e0,162,Effect::Effect,??0Effect@@QAE@XZ
 0x00428890,115,Ending::ReadInt,?ReadInt@Ending@@QAEHXZ
 0x00428910,591,Ending::DrawFade,?DrawFade@Ending@@QAEXXZ
 0x00428b80,2428,Ending::RunScript,?RunScript@Ending@@QAEHXZ

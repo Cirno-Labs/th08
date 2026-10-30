@@ -13,6 +13,9 @@
 // One effect, as th07's. Only the fields known so far.
 struct Effect
 {
+    // Constructs the sprite, the vectors and the timer (0x4287e0).
+    Effect();
+
     Sprite sprite;
     D3DXVECTOR3 pos;
     // Zero, or the velocity EffectManager::SpawnEffectWithVelocity is
