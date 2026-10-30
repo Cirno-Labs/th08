@@ -10,6 +10,23 @@
 #include "sprite.h"
 #include "unsorted.h"
 
+// The game's data, as the original defines it here. The DLL build uses
+// the original's copies instead.
+#ifdef TH08_EXE
+float g_Half = 0.5f;
+D3DFORMAT g_TextureFormats[6] = {
+    D3DFMT_UNKNOWN,
+    D3DFMT_A8R8G8B8,
+    D3DFMT_A1R5G5B5,
+    D3DFMT_R5G6B5,
+    D3DFMT_R8G8B8,
+    D3DFMT_A4R4G4B4,
+};
+int g_TextureFormatSizes[7] = {
+    4, 4, 2, 2, 3, 2, 1869363770,
+};
+#endif // TH08_EXE
+
 // The original allocates in an inline from global.h, whose __FILE__ names
 // that header.
 #define GLOBAL_H "d:\\cygwin\\home\\zun\\prog\\th08\\global.h"

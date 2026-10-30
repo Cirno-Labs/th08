@@ -11,6 +11,15 @@
 #include "sprite.h"
 #include "unsorted.h"
 
+// The game's data, as the original defines it here. The DLL build uses
+// the original's copies instead.
+#ifdef TH08_EXE
+D3DCOLOR g_BombFlashColors[7] = {
+    0x8fffffff, 0x8f0000ff, 0x8fff00ff, 0x8fff0000,
+    0x8fffff00, 0x8f00ff00, 0x8f00ffff,
+};
+#endif // TH08_EXE
+
 void DimPlayAreaForBomb(Player *player, D3DCOLOR tint)
 {
     ColorBytes target;

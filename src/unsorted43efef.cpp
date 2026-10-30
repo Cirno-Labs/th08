@@ -7,6 +7,20 @@
 
 #include "unsorted.h"
 
+// The game's data, as the original defines it here. The DLL build uses
+// the original's copies instead.
+#ifdef TH08_EXE
+FormatInfo g_FormatInfos[7] = {
+    {22, 32, 0x00000000, 0x00ff0000, 0x0000ff00, 0x000000ff},
+    {21, 32, 0xff000000, 0x00ff0000, 0x0000ff00, 0x000000ff},
+    {24, 16, 0x00000000, 0x00007c00, 0x000003e0, 0x0000001f},
+    {23, 16, 0x00000000, 0x0000f800, 0x000007e0, 0x0000001f},
+    {25, 16, 0x00008000, 0x00007c00, 0x000003e0, 0x0000001f},
+    {26, 16, 0x0000f000, 0x00000f00, 0x000000f0, 0x0000000f},
+    {-1, 0, 0x00000000, 0x00000000, 0x00000000, 0x00000000},
+};
+#endif // TH08_EXE
+
 GdiSurface::GdiSurface()
 {
     this->format = -1;

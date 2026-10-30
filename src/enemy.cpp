@@ -10,6 +10,15 @@
 #include "sprite.h"
 #include "unsorted.h"
 
+// The game's data, as the original defines it here. The DLL build uses
+// the original's copies instead.
+#ifdef TH08_EXE
+BYTE g_EnemyItemDrops[0x20] = {
+    0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0,
+    1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0,
+};
+#endif // TH08_EXE
+
 void EnemyManager::Initialize()
 {
     int i;

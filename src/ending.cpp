@@ -8,6 +8,53 @@
 #include "screeneffect.h"
 #include "unsorted.h"
 
+// The game's data, as the original defines it here. The DLL build uses
+// the original's copies instead.
+#ifdef TH08_EXE
+char *g_BadEndingFiles[12] = {
+    "end00a.end",
+    "end01a.end",
+    "end02a.end",
+    "end03a.end",
+    "end00a.end",
+    "end00a.end",
+    "end01a.end",
+    "end01a.end",
+    "end02a.end",
+    "end02a.end",
+    "end03a.end",
+    "end03a.end",
+};
+char *g_EndingFiles[12] = {
+    "end00b.end",
+    "end01b.end",
+    "end02b.end",
+    "end03b.end",
+    "end00b.end",
+    "end00b.end",
+    "end01b.end",
+    "end01b.end",
+    "end02b.end",
+    "end02b.end",
+    "end03b.end",
+    "end03b.end",
+};
+char *g_FinalBEndingFiles[12] = {
+    "end00c.end",
+    "end01c.end",
+    "end02c.end",
+    "end03c.end",
+    "end00c.end",
+    "end00c.end",
+    "end01c.end",
+    "end01c.end",
+    "end02c.end",
+    "end02c.end",
+    "end03c.end",
+    "end03c.end",
+};
+#endif // TH08_EXE
+
 int Ending::ReadInt()
 {
     int value;

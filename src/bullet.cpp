@@ -11,6 +11,40 @@
 #include "replay.h"
 #include "unsorted.h"
 
+// The game's data, as the original defines it here. The DLL build uses
+// the original's copies instead.
+#ifdef TH08_EXE
+int g_BulletColorOffsets16[16] = {
+    0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4, 4, 4, 0,
+};
+int g_BulletColorOffsets32[8] = {
+    0, 1, 1, 2, 2, 3, 4, 0,
+};
+const int g_BulletTypeScripts[21][5] = {
+    {0, 18, 19, 20, 15},
+    {1, 21, 22, 23, 16},
+    {2, 21, 22, 23, 16},
+    {3, 21, 22, 23, 16},
+    {4, 21, 22, 23, 16},
+    {5, 21, 22, 23, 16},
+    {6, 21, 22, 23, 16},
+    {7, 24, 24, 24, 17},
+    {8, 24, 24, 24, 17},
+    {9, 24, 24, 24, 17},
+    {25, 27, 27, 27, 26},
+    {106, 21, 22, 23, 16},
+    {107, 21, 22, 23, 16},
+    {108, 21, 22, 23, 16},
+    {109, 24, 24, 24, 17},
+    {110, 24, 24, 24, 17},
+    {111, 21, 22, 23, 16},
+    {112, 21, 22, 23, 16},
+    {113, 24, 24, 24, 17},
+    {114, 24, 24, 24, 17},
+    {115, 24, 24, 24, 17},
+};
+#endif // TH08_EXE
+
 void BulletManager::Reset()
 {
     int i;

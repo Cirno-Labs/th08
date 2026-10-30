@@ -535,7 +535,7 @@ void SaveScoreDat(ResultScreen *screen);
 
 // The stages' names ("Stage 1", ..., "Stage 4-uncanny", "Stage
 // 4-powerful", ..., "Extra Stage"), by stage. New in th08.
-extern char *g_StageNames[9];
+extern char *g_StageNames[10];
 // The shot types' names ("霊夢＆紫", ..., "西行寺　幽々子"), then
 // "全主人公合計", as th07's.
 extern char *g_ShotNames[13];
@@ -555,7 +555,7 @@ extern char *g_NameAlphabet;
 // th07's.
 extern char *g_ShotTypeNames[0xc];
 // The stages' numbers for the score lists, by stage. New in th08.
-extern int g_StageNumbers[9];
+extern int g_StageNumbers[11];
 // The difficulties' names ("Easy", ...), for score.txt. New in th08.
 extern char *g_PlainDifficultyNames[5];
 // The difficulties' names ("     Easy", ...), right-aligned, as th07's.

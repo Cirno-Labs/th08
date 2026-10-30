@@ -8,6 +8,26 @@
 #include "replay.h"
 #include "unsorted.h"
 
+// The game's data, as the original defines it here. The DLL build uses
+// the original's copies instead.
+#ifdef TH08_EXE
+int g_PowerItemBonus[31] = {
+    10, 20, 30, 40, 50, 60, 70, 80,
+    90, 100, 200, 300, 400, 500, 600, 700,
+    800, 900, 1000, 2000, 3000, 4000, 5000, 6000,
+    7000, 8000, 9000, 10000, 11000, 12000, 51200,
+};
+int g_PowerLevels[6] = {
+    8, 24, 48, 80, 128, 999,
+};
+int g_ExtendPointItems[6] = {
+    100, 250, 500, 800, 1100, 9999,
+};
+int g_ExtendPointItemsExtra[4] = {
+    200, 666, 9999, 1,
+};
+#endif // TH08_EXE
+
 ItemManager::ItemManager()
 {
 }

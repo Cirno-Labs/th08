@@ -7,6 +7,21 @@
 
 #include "unsorted.h"
 
+// The game's data, as the original defines it here. The DLL build uses
+// the original's copies instead.
+#ifdef TH08_EXE
+ControllerMapping g_DefaultControllerMapping = {0, 1, 2, 4, -1, -1, -1, -1, 3};
+CryptParams g_CryptParams[8] = {
+    {0x5d, 0x1b, 0x37, 0xaa, 64, 10240}, {0x74, 0x51, 0xe9, 0xbb, 64, 12288},
+    {0x71, 0xc1, 0x51, 0xcc, 5120, 8192}, {0x8a, 0x03, 0x19, 0xdd, 5120, 30720},
+    {0x95, 0xab, 0xcd, 0xee, 512, 4096}, {0xb7, 0x12, 0x34, 0xff, 1024, 10240},
+    {0x9d, 0x35, 0x97, 0x11, 128, 10240}, {0xaa, 0x99, 0x37, 0x77, 1024, 4096},
+};
+BYTE g_CryptMagic[4] = {
+    0x85, 0xa4, 0xda, 0x00,
+};
+#endif // TH08_EXE
+
 WORD InitJoystick()
 {
     JOYINFOEX joyInfo;

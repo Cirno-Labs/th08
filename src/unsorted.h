@@ -2724,7 +2724,7 @@ void SetChecksumKeyPoints();
 // stats->checksumKeyStage for the four main difficulties (then 500 more
 // each), and for Extra and Phantasm (then 99999).
 extern int g_ExtendPointItems[6];
-extern int g_ExtendPointItemsExtra[3];
+extern int g_ExtendPointItemsExtra[4];
 // g_SpellCardBgms' restartsMusic and titleIndex for the spell card
 // practised; both ignore `card` (0x439916, 0x439961).
 int GetPracticeBgmRestarts(int card);

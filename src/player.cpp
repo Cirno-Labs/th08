@@ -13,6 +13,137 @@
 #include "sprite.h"
 #include "unsorted.h"
 
+// The game's data, as the original defines it here. The DLL build uses
+// the original's copies instead.
+#ifdef TH08_EXE
+BombFuncs g_BombFuncs[24] = {
+    {UpdateReimuBomb, UpdateYukariBomb, UpdateReimuLastWord, UpdateYukariLastWord, UpdateDissolveBomb},
+    {DrawReimuBomb, DrawAliceBomb, DrawReimuLastWord, DrawYukariLastWord, DrawDissolveBomb},
+    {UpdateMarisaBomb, UpdateAliceBomb, UpdateMarisaLastWord, UpdateAliceLastWord, UpdateDissolveBomb},
+    {DrawMarisaBomb, DrawAliceBomb, DrawMarisaBomb, DrawAliceLastWord, DrawDissolveBomb},
+    {UpdateSakuyaBomb, UpdateRemiliaBomb, UpdateSakuyaLastWord, UpdateRemiliaLastWord, UpdateDissolveBomb},
+    {DrawSakuyaBomb, DrawRemiliaBomb, DrawSakuyaLastWord, DrawRemiliaLastWord, DrawDissolveBomb},
+    {UpdateYoumuBomb, UpdateYuyukoBomb, UpdateYoumuLastWord, UpdateYuyukoLastWord, UpdateDissolveBomb},
+    {DrawYoumuBomb, DrawYuyukoBomb, DrawYoumuLastWord, DrawYuyukoLastWord, DrawDissolveBomb},
+    {UpdateReimuBomb, UpdateReimuBomb, UpdateReimuLastWord, UpdateReimuLastWord, UpdateDissolveBomb},
+    {DrawReimuBomb, DrawReimuBomb, DrawReimuLastWord, DrawReimuLastWord, DrawDissolveBomb},
+    {UpdateYukariBomb, UpdateYukariBomb, UpdateYukariLastWord, UpdateYukariLastWord, UpdateDissolveBomb},
+    {DrawAliceBomb, DrawAliceBomb, DrawYukariLastWord, DrawYukariLastWord, DrawDissolveBomb},
+    {UpdateMarisaBomb, UpdateMarisaBomb, UpdateMarisaLastWord, UpdateMarisaLastWord, UpdateDissolveBomb},
+    {DrawMarisaBomb, DrawMarisaBomb, DrawMarisaBomb, DrawMarisaBomb, DrawDissolveBomb},
+    {UpdateAliceBomb, UpdateAliceBomb, UpdateAliceLastWord, UpdateAliceLastWord, UpdateDissolveBomb},
+    {DrawAliceBomb, DrawAliceBomb, DrawAliceLastWord, DrawAliceLastWord, DrawDissolveBomb},
+    {UpdateSakuyaBomb, UpdateSakuyaBomb, UpdateSakuyaLastWord, UpdateSakuyaLastWord, UpdateDissolveBomb},
+    {DrawSakuyaBomb, DrawSakuyaBomb, DrawSakuyaLastWord, DrawSakuyaLastWord, DrawDissolveBomb},
+    {UpdateRemiliaBomb, UpdateRemiliaBomb, UpdateRemiliaLastWord, UpdateRemiliaLastWord, UpdateDissolveBomb},
+    {DrawRemiliaBomb, DrawRemiliaBomb, DrawRemiliaLastWord, DrawRemiliaLastWord, DrawDissolveBomb},
+    {UpdateYoumuBomb, UpdateYoumuBomb, UpdateYoumuLastWord, UpdateYoumuLastWord, UpdateDissolveBomb},
+    {DrawYoumuBomb, DrawYoumuBomb, DrawYoumuLastWord, DrawYoumuLastWord, DrawDissolveBomb},
+    {UpdateYuyukoBomb, UpdateYuyukoBomb, UpdateYuyukoLastWord, UpdateYuyukoLastWord, UpdateDissolveBomb},
+    {DrawYuyukoBomb, DrawYuyukoBomb, DrawYuyukoLastWord, DrawYuyukoLastWord, DrawDissolveBomb},
+};
+char *g_PlayerAnmPaths[12] = {
+    "player00.anm",
+    "player01.anm",
+    "player02.anm",
+    "player03.anm",
+    "player00.anm",
+    "player00.anm",
+    "player01.anm",
+    "player01.anm",
+    "player02.anm",
+    "player02.anm",
+    "player03.anm",
+    "player03.anm",
+};
+char *g_ShotFiles[12] = {
+    "ply00a.sht",
+    "ply01a.sht",
+    "ply02a.sht",
+    "ply03a.sht",
+    "ply00a.sht",
+    "ply00as.sht",
+    "ply01a.sht",
+    "ply01as.sht",
+    "ply02a.sht",
+    "ply02as.sht",
+    "ply03a.sht",
+    "ply03as.sht",
+};
+char *g_ShotFilesFocused[12] = {
+    "ply00as.sht",
+    "ply01as.sht",
+    "ply02as.sht",
+    "ply03as.sht",
+    "ply00a.sht",
+    "ply00as.sht",
+    "ply01a.sht",
+    "ply01as.sht",
+    "ply02a.sht",
+    "ply02as.sht",
+    "ply03a.sht",
+    "ply03as.sht",
+};
+OptionFunc g_OptionUpdateFuncs[13][4] = {
+    {UpdateHomingOption, NULL, NULL, NULL},
+    {UpdateFrontOption, NULL, NULL, NULL},
+    {UpdateCirclingOption, UpdateCirclingOption, UpdateCirclingOption, UpdateCirclingOption},
+    {UpdateSwirlOption, UpdateSwirlOption, NULL, NULL},
+    {NULL, NULL, NULL, NULL},
+    {UpdateHomingOption, NULL, NULL, NULL},
+    {NULL, NULL, NULL, NULL},
+    {UpdateFrontOption, NULL, NULL, NULL},
+    {NULL, NULL, NULL, NULL},
+    {UpdateFollowingCirclingOption, UpdateFollowingCirclingOption, UpdateFollowingCirclingOption, UpdateFollowingCirclingOption},
+    {NULL, NULL, UpdateTintedTrailingOption, NULL},
+    {UpdateSwirlOption, UpdateSwirlOption, NULL, NULL},
+    {NULL, NULL, UpdateTrailingOption, NULL},
+};
+OptionFunc g_OptionDrawFuncs[13][4] = {
+    {DrawOption, NULL, NULL, NULL},
+    {DrawOption, NULL, NULL, NULL},
+    {DrawOption, DrawOption, DrawOption, DrawOption},
+    {DrawOption, DrawOption, NULL, NULL},
+    {NULL, NULL, NULL, NULL},
+    {DrawOption, NULL, NULL, NULL},
+    {NULL, NULL, NULL, NULL},
+    {DrawOption, NULL, NULL, NULL},
+    {NULL, NULL, NULL, NULL},
+    {DrawOption, DrawOption, DrawOption, DrawOption},
+    {NULL, NULL, DrawOption, NULL},
+    {DrawOption, DrawOption, NULL, NULL},
+    {NULL, NULL, DrawOption, NULL},
+};
+ShotFireFunc g_ShotFireFuncs[9] = {
+    NULL,
+    FireEnemyHomingShot,
+    TryFireShotNoBomb,
+    TryFireShotNoBomb,
+    FireLaser,
+    FireHomingShot,
+    FireAimedShot,
+    FireRandomShot,
+    FireOptionAimedShot,
+};
+ShotUpdateFunc g_ShotUpdateFuncs[6] = {
+    NULL,
+    UpdateHomingOrb,
+    NULL,
+    UpdateAcceleratingBullet,
+    UpdateLaserBullet,
+    UpdateTrailLaserBullet,
+};
+ShotUpdateFunc g_ShotDrawFuncs[2] = {
+    NULL,
+    DrawTrailLaserBullet,
+};
+ShotHitFunc g_ShotHitFuncs[3] = {
+    NULL,
+    UpdateBombShot,
+    BurstHitEffect,
+};
+#endif // TH08_EXE
+
 Player::Player()
 {
 }

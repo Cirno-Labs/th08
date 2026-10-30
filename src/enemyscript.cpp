@@ -12,6 +12,55 @@
 #include "screeneffect.h"
 #include "unsorted.h"
 
+// The game's data, as the original defines it here. The DLL build uses
+// the original's copies instead.
+#ifdef TH08_EXE
+EnemyScriptInterp g_EnemyScriptInterps[8] = {
+    ScriptMoveLinear,
+    ScriptMoveLinear,
+    ScriptMoveLinear,
+    ScriptMoveLinear,
+    ScriptMoveLinear,
+    ScriptMoveLinear,
+    ScriptMoveLinear,
+    ScriptMoveHermite,
+};
+EnemyScriptFunc g_EnemyScriptFuncs[32] = {
+    SetScriptFunc0Vars,
+    FlashScreen60,
+    BounceOffSides,
+    SpawnTwinEffects38,
+    BounceBulletsAtZones,
+    EndTwinEffects,
+    SpawnTwinEffects3A,
+    BounceBulletsAtZones3,
+    KeepFormation,
+    BeamHitsPlayer160,
+    FlashAndShakeScreen,
+    BeamHitsPlayer240,
+    ToggleMarkedBullets,
+    TintStageRed,
+    CycleMarkedBullets,
+    ShakeScreenRamp,
+    MarkFollowersNearBullets,
+    FlashScreen180,
+    SetGameSpeed,
+    GetPracticeCard,
+    SpawnTwinEffects41,
+    BounceBulletsAtZones2,
+    StartResurrection,
+    ScriptEndSpellCardName,
+    GetSpellCardsCaptured,
+    BeamHitsPlayer288,
+    SetFrozen,
+    SpawnEnemiesAtMarkedBullets,
+    StartSlowdown,
+    EndSlowdown,
+    SetScreenEffectHoldFrames,
+    DropBombOrLifeItem,
+};
+#endif // TH08_EXE
+
 // Argument `n` of `instr`, or the value of the variable it names, as
 // th07's.
 #define INT_ARG(n) \

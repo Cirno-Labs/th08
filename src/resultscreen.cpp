@@ -16,6 +16,76 @@
 #include "resultscreen.h"
 #include "unsorted.h"
 
+// The game's data, as the original defines it here. The DLL build uses
+// the original's copies instead.
+#ifdef TH08_EXE
+char *g_NameAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ.,:;_@abcdefghijklmnopqrstuvwxyz+-/*=%0123456789#!?'\"$(){}[]<>&\\|~^ --";
+char *g_ShotNames[13] = {
+    "霊夢＆紫　　　　",
+    "魔理沙＆アリス　",
+    "咲夜＆レミリア　",
+    "妖夢＆幽々子　　",
+    "博麗　霊夢　　　",
+    "八雲　紫　　　　",
+    "霧雨　魔理沙　　",
+    "アリス・Ｍ　　　",
+    "十六夜　咲夜　　",
+    "レミリア・Ｓ　　",
+    "魂魄　妖夢　　　",
+    "西行寺　幽々子　",
+    "全主人公合計　　",
+};
+int g_StageNumbers[11] = {
+    1, 2, 3, 4, 4, 5, 6, 6, 1, 1, 1,
+};
+char *g_StageNames[10] = {
+    "Stage 1",
+    "Stage 2",
+    "Stage 3",
+    "Stage 4-uncanny",
+    "Stage 4-powerful",
+    "Stage 5",
+    "Stage 6-Eirin",
+    "Stage 6-Kaguya",
+    "Extra Stage",
+    "Last Word",
+};
+char *g_PlainDifficultyNames[5] = {
+    "Easy",
+    "Normal",
+    "Hard",
+    "Lunatic",
+    "Extra",
+};
+float g_SpellCardRatings[5] = {
+    1.0f, 1.5f, 1.5f, 2.0f, 2.5f,
+};
+char *g_DifficultyNames[5] = {
+    "      Easy",
+    "    Normal",
+    "      Hard",
+    "   Lunatic",
+    "     Extra",
+};
+char *g_ShotTypeNames[12] = {
+    "Rm & Yk",
+    "Ms & Al",
+    "Sk & Rr",
+    "Ym & Yy",
+    "Reimu  ",
+    "Yukari ",
+    "Marisa ",
+    "Alice  ",
+    "Sakuya ",
+    "Remilia",
+    "Youmu  ",
+    "Yuyuko ",
+};
+float g_DifficultyRatings[5] = {
+    -30.0f, -10.0f, 20.0f, 30.0f, 30.0f,
+};
+#endif // TH08_EXE
+
 // The original allocates in an inline from global.h, whose __FILE__ names
 // the block.
 #define GLOBAL_H "d:\\cygwin\\home\\zun\\prog\\th08\\global.h"

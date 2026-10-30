@@ -10,6 +10,21 @@
 #include "musicscreen.h"
 #include "unsorted.h"
 
+// The game's data, as the original defines it here. The DLL build uses
+// the original's copies instead.
+#ifdef TH08_EXE
+char *g_MusicNotHeardComment[8] = {
+    "＊＊＊注意＊＊＊",
+    "　この曲はまだ、ゲーム中で流れておりません",
+    "　自分でプレイする前に聴きたくない、コメントを見たくない、",
+    "　という方は一刻も早くここから立ち去る事をお奨めします。",
+    "　",
+    "　（なお、ここで決定ボタンを押せば、他の曲と同様、",
+    "　　曲の再生とコメント表示が行われますので、注意）",
+    "　",
+};
+#endif // TH08_EXE
+
 int MusicScreen::UpdateIntro()
 {
     int i;

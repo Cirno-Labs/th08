@@ -16,6 +16,54 @@
 #include "sprite.h"
 #include "unsorted.h"
 
+// The game's data, as the original defines it here. The DLL build uses
+// the original's copies instead.
+#ifdef TH08_EXE
+int g_StageClearBonuses[9] = {
+    1000000, 1500000, 2000000, 2500000, 2500000, 3000000, 4000000, 6000000, 6660000,
+};
+D3DCOLOR g_MsgColors[12][4] = {
+    {0x00e8f0ff, 0x00f0e8ff, 0x00ffe8f0, 0x00ffe8f0},
+    {0x00e8f0ff, 0x00f0e8ff, 0x00ffe8f0, 0x00ffe8f0},
+    {0x00e8f0ff, 0x00f0e8ff, 0x00ffe8f0, 0x00ffe8f0},
+    {0x00e8f0ff, 0x00f0e8ff, 0x00ffe8f0, 0x00ffe8f0},
+    {0x00e8f0ff, 0x00f0e8ff, 0x00ffe8f0, 0x00ffe8f0},
+    {0x00e8f0ff, 0x00f0e8ff, 0x00ffe8f0, 0x00ffe8f0},
+    {0x00e8f0ff, 0x00f0e8ff, 0x00ffe8f0, 0x00ffe8f0},
+    {0x00e8f0ff, 0x00f0e8ff, 0x00ffe8f0, 0x00ffe8f0},
+    {0x00e8f0ff, 0x00f0e8ff, 0x00ffe8f0, 0x00ffe8f0},
+    {0x00e8f0ff, 0x00f0e8ff, 0x00ffe8f0, 0x00ffe8f0},
+    {0x00e8f0ff, 0x00f0e8ff, 0x00ffe8f0, 0x00ffe8f0},
+    {0x00e8f0ff, 0x00f0e8ff, 0x00ffe8f0, 0x00ffe8f0},
+};
+StageBgm g_StageBgms[9] = {
+    {1, 2, 0}, {3, 4, 0}, {5, 6, 0},
+    {7, 8, 0}, {7, 9, 0}, {10, 11, 0},
+    {12, 13, 15}, {12, 14, 15}, {16, 17, 0},
+};
+D3DCOLOR g_BossTimerColors[4] = {
+    0x00a0d0ff, 0x00a080ff, 0x00e080c0, 0x00ff4040,
+};
+char *g_AmPmNames[2] = {
+    "AM",
+    "PM",
+};
+char *g_LoadingAnmPaths[12] = {
+    "loading00.anm",
+    "loading01.anm",
+    "loading02.anm",
+    "loading03.anm",
+    "loading00h.anm",
+    "loading00a.anm",
+    "loading01h.anm",
+    "loading01a.anm",
+    "loading02h.anm",
+    "loading02a.anm",
+    "loading03h.anm",
+    "loading03a.anm",
+};
+#endif // TH08_EXE
+
 int Gui::OnUpdate(Gui *gui)
 {
     if (g_GameManager.isFrozen)

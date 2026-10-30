@@ -11,6 +11,19 @@
 #include "resultscreen.h"
 #include "unsorted.h"
 
+// The game's data, as the original defines it here. The DLL build uses
+// the original's copies instead.
+#ifdef TH08_EXE
+char *g_ReplayDifficultyNames[6] = {
+    "Easy",
+    "Normal",
+    "Hard",
+    "Lunatic",
+    "Extra",
+    "LastWord",
+};
+#endif // TH08_EXE
+
 // The original allocates in an inline from global.h, whose __FILE__ names
 // the block.
 #define GLOBAL_H "d:\\cygwin\\home\\zun\\prog\\th08\\global.h"

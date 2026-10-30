@@ -4,6 +4,19 @@
 #include "lzss.h"
 #include "unsorted.h"
 
+// The game's data, as the original defines it here. The DLL build uses
+// the original's copies instead.
+#ifdef TH08_EXE
+char *g_FileModes[3] = {
+    "r",
+    "w",
+    "a",
+};
+const DWORD g_SeekOrigins[3] = {
+    0, 1, 2,
+};
+#endif // TH08_EXE
+
 DatArchive::DatArchive()
 {
     this->entries = NULL;
