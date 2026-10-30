@@ -2798,7 +2798,7 @@ int MainMenu::DrawPracticeScores()
     {
         cleared |= 0x18;
     }
-    for (i = 0; i < ARRAY_SIZE(g_PracticeStageNames); i++)
+    for (i = 0; i < ARRAY_SIZE(g_PracticeStageNames) - 1; i++)
     {
         g_AsciiText.SetHighlight(i == this->cursor);
         if (i == this->cursor)

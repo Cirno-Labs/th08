@@ -218,8 +218,9 @@ extern char *g_MenuDifficultyNames[5];
 extern int *g_StageSpellCards[];
 // How many cards each list of g_StageSpellCards has.
 extern int g_StageSpellCardCounts[];
-// The practice menu's stage names.
-extern char *g_PracticeStageNames[8];
+// The stage names of the practice menu, which has no Extra, and of the
+// replay menu.
+extern char *g_PracticeStageNames[9];
 // The help line the options screen shows for each entry.
 extern char *g_OptionsHelpTexts[10];
 // The help line the key config shows for each entry.
