@@ -403,7 +403,7 @@ int Ending::AddedCallback(Ending *ending)
         ending->canSkip = 0;
         ending->nextCanSkip = 0;
         if ((g_GameManager.stage == 7 && g_GameManager.AnyShotHasExtraOpen()) ||
-            (g_GameManager.stage == 6 && g_GameManager.Func43c2c5()))
+            (g_GameManager.stage == 6 && g_GameManager.AnyShotHasClearedFinalA()))
         {
             ending->nextCanSkip = 1;
         }

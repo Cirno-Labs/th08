@@ -37,7 +37,7 @@ struct ShotData
     float speed;
     short damage;
     // Above 0, the bullet is drawn red while stats->unk_22 is at
-    // unk22High1. New in th08.
+    // gaugeHigh1. New in th08.
     short side;
     // 0 for the player, else the option, from 1.
     short option;
@@ -343,7 +343,7 @@ int DrawOption(Player *player, PlayerOption *option);
 
 // Fills `bullet` with shot `sd` and starts it, as th07's (0x44fb70):
 // from the player or its option, its script (from 10) and its panned
-// sound; red while stats->unk_22 is at unk22High1 for shots with
+// sound; red while stats->unk_22 is at gaugeHigh1 for shots with
 // unk_1e.
 void FireShot(Player *player, PlayerBullet *bullet, ShotData *sd);
 // Fires `sd` into `bullet` on frames where frame % interval is phase,
@@ -379,14 +379,14 @@ int UpdateAcceleratingBullet(Player *player, PlayerBullet *bullet);
 // (cut to 20 frames in dialogue, during a bomb or while bit 13 of
 // GameManager::unk_3dbac is set), else it keeps to its x offset,
 // stretches to the top unless the player is dying and turns blue while
-// stats->unk_22 is at unk22High1; below 100 frames its timer runs
+// stats->unk_22 is at gaugeHigh1; below 100 frames its timer runs
 // twice as fast (0x4505d0).
 int UpdateLaserBullet(Player *player, PlayerBullet *bullet);
 // th07's UpdateTrailLaserBullet, following the first option (0x450840).
 int UpdateTrailLaserBullet(Player *player, PlayerBullet *bullet);
 // th07's DrawTrailLaserBullet: draws every other trail point, at
 // three quarters of the alpha fading out along the trail, red at
-// unk22High1 (0x450ad0).
+// gaugeHigh1 (0x450ad0).
 int DrawTrailLaserBullet(Player *player, PlayerBullet *bullet);
 // th07's UpdateBombShot, with th08's scripts 12 to 20 and a hit damage
 // drop only every fourth frame during a spell card (0x450c50).
@@ -455,10 +455,10 @@ public:
     // ticked. Bullets deal their damage (a fifth during a bomb), at most
     // 50 a frame, which also goes to `*damageTaken`; every
     // g_DamagePerTimeOrb of it there spawns a time orb at bullets whose
-    // shot has unk_1e below 0 while stats->unk_22 is at unk22Low1. Then
+    // shot has unk_1e below 0 while stats->unk_22 is at gaugeLow1. Then
     // every bombHitboxes box or circle (turned by its angle) that meets
     // it on its damage frames, up to its maxDamage; during a bomb that
-    // sets `*hitByBomb`. 6% more at unk22High1 (0x451670).
+    // sets `*hitByBomb`. 6% more at gaugeHigh1 (0x451670).
     int CalcDamage(D3DXVECTOR3 *pos, D3DXVECTOR3 *size, int *damageTaken, int *hitByBomb);
     // CheckHit without the hit areas: 1 if the box meets the hitbox,
     // else 0. New in th08; an enemy's body uses it (0x42c290).

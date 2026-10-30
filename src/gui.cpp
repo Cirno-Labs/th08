@@ -141,7 +141,7 @@ void GuiImpl::StartMsgScript(int index)
         switch (g_GameManager.stage)
         {
         case 7:
-            if (g_GameManager.GetUnk28() >= 12)
+            if (g_GameManager.GetClock() >= 12)
             {
                 index = 5;
             }
@@ -517,13 +517,13 @@ int GuiImpl::RunMsg()
 
             this->stageClearPower = g_GameManager.GetPower();
             this->stageClearPoints = g_GameManager.stats->stageClearPoints;
-            this->stageClearTime = g_GameManager.GetUnk3c();
+            this->stageClearTime = g_GameManager.GetTimeOrbs();
             this->stageClearGraze = g_GameManager.stats->graze;
-            this->stageClearClock = g_GameManager.GetUnk28() * 30 + 660;
-            this->stageClearTimePassed = g_GameManager.Func43c35f();
-            g_GameManager.AddUnk28(this->stageClearTimePassed);
+            this->stageClearClock = g_GameManager.GetClock() * 30 + 660;
+            this->stageClearTimePassed = g_GameManager.GetStageClearClockStep();
+            g_GameManager.AddClock(this->stageClearTimePassed);
             this->stageClearBonus = g_StageClearBonuses[g_GameManager.stage];
-            this->stageClearLastTime = g_GameManager.GetUnk28() * 30 + 660;
+            this->stageClearLastTime = g_GameManager.GetClock() * 30 + 660;
             this->stageClearClock2 = this->stageClearClock;
             this->stageClearClockTimer = 0;
             this->stageClearShown = 1;
@@ -913,7 +913,7 @@ void Gui::UpdateInterface()
         }
         if (g_GameManager.stage == 7)
         {
-            clearBonus += (12 - g_GameManager.GetUnk28()) * 2000000;
+            clearBonus += (12 - g_GameManager.GetClock()) * 2000000;
         }
         switch (g_GameManager.difficulty)
         {
@@ -1141,17 +1141,17 @@ void Gui::DrawHud()
         }
         if (this->timeOrbsChanged || g_App.GetNoFrameItems())
         {
-            if (g_GameManager.GetUnk3c() >= g_GameManager.GetUnk40())
+            if (g_GameManager.GetTimeOrbs() >= g_GameManager.GetTimeOrbsNeeded())
             {
                 g_AsciiText.SetColor(0xfffff0c0);
             }
             scorePos = D3DXVECTOR3(488.0f, 184.0f, 0.0f);
-            scorePos.x += g_AsciiText.AddFormatLen(&scorePos, "%d", g_GameManager.GetUnk3c()) * 13;
+            scorePos.x += g_AsciiText.AddFormatLen(&scorePos, "%d", g_GameManager.GetTimeOrbs()) * 13;
             g_AsciiText.SetScale(0.5f, 1.0f);
             g_AsciiText.AddFormat(&scorePos, "/");
             g_AsciiText.SetScale(1.0f, 1.0f);
             scorePos.x += 6.0f;
-            g_AsciiText.AddFormat(&scorePos, "%d", g_GameManager.GetUnk40());
+            g_AsciiText.AddFormat(&scorePos, "%d", g_GameManager.GetTimeOrbsNeeded());
             g_AsciiText.SetColor(0xffffffff);
         }
     }
@@ -1610,7 +1610,7 @@ void Gui::DrawStageClear()
             cursor.y += 16.0f;
             g_AsciiText.AddFormat(&cursor, "Night Bonus");
             cursor.y += 16.0f;
-            g_AsciiText.AddFormat(&cursor, "        %8d0", (12 - g_GameManager.GetUnk28()) * 2000000);
+            g_AsciiText.AddFormat(&cursor, "        %8d0", (12 - g_GameManager.GetClock()) * 2000000);
         }
     }
     cursor.y += 32.0f;
@@ -1814,20 +1814,20 @@ int Func438ffd()
 int Gui::Func439007()
 {
     this->timesAnm->StartScriptAtOrigin(&this->impl->clock, 2);
-    this->timesAnm->SetSprite(&this->impl->clock, g_GameManager.GetUnk28());
+    this->timesAnm->SetSprite(&this->impl->clock, g_GameManager.GetClock());
     return 0;
 }
 
 int Gui::Func439050()
 {
-    this->timesAnm->SetSprite(&this->impl->clock, g_GameManager.GetUnk28());
+    this->timesAnm->SetSprite(&this->impl->clock, g_GameManager.GetClock());
     this->impl->clock.SetPendingInterrupt(1);
     return 0;
 }
 
 int Gui::Func439093()
 {
-    this->timesAnm->SetSprite(&this->impl->clock, g_GameManager.GetUnk28());
+    this->timesAnm->SetSprite(&this->impl->clock, g_GameManager.GetClock());
     this->impl->clock.SetPendingInterrupt(2);
     return 0;
 }
@@ -1896,7 +1896,7 @@ int Gui::LoadResources()
     }
     g_Gui.Func4390d6();
     this->timesAnm->StartScriptAtOrigin(&this->impl->stageTitleTime, 0);
-    this->timesAnm->SetSprite(&this->impl->stageTitleTime, g_GameManager.GetUnk28());
+    this->timesAnm->SetSprite(&this->impl->stageTitleTime, g_GameManager.GetClock());
     if (!g_GameManager.IsInSpellCardPractice() &&
         this->LoadMsg(g_MsgPaths[g_GameManager.stage][g_GameManager.character]) != 0)
     {

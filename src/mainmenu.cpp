@@ -118,7 +118,7 @@ int MainMenu::StartTitle()
                 this->titleAnm->SetSprite(&this->sprites[i + 1], this->sprites[i + 1].baseSpriteIndex + 1);
             }
             this->titleAnm->SetSprite(&this->sprites[this->cursor + 1], this->sprites[this->cursor + 1].baseSpriteIndex);
-            if (!g_GameManager.Func43c2c5())
+            if (!g_GameManager.AnyShotHasClearedFinalA())
             {
                 this->sprites[3].color = 0xff404040;
             }
@@ -145,7 +145,7 @@ int MainMenu::StartTitle()
         {
             for (;;)
             {
-                while (!g_GameManager.Func43c2c5() && this->cursor == 2)
+                while (!g_GameManager.AnyShotHasClearedFinalA() && this->cursor == 2)
                 {
                     this->cursor += i;
                 }
@@ -161,7 +161,7 @@ int MainMenu::StartTitle()
                 this->titleAnm->SetSprite(&this->sprites[i + 1], this->sprites[i + 1].baseSpriteIndex + 1);
             }
             this->titleAnm->SetSprite(&this->sprites[this->cursor + 1], this->sprites[this->cursor + 1].baseSpriteIndex);
-            if (!g_GameManager.Func43c2c5())
+            if (!g_GameManager.AnyShotHasClearedFinalA())
             {
                 this->sprites[3].color = 0xff404040;
             }
@@ -262,7 +262,7 @@ int MainMenu::StartTitle()
                     return 1;
                 }
             case 2:
-                if (g_GameManager.Func43c2c5())
+                if (g_GameManager.AnyShotHasClearedFinalA())
                 {
                     g_GameManager.stateFlags |= 1;
                     g_GameManager.stateFlags |= 0x4000;
@@ -1192,7 +1192,7 @@ int MainMenu::UpdateCharacterMenu()
                 {
                     return 0;
                 }
-                while (!g_GameManager.Func43c23b(this->cursor))
+                while (!g_GameManager.HasClearedFinalA(this->cursor))
                 {
                     this->cursor++;
                     if (this->cursor >= charCount)
@@ -1269,7 +1269,7 @@ int MainMenu::UpdateCharacterMenu()
 
             if (this->state == 15)
             {
-                while (!g_GameManager.Func43c23b(this->cursor))
+                while (!g_GameManager.HasClearedFinalA(this->cursor))
                 {
                     this->cursor += dir;
                     if (this->cursor >= charCount)
@@ -1517,7 +1517,7 @@ int MainMenu::UpdateState16()
             }
             this->cursor = g_GameManager.character;
             charCount = g_GameManager.AllShotsHaveExtraOpen() ? 12 : 4;
-            while (!g_GameManager.Func43c23b(this->cursor))
+            while (!g_GameManager.HasClearedFinalA(this->cursor))
             {
                 this->cursor++;
                 if (this->cursor >= charCount)
@@ -1613,7 +1613,7 @@ int MainMenu::UpdateState16()
             int i;
             DWORD j;
 
-            while (!g_GameManager.Func43c23b(this->cursor))
+            while (!g_GameManager.HasClearedFinalA(this->cursor))
             {
                 this->cursor += dir;
                 if (this->cursor >= numChars)
@@ -3263,7 +3263,7 @@ int MainMenu::InitTitleScene()
     {
         ShowInfoScreen("title/info00.jpg");
     }
-    if (g_GameManager.Func43c2c5() && !g_GameManager.anyShotHasClearedFinalA)
+    if (g_GameManager.AnyShotHasClearedFinalA() && !g_GameManager.anyShotHasClearedFinalA)
     {
         ShowInfoScreen("title/info02.jpg");
     }
@@ -3278,7 +3278,7 @@ int MainMenu::InitTitleScene()
     LoadFlspChunk(dat, &g_GameManager.flsp);
     ReleaseScoreDat(dat);
     g_GameManager.anyShotHasExtraOpen = g_GameManager.AnyShotHasExtraOpen();
-    g_GameManager.anyShotHasClearedFinalA = g_GameManager.Func43c2c5();
+    g_GameManager.anyShotHasClearedFinalA = g_GameManager.AnyShotHasClearedFinalA();
     g_GameManager.allShotsHaveExtraOpen = g_GameManager.AllShotsHaveExtraOpen();
     this->UnlockLastSpells();
     this->state = 0;

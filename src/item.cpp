@@ -112,22 +112,22 @@ Item *ItemManager::SpawnItem(D3DXVECTOR3 *pos, int type, int state)
     return i < 0x830 ? item : &this->items[0x830];
 }
 
-void Func440470()
+void SetChecksumKeyPoints()
 {
     if (g_GameManager.difficulty < 4)
     {
         if ((DWORD)g_GameManager.stats->checksumKeyStage < 6)
         {
-            g_GameManager.stats->checksumKeyPoints = g_Unknown4c7a84[g_GameManager.stats->checksumKeyStage];
+            g_GameManager.stats->checksumKeyPoints = g_ExtendPointItems[g_GameManager.stats->checksumKeyStage];
         }
         else
         {
-            g_GameManager.stats->checksumKeyPoints = (g_GameManager.stats->checksumKeyStage - 5) * 500 + g_Unknown4c7a84[5];
+            g_GameManager.stats->checksumKeyPoints = (g_GameManager.stats->checksumKeyStage - 5) * 500 + g_ExtendPointItems[5];
         }
     }
     else if ((DWORD)g_GameManager.stats->checksumKeyStage < 3)
     {
-        g_GameManager.stats->checksumKeyPoints = g_Unknown4c7a9c[g_GameManager.stats->checksumKeyStage];
+        g_GameManager.stats->checksumKeyPoints = g_ExtendPointItemsExtra[g_GameManager.stats->checksumKeyStage];
     }
     else
     {
@@ -397,7 +397,7 @@ void Item::CollectPoint()
         amount = maxValue;
     }
     amount -= amount % 10;
-    if (g_GameManager.IsUnk22AtLow1())
+    if (g_GameManager.IsGaugeAtLow1())
     {
         amount += amount;
     }
@@ -422,7 +422,7 @@ void Item::CollectPoint()
     {
         for (;;)
         {
-            Func440470();
+            SetChecksumKeyPoints();
             if (g_GameManager.stats->pointItemsTotal >= g_GameManager.stats->checksumKeyPoints)
             {
                 g_GameManager.AddLifeOrBomb();
@@ -453,7 +453,7 @@ void Item::CollectFullPowerItem()
     maxValue -= maxValue % 10;
     amount /= 10;
     amount -= amount % 10;
-    if (g_GameManager.IsUnk22AtLow1())
+    if (g_GameManager.IsGaugeAtLow1())
     {
         amount += amount;
     }
@@ -536,7 +536,7 @@ void Item::CollectTimeOrb()
     if (this != NULL)
     {
         g_AsciiText.AddPopup2(&this->pos, amount,
-                              g_GameManager.GetUnk3c() < g_GameManager.GetUnk40() ? 0xdfffffff : 0xdfffef80);
+                              g_GameManager.GetTimeOrbs() < g_GameManager.GetTimeOrbsNeeded() ? 0xdfffffff : 0xdfffef80);
     }
     g_Gui.timeOrbsChanged = 2;
     g_GameManager.AddScore(amount);
@@ -545,7 +545,7 @@ void Item::CollectTimeOrb()
     if (g_Player.orbGaugeCooldown == 0)
     {
         amount = 111;
-        g_GameManager.Func43c0bb(g_Player.focused ? amount : -amount, 0);
+        g_GameManager.AddGauge(g_Player.focused ? amount : -amount, 0);
     }
 }
 

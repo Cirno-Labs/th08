@@ -445,7 +445,7 @@ void Enemy::ReleaseFollowers(int collect)
     {
         D3DXVECTOR3 unused;
 
-        g_GameManager.Func43c0bb(-g_GameManager.GetUnk22() / 12, 0);
+        g_GameManager.AddGauge(-g_GameManager.GetGauge() / 12, 0);
         g_Player.gaugeShiftTimer = 0;
         g_Player.gaugeIdleTimer = 30;
         g_Player.orbGaugeCooldown = 50;
@@ -1380,7 +1380,7 @@ int EnemyManager::OnUpdate(EnemyManager *mgr)
             {
                 k = 200;
             }
-            g_GameManager.Func43c0bb(k, 0);
+            g_GameManager.AddGauge(k, 0);
             switch (enemy->deathMode)
             {
             case 3:
@@ -1455,7 +1455,7 @@ int EnemyManager::OnUpdate(EnemyManager *mgr)
                     g_EffectManager.SpawnEffect(enemy->deathEffect, &enemy->absPos, 1, 0xffffffff);
                     g_EffectManager.SpawnEffect(enemy->deathEffectIndex + 4, &enemy->absPos, 4, 0xffffffff);
                 }
-                if (g_GameManager.IsUnk22AtLow1() || g_GameManager.IsUnk22AtHigh1())
+                if (g_GameManager.IsGaugeAtLow1() || g_GameManager.IsGaugeAtHigh1())
                 {
                     g_ItemManager.SpawnItem(&enemy->absPos, 7, 1);
                 }

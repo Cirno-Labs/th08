@@ -437,7 +437,7 @@ int ReplayManager::RecordAddedCallback(ReplayManager *replay)
     cur->checksumKeyStage = g_GameManager.stats->checksumKeyStage;
     cur->checksumKeyPoints = g_GameManager.stats->checksumKeyPoints;
     cur->gauge = g_GameManager.stats->gauge;
-    cur->clock = g_GameManager.GetUnk28();
+    cur->clock = g_GameManager.GetClock();
     cur->maxPointValue = g_GameManager.stats->maxPointValue;
     replay->cursor = cur->frames;
     replay->seedCursor = (ReplayFrameWithSeed *)replay->cursor;
@@ -507,7 +507,7 @@ int ReplayManager::PlayAddedCallback(ReplayManager *replay)
     g_GameManager.stats->checksumKeyStage = cur->checksumKeyStage;
     g_GameManager.stats->checksumKeyPoints = cur->checksumKeyPoints;
     g_GameManager.stats->gauge = cur->gauge;
-    g_GameManager.SetUnk28(cur->clock);
+    g_GameManager.SetClock(cur->clock);
     replay->extraCursor = extras;
     replay->framesAfterStageClear = 0;
     earlier = NULL;

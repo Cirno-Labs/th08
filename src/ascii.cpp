@@ -992,7 +992,7 @@ int ContinueMenu::UpdateContinueMenu()
         if (this->stateFrames == 0)
         {
             if (!g_GameManager.IsInSpellCardPractice() && g_GameManager.difficulty < 4 &&
-                (g_GameManager.GetUnk28() >= 11 || g_GameManager.stage == 7))
+                (g_GameManager.GetClock() >= 11 || g_GameManager.stage == 7))
             {
                 g_GameManager.isInContinueMenu = 0;
                 g_GameManager.stats->guiScore = g_GameManager.stats->score;
@@ -1021,7 +1021,7 @@ int ContinueMenu::UpdateContinueMenu()
                 this->sprites[i].pendingInterrupt = 1;
             }
             g_Gui.timesAnm->StartScript(&this->sprites[3], 1);
-            g_Gui.timesAnm->SetSprite(&this->sprites[3], g_GameManager.GetUnk28());
+            g_Gui.timesAnm->SetSprite(&this->sprites[3], g_GameManager.GetClock());
             if ((g_App.stateFlags >> 1) & 1)
             {
                 g_AsciiText.anm2->StartScript(&this->background, 0);
@@ -1142,8 +1142,8 @@ int ContinueMenu::UpdateContinueMenu()
     case 3:
         if (this->stateFrames == 15)
         {
-            g_GameManager.AddUnk28(1);
-            g_Gui.timesAnm->SetSprite(&this->sprites[3], g_GameManager.GetUnk28());
+            g_GameManager.AddClock(1);
+            g_Gui.timesAnm->SetSprite(&this->sprites[3], g_GameManager.GetClock());
         }
         if (this->stateFrames == 60)
         {
@@ -1417,31 +1417,31 @@ void AsciiText::DrawPopups()
         int div;
 
         this->summaryPopup4.pos.x =
-            g_GameManager.GetUnk22() * 112.0f / 2.0f / 10000.0f + this->summaryPopup.pos.x + 64.0f;
+            g_GameManager.GetGauge() * 112.0f / 2.0f / 10000.0f + this->summaryPopup.pos.x + 64.0f;
         g_SpriteEngine->DrawRotatedNoRound(&this->summaryPopup4);
-        this->summaryDigit.pos.x = g_GameManager.GetUnk22() * 80.0f / 2.0f / 10000.0f + this->summaryPopup.pos.x + 64.0f;
+        this->summaryDigit.pos.x = g_GameManager.GetGauge() * 80.0f / 2.0f / 10000.0f + this->summaryPopup.pos.x + 64.0f;
         this->summaryDigit.pos.y = this->summaryPopup4.pos.y - 7.0f;
         this->summaryDigit.pos.z = this->summaryPopup4.pos.z;
         this->summaryDigit.alpha = this->summaryPopup.alpha;
-        if (g_GameManager.IsUnk22AtLow1())
+        if (g_GameManager.IsGaugeAtLow1())
         {
             this->summaryDigit.colorRgb[2] = 0x70;
             this->summaryDigit.colorRgb[1] = 0x70;
             this->summaryDigit.colorRgb[0] = 0xff;
         }
-        else if (g_GameManager.IsUnk22AtLow2())
+        else if (g_GameManager.IsGaugeAtLow2())
         {
             this->summaryDigit.colorRgb[2] = 0xb0;
             this->summaryDigit.colorRgb[1] = 0xb0;
             this->summaryDigit.colorRgb[0] = 0xff;
         }
-        else if (g_GameManager.IsUnk22AtHigh1())
+        else if (g_GameManager.IsGaugeAtHigh1())
         {
             this->summaryDigit.colorRgb[2] = 0xff;
             this->summaryDigit.colorRgb[1] = 0x70;
             this->summaryDigit.colorRgb[0] = 0x70;
         }
-        else if (g_GameManager.IsUnk22AtHigh2())
+        else if (g_GameManager.IsGaugeAtHigh2())
         {
             this->summaryDigit.colorRgb[2] = 0xff;
             this->summaryDigit.colorRgb[1] = 0xb0;
@@ -1457,7 +1457,7 @@ void AsciiText::DrawPopups()
         g_SpriteEngine->DrawUnrotated(&this->summaryPopup);
         g_SpriteEngine->DrawUnrotated(&this->summaryPopup2);
         g_SpriteEngine->DrawUnrotated(&this->summaryPopup3);
-        this->Func405e10(&this->summaryDigit.pos, g_GameManager.GetUnk22(), this->summaryDigit.color);
+        this->Func405e10(&this->summaryDigit.pos, g_GameManager.GetGauge(), this->summaryDigit.color);
         div = 10000000;
         count = g_GameManager.stats->maxPointValue;
         alpha = 0;

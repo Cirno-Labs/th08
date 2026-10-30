@@ -143,7 +143,7 @@ int GameManager::OnUpdate(GameManager *mgr)
                 }
                 else
                 {
-                    if (g_GameManager.GetUnk28() >= 12)
+                    if (g_GameManager.GetClock() >= 12)
                     {
                         g_GameManager.stateFlags &= ~0x10;
                         g_GameManager.nextScene = 9;
@@ -513,7 +513,7 @@ void GameManager::LoadingThread(GameManager *arg)
         MemFree(mgr->tempBuffer);
         mgr->powerItemCombo = 0;
         mgr->stats->gauge = 0;
-        mgr->SetUnk28(g_GameManager.stage == 8 ? 6 : 0);
+        mgr->SetClock(g_GameManager.stage == 8 ? 6 : 0);
         if (g_GameManager.difficulty >= 4)
         {
             mgr->savedConfig->lifeCount = 2;
@@ -572,7 +572,7 @@ void GameManager::LoadingThread(GameManager *arg)
             break;
         }
         mgr->stats->checksumKeyStage = 0;
-        Func440470();
+        SetChecksumKeyPoints();
         if (LoadScoreFile() != 0)
         {
             goto fail;
@@ -646,7 +646,7 @@ void GameManager::LoadingThread(GameManager *arg)
     mgr->stats->timeOrbsCollected = 0;
     if (!(g_GameManager.stateFlags >> 14 & 1))
     {
-        mgr->stats->timeOrbsNeeded = g_Unknown4c77f0[mgr->stage][g_GameManager.difficulty];
+        mgr->stats->timeOrbsNeeded = g_TimeOrbsNeeded[mgr->stage][g_GameManager.difficulty];
     }
     else
     {
@@ -1067,7 +1067,7 @@ void GameManager::SubSubRank(int amount)
     }
 }
 
-void GameManager::Func43c0bb(int amount, int force)
+void GameManager::AddGauge(int amount, int force)
 {
     if (g_Unknown17d6ed4 != 0 && force == 0)
     {
@@ -1101,7 +1101,7 @@ int GameManager::AnyShotHasExtraOpen()
                                                                                                            : FALSE;
 }
 
-int GameManager::Func43c23b(int shot)
+int GameManager::HasClearedFinalA(int shot)
 {
     return shot > 3 || this->clrds[shot].stagesCleared[0] & 0x8000 || this->clrds[shot].stagesCleared[1] & 0x8000 ||
                    this->clrds[shot].stagesCleared[2] & 0x8000 || this->clrds[shot].stagesCleared[3] & 0x8000
@@ -1109,9 +1109,9 @@ int GameManager::Func43c23b(int shot)
                : FALSE;
 }
 
-int GameManager::Func43c2c5()
+int GameManager::AnyShotHasClearedFinalA()
 {
-    return this->Func43c23b(0) || this->Func43c23b(1) || this->Func43c23b(2) || this->Func43c23b(3) ? TRUE : FALSE;
+    return this->HasClearedFinalA(0) || this->HasClearedFinalA(1) || this->HasClearedFinalA(2) || this->HasClearedFinalA(3) ? TRUE : FALSE;
 }
 
 int GameManager::IsPhantasmOpen()
@@ -1124,7 +1124,7 @@ int GameManager::IsPracticeReplay()
     return (this->stateFlags >> 3 & 1) && g_ReplayManager->data->isPractice ? TRUE : FALSE;
 }
 
-int GameManager::Func43c35f()
+int GameManager::GetStageClearClockStep()
 {
     switch (g_GameManager.stage)
     {

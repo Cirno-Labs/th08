@@ -424,7 +424,7 @@ int App::AddedCallback(App *arg)
     LoadFlspChunk(scoreDat, &g_GameManager.flsp);
     ReleaseScoreDat(scoreDat);
     g_GameManager.anyShotHasExtraOpen = g_GameManager.AnyShotHasExtraOpen();
-    g_GameManager.anyShotHasClearedFinalA = g_GameManager.Func43c2c5();
+    g_GameManager.anyShotHasClearedFinalA = g_GameManager.AnyShotHasClearedFinalA();
     g_GameManager.allShotsHaveExtraOpen = g_GameManager.AllShotsHaveExtraOpen();
     if (OpenGameArchive() != 0)
     {

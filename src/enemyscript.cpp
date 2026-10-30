@@ -1236,11 +1236,11 @@ loop:
             g_Gui.Func4390d6();
             break;
         case 181:
-            if (g_GameManager.GetUnk28() < 12)
+            if (g_GameManager.GetClock() < 12)
             {
                 g_SoundPlayer.QueueSound(0x2d, 0);
-                g_GameManager.AddUnk28(1);
-                if (g_GameManager.GetUnk28() == 12)
+                g_GameManager.AddClock(1);
+                if (g_GameManager.GetClock() == 12)
                 {
                     g_Gui.Func439093();
                 }
@@ -1608,7 +1608,7 @@ int GetIntOperand(Enemy *enemy, int id)
     case 10097:
         return g_Player.IsYoukai();
     case 10098:
-        return g_GameManager.GetUnk3c() + g_SpellCard.GetTimeOrbBonus() + g_ItemManager.CountType7Items() < g_GameManager.GetUnk40() ? 0 : 2;
+        return g_GameManager.GetTimeOrbs() + g_SpellCard.GetTimeOrbBonus() + g_ItemManager.CountType7Items() < g_GameManager.GetTimeOrbsNeeded() ? 0 : 2;
     case 10099:
         return g_SpellCard.IsActive() ? g_SpellCard.IsCapturable() : g_SpellCard.IsCaptured();
     case 10100:

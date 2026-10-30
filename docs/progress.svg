@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">97.31% (1086)</tspan> · <tspan class="decompiled">1.70% (19)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">0.99% (11)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">97.76% (1091)</tspan> · <tspan class="decompiled">1.25% (14)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">0.99% (11)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="726.92" height="6" x="0" y="0" class="named"/>
-<rect width="12.72" height="6" x="726.92" y="0" class="decompiled"/>
+<rect width="730.27" height="6" x="0" y="0" class="named"/>
+<rect width="9.37" height="6" x="730.27" y="0" class="decompiled"/>
 <rect width="7.36" height="6" x="739.64" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
@@ -134,13 +134,13 @@
 <rect width="12" height="12" x="195" y="15" class="named"><title>0x00406c90 GameManager::IsReplay (26 bytes)</title></rect>
 <rect width="12" height="12" x="210" y="15" class="named"><title>0x00406cb0 GameManager::IsDemo (25 bytes)</title></rect>
 <rect width="12" height="12" x="225" y="15" class="named"><title>0x00406cd0 GameManager::IsInPractice (23 bytes)</title></rect>
-<rect width="12" height="12" x="240" y="15" class="named"><title>0x00406cf0 GameManager::GetUnk22 (21 bytes)</title></rect>
-<rect width="12" height="12" x="255" y="15" class="named"><title>0x00406d10 GameManager::IsUnk22AtLow1 (38 bytes)</title></rect>
-<rect width="12" height="12" x="270" y="15" class="named"><title>0x00406d40 GameManager::IsUnk22AtLow2 (38 bytes)</title></rect>
-<rect width="12" height="12" x="285" y="15" class="named"><title>0x00406d70 GameManager::IsUnk22AtHigh1 (38 bytes)</title></rect>
-<rect width="12" height="12" x="300" y="15" class="named"><title>0x00406da0 GameManager::IsUnk22AtHigh2 (38 bytes)</title></rect>
-<rect width="12" height="12" x="315" y="15" class="named"><title>0x00406dd0 GameManager::GetUnk28 (20 bytes)</title></rect>
-<rect width="12" height="12" x="330" y="15" class="named"><title>0x00406df0 GameManager::AddUnk28 (38 bytes)</title></rect>
+<rect width="12" height="12" x="240" y="15" class="named"><title>0x00406cf0 GameManager::GetGauge (21 bytes)</title></rect>
+<rect width="12" height="12" x="255" y="15" class="named"><title>0x00406d10 GameManager::IsGaugeAtLow1 (38 bytes)</title></rect>
+<rect width="12" height="12" x="270" y="15" class="named"><title>0x00406d40 GameManager::IsGaugeAtLow2 (38 bytes)</title></rect>
+<rect width="12" height="12" x="285" y="15" class="named"><title>0x00406d70 GameManager::IsGaugeAtHigh1 (38 bytes)</title></rect>
+<rect width="12" height="12" x="300" y="15" class="named"><title>0x00406da0 GameManager::IsGaugeAtHigh2 (38 bytes)</title></rect>
+<rect width="12" height="12" x="315" y="15" class="named"><title>0x00406dd0 GameManager::GetClock (20 bytes)</title></rect>
+<rect width="12" height="12" x="330" y="15" class="named"><title>0x00406df0 GameManager::AddClock (38 bytes)</title></rect>
 <rect width="12" height="12" x="345" y="15" class="named"><title>0x00406e20 GameManager::SetLives (33 bytes)</title></rect>
 <rect width="12" height="12" x="360" y="15" class="named"><title>0x00406e50 GameManager::RerollChecksumKeys (154 bytes)</title></rect>
 <rect width="12" height="12" x="375" y="15" class="named"><title>0x00406ef0 Rng::GetRandomU32InRange (49 bytes)</title></rect>
@@ -332,8 +332,8 @@
 <rect width="12" height="12" x="165" y="75" class="named"><title>0x00421300 ScriptLerp (238 bytes)</title></rect>
 <rect width="12" height="12" x="180" y="75" class="named"><title>0x004213f0 ScriptStartInterp (506 bytes)</title></rect>
 <rect width="12" height="12" x="195" y="75" class="named"><title>0x004215f0 ScriptJumpIf (1343 bytes)</title></rect>
-<rect width="12" height="12" x="210" y="75" class="named"><title>0x00421b60 GameManager::GetUnk3c (20 bytes)</title></rect>
-<rect width="12" height="12" x="225" y="75" class="named"><title>0x00421b80 GameManager::GetUnk40 (20 bytes)</title></rect>
+<rect width="12" height="12" x="210" y="75" class="named"><title>0x00421b60 GameManager::GetTimeOrbs (20 bytes)</title></rect>
+<rect width="12" height="12" x="225" y="75" class="named"><title>0x00421b80 GameManager::GetTimeOrbsNeeded (20 bytes)</title></rect>
 <rect width="12" height="12" x="240" y="75" class="named"><title>0x00421ba0 GameManager::RankLerp (43 bytes)</title></rect>
 <rect width="12" height="12" x="255" y="75" class="named"><title>0x00421bd0 ScriptCallSub (214 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="75" class="named"><title>0x00421cb0 ScriptReturn (280 bytes)</title></rect>
@@ -607,14 +607,14 @@
 <rect width="12" height="12" x="540" y="150" class="named"><title>0x0043bf6e RemoveGameManagerChain (85 bytes)</title></rect>
 <rect width="12" height="12" x="555" y="150" class="named"><title>0x0043bfc3 GameManager::AddSubRank (124 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="150" class="named"><title>0x0043c03f GameManager::SubSubRank (124 bytes)</title></rect>
-<rect width="12" height="12" x="585" y="150" class="decompiled"><title>0x0043c0bb GameManager::Func43c0bb (164 bytes)</title></rect>
+<rect width="12" height="12" x="585" y="150" class="named"><title>0x0043c0bb GameManager::AddGauge (164 bytes)</title></rect>
 <rect width="12" height="12" x="600" y="150" class="named"><title>0x0043c15f GameManager::HasExtraOpen (138 bytes)</title></rect>
 <rect width="12" height="12" x="615" y="150" class="named"><title>0x0043c1e9 GameManager::AnyShotHasExtraOpen (82 bytes)</title></rect>
-<rect width="12" height="12" x="630" y="150" class="decompiled"><title>0x0043c23b GameManager::Func43c23b (138 bytes)</title></rect>
-<rect width="12" height="12" x="645" y="150" class="decompiled"><title>0x0043c2c5 GameManager::Func43c2c5 (82 bytes)</title></rect>
+<rect width="12" height="12" x="630" y="150" class="named"><title>0x0043c23b GameManager::HasClearedFinalA (138 bytes)</title></rect>
+<rect width="12" height="12" x="645" y="150" class="named"><title>0x0043c2c5 GameManager::AnyShotHasClearedFinalA (82 bytes)</title></rect>
 <rect width="12" height="12" x="660" y="150" class="named"><title>0x0043c317 GameManager::IsPhantasmOpen (11 bytes)</title></rect>
 <rect width="12" height="12" x="675" y="150" class="named"><title>0x0043c322 GameManager::IsPracticeReplay (61 bytes)</title></rect>
-<rect width="12" height="12" x="690" y="150" class="decompiled"><title>0x0043c35f GameManager::Func43c35f (308 bytes)</title></rect>
+<rect width="12" height="12" x="690" y="150" class="named"><title>0x0043c35f GameManager::GetStageClearClockStep (308 bytes)</title></rect>
 <rect width="12" height="12" x="705" y="150" class="named"><title>0x0043c4b3 GameManager::AdvanceStage (274 bytes)</title></rect>
 <rect width="12" height="12" x="720" y="150" class="named"><title>0x0043c5e1 GameManager::GameManager (96 bytes)</title></rect>
 <rect width="12" height="12" x="735" y="150" class="named"><title>0x0043c641 GameManager::AddLives (69 bytes)</title></rect>
@@ -683,7 +683,7 @@
 <rect width="12" height="12" x="180" y="180" class="named"><title>0x00440010 ItemManager::ItemManager (52 bytes)</title></rect>
 <rect width="12" height="12" x="195" y="180" class="named"><title>0x00440050 Item::Item (78 bytes)</title></rect>
 <rect width="12" height="12" x="210" y="180" class="named"><title>0x004400a0 ItemManager::SpawnItem (970 bytes)</title></rect>
-<rect width="12" height="12" x="225" y="180" class="decompiled"><title>0x00440470 Func440470 (137 bytes)</title></rect>
+<rect width="12" height="12" x="225" y="180" class="named"><title>0x00440470 SetChecksumKeyPoints (137 bytes)</title></rect>
 <rect width="12" height="12" x="240" y="180" class="named"><title>0x00440500 ItemManager::UpdateItems (1989 bytes)</title></rect>
 <rect width="12" height="12" x="255" y="180" class="named"><title>0x00440cf0 Item::CollectPower (334 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="180" class="named"><title>0x00440e40 Item::CollectPoint (472 bytes)</title></rect>
@@ -851,7 +851,7 @@
 <rect width="12" height="12" x="450" y="225" class="named"><title>0x0044e0e0 KeepsResources (15 bytes)</title></rect>
 <rect width="12" height="12" x="465" y="225" class="named"><title>0x0044e0f0 Sprite::SetBlendModeAdd (35 bytes)</title></rect>
 <rect width="12" height="12" x="480" y="225" class="named"><title>0x0044e120 Sprite::SetBlendModeNormal (32 bytes)</title></rect>
-<rect width="12" height="12" x="495" y="225" class="named"><title>0x0044e140 GameManager::SetUnk22 (27 bytes)</title></rect>
+<rect width="12" height="12" x="495" y="225" class="named"><title>0x0044e140 GameManager::SetGauge (27 bytes)</title></rect>
 <rect width="12" height="12" x="510" y="225" class="named"><title>0x0044e160 GameManager::RerollLifeChecksumKeys (255 bytes)</title></rect>
 <rect width="12" height="12" x="525" y="225" class="named"><title>0x0044e260 GameManager::AddDeaths (113 bytes)</title></rect>
 <rect width="12" height="12" x="540" y="225" class="named"><title>0x0044e2e0 GameManager::AddBombsUsed (104 bytes)</title></rect>
@@ -910,7 +910,7 @@
 <rect width="12" height="12" x="585" y="240" class="named"><title>0x00453c00 Rng::ResetGenerated (21 bytes)</title></rect>
 <rect width="12" height="12" x="600" y="240" class="named"><title>0x00453c20 Rng::GetSeed (17 bytes)</title></rect>
 <rect width="12" height="12" x="615" y="240" class="named"><title>0x00453c40 App::GetNoScore (26 bytes)</title></rect>
-<rect width="12" height="12" x="630" y="240" class="named"><title>0x00453c60 GameManager::SetUnk28 (25 bytes)</title></rect>
+<rect width="12" height="12" x="630" y="240" class="named"><title>0x00453c60 GameManager::SetClock (25 bytes)</title></rect>
 <rect width="12" height="12" x="645" y="240" class="named"><title>0x00453c80 GameManager::GetDeaths (25 bytes)</title></rect>
 <rect width="12" height="12" x="660" y="240" class="named"><title>0x00453ca0 GameManager::GetBombsUsed (28 bytes)</title></rect>
 <rect width="12" height="12" x="675" y="240" class="named"><title>0x00453cc0 ReplayManager::GetMode (17 bytes)</title></rect>
@@ -1188,10 +1188,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">98.32%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">0.70%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">98.50%</tspan> · <tspan class="decompiled">0.81%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">0.70%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="734.43" height="6" x="0" y="0" class="named"/>
-<rect width="7.37" height="6" x="734.43" y="0" class="decompiled"/>
+<rect width="735.78" height="6" x="0" y="0" class="named"/>
+<rect width="6.02" height="6" x="735.78" y="0" class="decompiled"/>
 <rect width="5.20" height="6" x="741.80" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
@@ -1515,7 +1515,7 @@
 <rect width="10.74" height="9.93" x="602.29" y="129.42" class="named"><title>0x00432460 StopTurnAndRestart (313 bytes)</title></rect>
 <rect width="10.65" height="9.93" x="616.02" y="129.42" class="named"><title>0x00451500 UpdateFiring (311 bytes)</title></rect>
 <rect width="10.56" height="9.93" x="629.67" y="129.42" class="named"><title>0x00404750 PauseMenu::DrawPauseMenu (309 bytes)</title></rect>
-<rect width="10.52" height="9.93" x="643.23" y="129.42" class="decompiled"><title>0x0043c35f GameManager::Func43c35f (308 bytes)</title></rect>
+<rect width="10.52" height="9.93" x="643.23" y="129.42" class="named"><title>0x0043c35f GameManager::GetStageClearClockStep (308 bytes)</title></rect>
 <rect width="10.47" height="9.93" x="656.75" y="129.42" class="named"><title>0x00467040 SpriteEngine::CopyTextureRect (307 bytes)</title></rect>
 <rect width="10.43" height="9.93" x="670.22" y="129.42" class="named"><title>0x004325a0 StopTurnToAngle (306 bytes)</title></rect>
 <rect width="10.30" height="9.93" x="683.65" y="129.42" class="named"><title>0x00442390 WindowProc (303 bytes)</title></rect>
@@ -1684,7 +1684,7 @@
 <rect width="6.85" height="6.62" x="590.98" y="198.78" class="named"><title>0x00432aa0 WrapAroundY (167 bytes)</title></rect>
 <rect width="6.85" height="6.56" x="590.98" y="208.40" class="named"><title>0x004271a0 EffectUpdateDivergeEased (166 bytes)</title></rect>
 <rect width="6.85" height="6.56" x="590.98" y="217.96" class="named"><title>0x0045e650 Sprite::ResolveFloatArgument (166 bytes)</title></rect>
-<rect width="6.85" height="6.45" x="590.98" y="227.53" class="decompiled"><title>0x0043c0bb GameManager::Func43c0bb (164 bytes)</title></rect>
+<rect width="6.85" height="6.45" x="590.98" y="227.53" class="named"><title>0x0043c0bb GameManager::AddGauge (164 bytes)</title></rect>
 <rect width="6.85" height="6.45" x="590.98" y="236.98" class="named"><title>0x0044dc60 Player::DeletedCallback (164 bytes)</title></rect>
 <rect width="6.85" height="6.39" x="590.98" y="246.43" class="named"><title>0x0045a3fd SpriteEngine::MoveSurface (163 bytes)</title></rect>
 <rect width="6.85" height="6.39" x="590.98" y="255.82" class="named"><title>0x004725a0 CSound::RestoreBuffer (163 bytes)</title></rect>
@@ -1735,9 +1735,9 @@
 <rect width="5.90" height="5.86" x="609.61" y="243.67" class="named"><title>0x0045e8a0 Sprite::ResolveIntArgumentPtr (139 bytes)</title></rect>
 <rect width="5.90" height="5.86" x="609.61" y="252.53" class="named"><title>0x00475150 DatArchive::DuplicateString (139 bytes)</title></rect>
 <rect width="5.90" height="5.80" x="609.61" y="261.39" class="named"><title>0x0043c15f GameManager::HasExtraOpen (138 bytes)</title></rect>
-<rect width="5.90" height="5.80" x="609.61" y="270.18" class="decompiled"><title>0x0043c23b GameManager::Func43c23b (138 bytes)</title></rect>
+<rect width="5.90" height="5.80" x="609.61" y="270.18" class="named"><title>0x0043c23b GameManager::HasClearedFinalA (138 bytes)</title></rect>
 <rect width="5.90" height="5.80" x="609.61" y="278.98" class="named"><title>0x00448790 App::StartLoadingSprites (138 bytes)</title></rect>
-<rect width="5.90" height="5.73" x="609.61" y="287.77" class="decompiled"><title>0x00440470 Func440470 (137 bytes)</title></rect>
+<rect width="5.90" height="5.73" x="609.61" y="287.77" class="named"><title>0x00440470 SetChecksumKeyPoints (137 bytes)</title></rect>
 <rect width="5.90" height="5.67" x="609.61" y="296.50" class="named"><title>0x0045ab70 LoadLsnmChunk (136 bytes)</title></rect>
 <rect width="5.90" height="5.67" x="609.61" y="305.17" class="named"><title>0x0045ac00 LoadFlspChunk (136 bytes)</title></rect>
 <rect width="5.90" height="5.60" x="609.61" y="313.84" class="named"><title>0x00428620 EffectManager::RegisterChain (135 bytes)</title></rect>
@@ -1880,7 +1880,7 @@
 <rect width="4" height="3.73" x="736.01" y="240.60" class="named"><title>0x00421280 StartSpellCard (83 bytes)</title></rect>
 <rect width="4" height="3.73" x="743" y="240.60" class="named"><title>0x00465510 SpriteEngine::AdjustTextureFormat (83 bytes)</title></rect>
 <rect width="3.76" height="3.88" x="649.18" y="247.34" class="named"><title>0x0043c1e9 GameManager::AnyShotHasExtraOpen (82 bytes)</title></rect>
-<rect width="3.76" height="3.88" x="649.18" y="254.22" class="decompiled"><title>0x0043c2c5 GameManager::Func43c2c5 (82 bytes)</title></rect>
+<rect width="3.76" height="3.88" x="649.18" y="254.22" class="named"><title>0x0043c2c5 GameManager::AnyShotHasClearedFinalA (82 bytes)</title></rect>
 <rect width="3.76" height="3.88" x="649.18" y="261.10" class="named"><title>0x0043c7d0 ChainElem::~ChainElem (82 bytes)</title></rect>
 <rect width="3.76" height="3.88" x="649.18" y="267.99" class="named"><title>0x00447d04 GameManager::AllShotsHaveExtraOpen (82 bytes)</title></rect>
 <rect width="3.76" height="3.80" x="649.18" y="274.87" class="named"><title>0x00444620 MidiPlayer::Play (81 bytes)</title></rect>
@@ -2091,11 +2091,11 @@
 <rect width="1.80" height="1.61" x="690.29" y="325.17" class="named"><title>0x00424e20 ShakeScreenRamp (39 bytes)</title></rect>
 <rect width="1.80" height="1.61" x="690.29" y="329.78" class="named"><title>0x00424f60 FlashScreen180 (39 bytes)</title></rect>
 <rect width="1.80" height="1.61" x="690.29" y="334.40" class="named"><title>0x004739f0 File::GetSize (39 bytes)</title></rect>
-<rect width="1.80" height="1.50" x="690.29" y="339.01" class="named"><title>0x00406d10 GameManager::IsUnk22AtLow1 (38 bytes)</title></rect>
-<rect width="1.80" height="1.50" x="690.29" y="343.50" class="named"><title>0x00406d40 GameManager::IsUnk22AtLow2 (38 bytes)</title></rect>
-<rect width="1.69" height="1.60" x="695.08" y="292.88" class="named"><title>0x00406d70 GameManager::IsUnk22AtHigh1 (38 bytes)</title></rect>
-<rect width="1.69" height="1.60" x="699.77" y="292.88" class="named"><title>0x00406da0 GameManager::IsUnk22AtHigh2 (38 bytes)</title></rect>
-<rect width="1.69" height="1.60" x="704.46" y="292.88" class="named"><title>0x00406df0 GameManager::AddUnk28 (38 bytes)</title></rect>
+<rect width="1.80" height="1.50" x="690.29" y="339.01" class="named"><title>0x00406d10 GameManager::IsGaugeAtLow1 (38 bytes)</title></rect>
+<rect width="1.80" height="1.50" x="690.29" y="343.50" class="named"><title>0x00406d40 GameManager::IsGaugeAtLow2 (38 bytes)</title></rect>
+<rect width="1.69" height="1.60" x="695.08" y="292.88" class="named"><title>0x00406d70 GameManager::IsGaugeAtHigh1 (38 bytes)</title></rect>
+<rect width="1.69" height="1.60" x="699.77" y="292.88" class="named"><title>0x00406da0 GameManager::IsGaugeAtHigh2 (38 bytes)</title></rect>
+<rect width="1.69" height="1.60" x="704.46" y="292.88" class="named"><title>0x00406df0 GameManager::AddClock (38 bytes)</title></rect>
 <rect width="1.57" height="1.60" x="709.15" y="292.88" class="named"><title>0x00415ce0 Stage::StartSpellCard (37 bytes)</title></rect>
 <rect width="1.57" height="1.60" x="713.72" y="292.88" class="todo"><title>0x00418300 Func418300 (37 bytes)</title></rect>
 <rect width="1.57" height="1.60" x="718.28" y="292.88" class="named"><title>0x0041f0b0 SpellCard::SetEffectFixed (37 bytes)</title></rect>
@@ -2161,7 +2161,7 @@
 <rect width="1.02" height="0.82" x="703.88" y="332.74" class="named"><title>0x0040e390 Timer::operator&lt;= (27 bytes)</title></rect>
 <rect width="1.02" height="0.82" x="703.88" y="336.55" class="named"><title>0x0043ee90 MemoryManager::MemoryManager (27 bytes)</title></rect>
 <rect width="1.02" height="0.82" x="703.88" y="340.37" class="named"><title>0x00441830 Timer::operator!= (27 bytes)</title></rect>
-<rect width="1.02" height="0.82" x="703.88" y="344.18" class="named"><title>0x0044e140 GameManager::SetUnk22 (27 bytes)</title></rect>
+<rect width="1.02" height="0.82" x="703.88" y="344.18" class="named"><title>0x0044e140 GameManager::SetGauge (27 bytes)</title></rect>
 <rect width="0.83" height="0.85" x="707.89" y="305.89" class="named"><title>0x00406580 App::GetNoFog (26 bytes)</title></rect>
 <rect width="0.83" height="0.85" x="711.72" y="305.89" class="named"><title>0x00406c70 GameManager::IsInSpellCardPractice (26 bytes)</title></rect>
 <rect width="0.83" height="0.85" x="715.55" y="305.89" class="named"><title>0x00406c90 GameManager::IsReplay (26 bytes)</title></rect>
@@ -2196,7 +2196,7 @@
 <rect width="0.90" height="0.63" x="715.34" y="309.74" class="named"><title>0x00439810 Gui::StartMsg (25 bytes)</title></rect>
 <rect width="0.90" height="0.63" x="719.24" y="309.74" class="named"><title>0x00443a70 App::GetNoVertexBuffer (25 bytes)</title></rect>
 <rect width="0.90" height="0.63" x="723.14" y="309.74" class="named"><title>0x00445420 MidiTimer::StartTimer (25 bytes)</title></rect>
-<rect width="0.90" height="0.63" x="727.05" y="309.74" class="named"><title>0x00453c60 GameManager::SetUnk28 (25 bytes)</title></rect>
+<rect width="0.90" height="0.63" x="727.05" y="309.74" class="named"><title>0x00453c60 GameManager::SetClock (25 bytes)</title></rect>
 <rect width="0.90" height="0.63" x="730.95" y="309.74" class="named"><title>0x00453c80 GameManager::GetDeaths (25 bytes)</title></rect>
 <rect width="0.90" height="0.63" x="734.85" y="309.74" class="named"><title>0x0045b000 ScreenEffect::ScreenEffect (25 bytes)</title></rect>
 <rect width="0.75" height="0.63" x="738.76" y="309.74" class="named"><title>0x00402430 AsciiText::OnDraw2 (24 bytes)</title></rect>
@@ -2244,7 +2244,7 @@
 <rect width="0.44" height="0.63" x="739.85" y="320.64" class="named"><title>0x00445400 MidiTimer::OnTimer (22 bytes)</title></rect>
 <rect width="0.44" height="0.63" x="743.28" y="320.64" class="named"><title>0x00449f50 PlayerLaser::PlayerLaser (22 bytes)</title></rect>
 <rect width="0.28" height="0.63" x="746.72" y="320.64" class="named"><title>0x00406640 Timer::operator++ (21 bytes)</title></rect>
-<rect width="0.51" height="0.39" x="722.67" y="324.27" class="named"><title>0x00406cf0 GameManager::GetUnk22 (21 bytes)</title></rect>
+<rect width="0.51" height="0.39" x="722.67" y="324.27" class="named"><title>0x00406cf0 GameManager::GetGauge (21 bytes)</title></rect>
 <rect width="0.51" height="0.39" x="722.67" y="327.66" class="named"><title>0x00408d40 cosf (21 bytes)</title></rect>
 <rect width="0.51" height="0.39" x="722.67" y="331.05" class="named"><title>0x00409060 sinf (21 bytes)</title></rect>
 <rect width="0.51" height="0.39" x="722.67" y="334.44" class="named"><title>0x0040b440 sqrtf (21 bytes)</title></rect>
@@ -2260,10 +2260,10 @@
 <rect width="0.51" height="0.39" x="726.18" y="344.61" class="named"><title>0x00462210 acosf (21 bytes)</title></rect>
 <rect width="0.49" height="0.41" x="729.70" y="324.27" class="named"><title>0x00462230 atanf (21 bytes)</title></rect>
 <rect width="0.49" height="0.41" x="733.19" y="324.27" class="named"><title>0x00462250 tanf (21 bytes)</title></rect>
-<rect width="0.33" height="0.41" x="736.69" y="324.27" class="named"><title>0x00406dd0 GameManager::GetUnk28 (20 bytes)</title></rect>
+<rect width="0.33" height="0.41" x="736.69" y="324.27" class="named"><title>0x00406dd0 GameManager::GetClock (20 bytes)</title></rect>
 <rect width="0.33" height="0.41" x="740.02" y="324.27" class="named"><title>0x00407140 AsciiText::GetSummaryPendingInterrupt (20 bytes)</title></rect>
-<rect width="0.33" height="0.41" x="743.34" y="324.27" class="named"><title>0x00421b60 GameManager::GetUnk3c (20 bytes)</title></rect>
-<rect width="0.33" height="0.41" x="746.67" y="324.27" class="named"><title>0x00421b80 GameManager::GetUnk40 (20 bytes)</title></rect>
+<rect width="0.33" height="0.41" x="743.34" y="324.27" class="named"><title>0x00421b60 GameManager::GetTimeOrbs (20 bytes)</title></rect>
+<rect width="0.33" height="0.41" x="746.67" y="324.27" class="named"><title>0x00421b80 GameManager::GetTimeOrbsNeeded (20 bytes)</title></rect>
 <rect width="0.44" height="0.30" x="729.70" y="327.68" class="named"><title>0x0042dfb0 EnemyScripts::GetTimelineCount (20 bytes)</title></rect>
 <rect width="0.44" height="0.30" x="733.14" y="327.68" class="named"><title>0x00445bc0 App::OnDraw (20 bytes)</title></rect>
 <rect width="0.44" height="0.30" x="736.58" y="327.68" class="todo"><title>0x0045e2d0 CWaveFile::GetFormat (20 bytes)</title></rect>

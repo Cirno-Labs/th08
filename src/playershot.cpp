@@ -639,7 +639,7 @@ void FireShot(Player *player, PlayerBullet *bullet, ShotData *sd)
     }
     player->anm->StartScript(&bullet->sprite, sd->script + 10);
     bullet->red = 0;
-    if (g_GameManager.IsUnk22AtHigh1() && sd->side > 0)
+    if (g_GameManager.IsGaugeAtHigh1() && sd->side > 0)
     {
         bullet->red = 1;
     }
@@ -880,7 +880,7 @@ int UpdateLaserBullet(Player *player, PlayerBullet *bullet)
     {
         player->lasers[bullet->laserIndex].timer--;
     }
-    if (g_GameManager.IsUnk22AtHigh1())
+    if (g_GameManager.IsGaugeAtHigh1())
     {
         bullet->sprite.colorRgb[2] = 0xff;
         bullet->sprite.colorRgb[1] = 0xd0;
@@ -931,7 +931,7 @@ int UpdateTrailLaserBullet(Player *player, PlayerBullet *bullet)
     bullet->pos.z = 0.44f;
     bullet->size.y = 448.0f;
     bullet->pos.y -= 208.0f;
-    if (g_GameManager.IsUnk22AtHigh1())
+    if (g_GameManager.IsGaugeAtHigh1())
     {
         bullet->sprite.colorRgb[2] = 0xff;
         bullet->sprite.colorRgb[1] = 0xd0;
@@ -969,7 +969,7 @@ int DrawTrailLaserBullet(Player *player, PlayerBullet *bullet)
         }
         bullet->sprite.pos.x = g_GameManager.arena[0] + bullet->sprite.pos.x;
         bullet->sprite.pos.y = g_GameManager.arena[1] + bullet->sprite.pos.y;
-        if (g_GameManager.IsUnk22AtHigh1())
+        if (g_GameManager.IsGaugeAtHigh1())
         {
             bullet->sprite.colorRgb[2] = 0xff;
             bullet->sprite.colorRgb[1] = 0x40;
@@ -1321,7 +1321,7 @@ int Player::CalcDamage(D3DXVECTOR3 *pos, D3DXVECTOR3 *size, int *damageTaken, in
         }
         while (*damageTaken >= g_DamagePerTimeOrb)
         {
-            if (g_GameManager.IsUnk22AtLow1() && cur->shot->side < 0)
+            if (g_GameManager.IsGaugeAtLow1() && cur->shot->side < 0)
             {
                 g_ItemManager.SpawnItem(&cur->pos, 7, 3);
             }
@@ -1413,7 +1413,7 @@ int Player::CalcDamage(D3DXVECTOR3 *pos, D3DXVECTOR3 *size, int *damageTaken, in
             *hitByBomb = 1;
         }
     }
-    if (g_GameManager.IsUnk22AtHigh1() && damage2 != 0)
+    if (g_GameManager.IsGaugeAtHigh1() && damage2 != 0)
     {
         damage2 = damage2 * 106 / 100;
     }

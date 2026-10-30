@@ -416,7 +416,7 @@ extern int g_ScreenEffectHoldFrames;
 extern int g_ScriptFunc0Int;
 // Set with g_ScriptFunc0Int by SetScriptFunc0Vars.
 extern float g_ScriptFunc0Float;
-// GameManager::Func43c0bb only applies while it is clear, unless forced.
+// GameManager::AddGauge only applies while it is clear, unless forced.
 extern int g_Unknown17d6ed4;
 // The damage an enemy takes per time orb Player::CalcDamage spawns.
 extern int g_DamagePerTimeOrb;
@@ -1137,7 +1137,7 @@ struct GameManagerStats
     BYTE bestContinuesUsed;
     unsigned char pad_19[0x3];
     int spellCardsCaptured;
-    // A copy of unk_22, which is kept in each replay stage; Func43c0bb
+    // A copy of unk_22, which is kept in each replay stage; AddGauge
     // moves it.
     short gaugeCopy;
     short gauge;
@@ -1150,7 +1150,7 @@ struct GameManagerStats
     // Kept in each replay stage.
     int checksumKeyStage;
     int checksumKeyPoints;
-    // Func43c35f compares them.
+    // GetStageClearClockStep compares them.
     int timeOrbs;
     int timeOrbsNeeded;
     int timeOrbsCollected;
@@ -1339,7 +1339,7 @@ public:
     }
     // Sets stats->unk_22. Inline; the copy at 0x44e140 is the player
     // object's.
-    void SetUnk22(short value)
+    void SetGauge(short value)
     {
         this->stats->gauge = value;
     }
@@ -1366,7 +1366,7 @@ public:
     // Unless g_Unknown17d6ed4 is set and `force` is not, adds `amount` to
     // stats->unk_22, within unk_3ddf8 and unk_3ddfa, and copies it to
     // stats->unk_20.
-    void Func43c0bb(int amount, int force);
+    void AddGauge(int amount, int force);
     // Whether shot type `shot` (0 to 3) cleared one of the four main
     // difficulties, as th07's (0x43c15f).
     int HasExtraOpen(int shot);
@@ -1374,9 +1374,9 @@ public:
     int AnyShotHasExtraOpen();
     // Whether shot type `shot` (0 to 3) has bit 0x8000 set in
     // stagesCleared of one of the four main difficulties.
-    int Func43c23b(int shot);
+    int HasClearedFinalA(int shot);
     // Whether a shot type has 0x43c23b set (0x43c2c5).
-    int Func43c2c5();
+    int AnyShotHasClearedFinalA();
     // Whether every shot type has Extra open. In App's object.
     int AllShotsHaveExtraOpen();
     // Whether spell card `card` was attempted, in a game or in practice,
@@ -1389,38 +1389,38 @@ public:
     int IsPracticeReplay();
     // By stage: 0 for 6 and 7, 4 past them, else 1, or 2 while stats'
     // unk_3c is below unk_40.
-    int Func43c35f();
+    int GetStageClearClockStep();
     // Moves `stage` on to the next stage: from stage 3 (index 2) to 4A or
     // 4B by the shot type, and from 6 to 6B if bits 11-12 of unk_3dbac
     // are set, else 6A (0x43c4b3).
     void AdvanceStage();
-    // stats->unk_22, and whether it reached each of unk22Low1, unk22Low2,
-    // unk22High1 and unk22High2. Inline; the copies at 0x406cf0 and
+    // stats->unk_22, and whether it reached each of gaugeLow1, gaugeLow2,
+    // gaugeHigh1 and gaugeHigh2. Inline; the copies at 0x406cf0 and
     // 0x406d10 to 0x406da0 are in an /Od object.
-    int GetUnk22()
+    int GetGauge()
     {
         return this->stats->gauge;
     }
-    BOOL IsUnk22AtLow1()
+    BOOL IsGaugeAtLow1()
     {
-        return this->stats->gauge <= this->unk22Low1;
+        return this->stats->gauge <= this->gaugeLow1;
     }
-    BOOL IsUnk22AtLow2()
+    BOOL IsGaugeAtLow2()
     {
-        return this->stats->gauge <= this->unk22Low2;
+        return this->stats->gauge <= this->gaugeLow2;
     }
-    BOOL IsUnk22AtHigh1()
+    BOOL IsGaugeAtHigh1()
     {
-        return this->stats->gauge >= this->unk22High1;
+        return this->stats->gauge >= this->gaugeHigh1;
     }
-    BOOL IsUnk22AtHigh2()
+    BOOL IsGaugeAtHigh2()
     {
-        return this->stats->gauge >= this->unk22High2;
+        return this->stats->gauge >= this->gaugeHigh2;
     }
     // stats->unk_3c and unk_40, which DrawHud shows as "%d/%d" on its last
     // row, in 0xfffff0c0 once unk_3c reaches unk_40. Inline; the copies at
     // 0x421b60 and 0x421b80 are in an /Od object.
-    int GetUnk3c()
+    int GetTimeOrbs()
     {
         return this->stats->timeOrbs;
     }
@@ -1448,7 +1448,7 @@ public:
             this->stats->timeOrbs = 0;
         }
     }
-    int GetUnk40()
+    int GetTimeOrbsNeeded()
     {
         return this->stats->timeOrbsNeeded;
     }
@@ -1530,17 +1530,17 @@ public:
     }
     // stats->unk_28 and a setter for it, inline: the copies at 0x406dd0
     // and 0x453c60 are another object's and the replay object's.
-    char GetUnk28()
+    char GetClock()
     {
         return this->stats->clock;
     }
-    void SetUnk28(int value)
+    void SetClock(int value)
     {
         this->stats->clock = value;
     }
     // Adds `amount` to stats->unk_28. Inline; the copy at 0x406df0 is in
     // an /Od object.
-    void AddUnk28(char amount)
+    void AddClock(char amount)
     {
         this->stats->clock += amount;
     }
@@ -1657,7 +1657,7 @@ public:
             unsigned int bossHitAnywhere : 1;
             // Set while a spell card is practised (IsInSpellCardPractice).
             unsigned int isInSpellCardPractice : 1;
-            // AnyShotHasExtraOpen, Func43c2c5 and AllShotsHaveExtraOpen
+            // AnyShotHasExtraOpen, AnyShotHasClearedFinalA and AllShotsHaveExtraOpen
             // as App::AddedCallback found them.
             unsigned int anyShotHasExtraOpen : 1;
             unsigned int anyShotHasClearedFinalA : 1;
@@ -1706,12 +1706,12 @@ public:
     short gaugeMin;
     short gaugeMax;
     // Where AsciiText::DrawPopups starts tinting the stats->unk_22
-    // gauge: blue at or below unk22Low1 (light blue at unk22Low2), red at
-    // or above unk22High1 (light red at unk22High2).
-    short unk22Low1;
-    short unk22High1;
-    short unk22Low2;
-    short unk22High2;
+    // gauge: blue at or below gaugeLow1 (light blue at gaugeLow2), red at
+    // or above gaugeHigh1 (light red at gaugeHigh2).
+    short gaugeLow1;
+    short gaugeHigh1;
+    short gaugeLow2;
+    short gaugeHigh2;
     // The frames played, as th07's.
     int progressFrames;
     // Counts the frames that slowdown may skip, as th07's.
@@ -1981,7 +1981,7 @@ public:
     // without a scene to go to (0x438f58).
     void Func438f58();
     // Restart the clock sprite (impl->unk_2156c) of times.anm on the
-    // hour (GameManager::GetUnk28), show the hour with interrupt 1 or 2,
+    // hour (GameManager::GetClock), show the hour with interrupt 1 or 2,
     // or hide it (0x439007, 0x439050, 0x439093, 0x4390d6). Return 0.
     int Func439007();
     int Func439050();
@@ -2495,7 +2495,7 @@ struct SpellCardBgm
 };
 extern SpellCardBgm g_SpellCardBgms[];
 // By stage and difficulty: what LoadingThread sets stats->unk_40 to.
-extern int g_Unknown4c77f0[][4];
+extern int g_TimeOrbsNeeded[][4];
 // The difficulty (0 to 4) whose g_SpellCardLists list has spell card
 // `card`, else 5.
 int GetSpellCardDifficulty(int card);
@@ -2727,12 +2727,12 @@ struct SpellCard
 ASSERT_SIZE(SpellCard, 0x2644);
 extern SpellCard g_SpellCard;
 // Sets stats->unk_38 from stats->unk_34 by difficulty (0x440470).
-void Func440470();
-// Func440470's tables: stats->unk_38 by stats->unk_34 for the four main
+void SetChecksumKeyPoints();
+// SetChecksumKeyPoints's tables: stats->unk_38 by stats->unk_34 for the four main
 // difficulties (then 500 more each), and for Extra and Phantasm (then
 // 99999).
-extern int g_Unknown4c7a84[6];
-extern int g_Unknown4c7a9c[3];
+extern int g_ExtendPointItems[6];
+extern int g_ExtendPointItemsExtra[3];
 // g_SpellCardBgms' unk_10 and unk_c for the spell card practised; both
 // ignore `card` (0x439916, 0x439961).
 int Func439916(int card);

@@ -235,7 +235,7 @@ void Player::Graze(D3DXVECTOR3 *pos, int isLaser)
 
     if (!g_Unknown17d6ed4)
     {
-        count = g_GameManager.IsUnk22AtLow1() ? 3 : (g_GameManager.IsUnk22AtLow2() ? 2 : 1);
+        count = g_GameManager.IsGaugeAtLow1() ? 3 : (g_GameManager.IsGaugeAtLow2() ? 2 : 1);
         if (g_GameManager.stats->graze < 99999)
         {
             g_GameManager.stats->graze += count;
@@ -250,14 +250,14 @@ void Player::Graze(D3DXVECTOR3 *pos, int isLaser)
     g_GameManager.AddSubRank(6);
     g_Gui.grazeChanged = 2;
     g_SoundPlayer.QueueSoundPanned(0x1e, pos->x);
-    points = g_GameManager.IsUnk22AtHigh2() ? 4000 : 2000;
+    points = g_GameManager.IsGaugeAtHigh2() ? 4000 : 2000;
     g_GameManager.AddScore(points);
     if (this->IsYoukai())
     {
-        g_GameManager.Func43c0bb(100, 0);
+        g_GameManager.AddGauge(100, 0);
     }
     if ((!g_GameManager.IsSoloHuman() || g_GameManager.character == 10) && g_EnemyManager.AnyBossActive() &&
-        g_GameManager.IsUnk22AtHigh1())
+        g_GameManager.IsGaugeAtHigh1())
     {
         g_ItemManager.SpawnItem(pos, 10, 1);
         if (!isLaser && g_SpellCard.IsActive())
@@ -292,11 +292,11 @@ void Player::Die()
     }
     else
     {
-        g_GameManager.SetUnk22(0);
+        g_GameManager.SetGauge(0);
         if (g_GameManager.GetBombs() >= 1)
         {
             this->deathbombFrames = g_GameManager.GetBombs() * 6;
-            if (g_GameManager.GetUnk3c() >= g_GameManager.GetUnk40())
+            if (g_GameManager.GetTimeOrbs() >= g_GameManager.GetTimeOrbsNeeded())
             {
                 this->deathbombFrames += 7;
             }
@@ -746,7 +746,7 @@ int HandleInput(Player *player)
                 {
                     amount = -amount;
                 }
-                g_GameManager.Func43c0bb(amount * g_App.gameSpeed, 0);
+                g_GameManager.AddGauge(amount * g_App.gameSpeed, 0);
                 player->gaugeShiftTimer++;
             }
         }
@@ -758,29 +758,29 @@ int HandleInput(Player *player)
             }
             if (player->gaugeIdleTimer >= 30)
             {
-                if (fabs((double)g_GameManager.GetUnk22()) <= 9.0)
+                if (fabs((double)g_GameManager.GetGauge()) <= 9.0)
                 {
-                    g_GameManager.SetUnk22(0);
+                    g_GameManager.SetGauge(0);
                 }
                 else
                 {
-                    if (g_GameManager.IsUnk22AtHigh1())
+                    if (g_GameManager.IsGaugeAtHigh1())
                     {
                         amount = -5;
                     }
-                    else if (g_GameManager.IsUnk22AtHigh2())
+                    else if (g_GameManager.IsGaugeAtHigh2())
                     {
                         amount = -3;
                     }
-                    else if (g_GameManager.GetUnk22() > 0)
+                    else if (g_GameManager.GetGauge() > 0)
                     {
                         amount = -2;
                     }
-                    else if (!g_GameManager.IsUnk22AtLow2())
+                    else if (!g_GameManager.IsGaugeAtLow2())
                     {
                         amount = 2;
                     }
-                    else if (!g_GameManager.IsUnk22AtLow1())
+                    else if (!g_GameManager.IsGaugeAtLow1())
                     {
                         amount = 3;
                     }
@@ -788,7 +788,7 @@ int HandleInput(Player *player)
                     {
                         amount = 5;
                     }
-                    g_GameManager.Func43c0bb(amount * g_App.gameSpeed, 0);
+                    g_GameManager.AddGauge(amount * g_App.gameSpeed, 0);
                 }
             }
             else
@@ -797,14 +797,14 @@ int HandleInput(Player *player)
             }
         }
     }
-    if ((g_GameManager.IsUnk22AtLow1() || g_GameManager.IsUnk22AtHigh1()) && player->gaugeFullEffect == NULL)
+    if ((g_GameManager.IsGaugeAtLow1() || g_GameManager.IsGaugeAtHigh1()) && player->gaugeFullEffect == NULL)
     {
         player->gaugeFullEffect = g_EffectManager.SpawnReservedEffect(0x19, &player->pos, 8, 1, 0xffffffff);
     }
     if (player->gaugeFullEffect != NULL)
     {
         player->gaugeFullEffect->pos = player->pos;
-        if (!g_GameManager.IsUnk22AtLow1() && !g_GameManager.IsUnk22AtHigh1())
+        if (!g_GameManager.IsGaugeAtLow1() && !g_GameManager.IsGaugeAtHigh1())
         {
             player->gaugeFullEffect->active = 0;
             player->gaugeFullEffect = NULL;
@@ -922,13 +922,13 @@ int Player::OnUpdate(Player *player)
     {
         g_GameManager.gaugeFramesTotal++;
         g_GameManager.gaugeFrames++;
-        if (g_GameManager.IsUnk22AtLow1())
+        if (g_GameManager.IsGaugeAtLow1())
         {
             g_GameManager.lowGaugeFramesTotal++;
             g_GameManager.lowGaugeFrames++;
             g_GameManager.AddScore(100);
         }
-        else if (g_GameManager.IsUnk22AtHigh1())
+        else if (g_GameManager.IsGaugeAtHigh1())
         {
             g_GameManager.highGaugeFramesTotal++;
             g_GameManager.highGaugeFrames++;
@@ -1013,11 +1013,11 @@ void UpdateBombState(Player *player)
         {
             if (player->bomb.type & 1)
             {
-                g_GameManager.Func43c0bb(26000 / player->bomb.duration, 1);
+                g_GameManager.AddGauge(26000 / player->bomb.duration, 1);
             }
             else
             {
-                g_GameManager.Func43c0bb(-26000 / player->bomb.duration, 1);
+                g_GameManager.AddGauge(-26000 / player->bomb.duration, 1);
             }
         }
         return;
@@ -1415,37 +1415,37 @@ int Player::AddedCallback(Player *player)
     g_AsciiText.SetNearbyLabelInterrupt(2, 2);
     // The bounds of stats->unk_22 and where its gauge changes color.
     g_GameManager.gaugeMin = -10000;
-    g_GameManager.unk22Low1 = -8000;
-    g_GameManager.unk22Low2 = -2000;
+    g_GameManager.gaugeLow1 = -8000;
+    g_GameManager.gaugeLow2 = -2000;
     g_GameManager.gaugeMax = 10000;
-    g_GameManager.unk22High1 = 8000;
-    g_GameManager.unk22High2 = 2000;
+    g_GameManager.gaugeHigh1 = 8000;
+    g_GameManager.gaugeHigh2 = 2000;
     if (g_GameManager.character == 3)
     {
         g_GameManager.gaugeMin = -5000;
-        g_GameManager.unk22Low1 = -3000;
-        g_GameManager.unk22Low2 = -2000;
+        g_GameManager.gaugeLow1 = -3000;
+        g_GameManager.gaugeLow2 = -2000;
     }
     else if (g_GameManager.character == 10)
     {
         g_GameManager.gaugeMin = -5000;
-        g_GameManager.unk22Low1 = -3000;
-        g_GameManager.unk22Low2 = -2000;
+        g_GameManager.gaugeLow1 = -3000;
+        g_GameManager.gaugeLow2 = -2000;
         g_GameManager.gaugeMax = 5000;
-        g_GameManager.unk22High1 = 3000;
-        g_GameManager.unk22High2 = 2000;
+        g_GameManager.gaugeHigh1 = 3000;
+        g_GameManager.gaugeHigh2 = 2000;
     }
     else if (g_GameManager.IsSoloHuman())
     {
         g_GameManager.gaugeMax = 2000;
-        g_GameManager.unk22High1 = 8000;
-        g_GameManager.unk22High2 = 2001;
+        g_GameManager.gaugeHigh1 = 8000;
+        g_GameManager.gaugeHigh2 = 2001;
     }
     else if (g_GameManager.IsSoloYoukai())
     {
         g_GameManager.gaugeMin = -2000;
-        g_GameManager.unk22Low1 = -8000;
-        g_GameManager.unk22Low2 = -2001;
+        g_GameManager.gaugeLow1 = -8000;
+        g_GameManager.gaugeLow2 = -2001;
     }
     player->gaugeFullEffect = NULL;
     for (i = 0; i < ARRAY_SIZE(player->posHistory); i++)

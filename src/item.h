@@ -27,7 +27,7 @@ struct Item
     // What collecting a point item (type 1) does, as th07's UpdateItems:
     // stats->unk_24 points above the auto-collect line or when it counts
     // in full (which also marks it so), else half of it less
-    // unk_24 / 1000 per pixel below the line; doubled at unk22Low1. Then
+    // unk_24 / 1000 per pixel below the line; doubled at gaugeLow1. Then
     // counts it and gives the extends it reaches (0x440e40).
     void CollectPoint();
     // What collecting a type 8 item (a power item at full power) does:
