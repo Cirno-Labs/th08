@@ -33,7 +33,7 @@ lib = ['C:\dx81\lib', 'C:\msvc7\lib', 'C:\psdk\Lib']
 obj_dir = "build/obj_exe"
 defines = ["TH08_EXE=1"]
 link_order = "median"
-ldflags = ["/SUBSYSTEM:WINDOWS", "/FIXED", "/OPT:NOWIN98", "/NODEFAULTLIB:libc.lib"]
+ldflags = ["/SUBSYSTEM:WINDOWS", "/FIXED", "/OPT:REF", "/OPT:ICF", "/OPT:NOWIN98", "/NODEFAULTLIB:libc.lib"]
 # The original's import table lists DINPUT8, DSOUND and d3d8 first and
 # ADVAPI32 and ole32 last; D3DX8 follows the game code and the CRT comes
 # last.
