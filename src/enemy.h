@@ -47,12 +47,29 @@ struct EnemyScriptVars
 };
 ASSERT_SIZE(EnemyScriptVars, 0x78);
 
-// One of an enemy script's interpolation loops, as th07's.
+struct Enemy;
+struct EnemyScriptInstr;
+
+// What an interpolation loop runs each frame, as th07's: ScriptMoveLinear
+// or ScriptMoveHermite.
+typedef void (*EnemyScriptInterp)(Enemy *enemy, EnemyScriptInstr *instr, float t);
+// The interpolations by loop type, as th07's (0x4c6c90).
+extern EnemyScriptInterp g_EnemyScriptInterps[8];
+
+// One of an enemy script's interpolation loops, as th07's, the
+// EnemyScriptInterp it runs.
 struct EnemyScriptLoop
 {
-    void *func;
+    EnemyScriptInterp func;
     Timer timer;
-    unsigned char unk_10[0x20];
+    // Its length in frames, its kind (picks func) and easing.
+    int duration;
+    int type;
+    int mode;
+    // The start and end values, and the curve's tangents.
+    float args[4];
+    // The variable it sets.
+    float target;
 };
 ASSERT_SIZE(EnemyScriptLoop, 0x30);
 
@@ -565,6 +582,10 @@ void EndSpellCard(Enemy *enemy, EnemyScriptInstr *instr);
 // Sets the float variable argument 0 names to argument 3 of the way
 // from argument 2 to argument 1. New in th08 (0x421300).
 void ScriptLerp(Enemy *enemy, EnemyScriptInstr *instr);
+// Starts an interpolation loop on the variable argument 0 names, in
+// the first free loop of the current context or the one already on it,
+// as th07's instruction 27 (0x4213f0).
+void ScriptStartInterp(Enemy *enemy, EnemyScriptInstr *instr);
 
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];

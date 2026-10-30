@@ -751,3 +751,28 @@ void ScriptLerp(Enemy *enemy, EnemyScriptInstr *instr)
     diff = FLOAT_ARG(1) - FLOAT_ARG(2);
     *ResolveFloatOperand(enemy, &instr->args[0].f, instr->paramMask, 0) = diff * FLOAT_ARG(3) + FLOAT_ARG(2);
 }
+
+void ScriptStartInterp(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    int i;
+    EnemyScriptLoop *loop;
+
+    for (loop = enemy->currentCtx->loops, i = 0; i < 8; i++, loop++)
+    {
+        if (loop->func != NULL && loop->target != instr->args[0].f)
+        {
+            continue;
+        }
+        loop->timer = 0;
+        loop->target = instr->args[0].f;
+        loop->duration = INT_ARG(1);
+        loop->type = INT_ARG(2);
+        loop->mode = INT_ARG(3);
+        loop->func = g_EnemyScriptInterps[loop->type];
+        loop->args[0] = FLOAT_ARG(4);
+        loop->args[1] = FLOAT_ARG(5);
+        loop->args[2] = FLOAT_ARG(6);
+        loop->args[3] = FLOAT_ARG(7);
+        break;
+    }
+}

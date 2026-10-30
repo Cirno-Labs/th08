@@ -261,7 +261,7 @@ address,size,name,symbol
 0x00421280,83,StartSpellCard,?StartSpellCard@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x004212e0,26,EndSpellCard,?EndSpellCard@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00421300,238,ScriptLerp,?ScriptLerp@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
-0x004213f0,506,Func4213f0,
+0x004213f0,506,ScriptStartInterp,?ScriptStartInterp@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x004215f0,1343,Func4215f0,
 0x00421b60,20,Func421b60,
 0x00421b80,20,Func421b80,
@@ -2417,6 +2417,7 @@ address,size,name,symbol
 0x004c67d0,,g_SpellCardLists,?g_SpellCardLists@@3PAPAHA
 0x004c67e8,,g_SpellCardListSizes,?g_SpellCardListSizes@@3PAHA
 0x004c6c40,,g_StageSpellCards,?g_StageSpellCards@@3PAPAHA
+0x004c6c90,,g_EnemyScriptInterps,?g_EnemyScriptInterps@@3PAP6IXPAUEnemy@@PAUEnemyScriptInstr@@M@ZA
 0x004c6d30,,g_EffectInfos,?g_EffectInfos@@3PAUEffectInfo@@A
 0x004c7048,,g_BadEndingFiles,?g_BadEndingFiles@@3PAPADA
 0x004c7078,,g_EndingFiles,?g_EndingFiles@@3PAPADA
