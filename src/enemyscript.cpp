@@ -1195,3 +1195,8 @@ void SpellCardFunc416160(Enemy *enemy, EnemyScriptInstr *instr)
 {
     g_SpellCard.Func416160();
 }
+
+void GetSpellCardsCaptured(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    enemy->currentCtx->vars.ints[0] = g_GameManager.stats->spellCardsCaptured;
+}

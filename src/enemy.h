@@ -706,6 +706,10 @@ void StartResurrection(Enemy *enemy, EnemyScriptInstr *instr);
 // Script function 23: SpellCard::Func416160 (0x425020).
 void SpellCardFunc416160(Enemy *enemy, EnemyScriptInstr *instr);
 
+// Script function 24: sets the first int variable to the spell cards
+// captured this game (0x425040).
+void GetSpellCardsCaptured(Enemy *enemy, EnemyScriptInstr *instr);
+
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
 // The enemy scripts by stage, by stage in spell practice (stage + 9),

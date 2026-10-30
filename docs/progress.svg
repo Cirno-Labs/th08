@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">85.39% (953)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">11.38% (127)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">85.48% (954)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">11.29% (126)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="637.90" height="6" x="0" y="0" class="named"/>
-<rect width="24.10" height="6" x="637.90" y="0" class="decompiled"/>
-<rect width="85.01" height="6" x="661.99" y="0" class="todo"/>
+<rect width="638.56" height="6" x="0" y="0" class="named"/>
+<rect width="24.10" height="6" x="638.56" y="0" class="decompiled"/>
+<rect width="84.34" height="6" x="662.66" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -383,7 +383,7 @@
 <rect width="12" height="12" x="180" y="90" class="named"><title>0x00424fc0 GetPracticeCard (35 bytes)</title></rect>
 <rect width="12" height="12" x="195" y="90" class="named"><title>0x00424ff0 StartResurrection (35 bytes)</title></rect>
 <rect width="12" height="12" x="210" y="90" class="decompiled"><title>0x00425020 SpellCardFunc416160 (26 bytes)</title></rect>
-<rect width="12" height="12" x="225" y="90" class="todo"><title>0x00425040 Func425040 (37 bytes)</title></rect>
+<rect width="12" height="12" x="225" y="90" class="named"><title>0x00425040 GetSpellCardsCaptured (37 bytes)</title></rect>
 <rect width="12" height="12" x="240" y="90" class="todo"><title>0x00425070 Func425070 (89 bytes)</title></rect>
 <rect width="12" height="12" x="255" y="90" class="todo"><title>0x004250d0 Func4250d0 (213 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="90" class="todo"><title>0x004251b0 Func4251b0 (213 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">79.27%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">19.15%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">79.28%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">19.14%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="592.15" height="6" x="0" y="0" class="named"/>
-<rect width="11.78" height="6" x="592.15" y="0" class="decompiled"/>
-<rect width="143.07" height="6" x="603.93" y="0" class="todo"/>
+<rect width="592.21" height="6" x="0" y="0" class="named"/>
+<rect width="11.78" height="6" x="592.21" y="0" class="decompiled"/>
+<rect width="143.01" height="6" x="603.99" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -2099,7 +2099,7 @@
 <rect width="1.57" height="1.60" x="709.15" y="292.88" class="todo"><title>0x00415ce0 Func415ce0 (37 bytes)</title></rect>
 <rect width="1.57" height="1.60" x="713.72" y="292.88" class="todo"><title>0x00418300 Func418300 (37 bytes)</title></rect>
 <rect width="1.57" height="1.60" x="718.28" y="292.88" class="todo"><title>0x0041f0b0 Func41f0b0 (37 bytes)</title></rect>
-<rect width="1.57" height="1.60" x="722.85" y="292.88" class="todo"><title>0x00425040 Func425040 (37 bytes)</title></rect>
+<rect width="1.57" height="1.60" x="722.85" y="292.88" class="named"><title>0x00425040 GetSpellCardsCaptured (37 bytes)</title></rect>
 <rect width="1.57" height="1.60" x="727.42" y="292.88" class="named"><title>0x0042f2f0 AsciiText::SetScale (37 bytes)</title></rect>
 <rect width="1.57" height="1.60" x="731.98" y="292.88" class="named"><title>0x0043f9a3 ReleaseTextSurface (37 bytes)</title></rect>
 <rect width="1.57" height="1.60" x="736.55" y="292.88" class="decompiled"><title>0x0044d150 SpellCard::Func44d150 (37 bytes)</title></rect>
