@@ -729,6 +729,10 @@ void UpdateYuyukoBomb(Player *player);
 // Its draw callback: dims the play area and draws the first 96
 // butterflies, turned the way they move (0x413890).
 void DrawYuyukoBomb(Player *player);
+// Her last word 死蝶「華胥の永眠」: the same rings, then every 20
+// frames from 60 to 200 sixteen larger butterflies at a random angle
+// (0x413990).
+void UpdateYuyukoLastWord(Player *player);
 // Draw callbacks of the bombs that only tint the play area, by the
 // bomb they follow: Alice's (also Yukari's draw.funcs[0..1], 0x40d950)
 // and Remilia's and her last word's (0x40f550, 0x40fcb0).
