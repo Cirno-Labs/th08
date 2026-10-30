@@ -626,6 +626,26 @@ Laser *BulletManager::SpawnLaser(BulletShooter *shooter)
     return laser;
 }
 
+int BulletManager::RegisterChain(char *anmPath)
+{
+    BulletManager *mgr = &g_BulletManager;
+
+    mgr->Reset();
+    mgr->anmPath = anmPath;
+    g_BulletCalcChain.SetCallback((ChainCallback)BulletManager::OnUpdate);
+    g_BulletCalcChain.addedCallback = (ChainCallback)BulletManager::AddedCallback;
+    g_BulletCalcChain.deletedCallback = (ChainCallback)BulletManager::DeletedCallback;
+    g_BulletCalcChain.arg = mgr;
+    if (g_Chain.AddToCalcChain(&g_BulletCalcChain, 0xe) != 0)
+    {
+        return -1;
+    }
+    g_BulletDrawChain.SetCallback((ChainCallback)BulletManager::OnDraw);
+    g_BulletDrawChain.arg = mgr;
+    g_Chain.AddToDrawChain(&g_BulletDrawChain, 0xd);
+    return 0;
+}
+
 // Turns `bullet` into an item of Player::areaItemType: two of type 7 for
 // type 9, none for a negative type.
 #define SPAWN_AREA_ITEM(bullet)                                     \
