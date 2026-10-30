@@ -2328,7 +2328,7 @@ int ResultScreen::AddedCallback(ResultScreen *screen)
                 screen->defaultScores[i][shot][k].stage = 0;
                 screen->defaultScores[i][shot][k].isNew = 0;
                 screen->defaultScores[i][shot][k].continuesUsed = 0;
-                screen->defaultScores[i][shot][k].unk_166 = 1;
+                screen->defaultScores[i][shot][k].isDefault = 1;
                 screen->AddScore(&screen->defaultScores[i][shot][k], i, shot);
                 strcpy(screen->defaultScores[i][shot][k].name, "--------");
                 strcpy(screen->defaultScores[i][shot][k].date, "--/--");

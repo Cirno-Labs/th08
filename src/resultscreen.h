@@ -61,7 +61,7 @@ struct Hscr
     BYTE version;
     // Set on the entry just added, which is the one being named.
     BYTE isNew;
-    BYTE unk_0a[0x2];
+    BYTE pad_0a[0x2];
     DWORD score;
     // How much the game slowed down, in percent.
     float slowdown;
@@ -75,7 +75,7 @@ struct Hscr
     // "%m/%d" and a NUL.
     char date[6];
     BYTE continuesUsed;
-    unsigned char unk_27;
+    unsigned char unusedByte27;
     union
     {
         // The config it was played with, in GameManagerUnk4's layout:
@@ -83,18 +83,18 @@ struct Hscr
         BYTE config[0x3c];
         struct
         {
-            unsigned char unk_28[0x1c];
+            unsigned char pad_28[0x1c];
             // The lives the game started with, less one: the config's
             // lifeCount.
             BYTE initialLives;
-            unsigned char unk_45[0x1f];
+            unsigned char pad_45[0x1f];
         };
     };
     // The frames played: HandleNameEntry copies GameManager::unk_3db94.
     int playFrames;
     // The point items collected.
     int pointItems;
-    int unk_6c;
+    int unusedInt6c;
     // The misses, bombs, last spells and pauses.
     int misses;
     int bombs;
@@ -108,8 +108,8 @@ struct Hscr
     // Set for each spell card captured, by card number.
     BYTE spellCards[0xde];
     // 1 in the entries the lists start with.
-    BYTE unk_166;
-    BYTE unk_167;
+    BYTE isDefault;
+    BYTE unusedByte167;
 };
 ASSERT_SIZE(Hscr, 0x168);
 
