@@ -412,7 +412,7 @@ address,size,name,symbol
 0x0042dfb0,20,Func42dfb0,
 0x0042dfd0,25,Func42dfd0,
 0x0042dff0,22,Func42dff0,
-0x0042e010,257,Func42e010,
+0x0042e010,257,MoveEnemyEffects,?MoveEnemyEffects@@YIXPAUEnemy@@@Z
 0x0042e120,23,Func42e120,
 0x0042e140,2504,Func42e140,
 0x0042eb10,114,Func42eb10,

@@ -209,7 +209,9 @@ struct Enemy
     // Effects that follow it, as th07's.
     struct Effect *effects[0x18];
     int effectCount;
-    unsigned char unk_53c4[0xc];
+    // How far the effects circle it, as th07's.
+    float effectRadius;
+    unsigned char unk_53c8[0x8];
 };
 ASSERT_SIZE(Enemy, 0x53d0);
 
@@ -278,8 +280,15 @@ struct EnemyTimeline
 };
 ASSERT_SIZE(EnemyTimeline, 0x10);
 
+// Keeps `enemy`'s effects on it, circling at effectRadius, as th07's
+// (0x42e010).
+void MoveEnemyEffects(Enemy *enemy);
 // Fades out and drops `enemy`'s effects, as th07's (0x42a820).
 void ReleaseEnemyEffects(Enemy *enemy);
+
+// The angle `t` of the way from `a` to `b`, the short way round, as
+// th07's (0x42eb10).
+float LerpAngle(float a, float b, float t);
 
 // The enemy scripts (ECL), at 0x4eccb8, as th07's. Only what is known
 // so far.
@@ -312,6 +321,14 @@ public:
     Enemy *Spawn(int sub, D3DXVECTOR3 *pos, int life, int item, int score, int mirrored);
     // Spawn with the script variables `vars`, as th07's (0x42a680).
     Enemy *SpawnWithVars(int sub, D3DXVECTOR3 *pos, int life, int item, int score, EnemyScriptVars *vars);
+    // Draw the enemies of draw lists `from` to `to`, as th07's
+    // (0x42e140).
+    static int DrawEnemies(EnemyManager *mgr, int from, int to);
+    // The draw chain callbacks, as th07's: lists 0 to 2, then 2 to 4 in
+    // red while bit 10 of g_GameManager.unk_3dbac is set (0x42e120,
+    // 0x42eb90).
+    static int OnDraw(EnemyManager *mgr);
+    static int OnDraw2(EnemyManager *mgr);
     // Whether any of the bosses is set, as th07's (0x42f1f0).
     int AnyBossActive();
     // Removes the enemies' chain elements, as th07's (0x42ef70).

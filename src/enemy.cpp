@@ -347,3 +347,29 @@ void EnemyTimeline::RunTimeline()
 tick:
     this->timer++;
 }
+
+void MoveEnemyEffects(Enemy *enemy)
+{
+    Effect *eff;
+    int i;
+
+    for (i = 0; i < enemy->effectCount; i++)
+    {
+        eff = enemy->effects[i];
+        if (eff == NULL)
+        {
+            continue;
+        }
+        eff->sprite.visible = !enemy->hideFollowEffects;
+        eff->origin = enemy->pos;
+        if (eff->radius < enemy->effectRadius)
+        {
+            eff->radius += 0.3f;
+        }
+        else
+        {
+            eff->radius = enemy->effectRadius;
+        }
+        eff->angle = AddNormalizeAngle(eff->angle, 0.031415928f);
+    }
+}
