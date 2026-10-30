@@ -50,9 +50,12 @@ libs = ["dinput8.lib", "dsound.lib", "d3d8.lib", "d3dx8.lib", "dxguid.lib", "win
 libs = ["AdvAPI32.Lib", "Gdi32.Lib", "Kernel32.Lib", "Ole32.Lib", "User32.Lib", "Uuid.Lib", "WinMM.Lib"]
 
 [exe.features]
-# FEAT=orig_checksum: the exe claims the original's size and checksum.
-# Any other exe crashes when it loads score.dat (App::CheckVersionFile),
-# as the original does when modified.
+# FEAT=orig_checksum: the game claims the original's size and checksum.
+# Any other exe crashes in App::CheckVersionFile, every 4000 frames and
+# when it loads a score.dat record, as the original does when modified.
+# It works for both the standalone exe and the hooked game (`just run`),
+# whose DLL then redirects ChecksumExecutable; the compared objects stay
+# vanilla.
 orig_checksum = "FEAT_ORIG_CHECKSUM"
 
 [hooks]

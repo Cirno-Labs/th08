@@ -10,6 +10,10 @@
 
 #include <windows.h>
 
+#if FEAT_ORIG_CHECKSUM
+#include "../unsorted.h"
+#endif
+
 struct Hook
 {
     DWORD original;
@@ -36,18 +40,38 @@ static void Log(const char *fmt, ...)
     OutputDebugStringA(buf);
 }
 
-static BOOL InstallHook(const Hook *hook)
+static BOOL WriteJump(DWORD from, void *to)
 {
-    BYTE *code = (BYTE *)hook->original;
+    BYTE *code = (BYTE *)from;
     DWORD protect;
     if (!VirtualProtect(code, 5, PAGE_EXECUTE_READWRITE, &protect))
     {
         return FALSE;
     }
     code[0] = 0xe9;
-    *(DWORD *)(code + 1) = (DWORD)hook->replacement - (hook->original + 5);
+    *(DWORD *)(code + 1) = (DWORD)to - (from + 5);
     VirtualProtect(code, 5, protect, &protect);
     return code[0] == 0xe9;
+}
+
+#if FEAT_ORIG_CHECKSUM
+// FEAT=orig_checksum: the game claims to be the original 1.00d exe, the
+// only one th08_0100d.ver lists. The patched exe differs, and for it
+// App::CheckVersionFile runs off the end of the file and crashes when the
+// game loads score.dat. The standalone exe's feature changes
+// ChecksumExecutable; the DLL keeps it the original's and jumps from it to
+// this instead.
+static int OrigChecksumExecutable()
+{
+    g_App.exeChecksum = 0xa26861b9;
+    g_App.exeSize = 840704;
+    return g_App.exeChecksum;
+}
+#endif
+
+static BOOL InstallHook(const Hook *hook)
+{
+    return WriteJump(hook->original, hook->replacement);
 }
 
 extern "C" BOOL WINAPI DllMain(HINSTANCE instance, DWORD reason, LPVOID reserved)
@@ -67,6 +91,15 @@ extern "C" BOOL WINAPI DllMain(HINSTANCE instance, DWORD reason, LPVOID reserved
         Log("th08: %08x -> %08x\n", hook->original, hook->replacement);
         installed++;
     }
+#if FEAT_ORIG_CHECKSUM
+    // Our own code calls the DLL's copy, so the jump goes there.
+    if (!WriteJump((DWORD)ChecksumExecutable, OrigChecksumExecutable))
+    {
+        Log("th08: cannot redirect ChecksumExecutable\n");
+        return FALSE;
+    }
+    Log("th08: orig_checksum\n");
+#endif
     FlushInstructionCache(GetCurrentProcess(), NULL, 0);
     Log("th08: %d hooks installed\n", installed);
     return TRUE;
