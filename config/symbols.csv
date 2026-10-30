@@ -389,10 +389,10 @@ address,size,name,symbol
 0x0042a450,62,EnemyScriptState::EnemyScriptState,??0EnemyScriptState@@QAE@XZ
 0x0042a490,33,EnemyBox::EnemyBox,??0EnemyBox@@QAE@XZ
 0x0042a4c0,25,EnemyScriptLoop::EnemyScriptLoop,??0EnemyScriptLoop@@QAE@XZ
-0x0042a4e0,409,EnemyManager::Spawn,?Spawn@EnemyManager@@QAEPAUEnemy@@FPAUD3DXVECTOR3@@HDHH@Z
-0x0042a680,413,EnemyManager::SpawnWithVars,?SpawnWithVars@EnemyManager@@QAEPAUEnemy@@FPAUD3DXVECTOR3@@HDHPAUEnemyScriptVars@@@Z
+0x0042a4e0,409,EnemyManager::Spawn,?Spawn@EnemyManager@@QAEPAUEnemy@@HPAUD3DXVECTOR3@@HHHH@Z
+0x0042a680,413,EnemyManager::SpawnWithVars,?SpawnWithVars@EnemyManager@@QAEPAUEnemy@@HPAUD3DXVECTOR3@@HHHPAUEnemyScriptVars@@@Z
 0x0042a820,115,ReleaseEnemyEffects,?ReleaseEnemyEffects@@YIXPAUEnemy@@@Z
-0x0042a8a0,1216,Func42a8a0,
+0x0042a8a0,1216,EnemyTimeline::RunTimeline,?RunTimeline@EnemyTimeline@@QAEXXZ
 0x0042adb0,1336,Enemy::Func42adb0,?Func42adb0@Enemy@@QAEXH@Z
 0x0042b2f0,117,Func42b2f0,
 0x0042b370,288,Func42b370,
@@ -427,7 +427,7 @@ address,size,name,symbol
 0x0042f2b0,25,GameManager::GetLives,?GetLives@GameManager@@QAEHXZ
 0x0042f2d0,29,Func42f2d0,
 0x0042f2f0,37,Func42f2f0,
-0x0042f320,17,Func42f320,
+0x0042f320,17,Gui::IsBossPresent,?IsBossPresent@Gui@@QAEEXZ
 0x0042f340,22,Func42f340,
 0x0042f360,177,Func42f360,
 0x0042f420,117,Func42f420,

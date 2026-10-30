@@ -147,7 +147,9 @@ struct Enemy
     struct Laser *lasers[0x20];
     int laserIndex;
     int item;
-    unsigned char unk_3308[0x8];
+    // Set by timeline instructions 11 and 12.
+    int unk_3308;
+    int unk_330c;
     char deathEffect;
     BYTE deathEffectIndex;
     BYTE deathEffectVariant;
@@ -211,12 +213,68 @@ struct Enemy
 };
 ASSERT_SIZE(Enemy, 0x53d0);
 
+// The arguments of the timeline's spawn instructions (0, 1 and 15 at a
+// position, 2 and 4 at a random x from xMin to xMax, 3 and 5 at a random
+// x in the play area, 11 and 12 with two more values for the enemy).
+struct EnemyTimelineSpawn
+{
+    int sub;
+    float x;
+    float y;
+    int life;
+    int item;
+    int score;
+};
+struct EnemyTimelineSpawnRandomX
+{
+    int sub;
+    float xMin;
+    float xMax;
+    float y;
+    int life;
+    int item;
+    int score;
+};
+struct EnemyTimelineSpawnAnyX
+{
+    int sub;
+    float y;
+    int life;
+    int item;
+    int score;
+};
+struct EnemyTimelineSpawnWithArgs
+{
+    int sub;
+    float x;
+    float y;
+    int life;
+    int unk_10;
+    int unk_14;
+    int score;
+};
+
+// One instruction of a timeline: from `time` on, `opcode` runs on the
+// difficulties in the bits of `difficulties`. New layout in th08.
+struct EnemyTimelineEntry
+{
+    int time;
+    short opcode;
+    BYTE size;
+    BYTE difficulties;
+    int args[1];
+};
+
 // One of EnemyManager's 16 timelines, as th07's. Its constructor is
 // folded with PlayerLaser's (0x449f50).
 struct EnemyTimeline
 {
+    // Runs the instructions due this frame, then ticks timer, as th07's
+    // (0x42a8a0).
+    void RunTimeline();
+
     Timer timer;
-    void *pos;
+    EnemyTimelineEntry *pos;
 };
 ASSERT_SIZE(EnemyTimeline, 0x10);
 
@@ -251,9 +309,9 @@ public:
     // Starts subroutine `sub` on a free enemy at `pos`, as th07's, and
     // keeps its index; marks bit 12 of g_ReplayManager->frameEvents and
     // sets spawnFailed (0x42a4e0).
-    Enemy *Spawn(short sub, D3DXVECTOR3 *pos, int life, char item, int score, int mirrored);
+    Enemy *Spawn(int sub, D3DXVECTOR3 *pos, int life, int item, int score, int mirrored);
     // Spawn with the script variables `vars`, as th07's (0x42a680).
-    Enemy *SpawnWithVars(short sub, D3DXVECTOR3 *pos, int life, char item, int score, EnemyScriptVars *vars);
+    Enemy *SpawnWithVars(int sub, D3DXVECTOR3 *pos, int life, int item, int score, EnemyScriptVars *vars);
     // Whether any of the bosses is set, as th07's (0x42f1f0).
     int AnyBossActive();
     // Removes the enemies' chain elements, as th07's (0x42ef70).
@@ -275,9 +333,10 @@ public:
     unsigned char unk_9dcedc[0x1c];
     // Whether the last Spawn found no free enemy.
     int spawnFailed;
-    // -1 after Initialize.
+    // -1 after Initialize; timeline instructions 13 and 14 use them.
     int unk_9dcefc[4];
-    unsigned char unk_9dcf0c[0x4];
+    // While set, the timelines spawn nothing.
+    int unk_9dcf0c;
 };
 ASSERT_SIZE(EnemyManager, 0x9dcf10);
 extern EnemyManager g_EnemyManager;

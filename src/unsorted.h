@@ -1938,6 +1938,12 @@ public:
     void FreeMsgFile();
     // Starts dialogue script `index`, as th07's (0x439810).
     void StartMsg(int index);
+    // Whether a boss fight runs, as th07's. Inline; the copy at
+    // 0x42f320 is an /Od object's.
+    BYTE IsBossPresent()
+    {
+        return this->bossPresent;
+    }
     // The update element's added callback: runs LoadResources.
     static int AddedCallback(Gui *gui);
     // Releases ANM slot 0xd unless Func438ffd, frees the dialogue file

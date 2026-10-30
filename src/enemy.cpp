@@ -83,7 +83,7 @@ EnemyManager::EnemyManager()
     this->Initialize();
 }
 
-Enemy *EnemyManager::Spawn(short sub, D3DXVECTOR3 *pos, int life, char item, int score, int mirrored)
+Enemy *EnemyManager::Spawn(int sub, D3DXVECTOR3 *pos, int life, int item, int score, int mirrored)
 {
     Enemy *enemy;
     int i;
@@ -112,7 +112,7 @@ Enemy *EnemyManager::Spawn(short sub, D3DXVECTOR3 *pos, int life, char item, int
             break;
         }
         enemy->color = enemy->sprite.color;
-        enemy->item = item;
+        enemy->item = (char)item;
         if (score >= 0)
         {
             enemy->score = score;
@@ -125,7 +125,7 @@ Enemy *EnemyManager::Spawn(short sub, D3DXVECTOR3 *pos, int life, char item, int
     return enemy;
 }
 
-Enemy *EnemyManager::SpawnWithVars(short sub, D3DXVECTOR3 *pos, int life, char item, int score,
+Enemy *EnemyManager::SpawnWithVars(int sub, D3DXVECTOR3 *pos, int life, int item, int score,
                                    EnemyScriptVars *vars)
 {
     Enemy *enemy;
@@ -155,7 +155,7 @@ Enemy *EnemyManager::SpawnWithVars(short sub, D3DXVECTOR3 *pos, int life, char i
             break;
         }
         enemy->color = enemy->sprite.color;
-        enemy->item = item;
+        enemy->item = (char)item;
         if (life >= 0)
         {
             enemy->life = life;
@@ -186,4 +186,164 @@ void ReleaseEnemyEffects(Enemy *enemy)
         enemy->effects[i] = NULL;
     }
     enemy->effectCount = 0;
+}
+
+void EnemyTimeline::RunTimeline()
+{
+    int mirror = 0;
+
+    while (this->pos->time >= 0)
+    {
+        if (this->timer == this->pos->time)
+        {
+            mirror = 0;
+            if (!(this->pos->difficulties & g_GameManager.difficultyMask))
+            {
+                goto next;
+            }
+            switch (this->pos->opcode)
+            {
+            case 16:
+                g_GameManager.isInContinueMenu = 1;
+                break;
+            case 1:
+                mirror = 1;
+            case 0:
+                if (!g_Gui.IsBossPresent() && g_EnemyManager.unk_9dcf0c == 0)
+            {
+                EnemyTimelineSpawn *args = (EnemyTimelineSpawn *)this->pos->args;
+                D3DXVECTOR3 pos;
+
+                pos.x = args->x;
+                pos.y = args->y;
+                pos.z = 0.0f;
+                g_EnemyManager.Spawn(args->sub, &pos, args->life, args->item, args->score, mirror);
+            }
+                break;
+            case 15:
+            {
+                EnemyTimelineSpawn *args = (EnemyTimelineSpawn *)this->pos->args;
+                D3DXVECTOR3 pos;
+
+                pos.x = args->x;
+                pos.y = args->y;
+                pos.z = 0.0f;
+                g_EnemyManager.Spawn(args->sub, &pos, args->life, args->item, args->score, mirror);
+            }
+                break;
+            case 12:
+                mirror = 1;
+            case 11:
+                if (!g_Gui.IsBossPresent() && g_EnemyManager.unk_9dcf0c == 0)
+                {
+                    EnemyTimelineSpawnWithArgs *args = (EnemyTimelineSpawnWithArgs *)this->pos->args;
+                    D3DXVECTOR3 pos;
+                    Enemy *enemy;
+
+                    pos.x = args->x;
+                    pos.y = args->y;
+                    pos.z = 0.0f;
+                    enemy = g_EnemyManager.Spawn(args->sub, &pos, args->life, -1, args->score, mirror);
+                    enemy->unk_3308 = args->unk_10;
+                    enemy->unk_330c = args->unk_14;
+                }
+                break;
+            case 4:
+                mirror = 1;
+            case 2:
+                if (!g_Gui.IsBossPresent() && g_EnemyManager.unk_9dcf0c == 0)
+                {
+                    EnemyTimelineSpawnRandomX *args = (EnemyTimelineSpawnRandomX *)this->pos->args;
+                    D3DXVECTOR3 pos;
+
+                    pos.x = g_Rng.GetRandomF32InRange(args->xMax - args->xMin) + args->xMin;
+                    pos.y = args->y;
+                    pos.z = 0.0f;
+                    g_EnemyManager.Spawn(args->sub, &pos, args->life, args->item, args->score, mirror);
+                }
+                break;
+            case 5:
+                mirror = 1;
+            case 3:
+                if (!g_Gui.IsBossPresent() && g_EnemyManager.unk_9dcf0c == 0)
+                {
+                    EnemyTimelineSpawnAnyX *args = (EnemyTimelineSpawnAnyX *)this->pos->args;
+                    D3DXVECTOR3 pos;
+
+                    pos.x = g_Rng.GetRandomF32InRange(384.0f);
+                    pos.y = args->y;
+                    pos.z = 0.0f;
+                    g_EnemyManager.Spawn(args->sub, &pos, args->life, args->item, args->score, mirror);
+                }
+                break;
+            case 6:
+                g_Gui.StartMsg(this->pos->args[0]);
+                break;
+            case 7:
+                if (g_Gui.MsgHoldsTimeline())
+                {
+                    this->timer--;
+                    goto tick;
+                }
+                break;
+            case 8:
+                g_EnemyManager.bosses[this->pos->args[0]]->pendingInterrupt = this->pos->args[1];
+                break;
+            case 9:
+                g_GameManager.SetPower(this->pos->args[0]);
+                break;
+            case 10:
+                if (g_EnemyManager.bosses[this->pos->args[0]] != NULL &&
+                    g_EnemyManager.bosses[this->pos->args[0]]->active)
+                {
+                    this->timer--;
+                    goto tick;
+                }
+                break;
+            case 13:
+            {
+                int count;
+                int j;
+
+                count = 0;
+                for (j = 0; j < ARRAY_SIZE(g_EnemyManager.unk_9dcefc); j++)
+                {
+                    if (g_EnemyManager.unk_9dcefc[j] == this->pos->args[0])
+                    {
+                        count++;
+                        g_EnemyManager.unk_9dcefc[j] = -1;
+                    }
+                }
+                if (count == 0)
+                {
+                    this->timer--;
+                    goto tick;
+                }
+                break;
+            }
+            case 14:
+            {
+                int k;
+
+                for (k = 0; k < ARRAY_SIZE(g_EnemyManager.unk_9dcefc); k++)
+                {
+                    if (g_EnemyManager.unk_9dcefc[k] >= 0)
+                    {
+                        continue;
+                    }
+                    g_EnemyManager.unk_9dcefc[k] = this->pos->args[0];
+                }
+                break;
+            }
+            }
+        }
+        else if (this->timer < this->pos->time)
+        {
+            break;
+        }
+    next:
+        this->pos = (EnemyTimelineEntry *)((char *)this->pos + this->pos->size);
+    }
+tick:
+    this->timer++;
 }
