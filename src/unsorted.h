@@ -222,12 +222,17 @@ public:
     int GetWindowed();
     // More of them, out-of-line copies from other objects: noFrameItems
     // (0x438a29), noDepthTest (0x438a41), noColorBlending (0x438a59) and
-    // unk12 (0x438a71) from the Gui object, noFog (0x406580).
+    // unk12 (0x438a71) from the Gui object.
     int GetNoFrameItems();
     int GetNoDepthTest();
     int GetNoColorBlending();
     int GetUnk12();
-    int GetNoFog();
+    // flags.noFog. Inline: the copy at 0x406580 comes from the /Od ascii
+    // object, the first in link order to use it.
+    int GetNoFog()
+    {
+        return this->flags.noFog;
+    }
     // flags.preloadBgm. Inline: the copy at 0x449c79 comes from the /Os
     // music screen object.
     int GetPreloadBgm()
