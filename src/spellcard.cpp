@@ -511,3 +511,19 @@ void SpellCard::Func416af0()
     this->unk_0_0 = 0;
     this->Func416160();
 }
+
+void SpellCard::Func416b10(int amount)
+{
+    if (!this->unk_0_11)
+    {
+        this->unk_fc += amount;
+        if (this->unk_fc >= this->unk_2638)
+        {
+            this->unk_fc = this->unk_2638;
+        }
+        else
+        {
+            this->unk_100 += amount / 120;
+        }
+    }
+}
