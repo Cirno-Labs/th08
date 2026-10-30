@@ -315,7 +315,7 @@ address,size,name,symbol
 0x00424ff0,35,StartResurrection,?StartResurrection@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00425020,26,SpellCardFunc416160,?SpellCardFunc416160@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00425040,37,GetSpellCardsCaptured,?GetSpellCardsCaptured@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
-0x00425070,89,Func425070,
+0x00425070,89,SetFrozen,?SetFrozen@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x004250d0,213,Func4250d0,
 0x004251b0,213,Func4251b0,
 0x00425290,255,Func425290,

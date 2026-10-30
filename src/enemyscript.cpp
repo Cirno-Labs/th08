@@ -1200,3 +1200,18 @@ void GetSpellCardsCaptured(Enemy *enemy, EnemyScriptInstr *instr)
 {
     enemy->currentCtx->vars.ints[0] = g_GameManager.stats->spellCardsCaptured;
 }
+
+void SetFrozen(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    g_GameManager.isFrozen = instr->args[1].i;
+    if (g_GameManager.isFrozen)
+    {
+        g_Stage.dialogueSprites[0].SetPendingInterrupt(2);
+        g_Stage.dialogueSprites[1].SetPendingInterrupt(2);
+    }
+    else
+    {
+        g_Stage.dialogueSprites[0].SetPendingInterrupt(1);
+        g_Stage.dialogueSprites[1].SetPendingInterrupt(1);
+    }
+}
