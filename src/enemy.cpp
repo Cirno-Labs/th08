@@ -5,6 +5,7 @@
 #include "effect.h"
 #include "enemy.h"
 #include "player.h"
+#include "sprite.h"
 #include "unsorted.h"
 
 void EnemyManager::Initialize()
@@ -403,4 +404,20 @@ float LerpAngle(float a, float b, float t)
     {
         return wrap * t + a;
     }
+}
+
+int EnemyManager::OnDraw2(EnemyManager *mgr)
+{
+    int result;
+
+    if (g_GameManager.unk_3dbac_10)
+    {
+        g_SpriteEngine->SetColorModulation(0xfff01010);
+    }
+    result = EnemyManager::DrawEnemies(mgr, 2, 4);
+    if (g_GameManager.unk_3dbac_10)
+    {
+        g_SpriteEngine->ResetColorModulation();
+    }
+    return result;
 }
