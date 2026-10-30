@@ -379,7 +379,7 @@
 <rect width="12" height="12" x="120" y="90" class="named"><title>0x00424e20 ShakeScreenRamp (39 bytes)</title></rect>
 <rect width="12" height="12" x="135" y="90" class="todo"><title>0x00424e50 Func424e50 (272 bytes)</title></rect>
 <rect width="12" height="12" x="150" y="90" class="named"><title>0x00424f60 FlashScreen180 (39 bytes)</title></rect>
-<rect width="12" height="12" x="165" y="90" class="named"><title>0x00424f90 StartSlowdown (46 bytes)</title></rect>
+<rect width="12" height="12" x="165" y="90" class="named"><title>0x00424f90 SetGameSpeed (46 bytes)</title></rect>
 <rect width="12" height="12" x="180" y="90" class="named"><title>0x00424fc0 GetPracticeCard (35 bytes)</title></rect>
 <rect width="12" height="12" x="195" y="90" class="named"><title>0x00424ff0 StartResurrection (35 bytes)</title></rect>
 <rect width="12" height="12" x="210" y="90" class="decompiled"><title>0x00425020 SpellCardFunc416160 (26 bytes)</title></rect>
@@ -2039,7 +2039,7 @@
 <rect width="2.07" height="2.37" x="710.68" y="278" class="named"><title>0x004481af App::IsScoreDisabled (48 bytes)</title></rect>
 <rect width="1.97" height="2.37" x="715.75" y="278" class="named"><title>0x004489ca App::StartLoadingScreenEffect (47 bytes)</title></rect>
 <rect width="1.97" height="2.37" x="720.72" y="278" class="named"><title>0x00454269 FormatAndAdvance (47 bytes)</title></rect>
-<rect width="1.86" height="2.37" x="725.69" y="278" class="named"><title>0x00424f90 StartSlowdown (46 bytes)</title></rect>
+<rect width="1.86" height="2.37" x="725.69" y="278" class="named"><title>0x00424f90 SetGameSpeed (46 bytes)</title></rect>
 <rect width="1.86" height="2.37" x="730.55" y="278" class="named"><title>0x0043ce00 ChainElem::`scalar deleting destructor&#x27; (46 bytes)</title></rect>
 <rect width="1.86" height="2.37" x="735.41" y="278" class="named"><title>0x0043ed80 Rng::GetRandomF32MinusOneToOne (46 bytes)</title></rect>
 <rect width="1.86" height="2.37" x="740.27" y="278" class="named"><title>0x00441e10 SpriteEngine::`scalar deleting destructor&#x27; (46 bytes)</title></rect>

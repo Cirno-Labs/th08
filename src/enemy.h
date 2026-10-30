@@ -693,9 +693,9 @@ void ShakeScreenRamp(Enemy *enemy, EnemyScriptInstr *instr);
 // Script function 17: a white flash of 180 frames (0x424f60).
 void FlashScreen180(Enemy *enemy, EnemyScriptInstr *instr);
 
-// Script function 18: runs the game at 1 / argument 1 speed, as th07's
-// StartSlowdown without its bullet handling (0x424f90).
-void StartSlowdown(Enemy *enemy, EnemyScriptInstr *instr);
+// Script function 18: runs the game at 1 / argument 1 speed, like
+// StartSlowdown without the sprites and bullets (0x424f90).
+void SetGameSpeed(Enemy *enemy, EnemyScriptInstr *instr);
 
 // Script function 19: sets the first int variable to the practised
 // spell card (GameManager::unk_3dbb0) (0x424fc0).

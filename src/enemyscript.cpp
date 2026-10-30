@@ -1444,7 +1444,7 @@ void FlashScreen180(Enemy *enemy, EnemyScriptInstr *instr)
     ScreenEffect::StartEffect(3, 180, 1, 0xffffffff, 0, 0x15);
 }
 
-void StartSlowdown(Enemy *enemy, EnemyScriptInstr *instr)
+void SetGameSpeed(Enemy *enemy, EnemyScriptInstr *instr)
 {
     int divisor;
     float newSpeed;
