@@ -229,7 +229,7 @@ address,size,name,symbol
 0x00418130,67,Func418130,
 0x00418180,98,Func418180,
 0x004181f0,44,GameManager::AddScore,?AddScore@GameManager@@QAEXH@Z
-0x00418220,180,Func418220,
+0x00418220,180,GameManager::AddTimeOrbs,?AddTimeOrbs@GameManager@@QAEXH@Z
 0x004182e0,25,Func4182e0,
 0x00418300,37,Func418300,
 0x00418330,239,EnemyScripts::Load,?Load@EnemyScripts@@QAEHPAD@Z
