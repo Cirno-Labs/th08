@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">88.17% (984)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">8.60% (96)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">88.26% (985)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">8.51% (95)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="658.65" height="6" x="0" y="0" class="named"/>
-<rect width="24.10" height="6" x="658.65" y="0" class="decompiled"/>
-<rect width="64.26" height="6" x="682.74" y="0" class="todo"/>
+<rect width="659.31" height="6" x="0" y="0" class="named"/>
+<rect width="24.10" height="6" x="659.31" y="0" class="decompiled"/>
+<rect width="63.59" height="6" x="683.41" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -192,7 +192,7 @@
 <rect width="12" height="12" x="315" y="30" class="named"><title>0x0040b9d0 SpriteEngine::ClearColorOp (21 bytes)</title></rect>
 <rect width="12" height="12" x="330" y="30" class="named"><title>0x0040b9f0 SpriteEngine::ClearVertexFormat (21 bytes)</title></rect>
 <rect width="12" height="12" x="345" y="30" class="named"><title>0x0040ba10 SpriteEngine::ClearTexture (24 bytes)</title></rect>
-<rect width="12" height="12" x="360" y="30" class="todo"><title>0x0040ba30 Func40ba30 (21 bytes)</title></rect>
+<rect width="12" height="12" x="360" y="30" class="named"><title>0x0040ba30 SpriteEngine::ClearZWrite (21 bytes)</title></rect>
 <rect width="12" height="12" x="375" y="30" class="named"><title>0x0040ba50 SpriteEngine::ClearSpriteData (24 bytes)</title></rect>
 <rect width="12" height="12" x="390" y="30" class="named"><title>0x0040ba70 SpriteEngine::ClearLastCameraSetupFlag (21 bytes)</title></rect>
 <rect width="12" height="12" x="405" y="30" class="named"><title>0x0040ba90 SpriteEngine::SetLastCameraSetupFlag (25 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">81.63%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">16.79%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">81.64%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">16.79%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="609.78" height="6" x="0" y="0" class="named"/>
-<rect width="11.78" height="6" x="609.78" y="0" class="decompiled"/>
-<rect width="125.44" height="6" x="621.56" y="0" class="todo"/>
+<rect width="609.82" height="6" x="0" y="0" class="named"/>
+<rect width="11.78" height="6" x="609.82" y="0" class="decompiled"/>
+<rect width="125.40" height="6" x="621.60" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -2251,7 +2251,7 @@
 <rect width="0.51" height="0.39" x="722.67" y="337.83" class="named"><title>0x0040b9b0 SpriteEngine::ClearBlendMode (21 bytes)</title></rect>
 <rect width="0.51" height="0.39" x="722.67" y="341.22" class="named"><title>0x0040b9d0 SpriteEngine::ClearColorOp (21 bytes)</title></rect>
 <rect width="0.51" height="0.39" x="722.67" y="344.61" class="named"><title>0x0040b9f0 SpriteEngine::ClearVertexFormat (21 bytes)</title></rect>
-<rect width="0.51" height="0.39" x="726.18" y="324.27" class="todo"><title>0x0040ba30 Func40ba30 (21 bytes)</title></rect>
+<rect width="0.51" height="0.39" x="726.18" y="324.27" class="named"><title>0x0040ba30 SpriteEngine::ClearZWrite (21 bytes)</title></rect>
 <rect width="0.51" height="0.39" x="726.18" y="327.66" class="named"><title>0x0040ba70 SpriteEngine::ClearLastCameraSetupFlag (21 bytes)</title></rect>
 <rect width="0.51" height="0.39" x="726.18" y="331.05" class="todo"><title>0x00415c60 BulletManager::Func415c60 (21 bytes)</title></rect>
 <rect width="0.51" height="0.39" x="726.18" y="334.44" class="named"><title>0x0043ef50 App::GetShootFocuses (21 bytes)</title></rect>
