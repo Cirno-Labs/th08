@@ -1391,6 +1391,87 @@ void SpawnTwinEffects38(Enemy *enemy, EnemyScriptInstr *instr)
     g_Stage.unk_625c = DrawTwinEffects;
 }
 
+void DrawTwinEffects()
+{
+    Effect *first;
+    D3DCOLOR saved;
+    float r1;
+    int i;
+    Effect *second;
+    Sprite *spr;
+    float r2;
+    VertexDiffuseXyzrwh vertices[10];
+
+    first = g_EffectManager.GetReservedEffect(9);
+    second = g_EffectManager.GetReservedEffect(10);
+    spr = &g_Stage.dialogueSprites[0];
+    r1 = first->sprite.pos.x * 0.70710683f;
+    r2 = second->sprite.pos.x * 0.70710683f;
+    vertices[0].pos.x = 32.0f + first->pos.x - r1;
+    vertices[0].pos.y = 16.0f + first->pos.y - r1;
+    vertices[1].pos.x = 32.0f + first->pos.x - r2;
+    vertices[1].pos.y = 16.0f + first->pos.y - r2;
+    vertices[2].pos.x = 32.0f + first->pos.x + r1;
+    vertices[2].pos.y = 16.0f + first->pos.y - r1;
+    vertices[3].pos.x = 32.0f + first->pos.x + r2;
+    vertices[3].pos.y = 16.0f + first->pos.y - r2;
+    vertices[4].pos.x = 32.0f + first->pos.x + r1;
+    vertices[4].pos.y = 16.0f + first->pos.y + r1;
+    vertices[5].pos.x = 32.0f + first->pos.x + r2;
+    vertices[5].pos.y = 16.0f + first->pos.y + r2;
+    vertices[6].pos.x = 32.0f + first->pos.x - r1;
+    vertices[6].pos.y = 16.0f + first->pos.y + r1;
+    vertices[7].pos.x = 32.0f + first->pos.x - r2;
+    vertices[7].pos.y = 16.0f + first->pos.y + r2;
+    vertices[8].pos = vertices[0].pos;
+    vertices[9].pos = vertices[1].pos;
+    for (i = 0; i < 10; i++)
+    {
+        vertices[i].pos.z = 0.8f;
+        vertices[i].w = 1.0f;
+        vertices[i].diffuse = 0xff000000;
+    }
+    g_App.d3dDevice->SetVertexShader(D3DFVF_XYZRHW | D3DFVF_DIFFUSE);
+    g_App.SetRenderState(D3DRS_ZWRITEENABLE, TRUE);
+    g_App.d3dDevice->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_SELECTARG1);
+    g_App.d3dDevice->SetTextureStageState(0, D3DTSS_COLOROP, D3DTOP_SELECTARG1);
+    g_App.d3dDevice->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_DIFFUSE);
+    g_App.d3dDevice->SetTextureStageState(0, D3DTSS_COLORARG1, D3DTA_DIFFUSE);
+    g_App.d3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLESTRIP, 8, vertices, sizeof(VertexDiffuseXyzrwh));
+    g_SpriteEngine->ClearVertexFormat();
+    g_SpriteEngine->ClearColorOp();
+    g_SpriteEngine->ClearBlendMode();
+    g_SpriteEngine->ClearZWrite();
+    g_App.d3dDevice->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_MODULATE);
+    g_App.d3dDevice->SetTextureStageState(0, D3DTSS_COLOROP, D3DTOP_MODULATE);
+    g_App.d3dDevice->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE);
+    g_App.d3dDevice->SetTextureStageState(0, D3DTSS_COLORARG1, D3DTA_TEXTURE);
+    g_App.SetRenderState(D3DRS_ZFUNC, D3DCMP_LESSEQUAL);
+    g_Stage.dialogueSprites[0].scaleY = -1.5f;
+    g_Stage.dialogueSprites[0].scaleX = -1.75f;
+    g_Stage.dialogueSprites[0].pos.z = 0.7f;
+    g_Stage.dialogueSprites[0].pos.x = 416.0f;
+    g_Stage.dialogueSprites[0].pos.y = 464.0f;
+    saved = g_Stage.dialogueSprites[0].color;
+    g_Stage.dialogueSprites[0].color = 0xffe0c0c0;
+    g_SpriteEngine->Draw(&g_Stage.dialogueSprites[0]);
+    g_Stage.dialogueSprites[0].scaleY = 1.5f;
+    g_Stage.dialogueSprites[0].scaleX = 1.75f;
+    g_Stage.dialogueSprites[0].pos.z = 0.5f;
+    g_Stage.dialogueSprites[0].pos.x = 32.0f;
+    g_Stage.dialogueSprites[0].pos.y = 16.0f;
+    g_Stage.dialogueSprites[0].color = saved;
+    g_Stage.dialogueSprites[1].rotation.z = g_Stage.dialogueSprites[1].rotation.z * -1.0f;
+    g_Stage.dialogueSprites[1].pos.z = 0.6f;
+    saved = g_Stage.dialogueSprites[1].color;
+    g_Stage.dialogueSprites[1].color = 0xffe0c0c0;
+    g_SpriteEngine->DrawAndFlush(&g_Stage.dialogueSprites[1]);
+    g_Stage.dialogueSprites[1].rotation.z = g_Stage.dialogueSprites[1].rotation.z * -1.0f;
+    g_Stage.dialogueSprites[1].pos.z = 0.5f;
+    g_Stage.dialogueSprites[1].color = saved;
+    g_App.SetRenderState(D3DRS_ZFUNC, D3DCMP_ALWAYS);
+}
+
 void BounceBulletsAtZones(Enemy *enemy, EnemyScriptInstr *instr)
 {
     Bullet *bullet = g_BulletManager.bullets;
