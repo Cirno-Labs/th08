@@ -11,6 +11,28 @@
 #include "sprite.h"
 #include "timer.h"
 
+// One argument of a script instruction, as th07's.
+union EnemyScriptArg
+{
+    int i;
+    float f;
+};
+
+// One instruction of an enemy script, as th07's.
+struct EnemyScriptInstr
+{
+    // The frame it runs on.
+    int time;
+    short opcode;
+    // The size of the instruction, arguments included.
+    short size;
+    BYTE unusedByte8;
+    BYTE difficultyMask;
+    // Bit n: argument n names a variable.
+    WORD paramMask;
+    EnemyScriptArg args[1];
+};
+
 // An enemy script's variables, as th07's, by operand number: ints
 // 10000 to 10007, floats 10016 to 10023, ints2 10036 to 10039, floats2
 // 10094 and 10095, ints3 10053 to 10056, floats3 10057 to 10060.
@@ -216,10 +238,12 @@ struct Enemy
     float unk_2db0;
     float unk_2db4;
     D3DXVECTOR3 shootOffset;
-    D3DXVECTOR3 unk_2dc4;
-    D3DXVECTOR3 unk_2dd0;
+    // A timed move (moveMode 2), as th07's: by moveDelta from moveStart
+    // over moveDuration frames, eased by moveEasing.
+    D3DXVECTOR3 moveDelta;
+    D3DXVECTOR3 moveStart;
     Timer moveTimer;
-    int unk_2de8;
+    int moveDuration;
     float rankSpeedLow;
     float rankSpeedHigh;
     short rankCount1Low;
@@ -283,7 +307,7 @@ struct Enemy
             // Player::unk_5 as Func42c420 last saw it.
             DWORD unk_3324_11 : 1;
             DWORD moveMode : 2;
-            DWORD unk_3324_14 : 3;
+            DWORD moveEasing : 3;
             DWORD holdFire : 1;
             DWORD mirrored : 1;
             DWORD clampPos : 1;
@@ -521,6 +545,9 @@ float GetFloatOperand(Enemy *enemy, float id);
 // ResolveOperand for float variables, as th07's; 10042 to 10044 name
 // pos, which GetFloatOperand reads from unk_2d88 (0x420950).
 float *ResolveFloatOperand(Enemy *enemy, float *operand, WORD mask, int bit);
+// Starts a timed move at an angle (argument 2, normalized), as th07's:
+// moveDelta is argument 3 times argument 0, from unk_2d88 (0x420d10).
+void ScriptMoveAngle(Enemy *enemy, EnemyScriptInstr *instr);
 
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
