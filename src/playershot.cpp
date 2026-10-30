@@ -639,7 +639,7 @@ void FireShot(Player *player, PlayerBullet *bullet, ShotData *sd)
     }
     player->anm->StartScript(&bullet->sprite, sd->script + 10);
     bullet->red = 0;
-    if (g_GameManager.IsUnk22AtHigh1() && sd->unk_1e > 0)
+    if (g_GameManager.IsUnk22AtHigh1() && sd->side > 0)
     {
         bullet->red = 1;
     }
@@ -1321,7 +1321,7 @@ int Player::CalcDamage(D3DXVECTOR3 *pos, D3DXVECTOR3 *size, int *damageTaken, in
         }
         while (*damageTaken >= g_Unknown18b8a24)
         {
-            if (g_GameManager.IsUnk22AtLow1() && cur->shot->unk_1e < 0)
+            if (g_GameManager.IsUnk22AtLow1() && cur->shot->side < 0)
             {
                 g_ItemManager.SpawnItem(&cur->pos, 7, 3);
             }

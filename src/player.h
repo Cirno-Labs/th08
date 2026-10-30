@@ -38,7 +38,7 @@ struct ShotData
     short damage;
     // Above 0, the bullet is drawn red while stats->unk_22 is at
     // unk22High1. New in th08.
-    short unk_1e;
+    short side;
     // 0 for the player, else the option, from 1.
     short option;
     // PlayerBullet::type.
