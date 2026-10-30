@@ -438,7 +438,7 @@ address,size,name,symbol
 0x0042f5f0,2138,BulletManager::SpawnBullet,?SpawnBullet@BulletManager@@QAEHPAUBulletShooter@@HHM@Z
 0x0042fe70,33,CopyBulletSprite,?CopyBulletSprite@@YIXPAVSprite@@0@Z
 0x0042fea0,204,ShowSpawnSprite,?ShowSpawnSprite@@YIXPAVSprite@@0PAUBullet@@H@Z
-0x0042ff70,67,Func42ff70,
+0x0042ff70,67,D3DXVECTOR3::operator-=,??ZD3DXVECTOR3@@QAEAAU0@ABU0@@Z
 0x0042ffc0,2075,RunBulletCommands,?RunBulletCommands@@YIXPAUBullet@@@Z
 0x00430830,620,BulletManager::Func430830,?Func430830@BulletManager@@QAEXH@Z
 0x00430aa0,651,BulletManager::ClearAllWithBonus,?ClearAllWithBonus@BulletManager@@QAEHHH@Z
