@@ -648,6 +648,22 @@ int EnemyManager::RegisterChain()
     return 0;
 }
 
+void Enemy::Move()
+{
+    this->posDelta = this->pos - this->prevPos;
+    this->prevPos = this->pos;
+    if (!this->mirrored)
+    {
+        this->pos.x += g_App.gameSpeed * this->velocity.x;
+    }
+    else
+    {
+        this->pos.x -= g_App.gameSpeed * this->velocity.x;
+    }
+    this->pos.y += g_App.gameSpeed * this->velocity.y;
+    this->pos.z += g_App.gameSpeed * this->velocity.z;
+}
+
 void MoveEnemyEffects(Enemy *enemy)
 {
     Effect *eff;

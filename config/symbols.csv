@@ -408,7 +408,7 @@ address,size,name,symbol
 0x0042c420,367,Enemy::Func42c420,?Func42c420@Enemy@@QAEXXZ
 0x0042c590,203,EnemyManager::RegisterChain,?RegisterChain@EnemyManager@@SIHXZ
 0x0042c660,6198,EnemyManager::OnUpdate,?OnUpdate@EnemyManager@@SIHPAV1@@Z
-0x0042deb0,252,Func42deb0,
+0x0042deb0,252,Enemy::Move,?Move@Enemy@@QAEXXZ
 0x0042dfb0,20,Func42dfb0,
 0x0042dfd0,25,Func42dfd0,
 0x0042dff0,22,Func42dff0,

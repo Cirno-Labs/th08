@@ -105,6 +105,9 @@ struct Enemy
     // bursts effect 0x1f or 0x1e, sends unk_53c8 interrupt 2 or 1 and
     // plays sound 0x28 or 0x27 (0x42c420).
     void Func42c420();
+    // Moves it by velocity (x mirrored while mirrored is set), keeping
+    // prevPos and posDelta, as th07's inline (0x42deb0).
+    void Move();
     // Keeps pos within lowerBound and upperBound while clampPos is set,
     // as th07's (0x42c180).
     void ClampPos();
@@ -145,8 +148,8 @@ struct Enemy
     D3DXVECTOR3 pos;
     D3DXVECTOR3 unk_2d40;
     D3DXVECTOR3 velocity;
-    D3DXVECTOR3 unk_2d58;
-    D3DXVECTOR3 unk_2d64;
+    D3DXVECTOR3 prevPos;
+    D3DXVECTOR3 posDelta;
     D3DXVECTOR3 hitboxSize;
     D3DXVECTOR3 unk_2d7c;
     // Where the player's homing options go to (MoveOptionToEnemy).
