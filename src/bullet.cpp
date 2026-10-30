@@ -1417,3 +1417,12 @@ int BulletManager::AddedCallback(BulletManager *mgr)
     g_ItemManager.Reset();
     return 0;
 }
+
+int BulletManager::DeletedCallback(BulletManager *mgr)
+{
+    if (IsFreeingResources())
+    {
+        g_SpriteEngine->ReleaseAnm(6);
+    }
+    return 0;
+}

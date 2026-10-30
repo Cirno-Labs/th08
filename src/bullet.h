@@ -231,8 +231,9 @@ public:
     // itself.
     void ClearDrawLists();
 
-    // Loads the bullet sprites and adds the bullets' chain elements, as
-    // th07's (0x4311a0). Returns 0, or -1 on failure.
+    // Resets g_BulletManager, remembers `anmPath` and adds the update
+    // element (priority 0xe) and the draw element (priority 0xd), as
+    // th07's. Returns 0, or -1 if adding fails.
     static int RegisterChain(char *anmPath);
     // Unless g_GameManager.unk_3dbac_10 is set: updates the items, then
     // runs every bullet's state, behaviors and collisions (from the
@@ -249,7 +250,11 @@ public:
     // its sprite's height and script, as th07's; then resets
     // g_ItemManager. Returns 0, or -1 if loading fails.
     static int AddedCallback(BulletManager *mgr);
-    // Removes the bullets' chain elements, as th07's (0x433850).
+    // Frees etama.anm (slot 6) while the scene frees its files. Returns
+    // 0.
+    static int DeletedCallback(BulletManager *mgr);
+    // Removes the two chain elements, as th07's, but leaves
+    // g_BulletManager as it is.
     static void RemoveChain();
 
     BulletTypeSprites typeSprites[0x20];
@@ -331,3 +336,7 @@ void DrawBullet(Bullet *bullet);
 void RunBulletCommands(Bullet *bullet);
 // etama.anm (slot 6), which BulletManager's added callback loads.
 extern AnmLoaded *g_EtamaAnm;
+
+// BulletManager's statically allocated chain elements.
+extern ChainElem g_BulletCalcChain;
+extern ChainElem g_BulletDrawChain;
