@@ -1521,7 +1521,13 @@ public:
         this->stats->computedChecksum = this->ComputeChecksum();
         this->checksumValue = this->stats->computedChecksum + this->stats->checksumKeysD[3];
     }
-    void SetPower(int power);
+    // Sets stats->power (a float) and rerolls the checksum keys. Inline;
+    // the copy at 0x406fa0 is the ascii object's.
+    void SetPower(int power)
+    {
+        this->stats->power = power;
+        this->RerollChecksumKeys();
+    }
     // stats->unk_28 and a setter for it, inline: the copies at 0x406dd0
     // and 0x453c60 are another object's and the replay object's.
     char GetUnk28()
