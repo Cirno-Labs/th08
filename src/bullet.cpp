@@ -1137,3 +1137,33 @@ void StopTurnToPlayer(Bullet *bullet)
     ((Vector2 *)&bullet->velocity)->SetPolar(bullet->angle, speed * g_App.gameSpeed);
     bullet->ex[3].timer++;
 }
+
+void BounceOffWalls(Bullet *bullet)
+{
+    float speed;
+
+    if (!g_GameManager.IsInPlayArea(bullet->pos[0], bullet->pos[1], bullet->sprites.sprite0.spriteData->width, bullet->sprites.sprite0.spriteData->height))
+    {
+        if (bullet->sound >= 0)
+        {
+            g_SoundPlayer.QueueSound(bullet->sound, 0);
+        }
+        if (bullet->pos.x < 0.0f || bullet->pos.x >= 384.0f)
+        {
+            bullet->angle = -bullet->angle - 3.1415927f;
+            bullet->angle = AddNormalizeAngle(bullet->angle, 0.0f);
+        }
+        if (bullet->pos.y < 0.0f || (bullet->pos.y >= 448.0f && (bullet->activeFlags & 0x400)))
+        {
+            bullet->angle = -bullet->angle;
+        }
+        bullet->speed = bullet->ex[4].turnSpeed;
+        speed = bullet->speed;
+        ((Vector2 *)&bullet->velocity)->SetPolar(bullet->angle, speed * g_App.gameSpeed);
+        bullet->ex[4].duration++;
+        if (bullet->ex[4].duration >= bullet->ex[4].maxTurns)
+        {
+            bullet->activeFlags &= ~0xc00;
+        }
+    }
+}
