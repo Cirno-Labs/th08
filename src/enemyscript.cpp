@@ -40,3 +40,16 @@ void EnemyScripts::Release()
     }
     this->file = NULL;
 }
+
+int EnemyScripts::StartSub(EnemyScriptState *ctx, short sub)
+{
+    if (sub < 0)
+    {
+        return 0;
+    }
+    ctx->code = this->subs[sub];
+    ctx->timer = 0;
+    ctx->waitTimer = 0;
+    ctx->sub = sub;
+    return 0;
+}
