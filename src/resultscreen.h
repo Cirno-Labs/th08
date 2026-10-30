@@ -238,15 +238,15 @@ struct Clrd
     WORD size;
     WORD size2;
     BYTE version;
-    BYTE unk_09[0x3];
+    BYTE pad_09[0x3];
     // By difficulty, as th07's (WORDs now, 5 difficulties): the stages
     // cleared, without continues and with.
     WORD stagesClearedNoContinue[5];
     WORD stagesCleared[5];
-    BYTE unk_20;
+    BYTE canSkipEnding;
     // The shot type.
     BYTE shot;
-    BYTE unk_22[0x2];
+    BYTE pad_22[0x2];
 };
 ASSERT_SIZE(Clrd, 0x24);
 

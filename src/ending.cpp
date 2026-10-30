@@ -431,8 +431,8 @@ int Ending::AddedCallback(Ending *ending)
     }
     else
     {
-        ending->canSkip = g_GameManager.clrds[g_GameManager.character].unk_20;
-        g_GameManager.clrds[g_GameManager.character].unk_20 = 0;
+        ending->canSkip = g_GameManager.clrds[g_GameManager.character].canSkipEnding;
+        g_GameManager.clrds[g_GameManager.character].canSkipEnding = 0;
         g_GameManager.plst.bgmHeard[0x12] = 0x12;
     }
     for (j = 0; j < 0xf; j++)
