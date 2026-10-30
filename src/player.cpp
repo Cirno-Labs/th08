@@ -998,7 +998,7 @@ void UpdateBombState(Player *player)
                     {
                         g_EnemyManager.bosses[i]->Func42adb0(0);
                         g_EnemyManager.bosses[i]->life = 0;
-                        g_EnemyManager.bosses[i]->unk_3324_30 = 0;
+                        g_EnemyManager.bosses[i]->haltedByBomb = 0;
                     }
                 }
                 ScreenEffect::StartEffect(3, 0x1e, 1, -1, 0, 0x15);

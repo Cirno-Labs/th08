@@ -441,7 +441,7 @@ address,size,name,symbol
 0x0042ff70,67,Func42ff70,
 0x0042ffc0,2075,Func42ffc0,
 0x00430830,620,BulletManager::Func430830,?Func430830@BulletManager@@QAEXH@Z
-0x00430aa0,651,Func430aa0,
+0x00430aa0,651,BulletManager::ClearAllWithBonus,?ClearAllWithBonus@BulletManager@@QAEHHH@Z
 0x00430d30,214,Func430d30,
 0x00430e10,259,Func430e10,
 0x00430f20,639,Func430f20,
@@ -2528,7 +2528,9 @@ address,size,name,symbol
 0x017ceac0,,g_LoadingSprites,?g_LoadingSprites@@3PAVSprite@@A
 0x017d5ef8,,g_Player,?g_Player@@3VPlayer@@A
 0x017d6ed4,,g_Unknown17d6ed4,?g_Unknown17d6ed4@@3HA
+0x018b899c,,g_OrbHomingTarget,?g_OrbHomingTarget@@3UD3DXVECTOR3@@A
 0x018b89b4,,g_Unknown18b89b4,?g_Unknown18b89b4@@3PAUEnemy@@A
+0x018b89b8,,g_HomingTargetSet,?g_HomingTargetSet@@3HA
 0x018b8a24,,g_Unknown18b8a24,?g_Unknown18b8a24@@3HA
 0x018b8a28,,g_ReplayManager,?g_ReplayManager@@3PAVReplayManager@@A
 0x018b8a2c,,g_Unknown18b8a2c,?g_Unknown18b8a2c@@3HA

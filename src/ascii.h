@@ -222,6 +222,13 @@ public:
     {
         this->nearbyLabels[i].pos = *pos;
     }
+    // Sets nearbyLabelDimmed[i], as th07's: 1 dims the label, 2 to 4
+    // colour it by the boss's danger level. Inline; the copy is at
+    // 0x42f2d0.
+    void SetNearbyLabelDimmed(int i, int value)
+    {
+        this->nearbyLabelDimmed[i] = value;
+    }
     // Sends nearbyLabels[i] `interrupt`. Inline; the copy at 0x422bb0
     // is in an /Od object.
     void SetNearbyLabelInterrupt(int i, short interrupt)

@@ -163,7 +163,9 @@ struct Enemy
     // Frees and clears unk_3384 (0x42bc90).
     void Func42bc90();
 
-    int unk_0;
+    // The next enemy in its draw list (EnemyManager::drawListHeads), as
+    // th07's.
+    Enemy *nextInDrawList;
     // The enemies before and after it in a list (Func42b2f0).
     Enemy *unk_4;
     Enemy *unk_8;
@@ -185,7 +187,8 @@ struct Enemy
     D3DXVECTOR3 prevPos;
     D3DXVECTOR3 posDelta;
     D3DXVECTOR3 hitboxSize;
-    D3DXVECTOR3 unk_2d7c;
+    // A second box the player's shots hurt it through, as th07's.
+    D3DXVECTOR3 extraHitboxSize;
     // Where the player's homing options go to (MoveOptionToEnemy).
     D3DXVECTOR3 unk_2d88;
     float angle;
@@ -278,8 +281,16 @@ struct Enemy
             // A timer callback leaves the spell card running while set,
             // as th07's.
             DWORD keepSpellCard : 1;
-            DWORD unk_3324_28 : 2;
-            DWORD unk_3324_30 : 1;
+            // OnUpdate keeps it after it leaves the play area while set,
+            // as th07's.
+            DWORD staysOffscreen : 1;
+            // OnUpdate neither moves nor clamps it while set, as th07's.
+            DWORD isWarpingToBoss : 1;
+            // Its script and callbacks wait while a bomb runs or the
+            // player is not in state 0, as th07's.
+            DWORD haltedByBomb : 1;
+            // The player's shots miss it while a bomb runs.
+            DWORD unk_3324_31 : 1;
         };
     };
     union
@@ -290,18 +301,24 @@ struct Enemy
             DWORD unk_3328_0 : 1;
             // Func42c420 bursts effect 0x26 every other frame while set.
             DWORD unk_3328_1 : 1;
-            DWORD unk_3328_2 : 2;
+            DWORD unk_3328_2 : 1;
+            // Set once OnUpdate has run its death; cleared while its life
+            // is above 0.
+            DWORD unk_3328_3 : 1;
             // How close it is to its next life callback, 0 to 3
             // (CheckLifeCallback).
             DWORD unk_3328_4 : 2;
             // ClearEnemiesForBonus spares it while set.
             DWORD unk_3328_6 : 1;
-            DWORD unk_3328_7 : 25;
+            // Like haltedByBomb, but always.
+            DWORD unk_3328_7 : 1;
+            DWORD unk_3328_8 : 24;
         };
     };
     unsigned char unk_332c[0x3];
-    // Set to 0 or 2 by Func42c420 as Player::unk_5 changes.
-    BYTE unk_332f;
+    // The draw list OnUpdate puts it in, as th07's: 0 or 2 by
+    // Func42c420 as Player::unk_5 changes.
+    BYTE drawListIndex;
     // 0x40 while Player::unk_5 is set, else 0x20 (Func42c420).
     BYTE unk_3330;
     unsigned char unk_3331[0x1];
@@ -314,7 +331,8 @@ struct Enemy
     float lowerBound[2];
     float upperBound[2];
     float unk_3350;
-    unsigned char unk_3354[0x4];
+    // The damage it took this frame, as th07's.
+    int lastDamage;
     int lifeCallbackLife[4];
     int lifeCallbackSub[4];
     int timerCallbackTime;
@@ -329,7 +347,9 @@ struct Enemy
     BYTE trailFlags;
     unsigned char unk_534d[0x1];
     short trailSegmentCount;
-    unsigned char unk_5350[0x4];
+    // How many trail boxes touch the player, every sixth, as th07's.
+    short trailContactSegments;
+    unsigned char unk_5352[0x2];
     Timer invulnTimer;
     // Effects that follow it, as th07's.
     struct Effect *effects[0x18];
@@ -419,6 +439,17 @@ void ReleaseEnemyEffects(Enemy *enemy);
 // th07's (0x42eb10).
 float LerpAngle(float a, float b, float t);
 
+// The head of an enemy script file, as th07's after a version (0x800):
+// the subroutine count, the timeline count, the offsets of sixteen
+// timelines, then those of the subroutines.
+struct EnemyScriptHeader
+{
+    int version;
+    short subCount;
+    short timelineCount;
+    void *timelines[16];
+};
+
 // The enemy scripts (ECL), at 0x4eccb8, as th07's. Only what is known
 // so far.
 class EnemyScripts
@@ -436,7 +467,19 @@ public:
     // pointers, as th07's (0x418330). Returns 0, or -1 if loading fails.
     int Load(char *path);
 
-    void *file;
+    // How many timelines the file has. Inline; the copy is at 0x42dfb0.
+    int GetTimelineCount()
+    {
+        return this->file->timelineCount;
+    }
+    // Timeline `i` of the file, as th07's. Inline; the copy is at
+    // 0x42dfd0.
+    EnemyTimelineEntry *GetTimeline(int i)
+    {
+        return (EnemyTimelineEntry *)this->file->timelines[i];
+    }
+
+    EnemyScriptHeader *file;
     void **subs;
     unsigned char unk_8[0x180];
 };
@@ -497,11 +540,14 @@ public:
     // Count and pick the items the enemies drop, as th07's.
     WORD dropCounter;
     WORD dropIndex;
-    unsigned char unk_9dcdc4[0xc];
+    // The active enemies, as th07's.
+    int enemyCount;
+    unsigned char unk_9dcdc8[0x8];
     EnemyTimeline timelines[16];
     // Counts the frames, as th07's.
     Timer frameTimer;
-    unsigned char unk_9dcedc[0x10];
+    // The enemies OnUpdate puts in each draw list, as th07's.
+    Enemy *drawListHeads[4];
     // enemy.anm (slot 7) and the stage's enemy ANM (slot 8).
     AnmLoaded *anm;
     AnmLoaded *stageAnm;
@@ -519,6 +565,11 @@ extern EnemyManager g_EnemyManager;
 extern BYTE g_EnemyItemDrops[0x20];
 // Cleared when this enemy despawns.
 extern Enemy *g_Unknown18b89b4;
+// Where the player's homing shots go, as th07's Player::orbHomingTarget:
+// the first boss, else the lowest enemy shot at; g_HomingTargetSet once
+// a boss is shot at.
+extern D3DXVECTOR3 g_OrbHomingTarget;
+extern int g_HomingTargetSet;
 extern ChainElem g_EnemyManagerCalcChain;
 extern ChainElem g_EnemyManagerDrawChain;
 extern ChainElem g_EnemyManagerDrawChain2;

@@ -979,7 +979,7 @@ void Enemy::Func42c420()
                 this->unk_53c8->sprite.SetPendingInterrupt(2);
             }
             g_SoundPlayer.QueueSound(0x28, 0);
-            this->unk_332f = 0;
+            this->drawListIndex = 0;
         }
         if (this->unk_3328_1 && this->callbackTimer.HasTickedEvery(2))
         {
@@ -994,7 +994,7 @@ void Enemy::Func42c420()
             this->unk_53c8->sprite.SetPendingInterrupt(1);
         }
         g_SoundPlayer.QueueSound(0x27, 0);
-        this->unk_332f = 2;
+        this->drawListIndex = 2;
     }
     this->unk_3324_11 = g_Player.IsUnk5Set();
     this->unk_3330 = g_Player.IsUnk5Set() ? 0x40 : 0x20;
@@ -1027,6 +1027,547 @@ int EnemyManager::RegisterChain()
         return -1;
     }
     return 0;
+}
+
+int EnemyManager::OnUpdate(EnemyManager *mgr)
+{
+    int bomb = 0;
+    int level;
+    int hurt;
+    int i;
+    D3DXVECTOR3 boxSize;
+    int extraHurt;
+    int hit;
+    int seg;
+    Enemy *enemy;
+    D3DXVECTOR3 targetDiff;
+    int points;
+    D3DXVECTOR3 toward;
+
+    level = 10;
+    if (!g_Gui.IsMsgRunning())
+    {
+        g_GameManager.progressFrames++;
+        if (mgr->frameTimer.AsFrames() >= 16)
+        {
+            g_GameManager.unk_3dba4++;
+            if (!g_Player.focused)
+            {
+                g_GameManager.unk_3dba0++;
+            }
+        }
+    }
+    if (g_GameManager.unk_3dbac_10)
+    {
+        return 1;
+    }
+    if (g_GameManager.unk_3dbac_13 && mgr->bosses[0] != NULL)
+    {
+        D3DXVECTOR3 size(384.0f, 448.0f, 0.0f);
+        D3DXVECTOR3 center(192.0f, 224.0f, 0.0f);
+
+        g_Player.CalcDamage(&center, &size, &mgr->bosses[0]->unk_2e10, &bomb);
+    }
+    mgr->AddRankOverTime();
+    mgr->drawListHeads[3] = NULL;
+    mgr->drawListHeads[2] = NULL;
+    mgr->drawListHeads[1] = NULL;
+    mgr->drawListHeads[0] = NULL;
+    for (i = 0; i < g_EnemyScripts.GetTimelineCount(); i++)
+    {
+        if (mgr->timelines[i].pos == NULL)
+        {
+            mgr->timelines[i].pos = g_EnemyScripts.GetTimeline(i);
+        }
+        mgr->timelines[i].RunTimeline();
+    }
+    enemy = mgr->enemies;
+    mgr->enemyCount = 0;
+    for (i = 0; i < 0x1e0; i++, enemy++)
+    {
+        if (!enemy->active)
+        {
+            if (g_Unknown18b89b4 == enemy)
+            {
+                g_Unknown18b89b4 = NULL;
+            }
+            continue;
+        }
+        hit = 0;
+        if (enemy->unk_3324_10)
+        {
+            enemy->unk_2d88 = enemy->pos + enemy->unk_2d40;
+            enemy->unk_2d88.z = 0.0f;
+            goto die;
+        }
+        mgr->enemyCount++;
+        if ((enemy->haltedByBomb && (g_Unknown17d6ed4 || g_Player.playerState)) || enemy->unk_3328_7)
+        {
+            enemy->callbackTimer--;
+            goto flash;
+        }
+        if (enemy->unk_3324_8)
+        {
+            enemy->Func42c420();
+        }
+    again:
+        if (g_EnemyScripts.RunEnemy(enemy) == -1)
+        {
+            enemy->active = 0;
+            enemy->Despawn();
+            continue;
+        }
+        if (!enemy->isWarpingToBoss)
+        {
+            enemy->ClampPos();
+            enemy->Move();
+            enemy->ClampPos();
+            if (enemy->unk_2da4 != NULL && enemy->unk_3324_9)
+            {
+                enemy->unk_2d40 = enemy->unk_2da4->pos;
+            }
+            enemy->unk_2d88 = enemy->pos + enemy->unk_2d40;
+            enemy->unk_2d88.z = 0.0f;
+        }
+        else
+        {
+            enemy->unk_2d88 = enemy->pos + enemy->unk_2d40;
+            enemy->unk_2d88.z = 0.0f;
+        }
+        if (enemy->unk_53c8 != NULL)
+        {
+            enemy->unk_53c8->pos = enemy->unk_2d88;
+        }
+        if (enemy->trailFlags)
+        {
+            for (seg = enemy->trailSegmentCount - 1; seg > 0; seg--)
+            {
+                enemy->trailBoxes[seg].pos = enemy->trailBoxes[seg - 1].pos;
+                enemy->trailBoxes[seg].velocity = enemy->trailBoxes[seg - 1].velocity;
+                enemy->trailBoxes[seg].angle = enemy->trailBoxes[seg - 1].angle;
+            }
+            enemy->trailBoxes[0].pos = enemy->unk_2d88;
+            enemy->trailBoxes[0].velocity = enemy->velocity;
+            enemy->trailBoxes[0].angle = enemy->angle;
+        }
+        if (enemy->sprite.spriteData == NULL)
+        {
+            enemy->hideFollowEffects = 1;
+        }
+        if (!enemy->hideFollowEffects && !enemy->onScreen &&
+            g_GameManager.IsInPlayArea(enemy->unk_2d88[0], enemy->unk_2d88[1], enemy->sprite.spriteData->width,
+                                       enemy->sprite.spriteData->height))
+        {
+            enemy->onScreen = 1;
+        }
+        else if (enemy->onScreen == 1 && !enemy->staysOffscreen &&
+                 ((!enemy->trailFlags &&
+                   !g_GameManager.IsInPlayArea(enemy->unk_2d88.x, enemy->unk_2d88.y,
+                                               enemy->sprite.spriteData->width,
+                                               enemy->sprite.spriteData->height)) ||
+                  (enemy->trailFlags &&
+                   !g_GameManager.IsInPlayArea(enemy->unk_2d88.x, enemy->unk_2d88.y,
+                                               enemy->sprite.spriteData->width,
+                                               enemy->sprite.spriteData->height) &&
+                   !g_GameManager.IsInPlayArea(enemy->trailBoxes[enemy->trailSegmentCount - 1].pos.x,
+                                               enemy->trailBoxes[enemy->trailSegmentCount - 1].pos.y,
+                                               enemy->sprite.spriteData->width,
+                                               enemy->sprite.spriteData->height))))
+        {
+            enemy->active = 0;
+            enemy->Despawn();
+            continue;
+        }
+        if (enemy->CheckLifeCallback())
+        {
+            goto again;
+        }
+        if (enemy->timerCallbackTime >= 0 && enemy->CheckTimerCallback())
+        {
+            goto again;
+        }
+        enemy->sprite.color = enemy->color;
+        g_SpriteEngine->Step(&enemy->sprite);
+        enemy->color = enemy->sprite.color;
+        for (seg = 0; seg < 2; seg++)
+        {
+            if (enemy->sprites[seg].scriptIndex >= 0 && g_SpriteEngine->Step(&enemy->sprites[seg]))
+            {
+                enemy->sprites[seg].scriptIndex = -1;
+            }
+        }
+        bomb = g_Unknown17d6ed4;
+        if (!enemy->hideFollowEffects && !enemy->unk_3324_5 && !enemy->unk_3324_11 &&
+            (!enemy->unk_3324_31 || !g_Unknown17d6ed4))
+        {
+            if (enemy->shootable)
+            {
+                enemy->CheckPlayerContact(&enemy->unk_2d88, &enemy->hitboxSize);
+                if (enemy->trailFlags)
+                {
+                    boxSize = enemy->hitboxSize;
+                    for (seg = 1; seg < enemy->trailContactSegments; seg += 6)
+                    {
+                        if (enemy->trailFlags & 2)
+                        {
+                            boxSize = enemy->hitboxSize -
+                                      enemy->hitboxSize * (float)seg / (float)enemy->trailContactSegments;
+                        }
+                        enemy->CheckPlayerContact(&enemy->trailBoxes[seg].pos, &boxSize);
+                    }
+                }
+            }
+            enemy->lastDamage = 0;
+            if (enemy->unk_3324_6)
+            {
+                if (!g_SpellCard.Func4178a0() || !enemy->Func41fd20() || !g_Unknown17d6ed4)
+                {
+                    hurt = g_Player.CalcDamage(&enemy->unk_2d88, &enemy->hitboxSize, &enemy->unk_2e10, &bomb);
+                }
+                else
+                {
+                    hurt = 0;
+                }
+                if (enemy->extraHitboxSize.x > 0.0f)
+                {
+                    extraHurt = g_Player.CalcDamage(&enemy->unk_2d88, &enemy->extraHitboxSize, &enemy->unk_2e10, &bomb);
+                    if (bomb == 0)
+                    {
+                        if (g_GameManager.character == 3 || g_GameManager.character == 11)
+                        {
+                            hurt = hurt + extraHurt / 6.5f;
+                        }
+                        else
+                        {
+                            hurt = hurt + extraHurt / 1.7f;
+                        }
+                    }
+                }
+                if (hurt > 0)
+                {
+                    if ((enemy->isBoss || !g_Player.focused) && !g_Unknown17d6ed4)
+                    {
+                        if (enemy->isBoss && !g_Player.focused)
+                        {
+                            points = hurt / (10 - level / 3) * 10;
+                        }
+                        else
+                        {
+                            points = hurt / (30 - level) * 10;
+                        }
+                        if (points > 70)
+                        {
+                            points = 70;
+                        }
+                        if (points == 0 && (!g_Player.focused || enemy->callbackTimer.AsFrames() & 1))
+                        {
+                            points = 10;
+                        }
+                    }
+                    if (hurt >= 70)
+                    {
+                        hurt = 70;
+                    }
+                    g_GameManager.AddScore(hurt / 5 * 10);
+                    if (enemy->contactDamage)
+                    {
+                        if (g_SpellCard.Func4178a0())
+                        {
+                            if (bomb == 0)
+                            {
+                                if (hurt > 7)
+                                {
+                                    hurt /= 7;
+                                }
+                                else if (hurt != 0)
+                                {
+                                    hurt = 1;
+                                }
+                            }
+                            else if (g_SpellCard.Func42dff0() && !enemy->Func41fd20())
+                            {
+                                if (hurt > 2)
+                                {
+                                    hurt = hurt / 2.5f;
+                                }
+                                else if (hurt != 0)
+                                {
+                                    hurt = 1;
+                                }
+                            }
+                            else
+                            {
+                                hurt = 0;
+                            }
+                        }
+                        if (enemy->invulnTimer > 0)
+                        {
+                            if (enemy->isBoss)
+                            {
+                                hurt /= 9;
+                            }
+                            else
+                            {
+                                hurt = 0;
+                            }
+                        }
+                        enemy->life -= hurt;
+                        enemy->lastDamage = hurt;
+                        enemy->Func42b370(hurt);
+                    }
+                    hit = 1;
+                }
+                if (enemy->isBoss)
+                {
+                    targetDiff = g_OrbHomingTarget - g_Player.pos;
+                    toward = enemy->unk_2d88 - g_Player.pos;
+                    if (!g_HomingTargetSet || fabsf(targetDiff.x) > fabsf(toward.x))
+                    {
+                        g_OrbHomingTarget = enemy->unk_2d88;
+                    }
+                    g_HomingTargetSet = 1;
+                }
+                if (!g_HomingTargetSet)
+                {
+                    if (g_OrbHomingTarget[1] < enemy->unk_2d88[1])
+                    {
+                        g_OrbHomingTarget = enemy->unk_2d88;
+                    }
+                }
+                if (fabsf(enemy->unk_2d88.x - g_Player.pos.x) < 64.0f && !enemy->Func41fd20() &&
+                    (g_Unknown18b89b4 == NULL || g_Unknown18b89b4->pos.y > enemy->unk_2d88.y))
+                {
+                    g_Unknown18b89b4 = enemy;
+                }
+            }
+        }
+        if (enemy->unk_3328_3 && enemy->life > 0)
+        {
+            enemy->unk_3328_3 = 0;
+        }
+        if (enemy->life <= 0 && !enemy->unk_3328_3 && !enemy->unk_3328_6)
+        {
+            int k;
+
+        die:
+            enemy->unk_3328_3 = 1;
+            // Unused.
+            D3DXVECTOR3 pos;
+            enemy->unk_53cc = (enemy->timerCallbackTime - enemy->callbackTimer.AsFrames()) / 60;
+            enemy->timerCallbackTime = -1;
+            for (k = 0; k < 4; k++)
+            {
+                enemy->lifeCallbackLife[k] = -1;
+            }
+            for (k = 0; k < 4; k++)
+            {
+                if (enemy->unk_3384[k] != NULL)
+                {
+                    g_MemoryManager.Free(enemy->unk_3384[k]);
+                    enemy->unk_3384[k] = NULL;
+                }
+            }
+            if (enemy->Func41fd20())
+            {
+                enemy->unk_2da4->unk_3380--;
+            }
+            enemy->Func42adb0(1);
+            if (!g_Player.focused)
+            {
+                k = -200;
+            }
+            else
+            {
+                k = 200;
+            }
+            g_GameManager.Func43c0bb(k, 0);
+            switch (enemy->deathMode)
+            {
+            case 3:
+                enemy->life = 1;
+                enemy->contactDamage = 0;
+                enemy->deathMode = 0;
+                g_Gui.SetBossPresent(0);
+                g_ReplayManager->frameEvents |= 0x20;
+                if (enemy->deathEffect >= 0)
+                {
+                    g_EffectManager.SpawnEffect(enemy->deathEffect, &enemy->unk_2d88, 1, 0xffffffff);
+                    g_EffectManager.SpawnEffect(enemy->deathEffect, &enemy->unk_2d88, 1, 0xffffffff);
+                    g_EffectManager.SpawnEffect(enemy->deathEffect, &enemy->unk_2d88, 1, 0xffffffff);
+                }
+                if (enemy->unk_53c8 != NULL)
+                {
+                    enemy->unk_53c8->sprite.SetPendingInterrupt(3);
+                    enemy->unk_53c8 = NULL;
+                }
+                if (g_Player.playerState == 0)
+                {
+                    g_Player.stateTimer = 90;
+                    g_Player.playerState = 3;
+                }
+                enemy->haltedByBomb = 0;
+                enemy->unk_3324_31 = 0;
+                break;
+            case 1:
+                g_GameManager.AddScore(enemy->score);
+                enemy->unk_3324_23 = 1;
+                enemy->shootable = 0;
+                enemy->contactDamage = 0;
+                enemy->unk_3324_6 = 0;
+                goto dead;
+            case 0:
+                g_GameManager.AddScore(enemy->score);
+                enemy->active = 0;
+                if (enemy->unk_53c8 != NULL)
+                {
+                    enemy->unk_53c8->sprite.SetPendingInterrupt(3);
+                    enemy->unk_53c8 = NULL;
+                }
+            dead:
+                if (enemy->isBoss)
+                {
+                    g_Gui.SetBossPresent(0);
+                    ReleaseEnemyEffects(enemy);
+                }
+            case 2:
+                enemy->DropItems(bomb);
+                if (enemy->isBoss && !g_SpellCard.Func4178a0())
+                {
+                    int bonus;
+
+                    bonus = g_BulletManager.ClearAllWithBonus(8000, 1);
+                    bonus = g_EnemyManager.ClearEnemiesForBonus(8000, bonus);
+                    if (bonus != 0)
+                    {
+                        g_GameManager.AddScore(bonus);
+                        g_Gui.ShowBonusPopup(bonus);
+                    }
+                }
+                enemy->life = 0;
+                g_ReplayManager->frameEvents |= 0x20;
+                break;
+            }
+            if (!enemy->unk_3324_10)
+            {
+                g_SoundPlayer.QueueSoundPanned(i % 2 + 2, enemy->unk_2d88.x);
+                if (enemy->deathEffect >= 0)
+                {
+                    g_EffectManager.SpawnEffect(enemy->deathEffect, &enemy->unk_2d88, 1, 0xffffffff);
+                    g_EffectManager.SpawnEffect(enemy->deathEffectIndex + 4, &enemy->unk_2d88, 4, 0xffffffff);
+                }
+                if (g_GameManager.IsUnk22AtLow1() || g_GameManager.IsUnk22AtHigh1())
+                {
+                    g_ItemManager.SpawnItem(&enemy->unk_2d88, 7, 1);
+                }
+            }
+            if (enemy->deathSub >= 0)
+            {
+                int l;
+
+                enemy->ResetRankSpeeds();
+                enemy->stackDepth = 0;
+                for (l = 0; l < 4; l++)
+                {
+                    enemy->lifeCallbackLife[l] = -1;
+                }
+                enemy->timerCallbackTime = -1;
+                enemy->Func42bc90();
+                enemy->shooter = g_EnemyManager.enemyTemplate.shooter;
+                enemy->shootInterval = 0;
+                g_EnemyScripts.StartSub(&enemy->ctx, enemy->deathSub);
+                enemy->deathSub = -1;
+            }
+        }
+    flash:
+        if (!enemy->unk_3324_11)
+        {
+            if (enemy->hitFlashTimer)
+            {
+                enemy->hitFlashTimer--;
+                enemy->sprite.useColor2 = 0;
+            }
+            else if (hit)
+            {
+                if (enemy->unk_3328_4 < 2)
+                {
+                    g_SoundPlayer.QueueSoundPanned(0x14, enemy->unk_2d88.x);
+                }
+                else
+                {
+                    g_SoundPlayer.QueueSoundPanned(0x25, enemy->unk_2d88.x);
+                }
+                enemy->sprite.color2Rgb[2] = 0xff;
+                enemy->sprite.color2Rgb[1] = 0x60;
+                enemy->sprite.color2Rgb[0] = 0x80;
+                enemy->sprite.color2Alpha = enemy->sprite.alpha;
+                enemy->sprite.useColor2 = 1;
+                enemy->hitFlashTimer = 1;
+            }
+            else
+            {
+                enemy->sprite.useColor2 = 0;
+            }
+        }
+        else
+        {
+            enemy->sprite.color2Rgb[2] = 0x20;
+            enemy->sprite.color2Rgb[1] = 0x20;
+            enemy->sprite.color2Rgb[0] = 0xc0;
+            enemy->sprite.color2Alpha = enemy->sprite.alpha / 2;
+            enemy->sprite.useColor2 = 1;
+        }
+        if (enemy->isBoss)
+        {
+            D3DXVECTOR3 markerPos;
+
+            if (!g_Gui.IsMsgRunning() && enemy->bossIndex == 0)
+            {
+                g_Gui.SetBossHealth((float)enemy->life / enemy->maxLife);
+            }
+            if (enemy->isBoss < 4)
+            {
+                if (!enemy->hideFollowEffects)
+                {
+                    markerPos.x = enemy->unk_2d88.x + 32.0f;
+                }
+                else
+                {
+                    markerPos.x = -999.0f;
+                }
+                markerPos.y = 472.0f;
+                markerPos.z = 0.0f;
+                g_AsciiText.SetNearbyLabelPos(enemy->bossIndex, &markerPos);
+                if (enemy->unk_3328_4 == 0)
+                {
+                    g_AsciiText.SetNearbyLabelDimmed(enemy->bossIndex, enemy->sprite.useColor2 != 0);
+                }
+                else
+                {
+                    g_AsciiText.SetNearbyLabelDimmed(enemy->bossIndex, enemy->unk_3328_4 + 1);
+                }
+            }
+        }
+        MoveEnemyEffects(enemy);
+        if (!g_GameManager.isFrozen)
+        {
+            enemy->callbackTimer++;
+        }
+        if (enemy->invulnTimer > 0)
+        {
+            enemy->invulnTimer--;
+        }
+        if (!enemy->hideFollowEffects && enemy->active)
+        {
+            enemy->nextInDrawList = mgr->drawListHeads[enemy->drawListIndex];
+            mgr->drawListHeads[enemy->drawListIndex] = enemy;
+        }
+    }
+    if (mgr->frameTimer % 200 == 0 && g_GameManager.ChecksumMismatch())
+    {
+        return 4;
+    }
+    mgr->frameTimer++;
+    return 1;
 }
 
 void Enemy::Move()
@@ -1121,7 +1662,7 @@ int EnemyManager::OnDraw2(EnemyManager *mgr)
 int EnemyManager::AddedCallback(EnemyManager *mgr)
 {
     Enemy *unusedEnemy = mgr->enemies;
-    void *savedFile;
+    EnemyScriptHeader *savedFile;
     void **subs;
 
     if (IsLoadingResources())

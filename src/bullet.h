@@ -46,6 +46,9 @@ public:
     // Called with 4 as a timer callback ends a spell card, as th07's
     // ClearAll(10) was (0x430830).
     void Func430830(int arg);
+    // Clears the bullets for a bonus of up to `maxBonus`, as th07's
+    // (0x430aa0). Returns the total.
+    int ClearAllWithBonus(int maxBonus, int toItems);
 
     unsigned char unk_0[0x6ba538];
     // The bullets alive, as th07's.

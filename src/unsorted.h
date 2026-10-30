@@ -1941,6 +1941,12 @@ public:
     void FreeMsgFile();
     // Starts dialogue script `index`, as th07's (0x439810).
     void StartMsg(int index);
+    // Sets bossHealth, as th07's. Inline; the copy at 0x4230c0 is an /Od
+    // object's.
+    void SetBossHealth(float health)
+    {
+        this->bossHealth = health;
+    }
     // Sets bossTimer, as th07's. Inline; the copy at 0x42f340 is an /Od
     // object's.
     void SetBossTimer(int seconds)
@@ -2416,6 +2422,12 @@ struct SpellCard
     // (StartBomb): the portrait for `face` (0 or 1, else none), `name`
     // and sprite `sprite` (0x415d60).
     void StartBombCard(int face, char *name, int sprite);
+    // Bit 7 of unk_0: whether the player bombed during the spell card,
+    // as th07's spellCardBombed? Inline; the copy is at 0x42dff0.
+    int Func42dff0()
+    {
+        return this->unk_0 >> 7 & 1;
+    }
     // Bit 9 of unk_0. Inline; the copy is at 0x405260.
     int Func405260()
     {
