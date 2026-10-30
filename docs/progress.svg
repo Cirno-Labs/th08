@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">94.62% (1056)</tspan> · <tspan class="decompiled">3.94% (44)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">1.43% (16)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">94.71% (1057)</tspan> · <tspan class="decompiled">3.94% (44)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">1.34% (15)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="706.84" height="6" x="0" y="0" class="named"/>
-<rect width="29.45" height="6" x="706.84" y="0" class="decompiled"/>
-<rect width="10.71" height="6" x="736.29" y="0" class="todo"/>
+<rect width="707.51" height="6" x="0" y="0" class="named"/>
+<rect width="29.45" height="6" x="707.51" y="0" class="decompiled"/>
+<rect width="10.04" height="6" x="736.96" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -144,7 +144,7 @@
 <rect width="12" height="12" x="345" y="15" class="named"><title>0x00406e20 GameManager::SetLives (33 bytes)</title></rect>
 <rect width="12" height="12" x="360" y="15" class="named"><title>0x00406e50 GameManager::RerollChecksumKeys (154 bytes)</title></rect>
 <rect width="12" height="12" x="375" y="15" class="named"><title>0x00406ef0 Rng::GetRandomU32InRange (49 bytes)</title></rect>
-<rect width="12" height="12" x="390" y="15" class="todo"><title>0x00406f30 GameManager::SetBombs (110 bytes)</title></rect>
+<rect width="12" height="12" x="390" y="15" class="named"><title>0x00406f30 GameManager::SetBombs (110 bytes)</title></rect>
 <rect width="12" height="12" x="405" y="15" class="todo"><title>0x00406fa0 GameManager::SetPower (36 bytes)</title></rect>
 <rect width="12" height="12" x="420" y="15" class="named"><title>0x00406fd0 AsciiText::RunScripts (217 bytes)</title></rect>
 <rect width="12" height="12" x="435" y="15" class="named"><title>0x004070b0 AsciiText::SetSummaryPendingInterrupt (101 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">97.56%</tspan> · <tspan class="decompiled">1.68%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">0.77%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">97.58%</tspan> · <tspan class="decompiled">1.68%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">0.74%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="728.74" height="6" x="0" y="0" class="named"/>
-<rect width="12.53" height="6" x="728.74" y="0" class="decompiled"/>
-<rect width="5.73" height="6" x="741.27" y="0" class="todo"/>
+<rect width="728.92" height="6" x="0" y="0" class="named"/>
+<rect width="12.53" height="6" x="728.92" y="0" class="decompiled"/>
+<rect width="5.55" height="6" x="741.45" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="named"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -1803,7 +1803,7 @@
 <rect width="4.78" height="5.17" x="626.59" y="307.58" class="named"><title>0x00474a80 DatArchiveEntry::`vector deleting destructor&#x27; (112 bytes)</title></rect>
 <rect width="4.78" height="5.10" x="626.59" y="315.75" class="named"><title>0x00449c0a MusicScreen::DeletedCallback (111 bytes)</title></rect>
 <rect width="4.78" height="5.10" x="626.59" y="323.85" class="named"><title>0x00464400 SpriteEngine::DrawProjectedWithCallback (111 bytes)</title></rect>
-<rect width="4.78" height="5.03" x="626.59" y="331.95" class="todo"><title>0x00406f30 GameManager::SetBombs (110 bytes)</title></rect>
+<rect width="4.78" height="5.03" x="626.59" y="331.95" class="named"><title>0x00406f30 GameManager::SetBombs (110 bytes)</title></rect>
 <rect width="4.78" height="5.03" x="626.59" y="339.97" class="named"><title>0x00427ae0 EffectUpdateRingFade (110 bytes)</title></rect>
 <rect width="4.87" height="4.93" x="634.36" y="225.05" class="named"><title>0x0042c3b0 EnemyManager::AddRankOverTime (110 bytes)</title></rect>
 <rect width="4.87" height="4.93" x="642.23" y="225.05" class="named"><title>0x0043e160 ResetKeyboard (110 bytes)</title></rect>

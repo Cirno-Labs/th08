@@ -1512,7 +1512,15 @@ public:
         this->stats->lives = lives;
         this->RerollChecksumKeys();
     }
-    void SetBombs(int bombs);
+    // SetBombs recomputes the checksums without new keys. Inline; the
+    // copy at 0x406f30 is the ascii object's.
+    void SetBombs(int bombs)
+    {
+        this->stats->bombs = bombs;
+        this->stats->checksum = this->stats->lifeChecksumKeys[2];
+        this->stats->computedChecksum = this->ComputeChecksum();
+        this->checksumValue = this->stats->computedChecksum + this->stats->checksumKeysD[3];
+    }
     void SetPower(int power);
     // stats->unk_28 and a setter for it, inline: the copies at 0x406dd0
     // and 0x453c60 are another object's and the replay object's.
