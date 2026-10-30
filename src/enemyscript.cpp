@@ -1524,3 +1524,31 @@ void StartSlowdown(Enemy *enemy, EnemyScriptInstr *instr)
         }
     }
 }
+
+void EndSlowdown(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    Bullet *bullet = g_BulletManager.bullets;
+    float scale = 1.0f / g_App.gameSpeed;
+    int i;
+
+    for (i = 0; i < 0x600; i++, bullet++)
+    {
+        if (bullet->state == 0)
+        {
+            continue;
+        }
+        bullet->velocity *= scale;
+        if (bullet->sprite.spriteIndex >= 0x60 && bullet->sprite.spriteIndex <= 0x6f)
+        {
+            g_BulletManager.etamaAnm->SetSprite(&bullet->sprite, bullet->sprite.baseSpriteIndex);
+        }
+    }
+    g_App.gameSpeed = 1.0f / instr->args[1].i;
+    if (g_App.gameSpeed < 1.0f)
+    {
+        g_App.stateFlags |= 0x20;
+    }
+    g_App.gameSpeed = 1.0f;
+    g_Stage.dialogueSprites[0].SetPendingInterrupt(1);
+    g_Stage.dialogueSprites[1].SetPendingInterrupt(1);
+}

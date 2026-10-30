@@ -750,6 +750,10 @@ void ScriptUpdateShooting(Enemy *enemy);
 // bullets' velocities and shows sprites 0x60 to 0x6f as 0x6f (0x4251b0).
 void StartSlowdown(Enemy *enemy, EnemyScriptInstr *instr);
 
+// Script function 29: ends StartSlowdown, as th07's; sets App
+// stateFlags bit 5 if argument 1 is above 1 (0x425290).
+void EndSlowdown(Enemy *enemy, EnemyScriptInstr *instr);
+
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
 // The enemy scripts by stage, by stage in spell practice (stage + 9),
