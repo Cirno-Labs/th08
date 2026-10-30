@@ -101,6 +101,10 @@ struct Enemy
     // Takes it out of the list through unk_4 and unk_8 while Func41fd20,
     // clearing unk_2da4; else just clears both links (0x42b2f0).
     void Func42b2f0();
+    // Passes half of `damage` on to unk_2da4 while Func41fd20 (a ninth
+    // while unk_2da4, a boss, is invulnerable; none for others then),
+    // keeping its life above its life callbacks (0x42b370).
+    void Func42b370(int damage);
     // Frees and clears unk_3384 (0x42bc90).
     void Func42bc90();
 
@@ -133,7 +137,8 @@ struct Enemy
     float angularVelocity;
     float unk_2d9c;
     float unk_2da0;
-    int unk_2da4;
+    // The enemy it shares its damage with (Func42b370).
+    Enemy *unk_2da4;
     float speed;
     float acceleration;
     float unk_2db0;

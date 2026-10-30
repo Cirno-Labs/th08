@@ -371,6 +371,51 @@ void Enemy::Func42b2f0()
     }
 }
 
+void Enemy::Func42b370(int damage)
+{
+    int share;
+    int i;
+    int threshold;
+
+    if (!this->Func41fd20())
+    {
+        return;
+    }
+    if (g_Unknown17d6ed4 != 0)
+    {
+        return;
+    }
+    threshold = 0;
+    for (i = 0; i < 4; i++)
+    {
+        if (threshold < this->unk_2da4->lifeCallbackLife[i])
+        {
+            threshold = this->unk_2da4->lifeCallbackLife[i];
+        }
+    }
+    share = damage / 2;
+    if (this->unk_2da4->invulnTimer > 0)
+    {
+        if (this->unk_2da4->isBoss)
+        {
+            share /= 9;
+        }
+        else
+        {
+            share = 0;
+        }
+    }
+    if (share == 0)
+    {
+        return;
+    }
+    this->unk_2da4->life -= share;
+    if (this->unk_2da4->life <= threshold)
+    {
+        this->unk_2da4->life = threshold;
+    }
+}
+
 void Enemy::Func42bc90()
 {
     int i;

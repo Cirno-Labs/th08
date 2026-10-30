@@ -395,7 +395,7 @@ address,size,name,symbol
 0x0042a8a0,1216,EnemyTimeline::RunTimeline,?RunTimeline@EnemyTimeline@@QAEXXZ
 0x0042adb0,1336,Enemy::Func42adb0,?Func42adb0@Enemy@@QAEXH@Z
 0x0042b2f0,117,Enemy::Func42b2f0,?Func42b2f0@Enemy@@QAEXXZ
-0x0042b370,288,Func42b370,
+0x0042b370,288,Enemy::Func42b370,?Func42b370@Enemy@@QAEXH@Z
 0x0042b490,1180,Func42b490,
 0x0042b930,796,Func42b930,
 0x0042bc50,50,Func42bc50,
