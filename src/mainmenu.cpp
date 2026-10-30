@@ -3235,7 +3235,7 @@ int MainMenu::InitTitleScene()
 {
     ScoreDat *dat;
 
-    g_Unknown18b8a2c = 0;
+    g_ScreenEffectHoldFrames = 0;
     g_AsciiText.Initialize();
     g_AsciiText.StartScripts();
     if (g_GameManager.savedConfig != NULL)

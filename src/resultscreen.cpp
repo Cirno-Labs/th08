@@ -1865,7 +1865,7 @@ int ResultScreen::RegisterChain(int mode)
     ResultScreen *screen = (ResultScreen *)g_MemoryManager.Register(new ResultScreen, sizeof(ResultScreen),
                                                                     "ResultSysInf");
 
-    g_Unknown18b8a2c = 0;
+    g_ScreenEffectHoldFrames = 0;
     DebugPrint2("Stg.PlayTimeAll = %d\r\n", g_GameManager.progressFrames);
     if (mode == 1)
     {

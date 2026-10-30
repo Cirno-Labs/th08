@@ -276,9 +276,9 @@ int App::OnUpdate(App *arg)
             return 4;
         }
     }
-    if (g_Unknown18b8a2c != 0)
+    if (g_ScreenEffectHoldFrames != 0)
     {
-        g_Unknown18b8a2c--;
+        g_ScreenEffectHoldFrames--;
     }
     return 1;
 }

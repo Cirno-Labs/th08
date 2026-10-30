@@ -516,7 +516,7 @@ void SpellCard::End()
     int captured;
     int bonus;
 
-    g_Unknown4e3d28 = 0;
+    g_ScriptFunc0Int = 0;
     if (this->active)
     {
         captured = FALSE;

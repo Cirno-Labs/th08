@@ -411,15 +411,15 @@ int RegisterGameManagerChain();
 void RemoveGameManagerChain();
 
 // Counted down by App::OnUpdate every frame while nonzero.
-extern int g_Unknown18b8a2c;
+extern int g_ScreenEffectHoldFrames;
 // Cleared by GameManager::DeletedCallback.
-extern int g_Unknown4e3d28;
-// Set with g_Unknown4e3d28 by ScriptSetUnknown4e3d28.
-extern float g_Unknown4e3d24;
+extern int g_ScriptFunc0Int;
+// Set with g_ScriptFunc0Int by SetScriptFunc0Vars.
+extern float g_ScriptFunc0Float;
 // GameManager::Func43c0bb only applies while it is clear, unless forced.
 extern int g_Unknown17d6ed4;
 // The damage an enemy takes per time orb Player::CalcDamage spawns.
-extern int g_Unknown18b8a24;
+extern int g_DamagePerTimeOrb;
 // Copies the stage's portrait into the dialogue texture by
 // g_GameManager.stage and, in a spell card practice, the card (0x438046).
 void Func438046();

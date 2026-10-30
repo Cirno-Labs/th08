@@ -338,7 +338,7 @@ struct Enemy
     int score;
     // Its index in EnemyManager::enemies.
     int index;
-    // g_Unknown18b8a24 in EnemyManager's template; Player::AddedCallback
+    // g_DamagePerTimeOrb in EnemyManager's template; Player::AddedCallback
     // sets the template's from Player::unk_e2b2c.
     int timeOrbDamage;
     Timer callbackTimer;
@@ -697,9 +697,9 @@ void ScriptMoveAngleTimed(Enemy *enemy, EnemyScriptInstr *instr, float angle);
 // turned back only near the top and bottom bounds (0x4224a0).
 void ScriptMoveRandom2(Enemy *enemy, EnemyScriptInstr *instr);
 
-// Script function 0: sets g_Unknown4e3d28 and g_Unknown4e3d24 from
+// Script function 0: sets g_ScriptFunc0Int and g_ScriptFunc0Float from
 // the first int and float variables (0x423390).
-void ScriptSetUnknown4e3d28(Enemy *enemy, EnemyScriptInstr *instr);
+void SetScriptFunc0Vars(Enemy *enemy, EnemyScriptInstr *instr);
 
 // Script function 1: a white flash of 60 frames, as th07's FlashScreen (0x4233d0).
 void FlashScreen60(Enemy *enemy, EnemyScriptInstr *instr);
@@ -736,8 +736,8 @@ void SpawnTwinEffects3A(Enemy *enemy, EnemyScriptInstr *instr);
 // rises over 120 frames, holds for 190 and falls over 60 (0x4246e0).
 void FlashAndShakeScreen(Enemy *enemy, EnemyScriptInstr *instr);
 
-// Script function 30: sets g_Unknown18b8a2c to argument 1 (0x424a00).
-void SetUnknown18b8a2c(Enemy *enemy, EnemyScriptInstr *instr);
+// Script function 30: sets g_ScreenEffectHoldFrames to argument 1 (0x424a00).
+void SetScreenEffectHoldFrames(Enemy *enemy, EnemyScriptInstr *instr);
 
 // Script function 13: tints the stage 0xffc03030 (0x424e00).
 void TintStageRed(Enemy *enemy, EnemyScriptInstr *instr);
@@ -949,7 +949,7 @@ extern EnemyManager g_EnemyManager;
 // What the enemies with item -1 drop, in turn, as th07's.
 extern BYTE g_EnemyItemDrops[0x20];
 // Cleared when this enemy despawns.
-extern Enemy *g_Unknown18b89b4;
+extern Enemy *g_EnemyAbovePlayer;
 // Where the player's homing shots go, as th07's Player::orbHomingTarget:
 // the first boss, else the lowest enemy shot at; g_HomingTargetSet once
 // a boss is shot at.

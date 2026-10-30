@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">97.22% (1085)</tspan> · <tspan class="decompiled">1.79% (20)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">0.99% (11)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">97.31% (1086)</tspan> · <tspan class="decompiled">1.70% (19)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">0.99% (11)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="726.25" height="6" x="0" y="0" class="named"/>
-<rect width="13.39" height="6" x="726.25" y="0" class="decompiled"/>
+<rect width="726.92" height="6" x="0" y="0" class="named"/>
+<rect width="12.72" height="6" x="726.92" y="0" class="decompiled"/>
 <rect width="7.36" height="6" x="739.64" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
@@ -355,7 +355,7 @@
 <rect width="12" height="12" x="510" y="75" class="named"><title>0x00423110 Gui::SetBossSectionColor (26 bytes)</title></rect>
 <rect width="12" height="12" x="525" y="75" class="named"><title>0x00423130 Gui::SetBossLives (22 bytes)</title></rect>
 <rect width="12" height="12" x="540" y="75" class="named"><title>0x00423150 ScriptUpdateShooting (567 bytes)</title></rect>
-<rect width="12" height="12" x="555" y="75" class="decompiled"><title>0x00423390 ScriptSetUnknown4e3d28 (52 bytes)</title></rect>
+<rect width="12" height="12" x="555" y="75" class="named"><title>0x00423390 SetScriptFunc0Vars (52 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="75" class="named"><title>0x004233d0 FlashScreen60 (39 bytes)</title></rect>
 <rect width="12" height="12" x="585" y="75" class="named"><title>0x00423400 BounceOffSides (296 bytes)</title></rect>
 <rect width="12" height="12" x="600" y="75" class="named"><title>0x00423530 SpawnTwinEffects38 (104 bytes)</title></rect>
@@ -372,7 +372,7 @@
 <rect width="12" height="12" x="15" y="90" class="named"><title>0x00424730 BeamHitsPlayer160 (228 bytes)</title></rect>
 <rect width="12" height="12" x="30" y="90" class="named"><title>0x00424820 BeamHitsPlayer240 (228 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="90" class="named"><title>0x00424910 BeamHitsPlayer288 (228 bytes)</title></rect>
-<rect width="12" height="12" x="60" y="90" class="named"><title>0x00424a00 SetUnknown18b8a2c (28 bytes)</title></rect>
+<rect width="12" height="12" x="60" y="90" class="named"><title>0x00424a00 SetScreenEffectHoldFrames (28 bytes)</title></rect>
 <rect width="12" height="12" x="75" y="90" class="named"><title>0x00424a20 ToggleMarkedBullets (536 bytes)</title></rect>
 <rect width="12" height="12" x="90" y="90" class="named"><title>0x00424c40 CycleMarkedBullets (443 bytes)</title></rect>
 <rect width="12" height="12" x="105" y="90" class="named"><title>0x00424e00 TintStageRed (31 bytes)</title></rect>
@@ -1188,10 +1188,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">98.31%</tspan> · <tspan class="decompiled">1%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">0.70%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">98.32%</tspan> · <tspan class="decompiled">0.99%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">0.70%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="734.35" height="6" x="0" y="0" class="named"/>
-<rect width="7.45" height="6" x="734.35" y="0" class="decompiled"/>
+<rect width="734.43" height="6" x="0" y="0" class="named"/>
+<rect width="7.37" height="6" x="734.43" y="0" class="decompiled"/>
 <rect width="5.20" height="6" x="741.80" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
@@ -2015,7 +2015,7 @@
 <rect width="2.55" height="2.31" x="674.24" y="316.12" class="named"><title>0x00402150 PauseMenu::PauseMenu (52 bytes)</title></rect>
 <rect width="2.55" height="2.31" x="674.24" y="321.43" class="named"><title>0x00402190 ContinueMenu::ContinueMenu (52 bytes)</title></rect>
 <rect width="2.55" height="2.31" x="674.24" y="326.75" class="named"><title>0x00406660 Timer::NextTick (52 bytes)</title></rect>
-<rect width="2.55" height="2.31" x="674.24" y="332.06" class="decompiled"><title>0x00423390 ScriptSetUnknown4e3d28 (52 bytes)</title></rect>
+<rect width="2.55" height="2.31" x="674.24" y="332.06" class="named"><title>0x00423390 SetScriptFunc0Vars (52 bytes)</title></rect>
 <rect width="2.55" height="2.31" x="674.24" y="337.37" class="named"><title>0x0042a410 BulletShooter::BulletShooter (52 bytes)</title></rect>
 <rect width="2.55" height="2.31" x="674.24" y="342.69" class="named"><title>0x00440010 ItemManager::ItemManager (52 bytes)</title></rect>
 <rect width="2.30" height="2.57" x="679.79" y="278" class="named"><title>0x00462750 ModulateChannel (52 bytes)</title></rect>
@@ -2146,7 +2146,7 @@
 <rect width="0.79" height="1.20" x="719.70" y="301.69" class="named"><title>0x00406c50 SoundPlayer::UnPause (28 bytes)</title></rect>
 <rect width="0.79" height="1.20" x="723.49" y="301.69" class="named"><title>0x0041fd20 Enemy::IsFollower (28 bytes)</title></rect>
 <rect width="0.79" height="1.20" x="727.28" y="301.69" class="named"><title>0x00422480 GameManager::GetPower (28 bytes)</title></rect>
-<rect width="0.79" height="1.20" x="731.06" y="301.69" class="named"><title>0x00424a00 SetUnknown18b8a2c (28 bytes)</title></rect>
+<rect width="0.79" height="1.20" x="731.06" y="301.69" class="named"><title>0x00424a00 SetScreenEffectHoldFrames (28 bytes)</title></rect>
 <rect width="0.79" height="1.20" x="734.85" y="301.69" class="named"><title>0x00428720 Sprite::IsScriptDone (28 bytes)</title></rect>
 <rect width="0.79" height="1.20" x="738.64" y="301.69" class="todo"><title>0x004418a0 Func4418a0 (28 bytes)</title></rect>
 <rect width="0.79" height="1.20" x="742.43" y="301.69" class="named"><title>0x00449bee MusicTune::MusicTune (28 bytes)</title></rect>

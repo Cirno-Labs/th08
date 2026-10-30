@@ -2638,10 +2638,10 @@ void ScriptUpdateShooting(Enemy *enemy)
     }
 }
 
-void ScriptSetUnknown4e3d28(Enemy *enemy, EnemyScriptInstr *instr)
+void SetScriptFunc0Vars(Enemy *enemy, EnemyScriptInstr *instr)
 {
-    g_Unknown4e3d28 = enemy->currentCtx->vars.ints[0];
-    g_Unknown4e3d24 = enemy->currentCtx->vars.floats[0];
+    g_ScriptFunc0Int = enemy->currentCtx->vars.ints[0];
+    g_ScriptFunc0Float = enemy->currentCtx->vars.floats[0];
 }
 
 void FlashScreen60(Enemy *enemy, EnemyScriptInstr *instr)
@@ -3091,9 +3091,9 @@ void BeamHitsPlayer288(Enemy *enemy, EnemyScriptInstr *instr)
     g_Player.CheckLaserHit(&center, &size, &origin, enemy->sprite.rotation.z, 0);
 }
 
-void SetUnknown18b8a2c(Enemy *enemy, EnemyScriptInstr *instr)
+void SetScreenEffectHoldFrames(Enemy *enemy, EnemyScriptInstr *instr)
 {
-    g_Unknown18b8a2c = instr->args[1].i;
+    g_ScreenEffectHoldFrames = instr->args[1].i;
 }
 
 void ToggleMarkedBullets(Enemy *enemy, EnemyScriptInstr *instr)

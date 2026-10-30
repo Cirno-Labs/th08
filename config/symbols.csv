@@ -286,7 +286,7 @@ address,size,name,symbol
 0x00423110,26,Gui::SetBossSectionColor,?SetBossSectionColor@Gui@@QAEXHH@Z
 0x00423130,22,Gui::SetBossLives,?SetBossLives@Gui@@QAEXH@Z
 0x00423150,567,ScriptUpdateShooting,?ScriptUpdateShooting@@YIXPAUEnemy@@@Z
-0x00423390,52,ScriptSetUnknown4e3d28,?ScriptSetUnknown4e3d28@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
+0x00423390,52,SetScriptFunc0Vars,?SetScriptFunc0Vars@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x004233d0,39,FlashScreen60,?FlashScreen60@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00423400,296,BounceOffSides,?BounceOffSides@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00423530,104,SpawnTwinEffects38,?SpawnTwinEffects38@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
@@ -303,7 +303,7 @@ address,size,name,symbol
 0x00424730,228,BeamHitsPlayer160,?BeamHitsPlayer160@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00424820,228,BeamHitsPlayer240,?BeamHitsPlayer240@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00424910,228,BeamHitsPlayer288,?BeamHitsPlayer288@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
-0x00424a00,28,SetUnknown18b8a2c,?SetUnknown18b8a2c@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
+0x00424a00,28,SetScreenEffectHoldFrames,?SetScreenEffectHoldFrames@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00424a20,536,ToggleMarkedBullets,?ToggleMarkedBullets@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00424c40,443,CycleMarkedBullets,?CycleMarkedBullets@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00424e00,31,TintStageRed,?TintStageRed@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
@@ -2492,8 +2492,8 @@ address,size,name,symbol
 0x004c8704,,g_FileModes,?g_FileModes@@3PAPADA
 0x004cce00,,g_AsciiDrawChain,?g_AsciiDrawChain@@3UChainElem@@A
 0x004cce20,,g_AsciiText,?g_AsciiText@@3VAsciiText@@A
-0x004e3d24,,g_Unknown4e3d24,?g_Unknown4e3d24@@3MA
-0x004e3d28,,g_Unknown4e3d28,?g_Unknown4e3d28@@3HA
+0x004e3d24,,g_ScriptFunc0Float,?g_ScriptFunc0Float@@3MA
+0x004e3d28,,g_ScriptFunc0Int,?g_ScriptFunc0Int@@3HA
 0x004e3fd0,,g_AsciiCalcChain,?g_AsciiCalcChain@@3UChainElem@@A
 0x004e3ff0,,g_AsciiDrawChain2,?g_AsciiDrawChain2@@3UChainElem@@A
 0x004e4010,,g_StageDrawChain,?g_StageDrawChain@@3UChainElem@@A
@@ -2545,11 +2545,11 @@ address,size,name,symbol
 0x017d5ef8,,g_Player,?g_Player@@3VPlayer@@A
 0x017d6ed4,,g_Unknown17d6ed4,?g_Unknown17d6ed4@@3HA
 0x018b899c,,g_OrbHomingTarget,?g_OrbHomingTarget@@3UD3DXVECTOR3@@A
-0x018b89b4,,g_Unknown18b89b4,?g_Unknown18b89b4@@3PAUEnemy@@A
+0x018b89b4,,g_EnemyAbovePlayer,?g_EnemyAbovePlayer@@3PAUEnemy@@A
 0x018b89b8,,g_HomingTargetSet,?g_HomingTargetSet@@3HA
-0x018b8a24,,g_Unknown18b8a24,?g_Unknown18b8a24@@3HA
+0x018b8a24,,g_DamagePerTimeOrb,?g_DamagePerTimeOrb@@3HA
 0x018b8a28,,g_ReplayManager,?g_ReplayManager@@3PAVReplayManager@@A
-0x018b8a2c,,g_Unknown18b8a2c,?g_Unknown18b8a2c@@3HA
+0x018b8a2c,,g_ScreenEffectHoldFrames,?g_ScreenEffectHoldFrames@@3HA
 0x018b8a68,,g_SoundPlayer,?g_SoundPlayer@@3VSoundPlayer@@A
 0x018bdc90,,g_SpriteEngine,?g_SpriteEngine@@3PAVSpriteEngine@@A
 0x018bdc98,,g_DiffuseQuad,?g_DiffuseQuad@@3PAUVertexTex1DiffuseXyzrwh@@A

@@ -134,7 +134,7 @@ void DrawGradientRect(float *rect, D3DCOLOR topLeft, D3DCOLOR topRight, D3DCOLOR
 
 int ScreenEffect::OnUpdateFadeOut(ScreenEffect *effect)
 {
-    if (g_Unknown18b8a2c != 0)
+    if (g_ScreenEffectHoldFrames != 0)
     {
         return 0;
     }
@@ -290,7 +290,7 @@ int ScreenEffect::OnUpdateFlash(ScreenEffect *effect)
 {
     DWORD startAlpha = (effect->flashColor >> 24) & 0xff;
 
-    if (g_Unknown18b8a2c != 0)
+    if (g_ScreenEffectHoldFrames != 0)
     {
         return 0;
     }
@@ -340,7 +340,7 @@ int ScreenEffect::OnUpdateShake(ScreenEffect *effect)
     {
         return 1;
     }
-    if (g_Unknown18b8a2c != 0)
+    if (g_ScreenEffectHoldFrames != 0)
     {
         return 0;
     }

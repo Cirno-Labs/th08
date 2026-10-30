@@ -78,7 +78,7 @@ void EnemyManager::Initialize()
     enemy->shooter.sound = 7;
     enemy->shooter.bulletSound = 0x19;
     enemy->minShootDistSq = 1024.0f;
-    enemy->timeOrbDamage = g_Unknown18b8a24;
+    enemy->timeOrbDamage = g_DamagePerTimeOrb;
 }
 
 EnemyManager::EnemyManager()
@@ -575,9 +575,9 @@ void Enemy::Despawn()
     }
     this->timerCallbackTime = -1;
     this->FreeThreads();
-    if (g_Unknown18b89b4 == this)
+    if (g_EnemyAbovePlayer == this)
     {
-        g_Unknown18b89b4 = NULL;
+        g_EnemyAbovePlayer = NULL;
     }
 }
 
@@ -1087,9 +1087,9 @@ int EnemyManager::OnUpdate(EnemyManager *mgr)
     {
         if (!enemy->active)
         {
-            if (g_Unknown18b89b4 == enemy)
+            if (g_EnemyAbovePlayer == enemy)
             {
-                g_Unknown18b89b4 = NULL;
+                g_EnemyAbovePlayer = NULL;
             }
             continue;
         }
@@ -1335,9 +1335,9 @@ int EnemyManager::OnUpdate(EnemyManager *mgr)
                     }
                 }
                 if (fabsf(enemy->absPos.x - g_Player.pos.x) < 64.0f && !enemy->IsFollower() &&
-                    (g_Unknown18b89b4 == NULL || g_Unknown18b89b4->pos.y > enemy->absPos.y))
+                    (g_EnemyAbovePlayer == NULL || g_EnemyAbovePlayer->pos.y > enemy->absPos.y))
                 {
-                    g_Unknown18b89b4 = enemy;
+                    g_EnemyAbovePlayer = enemy;
                 }
             }
         }
