@@ -1549,34 +1549,34 @@ int MainMenu::UpdateState16()
                     this->sprites[i].SetPendingInterrupt(0x17);
                 }
             }
-            this->resultTextAnm->InitSprite(&this->unkSprites[0], 2);
-            this->unkSprites[0].pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-            this->unkSprites[0].flags |= 0x1800;
-            this->unkSprites[0].fontWidth = 15;
-            this->unkSprites[0].fontHeight = 15;
-            this->unkSprites[0].alpha = 0xff;
-            this->unkSprites[0].colorRgb[2] = 0xff;
-            this->unkSprites[0].colorRgb[1] = 0xff;
-            this->unkSprites[0].colorRgb[0] = 0xff;
-            g_SpriteEngine->RenderText(&this->unkSprites[0], 0xffffff, 0,
+            this->resultTextAnm->InitSprite(&this->textSprites[0], 2);
+            this->textSprites[0].pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+            this->textSprites[0].flags |= 0x1800;
+            this->textSprites[0].fontWidth = 15;
+            this->textSprites[0].fontHeight = 15;
+            this->textSprites[0].alpha = 0xff;
+            this->textSprites[0].colorRgb[2] = 0xff;
+            this->textSprites[0].colorRgb[1] = 0xff;
+            this->textSprites[0].colorRgb[0] = 0xff;
+            g_SpriteEngine->RenderText(&this->textSprites[0], 0xffffff, 0,
                                        "ステージ    取得/挑戦可能/総数（()内は全キャラ合計）");
-            this->resultTextAnm->InitSprite(&this->unkSprites[1], 3);
-            this->unkSprites[1].pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-            this->unkSprites[1].flags |= 0x1800;
-            this->unkSprites[1].fontWidth = 15;
-            this->unkSprites[1].fontHeight = 15;
-            this->unkSprites[1].alpha = 0xff;
-            this->unkSprites[1].colorRgb[2] = 0xff;
-            this->unkSprites[1].colorRgb[1] = 0xff;
-            this->unkSprites[1].colorRgb[0] = 0xff;
-            g_SpriteEngine->RenderText(&this->unkSprites[1], 0xffffff, 0, "取得率　（キャラ別／総合）");
-            // The flags and color go to unkSprites[1] again (original).
-            this->titleAnm->InitSprite(&this->unkSprites[2], 0x90);
-            this->unkSprites[1].flags |= 0x1800;
-            this->unkSprites[1].alpha = 0xff;
-            this->unkSprites[1].colorRgb[2] = 0xff;
-            this->unkSprites[1].colorRgb[1] = 0xff;
-            this->unkSprites[1].colorRgb[0] = 0xff;
+            this->resultTextAnm->InitSprite(&this->textSprites[1], 3);
+            this->textSprites[1].pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+            this->textSprites[1].flags |= 0x1800;
+            this->textSprites[1].fontWidth = 15;
+            this->textSprites[1].fontHeight = 15;
+            this->textSprites[1].alpha = 0xff;
+            this->textSprites[1].colorRgb[2] = 0xff;
+            this->textSprites[1].colorRgb[1] = 0xff;
+            this->textSprites[1].colorRgb[0] = 0xff;
+            g_SpriteEngine->RenderText(&this->textSprites[1], 0xffffff, 0, "取得率　（キャラ別／総合）");
+            // The flags and color go to textSprites[1] again (original).
+            this->titleAnm->InitSprite(&this->textSprites[2], 0x90);
+            this->textSprites[1].flags |= 0x1800;
+            this->textSprites[1].alpha = 0xff;
+            this->textSprites[1].colorRgb[2] = 0xff;
+            this->textSprites[1].colorRgb[1] = 0xff;
+            this->textSprites[1].colorRgb[0] = 0xff;
             this->subState = 0;
             this->stateFrames = 0;
             g_GameManager.stateFlags |= 1;
@@ -1722,62 +1722,62 @@ int MainMenu::UpdateState17()
                     break;
                 }
                 id = g_StageSpellCards[g_GameManager.stage][i + this->spellPage * 15];
-                this->resultTextAnm->InitSprite(&this->unkSprites[i], i + 2);
-                this->unkSprites[i].pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-                this->unkSprites[i].flags |= 0x1800;
-                // unkSprites[0]'s font width every time (original).
-                this->unkSprites[0].fontWidth = 15;
-                this->unkSprites[i].fontHeight = 15;
+                this->resultTextAnm->InitSprite(&this->textSprites[i], i + 2);
+                this->textSprites[i].pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+                this->textSprites[i].flags |= 0x1800;
+                // textSprites[0]'s font width every time (original).
+                this->textSprites[0].fontWidth = 15;
+                this->textSprites[i].fontHeight = 15;
                 if (g_GameManager.catks[id].attempts[12] == 0 && g_GameManager.catks[id].practiceAttempts[12] == 0)
                 {
                     if (GetSpellCardDifficulty(id) <= 4 || !g_GameManager.IsSpellCardSeen(id))
                     {
-                        g_SpriteEngine->RenderText(&this->unkSprites[i], 0xffffff, 0, "？？？？？？？？");
+                        g_SpriteEngine->RenderText(&this->textSprites[i], 0xffffff, 0, "？？？？？？？？");
                     }
                     else
                     {
-                        g_SpriteEngine->RenderText(&this->unkSprites[i], 0xffffff, 0, "挑戦者歓迎中！");
+                        g_SpriteEngine->RenderText(&this->textSprites[i], 0xffffff, 0, "挑戦者歓迎中！");
                     }
                 }
                 else
                 {
-                    g_SpriteEngine->RenderText(&this->unkSprites[i], 0xffffff, 0, g_GameManager.catks[id].name);
+                    g_SpriteEngine->RenderText(&this->textSprites[i], 0xffffff, 0, g_GameManager.catks[id].name);
                 }
-                this->unkSprites[i].alpha = 0xff;
-                this->unkSprites[i].colorRgb[2] = 0x60;
-                this->unkSprites[i].colorRgb[1] = 0x60;
-                this->unkSprites[i].colorRgb[0] = 0x60;
+                this->textSprites[i].alpha = 0xff;
+                this->textSprites[i].colorRgb[2] = 0x60;
+                this->textSprites[i].colorRgb[1] = 0x60;
+                this->textSprites[i].colorRgb[0] = 0x60;
             }
             i = 15;
-            this->resultTextAnm->InitSprite(&this->unkSprites[i], i + 2);
-            this->unkSprites[i].pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-            this->unkSprites[i].flags |= 0x1800;
-            this->unkSprites[i].fontWidth = 15;
-            this->unkSprites[i].fontHeight = 15;
-            g_SpriteEngine->RenderText(&this->unkSprites[i], 0xffffff, 0, "取得数/挑戦数（()内は本編での集計）");
-            this->unkSprites[i].alpha = 0xff;
-            this->unkSprites[i].colorRgb[2] = 0xff;
-            this->unkSprites[i].colorRgb[1] = 0xff;
-            this->unkSprites[i].colorRgb[0] = 0xff;
+            this->resultTextAnm->InitSprite(&this->textSprites[i], i + 2);
+            this->textSprites[i].pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+            this->textSprites[i].flags |= 0x1800;
+            this->textSprites[i].fontWidth = 15;
+            this->textSprites[i].fontHeight = 15;
+            g_SpriteEngine->RenderText(&this->textSprites[i], 0xffffff, 0, "取得数/挑戦数（()内は本編での集計）");
+            this->textSprites[i].alpha = 0xff;
+            this->textSprites[i].colorRgb[2] = 0xff;
+            this->textSprites[i].colorRgb[1] = 0xff;
+            this->textSprites[i].colorRgb[0] = 0xff;
             i = this->cursor - this->spellPage * 15;
-            this->unkSprites[i].colorRgb[2] = 0xff;
-            this->unkSprites[i].colorRgb[1] = 0xff;
-            this->unkSprites[i].colorRgb[0] = 0xff;
+            this->textSprites[i].colorRgb[2] = 0xff;
+            this->textSprites[i].colorRgb[1] = 0xff;
+            this->textSprites[i].colorRgb[0] = 0xff;
             for (i = 0; i < 7; i++)
             {
-                g_App.textAnm->InitSprite(&this->unkSprites2[i], i + 0x15);
+                g_App.textAnm->InitSprite(&this->cardDetailSprites[i], i + 0x15);
                 if (i < 4)
                 {
-                    this->unkSprites2[i].pos = D3DXVECTOR3(64.0f, i * 16 + 344.0f, 0.0f);
+                    this->cardDetailSprites[i].pos = D3DXVECTOR3(64.0f, i * 16 + 344.0f, 0.0f);
                 }
                 else
                 {
-                    this->unkSprites2[i].pos = D3DXVECTOR3(64.0f, i * 16 + 344.0f + 8.0f, 0.0f);
+                    this->cardDetailSprites[i].pos = D3DXVECTOR3(64.0f, i * 16 + 344.0f + 8.0f, 0.0f);
                 }
-                this->unkSprites2[i].flags |= 0x1800;
-                this->unkSprites2[i].fontWidth = 15;
-                this->unkSprites2[i].fontHeight = 15;
-                this->unkSprites2[i].color = 0xffffffff;
+                this->cardDetailSprites[i].flags |= 0x1800;
+                this->cardDetailSprites[i].fontWidth = 15;
+                this->cardDetailSprites[i].fontHeight = 15;
+                this->cardDetailSprites[i].color = 0xffffffff;
             }
             this->UpdateCardDetails();
             this->cardDetailsTimer = 0;
@@ -1843,46 +1843,46 @@ int MainMenu::UpdateState17()
                 {
                     break;
                 }
-                this->resultTextAnm->InitSprite(&this->unkSprites[n], n + 2);
-                this->unkSprites[n].pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-                this->unkSprites[n].flags |= 0x1800;
-                // unkSprites2[0]'s font width every time (original).
-                this->unkSprites2[0].fontWidth = 15;
-                this->unkSprites[n].fontHeight = 15;
+                this->resultTextAnm->InitSprite(&this->textSprites[n], n + 2);
+                this->textSprites[n].pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+                this->textSprites[n].flags |= 0x1800;
+                // cardDetailSprites[0]'s font width every time (original).
+                this->cardDetailSprites[0].fontWidth = 15;
+                this->textSprites[n].fontHeight = 15;
                 cardId = g_StageSpellCards[g_GameManager.stage][n + this->spellPage * 15];
                 if (g_GameManager.catks[cardId].WasAttempted(12))
                 {
-                    g_SpriteEngine->RenderText(&this->unkSprites[n], 0xffffff, 0, g_GameManager.catks[cardId].name);
+                    g_SpriteEngine->RenderText(&this->textSprites[n], 0xffffff, 0, g_GameManager.catks[cardId].name);
                 }
                 else if (GetSpellCardDifficulty(cardId) <= 4 || !g_GameManager.IsSpellCardSeen(cardId))
                 {
-                    g_SpriteEngine->RenderText(&this->unkSprites[n], 0xffffff, 0, "？？？？？？？？");
+                    g_SpriteEngine->RenderText(&this->textSprites[n], 0xffffff, 0, "？？？？？？？？");
                 }
                 else
                 {
-                    g_SpriteEngine->RenderText(&this->unkSprites[n], 0xffffff, 0, "挑戦者歓迎中！");
+                    g_SpriteEngine->RenderText(&this->textSprites[n], 0xffffff, 0, "挑戦者歓迎中！");
                 }
-                this->unkSprites[n].alpha = 0xff;
-                this->unkSprites[n].colorRgb[2] = 0x60;
-                this->unkSprites[n].colorRgb[1] = 0x60;
-                this->unkSprites[n].colorRgb[0] = 0x60;
+                this->textSprites[n].alpha = 0xff;
+                this->textSprites[n].colorRgb[2] = 0x60;
+                this->textSprites[n].colorRgb[1] = 0x60;
+                this->textSprites[n].colorRgb[0] = 0x60;
             }
         }
         if (savedCursor != this->cursor)
         {
             for (n = 0; n < 15; n++)
             {
-                this->unkSprites[n].colorRgb[2] = 0x60;
-                this->unkSprites[n].colorRgb[1] = 0x60;
-                this->unkSprites[n].colorRgb[0] = 0x60;
+                this->textSprites[n].colorRgb[2] = 0x60;
+                this->textSprites[n].colorRgb[1] = 0x60;
+                this->textSprites[n].colorRgb[0] = 0x60;
             }
             n = this->cursor - this->spellPage * 15;
-            this->unkSprites[n].colorRgb[2] = 0xff;
-            this->unkSprites[n].colorRgb[1] = 0xff;
-            this->unkSprites[n].colorRgb[0] = 0xff;
+            this->textSprites[n].colorRgb[2] = 0xff;
+            this->textSprites[n].colorRgb[1] = 0xff;
+            this->textSprites[n].colorRgb[0] = 0xff;
             for (n = 0; n < 7; n++)
             {
-                this->unkSprites2[n].alpha = 0;
+                this->cardDetailSprites[n].alpha = 0;
             }
             this->cardDetailsTimer = 0x15;
         }
@@ -2269,19 +2269,19 @@ void MainMenu::UpdateCardDetails()
     seen = g_GameManager.catks[id].practiceAttempts[12] + g_GameManager.catks[id].attempts[12];
     if (this->subState == 0 || this->cardDetailsTimer == 11)
     {
-        g_SpriteEngine->RenderText(&this->unkSprites2[0], 0xffffff, 0, "Ｎｏ．%s　　%s", FormatFullWidthNumber(id + 1, 3),
+        g_SpriteEngine->RenderText(&this->cardDetailSprites[0], 0xffffff, 0, "Ｎｏ．%s　　%s", FormatFullWidthNumber(id + 1, 3),
                                    seen == 0 ? "？？？？？？？？" : g_GameManager.catks[id].name);
     }
     if (this->subState == 0 || this->cardDetailsTimer == 9)
     {
-        g_SpriteEngine->RenderText(&this->unkSprites2[1], 0xffffff, 0, "使用者  %s　　%s %s",
+        g_SpriteEngine->RenderText(&this->cardDetailSprites[1], 0xffffff, 0, "使用者  %s　　%s %s",
                                    seen == 0 ? "？？？？？？？？" : g_GameManager.catks[id].comment,
                                    g_SpellPracticeDifficultyNames[GetSpellCardDifficulty(id)],
                                    IsListedSpellCard(id) ? "Last" : " ");
     }
     if (this->subState == 0)
     {
-        g_SpriteEngine->RenderText(&this->unkSprites2[2], 0xffffff, 0, "取得数/挑戦数[最高点]　%s　全主人公合計",
+        g_SpriteEngine->RenderText(&this->cardDetailSprites[2], 0xffffff, 0, "取得数/挑戦数[最高点]　%s　全主人公合計",
                                    GetShotName(g_GameManager.character));
     }
     if (GetSpellCardDifficulty(id) <= 4)
@@ -2290,14 +2290,14 @@ void MainMenu::UpdateCardDetails()
         {
             if (this->subState == 0 || this->cardDetailsTimer == 7)
             {
-                g_SpriteEngine->RenderText(&this->unkSprites2[3], 0xffffff, 0,
+                g_SpriteEngine->RenderText(&this->cardDetailSprites[3], 0xffffff, 0,
                                            "　　---/---(---/---)[--------]　　---/---(---/---)[--------]");
             }
         }
         else if (this->subState == 0 || this->cardDetailsTimer == 7)
         {
             g_SpriteEngine->RenderText(
-                &this->unkSprites2[3], 0xffffff, 0, "　　%3d/%3d(%3d/%3d)[%.8d]　　%3d/%3d(%3d/%3d)[%.8d]",
+                &this->cardDetailSprites[3], 0xffffff, 0, "　　%3d/%3d(%3d/%3d)[%.8d]　　%3d/%3d(%3d/%3d)[%.8d]",
                 g_GameManager.catks[id].practiceCaptures[g_GameManager.character],
                 g_GameManager.catks[id].practiceAttempts[g_GameManager.character],
                 g_GameManager.catks[id].captures[g_GameManager.character],
@@ -2314,13 +2314,13 @@ void MainMenu::UpdateCardDetails()
         {
             if (this->subState == 0 || this->cardDetailsTimer == 7)
             {
-                g_SpriteEngine->RenderText(&this->unkSprites2[3], 0xffffff, 0,
+                g_SpriteEngine->RenderText(&this->cardDetailSprites[3], 0xffffff, 0,
                                            "　　---/---(---/---)[--------]　　---/---(---/---)[--------]");
             }
         }
         else if (this->subState == 0 || this->cardDetailsTimer == 7)
         {
-            g_SpriteEngine->RenderText(&this->unkSprites2[3], 0xffffff, 0,
+            g_SpriteEngine->RenderText(&this->cardDetailSprites[3], 0xffffff, 0,
                                        "　　%3d/%3d(---/---)[%.8d]　　%3d/%3d(---/---)[%.8d]",
                                        g_GameManager.catks[id].practiceCaptures[g_GameManager.character],
                                        g_GameManager.catks[id].practiceAttempts[g_GameManager.character],
@@ -2332,14 +2332,14 @@ void MainMenu::UpdateCardDetails()
     }
     if (this->subState == 0)
     {
-        g_SpriteEngine->RenderText(&this->unkSprites2[4], 0xffffff, 0, "カードの補足");
+        g_SpriteEngine->RenderText(&this->cardDetailSprites[4], 0xffffff, 0, "カードの補足");
     }
     if (this->subState == 0 || this->cardDetailsTimer == 5)
     {
         // A last spell not yet open shows how to open it.
         if (!g_GameManager.catks[id].WasAttempted(12) && id >= 0xcc && id <= 0xdd && !g_GameManager.IsSpellCardSeen(id))
         {
-            g_SpriteEngine->RenderText(&this->unkSprites2[5], 0xffffff, 0, g_LastSpellConditions[id - 0xcc][0].format,
+            g_SpriteEngine->RenderText(&this->cardDetailSprites[5], 0xffffff, 0, g_LastSpellConditions[id - 0xcc][0].format,
                                        g_LastSpellConditions[id - 0xcc][0].cards[0] + 1,
                                        g_LastSpellConditions[id - 0xcc][0].cards[1] + 1,
                                        g_LastSpellConditions[id - 0xcc][0].cards[2] + 1,
@@ -2352,7 +2352,7 @@ void MainMenu::UpdateCardDetails()
 
             memset(text, 0, sizeof(text));
             memcpy(text, g_GameManager.catks[id].note, sizeof(g_GameManager.catks[id].note));
-            g_SpriteEngine->RenderText(&this->unkSprites2[5], 0xffffff, 0,
+            g_SpriteEngine->RenderText(&this->cardDetailSprites[5], 0xffffff, 0,
                                        g_GameManager.catks[id].practiceCaptures[12] == 0 ? "？？？？？？？？？" : text);
         }
     }
@@ -2360,7 +2360,7 @@ void MainMenu::UpdateCardDetails()
     {
         if (!g_GameManager.catks[id].WasAttempted(12) && id >= 0xcc && id <= 0xdd && !g_GameManager.IsSpellCardSeen(id))
         {
-            g_SpriteEngine->RenderText(&this->unkSprites2[6], 0xffffff, 0, g_LastSpellConditions[id - 0xcc][1].format,
+            g_SpriteEngine->RenderText(&this->cardDetailSprites[6], 0xffffff, 0, g_LastSpellConditions[id - 0xcc][1].format,
                                        g_LastSpellConditions[id - 0xcc][1].cards[0] + 1,
                                        g_LastSpellConditions[id - 0xcc][1].cards[1] + 1,
                                        g_LastSpellConditions[id - 0xcc][1].cards[2] + 1,
@@ -2373,17 +2373,17 @@ void MainMenu::UpdateCardDetails()
 
             memset(text, 0, sizeof(text));
             memcpy(text, g_GameManager.catks[id].note2, sizeof(g_GameManager.catks[id].note2));
-            g_SpriteEngine->RenderText(&this->unkSprites2[6], 0xffffff, 0,
+            g_SpriteEngine->RenderText(&this->cardDetailSprites[6], 0xffffff, 0,
                                        g_GameManager.catks[id].practiceCaptures[12] == 0 ? "？？？？？？？？？" : text);
         }
     }
-    this->unkSprites2[5].pos.x = 96.0f;
-    this->unkSprites2[6].pos.x = 96.0f;
+    this->cardDetailSprites[5].pos.x = 96.0f;
+    this->cardDetailSprites[6].pos.x = 96.0f;
     if (this->subState == 0 || this->cardDetailsTimer == 3)
     {
         for (i = 0; i < 7; i++)
         {
-            this->unkSprites2[i].alpha = 0xff;
+            this->cardDetailSprites[i].alpha = 0xff;
         }
     }
     if (this->cardDetailsTimer != 0)
@@ -2534,17 +2534,17 @@ int MainMenu::UpdateReplayMenu()
                     return 0;
                 }
             }
-            this->resultTextAnm->InitSprite(&this->unkSprites[0], i + 2);
-            this->unkSprites[0].pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-            this->unkSprites[0].flags |= 0x1800;
-            this->unkSprites[0].fontWidth = 15;
-            this->unkSprites[0].fontHeight = 15;
-            g_SpriteEngine->RenderText(&this->unkSprites[0], 0xffffff, 0,
+            this->resultTextAnm->InitSprite(&this->textSprites[0], i + 2);
+            this->textSprites[0].pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+            this->textSprites[0].flags |= 0x1800;
+            this->textSprites[0].fontWidth = 15;
+            this->textSprites[0].fontHeight = 15;
+            g_SpriteEngine->RenderText(&this->textSprites[0], 0xffffff, 0,
                                        this->replays[this->replayCursor].spellCardName);
-            this->unkSprites[0].alpha = 0xff;
-            this->unkSprites[0].colorRgb[2] = 0xff;
-            this->unkSprites[0].colorRgb[1] = 0xff;
-            this->unkSprites[0].colorRgb[0] = 0xff;
+            this->textSprites[0].alpha = 0xff;
+            this->textSprites[0].colorRgb[2] = 0xff;
+            this->textSprites[0].colorRgb[1] = 0xff;
+            this->textSprites[0].colorRgb[0] = 0xff;
             break;
         }
         if (WAS_PRESSED(0xa))
@@ -2765,9 +2765,9 @@ int MainMenu::DrawReplayMenu()
             pos = text->pos;
             g_AsciiText.AddFormat(&pos, "No.%.3d %9d0", this->loadedReplay->spellCardNumber + 1,
                                   this->loadedReplay->score);
-            this->unkSprites[0].pos = text->pos;
-            this->unkSprites[0].pos.y += 16.0f;
-            g_SpriteEngine->DrawUnrotated(&this->unkSprites[0]);
+            this->textSprites[0].pos = text->pos;
+            this->textSprites[0].pos.y += 16.0f;
+            g_SpriteEngine->DrawUnrotated(&this->textSprites[0]);
         }
     }
     g_AsciiText.SetColor(0xffffffff);
@@ -2858,8 +2858,8 @@ int MainMenu::DrawState16()
     pos = title->pos;
     pos.y -= 152.0f;
     pos.x -= 32.0f;
-    this->unkSprites[0].pos = pos;
-    g_SpriteEngine->DrawUnrotated(&this->unkSprites[0]);
+    this->textSprites[0].pos = pos;
+    g_SpriteEngine->DrawUnrotated(&this->textSprites[0]);
     pos.y += 16.0f;
     for (i = 0; i < 10; i++)
     {
@@ -2939,14 +2939,14 @@ int MainMenu::DrawState16()
     g_AsciiText.SetScale(1.0f, 1.0f);
     g_AsciiText.SetColor(0xffffffff);
     g_AsciiText.SetHighlight(0);
-    this->unkSprites[1].pos.x = 400.0f;
-    this->unkSprites[1].pos.y = 376.0f;
-    this->unkSprites[1].pos.z = 0.0f;
-    g_SpriteEngine->DrawUnrotated(&this->unkSprites[1]);
-    this->unkSprites[2].pos.x = 552.0f;
-    this->unkSprites[2].pos.y = 426.0f;
-    this->unkSprites[2].pos.z = 0.0f;
-    g_SpriteEngine->DrawUnrotated(&this->unkSprites[2]);
+    this->textSprites[1].pos.x = 400.0f;
+    this->textSprites[1].pos.y = 376.0f;
+    this->textSprites[1].pos.z = 0.0f;
+    g_SpriteEngine->DrawUnrotated(&this->textSprites[1]);
+    this->textSprites[2].pos.x = 552.0f;
+    this->textSprites[2].pos.y = 426.0f;
+    this->textSprites[2].pos.z = 0.0f;
+    g_SpriteEngine->DrawUnrotated(&this->textSprites[2]);
     gaugePos.x = 530.0f;
     gaugePos.y = 420.0f;
     rate = totalPractice / 222.0f;
@@ -3021,8 +3021,8 @@ int MainMenu::DrawState17()
         cleared = 1;
     }
     pos.x += 318.0f;
-    this->unkSprites[15].pos = pos;
-    g_SpriteEngine->DrawUnrotated(&this->unkSprites[15]);
+    this->textSprites[15].pos = pos;
+    g_SpriteEngine->DrawUnrotated(&this->textSprites[15]);
     pos.x -= 318.0f;
     pos.y += 16.0f;
     for (i = 0; i < 15; i++)
@@ -3031,7 +3031,7 @@ int MainMenu::DrawState17()
         {
             break;
         }
-        g_AsciiText.SetColor(this->unkSprites[i].color);
+        g_AsciiText.SetColor(this->textSprites[i].color);
         cardId = g_StageSpellCards[g_GameManager.stage][i + this->spellPage * 15];
         g_AsciiText.AddFormat(&pos, "%sNo.%.3d",
                               g_GameManager.catks[cardId].practiceCaptures[g_GameManager.character] > 0 ? "@"
@@ -3046,18 +3046,18 @@ int MainMenu::DrawState17()
                               g_GameManager.catks[cardId].attempts[g_GameManager.character]);
         g_AsciiText.SetScale(1.0f, 1.0f);
         pos.x -= 414.0f;
-        this->unkSprites[i].pos = pos;
-        this->unkSprites[i].pos.x += 102.0f;
-        g_SpriteEngine->DrawUnrotated(&this->unkSprites[i]);
+        this->textSprites[i].pos = pos;
+        this->textSprites[i].pos.x += 102.0f;
+        g_SpriteEngine->DrawUnrotated(&this->textSprites[i]);
         pos.y += 16.0f;
     }
-    g_SpriteEngine->DrawUnrotated(&this->unkSprites2[0]);
-    g_SpriteEngine->DrawUnrotated(&this->unkSprites2[1]);
-    g_SpriteEngine->DrawUnrotated(&this->unkSprites2[2]);
-    g_SpriteEngine->DrawUnrotated(&this->unkSprites2[3]);
-    g_SpriteEngine->DrawUnrotated(&this->unkSprites2[4]);
-    g_SpriteEngine->DrawUnrotated(&this->unkSprites2[5]);
-    g_SpriteEngine->DrawUnrotated(&this->unkSprites2[6]);
+    g_SpriteEngine->DrawUnrotated(&this->cardDetailSprites[0]);
+    g_SpriteEngine->DrawUnrotated(&this->cardDetailSprites[1]);
+    g_SpriteEngine->DrawUnrotated(&this->cardDetailSprites[2]);
+    g_SpriteEngine->DrawUnrotated(&this->cardDetailSprites[3]);
+    g_SpriteEngine->DrawUnrotated(&this->cardDetailSprites[4]);
+    g_SpriteEngine->DrawUnrotated(&this->cardDetailSprites[5]);
+    g_SpriteEngine->DrawUnrotated(&this->cardDetailSprites[6]);
     g_AsciiText.SetColor(0xffffffff);
     g_AsciiText.SetHighlight(0);
     return 1;
@@ -3139,19 +3139,19 @@ int MainMenu::DrawCharacterMenu()
             g_GameManager.HasClearedStageWithContinues(6, this->cursor, g_App.defaultDifficulty))
         {
             shown = TRUE;
-            this->titleAnm->InitSprite(&this->unkSprites[0], 0x92);
+            this->titleAnm->InitSprite(&this->textSprites[0], 0x92);
         }
         else if (g_GameManager.HasClearedStage(7, this->cursor, g_App.defaultDifficulty))
         {
             shown = TRUE;
-            this->titleAnm->InitSprite(&this->unkSprites[0], 0x94);
+            this->titleAnm->InitSprite(&this->textSprites[0], 0x94);
         }
         else if (g_GameManager.HasClearedStage(7, this->cursor, 0) || g_GameManager.HasClearedStage(7, this->cursor, 1) ||
                  g_GameManager.HasClearedStage(7, this->cursor, 2) || g_GameManager.HasClearedStage(7, this->cursor, 3) ||
                  this->cursor > 3)
         {
             shown = TRUE;
-            this->titleAnm->InitSprite(&this->unkSprites[0], 0x93);
+            this->titleAnm->InitSprite(&this->textSprites[0], 0x93);
         }
         else if (g_GameManager.HasClearedStageWithContinues(6, this->cursor, 0) ||
                  g_GameManager.HasClearedStageWithContinues(6, this->cursor, 1) ||
@@ -3159,20 +3159,20 @@ int MainMenu::DrawCharacterMenu()
                  g_GameManager.HasClearedStageWithContinues(6, this->cursor, 3))
         {
             shown = TRUE;
-            this->titleAnm->InitSprite(&this->unkSprites[0], 0x91);
+            this->titleAnm->InitSprite(&this->textSprites[0], 0x91);
         }
     }
     if (shown)
     {
-        this->unkSprites[0].flags |= 0x1800;
-        this->unkSprites[0].alpha = 0xff;
-        this->unkSprites[0].colorRgb[2] = 0xff;
-        this->unkSprites[0].colorRgb[1] = 0xff;
-        this->unkSprites[0].colorRgb[0] = 0xff;
-        this->unkSprites[0].pos.x = 400.0f;
-        this->unkSprites[0].pos.y = 170.0f;
-        this->unkSprites[0].pos.z = 0.0f;
-        g_SpriteEngine->DrawUnrotated(&this->unkSprites[0]);
+        this->textSprites[0].flags |= 0x1800;
+        this->textSprites[0].alpha = 0xff;
+        this->textSprites[0].colorRgb[2] = 0xff;
+        this->textSprites[0].colorRgb[1] = 0xff;
+        this->textSprites[0].colorRgb[0] = 0xff;
+        this->textSprites[0].pos.x = 400.0f;
+        this->textSprites[0].pos.y = 170.0f;
+        this->textSprites[0].pos.z = 0.0f;
+        g_SpriteEngine->DrawUnrotated(&this->textSprites[0]);
     }
     return 0;
 }
@@ -3362,19 +3362,19 @@ void MainMenu::LoadingThread(MainMenu *arg)
     {
         g_App.textAnm->StartScript(&g_MainMenu->helpSprites[i], 9);
         g_App.textAnm->SetSprite(&g_MainMenu->helpSprites[i], g_MainMenu->helpSprites[i].spriteIndex + i);
-        g_App.textAnm->SetSprite(&g_MainMenu->unkSprites2[i], i + 0x15);
+        g_App.textAnm->SetSprite(&g_MainMenu->cardDetailSprites[i], i + 0x15);
         if (i <= 4)
         {
-            g_MainMenu->unkSprites2[i].pos = D3DXVECTOR3(64.0f, i * 16.0f + 352.0f, 0.0f);
+            g_MainMenu->cardDetailSprites[i].pos = D3DXVECTOR3(64.0f, i * 16.0f + 352.0f, 0.0f);
         }
         else
         {
-            g_MainMenu->unkSprites2[i].pos = D3DXVECTOR3(64.0f, i * 16.0f + 352.0f + 10.0f, 0.0f);
+            g_MainMenu->cardDetailSprites[i].pos = D3DXVECTOR3(64.0f, i * 16.0f + 352.0f + 10.0f, 0.0f);
         }
-        g_MainMenu->unkSprites2[i].flags |= 0x1800;
-        g_MainMenu->unkSprites2[i].fontWidth = 15;
-        g_MainMenu->unkSprites2[i].fontHeight = 15;
-        g_MainMenu->unkSprites2[i].flags |= 2;
+        g_MainMenu->cardDetailSprites[i].flags |= 0x1800;
+        g_MainMenu->cardDetailSprites[i].fontWidth = 15;
+        g_MainMenu->cardDetailSprites[i].fontHeight = 15;
+        g_MainMenu->cardDetailSprites[i].flags |= 2;
     }
     if (g_App.closeSubThread != 0)
     {

@@ -60,7 +60,7 @@ public:
     // meets: Extra clears, practice captures, captures and attempts of
     // given cards (0x46cbbb). New in th08.
     void UnlockLastSpells();
-    // Writes the card at the cursor's details into unkSprites2 in state
+    // Writes the card at the cursor's details into cardDetailSprites in state
     // 17: number and name, comment and difficulty, the counts for the
     // character and all, and the two comment lines or, for a last
     // spell not yet open, how to open it. Outside subState 0, only what
@@ -150,8 +150,8 @@ public:
     Sprite *sprites;
     Sprite *helpSprite;
     Sprite helpSprites[0xe];
-    Sprite unkSprites[0x15];
-    Sprite unkSprites2[0xe];
+    Sprite textSprites[0x15];
+    Sprite cardDetailSprites[0xe];
     int spriteCount;
     // The menu's state.
     int state;
