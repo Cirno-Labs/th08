@@ -466,6 +466,90 @@ int EnemyManager::OnDraw2(EnemyManager *mgr)
     return result;
 }
 
+int EnemyManager::AddedCallback(EnemyManager *mgr)
+{
+    Enemy *unusedEnemy = mgr->enemies;
+    void *savedFile;
+    void **subs;
+
+    if (IsLoadingResources())
+    {
+        mgr->anm = g_SpriteEngine->PreloadAnm(7, "enemy.anm");
+        if (mgr->anm == NULL)
+        {
+            return -1;
+        }
+    }
+    else
+    {
+        mgr->anm = g_SpriteEngine->GetAnm(7);
+    }
+    if (!IsRestarting())
+    {
+        if (!g_GameManager.isInSpellCardPractice || g_GameManager.unk_3dbb0 < 0xcd)
+        {
+            mgr->stageAnm = g_SpriteEngine->PreloadAnm(8, g_EnemyAnmPaths[g_GameManager.stage]);
+            if (mgr->stageAnm == NULL)
+            {
+                return -1;
+            }
+        }
+        else
+        {
+            mgr->stageAnm = g_SpriteEngine->PreloadAnm(8, g_EnemyAnmPaths[g_GameManager.unk_3dbb0 - 0xc4]);
+            if (mgr->stageAnm == NULL)
+            {
+                return -1;
+            }
+        }
+    }
+    else
+    {
+        mgr->stageAnm = g_SpriteEngine->GetAnm(8);
+    }
+    if (!IsRestarting())
+    {
+        memset(&g_EnemyScripts, 0, sizeof(EnemyScripts));
+        if (!g_GameManager.isInSpellCardPractice)
+        {
+            if (g_EnemyScripts.Load(g_EclPaths[g_GameManager.stage]) != 0)
+            {
+                return -1;
+            }
+        }
+        else if (g_GameManager.unk_3dbb0 >= 0xcd)
+        {
+            if (g_EnemyScripts.Load(g_EclPaths[g_GameManager.unk_3dbb0 - 0xba]) != 0)
+            {
+                return -1;
+            }
+        }
+        else
+        {
+            if (g_EnemyScripts.Load(g_EclPaths[g_GameManager.stage + 9]) != 0)
+            {
+                return -1;
+            }
+        }
+    }
+    else
+    {
+        savedFile = g_EnemyScripts.file;
+        subs = g_EnemyScripts.subs;
+        memset(&g_EnemyScripts, 0, sizeof(EnemyScripts));
+        g_EnemyScripts.file = savedFile;
+        g_EnemyScripts.subs = subs;
+    }
+    mgr->dropCounter = g_Rng.GetRandomU16InRange(3);
+    mgr->dropIndex = g_Rng.GetRandomU16InRange(8);
+    D3DXVECTOR3 nowhere(-999.0f, -999.0f, -999.0f);
+    g_AsciiText.SetNearbyLabelPos(0, &nowhere);
+    g_AsciiText.SetNearbyLabelPos(1, &nowhere);
+    g_AsciiText.SetNearbyLabelPos(2, &nowhere);
+    g_AsciiText.SetNearbyLabelPos(3, &nowhere);
+    return 0;
+}
+
 int EnemyManager::DeletedCallback(EnemyManager *mgr)
 {
     int i;

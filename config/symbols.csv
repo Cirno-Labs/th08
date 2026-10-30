@@ -232,7 +232,7 @@ address,size,name,symbol
 0x00418220,180,Func418220,
 0x004182e0,25,Func4182e0,
 0x00418300,37,Func418300,
-0x00418330,239,Func418330,
+0x00418330,239,EnemyScripts::Load,?Load@EnemyScripts@@QAEHPAD@Z
 0x00418420,44,EnemyScripts::Release,?Release@EnemyScripts@@QAEXXZ
 0x00418450,88,EnemyScripts::StartSub,?StartSub@EnemyScripts@@QAEHPAUEnemyScriptState@@F@Z
 0x004184b0,26638,EnemyScripts::RunEnemy,?RunEnemy@EnemyScripts@@QAEHPAUEnemy@@@Z
@@ -2430,6 +2430,8 @@ address,size,name,symbol
 0x004c72f8,,g_StageAnmPaths,?g_StageAnmPaths@@3PAPADA
 0x004c731c,,g_StageDataFiles,?g_StageDataFiles@@3PAPADA
 0x004c7340,,g_SpellPracticeStageDataFiles,?g_SpellPracticeStageDataFiles@@3PAPADA
+0x004c7364,,g_EnemyAnmPaths,?g_EnemyAnmPaths@@3PAPADA
+0x004c73cc,,g_EclPaths,?g_EclPaths@@3PAPADA
 0x004c745c,,g_StageTextAnmPaths,?g_StageTextAnmPaths@@3PAPADA
 0x004c7480,,g_EffectAnmPaths,?g_EffectAnmPaths@@3PAPADA
 0x004c74c0,,g_MsgPaths,?g_MsgPaths@@3PAY0M@PADA

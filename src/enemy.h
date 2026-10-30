@@ -307,10 +307,21 @@ public:
     // Frees the script file, as th07's (0x418420).
     void Release();
 
+    // Loads the script file at `path` and turns its offsets into
+    // pointers, as th07's (0x418330). Returns 0, or -1 if loading fails.
+    int Load(char *path);
+
     void *file;
     void **subs;
+    unsigned char unk_8[0x180];
 };
+ASSERT_SIZE(EnemyScripts, 0x188);
 extern EnemyScripts g_EnemyScripts;
+// The enemy ANMs by stage, then by last spell (card - 0xc4).
+extern char *g_EnemyAnmPaths[];
+// The enemy scripts by stage, by stage in spell practice (stage + 9),
+// then by last spell (card - 0xba).
+extern char *g_EclPaths[];
 
 // The enemies, at 0x577f20. Only what is known so far.
 class EnemyManager
@@ -355,10 +366,17 @@ public:
     Enemy enemies[0x1e1];
     // The bosses, as th07's.
     Enemy *bosses[8];
-    unsigned char unk_9dcdc0[0x10];
+    // Count and pick the items the enemies drop, as th07's.
+    WORD dropCounter;
+    WORD dropIndex;
+    unsigned char unk_9dcdc4[0xc];
     EnemyTimeline timelines[16];
     Timer unk_9dced0;
-    unsigned char unk_9dcedc[0x1c];
+    unsigned char unk_9dcedc[0x10];
+    // enemy.anm (slot 7) and the stage's enemy ANM (slot 8).
+    AnmLoaded *anm;
+    AnmLoaded *stageAnm;
+    int unk_9dcef4;
     // Whether the last Spawn found no free enemy.
     int spawnFailed;
     // -1 after Initialize; timeline instructions 13 and 14 use them.
