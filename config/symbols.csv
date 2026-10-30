@@ -458,8 +458,8 @@ address,size,name,symbol
 0x00432830,436,BounceOffWalls,?BounceOffWalls@@YIXPAUBullet@@@Z
 0x004329f0,167,WrapAroundX,?WrapAroundX@@YIXPAUBullet@@@Z
 0x00432aa0,167,WrapAroundY,?WrapAroundY@@YIXPAUBullet@@@Z
-0x00432b50,969,Func432b50,
-0x00432f20,320,Func432f20,
+0x00432b50,969,BulletManager::OnDraw,?OnDraw@BulletManager@@SIHPAV1@@Z
+0x00432f20,320,DrawBullet,?DrawBullet@@YIXPAUBullet@@@Z
 0x00433070,1662,Func433070,
 0x004337f0,42,Func4337f0,
 0x00433820,35,Func433820,

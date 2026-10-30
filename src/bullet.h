@@ -239,6 +239,10 @@ public:
     // first, then from the last one down) and builds the draw lists, then
     // runs the lasers, as th07's. Returns 1.
     static int OnUpdate(BulletManager *mgr);
+    // Draws the items, the lasers and the bullets' draw lists in order,
+    // then the effects of EffectManager::OnDraw3, as th07's; tinted
+    // while g_GameManager.unk_3dbac_10 is set. Returns 1.
+    static int OnDraw(BulletManager *mgr);
     // Removes the bullets' chain elements, as th07's (0x433850).
     static void RemoveChain();
 
@@ -304,6 +308,11 @@ void BounceOffWalls(Bullet *bullet);
 // has counted down. New in th08.
 void WrapAroundX(Bullet *bullet);
 void WrapAroundY(Bullet *bullet);
+
+// Draws a bullet with the sprite for its state (spawning effects, fading
+// out), placed in the play area and turned along its angle where the
+// sprite asks for it, as th07's.
+void DrawBullet(Bullet *bullet);
 
 // Starts the bullet's commands from commandIndex on, as th07's: skips
 // those whose flag the bullet lacks, and stops at an empty one, at one

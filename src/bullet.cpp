@@ -5,6 +5,7 @@
 
 #include "ascii.h"
 #include "bullet.h"
+#include "effect.h"
 #include "item.h"
 #include "player.h"
 #include "replay.h"
@@ -1206,4 +1207,71 @@ void WrapAroundY(Bullet *bullet)
     {
         bullet->ex[6].timer--;
     }
+}
+
+int BulletManager::OnDraw(BulletManager *mgr)
+{
+    int i;
+    float s;
+    Laser *laser;
+    float len;
+    float ca;
+    Bullet *blt;
+
+    if (g_GameManager.unk_3dbac_10)
+    {
+        g_SpriteEngine->SetColorModulation(0xfff01010);
+    }
+    laser = mgr->lasers;
+    g_ItemManager.DrawItems();
+    for (i = 0; i < 0x100; i++, laser++)
+    {
+        if (!laser->active)
+        {
+            continue;
+        }
+        SinCos(&s, &ca, laser->angle);
+        len = (laser->endOffset - laser->startOffset) / 2.0f + laser->startOffset;
+        laser->sprite0.pos[0] = laser->pos[0] + ca * len;
+        laser->sprite0.pos[1] = laser->pos[1] + s * len;
+        laser->sprite0.pos[2] = 0.06f;
+        laser->color = laser->color & 0xff000000 | 0xffffff;
+        laser->sprite0.pos.x = g_GameManager.arena[0] + laser->sprite0.pos.x;
+        laser->sprite0.pos.y = g_GameManager.arena[1] + laser->sprite0.pos.y;
+        g_SpriteEngine->Draw(&laser->sprite0);
+        if ((laser->startOffset < 16.0f || laser->speed == 0.0f) && (laser->drawDelayFlag == 0 || laser->state != 0))
+        {
+            laser->sprite1.pos[0] = laser->pos[0] + ca * laser->startOffset;
+            laser->sprite1.pos[1] = laser->pos[1] + s * laser->startOffset;
+            laser->sprite1.pos[2] = 0.05f;
+            laser->sprite1.color = laser->sprite0.color;
+            laser->sprite1.unusedFlag6 = 1;
+            laser->sprite1.color = laser->sprite1.color & 0xffffff | 0xff000000;
+            laser->sprite1.scaleY = laser->width / 10.0f * ((16.0f - laser->startOffset) / 16.0f);
+            laser->sprite1.scaleX = laser->sprite1.scaleY;
+            if (laser->sprite1.scaleX <= 0.0f)
+            {
+                laser->sprite1.scaleY = laser->width / 10.0f;
+                laser->sprite1.scaleX = laser->sprite1.scaleY;
+            }
+            laser->sprite1.pos.x = g_GameManager.arena[0] + laser->sprite1.pos.x;
+            laser->sprite1.pos.y = g_GameManager.arena[1] + laser->sprite1.pos.y;
+            g_SpriteEngine->Draw(&laser->sprite1);
+        }
+    }
+    for (i = 0; i < 6; i++)
+    {
+        blt = mgr->drawLists[i];
+        while (blt != NULL)
+        {
+            DrawBullet(blt);
+            blt = blt->next;
+        }
+    }
+    g_EffectManager.OnDraw3();
+    if (g_GameManager.unk_3dbac_10)
+    {
+        g_SpriteEngine->ResetColorModulation();
+    }
+    return 1;
 }
