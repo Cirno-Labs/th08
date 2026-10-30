@@ -76,3 +76,8 @@ void EnemyManager::Initialize()
     enemy->unk_3350 = 1024.0f;
     enemy->unk_2e10 = g_Unknown18b8a24;
 }
+
+EnemyManager::EnemyManager()
+{
+    this->Initialize();
+}

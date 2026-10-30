@@ -383,12 +383,12 @@ address,size,name,symbol
 0x00429de0,16,MemoryManager::Register,?Register@MemoryManager@@QAEPAXPAXHPBD@Z
 0x00429df0,13,MemoryManager::Unregister,?Unregister@MemoryManager@@QAEXPAX@Z
 0x00429e00,1029,EnemyManager::Initialize,?Initialize@EnemyManager@@QAEXXZ
-0x0042a210,97,Func42a210,
-0x0042a280,394,Func42a280,
-0x0042a410,52,Func42a410,
-0x0042a450,62,Func42a450,
-0x0042a490,33,Func42a490,
-0x0042a4c0,25,Func42a4c0,
+0x0042a210,97,EnemyManager::EnemyManager,??0EnemyManager@@QAE@XZ
+0x0042a280,394,Enemy::Enemy,??0Enemy@@QAE@XZ
+0x0042a410,52,BulletShooter::BulletShooter,??0BulletShooter@@QAE@XZ
+0x0042a450,62,EnemyScriptState::EnemyScriptState,??0EnemyScriptState@@QAE@XZ
+0x0042a490,33,EnemyBox::EnemyBox,??0EnemyBox@@QAE@XZ
+0x0042a4c0,25,EnemyScriptLoop::EnemyScriptLoop,??0EnemyScriptLoop@@QAE@XZ
 0x0042a4e0,409,Func42a4e0,
 0x0042a680,413,Func42a680,
 0x0042a820,115,Func42a820,
@@ -747,7 +747,7 @@ address,size,name,symbol
 0x00449e50,78,PlayerOption::PlayerOption,??0PlayerOption@@QAE@XZ
 0x00449ea0,66,PlayerBomb::PlayerBomb,??0PlayerBomb@@QAE@XZ
 0x00449ef0,87,PlayerBullet::PlayerBullet,??0PlayerBullet@@QAE@XZ
-0x00449f50,22,PlayerLaser::PlayerLaser,??0PlayerLaser@@QAE@XZ
+0x00449f50,22,PlayerLaser::PlayerLaser,??0PlayerLaser@@QAE@XZ ??0EnemyTimeline@@QAE@XZ
 0x00449f70,115,PlayerBombPart::PlayerBombPart,??0PlayerBombPart@@QAE@XZ
 0x00449ff0,563,Player::CheckAreaHit,?CheckAreaHit@Player@@QAEHPAUD3DXVECTOR3@@0@Z
 0x0044a230,302,Player::CheckHit,?CheckHit@Player@@QAEHPAUD3DXVECTOR3@@0@Z
