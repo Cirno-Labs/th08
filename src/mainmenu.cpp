@@ -1779,7 +1779,7 @@ int MainMenu::UpdateState17()
                 this->unkSprites2[i].fontHeight = 15;
                 this->unkSprites2[i].color = 0xffffffff;
             }
-            this->Func46d7f9();
+            this->UpdateCardDetails();
             this->unk_c29c = 0;
         }
         if (this->inputLockout == 8)
@@ -1886,7 +1886,7 @@ int MainMenu::UpdateState17()
             }
             this->unk_c29c = 0x15;
         }
-        this->Func46d7f9();
+        this->UpdateCardDetails();
         if (WAS_PRESSED(0x1001))
         {
             int card;
@@ -2253,6 +2253,143 @@ void DrawFan(D3DXVECTOR3 *center, D3DCOLOR color, float arc, float diameter)
         }
     }
     g_SpriteEngine->DrawColoredFan(&sprite, vertices, 0x40);
+}
+
+void MainMenu::UpdateCardDetails()
+{
+    int id;
+    int i;
+    int seen;
+
+    if (this->subState == 1 && this->unk_c29c == 0)
+    {
+        return;
+    }
+    id = g_StageSpellCards[g_GameManager.stage][this->cursor];
+    seen = g_GameManager.catks[id].practiceAttempts[12] + g_GameManager.catks[id].attempts[12];
+    if (this->subState == 0 || this->unk_c29c == 11)
+    {
+        g_SpriteEngine->RenderText(&this->unkSprites2[0], 0xffffff, 0, "Ｎｏ．%s　　%s", FormatFullWidthNumber(id + 1, 3),
+                                   seen == 0 ? "？？？？？？？？" : g_GameManager.catks[id].name);
+    }
+    if (this->subState == 0 || this->unk_c29c == 9)
+    {
+        g_SpriteEngine->RenderText(&this->unkSprites2[1], 0xffffff, 0, "使用者  %s　　%s %s",
+                                   seen == 0 ? "？？？？？？？？" : g_GameManager.catks[id].comment,
+                                   g_SpellPracticeDifficultyNames[GetSpellCardDifficulty(id)],
+                                   IsListedSpellCard(id) ? "Last" : " ");
+    }
+    if (this->subState == 0)
+    {
+        g_SpriteEngine->RenderText(&this->unkSprites2[2], 0xffffff, 0, "取得数/挑戦数[最高点]　%s　全主人公合計",
+                                   GetShotName(g_GameManager.character));
+    }
+    if (GetSpellCardDifficulty(id) <= 4)
+    {
+        if (!g_GameManager.catks[id].WasAttempted(12))
+        {
+            if (this->subState == 0 || this->unk_c29c == 7)
+            {
+                g_SpriteEngine->RenderText(&this->unkSprites2[3], 0xffffff, 0,
+                                           "　　---/---(---/---)[--------]　　---/---(---/---)[--------]");
+            }
+        }
+        else if (this->subState == 0 || this->unk_c29c == 7)
+        {
+            g_SpriteEngine->RenderText(
+                &this->unkSprites2[3], 0xffffff, 0, "　　%3d/%3d(%3d/%3d)[%.8d]　　%3d/%3d(%3d/%3d)[%.8d]",
+                g_GameManager.catks[id].practiceCaptures[g_GameManager.character],
+                g_GameManager.catks[id].practiceAttempts[g_GameManager.character],
+                g_GameManager.catks[id].captures[g_GameManager.character],
+                g_GameManager.catks[id].attempts[g_GameManager.character],
+                g_GameManager.catks[id].practiceMaxBonus[g_GameManager.character],
+                g_GameManager.catks[id].practiceCaptures[12], g_GameManager.catks[id].practiceAttempts[12],
+                g_GameManager.catks[id].captures[12], g_GameManager.catks[id].attempts[12],
+                g_GameManager.catks[id].practiceMaxBonus[12]);
+        }
+    }
+    else
+    {
+        if (!g_GameManager.catks[id].WasAttempted(12))
+        {
+            if (this->subState == 0 || this->unk_c29c == 7)
+            {
+                g_SpriteEngine->RenderText(&this->unkSprites2[3], 0xffffff, 0,
+                                           "　　---/---(---/---)[--------]　　---/---(---/---)[--------]");
+            }
+        }
+        else if (this->subState == 0 || this->unk_c29c == 7)
+        {
+            g_SpriteEngine->RenderText(&this->unkSprites2[3], 0xffffff, 0,
+                                       "　　%3d/%3d(---/---)[%.8d]　　%3d/%3d(---/---)[%.8d]",
+                                       g_GameManager.catks[id].practiceCaptures[g_GameManager.character],
+                                       g_GameManager.catks[id].practiceAttempts[g_GameManager.character],
+                                       g_GameManager.catks[id].practiceMaxBonus[g_GameManager.character],
+                                       g_GameManager.catks[id].practiceCaptures[12],
+                                       g_GameManager.catks[id].practiceAttempts[12],
+                                       g_GameManager.catks[id].practiceMaxBonus[12]);
+        }
+    }
+    if (this->subState == 0)
+    {
+        g_SpriteEngine->RenderText(&this->unkSprites2[4], 0xffffff, 0, "カードの補足");
+    }
+    if (this->subState == 0 || this->unk_c29c == 5)
+    {
+        // A last spell not yet open shows how to open it.
+        if (!g_GameManager.catks[id].WasAttempted(12) && id >= 0xcc && id <= 0xdd && !g_GameManager.IsSpellCardSeen(id))
+        {
+            g_SpriteEngine->RenderText(&this->unkSprites2[5], 0xffffff, 0, g_LastSpellConditions[id - 0xcc][0].format,
+                                       g_LastSpellConditions[id - 0xcc][0].cards[0] + 1,
+                                       g_LastSpellConditions[id - 0xcc][0].cards[1] + 1,
+                                       g_LastSpellConditions[id - 0xcc][0].cards[2] + 1,
+                                       g_LastSpellConditions[id - 0xcc][0].cards[3] + 1,
+                                       g_LastSpellConditions[id - 0xcc][0].cards[4] + 1);
+        }
+        else
+        {
+            char text[0x80];
+
+            memset(text, 0, sizeof(text));
+            memcpy(text, g_GameManager.catks[id].unk_70, sizeof(g_GameManager.catks[id].unk_70));
+            g_SpriteEngine->RenderText(&this->unkSprites2[5], 0xffffff, 0,
+                                       g_GameManager.catks[id].practiceCaptures[12] == 0 ? "？？？？？？？？？" : text);
+        }
+    }
+    if (this->subState == 0 || this->unk_c29c == 3)
+    {
+        if (!g_GameManager.catks[id].WasAttempted(12) && id >= 0xcc && id <= 0xdd && !g_GameManager.IsSpellCardSeen(id))
+        {
+            g_SpriteEngine->RenderText(&this->unkSprites2[6], 0xffffff, 0, g_LastSpellConditions[id - 0xcc][1].format,
+                                       g_LastSpellConditions[id - 0xcc][1].cards[0] + 1,
+                                       g_LastSpellConditions[id - 0xcc][1].cards[1] + 1,
+                                       g_LastSpellConditions[id - 0xcc][1].cards[2] + 1,
+                                       g_LastSpellConditions[id - 0xcc][1].cards[3] + 1,
+                                       g_LastSpellConditions[id - 0xcc][1].cards[4] + 1);
+        }
+        else
+        {
+            char text[0x80];
+
+            memset(text, 0, sizeof(text));
+            memcpy(text, g_GameManager.catks[id].unk_b0, sizeof(g_GameManager.catks[id].unk_b0));
+            g_SpriteEngine->RenderText(&this->unkSprites2[6], 0xffffff, 0,
+                                       g_GameManager.catks[id].practiceCaptures[12] == 0 ? "？？？？？？？？？" : text);
+        }
+    }
+    this->unkSprites2[5].pos.x = 96.0f;
+    this->unkSprites2[6].pos.x = 96.0f;
+    if (this->subState == 0 || this->unk_c29c == 3)
+    {
+        for (i = 0; i < 7; i++)
+        {
+            this->unkSprites2[i].alpha = 0xff;
+        }
+    }
+    if (this->unk_c29c != 0)
+    {
+        this->unk_c29c--;
+    }
 }
 
 int MainMenu::UpdateReplayMenu()

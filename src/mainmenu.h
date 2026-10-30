@@ -60,8 +60,13 @@ public:
     // meets: Extra clears, practice captures, captures and attempts of
     // given cards (0x46cbbb). New in th08.
     void UnlockLastSpells();
-    // The spell card list's per-card sprites in state 17 (0x46d7f9).
-    void Func46d7f9();
+    // Writes the card at the cursor's details into unkSprites2 in state
+    // 17: number and name, comment and difficulty, the counts for the
+    // character and all, and the two comment lines or, for a last
+    // spell not yet open, how to open it. Outside subState 0, only what
+    // unk_c29c (counting down from 0x15 as the cursor moves) reaches
+    // this frame (0x46d7f9).
+    void UpdateCardDetails();
 
     // Moves to state `state`, remembering the one it leaves in
     // prevState, and resets the frame counters. Inline: the copy is at
@@ -179,6 +184,18 @@ char *FormatFullWidthNumber(int value, int digits);
 // Draws a fan of 63 triangles around `center`, `diameter` wide, from
 // straight up, each `arc` * 2 pi / 62 wider than the last. New in th08.
 void DrawFan(D3DXVECTOR3 *center, D3DCOLOR color, float arc, float diameter);
+// A line of the hint the spell card list shows for a last spell not yet
+// open: a format and up to five card numbers (shown plus 1).
+struct LastSpellCondition
+{
+    char *format;
+    int cards[5];
+};
+// Two lines for each card from 0xcc to 0xdd.
+extern LastSpellCondition g_LastSpellConditions[18][2];
+// The difficulty names the spell card list shows, by
+// GetSpellCardDifficulty.
+extern char *g_SpellPracticeDifficultyNames[6];
 // FormatFullWidthNumber's result.
 extern char g_FullWidthNumber[0x40];
 // "０" to "９".

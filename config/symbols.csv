@@ -1016,7 +1016,7 @@ address,size,name,symbol
 0x0046bbc0,4047,MainMenu::UpdateState17,?UpdateState17@MainMenu@@QAEHXZ
 0x0046cbbb,2984,MainMenu::UnlockLastSpells,?UnlockLastSpells@MainMenu@@QAEXXZ
 0x0046d763,150,FormatFullWidthNumber,?FormatFullWidthNumber@@YIPADHH@Z
-0x0046d7f9,2365,MainMenu::Func46d7f9,?Func46d7f9@MainMenu@@QAEXXZ
+0x0046d7f9,2365,MainMenu::UpdateCardDetails,?UpdateCardDetails@MainMenu@@QAEXXZ
 0x0046e136,3671,MainMenu::UpdateReplayMenu,?UpdateReplayMenu@MainMenu@@QAEHXZ
 0x0046ef8d,1180,MainMenu::DrawReplayMenu,?DrawReplayMenu@MainMenu@@QAEHXZ
 0x0046f429,418,MainMenu::DrawPracticeScores,?DrawPracticeScores@MainMenu@@QAEHXZ
@@ -2480,6 +2480,8 @@ address,size,name,symbol
 0x004c8240,,g_DemoReplayPaths,?g_DemoReplayPaths@@3PAPADA
 0x004c8250,,g_PracticeStageNames,?g_PracticeStageNames@@3PAPADA
 0x004c829c,,g_FullWidthDigits,?g_FullWidthDigits@@3PAPADA
+0x004c82c8,,g_LastSpellConditions,?g_LastSpellConditions@@3PAY01ULastSpellCondition@@A
+0x004c8628,,g_SpellPracticeDifficultyNames,?g_SpellPracticeDifficultyNames@@3PAPADA
 0x004c8640,,g_TitleHelpTexts,?g_TitleHelpTexts@@3PAPADA
 0x004c8664,,g_OptionsHelpTexts,?g_OptionsHelpTexts@@3PAPADA
 0x004c868c,,g_LastPressedKey,?g_LastPressedKey@@3FA
