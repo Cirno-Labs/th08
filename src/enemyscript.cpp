@@ -1486,9 +1486,9 @@ void BounceBulletsAtZones(Enemy *enemy, EnemyScriptInstr *instr)
         {
             continue;
         }
-        if (bullet->unk_dc4 != 0)
+        if (bullet->scriptFuncState != 0)
         {
-            bullet->unk_dc4--;
+            bullet->scriptFuncState--;
             continue;
         }
         posPrev = bullet->pos - bullet->velocity;
@@ -1518,7 +1518,7 @@ void BounceBulletsAtZones(Enemy *enemy, EnemyScriptInstr *instr)
         }
         if (zone != prevZone)
         {
-            bullet->unk_dc4 = 2;
+            bullet->scriptFuncState = 2;
             bullet->velocity *= -1.0f;
             if (zone == 0 || prevZone == 0)
             {
@@ -1559,9 +1559,9 @@ void BounceBulletsAtZones2(Enemy *enemy, EnemyScriptInstr *instr)
         {
             continue;
         }
-        if (bullet->unk_dc4 != 0)
+        if (bullet->scriptFuncState != 0)
         {
-            bullet->unk_dc4--;
+            bullet->scriptFuncState--;
             continue;
         }
         posPrev = bullet->pos - bullet->velocity;
@@ -1591,7 +1591,7 @@ void BounceBulletsAtZones2(Enemy *enemy, EnemyScriptInstr *instr)
         }
         if (zone != prevZone)
         {
-            bullet->unk_dc4 = 2;
+            bullet->scriptFuncState = 2;
             bullet->velocity *= -1.0f;
             if (zone == 0 || prevZone == 0)
             {
@@ -1639,9 +1639,9 @@ void BounceBulletsAtZones3(Enemy *enemy, EnemyScriptInstr *instr)
         {
             continue;
         }
-        if (bullet->unk_dc4 != 0)
+        if (bullet->scriptFuncState != 0)
         {
-            bullet->unk_dc4--;
+            bullet->scriptFuncState--;
             continue;
         }
         posPrev = bullet->pos - bullet->velocity;
@@ -1671,7 +1671,7 @@ void BounceBulletsAtZones3(Enemy *enemy, EnemyScriptInstr *instr)
         }
         if (zone != prevZone)
         {
-            bullet->unk_dc4 = 2;
+            bullet->scriptFuncState = 2;
             bullet->velocity *= -1.0f;
             if (zone == 0 || prevZone == 0)
             {
@@ -1810,22 +1810,22 @@ void ToggleMarkedBullets(Enemy *enemy, EnemyScriptInstr *instr)
         {
             continue;
         }
-        if (bullet->activeFlags & enemy->currentCtx->vars.ints[0])
+        if (bullet->flags & enemy->currentCtx->vars.ints[0])
         {
-            if (bullet->sprite.autoRotate == 1)
+            if (bullet->sprites.sprite0.autoRotate == 1)
             {
-                bullet->sprite.autoRotate = 0;
-                bullet->sprite.blendMode = 1;
-                g_BulletManager.etamaAnm->SetSprite(&bullet->sprite, bullet->sprite.spriteIndex + 0x10);
+                bullet->sprites.sprite0.autoRotate = 0;
+                bullet->sprites.sprite0.blendMode = 1;
+                g_BulletManager.etamaAnm->SetSprite(&bullet->sprites.sprite0, bullet->sprites.sprite0.spriteIndex + 0x10);
                 bullet->unk_10b4 = 1;
                 ((Vector2 *)&bullet->velocity)
                     ->SetPolar(enemy->currentCtx->vars.floats[0], g_App.gameSpeed * enemy->currentCtx->vars.floats[1]);
             }
             else
             {
-                bullet->sprite.autoRotate = 1;
-                bullet->sprite.blendMode = 0;
-                g_BulletManager.etamaAnm->SetSprite(&bullet->sprite, bullet->sprite.spriteIndex - 0x10);
+                bullet->sprites.sprite0.autoRotate = 1;
+                bullet->sprites.sprite0.blendMode = 0;
+                g_BulletManager.etamaAnm->SetSprite(&bullet->sprites.sprite0, bullet->sprites.sprite0.spriteIndex - 0x10);
                 bullet->unk_10b4 = 0;
                 ((Vector2 *)&bullet->velocity)->SetPolar(bullet->angle, g_App.gameSpeed * bullet->speed);
             }
@@ -1868,29 +1868,29 @@ void CycleMarkedBullets(Enemy *enemy, EnemyScriptInstr *instr)
         {
             continue;
         }
-        if (bullet->activeFlags & enemy->currentCtx->vars.ints[0])
+        if (bullet->flags & enemy->currentCtx->vars.ints[0])
         {
-            if (bullet->sprite.autoRotate == 1)
+            if (bullet->sprites.sprite0.autoRotate == 1)
             {
-                bullet->sprite.autoRotate = 0;
-                bullet->sprite.blendMode = 1;
-                bullet->sprite.alpha = 0;
-                g_BulletManager.etamaAnm->SetSprite(&bullet->sprite, bullet->sprite.spriteIndex + 0x10);
+                bullet->sprites.sprite0.autoRotate = 0;
+                bullet->sprites.sprite0.blendMode = 1;
+                bullet->sprites.sprite0.alpha = 0;
+                g_BulletManager.etamaAnm->SetSprite(&bullet->sprites.sprite0, bullet->sprites.sprite0.spriteIndex + 0x10);
                 bullet->unk_10b4 = 1;
                 ((Vector2 *)&bullet->velocity)
                     ->SetPolar(bullet->angle, g_App.gameSpeed * enemy->currentCtx->vars.floats[1]);
             }
-            else if (bullet->sprite.autoRotate == 0)
+            else if (bullet->sprites.sprite0.autoRotate == 0)
             {
-                bullet->sprite.autoRotate = 2;
-                bullet->sprite.alpha = 0;
-                bullet->sprite.SetAlphaInterp(15, 0, 0, 0xff);
+                bullet->sprites.sprite0.autoRotate = 2;
+                bullet->sprites.sprite0.alpha = 0;
+                bullet->sprites.sprite0.SetAlphaInterp(15, 0, 0, 0xff);
             }
             else
             {
-                bullet->sprite.autoRotate = 1;
-                bullet->sprite.blendMode = 0;
-                g_BulletManager.etamaAnm->SetSprite(&bullet->sprite, bullet->sprite.spriteIndex - 0x10);
+                bullet->sprites.sprite0.autoRotate = 1;
+                bullet->sprites.sprite0.blendMode = 0;
+                g_BulletManager.etamaAnm->SetSprite(&bullet->sprites.sprite0, bullet->sprites.sprite0.spriteIndex - 0x10);
                 bullet->unk_10b4 = 0;
                 ((Vector2 *)&bullet->velocity)->SetPolar(bullet->angle, g_App.gameSpeed * bullet->speed);
             }
@@ -1921,7 +1921,7 @@ void MarkFollowersNearBullets(Enemy *enemy, EnemyScriptInstr *instr)
         {
             continue;
         }
-        if (bullet->activeFlags & 0x100000)
+        if (bullet->flags & 0x100000)
         {
             member = enemy->unk_8;
             while (member != NULL)
@@ -2004,12 +2004,12 @@ void SpawnEnemiesAtMarkedBullets(Enemy *enemy, EnemyScriptInstr *instr)
         {
             continue;
         }
-        if (bullet->activeFlags & 0x100000)
+        if (bullet->flags & 0x100000)
         {
             enemy->currentCtx->vars.floats[0] = bullet->angle;
             g_EnemyManager.SpawnWithVars(enemy->currentCtx->vars.ints2[2], &bullet->pos, 800, -2, 10,
                                          &enemy->currentCtx->vars);
-            bullet->activeFlags &= ~0x100000;
+            bullet->flags &= ~0x100000;
         }
     }
 }
@@ -2030,10 +2030,10 @@ void StartSlowdown(Enemy *enemy, EnemyScriptInstr *instr)
             continue;
         }
         bullet->velocity *= g_App.gameSpeed;
-        bullet->sprite.baseSpriteIndex = bullet->sprite.spriteIndex;
-        if (bullet->sprite.spriteIndex >= 0x60 && bullet->sprite.spriteIndex <= 0x6f)
+        bullet->sprites.sprite0.baseSpriteIndex = bullet->sprites.sprite0.spriteIndex;
+        if (bullet->sprites.sprite0.spriteIndex >= 0x60 && bullet->sprites.sprite0.spriteIndex <= 0x6f)
         {
-            g_BulletManager.etamaAnm->SetSprite(&bullet->sprite, 0x6f);
+            g_BulletManager.etamaAnm->SetSprite(&bullet->sprites.sprite0, 0x6f);
         }
     }
 }
@@ -2051,9 +2051,9 @@ void EndSlowdown(Enemy *enemy, EnemyScriptInstr *instr)
             continue;
         }
         bullet->velocity *= scale;
-        if (bullet->sprite.spriteIndex >= 0x60 && bullet->sprite.spriteIndex <= 0x6f)
+        if (bullet->sprites.sprite0.spriteIndex >= 0x60 && bullet->sprites.sprite0.spriteIndex <= 0x6f)
         {
-            g_BulletManager.etamaAnm->SetSprite(&bullet->sprite, bullet->sprite.baseSpriteIndex);
+            g_BulletManager.etamaAnm->SetSprite(&bullet->sprites.sprite0, bullet->sprites.sprite0.baseSpriteIndex);
         }
     }
     g_App.gameSpeed = 1.0f / instr->args[1].i;

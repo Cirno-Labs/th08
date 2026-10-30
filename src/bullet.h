@@ -1,4 +1,4 @@
-// Bullets. Only what is known so far.
+// The enemies' bullets and lasers, as th07's bullet.h.
 
 #pragma once
 
@@ -6,11 +6,115 @@
 #include <windows.h>
 #include <d3dx8math.h>
 
+#include "chain.h"
 #include "common.h"
 #include "sprite.h"
+#include "timer.h"
 
-// What an enemy fires bullets with, as th07's (0x210). Only what is
-// known so far.
+// A bullet type's sprites: the bullet's and those of its spawning
+// effects, as th07's.
+struct BulletTypeSprites
+{
+    Sprite sprite0;
+    Sprite sprite1;
+    Sprite sprite2;
+    Sprite sprite3;
+    Sprite sprite4;
+    // The size of the bullet's hitbox.
+    D3DXVECTOR3 hitboxSize;
+    // Only copied from the shooter's type into each bullet.
+    BYTE unusedByteD40;
+    // The height of the bullet's sprite.
+    BYTE height;
+    // A size class: 5 up to 8 high, 4 or 3 up to 16, 2 or 1 up to 32,
+    // 0 above; the draw list the bullet goes into.
+    BYTE sizeClass;
+    BYTE unusedByteD43;
+};
+ASSERT_SIZE(BulletTypeSprites, 0xd44);
+
+// One step of a bullet's behavior, as th07's: `flag` is the
+// Bullet::flags bit it runs under.
+struct BulletCommand
+{
+    float arg0;
+    float arg1;
+    // Frames, for most flags.
+    int frames;
+    int maxTurns;
+    DWORD flag;
+    int concurrentFlag;
+};
+ASSERT_SIZE(BulletCommand, 0x18);
+
+// The state of one of a bullet's running behaviors, as th07's.
+struct BulletEx
+{
+    Timer timer;
+    float turnSpeed;
+    float turnAngle;
+    // Added to the velocity (flag 0x10).
+    D3DXVECTOR3 accel;
+    // How long the behavior runs, in frames.
+    int duration;
+    int maxTurns;
+    int turnCount;
+};
+ASSERT_SIZE(BulletEx, 0x2c);
+
+// One enemy bullet (0x10b8), as th07's.
+struct Bullet
+{
+    BulletTypeSprites sprites;
+    D3DXVECTOR3 pos;
+    D3DXVECTOR3 velocity;
+    D3DXVECTOR3 accel;
+    float speed;
+    float accelSpeed;
+    float turnSpeed;
+    float angle;
+    float angularVelocity;
+    float turnAngle;
+    Timer timer;
+    Timer grazeDelayTimer;
+    unsigned char pad_d98[0x10];
+    // Set by a command with flag 0x2000.
+    int boundsCheckDelay;
+    // The behaviors running, by BulletCommand::flag.
+    DWORD activeFlags;
+    // BulletShooter::flags.
+    DWORD flags;
+    short color;
+    WORD unusedWordDb6;
+    // 0 while the slot is free; 6 marks the spare bullet after the last.
+    WORD state;
+    WORD outOfBoundsFrames;
+    BYTE spawnedFlag;
+    BYTE grazed;
+    // Set while it spawns inside one of the player's hit areas: it turns
+    // into an item as it finishes spawning. New in th08.
+    BYTE spawnedInArea;
+    BYTE unusedByteDbf;
+    // The next bullet in the same BulletManager draw list.
+    Bullet *next;
+    // 0 when fired; free for the g_EnemyScriptFuncs that work on bullets,
+    // which use it as a turned mark, a laser index or a countdown (the
+    // zone functions: frames before they may turn it again).
+    int scriptFuncState;
+    // The sound the bullet's behaviors play as they start.
+    int sound;
+    // The command to start next.
+    int commandIndex;
+    BulletCommand commands[18];
+    BulletEx ex[7];
+    // Set as the toggling script functions switch it to its additive
+    // sprite; it neither grazes nor hits while set.
+    BYTE unk_10b4;
+    unsigned char unk_10b5[0x3];
+};
+ASSERT_SIZE(Bullet, 0x10b8);
+
+// What an enemy fires bullets with, as th07's (0x210).
 struct BulletShooter
 {
     // Inline; the copy is at 0x42a410.
@@ -20,89 +124,116 @@ struct BulletShooter
         this->bulletSound = -1;
     }
 
-    // The bullet type, and its color, as th07's.
+    // The bullet type, and its color.
     short sprite;
     short color;
     D3DXVECTOR3 pos;
-    // The angles and speeds, as th07's.
     float angle1;
     float angle2;
     float speed1;
     float speed2;
-    unsigned char unk_20[0x1d4];
-    // How many bullets, as th07's.
+    // Copied into each bullet.
+    BulletCommand commands[18];
+    // Extra values for the lasers.
+    float exFloats[4];
+    int exInts[4];
+    DWORD laserEndHitFrames;
     short count1;
     short count2;
-    // Which of the fire instructions (96 on) set it, as th07's.
+    // Which of the fire instructions (96 on) set it.
     WORD aimMode;
-    // Cleared by the fire instructions; nothing reads it, as th07's.
+    // Cleared by the fire instructions; nothing reads it.
     WORD unusedAfterFireC2;
     int flags;
     int sound;
-    // Bullet::sound, as th07's.
+    // Bullet::sound.
     int bulletSound;
-    unsigned char unk_208[0x8];
+    // Bullet::commandIndex, the command its bullets start from. New in
+    // th08.
+    int commandIndex;
+    // FirePattern sets it to the bullet type's sprites.
+    BulletTypeSprites *typeSprites;
 };
 ASSERT_SIZE(BulletShooter, 0x210);
 
-// One enemy bullet (0x10b8), as th07's. Only what is known so far.
-struct Bullet
+// One enemy laser, as th07's.
+struct Laser
 {
-    // Its sprite, as th07's sprites.sprite0.
-    Sprite sprite;
-    unsigned char unk_2a4[0xaa0];
+    Sprite sprite0;
+    Sprite sprite1;
     D3DXVECTOR3 pos;
-    D3DXVECTOR3 velocity;
-    unsigned char unk_d5c[0xc];
-    float speed;
-    unsigned char unk_d6c[0x8];
     float angle;
-    unsigned char unk_d78[0x38];
-    DWORD activeFlags;
-    unsigned char unk_db4[0x4];
-    // 0 while the slot is free, as th07's.
-    WORD state;
-    unsigned char unk_dba[0xa];
-    // Frames left before the zone script functions may turn it again.
-    int unk_dc4;
-    unsigned char unk_dc8[0x2ec];
-    // Set as the toggling script functions switch it to its additive
-    // sprite.
-    BYTE unk_10b4;
-    unsigned char unk_10b5[0x3];
+    float startOffset;
+    float endOffset;
+    float maxLength;
+    float width;
+    float baseWidth;
+    float speed;
+    int startFrames;
+    int hitStartFrame;
+    int durationFrames;
+    int endFrames;
+    int endHitFrames;
+    int active;
+    Timer timer;
+    WORD flags;
+    short color;
+    BYTE state;
+    BYTE drawDelayFlag;
+    unsigned char pad_59a[0x2];
 };
-ASSERT_SIZE(Bullet, 0x10b8);
+ASSERT_SIZE(Laser, 0x59c);
 
-// The bullets. Only what is known so far.
+// The bullets, at 0xf54e90.
 class BulletManager
 {
 public:
-    // Removes the bullets' chain elements, as th07's (0x433850).
-    static void RemoveChain();
-    // Loads the bullet sprites from `path` and adds the bullets' chain
-    // elements, as th07's (0x4311a0). Returns 0, or -1 on failure.
-    static int RegisterChain(char *path);
-    // Clears the bullets, as th07's ClearAll (0x415c60).
-    void Func415c60();
+    // Constructs the members and resets.
+    BulletManager();
+
+    // Zeroes everything, marks the spare bullet and clears the script
+    // index of every bullet's sprites (0x42f360).
+    void Reset();
     // Called with 4 as a timer callback ends a spell card, as th07's
     // ClearAll(10) was (0x430830).
-    void Func430830(int arg);
+    void Func430830(int mode);
+    // Clears the bullets, as th07's ClearAll (0x415c60).
+    void Func415c60();
     // Clears the bullets for a bonus of up to `maxBonus`, as th07's
     // (0x430aa0). Returns the total.
     int ClearAllWithBonus(int maxBonus, int toItems);
     // Fires `shooter`'s pattern, as th07's (0x430e10).
-    int FirePattern(struct BulletShooter *shooter);
+    int FirePattern(BulletShooter *shooter);
 
-    unsigned char unk_0[0x1a880];
-    // The bullets, as th07's; the last is a spare.
+    // Loads the bullet sprites and adds the bullets' chain elements, as
+    // th07's (0x4311a0). Returns 0, or -1 on failure.
+    static int RegisterChain(char *anmPath);
+    // Removes the bullets' chain elements, as th07's (0x433850).
+    static void RemoveChain();
+
+    BulletTypeSprites typeSprites[0x20];
+    // The last one is a spare whose state 6 sends searches back to the
+    // first.
     Bullet bullets[0x601];
-    unsigned char unk_660938[0x59c00];
-    // The bullets alive, as th07's.
+    Laser lasers[0x100];
+    // The bullets alive.
     int bulletCount;
-    unsigned char unk_6ba53c[0x38];
+    int clearAllFrames;
+    Timer updateTimer;
+    int updateFrameCount;
+    // RegisterChain's argument.
+    char *anmPath;
+    // Six lists of the bullets to draw, in order, linked by
+    // Bullet::next.
+    Bullet *drawLists[6];
+    // Where SpawnBullet looks for a free bullet first.
+    Bullet *nextBullet;
+    // The item type cleared bullets turn into.
+    int clearItemType;
     // A copy of g_EtamaAnm, which the items also run their scripts from.
     AnmLoaded *etamaAnm;
 };
+ASSERT_SIZE(BulletManager, 0x6ba578);
 extern BulletManager g_BulletManager;
 // etama.anm (slot 6), which BulletManager's added callback loads.
 extern AnmLoaded *g_EtamaAnm;

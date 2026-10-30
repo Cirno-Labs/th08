@@ -429,7 +429,7 @@ address,size,name,symbol
 0x0042f2f0,37,AsciiText::SetScale,?SetScale@AsciiText@@QAEXMM@Z
 0x0042f320,17,Gui::IsBossPresent,?IsBossPresent@Gui@@QAEEXZ
 0x0042f340,22,Gui::SetBossTimer,?SetBossTimer@Gui@@QAEXH@Z
-0x0042f360,177,Func42f360,
+0x0042f360,177,BulletManager::Reset,?Reset@BulletManager@@QAEXXZ
 0x0042f420,117,Func42f420,
 0x0042f4a0,92,Func42f4a0,
 0x0042f500,115,Func42f500,
