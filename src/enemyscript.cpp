@@ -1190,3 +1190,8 @@ void StartResurrection(Enemy *enemy, EnemyScriptInstr *instr)
 {
     g_SpellCard.Func415d10("「リザレクション」", enemy);
 }
+
+void SpellCardFunc416160(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    g_SpellCard.Func416160();
+}

@@ -703,6 +703,9 @@ void GetPracticeCard(Enemy *enemy, EnemyScriptInstr *instr);
 // SpellCard::Func415d10 (0x424ff0).
 void StartResurrection(Enemy *enemy, EnemyScriptInstr *instr);
 
+// Script function 23: SpellCard::Func416160 (0x425020).
+void SpellCardFunc416160(Enemy *enemy, EnemyScriptInstr *instr);
+
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
 // The enemy scripts by stage, by stage in spell practice (stage + 9),
