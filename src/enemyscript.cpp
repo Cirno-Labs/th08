@@ -1439,21 +1439,6 @@ void ShakeScreenRamp(Enemy *enemy, EnemyScriptInstr *instr)
     ScreenEffect::StartEffect(7, 16, 20, 20, 20, 0x15);
 }
 
-void FlashScreen180(Enemy *enemy, EnemyScriptInstr *instr)
-{
-    ScreenEffect::StartEffect(3, 180, 1, 0xffffffff, 0, 0x15);
-}
-
-void SetGameSpeed(Enemy *enemy, EnemyScriptInstr *instr)
-{
-    int divisor;
-    float newSpeed;
-
-    divisor = instr->args[1].i;
-    newSpeed = 1.0f / divisor;
-    g_App.gameSpeed = newSpeed;
-}
-
 void MarkFollowersNearBullets(Enemy *enemy, EnemyScriptInstr *instr)
 {
     Bullet *bullet = g_BulletManager.bullets;
@@ -1485,6 +1470,21 @@ void MarkFollowersNearBullets(Enemy *enemy, EnemyScriptInstr *instr)
             }
         }
     }
+}
+
+void FlashScreen180(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    ScreenEffect::StartEffect(3, 180, 1, 0xffffffff, 0, 0x15);
+}
+
+void SetGameSpeed(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    int divisor;
+    float newSpeed;
+
+    divisor = instr->args[1].i;
+    newSpeed = 1.0f / divisor;
+    g_App.gameSpeed = newSpeed;
 }
 
 void GetPracticeCard(Enemy *enemy, EnemyScriptInstr *instr)
@@ -1519,18 +1519,6 @@ void SetFrozen(Enemy *enemy, EnemyScriptInstr *instr)
     {
         g_Stage.dialogueSprites[0].SetPendingInterrupt(1);
         g_Stage.dialogueSprites[1].SetPendingInterrupt(1);
-    }
-}
-
-void DropBombOrLifeItem(Enemy *enemy, EnemyScriptInstr *instr)
-{
-    if (g_Unknown17d6ed4)
-    {
-        g_ItemManager.SpawnItem(&enemy->pos, 3, 0);
-    }
-    else
-    {
-        g_ItemManager.SpawnItem(&enemy->pos, 5, 0);
     }
 }
 
@@ -1607,4 +1595,16 @@ void EndSlowdown(Enemy *enemy, EnemyScriptInstr *instr)
     g_App.gameSpeed = 1.0f;
     g_Stage.dialogueSprites[0].SetPendingInterrupt(1);
     g_Stage.dialogueSprites[1].SetPendingInterrupt(1);
+}
+
+void DropBombOrLifeItem(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    if (g_Unknown17d6ed4)
+    {
+        g_ItemManager.SpawnItem(&enemy->pos, 3, 0);
+    }
+    else
+    {
+        g_ItemManager.SpawnItem(&enemy->pos, 5, 0);
+    }
 }
