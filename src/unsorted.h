@@ -2480,7 +2480,7 @@ struct StageBgm
 {
     int stageBgm;
     int bossBgm;
-    int unk_8;
+    int bossBgm2;
 };
 extern StageBgm g_StageBgms[];
 // The music a practised spell card plays, by card number: entries up to
