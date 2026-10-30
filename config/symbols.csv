@@ -316,7 +316,7 @@ address,size,name,symbol
 0x00425020,26,SpellCardFunc416160,?SpellCardFunc416160@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00425040,37,GetSpellCardsCaptured,?GetSpellCardsCaptured@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00425070,89,SetFrozen,?SetFrozen@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
-0x004250d0,213,Func4250d0,
+0x004250d0,213,SpawnEnemiesAtMarkedBullets,?SpawnEnemiesAtMarkedBullets@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x004251b0,213,StartSlowdown,?StartSlowdown@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00425290,255,EndSlowdown,?EndSlowdown@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00425390,74,DropBombOrLifeItem,?DropBombOrLifeItem@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z

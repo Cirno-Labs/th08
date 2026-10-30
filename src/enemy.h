@@ -759,6 +759,11 @@ void EndSlowdown(Enemy *enemy, EnemyScriptInstr *instr);
 // there and the enemy's ints[7] (0x424e50).
 void MarkFollowersNearBullets(Enemy *enemy, EnemyScriptInstr *instr);
 
+// Script function 27: spawns subroutine ints2[2] (life 800, item -2,
+// score 10, floats[0] at its angle) at each bullet with activeFlags bit
+// 20, which it clears (0x4250d0).
+void SpawnEnemiesAtMarkedBullets(Enemy *enemy, EnemyScriptInstr *instr);
+
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
 // The enemy scripts by stage, by stage in spell practice (stage + 9),

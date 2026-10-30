@@ -1534,6 +1534,29 @@ void DropBombOrLifeItem(Enemy *enemy, EnemyScriptInstr *instr)
     }
 }
 
+void SpawnEnemiesAtMarkedBullets(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    Bullet *bullet = g_BulletManager.bullets;
+    // Unused.
+    D3DXVECTOR3 pos;
+    int i;
+
+    for (i = 0; i < 0x600; i++, bullet++)
+    {
+        if (bullet->state == 0)
+        {
+            continue;
+        }
+        if (bullet->activeFlags & 0x100000)
+        {
+            enemy->currentCtx->vars.floats[0] = bullet->angle;
+            g_EnemyManager.SpawnWithVars(enemy->currentCtx->vars.ints2[2], &bullet->pos, 800, -2, 10,
+                                         &enemy->currentCtx->vars);
+            bullet->activeFlags &= ~0x100000;
+        }
+    }
+}
+
 void StartSlowdown(Enemy *enemy, EnemyScriptInstr *instr)
 {
     Bullet *bullet;
