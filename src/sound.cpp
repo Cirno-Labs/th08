@@ -597,6 +597,306 @@ void SoundPlayer::QueueSoundPanned(int idx, float x)
     this->queueArgCounts[i]++;
 }
 
+// Not matched yet: the original has a two-byte jump to the next
+// instruction after case 7 that this code does not produce. Only the
+// standalone exe builds it; the DLL keeps the original's.
+#ifdef TH08_EXE
+int SoundPlayer::PlayQueuedSounds()
+{
+    int sound;
+    SoundCommand *command;
+    int i;
+    int arg;
+    int advance;
+    int j;
+
+    if (!this->manager)
+    {
+        return 0;
+    }
+    command = this->commands;
+again:
+    advance = 0;
+    switch (command->type)
+    {
+    case 8:
+        if (this->bgm != NULL)
+        {
+            this->bgm->SetVolume(this->bgmVolume);
+        }
+        break;
+    case 1:
+        if (g_App.GetPreloadBgm())
+        {
+            DebugPrint("Sound : PreLoad Stage\r\n");
+            if (command->stage == 0)
+            {
+                this->StopBgm();
+                this->PreloadBgm(command->arg, command->path);
+                advance = 1;
+                break;
+            }
+        }
+        else
+        {
+            DebugPrint("Sound : PreLoad Stage\r\n");
+            this->PreloadBgm(command->arg, command->path);
+            advance = 1;
+            break;
+        }
+        command->stage++;
+        goto done;
+    case 2:
+        if (g_App.GetPreloadBgm() && command->arg >= 0)
+        {
+            if (command->stage == 0)
+            {
+                DebugPrint("Sound : Load Stage\r\n");
+                if (this->PlayPreloadedBgm(command->arg) != 0)
+                {
+                    break;
+                }
+            }
+            else if (command->stage == 2)
+            {
+                DebugPrint("Sound : Reset Stage\r\n");
+                if (this->bgm != NULL)
+                {
+                    if (this->bgm->Reset() < 0)
+                    {
+                        break;
+                    }
+                }
+            }
+            else if (command->stage == 5)
+            {
+                DebugPrint("Sound : Fill Buffer Stage\r\n");
+                LPDIRECTSOUNDBUFFER buffer = this->bgm->GetBuffer(0);
+                command->arg = this->bgm->GetWaveFile()->GetFormat()->loopEnd != 0;
+                if (this->bgm->FillBufferWithSound(buffer, command->arg) < 0)
+                {
+                    break;
+                }
+            }
+            else if (command->stage == 7)
+            {
+                DebugPrint("Sound : Play Stage\r\n");
+                this->bgm->Play(0, DSBPLAY_LOOPING);
+            }
+            else if (command->stage >= 0x14)
+            {
+                break;
+            }
+        }
+        else
+        {
+            if (this->bgm == NULL)
+            {
+                break;
+            }
+            if (command->stage == 0)
+            {
+                DebugPrint("Sound : Stop Stage\r\n");
+                this->bgm->Stop();
+            }
+            else if (command->stage == 1)
+            {
+                if (this->bgm->isBuffering != 0)
+                {
+                    goto done;
+                }
+                DebugPrint("Sound : Recreate Stage\r\n");
+                this->bgm->RecreateBuffers();
+            }
+            else if (command->stage == 2)
+            {
+                DebugPrint("Sound : ReOpen Stage\r\n");
+                char *name = command->arg >= 0 ? this->bgmNames[command->arg] : command->path;
+                int entry = this->FindTrackIndex(name);
+                this->bgm->GetWaveFile()->SwitchTrack(&this->bgmFormat[entry]);
+            }
+            else if (command->stage == 3)
+            {
+                DebugPrint("Sound : Fill Buffer Stage\r\n");
+                LPDIRECTSOUNDBUFFER buffer = this->bgm->GetBuffer(0);
+                this->bgm->Reset();
+                command->arg = this->bgm->GetWaveFile()->GetFormat()->loopEnd != 0;
+                if (this->bgm->FillBufferWithSound(buffer, command->arg) < 0)
+                {
+                    break;
+                }
+            }
+            else if (command->stage == 4)
+            {
+                DebugPrint("Sound : Play Stage\r\n");
+                this->bgm->Play(0, DSBPLAY_LOOPING);
+            }
+            else if (command->stage >= 7)
+            {
+                break;
+            }
+        }
+        command->stage++;
+        goto done;
+    case 4:
+        if (this->bgm == NULL)
+        {
+            break;
+        }
+        if (command->stage == 0)
+        {
+            DebugPrint("Sound : Stop Stage\r\n");
+            this->bgm->Stop();
+        }
+        else if (command->stage == 1)
+        {
+            DebugPrint("Sound : Thread Stop Stage\r\n");
+            if (this->notifyThread == NULL)
+            {
+                break;
+            }
+            PostThreadMessageA(this->notifyThreadId, WM_QUIT, 0, 0);
+        }
+        else if (command->stage == 2)
+        {
+            if (WaitForSingleObject(this->notifyThread, 0x100) != WAIT_OBJECT_0)
+            {
+                DebugPrint("Sound : Thread Stop Wait Stage\r\n");
+                PostThreadMessageA(this->notifyThreadId, WM_QUIT, 0, 0);
+                command->stage--;
+            }
+            else
+            {
+                this->notifyThread = NULL;
+            }
+        }
+        else if (command->stage == 3)
+        {
+            DebugPrint("Sound : Handle Close Stage\r\n");
+            CloseHandle(this->notifyThread);
+            CloseHandle(this->notifyEvent);
+            this->notifyThread = NULL;
+            if (this->bgm != NULL)
+            {
+                delete this->bgm;
+                this->bgm = NULL;
+            }
+        }
+        else if (command->stage == 10)
+        {
+            break;
+        }
+        command->stage++;
+        goto done;
+    case 3:
+        if (this->bgm == NULL)
+        {
+            break;
+        }
+        if (command->stage == 0)
+        {
+            DebugPrint("Sound : Stop Stage\r\n");
+            this->bgm->Stop();
+        }
+        else if (command->stage == 1)
+        {
+            break;
+        }
+        command->stage++;
+        goto done;
+    case 5:
+        DebugPrint("Sound : Fade Out Stage %d\r\n", command->arg);
+        g_SoundPlayer.FadeOutBgm(command->arg);
+        break;
+    case 6:
+        if (g_App.musicMode == 1)
+        {
+            if (this->bgm->isBuffering != 0)
+            {
+                DebugPrint("locked\n");
+                goto done;
+            }
+            if (this->bgm != NULL)
+            {
+                this->bgm->PauseBuffer();
+            }
+        }
+        break;
+    case 7:
+        if (g_App.musicMode == 1)
+        {
+            if (this->bgm->isBuffering != 0)
+            {
+                goto done;
+            }
+            if (this->bgm != NULL)
+            {
+                this->bgm->ResumeBuffer();
+            }
+        }
+        break;
+    default:
+        goto done;
+        break;
+    }
+    for (i = 0; i < 0x1f; i++, command++)
+    {
+        if (command->type == 0)
+        {
+            break;
+        }
+        *command = *(command + 1);
+    }
+    if (advance)
+    {
+        goto again;
+    }
+done:
+    if (!g_App.playSounds)
+    {
+        return this->commands[0].type;
+    }
+    for (i = 0; i < 0xc; i++)
+    {
+        if (this->queue[i] < 0)
+        {
+            break;
+        }
+        sound = this->queue[i];
+        this->queue[i] = -1;
+        arg = 0;
+        for (j = 0; j < this->queueArgCounts[i]; j++)
+        {
+            arg += this->queueArgs[i][j];
+        }
+        arg /= this->queueArgCounts[i];
+        this->queueArgCounts[i] = 0;
+        if (this->sounds[sound] == NULL)
+        {
+            continue;
+        }
+        this->sounds[sound]->Stop();
+        this->sounds[sound]->SetCurrentPosition(0);
+        // The arguments' average is the pan.
+        this->sounds[sound]->SetPan(arg);
+        // As CSound::SetVolume, by g_SoundPlayer.seVolume with a cube.
+        float scale = g_SoundPlayer.seVolume / 100.0f;
+        if (g_SoundPlayer.seVolume != 0)
+        {
+            scale = (scale = 1.0f - scale) * scale * scale;
+            scale = 1.0f - scale;
+            this->sounds[sound]->SetVolume((LONG)((g_SoundInfos[sound].volume + 5000) * scale) - 5000);
+        }
+        else
+        {
+            this->sounds[sound]->SetVolume(DSBVOLUME_MIN);
+        }
+        this->sounds[sound]->Play(0, 0, 0);
+    }
+    return this->commands[0].type;
+}
+#endif // TH08_EXE
+
 DWORD WINAPI BgmNotificationProc(LPVOID lpParameter)
 {
     HRESULT hr;
