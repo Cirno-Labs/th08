@@ -578,3 +578,11 @@ int SpellCard::DeletedCallback(SpellCard *sc)
     sc->drawChain = NULL;
     return 0;
 }
+
+void SpellCard::RemoveChain()
+{
+    if (g_SpellCard.calcChain != NULL)
+    {
+        g_Chain.Remove(g_SpellCard.calcChain);
+    }
+}
