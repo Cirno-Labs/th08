@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">83.15% (928)</tspan> · <tspan class="decompiled">3.05% (34)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">13.80% (154)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">83.24% (929)</tspan> · <tspan class="decompiled">3.05% (34)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">13.71% (153)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="621.16" height="6" x="0" y="0" class="named"/>
-<rect width="22.76" height="6" x="621.16" y="0" class="decompiled"/>
-<rect width="103.08" height="6" x="643.92" y="0" class="todo"/>
+<rect width="621.83" height="6" x="0" y="0" class="named"/>
+<rect width="22.76" height="6" x="621.83" y="0" class="decompiled"/>
+<rect width="102.41" height="6" x="644.59" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -333,7 +333,7 @@
 <rect width="12" height="12" x="180" y="75" class="named"><title>0x004213f0 ScriptStartInterp (506 bytes)</title></rect>
 <rect width="12" height="12" x="195" y="75" class="named"><title>0x004215f0 ScriptJumpIf (1343 bytes)</title></rect>
 <rect width="12" height="12" x="210" y="75" class="named"><title>0x00421b60 GameManager::GetUnk3c (20 bytes)</title></rect>
-<rect width="12" height="12" x="225" y="75" class="todo"><title>0x00421b80 Func421b80 (20 bytes)</title></rect>
+<rect width="12" height="12" x="225" y="75" class="named"><title>0x00421b80 GameManager::GetUnk40 (20 bytes)</title></rect>
 <rect width="12" height="12" x="240" y="75" class="todo"><title>0x00421ba0 Func421ba0 (43 bytes)</title></rect>
 <rect width="12" height="12" x="255" y="75" class="todo"><title>0x00421bd0 Func421bd0 (214 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="75" class="todo"><title>0x00421cb0 Func421cb0 (280 bytes)</title></rect>
@@ -1190,9 +1190,9 @@
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
 <text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">78.42%</tspan> · <tspan class="decompiled">1.56%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">20.02%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="585.78" height="6" x="0" y="0" class="named"/>
-<rect width="11.65" height="6" x="585.78" y="0" class="decompiled"/>
-<rect width="149.56" height="6" x="597.44" y="0" class="todo"/>
+<rect width="585.82" height="6" x="0" y="0" class="named"/>
+<rect width="11.65" height="6" x="585.82" y="0" class="decompiled"/>
+<rect width="149.53" height="6" x="597.47" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -2263,7 +2263,7 @@
 <rect width="0.33" height="0.41" x="736.69" y="324.27" class="named"><title>0x00406dd0 GameManager::GetUnk28 (20 bytes)</title></rect>
 <rect width="0.33" height="0.41" x="740.02" y="324.27" class="named"><title>0x00407140 AsciiText::GetSummaryPendingInterrupt (20 bytes)</title></rect>
 <rect width="0.33" height="0.41" x="743.34" y="324.27" class="named"><title>0x00421b60 GameManager::GetUnk3c (20 bytes)</title></rect>
-<rect width="0.33" height="0.41" x="746.67" y="324.27" class="todo"><title>0x00421b80 Func421b80 (20 bytes)</title></rect>
+<rect width="0.33" height="0.41" x="746.67" y="324.27" class="named"><title>0x00421b80 GameManager::GetUnk40 (20 bytes)</title></rect>
 <rect width="0.44" height="0.30" x="729.70" y="327.68" class="named"><title>0x0042dfb0 EnemyScripts::GetTimelineCount (20 bytes)</title></rect>
 <rect width="0.44" height="0.30" x="733.14" y="327.68" class="named"><title>0x00445bc0 App::OnDraw (20 bytes)</title></rect>
 <rect width="0.44" height="0.30" x="736.58" y="327.68" class="todo"><title>0x0045e2d0 CWaveFile::GetFormat (20 bytes)</title></rect>
