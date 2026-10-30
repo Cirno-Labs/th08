@@ -2053,6 +2053,40 @@ void UpdateYoumuLastWord(Player *player)
     }
 }
 
+void DrawYoumuLastWord(Player *player)
+{
+    PlayerBomb *bomb = &player->bomb;
+
+    DimPlayAreaForBomb(player, 0x80404040);
+    if (bomb->timer >= 70)
+    {
+        float rect[4];
+        ColorBytes color;
+
+        DimPlayAreaForBomb(player, 0x80000030);
+        rect[0] = 32.0f;
+        rect[1] = 16.0f;
+        rect[2] = 416.0f;
+        rect[3] = 464.0f;
+        color.r = 0xff;
+        color.g = 0;
+        color.b = 0;
+        if (bomb->timer < 100)
+        {
+            color.a = 0xff;
+        }
+        else if (bomb->timer < 160)
+        {
+            color.a = 0xff - (bomb->timer.AsFrames() - 100) * 0xff / 60;
+        }
+        else
+        {
+            return;
+        }
+        DrawColorRect(rect, color.color);
+    }
+}
+
 int EffectUpdateBombRing48(Effect *effect)
 {
     float t;

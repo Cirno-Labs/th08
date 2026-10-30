@@ -721,6 +721,8 @@ void DrawYoumuBomb(Player *player);
 // Her last word 人鬼「未来永劫斬」: the same with three more pairs of
 // slashes, wider each time (0x4123d0).
 void UpdateYoumuLastWord(Player *player);
+// Its draw callback: the same with a red flash (0x412fa0).
+void DrawYoumuLastWord(Player *player);
 // Draw callbacks of the bombs that only tint the play area, by the
 // bomb they follow: Alice's (also Yukari's draw.funcs[0..1], 0x40d950)
 // and Remilia's and her last word's (0x40f550, 0x40fcb0).
