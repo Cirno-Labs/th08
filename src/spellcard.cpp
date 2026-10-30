@@ -912,6 +912,131 @@ int SpellCard::Update()
     return 1;
 }
 
+int SpellCard::Draw()
+{
+    if (this->unk_120.IsShown())
+    {
+        g_SpriteEngine->DrawUnrotated(&this->unk_120);
+        g_SpriteEngine->DrawUnrotated(&this->unk_668);
+        g_SpriteEngine->Draw(&this->unk_bb0);
+    }
+    if (this->unk_3c4.IsShown())
+    {
+        D3DXVECTOR3 savedPos = this->unk_3c4.pos;
+
+        this->unk_3c4.pos += this->unk_3c4.posOffset;
+        g_SpriteEngine->DrawUnrotated(&this->unk_3c4);
+        this->unk_3c4.pos = savedPos;
+        g_SpriteEngine->DrawUnrotated(&this->unk_90c);
+        g_SpriteEngine->Draw(&this->unk_e54);
+    }
+    if (this->unk_10f8.IsShown())
+    {
+        this->unk_1b88.pos = this->unk_10f8.pos;
+        this->unk_1b88.pos.x -= 32.0f;
+        g_SpriteEngine->DrawUnrotated(&this->unk_1b88);
+        g_SpriteEngine->Draw(&this->unk_10f8);
+    }
+    if (this->unk_139c.IsShown())
+    {
+        g_SpriteEngine->SetColorModulation(this->unk_2620);
+        this->unk_1e2c.pos = this->unk_139c.pos;
+        g_SpriteEngine->DrawUnrotated(&this->unk_1e2c);
+        g_SpriteEngine->Draw(&this->unk_139c);
+        g_SpriteEngine->Draw(&this->unk_1640);
+        g_SpriteEngine->Draw(&this->unk_18e4);
+        g_SpriteEngine->DrawUnrotated(&this->unk_2374);
+        if (!this->unk_0_10)
+        {
+            Catk *spellCatk;
+            int n;
+            int i;
+            int bonus;
+            int divisor;
+            int started;
+
+            bonus = this->unk_fc;
+            divisor = 10000000;
+            started = 0;
+            spellCatk = &g_GameManager.catks[this->card];
+            if (!this->unk_0_2)
+            {
+                bonus = 0;
+            }
+            this->unk_20d0.pos = this->unk_2374.pos;
+            this->unk_20d0.pos.x -= 40.0f;
+            this->unk_20d0.pos.y += 1.0f;
+            for (i = 0; i < 8; i++)
+            {
+                n = bonus / divisor;
+                if (n != 0)
+                {
+                    started = 1;
+                }
+                if (started || divisor == 1)
+                {
+                    this->unk_20d0.spriteData = g_AsciiText.anm->GetSprite(n + 0x88);
+                    g_SpriteEngine->DrawUnrotated(&this->unk_20d0);
+                }
+                this->unk_20d0.pos.x += 7.0f;
+                bonus %= divisor;
+                divisor /= 10;
+            }
+            n = g_GameManager.IsInSpellCardPractice() ? spellCatk->practiceCaptures[g_GameManager.character]
+                                                      : spellCatk->captures[g_GameManager.character];
+            if (n > 999)
+            {
+                n = 999;
+            }
+            this->unk_20d0.pos.x += 32.0f;
+            started = 0;
+            if (n / 100 != 0)
+            {
+                this->unk_20d0.spriteData = g_AsciiText.anm->GetSprite(n / 100 + 0x88);
+                g_SpriteEngine->DrawUnrotated(&this->unk_20d0);
+                n %= 100;
+                started = 1;
+            }
+            this->unk_20d0.pos.x += 7.0f;
+            if (n / 10 != 0 || started)
+            {
+                this->unk_20d0.spriteData = g_AsciiText.anm->GetSprite(n / 10 + 0x88);
+                g_SpriteEngine->DrawUnrotated(&this->unk_20d0);
+                n %= 10;
+            }
+            this->unk_20d0.pos.x += 7.0f;
+            this->unk_20d0.spriteData = g_AsciiText.anm->GetSprite(n + 0x88);
+            g_SpriteEngine->DrawUnrotated(&this->unk_20d0);
+            n = g_GameManager.IsInSpellCardPractice() ? spellCatk->practiceAttempts[g_GameManager.character]
+                                                      : spellCatk->attempts[g_GameManager.character];
+            if (n > 999)
+            {
+                n = 999;
+            }
+            this->unk_20d0.pos.x += 13.0f;
+            if (n / 100 != 0)
+            {
+                this->unk_20d0.spriteData = g_AsciiText.anm->GetSprite(n / 100 + 0x88);
+                g_SpriteEngine->DrawUnrotated(&this->unk_20d0);
+                n %= 100;
+                started = 1;
+            }
+            this->unk_20d0.pos.x += 7.0f;
+            if (n / 10 != 0 || started)
+            {
+                this->unk_20d0.spriteData = g_AsciiText.anm->GetSprite(n / 10 + 0x88);
+                g_SpriteEngine->DrawUnrotated(&this->unk_20d0);
+                n %= 10;
+            }
+            this->unk_20d0.pos.x += 7.0f;
+            this->unk_20d0.spriteData = g_AsciiText.anm->GetSprite(n % 10 + 0x88);
+            g_SpriteEngine->DrawUnrotated(&this->unk_20d0);
+        }
+        g_SpriteEngine->ResetColorModulation();
+    }
+    return 1;
+}
+
 int SpellCard::RegisterChain()
 {
     SpellCard *sc = &g_SpellCard;
