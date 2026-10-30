@@ -884,14 +884,14 @@ void ReleaseTextSurface();
 // Draws `text` at `x` in "ＭＳ ゴシック" `fontHeight` high (not bold, unlike
 // th07's), with a black outline when `shadowColor` is -1 and a wider
 // black shadow otherwise, on g_TextSurface at twice the size, then scales
-// `width` by `fontHeight` of it into `texture`, `unk6` rows high at row
+// `width` by `fontHeight` of it into `texture`, `destHeight` rows high at row
 // `y`.
-void RenderTextToTexture(int x, int y, int width, int unk4, int fontHeight, int unk6, COLORREF textColor,
+void RenderTextToTexture(int x, int y, int width, int unused, int fontHeight, int destHeight, COLORREF textColor,
                          COLORREF shadowColor, char *text, IDirect3DTexture8 *texture);
 
 // th07's RenderTextToTexture, but semibold rather than bold. The other
 // font of SpriteEngine's text rendering (0x466340).
-void RenderTextToTextureBold(int x, int y, int width, int unk4, int fontHeight, int unk6, COLORREF textColor,
+void RenderTextToTextureBold(int x, int y, int width, int unused, int fontHeight, int destHeight, COLORREF textColor,
                              COLORREF shadowColor, char *text, IDirect3DTexture8 *texture);
 
 class CSoundManager;

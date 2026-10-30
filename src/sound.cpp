@@ -476,9 +476,9 @@ int SoundPlayer::LoadSounds()
 void SoundPlayer::QueueSound(int idx, int arg)
 {
     int i;
-    int unk;
+    int pri;
 
-    unk = g_SoundInfos[idx].priority;
+    pri = g_SoundInfos[idx].priority;
     for (i = 0; i < 0xc; i++)
     {
         if (this->queue[i] < 0)
@@ -500,7 +500,7 @@ void SoundPlayer::QueueSound(int idx, int arg)
         return;
     }
     this->queue[i] = idx;
-    this->queuedSound[idx] = unk;
+    this->queuedSound[idx] = pri;
     this->queueArgs[i][0] = arg;
     this->queueArgCounts[i]++;
 }
@@ -509,9 +509,9 @@ void SoundPlayer::QueueSoundPanned(int idx, float x)
 {
     int i;
     int pan;
-    int unk;
+    int pri;
 
-    unk = g_SoundInfos[idx].priority;
+    pri = g_SoundInfos[idx].priority;
     pan = (x - 192.0f) * 1000.0f / 192.0f;
     for (i = 0; i < 0xc; i++)
     {
@@ -534,7 +534,7 @@ void SoundPlayer::QueueSoundPanned(int idx, float x)
         return;
     }
     this->queue[i] = idx;
-    this->queuedSound[idx] = unk;
+    this->queuedSound[idx] = pri;
     this->queueArgs[i][0] = pan;
     this->queueArgCounts[i]++;
 }

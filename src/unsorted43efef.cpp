@@ -291,7 +291,7 @@ void ReleaseTextSurface()
     }
 }
 
-void RenderTextToTextureBold(int x, int y, int width, int unk4, int fontHeight, int unk6, COLORREF textColor,
+void RenderTextToTextureBold(int x, int y, int width, int unused, int fontHeight, int destHeight, COLORREF textColor,
                              COLORREF shadowColor, char *text, IDirect3DTexture8 *texture)
 {
     HDC hdcMem;
@@ -338,7 +338,7 @@ void RenderTextToTextureBold(int x, int y, int width, int unk4, int fontHeight, 
     rcDst.left = 0;
     rcDst.top = y;
     rcDst.right = width;
-    rcDst.bottom = y + unk6;
+    rcDst.bottom = y + destHeight;
     rcSrc.left = 0;
     rcSrc.top = 0;
     rcSrc.right = width * 2;
@@ -356,7 +356,7 @@ void RenderTextToTextureBold(int x, int y, int width, int unk4, int fontHeight, 
     }
 }
 
-void RenderTextToTexture(int x, int y, int width, int unk4, int fontHeight, int unk6, COLORREF textColor,
+void RenderTextToTexture(int x, int y, int width, int unused, int fontHeight, int destHeight, COLORREF textColor,
                          COLORREF shadowColor, char *text, IDirect3DTexture8 *texture)
 {
     HDC hdcMem;
@@ -403,7 +403,7 @@ void RenderTextToTexture(int x, int y, int width, int unk4, int fontHeight, int 
     rcDst.left = 0;
     rcDst.top = y;
     rcDst.right = width;
-    rcDst.bottom = y + unk6;
+    rcDst.bottom = y + destHeight;
     rcSrc.left = 0;
     rcSrc.top = 0;
     rcSrc.right = width * 2;

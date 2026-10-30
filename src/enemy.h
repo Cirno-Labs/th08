@@ -681,7 +681,7 @@ int ScriptReturn(Enemy *enemy, EnemyScriptInstr *instr);
 // Sets the turning sprite scripts, as th07's instruction 96, and
 // clears spriteDirection (0x421de0).
 void ScriptSetTurnSprites(Enemy *enemy, EnemyScriptInstr *instr, int still, int left, int right,
-                          int stillFromLeft, int stillFromRight, int unk);
+                          int stillFromLeft, int stillFromRight, int extra);
 // Starts script argument 1 on sprites[argument 0] (from stageAnm with
 // useStageAnm, else anm), or stops it for a negative script (0x421e50).
 void ScriptSetSubSprite(Enemy *enemy, EnemyScriptInstr *instr);

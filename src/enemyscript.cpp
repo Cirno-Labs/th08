@@ -2253,14 +2253,14 @@ void DebugPrint(const char *fmt, ...)
 }
 
 void ScriptSetTurnSprites(Enemy *enemy, EnemyScriptInstr *instr, int still, int left, int right,
-                          int stillFromLeft, int stillFromRight, int unk)
+                          int stillFromLeft, int stillFromRight, int extra)
 {
     enemy->turnStill = still;
     enemy->turnLeft = left;
     enemy->turnRight = right;
     enemy->turnStillFromLeft = stillFromLeft;
     enemy->turnStillFromRight = stillFromRight;
-    enemy->turnExtra = unk;
+    enemy->turnExtra = extra;
     enemy->spriteDirection = 0xff;
 }
 
