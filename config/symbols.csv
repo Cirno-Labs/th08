@@ -410,7 +410,7 @@ address,size,name,symbol
 0x0042c660,6198,EnemyManager::OnUpdate,?OnUpdate@EnemyManager@@SIHPAV1@@Z
 0x0042deb0,252,Enemy::Move,?Move@Enemy@@QAEXXZ
 0x0042dfb0,20,EnemyScripts::GetTimelineCount,?GetTimelineCount@EnemyScripts@@QAEHXZ
-0x0042dfd0,25,Func42dfd0,
+0x0042dfd0,25,EnemyScripts::GetTimeline,?GetTimeline@EnemyScripts@@QAEPAUEnemyTimelineEntry@@H@Z
 0x0042dff0,22,Func42dff0,
 0x0042e010,257,MoveEnemyEffects,?MoveEnemyEffects@@YIXPAUEnemy@@@Z
 0x0042e120,23,EnemyManager::OnDraw,?OnDraw@EnemyManager@@SIHPAV1@@Z

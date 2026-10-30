@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">81.36% (908)</tspan> · <tspan class="decompiled">2.78% (31)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">15.86% (177)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">81.45% (909)</tspan> · <tspan class="decompiled">2.78% (31)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">15.77% (176)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="607.77" height="6" x="0" y="0" class="named"/>
-<rect width="20.75" height="6" x="607.77" y="0" class="decompiled"/>
-<rect width="118.48" height="6" x="628.52" y="0" class="todo"/>
+<rect width="608.44" height="6" x="0" y="0" class="named"/>
+<rect width="20.75" height="6" x="608.44" y="0" class="decompiled"/>
+<rect width="117.81" height="6" x="629.19" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -479,7 +479,7 @@
 <rect width="12" height="12" x="120" y="120" class="named"><title>0x0042c660 EnemyManager::OnUpdate (6198 bytes)</title></rect>
 <rect width="12" height="12" x="135" y="120" class="named"><title>0x0042deb0 Enemy::Move (252 bytes)</title></rect>
 <rect width="12" height="12" x="150" y="120" class="named"><title>0x0042dfb0 EnemyScripts::GetTimelineCount (20 bytes)</title></rect>
-<rect width="12" height="12" x="165" y="120" class="todo"><title>0x0042dfd0 Func42dfd0 (25 bytes)</title></rect>
+<rect width="12" height="12" x="165" y="120" class="named"><title>0x0042dfd0 EnemyScripts::GetTimeline (25 bytes)</title></rect>
 <rect width="12" height="12" x="180" y="120" class="todo"><title>0x0042dff0 Func42dff0 (22 bytes)</title></rect>
 <rect width="12" height="12" x="195" y="120" class="named"><title>0x0042e010 MoveEnemyEffects (257 bytes)</title></rect>
 <rect width="12" height="12" x="210" y="120" class="named"><title>0x0042e120 EnemyManager::OnDraw (23 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">75.95%</tspan> · <tspan class="decompiled">1.54%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">22.51%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">75.96%</tspan> · <tspan class="decompiled">1.54%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">22.51%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="567.36" height="6" x="0" y="0" class="named"/>
-<rect width="11.48" height="6" x="567.36" y="0" class="decompiled"/>
-<rect width="168.16" height="6" x="578.84" y="0" class="todo"/>
+<rect width="567.40" height="6" x="0" y="0" class="named"/>
+<rect width="11.48" height="6" x="567.40" y="0" class="decompiled"/>
+<rect width="168.12" height="6" x="578.88" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -2191,7 +2191,7 @@
 <rect width="0.71" height="0.83" x="711.63" y="328.87" class="named"><title>0x00422c20 Gui::SetBossPresent (25 bytes)</title></rect>
 <rect width="0.71" height="0.83" x="711.63" y="332.70" class="named"><title>0x00425410 EffectManager::Reset (25 bytes)</title></rect>
 <rect width="0.71" height="0.83" x="711.63" y="336.52" class="named"><title>0x0042a4c0 EnemyScriptLoop::EnemyScriptLoop (25 bytes)</title></rect>
-<rect width="0.71" height="0.83" x="711.63" y="340.35" class="todo"><title>0x0042dfd0 Func42dfd0 (25 bytes)</title></rect>
+<rect width="0.71" height="0.83" x="711.63" y="340.35" class="named"><title>0x0042dfd0 EnemyScripts::GetTimeline (25 bytes)</title></rect>
 <rect width="0.71" height="0.83" x="711.63" y="344.17" class="named"><title>0x0042f2b0 GameManager::GetLives (25 bytes)</title></rect>
 <rect width="0.90" height="0.63" x="715.34" y="309.74" class="named"><title>0x00439810 Gui::StartMsg (25 bytes)</title></rect>
 <rect width="0.90" height="0.63" x="719.24" y="309.74" class="named"><title>0x00443a70 App::GetNoVertexBuffer (25 bytes)</title></rect>
