@@ -1526,10 +1526,10 @@ int MainMenu::UpdateState16()
                 }
             }
             g_GameManager.character = this->cursor;
-            this->unk_c2a0[0] = 0.0f;
-            this->unk_c2a0[1] = 0.0f;
-            this->unk_c2a0[2] = 0.0f;
-            this->unk_c2a0[3] = 0.0f;
+            this->shownRates[0] = 0.0f;
+            this->shownRates[1] = 0.0f;
+            this->shownRates[2] = 0.0f;
+            this->shownRates[3] = 0.0f;
             this->cursor = g_GameManager.stage;
             for (i = 0x6f; i <= 0x82; i++)
             {
@@ -1703,10 +1703,10 @@ int MainMenu::UpdateState17()
             this->stateFrames = 0;
             g_GameManager.stateFlags |= 1;
             g_GameManager.stateFlags |= 0x4000;
-            this->unk_c298 = g_StageSpellCardCounts[g_GameManager.stage];
+            this->spellCardCount = g_StageSpellCardCounts[g_GameManager.stage];
             this->UnlockLastSpells();
             this->cursor = 0;
-            for (i = 0; i < this->unk_c298; i++)
+            for (i = 0; i < this->spellCardCount; i++)
             {
                 if (g_StageSpellCards[g_GameManager.stage][i] == g_GameManager.practiceSpellCard)
                 {
@@ -1714,14 +1714,14 @@ int MainMenu::UpdateState17()
                     break;
                 }
             }
-            this->unk_4 = this->cursor / 15;
+            this->spellPage = this->cursor / 15;
             for (i = 0; i < 15; i++)
             {
-                if (i + this->unk_4 * 15 >= this->unk_c298)
+                if (i + this->spellPage * 15 >= this->spellCardCount)
                 {
                     break;
                 }
-                id = g_StageSpellCards[g_GameManager.stage][i + this->unk_4 * 15];
+                id = g_StageSpellCards[g_GameManager.stage][i + this->spellPage * 15];
                 this->resultTextAnm->InitSprite(&this->unkSprites[i], i + 2);
                 this->unkSprites[i].pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
                 this->unkSprites[i].flags |= 0x1800;
@@ -1759,7 +1759,7 @@ int MainMenu::UpdateState17()
             this->unkSprites[i].colorRgb[2] = 0xff;
             this->unkSprites[i].colorRgb[1] = 0xff;
             this->unkSprites[i].colorRgb[0] = 0xff;
-            i = this->cursor - this->unk_4 * 15;
+            i = this->cursor - this->spellPage * 15;
             this->unkSprites[i].colorRgb[2] = 0xff;
             this->unkSprites[i].colorRgb[1] = 0xff;
             this->unkSprites[i].colorRgb[0] = 0xff;
@@ -1780,7 +1780,7 @@ int MainMenu::UpdateState17()
                 this->unkSprites2[i].color = 0xffffffff;
             }
             this->UpdateCardDetails();
-            this->unk_c29c = 0;
+            this->cardDetailsTimer = 0;
         }
         if (this->inputLockout == 8)
         {
@@ -1794,9 +1794,9 @@ int MainMenu::UpdateState17()
         int n;
         int page;
 
-        page = this->unk_4;
+        page = this->spellPage;
         savedCursor = this->cursor;
-        if (this->unk_c298 > 15)
+        if (this->spellCardCount > 15)
         {
             if (WAS_PRESSED_OR_HELD(0x40))
             {
@@ -1805,9 +1805,9 @@ int MainMenu::UpdateState17()
                 g_SoundPlayer.PlayQueuedSounds();
                 if (this->cursor < 0)
                 {
-                    this->cursor = this->unk_c298 - 1;
+                    this->cursor = this->spellCardCount - 1;
                 }
-                if (this->cursor >= this->unk_c298)
+                if (this->cursor >= this->spellCardCount)
                 {
                     this->cursor = 0;
                 }
@@ -1815,7 +1815,7 @@ int MainMenu::UpdateState17()
             if (WAS_PRESSED_OR_HELD(0x80))
             {
                 g_SoundPlayer.QueueSound(12, 0);
-                if (this->unk_c298 - this->cursor <= this->unk_c298 % 15)
+                if (this->spellCardCount - this->cursor <= this->spellCardCount % 15)
                 {
                     this->cursor %= 15;
                 }
@@ -1824,22 +1824,22 @@ int MainMenu::UpdateState17()
                     this->cursor += 15;
                     if (this->cursor < 0)
                     {
-                        this->cursor = this->unk_c298 - 1;
+                        this->cursor = this->spellCardCount - 1;
                     }
-                    if (this->cursor >= this->unk_c298)
+                    if (this->cursor >= this->spellCardCount)
                     {
-                        this->cursor = this->unk_c298 - 1;
+                        this->cursor = this->spellCardCount - 1;
                     }
                 }
             }
         }
-        this->MoveMenuCursor(this->unk_c298);
-        this->unk_4 = this->cursor / 15;
-        if (page != this->unk_4)
+        this->MoveMenuCursor(this->spellCardCount);
+        this->spellPage = this->cursor / 15;
+        if (page != this->spellPage)
         {
             for (n = 0; n < 15; n++)
             {
-                if (n + this->unk_4 * 15 >= this->unk_c298)
+                if (n + this->spellPage * 15 >= this->spellCardCount)
                 {
                     break;
                 }
@@ -1849,7 +1849,7 @@ int MainMenu::UpdateState17()
                 // unkSprites2[0]'s font width every time (original).
                 this->unkSprites2[0].fontWidth = 15;
                 this->unkSprites[n].fontHeight = 15;
-                cardId = g_StageSpellCards[g_GameManager.stage][n + this->unk_4 * 15];
+                cardId = g_StageSpellCards[g_GameManager.stage][n + this->spellPage * 15];
                 if (g_GameManager.catks[cardId].WasAttempted(12))
                 {
                     g_SpriteEngine->RenderText(&this->unkSprites[n], 0xffffff, 0, g_GameManager.catks[cardId].name);
@@ -1876,7 +1876,7 @@ int MainMenu::UpdateState17()
                 this->unkSprites[n].colorRgb[1] = 0x60;
                 this->unkSprites[n].colorRgb[0] = 0x60;
             }
-            n = this->cursor - this->unk_4 * 15;
+            n = this->cursor - this->spellPage * 15;
             this->unkSprites[n].colorRgb[2] = 0xff;
             this->unkSprites[n].colorRgb[1] = 0xff;
             this->unkSprites[n].colorRgb[0] = 0xff;
@@ -1884,7 +1884,7 @@ int MainMenu::UpdateState17()
             {
                 this->unkSprites2[n].alpha = 0;
             }
-            this->unk_c29c = 0x15;
+            this->cardDetailsTimer = 0x15;
         }
         this->UpdateCardDetails();
         if (WAS_PRESSED(0x1001))
@@ -2261,18 +2261,18 @@ void MainMenu::UpdateCardDetails()
     int i;
     int seen;
 
-    if (this->subState == 1 && this->unk_c29c == 0)
+    if (this->subState == 1 && this->cardDetailsTimer == 0)
     {
         return;
     }
     id = g_StageSpellCards[g_GameManager.stage][this->cursor];
     seen = g_GameManager.catks[id].practiceAttempts[12] + g_GameManager.catks[id].attempts[12];
-    if (this->subState == 0 || this->unk_c29c == 11)
+    if (this->subState == 0 || this->cardDetailsTimer == 11)
     {
         g_SpriteEngine->RenderText(&this->unkSprites2[0], 0xffffff, 0, "Ｎｏ．%s　　%s", FormatFullWidthNumber(id + 1, 3),
                                    seen == 0 ? "？？？？？？？？" : g_GameManager.catks[id].name);
     }
-    if (this->subState == 0 || this->unk_c29c == 9)
+    if (this->subState == 0 || this->cardDetailsTimer == 9)
     {
         g_SpriteEngine->RenderText(&this->unkSprites2[1], 0xffffff, 0, "使用者  %s　　%s %s",
                                    seen == 0 ? "？？？？？？？？" : g_GameManager.catks[id].comment,
@@ -2288,13 +2288,13 @@ void MainMenu::UpdateCardDetails()
     {
         if (!g_GameManager.catks[id].WasAttempted(12))
         {
-            if (this->subState == 0 || this->unk_c29c == 7)
+            if (this->subState == 0 || this->cardDetailsTimer == 7)
             {
                 g_SpriteEngine->RenderText(&this->unkSprites2[3], 0xffffff, 0,
                                            "　　---/---(---/---)[--------]　　---/---(---/---)[--------]");
             }
         }
-        else if (this->subState == 0 || this->unk_c29c == 7)
+        else if (this->subState == 0 || this->cardDetailsTimer == 7)
         {
             g_SpriteEngine->RenderText(
                 &this->unkSprites2[3], 0xffffff, 0, "　　%3d/%3d(%3d/%3d)[%.8d]　　%3d/%3d(%3d/%3d)[%.8d]",
@@ -2312,13 +2312,13 @@ void MainMenu::UpdateCardDetails()
     {
         if (!g_GameManager.catks[id].WasAttempted(12))
         {
-            if (this->subState == 0 || this->unk_c29c == 7)
+            if (this->subState == 0 || this->cardDetailsTimer == 7)
             {
                 g_SpriteEngine->RenderText(&this->unkSprites2[3], 0xffffff, 0,
                                            "　　---/---(---/---)[--------]　　---/---(---/---)[--------]");
             }
         }
-        else if (this->subState == 0 || this->unk_c29c == 7)
+        else if (this->subState == 0 || this->cardDetailsTimer == 7)
         {
             g_SpriteEngine->RenderText(&this->unkSprites2[3], 0xffffff, 0,
                                        "　　%3d/%3d(---/---)[%.8d]　　%3d/%3d(---/---)[%.8d]",
@@ -2334,7 +2334,7 @@ void MainMenu::UpdateCardDetails()
     {
         g_SpriteEngine->RenderText(&this->unkSprites2[4], 0xffffff, 0, "カードの補足");
     }
-    if (this->subState == 0 || this->unk_c29c == 5)
+    if (this->subState == 0 || this->cardDetailsTimer == 5)
     {
         // A last spell not yet open shows how to open it.
         if (!g_GameManager.catks[id].WasAttempted(12) && id >= 0xcc && id <= 0xdd && !g_GameManager.IsSpellCardSeen(id))
@@ -2356,7 +2356,7 @@ void MainMenu::UpdateCardDetails()
                                        g_GameManager.catks[id].practiceCaptures[12] == 0 ? "？？？？？？？？？" : text);
         }
     }
-    if (this->subState == 0 || this->unk_c29c == 3)
+    if (this->subState == 0 || this->cardDetailsTimer == 3)
     {
         if (!g_GameManager.catks[id].WasAttempted(12) && id >= 0xcc && id <= 0xdd && !g_GameManager.IsSpellCardSeen(id))
         {
@@ -2379,16 +2379,16 @@ void MainMenu::UpdateCardDetails()
     }
     this->unkSprites2[5].pos.x = 96.0f;
     this->unkSprites2[6].pos.x = 96.0f;
-    if (this->subState == 0 || this->unk_c29c == 3)
+    if (this->subState == 0 || this->cardDetailsTimer == 3)
     {
         for (i = 0; i < 7; i++)
         {
             this->unkSprites2[i].alpha = 0xff;
         }
     }
-    if (this->unk_c29c != 0)
+    if (this->cardDetailsTimer != 0)
     {
-        this->unk_c29c--;
+        this->cardDetailsTimer--;
     }
 }
 
@@ -2954,17 +2954,17 @@ int MainMenu::DrawState16()
     // The gauges fill over the first 50 frames.
     if (this->inputLockout < 50)
     {
-        if (this->unk_c2a0[0] != rate)
+        if (this->shownRates[0] != rate)
         {
-            rate = (rate - this->unk_c2a0[0]) * this->inputLockout / 50.0f + this->unk_c2a0[0];
+            rate = (rate - this->shownRates[0]) * this->inputLockout / 50.0f + this->shownRates[0];
         }
-        if (this->unk_c2a0[1] != mainRate)
+        if (this->shownRates[1] != mainRate)
         {
-            mainRate = (mainRate - this->unk_c2a0[1]) * this->inputLockout / 50.0f + this->unk_c2a0[1];
+            mainRate = (mainRate - this->shownRates[1]) * this->inputLockout / 50.0f + this->shownRates[1];
         }
     }
-    this->unk_c2a0[0] = rate;
-    this->unk_c2a0[1] = mainRate;
+    this->shownRates[0] = rate;
+    this->shownRates[1] = mainRate;
     gaugePos.z = 0.02f;
     DrawFan(&gaugePos, 0x60c0c0f0, rate, 48.0f);
     gaugePos.z = 0.01f;
@@ -2982,17 +2982,17 @@ int MainMenu::DrawState16()
     mainRate = totalGameAll / 205.0f;
     if (this->inputLockout < 50)
     {
-        if (this->unk_c2a0[2] != rate)
+        if (this->shownRates[2] != rate)
         {
-            rate = (rate - this->unk_c2a0[2]) * this->inputLockout / 50.0f + this->unk_c2a0[2];
+            rate = (rate - this->shownRates[2]) * this->inputLockout / 50.0f + this->shownRates[2];
         }
-        if (this->unk_c2a0[3] != mainRate)
+        if (this->shownRates[3] != mainRate)
         {
-            mainRate = (mainRate - this->unk_c2a0[3]) * this->inputLockout / 50.0f + this->unk_c2a0[3];
+            mainRate = (mainRate - this->shownRates[3]) * this->inputLockout / 50.0f + this->shownRates[3];
         }
     }
-    this->unk_c2a0[2] = rate;
-    this->unk_c2a0[3] = mainRate;
+    this->shownRates[2] = rate;
+    this->shownRates[3] = mainRate;
     gaugePos.z = 0.02f;
     DrawFan(&gaugePos, 0x6080c0c0, rate, 32.0f);
     gaugePos.z = 0.01f;
@@ -3027,12 +3027,12 @@ int MainMenu::DrawState17()
     pos.y += 16.0f;
     for (i = 0; i < 15; i++)
     {
-        if (i + this->unk_4 * 15 >= this->unk_c298)
+        if (i + this->spellPage * 15 >= this->spellCardCount)
         {
             break;
         }
         g_AsciiText.SetColor(this->unkSprites[i].color);
-        cardId = g_StageSpellCards[g_GameManager.stage][i + this->unk_4 * 15];
+        cardId = g_StageSpellCards[g_GameManager.stage][i + this->spellPage * 15];
         g_AsciiText.AddFormat(&pos, "%sNo.%.3d",
                               g_GameManager.catks[cardId].practiceCaptures[g_GameManager.character] > 0 ? "@"
                               : g_GameManager.catks[cardId].practiceCaptures[12] > 0                     ? "*"

@@ -115,13 +115,13 @@ public:
 
     // The selected entry.
     int cursor;
-    int unk_4;
+    int spellPage;
     // The cursor the menus last highlighted.
     int prevCursor;
     int subState;
     // Counts the frames in the current state.
     int stateFrames;
-    unsigned char unk_14[0x54];
+    unsigned char pad_14[0x54];
     // The state before the current one.
     int prevState;
     int returningFromPractice;
@@ -139,9 +139,9 @@ public:
     int replayCursor;
     int replayStage;
     int subMenuIdleFrames;
-    int unk_c298;
-    int unk_c29c;
-    float unk_c2a0[4];
+    int spellCardCount;
+    int cardDetailsTimer;
+    float shownRates[4];
     // title01.anm (slot 0x14) and resulttext.anm (slot 0x16), loaded by
     // the loading thread.
     AnmLoaded *titleAnm;
@@ -168,7 +168,7 @@ public:
     ChainElem *drawChain;
     // The button mapping the options screen edits.
     ControllerMapping controllerMapping;
-    unsigned char unk_14452[0x2];
+    unsigned char pad_14452[0x2];
     // A copy of g_App's config.
     ConfigCopy savedConfig;
 };
