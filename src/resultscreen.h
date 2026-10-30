@@ -155,6 +155,13 @@ struct Flsp
     // The last spells (cards 0xcd on) seen: entry i holds 0xcd + i once
     // it was.
     BYTE lastSpellsSeen[0x14];
+
+    // Opens last spell `card` (0xcd on). Inline; MainMenu::UnlockLastSpells
+    // expands it.
+    void Open(int card)
+    {
+        this->lastSpellsSeen[card - 0xcd] = card;
+    }
 };
 ASSERT_SIZE(Flsp, 0x20);
 
@@ -209,6 +216,17 @@ struct Catk
     int WasAttempted(int shot)
     {
         return this->attempts[shot] > 0 || this->practiceAttempts[shot] != 0;
+    }
+    // Whether the card was captured with shot type `shot`, in a game or
+    // in practice, and in practice. Inline; MainMenu::UnlockLastSpells
+    // expands them.
+    int WasCaptured(int shot)
+    {
+        return this->captures[shot] > 0 || this->practiceCaptures[shot] > 0;
+    }
+    int WasPracticeCaptured(int shot)
+    {
+        return this->practiceCaptures[shot] > 0;
     }
 };
 ASSERT_SIZE(Catk, 0x22c);
@@ -527,6 +545,8 @@ extern char *g_ShotNames[13];
 // in th08.
 extern int *g_SpellCardLists[6];
 extern int g_SpellCardListSizes[6];
+// The Normal list of g_SpellCardLists.
+extern int g_NormalSpellCards[];
 
 // The characters a name can be made of, 16 to a row; the last two
 // stand for a space and the end. As th07's.

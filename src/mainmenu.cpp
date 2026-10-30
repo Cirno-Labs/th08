@@ -1704,7 +1704,7 @@ int MainMenu::UpdateState17()
             g_GameManager.unk_3dbac |= 1;
             g_GameManager.unk_3dbac |= 0x4000;
             this->unk_c298 = g_StageSpellCardCounts[g_GameManager.stage];
-            this->Func46cbbb();
+            this->UnlockLastSpells();
             this->cursor = 0;
             for (i = 0; i < this->unk_c298; i++)
             {
@@ -1965,6 +1965,213 @@ int MainMenu::UpdateState17()
     this->stateFrames++;
     this->inputLockout++;
     return 1;
+}
+
+void MainMenu::UnlockLastSpells()
+{
+    int i;
+    int captured;
+
+    captured = 0;
+    for (i = 0; i < 0xde; i++)
+    {
+        if (g_GameManager.catks[i].WasPracticeCaptured(12))
+        {
+            captured++;
+        }
+    }
+    {
+        int count;
+
+        count = 0;
+        for (i = 0; i < 12; i++)
+        {
+            if ((g_GameManager.clrds[i].stagesClearedNoContinue[0] & 0x4000) ||
+                (g_GameManager.clrds[i].stagesClearedNoContinue[1] & 0x4000) ||
+                (g_GameManager.clrds[i].stagesClearedNoContinue[2] & 0x4000) ||
+                (g_GameManager.clrds[i].stagesClearedNoContinue[3] & 0x4000))
+            {
+                count++;
+            }
+        }
+        if (count >= 2)
+        {
+            g_GameManager.flsp.Open(0xcd);
+        }
+    }
+    {
+        int count;
+        int j;
+
+        count = 0;
+        for (j = 0; j < 12; j++)
+        {
+            if ((g_GameManager.clrds[j].stagesClearedNoContinue[0] & 0x4000) ||
+                (g_GameManager.clrds[j].stagesClearedNoContinue[1] & 0x4000) ||
+                (g_GameManager.clrds[j].stagesClearedNoContinue[2] & 0x4000) ||
+                (g_GameManager.clrds[j].stagesClearedNoContinue[3] & 0x4000))
+            {
+                count++;
+            }
+        }
+        if (count >= 3)
+        {
+            g_GameManager.flsp.Open(0xce);
+        }
+    }
+    if (captured >= 50)
+    {
+        g_GameManager.flsp.Open(0xcf);
+    }
+    {
+        int count;
+
+        count = 0;
+        for (i = 0; i < g_ListedSpellCardCount; i++)
+        {
+            if (g_GameManager.catks[g_ListedSpellCards[i]].WasPracticeCaptured(12))
+            {
+                count++;
+            }
+        }
+        if (count >= 15)
+        {
+            g_GameManager.flsp.Open(0xd2);
+        }
+    }
+    if (g_GameManager.catks[137].WasCaptured(12))
+    {
+        g_GameManager.flsp.Open(0xd1);
+    }
+    {
+        int count;
+        int j;
+
+        count = 0;
+        for (j = 0; j < 12; j++)
+        {
+            if ((g_GameManager.clrds[j].stagesClearedNoContinue[0] & 0x4000) ||
+                (g_GameManager.clrds[j].stagesClearedNoContinue[1] & 0x4000) ||
+                (g_GameManager.clrds[j].stagesClearedNoContinue[2] & 0x4000) ||
+                (g_GameManager.clrds[j].stagesClearedNoContinue[3] & 0x4000))
+            {
+                count++;
+            }
+        }
+        if (count >= 4)
+        {
+            g_GameManager.flsp.Open(0xd0);
+        }
+    }
+    if (g_GameManager.catks[195].WasCaptured(12) && g_GameManager.catks[204].WasAttempted(12) &&
+        g_GameManager.catks[145].WasCaptured(12))
+    {
+        g_GameManager.flsp.Open(0xd3);
+    }
+    if (g_GameManager.catks[208].WasAttempted(12) && g_GameManager.catks[209].WasAttempted(12) &&
+        g_GameManager.catks[210].WasAttempted(12))
+    {
+        g_GameManager.flsp.Open(0xd4);
+    }
+    if (g_GameManager.catks[205].WasAttempted(12) && g_GameManager.catks[206].WasAttempted(12) &&
+        g_GameManager.catks[207].WasAttempted(12) && g_GameManager.catks[211].WasAttempted(12))
+    {
+        g_GameManager.flsp.Open(0xd5);
+    }
+    {
+        int count = 0;
+        int j;
+
+        count = 0;
+        for (j = 0; j < g_SpellCardListSizes[1]; j++)
+        {
+            if (g_GameManager.catks[g_NormalSpellCards[j]].WasCaptured(6))
+            {
+                count++;
+            }
+        }
+        if (count == g_SpellCardListSizes[1])
+        {
+            g_GameManager.flsp.Open(0xd6);
+        }
+    }
+    if ((g_GameManager.clrds[4].stagesClearedNoContinue[2] & 0x4000) ||
+        (g_GameManager.clrds[4].stagesClearedNoContinue[3] & 0x4000))
+    {
+        g_GameManager.flsp.Open(0xd7);
+    }
+    if (captured >= 120)
+    {
+        g_GameManager.flsp.Open(0xd8);
+    }
+    {
+        int count;
+        int j;
+
+        count = 0;
+        for (j = 0; j < 12; j++)
+        {
+            if ((g_GameManager.clrds[j].stagesClearedNoContinue[0] & 0x4000) ||
+                (g_GameManager.clrds[j].stagesClearedNoContinue[1] & 0x4000) ||
+                (g_GameManager.clrds[j].stagesClearedNoContinue[2] & 0x4000) ||
+                (g_GameManager.clrds[j].stagesClearedNoContinue[3] & 0x4000))
+            {
+                count++;
+            }
+        }
+        if (count >= 6)
+        {
+            g_GameManager.flsp.Open(0xd9);
+        }
+    }
+    {
+        int count;
+        int j;
+
+        count = 0;
+        for (j = 0; j < 12; j++)
+        {
+            if (g_GameManager.clrds[j].stagesClearedNoContinue[4] & 0x100)
+            {
+                count++;
+            }
+        }
+        if (count >= 3)
+        {
+            g_GameManager.flsp.Open(0xda);
+        }
+    }
+    {
+        int count;
+
+        count = 0;
+        for (i = 0; i < g_ListedSpellCardCount; i++)
+        {
+            if (g_GameManager.catks[g_ListedSpellCards[i]].WasPracticeCaptured(12))
+            {
+                count++;
+            }
+        }
+        if (count >= 30)
+        {
+            g_GameManager.flsp.Open(0xdb);
+        }
+    }
+    if (g_GameManager.clrds[12].stagesCleared[3] & 0xc000)
+    {
+        g_GameManager.flsp.Open(0xdc);
+    }
+    if (g_GameManager.catks[205].WasAttempted(12) && g_GameManager.catks[206].WasAttempted(12) &&
+        g_GameManager.catks[207].WasAttempted(12) && g_GameManager.catks[208].WasAttempted(12) &&
+        g_GameManager.catks[209].WasAttempted(12) && g_GameManager.catks[210].WasAttempted(12) &&
+        g_GameManager.catks[211].WasAttempted(12) && g_GameManager.catks[212].WasAttempted(12) &&
+        g_GameManager.catks[213].WasAttempted(12) && g_GameManager.catks[214].WasAttempted(12) &&
+        g_GameManager.catks[215].WasAttempted(12) && g_GameManager.catks[216].WasAttempted(12) &&
+        g_GameManager.catks[217].WasAttempted(12) && g_GameManager.catks[218].WasAttempted(12) &&
+        g_GameManager.catks[219].WasAttempted(12) && g_GameManager.catks[220].WasAttempted(12))
+    {
+        g_GameManager.flsp.Open(0xdd);
+    }
 }
 
 int MainMenu::ShowButtonDigits(Sprite *vm, short value)
@@ -2754,7 +2961,7 @@ int MainMenu::InitTitleScene()
     g_GameManager.anyShotHasExtraOpen = g_GameManager.AnyShotHasExtraOpen();
     g_GameManager.unk_3dbac_16 = g_GameManager.Func43c2c5();
     g_GameManager.allShotsHaveExtraOpen = g_GameManager.AllShotsHaveExtraOpen();
-    this->Func46cbbb();
+    this->UnlockLastSpells();
     this->state = 0;
     g_App.ResetClockDriftCounters();
     switch (g_App.prevScene)

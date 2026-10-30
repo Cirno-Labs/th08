@@ -56,8 +56,10 @@ public:
     // Shows the picture at `path` for up to 100 seconds, fading in and
     // out; shot or bomb skips it after 3 seconds. New in th08.
     static void ShowInfoScreen(char *path);
-    // Sets the title menu's sprites up (0x46cbbb).
-    void Func46cbbb();
+    // Opens the last spells (FLSP) whose conditions the score file
+    // meets: Extra clears, practice captures, captures and attempts of
+    // given cards (0x46cbbb). New in th08.
+    void UnlockLastSpells();
     // The spell card list's per-card sprites in state 17 (0x46d7f9).
     void Func46d7f9();
 

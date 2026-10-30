@@ -1014,7 +1014,7 @@ address,size,name,symbol
 0x0046adb0,964,MainMenu::UpdateGameStartMenu,?UpdateGameStartMenu@MainMenu@@QAEHXZ
 0x0046b174,2636,MainMenu::UpdateState16,?UpdateState16@MainMenu@@QAEHXZ
 0x0046bbc0,4047,MainMenu::UpdateState17,?UpdateState17@MainMenu@@QAEHXZ
-0x0046cbbb,2984,MainMenu::Func46cbbb,?Func46cbbb@MainMenu@@QAEXXZ
+0x0046cbbb,2984,MainMenu::UnlockLastSpells,?UnlockLastSpells@MainMenu@@QAEXXZ
 0x0046d763,150,FormatFullWidthNumber,?FormatFullWidthNumber@@YIPADHH@Z
 0x0046d7f9,2365,MainMenu::Func46d7f9,?Func46d7f9@MainMenu@@QAEXXZ
 0x0046e136,3671,MainMenu::UpdateReplayMenu,?UpdateReplayMenu@MainMenu@@QAEHXZ
@@ -2415,6 +2415,7 @@ address,size,name,symbol
 0x004bd6f0,,IID_IPersistFile,_IID_IPersistFile
 0x004bd700,,GUID_NULL,_GUID_NULL
 0x004c6100,,g_BombFlashColors,?g_BombFlashColors@@3PAKA
+0x004c61c8,,g_NormalSpellCards,?g_NormalSpellCards@@3PAHA
 0x004c67d0,,g_SpellCardLists,?g_SpellCardLists@@3PAPAHA
 0x004c67e8,,g_SpellCardListSizes,?g_SpellCardListSizes@@3PAHA
 0x004c6b90,,g_ListedSpellCards,?g_ListedSpellCards@@3PAHA
