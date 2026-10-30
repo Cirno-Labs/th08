@@ -586,6 +586,39 @@ void EnemyManager::AddRankOverTime()
     }
 }
 
+void Enemy::Func42c420()
+{
+    if (!this->unk_3324_11)
+    {
+        if (g_Player.IsUnk5Set())
+        {
+            g_EffectManager.SpawnEffect(0x1f, &this->unk_2d88, 1, 0x80303080);
+            if (this->unk_53c8 != NULL)
+            {
+                this->unk_53c8->sprite.SetPendingInterrupt(2);
+            }
+            g_SoundPlayer.QueueSound(0x28, 0);
+            this->unk_332f = 0;
+        }
+        if (this->unk_3328_1 && this->callbackTimer.HasTickedEvery(2))
+        {
+            g_EffectManager.SpawnEffect(0x26, &this->unk_2d88, 1, 0xffffffff);
+        }
+    }
+    else if (!g_Player.IsUnk5Set())
+    {
+        g_EffectManager.SpawnEffect(0x1e, &this->unk_2d88, 1, 0x80803030);
+        if (this->unk_53c8 != NULL)
+        {
+            this->unk_53c8->sprite.SetPendingInterrupt(1);
+        }
+        g_SoundPlayer.QueueSound(0x27, 0);
+        this->unk_332f = 2;
+    }
+    this->unk_3324_11 = g_Player.IsUnk5Set();
+    this->unk_3330 = g_Player.IsUnk5Set() ? 0x40 : 0x20;
+}
+
 int EnemyManager::RegisterChain()
 {
     EnemyManager *em = &g_EnemyManager;

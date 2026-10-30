@@ -405,7 +405,7 @@ address,size,name,symbol
 0x0042c180,270,Enemy::ClampPos,?ClampPos@Enemy@@QAEXXZ
 0x0042c290,284,Enemy::CheckPlayerContact,?CheckPlayerContact@Enemy@@QAEXPAUD3DXVECTOR3@@0@Z
 0x0042c3b0,110,EnemyManager::AddRankOverTime,?AddRankOverTime@EnemyManager@@QAEXXZ
-0x0042c420,367,Func42c420,
+0x0042c420,367,Enemy::Func42c420,?Func42c420@Enemy@@QAEXXZ
 0x0042c590,203,EnemyManager::RegisterChain,?RegisterChain@EnemyManager@@SIHXZ
 0x0042c660,6198,EnemyManager::OnUpdate,?OnUpdate@EnemyManager@@SIHPAV1@@Z
 0x0042deb0,252,Func42deb0,

@@ -101,6 +101,10 @@ struct Enemy
     // Takes it out of the list through unk_4 and unk_8 while Func41fd20,
     // clearing unk_2da4; else just clears both links (0x42b2f0).
     void Func42b2f0();
+    // Follows Player::unk_5 (the human/youkai side?): as it changes,
+    // bursts effect 0x1f or 0x1e, sends unk_53c8 interrupt 2 or 1 and
+    // plays sound 0x28 or 0x27 (0x42c420).
+    void Func42c420();
     // Keeps pos within lowerBound and upperBound while clampPos is set,
     // as th07's (0x42c180).
     void ClampPos();
@@ -214,7 +218,9 @@ struct Enemy
             // Cleared for the bosses as a Dissolve Spell starts.
             DWORD unk_3324_6 : 1;
             DWORD grazeable : 1;
-            DWORD unk_3324_8 : 4;
+            DWORD unk_3324_8 : 3;
+            // Player::unk_5 as Func42c420 last saw it.
+            DWORD unk_3324_11 : 1;
             DWORD moveMode : 2;
             DWORD unk_3324_14 : 3;
             DWORD holdFire : 1;
@@ -233,13 +239,21 @@ struct Enemy
         DWORD unk_3328;
         struct
         {
-            DWORD unk_3328_0 : 6;
+            DWORD unk_3328_0 : 1;
+            // Func42c420 bursts effect 0x26 every other frame while set.
+            DWORD unk_3328_1 : 1;
+            DWORD unk_3328_2 : 4;
             // ClearEnemiesForBonus spares it while set.
             DWORD unk_3328_6 : 1;
             DWORD unk_3328_7 : 25;
         };
     };
-    unsigned char unk_332c[0x6];
+    unsigned char unk_332c[0x3];
+    // Set to 0 or 2 by Func42c420 as Player::unk_5 changes.
+    BYTE unk_332f;
+    // 0x40 while Player::unk_5 is set, else 0x20 (Func42c420).
+    BYTE unk_3330;
+    unsigned char unk_3331[0x1];
     short turnStill;
     unsigned char unk_3334[0x4];
     short turnLeft;
