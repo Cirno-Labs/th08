@@ -2434,6 +2434,15 @@ struct SpellCardBgm
 extern SpellCardBgm g_SpellCardBgms[];
 // By stage and difficulty: what LoadingThread sets stats->unk_40 to.
 extern int g_Unknown4c77f0[][4];
+// The difficulty (0 to 4) whose g_SpellCardLists list has spell card
+// `card`, else 5.
+int GetSpellCardDifficulty(int card);
+// Whether spell card `card` is one of g_ListedSpellCards.
+int IsListedSpellCard(int card);
+// 43 spell cards (the 3 or 4 difficulties of several bosses' cards, and
+// 171 to 190), and how many.
+extern int g_ListedSpellCards[];
+extern int g_ListedSpellCardCount;
 // The spell card manager's RegisterChain (0x417f60), the counterpart of
 // Func4180f0.
 int Func417f60();
