@@ -101,7 +101,7 @@ struct EnemyScriptState
     int compareResult;
     int timedCallActive;
     short sub;
-    short unk_226;
+    short unusedShort226;
 };
 ASSERT_SIZE(EnemyScriptState, 0x228);
 
