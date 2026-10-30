@@ -23,7 +23,7 @@ cflags = ["/Od", "/Gr", "/GX", "/Oi"]
 # original has (18/8444, the 8 objects without a comp.id, 28/9178,
 # Implib700/9210), but its C++ objects say 9178 where the original's say
 # 9177: the original's SDK was a slightly different build.
-lib = ['C:\dx81\lib', 'C:\msvc7\lib', 'C:\psdk\Lib']
+lib = ['C:\dx81\lib', 'C:\msvc7\lib', 'C:\msvc7\PlatformSDK\Lib', 'C:\psdk\Lib']
 hook = "scripts/build_hook.py"  # the standalone exe's DOS stub
 
 [exe]
@@ -44,6 +44,10 @@ ldflags = ["/SUBSYSTEM:WINDOWS", "/FIXED", "/OPT:REF", "/OPT:ICF", "/OPT:NOWIN98
 libs = ["dinput8.lib", "dsound.lib", "d3d8.lib", "d3dx8.lib", "dxguid.lib", "winmm.lib",
         "kernel32.lib", "user32.lib", "gdi32.lib", "advapi32.lib", "ole32.lib", "uuid.lib",
         "libcmt.lib"]
+
+[psdk]
+# VS.NET 2002's own import libraries, which `just psdk-libs` extracts.
+libs = ["AdvAPI32.Lib", "Gdi32.Lib", "Kernel32.Lib", "Ole32.Lib", "User32.Lib", "Uuid.Lib", "WinMM.Lib"]
 
 [exe.features]
 # FEAT=orig_checksum: the exe claims the original's size and checksum.
