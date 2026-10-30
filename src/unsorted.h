@@ -1224,9 +1224,17 @@ public:
     // Whether the checksummed fields of `stats` no longer agree, as
     // th07's (0x40bb80).
     int ChecksumMismatch();
-    // Rerolls the checksum keys and recomputes the checksums, as th07's
-    // (0x406e50).
-    void RerollChecksumKeys();
+    // Rerolls the checksum keys lifeChecksumKeys[2] and checksumKeysD[3]
+    // and recomputes the checksums, as th07's. Inline; the copy at
+    // 0x406e50 is the ascii object's.
+    void RerollChecksumKeys()
+    {
+        this->stats->lifeChecksumKeys[2] = g_Rng.GetRandomU32InRange(100000) + 6543;
+        this->stats->checksumKeysD[3] = g_Rng.GetRandomU32InRange(100000) + 6543;
+        this->stats->checksum = this->stats->lifeChecksumKeys[2];
+        this->stats->computedChecksum = this->ComputeChecksum();
+        this->checksumValue = this->stats->computedChecksum + this->stats->checksumKeysD[3];
+    }
     // Add `lives` to stats->lives and `bombs` to stats->bombs and
     // recompute the checksums; wipe g_App with 0xff first if the checksums
     // were already wrong, as th07's. Inline; the copies are at 0x43c641
