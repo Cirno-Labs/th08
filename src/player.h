@@ -150,8 +150,8 @@ struct PlayerBombHitbox
     int damageInterval;
     BYTE active;
     // Set on the boxes of UpdateTrailLaserBullet's lasers.
-    BYTE unk_3d;
-    unsigned char unk_3e[0x2];
+    BYTE unusedByte3d;
+    unsigned char pad_3e[0x2];
 };
 
 // One of the player's options (0x2f4). New in th08: some shot types

@@ -918,7 +918,7 @@ int UpdateTrailLaserBullet(Player *player, PlayerBullet *bullet)
         if (bullet->trail[j * 2].x >= -900.0f)
         {
             area = player->AddBombHitbox(&bullet->trail[j * 2], 16.0f, 448.0f, 1, 0);
-            area->unk_3d = 1;
+            area->unusedByte3d = 1;
         }
     }
     for (j = 0x1f; j > 0; j--)
@@ -1393,7 +1393,7 @@ int Player::CalcDamage(D3DXVECTOR3 *pos, D3DXVECTOR3 *size, int *damageTaken, in
             hitbox->damage = 0;
             damage2 -= hitbox->hits - hitbox->maxDamage;
         }
-        if (!hitbox->unk_3d)
+        if (!hitbox->unusedByte3d)
         {
             this->hitCounter++;
             if (this->hitCounter % 4 == 0)
