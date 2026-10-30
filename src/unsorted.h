@@ -2403,15 +2403,15 @@ public:
     D3DCOLOR clearColor;
     // Follows g_Player.unk_5: set, unk_844 gets interrupt 1, cleared,
     // interrupt 2. New in th08.
-    BYTE unk_834;
+    BYTE colorScaleOn;
     unsigned char pad_835[0x3];
     // Restarted whenever unk_834 changes. New in th08.
-    Timer unk_838;
+    Timer colorScaleTimer;
     // Script 0x21 of g_App.textAnm. Its color scales the color of the
     // petals and of some of the stage's sprites. New in th08.
-    Sprite unk_844;
+    Sprite colorScaleSprite;
     // Stage 7's effect. New in th08.
-    Effect *unk_ae8;
+    Effect *stage7Effect;
     StageFog fog;
     StageFog fogStart;
     StageFog fogTarget;
@@ -2432,7 +2432,7 @@ public:
     Sprite dialogueSprites[0x20];
     Sprite unusedSprite5fb8;
     // Called by OnDraw2 after the dialogue sprites. New in th08.
-    void (*unk_625c)();
+    void (*spellCardDrawCallback)();
     int waitLabel;
     StageCamera cameraFrom;
     StageCamera cameraTo;
@@ -2453,13 +2453,13 @@ public:
     // Probably the squared distance DrawLayer draws objects within:
     // 1150 squared, 1350 squared for stage 5, 1800 squared for stages 6
     // and 7. New in th08.
-    float unk_6470;
+    float drawDistanceSq;
     // The camera shake opcode 33 starts: 1 to 3. New in th08.
     BYTE shakeMode;
     unsigned char pad_6475[0x3];
-    int unk_6478;
-    int unk_647c;
-    D3DXVECTOR3 unk_6480[0x20];
+    int effectSpawnPosCount;
+    int recordEffectSpawnPos;
+    D3DXVECTOR3 effectSpawnPos[0x20];
 };
 ASSERT_SIZE(Stage, 0x6600);
 extern Stage g_Stage;

@@ -35,24 +35,24 @@ int Stage::OnUpdate(Stage *stage)
     }
     if (g_GameManager.stage == 7)
     {
-        if (stage->unk_ae8 == NULL)
+        if (stage->stage7Effect == NULL)
         {
             Sprite *sprite;
             D3DXVECTOR3 pos(0.0f, 0.0f, 0.0f);
 
-            stage->unk_ae8 = g_EffectManager.SpawnReservedEffect(0x40, &pos, 0xc, 1, 0xffffffff);
-            sprite = &stage->unk_ae8->sprite;
+            stage->stage7Effect = g_EffectManager.SpawnReservedEffect(0x40, &pos, 0xc, 1, 0xffffffff);
+            sprite = &stage->stage7Effect->sprite;
             stage->anm->StartScript(sprite, 0xb);
         }
         else if (stage->waitLabel == 1)
         {
-            Sprite *sprite = &stage->unk_ae8->sprite;
+            Sprite *sprite = &stage->stage7Effect->sprite;
 
             stage->anm->StartScript(sprite, 0xb);
         }
         else if (stage->waitLabel == 2)
         {
-            Sprite *sprite = &stage->unk_ae8->sprite;
+            Sprite *sprite = &stage->stage7Effect->sprite;
             Sprite copy = *sprite;
 
             stage->anm->StartScript(sprite, 0xc);
@@ -66,7 +66,7 @@ int Stage::OnUpdate(Stage *stage)
         }
         else if (stage->waitLabel == 3)
         {
-            Sprite *sprite = &stage->unk_ae8->sprite;
+            Sprite *sprite = &stage->stage7Effect->sprite;
             Sprite copy = *sprite;
 
             sprite->SetPendingInterrupt(3);
@@ -79,7 +79,7 @@ int Stage::OnUpdate(Stage *stage)
         }
         else if (stage->waitLabel == 4)
         {
-            Sprite *sprite = &stage->unk_ae8->sprite;
+            Sprite *sprite = &stage->stage7Effect->sprite;
             Sprite copy = *sprite;
 
             sprite->SetPendingInterrupt(4);
@@ -489,14 +489,14 @@ done:
 
         for (l = 0; l < 0xc; l++)
         {
-            effect = g_EffectManager.SpawnEffect(0x3e, &stage->unk_6480[l], 1, 0x20ffffff);
+            effect = g_EffectManager.SpawnEffect(0x3e, &stage->effectSpawnPos[l], 1, 0x20ffffff);
             effect->drawList = 4;
         }
     }
-    stage->unk_647c = 1;
+    stage->recordEffectSpawnPos = 1;
     if (stage->spellCardState >= 2)
     {
-        stage->unk_6478 = 0;
+        stage->effectSpawnPosCount = 0;
     }
     stage->checksumCheckFrames++;
     if (stage->checksumCheckFrames % 500 == 250 && g_GameManager.ChecksumMismatch())
@@ -591,10 +591,10 @@ int Stage::OnDraw(Stage *stage)
 {
     int i;
 
-    stage->unk_6478 = 0;
+    stage->effectSpawnPosCount = 0;
     for (i = 0; i < 0x10; i++)
     {
-        stage->unk_6480[i] = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+        stage->effectSpawnPos[i] = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
     }
     g_App.viewport.X = 32;
     g_App.viewport.Y = 16;
@@ -645,11 +645,11 @@ int Stage::OnDraw(Stage *stage)
         {
             g_SpriteEngine->DrawAndFlush(&stage->backgroundLayer1);
         }
-        if (stage->unk_ae8 != NULL)
+        if (stage->stage7Effect != NULL)
         {
             Effect *effect;
 
-            effect = stage->unk_ae8;
+            effect = stage->stage7Effect;
             effect->draw(effect);
         }
     }
@@ -745,9 +745,9 @@ int Stage::OnDraw2(Stage *stage)
         {
             g_SpriteEngine->DrawAndFlush(&stage->dialogueSprites[j]);
         }
-        if (stage->unk_625c != NULL)
+        if (stage->spellCardDrawCallback != NULL)
         {
-            stage->unk_625c();
+            stage->spellCardDrawCallback();
         }
     }
     g_SpriteEngine->SetLastCameraSetupFlag(0);
@@ -762,7 +762,7 @@ int Stage::OnDraw2(Stage *stage)
         g_SpriteEngine->ResetColorModulation();
     }
     stage->keepTintColor = 0;
-    stage->unk_647c = 0;
+    stage->recordEffectSpawnPos = 0;
     return 1;
 }
 
@@ -820,14 +820,14 @@ int Stage::AddedCallback(Stage *stage)
         stage->cameraFadeTimer[i] = 0;
     }
     stage->waitLabel = 0;
-    stage->unk_6470 = 1322500.0f;
+    stage->drawDistanceSq = 1322500.0f;
     if (g_GameManager.stage == 5)
     {
-        stage->unk_6470 = 1822500.0f;
+        stage->drawDistanceSq = 1822500.0f;
     }
     else if (g_GameManager.stage == 6 || g_GameManager.stage == 7)
     {
-        stage->unk_6470 = 3240000.0f;
+        stage->drawDistanceSq = 3240000.0f;
     }
     return 0;
 }
@@ -936,15 +936,15 @@ int Stage::Load(char *dataPath)
     switch (g_GameManager.stage)
     {
     case 2:
-        g_App.textAnm->StartScript(&this->unk_844, 0x21);
+        g_App.textAnm->StartScript(&this->colorScaleSprite, 0x21);
         break;
     default:
-        g_App.textAnm->StartScript(&this->unk_844, 0x21);
+        g_App.textAnm->StartScript(&this->colorScaleSprite, 0x21);
         break;
     }
-    this->unk_844.SetPendingInterrupt(2);
-    this->unk_834 = 0;
-    this->unk_838 = 0;
+    this->colorScaleSprite.SetPendingInterrupt(2);
+    this->colorScaleOn = 0;
+    this->colorScaleTimer = 0;
     return 0;
 }
 
@@ -957,26 +957,26 @@ int Stage::StepObjects()
     StageObject *obj;
     StageQuad *piece;
 
-    if (this->unk_834)
+    if (this->colorScaleOn)
     {
         if (g_Player.IsUnk5Clear())
         {
-            this->unk_834 = 0;
-            this->unk_838 = 0;
-            this->unk_844.SetPendingInterrupt(2);
+            this->colorScaleOn = 0;
+            this->colorScaleTimer = 0;
+            this->colorScaleSprite.SetPendingInterrupt(2);
         }
     }
     else
     {
         if (g_Player.IsUnk5Set())
         {
-            this->unk_834 = 1;
-            this->unk_838 = 0;
-            this->unk_844.SetPendingInterrupt(1);
+            this->colorScaleOn = 1;
+            this->colorScaleTimer = 0;
+            this->colorScaleSprite.SetPendingInterrupt(1);
         }
     }
-    this->unk_838++;
-    g_SpriteEngine->Step(&this->unk_844);
+    this->colorScaleTimer++;
+    g_SpriteEngine->Step(&this->colorScaleSprite);
     for (i = 0; i < this->objectCount; i++)
     {
         obj = this->objects[i];
@@ -1006,10 +1006,10 @@ int Stage::StepObjects()
             if (sprite->autoRotate == 1)
             {
                 sprite->flags |= 0x20000;
-                sprite->color2Rgb[2] = (DWORD)sprite->colorRgb[2] * this->unk_844.colorRgb[2] >> 8;
-                sprite->color2Rgb[1] = (DWORD)sprite->colorRgb[1] * this->unk_844.colorRgb[1] >> 8;
-                sprite->color2Rgb[0] = (DWORD)sprite->colorRgb[0] * this->unk_844.colorRgb[0] >> 8;
-                sprite->color2Alpha = (DWORD)sprite->alpha * this->unk_844.alpha >> 8;
+                sprite->color2Rgb[2] = (DWORD)sprite->colorRgb[2] * this->colorScaleSprite.colorRgb[2] >> 8;
+                sprite->color2Rgb[1] = (DWORD)sprite->colorRgb[1] * this->colorScaleSprite.colorRgb[1] >> 8;
+                sprite->color2Rgb[0] = (DWORD)sprite->colorRgb[0] * this->colorScaleSprite.colorRgb[0] >> 8;
+                sprite->color2Alpha = (DWORD)sprite->alpha * this->colorScaleSprite.alpha >> 8;
             }
             if (busy == 0)
             {
@@ -1058,7 +1058,7 @@ int Stage::DrawLayer(int layer)
             centre.y = objData->pos.y + placement->pos.y - this->cameraPos.y + objData->size.y / 2.0f;
             centre.z = objData->pos.z + placement->pos.z - this->cameraPos.z + objData->size.z / 2.0f;
             centre = centre - (this->camera.eye + this->camera.offset);
-            if (D3DXVec3LengthSq(&centre) > this->unk_6470)
+            if (D3DXVec3LengthSq(&centre) > this->drawDistanceSq)
             {
                 goto next;
             }
@@ -1146,11 +1146,11 @@ int Stage::DrawLayer(int layer)
                                 fog = 0;
                             }
                             g_SpriteEngine->DrawNoRound(spr);
-                            if ((spr->autoRotate & 0xf0) == 0x10 && this->fog.nearPlane > w2 && this->unk_647c != 0)
+                            if ((spr->autoRotate & 0xf0) == 0x10 && this->fog.nearPlane > w2 && this->recordEffectSpawnPos != 0)
                             {
-                                this->unk_6480[this->unk_6478] = centre;
-                                this->unk_6480[this->unk_6478].z = 0.0f;
-                                this->unk_6478++;
+                                this->effectSpawnPos[this->effectSpawnPosCount] = centre;
+                                this->effectSpawnPos[this->effectSpawnPosCount].z = 0.0f;
+                                this->effectSpawnPosCount++;
                             }
                         }
                         spr->color = colVal;

@@ -311,7 +311,7 @@ void SpellCard::Start(int card, char *name, int face, DWORD bonus, Enemy *enemy,
     {
         g_Unknown577eb8->StartScript(&g_Stage.dialogueSprites[i], i + g_Stage.dialogueScriptOffset);
     }
-    g_Stage.unk_625c = NULL;
+    g_Stage.spellCardDrawCallback = NULL;
     this->enemy->ResetRankSpeeds();
     this->nameColor = 0x80808080;
     if (this->bonusPending)

@@ -393,10 +393,10 @@ int EffectUpdateBossPetal(Effect *effect)
         }
     }
     effect->sprite.flags |= 0x20000;
-    effect->sprite.color2Rgb[2] = (DWORD)effect->sprite.colorRgb[2] * g_Stage.unk_844.colorRgb[2] >> 8;
-    effect->sprite.color2Rgb[1] = (DWORD)effect->sprite.colorRgb[1] * g_Stage.unk_844.colorRgb[1] >> 8;
-    effect->sprite.color2Rgb[0] = (DWORD)effect->sprite.colorRgb[0] * g_Stage.unk_844.colorRgb[0] >> 8;
-    effect->sprite.color2Alpha = (DWORD)effect->sprite.alpha * g_Stage.unk_844.alpha >> 8;
+    effect->sprite.color2Rgb[2] = (DWORD)effect->sprite.colorRgb[2] * g_Stage.colorScaleSprite.colorRgb[2] >> 8;
+    effect->sprite.color2Rgb[1] = (DWORD)effect->sprite.colorRgb[1] * g_Stage.colorScaleSprite.colorRgb[1] >> 8;
+    effect->sprite.color2Rgb[0] = (DWORD)effect->sprite.colorRgb[0] * g_Stage.colorScaleSprite.colorRgb[0] >> 8;
+    effect->sprite.color2Alpha = (DWORD)effect->sprite.alpha * g_Stage.colorScaleSprite.alpha >> 8;
     return 1;
 }
 

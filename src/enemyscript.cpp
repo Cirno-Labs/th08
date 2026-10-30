@@ -2685,7 +2685,7 @@ void SpawnTwinEffects38(Enemy *enemy, EnemyScriptInstr *instr)
     effect = g_EffectManager.SpawnReservedEffect(0x38, &enemy->pos, 9, 1, 0xffffffff);
     effect = g_EffectManager.SpawnReservedEffect(0x38, &enemy->pos, 10, 1, 0xffffffff);
     g_EtamaAnm->StartScript(&effect->sprite, 0x61);
-    g_Stage.unk_625c = DrawTwinEffects;
+    g_Stage.spellCardDrawCallback = DrawTwinEffects;
 }
 
 void DrawTwinEffects()
@@ -2839,7 +2839,7 @@ void SpawnTwinEffects41(Enemy *enemy, EnemyScriptInstr *instr)
     effect = g_EffectManager.SpawnReservedEffect(0x41, &enemy->pos, 9, 1, 0xffffffff);
     effect = g_EffectManager.SpawnReservedEffect(0x41, &enemy->pos, 10, 1, 0xffffffff);
     g_EtamaAnm->StartScript(&effect->sprite, 0x63);
-    g_Stage.unk_625c = DrawTwinEffects;
+    g_Stage.spellCardDrawCallback = DrawTwinEffects;
 }
 
 void BounceBulletsAtZones2(Enemy *enemy, EnemyScriptInstr *instr)
@@ -2919,7 +2919,7 @@ void SpawnTwinEffects3A(Enemy *enemy, EnemyScriptInstr *instr)
     effect = g_EffectManager.SpawnReservedEffect(0x3a, &enemy->pos, 9, 1, 0xffffffff);
     effect = g_EffectManager.SpawnReservedEffect(0x3a, &enemy->pos, 10, 1, 0xffffffff);
     g_EtamaAnm->StartScript(&effect->sprite, 0x65);
-    g_Stage.unk_625c = DrawTwinEffects;
+    g_Stage.spellCardDrawCallback = DrawTwinEffects;
 }
 
 void BounceBulletsAtZones3(Enemy *enemy, EnemyScriptInstr *instr)
