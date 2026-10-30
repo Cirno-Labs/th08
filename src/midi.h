@@ -204,7 +204,7 @@ public:
     // Parsed tracks, `trackCount` of them.
     MidiTrack *tracks;
     MidiDevice device;
-    unsigned char unk_144[0x10];
+    unsigned char pad_144[0x10];
     MidiChannel channels[0x10];
     // Added to every note number.
     char transpose;
@@ -212,10 +212,10 @@ public:
     float volumeScale;
     // The volume last sent while fading, volumeScale * 128.
     int lastVolume;
-    int unk_2d0;
-    int unk_2d4;
-    int unk_2d8;
-    int unk_2dc;
+    int unusedAfterConstruct2d0;
+    int suppressVolume;
+    int unusedAfterConstruct2d8;
+    int framesSinceRewind;
     // Set while fading out.
     int fading;
     // In ms, set by FadeOut.

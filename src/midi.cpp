@@ -155,10 +155,10 @@ MidiPlayer::MidiPlayer()
     this->transpose = 0;
     this->volumeScale = 0.0f;
     this->lastVolume = 0;
-    this->unk_2d0 = 0;
-    this->unk_2d4 = 0;
-    this->unk_2d8 = 0;
-    this->unk_2dc = 0;
+    this->unusedAfterConstruct2d0 = 0;
+    this->suppressVolume = 0;
+    this->unusedAfterConstruct2d8 = 0;
+    this->framesSinceRewind = 0;
     this->fading = 0;
     for (i = 0; i < 0x20; i++)
     {
@@ -299,7 +299,7 @@ void MidiPlayer::Rewind()
 
     track = this->tracks;
     this->volumeScale = 1.0f;
-    this->unk_2dc = 0;
+    this->framesSinceRewind = 0;
     this->fading = 0;
     this->ticks = 0;
     this->baseTime = 0;
@@ -384,7 +384,7 @@ int MidiPlayer::FadeOut(int duration)
     this->volumeScale = 0.0f;
     this->fadeDuration = duration;
     this->fadeElapsed = 0;
-    this->unk_2dc = 0;
+    this->framesSinceRewind = 0;
     this->fading = 1;
     return 0;
 }
@@ -639,7 +639,7 @@ void MidiPlayer::SendVolume(int offset)
     int data2;
     int volume;
 
-    if (this->unk_2d4 != 0)
+    if (this->suppressVolume != 0)
     {
         return;
     }
