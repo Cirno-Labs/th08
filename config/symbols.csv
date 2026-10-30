@@ -234,8 +234,8 @@ address,size,name,symbol
 0x00418300,37,Func418300,
 0x00418330,239,Func418330,
 0x00418420,44,Func418420,
-0x00418450,88,Func418450,
-0x004184b0,26638,Func4184b0,
+0x00418450,88,EnemyScripts::StartSub,?StartSub@EnemyScripts@@QAEHPAUEnemyScriptState@@F@Z
+0x004184b0,26638,EnemyScripts::RunEnemy,?RunEnemy@EnemyScripts@@QAEHPAUEnemy@@@Z
 0x0041efc0,54,Func41efc0,
 0x0041f000,53,Func41f000,
 0x0041f040,67,Func41f040,
@@ -389,7 +389,7 @@ address,size,name,symbol
 0x0042a450,62,EnemyScriptState::EnemyScriptState,??0EnemyScriptState@@QAE@XZ
 0x0042a490,33,EnemyBox::EnemyBox,??0EnemyBox@@QAE@XZ
 0x0042a4c0,25,EnemyScriptLoop::EnemyScriptLoop,??0EnemyScriptLoop@@QAE@XZ
-0x0042a4e0,409,Func42a4e0,
+0x0042a4e0,409,EnemyManager::Spawn,?Spawn@EnemyManager@@QAEPAUEnemy@@FPAUD3DXVECTOR3@@HDHH@Z
 0x0042a680,413,Func42a680,
 0x0042a820,115,Func42a820,
 0x0042a8a0,1216,Func42a8a0,
@@ -2485,6 +2485,7 @@ address,size,name,symbol
 0x004ea630,,g_StageDrawChain2,?g_StageDrawChain2@@3UChainElem@@A
 0x004ea650,,g_StageCalcChain,?g_StageCalcChain@@3UChainElem@@A
 0x004ea670,,g_SpellCard,?g_SpellCard@@3USpellCard@@A
+0x004eccb8,,g_EnemyScripts,?g_EnemyScripts@@3VEnemyScripts@@A
 0x004ece60,,g_EffectManager,?g_EffectManager@@3VEffectManager@@A
 0x00577eb4,,g_EtamaAnm,?g_EtamaAnm@@3PAVAnmLoaded@@A
 0x00577ebc,,g_EffectCalcChain,?g_EffectCalcChain@@3UChainElem@@A

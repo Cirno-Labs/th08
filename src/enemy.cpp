@@ -40,7 +40,7 @@ void EnemyManager::Initialize()
     enemy->mirrored = 0;
     enemy->isBoss = 0;
     enemy->stackDepth = 0;
-    enemy->unk_2dfc = 1;
+    enemy->life = 1;
     enemy->score = 100;
     enemy->deathEffect = 0;
     enemy->deathEffectIndex = 0;
@@ -59,7 +59,7 @@ void EnemyManager::Initialize()
     enemy->deathMode = 0;
     enemy->deathSub = -1;
     enemy->clampPos = 0;
-    enemy->unk_53c0 = 0;
+    enemy->effectCount = 0;
     enemy->pendingInterrupt = -1;
     for (i = 0; i < 4; i++)
     {
@@ -80,4 +80,46 @@ void EnemyManager::Initialize()
 EnemyManager::EnemyManager()
 {
     this->Initialize();
+}
+
+Enemy *EnemyManager::Spawn(short sub, D3DXVECTOR3 *pos, int life, char item, int score, int mirrored)
+{
+    Enemy *enemy;
+    int i;
+
+    enemy = this->enemies;
+    g_ReplayManager->frameEvents |= 0x1000;
+    for (i = 0; i < 0x1e0; i++, enemy++)
+    {
+        if (enemy->active)
+        {
+            continue;
+        }
+        *enemy = this->enemyTemplate;
+        enemy->index = i;
+        enemy->mirrored = mirrored;
+        if (life >= 0)
+        {
+            enemy->life = life;
+        }
+        enemy->pos = *pos;
+        g_EnemyScripts.StartSub(&enemy->ctx, sub);
+        if (g_EnemyScripts.RunEnemy(enemy) == -1)
+        {
+            enemy->active = 0;
+            i = 0x1e0;
+            break;
+        }
+        enemy->color = enemy->sprite.color;
+        enemy->item = item;
+        if (score >= 0)
+        {
+            enemy->score = score;
+        }
+        enemy->maxLife = enemy->life;
+        enemy->unk_2e04 = enemy->maxLife;
+        break;
+    }
+    this->spawnFailed = i == 0x1e0;
+    return enemy;
 }

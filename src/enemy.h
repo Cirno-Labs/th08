@@ -126,17 +126,19 @@ struct Enemy
     float rankSpeedLow;
     float rankSpeedHigh;
     unsigned char unk_2df4[0x8];
-    // 1 in EnemyManager's template. Cleared for the bosses as a spell
-    // card bomb (Player::bomb.type 4) ends.
-    int unk_2dfc;
-    unsigned char unk_2e00[0x8];
+    // Its life, as th07's. Cleared for the bosses as a spell card bomb
+    // (Player::bomb.type 4) ends.
+    int life;
+    int maxLife;
+    int unk_2e04;
     int score;
-    int unk_2e0c;
+    // Its index in EnemyManager::enemies.
+    int index;
     // g_Unknown18b8a24 in EnemyManager's template; Player::AddedCallback
     // sets the template's from Player::unk_e2b2c.
     int unk_2e10;
     Timer callbackTimer;
-    int unk_2e20;
+    D3DCOLOR color;
     BulletShooter shooter;
     unsigned char unk_3034[0x2c];
     int shootInterval;
@@ -144,7 +146,8 @@ struct Enemy
     BulletShooter laserShooter;
     struct Laser *lasers[0x20];
     int laserIndex;
-    unsigned char unk_3304[0xc];
+    int item;
+    unsigned char unk_3308[0x8];
     char deathEffect;
     BYTE deathEffectIndex;
     BYTE deathEffectVariant;
@@ -201,8 +204,9 @@ struct Enemy
     VertexTex1DiffuseXyzrwh spriteStripVertices[0xc2];
     unsigned char unk_534c[0x8];
     Timer invulnTimer;
-    unsigned char unk_5360[0x60];
-    int unk_53c0;
+    // Effects that follow it, as th07's.
+    struct Effect *effects[0x18];
+    int effectCount;
     unsigned char unk_53c4[0xc];
 };
 ASSERT_SIZE(Enemy, 0x53d0);
@@ -216,6 +220,25 @@ struct EnemyTimeline
 };
 ASSERT_SIZE(EnemyTimeline, 0x10);
 
+// Fades out and drops `enemy`'s effects, as th07's (0x42a820).
+void ReleaseEnemyEffects(Enemy *enemy);
+
+// The enemy scripts (ECL), at 0x4eccb8, as th07's. Only what is known
+// so far.
+class EnemyScripts
+{
+public:
+    // Starts subroutine `sub` in `ctx`, as th07's (0x418450). Returns 0.
+    int StartSub(EnemyScriptState *ctx, short sub);
+    // Runs `enemy`'s script for a frame, as th07's (0x4184b0). Returns
+    // -1 once the script ends, else 0.
+    int RunEnemy(Enemy *enemy);
+
+    void *file;
+    void **subs;
+};
+extern EnemyScripts g_EnemyScripts;
+
 // The enemies, at 0x577f20. Only what is known so far.
 class EnemyManager
 {
@@ -225,6 +248,12 @@ public:
     // Zeroes everything and sets enemyTemplate's defaults, as th07's
     // (0x429e00).
     void Initialize();
+    // Starts subroutine `sub` on a free enemy at `pos`, as th07's, and
+    // keeps its index; marks bit 12 of g_ReplayManager->frameEvents and
+    // sets spawnFailed (0x42a4e0).
+    Enemy *Spawn(short sub, D3DXVECTOR3 *pos, int life, char item, int score, int mirrored);
+    // Spawn with the script variables `vars`, as th07's (0x42a680).
+    Enemy *SpawnWithVars(short sub, D3DXVECTOR3 *pos, int life, char item, int score, EnemyScriptVars *vars);
     // Whether any of the bosses is set, as th07's (0x42f1f0).
     int AnyBossActive();
     // Removes the enemies' chain elements, as th07's (0x42ef70).
@@ -243,7 +272,9 @@ public:
     unsigned char unk_9dcdc0[0x10];
     EnemyTimeline timelines[16];
     Timer unk_9dced0;
-    unsigned char unk_9dcedc[0x20];
+    unsigned char unk_9dcedc[0x1c];
+    // Whether the last Spawn found no free enemy.
+    int spawnFailed;
     // -1 after Initialize.
     int unk_9dcefc[4];
     unsigned char unk_9dcf0c[0x4];

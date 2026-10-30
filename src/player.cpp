@@ -997,7 +997,7 @@ void UpdateBombState(Player *player)
                     if (g_EnemyManager.bosses[i] != NULL)
                     {
                         g_EnemyManager.bosses[i]->Func42adb0(0);
-                        g_EnemyManager.bosses[i]->unk_2dfc = 0;
+                        g_EnemyManager.bosses[i]->life = 0;
                         g_EnemyManager.bosses[i]->unk_3324_30 = 0;
                     }
                 }
