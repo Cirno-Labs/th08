@@ -1457,6 +1457,17 @@ public:
     {
         return this->stats->power;
     }
+    // From `lo` to `hi` by the rank (0 to 32), as th07's free RankLerp
+    // and RankLerpF. Inline; the copies at 0x421ba0 and 0x422b80 are an
+    // /Od object's.
+    int RankLerp(int lo, int hi)
+    {
+        return (hi - lo) * this->rank / 32 + lo;
+    }
+    float RankLerpF(float lo, float hi)
+    {
+        return (hi - lo) * this->rank / 32.0f + lo;
+    }
     int GetLives()
     {
         return this->stats->lives;

@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">86.20% (962)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">10.57% (118)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">86.29% (963)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">10.48% (117)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="643.92" height="6" x="0" y="0" class="named"/>
-<rect width="24.10" height="6" x="643.92" y="0" class="decompiled"/>
-<rect width="78.98" height="6" x="668.02" y="0" class="todo"/>
+<rect width="644.59" height="6" x="0" y="0" class="named"/>
+<rect width="24.10" height="6" x="644.59" y="0" class="decompiled"/>
+<rect width="78.31" height="6" x="668.69" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -344,7 +344,7 @@
 <rect width="12" height="12" x="345" y="75" class="named"><title>0x004222b0 ScriptMoveAngleTimed (461 bytes)</title></rect>
 <rect width="12" height="12" x="360" y="75" class="named"><title>0x00422480 GameManager::GetPower (28 bytes)</title></rect>
 <rect width="12" height="12" x="375" y="75" class="named"><title>0x004224a0 ScriptMoveRandom2 (630 bytes)</title></rect>
-<rect width="12" height="12" x="390" y="75" class="todo"><title>0x00422720 Func422720 (1110 bytes)</title></rect>
+<rect width="12" height="12" x="390" y="75" class="named"><title>0x00422720 ScriptFireBullets (1110 bytes)</title></rect>
 <rect width="12" height="12" x="405" y="75" class="todo"><title>0x00422b80 Func422b80 (39 bytes)</title></rect>
 <rect width="12" height="12" x="420" y="75" class="named"><title>0x00422bb0 AsciiText::SetNearbyLabelInterrupt (42 bytes)</title></rect>
 <rect width="12" height="12" x="435" y="75" class="named"><title>0x00422be0 AsciiText::SetNearbyLabelPos (51 bytes)</title></rect>
@@ -512,7 +512,7 @@
 <rect width="12" height="12" x="615" y="120" class="todo"><title>0x00430830 BulletManager::Func430830 (620 bytes)</title></rect>
 <rect width="12" height="12" x="630" y="120" class="todo"><title>0x00430aa0 BulletManager::ClearAllWithBonus (651 bytes)</title></rect>
 <rect width="12" height="12" x="645" y="120" class="todo"><title>0x00430d30 Func430d30 (214 bytes)</title></rect>
-<rect width="12" height="12" x="660" y="120" class="todo"><title>0x00430e10 Func430e10 (259 bytes)</title></rect>
+<rect width="12" height="12" x="660" y="120" class="todo"><title>0x00430e10 BulletManager::FirePattern (259 bytes)</title></rect>
 <rect width="12" height="12" x="675" y="120" class="todo"><title>0x00430f20 Func430f20 (639 bytes)</title></rect>
 <rect width="12" height="12" x="690" y="120" class="todo"><title>0x004311a0 BulletManager::RegisterChain (152 bytes)</title></rect>
 <rect width="12" height="12" x="705" y="120" class="todo"><title>0x00431240 Func431240 (3862 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">79.54%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">18.89%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">79.78%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">18.65%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="594.13" height="6" x="0" y="0" class="named"/>
-<rect width="11.78" height="6" x="594.13" y="0" class="decompiled"/>
-<rect width="141.09" height="6" x="605.91" y="0" class="todo"/>
+<rect width="595.93" height="6" x="0" y="0" class="named"/>
+<rect width="11.78" height="6" x="595.93" y="0" class="decompiled"/>
+<rect width="139.29" height="6" x="607.71" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -1291,7 +1291,7 @@
 <rect width="22.75" height="23" x="385.32" y="272.37" class="named"><title>0x0046ef8d MainMenu::DrawReplayMenu (1180 bytes)</title></rect>
 <rect width="22.75" height="21.90" x="385.32" y="298.37" class="named"><title>0x00442a80 FormatCapsReport (1130 bytes)</title></rect>
 <rect width="22.75" height="21.72" x="385.32" y="323.28" class="todo"><title>0x00422c40 Func422c40 (1122 bytes)</title></rect>
-<rect width="23.11" height="21.13" x="411.08" y="0" class="todo"><title>0x00422720 Func422720 (1110 bytes)</title></rect>
+<rect width="23.11" height="21.13" x="411.08" y="0" class="named"><title>0x00422720 ScriptFireBullets (1110 bytes)</title></rect>
 <rect width="23.04" height="21.13" x="437.18" y="0" class="named"><title>0x0043542b GuiImpl::DrawMsg (1107 bytes)</title></rect>
 <rect width="22.73" height="21.13" x="463.22" y="0" class="named"><title>0x0043396d GuiImpl::StartMsgScript (1094 bytes)</title></rect>
 <rect width="22.57" height="21.13" x="488.95" y="0" class="named"><title>0x00409200 Stage::OnDraw (1087 bytes)</title></rect>
@@ -1565,7 +1565,7 @@
 <rect width="9.31" height="9.22" x="545.71" y="240.47" class="named"><title>0x004717c0 CSoundManager::SetPrimaryBufferFormat (265 bytes)</title></rect>
 <rect width="9.31" height="9.17" x="545.71" y="252.69" class="named"><title>0x0040bf00 SpawnBombAura (264 bytes)</title></rect>
 <rect width="9.31" height="9.08" x="545.71" y="264.86" class="named"><title>0x0043e390 DecryptFileData (262 bytes)</title></rect>
-<rect width="9.31" height="8.94" x="545.71" y="276.95" class="todo"><title>0x00430e10 Func430e10 (259 bytes)</title></rect>
+<rect width="9.31" height="8.94" x="545.71" y="276.95" class="todo"><title>0x00430e10 BulletManager::FirePattern (259 bytes)</title></rect>
 <rect width="9.31" height="8.94" x="545.71" y="288.89" class="named"><title>0x0044886f App::StartLoadingSpritesOverScreen (259 bytes)</title></rect>
 <rect width="9.31" height="8.85" x="545.71" y="300.83" class="named"><title>0x0042e010 MoveEnemyEffects (257 bytes)</title></rect>
 <rect width="9.31" height="8.80" x="545.71" y="312.68" class="named"><title>0x00421180 ScriptMoveHermite (256 bytes)</title></rect>

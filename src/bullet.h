@@ -24,7 +24,20 @@ struct BulletShooter
     short sprite;
     short color;
     D3DXVECTOR3 pos;
-    unsigned char unk_10[0x1f0];
+    // The angles and speeds, as th07's.
+    float angle1;
+    float angle2;
+    float speed1;
+    float speed2;
+    unsigned char unk_20[0x1d4];
+    // How many bullets, as th07's.
+    short count1;
+    short count2;
+    // Which of the fire instructions (96 on) set it, as th07's.
+    WORD aimMode;
+    // Cleared by the fire instructions; nothing reads it, as th07's.
+    WORD unusedAfterFireC2;
+    int flags;
     int sound;
     // Bullet::sound, as th07's.
     int bulletSound;
@@ -49,6 +62,8 @@ public:
     // Clears the bullets for a bonus of up to `maxBonus`, as th07's
     // (0x430aa0). Returns the total.
     int ClearAllWithBonus(int maxBonus, int toItems);
+    // Fires `shooter`'s pattern, as th07's (0x430e10).
+    int FirePattern(struct BulletShooter *shooter);
 
     unsigned char unk_0[0x6ba538];
     // The bullets alive, as th07's.

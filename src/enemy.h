@@ -727,6 +727,12 @@ Enemy *ScriptSpawnEnemy(Enemy *enemy, EnemyScriptInstr *instr);
 // ScriptSpawnEnemy relative to the enemy (unk_2d88) (0x41f280).
 Enemy *ScriptSpawnEnemyRel(Enemy *enemy, EnemyScriptInstr *instr);
 
+// The fire instructions (96 on), as th07's 64 to 72: sets the shooter
+// up from the arguments, with the rank outside spell cards, and fires;
+// unless flag 0x8000 or 0x10000 of argument 7 rules out the enemy's side
+// (unk_3324_11) or the player is within sqrt(unk_3350) (0x422720).
+void ScriptFireBullets(Enemy *enemy, EnemyScriptInstr *instr);
+
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
 // The enemy scripts by stage, by stage in spell practice (stage + 9),

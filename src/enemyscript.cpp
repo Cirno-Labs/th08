@@ -17,6 +17,10 @@
     ((instr->paramMask & (1 << (n))) ? GetIntOperand(enemy, instr->args[n].i) : instr->args[n].i)
 #define FLOAT_ARG(n) \
     ((instr->paramMask & (1 << (n))) ? GetFloatOperand(enemy, instr->args[n].f) : instr->args[n].f)
+// INT_ARG and FLOAT_ARG for a value `v` whose variable bit is `bit`, as
+// th07's. `v` must stay unparenthesized.
+#define INT_OP(v, bit) ((instr->paramMask & (bit)) ? GetIntOperand(enemy, v) : v)
+#define FLOAT_OP(v, bit) ((instr->paramMask & (bit)) ? GetFloatOperand(enemy, v) : v)
 
 int EnemyScripts::Load(char *path)
 {
@@ -1109,6 +1113,68 @@ void ScriptMoveRandom2(Enemy *enemy, EnemyScriptInstr *instr)
     {
         ScriptMoveAngleTimed(enemy, instr, angle);
     }
+}
+
+void ScriptFireBullets(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    EnemyScriptArg *bulletArgs;
+    int shortArg;
+    BulletShooter *bs;
+
+    bulletArgs = instr->args;
+    bs = &enemy->shooter;
+    if (((bulletArgs[7].i & 0x8000) && !enemy->unk_3324_11) || ((bulletArgs[7].i & 0x10000) && enemy->unk_3324_11))
+    {
+        return;
+    }
+    if (enemy->unk_3350 > 0.0f &&
+        (enemy->unk_2d88.x - g_Player.pos.x) * (enemy->unk_2d88.x - g_Player.pos.x) +
+                (enemy->unk_2d88.y - g_Player.pos.y) * (enemy->unk_2d88.y - g_Player.pos.y) <
+            enemy->unk_3350)
+    {
+        return;
+    }
+    bs->pos = enemy->unk_2d88 + enemy->shootOffset;
+    shortArg = *(short *)&bulletArgs[0];
+    bs->sprite = INT_OP(shortArg, 1);
+    bs->aimMode = instr->opcode - 96;
+    bs->count1 = INT_OP(bulletArgs[1].i, 4);
+    bs->count2 = INT_OP(bulletArgs[2].i, 8);
+    bs->angle1 = FLOAT_OP(bulletArgs[5].f, 0x40);
+    bs->speed1 = FLOAT_OP(bulletArgs[3].f, 0x10);
+    bs->angle2 = FLOAT_OP(bulletArgs[6].f, 0x80);
+    bs->speed2 = FLOAT_OP(bulletArgs[4].f, 0x20);
+    if (!g_SpellCard.Func4178a0())
+    {
+        bs->count1 += g_GameManager.RankLerp(enemy->rankCount1Low, enemy->rankCount1High);
+        if (bs->count1 <= 0)
+        {
+            bs->count1 = 1;
+        }
+        bs->count2 += g_GameManager.RankLerp(enemy->rankCount2Low, enemy->rankCount2High);
+        if (bs->count2 <= 0)
+        {
+            bs->count2 = 1;
+        }
+        if (bs->speed1 != 0.0f)
+        {
+            bs->speed1 += g_GameManager.RankLerpF(enemy->rankSpeedLow, enemy->rankSpeedHigh);
+            if (bs->speed1 < 0.3f)
+            {
+                bs->speed1 = 0.3f;
+            }
+        }
+        bs->speed2 += g_GameManager.RankLerpF(enemy->rankSpeedLow, enemy->rankSpeedHigh) / 2.0f;
+        if (bs->speed2 < 0.3f)
+        {
+            bs->speed2 = 0.3f;
+        }
+    }
+    bs->unusedAfterFireC2 = 0;
+    bs->flags = bulletArgs[7].i;
+    shortArg = ((short *)bulletArgs)[1];
+    bs->color = INT_OP(shortArg, 2);
+    g_BulletManager.FirePattern(bs);
 }
 
 void ScriptSetUnknown4e3d28(Enemy *enemy, EnemyScriptInstr *instr)
