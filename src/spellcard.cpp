@@ -495,3 +495,13 @@ void SpellCard::ShowName(int face, char *name, int sprite)
     g_SoundPlayer.QueueSound(0xe, 0);
     g_App.redrawFrames = 2;
 }
+
+void SpellCard::Func416160()
+{
+    this->unk_139c.pendingInterrupt = 1;
+    this->unk_1e2c.SetPendingInterrupt(2);
+    if (!this->unk_0_10)
+    {
+        this->unk_2374.SetPendingInterrupt(2);
+    }
+}

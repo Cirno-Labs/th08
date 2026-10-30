@@ -2490,7 +2490,9 @@ struct SpellCard
     // Starts the card named `name` (「リザレクション」) for `enemy` without a
     // capture: sets bit 10, clears bits 0 and 4 (0x415d10).
     void Func415d10(char *name, struct Enemy *enemy);
-    // Sets unk_159a and sends interrupt 2 to two sprites (0x416160).
+    // Ends the name banners ShowName started: sets unk_139c's pending
+    // interrupt directly and sends unk_1e2c (and unk_2374 unless
+    // unk_0_10) interrupt 2 (0x416160).
     void Func416160();
     // Called with 8000 when a time orb is collected (0x416b10).
     void Func416b10(int amount);

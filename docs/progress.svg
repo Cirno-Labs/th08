@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">92.20% (1029)</tspan> · <tspan class="decompiled">3.41% (38)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">4.39% (49)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">92.20% (1029)</tspan> · <tspan class="decompiled">3.49% (39)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">4.30% (48)</tspan></tspan></text>
 <g transform="translate(0 20)">
 <rect width="688.77" height="6" x="0" y="0" class="named"/>
-<rect width="25.44" height="6" x="688.77" y="0" class="decompiled"/>
-<rect width="32.80" height="6" x="714.20" y="0" class="todo"/>
+<rect width="26.10" height="6" x="688.77" y="0" class="decompiled"/>
+<rect width="32.13" height="6" x="714.87" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -280,7 +280,7 @@
 <rect width="12" height="12" x="135" y="60" class="named"><title>0x00415d60 SpellCard::StartBombCard (415 bytes)</title></rect>
 <rect width="12" height="12" x="150" y="60" class="named"><title>0x00415f00 SpellCard::ShowName (558 bytes)</title></rect>
 <rect width="12" height="12" x="165" y="60" class="decompiled"><title>0x00416130 SpellCard::Func416130 (39 bytes)</title></rect>
-<rect width="12" height="12" x="180" y="60" class="todo"><title>0x00416160 SpellCard::Func416160 (70 bytes)</title></rect>
+<rect width="12" height="12" x="180" y="60" class="decompiled"><title>0x00416160 SpellCard::Func416160 (70 bytes)</title></rect>
 <rect width="12" height="12" x="195" y="60" class="todo"><title>0x004161b0 SpellCard::End (2331 bytes)</title></rect>
 <rect width="12" height="12" x="210" y="60" class="todo"><title>0x00416ad0 Func416ad0 (24 bytes)</title></rect>
 <rect width="12" height="12" x="225" y="60" class="todo"><title>0x00416af0 Func416af0 (32 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">86.85%</tspan> · <tspan class="decompiled">1.60%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">11.55%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">86.85%</tspan> · <tspan class="decompiled">1.62%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">11.54%</tspan></tspan></text>
 <g transform="translate(0 20)">
 <rect width="648.74" height="6" x="0" y="0" class="named"/>
-<rect width="11.96" height="6" x="648.74" y="0" class="decompiled"/>
-<rect width="86.31" height="6" x="660.69" y="0" class="todo"/>
+<rect width="12.07" height="6" x="648.74" y="0" class="decompiled"/>
+<rect width="86.19" height="6" x="660.81" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -1926,7 +1926,7 @@
 <rect width="3.31" height="3.38" x="655.94" y="266.44" class="named"><title>0x00448229 App::DisableFog (71 bytes)</title></rect>
 <rect width="3.31" height="3.29" x="655.94" y="272.82" class="named"><title>0x00409080 D3DXVECTOR3::operator+ (70 bytes)</title></rect>
 <rect width="3.31" height="3.29" x="655.94" y="279.12" class="named"><title>0x004090d0 D3DXVECTOR3::operator- (70 bytes)</title></rect>
-<rect width="3.31" height="3.29" x="655.94" y="285.41" class="todo"><title>0x00416160 SpellCard::Func416160 (70 bytes)</title></rect>
+<rect width="3.31" height="3.29" x="655.94" y="285.41" class="decompiled"><title>0x00416160 SpellCard::Func416160 (70 bytes)</title></rect>
 <rect width="3.31" height="3.29" x="655.94" y="291.71" class="decompiled"><title>0x0041fd40 Enemy::Func41fd40 (70 bytes)</title></rect>
 <rect width="3.31" height="3.29" x="655.94" y="298" class="named"><title>0x00433927 Gui::OnDraw (70 bytes)</title></rect>
 <rect width="3.31" height="3.29" x="655.94" y="304.30" class="named"><title>0x00445b7a App::App (70 bytes)</title></rect>
