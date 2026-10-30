@@ -441,3 +441,77 @@ void BulletManager::ClearAll(int mode)
     }
     this->clearAllFrames = 10;
 }
+
+int BulletManager::ClearAllWithBonus(int maxBonus, int toItems)
+{
+    int score;
+    int totalBonus;
+    int numCleared;
+    int i;
+    float s;
+    Bullet *curBullet;
+    Laser *beam;
+    float c;
+    float t;
+
+    totalBonus = 0;
+    score = 2000;
+    numCleared = 0;
+    curBullet = g_BulletManager.bullets;
+    for (i = 0; i < 0x600; i++, curBullet++)
+    {
+        if (curBullet->state == 0)
+        {
+            continue;
+        }
+        if (g_Player.CheckAreaHit(&curBullet->pos, &curBullet->sprites.hitboxSize) == 2)
+        {
+            g_ItemManager.SpawnItem(&curBullet->pos, g_Player.areaItemType, 1);
+        }
+        else
+        {
+            g_ItemManager.SpawnItem(&curBullet->pos, this->clearItemType, 1);
+        }
+        g_AsciiText.AddPopup(&curBullet->pos, score, score >= maxBonus ? 0xffffff00 : 0xffffffff);
+        totalBonus += score;
+        numCleared++;
+        score += 20;
+        if (score > maxBonus)
+        {
+            score = maxBonus;
+        }
+        curBullet->state = 5;
+    }
+    beam = this->lasers;
+    D3DXVECTOR3 spot;
+    for (i = 0; i < 0x100; i++, beam++)
+    {
+        if (!beam->active)
+        {
+            continue;
+        }
+        if (beam->state < 2)
+        {
+            beam->state = 2;
+            beam->timer = 0;
+            beam->width = beam->baseWidth;
+            if (toItems)
+            {
+                g_ItemManager.SpawnItem(&beam->pos, this->clearItemType, 1);
+                t = beam->startOffset;
+                SinCos(&s, &c, beam->angle);
+                while (beam->endOffset > t)
+                {
+                    spot.x = c * t + beam->pos.x;
+                    spot.y = s * t + beam->pos.y;
+                    spot.z = 0.0f;
+                    g_ItemManager.SpawnItem(&spot, this->clearItemType, 1);
+                    t += 32.0f;
+                }
+            }
+        }
+        beam->endHitFrames = 0;
+    }
+    this->clearAllFrames = 10;
+    return totalBonus;
+}
