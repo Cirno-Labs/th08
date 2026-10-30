@@ -776,3 +776,86 @@ void ScriptStartInterp(Enemy *enemy, EnemyScriptInstr *instr)
         break;
     }
 }
+
+EnemyScriptInstr *ScriptJumpIf(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    switch (instr->opcode)
+    {
+    case 40:
+        if (INT_ARG(0) == INT_ARG(1))
+        {
+            goto jump;
+        }
+        break;
+    case 41:
+        if (FLOAT_ARG(0) == FLOAT_ARG(1))
+        {
+            goto jump;
+        }
+        break;
+    case 42:
+        if (INT_ARG(0) != INT_ARG(1))
+        {
+            goto jump;
+        }
+        break;
+    case 43:
+        if (FLOAT_ARG(0) != FLOAT_ARG(1))
+        {
+            goto jump;
+        }
+        break;
+    case 44:
+        if (INT_ARG(0) < INT_ARG(1))
+        {
+            goto jump;
+        }
+        break;
+    case 45:
+        if (FLOAT_ARG(0) < FLOAT_ARG(1))
+        {
+            goto jump;
+        }
+        break;
+    case 46:
+        if (INT_ARG(0) <= INT_ARG(1))
+        {
+            goto jump;
+        }
+        break;
+    case 47:
+        if (FLOAT_ARG(0) <= FLOAT_ARG(1))
+        {
+            goto jump;
+        }
+        break;
+    case 48:
+        if (INT_ARG(0) > INT_ARG(1))
+        {
+            goto jump;
+        }
+        break;
+    case 49:
+        if (FLOAT_ARG(0) > FLOAT_ARG(1))
+        {
+            goto jump;
+        }
+        break;
+    case 50:
+        if (INT_ARG(0) >= INT_ARG(1))
+        {
+            goto jump;
+        }
+        break;
+    case 51:
+        if (FLOAT_ARG(0) >= FLOAT_ARG(1))
+        {
+            goto jump;
+        }
+        break;
+    jump:
+        enemy->currentCtx->timer.current = instr->args[2].i;
+        return (EnemyScriptInstr *)((char *)instr + instr->args[3].i);
+    }
+    return NULL;
+}

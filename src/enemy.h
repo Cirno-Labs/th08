@@ -586,6 +586,11 @@ void ScriptLerp(Enemy *enemy, EnemyScriptInstr *instr);
 // the first free loop of the current context or the one already on it,
 // as th07's instruction 27 (0x4213f0).
 void ScriptStartInterp(Enemy *enemy, EnemyScriptInstr *instr);
+// Instructions 40 to 51 (placeholder name): compares arguments 0 and 1,
+// as ints or floats, by ==, !=, <, <=, > or >=; if that holds, sets the
+// current context's time to argument 2 and returns the instruction
+// argument 3 bytes on, else NULL (0x4215f0).
+EnemyScriptInstr *ScriptJumpIf(Enemy *enemy, EnemyScriptInstr *instr);
 
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
