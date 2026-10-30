@@ -473,6 +473,61 @@ void Enemy::Despawn()
     }
 }
 
+void Enemy::DropItems(int byBomb)
+{
+    D3DXVECTOR3 pos;
+    int i;
+
+    if (this->item >= 0)
+    {
+        g_EffectManager.SpawnEffect(this->deathEffectIndex + 4, &this->unk_2d88, 3, 0xffffffff);
+        g_ItemManager.SpawnItem(&this->unk_2d88, this->item, byBomb != 0);
+    }
+    else if (this->item == -1)
+    {
+        if (g_EnemyManager.dropCounter % 3 == 0)
+        {
+            g_EffectManager.SpawnEffect(this->deathEffectIndex + 4, &this->unk_2d88, 6, 0xffffffff);
+            g_ItemManager.SpawnItem(&this->unk_2d88, g_EnemyItemDrops[g_EnemyManager.dropIndex], byBomb != 0);
+            g_EnemyManager.dropIndex++;
+            if (g_EnemyManager.dropIndex >= 0x20)
+            {
+                g_EnemyManager.dropIndex = 0;
+            }
+        }
+        g_EnemyManager.dropCounter++;
+    }
+    if (this->unk_330c != 0)
+    {
+        for (i = 0; i < this->unk_330c; i++)
+        {
+            pos = this->unk_2d88;
+            pos[0] += g_Rng.GetRandomF32ZeroToOne() * 128.0f - 64.0f;
+            pos[1] += g_Rng.GetRandomF32ZeroToOne() * 128.0f - 64.0f;
+            if (g_GameManager.GetPower() < 0x80)
+            {
+                g_ItemManager.SpawnItem(&pos, 0, 0);
+            }
+            else
+            {
+                g_ItemManager.SpawnItem(&pos, 1, 0);
+            }
+        }
+        this->unk_330c = 0;
+    }
+    if (this->unk_3308 != 0)
+    {
+        for (i = 0; i < this->unk_3308; i++)
+        {
+            pos = this->unk_2d88;
+            pos[0] += g_Rng.GetRandomF32ZeroToOne() * 128.0f - 64.0f;
+            pos[1] += g_Rng.GetRandomF32ZeroToOne() * 128.0f - 64.0f;
+            g_ItemManager.SpawnItem(&pos, 1, 0);
+        }
+        this->unk_3308 = 0;
+    }
+}
+
 int EnemyManager::RegisterChain()
 {
     EnemyManager *em = &g_EnemyManager;

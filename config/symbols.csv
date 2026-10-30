@@ -401,7 +401,7 @@ address,size,name,symbol
 0x0042bc50,50,Func42bc50,
 0x0042bc90,96,Enemy::Func42bc90,?Func42bc90@Enemy@@QAEXXZ
 0x0042bcf0,432,Enemy::Despawn,?Despawn@Enemy@@QAEXXZ
-0x0042bea0,734,Func42bea0,
+0x0042bea0,734,Enemy::DropItems,?DropItems@Enemy@@QAEXH@Z
 0x0042c180,270,Func42c180,
 0x0042c290,284,Func42c290,
 0x0042c3b0,110,Func42c3b0,
@@ -2421,6 +2421,7 @@ address,size,name,symbol
 0x004c7048,,g_BadEndingFiles,?g_BadEndingFiles@@3PAPADA
 0x004c7078,,g_EndingFiles,?g_EndingFiles@@3PAPADA
 0x004c70a8,,g_FinalBEndingFiles,?g_FinalBEndingFiles@@3PAPADA
+0x004c70d8,,g_EnemyItemDrops,?g_EnemyItemDrops@@3PAEA
 0x004c7158,,g_StageClearBonuses,?g_StageClearBonuses@@3PAHA
 0x004c7180,,g_MsgColors,?g_MsgColors@@3PAY03KA
 0x004c7240,,g_StageBgms,?g_StageBgms@@3PAUStageBgm@@A

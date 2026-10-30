@@ -105,6 +105,12 @@ struct Enemy
     // while unk_2da4, a boss, is invulnerable; none for others then),
     // keeping its life above its life callbacks (0x42b370).
     void Func42b370(int damage);
+    // Drops its items, as th07's OnUpdate did: its item (or, at -1,
+    // every third enemy one of g_EnemyItemDrops) with effect
+    // deathEffectIndex + 4, then unk_330c power items (big ones at full
+    // power) and unk_3308 point items around unk_2d88; `byBomb` makes
+    // them fly to the player (0x42bea0).
+    void DropItems(int byBomb);
     // Frees and clears unk_3384 (0x42bc90).
     void Func42bc90();
 
@@ -172,7 +178,8 @@ struct Enemy
     struct Laser *lasers[0x20];
     int laserIndex;
     int item;
-    // Set by timeline instructions 11 and 12.
+    // Set by timeline instructions 11 and 12: how many point and power
+    // items DropItems drops.
     int unk_3308;
     int unk_330c;
     char deathEffect;
@@ -426,6 +433,8 @@ public:
 };
 ASSERT_SIZE(EnemyManager, 0x9dcf10);
 extern EnemyManager g_EnemyManager;
+// What the enemies with item -1 drop, in turn, as th07's.
+extern BYTE g_EnemyItemDrops[0x20];
 // Cleared when this enemy despawns.
 extern Enemy *g_Unknown18b89b4;
 extern ChainElem g_EnemyManagerCalcChain;
