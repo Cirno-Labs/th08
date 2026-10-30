@@ -520,13 +520,13 @@ struct GameWindow
     WPARAM isAppActive;
     int isAppInactive;
     char curFrame;
-    unsigned char unk_11[0x3];
+    unsigned char pad_11[0x3];
     // QueryPerformanceFrequency's result.
     DWORD perfFrequency[2];
     // Set when the game was started from a shortcut or another path;
     // paces every frame by the clock, even ones that are early.
     BYTE forceClockPacing;
-    unsigned char unk_1d[0x3];
+    unsigned char pad_1d[0x3];
     // The screen saver and power settings, put back on exit.
     int screenSaveActive;
     int lowPowerActive;
