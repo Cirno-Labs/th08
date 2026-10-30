@@ -614,13 +614,13 @@ void SpellCard::End()
                     }
                     else
                     {
-                        for (k = 0; k < sizeof(catk->unk_70); k++)
+                        for (k = 0; k < sizeof(catk->note); k++)
                         {
-                            catk->unk_70[k] = (BYTE)this->text2[k] ^ 0xdd;
+                            catk->note[k] = (BYTE)this->text2[k] ^ 0xdd;
                         }
-                        for (k = 0; k < sizeof(catk->unk_b0); k++)
+                        for (k = 0; k < sizeof(catk->note2); k++)
                         {
-                            catk->unk_b0[k] = (BYTE)this->text3[k] ^ 0xee;
+                            catk->note2[k] = (BYTE)this->text3[k] ^ 0xee;
                         }
                         shot = g_GameManager.character;
                         if (catk->practiceMaxBonus[shot] < this->bonus)

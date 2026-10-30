@@ -184,7 +184,7 @@ struct Catk
     WORD size;
     WORD size2;
     BYTE version;
-    BYTE unk_09[0x3];
+    BYTE pad_09[0x3];
     // The card's number.
     WORD index;
     // A checksum: the low byte of the name's characters plus all the
@@ -198,8 +198,8 @@ struct Catk
     char comment[0x30];
     // SpellCard::unk_74 and unk_b4 (xor 0xdd and 0xee), set as a
     // practised card is captured.
-    char unk_70[0x40];
-    char unk_b0[0x40];
+    char note[0x40];
+    char note2[0x40];
     // By shot type, then with every shot type, as th07's (DWORDs now):
     // the best bonus, the attempts and the captures.
     DWORD maxBonus[0xd];
@@ -209,7 +209,7 @@ struct Catk
     // The same in spell card practice.
     DWORD practiceAttempts[0xd];
     DWORD practiceCaptures[0xd];
-    unsigned char unk_228[0x4];
+    unsigned char pad_228[0x4];
 
     // Whether the card was met with shot type `shot`, in a game or in
     // practice. Inline; WriteScoreText calls the copy at 0x45a4a0.

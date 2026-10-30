@@ -2351,7 +2351,7 @@ void MainMenu::UpdateCardDetails()
             char text[0x80];
 
             memset(text, 0, sizeof(text));
-            memcpy(text, g_GameManager.catks[id].unk_70, sizeof(g_GameManager.catks[id].unk_70));
+            memcpy(text, g_GameManager.catks[id].note, sizeof(g_GameManager.catks[id].note));
             g_SpriteEngine->RenderText(&this->unkSprites2[5], 0xffffff, 0,
                                        g_GameManager.catks[id].practiceCaptures[12] == 0 ? "？？？？？？？？？" : text);
         }
@@ -2372,7 +2372,7 @@ void MainMenu::UpdateCardDetails()
             char text[0x80];
 
             memset(text, 0, sizeof(text));
-            memcpy(text, g_GameManager.catks[id].unk_b0, sizeof(g_GameManager.catks[id].unk_b0));
+            memcpy(text, g_GameManager.catks[id].note2, sizeof(g_GameManager.catks[id].note2));
             g_SpriteEngine->RenderText(&this->unkSprites2[6], 0xffffff, 0,
                                        g_GameManager.catks[id].practiceCaptures[12] == 0 ? "？？？？？？？？？" : text);
         }
