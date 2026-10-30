@@ -2473,8 +2473,8 @@ struct SpellCard
     static int OnDraw(SpellCard *sc);
     // Releases the boss faces (slots 0x12 and 0x13) unless restarting,
     // and the background and team faces (0xf to 0x11) while the scene
-    // frees its files, then removes the draw element. Returns 0
-    // (0x418050).
+    // frees its files, then clears the update element's deleted
+    // callback and removes the draw element. Returns 0 (0x418050).
     static int DeletedCallback(SpellCard *sc);
     // Removes the update element, which deletes the draw element too;
     // GameManager::DeletedCallback calls it before the stage's

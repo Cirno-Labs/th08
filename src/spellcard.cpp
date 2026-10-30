@@ -556,3 +556,25 @@ int SpellCard::OnDraw(SpellCard *sc)
 {
     return sc->Draw();
 }
+
+int SpellCard::DeletedCallback(SpellCard *sc)
+{
+    if (!IsRestarting())
+    {
+        g_SpriteEngine->ReleaseAnm(0x12);
+        g_SpriteEngine->ReleaseAnm(0x13);
+    }
+    if (IsFreeingResources())
+    {
+        g_SpriteEngine->ReleaseAnm(0xf);
+        g_SpriteEngine->ReleaseAnm(0x10);
+        g_SpriteEngine->ReleaseAnm(0x11);
+    }
+    if (sc->calcChain != NULL)
+    {
+        sc->calcChain->deletedCallback = NULL;
+    }
+    g_Chain.Remove(sc->drawChain);
+    sc->drawChain = NULL;
+    return 0;
+}
