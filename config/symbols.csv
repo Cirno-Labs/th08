@@ -308,7 +308,7 @@ address,size,name,symbol
 0x00424c40,443,Func424c40,
 0x00424e00,31,TintStageRed,?TintStageRed@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00424e20,39,ShakeScreenRamp,?ShakeScreenRamp@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
-0x00424e50,272,Func424e50,
+0x00424e50,272,MarkFollowersNearBullets,?MarkFollowersNearBullets@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00424f60,39,FlashScreen180,?FlashScreen180@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00424f90,46,SetGameSpeed,?SetGameSpeed@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00424fc0,35,GetPracticeCard,?GetPracticeCard@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z

@@ -1454,6 +1454,39 @@ void SetGameSpeed(Enemy *enemy, EnemyScriptInstr *instr)
     g_App.gameSpeed = newSpeed;
 }
 
+void MarkFollowersNearBullets(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    Bullet *bullet = g_BulletManager.bullets;
+    D3DXVECTOR3 diff;
+    int i;
+    Enemy *member;
+
+    for (i = 0; i < 0x600; i++, bullet++)
+    {
+        if (bullet->state == 0)
+        {
+            continue;
+        }
+        if (bullet->activeFlags & 0x100000)
+        {
+            member = enemy->unk_8;
+            while (member != NULL)
+            {
+                if (member->currentCtx->vars.ints2[2] == 0)
+                {
+                    diff = bullet->pos - member->pos;
+                    if (D3DXVec3LengthSq(&diff) < 4096.0f)
+                    {
+                        member->currentCtx->vars.ints2[2] = 60;
+                        member->currentCtx->vars.ints[7] = enemy->currentCtx->vars.ints[7];
+                    }
+                }
+                member = member->unk_8;
+            }
+        }
+    }
+}
+
 void GetPracticeCard(Enemy *enemy, EnemyScriptInstr *instr)
 {
     enemy->currentCtx->vars.ints[0] = g_GameManager.unk_3dbb0;

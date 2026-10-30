@@ -754,6 +754,11 @@ void StartSlowdown(Enemy *enemy, EnemyScriptInstr *instr);
 // stateFlags bit 5 if argument 1 is above 1 (0x425290).
 void EndSlowdown(Enemy *enemy, EnemyScriptInstr *instr);
 
+// Script function 16: for each bullet with activeFlags bit 20, the
+// enemy's followers within 64 pixels of it with ints2[2] at 0 get 60
+// there and the enemy's ints[7] (0x424e50).
+void MarkFollowersNearBullets(Enemy *enemy, EnemyScriptInstr *instr);
+
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
 // The enemy scripts by stage, by stage in spell practice (stage + 9),
