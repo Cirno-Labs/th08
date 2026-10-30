@@ -28,3 +28,8 @@ void BulletManager::Reset()
         bullet->sprites.sprite3.scriptIndex = -1;
     }
 }
+
+BulletManager::BulletManager()
+{
+    this->Reset();
+}
