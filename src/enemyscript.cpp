@@ -904,3 +904,15 @@ int ScriptReturn(Enemy *enemy, EnemyScriptInstr *instr)
 void DebugPrint(const char *fmt, ...)
 {
 }
+
+void ScriptSetTurnSprites(Enemy *enemy, EnemyScriptInstr *instr, short still, short left, short right,
+                          short stillFromLeft, short stillFromRight, short unk)
+{
+    enemy->turnStill = still;
+    enemy->turnLeft = left;
+    enemy->turnRight = right;
+    enemy->turnStillFromLeft = stillFromLeft;
+    enemy->turnStillFromRight = stillFromRight;
+    enemy->unk_333c = unk;
+    enemy->spriteDirection = 0xff;
+}

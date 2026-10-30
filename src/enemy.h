@@ -384,18 +384,24 @@ struct Enemy
             DWORD unk_3328_9 : 23;
         };
     };
-    unsigned char unk_332c[0x3];
+    unsigned char unk_332c[0x2];
+    // The turning sprite script last started, as th07's: 0 still, 1
+    // left, 2 right, 0xff none yet.
+    BYTE spriteDirection;
     // The draw list OnUpdate puts it in, as th07's: 0 or 2 by
     // Func42c420 as Player::unk_5 changes.
     BYTE drawListIndex;
     // 0x40 while Player::unk_5 is set, else 0x20 (Func42c420).
     BYTE unk_3330;
     unsigned char unk_3331[0x1];
+    // The sprite scripts for turning, as th07's, and a sixth one.
     short turnStill;
-    unsigned char unk_3334[0x4];
+    short turnStillFromLeft;
+    short turnStillFromRight;
     short turnLeft;
     short turnRight;
-    unsigned char unk_333c[0x4];
+    short unk_333c;
+    unsigned char unk_333e[0x2];
     // Where ClampPos keeps it, as th07's.
     float lowerBound[2];
     float upperBound[2];
@@ -612,6 +618,10 @@ void ScriptCallSub(Enemy *enemy, EnemyScriptInstr *instr, short sub);
 // goes back to ctx, savedCtx and savedStackDepth and returns 1. Prints
 // an error under disableCallStack (0x421cb0).
 int ScriptReturn(Enemy *enemy, EnemyScriptInstr *instr);
+// Sets the turning sprite scripts, as th07's instruction 96, and
+// clears spriteDirection (0x421de0).
+void ScriptSetTurnSprites(Enemy *enemy, EnemyScriptInstr *instr, short still, short left, short right,
+                          short stillFromLeft, short stillFromRight, short unk);
 
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
