@@ -2502,7 +2502,9 @@ address,size,name,symbol
 0x00577f20,,g_EnemyManager,?g_EnemyManager@@3VEnemyManager@@A
 0x00f54e30,,g_EnemyManagerCalcChain,?g_EnemyManagerCalcChain@@3UChainElem@@A
 0x00f54e50,,g_EnemyManagerDrawChain2,?g_EnemyManagerDrawChain2@@3UChainElem@@A
+0x00f54e70,,g_BulletDrawChain,?g_BulletDrawChain@@3UChainElem@@A
 0x00f54e90,,g_BulletManager,?g_BulletManager@@3VBulletManager@@A
+0x0160f408,,g_BulletCalcChain,?g_BulletCalcChain@@3UChainElem@@A
 0x0160f428,,g_Gui,?g_Gui@@3VGui@@A
 0x0160f4c4,,g_GuiDrawChain,?g_GuiDrawChain@@3UChainElem@@A
 0x0160f4e4,,g_GuiCalcChain,?g_GuiCalcChain@@3UChainElem@@A

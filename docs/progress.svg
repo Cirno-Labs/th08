@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">91.31% (1019)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">5.47% (61)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">91.40% (1020)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">5.38% (60)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="682.07" height="6" x="0" y="0" class="named"/>
-<rect width="24.10" height="6" x="682.07" y="0" class="decompiled"/>
-<rect width="40.83" height="6" x="706.17" y="0" class="todo"/>
+<rect width="682.74" height="6" x="0" y="0" class="named"/>
+<rect width="24.10" height="6" x="682.74" y="0" class="decompiled"/>
+<rect width="40.16" height="6" x="706.84" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -532,7 +532,7 @@
 <rect width="12" height="12" x="165" y="135" class="named"><title>0x00433070 BulletManager::AddedCallback (1662 bytes)</title></rect>
 <rect width="12" height="12" x="180" y="135" class="named"><title>0x004337f0 ItemManager::Reset (42 bytes)</title></rect>
 <rect width="12" height="12" x="195" y="135" class="named"><title>0x00433820 BulletManager::DeletedCallback (35 bytes)</title></rect>
-<rect width="12" height="12" x="210" y="135" class="todo"><title>0x00433850 BulletManager::RemoveChain (35 bytes)</title></rect>
+<rect width="12" height="12" x="210" y="135" class="named"><title>0x00433850 BulletManager::RemoveChain (35 bytes)</title></rect>
 <rect width="12" height="12" x="225" y="135" class="named"><title>0x00433880 SinCos (33 bytes)</title></rect>
 <rect width="12" height="12" x="240" y="135" class="named"><title>0x004338b0 IsLoadingResources (10 bytes)</title></rect>
 <rect width="12" height="12" x="255" y="135" class="named"><title>0x004338c0 IsFreeingResources (10 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">85.30%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">13.12%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">85.31%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">13.12%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="637.19" height="6" x="0" y="0" class="named"/>
-<rect width="11.78" height="6" x="637.19" y="0" class="decompiled"/>
-<rect width="98.03" height="6" x="648.97" y="0" class="todo"/>
+<rect width="637.24" height="6" x="0" y="0" class="named"/>
+<rect width="11.78" height="6" x="637.24" y="0" class="decompiled"/>
+<rect width="97.98" height="6" x="649.02" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -2110,7 +2110,7 @@
 <rect width="1.32" height="1.59" x="695.08" y="306.66" class="named"><title>0x00424ff0 StartResurrection (35 bytes)</title></rect>
 <rect width="1.32" height="1.59" x="695.08" y="311.25" class="named"><title>0x004286b0 EffectManager::RemoveChain (35 bytes)</title></rect>
 <rect width="1.32" height="1.59" x="695.08" y="315.85" class="named"><title>0x00433820 BulletManager::DeletedCallback (35 bytes)</title></rect>
-<rect width="1.32" height="1.59" x="695.08" y="320.44" class="todo"><title>0x00433850 BulletManager::RemoveChain (35 bytes)</title></rect>
+<rect width="1.32" height="1.59" x="695.08" y="320.44" class="named"><title>0x00433850 BulletManager::RemoveChain (35 bytes)</title></rect>
 <rect width="1.32" height="1.59" x="695.08" y="325.03" class="named"><title>0x00437d64 Gui::RemoveChain (35 bytes)</title></rect>
 <rect width="1.32" height="1.59" x="695.08" y="329.63" class="named"><title>0x0043be09 IncrementStatCounter (35 bytes)</title></rect>
 <rect width="1.32" height="1.59" x="695.08" y="334.22" class="named"><title>0x0043f980 CreateTextSurface (35 bytes)</title></rect>

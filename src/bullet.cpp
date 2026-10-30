@@ -1426,3 +1426,9 @@ int BulletManager::DeletedCallback(BulletManager *mgr)
     }
     return 0;
 }
+
+void BulletManager::RemoveChain()
+{
+    g_Chain.Remove(&g_BulletCalcChain);
+    g_Chain.Remove(&g_BulletDrawChain);
+}
