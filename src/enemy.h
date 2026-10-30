@@ -108,6 +108,25 @@ struct Enemy
     // Moves it by velocity (x mirrored while mirrored is set), keeping
     // prevPos and posDelta, as th07's inline (0x42deb0).
     void Move();
+    // Resets the rank speeds and counts after a life or timer callback,
+    // as th07's did in place. Inline; the copy at 0x415c80 is an /Od
+    // object's.
+    void ResetRankSpeeds()
+    {
+        this->rankSpeedLow = -0.5f;
+        this->rankSpeedHigh = 0.5f;
+        this->rankCount1Low = 0;
+        this->rankCount1High = 0;
+        this->rankCount2Low = 0;
+        this->rankCount2High = 0;
+    }
+    // Runs the first life callback whose life the enemy dropped below,
+    // as th07's: restarts its script there, ends its timer callback,
+    // frees unk_3384, Func42adb0(1), kills the other non-boss enemies and
+    // makes the player invulnerable for 70 frames after a boss's.
+    // Returns 1 then, else 0 after setting unk_3328_4 by how close the
+    // life is to the next callback (or to 0) (0x42b490).
+    int CheckLifeCallback();
     // Keeps pos within lowerBound and upperBound while clampPos is set,
     // as th07's (0x42c180).
     void ClampPos();
@@ -171,7 +190,10 @@ struct Enemy
     int unk_2de8;
     float rankSpeedLow;
     float rankSpeedHigh;
-    unsigned char unk_2df4[0x8];
+    short rankCount1Low;
+    short rankCount1High;
+    short rankCount2Low;
+    short rankCount2High;
     // Its life, as th07's. Cleared for the bosses as a spell card bomb
     // (Player::bomb.type 4) ends.
     int life;
@@ -245,7 +267,10 @@ struct Enemy
             DWORD unk_3328_0 : 1;
             // Func42c420 bursts effect 0x26 every other frame while set.
             DWORD unk_3328_1 : 1;
-            DWORD unk_3328_2 : 4;
+            DWORD unk_3328_2 : 2;
+            // How close it is to its next life callback, 0 to 3
+            // (CheckLifeCallback).
+            DWORD unk_3328_4 : 2;
             // ClearEnemiesForBonus spares it while set.
             DWORD unk_3328_6 : 1;
             DWORD unk_3328_7 : 25;
@@ -290,7 +315,9 @@ struct Enemy
     float effectRadius;
     // Sent interrupt 3 as it despawns.
     struct Effect *unk_53c8;
-    unsigned char unk_53cc[0x4];
+    // The seconds its timer callback had left when CheckLifeCallback
+    // last ran a life callback.
+    int unk_53cc;
 };
 ASSERT_SIZE(Enemy, 0x53d0);
 

@@ -473,6 +473,192 @@ void Enemy::Despawn()
     }
 }
 
+int Enemy::CheckLifeCallback()
+{
+    DWORD level;
+    int count;
+    int i;
+    int tmp;
+    Enemy *enemy;
+    int k;
+
+    count = 0;
+    level = 0;
+    this->unk_3328_4 = 0;
+    for (i = 0; i < 4; i++)
+    {
+        if (this->lifeCallbackLife[i] < 0)
+        {
+            continue;
+        }
+        count++;
+        if (this->life < this->lifeCallbackLife[i])
+        {
+            this->life = this->lifeCallbackLife[i];
+            this->unk_2e04 = this->life;
+            g_EnemyScripts.StartSub(&this->ctx, this->lifeCallbackSub[i]);
+            this->lifeCallbackLife[i] = -1;
+            this->unk_53cc = (this->timerCallbackTime - this->callbackTimer.AsFrames()) / 60;
+            this->timerCallbackTime = -1;
+            for (tmp = 0; tmp < 4; tmp++)
+            {
+                if (this->unk_3384[tmp] != NULL)
+                {
+                    g_MemoryManager.Free(this->unk_3384[tmp]);
+                    this->unk_3384[tmp] = NULL;
+                }
+            }
+            this->ResetRankSpeeds();
+            this->stackDepth = 0;
+            this->unk_3328_4 = 0;
+            this->shooter = g_EnemyManager.enemyTemplate.shooter;
+            this->shootInterval = 0;
+            this->Func42adb0(1);
+            for (enemy = g_EnemyManager.enemies, k = 0; k < 0x1e0; k++, enemy++)
+            {
+                if (!enemy->active)
+                {
+                    continue;
+                }
+                if (enemy->isBoss)
+                {
+                    continue;
+                }
+                enemy->life = 0;
+                if (enemy->deathSub >= 0)
+                {
+                    g_EnemyScripts.StartSub(&enemy->ctx, enemy->deathSub);
+                    enemy->deathSub = -1;
+                }
+            }
+            if (this->isBoss && g_Player.playerState == 0)
+            {
+                g_Player.stateTimer = 70;
+                g_Player.playerState = 3;
+            }
+            return 1;
+        }
+        tmp = this->life - this->lifeCallbackLife[i];
+        if (g_SpellCard.Func4178a0())
+        {
+            if (tmp < 120)
+            {
+                level = 3;
+            }
+            else if (tmp < 200)
+            {
+                level = 2;
+            }
+            else if (tmp < 300)
+            {
+                level = 1;
+            }
+            else
+            {
+                level = 0;
+            }
+        }
+        else
+        {
+            if (tmp < 500)
+            {
+                level = 3;
+            }
+            else if (tmp < 1500)
+            {
+                level = 2;
+            }
+            else if (tmp < 2200)
+            {
+                level = 1;
+            }
+            else
+            {
+                level = 0;
+            }
+        }
+        if (this->unk_3328_4 < level)
+        {
+            this->unk_3328_4 = level;
+        }
+    }
+    if (count == 0)
+    {
+        tmp = this->life;
+        if (this->isBoss)
+        {
+            if (g_SpellCard.Func4178a0())
+            {
+                if (tmp < 120)
+                {
+                    level = 3;
+                }
+                else if (tmp < 300)
+                {
+                    level = 2;
+                }
+                else if (tmp < 400)
+                {
+                    level = 1;
+                }
+                else
+                {
+                    level = 0;
+                }
+            }
+            else
+            {
+                if (tmp < 600)
+                {
+                    level = 3;
+                }
+                else if (tmp < 1600)
+                {
+                    level = 2;
+                }
+                else if (tmp < 2400)
+                {
+                    level = 1;
+                }
+                else
+                {
+                    level = 0;
+                }
+            }
+        }
+        else
+        {
+            if (g_SpellCard.Func4178a0())
+            {
+                if (tmp < 10)
+                {
+                    level = 3;
+                }
+                else
+                {
+                    level = 0;
+                }
+            }
+            else
+            {
+                if (tmp < 50)
+                {
+                    level = 3;
+                }
+                else
+                {
+                    level = 0;
+                }
+            }
+        }
+        if (this->unk_3328_4 < level)
+        {
+            this->unk_3328_4 = level;
+        }
+    }
+    return 0;
+}
+
 void Enemy::DropItems(int byBomb)
 {
     D3DXVECTOR3 pos;
