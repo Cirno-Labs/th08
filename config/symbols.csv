@@ -239,7 +239,7 @@ address,size,name,symbol
 0x0041efc0,54,Func41efc0,
 0x0041f000,53,Enemy::Func41f000,?Func41f000@Enemy@@QAEHXZ
 0x0041f040,67,Func41f040,
-0x0041f090,24,Func41f090,
+0x0041f090,24,fmodf,@fmodf@8
 0x0041f0b0,37,Func41f0b0,
 0x0041f0e0,40,Func41f0e0,
 0x0041f110,365,ScriptSpawnEnemy,?ScriptSpawnEnemy@@YIPAUEnemy@@PAU1@PAUEnemyScriptInstr@@@Z

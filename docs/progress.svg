@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">87.90% (981)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">8.87% (99)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">87.99% (982)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">8.78% (98)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="656.64" height="6" x="0" y="0" class="named"/>
-<rect width="24.10" height="6" x="656.64" y="0" class="decompiled"/>
-<rect width="66.27" height="6" x="680.73" y="0" class="todo"/>
+<rect width="657.31" height="6" x="0" y="0" class="named"/>
+<rect width="24.10" height="6" x="657.31" y="0" class="decompiled"/>
+<rect width="65.60" height="6" x="681.40" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -308,7 +308,7 @@
 <rect width="12" height="12" x="555" y="60" class="todo"><title>0x0041efc0 Func41efc0 (54 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="60" class="decompiled"><title>0x0041f000 Enemy::Func41f000 (53 bytes)</title></rect>
 <rect width="12" height="12" x="585" y="60" class="todo"><title>0x0041f040 Func41f040 (67 bytes)</title></rect>
-<rect width="12" height="12" x="600" y="60" class="todo"><title>0x0041f090 Func41f090 (24 bytes)</title></rect>
+<rect width="12" height="12" x="600" y="60" class="named"><title>0x0041f090 fmodf (24 bytes)</title></rect>
 <rect width="12" height="12" x="615" y="60" class="todo"><title>0x0041f0b0 Func41f0b0 (37 bytes)</title></rect>
 <rect width="12" height="12" x="630" y="60" class="todo"><title>0x0041f0e0 Func41f0e0 (40 bytes)</title></rect>
 <rect width="12" height="12" x="645" y="60" class="named"><title>0x0041f110 ScriptSpawnEnemy (365 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">81.61%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">16.81%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">81.62%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">16.81%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="609.63" height="6" x="0" y="0" class="named"/>
-<rect width="11.78" height="6" x="609.63" y="0" class="decompiled"/>
-<rect width="125.59" height="6" x="621.41" y="0" class="todo"/>
+<rect width="609.67" height="6" x="0" y="0" class="named"/>
+<rect width="11.78" height="6" x="609.67" y="0" class="decompiled"/>
+<rect width="125.55" height="6" x="621.45" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -2210,7 +2210,7 @@
 <rect width="0.54" height="0.85" x="715.34" y="332.61" class="named"><title>0x0040fcb0 DrawRemiliaLastWord (24 bytes)</title></rect>
 <rect width="0.54" height="0.85" x="715.34" y="336.46" class="named"><title>0x004143c0 Rng::GetRandomF32SignedInRange (24 bytes)</title></rect>
 <rect width="0.54" height="0.85" x="715.34" y="340.31" class="todo"><title>0x00416ad0 Func416ad0 (24 bytes)</title></rect>
-<rect width="0.54" height="0.85" x="715.34" y="344.15" class="todo"><title>0x0041f090 Func41f090 (24 bytes)</title></rect>
+<rect width="0.54" height="0.85" x="715.34" y="344.15" class="named"><title>0x0041f090 fmodf (24 bytes)</title></rect>
 <rect width="0.89" height="0.50" x="718.88" y="313.38" class="named"><title>0x00438a29 App::GetNoFrameItems (24 bytes)</title></rect>
 <rect width="0.89" height="0.50" x="722.77" y="313.38" class="named"><title>0x00438a41 App::GetNoDepthTest (24 bytes)</title></rect>
 <rect width="0.89" height="0.50" x="726.66" y="313.38" class="named"><title>0x00438a59 App::GetNoColorBlending (24 bytes)</title></rect>
