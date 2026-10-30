@@ -912,7 +912,7 @@ public:
     // The world matrix ProjectSprite3D last projected with.
     D3DXMATRIX lastWorldMatrix;
     Sprite unusedSprite1c64;
-    unsigned char unk_1f08[0x130];
+    unsigned char pad_1f08[0x130];
     // Images loaded as surfaces to copy to the back buffer from.
     IDirect3DSurface8 *surfaces[0x20];
     // System memory copies of them, to recreate them from.
@@ -934,7 +934,7 @@ public:
     // Set to have SetRenderStateForSprite set the texture factor as
     // texture stage 0's second color and alpha arguments again.
     BYTE resetTextureArgs;
-    unsigned char unk_24c6[0x2];
+    unsigned char pad_24c6[0x2];
     void *currentSpriteData;
     IDirect3DVertexBuffer8 *vertexBuffer;
     // The quad the vertex buffer holds, 256 pixels across.
