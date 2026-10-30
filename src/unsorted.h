@@ -2504,6 +2504,9 @@ extern int g_ListedSpellCardCount;
 // registers it). Only what is known so far.
 struct SpellCard
 {
+    // Constructs the timers and sprites (0x4143e0).
+    SpellCard();
+
     // Bit 0 of flags. Inline; the copy at 0x4178a0 is in an /Od object.
     int IsActive()
     {

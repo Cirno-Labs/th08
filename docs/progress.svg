@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">99.01% (1105)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">0.99% (11)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">99.10% (1106)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">0.90% (10)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="739.64" height="6" x="0" y="0" class="named"/>
-<rect width="7.36" height="6" x="739.64" y="0" class="todo"/>
+<rect width="740.31" height="6" x="0" y="0" class="named"/>
+<rect width="6.69" height="6" x="740.31" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -267,7 +267,7 @@
 <rect width="12" height="12" x="705" y="45" class="named"><title>0x00413990 UpdateYuyukoLastWord (2344 bytes)</title></rect>
 <rect width="12" height="12" x="720" y="45" class="named"><title>0x004142c0 DrawYuyukoLastWord (244 bytes)</title></rect>
 <rect width="12" height="12" x="735" y="45" class="named"><title>0x004143c0 Rng::GetRandomF32SignedInRange (24 bytes)</title></rect>
-<rect width="12" height="12" x="0" y="60" class="todo"><title>0x004143e0 SpellCard::SpellCard (238 bytes)</title></rect>
+<rect width="12" height="12" x="0" y="60" class="named"><title>0x004143e0 SpellCard::SpellCard (238 bytes)</title></rect>
 <rect width="12" height="12" x="15" y="60" class="named"><title>0x004144d0 GetSpellCardDifficulty (105 bytes)</title></rect>
 <rect width="12" height="12" x="30" y="60" class="named"><title>0x00414540 IsListedSpellCard (68 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="60" class="named"><title>0x00414590 SpellCard::Initialize (3237 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">99.30%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">0.70%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">99.36%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">0.64%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="741.80" height="6" x="0" y="0" class="named"/>
-<rect width="5.20" height="6" x="741.80" y="0" class="todo"/>
+<rect width="742.19" height="6" x="0" y="0" class="named"/>
+<rect width="4.81" height="6" x="742.19" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="named"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -1588,7 +1588,7 @@
 <rect width="8.77" height="8.62" x="558.02" y="166.35" class="named"><title>0x0044d530 Player::OnDraw (241 bytes)</title></rect>
 <rect width="8.77" height="8.62" x="558.02" y="177.96" class="named"><title>0x00451400 DrawHitBullets (241 bytes)</title></rect>
 <rect width="8.77" height="8.52" x="558.02" y="189.58" class="named"><title>0x00418330 EnemyScripts::Load (239 bytes)</title></rect>
-<rect width="8.77" height="8.47" x="558.02" y="201.10" class="todo"><title>0x004143e0 SpellCard::SpellCard (238 bytes)</title></rect>
+<rect width="8.77" height="8.47" x="558.02" y="201.10" class="named"><title>0x004143e0 SpellCard::SpellCard (238 bytes)</title></rect>
 <rect width="8.77" height="8.47" x="558.02" y="212.57" class="named"><title>0x00421300 ScriptLerp (238 bytes)</title></rect>
 <rect width="8.77" height="8.47" x="558.02" y="224.04" class="named"><title>0x00449399 MusicScreen::OnUpdate (238 bytes)</title></rect>
 <rect width="8.77" height="8.47" x="558.02" y="235.51" class="named"><title>0x004663b0 SpriteEngine::RenderText (238 bytes)</title></rect>

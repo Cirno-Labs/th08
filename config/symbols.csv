@@ -199,7 +199,7 @@ address,size,name,symbol
 0x00413990,2344,UpdateYuyukoLastWord,?UpdateYuyukoLastWord@@YIXPAVPlayer@@@Z
 0x004142c0,244,DrawYuyukoLastWord,?DrawYuyukoLastWord@@YIXPAVPlayer@@@Z
 0x004143c0,24,Rng::GetRandomF32SignedInRange,?GetRandomF32SignedInRange@Rng@@QAEMM@Z
-0x004143e0,238,SpellCard::SpellCard,
+0x004143e0,238,SpellCard::SpellCard,??0SpellCard@@QAE@XZ
 0x004144d0,105,GetSpellCardDifficulty,?GetSpellCardDifficulty@@YIHH@Z
 0x00414540,68,IsListedSpellCard,?IsListedSpellCard@@YIHH@Z
 0x00414590,3237,SpellCard::Initialize,?Initialize@SpellCard@@QAEHXZ

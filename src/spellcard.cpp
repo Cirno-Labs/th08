@@ -14,6 +14,10 @@
 #include "sprite.h"
 #include "unsorted.h"
 
+EXE_INLINE SpellCard::SpellCard()
+{
+}
+
 int GetSpellCardDifficulty(int card)
 {
     int i;

@@ -11,6 +11,18 @@
 // The number of elements of array `a`, as an unsigned size_t.
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof((a)[0]))
 
+// Marks a constructor that only the static initializer of a global
+// calls. The standalone exe defines it inline, as the original did: its
+// out-of-line copy then lands where the global is defined or where the
+// constructor is, whichever comes later. The DLL build defines it out of
+// line: it constructs no globals, and an inline function nobody calls
+// would not be compiled, or compared.
+#ifdef TH08_EXE
+#define EXE_INLINE inline
+#else
+#define EXE_INLINE
+#endif
+
 // Every free() in the game passes through a temporary, the trace an
 // inlined wrapper leaves under /Ob1.
 inline void MemFree(void *p)
