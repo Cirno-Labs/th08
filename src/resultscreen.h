@@ -31,7 +31,7 @@ struct Plst
     WORD size;
     WORD size2;
     BYTE version;
-    BYTE unk_09[0x3];
+    BYTE pad_09[0x3];
     // How long the game has run, App::AddPlayTime keeps it up to date.
     DWORD runHours;
     DWORD runMinutes;
