@@ -91,7 +91,7 @@ struct DatArchiveEntry
     DWORD offset;
     // The decoded size.
     DWORD size;
-    DWORD unk_0c;
+    DWORD checksum;
 };
 ASSERT_SIZE(DatArchiveEntry, 0x10);
 
