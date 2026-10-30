@@ -114,8 +114,8 @@ struct Bullet
     BulletEx ex[7];
     // Set as the toggling script functions switch it to its additive
     // sprite; it neither grazes nor hits while set.
-    char unk_10b4;
-    unsigned char unk_10b5[0x3];
+    char harmless;
+    unsigned char pad_10b5[0x3];
 };
 ASSERT_SIZE(Bullet, 0x10b8);
 

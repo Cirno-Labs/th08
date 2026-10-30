@@ -3114,7 +3114,7 @@ void ToggleMarkedBullets(Enemy *enemy, EnemyScriptInstr *instr)
                 bullet->sprites.sprite0.autoRotate = 0;
                 bullet->sprites.sprite0.blendMode = 1;
                 g_BulletManager.etamaAnm->SetSprite(&bullet->sprites.sprite0, bullet->sprites.sprite0.spriteIndex + 0x10);
-                bullet->unk_10b4 = 1;
+                bullet->harmless = 1;
                 ((Vector2 *)&bullet->velocity)
                     ->SetPolar(enemy->currentCtx->vars.floats[0], g_App.gameSpeed * enemy->currentCtx->vars.floats[1]);
             }
@@ -3123,7 +3123,7 @@ void ToggleMarkedBullets(Enemy *enemy, EnemyScriptInstr *instr)
                 bullet->sprites.sprite0.autoRotate = 1;
                 bullet->sprites.sprite0.blendMode = 0;
                 g_BulletManager.etamaAnm->SetSprite(&bullet->sprites.sprite0, bullet->sprites.sprite0.spriteIndex - 0x10);
-                bullet->unk_10b4 = 0;
+                bullet->harmless = 0;
                 ((Vector2 *)&bullet->velocity)->SetPolar(bullet->angle, g_App.gameSpeed * bullet->speed);
             }
         }
@@ -3173,7 +3173,7 @@ void CycleMarkedBullets(Enemy *enemy, EnemyScriptInstr *instr)
                 bullet->sprites.sprite0.blendMode = 1;
                 bullet->sprites.sprite0.alpha = 0;
                 g_BulletManager.etamaAnm->SetSprite(&bullet->sprites.sprite0, bullet->sprites.sprite0.spriteIndex + 0x10);
-                bullet->unk_10b4 = 1;
+                bullet->harmless = 1;
                 ((Vector2 *)&bullet->velocity)
                     ->SetPolar(bullet->angle, g_App.gameSpeed * enemy->currentCtx->vars.floats[1]);
             }
@@ -3188,7 +3188,7 @@ void CycleMarkedBullets(Enemy *enemy, EnemyScriptInstr *instr)
                 bullet->sprites.sprite0.autoRotate = 1;
                 bullet->sprites.sprite0.blendMode = 0;
                 g_BulletManager.etamaAnm->SetSprite(&bullet->sprites.sprite0, bullet->sprites.sprite0.spriteIndex - 0x10);
-                bullet->unk_10b4 = 0;
+                bullet->harmless = 0;
                 ((Vector2 *)&bullet->velocity)->SetPolar(bullet->angle, g_App.gameSpeed * bullet->speed);
             }
         }

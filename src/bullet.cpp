@@ -149,7 +149,7 @@ int BulletManager::SpawnBullet(BulletShooter *shooter, int col, int row, float a
     cur->spawnedFlag = 1;
     cur->grazed = 0;
     cur->timer = 0;
-    cur->unk_10b4 = 0;
+    cur->harmless = 0;
     cur->grazeDelayTimer = 0;
     cur->speed = v;
     cur->angle = AddNormalizeAngle(angle, 0.0f);
@@ -781,7 +781,7 @@ int BulletManager::OnUpdate(BulletManager *mgr)
                     bullet->outOfBoundsFrames = 0;
                 }
             }
-            if (!bullet->unk_10b4)
+            if (!bullet->harmless)
             {
                 if (bullet->grazed == 0 && bullet->grazeDelayTimer.AsFrames() >= 0x10)
                 {
