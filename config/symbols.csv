@@ -257,7 +257,7 @@ address,size,name,symbol
 0x00420d10,556,ScriptMoveAngle,?ScriptMoveAngle@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00420f40,467,ScriptMovePos,?ScriptMovePos@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00421120,89,ScriptMoveLinear,?ScriptMoveLinear@@YIXPAUEnemy@@PAUEnemyScriptInstr@@M@Z
-0x00421180,256,Func421180,
+0x00421180,256,ScriptMoveHermite,?ScriptMoveHermite@@YIXPAUEnemy@@PAUEnemyScriptInstr@@M@Z
 0x00421280,83,Func421280,
 0x004212e0,26,Func4212e0,
 0x00421300,238,Func421300,

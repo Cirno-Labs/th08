@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">82.53% (921)</tspan> · <tspan class="decompiled">3.05% (34)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">14.43% (161)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">82.62% (922)</tspan> · <tspan class="decompiled">3.05% (34)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">14.34% (160)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="616.48" height="6" x="0" y="0" class="named"/>
-<rect width="22.76" height="6" x="616.48" y="0" class="decompiled"/>
-<rect width="107.77" height="6" x="639.23" y="0" class="todo"/>
+<rect width="617.15" height="6" x="0" y="0" class="named"/>
+<rect width="22.76" height="6" x="617.15" y="0" class="decompiled"/>
+<rect width="107.10" height="6" x="639.90" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -326,7 +326,7 @@
 <rect width="12" height="12" x="75" y="75" class="named"><title>0x00420d10 ScriptMoveAngle (556 bytes)</title></rect>
 <rect width="12" height="12" x="90" y="75" class="named"><title>0x00420f40 ScriptMovePos (467 bytes)</title></rect>
 <rect width="12" height="12" x="105" y="75" class="named"><title>0x00421120 ScriptMoveLinear (89 bytes)</title></rect>
-<rect width="12" height="12" x="120" y="75" class="todo"><title>0x00421180 Func421180 (256 bytes)</title></rect>
+<rect width="12" height="12" x="120" y="75" class="named"><title>0x00421180 ScriptMoveHermite (256 bytes)</title></rect>
 <rect width="12" height="12" x="135" y="75" class="todo"><title>0x00421280 Func421280 (83 bytes)</title></rect>
 <rect width="12" height="12" x="150" y="75" class="todo"><title>0x004212e0 Func4212e0 (26 bytes)</title></rect>
 <rect width="12" height="12" x="165" y="75" class="todo"><title>0x00421300 Func421300 (238 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">77.88%</tspan> · <tspan class="decompiled">1.56%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">20.56%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">77.94%</tspan> · <tspan class="decompiled">1.56%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">20.50%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="581.77" height="6" x="0" y="0" class="named"/>
-<rect width="11.65" height="6" x="581.77" y="0" class="decompiled"/>
-<rect width="153.58" height="6" x="593.42" y="0" class="todo"/>
+<rect width="582.19" height="6" x="0" y="0" class="named"/>
+<rect width="11.65" height="6" x="582.19" y="0" class="decompiled"/>
+<rect width="153.16" height="6" x="593.84" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -1568,7 +1568,7 @@
 <rect width="9.31" height="8.94" x="545.71" y="276.95" class="todo"><title>0x00430e10 Func430e10 (259 bytes)</title></rect>
 <rect width="9.31" height="8.94" x="545.71" y="288.89" class="named"><title>0x0044886f App::StartLoadingSpritesOverScreen (259 bytes)</title></rect>
 <rect width="9.31" height="8.85" x="545.71" y="300.83" class="named"><title>0x0042e010 MoveEnemyEffects (257 bytes)</title></rect>
-<rect width="9.31" height="8.80" x="545.71" y="312.68" class="todo"><title>0x00421180 Func421180 (256 bytes)</title></rect>
+<rect width="9.31" height="8.80" x="545.71" y="312.68" class="named"><title>0x00421180 ScriptMoveHermite (256 bytes)</title></rect>
 <rect width="9.31" height="8.76" x="545.71" y="324.48" class="todo"><title>0x00425290 Func425290 (255 bytes)</title></rect>
 <rect width="9.31" height="8.76" x="545.71" y="336.24" class="named"><title>0x00445d3e App::OnDrawLoading (255 bytes)</title></rect>
 <rect width="9.28" height="8.78" x="558.02" y="154.57" class="named"><title>0x0044e160 GameManager::RerollLifeChecksumKeys (255 bytes)</title></rect>

@@ -708,3 +708,26 @@ void ScriptMoveLinear(Enemy *enemy, EnemyScriptInstr *instr, float t)
     end = GetFloatOperand(enemy, instr->args[5].f);
     *ResolveFloatOperand(enemy, &instr->args[8].f, 0, -1) = (end - start) * t + start;
 }
+
+void ScriptMoveHermite(Enemy *enemy, EnemyScriptInstr *instr, float t)
+{
+    float start;
+    float hStart;
+    float weightIn;
+    float end;
+    float slopeIn;
+    float wEnd;
+    float tangentOut;
+    float outWeight;
+
+    start = GetFloatOperand(enemy, instr->args[4].f);
+    end = GetFloatOperand(enemy, instr->args[5].f);
+    slopeIn = GetFloatOperand(enemy, instr->args[6].f);
+    tangentOut = GetFloatOperand(enemy, instr->args[7].f);
+    hStart = (t - 1.0f) * (t - 1.0f) * (2.0f * t + 1.0f);
+    wEnd = t * t * (3.0f - 2.0f * t);
+    weightIn = (1.0f - t) * (1.0f - t) * t;
+    outWeight = (t - 1.0f) * t * t;
+    *ResolveFloatOperand(enemy, &instr->args[8].f, 0, -1) =
+        hStart * start + wEnd * end + weightIn * slopeIn + outWeight * tangentOut;
+}
