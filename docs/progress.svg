@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">88.89% (992)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">7.89% (88)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">88.98% (993)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">7.80% (87)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="664" height="6" x="0" y="0" class="named"/>
-<rect width="24.10" height="6" x="664" y="0" class="decompiled"/>
-<rect width="58.90" height="6" x="688.10" y="0" class="todo"/>
+<rect width="664.67" height="6" x="0" y="0" class="named"/>
+<rect width="24.10" height="6" x="664.67" y="0" class="decompiled"/>
+<rect width="58.23" height="6" x="688.77" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -505,7 +505,7 @@
 <rect width="12" height="12" x="510" y="120" class="named"><title>0x0042f580 Laser::Laser (64 bytes)</title></rect>
 <rect width="12" height="12" x="525" y="120" class="named"><title>0x0042f5c0 BulletEx::BulletEx (33 bytes)</title></rect>
 <rect width="12" height="12" x="540" y="120" class="named"><title>0x0042f5f0 BulletManager::SpawnBullet (2138 bytes)</title></rect>
-<rect width="12" height="12" x="555" y="120" class="todo"><title>0x0042fe70 Func42fe70 (33 bytes)</title></rect>
+<rect width="12" height="12" x="555" y="120" class="named"><title>0x0042fe70 CopyBulletSprite (33 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="120" class="todo"><title>0x0042fea0 Func42fea0 (204 bytes)</title></rect>
 <rect width="12" height="12" x="585" y="120" class="todo"><title>0x0042ff70 Func42ff70 (67 bytes)</title></rect>
 <rect width="12" height="12" x="600" y="120" class="todo"><title>0x0042ffc0 RunBulletCommands (2075 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">82.23%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">16.19%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">82.24%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">16.19%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="614.26" height="6" x="0" y="0" class="named"/>
-<rect width="11.78" height="6" x="614.26" y="0" class="decompiled"/>
-<rect width="120.96" height="6" x="626.04" y="0" class="todo"/>
+<rect width="614.31" height="6" x="0" y="0" class="named"/>
+<rect width="11.78" height="6" x="614.31" y="0" class="decompiled"/>
+<rect width="120.91" height="6" x="626.09" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -2123,7 +2123,7 @@
 <rect width="1.47" height="1.19" x="699.41" y="314.74" class="named"><title>0x0040baf0 SpriteEngine::DrawAndFlush (33 bytes)</title></rect>
 <rect width="1.47" height="1.19" x="699.41" y="318.93" class="named"><title>0x0042a490 EnemyBox::EnemyBox (33 bytes)</title></rect>
 <rect width="1.47" height="1.19" x="699.41" y="323.12" class="named"><title>0x0042f5c0 BulletEx::BulletEx (33 bytes)</title></rect>
-<rect width="1.47" height="1.19" x="699.41" y="327.31" class="todo"><title>0x0042fe70 Func42fe70 (33 bytes)</title></rect>
+<rect width="1.47" height="1.19" x="699.41" y="327.31" class="named"><title>0x0042fe70 CopyBulletSprite (33 bytes)</title></rect>
 <rect width="1.47" height="1.19" x="699.41" y="331.50" class="todo"><title>0x00433880 Func433880 (33 bytes)</title></rect>
 <rect width="1.47" height="1.19" x="699.41" y="335.69" class="named"><title>0x00443c60 MidiDevice::MidiDevice (33 bytes)</title></rect>
 <rect width="1.47" height="1.06" x="699.41" y="339.88" class="named"><title>0x00406700 Sprite::ClearShown (32 bytes)</title></rect>
