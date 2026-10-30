@@ -411,7 +411,7 @@ void Enemy::Func42adb0(int collect)
                     pos += cur->absPos;
                     g_ItemManager.SpawnItem(&pos, 7, 3);
                 }
-                if (!g_EnemyManager.AnyBossActive() || g_SpellCard.Func4178a0())
+                if (!g_EnemyManager.AnyBossActive() || g_SpellCard.IsActive())
                 {
                     cur->item = 8;
                     cur->DropItems(0);
@@ -647,7 +647,7 @@ int Enemy::CheckLifeCallback()
             return 1;
         }
         tmp = this->life - this->lifeCallbackLife[i];
-        if (g_SpellCard.Func4178a0())
+        if (g_SpellCard.IsActive())
         {
             if (tmp < 120)
             {
@@ -695,7 +695,7 @@ int Enemy::CheckLifeCallback()
         tmp = this->life;
         if (this->isBoss)
         {
-            if (g_SpellCard.Func4178a0())
+            if (g_SpellCard.IsActive())
             {
                 if (tmp < 120)
                 {
@@ -736,7 +736,7 @@ int Enemy::CheckLifeCallback()
         }
         else
         {
-            if (g_SpellCard.Func4178a0())
+            if (g_SpellCard.IsActive())
             {
                 if (tmp < 10)
                 {
@@ -807,7 +807,7 @@ int Enemy::CheckTimerCallback()
         this->callbackTimer = 0;
         if (!this->keepSpellCard)
         {
-            g_SpellCard.Func42bc50();
+            g_SpellCard.TimeOut();
             g_BulletManager.ClearAll(4);
         }
         if (this->isBoss && g_Player.playerState == 0)
@@ -1220,7 +1220,7 @@ int EnemyManager::OnUpdate(EnemyManager *mgr)
             enemy->lastDamage = 0;
             if (enemy->hitByShots)
             {
-                if (!g_SpellCard.Func4178a0() || !enemy->Func41fd20() || !g_Unknown17d6ed4)
+                if (!g_SpellCard.IsActive() || !enemy->Func41fd20() || !g_Unknown17d6ed4)
                 {
                     hurt = g_Player.CalcDamage(&enemy->absPos, &enemy->hitboxSize, &enemy->timeOrbDamage, &bomb);
                 }
@@ -1271,7 +1271,7 @@ int EnemyManager::OnUpdate(EnemyManager *mgr)
                     g_GameManager.AddScore(hurt / 5 * 10);
                     if (enemy->contactDamage)
                     {
-                        if (g_SpellCard.Func4178a0())
+                        if (g_SpellCard.IsActive())
                         {
                             if (bomb == 0)
                             {
@@ -1284,7 +1284,7 @@ int EnemyManager::OnUpdate(EnemyManager *mgr)
                                     hurt = 1;
                                 }
                             }
-                            else if (g_SpellCard.Func42dff0() && !enemy->Func41fd20())
+                            else if (g_SpellCard.WasBombed() && !enemy->Func41fd20())
                             {
                                 if (hurt > 2)
                                 {
@@ -1431,7 +1431,7 @@ int EnemyManager::OnUpdate(EnemyManager *mgr)
                 }
             case 2:
                 enemy->DropItems(bomb);
-                if (enemy->isBoss && !g_SpellCard.Func4178a0())
+                if (enemy->isBoss && !g_SpellCard.IsActive())
                 {
                     int bonus;
 

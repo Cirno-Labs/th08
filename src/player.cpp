@@ -260,7 +260,7 @@ void Player::Graze(D3DXVECTOR3 *pos, int isLaser)
         g_GameManager.IsUnk22AtHigh1())
     {
         g_ItemManager.SpawnItem(pos, 10, 1);
-        if (!isLaser && g_SpellCard.Func4178a0())
+        if (!isLaser && g_SpellCard.IsActive())
         {
             g_ItemManager.SpawnItem(pos, 10, 1);
             if (!g_GameManager.IsSoloYoukai())
@@ -304,7 +304,7 @@ void Player::Die()
             {
                 this->deathbombFrames = 15;
             }
-            if (g_SpellCard.Func4178a0())
+            if (g_SpellCard.IsActive())
             {
                 this->deathbombFrames += this->deathbombFrames;
                 if (this->deathbombFrames > 30)
@@ -340,7 +340,7 @@ void Player::Die()
             effect->ringWidth = 15.0f;
             effect->waveCount = 6.0f;
             effect->alwaysUpdates = 1;
-            if (g_SpellCard.Func4178a0())
+            if (g_SpellCard.IsActive())
             {
                 g_GameManager.deathbombFreeze = 1;
             }
@@ -986,7 +986,7 @@ void UpdateBombState(Player *player)
         }
         if (player->bomb.timer >= player->bomb.duration)
         {
-            g_SpellCard.Func416130();
+            g_SpellCard.EndBombName();
             player->bomb.running = 0;
             player->moveScaleX = player->moveScaleY = 1.0f;
             if (player->bomb.type == 4)
@@ -1092,7 +1092,7 @@ void UpdateBombState(Player *player)
         player->bomb.update.funcs[player->bomb.type](player);
         player->bomb.timer++;
         g_GameManager.SubSubRank(200);
-        g_SpellCard.Func44cba0();
+        g_SpellCard.LoseCaptureToBomb();
         player->deathbombFrames += 6;
         if (player->deathbombFrames > g_Player.shotType->deathbombFrames)
         {
@@ -1131,7 +1131,7 @@ int UpdateDyingState(Player *player)
             g_ReplayManager->frameEvents |= 4;
             g_GameManager.powerItemCombo = 0;
             player->lastWordReady = 0;
-            g_SpellCard.Func44d150();
+            g_SpellCard.LoseCapture();
             g_GameManager.AddDeaths(1);
             g_Gui.timeOrbsChanged = 2;
             g_GameManager.AddTimeOrbs(g_GameManager.stats->timeOrbs > 5000 ? -500 : -g_GameManager.stats->timeOrbs / 10);

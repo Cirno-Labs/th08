@@ -1158,7 +1158,7 @@ loop:
             break;
         case 164:
             value = INT_ARG(0);
-            g_SpellCard.SetUnk0_6(value);
+            g_SpellCard.SetEffectFixed(value);
             if (value == 0)
             {
                 g_SpellCard.SetEffectPos(FLOAT_ARG(1), FLOAT_ARG(2), FLOAT_ARG(3));
@@ -1254,7 +1254,7 @@ loop:
             enemy->useMainSpriteOffset = INT_ARG(0);
             break;
         case 184:
-            g_SpellCard.SetUnk0_11(INT_ARG(0));
+            g_SpellCard.SetBonusFrozen(INT_ARG(0));
             break;
         }
     next:
@@ -1608,11 +1608,11 @@ int GetIntOperand(Enemy *enemy, int id)
     case 10097:
         return g_Player.IsUnk5Set();
     case 10098:
-        return g_GameManager.GetUnk3c() + g_SpellCard.GetUnk10() + g_ItemManager.CountType7Items() < g_GameManager.GetUnk40() ? 0 : 2;
+        return g_GameManager.GetUnk3c() + g_SpellCard.GetTimeOrbBonus() + g_ItemManager.CountType7Items() < g_GameManager.GetUnk40() ? 0 : 2;
     case 10099:
-        return g_SpellCard.Func4178a0() ? g_SpellCard.Func41fd90() : g_SpellCard.Func405260();
+        return g_SpellCard.IsActive() ? g_SpellCard.IsCapturable() : g_SpellCard.IsCaptured();
     case 10100:
-        return g_SpellCard.Func41fdd0();
+        return g_SpellCard.GetTimeLeft();
     }
     return id;
 }
@@ -1902,7 +1902,7 @@ float GetFloatOperand(Enemy *enemy, float id)
     case 10097:
         return g_Player.IsUnk5Set();
     case 10099:
-        return g_SpellCard.Func4178a0() ? g_SpellCard.Func41fd90() : g_SpellCard.Func405260();
+        return g_SpellCard.IsActive() ? g_SpellCard.IsCapturable() : g_SpellCard.IsCaptured();
     }
     return id;
 }
@@ -2441,7 +2441,7 @@ void ScriptFireBullets(Enemy *enemy, EnemyScriptInstr *instr)
     bs->speed1 = FLOAT_OP(bulletArgs[3].f, 0x10);
     bs->angle2 = FLOAT_OP(bulletArgs[6].f, 0x80);
     bs->speed2 = FLOAT_OP(bulletArgs[4].f, 0x20);
-    if (!g_SpellCard.Func4178a0())
+    if (!g_SpellCard.IsActive())
     {
         bs->count1 += g_GameManager.RankLerp(enemy->rankCount1Low, enemy->rankCount1High);
         if (bs->count1 <= 0)
@@ -3260,12 +3260,12 @@ void GetPracticeCard(Enemy *enemy, EnemyScriptInstr *instr)
 
 void StartResurrection(Enemy *enemy, EnemyScriptInstr *instr)
 {
-    g_SpellCard.Func415d10("「リザレクション」", enemy);
+    g_SpellCard.StartNameOnly("「リザレクション」", enemy);
 }
 
-void SpellCardFunc416160(Enemy *enemy, EnemyScriptInstr *instr)
+void ScriptEndSpellCardName(Enemy *enemy, EnemyScriptInstr *instr)
 {
-    g_SpellCard.Func416160();
+    g_SpellCard.EndSpellCardName();
 }
 
 void GetSpellCardsCaptured(Enemy *enemy, EnemyScriptInstr *instr)

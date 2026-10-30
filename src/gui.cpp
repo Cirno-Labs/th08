@@ -1099,7 +1099,7 @@ void Gui::DrawHud()
             g_SpriteEngine->DrawUnrotated(vm);
         }
     }
-    if ((this->bombsChanged || this->livesChanged) && g_GameManager.lastSpellState == 1 && g_SpellCard.Func4178a0())
+    if ((this->bombsChanged || this->livesChanged) && g_GameManager.lastSpellState == 1 && g_SpellCard.IsActive())
     {
         g_SpriteEngine->DrawUnrotated(&this->impl->livesBombsOverlay);
     }

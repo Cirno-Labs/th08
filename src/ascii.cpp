@@ -1049,7 +1049,7 @@ int ContinueMenu::UpdateContinueMenu()
         }
         else
         {
-            this->state += !g_SpellCard.Func405260() && g_GameManager.IsInSpellCardPractice() ? 1 : 2;
+            this->state += !g_SpellCard.IsCaptured() && g_GameManager.IsInSpellCardPractice() ? 1 : 2;
         }
         this->stateFrames = 0;
         if (this->state == 2)

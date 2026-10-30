@@ -991,7 +991,7 @@ int UpdateBombShot(Player *player, PlayerBullet *bullet, D3DXVECTOR3 *pos)
         {
             return 1;
         }
-        if (g_SpellCard.Func4178a0() && bullet->timer.AsFrames() % 4 != 0)
+        if (g_SpellCard.IsActive() && bullet->timer.AsFrames() % 4 != 0)
         {
             return 1;
         }

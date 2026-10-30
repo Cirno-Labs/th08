@@ -1646,7 +1646,7 @@ public:
             // AddedCallback turns 2 and 3 into 1.
             unsigned int stageEndState : 2;
             // Gui::DrawHud draws GuiImpl::unk_5484 with the lives and
-            // bombs while it is 1 and g_SpellCard.Func4178a0().
+            // bombs while it is 1 and g_SpellCard.IsActive().
             unsigned int lastSpellState : 2;
             unsigned int stageClearStarted : 1;
             // The screen shakes hold still while it is set.
@@ -2513,7 +2513,7 @@ extern int g_ListedSpellCardCount;
 struct SpellCard
 {
     // Bit 0 of unk_0. Inline; the copy at 0x4178a0 is in an /Od object.
-    int Func4178a0()
+    int IsActive()
     {
         return this->flags & 1;
     }
@@ -2556,31 +2556,31 @@ struct SpellCard
     void End();
     // Starts the card named `name` (「リザレクション」) for `enemy` without a
     // capture: sets bit 10, clears bits 0 and 4 (0x415d10).
-    void Func415d10(char *name, struct Enemy *enemy);
+    void StartNameOnly(char *name, struct Enemy *enemy);
     // Ends the name banners ShowName started: sets unk_139c's pending
     // interrupt directly and sends unk_1e2c (and unk_2374 unless
     // unk_0_10) interrupt 2 (0x416160).
-    void Func416160();
+    void EndSpellCardName();
     // Hides the boss's card: clears unk_0_0 and ends the name banners
     // (0x416af0).
-    void Func416af0();
+    void Abort();
     // Called with 8000 when a time orb is collected: unless unk_0_11 is
     // set, adds `amount` to the bonus, up to the bonus the card started
     // with, and below that `amount` / 120 to what it loses a second
     // (0x416b10).
-    void Func416b10(int amount);
+    void AddBonus(int amount);
     // Shows the name of a bomb's spell card as the bomb starts
     // (StartBomb): the portrait for `face` (0 or 1, else none), `name`
     // and sprite `sprite` (0x415d60).
     void StartBombCard(int face, char *name, int sprite);
     // Bit 7 of unk_0: whether the player bombed during the spell card,
     // as th07's spellCardBombed? Inline; the copy is at 0x42dff0.
-    int Func42dff0()
+    int WasBombed()
     {
         return this->flags >> 7 & 1;
     }
     // Bit 9 of unk_0. Inline; the copy is at 0x405260.
-    int Func405260()
+    int IsCaptured()
     {
         return this->flags >> 9 & 1;
     }
@@ -2588,7 +2588,7 @@ struct SpellCard
     // Ends the spell card's bonus: sets unk_10f8's pending interrupt
     // directly and sends unk_1b88 interrupt 2. Inline; the copy at
     // 0x416130 is an /Od object's.
-    void Func416130()
+    void EndBombName()
     {
         this->bombName.pendingInterrupt = 1;
         this->bombNameBar.SetPendingInterrupt(2);
@@ -2596,7 +2596,7 @@ struct SpellCard
     // Ends the spell card as a timer callback runs: clears unk_0_2 and
     // unk_fc, sets unk_0_3. Inline; the copy at 0x42bc50 is an /Od
     // object's.
-    void Func42bc50()
+    void TimeOut()
     {
         this->capture = 0;
         this->timedOut = 1;
@@ -2605,13 +2605,13 @@ struct SpellCard
     // Clear unk_0_2 and unk_fc; the first also copies bit 0 to bit 7.
     // Called as a bomb starts and as the player dies. Inline; the copies
     // at 0x44cba0 and 0x44d150 are the player object's.
-    void Func44cba0()
+    void LoseCaptureToBomb()
     {
         this->capture = 0;
         this->bonus = 0;
         this->bombed = this->active;
     }
-    void Func44d150()
+    void LoseCapture()
     {
         this->capture = 0;
         this->bonus = 0;
@@ -2639,29 +2639,29 @@ struct SpellCard
     };
     // unk_10. Inline; its copy is folded with ReplayManager::GetMode
     // (0x453cc0).
-    int GetUnk10()
+    int GetTimeOrbBonus()
     {
         return this->timeOrbBonus;
     }
     // Whether unk_0_0 and unk_0_5 are set. Inline; the copy is at
     // 0x417860.
-    int Func417860()
+    int IsLastSpellActive()
     {
-        return this->Func4178a0() && this->lastSpell ? TRUE : FALSE;
+        return this->IsActive() && this->lastSpell ? TRUE : FALSE;
     }
     // Whether unk_0_0 and unk_0_2 are set. Inline; the copy is at
     // 0x41fd90.
-    int Func41fd90()
+    int IsCapturable()
     {
-        return this->Func4178a0() && this->capture ? TRUE : FALSE;
+        return this->IsActive() && this->capture ? TRUE : FALSE;
     }
     // Set unk_0_6 and unk_0_11 (opcodes 164 and 184). Inline; the copies
     // at 0x41f0b0 and 0x41f0e0 are an /Od object's.
-    void SetUnk0_6(int value)
+    void SetEffectFixed(int value)
     {
         this->effectFixed = value;
     }
-    void SetUnk0_11(int value)
+    void SetBonusFrozen(int value)
     {
         this->bonusFrozen = value;
     }
@@ -2669,7 +2669,7 @@ struct SpellCard
     // is an /Od object's.
     void SetEffectPos(float x, float y, float z);
     // unk_108 in frames. Inline; the copy is at 0x41fdd0.
-    int Func41fdd0()
+    int GetTimeLeft()
     {
         return this->timeLeft.AsFrames();
     }

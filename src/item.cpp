@@ -357,7 +357,7 @@ void Item::CollectPower()
         if (g_GameManager.GetPower() >= 128)
         {
             g_GameManager.SetPower(128);
-            if (!g_SpellCard.Func4178a0())
+            if (!g_SpellCard.IsActive())
             {
                 g_BulletManager.ClearAllToItems();
             }
@@ -485,7 +485,7 @@ void Item::CollectBigPower()
         if (g_GameManager.GetPower() >= 128)
         {
             g_GameManager.SetPower(128);
-            if (!g_SpellCard.Func4178a0())
+            if (!g_SpellCard.IsActive())
             {
                 g_BulletManager.ClearAllToItems();
             }
@@ -541,7 +541,7 @@ void Item::CollectTimeOrb()
     g_Gui.timeOrbsChanged = 2;
     g_GameManager.AddScore(amount);
     g_GameManager.AddTimeOrbs(1);
-    g_SpellCard.Func416b10(8000);
+    g_SpellCard.AddBonus(8000);
     if (g_Player.orbGaugeCooldown == 0)
     {
         amount = 111;

@@ -26,7 +26,7 @@ address,size,name,symbol
 0x00404720,42,D3DXVECTOR3::D3DXVECTOR3,??0D3DXVECTOR3@@QAE@MMM@Z
 0x00404750,309,PauseMenu::DrawPauseMenu,?DrawPauseMenu@PauseMenu@@QAEXXZ
 0x00404890,2482,ContinueMenu::UpdateContinueMenu,?UpdateContinueMenu@ContinueMenu@@QAEHXZ
-0x00405260,22,SpellCard::Func405260,?Func405260@SpellCard@@QAEHXZ
+0x00405260,22,SpellCard::IsCaptured,?IsCaptured@SpellCard@@QAEHXZ
 0x00405280,39,IncrementCounterCapped,?IncrementCounterCapped@@YIXPAKK@Z
 0x004052b0,364,ContinueMenu::DrawContinueMenu,?DrawContinueMenu@ContinueMenu@@QAEXXZ
 0x00405420,2538,AsciiText::DrawPopups,?DrawPopups@AsciiText@@QAEXXZ
@@ -207,18 +207,18 @@ address,size,name,symbol
 0x00415c60,21,BulletManager::ClearAllToItems,?ClearAllToItems@BulletManager@@QAEXXZ
 0x00415c80,85,Enemy::ResetRankSpeeds,?ResetRankSpeeds@Enemy@@QAEXXZ
 0x00415ce0,37,Stage::StartSpellCard,?StartSpellCard@Stage@@QAEXXZ
-0x00415d10,71,SpellCard::Func415d10,?Func415d10@SpellCard@@QAEXPADPAUEnemy@@@Z
+0x00415d10,71,SpellCard::StartNameOnly,?StartNameOnly@SpellCard@@QAEXPADPAUEnemy@@@Z
 0x00415d60,415,SpellCard::StartBombCard,?StartBombCard@SpellCard@@QAEXHPADH@Z
 0x00415f00,558,SpellCard::ShowName,?ShowName@SpellCard@@QAEXHPADH@Z
-0x00416130,39,SpellCard::Func416130,?Func416130@SpellCard@@QAEXXZ
-0x00416160,70,SpellCard::Func416160,?Func416160@SpellCard@@QAEXXZ
+0x00416130,39,SpellCard::EndBombName,?EndBombName@SpellCard@@QAEXXZ
+0x00416160,70,SpellCard::EndSpellCardName,?EndSpellCardName@SpellCard@@QAEXXZ
 0x004161b0,2331,SpellCard::End,?End@SpellCard@@QAEXXZ
 0x00416ad0,24,Stage::EndSpellCard,?EndSpellCard@Stage@@QAEXXZ
-0x00416af0,32,SpellCard::Func416af0,?Func416af0@SpellCard@@QAEXXZ
-0x00416b10,118,SpellCard::Func416b10,?Func416b10@SpellCard@@QAEXH@Z
+0x00416af0,32,SpellCard::Abort,?Abort@SpellCard@@QAEXXZ
+0x00416b10,118,SpellCard::AddBonus,?AddBonus@SpellCard@@QAEXH@Z
 0x00416b90,3269,SpellCard::Update,?Update@SpellCard@@QAEHXZ
-0x00417860,59,SpellCard::Func417860,?Func417860@SpellCard@@QAEHXZ
-0x004178a0,19,SpellCard::Func4178a0,?Func4178a0@SpellCard@@QAEHXZ
+0x00417860,59,SpellCard::IsLastSpellActive,?IsLastSpellActive@SpellCard@@QAEHXZ
+0x004178a0,19,SpellCard::IsActive,?IsActive@SpellCard@@QAEHXZ
 0x004178c0,1685,SpellCard::Draw,?Draw@SpellCard@@QAEHXZ
 0x00417f60,175,SpellCard::RegisterChain,?RegisterChain@SpellCard@@SIHXZ
 0x00418010,19,SpellCard::OnUpdate,?OnUpdate@SpellCard@@SIHPAU1@@Z
@@ -240,16 +240,16 @@ address,size,name,symbol
 0x0041f000,53,Enemy::Func41f000,?Func41f000@Enemy@@QAEHXZ
 0x0041f040,67,SpellCard::SetEffectPos,?SetEffectPos@SpellCard@@QAEXMMM@Z
 0x0041f090,24,fmodf,@fmodf@8
-0x0041f0b0,37,SpellCard::SetUnk0_6,?SetUnk0_6@SpellCard@@QAEXH@Z
-0x0041f0e0,40,SpellCard::SetUnk0_11,?SetUnk0_11@SpellCard@@QAEXH@Z
+0x0041f0b0,37,SpellCard::SetEffectFixed,?SetEffectFixed@SpellCard@@QAEXH@Z
+0x0041f0e0,40,SpellCard::SetBonusFrozen,?SetBonusFrozen@SpellCard@@QAEXH@Z
 0x0041f110,365,ScriptSpawnEnemy,?ScriptSpawnEnemy@@YIPAUEnemy@@PAU1@PAUEnemyScriptInstr@@@Z
 0x0041f280,383,ScriptSpawnEnemyRel,?ScriptSpawnEnemyRel@@YIPAUEnemy@@PAU1@PAUEnemyScriptInstr@@@Z
 0x0041f400,25,EnemySpawnArgs::EnemySpawnArgs,??0EnemySpawnArgs@@QAE@XZ
 0x0041f420,1899,GetIntOperand,?GetIntOperand@@YIHPAUEnemy@@H@Z
 0x0041fd20,28,Enemy::Func41fd20,?Func41fd20@Enemy@@QAEHXZ
 0x0041fd40,70,Enemy::Func41fd40,?Func41fd40@Enemy@@QAEHXZ
-0x0041fd90,59,SpellCard::Func41fd90,?Func41fd90@SpellCard@@QAEHXZ
-0x0041fdd0,25,SpellCard::Func41fdd0,?Func41fdd0@SpellCard@@QAEHXZ
+0x0041fd90,59,SpellCard::IsCapturable,?IsCapturable@SpellCard@@QAEHXZ
+0x0041fdd0,25,SpellCard::GetTimeLeft,?GetTimeLeft@SpellCard@@QAEHXZ
 0x0041fdf0,25,Timer::operator+=,??YTimer@@QAEXH@Z
 0x0041fe10,548,ResolveOperand,?ResolveOperand@@YIPAHPAUEnemy@@PAHGH@Z
 0x00420120,1687,GetFloatOperand,?GetFloatOperand@@YIMPAUEnemy@@M@Z
@@ -313,7 +313,7 @@ address,size,name,symbol
 0x00424f90,46,SetGameSpeed,?SetGameSpeed@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00424fc0,35,GetPracticeCard,?GetPracticeCard@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00424ff0,35,StartResurrection,?StartResurrection@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
-0x00425020,26,SpellCardFunc416160,?SpellCardFunc416160@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
+0x00425020,26,ScriptEndSpellCardName,?ScriptEndSpellCardName@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00425040,37,GetSpellCardsCaptured,?GetSpellCardsCaptured@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00425070,89,SetFrozen,?SetFrozen@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x004250d0,213,SpawnEnemiesAtMarkedBullets,?SpawnEnemiesAtMarkedBullets@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
@@ -398,7 +398,7 @@ address,size,name,symbol
 0x0042b370,288,Enemy::Func42b370,?Func42b370@Enemy@@QAEXH@Z
 0x0042b490,1180,Enemy::CheckLifeCallback,?CheckLifeCallback@Enemy@@QAEHXZ
 0x0042b930,796,Enemy::CheckTimerCallback,?CheckTimerCallback@Enemy@@QAEHXZ
-0x0042bc50,50,SpellCard::Func42bc50,?Func42bc50@SpellCard@@QAEXXZ
+0x0042bc50,50,SpellCard::TimeOut,?TimeOut@SpellCard@@QAEXXZ
 0x0042bc90,96,Enemy::Func42bc90,?Func42bc90@Enemy@@QAEXXZ
 0x0042bcf0,432,Enemy::Despawn,?Despawn@Enemy@@QAEXXZ
 0x0042bea0,734,Enemy::DropItems,?DropItems@Enemy@@QAEXH@Z
@@ -411,7 +411,7 @@ address,size,name,symbol
 0x0042deb0,252,Enemy::Move,?Move@Enemy@@QAEXXZ
 0x0042dfb0,20,EnemyScripts::GetTimelineCount,?GetTimelineCount@EnemyScripts@@QAEHXZ
 0x0042dfd0,25,EnemyScripts::GetTimeline,?GetTimeline@EnemyScripts@@QAEPAUEnemyTimelineEntry@@H@Z
-0x0042dff0,22,SpellCard::Func42dff0,?Func42dff0@SpellCard@@QAEHXZ
+0x0042dff0,22,SpellCard::WasBombed,?WasBombed@SpellCard@@QAEHXZ
 0x0042e010,257,MoveEnemyEffects,?MoveEnemyEffects@@YIXPAUEnemy@@@Z
 0x0042e120,23,EnemyManager::OnDraw,?OnDraw@EnemyManager@@SIHPAV1@@Z
 0x0042e140,2504,EnemyManager::DrawEnemies,?DrawEnemies@EnemyManager@@SIHPAV1@HH@Z
@@ -763,9 +763,9 @@ address,size,name,symbol
 0x0044c390,529,Player::OnUpdate,?OnUpdate@Player@@SIHPAV1@@Z
 0x0044c5b0,159,UpdateHitboxAreas,?UpdateHitboxAreas@@YIXPAVPlayer@@@Z
 0x0044c650,1352,UpdateBombState,?UpdateBombState@@YIXPAVPlayer@@@Z
-0x0044cba0,69,SpellCard::Func44cba0,?Func44cba0@SpellCard@@QAEXXZ
+0x0044cba0,69,SpellCard::LoseCaptureToBomb,?LoseCaptureToBomb@SpellCard@@QAEXXZ
 0x0044cbf0,1373,UpdateDyingState,?UpdateDyingState@@YIHPAVPlayer@@@Z
-0x0044d150,37,SpellCard::Func44d150,?Func44d150@SpellCard@@QAEXXZ
+0x0044d150,37,SpellCard::LoseCapture,?LoseCapture@SpellCard@@QAEXXZ
 0x0044d180,314,UpdateRespawningState,?UpdateRespawningState@@YIXPAVPlayer@@@Z
 0x0044d2c0,338,UpdateInvulnerability,?UpdateInvulnerability@@YIXPAVPlayer@@@Z
 0x0044d420,267,ResetHomingAndText,?ResetHomingAndText@@YIXPAVPlayer@@@Z
@@ -844,7 +844,7 @@ address,size,name,symbol
 0x00453c60,25,GameManager::SetUnk28,?SetUnk28@GameManager@@QAEXH@Z
 0x00453c80,25,GameManager::GetDeaths,?GetDeaths@GameManager@@QAEHXZ
 0x00453ca0,28,GameManager::GetBombsUsed,?GetBombsUsed@GameManager@@QAEHXZ
-0x00453cc0,17,ReplayManager::GetMode,?GetMode@ReplayManager@@QAEHXZ ?GetUnk10@SpellCard@@QAEHXZ
+0x00453cc0,17,ReplayManager::GetMode,?GetMode@ReplayManager@@QAEHXZ ?GetTimeOrbBonus@SpellCard@@QAEHXZ
 0x00453cd1,41,GetStageName,?GetStageName@@YIPADH@Z
 0x00453cfa,19,GetShotName,?GetShotName@@YIPADH@Z
 0x00453d0d,1372,SaveScoreDat,?SaveScoreDat@@YIXPAVResultScreen@@@Z

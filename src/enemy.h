@@ -758,11 +758,11 @@ void SetGameSpeed(Enemy *enemy, EnemyScriptInstr *instr);
 void GetPracticeCard(Enemy *enemy, EnemyScriptInstr *instr);
 
 // Script function 22: starts 「リザレクション」 through
-// SpellCard::Func415d10 (0x424ff0).
+// SpellCard::StartNameOnly (0x424ff0).
 void StartResurrection(Enemy *enemy, EnemyScriptInstr *instr);
 
-// Script function 23: SpellCard::Func416160 (0x425020).
-void SpellCardFunc416160(Enemy *enemy, EnemyScriptInstr *instr);
+// Script function 23: SpellCard::EndSpellCardName (0x425020).
+void ScriptEndSpellCardName(Enemy *enemy, EnemyScriptInstr *instr);
 
 // Script function 24: sets the first int variable to the spell cards
 // captured this game (0x425040).

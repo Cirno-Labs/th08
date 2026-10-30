@@ -433,7 +433,7 @@ void BulletManager::ClearAllToItems()
     this->ClearAll(1);
 }
 
-void SpellCard::Func415d10(char *name, Enemy *enemy)
+void SpellCard::StartNameOnly(char *name, Enemy *enemy)
 {
     this->nameOnly = 1;
     this->active = 0;
@@ -499,7 +499,7 @@ void SpellCard::ShowName(int face, char *name, int sprite)
     g_App.redrawFrames = 2;
 }
 
-void SpellCard::Func416160()
+void SpellCard::EndSpellCardName()
 {
     this->spellName.pendingInterrupt = 1;
     this->spellNameBar.SetPendingInterrupt(2);
@@ -521,7 +521,7 @@ void SpellCard::End()
     {
         captured = FALSE;
         this->active = 0;
-        this->Func416160();
+        this->EndSpellCardName();
         if (!this->timedOut)
         {
             bonus = g_BulletManager.ClearAllWithBonus(8000, 1);
@@ -719,13 +719,13 @@ void SpellCard::End()
     this->bonusFrozen = 0;
 }
 
-void SpellCard::Func416af0()
+void SpellCard::Abort()
 {
     this->active = 0;
-    this->Func416160();
+    this->EndSpellCardName();
 }
 
-void SpellCard::Func416b10(int amount)
+void SpellCard::AddBonus(int amount)
 {
     if (!this->bonusFrozen)
     {
@@ -751,7 +751,7 @@ int SpellCard::Update()
     {
         if (!this->enemy->active || this->enemyIndex != this->enemy->index)
         {
-            this->Func416af0();
+            this->Abort();
         }
         if (g_Player.pos.x >= 64.0f && g_Player.pos.y < 64.0f)
         {
@@ -802,7 +802,7 @@ int SpellCard::Update()
                 (this->enemy->pos + this->enemy->posOrigin - this->effect->origin) / 16.0f + this->effect->origin;
             this->effect->origin.z = 0.0f;
         }
-        this->effect->angle = AddNormalizeAngle(this->effect->angle, this->Func417860() ? -0.031415928f : 0.015707964f);
+        this->effect->angle = AddNormalizeAngle(this->effect->angle, this->IsLastSpellActive() ? -0.031415928f : 0.015707964f);
     }
     else if (this->captureEffect != NULL)
     {
