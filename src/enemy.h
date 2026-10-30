@@ -660,6 +660,11 @@ void DrawTwinEffects();
 // stage draw them through DrawTwinEffects (0x423530).
 void SpawnTwinEffects38(Enemy *enemy, EnemyScriptInstr *instr);
 
+// Script function 20: starts effect 0x41 in reserved slots 9 and 10
+// at the enemy, slot 10's sprite on etama script 0x63, and has the
+// stage draw them through DrawTwinEffects (0x423db0).
+void SpawnTwinEffects41(Enemy *enemy, EnemyScriptInstr *instr);
+
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
 // The enemy scripts by stage, by stage in spell practice (stage + 9),
