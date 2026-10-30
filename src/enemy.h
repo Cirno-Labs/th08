@@ -643,6 +643,9 @@ void ScriptMoveRandom2(Enemy *enemy, EnemyScriptInstr *instr);
 // the first int and float variables (0x423390).
 void ScriptSetUnknown4e3d28(Enemy *enemy, EnemyScriptInstr *instr);
 
+// Script function 1: a white flash of 60 frames, as th07's FlashScreen (0x4233d0).
+void FlashScreen60(Enemy *enemy, EnemyScriptInstr *instr);
+
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
 // The enemy scripts by stage, by stage in spell practice (stage + 9),

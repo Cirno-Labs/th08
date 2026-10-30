@@ -1070,3 +1070,8 @@ void ScriptSetUnknown4e3d28(Enemy *enemy, EnemyScriptInstr *instr)
     g_Unknown4e3d28 = enemy->currentCtx->vars.ints[0];
     g_Unknown4e3d24 = enemy->currentCtx->vars.floats[0];
 }
+
+void FlashScreen60(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    ScreenEffect::StartEffect(3, 60, 1, 0xffffffff, 0, 0x15);
+}
