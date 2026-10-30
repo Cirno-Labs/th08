@@ -1687,6 +1687,286 @@ int MainMenu::UpdateState16()
     return 1;
 }
 
+int MainMenu::UpdateState17()
+{
+    int id;
+    int i;
+
+    switch (this->subState)
+    {
+    case 0:
+        if (this->inputLockout == 0)
+        {
+            g_SpriteEngine->SendInterruptToLoadedSprites(this->sprites, this->spriteCount, 0x1a);
+            this->returningFromPractice = 0;
+            this->subState = 0;
+            this->stateFrames = 0;
+            g_GameManager.unk_3dbac |= 1;
+            g_GameManager.unk_3dbac |= 0x4000;
+            this->unk_c298 = g_StageSpellCardCounts[g_GameManager.stage];
+            this->Func46cbbb();
+            this->cursor = 0;
+            for (i = 0; i < this->unk_c298; i++)
+            {
+                if (g_StageSpellCards[g_GameManager.stage][i] == g_GameManager.unk_3dbb0)
+                {
+                    this->cursor = i;
+                    break;
+                }
+            }
+            this->unk_4 = this->cursor / 15;
+            for (i = 0; i < 15; i++)
+            {
+                if (i + this->unk_4 * 15 >= this->unk_c298)
+                {
+                    break;
+                }
+                id = g_StageSpellCards[g_GameManager.stage][i + this->unk_4 * 15];
+                this->resultTextAnm->InitSprite(&this->unkSprites[i], i + 2);
+                this->unkSprites[i].pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+                this->unkSprites[i].flags |= 0x1800;
+                // unkSprites[0]'s font width every time (original).
+                this->unkSprites[0].fontWidth = 15;
+                this->unkSprites[i].fontHeight = 15;
+                if (g_GameManager.catks[id].attempts[12] == 0 && g_GameManager.catks[id].practiceAttempts[12] == 0)
+                {
+                    if (GetSpellCardDifficulty(id) <= 4 || !g_GameManager.IsSpellCardSeen(id))
+                    {
+                        g_SpriteEngine->RenderText(&this->unkSprites[i], 0xffffff, 0, "？？？？？？？？");
+                    }
+                    else
+                    {
+                        g_SpriteEngine->RenderText(&this->unkSprites[i], 0xffffff, 0, "挑戦者歓迎中！");
+                    }
+                }
+                else
+                {
+                    g_SpriteEngine->RenderText(&this->unkSprites[i], 0xffffff, 0, g_GameManager.catks[id].name);
+                }
+                this->unkSprites[i].alpha = 0xff;
+                this->unkSprites[i].colorRgb[2] = 0x60;
+                this->unkSprites[i].colorRgb[1] = 0x60;
+                this->unkSprites[i].colorRgb[0] = 0x60;
+            }
+            i = 15;
+            this->resultTextAnm->InitSprite(&this->unkSprites[i], i + 2);
+            this->unkSprites[i].pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+            this->unkSprites[i].flags |= 0x1800;
+            this->unkSprites[i].fontWidth = 15;
+            this->unkSprites[i].fontHeight = 15;
+            g_SpriteEngine->RenderText(&this->unkSprites[i], 0xffffff, 0, "取得数/挑戦数（()内は本編での集計）");
+            this->unkSprites[i].alpha = 0xff;
+            this->unkSprites[i].colorRgb[2] = 0xff;
+            this->unkSprites[i].colorRgb[1] = 0xff;
+            this->unkSprites[i].colorRgb[0] = 0xff;
+            i = this->cursor - this->unk_4 * 15;
+            this->unkSprites[i].colorRgb[2] = 0xff;
+            this->unkSprites[i].colorRgb[1] = 0xff;
+            this->unkSprites[i].colorRgb[0] = 0xff;
+            for (i = 0; i < 7; i++)
+            {
+                g_App.textAnm->InitSprite(&this->unkSprites2[i], i + 0x15);
+                if (i < 4)
+                {
+                    this->unkSprites2[i].pos = D3DXVECTOR3(64.0f, i * 16 + 344.0f, 0.0f);
+                }
+                else
+                {
+                    this->unkSprites2[i].pos = D3DXVECTOR3(64.0f, i * 16 + 344.0f + 8.0f, 0.0f);
+                }
+                this->unkSprites2[i].flags |= 0x1800;
+                this->unkSprites2[i].fontWidth = 15;
+                this->unkSprites2[i].fontHeight = 15;
+                this->unkSprites2[i].color = 0xffffffff;
+            }
+            this->Func46d7f9();
+            this->unk_c29c = 0;
+        }
+        if (this->inputLockout == 8)
+        {
+            this->subState = 1;
+        }
+        break;
+    case 1:
+    {
+        int savedCursor;
+        int cardId;
+        int n;
+        int page;
+
+        page = this->unk_4;
+        savedCursor = this->cursor;
+        if (this->unk_c298 > 15)
+        {
+            if (WAS_PRESSED_OR_HELD(0x40))
+            {
+                this->cursor -= 15;
+                g_SoundPlayer.QueueSound(12, 0);
+                g_SoundPlayer.PlayQueuedSounds();
+                if (this->cursor < 0)
+                {
+                    this->cursor = this->unk_c298 - 1;
+                }
+                if (this->cursor >= this->unk_c298)
+                {
+                    this->cursor = 0;
+                }
+            }
+            if (WAS_PRESSED_OR_HELD(0x80))
+            {
+                g_SoundPlayer.QueueSound(12, 0);
+                if (this->unk_c298 - this->cursor <= this->unk_c298 % 15)
+                {
+                    this->cursor %= 15;
+                }
+                else
+                {
+                    this->cursor += 15;
+                    if (this->cursor < 0)
+                    {
+                        this->cursor = this->unk_c298 - 1;
+                    }
+                    if (this->cursor >= this->unk_c298)
+                    {
+                        this->cursor = this->unk_c298 - 1;
+                    }
+                }
+            }
+        }
+        this->MoveMenuCursor(this->unk_c298);
+        this->unk_4 = this->cursor / 15;
+        if (page != this->unk_4)
+        {
+            for (n = 0; n < 15; n++)
+            {
+                if (n + this->unk_4 * 15 >= this->unk_c298)
+                {
+                    break;
+                }
+                this->resultTextAnm->InitSprite(&this->unkSprites[n], n + 2);
+                this->unkSprites[n].pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+                this->unkSprites[n].flags |= 0x1800;
+                // unkSprites2[0]'s font width every time (original).
+                this->unkSprites2[0].fontWidth = 15;
+                this->unkSprites[n].fontHeight = 15;
+                cardId = g_StageSpellCards[g_GameManager.stage][n + this->unk_4 * 15];
+                if (g_GameManager.catks[cardId].WasAttempted(12))
+                {
+                    g_SpriteEngine->RenderText(&this->unkSprites[n], 0xffffff, 0, g_GameManager.catks[cardId].name);
+                }
+                else if (GetSpellCardDifficulty(cardId) <= 4 || !g_GameManager.IsSpellCardSeen(cardId))
+                {
+                    g_SpriteEngine->RenderText(&this->unkSprites[n], 0xffffff, 0, "？？？？？？？？");
+                }
+                else
+                {
+                    g_SpriteEngine->RenderText(&this->unkSprites[n], 0xffffff, 0, "挑戦者歓迎中！");
+                }
+                this->unkSprites[n].alpha = 0xff;
+                this->unkSprites[n].colorRgb[2] = 0x60;
+                this->unkSprites[n].colorRgb[1] = 0x60;
+                this->unkSprites[n].colorRgb[0] = 0x60;
+            }
+        }
+        if (savedCursor != this->cursor)
+        {
+            for (n = 0; n < 15; n++)
+            {
+                this->unkSprites[n].colorRgb[2] = 0x60;
+                this->unkSprites[n].colorRgb[1] = 0x60;
+                this->unkSprites[n].colorRgb[0] = 0x60;
+            }
+            n = this->cursor - this->unk_4 * 15;
+            this->unkSprites[n].colorRgb[2] = 0xff;
+            this->unkSprites[n].colorRgb[1] = 0xff;
+            this->unkSprites[n].colorRgb[0] = 0xff;
+            for (n = 0; n < 7; n++)
+            {
+                this->unkSprites2[n].alpha = 0;
+            }
+            this->unk_c29c = 0x15;
+        }
+        this->Func46d7f9();
+        if (WAS_PRESSED(0x1001))
+        {
+            int card;
+
+            card = g_StageSpellCards[g_GameManager.stage][this->cursor];
+            if (g_GameManager.catks[card].attempts[12] != 0 || g_GameManager.catks[card].practiceAttempts[12] != 0 ||
+                (card >= 0xcd && g_GameManager.IsSpellCardSeen(card)))
+            {
+                g_SoundPlayer.QueueSound(10, 0);
+                g_GameManager.unk_3dbac |= 0x4000;
+                g_GameManager.unk_3dbb0 = g_StageSpellCards[g_GameManager.stage][this->cursor];
+                g_GameManager.difficulty = GetSpellCardDifficulty(g_GameManager.unk_3dbb0);
+                if (g_GameManager.difficulty > 4)
+                {
+                    // Last spells play on their stage's (or a later) card
+                    // list, as Normal.
+                    switch (g_GameManager.unk_3dbb0)
+                    {
+                    case 0xcd:
+                        g_GameManager.stage = 0;
+                        break;
+                    case 0xce:
+                        g_GameManager.stage = 1;
+                        break;
+                    case 0xcf:
+                        g_GameManager.stage = 2;
+                        break;
+                    case 0xd0:
+                        g_GameManager.stage = 5;
+                        break;
+                    case 0xd1:
+                        g_GameManager.stage = 6;
+                        break;
+                    case 0xd2:
+                        g_GameManager.stage = 7;
+                        break;
+                    case 0xd3:
+                        g_GameManager.stage = 8;
+                        break;
+                    case 0xd4:
+                        g_GameManager.stage = 5;
+                        break;
+                    case 0xd5:
+                        g_GameManager.stage = 8;
+                        break;
+                    case 0xd6:
+                        g_GameManager.stage = 3;
+                        break;
+                    case 0xd7:
+                        g_GameManager.stage = 4;
+                        break;
+                    default:
+                        g_GameManager.stage = 3;
+                    }
+                    g_GameManager.difficulty = 1;
+                }
+                g_App.scene = 2;
+                g_GameManager.SetIsReplay(0);
+                g_App.StopMusic();
+                return 0;
+            }
+            g_SoundPlayer.QueueSound(0x29, 0);
+        }
+        if (WAS_PRESSED(0xa))
+        {
+            g_GameManager.unk_3dbb0 = g_StageSpellCards[g_GameManager.stage][this->cursor];
+            g_SoundPlayer.QueueSound(11, 0);
+            this->cursor = g_GameManager.stage;
+            this->SetState(16);
+            return 2;
+        }
+        break;
+    }
+    }
+    this->subMenuIdleFrames++;
+    this->stateFrames++;
+    this->inputLockout++;
+    return 1;
+}
+
 int MainMenu::ShowButtonDigits(Sprite *vm, short value)
 {
     if (value < 0)

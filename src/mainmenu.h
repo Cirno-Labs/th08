@@ -58,6 +58,8 @@ public:
     static void ShowInfoScreen(char *path);
     // Sets the title menu's sprites up (0x46cbbb).
     void Func46cbbb();
+    // The spell card list's per-card sprites in state 17 (0x46d7f9).
+    void Func46d7f9();
 
     // Moves to state `state`, remembering the one it leaves in
     // prevState, and resets the frame counters. Inline: the copy is at
@@ -192,6 +194,8 @@ extern char *g_MenuShotTypeNames[12];
 extern char *g_MenuDifficultyNames[5];
 // The spell cards of each stage, for the spell card practice menu.
 extern int *g_StageSpellCards[];
+// How many cards each list of g_StageSpellCards has.
+extern int g_StageSpellCardCounts[];
 // The practice menu's stage names.
 extern char *g_PracticeStageNames[8];
 // The help line the options screen shows for each entry.

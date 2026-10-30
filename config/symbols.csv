@@ -1016,7 +1016,7 @@ address,size,name,symbol
 0x0046bbc0,4047,MainMenu::UpdateState17,?UpdateState17@MainMenu@@QAEHXZ
 0x0046cbbb,2984,MainMenu::Func46cbbb,?Func46cbbb@MainMenu@@QAEXXZ
 0x0046d763,150,FormatFullWidthNumber,?FormatFullWidthNumber@@YIPADHH@Z
-0x0046d7f9,2365,Func46d7f9,
+0x0046d7f9,2365,MainMenu::Func46d7f9,?Func46d7f9@MainMenu@@QAEXXZ
 0x0046e136,3671,MainMenu::UpdateReplayMenu,?UpdateReplayMenu@MainMenu@@QAEHXZ
 0x0046ef8d,1180,MainMenu::DrawReplayMenu,?DrawReplayMenu@MainMenu@@QAEHXZ
 0x0046f429,418,MainMenu::DrawPracticeScores,?DrawPracticeScores@MainMenu@@QAEHXZ
@@ -2420,6 +2420,7 @@ address,size,name,symbol
 0x004c6b90,,g_ListedSpellCards,?g_ListedSpellCards@@3PAHA
 0x004c6c3c,,g_ListedSpellCardCount,?g_ListedSpellCardCount@@3HA
 0x004c6c40,,g_StageSpellCards,?g_StageSpellCards@@3PAPAHA
+0x004c6c68,,g_StageSpellCardCounts,?g_StageSpellCardCounts@@3PAHA
 0x004c6c90,,g_EnemyScriptInterps,?g_EnemyScriptInterps@@3PAP6IXPAUEnemy@@PAUEnemyScriptInstr@@M@ZA
 0x004c6cb0,,g_EnemyScriptFuncs,?g_EnemyScriptFuncs@@3PAP6IXPAUEnemy@@PAUEnemyScriptInstr@@@ZA
 0x004c6d30,,g_EffectInfos,?g_EffectInfos@@3PAUEffectInfo@@A
