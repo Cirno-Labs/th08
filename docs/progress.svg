@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">99.37% (1109)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">0.63% (7)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">99.46% (1110)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">0.54% (6)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="742.31" height="6" x="0" y="0" class="named"/>
-<rect width="4.69" height="6" x="742.31" y="0" class="todo"/>
+<rect width="742.98" height="6" x="0" y="0" class="named"/>
+<rect width="4.02" height="6" x="742.98" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -436,7 +436,7 @@
 <rect width="12" height="12" x="240" y="105" class="named"><title>0x004286e0 Vector2::SetPolar (32 bytes)</title></rect>
 <rect width="12" height="12" x="255" y="105" class="named"><title>0x00428700 Vector2::SetPolarEllipse (32 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="105" class="named"><title>0x00428720 Sprite::IsScriptDone (28 bytes)</title></rect>
-<rect width="12" height="12" x="285" y="105" class="todo"><title>0x00428740 EffectManager::EffectManager (159 bytes)</title></rect>
+<rect width="12" height="12" x="285" y="105" class="named"><title>0x00428740 EffectManager::EffectManager (159 bytes)</title></rect>
 <rect width="12" height="12" x="300" y="105" class="named"><title>0x004287e0 Effect::Effect (162 bytes)</title></rect>
 <rect width="12" height="12" x="315" y="105" class="named"><title>0x00428890 Ending::ReadInt (115 bytes)</title></rect>
 <rect width="12" height="12" x="330" y="105" class="named"><title>0x00428910 Ending::DrawFade (591 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">99.40%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">0.60%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">99.44%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">0.56%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="742.55" height="6" x="0" y="0" class="named"/>
-<rect width="4.45" height="6" x="742.55" y="0" class="todo"/>
+<rect width="742.81" height="6" x="0" y="0" class="named"/>
+<rect width="4.19" height="6" x="742.81" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="named"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -1689,7 +1689,7 @@
 <rect width="6.85" height="6.39" x="590.98" y="265.21" class="named"><title>0x00473250 CWaveFile::Open (163 bytes)</title></rect>
 <rect width="6.85" height="6.33" x="590.98" y="274.60" class="named"><title>0x004287e0 Effect::Effect (162 bytes)</title></rect>
 <rect width="6.85" height="6.33" x="590.98" y="283.93" class="named"><title>0x0043ce60 Chain::CreateElem (162 bytes)</title></rect>
-<rect width="6.85" height="6.16" x="590.98" y="293.27" class="todo"><title>0x00428740 EffectManager::EffectManager (159 bytes)</title></rect>
+<rect width="6.85" height="6.16" x="590.98" y="293.27" class="named"><title>0x00428740 EffectManager::EffectManager (159 bytes)</title></rect>
 <rect width="6.85" height="6.16" x="590.98" y="302.43" class="named"><title>0x0044c5b0 UpdateHitboxAreas (159 bytes)</title></rect>
 <rect width="6.85" height="6.16" x="590.98" y="311.59" class="named"><title>0x0045a500 InsertScore (159 bytes)</title></rect>
 <rect width="6.85" height="6.10" x="590.98" y="320.75" class="named"><title>0x00427b50 EffectUpdateRingAt (158 bytes)</title></rect>

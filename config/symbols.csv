@@ -368,7 +368,7 @@ address,size,name,symbol
 0x004286e0,32,Vector2::SetPolar,?SetPolar@Vector2@@QAEXMM@Z
 0x00428700,32,Vector2::SetPolarEllipse,?SetPolarEllipse@Vector2@@QAEXMMM@Z
 0x00428720,28,Sprite::IsScriptDone,?IsScriptDone@Sprite@@QAEHXZ
-0x00428740,159,EffectManager::EffectManager,
+0x00428740,159,EffectManager::EffectManager,??0EffectManager@@QAE@XZ
 0x004287e0,162,Effect::Effect,??0Effect@@QAE@XZ
 0x00428890,115,Ending::ReadInt,?ReadInt@Ending@@QAEHXZ
 0x00428910,591,Ending::DrawFade,?DrawFade@Ending@@QAEXXZ

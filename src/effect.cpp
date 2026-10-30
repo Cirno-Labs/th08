@@ -1152,6 +1152,15 @@ void Vector2::SetPolarEllipse(float angle, float radiusX, float radiusY)
     }
 }
 
+EXE_INLINE EffectManager::EffectManager()
+{
+    this->Reset();
+    this->colorScale[0] = 1.0f;
+    this->colorScale[1] = 1.0f;
+    this->colorScale[2] = 1.0f;
+    this->colorScale[3] = 1.0f;
+}
+
 EXE_INLINE Effect::Effect()
 {
 }

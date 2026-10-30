@@ -250,6 +250,8 @@ int EffectUpdateBombRing48(Effect *effect);
 class EffectManager
 {
 public:
+    // Resets and sets colorScale to 1, as th07's (0x428740).
+    EffectManager();
     // Zeroes everything, as th07's (0x425410).
     void Reset();
     // Starts `count` effects of `type` at `pos` in `color`, as th07's
@@ -315,7 +317,8 @@ public:
     unsigned char pad_4[0x4];
     // How many effects were active this frame.
     int activeCount;
-    unsigned char pad_c[0x10];
+    // Set to 1 by the constructor and never read, as th07's.
+    float colorScale[4];
     Effect effects[0x28e];
     // The heads of the draw lists, and their last effects.
     Effect drawList0;
