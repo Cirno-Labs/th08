@@ -203,13 +203,13 @@ address,size,name,symbol
 0x004144d0,105,GetSpellCardDifficulty,?GetSpellCardDifficulty@@YIHH@Z
 0x00414540,68,IsListedSpellCard,?IsListedSpellCard@@YIHH@Z
 0x00414590,3237,SpellCard::Initialize,?Initialize@SpellCard@@QAEHXZ
-0x004152a0,2483,SpellCard::Start,?Start@SpellCard@@QAEXHPADHHPAUEnemy@@000@Z
+0x004152a0,2483,SpellCard::Start,?Start@SpellCard@@QAEXHPADHKPAUEnemy@@000@Z
 0x00415c60,21,BulletManager::Func415c60,?Func415c60@BulletManager@@QAEXXZ
 0x00415c80,85,Enemy::ResetRankSpeeds,?ResetRankSpeeds@Enemy@@QAEXXZ
 0x00415ce0,37,Func415ce0,
 0x00415d10,71,SpellCard::Func415d10,?Func415d10@SpellCard@@QAEXPADPAUEnemy@@@Z
 0x00415d60,415,SpellCard::StartBombCard,?StartBombCard@SpellCard@@QAEXHPADH@Z
-0x00415f00,558,Func415f00,
+0x00415f00,558,SpellCard::ShowName,?ShowName@SpellCard@@QAEXHPADH@Z
 0x00416130,39,Func416130,
 0x00416160,70,SpellCard::Func416160,?Func416160@SpellCard@@QAEXXZ
 0x004161b0,2331,SpellCard::End,?End@SpellCard@@QAEXXZ
@@ -2498,6 +2498,7 @@ address,size,name,symbol
 0x004eccb8,,g_EnemyScripts,?g_EnemyScripts@@3VEnemyScripts@@A
 0x004ece60,,g_EffectManager,?g_EffectManager@@3VEffectManager@@A
 0x00577eb4,,g_EtamaAnm,?g_EtamaAnm@@3PAVAnmLoaded@@A
+0x00577eb8,,g_Unknown577eb8,?g_Unknown577eb8@@3PAVAnmLoaded@@A
 0x00577ebc,,g_EffectCalcChain,?g_EffectCalcChain@@3UChainElem@@A
 0x00577edc,,g_EffectDrawChain,?g_EffectDrawChain@@3UChainElem@@A
 0x00577f00,,g_EnemyManagerDrawChain,?g_EnemyManagerDrawChain@@3UChainElem@@A

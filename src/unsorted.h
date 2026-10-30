@@ -2273,6 +2273,18 @@ public:
     // ChecksumMismatch finds the player's numbers tampered with
     // (checked every 500 frames).
     static int OnUpdate(Stage *stage);
+    // Starts and ends the spell card background: spellCardState 1 from
+    // frame 0, and 0. Inline; the copies at 0x415ce0 and 0x416ad0 are the
+    // spell card object's.
+    void StartSpellCard()
+    {
+        this->spellCardState = 1;
+        this->spellCardFrames = 0;
+    }
+    void EndSpellCard()
+    {
+        this->spellCardState = 0;
+    }
     // Releases the background ANM (slot 4) and frees the sprites, and
     // the data unless restarting (0x409c20). Returns 0.
     static int DeletedCallback(Stage *stage);
@@ -2439,6 +2451,9 @@ extern int g_Unknown4c77f0[][4];
 int GetSpellCardDifficulty(int card);
 // Whether spell card `card` is one of g_ListedSpellCards.
 int IsListedSpellCard(int card);
+// Read by SpellCard::Start to start the stage's dialogue sprites;
+// nothing sets it.
+extern AnmLoaded *g_Unknown577eb8;
 // 43 spell cards (the 3 or 4 difficulties of several bosses' cards, and
 // 171 to 190), and how many.
 extern int g_ListedSpellCards[];
@@ -2465,8 +2480,11 @@ struct SpellCard
     // Starts spell card `card` named `name` for `enemy`, from an enemy
     // script instruction (StartSpellCard; th07's was the script's own
     // code) (0x4152a0).
-    void Start(int card, char *name, int face, int unk, struct Enemy *enemy, char *text1, char *text2,
+    void Start(int card, char *name, int face, DWORD bonus, struct Enemy *enemy, char *text1, char *text2,
                char *text3);
+    // Shows the card's name `name` with sprite `sprite`, and face `face`
+    // unless it is negative (0x415f00).
+    void ShowName(int face, char *name, int sprite);
     // Ends the spell card, as th07's EndSpellCard did (0x4161b0).
     void End();
     // Starts the card named `name` (「リザレクション」) for `enemy` without a
@@ -2533,8 +2551,15 @@ struct SpellCard
             DWORD unk_0_1 : 1;
             DWORD unk_0_2 : 1;
             DWORD unk_0_3 : 1;
-            DWORD unk_0_4 : 3;
+            DWORD unk_0_4 : 1;
+            DWORD unk_0_5 : 1;
+            DWORD unk_0_6 : 1;
             DWORD unk_0_7 : 1;
+            // Set while a bonus is pending from the last card.
+            DWORD unk_0_8 : 1;
+            DWORD unk_0_9 : 1;
+            DWORD unk_0_10 : 1;
+            DWORD unk_0_11 : 1;
         };
     };
     // unk_10. Inline; its copy is folded with ReplayManager::GetMode
@@ -2572,8 +2597,8 @@ struct SpellCard
     struct Effect *effect;
     int unk_f8;
     // The bonus left, and what it loses each second.
-    int unk_fc;
-    int unk_100;
+    DWORD unk_fc;
+    DWORD unk_100;
     int unk_104;
     Timer unk_108;
     Timer unk_114;
@@ -2600,7 +2625,7 @@ struct SpellCard
     // face_cdbg.anm (slot 0xf).
     AnmLoaded *backgroundAnm;
     // The bonus the card starts with.
-    int unk_2638;
+    DWORD unk_2638;
     ChainElem *calcChain;
     ChainElem *drawChain;
 };

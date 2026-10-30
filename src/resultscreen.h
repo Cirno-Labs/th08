@@ -180,12 +180,16 @@ struct Catk
     BYTE unk_09[0x3];
     // The card's number.
     WORD index;
-    BYTE unk_0e;
+    // A checksum: the low byte of the name's characters plus all the
+    // counters below (SpellCard::Start).
+    BYTE checksum;
     // The card's difficulty, 0 to 3, or 4 for none.
     BYTE difficulty;
-    // The card's name; its length is a guess.
-    char name[0x40];
-    unsigned char unk_50[0xa0];
+    // The card's name.
+    char name[0x30];
+    // The card's comment, set with the name as the card starts.
+    char comment[0x80];
+    unsigned char unk_c0[0x30];
     // By shot type, then with every shot type, as th07's (DWORDs now):
     // the best bonus, the attempts and the captures.
     DWORD maxBonus[0xd];
