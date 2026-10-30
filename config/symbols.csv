@@ -260,7 +260,7 @@ address,size,name,symbol
 0x00421180,256,ScriptMoveHermite,?ScriptMoveHermite@@YIXPAUEnemy@@PAUEnemyScriptInstr@@M@Z
 0x00421280,83,StartSpellCard,?StartSpellCard@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x004212e0,26,EndSpellCard,?EndSpellCard@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
-0x00421300,238,Func421300,
+0x00421300,238,ScriptLerp,?ScriptLerp@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x004213f0,506,Func4213f0,
 0x004215f0,1343,Func4215f0,
 0x00421b60,20,Func421b60,

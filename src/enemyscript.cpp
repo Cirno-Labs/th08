@@ -743,3 +743,11 @@ void EndSpellCard(Enemy *enemy, EnemyScriptInstr *instr)
 {
     g_SpellCard.End();
 }
+
+void ScriptLerp(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    float diff;
+
+    diff = FLOAT_ARG(1) - FLOAT_ARG(2);
+    *ResolveFloatOperand(enemy, &instr->args[0].f, instr->paramMask, 0) = diff * FLOAT_ARG(3) + FLOAT_ARG(2);
+}

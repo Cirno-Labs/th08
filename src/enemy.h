@@ -562,6 +562,9 @@ void ScriptMoveHermite(Enemy *enemy, EnemyScriptInstr *instr, float t);
 // 2, three more texts) and SpellCard::End (0x421280, 0x4212e0).
 void StartSpellCard(Enemy *enemy, EnemyScriptInstr *instr);
 void EndSpellCard(Enemy *enemy, EnemyScriptInstr *instr);
+// Sets the float variable argument 0 names to argument 3 of the way
+// from argument 2 to argument 1. New in th08 (0x421300).
+void ScriptLerp(Enemy *enemy, EnemyScriptInstr *instr);
 
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
