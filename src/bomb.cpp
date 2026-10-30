@@ -272,7 +272,7 @@ void UpdateReimuLastWord(Player *player)
             orbs->hitbox->maxDamage = 200;
             orbs->hitbox->unk_3d = 1;
         }
-        pb->unk_14 = 0;
+        pb->spawnCount = 0;
         g_SoundPlayer.QueueSound(0xd, 0);
     }
     {
@@ -330,9 +330,9 @@ void UpdateReimuLastWord(Player *player)
 
         if (pb->timer % 20 == 0)
         {
-            orbs = &pb->parts[pb->unk_14 + 0x10];
+            orbs = &pb->parts[pb->spawnCount + 0x10];
             player->anm->StartScript(&orbs->sprites[0], 0x14);
-            pb->unk_14 = 1;
+            pb->spawnCount = 1;
             orbs->state = 1;
             color = g_BombFlashColors[(DWORD)(pb->timer.AsFrames() / 20) % 7];
             if (player->orbHomingTarget.x > -100.0f)
@@ -894,7 +894,7 @@ void UpdateMarisaLastWord(Player *player)
         ScreenEffect::StartEffect(7, 0x10, 0x78, 0x3c, 0x78, 0x15);
         player->moveScaleY = 0.2f;
         player->moveScaleX = 0.2f;
-        bomb->unk_14 = 0;
+        bomb->spawnCount = 0;
     }
     if (bomb->timer.HasTickedEvery(10))
     {
@@ -902,8 +902,8 @@ void UpdateMarisaLastWord(Player *player)
         float scaleStart[2];
         float scaleTo[2];
 
-        eff = g_EffectManager.SpawnReservedEffect(0x35, &player->pos, bomb->unk_14 % 4 + 4, 1, 0xffffffff);
-        if (bomb->unk_14 & 1)
+        eff = g_EffectManager.SpawnReservedEffect(0x35, &player->pos, bomb->spawnCount % 4 + 4, 1, 0xffffffff);
+        if (bomb->spawnCount & 1)
         {
             g_EtamaAnm->StartScript(&eff->sprite, 0x5c);
         }
@@ -926,7 +926,7 @@ void UpdateMarisaLastWord(Player *player)
         eff->sprite.SetAlphaInterp(30, 3, 0xff, 0);
         eff->sprite.SetColorInterp(30, 0, 0xffffffff, 0xffff0000);
         g_SpriteEngine->Step(&eff->sprite);
-        bomb->unk_14++;
+        bomb->spawnCount++;
         g_SoundPlayer.QueueSoundPanned(0x11, player->pos.x);
     }
     if (player->bomb.timer.HasTicked() && player->bomb.timer.AsFrames() % 4 != 0)
@@ -973,7 +973,7 @@ void UpdateRemiliaBomb(Player *player)
         part[2].pos = player->options[2].center;
         part[3].pos = player->options[3].center;
         g_SoundPlayer.QueueSound(6, 0);
-        bomb->unk_14 = 0;
+        bomb->spawnCount = 0;
         player->moveScaleY = 0.0f;
         player->moveScaleX = 0.0f;
     }
@@ -1025,7 +1025,7 @@ void UpdateRemiliaBomb(Player *player)
             float scaleStart[2];
             float scaleTo[2];
 
-            eff = g_EffectManager.SpawnReservedEffect(0x35, &player->pos, bomb->unk_14 % 4 + 4, 1, 0xffffffff);
+            eff = g_EffectManager.SpawnReservedEffect(0x35, &player->pos, bomb->spawnCount % 4 + 4, 1, 0xffffffff);
             eff->segmentCount = 0x20;
             eff->unk_334 = 4.0f;
             D3DXVECTOR3 start;
@@ -1044,7 +1044,7 @@ void UpdateRemiliaBomb(Player *player)
             eff->sprite.SetScaleInterp(30, 1, (D3DXVECTOR2 *)scaleStart, (D3DXVECTOR2 *)scaleTo);
             eff->sprite.SetAlphaInterp(30, 3, 0xff, 0);
             eff->sprite.SetColorInterp(30, 0, 0xffffffff, 0xffff0000);
-            bomb->unk_14++;
+            bomb->spawnCount++;
             g_SoundPlayer.QueueSoundPanned(0x11, player->pos.x);
             g_SpriteEngine->Step(&eff->sprite);
         }
@@ -1086,7 +1086,7 @@ void UpdateRemiliaLastWord(Player *player)
         part[2].pos = player->options[2].center;
         part[3].pos = player->options[3].center;
         g_SoundPlayer.QueueSound(6, 0);
-        bomb->unk_14 = 0;
+        bomb->spawnCount = 0;
         player->moveScaleY = 0.0f;
         player->moveScaleX = 0.0f;
     }
@@ -1138,7 +1138,7 @@ void UpdateRemiliaLastWord(Player *player)
             float scaleStart[2];
             float scaleTo[2];
 
-            eff = g_EffectManager.SpawnReservedEffect(0x35, &player->pos, bomb->unk_14 % 4 + 4, 1, 0xffffffff);
+            eff = g_EffectManager.SpawnReservedEffect(0x35, &player->pos, bomb->spawnCount % 4 + 4, 1, 0xffffffff);
             eff->segmentCount = 0x20;
             eff->unk_334 = 4.0f;
             D3DXVECTOR3 start;
@@ -1157,7 +1157,7 @@ void UpdateRemiliaLastWord(Player *player)
             eff->sprite.SetScaleInterp(30, 1, (D3DXVECTOR2 *)scaleStart, (D3DXVECTOR2 *)scaleTo);
             eff->sprite.SetAlphaInterp(30, 3, 0xff, 0);
             eff->sprite.SetColorInterp(30, 0, 0xffffffff, 0xffff0000);
-            bomb->unk_14++;
+            bomb->spawnCount++;
             g_SoundPlayer.QueueSoundPanned(0x11, player->pos.x);
             g_SpriteEngine->Step(&eff->sprite);
         }

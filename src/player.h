@@ -241,10 +241,10 @@ struct PlayerBomb
     int type;
     // How long it runs; 999 when it starts.
     int duration;
-    int unk_c;
+    int unusedIntC;
     // The bombs it used (last words take up to two).
     int bombsUsed;
-    int unk_14;
+    int spawnCount;
     Timer timer;
     BombFuncs update;
     BombFuncs draw;
