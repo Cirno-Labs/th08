@@ -429,3 +429,11 @@ void BulletManager::ClearAllToItems()
 {
     this->ClearAll(1);
 }
+
+void SpellCard::Func415d10(char *name, Enemy *enemy)
+{
+    this->unk_0_10 = 1;
+    this->unk_0_0 = 0;
+    this->unk_0_4 = 0;
+    this->ShowName(-1, name, 1);
+}
