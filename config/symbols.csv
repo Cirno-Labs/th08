@@ -425,7 +425,7 @@ address,size,name,symbol
 0x0042f230,64,GameManager::IsSoloHuman,?IsSoloHuman@GameManager@@QAEHXZ
 0x0042f270,64,GameManager::IsSoloYoukai,?IsSoloYoukai@GameManager@@QAEHXZ
 0x0042f2b0,25,GameManager::GetLives,?GetLives@GameManager@@QAEHXZ
-0x0042f2d0,29,Func42f2d0,
+0x0042f2d0,29,AsciiText::SetNearbyLabelDimmed,?SetNearbyLabelDimmed@AsciiText@@QAEXHH@Z
 0x0042f2f0,37,AsciiText::SetScale,?SetScale@AsciiText@@QAEXMM@Z
 0x0042f320,17,Gui::IsBossPresent,?IsBossPresent@Gui@@QAEEXZ
 0x0042f340,22,Gui::SetBossTimer,?SetBossTimer@Gui@@QAEXH@Z
