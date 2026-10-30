@@ -900,3 +900,7 @@ int ScriptReturn(Enemy *enemy, EnemyScriptInstr *instr)
     *enemy->currentCtx = enemy->callStack[enemy->stackDepth];
     return 0;
 }
+
+void DebugPrint(const char *fmt, ...)
+{
+}

@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">83.42% (931)</tspan> · <tspan class="decompiled">3.05% (34)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">13.53% (151)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">83.51% (932)</tspan> · <tspan class="decompiled">3.05% (34)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">13.44% (150)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="623.17" height="6" x="0" y="0" class="named"/>
-<rect width="22.76" height="6" x="623.17" y="0" class="decompiled"/>
-<rect width="101.07" height="6" x="645.93" y="0" class="todo"/>
+<rect width="623.84" height="6" x="0" y="0" class="named"/>
+<rect width="22.76" height="6" x="623.84" y="0" class="decompiled"/>
+<rect width="100.40" height="6" x="646.60" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -337,7 +337,7 @@
 <rect width="12" height="12" x="240" y="75" class="todo"><title>0x00421ba0 Func421ba0 (43 bytes)</title></rect>
 <rect width="12" height="12" x="255" y="75" class="named"><title>0x00421bd0 ScriptCallSub (214 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="75" class="named"><title>0x00421cb0 ScriptReturn (280 bytes)</title></rect>
-<rect width="12" height="12" x="285" y="75" class="todo"><title>0x00421dd0 DebugPrint (5 bytes)</title></rect>
+<rect width="12" height="12" x="285" y="75" class="named"><title>0x00421dd0 DebugPrint (5 bytes)</title></rect>
 <rect width="12" height="12" x="300" y="75" class="todo"><title>0x00421de0 Func421de0 (112 bytes)</title></rect>
 <rect width="12" height="12" x="315" y="75" class="todo"><title>0x00421e50 Func421e50 (454 bytes)</title></rect>
 <rect width="12" height="12" x="330" y="75" class="todo"><title>0x00422020 Func422020 (650 bytes)</title></rect>
@@ -1190,9 +1190,9 @@
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
 <text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">78.53%</tspan> · <tspan class="decompiled">1.56%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">19.91%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="586.62" height="6" x="0" y="0" class="named"/>
-<rect width="11.65" height="6" x="586.62" y="0" class="decompiled"/>
-<rect width="148.73" height="6" x="598.27" y="0" class="todo"/>
+<rect width="586.63" height="6" x="0" y="0" class="named"/>
+<rect width="11.65" height="6" x="586.63" y="0" class="decompiled"/>
+<rect width="148.72" height="6" x="598.28" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -2309,7 +2309,7 @@
 <rect width="0.10" height="0.10" x="744.64" y="345.35" class="decompiled"><title>0x00438fe9 Func438fe9 (10 bytes)</title></rect>
 <rect width="0.22" height="0.10" x="746.78" y="342.71" class="decompiled"><title>0x00438ff3 Func438ff3 (10 bytes)</title></rect>
 <rect width="0.22" height="0.10" x="746.78" y="344.47" class="decompiled"><title>0x00438ffd Func438ffd (10 bytes)</title></rect>
-<rect width="0.10" height="0.10" x="746.78" y="346.24" class="todo"><title>0x00421dd0 DebugPrint (5 bytes)</title></rect>
+<rect width="0.10" height="0.10" x="746.78" y="346.24" class="named"><title>0x00421dd0 DebugPrint (5 bytes)</title></rect>
 <rect width="0.10" height="0.10" x="748.39" y="346.24" class="named"><title>0x00437cdd DebugPrint2 (5 bytes)</title></rect>
 </g>
 </g>
