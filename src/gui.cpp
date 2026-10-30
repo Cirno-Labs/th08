@@ -496,8 +496,8 @@ int GuiImpl::RunMsg()
             }
             else
             {
-                g_Gui.textAnm->StartScript(&this->unk_2a44[3], 3);
-                g_Gui.textAnm->SetSprite(&this->unk_2a44[3], this->msg.instr->i + 3);
+                g_Gui.textAnm->StartScript(&this->trackNumberSprites[3], 3);
+                g_Gui.textAnm->SetSprite(&this->trackNumberSprites[3], this->msg.instr->i + 3);
                 if (g_App.PlayMidi(this->msg.instr->i,
                                    (&g_StageBgms[g_GameManager.stage].stageBgm)[this->msg.instr->i]) != 0)
                 {
@@ -515,29 +515,29 @@ int GuiImpl::RunMsg()
         {
             int k;
 
-            this->unk_22df0 = g_GameManager.GetPower();
+            this->stageClearPower = g_GameManager.GetPower();
             this->stageClearPoints = g_GameManager.stats->stageClearPoints;
             this->stageClearTime = g_GameManager.GetUnk3c();
             this->stageClearGraze = g_GameManager.stats->graze;
             this->stageClearClock = g_GameManager.GetUnk28() * 30 + 660;
-            this->unk_22e00 = g_GameManager.Func43c35f();
-            g_GameManager.AddUnk28(this->unk_22e00);
+            this->stageClearTimePassed = g_GameManager.Func43c35f();
+            g_GameManager.AddUnk28(this->stageClearTimePassed);
             this->stageClearBonus = g_StageClearBonuses[g_GameManager.stage];
             this->stageClearLastTime = g_GameManager.GetUnk28() * 30 + 660;
             this->stageClearClock2 = this->stageClearClock;
-            this->unk_22e10 = 0;
+            this->stageClearClockTimer = 0;
             this->stageClearShown = 1;
             g_GameManager.stageClearStarted = 1;
             if (g_GameManager.stage != 6 && g_GameManager.stage != 7 && g_GameManager.stage != 8)
             {
-                g_AsciiText.anm->StartScript(&this->unk_212c8, 3);
-                g_AsciiText.anm->SetSprite(&this->unk_212c8, this->unk_22e00 + 0x80);
+                g_AsciiText.anm->StartScript(&this->timePassedDigit, 3);
+                g_AsciiText.anm->SetSprite(&this->timePassedDigit, this->stageClearTimePassed + 0x80);
             }
             else
             {
-                this->unk_212c8.scriptPos = NULL;
+                this->timePassedDigit.scriptPos = NULL;
             }
-            this->unk_212c8.SetPendingInterrupt(1);
+            this->timePassedDigit.SetPendingInterrupt(1);
             if (g_GameManager.stage != 6 && g_GameManager.stage != 7 && g_GameManager.stage != 8)
             {
                 g_Gui.characterAnm->StartScript(&this->loadingIcon, 0);
@@ -546,11 +546,11 @@ int GuiImpl::RunMsg()
                                                this->loadingBar.spriteData->startY,
                                                this->loadingBar.spriteData->width,
                                                this->loadingBar.spriteData->height);
-                for (k = 0; k < ARRAY_SIZE(this->unk_3f64); k++)
+                for (k = 0; k < ARRAY_SIZE(this->loadingBarTrail); k++)
                 {
-                    g_AsciiText.anm2->StartScript(&this->unk_3f64[k], 2);
-                    this->unk_3f64[k].scriptVar8 = k * 4 + 3;
-                    this->unk_3f64[k].alpha = 0x40 - k * 2;
+                    g_AsciiText.anm2->StartScript(&this->loadingBarTrail[k], 2);
+                    this->loadingBarTrail[k].scriptVar8 = k * 4 + 3;
+                    this->loadingBarTrail[k].alpha = 0x40 - k * 2;
                 }
             }
             else
@@ -801,37 +801,37 @@ void Gui::UpdateInterface()
         }
     }
     g_SpriteEngine->StepSprites(this->impl->sprites, 0x10);
-    g_SpriteEngine->StepSprites(this->impl->unk_2a44, 4);
-    if (!(g_GameManager.stateFlags >> 14 & 1) && this->impl->unk_2a44[0].alpha != 0)
+    g_SpriteEngine->StepSprites(this->impl->trackNumberSprites, 4);
+    if (!(g_GameManager.stateFlags >> 14 & 1) && this->impl->trackNumberSprites[0].alpha != 0)
     {
-        g_SpriteEngine->StepSprites(&this->impl->unk_34d4, 1);
+        g_SpriteEngine->StepSprites(&this->impl->stageTitleTime, 1);
     }
-    g_SpriteEngine->Step(&this->impl->unk_212c8);
-    g_SpriteEngine->Step(&this->impl->unk_2156c);
+    g_SpriteEngine->Step(&this->impl->timePassedDigit);
+    g_SpriteEngine->Step(&this->impl->clock);
     // The clock fades to 0x40 while the player is near it.
-    if (this->impl->unk_2156c.alpha != 0)
+    if (this->impl->clock.alpha != 0)
     {
         if (g_Player.pos.x >= 64.0f && g_Player.pos.y < 128.0f)
         {
-            if (this->impl->unk_2156c.alpha > 0x40)
+            if (this->impl->clock.alpha > 0x40)
             {
-                this->impl->unk_2156c.alpha -= 4;
+                this->impl->clock.alpha -= 4;
             }
         }
-        else if (this->impl->unk_2156c.alpha < 0xff)
+        else if (this->impl->clock.alpha < 0xff)
         {
-            if (this->impl->unk_2156c.alpha <= 0xfb)
+            if (this->impl->clock.alpha <= 0xfb)
             {
-                this->impl->unk_2156c.alpha += 4;
+                this->impl->clock.alpha += 4;
             }
             else
             {
-                this->impl->unk_2156c.alpha = 0xff;
+                this->impl->clock.alpha = 0xff;
             }
         }
     }
-    g_SpriteEngine->Step(&this->impl->unk_5484);
-    g_SpriteEngine->Step(&this->impl->unk_22e14);
+    g_SpriteEngine->Step(&this->impl->livesBombsOverlay);
+    g_SpriteEngine->Step(&this->impl->difficultyLabel);
     if (this->impl->loadingIcon.spriteIndex >= 0)
     {
         if (g_SpriteEngine->Step(&this->impl->loadingIcon) != 0)
@@ -842,9 +842,9 @@ void Gui::UpdateInterface()
         {
             this->impl->loadingBar.spriteIndex = -1;
         }
-        for (i = 0; i < ARRAY_SIZE(this->impl->unk_3f64); i++)
+        for (i = 0; i < ARRAY_SIZE(this->impl->loadingBarTrail); i++)
         {
-            g_SpriteEngine->Step(&this->impl->unk_3f64[i]);
+            g_SpriteEngine->Step(&this->impl->loadingBarTrail[i]);
         }
     }
     if (this->impl->backgroundTileCount != 0)
@@ -959,7 +959,7 @@ void Gui::UpdateInterface()
     }
     if (this->impl->stageClearClock2 != 0 && this->impl->stageClearClock2 != this->impl->stageClearLastTime)
     {
-        if (this->impl->unk_22e10 >= 60)
+        if (this->impl->stageClearClockTimer >= 60)
         {
             if (this->impl->stageClearClock2 < this->impl->stageClearLastTime)
             {
@@ -975,12 +975,12 @@ void Gui::UpdateInterface()
             }
             else
             {
-                this->impl->unk_22e10++;
+                this->impl->stageClearClockTimer++;
             }
         }
         else
         {
-            this->impl->unk_22e10++;
+            this->impl->stageClearClockTimer++;
         }
     }
 }
@@ -1073,7 +1073,7 @@ void Gui::DrawHud()
         g_SpriteEngine->DrawUnrotated(&this->impl->sprites[7]);
         g_SpriteEngine->DrawUnrotated(&this->impl->sprites[8]);
         g_SpriteEngine->DrawUnrotated(&this->impl->sprites[9]);
-        g_SpriteEngine->DrawUnrotated(&this->impl->unk_22e14);
+        g_SpriteEngine->DrawUnrotated(&this->impl->difficultyLabel);
         this->livesChanged = 2;
         this->bombsChanged = 2;
         this->grazeChanged = 2;
@@ -1101,7 +1101,7 @@ void Gui::DrawHud()
     }
     if ((this->bombsChanged || this->livesChanged) && g_GameManager.lastSpellState == 1 && g_SpellCard.Func4178a0())
     {
-        g_SpriteEngine->DrawUnrotated(&this->impl->unk_5484);
+        g_SpriteEngine->DrawUnrotated(&this->impl->livesBombsOverlay);
     }
     vm = &this->impl->sprites[14];
     for (xx = 32.0f; xx < 368.0f; xx += 128.0f)
@@ -1243,17 +1243,17 @@ void Gui::DrawBanners()
 
     for (i = 0; i < 4; i++)
     {
-        g_SpriteEngine->Draw(&this->impl->unk_2a44[i]);
+        g_SpriteEngine->Draw(&this->impl->trackNumberSprites[i]);
     }
-    g_SpriteEngine->Draw(&this->impl->unk_34d4);
-    g_SpriteEngine->Draw(&this->impl->unk_2156c);
+    g_SpriteEngine->Draw(&this->impl->stageTitleTime);
+    g_SpriteEngine->Draw(&this->impl->clock);
     if (this->impl->loadingIcon.spriteIndex >= 0)
     {
         g_SpriteEngine->DrawUnrotated(&this->impl->loadingIcon);
         g_SpriteEngine->DrawProjected3D(&this->impl->loadingBar);
-        for (i = 0; i < ARRAY_SIZE(this->impl->unk_3f64); i++)
+        for (i = 0; i < ARRAY_SIZE(this->impl->loadingBarTrail); i++)
         {
-            g_SpriteEngine->DrawProjected3D(&this->impl->unk_3f64[i]);
+            g_SpriteEngine->DrawProjected3D(&this->impl->loadingBarTrail[i]);
         }
         if (this->impl->loadingCaption.spriteIndex >= 0)
         {
@@ -1359,7 +1359,7 @@ void Gui::DrawBanners()
                                    0xfff0f00f);
         }
     }
-    g_SpriteEngine->DrawUnrotated(&this->impl->unk_212c8);
+    g_SpriteEngine->DrawUnrotated(&this->impl->timePassedDigit);
 }
 
 int Gui::AddedCallback(Gui *gui)
@@ -1813,28 +1813,28 @@ int Func438ffd()
 
 int Gui::Func439007()
 {
-    this->timesAnm->StartScriptAtOrigin(&this->impl->unk_2156c, 2);
-    this->timesAnm->SetSprite(&this->impl->unk_2156c, g_GameManager.GetUnk28());
+    this->timesAnm->StartScriptAtOrigin(&this->impl->clock, 2);
+    this->timesAnm->SetSprite(&this->impl->clock, g_GameManager.GetUnk28());
     return 0;
 }
 
 int Gui::Func439050()
 {
-    this->timesAnm->SetSprite(&this->impl->unk_2156c, g_GameManager.GetUnk28());
-    this->impl->unk_2156c.SetPendingInterrupt(1);
+    this->timesAnm->SetSprite(&this->impl->clock, g_GameManager.GetUnk28());
+    this->impl->clock.SetPendingInterrupt(1);
     return 0;
 }
 
 int Gui::Func439093()
 {
-    this->timesAnm->SetSprite(&this->impl->unk_2156c, g_GameManager.GetUnk28());
-    this->impl->unk_2156c.SetPendingInterrupt(2);
+    this->timesAnm->SetSprite(&this->impl->clock, g_GameManager.GetUnk28());
+    this->impl->clock.SetPendingInterrupt(2);
     return 0;
 }
 
 int Gui::Func4390d6()
 {
-    this->impl->unk_2156c.alpha = 0;
+    this->impl->clock.alpha = 0;
     return 0;
 }
 
@@ -1863,15 +1863,15 @@ int Gui::LoadResources()
         {
             return -1;
         }
-        g_AsciiText.anm->StartScript(&this->impl->unk_5484, 0x1a);
-        g_AsciiText.anm->StartScript(&this->impl->unk_22e14, 0x19);
+        g_AsciiText.anm->StartScript(&this->impl->livesBombsOverlay, 0x1a);
+        g_AsciiText.anm->StartScript(&this->impl->difficultyLabel, 0x19);
         if (g_GameManager.IsInSpellCardPractice() && g_GameManager.practiceSpellCard >= 0xcd)
         {
-            g_AsciiText.anm->SetSprite(&this->impl->unk_22e14, 0x120);
+            g_AsciiText.anm->SetSprite(&this->impl->difficultyLabel, 0x120);
         }
         else
         {
-            g_AsciiText.anm->SetSprite(&this->impl->unk_22e14, g_GameManager.difficulty + 0x11b);
+            g_AsciiText.anm->SetSprite(&this->impl->difficultyLabel, g_GameManager.difficulty + 0x11b);
         }
     }
     else
@@ -1895,8 +1895,8 @@ int Gui::LoadResources()
         this->impl->backgroundTileCount = 0xa8;
     }
     g_Gui.Func4390d6();
-    this->timesAnm->StartScriptAtOrigin(&this->impl->unk_34d4, 0);
-    this->timesAnm->SetSprite(&this->impl->unk_34d4, g_GameManager.GetUnk28());
+    this->timesAnm->StartScriptAtOrigin(&this->impl->stageTitleTime, 0);
+    this->timesAnm->SetSprite(&this->impl->stageTitleTime, g_GameManager.GetUnk28());
     if (!g_GameManager.IsInSpellCardPractice() &&
         this->LoadMsg(g_MsgPaths[g_GameManager.stage][g_GameManager.character]) != 0)
     {
@@ -1935,12 +1935,12 @@ int Gui::LoadResources()
     this->bossHealthShown = 0.0f;
     if (!(g_GameManager.stateFlags >> 14 & 1))
     {
-        this->textAnm->StartSpriteSeries(this->impl->unk_2a44, 0, 4);
+        this->textAnm->StartSpriteSeries(this->impl->trackNumberSprites, 0, 4);
     }
     else if (!Func438ffd() || Func439916(g_GameManager.practiceSpellCard))
     {
-        this->textAnm->StartSpriteSeries(this->impl->unk_2a44, 3, 1);
-        this->textAnm->SetSprite(this->impl->unk_2a44, Func439961(g_GameManager.practiceSpellCard) + 3);
+        this->textAnm->StartSpriteSeries(this->impl->trackNumberSprites, 3, 1);
+        this->textAnm->SetSprite(this->impl->trackNumberSprites, Func439961(g_GameManager.practiceSpellCard) + 3);
     }
     this->impl->msg.scriptIndex = -1;
     this->impl->stageClearShown = 0;
@@ -1953,7 +1953,7 @@ int Gui::LoadResources()
     this->frameItemsHideTimer = 2;
     this->powerChanged = 2;
     this->unk_4_10 = 2;
-    g_AsciiText.anm->StartScript(&this->impl->unk_212c8, 3);
+    g_AsciiText.anm->StartScript(&this->impl->timePassedDigit, 3);
     g_App.redrawFrames = 0x10;
     this->impl->stageClearClock2 = 0;
     return 0;

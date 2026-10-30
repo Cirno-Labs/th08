@@ -1898,16 +1898,16 @@ struct GuiImpl
     // leaving, as th07's.
     BYTE bossBarState;
     unsigned char pad_2a41[0x3];
-    Sprite unk_2a44[4];
-    Sprite unk_34d4;
+    Sprite trackNumberSprites[4];
+    Sprite stageTitleTime;
     Sprite loadingIcon;
     Sprite loadingCaption;
     Sprite loadingBar;
-    Sprite unk_3f64[8];
-    Sprite unk_5484;
+    Sprite loadingBarTrail[8];
+    Sprite livesBombsOverlay;
     Sprite backgroundTiles[0xa8];
-    Sprite unk_212c8;
-    Sprite unk_2156c;
+    Sprite timePassedDigit;
+    Sprite clock;
     int backgroundTileCount;
     GuiMsg msg;
     // Gui::OnDraw draws the stage clear screen (DrawStageClear) while it
@@ -1922,18 +1922,18 @@ struct GuiImpl
     // The stage clear screen's clear bonus (in tens), point items,
     // grazes and time bonus count, as th07's.
     int stageClearBonus;
-    int unk_22df0;
+    int stageClearPower;
     int stageClearPoints;
     int stageClearGraze;
     int stageClearTime;
-    int unk_22e00;
+    int stageClearTimePassed;
     // Clock times in minutes (h * 60 + m): shown from stage 1 to 6 as two
     // times, and from stage 6B as the last time for the night bonus.
     int stageClearClock;
     int stageClearLastTime;
     int stageClearClock2;
-    int unk_22e10;
-    Sprite unk_22e14;
+    int stageClearClockTimer;
+    Sprite difficultyLabel;
 };
 ASSERT_SIZE(GuiImpl, 0x230b8);
 
