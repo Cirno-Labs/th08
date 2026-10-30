@@ -19,10 +19,11 @@ cflags = ["/Od", "/Gr", "/GX", "/Oi"]
 lib = ['C:\dx8\lib', 'C:\msvc7\lib', 'C:\psdk\Lib']
 
 [exe]
-# Not set up for the standalone exe yet: the DLL's objects, in source
-# order.
+# Not set up for the standalone exe yet: the DLL's objects. The link
+# order also decides which copy of an inline function compare and the
+# DLL keep.
 obj_dir = "build/obj"
-link_order = "source"
+link_order = "median"
 libs = ["libcmt.lib", "d3dx8.lib", "d3d8.lib", "dsound.lib", "dinput8.lib", "dxguid.lib",
         "winmm.lib", "kernel32.lib", "user32.lib", "gdi32.lib"]
 
