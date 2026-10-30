@@ -16,7 +16,14 @@ functions = "build/functions_100d.csv"
 
 [build]
 cflags = ["/Od", "/Gr", "/GX", "/Oi"]
-lib = ['C:\dx8\lib', 'C:\msvc7\lib', 'C:\psdk\Lib']
+# The game's code was compiled with DirectX 8.0's headers (its
+# D3DXIMAGE_INFO has 8.0's 20 bytes, not 8.1's 28) but linked with
+# DirectX 8.1's libraries: C:\dx81\lib is DXF/DXSDK/lib from the
+# DirectX 8.1 SDK (dx81sdk_full.exe). It brings Rich header entries the
+# original has (18/8444, the 8 objects without a comp.id, 28/9178,
+# Implib700/9210), but its C++ objects say 9178 where the original's say
+# 9177: the original's SDK was a slightly different build.
+lib = ['C:\dx81\lib', 'C:\msvc7\lib', 'C:\psdk\Lib']
 
 [exe]
 # The exe's objects are compiled with TH08_EXE, which defines the

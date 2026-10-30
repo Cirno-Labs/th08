@@ -70,8 +70,11 @@ Read from the Rich header (`tools/peinfo.py`):
 This is the th06 and th07 toolchain: Visual C++ .NET 2002 (MSVC 7.0,
 `cl` 13.00.9466) with the DirectX 8 SDK. Unlike th07, no object was
 compiled with `/GL`. The static libraries come from a different build
-(9177) than th07's (8830). The compiler flags start as th07's and change
-as functions show otherwise.
+(9177) than th07's (8830): the DirectX 8.1 SDK's (its C++ objects say
+9178), while the game code still includes DirectX 8.0's headers. The
+standalone exe links the libraries of `dx81sdk_full.exe`
+(`DXF/DXSDK/lib`), copied to `C:\dx81\lib` in the Wine prefix. The
+compiler flags start as th07's and change as functions show otherwise.
 
 ## Workflow
 
