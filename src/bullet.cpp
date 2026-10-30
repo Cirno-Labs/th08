@@ -1167,3 +1167,23 @@ void BounceOffWalls(Bullet *bullet)
         }
     }
 }
+
+void WrapAroundX(Bullet *bullet)
+{
+    if (bullet->pos.x < 0.0)
+    {
+        bullet->pos.x += 384.0f;
+    }
+    else if (bullet->pos.x > 384.0)
+    {
+        bullet->pos.x -= 384.0f;
+    }
+    if (bullet->ex[6].timer <= 0)
+    {
+        bullet->activeFlags ^= 0x400000;
+    }
+    else
+    {
+        bullet->ex[6].timer--;
+    }
+}
