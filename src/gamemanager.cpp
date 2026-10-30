@@ -792,7 +792,7 @@ void GameManager::LoadingThread(GameManager *arg)
             {
                 if (g_GameManager.unk_3dbb0 <= g_SpellCardBgms[j].lastCard)
                 {
-                    g_App.LoadMidi(0, g_SpellCardBgms[j].unk_8);
+                    g_App.LoadMidi(0, g_SpellCardBgms[j].midiPath);
                     break;
                 }
                 j++;

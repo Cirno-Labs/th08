@@ -2010,7 +2010,7 @@ int Func439916(int card)
     {
         if (g_GameManager.unk_3dbb0 <= g_SpellCardBgms[i].lastCard)
         {
-            return g_SpellCardBgms[i].unk_10;
+            return g_SpellCardBgms[i].restartsMusic;
         }
         i++;
     }
@@ -2026,7 +2026,7 @@ int Func439961(int card)
     {
         if (g_GameManager.unk_3dbb0 <= g_SpellCardBgms[i].lastCard)
         {
-            return g_SpellCardBgms[i].unk_c;
+            return g_SpellCardBgms[i].titleIndex;
         }
         i++;
     }

@@ -2489,9 +2489,9 @@ struct SpellCardBgm
 {
     int lastCard;
     int bgm;
-    char *unk_8;
-    int unk_c;
-    int unk_10;
+    char *midiPath;
+    int titleIndex;
+    int restartsMusic;
 };
 extern SpellCardBgm g_SpellCardBgms[];
 // By stage and difficulty: what LoadingThread sets stats->unk_40 to.
