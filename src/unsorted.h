@@ -1857,7 +1857,7 @@ struct GuiMsg
     // The portrait shown in front (interrupt 3), 0xff for none.
     BYTE activePortrait;
     // Set by opcode 18; DrawMsg tests it.
-    BYTE unk_156d;
+    BYTE textBoxShown;
     // The Extra/clear level StartMsgScript picks for the ending dialogue
     // (index 10 of stage 6), kept in bits 11-12 of
     // GameManager::unk_3dbac. Opcode 21 lets the player pick it (up and

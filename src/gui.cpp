@@ -152,7 +152,7 @@ void GuiImpl::StartMsgScript(int index)
     this->msg.instr = (MsgInstr *)this->msg.msgFile->scripts[index];
     this->msg.text[0].scriptIndex = -1;
     this->msg.text[1].scriptIndex = -1;
-    this->msg.unk_156d = 1;
+    this->msg.textBoxShown = 1;
     this->msg.fontSize = 15;
     this->msg.textColors[0] = g_MsgColors[g_GameManager.character][0];
     this->msg.textColors[1] = g_MsgColors[g_GameManager.character][1];
@@ -586,7 +586,7 @@ int GuiImpl::RunMsg()
             this->msg.skippable = this->msg.instr->b;
             break;
         case 18:
-            this->msg.unk_156d = this->msg.instr->b;
+            this->msg.textBoxShown = this->msg.instr->b;
             break;
         }
         this->msg.instr = (MsgInstr *)((BYTE *)this->msg.instr + 4 + this->msg.instr->argsSize);
@@ -668,7 +668,7 @@ int GuiImpl::DrawMsg()
         g_SpriteEngine->DrawUnrotated(&this->msg.portraits[2]);
     }
     g_SpriteEngine->FlushQuadBatch();
-    if (this->msg.unk_156d)
+    if (this->msg.textBoxShown)
     {
         if (!g_App.GetNoColorBlending())
         {
