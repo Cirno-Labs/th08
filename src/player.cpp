@@ -233,7 +233,7 @@ void Player::Graze(D3DXVECTOR3 *pos, int isLaser)
     int count;
     int points;
 
-    if (!g_PlayerBombRunning)
+    if (!g_Player.bomb.running)
     {
         count = g_GameManager.IsGaugeAtLow1() ? 3 : (g_GameManager.IsGaugeAtLow2() ? 2 : 1);
         if (g_GameManager.stats->graze < 99999)

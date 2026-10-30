@@ -416,8 +416,6 @@ extern int g_ScreenEffectHoldFrames;
 extern int g_ScriptFunc0Int;
 // Set with g_ScriptFunc0Int by SetScriptFunc0Vars.
 extern float g_ScriptFunc0Float;
-// GameManager::AddGauge only applies while it is clear, unless forced.
-extern int g_PlayerBombRunning;
 // The damage an enemy takes per time orb Player::CalcDamage spawns.
 extern int g_DamagePerTimeOrb;
 // Copies the stage's portrait into the dialogue texture by
@@ -1364,7 +1362,7 @@ public:
     void AddSubRank(int amount);
     // Takes `amount` hundredths from the rank, as th07's.
     void SubSubRank(int amount);
-    // Unless g_PlayerBombRunning is set and `force` is not, adds `amount` to
+    // Unless g_Player.bomb.running is set and `force` is not, adds `amount` to
     // stats->gauge, within gaugeMin and gaugeMax, and copies it to
     // stats->gaugeCopy.
     void AddGauge(int amount, int force);

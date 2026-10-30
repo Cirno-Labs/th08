@@ -2543,7 +2543,6 @@ address,size,name,symbol
 0x017ce758,,g_App,?g_App@@3VApp@@A
 0x017ceac0,,g_LoadingSprites,?g_LoadingSprites@@3PAVSprite@@A
 0x017d5ef8,,g_Player,?g_Player@@3VPlayer@@A
-0x017d6ed4,,g_PlayerBombRunning,?g_PlayerBombRunning@@3HA
 0x018b899c,,g_OrbHomingTarget,?g_OrbHomingTarget@@3UD3DXVECTOR3@@A
 0x018b89b4,,g_EnemyAbovePlayer,?g_EnemyAbovePlayer@@3PAUEnemy@@A
 0x018b89b8,,g_HomingTargetSet,?g_HomingTargetSet@@3HA

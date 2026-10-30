@@ -1069,7 +1069,7 @@ void GameManager::SubSubRank(int amount)
 
 void GameManager::AddGauge(int amount, int force)
 {
-    if (g_PlayerBombRunning != 0 && force == 0)
+    if (g_Player.bomb.running != 0 && force == 0)
     {
         return;
     }

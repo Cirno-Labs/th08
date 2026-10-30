@@ -1229,7 +1229,7 @@ int UpdateFiring(Player *player)
         return 0;
     }
     if (player->fireTimer.HasTicked() &&
-        (!g_PlayerBombRunning ||
+        (!g_Player.bomb.running ||
          (g_GameManager.character != 1 && g_GameManager.character != 7 && g_GameManager.character != 6)))
     {
         FireShots(player, player->fireTimer.AsFrames());

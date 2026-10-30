@@ -396,7 +396,7 @@ void Enemy::ReleaseFollowers(int collect)
                 {
                     items = count >= 8 ? 26 : count * 2 + 10;
                 }
-                if (g_PlayerBombRunning != 0)
+                if (g_Player.bomb.running != 0)
                 {
                     count /= 3;
                 }
@@ -489,7 +489,7 @@ void Enemy::ShareDamageWithLeader(int damage)
     {
         return;
     }
-    if (g_PlayerBombRunning != 0)
+    if (g_Player.bomb.running != 0)
     {
         return;
     }
@@ -1101,7 +1101,7 @@ int EnemyManager::OnUpdate(EnemyManager *mgr)
             goto die;
         }
         mgr->enemyCount++;
-        if ((enemy->haltedByBomb && (g_PlayerBombRunning || g_Player.playerState)) || enemy->halted)
+        if ((enemy->haltedByBomb && (g_Player.bomb.running || g_Player.playerState)) || enemy->halted)
         {
             enemy->callbackTimer--;
             goto flash;
@@ -1196,9 +1196,9 @@ int EnemyManager::OnUpdate(EnemyManager *mgr)
                 enemy->sprites[seg].scriptIndex = -1;
             }
         }
-        bomb = g_PlayerBombRunning;
+        bomb = g_Player.bomb.running;
         if (!enemy->hideFollowEffects && !enemy->hiddenByBomb && !enemy->isYoukai &&
-            (!enemy->intangibleDuringBomb || !g_PlayerBombRunning))
+            (!enemy->intangibleDuringBomb || !g_Player.bomb.running))
         {
             if (enemy->shootable)
             {
@@ -1220,7 +1220,7 @@ int EnemyManager::OnUpdate(EnemyManager *mgr)
             enemy->lastDamage = 0;
             if (enemy->hitByShots)
             {
-                if (!g_SpellCard.IsActive() || !enemy->IsFollower() || !g_PlayerBombRunning)
+                if (!g_SpellCard.IsActive() || !enemy->IsFollower() || !g_Player.bomb.running)
                 {
                     hurt = g_Player.CalcDamage(&enemy->absPos, &enemy->hitboxSize, &enemy->timeOrbDamage, &bomb);
                 }
@@ -1245,7 +1245,7 @@ int EnemyManager::OnUpdate(EnemyManager *mgr)
                 }
                 if (hurt > 0)
                 {
-                    if ((enemy->isBoss || !g_Player.focused) && !g_PlayerBombRunning)
+                    if ((enemy->isBoss || !g_Player.focused) && !g_Player.bomb.running)
                     {
                         if (enemy->isBoss && !g_Player.focused)
                         {
