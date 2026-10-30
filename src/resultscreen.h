@@ -172,7 +172,7 @@ struct Lsnm
     WORD size;
     WORD size2;
     BYTE version;
-    BYTE unk_09[0x3];
+    BYTE pad_09[0x3];
     char name[0xc];
 };
 ASSERT_SIZE(Lsnm, 0x18);
