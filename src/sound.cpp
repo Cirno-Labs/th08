@@ -597,8 +597,6 @@ void SoundPlayer::QueueSoundPanned(int idx, float x)
     this->queueArgCounts[i]++;
 }
 
-// Does not match: the original has a two-byte jump to the next
-// instruction after case 7 (0x45de43) that this code does not produce.
 int SoundPlayer::PlayQueuedSounds()
 {
     int sound;
@@ -622,7 +620,7 @@ again:
         {
             this->bgm->SetVolume(this->bgmVolume);
         }
-        break;
+        goto shift;
     case 1:
         if (g_App.GetPreloadBgm())
         {
@@ -632,7 +630,7 @@ again:
                 this->StopBgm();
                 this->PreloadBgm(command->arg, command->path);
                 advance = 1;
-                break;
+                goto shift;
             }
         }
         else
@@ -640,10 +638,10 @@ again:
             DebugPrint("Sound : PreLoad Stage\r\n");
             this->PreloadBgm(command->arg, command->path);
             advance = 1;
-            break;
+            goto shift;
         }
         command->stage++;
-        goto done;
+        break;
     case 2:
         if (g_App.GetPreloadBgm() && command->arg >= 0)
         {
@@ -652,7 +650,7 @@ again:
                 DebugPrint("Sound : Load Stage\r\n");
                 if (this->PlayPreloadedBgm(command->arg) != 0)
                 {
-                    break;
+                    goto shift;
                 }
             }
             else if (command->stage == 2)
@@ -662,7 +660,7 @@ again:
                 {
                     if (this->bgm->Reset() < 0)
                     {
-                        break;
+                        goto shift;
                     }
                 }
             }
@@ -673,7 +671,7 @@ again:
                 command->arg = this->bgm->GetWaveFile()->GetFormat()->loopEnd != 0;
                 if (this->bgm->FillBufferWithSound(buffer, command->arg) < 0)
                 {
-                    break;
+                    goto shift;
                 }
             }
             else if (command->stage == 7)
@@ -683,14 +681,14 @@ again:
             }
             else if (command->stage >= 0x14)
             {
-                break;
+                goto shift;
             }
         }
         else
         {
             if (this->bgm == NULL)
             {
-                break;
+                goto shift;
             }
             if (command->stage == 0)
             {
@@ -701,7 +699,7 @@ again:
             {
                 if (this->bgm->isBuffering != 0)
                 {
-                    goto done;
+                    break;
                 }
                 DebugPrint("Sound : Recreate Stage\r\n");
                 this->bgm->RecreateBuffers();
@@ -721,7 +719,7 @@ again:
                 command->arg = this->bgm->GetWaveFile()->GetFormat()->loopEnd != 0;
                 if (this->bgm->FillBufferWithSound(buffer, command->arg) < 0)
                 {
-                    break;
+                    goto shift;
                 }
             }
             else if (command->stage == 4)
@@ -731,15 +729,15 @@ again:
             }
             else if (command->stage >= 7)
             {
-                break;
+                goto shift;
             }
         }
         command->stage++;
-        goto done;
+        break;
     case 4:
         if (this->bgm == NULL)
         {
-            break;
+            goto shift;
         }
         if (command->stage == 0)
         {
@@ -751,7 +749,7 @@ again:
             DebugPrint("Sound : Thread Stop Stage\r\n");
             if (this->notifyThread == NULL)
             {
-                break;
+                goto shift;
             }
             PostThreadMessageA(this->notifyThreadId, WM_QUIT, 0, 0);
         }
@@ -782,14 +780,14 @@ again:
         }
         else if (command->stage == 10)
         {
-            break;
+            goto shift;
         }
         command->stage++;
-        goto done;
+        break;
     case 3:
         if (this->bgm == NULL)
         {
-            break;
+            goto shift;
         }
         if (command->stage == 0)
         {
@@ -798,58 +796,57 @@ again:
         }
         else if (command->stage == 1)
         {
-            break;
+            goto shift;
         }
         command->stage++;
-        goto done;
+        break;
     case 5:
         DebugPrint("Sound : Fade Out Stage %d\r\n", command->arg);
         g_SoundPlayer.FadeOutBgm(command->arg);
-        break;
+        goto shift;
     case 6:
         if (g_App.musicMode == 1)
         {
             if (this->bgm->isBuffering != 0)
             {
                 DebugPrint("locked\n");
-                goto done;
+                break;
             }
             if (this->bgm != NULL)
             {
                 this->bgm->PauseBuffer();
             }
         }
-        break;
+        goto shift;
     case 7:
         if (g_App.musicMode == 1)
         {
             if (this->bgm->isBuffering != 0)
             {
-                goto done;
+                break;
             }
             if (this->bgm != NULL)
             {
                 this->bgm->ResumeBuffer();
             }
         }
-        break;
+        goto shift;
     default:
-        goto done;
         break;
-    }
-    for (i = 0; i < 0x1f; i++, command++)
-    {
-        if (command->type == 0)
+    shift:
+        for (i = 0; i < 0x1f; i++, command++)
         {
-            break;
+            if (command->type == 0)
+            {
+                break;
+            }
+            *command = *(command + 1);
         }
-        *command = *(command + 1);
+        if (advance)
+        {
+            goto again;
+        }
     }
-    if (advance)
-    {
-        goto again;
-    }
-done:
     if (!g_App.playSounds)
     {
         return this->commands[0].type;
