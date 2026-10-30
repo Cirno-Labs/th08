@@ -802,6 +802,11 @@ void KeepFormation(Enemy *enemy, EnemyScriptInstr *instr);
 // (192.0, 208.0) across the gap (0x423a60).
 void BounceBulletsAtZones(Enemy *enemy, EnemyScriptInstr *instr);
 
+// Script function 21: bounces the bullets back where they cross
+// between three zones (an inner and an outer box), scaling them about
+// (192.0, 208.0) across the gap (0x423e20).
+void BounceBulletsAtZones2(Enemy *enemy, EnemyScriptInstr *instr);
+
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
 // The enemy scripts by stage, by stage in spell practice (stage + 9),

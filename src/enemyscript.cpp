@@ -1464,6 +1464,69 @@ void SpawnTwinEffects41(Enemy *enemy, EnemyScriptInstr *instr)
     g_Stage.unk_625c = DrawTwinEffects;
 }
 
+void BounceBulletsAtZones2(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    Bullet *bullet = g_BulletManager.bullets;
+    D3DXVECTOR3 posPrev;
+    int i;
+    int prevZone;
+    int zone;
+
+    for (i = 0; i < 0x600; i++, bullet++)
+    {
+        if (bullet->state == 0)
+        {
+            continue;
+        }
+        if (bullet->unk_dc4 != 0)
+        {
+            bullet->unk_dc4--;
+            continue;
+        }
+        posPrev = bullet->pos - bullet->velocity;
+        if (bullet->pos.x > 112.80403f && bullet->pos.x < 271.19595f && bullet->pos.y > 128.80403f && bullet->pos.y < 287.19595f)
+        {
+            zone = 0;
+        }
+        else if (bullet->pos.x > 33.60807f && bullet->pos.x < 350.39194f && bullet->pos.y > 49.60807f && bullet->pos.y < 366.39194f)
+        {
+            zone = 1;
+        }
+        else
+        {
+            zone = 2;
+        }
+        if (posPrev.x > 112.80403f && posPrev.x < 271.19595f && posPrev.y > 128.80403f && posPrev.y < 287.19595f)
+        {
+            prevZone = 0;
+        }
+        else if (posPrev.x > 33.60807f && posPrev.x < 350.39194f && posPrev.y > 49.60807f && posPrev.y < 366.39194f)
+        {
+            prevZone = 1;
+        }
+        else
+        {
+            prevZone = 2;
+        }
+        if (zone != prevZone)
+        {
+            bullet->unk_dc4 = 2;
+            bullet->velocity *= -1.0f;
+            if (zone == 0 || prevZone == 0)
+            {
+                bullet->pos.x = (bullet->pos.x - 192.0f) * 158.39194f / 79.19597f + 192.0f;
+                bullet->pos.y = (bullet->pos.y - 208.0f) * 158.39194f / 79.19597f + 208.0f;
+            }
+            else
+            {
+                bullet->pos.x = (bullet->pos.x - 192.0f) * 79.19597f / 158.39194f + 192.0f;
+                bullet->pos.y = (bullet->pos.y - 208.0f) * 79.19597f / 158.39194f + 208.0f;
+            }
+            bullet->angle = AddNormalizeAngle(bullet->angle, 3.1415927f);
+        }
+    }
+}
+
 void EndTwinEffects(Enemy *enemy, EnemyScriptInstr *instr)
 {
     g_EffectManager.GetReservedEffect(9)->active = 0;
