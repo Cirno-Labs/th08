@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">80.29% (896)</tspan> · <tspan class="decompiled">2.33% (26)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">17.38% (194)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">80.38% (897)</tspan> · <tspan class="decompiled">2.33% (26)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">17.29% (193)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="599.74" height="6" x="0" y="0" class="named"/>
-<rect width="17.40" height="6" x="599.74" y="0" class="decompiled"/>
-<rect width="129.85" height="6" x="617.15" y="0" class="todo"/>
+<rect width="600.41" height="6" x="0" y="0" class="named"/>
+<rect width="17.40" height="6" x="600.41" y="0" class="decompiled"/>
+<rect width="129.19" height="6" x="617.81" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -473,7 +473,7 @@
 <rect width="12" height="12" x="30" y="120" class="named"><title>0x0042bea0 Enemy::DropItems (734 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="120" class="named"><title>0x0042c180 Enemy::ClampPos (270 bytes)</title></rect>
 <rect width="12" height="12" x="60" y="120" class="named"><title>0x0042c290 Enemy::CheckPlayerContact (284 bytes)</title></rect>
-<rect width="12" height="12" x="75" y="120" class="todo"><title>0x0042c3b0 Func42c3b0 (110 bytes)</title></rect>
+<rect width="12" height="12" x="75" y="120" class="named"><title>0x0042c3b0 EnemyManager::AddRankOverTime (110 bytes)</title></rect>
 <rect width="12" height="12" x="90" y="120" class="todo"><title>0x0042c420 Func42c420 (367 bytes)</title></rect>
 <rect width="12" height="12" x="105" y="120" class="named"><title>0x0042c590 EnemyManager::RegisterChain (203 bytes)</title></rect>
 <rect width="12" height="12" x="120" y="120" class="todo"><title>0x0042c660 EnemyManager::OnUpdate (6198 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">74.03%</tspan> · <tspan class="decompiled">1.13%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">24.84%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">74.05%</tspan> · <tspan class="decompiled">1.13%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">24.82%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="552.98" height="6" x="0" y="0" class="named"/>
-<rect width="8.43" height="6" x="552.98" y="0" class="decompiled"/>
-<rect width="185.58" height="6" x="561.42" y="0" class="todo"/>
+<rect width="553.16" height="6" x="0" y="0" class="named"/>
+<rect width="8.43" height="6" x="553.16" y="0" class="decompiled"/>
+<rect width="185.40" height="6" x="561.60" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -1805,7 +1805,7 @@
 <rect width="4.78" height="5.10" x="626.59" y="323.85" class="named"><title>0x00464400 SpriteEngine::DrawProjectedWithCallback (111 bytes)</title></rect>
 <rect width="4.78" height="5.03" x="626.59" y="331.95" class="todo"><title>0x00406f30 GameManager::SetBombs (110 bytes)</title></rect>
 <rect width="4.78" height="5.03" x="626.59" y="339.97" class="named"><title>0x00427ae0 EffectUpdateRingFade (110 bytes)</title></rect>
-<rect width="4.87" height="4.93" x="634.36" y="225.05" class="todo"><title>0x0042c3b0 Func42c3b0 (110 bytes)</title></rect>
+<rect width="4.87" height="4.93" x="634.36" y="225.05" class="named"><title>0x0042c3b0 EnemyManager::AddRankOverTime (110 bytes)</title></rect>
 <rect width="4.87" height="4.93" x="642.23" y="225.05" class="named"><title>0x0043e160 ResetKeyboard (110 bytes)</title></rect>
 <rect width="4.87" height="4.93" x="650.11" y="225.05" class="named"><title>0x00447421 App::TickTimer (110 bytes)</title></rect>
 <rect width="4.87" height="4.93" x="657.98" y="225.05" class="named"><title>0x00472a30 CSound::Reset (110 bytes)</title></rect>

@@ -571,6 +571,21 @@ void Enemy::CheckPlayerContact(D3DXVECTOR3 *pos, D3DXVECTOR3 *size)
     }
 }
 
+void EnemyManager::AddRankOverTime()
+{
+    int interval;
+
+    if (!g_Gui.IsMsgRunning())
+    {
+        interval = 2400;
+        interval -= g_GameManager.GetLives() * 4 * 60;
+        if (this->frameTimer.HasTicked() && this->frameTimer.AsFrames() % interval == 0)
+        {
+            g_GameManager.AddSubRank(100);
+        }
+    }
+}
+
 int EnemyManager::RegisterChain()
 {
     EnemyManager *em = &g_EnemyManager;
