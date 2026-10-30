@@ -786,6 +786,11 @@ void BeamHitsPlayer288(Enemy *enemy, EnemyScriptInstr *instr);
 // interrupt 2, else releases them with 1 (0x424a20).
 void ToggleMarkedBullets(Enemy *enemy, EnemyScriptInstr *instr);
 
+// Script function 14: like ToggleMarkedBullets' bullet loop in three
+// steps: autoRotate 1 turn additive at their own angle and floats[1],
+// 0 fade in over 15 frames as 2, the others go back (0x424c40).
+void CycleMarkedBullets(Enemy *enemy, EnemyScriptInstr *instr);
+
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
 // The enemy scripts by stage, by stage in spell practice (stage + 9),

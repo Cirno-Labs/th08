@@ -305,7 +305,7 @@ address,size,name,symbol
 0x00424910,228,BeamHitsPlayer288,?BeamHitsPlayer288@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00424a00,28,SetUnknown18b8a2c,?SetUnknown18b8a2c@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00424a20,536,ToggleMarkedBullets,?ToggleMarkedBullets@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
-0x00424c40,443,Func424c40,
+0x00424c40,443,CycleMarkedBullets,?CycleMarkedBullets@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00424e00,31,TintStageRed,?TintStageRed@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00424e20,39,ShakeScreenRamp,?ShakeScreenRamp@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00424e50,272,MarkFollowersNearBullets,?MarkFollowersNearBullets@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z

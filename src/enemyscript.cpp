@@ -1529,6 +1529,47 @@ void ToggleMarkedBullets(Enemy *enemy, EnemyScriptInstr *instr)
     }
 }
 
+void CycleMarkedBullets(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    Bullet *bullet = g_BulletManager.bullets;
+    int i;
+
+    for (i = 0; i < 0x600; i++, bullet++)
+    {
+        if (bullet->state == 0)
+        {
+            continue;
+        }
+        if (bullet->activeFlags & enemy->currentCtx->vars.ints[0])
+        {
+            if (bullet->sprite.autoRotate == 1)
+            {
+                bullet->sprite.autoRotate = 0;
+                bullet->sprite.blendMode = 1;
+                bullet->sprite.alpha = 0;
+                g_BulletManager.etamaAnm->SetSprite(&bullet->sprite, bullet->sprite.spriteIndex + 0x10);
+                bullet->unk_10b4 = 1;
+                ((Vector2 *)&bullet->velocity)
+                    ->SetPolar(bullet->angle, g_App.gameSpeed * enemy->currentCtx->vars.floats[1]);
+            }
+            else if (bullet->sprite.autoRotate == 0)
+            {
+                bullet->sprite.autoRotate = 2;
+                bullet->sprite.alpha = 0;
+                bullet->sprite.SetAlphaInterp(15, 0, 0, 0xff);
+            }
+            else
+            {
+                bullet->sprite.autoRotate = 1;
+                bullet->sprite.blendMode = 0;
+                g_BulletManager.etamaAnm->SetSprite(&bullet->sprite, bullet->sprite.spriteIndex - 0x10);
+                bullet->unk_10b4 = 0;
+                ((Vector2 *)&bullet->velocity)->SetPolar(bullet->angle, g_App.gameSpeed * bullet->speed);
+            }
+        }
+    }
+}
+
 void TintStageRed(Enemy *enemy, EnemyScriptInstr *instr)
 {
     g_Stage.SetTintColor(0xffc03030);

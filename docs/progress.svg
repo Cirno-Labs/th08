@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">87.37% (975)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">9.41% (105)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">87.46% (976)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">9.32% (104)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="652.62" height="6" x="0" y="0" class="named"/>
-<rect width="24.10" height="6" x="652.62" y="0" class="decompiled"/>
-<rect width="70.28" height="6" x="676.72" y="0" class="todo"/>
+<rect width="653.29" height="6" x="0" y="0" class="named"/>
+<rect width="24.10" height="6" x="653.29" y="0" class="decompiled"/>
+<rect width="69.61" height="6" x="677.39" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -374,7 +374,7 @@
 <rect width="12" height="12" x="45" y="90" class="named"><title>0x00424910 BeamHitsPlayer288 (228 bytes)</title></rect>
 <rect width="12" height="12" x="60" y="90" class="named"><title>0x00424a00 SetUnknown18b8a2c (28 bytes)</title></rect>
 <rect width="12" height="12" x="75" y="90" class="named"><title>0x00424a20 ToggleMarkedBullets (536 bytes)</title></rect>
-<rect width="12" height="12" x="90" y="90" class="todo"><title>0x00424c40 Func424c40 (443 bytes)</title></rect>
+<rect width="12" height="12" x="90" y="90" class="named"><title>0x00424c40 CycleMarkedBullets (443 bytes)</title></rect>
 <rect width="12" height="12" x="105" y="90" class="named"><title>0x00424e00 TintStageRed (31 bytes)</title></rect>
 <rect width="12" height="12" x="120" y="90" class="named"><title>0x00424e20 ShakeScreenRamp (39 bytes)</title></rect>
 <rect width="12" height="12" x="135" y="90" class="named"><title>0x00424e50 MarkFollowersNearBullets (272 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">80.63%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">17.79%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">80.73%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">17.69%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="602.34" height="6" x="0" y="0" class="named"/>
-<rect width="11.78" height="6" x="602.34" y="0" class="decompiled"/>
-<rect width="132.89" height="6" x="614.11" y="0" class="todo"/>
+<rect width="603.05" height="6" x="0" y="0" class="named"/>
+<rect width="11.78" height="6" x="603.05" y="0" class="decompiled"/>
+<rect width="132.17" height="6" x="614.83" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -1438,7 +1438,7 @@
 <rect width="13.39" height="12.51" x="487.92" y="226.46" class="named"><title>0x0043e4a0 EncryptData (448 bytes)</title></rect>
 <rect width="13.39" height="12.48" x="487.92" y="241.98" class="named"><title>0x0043f10d GdiSurface::CreateInFormat (447 bytes)</title></rect>
 <rect width="13.39" height="12.41" x="487.92" y="257.45" class="named"><title>0x00466bb0 SpriteEngine::CopySurfaceToBackBuffer (445 bytes)</title></rect>
-<rect width="13.39" height="12.34" x="487.92" y="272.86" class="todo"><title>0x00424c40 Func424c40 (443 bytes)</title></rect>
+<rect width="13.39" height="12.34" x="487.92" y="272.86" class="named"><title>0x00424c40 CycleMarkedBullets (443 bytes)</title></rect>
 <rect width="13.39" height="12.10" x="487.92" y="288.20" class="todo"><title>0x00432830 Func432830 (436 bytes)</title></rect>
 <rect width="13.39" height="11.96" x="487.92" y="303.30" class="named"><title>0x0042bcf0 Enemy::Despawn (432 bytes)</title></rect>
 <rect width="13.39" height="11.96" x="487.92" y="318.26" class="named"><title>0x004664a0 SpriteEngine::RenderTextRightAligned (432 bytes)</title></rect>
