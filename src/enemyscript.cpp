@@ -261,3 +261,83 @@ int GetIntOperand(Enemy *enemy, int id)
     }
     return id;
 }
+
+int *ResolveOperand(Enemy *enemy, int *operand, WORD mask, int bit)
+{
+    if (bit >= 0 && (mask & (1 << bit)) == 0)
+    {
+        return operand;
+    }
+    switch (*operand)
+    {
+    case 10000:
+        return &enemy->currentCtx->vars.ints[0];
+    case 10001:
+        return &enemy->currentCtx->vars.ints[1];
+    case 10002:
+        return &enemy->currentCtx->vars.ints[2];
+    case 10003:
+        return &enemy->currentCtx->vars.ints[3];
+    case 10004:
+        return &enemy->currentCtx->vars.ints[4];
+    case 10005:
+        return &enemy->currentCtx->vars.ints[5];
+    case 10006:
+        return &enemy->currentCtx->vars.ints[6];
+    case 10007:
+        return &enemy->currentCtx->vars.ints[7];
+    case 10008:
+        return &enemy->enemyInts[0];
+    case 10009:
+        return &enemy->enemyInts[1];
+    case 10010:
+        return &enemy->enemyInts[2];
+    case 10011:
+        return &enemy->enemyInts[3];
+    case 10012:
+        return &enemy->enemyInts[4];
+    case 10013:
+        return &enemy->enemyInts[5];
+    case 10014:
+        return &enemy->enemyInts[6];
+    case 10015:
+        return &enemy->enemyInts[7];
+    case 10053:
+        return &enemy->currentCtx->vars.ints3[0];
+    case 10054:
+        return &enemy->currentCtx->vars.ints3[1];
+    case 10055:
+        return &enemy->currentCtx->vars.ints3[2];
+    case 10056:
+        return &enemy->currentCtx->vars.ints3[3];
+    case 10036:
+        return &enemy->currentCtx->vars.ints2[0];
+    case 10037:
+        return &enemy->currentCtx->vars.ints2[1];
+    case 10038:
+        return &enemy->currentCtx->vars.ints2[2];
+    case 10039:
+        return &enemy->currentCtx->vars.ints2[3];
+    case 10040:
+        return &g_GameManager.difficulty;
+    case 10041:
+        return &g_GameManager.rank;
+    case 10049:
+        return &enemy->callbackTimer.current;
+    case 10051:
+        return &enemy->life;
+    case 10092:
+        return &enemy->item;
+    case 10093:
+        return &enemy->score;
+    case 10061:
+        return &g_EnemyScripts.globalInts[0];
+    case 10062:
+        return &g_EnemyScripts.globalInts[1];
+    case 10063:
+        return &g_EnemyScripts.globalInts[2];
+    case 10064:
+        return &g_EnemyScripts.globalInts[3];
+    }
+    return operand;
+}

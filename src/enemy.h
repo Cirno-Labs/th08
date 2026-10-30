@@ -511,6 +511,10 @@ extern EnemyScripts g_EnemyScripts;
 // (floats truncated) or another value the scripts read by number from
 // 10000 to 10100; any other number is its own value (0x41f420).
 int GetIntOperand(Enemy *enemy, int id);
+// The int variable script operand `operand` names, as th07's, or
+// `operand` itself if it names none or if `bit` is not negative and
+// clear in `mask` (0x41fe10).
+int *ResolveOperand(Enemy *enemy, int *operand, WORD mask, int bit);
 
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
