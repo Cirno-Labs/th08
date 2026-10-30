@@ -88,6 +88,28 @@ Enemy *ScriptSpawnEnemy(Enemy *enemy, EnemyScriptInstr *instr)
     return spawned;
 }
 
+Enemy *ScriptSpawnEnemyRel(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    Enemy *spawned = &g_EnemyManager.enemies[0x1e0];
+
+    if (enemy->life > 0 && !enemy->unk_3324_10)
+    {
+        D3DXVECTOR3 pos;
+
+        pos.x = FLOAT_ARG(1);
+        pos.y = FLOAT_ARG(2);
+        pos.z = 0.0f;
+        pos += enemy->unk_2d88;
+        spawned = g_EnemyManager.SpawnWithVars(instr->args[0].i, &pos, INT_ARG(3), INT_ARG(4), INT_ARG(5),
+                                               &enemy->currentCtx->vars);
+    }
+    else
+    {
+        g_EnemyManager.spawnFailed = 1;
+    }
+    return spawned;
+}
+
 int GetIntOperand(Enemy *enemy, int id)
 {
     switch (id)

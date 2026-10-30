@@ -724,6 +724,9 @@ void DropBombOrLifeItem(Enemy *enemy, EnemyScriptInstr *instr);
 // is set, which sets spawnFailed. Returns the enemy, or the spare one (0x41f110).
 Enemy *ScriptSpawnEnemy(Enemy *enemy, EnemyScriptInstr *instr);
 
+// ScriptSpawnEnemy relative to the enemy (unk_2d88) (0x41f280).
+Enemy *ScriptSpawnEnemyRel(Enemy *enemy, EnemyScriptInstr *instr);
+
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
 // The enemy scripts by stage, by stage in spell practice (stage + 9),

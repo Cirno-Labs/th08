@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">85.75% (957)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">11.02% (123)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">85.84% (958)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">10.93% (122)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="640.57" height="6" x="0" y="0" class="named"/>
-<rect width="24.10" height="6" x="640.57" y="0" class="decompiled"/>
-<rect width="82.33" height="6" x="664.67" y="0" class="todo"/>
+<rect width="641.24" height="6" x="0" y="0" class="named"/>
+<rect width="24.10" height="6" x="641.24" y="0" class="decompiled"/>
+<rect width="81.66" height="6" x="665.34" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -312,7 +312,7 @@
 <rect width="12" height="12" x="615" y="60" class="todo"><title>0x0041f0b0 Func41f0b0 (37 bytes)</title></rect>
 <rect width="12" height="12" x="630" y="60" class="todo"><title>0x0041f0e0 Func41f0e0 (40 bytes)</title></rect>
 <rect width="12" height="12" x="645" y="60" class="named"><title>0x0041f110 ScriptSpawnEnemy (365 bytes)</title></rect>
-<rect width="12" height="12" x="660" y="60" class="todo"><title>0x0041f280 Func41f280 (383 bytes)</title></rect>
+<rect width="12" height="12" x="660" y="60" class="named"><title>0x0041f280 ScriptSpawnEnemyRel (383 bytes)</title></rect>
 <rect width="12" height="12" x="675" y="60" class="todo"><title>0x0041f400 Func41f400 (25 bytes)</title></rect>
 <rect width="12" height="12" x="690" y="60" class="named"><title>0x0041f420 GetIntOperand (1899 bytes)</title></rect>
 <rect width="12" height="12" x="705" y="60" class="decompiled"><title>0x0041fd20 Enemy::Func41fd20 (28 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">79.39%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">19.03%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">79.48%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">18.95%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="593.07" height="6" x="0" y="0" class="named"/>
-<rect width="11.78" height="6" x="593.07" y="0" class="decompiled"/>
-<rect width="142.15" height="6" x="604.85" y="0" class="todo"/>
+<rect width="593.69" height="6" x="0" y="0" class="named"/>
+<rect width="11.78" height="6" x="593.69" y="0" class="decompiled"/>
+<rect width="141.53" height="6" x="605.47" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -1463,7 +1463,7 @@
 <rect width="11.67" height="12.16" x="504.31" y="130.63" class="named"><title>0x0043d7e0 GetPadButtons (392 bytes)</title></rect>
 <rect width="11.67" height="12" x="504.31" y="145.79" class="named"><title>0x00426990 EffectUpdateBossPetal2 (388 bytes)</title></rect>
 <rect width="11.67" height="11.93" x="504.31" y="160.79" class="named"><title>0x0045cc70 SoundPlayer::LoadBgm (386 bytes)</title></rect>
-<rect width="11.67" height="11.81" x="504.31" y="175.72" class="todo"><title>0x0041f280 Func41f280 (383 bytes)</title></rect>
+<rect width="11.67" height="11.81" x="504.31" y="175.72" class="named"><title>0x0041f280 ScriptSpawnEnemyRel (383 bytes)</title></rect>
 <rect width="11.67" height="11.50" x="504.31" y="190.53" class="named"><title>0x004482a1 App::AddPlayTime (375 bytes)</title></rect>
 <rect width="11.67" height="11.50" x="504.31" y="205.03" class="named"><title>0x0044fe20 FireLaser (375 bytes)</title></rect>
 <rect width="11.67" height="11.42" x="504.31" y="219.53" class="named"><title>0x00448418 App::AddTotalPlayTime (373 bytes)</title></rect>
