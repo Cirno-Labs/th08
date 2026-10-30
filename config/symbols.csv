@@ -434,7 +434,7 @@ address,size,name,symbol
 0x0042f4a0,92,BulletTypeSprites::BulletTypeSprites,??0BulletTypeSprites@@QAE@XZ
 0x0042f500,115,Bullet::Bullet,??0Bullet@@QAE@XZ
 0x0042f580,64,Laser::Laser,??0Laser@@QAE@XZ
-0x0042f5c0,33,Func42f5c0,
+0x0042f5c0,33,BulletEx::BulletEx,??0BulletEx@@QAE@XZ
 0x0042f5f0,2138,Func42f5f0,
 0x0042fe70,33,Func42fe70,
 0x0042fea0,204,Func42fea0,

@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">88.71% (990)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">8.06% (90)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">88.80% (991)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">7.97% (89)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="662.66" height="6" x="0" y="0" class="named"/>
-<rect width="24.10" height="6" x="662.66" y="0" class="decompiled"/>
-<rect width="60.24" height="6" x="686.76" y="0" class="todo"/>
+<rect width="663.33" height="6" x="0" y="0" class="named"/>
+<rect width="24.10" height="6" x="663.33" y="0" class="decompiled"/>
+<rect width="59.57" height="6" x="687.43" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -503,7 +503,7 @@
 <rect width="12" height="12" x="480" y="120" class="named"><title>0x0042f4a0 BulletTypeSprites::BulletTypeSprites (92 bytes)</title></rect>
 <rect width="12" height="12" x="495" y="120" class="named"><title>0x0042f500 Bullet::Bullet (115 bytes)</title></rect>
 <rect width="12" height="12" x="510" y="120" class="named"><title>0x0042f580 Laser::Laser (64 bytes)</title></rect>
-<rect width="12" height="12" x="525" y="120" class="todo"><title>0x0042f5c0 Func42f5c0 (33 bytes)</title></rect>
+<rect width="12" height="12" x="525" y="120" class="named"><title>0x0042f5c0 BulletEx::BulletEx (33 bytes)</title></rect>
 <rect width="12" height="12" x="540" y="120" class="todo"><title>0x0042f5f0 Func42f5f0 (2138 bytes)</title></rect>
 <rect width="12" height="12" x="555" y="120" class="todo"><title>0x0042fe70 Func42fe70 (33 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="120" class="todo"><title>0x0042fea0 Func42fea0 (204 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">81.76%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">16.66%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">81.77%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">16.66%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="610.73" height="6" x="0" y="0" class="named"/>
-<rect width="11.78" height="6" x="610.73" y="0" class="decompiled"/>
-<rect width="124.49" height="6" x="622.51" y="0" class="todo"/>
+<rect width="610.79" height="6" x="0" y="0" class="named"/>
+<rect width="11.78" height="6" x="610.79" y="0" class="decompiled"/>
+<rect width="124.43" height="6" x="622.57" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -2122,7 +2122,7 @@
 <rect width="1.47" height="1.19" x="699.41" y="310.55" class="named"><title>0x00406e20 GameManager::SetLives (33 bytes)</title></rect>
 <rect width="1.47" height="1.19" x="699.41" y="314.74" class="named"><title>0x0040baf0 SpriteEngine::DrawAndFlush (33 bytes)</title></rect>
 <rect width="1.47" height="1.19" x="699.41" y="318.93" class="named"><title>0x0042a490 EnemyBox::EnemyBox (33 bytes)</title></rect>
-<rect width="1.47" height="1.19" x="699.41" y="323.12" class="todo"><title>0x0042f5c0 Func42f5c0 (33 bytes)</title></rect>
+<rect width="1.47" height="1.19" x="699.41" y="323.12" class="named"><title>0x0042f5c0 BulletEx::BulletEx (33 bytes)</title></rect>
 <rect width="1.47" height="1.19" x="699.41" y="327.31" class="todo"><title>0x0042fe70 Func42fe70 (33 bytes)</title></rect>
 <rect width="1.47" height="1.19" x="699.41" y="331.50" class="todo"><title>0x00433880 Func433880 (33 bytes)</title></rect>
 <rect width="1.47" height="1.19" x="699.41" y="335.69" class="named"><title>0x00443c60 MidiDevice::MidiDevice (33 bytes)</title></rect>
