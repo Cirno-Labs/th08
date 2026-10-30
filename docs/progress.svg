@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">89.34% (997)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">7.44% (83)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">89.43% (998)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">7.35% (82)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="667.35" height="6" x="0" y="0" class="named"/>
-<rect width="24.10" height="6" x="667.35" y="0" class="decompiled"/>
-<rect width="55.56" height="6" x="691.44" y="0" class="todo"/>
+<rect width="668.02" height="6" x="0" y="0" class="named"/>
+<rect width="24.10" height="6" x="668.02" y="0" class="decompiled"/>
+<rect width="54.89" height="6" x="692.11" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -533,7 +533,7 @@
 <rect width="12" height="12" x="180" y="135" class="todo"><title>0x004337f0 Func4337f0 (42 bytes)</title></rect>
 <rect width="12" height="12" x="195" y="135" class="todo"><title>0x00433820 Func433820 (35 bytes)</title></rect>
 <rect width="12" height="12" x="210" y="135" class="todo"><title>0x00433850 BulletManager::RemoveChain (35 bytes)</title></rect>
-<rect width="12" height="12" x="225" y="135" class="todo"><title>0x00433880 Func433880 (33 bytes)</title></rect>
+<rect width="12" height="12" x="225" y="135" class="named"><title>0x00433880 SinCos (33 bytes)</title></rect>
 <rect width="12" height="12" x="240" y="135" class="named"><title>0x004338b0 IsLoadingResources (10 bytes)</title></rect>
 <rect width="12" height="12" x="255" y="135" class="named"><title>0x004338c0 IsFreeingResources (10 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="135" class="named"><title>0x004338ca Gui::OnUpdate (93 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">82.88%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">15.54%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">82.89%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">15.53%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="619.13" height="6" x="0" y="0" class="named"/>
-<rect width="11.78" height="6" x="619.13" y="0" class="decompiled"/>
-<rect width="116.09" height="6" x="630.91" y="0" class="todo"/>
+<rect width="619.18" height="6" x="0" y="0" class="named"/>
+<rect width="11.78" height="6" x="619.18" y="0" class="decompiled"/>
+<rect width="116.04" height="6" x="630.96" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -2124,7 +2124,7 @@
 <rect width="1.47" height="1.19" x="699.41" y="318.93" class="named"><title>0x0042a490 EnemyBox::EnemyBox (33 bytes)</title></rect>
 <rect width="1.47" height="1.19" x="699.41" y="323.12" class="named"><title>0x0042f5c0 BulletEx::BulletEx (33 bytes)</title></rect>
 <rect width="1.47" height="1.19" x="699.41" y="327.31" class="named"><title>0x0042fe70 CopyBulletSprite (33 bytes)</title></rect>
-<rect width="1.47" height="1.19" x="699.41" y="331.50" class="todo"><title>0x00433880 Func433880 (33 bytes)</title></rect>
+<rect width="1.47" height="1.19" x="699.41" y="331.50" class="named"><title>0x00433880 SinCos (33 bytes)</title></rect>
 <rect width="1.47" height="1.19" x="699.41" y="335.69" class="named"><title>0x00443c60 MidiDevice::MidiDevice (33 bytes)</title></rect>
 <rect width="1.47" height="1.06" x="699.41" y="339.88" class="named"><title>0x00406700 Sprite::ClearShown (32 bytes)</title></rect>
 <rect width="1.47" height="1.06" x="699.41" y="343.94" class="todo"><title>0x00416af0 Func416af0 (32 bytes)</title></rect>
