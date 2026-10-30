@@ -1150,3 +1150,8 @@ void FlashAndShakeScreen(Enemy *enemy, EnemyScriptInstr *instr)
     ScreenEffect::StartEffect(3, 30, 5, 0x40ffffff, 0, 0x15);
     ScreenEffect::StartEffect(7, 4, 120, 190, 60, 0x15);
 }
+
+void SetUnknown18b8a2c(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    g_Unknown18b8a2c = instr->args[1].i;
+}
