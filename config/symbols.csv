@@ -2396,10 +2396,10 @@ address,size,name,symbol
 0x004b4288,4,CoInitialize,__imp__CoInitialize@4
 0x004b4ad8,,g_BulletTypeScripts,?g_BulletTypeScripts@@3QAY04$$CBHA
 0x004b7b14,,g_DifficultyRatings,?g_DifficultyRatings@@3PAMA
-0x004b847c,,g_Half,?g_Half@@3MA
-0x004b8480,,g_TextureFormats,?g_TextureFormats@@3PAW4_D3DFORMAT@@A
-0x004b8498,,g_TextureFormatSizes,?g_TextureFormatSizes@@3PAHA
-0x004b8cd8,,g_CharacterMenuSprites,?g_CharacterMenuSprites@@3PAY03HA
+0x004b847c,,g_Half,?g_Half@@3MB
+0x004b8480,,g_TextureFormats,?g_TextureFormats@@3QBW4_D3DFORMAT@@B
+0x004b8498,,g_TextureFormatSizes,?g_TextureFormatSizes@@3QBHB
+0x004b8cd8,,g_CharacterMenuSprites,?g_CharacterMenuSprites@@3QAY03$$CBHA
 0x004b96bc,4,CSound::`vftable',??_7CSound@@6B@
 0x004b96c0,4,CStreamingSound::`vftable',??_7CStreamingSound@@6B@
 0x004b98b4,36,File::`vftable',??_7File@@6B@

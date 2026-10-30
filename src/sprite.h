@@ -998,14 +998,14 @@ extern VertexTex1DiffuseXyzrwh g_DiffuseQuad[4];
 // A transformed quad without a color.
 extern VertexTex1Xyzrwh g_Quad[4];
 // 0.5, for DrawQuad's rounding.
-extern float g_Half;
+extern const float g_Half;
 // CreateQuad's quad with a color, for drawing without the vertex
 // buffer.
 extern VertexTex1DiffuseXyz g_DiffuseQuadXyz[4];
 // The texture formats ANM files name by number.
-extern D3DFORMAT g_TextureFormats[];
+extern const D3DFORMAT g_TextureFormats[];
 // The bytes per pixel of each of g_TextureFormats.
-extern int g_TextureFormatSizes[];
+extern const int g_TextureFormatSizes[];
 
 // The loading screen's sprites, right after g_App (0x17ceac0).
 extern Sprite g_LoadingSprites[3];

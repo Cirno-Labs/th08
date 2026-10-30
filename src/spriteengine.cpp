@@ -13,8 +13,9 @@
 // The game's data, as the original defines it here. The DLL build uses
 // the original's copies instead.
 #ifdef TH08_EXE
-float g_Half = 0.5f;
-D3DFORMAT g_TextureFormats[6] = {
+// /OPT:ICF folds the compiler's other 0.5f constants into it, as th07's.
+__declspec(selectany) extern const float g_Half = 0.5f;
+const D3DFORMAT g_TextureFormats[6] = {
     D3DFMT_UNKNOWN,
     D3DFMT_A8R8G8B8,
     D3DFMT_A1R5G5B5,
@@ -22,7 +23,7 @@ D3DFORMAT g_TextureFormats[6] = {
     D3DFMT_R8G8B8,
     D3DFMT_A4R4G4B4,
 };
-int g_TextureFormatSizes[7] = {
+const int g_TextureFormatSizes[7] = {
     4, 4, 2, 2, 3, 2, 1869363770,
 };
 SpriteEngine *g_SpriteEngine;

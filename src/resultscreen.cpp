@@ -81,9 +81,6 @@ char *g_ShotTypeNames[12] = {
     "Youmu  ",
     "Yuyuko ",
 };
-float g_DifficultyRatings[5] = {
-    -30.0f, -10.0f, 20.0f, 30.0f, 30.0f,
-};
 #endif // TH08_EXE
 
 // The original allocates in an inline from global.h, whose __FILE__ names
@@ -1859,6 +1856,11 @@ int ResultScreen::DrawStatistics()
         }
         cursorPos.y += 22.0f;
         g_AsciiText.AddString(&cursorPos, g_DifficultyNames[g_GameManager.difficulty]);
+#ifdef TH08_EXE
+        static const float g_DifficultyRatings[5] = {
+            -30.0f, -10.0f, 20.0f, 30.0f, 30.0f,
+        };
+#endif // TH08_EXE
         rating += g_DifficultyRatings[g_GameManager.difficulty];
         cursorPos.x += g_AsciiText.glyphWidth;
         cursorPos.y += 22.0f;

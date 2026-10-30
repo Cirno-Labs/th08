@@ -144,7 +144,7 @@ char *g_MenuDifficultyNames[5] = {
     "Lunatic ",
     "Extra   ",
 };
-int g_CharacterMenuSprites[12][4] = {
+const int g_CharacterMenuSprites[12][4] = {
     {119, 111, 112, -1}, {120, 114, 113, -1}, {121, 115, 116, -1},
     {122, 118, 117, -1}, {123, 111, -1, 112}, {124, 112, -1, 111},
     {125, 114, -1, 113}, {126, 113, -1, 114}, {127, 115, -1, 116},
