@@ -995,3 +995,14 @@ void ScriptMoveRandom(Enemy *enemy, EnemyScriptInstr *instr)
         ScriptMoveAngleTimed(enemy, instr, angle);
     }
 }
+
+void ScriptMoveAngleTimed(Enemy *enemy, EnemyScriptInstr *instr, float angle)
+{
+    enemy->moveDelta.x = cosf(angle) * FLOAT_ARG(2) * INT_ARG(0);
+    enemy->moveDelta.y = sinf(angle) * FLOAT_ARG(2) * INT_ARG(0);
+    enemy->moveDelta.z = 0.0f;
+    enemy->moveStart = enemy->unk_2d88;
+    enemy->moveTimer = (enemy->moveDuration = INT_ARG(0));
+    enemy->moveEasing = INT_ARG(1);
+    enemy->moveMode = 2;
+}
