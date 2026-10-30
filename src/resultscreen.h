@@ -452,17 +452,17 @@ public:
     int frame;
     int state;
     // The state SetState set last.
-    int unk_0c;
+    int lastSetState;
     // A step within the state; SetState clears it.
     int subState;
     // The state before.
     int prevState;
-    int unk_18;
+    int subStateFrames;
     // The menu item selected.
     int cursor;
     // The menu cursor, kept while away, as th07's.
     int savedCursor;
-    int unk_24;
+    int unusedInt24;
     // The replay slot chosen, 0 to 14, as th07's.
     int replaySlot;
     // The character of g_NameAlphabet selected, as th07's.
@@ -491,7 +491,7 @@ public:
     // When set, the name entry starts on the end mark, as th07's.
     int nameEntryAtEnd;
     // Set to leave the spell card list once its sprites are out.
-    int unk_54;
+    int leavingSpellList;
     // The name entered last.
     char name[0xc];
     // By spell card list and shot type (and all of them): the spell cards
@@ -499,7 +499,7 @@ public:
     int capturedSpellCounts[6][0xd];
     // The runSeconds RunStatisticsMenu shows, as th07's.
     BYTE shownRunSeconds;
-    unsigned char unk_19d[0x3];
+    unsigned char pad_19d[0x3];
     Sprite sprites[0x48];
     // Text drawn with RenderText, as th07's.
     Sprite textSprites[0x1e];
@@ -509,7 +509,7 @@ public:
     // "result00.anm" and "resulttext.anm".
     AnmLoaded *resultAnm;
     AnmLoaded *resultTextAnm;
-    unsigned char unk_11448[0x4];
+    unsigned char pad_11448[0x4];
     // The high score lists, by difficulty and shot.
     ListNode scores[5][0xc];
     // The entries the lists start with, by difficulty, shot and rank.

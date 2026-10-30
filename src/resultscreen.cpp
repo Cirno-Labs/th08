@@ -382,7 +382,7 @@ int ResultScreen::UpdateMenu()
     switch (this->subState)
     {
     case 0:
-        if (this->unk_18 == 0)
+        if (this->subStateFrames == 0)
         {
             sprite = this->sprites;
             for (i = 0; i < 0x48; i++, sprite++)
@@ -403,12 +403,12 @@ int ResultScreen::UpdateMenu()
                 }
             }
         }
-        if (this->unk_18 < 20)
+        if (this->subStateFrames < 20)
         {
             break;
         }
         this->subState++;
-        this->unk_18 = 0;
+        this->subStateFrames = 0;
     case 1:
         i = MoveCursorVertical(this, 4);
         if (i != 0)
@@ -507,7 +507,7 @@ int ResultScreen::UpdateMenu()
         }
         break;
     }
-    this->unk_18++;
+    this->subStateFrames++;
     return 0;
 }
 
@@ -515,11 +515,11 @@ void ResultScreen::SetState(int state)
 {
     this->prevState = this->state;
     this->state = state;
-    this->unk_0c = state;
+    this->lastSetState = state;
     this->subState = 0;
-    this->unk_18 = 0;
+    this->subStateFrames = 0;
     this->frame = 0;
-    this->unk_54 = 0;
+    this->leavingSpellList = 0;
 }
 
 int ResultScreen::UpdateScoreDifficultySelect()
@@ -532,7 +532,7 @@ int ResultScreen::UpdateScoreDifficultySelect()
     switch (this->subState)
     {
     case 0:
-        if (this->unk_18 == 0)
+        if (this->subStateFrames == 0)
         {
             this->cursor = this->difficulty;
             for (i = 4; i <= 8; i++)
@@ -549,12 +549,12 @@ int ResultScreen::UpdateScoreDifficultySelect()
                 }
             }
         }
-        if (this->unk_18 < 6)
+        if (this->subStateFrames < 6)
         {
             break;
         }
         this->subState++;
-        this->unk_18 = 0;
+        this->subStateFrames = 0;
     case 1:
         i = MoveCursorVertical(this, 5);
         if (i != 0)
@@ -672,7 +672,7 @@ int ResultScreen::UpdateScoreDifficultySelect()
     {
         this->cheatProgress = 0;
     }
-    this->unk_18++;
+    this->subStateFrames++;
     return 0;
 }
 
@@ -684,7 +684,7 @@ int ResultScreen::UpdateScoreShotSelect()
     switch (this->subState)
     {
     case 0:
-        if (this->unk_18 == 0)
+        if (this->subStateFrames == 0)
         {
             this->cursor = this->character;
             for (i = 0xf; i <= 0x1a; i++)
@@ -701,12 +701,12 @@ int ResultScreen::UpdateScoreShotSelect()
                 }
             }
         }
-        if (this->unk_18 < 6)
+        if (this->subStateFrames < 6)
         {
             break;
         }
         this->subState++;
-        this->unk_18 = 0;
+        this->subStateFrames = 0;
     case 1:
         i = MoveCursorVertical(this, 0xc);
         if (i != 0)
@@ -756,7 +756,7 @@ int ResultScreen::UpdateScoreShotSelect()
         }
         break;
     }
-    this->unk_18++;
+    this->subStateFrames++;
     return 0;
 }
 
@@ -788,7 +788,7 @@ int ResultScreen::UpdateScoreList()
         g_SoundPlayer.QueueSound(0xb, 0);
         return 1;
     }
-    this->unk_18++;
+    this->subStateFrames++;
     return 0;
 }
 
@@ -800,7 +800,7 @@ int ResultScreen::UpdateSpellDifficultySelect()
     switch (this->subState)
     {
     case 0:
-        if (this->unk_18 == 0)
+        if (this->subStateFrames == 0)
         {
             this->cursor = this->spellList;
             for (i = 9; i <= 0xe; i++)
@@ -817,12 +817,12 @@ int ResultScreen::UpdateSpellDifficultySelect()
                 }
             }
         }
-        if (this->unk_18 < 6)
+        if (this->subStateFrames < 6)
         {
             break;
         }
         this->subState++;
-        this->unk_18 = 0;
+        this->subStateFrames = 0;
     case 1:
         i = MoveCursorVertical(this, 6);
         if (i != 0)
@@ -868,7 +868,7 @@ int ResultScreen::UpdateSpellDifficultySelect()
         }
         break;
     }
-    this->unk_18++;
+    this->subStateFrames++;
     return 0;
 }
 
@@ -880,7 +880,7 @@ int ResultScreen::UpdateSpellShotSelect()
     switch (this->subState)
     {
     case 0:
-        if (this->unk_18 == 0)
+        if (this->subStateFrames == 0)
         {
             this->cursor = this->spellCursor;
             for (i = 0x1b; i <= 0x27; i++)
@@ -897,12 +897,12 @@ int ResultScreen::UpdateSpellShotSelect()
                 }
             }
         }
-        if (this->unk_18 < 6)
+        if (this->subStateFrames < 6)
         {
             break;
         }
         this->subState++;
-        this->unk_18 = 0;
+        this->subStateFrames = 0;
     case 1:
         i = MoveCursorVertical(this, 0xd);
         if (i != 0)
@@ -954,7 +954,7 @@ int ResultScreen::UpdateSpellShotSelect()
         }
         break;
     }
-    this->unk_18++;
+    this->subStateFrames++;
     return 0;
 }
 
@@ -964,7 +964,7 @@ int ResultScreen::UpdateSpellList()
     int i;
     int total;
 
-    if (this->unk_54 != 0 && this->frame >= 10)
+    if (this->leavingSpellList != 0 && this->frame >= 10)
     {
         this->SetState(7);
     }
@@ -1012,13 +1012,13 @@ int ResultScreen::UpdateSpellList()
     }
     if (WAS_PRESSED(0xa))
     {
-        this->unk_54 = 1;
+        this->leavingSpellList = 1;
         this->frame = 0;
         g_SoundPlayer.QueueSound(0xb, 0);
         this->sprites[0x28].pendingInterrupt = 1;
         return 1;
     }
-    this->unk_18++;
+    this->subStateFrames++;
     return 0;
 }
 
