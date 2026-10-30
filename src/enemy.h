@@ -533,8 +533,8 @@ struct EnemyTimelineSpawnWithArgs
     float x;
     float y;
     int life;
-    int unk_10;
-    int unk_14;
+    int pointItems;
+    int powerItems;
     int score;
 };
 

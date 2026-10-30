@@ -247,8 +247,8 @@ void EnemyTimeline::RunTimeline()
                     pos.y = args->y;
                     pos.z = 0.0f;
                     enemy = g_EnemyManager.Spawn(args->sub, &pos, args->life, -1, args->score, mirror);
-                    enemy->pointItems = args->unk_10;
-                    enemy->powerItems = args->unk_14;
+                    enemy->pointItems = args->pointItems;
+                    enemy->powerItems = args->powerItems;
                 }
                 break;
             case 4:
