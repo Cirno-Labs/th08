@@ -624,3 +624,384 @@ Laser *BulletManager::SpawnLaser(BulletShooter *shooter)
     }
     return laser;
 }
+
+// Turns `bullet` into an item of Player::areaItemType: two of type 7 for
+// type 9, none for a negative type.
+#define SPAWN_AREA_ITEM(bullet)                                     \
+    if (g_Player.areaItemType == 9)                                 \
+    {                                                               \
+        g_ItemManager.SpawnItem(&(bullet)->pos, 7, 1);              \
+        g_ItemManager.SpawnItem(&(bullet)->pos, 7, 1);              \
+    }                                                               \
+    else if (g_Player.areaItemType >= 0)                            \
+    {                                                               \
+        g_ItemManager.SpawnItem(&(bullet)->pos, g_Player.areaItemType, 1); \
+    }
+
+int BulletManager::OnUpdate(BulletManager *mgr)
+{
+    int fadeTime6;
+    Laser *las;
+    int alpha4;
+    Bullet *bullet;
+    // Which bullet the walk is at: 0, then from the last one down.
+    int walk;
+    float scale;
+    int i;
+    int res;
+
+    walk = 0;
+    bullet = mgr->bullets;
+    if (g_GameManager.unk_3dbac_10)
+    {
+        return 1;
+    }
+    g_ItemManager.UpdateItems();
+    mgr->bulletCount = 0;
+    mgr->ClearDrawLists();
+    for (i = 0; i < 0x600; i++)
+    {
+        if (bullet->state == 0)
+        {
+            goto next;
+        }
+        mgr->bulletCount++;
+        switch (bullet->state)
+        {
+        spawned:
+            bullet->state = 1;
+            bullet->timer = 0;
+        case 1:
+            RunBulletCommands(bullet);
+            if (bullet->activeFlags != 0)
+            {
+                if (bullet->activeFlags & 1)
+                {
+                    SlowBulletStart(bullet);
+                }
+                if (bullet->activeFlags & 0x10)
+                {
+                    AccelerateAlongVelocity(bullet);
+                }
+                if (bullet->activeFlags & 0x20)
+                {
+                    TurnAndAccelerate(bullet);
+                }
+                if (bullet->activeFlags & 0x40)
+                {
+                    StopTurnAndRestart(bullet);
+                }
+                if (bullet->activeFlags & 0x100)
+                {
+                    StopTurnToAngle(bullet);
+                }
+                if (bullet->activeFlags & 0x80)
+                {
+                    StopTurnToPlayer(bullet);
+                }
+                if (bullet->activeFlags & 0xc00)
+                {
+                    BounceOffWalls(bullet);
+                }
+                if (bullet->activeFlags & 0x400000)
+                {
+                    WrapAroundX(bullet);
+                }
+                if (bullet->activeFlags & 0x800000)
+                {
+                    WrapAroundY(bullet);
+                }
+                if (bullet->activeFlags & 0x20000)
+                {
+                    if (bullet->ex[5].timer <= 0)
+                    {
+                        bullet->activeFlags ^= 0x20000;
+                    }
+                    else
+                    {
+                        bullet->ex[5].timer--;
+                    }
+                }
+            }
+            if (bullet->boundsCheckDelay != 0)
+            {
+                bullet->boundsCheckDelay--;
+            }
+            if (!g_GameManager.isFrozen)
+            {
+                bullet->pos += bullet->velocity;
+            }
+            if (bullet->boundsCheckDelay == 0)
+            {
+                if (!g_GameManager.IsInPlayArea(bullet->pos[0], bullet->pos[1], bullet->sprites.sprite0.spriteData->width,
+                                                  bullet->sprites.sprite0.spriteData->height))
+                {
+                    if (bullet->activeFlags & 0xdc0)
+                    {
+                        bullet->outOfBoundsFrames++;
+                        if (bullet->outOfBoundsFrames >= 0x80)
+                        {
+                            bullet->FreeBullet();
+                            goto next;
+                        }
+                    }
+                    else
+                    {
+                        if (bullet->outOfBoundsFrames == 0)
+                        {
+                            bullet->FreeBullet();
+                            goto next;
+                        }
+                        bullet->outOfBoundsFrames--;
+                    }
+                }
+                else
+                {
+                    bullet->outOfBoundsFrames = 0;
+                }
+            }
+            if (!bullet->unk_10b4)
+            {
+                if (bullet->grazed == 0 && bullet->grazeDelayTimer.AsFrames() >= 0x10)
+                {
+                    res = g_Player.CheckGraze(&bullet->pos, &bullet->sprites.hitboxSize);
+                    if (res == 1)
+                    {
+                        bullet->grazed = 1;
+                        goto checkHit;
+                    }
+                    if (res == 2 && !(bullet->flags & 0x1000))
+                    {
+                        bullet->state = 5;
+                        SPAWN_AREA_ITEM(bullet);
+                    }
+                }
+                else
+                {
+                checkHit:
+                    res = g_Player.CheckHit(&bullet->pos, &bullet->sprites.hitboxSize);
+                    if (res != 0 && (res != 2 || !(bullet->flags & 0x1000)))
+                    {
+                        bullet->state = 5;
+                        if (res == 2)
+                        {
+                            SPAWN_AREA_ITEM(bullet);
+                        }
+                    }
+                }
+            }
+            if (bullet->sprites.sprite0.scriptPos != NULL)
+            {
+                g_SpriteEngine->Step(&bullet->sprites.sprite0);
+            }
+            break;
+        case 2:
+            bullet->grazeDelayTimer--;
+            bullet->pos += bullet->velocity / 2.0f;
+            if (!(bullet->flags & 0x1000) && g_Player.CheckAreaHit(&bullet->pos, &bullet->sprites.hitboxSize) == 2)
+            {
+                bullet->spawnedInArea = 1;
+            }
+            if (g_SpriteEngine->Step(&bullet->sprites.sprite1) == 0)
+            {
+                break;
+            }
+            if (bullet->spawnedInArea)
+            {
+                bullet->state = 5;
+                SPAWN_AREA_ITEM(bullet);
+            }
+            goto spawned;
+        case 3:
+            bullet->grazeDelayTimer--;
+            bullet->pos += bullet->velocity / 2.5f;
+            if (!(bullet->flags & 0x1000) && g_Player.CheckAreaHit(&bullet->pos, &bullet->sprites.hitboxSize) == 2)
+            {
+                bullet->spawnedInArea = 1;
+            }
+            if (g_SpriteEngine->Step(&bullet->sprites.sprite2) == 0)
+            {
+                break;
+            }
+            if (bullet->spawnedInArea)
+            {
+                bullet->state = 5;
+                SPAWN_AREA_ITEM(bullet);
+            }
+            goto spawned;
+        case 4:
+            bullet->grazeDelayTimer--;
+            bullet->pos += bullet->velocity / 3.0f;
+            if (!(bullet->flags & 0x1000) && g_Player.CheckAreaHit(&bullet->pos, &bullet->sprites.hitboxSize) == 2)
+            {
+                bullet->spawnedInArea = 1;
+            }
+            if (g_SpriteEngine->Step(&bullet->sprites.sprite3) == 0)
+            {
+                break;
+            }
+            if (bullet->spawnedInArea)
+            {
+                bullet->state = 5;
+                SPAWN_AREA_ITEM(bullet);
+            }
+            goto spawned;
+        case 5:
+            bullet->pos += bullet->velocity / 2.0f;
+            if (g_SpriteEngine->Step(&bullet->sprites.sprite4) != 0)
+            {
+                bullet->FreeBullet();
+                goto next;
+            }
+        }
+        bullet->timer++;
+        bullet->grazeDelayTimer++;
+        bullet->next = mgr->drawLists[bullet->sprites.sizeClass];
+        mgr->drawLists[bullet->sprites.sizeClass] = bullet;
+    next:
+        walk--;
+        if (walk < 0)
+        {
+            walk = 0x5ff;
+            bullet += 0x600;
+        }
+        bullet--;
+    }
+    las = mgr->lasers;
+    D3DXVECTOR3 center2;
+    D3DXVECTOR3 extent5;
+    for (i = 0; i < 0x100; i++, las++)
+    {
+        if (!las->active)
+        {
+            continue;
+        }
+        las->endOffset = g_App.gameSpeed * las->speed + las->endOffset;
+        if (las->endOffset - las->startOffset > las->maxLength)
+        {
+            las->startOffset = las->endOffset - las->maxLength;
+        }
+        if (las->startOffset < 0.0f)
+        {
+            las->startOffset = 0.0f;
+        }
+        extent5.y = las->width / 2.0f;
+        if (las->startOffset <= 0.0f)
+        {
+            extent5.x = las->endOffset - las->startOffset;
+        }
+        else
+        {
+            extent5.x = (las->endOffset - las->startOffset) * 0.7f;
+        }
+        center2.x = (las->endOffset - las->startOffset) / 2.0f + las->startOffset + las->pos.x;
+        center2.y = las->pos.y;
+        las->sprite0.scaleY = las->width / las->sprite0.spriteData->width;
+        scale = las->endOffset - las->startOffset;
+        las->sprite0.scaleX = scale / las->sprite0.spriteData->height;
+        las->sprite0.SetRotationZ(AddNormalizeAngle(1.5707964f + las->angle, 0.0f));
+        switch (las->state)
+        {
+        case 0:
+            if (las->flags & 1)
+            {
+                alpha4 = las->timer.AsFloat() * 255.0f / las->startFrames;
+                if (alpha4 > 0xff)
+                {
+                    alpha4 = 0xff;
+                }
+                las->sprite0.color = alpha4 << 24;
+            }
+            else
+            {
+                fadeTime6 = las->startFrames > 30 ? 30 : las->startFrames;
+                if (las->startFrames - fadeTime6 < las->timer.AsFrames())
+                {
+                    scale = las->timer.AsFloat() * las->width / las->startFrames;
+                }
+                else
+                {
+                    scale = 1.2f;
+                }
+                las->baseWidth = scale;
+                las->sprite0.scaleY = scale / 16.0f;
+                extent5.x = scale / 2.0f;
+            }
+            if (las->timer >= las->hitStartFrame)
+            {
+                g_Player.CheckLaserHit(&center2, &extent5, &las->pos, las->angle, 0);
+            }
+            if (las->timer < las->startFrames)
+            {
+                break;
+            }
+            las->timer = 0;
+            las->state++;
+            las->baseWidth = las->width;
+        case 1:
+            g_Player.CheckLaserHit(&center2, &extent5, &las->pos, las->angle, las->timer.AsFrames() % 20 == 0);
+            if (las->timer < las->durationFrames)
+            {
+                break;
+            }
+            las->timer = 0;
+            las->state++;
+            if (las->endFrames == 0)
+            {
+                las->active = 0;
+                continue;
+            }
+        case 2:
+            if (las->flags & 1)
+            {
+                alpha4 = las->timer.AsFloat() * 255.0f / las->startFrames;
+                if (alpha4 > 0xff)
+                {
+                    alpha4 = 0xff;
+                }
+                las->sprite0.color = alpha4 << 24;
+            }
+            else if (las->endFrames > 0)
+            {
+                las->sprite0.scaleY = (scale = las->width - las->timer.AsFloat() * las->width / las->endFrames) / 16.0f;
+                extent5.x = scale / 2.0f;
+            }
+            if (las->timer < las->endHitFrames)
+            {
+                g_Player.CheckLaserHit(&center2, &extent5, &las->pos, las->angle, 0);
+            }
+            if (las->timer < las->endFrames)
+            {
+                break;
+            }
+            las->active = 0;
+            continue;
+        }
+        if (las->startOffset >= 640.0f)
+        {
+            las->active = 0;
+        }
+        las->timer++;
+        g_SpriteEngine->Step(&las->sprite0);
+    }
+    if (mgr->clearAllFrames != 0)
+    {
+        mgr->clearAllFrames--;
+    }
+    mgr->updateTimer++;
+    mgr->updateFrameCount++;
+    return 1;
+}
+
+inline void Bullet::FreeBullet()
+{
+    this->state = 0;
+    this->timer = 0;
+    this->grazeDelayTimer = 0;
+}
+
+inline void BulletManager::ClearDrawLists()
+{
+    this->drawLists[0] = this->drawLists[1] = this->drawLists[2] = this->drawLists[3] = this->drawLists[4] =
+        this->drawLists[5] = NULL;
+}

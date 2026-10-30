@@ -65,6 +65,11 @@ ASSERT_SIZE(BulletEx, 0x2c);
 // One enemy bullet (0x10b8), as th07's.
 struct Bullet
 {
+    // Frees the bullet: state 0 and both timers reset, as th07's.
+    // Inline, defined after BulletManager::OnUpdate, which calls it out
+    // of line.
+    void FreeBullet();
+
     BulletTypeSprites sprites;
     D3DXVECTOR3 pos;
     D3DXVECTOR3 velocity;
@@ -109,7 +114,7 @@ struct Bullet
     BulletEx ex[7];
     // Set as the toggling script functions switch it to its additive
     // sprite; it neither grazes nor hits while set.
-    BYTE unk_10b4;
+    char unk_10b4;
     unsigned char unk_10b5[0x3];
 };
 ASSERT_SIZE(Bullet, 0x10b8);
@@ -221,9 +226,19 @@ public:
     // and flag 4 is not, or past the last one if none is free.
     Laser *SpawnLaser(BulletShooter *shooter);
 
+    // Empties the six draw lists. Inline, defined after OnUpdate, which
+    // calls it out of line. New in th08; th07's OnUpdate cleared them
+    // itself.
+    void ClearDrawLists();
+
     // Loads the bullet sprites and adds the bullets' chain elements, as
     // th07's (0x4311a0). Returns 0, or -1 on failure.
     static int RegisterChain(char *anmPath);
+    // Unless g_GameManager.unk_3dbac_10 is set: updates the items, then
+    // runs every bullet's state, behaviors and collisions (from the
+    // first, then from the last one down) and builds the draw lists, then
+    // runs the lasers, as th07's. Returns 1.
+    static int OnUpdate(BulletManager *mgr);
     // Removes the bullets' chain elements, as th07's (0x433850).
     static void RemoveChain();
 
@@ -261,6 +276,34 @@ extern int g_BulletColorOffsets32[8];
 // sprite, unless `dst` shows it already, as th07's. Inline, defined in
 // bullet.cpp.
 void ShowSpawnSprite(Sprite *dst, Sprite *src, Bullet *bullet, int color);
+
+// The bullet behaviors BulletManager::OnUpdate runs by activeFlags, as
+// th07's, each on its own BulletEx.
+// Flag 1, ex[0]: for 16 frames the bullet runs 5 to 0 faster than its
+// speed.
+void SlowBulletStart(Bullet *bullet);
+// Flag 0x10, ex[1]: for its duration the bullet speeds up by accel,
+// turned along its velocity.
+void AccelerateAlongVelocity(Bullet *bullet);
+// Flag 0x20, ex[2]: for its duration the bullet turns by turnAngle and
+// speeds up by turnSpeed a frame.
+void TurnAndAccelerate(Bullet *bullet);
+// Flags 0x40, 0x100 and 0x80, ex[3]: the bullet slows to a stop over
+// each `duration` frames, then plays its sound, turns (by turnAngle, to
+// turnAngle, or to the player plus turnAngle) and runs at turnSpeed
+// again, maxTurns times (counted in turnCount).
+void StopTurnAndRestart(Bullet *bullet);
+void StopTurnToAngle(Bullet *bullet);
+void StopTurnToPlayer(Bullet *bullet);
+// Flags 0x400 and 0x800, ex[4]: a bullet leaving the play area plays
+// its sound and bounces off the sides and the top (and the bottom with
+// 0x400) at speed turnSpeed, up to maxTurns times (counted in duration).
+void BounceOffWalls(Bullet *bullet);
+// Flags 0x400000 and 0x800000, ex[6]: a bullet leaving the sides (or
+// the top or bottom) comes back in at the other one, until ex[6]'s timer
+// has counted down. New in th08.
+void WrapAroundX(Bullet *bullet);
+void WrapAroundY(Bullet *bullet);
 
 // Starts the bullet's commands from commandIndex on, as th07's: skips
 // those whose flag the bullet lacks, and stops at an empty one, at one
