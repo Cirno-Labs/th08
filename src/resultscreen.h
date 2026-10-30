@@ -291,7 +291,7 @@ struct Vrsm
     WORD size2;
     BYTE version;
     BYTE clearedOnSave;
-    BYTE unk_0a[0x2];
+    BYTE pad_0a[0x2];
     // "0100d".
     char gameVersion[0x8];
     DWORD exeSize;
