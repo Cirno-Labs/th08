@@ -257,7 +257,7 @@ struct Pscr
     WORD size;
     WORD size2;
     BYTE version;
-    BYTE unk_09[0x3];
+    BYTE pad_09[0x3];
     // How often each stage was practised, by stage and difficulty
     // (LoadScoreFile counts them).
     DWORD playCount[9][5];
@@ -267,8 +267,8 @@ struct Pscr
     BYTE shot;
     // Set once the shot type has a practice score: SaveScoreDat skips
     // the chunk while it is 0.
-    BYTE unk_175;
-    BYTE unk_176[0x2];
+    BYTE practised;
+    BYTE pad_176[0x2];
 };
 ASSERT_SIZE(Pscr, 0x178);
 

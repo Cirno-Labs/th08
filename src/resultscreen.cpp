@@ -114,7 +114,7 @@ void SaveScoreDat(ResultScreen *screen)
     pscr0 = g_GameManager.pscrs;
     for (i = 0; i < 0xc; i++, pscr0++)
     {
-        if (pscr0->unk_175 != 0)
+        if (pscr0->practised != 0)
         {
             memcpy(buf + size0, pscr0, sizeof(Pscr));
             size0 += sizeof(Pscr);

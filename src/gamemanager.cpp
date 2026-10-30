@@ -960,7 +960,7 @@ int LoadScoreFile()
         g_GameManager.stats->highScore =
             g_GameManager.pscrs[g_GameManager.character].scores[g_GameManager.stage][g_GameManager.difficulty];
         g_GameManager.pscrs[g_GameManager.character].playCount[g_GameManager.stage][g_GameManager.difficulty]++;
-        g_GameManager.pscrs[g_GameManager.character].unk_175 = 1;
+        g_GameManager.pscrs[g_GameManager.character].practised = 1;
     }
     ReleaseScoreDat(data);
     memcpy(g_GameManager.savedCatks, g_GameManager.catks, sizeof(g_GameManager.catks));

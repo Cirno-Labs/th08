@@ -342,7 +342,7 @@ int LoadPracticeScores(void *scoreDat, Pscr *pscrs)
         p->size = sizeof(Pscr);
         p->version = 2;
         p->shot = i3;
-        p->unk_175 = 0;
+        p->practised = 0;
     }
     chunk = (Pscr *)((BYTE *)dat10 + dat10->dataOffset);
     rest3 = dat10->fileSize - dat10->dataOffset;
