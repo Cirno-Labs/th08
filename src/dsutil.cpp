@@ -237,7 +237,7 @@ CSound::CSound(LPDIRECTSOUNDBUFFER *apDSBuffer, DWORD dwDSBufferSize, DWORD dwNu
     for (i = 0; i < dwNumBuffers; i++)
         m_apDSBuffer[i]->SetCurrentPosition(0);
 
-    this->unk_30 = 0;
+    this->isPlaying = 0;
 }
 
 HRESULT CStreamingSound::RecreateBuffers()
@@ -247,7 +247,7 @@ HRESULT CStreamingSound::RecreateBuffers()
     LPDIRECTSOUNDNOTIFY pNotify;
     DWORD j;
 
-    this->unk_30 = 0;
+    this->isPlaying = 0;
     for (i = 0; i < m_dwNumBuffers; i++)
     {
         SAFE_RELEASE(m_apDSBuffer[i]);
@@ -469,10 +469,10 @@ HRESULT CSound::Play(DWORD dwPriority, DWORD dwFlags)
     this->fadeFrames = 0;
     this->fadeTotal = 0;
     SetVolume(0);
-    this->unk_30 = 1;
+    this->isPlaying = 1;
     this->dwPlayPriority = dwPriority;
     this->dwPlayFlags = dwFlags;
-    this->unk_2c = 0;
+    this->clearedOnPlay = 0;
     return pDSB->Play(0, dwPriority, dwFlags);
 }
 
@@ -499,7 +499,7 @@ HRESULT CSound::Stop()
 
     HRESULT hr = 0;
 
-    this->unk_30 = 0;
+    this->isPlaying = 0;
     for (DWORD i = 0; i < m_dwNumBuffers; i++)
     {
         hr |= m_apDSBuffer[i]->Stop();
@@ -517,7 +517,7 @@ HRESULT CSound::PauseBuffer()
 
     HRESULT hr = 0;
 
-    this->unk_30 = 0;
+    this->isPlaying = 0;
     hr |= m_apDSBuffer[0]->Stop();
 
     return hr;
@@ -530,7 +530,7 @@ HRESULT CSound::ResumeBuffer()
 
     LPDIRECTSOUNDBUFFER pDSB = m_apDSBuffer[0];
 
-    this->unk_30 = 1;
+    this->isPlaying = 1;
     return pDSB->Play(0, this->dwPlayPriority, this->dwPlayFlags);
 }
 

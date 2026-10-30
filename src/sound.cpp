@@ -558,7 +558,7 @@ DWORD WINAPI BgmNotificationProc(LPVOID lpParameter)
         switch (dwResult)
         {
         case WAIT_OBJECT_0 + 0:
-            if (g_SoundPlayer.bgm != NULL && g_SoundPlayer.bgm->unk_30)
+            if (g_SoundPlayer.bgm != NULL && g_SoundPlayer.bgm->isPlaying)
             {
                 g_SoundPlayer.bgm->unk_74 = 1;
                 hr = g_SoundPlayer.bgm->HandleWaveStreamNotification(bLooped);
