@@ -74,7 +74,7 @@ address,size,name,symbol
 0x00406df0,38,GameManager::AddUnk28,?AddUnk28@GameManager@@QAEXD@Z
 0x00406e20,33,GameManager::SetLives,?SetLives@GameManager@@QAEXH@Z
 0x00406e50,154,GameManager::RerollChecksumKeys,?RerollChecksumKeys@GameManager@@QAEXXZ
-0x00406ef0,49,Func406ef0,
+0x00406ef0,49,Rng::GetRandomU32InRange,?GetRandomU32InRange@Rng@@QAEKK@Z
 0x00406f30,110,GameManager::SetBombs,?SetBombs@GameManager@@QAEXH@Z
 0x00406fa0,36,GameManager::SetPower,?SetPower@GameManager@@QAEXH@Z
 0x00406fd0,217,AsciiText::RunScripts,?RunScripts@AsciiText@@QAEXXZ
