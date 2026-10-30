@@ -5,6 +5,7 @@
 #include "ascii.h"
 #include "effect.h"
 #include "enemy.h"
+#include "item.h"
 #include "player.h"
 #include "sprite.h"
 #include "unsorted.h"
@@ -604,6 +605,66 @@ void EnemyManager::RemoveChain()
     g_Chain.Remove(&g_EnemyManagerCalcChain);
     g_Chain.Remove(&g_EnemyManagerDrawChain);
     g_Chain.Remove(&g_EnemyManagerDrawChain2);
+}
+
+int EnemyManager::ClearEnemiesForBonus(int maxBonus, int start)
+{
+    Enemy *enemy = this->enemies;
+    int total = start;
+    int bonus = 2000;
+    int k;
+    int j;
+
+    for (k = 0; k < 0x1e0; k++, enemy++)
+    {
+        if (!enemy->active)
+        {
+            continue;
+        }
+        if (enemy->isBoss)
+        {
+            continue;
+        }
+        if (enemy->unk_3328_6)
+        {
+            continue;
+        }
+        enemy->life = 0;
+        if (enemy->grazeable)
+        {
+            enemy->unk_2d88 = enemy->pos + enemy->unk_2d40;
+            g_ItemManager.SpawnItem(&enemy->unk_2d88, 6, 1);
+            g_AsciiText.AddPopup(&enemy->unk_2d88, bonus, bonus >= maxBonus ? 0xffffff00 : 0xffffffff);
+            total += bonus;
+            bonus += 30;
+            if (bonus > maxBonus)
+            {
+                bonus = maxBonus;
+            }
+            if (enemy->trailFlags)
+            {
+                for (j = 0; j < enemy->trailSegmentCount; j += 6)
+                {
+                    g_ItemManager.SpawnItem(&enemy->trailBoxes[j].pos, 6, 1);
+                    g_AsciiText.AddPopup(&enemy->trailBoxes[j].pos, bonus,
+                                         bonus >= maxBonus ? 0xffffff00 : 0xffffffff);
+                    total += bonus;
+                    bonus += 30;
+                    if (bonus > maxBonus)
+                    {
+                        bonus = maxBonus;
+                    }
+                }
+            }
+        }
+        enemy->Func42b2f0();
+        if (enemy->deathSub >= 0)
+        {
+            g_EnemyScripts.StartSub(&enemy->ctx, enemy->deathSub);
+            enemy->deathSub = -1;
+        }
+    }
+    return total;
 }
 
 int EnemyManager::AnyBossActive()

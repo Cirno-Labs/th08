@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">79.66% (889)</tspan> · <tspan class="decompiled">2.24% (25)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">18.10% (202)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">79.75% (890)</tspan> · <tspan class="decompiled">2.24% (25)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">18.01% (201)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="595.06" height="6" x="0" y="0" class="named"/>
-<rect width="16.73" height="6" x="595.06" y="0" class="decompiled"/>
-<rect width="135.21" height="6" x="611.79" y="0" class="todo"/>
+<rect width="595.73" height="6" x="0" y="0" class="named"/>
+<rect width="16.73" height="6" x="595.73" y="0" class="decompiled"/>
+<rect width="134.54" height="6" x="612.46" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -489,7 +489,7 @@
 <rect width="12" height="12" x="270" y="120" class="named"><title>0x0042ebf0 EnemyManager::AddedCallback (642 bytes)</title></rect>
 <rect width="12" height="12" x="285" y="120" class="named"><title>0x0042ee80 EnemyManager::DeletedCallback (225 bytes)</title></rect>
 <rect width="12" height="12" x="300" y="120" class="named"><title>0x0042ef70 EnemyManager::RemoveChain (50 bytes)</title></rect>
-<rect width="12" height="12" x="315" y="120" class="todo"><title>0x0042efb0 EnemyManager::ClearEnemiesForBonus (575 bytes)</title></rect>
+<rect width="12" height="12" x="315" y="120" class="named"><title>0x0042efb0 EnemyManager::ClearEnemiesForBonus (575 bytes)</title></rect>
 <rect width="12" height="12" x="330" y="120" class="named"><title>0x0042f1f0 EnemyManager::AnyBossActive (64 bytes)</title></rect>
 <rect width="12" height="12" x="345" y="120" class="todo"><title>0x0042f230 Func42f230 (64 bytes)</title></rect>
 <rect width="12" height="12" x="360" y="120" class="todo"><title>0x0042f270 Func42f270 (64 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">73.51%</tspan> · <tspan class="decompiled">1.07%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">25.42%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">73.64%</tspan> · <tspan class="decompiled">1.07%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">25.29%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="549.15" height="6" x="0" y="0" class="named"/>
-<rect width="7.97" height="6" x="549.15" y="0" class="decompiled"/>
-<rect width="189.89" height="6" x="557.11" y="0" class="todo"/>
+<rect width="550.08" height="6" x="0" y="0" class="named"/>
+<rect width="7.97" height="6" x="550.08" y="0" class="decompiled"/>
+<rect width="188.95" height="6" x="558.05" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -1383,7 +1383,7 @@
 <rect width="15.30" height="15.24" x="471.21" y="65.08" class="named"><title>0x00426030 EffectUpdateOrbit (588 bytes)</title></rect>
 <rect width="15.27" height="15.24" x="489.51" y="65.08" class="named"><title>0x00426e70 EffectInitPetal (587 bytes)</title></rect>
 <rect width="14.96" height="15.24" x="507.78" y="65.08" class="named"><title>0x00408d60 UpdateEasedVector (577 bytes)</title></rect>
-<rect width="14.89" height="15.24" x="525.73" y="65.08" class="todo"><title>0x0042efb0 EnemyManager::ClearEnemiesForBonus (575 bytes)</title></rect>
+<rect width="14.89" height="15.24" x="525.73" y="65.08" class="named"><title>0x0042efb0 EnemyManager::ClearEnemiesForBonus (575 bytes)</title></rect>
 <rect width="14.74" height="15.24" x="543.63" y="65.08" class="named"><title>0x0044f930 UpdateSwirlOption (570 bytes)</title></rect>
 <rect width="14.64" height="15.24" x="561.36" y="65.08" class="named"><title>0x004114e0 EffectUpdateBombRing36 (567 bytes)</title></rect>
 <rect width="14.64" height="15.24" x="579.01" y="65.08" class="todo"><title>0x00423150 Func423150 (567 bytes)</title></rect>

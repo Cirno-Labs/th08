@@ -202,7 +202,18 @@ struct Enemy
             DWORD unk_3324_30 : 1;
         };
     };
-    unsigned char unk_3328[0xa];
+    union
+    {
+        DWORD unk_3328;
+        struct
+        {
+            DWORD unk_3328_0 : 6;
+            // ClearEnemiesForBonus spares it while set.
+            DWORD unk_3328_6 : 1;
+            DWORD unk_3328_7 : 25;
+        };
+    };
+    unsigned char unk_332c[0x6];
     short turnStill;
     unsigned char unk_3334[0x4];
     short turnLeft;
@@ -220,7 +231,11 @@ struct Enemy
     void *unk_3384[4];
     EnemyBox trailBoxes[0x60];
     VertexTex1DiffuseXyzrwh spriteStripVertices[0xc2];
-    unsigned char unk_534c[0x8];
+    // Whether it has a trail, and how long it is, as th07's.
+    BYTE trailFlags;
+    unsigned char unk_534d[0x1];
+    short trailSegmentCount;
+    unsigned char unk_5350[0x4];
     Timer invulnTimer;
     // Effects that follow it, as th07's.
     struct Effect *effects[0x18];
