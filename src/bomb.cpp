@@ -442,7 +442,7 @@ void UpdateDissolveBomb(Player *player)
         {
             if (g_EnemyManager.bosses[j] != NULL)
             {
-                g_EnemyManager.bosses[j]->unk_3324_6 = 0;
+                g_EnemyManager.bosses[j]->hitByShots = 0;
             }
         }
     }

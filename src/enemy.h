@@ -148,7 +148,7 @@ struct Enemy
     // 0x41f000 is in an /Od object.
     BOOL Func41f000()
     {
-        return this->unk_2da4 == 0 && this->unk_8 != NULL ? TRUE : FALSE;
+        return this->leader == 0 && this->nextFollower != NULL ? TRUE : FALSE;
     }
     // How many enemies follow it through unk_8, when Func41f000. Inline;
     // the copy at 0x41fd40 is in an /Od object. DrawBanners shows it
@@ -162,9 +162,9 @@ struct Enemy
         count = 0;
         if (this->Func41f000())
         {
-            while (enemy->unk_8 != NULL)
+            while (enemy->nextFollower != NULL)
             {
-                enemy = enemy->unk_8;
+                enemy = enemy->nextFollower;
                 count++;
             }
         }
@@ -180,9 +180,9 @@ struct Enemy
         enemy = this;
         if (this->Func41f000())
         {
-            while (enemy->unk_8 != NULL)
+            while (enemy->nextFollower != NULL)
             {
-                enemy = enemy->unk_8;
+                enemy = enemy->nextFollower;
             }
         }
         return enemy;
@@ -192,7 +192,7 @@ struct Enemy
     // /Od object.
     BOOL Func41fd20()
     {
-        return this->unk_2da4 != 0;
+        return this->leader != 0;
     }
 
     // Breaks up the list of enemies following it through unk_8 (and
@@ -271,8 +271,8 @@ struct Enemy
     // th07's.
     Enemy *nextInDrawList;
     // The enemies before and after it in a list (Func42b2f0).
-    Enemy *unk_4;
-    Enemy *unk_8;
+    Enemy *prevFollower;
+    Enemy *nextFollower;
     Sprite sprite;
     Sprite sprites[2];
     EnemyScriptState ctx;
@@ -289,16 +289,16 @@ struct Enemy
     // stackDepth to go back to as ScriptReturn leaves a context set.
     short savedStackDepth;
     short stackDepth;
-    short unk_2cec;
+    short unusedShort2cec;
     short deathSub;
     // The subroutines of the interrupts opcode 125 (or another enemy's
     // 89) starts, set by opcode 126, as th07's.
     short interrupts[0x20];
     short pendingInterrupt;
-    short unk_2d32;
+    short unusedShort2d32;
     // Where it is.
     D3DXVECTOR3 pos;
-    D3DXVECTOR3 unk_2d40;
+    D3DXVECTOR3 posOrigin;
     D3DXVECTOR3 velocity;
     D3DXVECTOR3 prevPos;
     D3DXVECTOR3 posDelta;
@@ -306,13 +306,13 @@ struct Enemy
     // A second box the player's shots hurt it through, as th07's.
     D3DXVECTOR3 extraHitboxSize;
     // Where the player's homing options go to (MoveOptionToEnemy).
-    D3DXVECTOR3 unk_2d88;
+    D3DXVECTOR3 absPos;
     float angle;
     float angularVelocity;
     float orbitAngle;
     float orbitAngularVelocity;
     // The enemy it shares its damage with (Func42b370).
-    Enemy *unk_2da4;
+    Enemy *leader;
     float speed;
     float acceleration;
     float orbitRadius;
@@ -334,13 +334,13 @@ struct Enemy
     // (Player::bomb.type 4) ends.
     int life;
     int maxLife;
-    int unk_2e04;
+    int phaseStartLife;
     int score;
     // Its index in EnemyManager::enemies.
     int index;
     // g_Unknown18b8a24 in EnemyManager's template; Player::AddedCallback
     // sets the template's from Player::unk_e2b2c.
-    int unk_2e10;
+    int timeOrbDamage;
     Timer callbackTimer;
     D3DCOLOR color;
     BulletShooter shooter;
@@ -355,21 +355,21 @@ struct Enemy
     int item;
     // Set by timeline instructions 11 and 12: how many point and power
     // items DropItems drops.
-    int unk_3308;
-    int unk_330c;
+    int pointItems;
+    int powerItems;
     char deathEffect;
     BYTE deathEffectIndex;
     BYTE deathEffectVariant;
     // Its index in EnemyManager::bosses while isBoss is set.
     BYTE bossIndex;
     BYTE hitFlashTimer;
-    unsigned char unk_3315[0x3];
-    Timer unk_3318;
+    unsigned char pad_3315[0x3];
+    Timer unusedTimer3318;
     // Bit 3: the petal effects drift towards it while it is the first
     // boss. Bit 30 is cleared with unk_2dfc.
     union
     {
-        DWORD unk_3324;
+        DWORD flags;
         struct
         {
             DWORD active : 1;
@@ -377,24 +377,24 @@ struct Enemy
             DWORD shootable : 1;
             DWORD contactDamage : 1;
             DWORD hideFollowEffects : 1;
-            DWORD unk_3324_5 : 1;
+            DWORD hiddenByBomb : 1;
             // Cleared for the bosses as a Dissolve Spell starts.
-            DWORD unk_3324_6 : 1;
+            DWORD hitByShots : 1;
             DWORD grazeable : 1;
-            DWORD unk_3324_8 : 1;
+            DWORD followsYoukaiState : 1;
             // Func42adb0 moves unk_2d40 to its leader's pos while set.
-            DWORD unk_3324_9 : 1;
+            DWORD posRelativeToLeader : 1;
             // Set by Func42adb0 as it leaves its leader's list.
-            DWORD unk_3324_10 : 1;
+            DWORD releasedFromLeader : 1;
             // Player::unk_5 as Func42c420 last saw it.
-            DWORD unk_3324_11 : 1;
+            DWORD isYoukai : 1;
             DWORD moveMode : 2;
             DWORD moveEasing : 3;
             DWORD holdFire : 1;
             DWORD mirrored : 1;
             DWORD clampPos : 1;
             DWORD deathMode : 3;
-            DWORD unk_3324_23 : 1;
+            DWORD unusedFlag3324_23 : 1;
             DWORD onScreen : 1;
             DWORD rotateSprite : 1;
             // Calls save no context while set, as th07's.
@@ -411,37 +411,37 @@ struct Enemy
             // player is not in state 0, as th07's.
             DWORD haltedByBomb : 1;
             // The player's shots miss it while a bomb runs.
-            DWORD unk_3324_31 : 1;
+            DWORD intangibleDuringBomb : 1;
         };
     };
     union
     {
-        DWORD unk_3328;
+        DWORD unusedDword3328;
         struct
         {
-            DWORD unk_3328_0 : 1;
+            DWORD unusedFlag3328_0 : 1;
             // Func42c420 bursts effect 0x26 every other frame while set.
-            DWORD unk_3328_1 : 1;
+            DWORD emitsEffect26 : 1;
             // Its sprites run their scripts from the stage's enemy ANM
             // (EnemyManager::stageAnm) while set, else from enemy.anm.
             DWORD useStageAnm : 1;
             // Set once OnUpdate has run its death; cleared while its life
             // is above 0.
-            DWORD unk_3328_3 : 1;
+            DWORD hasDied : 1;
             // How close it is to its next life callback, 0 to 3
             // (CheckLifeCallback).
-            DWORD unk_3328_4 : 2;
+            DWORD lifeCallbackProximity : 2;
             // ClearEnemiesForBonus spares it while set.
-            DWORD unk_3328_6 : 1;
+            DWORD undying : 1;
             // Like haltedByBomb, but always.
-            DWORD unk_3328_7 : 1;
+            DWORD halted : 1;
             // DrawEnemies puts sprites[] at sprite's posOffset instead of
             // their own while set.
-            DWORD unk_3328_8 : 1;
-            DWORD unk_3328_9 : 23;
+            DWORD useMainSpriteOffset : 1;
+            DWORD unusedBits3328_9 : 23;
         };
     };
-    unsigned char unk_332c[0x2];
+    unsigned char pad_332c[0x2];
     // The turning sprite script last started, as th07's: 0 still, 1
     // left, 2 right, 0xff none yet.
     BYTE spriteDirection;
@@ -449,20 +449,20 @@ struct Enemy
     // Func42c420 as Player::unk_5 changes.
     BYTE drawListIndex;
     // 0x40 while Player::unk_5 is set, else 0x20 (Func42c420).
-    BYTE unk_3330;
-    unsigned char unk_3331[0x1];
+    BYTE difficultyMaskExtra;
+    unsigned char pad_3331[0x1];
     // The sprite scripts for turning, as th07's, and a sixth one.
     short turnStill;
     short turnStillFromLeft;
     short turnStillFromRight;
     short turnLeft;
     short turnRight;
-    short unk_333c;
-    unsigned char unk_333e[0x2];
+    short turnExtra;
+    unsigned char pad_333e[0x2];
     // Where ClampPos keeps it, as th07's.
     float lowerBound[2];
     float upperBound[2];
-    float unk_3350;
+    float minShootDistSq;
     // The damage it took this frame, as th07's.
     int lastDamage;
     int lifeCallbackLife[4];
@@ -470,14 +470,14 @@ struct Enemy
     int timerCallbackTime;
     int timerCallbackSub;
     // Shown by DrawBanners next to Func41fd40.
-    int unk_3380;
+    int followerCount;
     // Freed by Func42bc90.
     EnemyScriptThread *threads[4];
     EnemyBox trailBoxes[0x60];
     VertexTex1DiffuseXyzrwh spriteStripVertices[0xc2];
     // Whether it has a trail, and how long it is, as th07's.
     BYTE trailFlags;
-    unsigned char unk_534d[0x1];
+    unsigned char pad_534d[0x1];
     short trailSegmentCount;
     // How many trail boxes touch the player, every sixth, as th07's.
     short trailContactSegments;
@@ -490,10 +490,10 @@ struct Enemy
     // How far the effects circle it, as th07's.
     float effectRadius;
     // Sent interrupt 3 as it despawns.
-    struct Effect *unk_53c8;
+    struct Effect *attachedEffect;
     // The seconds its timer callback had left when CheckLifeCallback
     // last ran a life callback.
-    int unk_53cc;
+    int phaseEndSecondsLeft;
 };
 ASSERT_SIZE(Enemy, 0x53d0);
 

@@ -799,7 +799,7 @@ int SpellCard::Update()
         if (!this->unk_0_6)
         {
             this->effect->origin =
-                (this->enemy->pos + this->enemy->unk_2d40 - this->effect->origin) / 16.0f + this->effect->origin;
+                (this->enemy->pos + this->enemy->posOrigin - this->effect->origin) / 16.0f + this->effect->origin;
             this->effect->origin.z = 0.0f;
         }
         this->effect->angle = AddNormalizeAngle(this->effect->angle, this->Func417860() ? -0.031415928f : 0.015707964f);

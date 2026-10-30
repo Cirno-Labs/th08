@@ -157,7 +157,7 @@ void MoveOptionToEnemy(Player *player, PlayerOption *option)
     D3DXVECTOR3 target;
     D3DXVECTOR3 accel;
 
-    target = player->homingEnemy->unk_2d88;
+    target = player->homingEnemy->absPos;
     target.y += 32.0f;
     if (target.y < 32.0f)
     {

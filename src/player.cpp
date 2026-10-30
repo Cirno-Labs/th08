@@ -1481,7 +1481,7 @@ int Player::AddedCallback(Player *player)
     {
         player->damagePerTimeOrb = 0x28;
     }
-    g_EnemyManager.enemyTemplate.unk_2e10 = player->damagePerTimeOrb;
+    g_EnemyManager.enemyTemplate.timeOrbDamage = player->damagePerTimeOrb;
     return 0;
 }
 

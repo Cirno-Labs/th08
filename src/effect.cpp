@@ -380,7 +380,7 @@ int EffectUpdateBossPetal(Effect *effect)
     {
         return 0;
     }
-    if (g_EnemyManager.AnyBossActive() && g_EnemyManager.bosses[0]->unk_3324 >> 3 & 1)
+    if (g_EnemyManager.AnyBossActive() && g_EnemyManager.bosses[0]->flags >> 3 & 1)
     {
         if (effect->sprite.posOffset.x <= -9999.0f)
         {
@@ -444,7 +444,7 @@ int EffectUpdateBossPetal2(Effect *effect)
     {
         return 0;
     }
-    if (g_EnemyManager.bosses[0] != NULL && g_EnemyManager.bosses[0]->unk_3324 >> 3 & 1)
+    if (g_EnemyManager.bosses[0] != NULL && g_EnemyManager.bosses[0]->flags >> 3 & 1)
     {
         if (effect->sprite.posOffset.x <= -9999.0f)
         {

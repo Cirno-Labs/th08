@@ -101,7 +101,7 @@ restart:
         goto interrupt;
     }
 loop:
-    enemy->unk_2d88 = enemy->pos + enemy->unk_2d40;
+    enemy->absPos = enemy->pos + enemy->posOrigin;
     if (enemy->currentCtx->waitTimer.AsFrames() > 0)
     {
         enemy->currentCtx->waitTimer--;
@@ -110,8 +110,8 @@ loop:
     }
     if (enemy->currentCtx->timer == instr->time)
     {
-        if ((instr->difficultyMask & (g_GameManager.difficultyMask | enemy->unk_3330)) !=
-            (g_GameManager.difficultyMask | enemy->unk_3330))
+        if ((instr->difficultyMask & (g_GameManager.difficultyMask | enemy->difficultyMaskExtra)) !=
+            (g_GameManager.difficultyMask | enemy->difficultyMaskExtra))
         {
             goto next;
         }
@@ -320,11 +320,11 @@ loop:
         case 62:
             if (!enemy->useStageAnm)
             {
-                g_EnemyManager.anm->StartScript(&enemy->sprite, enemy->unk_333c);
+                g_EnemyManager.anm->StartScript(&enemy->sprite, enemy->turnExtra);
             }
             else
             {
-                g_EnemyManager.stageAnm->StartScript(&enemy->sprite, enemy->unk_333c);
+                g_EnemyManager.stageAnm->StartScript(&enemy->sprite, enemy->turnExtra);
             }
             break;
         case 63:
@@ -431,25 +431,25 @@ loop:
             break;
         case 79:
             value = INT_ARG(0);
-            enemy->unk_3324_6 = !(value & 1);
+            enemy->hitByShots = !(value & 1);
             enemy->shootable = !(value & 2);
             enemy->contactDamage = !(value & 4);
             enemy->hideFollowEffects = (value & 8) != 0;
             enemy->staysOffscreen = (value & 0x10) != 0;
-            enemy->unk_3328_6 = (value & 0x20) != 0;
+            enemy->undying = (value & 0x20) != 0;
             break;
         case 80:
             value = INT_ARG(0);
             if (value & 1)
             {
-                enemy->unk_3324_6 = 0;
+                enemy->hitByShots = 0;
             }
             if (value & 2)
             {
                 enemy->shootable = 0;
-                if (enemy->unk_53c8 != NULL)
+                if (enemy->attachedEffect != NULL)
                 {
-                    enemy->unk_53c8->sprite.useColor2 = 0;
+                    enemy->attachedEffect->sprite.useColor2 = 0;
                 }
             }
             if (value & 4)
@@ -466,21 +466,21 @@ loop:
             }
             if (value & 0x20)
             {
-                enemy->unk_3328_6 = 1;
+                enemy->undying = 1;
             }
             break;
         case 81:
             value = INT_ARG(0);
             if (value & 1)
             {
-                enemy->unk_3324_6 = 1;
+                enemy->hitByShots = 1;
             }
             if (value & 2)
             {
                 enemy->shootable = 1;
-                if (enemy->unk_53c8 != NULL)
+                if (enemy->attachedEffect != NULL)
                 {
-                    enemy->unk_53c8->sprite.useColor2 = 1;
+                    enemy->attachedEffect->sprite.useColor2 = 1;
                 }
             }
             if (value & 4)
@@ -497,7 +497,7 @@ loop:
             }
             if (value & 0x20)
             {
-                enemy->unk_3328_6 = 0;
+                enemy->undying = 0;
             }
             break;
         case 86:
@@ -533,24 +533,24 @@ loop:
             child = ScriptSpawnEnemy(enemy, instr);
             if (!g_EnemyManager.spawnFailed)
             {
-                child->unk_3324_8 = 1;
-                child->unk_3324_11 = g_Player.IsUnk5Set();
+                child->followsYoukaiState = 1;
+                child->isYoukai = g_Player.IsUnk5Set();
                 child->drawListIndex = g_Player.IsUnk5Set() ? 0 : 2;
                 child->shootable = 0;
-                if (child->unk_53c8 == NULL)
+                if (child->attachedEffect == NULL)
                 {
-                    child->unk_53c8 = g_EffectManager.SpawnEffect2(0x20, &child->pos, 1, 0xffffffff);
-                    child->unk_53c8->sprite.SetPendingInterrupt(g_Player.IsUnk5Set() ? 2 : 1);
-                    child->unk_53c8->sprite.useColor2 = child->shootable != 0;
+                    child->attachedEffect = g_EffectManager.SpawnEffect2(0x20, &child->pos, 1, 0xffffffff);
+                    child->attachedEffect->sprite.SetPendingInterrupt(g_Player.IsUnk5Set() ? 2 : 1);
+                    child->attachedEffect->sprite.useColor2 = child->shootable != 0;
                     if (child->index & 1)
                     {
-                        child->unk_53c8->sprite.rotationSpeed.z = -child->unk_53c8->sprite.rotationSpeed.z;
+                        child->attachedEffect->sprite.rotationSpeed.z = -child->attachedEffect->sprite.rotationSpeed.z;
                     }
                 }
-                child->unk_2da4 = enemy;
-                tail->unk_8 = child;
-                child->unk_4 = tail;
-                enemy->unk_3380++;
+                child->leader = enemy;
+                tail->nextFollower = child;
+                child->prevFollower = tail;
+                enemy->followerCount++;
             }
             g_SoundPlayer.QueueSoundPanned(0x24, enemy->pos.x);
             break;
@@ -564,24 +564,24 @@ loop:
             child = ScriptSpawnEnemyRel(enemy, instr);
             if (!g_EnemyManager.spawnFailed)
             {
-                child->unk_3324_8 = 1;
-                child->unk_3324_11 = g_Player.IsUnk5Set();
+                child->followsYoukaiState = 1;
+                child->isYoukai = g_Player.IsUnk5Set();
                 child->drawListIndex = g_Player.IsUnk5Set() ? 0 : 2;
                 child->shootable = 0;
-                if (child->unk_53c8 == NULL)
+                if (child->attachedEffect == NULL)
                 {
-                    child->unk_53c8 = g_EffectManager.SpawnEffect2(0x20, &child->pos, 1, 0xffffffff);
-                    child->unk_53c8->sprite.SetPendingInterrupt(g_Player.IsUnk5Set() ? 2 : 1);
-                    child->unk_53c8->sprite.useColor2 = child->shootable != 0;
+                    child->attachedEffect = g_EffectManager.SpawnEffect2(0x20, &child->pos, 1, 0xffffffff);
+                    child->attachedEffect->sprite.SetPendingInterrupt(g_Player.IsUnk5Set() ? 2 : 1);
+                    child->attachedEffect->sprite.useColor2 = child->shootable != 0;
                     if (child->index & 1)
                     {
-                        child->unk_53c8->sprite.rotationSpeed.z = -child->unk_53c8->sprite.rotationSpeed.z;
+                        child->attachedEffect->sprite.rotationSpeed.z = -child->attachedEffect->sprite.rotationSpeed.z;
                     }
                 }
-                child->unk_2da4 = enemy;
-                tail->unk_8 = child;
-                child->unk_4 = tail;
-                enemy->unk_3380++;
+                child->leader = enemy;
+                tail->nextFollower = child;
+                child->prevFollower = tail;
+                enemy->followerCount++;
             }
             g_SoundPlayer.QueueSoundPanned(0x24, enemy->pos.x);
             break;
@@ -595,27 +595,27 @@ loop:
             child = ScriptSpawnEnemy(enemy, instr);
             if (!g_EnemyManager.spawnFailed)
             {
-                child->unk_3324_8 = 1;
-                child->unk_3324_11 = g_Player.IsUnk5Set();
+                child->followsYoukaiState = 1;
+                child->isYoukai = g_Player.IsUnk5Set();
                 child->drawListIndex = g_Player.IsUnk5Set() ? 0 : 2;
-                child->unk_2d40 = enemy->pos;
-                child->unk_2d88 = child->unk_2d40 + child->pos;
+                child->posOrigin = enemy->pos;
+                child->absPos = child->posOrigin + child->pos;
                 child->shootable = 0;
-                if (child->unk_53c8 == NULL)
+                if (child->attachedEffect == NULL)
                 {
-                    child->unk_53c8 = g_EffectManager.SpawnEffect2(0x20, &child->unk_2d88, 1, 0xffffffff);
-                    child->unk_53c8->sprite.SetPendingInterrupt(g_Player.IsUnk5Set() ? 2 : 1);
-                    child->unk_53c8->sprite.useColor2 = child->shootable != 0;
+                    child->attachedEffect = g_EffectManager.SpawnEffect2(0x20, &child->absPos, 1, 0xffffffff);
+                    child->attachedEffect->sprite.SetPendingInterrupt(g_Player.IsUnk5Set() ? 2 : 1);
+                    child->attachedEffect->sprite.useColor2 = child->shootable != 0;
                     if (child->index & 1)
                     {
-                        child->unk_53c8->sprite.rotationSpeed.z = -child->unk_53c8->sprite.rotationSpeed.z;
+                        child->attachedEffect->sprite.rotationSpeed.z = -child->attachedEffect->sprite.rotationSpeed.z;
                     }
                 }
-                child->unk_3324_9 = 1;
-                child->unk_2da4 = enemy;
-                tail->unk_8 = child;
-                child->unk_4 = tail;
-                enemy->unk_3380++;
+                child->posRelativeToLeader = 1;
+                child->leader = enemy;
+                tail->nextFollower = child;
+                child->prevFollower = tail;
+                enemy->followerCount++;
             }
             g_SoundPlayer.QueueSoundPanned(0x24, enemy->pos.x);
             break;
@@ -701,7 +701,7 @@ loop:
 
             laserArgs = instr->args;
             shooter = &enemy->laserShooter;
-            shooter->pos = enemy->unk_2d88 + enemy->shootOffset;
+            shooter->pos = enemy->absPos + enemy->shootOffset;
             shooter->sprite = *(short *)&laserArgs[0];
             shooter->color = INT_OP(((short *)laserArgs)[1], 2);
             shooter->angle1 = FLOAT_OP(laserArgs[1].f, 4);
@@ -755,9 +755,9 @@ loop:
             value = INT_ARG(0);
             if (enemy->lasers[value] != NULL)
             {
-                enemy->lasers[value]->pos.x = FLOAT_ARG(1) + enemy->unk_2d88.x;
-                enemy->lasers[value]->pos.y = FLOAT_ARG(2) + enemy->unk_2d88.y;
-                enemy->lasers[value]->pos.z = FLOAT_ARG(3) + enemy->unk_2d88.z;
+                enemy->lasers[value]->pos.x = FLOAT_ARG(1) + enemy->absPos.x;
+                enemy->lasers[value]->pos.y = FLOAT_ARG(2) + enemy->absPos.y;
+                enemy->lasers[value]->pos.z = FLOAT_ARG(3) + enemy->absPos.z;
             }
             break;
         case 170:
@@ -828,7 +828,7 @@ loop:
                 enemy->isBoss = 1;
                 enemy->bossIndex = INT_ARG(0);
                 g_AsciiText.SetNearbyLabelInterrupt(enemy->bossIndex, 1);
-                enemy->unk_3350 = 0.0f;
+                enemy->minShootDistSq = 0.0f;
             }
             else
             {
@@ -891,7 +891,7 @@ loop:
             enemy->pendingInterrupt = -1;
             goto restart;
         case 131:
-            enemy->unk_2e04 = enemy->life = enemy->maxLife = INT_ARG(0);
+            enemy->phaseStartLife = enemy->life = enemy->maxLife = INT_ARG(0);
             if (!enemy->bossIndex && enemy->isBoss)
             {
                 int i;
@@ -980,8 +980,8 @@ loop:
             enemy->item = INT_ARG(0);
             break;
         case 144:
-            enemy->unk_3308 = INT_ARG(0);
-            enemy->unk_330c = INT_ARG(1);
+            enemy->pointItems = INT_ARG(0);
+            enemy->powerItems = INT_ARG(1);
             break;
         case 142:
         {
@@ -1151,7 +1151,7 @@ loop:
             enemy->invulnTimer = INT_ARG(0);
             break;
         case 161:
-            g_BulletManager.ConvertBulletsToItems(&enemy->unk_2d88, FLOAT_ARG(0));
+            g_BulletManager.ConvertBulletsToItems(&enemy->absPos, FLOAT_ARG(0));
             break;
         case 162:
             g_BulletManager.ClearAll(4);
@@ -1185,7 +1185,7 @@ loop:
             enemy->haltedByBomb = INT_ARG(0);
             break;
         case 183:
-            enemy->unk_3324_31 = INT_ARG(0);
+            enemy->intangibleDuringBomb = INT_ARG(0);
             break;
         case 176:
             g_GameManager.unk_3dbac_7 = 1;
@@ -1205,29 +1205,29 @@ loop:
             enemy->haltedByBomb = 1;
             break;
         case 82:
-            enemy->unk_3350 = FLOAT_ARG(0);
-            enemy->unk_3350 *= enemy->unk_3350;
+            enemy->minShootDistSq = FLOAT_ARG(0);
+            enemy->minShootDistSq *= enemy->minShootDistSq;
             break;
         case 83:
-            enemy->unk_3328_1 = INT_ARG(0);
+            enemy->emitsEffect26 = INT_ARG(0);
             break;
         case 174:
-            if (enemy->unk_53c8 != NULL)
+            if (enemy->attachedEffect != NULL)
             {
-                enemy->unk_53c8->active = 0;
+                enemy->attachedEffect->active = 0;
             }
-            enemy->unk_53c8 = g_EffectManager.SpawnEffect2(INT_ARG(0) + 0x20, &enemy->unk_2d88, 1, 0xffffffff);
-            enemy->unk_53c8->sprite.SetPendingInterrupt(g_Player.IsUnk5Set() ? 2 : 1);
+            enemy->attachedEffect = g_EffectManager.SpawnEffect2(INT_ARG(0) + 0x20, &enemy->absPos, 1, 0xffffffff);
+            enemy->attachedEffect->sprite.SetPendingInterrupt(g_Player.IsUnk5Set() ? 2 : 1);
             if (enemy->index & 1)
             {
-                enemy->unk_53c8->sprite.rotationSpeed.z = -enemy->unk_53c8->sprite.rotationSpeed.z;
+                enemy->attachedEffect->sprite.rotationSpeed.z = -enemy->attachedEffect->sprite.rotationSpeed.z;
             }
             break;
         case 175:
             g_EnemyManager.unk_9dcf0c = INT_ARG(0);
             break;
         case 177:
-            enemy->unk_2e04 = INT_ARG(0);
+            enemy->phaseStartLife = INT_ARG(0);
             break;
         case 179:
             g_Gui.Func439007();
@@ -1251,7 +1251,7 @@ loop:
             }
             break;
         case 182:
-            enemy->unk_3328_8 = INT_ARG(0);
+            enemy->useMainSpriteOffset = INT_ARG(0);
             break;
         case 184:
             g_SpellCard.SetUnk0_11(INT_ARG(0));
@@ -1372,7 +1372,7 @@ Enemy *ScriptSpawnEnemy(Enemy *enemy, EnemyScriptInstr *instr)
 {
     Enemy *spawned = &g_EnemyManager.enemies[0x1e0];
 
-    if (enemy->life > 0 && !enemy->unk_3324_10)
+    if (enemy->life > 0 && !enemy->releasedFromLeader)
     {
         D3DXVECTOR3 pos;
 
@@ -1393,14 +1393,14 @@ Enemy *ScriptSpawnEnemyRel(Enemy *enemy, EnemyScriptInstr *instr)
 {
     Enemy *spawned = &g_EnemyManager.enemies[0x1e0];
 
-    if (enemy->life > 0 && !enemy->unk_3324_10)
+    if (enemy->life > 0 && !enemy->releasedFromLeader)
     {
         D3DXVECTOR3 pos;
 
         pos.x = FLOAT_ARG(1);
         pos.y = FLOAT_ARG(2);
         pos.z = 0.0f;
-        pos += enemy->unk_2d88;
+        pos += enemy->absPos;
         spawned = g_EnemyManager.SpawnWithVars(instr->args[0].i, &pos, INT_ARG(3), INT_ARG(4), INT_ARG(5),
                                                &enemy->currentCtx->vars);
     }
@@ -1542,11 +1542,11 @@ int GetIntOperand(Enemy *enemy, int id)
     case 10068:
         return g_EnemyScripts.callArgs.floats[3];
     case 10042:
-        return enemy->unk_2d88.x;
+        return enemy->absPos.x;
     case 10043:
-        return enemy->unk_2d88.y;
+        return enemy->absPos.y;
     case 10044:
-        return enemy->unk_2d88.z;
+        return enemy->absPos.z;
     case 10045:
         return g_Player.pos.x;
     case 10046:
@@ -1596,12 +1596,12 @@ int GetIntOperand(Enemy *enemy, int id)
     case 10093:
         return enemy->score;
     case 10096:
-        return enemy->Func41f000() ? enemy->Func41fd40() : (enemy->Func41fd20() ? enemy->unk_2da4->Func41fd40() : 0);
+        return enemy->Func41f000() ? enemy->Func41fd40() : (enemy->Func41fd20() ? enemy->leader->Func41fd40() : 0);
     case 10048:
-        return g_Player.AngleFrom(&enemy->unk_2d88);
+        return g_Player.AngleFrom(&enemy->absPos);
     case 10050:
     {
-        D3DXVECTOR3 diff = g_Player.pos - enemy->unk_2d88;
+        D3DXVECTOR3 diff = g_Player.pos - enemy->absPos;
 
         return D3DXVec3Length(&diff);
     }
@@ -1830,11 +1830,11 @@ float GetFloatOperand(Enemy *enemy, float id)
     case 10060:
         return enemy->currentCtx->vars.args.floats[3];
     case 10042:
-        return enemy->unk_2d88.x;
+        return enemy->absPos.x;
     case 10043:
-        return enemy->unk_2d88.y;
+        return enemy->absPos.y;
     case 10044:
-        return enemy->unk_2d88.z;
+        return enemy->absPos.z;
     case 10045:
         return g_Player.pos.x;
     case 10046:
@@ -1872,7 +1872,7 @@ float GetFloatOperand(Enemy *enemy, float id)
     case 10091:
         return enemy->lifeCallbackLife[3];
     case 10048:
-        return g_Player.AngleFrom(&enemy->unk_2d88);
+        return g_Player.AngleFrom(&enemy->absPos);
     case 10069:
         return enemy->angle;
     case 10070:
@@ -1892,10 +1892,10 @@ float GetFloatOperand(Enemy *enemy, float id)
     case 10083:
         return enemy->lastDamage;
     case 10096:
-        return enemy->Func41f000() ? enemy->Func41fd40() : (enemy->Func41fd20() ? enemy->unk_2da4->Func41fd40() : 0);
+        return enemy->Func41f000() ? enemy->Func41fd40() : (enemy->Func41fd20() ? enemy->leader->Func41fd40() : 0);
     case 10050:
     {
-        D3DXVECTOR3 diff = g_Player.pos - enemy->unk_2d88;
+        D3DXVECTOR3 diff = g_Player.pos - enemy->absPos;
 
         return D3DXVec3Length(&diff);
     }
@@ -2017,7 +2017,7 @@ void ScriptMoveAngle(Enemy *enemy, EnemyScriptInstr *instr)
     enemy->moveDelta.x = cosf(angle) * FLOAT_ARG(3) * INT_ARG(0);
     enemy->moveDelta.y = sinf(angle) * FLOAT_ARG(3) * INT_ARG(0);
     enemy->moveDelta.z = 0.0f;
-    enemy->moveStart = enemy->unk_2d88;
+    enemy->moveStart = enemy->absPos;
     enemy->moveTimer = (enemy->moveDuration = INT_ARG(0));
     enemy->moveEasing = INT_ARG(1);
     enemy->moveMode = 2;
@@ -2034,7 +2034,7 @@ void ScriptMovePos(Enemy *enemy, EnemyScriptInstr *instr)
     target.x = FLOAT_ARG(2);
     target.y = FLOAT_ARG(3);
     target.z = 0.0f;
-    enemy->moveDelta = target - enemy->unk_2d88;
+    enemy->moveDelta = target - enemy->absPos;
     enemy->moveStart = enemy->pos;
     enemy->moveTimer = (enemy->moveDuration = INT_ARG(0));
     enemy->moveEasing = INT_ARG(1);
@@ -2260,7 +2260,7 @@ void ScriptSetTurnSprites(Enemy *enemy, EnemyScriptInstr *instr, int still, int 
     enemy->turnRight = right;
     enemy->turnStillFromLeft = stillFromLeft;
     enemy->turnStillFromRight = stillFromRight;
-    enemy->unk_333c = unk;
+    enemy->turnExtra = unk;
     enemy->spriteDirection = 0xff;
 }
 
@@ -2348,7 +2348,7 @@ void ScriptMoveAngleTimed(Enemy *enemy, EnemyScriptInstr *instr, float angle)
     enemy->moveDelta.x = cosf(angle) * FLOAT_ARG(2) * INT_ARG(0);
     enemy->moveDelta.y = sinf(angle) * FLOAT_ARG(2) * INT_ARG(0);
     enemy->moveDelta.z = 0.0f;
-    enemy->moveStart = enemy->unk_2d88;
+    enemy->moveStart = enemy->absPos;
     enemy->moveTimer = (enemy->moveDuration = INT_ARG(0));
     enemy->moveEasing = INT_ARG(1);
     enemy->moveMode = 2;
@@ -2420,18 +2420,18 @@ void ScriptFireBullets(Enemy *enemy, EnemyScriptInstr *instr)
 
     bulletArgs = instr->args;
     bs = &enemy->shooter;
-    if (((bulletArgs[7].i & 0x8000) && !enemy->unk_3324_11) || ((bulletArgs[7].i & 0x10000) && enemy->unk_3324_11))
+    if (((bulletArgs[7].i & 0x8000) && !enemy->isYoukai) || ((bulletArgs[7].i & 0x10000) && enemy->isYoukai))
     {
         return;
     }
-    if (enemy->unk_3350 > 0.0f &&
-        (enemy->unk_2d88.x - g_Player.pos.x) * (enemy->unk_2d88.x - g_Player.pos.x) +
-                (enemy->unk_2d88.y - g_Player.pos.y) * (enemy->unk_2d88.y - g_Player.pos.y) <
-            enemy->unk_3350)
+    if (enemy->minShootDistSq > 0.0f &&
+        (enemy->absPos.x - g_Player.pos.x) * (enemy->absPos.x - g_Player.pos.x) +
+                (enemy->absPos.y - g_Player.pos.y) * (enemy->absPos.y - g_Player.pos.y) <
+            enemy->minShootDistSq)
     {
         return;
     }
-    bs->pos = enemy->unk_2d88 + enemy->shootOffset;
+    bs->pos = enemy->absPos + enemy->shootOffset;
     shortArg = *(short *)&bulletArgs[0];
     bs->sprite = INT_OP(shortArg, 1);
     bs->aimMode = instr->opcode - 96;
@@ -2995,15 +2995,15 @@ void KeepFormation(Enemy *enemy, EnemyScriptInstr *instr)
     float diff;
 
     key = enemy->currentCtx->vars.ints2[2];
-    member = enemy->unk_2da4;
+    member = enemy->leader;
     if (member == NULL)
     {
         return;
     }
     count = 0;
-    while (member->unk_8 != NULL)
+    while (member->nextFollower != NULL)
     {
-        member = member->unk_8;
+        member = member->nextFollower;
         if (member->currentCtx->vars.ints2[2] == key)
         {
             member->currentCtx->vars.ints2[1] = count;
@@ -3051,7 +3051,7 @@ void FlashAndShakeScreen(Enemy *enemy, EnemyScriptInstr *instr)
 
 void BeamHitsPlayer160(Enemy *enemy, EnemyScriptInstr *instr)
 {
-    D3DXVECTOR3 origin(enemy->unk_2d88.x - enemy->currentCtx->vars.floats[0], enemy->unk_2d88.y - enemy->currentCtx->vars.floats[1], 0.0f);
+    D3DXVECTOR3 origin(enemy->absPos.x - enemy->currentCtx->vars.floats[0], enemy->absPos.y - enemy->currentCtx->vars.floats[1], 0.0f);
     D3DXVECTOR3 size(590.0f, 160.0f, 0.0f);
     D3DXVECTOR3 size2(590.0f, 128.0f, 0.0f);
     D3DXVECTOR3 center(size.x / 2.0f + origin.x, origin.y, 0.0f);
@@ -3079,7 +3079,7 @@ void BeamHitsPlayer240(Enemy *enemy, EnemyScriptInstr *instr)
 
 void BeamHitsPlayer288(Enemy *enemy, EnemyScriptInstr *instr)
 {
-    D3DXVECTOR3 origin(enemy->unk_2d88.x - enemy->currentCtx->vars.floats[0], enemy->unk_2d88.y - enemy->currentCtx->vars.floats[1], 0.0f);
+    D3DXVECTOR3 origin(enemy->absPos.x - enemy->currentCtx->vars.floats[0], enemy->absPos.y - enemy->currentCtx->vars.floats[1], 0.0f);
     D3DXVECTOR3 size(590.0f, 288.0f, 0.0f);
     D3DXVECTOR3 size2(590.0f, 224.0f, 0.0f);
     D3DXVECTOR3 center(size.x / 2.0f + origin.x, origin.y, 0.0f);
@@ -3132,10 +3132,10 @@ void ToggleMarkedBullets(Enemy *enemy, EnemyScriptInstr *instr)
     {
         Enemy *follower = enemy;
 
-        while (follower->unk_8 != NULL)
+        while (follower->nextFollower != NULL)
         {
-            follower = follower->unk_8;
-            follower->unk_3328_7 = 1;
+            follower = follower->nextFollower;
+            follower->halted = 1;
         }
         g_Stage.dialogueSprites[0].SetPendingInterrupt(2);
         g_Stage.dialogueSprites[1].SetPendingInterrupt(2);
@@ -3144,10 +3144,10 @@ void ToggleMarkedBullets(Enemy *enemy, EnemyScriptInstr *instr)
     {
         Enemy *follower = enemy;
 
-        while (follower->unk_8 != NULL)
+        while (follower->nextFollower != NULL)
         {
-            follower = follower->unk_8;
-            follower->unk_3328_7 = 0;
+            follower = follower->nextFollower;
+            follower->halted = 0;
         }
         g_Stage.dialogueSprites[0].SetPendingInterrupt(1);
         g_Stage.dialogueSprites[1].SetPendingInterrupt(1);
@@ -3220,7 +3220,7 @@ void MarkFollowersNearBullets(Enemy *enemy, EnemyScriptInstr *instr)
         }
         if (bullet->flags & 0x100000)
         {
-            member = enemy->unk_8;
+            member = enemy->nextFollower;
             while (member != NULL)
             {
                 if (member->currentCtx->vars.ints2[2] == 0)
@@ -3232,7 +3232,7 @@ void MarkFollowersNearBullets(Enemy *enemy, EnemyScriptInstr *instr)
                         member->currentCtx->vars.ints[7] = enemy->currentCtx->vars.ints[7];
                     }
                 }
-                member = member->unk_8;
+                member = member->nextFollower;
             }
         }
     }
