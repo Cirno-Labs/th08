@@ -2455,6 +2455,13 @@ struct SpellCard
     {
         return this->unk_0 & 1;
     }
+    // Zeroes everything and loads (or, while the scene keeps its files,
+    // takes) the dialogue background (slot 0xf), the two faces of the
+    // player's team (slots 0x10 and 0x11, not while a card is practised)
+    // and the boss faces of the stage or the practised card (slots 0x12
+    // and 0x13, kept while restarting); then starts the sprites' scripts
+    // and hides them. Returns 0, or -1 if loading fails (0x414590).
+    int Initialize();
     // Starts spell card `card` named `name` for `enemy`, from an enemy
     // script instruction (StartSpellCard; th07's was the script's own
     // code) (0x4152a0).
@@ -2485,11 +2492,12 @@ struct SpellCard
         return this->unk_0 >> 9 & 1;
     }
 
-    // Ends the spell card's bonus: sets unk_12f6 and sends unk_1b88
-    // interrupt 2. Inline; the copy at 0x416130 is an /Od object's.
+    // Ends the spell card's bonus: sets unk_10f8's pending interrupt
+    // directly and sends unk_1b88 interrupt 2. Inline; the copy at
+    // 0x416130 is an /Od object's.
     void Func416130()
     {
-        this->unk_12f6 = 1;
+        this->unk_10f8.pendingInterrupt = 1;
         this->unk_1b88.SetPendingInterrupt(2);
     }
     // Ends the spell card as a timer callback runs: clears unk_0_2 and
@@ -2547,23 +2555,56 @@ struct SpellCard
         return this->unk_108.AsFrames();
     }
 
-    unsigned char unk_4[0xc];
+    // The boss whose card it is.
+    struct Enemy *enemy;
+    // The card's number.
+    int card;
+    // enemy->index.
+    int enemyIndex;
+    // Time orbs added as the card ends.
     int unk_10;
-    unsigned char unk_14[0xe8];
+    // The card's name (decoded with 0xaa).
+    char name[0x30];
+    unsigned char unk_44[0x30];
+    // Copied from Start's last two arguments while a card is practised.
+    char unk_74[0x40];
+    char unk_b4[0x40];
+    struct Effect *effect;
+    int unk_f8;
+    // The bonus left, and what it loses each second.
     int unk_fc;
-    unsigned char unk_100[0x8];
+    int unk_100;
+    int unk_104;
     Timer unk_108;
-    unsigned char unk_114[0x11e2];
-    short unk_12f6;
-    unsigned char unk_12f8[0x890];
+    Timer unk_114;
+    Sprite unk_120;
+    Sprite unk_3c4;
+    Sprite unk_668;
+    Sprite unk_90c;
+    Sprite unk_bb0;
+    Sprite unk_e54;
+    Sprite unk_10f8;
+    Sprite unk_139c;
+    Sprite unk_1640;
+    Sprite unk_18e4;
     Sprite unk_1b88;
-    unsigned char unk_1e2c[0x7f8];
+    Sprite unk_1e2c;
+    Sprite unk_20d0;
+    Sprite unk_2374;
+    float unk_2618;
+    float unk_261c;
+    D3DCOLOR unk_2620;
     // The face ANMs (slots 0x10 to 0x13) of the dialogue's four portraits.
     // GuiImpl::StartMsgScript swaps the last two for stages 6B and Extra.
     AnmLoaded *faceAnms[4];
     // face_cdbg.anm (slot 0xf).
     AnmLoaded *backgroundAnm;
+    // The bonus the card starts with.
+    int unk_2638;
+    ChainElem *calcChain;
+    ChainElem *drawChain;
 };
+ASSERT_SIZE(SpellCard, 0x2644);
 extern SpellCard g_SpellCard;
 // Sets stats->unk_38 from stats->unk_34 by difficulty (0x440470).
 void Func440470();

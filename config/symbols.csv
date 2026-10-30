@@ -202,7 +202,7 @@ address,size,name,symbol
 0x004143e0,238,Func4143e0,
 0x004144d0,105,GetSpellCardDifficulty,?GetSpellCardDifficulty@@YIHH@Z
 0x00414540,68,IsListedSpellCard,?IsListedSpellCard@@YIHH@Z
-0x00414590,3237,Func414590,
+0x00414590,3237,SpellCard::Initialize,?Initialize@SpellCard@@QAEHXZ
 0x004152a0,2483,SpellCard::Start,?Start@SpellCard@@QAEXHPADHHPAUEnemy@@000@Z
 0x00415c60,21,BulletManager::Func415c60,?Func415c60@BulletManager@@QAEXXZ
 0x00415c80,85,Enemy::ResetRankSpeeds,?ResetRankSpeeds@Enemy@@QAEXXZ
