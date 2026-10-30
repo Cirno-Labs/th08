@@ -435,11 +435,11 @@ address,size,name,symbol
 0x0042f500,115,Bullet::Bullet,??0Bullet@@QAE@XZ
 0x0042f580,64,Laser::Laser,??0Laser@@QAE@XZ
 0x0042f5c0,33,BulletEx::BulletEx,??0BulletEx@@QAE@XZ
-0x0042f5f0,2138,Func42f5f0,
+0x0042f5f0,2138,BulletManager::SpawnBullet,?SpawnBullet@BulletManager@@QAEHPAUBulletShooter@@HHM@Z
 0x0042fe70,33,Func42fe70,
 0x0042fea0,204,Func42fea0,
 0x0042ff70,67,Func42ff70,
-0x0042ffc0,2075,Func42ffc0,
+0x0042ffc0,2075,RunBulletCommands,?RunBulletCommands@@YIXPAUBullet@@@Z
 0x00430830,620,BulletManager::Func430830,?Func430830@BulletManager@@QAEXH@Z
 0x00430aa0,651,BulletManager::ClearAllWithBonus,?ClearAllWithBonus@BulletManager@@QAEHHH@Z
 0x00430d30,214,Func430d30,
@@ -2423,6 +2423,8 @@ address,size,name,symbol
 0x004c7078,,g_EndingFiles,?g_EndingFiles@@3PAPADA
 0x004c70a8,,g_FinalBEndingFiles,?g_FinalBEndingFiles@@3PAPADA
 0x004c70d8,,g_EnemyItemDrops,?g_EnemyItemDrops@@3PAEA
+0x004c70f8,,g_BulletColorOffsets16,?g_BulletColorOffsets16@@3PAHA
+0x004c7138,,g_BulletColorOffsets32,?g_BulletColorOffsets32@@3PAHA
 0x004c7158,,g_StageClearBonuses,?g_StageClearBonuses@@3PAHA
 0x004c7180,,g_MsgColors,?g_MsgColors@@3PAY03KA
 0x004c7240,,g_StageBgms,?g_StageBgms@@3PAUStageBgm@@A

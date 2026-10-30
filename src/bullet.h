@@ -202,6 +202,10 @@ public:
     // Clears the bullets for a bonus of up to `maxBonus`, as th07's
     // (0x430aa0). Returns the total.
     int ClearAllWithBonus(int maxBonus, int toItems);
+    // Spawns bullet (`col`, `row`) of `shooter`'s pattern, aimed at
+    // `aimAngle` by the aiming modes that use it, as th07's. Returns 0,
+    // or 1 if no bullet is free.
+    int SpawnBullet(BulletShooter *shooter, int col, int row, float aimAngle);
     // Fires `shooter`'s pattern, as th07's (0x430e10).
     int FirePattern(BulletShooter *shooter);
 
@@ -235,5 +239,22 @@ public:
 };
 ASSERT_SIZE(BulletManager, 0x6ba578);
 extern BulletManager g_BulletManager;
+
+// Sprite offsets by color, for bullets up to 16 and up to 32 high, as
+// th07's.
+extern int g_BulletColorOffsets16[16];
+extern int g_BulletColorOffsets32[8];
+
+// Shows sprite `src` in `color` on `dst`, by the size of `bullet`'s
+// sprite, unless `dst` shows it already, as th07's. Inline, defined in
+// bullet.cpp.
+void ShowSpawnSprite(Sprite *dst, Sprite *src, Bullet *bullet, int color);
+
+// Starts the bullet's commands from commandIndex on, as th07's: skips
+// those whose flag the bullet lacks, and stops at an empty one, at one
+// whose concurrentFlag is 0 while a behavior is still running, or after
+// starting one behavior in its BulletEx; some commands (sounds, sprite
+// changes, bounds delays, firing) go on to the next.
+void RunBulletCommands(Bullet *bullet);
 // etama.anm (slot 6), which BulletManager's added callback loads.
 extern AnmLoaded *g_EtamaAnm;
