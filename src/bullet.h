@@ -210,6 +210,9 @@ public:
     // `aimAngle` by the aiming modes that use it, as th07's. Returns 0,
     // or 1 if no bullet is free.
     int SpawnBullet(BulletShooter *shooter, int col, int row, float aimAngle);
+    // Turns every bullet of g_BulletManager within `radius` of `pos` into
+    // an item of type 6, as th07's.
+    void ConvertBulletsToItems(D3DXVECTOR3 *pos, float radius);
     // Fires `shooter`'s pattern, as th07's (0x430e10).
     int FirePattern(BulletShooter *shooter);
 

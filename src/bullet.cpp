@@ -515,3 +515,26 @@ int BulletManager::ClearAllWithBonus(int maxBonus, int toItems)
     this->clearAllFrames = 10;
     return totalBonus;
 }
+
+void BulletManager::ConvertBulletsToItems(D3DXVECTOR3 *pos, float radius)
+{
+    Bullet *bullet = g_BulletManager.bullets;
+    int i;
+    D3DXVECTOR3 v;
+
+    radius = radius * radius;
+    for (i = 0; i < 0x600; i++, bullet++)
+    {
+        if (bullet->state == 0 || bullet->state == 5)
+        {
+            continue;
+        }
+        v = bullet->pos - *pos;
+        if (D3DXVec3LengthSq(&v) > radius)
+        {
+            continue;
+        }
+        g_ItemManager.SpawnItem(&bullet->pos, 6, 1);
+        memset(bullet, 0, sizeof(Bullet));
+    }
+}
