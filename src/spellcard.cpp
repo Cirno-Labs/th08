@@ -461,3 +461,37 @@ void SpellCard::StartBombCard(int face, char *name, int sprite)
     g_SoundPlayer.QueueSound(0xe, 0);
     g_App.redrawFrames = 2;
 }
+
+void SpellCard::ShowName(int face, char *name, int sprite)
+{
+    if (face >= 0)
+    {
+        this->faceAnms[2]->StartScript(&this->unk_3c4, 0);
+        this->faceAnms[2]->SetSprite(&this->unk_3c4, face);
+    }
+    this->backgroundAnm->StartScript(&this->unk_668, 1);
+    this->backgroundAnm->SetSprite(&this->unk_668, sprite);
+    this->backgroundAnm->StartScript(&this->unk_bb0, 3);
+    this->backgroundAnm->SetSprite(&this->unk_bb0, sprite);
+    if (g_GameManager.IsPracticingSpellCardIn(0xcd, 0xdd))
+    {
+        g_App.textAnm->StartScript(&this->unk_139c, 6);
+        g_App.textAnm->StartScript(&this->unk_1640, 7);
+        g_App.textAnm->StartScript(&this->unk_18e4, 8);
+        g_SpriteEngine->RenderTextRightAligned(&this->unk_1640, 0xfff0f0, 0, name);
+        g_SpriteEngine->RenderTextRightAligned(&this->unk_18e4, 0xfff0f0, 0, name);
+    }
+    else
+    {
+        g_App.textAnm->StartScript(&this->unk_139c, 5);
+    }
+    g_SpriteEngine->RenderTextRightAligned(&this->unk_139c, 0xfff0f0, 0, name);
+    this->unk_261c = (float)(strlen(name) * 15) / 2.0f + 16.0f;
+    this->unk_1e2c.SetPendingInterrupt(1);
+    if (!this->unk_0_10)
+    {
+        this->unk_2374.SetPendingInterrupt(1);
+    }
+    g_SoundPlayer.QueueSound(0xe, 0);
+    g_App.redrawFrames = 2;
+}
