@@ -718,6 +718,12 @@ void SetFrozen(Enemy *enemy, EnemyScriptInstr *instr);
 // else item 5 (0x425390).
 void DropBombOrLifeItem(Enemy *enemy, EnemyScriptInstr *instr);
 
+// Spawns subroutine argument 0 at (argument 1, argument 2) with life,
+// item and score arguments 3 to 5 and the current context's variables,
+// as th07's spawn instructions; unless the enemy is dead or unk_3324_10
+// is set, which sets spawnFailed. Returns the enemy, or the spare one (0x41f110).
+Enemy *ScriptSpawnEnemy(Enemy *enemy, EnemyScriptInstr *instr);
+
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
 // The enemy scripts by stage, by stage in spell practice (stage + 9),

@@ -242,7 +242,7 @@ address,size,name,symbol
 0x0041f090,24,Func41f090,
 0x0041f0b0,37,Func41f0b0,
 0x0041f0e0,40,Func41f0e0,
-0x0041f110,365,Func41f110,
+0x0041f110,365,ScriptSpawnEnemy,?ScriptSpawnEnemy@@YIPAUEnemy@@PAU1@PAUEnemyScriptInstr@@@Z
 0x0041f280,383,Func41f280,
 0x0041f400,25,Func41f400,
 0x0041f420,1899,GetIntOperand,?GetIntOperand@@YIHPAUEnemy@@H@Z
