@@ -2174,7 +2174,7 @@ struct SoundInfo
 {
     int buffer;
     short volume;
-    short unk_6;
+    short priority;
 };
 // 0x2e sound effects (th07 0x26).
 extern SoundInfo g_SoundInfos[0x2e];

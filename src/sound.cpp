@@ -478,7 +478,7 @@ void SoundPlayer::QueueSound(int idx, int arg)
     int i;
     int unk;
 
-    unk = g_SoundInfos[idx].unk_6;
+    unk = g_SoundInfos[idx].priority;
     for (i = 0; i < 0xc; i++)
     {
         if (this->queue[i] < 0)
@@ -511,7 +511,7 @@ void SoundPlayer::QueueSoundPanned(int idx, float x)
     int pan;
     int unk;
 
-    unk = g_SoundInfos[idx].unk_6;
+    unk = g_SoundInfos[idx].priority;
     pan = (x - 192.0f) * 1000.0f / 192.0f;
     for (i = 0; i < 0xc; i++)
     {
