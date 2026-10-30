@@ -874,3 +874,29 @@ void ScriptCallSub(Enemy *enemy, EnemyScriptInstr *instr, short sub)
         enemy->stackDepth++;
     }
 }
+
+int ScriptReturn(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    int i;
+
+    if (enemy->disableCallStack)
+    {
+        DebugPrint("error : no Stack Ret\r\n");
+    }
+    enemy->stackDepth--;
+    if (enemy->stackDepth < 0)
+    {
+        i = enemy->currentCtx->timedCallActive - 1;
+        if (enemy->unk_3384[i] != NULL)
+        {
+            g_MemoryManager.Free(enemy->unk_3384[i]);
+        }
+        enemy->unk_3384[i] = NULL;
+        enemy->callStack = enemy->savedCtx;
+        enemy->currentCtx = &enemy->ctx;
+        enemy->stackDepth = enemy->savedStackDepth;
+        return 1;
+    }
+    *enemy->currentCtx = enemy->callStack[enemy->stackDepth];
+    return 0;
+}

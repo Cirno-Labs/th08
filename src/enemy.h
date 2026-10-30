@@ -606,6 +606,12 @@ EnemyScriptInstr *ScriptJumpIf(Enemy *enemy, EnemyScriptInstr *instr);
 // saves the current context on callStack (unless disableCallStack),
 // starts `sub` in it with callArgs (0x421bd0).
 void ScriptCallSub(Enemy *enemy, EnemyScriptInstr *instr, short sub);
+// Returns from a subroutine call, as th07's return instruction: takes
+// the caller's context back from callStack and returns 0; past the
+// bottom of the stack, frees buffer timedCallActive - 1 of unk_3384,
+// goes back to ctx, savedCtx and savedStackDepth and returns 1. Prints
+// an error under disableCallStack (0x421cb0).
+int ScriptReturn(Enemy *enemy, EnemyScriptInstr *instr);
 
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
