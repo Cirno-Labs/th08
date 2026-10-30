@@ -256,14 +256,14 @@ struct Enemy
     D3DXVECTOR3 unk_2d88;
     float angle;
     float angularVelocity;
-    float unk_2d9c;
-    float unk_2da0;
+    float orbitAngle;
+    float orbitAngularVelocity;
     // The enemy it shares its damage with (Func42b370).
     Enemy *unk_2da4;
     float speed;
     float acceleration;
-    float unk_2db0;
-    float unk_2db4;
+    float orbitRadius;
+    float orbitRadiusVelocity;
     D3DXVECTOR3 shootOffset;
     // A timed move (moveMode 2), as th07's: by moveDelta from moveStart
     // over moveDuration frames, eased by moveEasing.
@@ -732,6 +732,11 @@ Enemy *ScriptSpawnEnemyRel(Enemy *enemy, EnemyScriptInstr *instr);
 // unless flag 0x8000 or 0x10000 of argument 7 rules out the enemy's side
 // (unk_3324_11) or the player is within sqrt(unk_3350) (0x422720).
 void ScriptFireBullets(Enemy *enemy, EnemyScriptInstr *instr);
+
+// Moves the enemy by its move mode, as th07's RunEnemy did after the
+// instructions: 1 by angle and speed, 2 a timed eased move by moveDelta,
+// 3 around moveStart at orbitRadius (0x422c40).
+void ScriptUpdateMovement(Enemy *enemy);
 
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];

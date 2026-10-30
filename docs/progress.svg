@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">86.47% (965)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">10.30% (115)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">86.56% (966)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">10.22% (114)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="645.93" height="6" x="0" y="0" class="named"/>
-<rect width="24.10" height="6" x="645.93" y="0" class="decompiled"/>
-<rect width="76.98" height="6" x="670.02" y="0" class="todo"/>
+<rect width="646.60" height="6" x="0" y="0" class="named"/>
+<rect width="24.10" height="6" x="646.60" y="0" class="decompiled"/>
+<rect width="76.31" height="6" x="670.69" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -349,7 +349,7 @@
 <rect width="12" height="12" x="420" y="75" class="named"><title>0x00422bb0 AsciiText::SetNearbyLabelInterrupt (42 bytes)</title></rect>
 <rect width="12" height="12" x="435" y="75" class="named"><title>0x00422be0 AsciiText::SetNearbyLabelPos (51 bytes)</title></rect>
 <rect width="12" height="12" x="450" y="75" class="named"><title>0x00422c20 Gui::SetBossPresent (25 bytes)</title></rect>
-<rect width="12" height="12" x="465" y="75" class="todo"><title>0x00422c40 Func422c40 (1122 bytes)</title></rect>
+<rect width="12" height="12" x="465" y="75" class="named"><title>0x00422c40 ScriptUpdateMovement (1122 bytes)</title></rect>
 <rect width="12" height="12" x="480" y="75" class="named"><title>0x004230c0 Gui::SetBossHealth (22 bytes)</title></rect>
 <rect width="12" height="12" x="495" y="75" class="todo"><title>0x004230e0 Func4230e0 (39 bytes)</title></rect>
 <rect width="12" height="12" x="510" y="75" class="todo"><title>0x00423110 Func423110 (26 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">79.79%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">18.63%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">80.04%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">18.38%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="596.06" height="6" x="0" y="0" class="named"/>
-<rect width="11.78" height="6" x="596.06" y="0" class="decompiled"/>
-<rect width="139.16" height="6" x="607.84" y="0" class="todo"/>
+<rect width="597.89" height="6" x="0" y="0" class="named"/>
+<rect width="11.78" height="6" x="597.89" y="0" class="decompiled"/>
+<rect width="137.34" height="6" x="609.66" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -1290,7 +1290,7 @@
 <rect width="22.75" height="23" x="385.32" y="246.37" class="named"><title>0x0042b490 Enemy::CheckLifeCallback (1180 bytes)</title></rect>
 <rect width="22.75" height="23" x="385.32" y="272.37" class="named"><title>0x0046ef8d MainMenu::DrawReplayMenu (1180 bytes)</title></rect>
 <rect width="22.75" height="21.90" x="385.32" y="298.37" class="named"><title>0x00442a80 FormatCapsReport (1130 bytes)</title></rect>
-<rect width="22.75" height="21.72" x="385.32" y="323.28" class="todo"><title>0x00422c40 Func422c40 (1122 bytes)</title></rect>
+<rect width="22.75" height="21.72" x="385.32" y="323.28" class="named"><title>0x00422c40 ScriptUpdateMovement (1122 bytes)</title></rect>
 <rect width="23.11" height="21.13" x="411.08" y="0" class="named"><title>0x00422720 ScriptFireBullets (1110 bytes)</title></rect>
 <rect width="23.04" height="21.13" x="437.18" y="0" class="named"><title>0x0043542b GuiImpl::DrawMsg (1107 bytes)</title></rect>
 <rect width="22.73" height="21.13" x="463.22" y="0" class="named"><title>0x0043396d GuiImpl::StartMsgScript (1094 bytes)</title></rect>

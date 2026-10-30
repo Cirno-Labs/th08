@@ -285,11 +285,11 @@ int GetIntOperand(Enemy *enemy, int id)
     case 10072:
         return enemy->acceleration;
     case 10073:
-        return enemy->unk_2db0;
+        return enemy->orbitRadius;
     case 10077:
-        return enemy->unk_2d9c;
+        return enemy->orbitAngle;
     case 10078:
-        return enemy->unk_2da0;
+        return enemy->orbitAngularVelocity;
     case 10083:
         return enemy->lastDamage;
     case 10084:
@@ -585,11 +585,11 @@ float GetFloatOperand(Enemy *enemy, float id)
     case 10072:
         return enemy->acceleration;
     case 10073:
-        return enemy->unk_2db0;
+        return enemy->orbitRadius;
     case 10077:
-        return enemy->unk_2d9c;
+        return enemy->orbitAngle;
     case 10078:
-        return enemy->unk_2da0;
+        return enemy->orbitAngularVelocity;
     case 10084:
         return enemy->bossIndex;
     case 10083:
@@ -703,11 +703,11 @@ float *ResolveFloatOperand(Enemy *enemy, float *operand, WORD mask, int bit)
     case 10072:
         return &enemy->acceleration;
     case 10073:
-        return &enemy->unk_2db0;
+        return &enemy->orbitRadius;
     case 10077:
-        return &enemy->unk_2d9c;
+        return &enemy->orbitAngle;
     case 10078:
-        return &enemy->unk_2da0;
+        return &enemy->orbitAngularVelocity;
     }
     return operand;
 }
@@ -1175,6 +1175,97 @@ void ScriptFireBullets(Enemy *enemy, EnemyScriptInstr *instr)
     shortArg = ((short *)bulletArgs)[1];
     bs->color = INT_OP(shortArg, 2);
     g_BulletManager.FirePattern(bs);
+}
+
+void ScriptUpdateMovement(Enemy *enemy)
+{
+    switch (enemy->moveMode)
+    {
+    case 3:
+    {
+        // Unused.
+        D3DXVECTOR3 unused;
+        D3DXVECTOR3 polar;
+
+        enemy->orbitAngle = AddNormalizeAngle(enemy->orbitAngle, g_App.gameSpeed * enemy->orbitAngularVelocity);
+        enemy->orbitRadius = g_App.gameSpeed * enemy->orbitRadiusVelocity + enemy->orbitRadius;
+        ((Vector2 *)&polar)->SetPolar(enemy->orbitAngle, enemy->orbitRadius);
+        enemy->velocity.x = polar.x + enemy->moveStart.x - enemy->pos.x;
+        enemy->velocity.y = polar.y + enemy->moveStart.y - enemy->pos.y;
+        enemy->angle = atan2f(enemy->velocity.y, enemy->velocity.x);
+        if (enemy->moveDuration > 0)
+        {
+            enemy->moveTimer--;
+            if (enemy->moveTimer <= 0)
+            {
+                enemy->moveMode = 0;
+            }
+        }
+        break;
+    }
+    case 1:
+        enemy->angle = AddNormalizeAngle(enemy->angle, g_App.gameSpeed * enemy->angularVelocity);
+        enemy->speed = g_App.gameSpeed * enemy->acceleration + enemy->speed;
+        ((Vector2 *)&enemy->velocity)->SetPolar(enemy->angle, enemy->speed);
+        enemy->velocity[2] = 0.0f;
+        if (enemy->moveDuration > 0)
+        {
+            enemy->moveTimer--;
+            if (enemy->moveTimer <= 0)
+            {
+                enemy->moveMode = 0;
+            }
+        }
+        break;
+    case 2:
+    {
+        float t;
+
+        enemy->moveTimer--;
+        t = 1.0f - enemy->moveTimer.AsFloat() / enemy->moveDuration;
+        if (t < 0.0f)
+        {
+            t = 0.0f;
+        }
+        switch (enemy->moveEasing)
+        {
+        case 1:
+            t = t * t;
+            break;
+        case 2:
+            t = t * t * t;
+            break;
+        case 3:
+            t = t * t * t * t;
+            break;
+        case 4:
+            t = (t = 1.0f - t) * t;
+            t = 1.0f - t;
+            break;
+        case 5:
+            t = (t = 1.0f - t) * t * t;
+            t = 1.0f - t;
+            break;
+        case 6:
+            t = (t = 1.0f - t) * t * t * t;
+            t = 1.0f - t;
+            break;
+        }
+        enemy->velocity = enemy->moveStart + enemy->moveDelta * t - enemy->pos;
+        if (enemy->mirrored)
+        {
+            enemy->velocity.x = -enemy->velocity.x;
+        }
+        enemy->angle = atan2f(enemy->velocity.y, enemy->velocity.x);
+        if (enemy->moveTimer <= 0)
+        {
+            enemy->moveMode = 0;
+            enemy->pos = enemy->moveStart + enemy->moveDelta;
+            enemy->velocity = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+        }
+        break;
+    }
+    }
 }
 
 void ScriptSetUnknown4e3d28(Enemy *enemy, EnemyScriptInstr *instr)
