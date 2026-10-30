@@ -226,7 +226,7 @@ address,size,name,symbol
 0x00418050,157,SpellCard::DeletedCallback,?DeletedCallback@SpellCard@@SIHPAU1@@Z
 0x004180f0,30,SpellCard::RemoveChain,?RemoveChain@SpellCard@@SIXXZ
 0x00418110,23,Timer::operator--,??FTimer@@QAEXH@Z
-0x00418130,67,Func418130,
+0x00418130,67,GameManager::IsPracticingSpellCard,?IsPracticingSpellCard@GameManager@@QAEHH@Z
 0x00418180,98,Func418180,
 0x004181f0,44,GameManager::AddScore,?AddScore@GameManager@@QAEXH@Z
 0x00418220,180,GameManager::AddTimeOrbs,?AddTimeOrbs@GameManager@@QAEXH@Z

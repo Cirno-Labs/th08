@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">94.89% (1059)</tspan> · <tspan class="decompiled">3.94% (44)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">1.16% (13)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">94.98% (1060)</tspan> · <tspan class="decompiled">3.94% (44)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">1.08% (12)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="708.85" height="6" x="0" y="0" class="named"/>
-<rect width="29.45" height="6" x="708.85" y="0" class="decompiled"/>
-<rect width="8.70" height="6" x="738.30" y="0" class="todo"/>
+<rect width="709.52" height="6" x="0" y="0" class="named"/>
+<rect width="29.45" height="6" x="709.52" y="0" class="decompiled"/>
+<rect width="8.03" height="6" x="738.97" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -295,7 +295,7 @@
 <rect width="12" height="12" x="360" y="60" class="named"><title>0x00418050 SpellCard::DeletedCallback (157 bytes)</title></rect>
 <rect width="12" height="12" x="375" y="60" class="named"><title>0x004180f0 SpellCard::RemoveChain (30 bytes)</title></rect>
 <rect width="12" height="12" x="390" y="60" class="named"><title>0x00418110 Timer::operator-- (23 bytes)</title></rect>
-<rect width="12" height="12" x="405" y="60" class="todo"><title>0x00418130 Func418130 (67 bytes)</title></rect>
+<rect width="12" height="12" x="405" y="60" class="named"><title>0x00418130 GameManager::IsPracticingSpellCard (67 bytes)</title></rect>
 <rect width="12" height="12" x="420" y="60" class="todo"><title>0x00418180 Func418180 (98 bytes)</title></rect>
 <rect width="12" height="12" x="435" y="60" class="named"><title>0x004181f0 GameManager::AddScore (44 bytes)</title></rect>
 <rect width="12" height="12" x="450" y="60" class="named"><title>0x00418220 GameManager::AddTimeOrbs (180 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">97.59%</tspan> · <tspan class="decompiled">1.68%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">0.73%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">97.61%</tspan> · <tspan class="decompiled">1.68%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">0.72%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="729" height="6" x="0" y="0" class="named"/>
-<rect width="12.53" height="6" x="729" y="0" class="decompiled"/>
-<rect width="5.47" height="6" x="741.53" y="0" class="todo"/>
+<rect width="729.11" height="6" x="0" y="0" class="named"/>
+<rect width="12.53" height="6" x="729.11" y="0" class="decompiled"/>
+<rect width="5.36" height="6" x="741.64" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="named"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -1945,7 +1945,7 @@
 <rect width="3.29" height="3.13" x="700.20" y="260.05" class="named"><title>0x004246e0 FlashAndShakeScreen (68 bytes)</title></rect>
 <rect width="3.29" height="3.13" x="706.49" y="260.05" class="named"><title>0x00473920 File::Read (68 bytes)</title></rect>
 <rect width="3.20" height="3.13" x="712.79" y="260.05" class="named"><title>0x00410a70 D3DXVECTOR3::operator+= (67 bytes)</title></rect>
-<rect width="3.20" height="3.13" x="718.99" y="260.05" class="todo"><title>0x00418130 Func418130 (67 bytes)</title></rect>
+<rect width="3.20" height="3.13" x="718.99" y="260.05" class="named"><title>0x00418130 GameManager::IsPracticingSpellCard (67 bytes)</title></rect>
 <rect width="3.20" height="3.13" x="725.19" y="260.05" class="named"><title>0x0041f040 SpellCard::SetEffectPos (67 bytes)</title></rect>
 <rect width="3.20" height="3.13" x="731.39" y="260.05" class="named"><title>0x0042ff70 D3DXVECTOR3::operator-= (67 bytes)</title></rect>
 <rect width="3.20" height="3.13" x="737.60" y="260.05" class="decompiled"><title>0x00439050 Gui::Func439050 (67 bytes)</title></rect>
