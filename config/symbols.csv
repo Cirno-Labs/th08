@@ -448,7 +448,7 @@ address,size,name,symbol
 0x004311a0,152,BulletManager::RegisterChain,?RegisterChain@BulletManager@@SIHPAD@Z
 0x00431240,3862,BulletManager::OnUpdate,?OnUpdate@BulletManager@@SIHPAV1@@Z
 0x00432170,55,Bullet::FreeBullet,?FreeBullet@Bullet@@QAEXXZ
-0x004321b0,89,Func4321b0,
+0x004321b0,89,BulletManager::ClearDrawLists,?ClearDrawLists@BulletManager@@QAEXXZ
 0x00432210,153,SlowBulletStart,?SlowBulletStart@@YIXPAUBullet@@@Z
 0x004322b0,213,AccelerateAlongVelocity,?AccelerateAlongVelocity@@YIXPAUBullet@@@Z
 0x00432390,197,TurnAndAccelerate,?TurnAndAccelerate@@YIXPAUBullet@@@Z
