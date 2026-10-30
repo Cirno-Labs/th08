@@ -411,7 +411,7 @@ address,size,name,symbol
 0x0042deb0,252,Enemy::Move,?Move@Enemy@@QAEXXZ
 0x0042dfb0,20,EnemyScripts::GetTimelineCount,?GetTimelineCount@EnemyScripts@@QAEHXZ
 0x0042dfd0,25,EnemyScripts::GetTimeline,?GetTimeline@EnemyScripts@@QAEPAUEnemyTimelineEntry@@H@Z
-0x0042dff0,22,Func42dff0,
+0x0042dff0,22,SpellCard::Func42dff0,?Func42dff0@SpellCard@@QAEHXZ
 0x0042e010,257,MoveEnemyEffects,?MoveEnemyEffects@@YIXPAUEnemy@@@Z
 0x0042e120,23,EnemyManager::OnDraw,?OnDraw@EnemyManager@@SIHPAV1@@Z
 0x0042e140,2504,EnemyManager::DrawEnemies,?DrawEnemies@EnemyManager@@SIHPAV1@HH@Z
