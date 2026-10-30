@@ -19,6 +19,7 @@ FormatInfo g_FormatInfos[7] = {
     {26, 16, 0x0000f000, 0x00000f00, 0x000000f0, 0x0000000f},
     {-1, 0, 0x00000000, 0x00000000, 0x00000000, 0x00000000},
 };
+IDirect3DSurface8 *g_TextSurface;
 #endif // TH08_EXE
 
 GdiSurface::GdiSurface()

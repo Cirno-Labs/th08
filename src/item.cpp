@@ -26,6 +26,10 @@ int g_ExtendPointItems[6] = {
 int g_ExtendPointItemsExtra[4] = {
     200, 666, 9999, 1,
 };
+ItemManager g_ItemManager;
+// Constructed, but nothing uses them.
+ChainElem g_UnusedItemChain;
+ChainElem g_UnusedItemChain2;
 #endif // TH08_EXE
 
 ItemManager::ItemManager()

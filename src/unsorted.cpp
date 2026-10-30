@@ -20,6 +20,15 @@ CryptParams g_CryptParams[8] = {
 BYTE g_CryptMagic[4] = {
     0x85, 0xa4, 0xda, 0x00,
 };
+JOYCAPSA g_JoyCaps;
+WORD g_ShotHeldFrames;
+Rng g_Rng;
+WORD g_Buttons;
+WORD g_GameButtons;
+WORD g_PrevButtons;
+WORD g_PrevGameButtons;
+WORD g_ButtonRepeat;
+WORD g_ButtonFrames;
 #endif // TH08_EXE
 
 WORD InitJoystick()
@@ -185,6 +194,9 @@ int SetButtonFromJoystick(WORD *buttons, short button, WORD bit, DWORD joyButton
 
 BYTE *GetPadButtons()
 {
+#ifdef TH08_EXE
+    static BYTE g_PadButtons[0x80];
+#endif // TH08_EXE
     JOYINFOEX joyInfo;
     DWORD mask;
     DWORD button;
@@ -702,12 +714,21 @@ void Rotate2D(D3DXVECTOR3 *out, D3DXVECTOR3 *in, float angle)
     out->y = c * in->y + s * in->x;
 }
 
-MemoryManager::MemoryManager()
+// The constructed globals come after the functions: the original's
+// copies of the constructors and destructors inline here follow them.
+#ifdef TH08_EXE
+Chain g_Chain;
+MemoryManager g_MemoryManager;
+DatArchive g_Archive;
+Log g_Log;
+#endif // TH08_EXE
+
+EXE_INLINE MemoryManager::MemoryManager()
 {
     this->freeBlocksOnExit = 0;
 }
 
-MemoryManager::~MemoryManager()
+EXE_INLINE MemoryManager::~MemoryManager()
 {
     int i;
 
@@ -723,11 +744,15 @@ MemoryManager::~MemoryManager()
     }
 }
 
-Log::Log()
+EXE_INLINE Log::Log()
 {
     this->cursor = this->buffer;
     *this->cursor = '\0';
     this->hasError = 0;
+}
+
+EXE_INLINE Log::~Log()
+{
 }
 
 int App::GetShootFocuses()

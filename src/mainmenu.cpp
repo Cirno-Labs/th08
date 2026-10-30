@@ -150,6 +150,8 @@ int g_CharacterMenuSprites[12][4] = {
     {125, 114, -1, 113}, {126, 113, -1, 114}, {127, 115, -1, 116},
     {128, 116, -1, 115}, {129, 118, -1, 117}, {130, 117, -1, 118},
 };
+char g_FullWidthNumber[0x40];
+MainMenu *g_MainMenu;
 #endif // TH08_EXE
 
 int MainMenu::OnUpdate(MainMenu *menu)

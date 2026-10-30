@@ -59,6 +59,7 @@ char *g_SoundPaths[36] = {
     "se_slash.wav",
     "se_item01.wav",
 };
+SoundPlayer g_SoundPlayer;
 #endif // TH08_EXE
 
 // The original allocates in an inline from global.h, whose __FILE__ names

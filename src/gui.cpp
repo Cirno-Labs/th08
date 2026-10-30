@@ -62,6 +62,9 @@ char *g_LoadingAnmPaths[12] = {
     "loading03h.anm",
     "loading03a.anm",
 };
+ChainElem g_GuiCalcChain;
+ChainElem g_GuiDrawChain;
+Gui g_Gui;
 #endif // TH08_EXE
 
 int Gui::OnUpdate(Gui *gui)

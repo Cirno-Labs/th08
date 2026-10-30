@@ -155,6 +155,7 @@ int *g_StageSpellCards[10] = {
 int g_StageSpellCardCounts[10] = {
     13, 19, 22, 23, 23, 19, 28, 44, 14, 17,
 };
+SpellCard g_SpellCard;
 #endif // TH08_EXE
 
 EXE_INLINE SpellCard::SpellCard()

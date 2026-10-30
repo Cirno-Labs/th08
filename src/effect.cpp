@@ -79,6 +79,9 @@ EffectInfo g_EffectInfos[66] = {
     {77, EffectUpdateRingAt, EffectInitRing},
     {98, EffectUpdateRingFull, EffectInitRing2},
 };
+EffectManager g_EffectManager;
+ChainElem g_EffectCalcChain;
+ChainElem g_EffectDrawChain;
 #endif // TH08_EXE
 
 void EffectManager::Reset()

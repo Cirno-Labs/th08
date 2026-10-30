@@ -22,6 +22,7 @@ char *g_ReplayDifficultyNames[6] = {
     "Extra",
     "LastWord",
 };
+ReplayManager *g_ReplayManager;
 #endif // TH08_EXE
 
 // The original allocates in an inline from global.h, whose __FILE__ names

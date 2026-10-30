@@ -7,6 +7,14 @@
 #include "sprite.h"
 #include "unsorted.h"
 
+// The game's data, as the original defines it here. The DLL build uses
+// the original's copies instead.
+#ifdef TH08_EXE
+int g_ScreenEffectHoldFrames;
+// Constructed, but nothing uses it.
+ScreenEffect g_UnusedScreenEffect;
+#endif // TH08_EXE
+
 void ClearScreen(D3DCOLOR color)
 {
     g_App.d3dDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, color, 1.0f, 0);

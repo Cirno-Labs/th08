@@ -17,6 +17,10 @@ BYTE g_EnemyItemDrops[0x20] = {
     0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0,
     1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0,
 };
+ChainElem g_EnemyManagerCalcChain;
+ChainElem g_EnemyManagerDrawChain;
+ChainElem g_EnemyManagerDrawChain2;
+EnemyManager g_EnemyManager;
 #endif // TH08_EXE
 
 void EnemyManager::Initialize()

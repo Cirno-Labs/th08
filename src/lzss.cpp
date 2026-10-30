@@ -2,6 +2,13 @@
 
 #include "lzss.h"
 
+// The game's data, as the original defines it here. The DLL build uses
+// the original's copies instead.
+#ifdef TH08_EXE
+LzssNode g_LzssTree[0x2001];
+BYTE g_LzssWindow[0x2000];
+#endif // TH08_EXE
+
 // The next input byte, or -1 past the end.
 #define GET_BYTE(c) \
     { \

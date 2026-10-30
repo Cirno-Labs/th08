@@ -43,6 +43,9 @@ const int g_BulletTypeScripts[21][5] = {
     {114, 24, 24, 24, 17},
     {115, 24, 24, 24, 17},
 };
+ChainElem g_BulletCalcChain;
+ChainElem g_BulletDrawChain;
+BulletManager g_BulletManager;
 #endif // TH08_EXE
 
 void BulletManager::Reset()

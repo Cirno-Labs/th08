@@ -59,6 +59,9 @@ EnemyScriptFunc g_EnemyScriptFuncs[32] = {
     SetScreenEffectHoldFrames,
     DropBombOrLifeItem,
 };
+// Constructed, but nothing uses it.
+ChainElem g_UnusedEnemyScriptsChain;
+EnemyScripts g_EnemyScripts;
 #endif // TH08_EXE
 
 // Argument `n` of `instr`, or the value of the variable it names, as

@@ -17,6 +17,13 @@
 #include "sprite.h"
 #include "unsorted.h"
 
+// The game's data, as the original defines it here. The DLL build uses
+// the original's copies instead.
+#ifdef TH08_EXE
+HANDLE g_AppMutex;
+GameWindow g_GameWindow;
+#endif // TH08_EXE
+
 EXE_INLINE GameWindow::GameWindow()
 {
     memset(this, 0, sizeof(GameWindow));

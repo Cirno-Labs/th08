@@ -25,6 +25,10 @@ D3DFORMAT g_TextureFormats[6] = {
 int g_TextureFormatSizes[7] = {
     4, 4, 2, 2, 3, 2, 1869363770,
 };
+SpriteEngine *g_SpriteEngine;
+VertexTex1Xyzrwh g_Quad[4];
+VertexTex1DiffuseXyzrwh g_DiffuseQuad[4];
+VertexTex1DiffuseXyz g_DiffuseQuadXyz[4];
 #endif // TH08_EXE
 
 // The original allocates in an inline from global.h, whose __FILE__ names
@@ -1961,6 +1965,10 @@ SpriteEngine::SpriteEngine()
     this->zWriteDisabled = 0;
     this->pendingTexCopyTexture = -1;
     this->pendingCopyTexture = -1;
+}
+
+SpriteEngine::~SpriteEngine()
+{
 }
 
 void SpriteEngine::CreateQuad()

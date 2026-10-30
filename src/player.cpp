@@ -142,6 +142,7 @@ ShotHitFunc g_ShotHitFuncs[3] = {
     UpdateBombShot,
     BurstHitEffect,
 };
+Player g_Player;
 #endif // TH08_EXE
 
 Player::Player()

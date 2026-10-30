@@ -187,6 +187,9 @@ RankSettings g_Ranks[6] = {
     {10, 8, 16}, {10, 8, 16}, {8, 8, 12},
     {8, 8, 12}, {16, 15, 16}, {16, 15, 16},
 };
+GameManager g_GameManager;
+ChainElem g_GameManagerCalcChain;
+ChainElem g_GameManagerDrawChain;
 #endif // TH08_EXE
 
 BOOL GameManager::IsInPlayArea(float x, float y, float width, float height)

@@ -23,6 +23,14 @@
 #include "sprite.h"
 #include "unsorted.h"
 
+// The game's data, as the original defines it here. The DLL build uses
+// the original's copies instead.
+#ifdef TH08_EXE
+ScreenEffect *g_LoadingScreenEffect;
+App g_App;
+Sprite g_LoadingSprites[3];
+#endif // TH08_EXE
+
 int App::OnUpdate(App *arg)
 {
     if ((arg->stateFlags >> 7 & 1) && !arg->HasSubThread())
