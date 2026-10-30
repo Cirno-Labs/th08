@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">90.14% (1006)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">6.63% (74)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">90.23% (1007)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">6.54% (73)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="673.37" height="6" x="0" y="0" class="named"/>
-<rect width="24.10" height="6" x="673.37" y="0" class="decompiled"/>
-<rect width="49.53" height="6" x="697.47" y="0" class="todo"/>
+<rect width="674.04" height="6" x="0" y="0" class="named"/>
+<rect width="24.10" height="6" x="674.04" y="0" class="decompiled"/>
+<rect width="48.86" height="6" x="698.14" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -519,7 +519,7 @@
 <rect width="12" height="12" x="720" y="120" class="named"><title>0x00432170 Bullet::FreeBullet (55 bytes)</title></rect>
 <rect width="12" height="12" x="735" y="120" class="named"><title>0x004321b0 BulletManager::ClearDrawLists (89 bytes)</title></rect>
 <rect width="12" height="12" x="0" y="135" class="named"><title>0x00432210 SlowBulletStart (153 bytes)</title></rect>
-<rect width="12" height="12" x="15" y="135" class="todo"><title>0x004322b0 AccelerateAlongVelocity (213 bytes)</title></rect>
+<rect width="12" height="12" x="15" y="135" class="named"><title>0x004322b0 AccelerateAlongVelocity (213 bytes)</title></rect>
 <rect width="12" height="12" x="30" y="135" class="todo"><title>0x00432390 TurnAndAccelerate (197 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="135" class="todo"><title>0x00432460 StopTurnAndRestart (313 bytes)</title></rect>
 <rect width="12" height="12" x="60" y="135" class="todo"><title>0x004325a0 StopTurnToAngle (306 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">84.18%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">14.25%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">84.22%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">14.20%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="628.80" height="6" x="0" y="0" class="named"/>
-<rect width="11.78" height="6" x="628.80" y="0" class="decompiled"/>
-<rect width="106.42" height="6" x="640.58" y="0" class="todo"/>
+<rect width="629.15" height="6" x="0" y="0" class="named"/>
+<rect width="11.78" height="6" x="629.15" y="0" class="decompiled"/>
+<rect width="106.07" height="6" x="640.93" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -1632,7 +1632,7 @@
 <rect width="7.79" height="8.25" x="569.79" y="292.05" class="named"><title>0x00430d30 BulletManager::ConvertBulletsToItems (214 bytes)</title></rect>
 <rect width="7.79" height="8.20" x="569.79" y="303.30" class="named"><title>0x004250d0 SpawnEnemiesAtMarkedBullets (213 bytes)</title></rect>
 <rect width="7.79" height="8.20" x="569.79" y="314.50" class="named"><title>0x004251b0 StartSlowdown (213 bytes)</title></rect>
-<rect width="7.79" height="8.20" x="569.79" y="325.70" class="todo"><title>0x004322b0 AccelerateAlongVelocity (213 bytes)</title></rect>
+<rect width="7.79" height="8.20" x="569.79" y="325.70" class="named"><title>0x004322b0 AccelerateAlongVelocity (213 bytes)</title></rect>
 <rect width="7.79" height="8.10" x="569.79" y="336.90" class="named"><title>0x00462f10 SpriteEngine::AddQuadToBatch (211 bytes)</title></rect>
 <rect width="7.78" height="8.06" x="580.58" y="177.72" class="named"><title>0x0045bc90 ScreenEffect::OnUpdateFlash (210 bytes)</title></rect>
 <rect width="7.78" height="8.06" x="591.36" y="177.72" class="named"><title>0x00473a60 File::ReadAll (210 bytes)</title></rect>

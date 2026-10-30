@@ -1021,3 +1021,20 @@ void SlowBulletStart(Bullet *bullet)
     }
     bullet->ex[0].timer++;
 }
+
+void AccelerateAlongVelocity(Bullet *bullet)
+{
+    if (bullet->ex[1].timer >= bullet->ex[1].duration)
+    {
+        bullet->activeFlags &= ~0x10;
+    }
+    else
+    {
+        bullet->velocity += bullet->ex[1].accel * g_App.gameSpeed;
+        if (fabsf(bullet->velocity.x) > 0.0001f || fabsf(bullet->velocity.y) > 0.0001f)
+        {
+            bullet->angle = atan2f(bullet->velocity.y, bullet->velocity.x);
+        }
+    }
+    bullet->ex[1].timer++;
+}
