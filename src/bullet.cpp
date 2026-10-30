@@ -227,3 +227,147 @@ int BulletManager::SpawnBullet(BulletShooter *shooter, int col, int row, float a
     }
     return 0;
 }
+
+void RunBulletCommands(Bullet *bullet)
+{
+    BulletCommand *cmd;
+    // Whether the bullet ends after firing (flag 0x1000000).
+    int stop;
+
+    for (;;)
+    {
+        if (bullet->commandIndex >= 18)
+        {
+            return;
+        }
+        cmd = &bullet->commands[bullet->commandIndex];
+        if (cmd->flag == 0)
+        {
+            return;
+        }
+        if (cmd->concurrentFlag == 0 && bullet->activeFlags != 0)
+        {
+            return;
+        }
+        if ((bullet->flags & cmd->flag) == 0)
+        {
+            bullet->commandIndex++;
+            continue;
+        }
+        switch (cmd->flag)
+        {
+        case 1:
+            bullet->activeFlags |= 1;
+            bullet->ex[0].timer = 0;
+            bullet->ex[0].accel.z = 0.0f;
+            break;
+        case 0x10:
+            bullet->activeFlags |= 0x10;
+            bullet->ex[1].turnSpeed = cmd->arg0;
+            bullet->ex[1].turnAngle = cmd->arg1 > -990.0f ? cmd->arg1 : bullet->angle;
+            bullet->ex[1].timer = 0;
+            bullet->ex[1].duration = cmd->frames;
+            ((Vector2 *)&bullet->ex[1].accel)->SetPolar(bullet->ex[1].turnAngle, g_App.gameSpeed * bullet->ex[1].turnSpeed);
+            if (bullet->commandIndex != 0 && bullet->sound >= 0)
+            {
+                g_SoundPlayer.QueueSound(bullet->sound, 0);
+            }
+            break;
+        case 0x20:
+            bullet->activeFlags |= 0x20;
+            bullet->ex[2].turnSpeed = cmd->arg0;
+            bullet->ex[2].turnAngle = cmd->arg1;
+            bullet->ex[2].timer = 0;
+            bullet->ex[2].duration = cmd->frames;
+            if (bullet->commandIndex != 0 && bullet->sound >= 0)
+            {
+                g_SoundPlayer.QueueSound(bullet->sound, 0);
+            }
+            break;
+        case 0x40:
+        case 0x80:
+        case 0x100:
+            bullet->activeFlags |= cmd->flag;
+            bullet->ex[3].turnAngle = cmd->arg0;
+            bullet->ex[3].turnSpeed = cmd->arg1 > -999.0f ? cmd->arg1 : bullet->speed;
+            bullet->ex[3].timer = 0;
+            bullet->ex[3].duration = cmd->frames;
+            bullet->ex[3].maxTurns = cmd->maxTurns;
+            bullet->ex[3].turnCount = 0;
+            break;
+        case 0x400:
+        case 0x800:
+            bullet->activeFlags |= cmd->flag;
+            if (cmd->arg0 >= 0.0f)
+            {
+                bullet->ex[4].turnSpeed = cmd->arg0;
+            }
+            else
+            {
+                bullet->ex[4].turnSpeed = bullet->speed;
+            }
+            bullet->ex[4].maxTurns = cmd->frames;
+            bullet->ex[4].duration = 0;
+            break;
+        case 0x400000:
+            bullet->activeFlags |= cmd->flag;
+            bullet->ex[6].timer = cmd->frames;
+            break;
+        case 0x800000:
+            bullet->activeFlags |= cmd->flag;
+            bullet->ex[6].timer = cmd->frames;
+            break;
+        case 0x20000:
+            bullet->activeFlags |= cmd->flag;
+            bullet->ex[5].timer = cmd->frames;
+            break;
+        case 0x2000:
+            bullet->boundsCheckDelay = cmd->frames;
+            bullet->commandIndex++;
+            continue;
+        case 0x4000:
+            bullet->sprites = g_BulletManager.typeSprites[cmd->frames];
+            g_BulletManager.etamaAnm->SetSprite(&bullet->sprites.sprite0, bullet->sprites.sprite0.spriteIndex + cmd->maxTurns);
+            bullet->commandIndex++;
+            continue;
+        case 0x40000:
+            bullet->state = 5;
+            break;
+        case 0x80000:
+            g_SoundPlayer.QueueSoundPanned(cmd->frames, bullet->pos.x);
+            bullet->commandIndex++;
+            continue;
+        case 0x1000000:
+        {
+            BulletShooter shooter;
+
+            shooter.pos = bullet->pos;
+            stop = cmd->frames & 0x80000000;
+            shooter.aimMode = ((DWORD)cmd->frames & 0x7f000000) >> 24;
+            shooter.sprite = ((DWORD)cmd->frames & 0xff0000) >> 16;
+            shooter.color = ((DWORD)cmd->frames & 0xff00) >> 8;
+            shooter.commandIndex = cmd->frames & 0xff;
+            shooter.count1 = cmd->maxTurns;
+            shooter.speed1 = cmd->arg0;
+            shooter.speed2 = cmd->arg1;
+            cmd++;
+            bullet->commandIndex++;
+            shooter.count2 = cmd->frames;
+            shooter.flags = cmd->maxTurns;
+            shooter.angle1 = cmd->arg0;
+            shooter.angle2 = cmd->arg1;
+            memcpy(shooter.commands, bullet->commands, sizeof(shooter.commands));
+            g_BulletManager.FirePattern(&shooter);
+            bullet->commandIndex++;
+            if (stop)
+            {
+                bullet->state = 5;
+                break;
+            }
+            continue;
+        }
+        }
+        bullet->commandIndex++;
+        return;
+    }
+}
