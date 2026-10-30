@@ -669,6 +669,11 @@ void SpawnTwinEffects41(Enemy *enemy, EnemyScriptInstr *instr);
 // stage's dialogueSpriteCount to 2 (0x424130).
 void EndTwinEffects(Enemy *enemy, EnemyScriptInstr *instr);
 
+// Script function 6: starts effect 0x3a in reserved slots 9 and 10
+// at the enemy, slot 10's sprite on etama script 0x65, and has the
+// stage draw them through DrawTwinEffects (0x424170).
+void SpawnTwinEffects3A(Enemy *enemy, EnemyScriptInstr *instr);
+
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
 // The enemy scripts by stage, by stage in spell practice (stage + 9),

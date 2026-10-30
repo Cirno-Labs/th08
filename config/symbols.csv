@@ -296,7 +296,7 @@ address,size,name,symbol
 0x00423db0,104,SpawnTwinEffects41,?SpawnTwinEffects41@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00423e20,784,Func423e20,
 0x00424130,64,EndTwinEffects,?EndTwinEffects@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
-0x00424170,104,Func424170,
+0x00424170,104,SpawnTwinEffects3A,?SpawnTwinEffects3A@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x004241e0,784,Func4241e0,
 0x004244f0,494,Func4244f0,
 0x004246e0,68,Func4246e0,

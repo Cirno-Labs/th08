@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">84.50% (943)</tspan> · <tspan class="decompiled">3.14% (35)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">12.37% (138)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">84.59% (944)</tspan> · <tspan class="decompiled">3.14% (35)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">12.28% (137)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="631.20" height="6" x="0" y="0" class="named"/>
-<rect width="23.43" height="6" x="631.20" y="0" class="decompiled"/>
-<rect width="92.37" height="6" x="654.63" y="0" class="todo"/>
+<rect width="631.87" height="6" x="0" y="0" class="named"/>
+<rect width="23.43" height="6" x="631.87" y="0" class="decompiled"/>
+<rect width="91.70" height="6" x="655.30" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -365,7 +365,7 @@
 <rect width="12" height="12" x="660" y="75" class="named"><title>0x00423db0 SpawnTwinEffects41 (104 bytes)</title></rect>
 <rect width="12" height="12" x="675" y="75" class="todo"><title>0x00423e20 Func423e20 (784 bytes)</title></rect>
 <rect width="12" height="12" x="690" y="75" class="named"><title>0x00424130 EndTwinEffects (64 bytes)</title></rect>
-<rect width="12" height="12" x="705" y="75" class="todo"><title>0x00424170 Func424170 (104 bytes)</title></rect>
+<rect width="12" height="12" x="705" y="75" class="named"><title>0x00424170 SpawnTwinEffects3A (104 bytes)</title></rect>
 <rect width="12" height="12" x="720" y="75" class="todo"><title>0x004241e0 Func4241e0 (784 bytes)</title></rect>
 <rect width="12" height="12" x="735" y="75" class="todo"><title>0x004244f0 Func4244f0 (494 bytes)</title></rect>
 <rect width="12" height="12" x="0" y="90" class="todo"><title>0x004246e0 Func4246e0 (68 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">79.17%</tspan> · <tspan class="decompiled">1.57%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">19.26%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">79.19%</tspan> · <tspan class="decompiled">1.57%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">19.24%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="591.41" height="6" x="0" y="0" class="named"/>
-<rect width="11.74" height="6" x="591.41" y="0" class="decompiled"/>
-<rect width="143.86" height="6" x="603.14" y="0" class="todo"/>
+<rect width="591.57" height="6" x="0" y="0" class="named"/>
+<rect width="11.74" height="6" x="591.57" y="0" class="decompiled"/>
+<rect width="143.69" height="6" x="603.31" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -1824,7 +1824,7 @@
 <rect width="4.60" height="4.84" x="634.36" y="240.82" class="named"><title>0x0043e880 FileExists (105 bytes)</title></rect>
 <rect width="4.60" height="4.77" x="634.36" y="248.66" class="named"><title>0x00423530 SpawnTwinEffects38 (104 bytes)</title></rect>
 <rect width="4.60" height="4.77" x="634.36" y="256.43" class="named"><title>0x00423db0 SpawnTwinEffects41 (104 bytes)</title></rect>
-<rect width="4.60" height="4.77" x="634.36" y="264.20" class="todo"><title>0x00424170 Func424170 (104 bytes)</title></rect>
+<rect width="4.60" height="4.77" x="634.36" y="264.20" class="named"><title>0x00424170 SpawnTwinEffects3A (104 bytes)</title></rect>
 <rect width="4.60" height="4.77" x="634.36" y="271.97" class="named"><title>0x00443af0 SpriteEngine::ReleaseSurfaces (104 bytes)</title></rect>
 <rect width="4.60" height="4.77" x="634.36" y="279.73" class="named"><title>0x00449331 MusicScreen::MusicScreen (104 bytes)</title></rect>
 <rect width="4.60" height="4.77" x="634.36" y="287.50" class="named"><title>0x0044e2e0 GameManager::AddBombsUsed (104 bytes)</title></rect>
