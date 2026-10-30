@@ -934,18 +934,10 @@ ASSERT_SIZE(BgmFormat, 0x34);
 class SoundPlayer
 {
 public:
-    // Zeroes everything; no sound is loaded. An out-of-line copy at the
-    // end of the sound object (0x45e320); th07's was a plain method.
-    SoundPlayer()
-    {
-        int i;
-
-        memset(this, 0, sizeof(*this));
-        for (i = 0; i < 0x80; i++)
-        {
-            this->queuedSound[i] = -1;
-        }
-    }
+    // Zeroes everything; no sound is loaded. Only g_SoundPlayer's static
+    // initializer calls it; its copy is among the inline copies at the
+    // end of the sound object (0x45e320). th07's was a plain method.
+    SoundPlayer();
     // Creates the DirectSound objects for `hwnd`. Returns 0, or -1 on
     // failure.
     int Initialize(HWND hwnd);

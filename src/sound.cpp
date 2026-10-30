@@ -598,3 +598,14 @@ void SoundPlayer::QueueSoundCommand(int type, int arg, char *path)
     }
     DebugPrint("Sound Que Add %d\r\n", type);
 }
+
+EXE_INLINE SoundPlayer::SoundPlayer()
+{
+    int i;
+
+    memset(this, 0, sizeof(*this));
+    for (i = 0; i < 0x80; i++)
+    {
+        this->queuedSound[i] = -1;
+    }
+}
