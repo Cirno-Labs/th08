@@ -1496,6 +1496,197 @@ int MainMenu::UpdateGameStartMenu()
     return 1;
 }
 
+int MainMenu::UpdateState16()
+{
+    int charCount;
+
+    switch (this->subState)
+    {
+    case 0:
+        if (this->inputLockout == 0)
+        {
+            int i;
+            DWORD j;
+
+            g_SpriteEngine->SendInterruptToLoadedSprites(this->sprites, this->spriteCount, 0x12);
+            this->sprites[0x8b].SetPendingInterrupt(0x1b);
+            this->sprites[0x8a].SetPendingInterrupt(0x1b);
+            if (this->prevState != 17 && g_SpriteEngine->LoadSurface(0, "title/select00.png") != 0)
+            {
+                return 0;
+            }
+            this->cursor = g_GameManager.character;
+            charCount = g_GameManager.AllShotsHaveExtraOpen() ? 12 : 4;
+            while (!g_GameManager.Func43c23b(this->cursor))
+            {
+                this->cursor++;
+                if (this->cursor >= charCount)
+                {
+                    this->cursor -= charCount;
+                }
+            }
+            g_GameManager.character = this->cursor;
+            this->unk_c2a0[0] = 0.0f;
+            this->unk_c2a0[1] = 0.0f;
+            this->unk_c2a0[2] = 0.0f;
+            this->unk_c2a0[3] = 0.0f;
+            this->cursor = g_GameManager.stage;
+            for (i = 0x6f; i <= 0x82; i++)
+            {
+                this->sprites[i].flags &= ~2;
+                this->sprites[i].SetPendingInterrupt(8);
+                for (j = 1; j < 3; j++)
+                {
+                    if (g_CharacterMenuSprites[g_GameManager.character][j] == i)
+                    {
+                        this->sprites[i].flags |= 2;
+                        this->sprites[i].SetPendingInterrupt(9);
+                    }
+                }
+                if (g_CharacterMenuSprites[g_GameManager.character][j] == i)
+                {
+                    this->sprites[i].flags |= 2;
+                    this->sprites[i].SetPendingInterrupt(0x17);
+                }
+            }
+            this->resultTextAnm->InitSprite(&this->unkSprites[0], 2);
+            this->unkSprites[0].pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+            this->unkSprites[0].flags |= 0x1800;
+            this->unkSprites[0].fontWidth = 15;
+            this->unkSprites[0].fontHeight = 15;
+            this->unkSprites[0].alpha = 0xff;
+            this->unkSprites[0].colorRgb[2] = 0xff;
+            this->unkSprites[0].colorRgb[1] = 0xff;
+            this->unkSprites[0].colorRgb[0] = 0xff;
+            g_SpriteEngine->RenderText(&this->unkSprites[0], 0xffffff, 0,
+                                       "ステージ    取得/挑戦可能/総数（()内は全キャラ合計）");
+            this->resultTextAnm->InitSprite(&this->unkSprites[1], 3);
+            this->unkSprites[1].pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+            this->unkSprites[1].flags |= 0x1800;
+            this->unkSprites[1].fontWidth = 15;
+            this->unkSprites[1].fontHeight = 15;
+            this->unkSprites[1].alpha = 0xff;
+            this->unkSprites[1].colorRgb[2] = 0xff;
+            this->unkSprites[1].colorRgb[1] = 0xff;
+            this->unkSprites[1].colorRgb[0] = 0xff;
+            g_SpriteEngine->RenderText(&this->unkSprites[1], 0xffffff, 0, "取得率　（キャラ別／総合）");
+            // The flags and color go to unkSprites[1] again (original).
+            this->titleAnm->InitSprite(&this->unkSprites[2], 0x90);
+            this->unkSprites[1].flags |= 0x1800;
+            this->unkSprites[1].alpha = 0xff;
+            this->unkSprites[1].colorRgb[2] = 0xff;
+            this->unkSprites[1].colorRgb[1] = 0xff;
+            this->unkSprites[1].colorRgb[0] = 0xff;
+            this->subState = 0;
+            this->stateFrames = 0;
+            g_GameManager.unk_3dbac |= 1;
+            g_GameManager.unk_3dbac |= 0x4000;
+        }
+        if (this->returningFromPractice != 0)
+        {
+            this->cursor = 0;
+            this->SetState(17);
+            if (g_GameManager.unk_3dbb0 >= 0xcd)
+            {
+                g_GameManager.stage = 9;
+            }
+            return 2;
+        }
+        if (this->inputLockout == 8)
+        {
+            this->subState = 1;
+        }
+        break;
+    case 1:
+    {
+        int numChars;
+        int stageIndex;
+        int dir;
+
+        this->MoveMenuCursor(10);
+        stageIndex = this->cursor;
+        this->cursor = g_GameManager.character;
+        numChars = g_GameManager.AllShotsHaveExtraOpen() ? 12 : 4;
+        dir = this->MoveMenuCursorLR(numChars);
+        if (dir != 0)
+        {
+            int i;
+            DWORD j;
+
+            while (!g_GameManager.Func43c23b(this->cursor))
+            {
+                this->cursor += dir;
+                if (this->cursor >= numChars)
+                {
+                    this->cursor -= numChars;
+                }
+                if (this->cursor < 0)
+                {
+                    this->cursor += numChars;
+                }
+            }
+            g_GameManager.character = this->cursor;
+            for (i = 0x6f; i <= 0x82; i++)
+            {
+                this->sprites[i].flags &= ~2;
+                this->sprites[i].SetPendingInterrupt(8);
+                for (j = 1; j < 3; j++)
+                {
+                    if (g_CharacterMenuSprites[this->cursor][j] == i)
+                    {
+                        this->sprites[i].flags |= 2;
+                        this->sprites[i].SetPendingInterrupt(9);
+                    }
+                }
+                if (g_CharacterMenuSprites[this->cursor][j] == i)
+                {
+                    this->sprites[i].flags |= 2;
+                    this->sprites[i].SetPendingInterrupt(0x17);
+                }
+            }
+            this->inputLockout = 0;
+        }
+        this->cursor = stageIndex;
+        if (WAS_PRESSED(0x1001))
+        {
+            g_SoundPlayer.QueueSound(10, 0);
+            g_GameManager.stage = this->cursor;
+            g_SoundPlayer.QueueSound(10, 0);
+            g_SoundPlayer.PlayQueuedSounds();
+            this->cursor = 0;
+            this->SetState(17);
+            return 2;
+        }
+        if (WAS_PRESSED(0xa))
+        {
+            g_SoundPlayer.QueueSound(11, 0);
+            g_SoundPlayer.PlayQueuedSounds();
+            this->subState = 3;
+            this->stateFrames = 0;
+            g_GameManager.stage = this->cursor;
+            g_SpriteEngine->SendInterruptToLoadedSprites(this->sprites, this->spriteCount, 6);
+            break;
+        }
+        break;
+    }
+    case 3:
+        if (this->stateFrames >= 20)
+        {
+            int state = this->state;
+
+            this->SetState(0);
+            this->cursor = 2;
+            g_GameManager.unk_3dbac &= ~1;
+            return 1;
+        }
+        break;
+    }
+    this->subMenuIdleFrames++;
+    this->stateFrames++;
+    this->inputLockout++;
+    return 1;
+}
+
 int MainMenu::ShowButtonDigits(Sprite *vm, short value)
 {
     if (value < 0)

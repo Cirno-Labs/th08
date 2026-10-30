@@ -132,7 +132,7 @@ public:
     int subMenuIdleFrames;
     int unk_c298;
     int unk_c29c;
-    int unk_c2a0[4];
+    float unk_c2a0[4];
     // title01.anm (slot 0x14) and resulttext.anm (slot 0x16), loaded by
     // the loading thread.
     AnmLoaded *titleAnm;
