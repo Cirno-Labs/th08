@@ -515,6 +515,9 @@ int GetIntOperand(Enemy *enemy, int id);
 // `operand` itself if it names none or if `bit` is not negative and
 // clear in `mask` (0x41fe10).
 int *ResolveOperand(Enemy *enemy, int *operand, WORD mask, int bit);
+// GetIntOperand for float operands, as th07's, with a random angle for
+// 10082 (0x420120).
+float GetFloatOperand(Enemy *enemy, float id);
 
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
