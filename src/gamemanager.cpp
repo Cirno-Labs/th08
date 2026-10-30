@@ -444,11 +444,11 @@ int GameManager::AddedCallback(GameManager *mgr)
 {
     if (g_App.scene != 3 && g_App.scene != 11 && g_App.scene != 12)
     {
-        g_App.unk_164 = 1;
+        g_App.loadsResources = 1;
     }
     else
     {
-        g_App.unk_164 = 0;
+        g_App.loadsResources = 0;
     }
     g_GameManager.loadingThreadState = 1;
     if (g_App.prevScene == 1)
@@ -492,7 +492,7 @@ void GameManager::LoadingThread(GameManager *arg)
     mgr->shotIndex = mgr->character + mgr->shotType;
     g_App.gameSpeed = 1.0f;
     mgr->stateFlags &= ~0x400;
-    if (g_App.unk_164 != 0 || mgr->stateFlags >> 14 & 1 || g_GameManager.stateFlags & 1 || g_GameManager.difficulty >= 4)
+    if (g_App.loadsResources != 0 || mgr->stateFlags >> 14 & 1 || g_GameManager.stateFlags & 1 || g_GameManager.difficulty >= 4)
     {
         if (mgr->savedConfig != NULL)
         {
@@ -783,7 +783,7 @@ void GameManager::LoadingThread(GameManager *arg)
             break;
         }
     }
-    if (g_App.unk_16c == 0)
+    if (g_App.isRestarting == 0)
     {
         if (g_GameManager.stateFlags >> 14 & 1)
         {
@@ -813,7 +813,7 @@ void GameManager::LoadingThread(GameManager *arg)
     }
     mgr->isInContinueMenu = 0;
     mgr->stateFlags |= 4;
-    if (g_App.unk_16c != 0 && g_GameManager.stateFlags >> 14 & 1 && !Func439916(g_GameManager.practiceSpellCard))
+    if (g_App.isRestarting != 0 && g_GameManager.stateFlags >> 14 & 1 && !Func439916(g_GameManager.practiceSpellCard))
     {
         mgr->pendingMusicStart = 2;
     }
@@ -859,7 +859,7 @@ void GameManager::LoadingThread(GameManager *arg)
     g_App.subThreadRunning = 0;
     g_App.redrawFrames = 60;
     mgr->stateFlags &= ~0x200;
-    g_App.unk_16c = 0;
+    g_App.isRestarting = 0;
     g_Unknown18b8a2c = 2;
     return;
 
@@ -869,7 +869,7 @@ fail:
     g_App.subThread = NULL;
     g_App.closeSubThread = 0;
     g_App.subThreadRunning = 0;
-    g_App.unk_16c = 0;
+    g_App.isRestarting = 0;
     g_Unknown18b8a2c = 2;
 }
 
@@ -986,13 +986,13 @@ int GameManager::DeletedCallback(GameManager *mgr)
     g_Unknown4e3d28 = 0;
     if (g_App.scene != 3 && g_App.scene != 11 && g_App.scene != 12)
     {
-        g_App.unk_168 = 1;
+        g_App.freesResources = 1;
     }
     else
     {
-        g_App.unk_168 = 0;
+        g_App.freesResources = 0;
     }
-    if (!(g_GameManager.stateFlags >> 14 & 1) || g_App.unk_168 != 0)
+    if (!(g_GameManager.stateFlags >> 14 & 1) || g_App.freesResources != 0)
     {
         g_App.StopMusic();
         if (g_App.musicMode == 2 && g_App.midi != NULL)

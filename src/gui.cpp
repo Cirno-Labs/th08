@@ -1798,17 +1798,17 @@ void Gui::Func438f58()
 
 int Func438fe9()
 {
-    return g_App.unk_164;
+    return g_App.loadsResources;
 }
 
 int Func438ff3()
 {
-    return g_App.unk_168;
+    return g_App.freesResources;
 }
 
 int Func438ffd()
 {
-    return g_App.unk_16c;
+    return g_App.isRestarting;
 }
 
 int Gui::Func439007()

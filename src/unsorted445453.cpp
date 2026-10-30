@@ -45,15 +45,15 @@ int App::OnUpdate(App *arg)
     {
         return 4;
     }
-    if (arg->unk_294 != 0)
+    if (arg->loadingThreadState != 0)
     {
-        if (arg->unk_294 == 2)
+        if (arg->loadingThreadState == 2)
         {
             return 4;
         }
         if (arg->subThreadRunning == 0)
         {
-            arg->unk_294 = 0;
+            arg->loadingThreadState = 0;
         }
         else
         {
@@ -182,7 +182,7 @@ int App::OnUpdate(App *arg)
                 break;
             case 11:
                 g_App.scene = 3;
-                g_App.unk_16c = 1;
+                g_App.isRestarting = 1;
                 RemoveGameManagerChain();
                 if (RegisterGameManagerChain() != 0)
                 {
@@ -346,7 +346,7 @@ int App::OnDrawLoading(App *arg)
         g_SpriteEngine->Draw(&g_LoadingSprites[i]);
         g_LoadingSprites[i].pos -= g_LoadingSprites[i].posOffset;
     }
-    if (arg->unk_294 != 0)
+    if (arg->loadingThreadState != 0)
     {
         return 1;
     }
@@ -449,7 +449,7 @@ int App::AddedCallback(App *arg)
     position.y = 440.0f;
     position.z = 0.0f;
     g_App.StartLoadingSprites(&position);
-    g_App.unk_294 = 1;
+    g_App.loadingThreadState = 1;
     g_App.StartSubThread((LPTHREAD_START_ROUTINE)App::LoadingThread, arg);
     return 0;
 }
@@ -706,7 +706,7 @@ void App::LoadingThread(App *arg)
     g_App.subThread = NULL;
     g_App.closeSubThread = 0;
     g_App.subThreadRunning = 0;
-    g_App.unk_294 = 0;
+    g_App.loadingThreadState = 0;
     g_App.stateFlags &= ~0x100;
     return;
 
@@ -714,7 +714,7 @@ fail:
     g_App.subThread = NULL;
     g_App.closeSubThread = 0;
     g_App.subThreadRunning = 0;
-    g_App.unk_294 = 2;
+    g_App.loadingThreadState = 2;
     g_App.stateFlags |= 0x80;
 }
 

@@ -294,7 +294,7 @@ public:
     // default.
     char bgmVolume;
     char seVolume;
-    unsigned char unk_141[0xf];
+    unsigned char pad_141[0xf];
     // th07's flags, 4 bytes further on.
     GameConfigFlags flags;
     // Counts OnUpdate's calls.
@@ -308,11 +308,11 @@ public:
     int prevScene;
     // Cleared by GameManager::AddedCallback in scenes 3, 11 and 12, else
     // set; unk_168 the same by DeletedCallback.
-    int unk_164;
-    int unk_168;
+    int loadsResources;
+    int freesResources;
     // Set by OnUpdate when a game restarts from scene 11.
-    int unk_16c;
-    unsigned char unk_170[0x4];
+    int isRestarting;
+    unsigned char pad_170[0x4];
     // How many more frames to draw in full, after the device was reset.
     int redrawFrames;
     // DrawFps shows the frame rate while it is 0; AddedCallback sets it
@@ -336,7 +336,7 @@ public:
     // The frame rate rounded, as DrawFps shows it with bit 3 of
     // g_GameManager.unk_3dbac.
     short roundedFps;
-    unsigned char unk_19a[0x2];
+    unsigned char pad_19a[0x2];
     // text.anm, loaded by LoadingThread.
     AnmLoaded *textAnm;
     // nowloading.anm, with g_LoadingSprites' scripts (AddedCallback).
@@ -364,7 +364,7 @@ public:
     // and this is.
     int subThreadRunning;
     // OnUpdate quits when it is 2.
-    int unk_294;
+    int loadingThreadState;
     // Locked by EnterCriticalSection: 2 around file access, 3 around the
     // log.
     CRITICAL_SECTION criticalSections[4];
@@ -2114,7 +2114,7 @@ extern ChainElem g_GuiDrawChain;
 // loaded ANMs. Inline; the copy at 0x40b900 is an /Od object's.
 inline int IsRestarting()
 {
-    return g_App.unk_16c;
+    return g_App.isRestarting;
 }
 
 // App::unk_164 and unk_168: whether the scene's objects load their
@@ -2122,11 +2122,11 @@ inline int IsRestarting()
 // the copies at 0x4338b0 and 0x4338c0 are an /Od object's.
 inline int IsLoadingResources()
 {
-    return g_App.unk_164;
+    return g_App.loadsResources;
 }
 inline int IsFreeingResources()
 {
-    return g_App.unk_168;
+    return g_App.freesResources;
 }
 
 // Whether the scene's objects keep the files they loaded
