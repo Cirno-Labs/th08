@@ -617,7 +617,7 @@ public:
 
     EnemyScriptHeader *file;
     void **subs;
-    unsigned char unk_8[0x160];
+    unsigned char unused8[0x160];
     // The arguments of the next subroutine call, as th07's shared
     // variables: ints 10061 to 10064 and floats 10065 to 10068.
     // ScriptCallSub copies them into the called context.
