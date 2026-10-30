@@ -372,7 +372,7 @@ public:
     // AnmLoaded::StartScriptAtOrigin.
     BYTE fontWidth;
     BYTE fontHeight;
-    unsigned char unk_29a[0xa];
+    unsigned char pad_29a[0xa];
 };
 ASSERT_SIZE(Sprite, 0x2a4);
 
