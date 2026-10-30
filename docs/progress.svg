@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">84.59% (944)</tspan> · <tspan class="decompiled">3.14% (35)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">12.28% (137)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">84.68% (945)</tspan> · <tspan class="decompiled">3.14% (35)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">12.19% (136)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="631.87" height="6" x="0" y="0" class="named"/>
-<rect width="23.43" height="6" x="631.87" y="0" class="decompiled"/>
-<rect width="91.70" height="6" x="655.30" y="0" class="todo"/>
+<rect width="632.54" height="6" x="0" y="0" class="named"/>
+<rect width="23.43" height="6" x="632.54" y="0" class="decompiled"/>
+<rect width="91.03" height="6" x="655.97" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -389,7 +389,7 @@
 <rect width="12" height="12" x="270" y="90" class="todo"><title>0x004251b0 Func4251b0 (213 bytes)</title></rect>
 <rect width="12" height="12" x="285" y="90" class="todo"><title>0x00425290 Func425290 (255 bytes)</title></rect>
 <rect width="12" height="12" x="300" y="90" class="todo"><title>0x00425390 Func425390 (74 bytes)</title></rect>
-<rect width="12" height="12" x="315" y="90" class="todo"><title>0x004253e0 Func4253e0 (34 bytes)</title></rect>
+<rect width="12" height="12" x="315" y="90" class="named"><title>0x004253e0 EffectManager::GetReservedEffect (34 bytes)</title></rect>
 <rect width="12" height="12" x="330" y="90" class="named"><title>0x00425410 EffectManager::Reset (25 bytes)</title></rect>
 <rect width="12" height="12" x="345" y="90" class="named"><title>0x00425430 EffectManager::SpawnEffect (529 bytes)</title></rect>
 <rect width="12" height="12" x="360" y="90" class="named"><title>0x00425650 EffectManager::SpawnEffectWithVelocity (533 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">79.19%</tspan> · <tspan class="decompiled">1.57%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">19.24%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">79.20%</tspan> · <tspan class="decompiled">1.57%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">19.23%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="591.57" height="6" x="0" y="0" class="named"/>
-<rect width="11.74" height="6" x="591.57" y="0" class="decompiled"/>
-<rect width="143.69" height="6" x="603.31" y="0" class="todo"/>
+<rect width="591.63" height="6" x="0" y="0" class="named"/>
+<rect width="11.74" height="6" x="591.63" y="0" class="decompiled"/>
+<rect width="143.63" height="6" x="603.37" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -2117,7 +2117,7 @@
 <rect width="1.32" height="1.59" x="695.08" y="338.81" class="named"><title>0x00443990 Log::Reset (35 bytes)</title></rect>
 <rect width="1.32" height="1.59" x="695.08" y="343.41" class="named"><title>0x0044e0f0 Sprite::SetBlendModeAdd (35 bytes)</title></rect>
 <rect width="1.47" height="1.44" x="699.41" y="297.47" class="named"><title>0x0044e370 PlayerBombHitbox::Reset (35 bytes)</title></rect>
-<rect width="1.47" height="1.32" x="699.41" y="301.92" class="todo"><title>0x004253e0 Func4253e0 (34 bytes)</title></rect>
+<rect width="1.47" height="1.32" x="699.41" y="301.92" class="named"><title>0x004253e0 EffectManager::GetReservedEffect (34 bytes)</title></rect>
 <rect width="1.47" height="1.32" x="699.41" y="306.23" class="named"><title>0x0045c160 ScreenEffect::Finish (34 bytes)</title></rect>
 <rect width="1.47" height="1.19" x="699.41" y="310.55" class="named"><title>0x00406e20 GameManager::SetLives (33 bytes)</title></rect>
 <rect width="1.47" height="1.19" x="699.41" y="314.74" class="named"><title>0x0040baf0 SpriteEngine::DrawAndFlush (33 bytes)</title></rect>
