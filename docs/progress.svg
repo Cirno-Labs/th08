@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">87.72% (979)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">9.05% (101)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">87.81% (980)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">8.96% (100)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="655.30" height="6" x="0" y="0" class="named"/>
-<rect width="24.10" height="6" x="655.30" y="0" class="decompiled"/>
-<rect width="67.60" height="6" x="679.40" y="0" class="todo"/>
+<rect width="655.97" height="6" x="0" y="0" class="named"/>
+<rect width="24.10" height="6" x="655.97" y="0" class="decompiled"/>
+<rect width="66.94" height="6" x="680.06" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -366,7 +366,7 @@
 <rect width="12" height="12" x="675" y="75" class="named"><title>0x00423e20 BounceBulletsAtZones2 (784 bytes)</title></rect>
 <rect width="12" height="12" x="690" y="75" class="named"><title>0x00424130 EndTwinEffects (64 bytes)</title></rect>
 <rect width="12" height="12" x="705" y="75" class="named"><title>0x00424170 SpawnTwinEffects3A (104 bytes)</title></rect>
-<rect width="12" height="12" x="720" y="75" class="todo"><title>0x004241e0 Func4241e0 (784 bytes)</title></rect>
+<rect width="12" height="12" x="720" y="75" class="named"><title>0x004241e0 BounceBulletsAtZones3 (784 bytes)</title></rect>
 <rect width="12" height="12" x="735" y="75" class="named"><title>0x004244f0 KeepFormation (494 bytes)</title></rect>
 <rect width="12" height="12" x="0" y="90" class="named"><title>0x004246e0 FlashAndShakeScreen (68 bytes)</title></rect>
 <rect width="12" height="12" x="15" y="90" class="named"><title>0x00424730 BeamHitsPlayer160 (228 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">81.18%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">17.24%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">81.35%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">17.07%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="606.40" height="6" x="0" y="0" class="named"/>
-<rect width="11.78" height="6" x="606.40" y="0" class="decompiled"/>
-<rect width="128.82" height="6" x="618.18" y="0" class="todo"/>
+<rect width="607.68" height="6" x="0" y="0" class="named"/>
+<rect width="11.78" height="6" x="607.68" y="0" class="decompiled"/>
+<rect width="127.54" height="6" x="619.46" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -1329,7 +1329,7 @@
 <rect width="18.05" height="18.19" x="582.78" y="24.13" class="named"><title>0x004640e0 SpriteEngine::ProjectSpriteWithCallback (786 bytes)</title></rect>
 <rect width="18" height="18.19" x="603.84" y="24.13" class="named"><title>0x00423a60 BounceBulletsAtZones (784 bytes)</title></rect>
 <rect width="18" height="18.19" x="624.83" y="24.13" class="named"><title>0x00423e20 BounceBulletsAtZones2 (784 bytes)</title></rect>
-<rect width="18" height="18.19" x="645.83" y="24.13" class="todo"><title>0x004241e0 Func4241e0 (784 bytes)</title></rect>
+<rect width="18" height="18.19" x="645.83" y="24.13" class="named"><title>0x004241e0 BounceBulletsAtZones3 (784 bytes)</title></rect>
 <rect width="17.87" height="18.19" x="666.83" y="24.13" class="named"><title>0x00463d60 SpriteEngine::ProjectSprite3D (779 bytes)</title></rect>
 <rect width="17.84" height="18.19" x="687.70" y="24.13" class="named"><title>0x00427bf0 EffectManager::OnUpdate (778 bytes)</title></rect>
 <rect width="17.81" height="18.19" x="708.54" y="24.13" class="named"><title>0x00451f90 ReplayManager::RegisterChain (777 bytes)</title></rect>

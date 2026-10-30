@@ -1544,6 +1544,69 @@ void SpawnTwinEffects3A(Enemy *enemy, EnemyScriptInstr *instr)
     g_Stage.unk_625c = DrawTwinEffects;
 }
 
+void BounceBulletsAtZones3(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    Bullet *bullet = g_BulletManager.bullets;
+    D3DXVECTOR3 posPrev;
+    int i;
+    int prevZone;
+    int zone;
+
+    for (i = 0; i < 0x600; i++, bullet++)
+    {
+        if (bullet->state == 0)
+        {
+            continue;
+        }
+        if (bullet->unk_dc4 != 0)
+        {
+            bullet->unk_dc4--;
+            continue;
+        }
+        posPrev = bullet->pos - bullet->velocity;
+        if (bullet->pos.x > 56.23549f && bullet->pos.x < 327.76453f && bullet->pos.y > 88.23549f && bullet->pos.y < 359.76453f)
+        {
+            zone = 0;
+        }
+        else if (bullet->pos.x > -32.0f && bullet->pos.x < 416.0f && bullet->pos.y > 0.0f && bullet->pos.y < 448.0f)
+        {
+            zone = 1;
+        }
+        else
+        {
+            zone = 2;
+        }
+        if (posPrev.x > 56.23549f && posPrev.x < 327.76453f && posPrev.y > 88.23549f && posPrev.y < 359.76453f)
+        {
+            prevZone = 0;
+        }
+        else if (posPrev.x > -31.100006f && posPrev.x < 416.0f && posPrev.y > 0.0f && posPrev.y < 448.0f)
+        {
+            prevZone = 1;
+        }
+        else
+        {
+            prevZone = 2;
+        }
+        if (zone != prevZone)
+        {
+            bullet->unk_dc4 = 2;
+            bullet->velocity *= -1.0f;
+            if (zone == 0 || prevZone == 0)
+            {
+                bullet->pos.x = (bullet->pos.x - 192.0f) * 224.0f / 135.76451f + 192.0f;
+                bullet->pos.y = (bullet->pos.y - 224.0f) * 224.0f / 135.76451f + 224.0f;
+            }
+            else
+            {
+                bullet->pos.x = (bullet->pos.x - 192.0f) * 135.76451f / 224.0f + 192.0f;
+                bullet->pos.y = (bullet->pos.y - 224.0f) * 135.76451f / 224.0f + 224.0f;
+            }
+            bullet->angle = AddNormalizeAngle(bullet->angle, 3.1415927f);
+        }
+    }
+}
+
 void KeepFormation(Enemy *enemy, EnemyScriptInstr *instr)
 {
     int count;
