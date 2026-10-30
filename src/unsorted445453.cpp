@@ -532,7 +532,7 @@ int MeasureRefreshRate()
             ticks = 0;
         }
     }
-    if (!g_App.flags.unk14)
+    if (!g_App.flags.noVsync)
     {
         sum = 0.0f;
         if (validCount >= 2)
@@ -1324,7 +1324,7 @@ int App::LoadConfig(char *path)
     {
         LogPrintf(&g_Log, "パッド、キーボードの入力に DirectInput を使用しません\r\n");
     }
-    if (this->flags.unk12)
+    if (this->flags.redrawHudEveryFrame)
     {
         LogPrintf(&g_Log, "画面周りを毎回描画します\r\n");
     }
@@ -1332,12 +1332,12 @@ int App::LoadConfig(char *path)
     {
         LogPrintf(&g_Log, "ＢＧＭをメモリに読み込みます\r\n");
     }
-    if (this->flags.unk14)
+    if (this->flags.noVsync)
     {
         LogPrintf(&g_Log, "垂直同期を取りません\r\n");
         g_App.presentImmediate = 1;
     }
-    if (this->flags.unk15)
+    if (this->flags.noTextRenderDetect)
     {
         LogPrintf(&g_Log, "文字描画の環境を自動検出しません\r\n");
     }

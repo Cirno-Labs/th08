@@ -1040,7 +1040,7 @@ void Gui::DrawHud()
         g_SpriteEngine->DrawUnrotated(vm);
     }
     vm = &this->impl->sprites[13];
-    if (g_App.GetUnk12() || vm->scriptPos != NULL || g_App.redrawFrames != 0)
+    if (g_App.GetRedrawHudEveryFrame() || vm->scriptPos != NULL || g_App.redrawFrames != 0)
     {
         for (y = 0.0f; y < 464.0f; y += 32.0f)
         {
@@ -1705,9 +1705,9 @@ int App::GetNoColorBlending()
     return this->flags.noColorBlending;
 }
 
-int App::GetUnk12()
+int App::GetRedrawHudEveryFrame()
 {
-    return this->flags.unk12;
+    return this->flags.redrawHudEveryFrame;
 }
 
 void Gui::DrawPopups()

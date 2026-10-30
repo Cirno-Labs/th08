@@ -566,7 +566,7 @@
 <rect width="12" height="12" x="675" y="135" class="named"><title>0x00438a29 App::GetNoFrameItems (24 bytes)</title></rect>
 <rect width="12" height="12" x="690" y="135" class="named"><title>0x00438a41 App::GetNoDepthTest (24 bytes)</title></rect>
 <rect width="12" height="12" x="705" y="135" class="named"><title>0x00438a59 App::GetNoColorBlending (24 bytes)</title></rect>
-<rect width="12" height="12" x="720" y="135" class="named"><title>0x00438a71 App::GetUnk12 (24 bytes)</title></rect>
+<rect width="12" height="12" x="720" y="135" class="named"><title>0x00438a71 App::GetRedrawHudEveryFrame (24 bytes)</title></rect>
 <rect width="12" height="12" x="735" y="135" class="named"><title>0x00438a89 Gui::DrawPopups (1231 bytes)</title></rect>
 <rect width="12" height="12" x="0" y="150" class="decompiled"><title>0x00438f58 Gui::Func438f58 (145 bytes)</title></rect>
 <rect width="12" height="12" x="15" y="150" class="decompiled"><title>0x00438fe9 Func438fe9 (10 bytes)</title></rect>
@@ -2214,7 +2214,7 @@
 <rect width="0.89" height="0.50" x="718.88" y="313.38" class="named"><title>0x00438a29 App::GetNoFrameItems (24 bytes)</title></rect>
 <rect width="0.89" height="0.50" x="722.77" y="313.38" class="named"><title>0x00438a41 App::GetNoDepthTest (24 bytes)</title></rect>
 <rect width="0.89" height="0.50" x="726.66" y="313.38" class="named"><title>0x00438a59 App::GetNoColorBlending (24 bytes)</title></rect>
-<rect width="0.89" height="0.50" x="730.55" y="313.38" class="named"><title>0x00438a71 App::GetUnk12 (24 bytes)</title></rect>
+<rect width="0.89" height="0.50" x="730.55" y="313.38" class="named"><title>0x00438a71 App::GetRedrawHudEveryFrame (24 bytes)</title></rect>
 <rect width="0.89" height="0.50" x="734.44" y="313.38" class="decompiled"><title>0x004390d6 Gui::Func4390d6 (24 bytes)</title></rect>
 <rect width="0.89" height="0.50" x="738.33" y="313.38" class="named"><title>0x004396f8 Sprite::IsStopped (24 bytes)</title></rect>
 <rect width="0.89" height="0.50" x="742.22" y="313.38" class="named"><title>0x00449c79 App::GetPreloadBgm (24 bytes)</title></rect>

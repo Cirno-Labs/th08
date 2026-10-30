@@ -497,7 +497,7 @@ address,size,name,symbol
 0x00438a29,24,App::GetNoFrameItems,?GetNoFrameItems@App@@QAEHXZ
 0x00438a41,24,App::GetNoDepthTest,?GetNoDepthTest@App@@QAEHXZ
 0x00438a59,24,App::GetNoColorBlending,?GetNoColorBlending@App@@QAEHXZ
-0x00438a71,24,App::GetUnk12,?GetUnk12@App@@QAEHXZ
+0x00438a71,24,App::GetRedrawHudEveryFrame,?GetRedrawHudEveryFrame@App@@QAEHXZ
 0x00438a89,1231,Gui::DrawPopups,?DrawPopups@Gui@@QAEXXZ
 0x00438f58,145,Gui::Func438f58,?Func438f58@Gui@@QAEXXZ
 0x00438fe9,10,Func438fe9,?Func438fe9@@YIHXZ

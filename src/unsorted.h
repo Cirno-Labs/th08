@@ -56,13 +56,13 @@ struct GameConfigFlags
     unsigned int referenceRasterizer : 1;
     unsigned int noFog : 1;
     unsigned int noDirectInput : 1;
-    unsigned int unk12 : 1;
+    unsigned int redrawHudEveryFrame : 1;
     unsigned int preloadBgm : 1;
-    unsigned int unk14 : 1;
+    unsigned int noVsync : 1;
     // Text rendering's environment is not detected automatically. New
     // in th08.
-    unsigned int unk15 : 1;
-    unsigned int unk16 : 16;
+    unsigned int noTextRenderDetect : 1;
+    unsigned int unusedBits : 16;
 };
 
 class App
@@ -222,11 +222,11 @@ public:
     int GetWindowed();
     // More of them, out-of-line copies from other objects: noFrameItems
     // (0x438a29), noDepthTest (0x438a41), noColorBlending (0x438a59) and
-    // unk12 (0x438a71) from the Gui object.
+    // redrawHudEveryFrame (0x438a71) from the Gui object.
     int GetNoFrameItems();
     int GetNoDepthTest();
     int GetNoColorBlending();
-    int GetUnk12();
+    int GetRedrawHudEveryFrame();
     // flags.noFog. Inline: the copy at 0x406580 comes from the /Od ascii
     // object, the first in link order to use it.
     int GetNoFog()
@@ -435,7 +435,7 @@ int OpenGameArchive();
 
 // Measures the refresh rate by presenting surface 8, up to 1800 times
 // or until it has eight rates of 57 Hz or more, each over half a second
-// or so. Unless g_App.flags.unk14 is set, it turns presentImmediate on
+// or so. Unless g_App.flags.noVsync is set, it turns presentImmediate on
 // and returns -2 when their average is over 160 Hz (or there are fewer
 // than two), or 65 Hz or more. Otherwise returns 0.
 int MeasureRefreshRate();
