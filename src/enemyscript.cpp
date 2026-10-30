@@ -738,3 +738,8 @@ void StartSpellCard(Enemy *enemy, EnemyScriptInstr *instr)
                       instr->args[1].i, enemy, (char *)&instr->args[14], (char *)&instr->args[26],
                       (char *)&instr->args[42]);
 }
+
+void EndSpellCard(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    g_SpellCard.End();
+}

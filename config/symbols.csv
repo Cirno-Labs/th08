@@ -212,7 +212,7 @@ address,size,name,symbol
 0x00415f00,558,Func415f00,
 0x00416130,39,Func416130,
 0x00416160,70,Func416160,
-0x004161b0,2331,Func4161b0,
+0x004161b0,2331,SpellCard::End,?End@SpellCard@@QAEXXZ
 0x00416ad0,24,Func416ad0,
 0x00416af0,32,Func416af0,
 0x00416b10,118,SpellCard::Func416b10,?Func416b10@SpellCard@@QAEXH@Z
@@ -259,7 +259,7 @@ address,size,name,symbol
 0x00421120,89,ScriptMoveLinear,?ScriptMoveLinear@@YIXPAUEnemy@@PAUEnemyScriptInstr@@M@Z
 0x00421180,256,ScriptMoveHermite,?ScriptMoveHermite@@YIXPAUEnemy@@PAUEnemyScriptInstr@@M@Z
 0x00421280,83,StartSpellCard,?StartSpellCard@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
-0x004212e0,26,Func4212e0,
+0x004212e0,26,EndSpellCard,?EndSpellCard@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00421300,238,Func421300,
 0x004213f0,506,Func4213f0,
 0x004215f0,1343,Func4215f0,
