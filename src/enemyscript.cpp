@@ -1130,7 +1130,7 @@ loop:
             break;
         case 155:
             enemy->keepSpellCard = *(BYTE *)instr->args;
-            g_SpellCard.unk_2638 = 99999990;
+            g_SpellCard.startBonus = 99999990;
             break;
         case 156:
             enemy->grazeable = *(BYTE *)instr->args;

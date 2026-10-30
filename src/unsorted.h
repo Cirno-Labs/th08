@@ -2515,7 +2515,7 @@ struct SpellCard
     // Bit 0 of unk_0. Inline; the copy at 0x4178a0 is in an /Od object.
     int Func4178a0()
     {
-        return this->unk_0 & 1;
+        return this->flags & 1;
     }
     // Initializes g_SpellCard and adds its update element (priority 0xc)
     // and draw element (priority 0xf), both allocated by
@@ -2577,12 +2577,12 @@ struct SpellCard
     // as th07's spellCardBombed? Inline; the copy is at 0x42dff0.
     int Func42dff0()
     {
-        return this->unk_0 >> 7 & 1;
+        return this->flags >> 7 & 1;
     }
     // Bit 9 of unk_0. Inline; the copy is at 0x405260.
     int Func405260()
     {
-        return this->unk_0 >> 9 & 1;
+        return this->flags >> 9 & 1;
     }
 
     // Ends the spell card's bonus: sets unk_10f8's pending interrupt
@@ -2590,80 +2590,80 @@ struct SpellCard
     // 0x416130 is an /Od object's.
     void Func416130()
     {
-        this->unk_10f8.pendingInterrupt = 1;
-        this->unk_1b88.SetPendingInterrupt(2);
+        this->bombName.pendingInterrupt = 1;
+        this->bombNameBar.SetPendingInterrupt(2);
     }
     // Ends the spell card as a timer callback runs: clears unk_0_2 and
     // unk_fc, sets unk_0_3. Inline; the copy at 0x42bc50 is an /Od
     // object's.
     void Func42bc50()
     {
-        this->unk_0_2 = 0;
-        this->unk_0_3 = 1;
-        this->unk_fc = 0;
+        this->capture = 0;
+        this->timedOut = 1;
+        this->bonus = 0;
     }
     // Clear unk_0_2 and unk_fc; the first also copies bit 0 to bit 7.
     // Called as a bomb starts and as the player dies. Inline; the copies
     // at 0x44cba0 and 0x44d150 are the player object's.
     void Func44cba0()
     {
-        this->unk_0_2 = 0;
-        this->unk_fc = 0;
-        this->unk_0_7 = this->unk_0_0;
+        this->capture = 0;
+        this->bonus = 0;
+        this->bombed = this->active;
     }
     void Func44d150()
     {
-        this->unk_0_2 = 0;
-        this->unk_fc = 0;
+        this->capture = 0;
+        this->bonus = 0;
     }
 
     union
     {
-        DWORD unk_0;
+        DWORD flags;
         struct
         {
-            DWORD unk_0_0 : 1;
-            DWORD unk_0_1 : 1;
-            DWORD unk_0_2 : 1;
-            DWORD unk_0_3 : 1;
-            DWORD unk_0_4 : 1;
-            DWORD unk_0_5 : 1;
-            DWORD unk_0_6 : 1;
-            DWORD unk_0_7 : 1;
+            DWORD active : 1;
+            DWORD unusedFlag0_1 : 1;
+            DWORD capture : 1;
+            DWORD timedOut : 1;
+            DWORD unusedFlag0_4 : 1;
+            DWORD lastSpell : 1;
+            DWORD effectFixed : 1;
+            DWORD bombed : 1;
             // Set while a bonus is pending from the last card.
-            DWORD unk_0_8 : 1;
-            DWORD unk_0_9 : 1;
-            DWORD unk_0_10 : 1;
-            DWORD unk_0_11 : 1;
+            DWORD bonusPending : 1;
+            DWORD captured : 1;
+            DWORD nameOnly : 1;
+            DWORD bonusFrozen : 1;
         };
     };
     // unk_10. Inline; its copy is folded with ReplayManager::GetMode
     // (0x453cc0).
     int GetUnk10()
     {
-        return this->unk_10;
+        return this->timeOrbBonus;
     }
     // Whether unk_0_0 and unk_0_5 are set. Inline; the copy is at
     // 0x417860.
     int Func417860()
     {
-        return this->Func4178a0() && this->unk_0_5 ? TRUE : FALSE;
+        return this->Func4178a0() && this->lastSpell ? TRUE : FALSE;
     }
     // Whether unk_0_0 and unk_0_2 are set. Inline; the copy is at
     // 0x41fd90.
     int Func41fd90()
     {
-        return this->Func4178a0() && this->unk_0_2 ? TRUE : FALSE;
+        return this->Func4178a0() && this->capture ? TRUE : FALSE;
     }
     // Set unk_0_6 and unk_0_11 (opcodes 164 and 184). Inline; the copies
     // at 0x41f0b0 and 0x41f0e0 are an /Od object's.
     void SetUnk0_6(int value)
     {
-        this->unk_0_6 = value;
+        this->effectFixed = value;
     }
     void SetUnk0_11(int value)
     {
-        this->unk_0_11 = value;
+        this->bonusFrozen = value;
     }
     // Puts the card's effect at (x, y, z). Inline; the copy at 0x41f040
     // is an /Od object's.
@@ -2671,7 +2671,7 @@ struct SpellCard
     // unk_108 in frames. Inline; the copy is at 0x41fdd0.
     int Func41fdd0()
     {
-        return this->unk_108.AsFrames();
+        return this->timeLeft.AsFrames();
     }
 
     // The boss whose card it is.
@@ -2681,46 +2681,46 @@ struct SpellCard
     // enemy->index.
     int enemyIndex;
     // Time orbs added as the card ends.
-    int unk_10;
+    int timeOrbBonus;
     // The card's name (decoded with 0xaa).
     char name[0x30];
-    unsigned char unk_44[0x30];
+    unsigned char pad_44[0x30];
     // Copied from Start's last two arguments while a card is practised.
-    char unk_74[0x40];
-    char unk_b4[0x40];
+    char text2[0x40];
+    char text3[0x40];
     struct Effect *effect;
     // The ring effect after a capture, which End hands over from effect.
-    struct Effect *unk_f8;
+    struct Effect *captureEffect;
     // The bonus left, and what it loses each second.
-    DWORD unk_fc;
-    DWORD unk_100;
-    int unk_104;
-    Timer unk_108;
-    Timer unk_114;
-    Sprite unk_120;
-    Sprite unk_3c4;
-    Sprite unk_668;
-    Sprite unk_90c;
-    Sprite unk_bb0;
-    Sprite unk_e54;
-    Sprite unk_10f8;
-    Sprite unk_139c;
-    Sprite unk_1640;
-    Sprite unk_18e4;
-    Sprite unk_1b88;
-    Sprite unk_1e2c;
-    Sprite unk_20d0;
-    Sprite unk_2374;
-    float unk_2618;
-    float unk_261c;
-    D3DCOLOR unk_2620;
+    DWORD bonus;
+    DWORD bonusStep;
+    int capturedBonus;
+    Timer timeLeft;
+    Timer timeLimit;
+    Sprite bombPortrait;
+    Sprite spellPortrait;
+    Sprite bombPortraitGlow;
+    Sprite spellPortraitGlow;
+    Sprite bombPortraitFrame;
+    Sprite spellPortraitFrame;
+    Sprite bombName;
+    Sprite spellName;
+    Sprite lastWordName1;
+    Sprite lastWordName2;
+    Sprite bombNameBar;
+    Sprite spellNameBar;
+    Sprite spellScoreDigit;
+    Sprite spellScoreBar;
+    float bombNameWidth;
+    float spellNameWidth;
+    D3DCOLOR nameColor;
     // The face ANMs (slots 0x10 to 0x13) of the dialogue's four portraits.
     // GuiImpl::StartMsgScript swaps the last two for stages 6B and Extra.
     AnmLoaded *faceAnms[4];
     // face_cdbg.anm (slot 0xf).
     AnmLoaded *backgroundAnm;
     // The bonus the card starts with.
-    DWORD unk_2638;
+    DWORD startBonus;
     ChainElem *calcChain;
     ChainElem *drawChain;
 };

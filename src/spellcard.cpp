@@ -239,36 +239,36 @@ int SpellCard::Initialize()
     }
     if (this->faceAnms[0] != NULL)
     {
-        this->faceAnms[0]->StartScript(&this->unk_120, 0);
-        this->faceAnms[0]->StartScript(&this->unk_3c4, 0);
+        this->faceAnms[0]->StartScript(&this->bombPortrait, 0);
+        this->faceAnms[0]->StartScript(&this->spellPortrait, 0);
     }
-    g_App.textAnm->StartScript(&this->unk_10f8, 4);
-    g_App.textAnm->StartScript(&this->unk_139c, 5);
-    g_AsciiText.anm->StartScript(&this->unk_1b88, 1);
-    g_AsciiText.anm->StartScript(&this->unk_1e2c, 0);
-    g_AsciiText.anm->StartScript(&this->unk_2374, 2);
-    g_AsciiText.anm->StartScript(&this->unk_20d0, 4);
-    this->unk_120.scriptPos = NULL;
-    this->unk_668.scriptPos = NULL;
-    this->unk_bb0.scriptPos = NULL;
-    this->unk_10f8.scriptPos = NULL;
-    this->unk_3c4.scriptPos = NULL;
-    this->unk_90c.scriptPos = NULL;
-    this->unk_e54.scriptPos = NULL;
-    this->unk_139c.scriptPos = NULL;
-    this->unk_120.shown = 0;
-    this->unk_668.shown = 0;
-    this->unk_bb0.shown = 0;
-    this->unk_10f8.shown = 0;
-    this->unk_3c4.shown = 0;
-    this->unk_90c.shown = 0;
-    this->unk_e54.shown = 0;
-    this->unk_139c.shown = 0;
-    this->unk_10f8.fontWidth = 0xf;
-    this->unk_10f8.fontHeight = 0xf;
-    this->unk_139c.fontWidth = 0xf;
-    this->unk_139c.fontHeight = 0xf;
-    this->unk_10 = 0;
+    g_App.textAnm->StartScript(&this->bombName, 4);
+    g_App.textAnm->StartScript(&this->spellName, 5);
+    g_AsciiText.anm->StartScript(&this->bombNameBar, 1);
+    g_AsciiText.anm->StartScript(&this->spellNameBar, 0);
+    g_AsciiText.anm->StartScript(&this->spellScoreBar, 2);
+    g_AsciiText.anm->StartScript(&this->spellScoreDigit, 4);
+    this->bombPortrait.scriptPos = NULL;
+    this->bombPortraitGlow.scriptPos = NULL;
+    this->bombPortraitFrame.scriptPos = NULL;
+    this->bombName.scriptPos = NULL;
+    this->spellPortrait.scriptPos = NULL;
+    this->spellPortraitGlow.scriptPos = NULL;
+    this->spellPortraitFrame.scriptPos = NULL;
+    this->spellName.scriptPos = NULL;
+    this->bombPortrait.shown = 0;
+    this->bombPortraitGlow.shown = 0;
+    this->bombPortraitFrame.shown = 0;
+    this->bombName.shown = 0;
+    this->spellPortrait.shown = 0;
+    this->spellPortraitGlow.shown = 0;
+    this->spellPortraitFrame.shown = 0;
+    this->spellName.shown = 0;
+    this->bombName.fontWidth = 0xf;
+    this->bombName.fontHeight = 0xf;
+    this->spellName.fontWidth = 0xf;
+    this->spellName.fontHeight = 0xf;
+    this->timeOrbBonus = 0;
     return 0;
 }
 
@@ -280,26 +280,26 @@ void SpellCard::Start(int card, char *name, int face, DWORD bonus, Enemy *enemy,
     Catk *catk;
     int nameSum;
 
-    this->unk_0_9 = 0;
-    this->unk_0_0 = 1;
-    this->unk_0_2 = 1;
-    this->unk_0_4 = 0;
-    this->unk_0_3 = 0;
-    this->unk_0_6 = 0;
-    this->unk_0_7 = 0;
-    this->unk_0_10 = 0;
+    this->captured = 0;
+    this->active = 1;
+    this->capture = 1;
+    this->unusedFlag0_4 = 0;
+    this->timedOut = 0;
+    this->effectFixed = 0;
+    this->bombed = 0;
+    this->nameOnly = 0;
     this->card = card;
     this->enemy = enemy;
     this->enemyIndex = this->enemy->index;
-    this->unk_fc = bonus;
-    this->unk_2638 = bonus;
+    this->bonus = bonus;
+    this->startBonus = bonus;
     if (this->enemy->keepSpellCard)
     {
-        this->unk_2638 = 99999990;
+        this->startBonus = 99999990;
     }
-    this->unk_100 = (this->unk_fc - this->unk_fc / 7) / (this->enemy->timerCallbackTime / 60);
-    this->unk_108 = this->enemy->timerCallbackTime;
-    this->unk_114 = this->enemy->timerCallbackTime;
+    this->bonusStep = (this->bonus - this->bonus / 7) / (this->enemy->timerCallbackTime / 60);
+    this->timeLeft = this->enemy->timerCallbackTime;
+    this->timeLimit = this->enemy->timerCallbackTime;
     for (i = 0; i < sizeof(this->name); i++)
     {
         this->name[i] = (BYTE)name[i] ^ 0xaa;
@@ -313,20 +313,20 @@ void SpellCard::Start(int card, char *name, int face, DWORD bonus, Enemy *enemy,
     }
     g_Stage.unk_625c = NULL;
     this->enemy->ResetRankSpeeds();
-    this->unk_2620 = 0x80808080;
-    if (this->unk_0_8)
+    this->nameColor = 0x80808080;
+    if (this->bonusPending)
     {
-        this->unk_f8 = NULL;
-        g_Gui.ShowSpellCardBonus(this->unk_104);
-        g_GameManager.AddScore(this->unk_104);
-        this->unk_0_8 = 0;
-        if (this->unk_10 > 0)
+        this->captureEffect = NULL;
+        g_Gui.ShowSpellCardBonus(this->capturedBonus);
+        g_GameManager.AddScore(this->capturedBonus);
+        this->bonusPending = 0;
+        if (this->timeOrbBonus > 0)
         {
-            g_GameManager.AddTimeOrbs(this->unk_10);
-            this->unk_10 = 0;
+            g_GameManager.AddTimeOrbs(this->timeOrbBonus);
+            this->timeOrbBonus = 0;
         }
     }
-    this->unk_0_11 = 0;
+    this->bonusFrozen = 0;
     this->effect = g_EffectManager.SpawnReservedEffect(g_GameManager.unk_3dbac_7 ? 0x34 : 0x27, &this->enemy->pos, 1, 1, 0xffffffff);
     this->effect->sprite.interpDuration[0] = 0;
     this->effect->sprite.interpFrame[0] = 100;
@@ -342,10 +342,10 @@ void SpellCard::Start(int card, char *name, int face, DWORD bonus, Enemy *enemy,
     this->effect->radius = 256.0f;
     this->effect->ringWidth = 15.0f;
     this->effect->waveCount = 6.0f;
-    this->unk_0_5 = g_GameManager.unk_3dbac_7;
+    this->lastSpell = g_GameManager.unk_3dbac_7;
     g_Gui.bombsChanged = 3;
     g_Gui.livesChanged = 3;
-    this->unk_0_6 = 0;
+    this->effectFixed = 0;
     if (!g_GameManager.IsReplay())
     {
         char buf[0x80];
@@ -361,8 +361,8 @@ void SpellCard::Start(int card, char *name, int face, DWORD bonus, Enemy *enemy,
         strcpy(catk->comment, buf);
         if (g_GameManager.isInSpellCardPractice)
         {
-            memcpy(this->unk_74, text2, sizeof(this->unk_74));
-            memcpy(this->unk_b4, text3, sizeof(this->unk_b4));
+            memcpy(this->text2, text2, sizeof(this->text2));
+            memcpy(this->text3, text3, sizeof(this->text3));
         }
         k = strlen(catk->name);
         while (k > 0)
@@ -435,9 +435,9 @@ void BulletManager::ClearAllToItems()
 
 void SpellCard::Func415d10(char *name, Enemy *enemy)
 {
-    this->unk_0_10 = 1;
-    this->unk_0_0 = 0;
-    this->unk_0_4 = 0;
+    this->nameOnly = 1;
+    this->active = 0;
+    this->unusedFlag0_4 = 0;
     this->ShowName(-1, name, 1);
 }
 
@@ -445,22 +445,22 @@ void SpellCard::StartBombCard(int face, char *name, int sprite)
 {
     if (face == 0)
     {
-        this->faceAnms[0]->StartScript(&this->unk_120, 0);
-        this->faceAnms[0]->SetSprite(&this->unk_120, 0);
+        this->faceAnms[0]->StartScript(&this->bombPortrait, 0);
+        this->faceAnms[0]->SetSprite(&this->bombPortrait, 0);
     }
     else if (face == 1)
     {
-        this->faceAnms[1]->StartScript(&this->unk_120, 0);
-        this->faceAnms[1]->SetSprite(&this->unk_120, 0);
+        this->faceAnms[1]->StartScript(&this->bombPortrait, 0);
+        this->faceAnms[1]->SetSprite(&this->bombPortrait, 0);
     }
-    this->backgroundAnm->StartScript(&this->unk_668, 0);
-    this->backgroundAnm->StartScript(&this->unk_bb0, 2);
-    this->backgroundAnm->SetSprite(&this->unk_668, sprite);
-    this->backgroundAnm->SetSprite(&this->unk_bb0, sprite);
-    g_App.textAnm->StartScript(&this->unk_10f8, 4);
-    g_SpriteEngine->RenderText(&this->unk_10f8, 0xf0f0ff, 0, name);
-    this->unk_2618 = (float)(strlen(name) * 15) / 2.0f + 16.0f;
-    this->unk_1b88.SetPendingInterrupt(1);
+    this->backgroundAnm->StartScript(&this->bombPortraitGlow, 0);
+    this->backgroundAnm->StartScript(&this->bombPortraitFrame, 2);
+    this->backgroundAnm->SetSprite(&this->bombPortraitGlow, sprite);
+    this->backgroundAnm->SetSprite(&this->bombPortraitFrame, sprite);
+    g_App.textAnm->StartScript(&this->bombName, 4);
+    g_SpriteEngine->RenderText(&this->bombName, 0xf0f0ff, 0, name);
+    this->bombNameWidth = (float)(strlen(name) * 15) / 2.0f + 16.0f;
+    this->bombNameBar.SetPendingInterrupt(1);
     g_SoundPlayer.QueueSound(0xe, 0);
     g_App.redrawFrames = 2;
 }
@@ -469,31 +469,31 @@ void SpellCard::ShowName(int face, char *name, int sprite)
 {
     if (face >= 0)
     {
-        this->faceAnms[2]->StartScript(&this->unk_3c4, 0);
-        this->faceAnms[2]->SetSprite(&this->unk_3c4, face);
+        this->faceAnms[2]->StartScript(&this->spellPortrait, 0);
+        this->faceAnms[2]->SetSprite(&this->spellPortrait, face);
     }
-    this->backgroundAnm->StartScript(&this->unk_668, 1);
-    this->backgroundAnm->SetSprite(&this->unk_668, sprite);
-    this->backgroundAnm->StartScript(&this->unk_bb0, 3);
-    this->backgroundAnm->SetSprite(&this->unk_bb0, sprite);
+    this->backgroundAnm->StartScript(&this->bombPortraitGlow, 1);
+    this->backgroundAnm->SetSprite(&this->bombPortraitGlow, sprite);
+    this->backgroundAnm->StartScript(&this->bombPortraitFrame, 3);
+    this->backgroundAnm->SetSprite(&this->bombPortraitFrame, sprite);
     if (g_GameManager.IsPracticingSpellCardIn(0xcd, 0xdd))
     {
-        g_App.textAnm->StartScript(&this->unk_139c, 6);
-        g_App.textAnm->StartScript(&this->unk_1640, 7);
-        g_App.textAnm->StartScript(&this->unk_18e4, 8);
-        g_SpriteEngine->RenderTextRightAligned(&this->unk_1640, 0xfff0f0, 0, name);
-        g_SpriteEngine->RenderTextRightAligned(&this->unk_18e4, 0xfff0f0, 0, name);
+        g_App.textAnm->StartScript(&this->spellName, 6);
+        g_App.textAnm->StartScript(&this->lastWordName1, 7);
+        g_App.textAnm->StartScript(&this->lastWordName2, 8);
+        g_SpriteEngine->RenderTextRightAligned(&this->lastWordName1, 0xfff0f0, 0, name);
+        g_SpriteEngine->RenderTextRightAligned(&this->lastWordName2, 0xfff0f0, 0, name);
     }
     else
     {
-        g_App.textAnm->StartScript(&this->unk_139c, 5);
+        g_App.textAnm->StartScript(&this->spellName, 5);
     }
-    g_SpriteEngine->RenderTextRightAligned(&this->unk_139c, 0xfff0f0, 0, name);
-    this->unk_261c = (float)(strlen(name) * 15) / 2.0f + 16.0f;
-    this->unk_1e2c.SetPendingInterrupt(1);
-    if (!this->unk_0_10)
+    g_SpriteEngine->RenderTextRightAligned(&this->spellName, 0xfff0f0, 0, name);
+    this->spellNameWidth = (float)(strlen(name) * 15) / 2.0f + 16.0f;
+    this->spellNameBar.SetPendingInterrupt(1);
+    if (!this->nameOnly)
     {
-        this->unk_2374.SetPendingInterrupt(1);
+        this->spellScoreBar.SetPendingInterrupt(1);
     }
     g_SoundPlayer.QueueSound(0xe, 0);
     g_App.redrawFrames = 2;
@@ -501,11 +501,11 @@ void SpellCard::ShowName(int face, char *name, int sprite)
 
 void SpellCard::Func416160()
 {
-    this->unk_139c.pendingInterrupt = 1;
-    this->unk_1e2c.SetPendingInterrupt(2);
-    if (!this->unk_0_10)
+    this->spellName.pendingInterrupt = 1;
+    this->spellNameBar.SetPendingInterrupt(2);
+    if (!this->nameOnly)
     {
-        this->unk_2374.SetPendingInterrupt(2);
+        this->spellScoreBar.SetPendingInterrupt(2);
     }
 }
 
@@ -517,12 +517,12 @@ void SpellCard::End()
     int bonus;
 
     g_Unknown4e3d28 = 0;
-    if (this->unk_0_0)
+    if (this->active)
     {
         captured = FALSE;
-        this->unk_0_0 = 0;
+        this->active = 0;
         this->Func416160();
-        if (!this->unk_0_3)
+        if (!this->timedOut)
         {
             bonus = g_BulletManager.ClearAllWithBonus(8000, 1);
             bonus = g_EnemyManager.ClearEnemiesForBonus(8000, bonus);
@@ -531,31 +531,31 @@ void SpellCard::End()
                 g_GameManager.AddScore(bonus);
                 g_Gui.ShowBonusPopup(bonus);
             }
-            if (this->unk_0_2)
+            if (this->capture)
             {
                 catk = &g_GameManager.catks[this->card];
-                this->unk_104 = this->unk_fc;
+                this->capturedBonus = this->bonus;
                 if (this->enemy->keepSpellCard)
                 {
-                    this->unk_10 = 700;
+                    this->timeOrbBonus = 700;
                 }
                 else
                 {
-                    k = this->unk_114.AsFrames() - this->unk_114.AsFrames() / 7;
-                    if (this->unk_108.AsFrames() >= k)
+                    k = this->timeLimit.AsFrames() - this->timeLimit.AsFrames() / 7;
+                    if (this->timeLeft.AsFrames() >= k)
                     {
-                        this->unk_10 = 1000;
+                        this->timeOrbBonus = 1000;
                     }
-                    else if (this->unk_108.AsFrames() >= 180)
+                    else if (this->timeLeft.AsFrames() >= 180)
                     {
-                        this->unk_10 = (this->unk_108.AsFrames() - 180) * 900 / (k - 180) + 100;
+                        this->timeOrbBonus = (this->timeLeft.AsFrames() - 180) * 900 / (k - 180) + 100;
                     }
                     else
                     {
-                        this->unk_10 = 100;
+                        this->timeOrbBonus = 100;
                     }
                 }
-                this->unk_0_9 = 1;
+                this->captured = 1;
                 if (!g_GameManager.IsReplay())
                 {
                     int nameSum;
@@ -595,13 +595,13 @@ void SpellCard::End()
                     if (!g_GameManager.IsInSpellCardPractice())
                     {
                         shot = g_GameManager.character;
-                        if (catk->maxBonus[shot] < this->unk_fc)
+                        if (catk->maxBonus[shot] < this->bonus)
                         {
-                            catk->maxBonus[shot] = this->unk_fc;
+                            catk->maxBonus[shot] = this->bonus;
                         }
-                        if (catk->maxBonus[12] < this->unk_fc)
+                        if (catk->maxBonus[12] < this->bonus)
                         {
-                            catk->maxBonus[12] = this->unk_fc;
+                            catk->maxBonus[12] = this->bonus;
                         }
                         if (catk->captures[shot] < 9999)
                         {
@@ -616,20 +616,20 @@ void SpellCard::End()
                     {
                         for (k = 0; k < sizeof(catk->unk_70); k++)
                         {
-                            catk->unk_70[k] = (BYTE)this->unk_74[k] ^ 0xdd;
+                            catk->unk_70[k] = (BYTE)this->text2[k] ^ 0xdd;
                         }
                         for (k = 0; k < sizeof(catk->unk_b0); k++)
                         {
-                            catk->unk_b0[k] = (BYTE)this->unk_b4[k] ^ 0xee;
+                            catk->unk_b0[k] = (BYTE)this->text3[k] ^ 0xee;
                         }
                         shot = g_GameManager.character;
-                        if (catk->practiceMaxBonus[shot] < this->unk_fc)
+                        if (catk->practiceMaxBonus[shot] < this->bonus)
                         {
-                            catk->practiceMaxBonus[shot] = this->unk_fc;
+                            catk->practiceMaxBonus[shot] = this->bonus;
                         }
-                        if (catk->practiceMaxBonus[12] < this->unk_fc)
+                        if (catk->practiceMaxBonus[12] < this->bonus)
                         {
-                            catk->practiceMaxBonus[12] = this->unk_fc;
+                            catk->practiceMaxBonus[12] = this->bonus;
                         }
                         if (catk->practiceCaptures[shot] < 9999)
                         {
@@ -667,11 +667,11 @@ void SpellCard::End()
                 }
                 this->effect->active = 0;
                 this->effect = NULL;
-                g_Gui.ShowFullPowerPopup(0, this->unk_0_5 ? 6 : 5);
+                g_Gui.ShowFullPowerPopup(0, this->lastSpell ? 6 : 5);
             }
             else
             {
-                this->unk_0_8 = 1;
+                this->bonusPending = 1;
                 if (g_GameManager.unk_3dbac_7)
                 {
                     g_GameManager.unk_3dbac_7 = 2;
@@ -695,7 +695,7 @@ void SpellCard::End()
                 ((BYTE *)&this->effect->sprite.colorTween.z)[3] = 0x20;
                 this->effect->waveCount = 6.0f;
                 this->effect->timer = 0;
-                this->unk_f8 = this->effect;
+                this->captureEffect = this->effect;
                 this->effect = NULL;
                 g_SoundPlayer.QueueSound(0x23, 0);
             }
@@ -716,27 +716,27 @@ void SpellCard::End()
         this->enemy->keepSpellCard = 0;
     }
     this->enemy = NULL;
-    this->unk_0_11 = 0;
+    this->bonusFrozen = 0;
 }
 
 void SpellCard::Func416af0()
 {
-    this->unk_0_0 = 0;
+    this->active = 0;
     this->Func416160();
 }
 
 void SpellCard::Func416b10(int amount)
 {
-    if (!this->unk_0_11)
+    if (!this->bonusFrozen)
     {
-        this->unk_fc += amount;
-        if (this->unk_fc >= this->unk_2638)
+        this->bonus += amount;
+        if (this->bonus >= this->startBonus)
         {
-            this->unk_fc = this->unk_2638;
+            this->bonus = this->startBonus;
         }
         else
         {
-            this->unk_100 += amount / 120;
+            this->bonusStep += amount / 120;
         }
     }
 }
@@ -747,7 +747,7 @@ int SpellCard::Update()
     {
         return 1;
     }
-    if (this->unk_0_0)
+    if (this->active)
     {
         if (!this->enemy->active || this->enemyIndex != this->enemy->index)
         {
@@ -755,21 +755,21 @@ int SpellCard::Update()
         }
         if (g_Player.pos.x >= 64.0f && g_Player.pos.y < 64.0f)
         {
-            if (((BYTE *)&this->unk_2620)[3] > 0x20)
+            if (((BYTE *)&this->nameColor)[3] > 0x20)
             {
-                ((BYTE *)&this->unk_2620)[3] -= 4;
+                ((BYTE *)&this->nameColor)[3] -= 4;
             }
         }
-        else if (((BYTE *)&this->unk_2620)[3] < 0x80)
+        else if (((BYTE *)&this->nameColor)[3] < 0x80)
         {
-            ((BYTE *)&this->unk_2620)[3] += 4;
+            ((BYTE *)&this->nameColor)[3] += 4;
         }
-        if (this->unk_0_2)
+        if (this->capture)
         {
-            if (!this->unk_0_11 && !this->enemy->keepSpellCard)
+            if (!this->bonusFrozen && !this->enemy->keepSpellCard)
             {
-                this->unk_fc -= (int)(this->unk_100 / 60 * g_App.gameSpeed);
-                this->unk_fc -= this->unk_fc % 10;
+                this->bonus -= (int)(this->bonusStep / 60 * g_App.gameSpeed);
+                this->bonus -= this->bonus % 10;
             }
         }
         else if (this->effect->sprite.spriteIndex == 0xdd)
@@ -796,7 +796,7 @@ int SpellCard::Update()
             this->effect->sprite.moveStart.y = 0.0f;
             this->effect->sprite.moveEnd.y = 0.0f;
         }
-        if (!this->unk_0_6)
+        if (!this->effectFixed)
         {
             this->effect->origin =
                 (this->enemy->pos + this->enemy->posOrigin - this->effect->origin) / 16.0f + this->effect->origin;
@@ -804,149 +804,149 @@ int SpellCard::Update()
         }
         this->effect->angle = AddNormalizeAngle(this->effect->angle, this->Func417860() ? -0.031415928f : 0.015707964f);
     }
-    else if (this->unk_f8 != NULL)
+    else if (this->captureEffect != NULL)
     {
-        if (this->unk_f8->timer == 30)
+        if (this->captureEffect->timer == 30)
         {
-            this->unk_f8->sprite.interpDuration[4] = 0;
-            this->unk_f8->sprite.interpFrame[4] = 20;
-            this->unk_f8->sprite.scaleInterpEasing = 1;
-            this->unk_f8->sprite.scaleTween.x = this->unk_f8->ringWidth;
-            this->unk_f8->sprite.scaleTween.z = 64.0f;
-            this->unk_f8->sprite.interpDuration[0] = 0;
-            this->unk_f8->sprite.interpFrame[0] = 100;
-            this->unk_f8->sprite.interpEasing = 4;
-            this->unk_f8->sprite.moveStart.x = this->unk_f8->radius;
-            this->unk_f8->sprite.moveEnd.x = 0.0f;
-            this->unk_f8->sprite.moveStart.y = this->unk_f8->radiusY;
-            this->unk_f8->sprite.moveEnd.y = 60.0f;
-            this->unk_f8->sprite.pos.x = this->unk_f8->radius;
-            this->unk_f8->sprite.pos.y = this->unk_f8->radiusY;
+            this->captureEffect->sprite.interpDuration[4] = 0;
+            this->captureEffect->sprite.interpFrame[4] = 20;
+            this->captureEffect->sprite.scaleInterpEasing = 1;
+            this->captureEffect->sprite.scaleTween.x = this->captureEffect->ringWidth;
+            this->captureEffect->sprite.scaleTween.z = 64.0f;
+            this->captureEffect->sprite.interpDuration[0] = 0;
+            this->captureEffect->sprite.interpFrame[0] = 100;
+            this->captureEffect->sprite.interpEasing = 4;
+            this->captureEffect->sprite.moveStart.x = this->captureEffect->radius;
+            this->captureEffect->sprite.moveEnd.x = 0.0f;
+            this->captureEffect->sprite.moveStart.y = this->captureEffect->radiusY;
+            this->captureEffect->sprite.moveEnd.y = 60.0f;
+            this->captureEffect->sprite.pos.x = this->captureEffect->radius;
+            this->captureEffect->sprite.pos.y = this->captureEffect->radiusY;
         }
-        else if (this->unk_f8->timer == 60)
+        else if (this->captureEffect->timer == 60)
         {
-            this->unk_f8->sprite.interpDuration[4] = 0;
-            this->unk_f8->sprite.interpFrame[4] = 70;
-            this->unk_f8->sprite.scaleInterpEasing = 1;
-            this->unk_f8->sprite.scaleTween.x = this->unk_f8->ringWidth;
-            this->unk_f8->sprite.scaleTween.z = 0.0f;
+            this->captureEffect->sprite.interpDuration[4] = 0;
+            this->captureEffect->sprite.interpFrame[4] = 70;
+            this->captureEffect->sprite.scaleInterpEasing = 1;
+            this->captureEffect->sprite.scaleTween.x = this->captureEffect->ringWidth;
+            this->captureEffect->sprite.scaleTween.z = 0.0f;
         }
-        else if (this->unk_f8->timer == 130)
+        else if (this->captureEffect->timer == 130)
         {
-            this->unk_f8->active = 0;
-            this->unk_f8 = NULL;
-            g_Gui.ShowSpellCardBonus(this->unk_104);
-            g_GameManager.AddScore(this->unk_104);
-            this->unk_0_8 = 0;
-            if (this->unk_10 > 0)
+            this->captureEffect->active = 0;
+            this->captureEffect = NULL;
+            g_Gui.ShowSpellCardBonus(this->capturedBonus);
+            g_GameManager.AddScore(this->capturedBonus);
+            this->bonusPending = 0;
+            if (this->timeOrbBonus > 0)
             {
-                g_GameManager.AddTimeOrbs(this->unk_10);
-                g_GameManager.stats->unk_24 += this->unk_10 * 10;
-                this->unk_10 = 0;
+                g_GameManager.AddTimeOrbs(this->timeOrbBonus);
+                g_GameManager.stats->unk_24 += this->timeOrbBonus * 10;
+                this->timeOrbBonus = 0;
             }
         }
-        if (this->unk_f8 != NULL)
+        if (this->captureEffect != NULL)
         {
-            if (this->unk_f8->timer <= 80)
+            if (this->captureEffect->timer <= 80)
             {
-                this->unk_f8->origin = (g_Player.pos - this->unk_f8->origin) / 16.0f + this->unk_f8->origin;
-                this->unk_f8->origin.z = 0.0f;
-                this->unk_f8->angle = AddNormalizeAngle(this->unk_f8->angle, -0.015707964f);
+                this->captureEffect->origin = (g_Player.pos - this->captureEffect->origin) / 16.0f + this->captureEffect->origin;
+                this->captureEffect->origin.z = 0.0f;
+                this->captureEffect->angle = AddNormalizeAngle(this->captureEffect->angle, -0.015707964f);
             }
             else
             {
-                this->unk_f8->origin = (g_Player.pos - this->unk_f8->origin) / 4.0f + this->unk_f8->origin;
-                this->unk_f8->origin.z = 0.0f;
-                this->unk_f8->angle = AddNormalizeAngle(this->unk_f8->angle, -0.05235988f);
+                this->captureEffect->origin = (g_Player.pos - this->captureEffect->origin) / 4.0f + this->captureEffect->origin;
+                this->captureEffect->origin.z = 0.0f;
+                this->captureEffect->angle = AddNormalizeAngle(this->captureEffect->angle, -0.05235988f);
             }
-            this->unk_f8->radiusY = this->unk_f8->sprite.pos.y;
-            if (this->unk_f8->timer > 8 && this->unk_10 > 0)
+            this->captureEffect->radiusY = this->captureEffect->sprite.pos.y;
+            if (this->captureEffect->timer > 8 && this->timeOrbBonus > 0)
             {
                 D3DXVECTOR3 itemPos;
                 float angle;
                 int i;
                 int count;
 
-                angle = (this->unk_f8->timer.AsFloat() - 10.0f) * 6.2831855f / 40.0f - 1.5707964f;
+                angle = (this->captureEffect->timer.AsFloat() - 10.0f) * 6.2831855f / 40.0f - 1.5707964f;
                 angle = AddNormalizeAngle(angle, 0.0f);
                 ((Vector2 *)&itemPos)->SetPolar(angle, 128.0f);
-                itemPos += this->unk_f8->origin;
+                itemPos += this->captureEffect->origin;
                 itemPos.z = 0.0f;
-                count = this->unk_10 > 7 ? 7 : this->unk_10;
+                count = this->timeOrbBonus > 7 ? 7 : this->timeOrbBonus;
                 for (i = 0; i < count; i++)
                 {
                     g_ItemManager.SpawnItem(&itemPos, 10, 0);
                 }
-                this->unk_10 -= count;
+                this->timeOrbBonus -= count;
                 angle = AddNormalizeAngle(angle, 3.1415927f);
                 ((Vector2 *)&itemPos)->SetPolar(angle, 128.0f);
-                itemPos += this->unk_f8->origin;
+                itemPos += this->captureEffect->origin;
                 itemPos.z = 0.0f;
-                count = this->unk_10 > 7 ? 7 : this->unk_10;
+                count = this->timeOrbBonus > 7 ? 7 : this->timeOrbBonus;
                 for (i = 0; i < 6; i++)
                 {
                     g_ItemManager.SpawnItem(&itemPos, 10, 0);
                 }
-                this->unk_10 -= count;
-                if (this->unk_10 < 0)
+                this->timeOrbBonus -= count;
+                if (this->timeOrbBonus < 0)
                 {
-                    this->unk_10 = 0;
+                    this->timeOrbBonus = 0;
                 }
             }
         }
     }
-    g_SpriteEngine->Step(&this->unk_120);
-    g_SpriteEngine->Step(&this->unk_668);
-    g_SpriteEngine->Step(&this->unk_bb0);
-    g_SpriteEngine->Step(&this->unk_10f8);
-    g_SpriteEngine->Step(&this->unk_1b88);
-    g_SpriteEngine->Step(&this->unk_3c4);
-    g_SpriteEngine->Step(&this->unk_90c);
-    g_SpriteEngine->Step(&this->unk_e54);
-    g_SpriteEngine->Step(&this->unk_139c);
-    g_SpriteEngine->Step(&this->unk_1640);
-    g_SpriteEngine->Step(&this->unk_18e4);
-    g_SpriteEngine->Step(&this->unk_1e2c);
-    g_SpriteEngine->Step(&this->unk_2374);
-    this->unk_108--;
+    g_SpriteEngine->Step(&this->bombPortrait);
+    g_SpriteEngine->Step(&this->bombPortraitGlow);
+    g_SpriteEngine->Step(&this->bombPortraitFrame);
+    g_SpriteEngine->Step(&this->bombName);
+    g_SpriteEngine->Step(&this->bombNameBar);
+    g_SpriteEngine->Step(&this->spellPortrait);
+    g_SpriteEngine->Step(&this->spellPortraitGlow);
+    g_SpriteEngine->Step(&this->spellPortraitFrame);
+    g_SpriteEngine->Step(&this->spellName);
+    g_SpriteEngine->Step(&this->lastWordName1);
+    g_SpriteEngine->Step(&this->lastWordName2);
+    g_SpriteEngine->Step(&this->spellNameBar);
+    g_SpriteEngine->Step(&this->spellScoreBar);
+    this->timeLeft--;
     return 1;
 }
 
 int SpellCard::Draw()
 {
-    if (this->unk_120.IsShown())
+    if (this->bombPortrait.IsShown())
     {
-        g_SpriteEngine->DrawUnrotated(&this->unk_120);
-        g_SpriteEngine->DrawUnrotated(&this->unk_668);
-        g_SpriteEngine->Draw(&this->unk_bb0);
+        g_SpriteEngine->DrawUnrotated(&this->bombPortrait);
+        g_SpriteEngine->DrawUnrotated(&this->bombPortraitGlow);
+        g_SpriteEngine->Draw(&this->bombPortraitFrame);
     }
-    if (this->unk_3c4.IsShown())
+    if (this->spellPortrait.IsShown())
     {
-        D3DXVECTOR3 savedPos = this->unk_3c4.pos;
+        D3DXVECTOR3 savedPos = this->spellPortrait.pos;
 
-        this->unk_3c4.pos += this->unk_3c4.posOffset;
-        g_SpriteEngine->DrawUnrotated(&this->unk_3c4);
-        this->unk_3c4.pos = savedPos;
-        g_SpriteEngine->DrawUnrotated(&this->unk_90c);
-        g_SpriteEngine->Draw(&this->unk_e54);
+        this->spellPortrait.pos += this->spellPortrait.posOffset;
+        g_SpriteEngine->DrawUnrotated(&this->spellPortrait);
+        this->spellPortrait.pos = savedPos;
+        g_SpriteEngine->DrawUnrotated(&this->spellPortraitGlow);
+        g_SpriteEngine->Draw(&this->spellPortraitFrame);
     }
-    if (this->unk_10f8.IsShown())
+    if (this->bombName.IsShown())
     {
-        this->unk_1b88.pos = this->unk_10f8.pos;
-        this->unk_1b88.pos.x -= 32.0f;
-        g_SpriteEngine->DrawUnrotated(&this->unk_1b88);
-        g_SpriteEngine->Draw(&this->unk_10f8);
+        this->bombNameBar.pos = this->bombName.pos;
+        this->bombNameBar.pos.x -= 32.0f;
+        g_SpriteEngine->DrawUnrotated(&this->bombNameBar);
+        g_SpriteEngine->Draw(&this->bombName);
     }
-    if (this->unk_139c.IsShown())
+    if (this->spellName.IsShown())
     {
-        g_SpriteEngine->SetColorModulation(this->unk_2620);
-        this->unk_1e2c.pos = this->unk_139c.pos;
-        g_SpriteEngine->DrawUnrotated(&this->unk_1e2c);
-        g_SpriteEngine->Draw(&this->unk_139c);
-        g_SpriteEngine->Draw(&this->unk_1640);
-        g_SpriteEngine->Draw(&this->unk_18e4);
-        g_SpriteEngine->DrawUnrotated(&this->unk_2374);
-        if (!this->unk_0_10)
+        g_SpriteEngine->SetColorModulation(this->nameColor);
+        this->spellNameBar.pos = this->spellName.pos;
+        g_SpriteEngine->DrawUnrotated(&this->spellNameBar);
+        g_SpriteEngine->Draw(&this->spellName);
+        g_SpriteEngine->Draw(&this->lastWordName1);
+        g_SpriteEngine->Draw(&this->lastWordName2);
+        g_SpriteEngine->DrawUnrotated(&this->spellScoreBar);
+        if (!this->nameOnly)
         {
             Catk *spellCatk;
             int n;
@@ -955,17 +955,17 @@ int SpellCard::Draw()
             int divisor;
             int started;
 
-            bonus = this->unk_fc;
+            bonus = this->bonus;
             divisor = 10000000;
             started = 0;
             spellCatk = &g_GameManager.catks[this->card];
-            if (!this->unk_0_2)
+            if (!this->capture)
             {
                 bonus = 0;
             }
-            this->unk_20d0.pos = this->unk_2374.pos;
-            this->unk_20d0.pos.x -= 40.0f;
-            this->unk_20d0.pos.y += 1.0f;
+            this->spellScoreDigit.pos = this->spellScoreBar.pos;
+            this->spellScoreDigit.pos.x -= 40.0f;
+            this->spellScoreDigit.pos.y += 1.0f;
             for (i = 0; i < 8; i++)
             {
                 n = bonus / divisor;
@@ -975,10 +975,10 @@ int SpellCard::Draw()
                 }
                 if (started || divisor == 1)
                 {
-                    this->unk_20d0.spriteData = g_AsciiText.anm->GetSprite(n + 0x88);
-                    g_SpriteEngine->DrawUnrotated(&this->unk_20d0);
+                    this->spellScoreDigit.spriteData = g_AsciiText.anm->GetSprite(n + 0x88);
+                    g_SpriteEngine->DrawUnrotated(&this->spellScoreDigit);
                 }
-                this->unk_20d0.pos.x += 7.0f;
+                this->spellScoreDigit.pos.x += 7.0f;
                 bonus %= divisor;
                 divisor /= 10;
             }
@@ -988,49 +988,49 @@ int SpellCard::Draw()
             {
                 n = 999;
             }
-            this->unk_20d0.pos.x += 32.0f;
+            this->spellScoreDigit.pos.x += 32.0f;
             started = 0;
             if (n / 100 != 0)
             {
-                this->unk_20d0.spriteData = g_AsciiText.anm->GetSprite(n / 100 + 0x88);
-                g_SpriteEngine->DrawUnrotated(&this->unk_20d0);
+                this->spellScoreDigit.spriteData = g_AsciiText.anm->GetSprite(n / 100 + 0x88);
+                g_SpriteEngine->DrawUnrotated(&this->spellScoreDigit);
                 n %= 100;
                 started = 1;
             }
-            this->unk_20d0.pos.x += 7.0f;
+            this->spellScoreDigit.pos.x += 7.0f;
             if (n / 10 != 0 || started)
             {
-                this->unk_20d0.spriteData = g_AsciiText.anm->GetSprite(n / 10 + 0x88);
-                g_SpriteEngine->DrawUnrotated(&this->unk_20d0);
+                this->spellScoreDigit.spriteData = g_AsciiText.anm->GetSprite(n / 10 + 0x88);
+                g_SpriteEngine->DrawUnrotated(&this->spellScoreDigit);
                 n %= 10;
             }
-            this->unk_20d0.pos.x += 7.0f;
-            this->unk_20d0.spriteData = g_AsciiText.anm->GetSprite(n + 0x88);
-            g_SpriteEngine->DrawUnrotated(&this->unk_20d0);
+            this->spellScoreDigit.pos.x += 7.0f;
+            this->spellScoreDigit.spriteData = g_AsciiText.anm->GetSprite(n + 0x88);
+            g_SpriteEngine->DrawUnrotated(&this->spellScoreDigit);
             n = g_GameManager.IsInSpellCardPractice() ? spellCatk->practiceAttempts[g_GameManager.character]
                                                       : spellCatk->attempts[g_GameManager.character];
             if (n > 999)
             {
                 n = 999;
             }
-            this->unk_20d0.pos.x += 13.0f;
+            this->spellScoreDigit.pos.x += 13.0f;
             if (n / 100 != 0)
             {
-                this->unk_20d0.spriteData = g_AsciiText.anm->GetSprite(n / 100 + 0x88);
-                g_SpriteEngine->DrawUnrotated(&this->unk_20d0);
+                this->spellScoreDigit.spriteData = g_AsciiText.anm->GetSprite(n / 100 + 0x88);
+                g_SpriteEngine->DrawUnrotated(&this->spellScoreDigit);
                 n %= 100;
                 started = 1;
             }
-            this->unk_20d0.pos.x += 7.0f;
+            this->spellScoreDigit.pos.x += 7.0f;
             if (n / 10 != 0 || started)
             {
-                this->unk_20d0.spriteData = g_AsciiText.anm->GetSprite(n / 10 + 0x88);
-                g_SpriteEngine->DrawUnrotated(&this->unk_20d0);
+                this->spellScoreDigit.spriteData = g_AsciiText.anm->GetSprite(n / 10 + 0x88);
+                g_SpriteEngine->DrawUnrotated(&this->spellScoreDigit);
                 n %= 10;
             }
-            this->unk_20d0.pos.x += 7.0f;
-            this->unk_20d0.spriteData = g_AsciiText.anm->GetSprite(n % 10 + 0x88);
-            g_SpriteEngine->DrawUnrotated(&this->unk_20d0);
+            this->spellScoreDigit.pos.x += 7.0f;
+            this->spellScoreDigit.spriteData = g_AsciiText.anm->GetSprite(n % 10 + 0x88);
+            g_SpriteEngine->DrawUnrotated(&this->spellScoreDigit);
         }
         g_SpriteEngine->ResetColorModulation();
     }
