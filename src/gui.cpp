@@ -516,7 +516,7 @@ int GuiImpl::RunMsg()
             int k;
 
             this->unk_22df0 = g_GameManager.GetPower();
-            this->stageClearPoints = g_GameManager.stats->unk_2c;
+            this->stageClearPoints = g_GameManager.stats->stageClearPoints;
             this->stageClearTime = g_GameManager.GetUnk3c();
             this->stageClearGraze = g_GameManager.stats->graze;
             this->stageClearClock = g_GameManager.GetUnk28() * 30 + 660;
@@ -555,7 +555,7 @@ int GuiImpl::RunMsg()
             }
             else
             {
-                g_GameManager.stats->unk_34 = -1;
+                g_GameManager.stats->checksumKeyStage = -1;
             }
             if (g_GameManager.stage != 7 && g_GameManager.stage != 6 && g_GameManager.stage != 8 &&
                 g_GameManager.GetBombs() < 3 &&
@@ -1137,7 +1137,7 @@ void Gui::DrawHud()
             g_AsciiText.AddFormat(&scorePos, "/");
             g_AsciiText.SetScale(1.0f, 1.0f);
             scorePos.x += 6.0f;
-            g_AsciiText.AddFormat(&scorePos, "%d", g_GameManager.stats->unk_38);
+            g_AsciiText.AddFormat(&scorePos, "%d", g_GameManager.stats->checksumKeyPoints);
         }
         if (this->unk_4_10 || g_App.GetNoFrameItems())
         {

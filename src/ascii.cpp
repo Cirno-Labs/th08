@@ -1169,11 +1169,11 @@ int ContinueMenu::UpdateContinueMenu()
             g_GameManager.SetLives(g_GameManager.savedConfig->lifeCount);
             g_GameManager.SetBombs(g_Player.shotType->bombs);
             g_GameManager.stats->graze = 0;
-            g_GameManager.stats->unk_2c = 0;
+            g_GameManager.stats->stageClearPoints = 0;
             g_GameManager.stats->pointItemsTotal = 0;
             g_GameManager.SetPower(0);
-            g_GameManager.stats->unk_34 = 0;
-            g_GameManager.stats->unk_38 = 100;
+            g_GameManager.stats->checksumKeyStage = 0;
+            g_GameManager.stats->checksumKeyPoints = 100;
             g_App.redrawFrames = 8;
             // The shot type counters are indexed by character here.
             IncrementCounterCapped((DWORD *)&g_GameManager.plst.counts[g_GameManager.difficulty].plays[0], 999999);
@@ -1459,7 +1459,7 @@ void AsciiText::DrawPopups()
         g_SpriteEngine->DrawUnrotated(&this->summaryPopup3);
         this->Func405e10(&this->unk_127c.pos, g_GameManager.GetUnk22(), this->unk_127c.color);
         div = 10000000;
-        count = g_GameManager.stats->unk_24;
+        count = g_GameManager.stats->maxPointValue;
         alpha = 0;
         this->unk_127c.pos.x = this->summaryPopup.pos.x + 62.0f - 14.0f;
         this->unk_127c.pos.y = this->summaryPopup.pos.y + 3.0f + 8.0f;

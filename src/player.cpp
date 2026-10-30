@@ -1134,7 +1134,7 @@ int UpdateDyingState(Player *player)
             g_SpellCard.Func44d150();
             g_GameManager.AddDeaths(1);
             g_Gui.unk_4_10 = 2;
-            g_GameManager.AddTimeOrbs(g_GameManager.stats->unk_3c > 5000 ? -500 : -g_GameManager.stats->unk_3c / 10);
+            g_GameManager.AddTimeOrbs(g_GameManager.stats->timeOrbs > 5000 ? -500 : -g_GameManager.stats->timeOrbs / 10);
             if (g_GameManager.GetLives() > 0)
             {
                 if (g_GameManager.GetPower() <= 16)

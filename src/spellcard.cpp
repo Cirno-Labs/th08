@@ -841,7 +841,7 @@ int SpellCard::Update()
             if (this->timeOrbBonus > 0)
             {
                 g_GameManager.AddTimeOrbs(this->timeOrbBonus);
-                g_GameManager.stats->unk_24 += this->timeOrbBonus * 10;
+                g_GameManager.stats->maxPointValue += this->timeOrbBonus * 10;
                 this->timeOrbBonus = 0;
             }
         }

@@ -116,22 +116,22 @@ void Func440470()
 {
     if (g_GameManager.difficulty < 4)
     {
-        if ((DWORD)g_GameManager.stats->unk_34 < 6)
+        if ((DWORD)g_GameManager.stats->checksumKeyStage < 6)
         {
-            g_GameManager.stats->unk_38 = g_Unknown4c7a84[g_GameManager.stats->unk_34];
+            g_GameManager.stats->checksumKeyPoints = g_Unknown4c7a84[g_GameManager.stats->checksumKeyStage];
         }
         else
         {
-            g_GameManager.stats->unk_38 = (g_GameManager.stats->unk_34 - 5) * 500 + g_Unknown4c7a84[5];
+            g_GameManager.stats->checksumKeyPoints = (g_GameManager.stats->checksumKeyStage - 5) * 500 + g_Unknown4c7a84[5];
         }
     }
-    else if ((DWORD)g_GameManager.stats->unk_34 < 3)
+    else if ((DWORD)g_GameManager.stats->checksumKeyStage < 3)
     {
-        g_GameManager.stats->unk_38 = g_Unknown4c7a9c[g_GameManager.stats->unk_34];
+        g_GameManager.stats->checksumKeyPoints = g_Unknown4c7a9c[g_GameManager.stats->checksumKeyStage];
     }
     else
     {
-        g_GameManager.stats->unk_38 = 99999;
+        g_GameManager.stats->checksumKeyPoints = 99999;
     }
 }
 
@@ -385,13 +385,13 @@ void Item::CollectPower()
 
 void Item::CollectPoint()
 {
-    int maxValue = g_GameManager.stats->unk_24;
+    int maxValue = g_GameManager.stats->maxPointValue;
     int amount;
 
     amount = (this->pos.y < g_Player.shotType->itemAutoCollectLine ? 1 : 0)
                  ? maxValue
                  : maxValue / 2 - (int)(this->pos.y - g_Player.shotType->itemAutoCollectLine) *
-                                      (g_GameManager.stats->unk_24 / 1000);
+                                      (g_GameManager.stats->maxPointValue / 1000);
     if (this->countsFullValue == 1)
     {
         amount = maxValue;
@@ -407,7 +407,7 @@ void Item::CollectPoint()
         this->countsFullValue = 1;
     }
     g_GameManager.AddScore(amount);
-    g_GameManager.stats->unk_2c++;
+    g_GameManager.stats->stageClearPoints++;
     g_GameManager.stats->pointItemsTotal++;
     g_Gui.frameItemsHideTimer = 2;
     if (amount >= maxValue)
@@ -418,15 +418,15 @@ void Item::CollectPoint()
     {
         g_GameManager.AddSubRank(3);
     }
-    if (g_GameManager.stats->unk_34 >= 0)
+    if (g_GameManager.stats->checksumKeyStage >= 0)
     {
         for (;;)
         {
             Func440470();
-            if (g_GameManager.stats->pointItemsTotal >= g_GameManager.stats->unk_38)
+            if (g_GameManager.stats->pointItemsTotal >= g_GameManager.stats->checksumKeyPoints)
             {
                 g_GameManager.AddLifeOrBomb();
-                g_GameManager.stats->unk_34++;
+                g_GameManager.stats->checksumKeyStage++;
                 continue;
             }
             break;
@@ -438,13 +438,13 @@ void Item::CollectPoint()
 
 void Item::CollectFullPowerItem()
 {
-    int maxValue = g_GameManager.stats->unk_24;
+    int maxValue = g_GameManager.stats->maxPointValue;
     int amount;
 
     amount = (this->pos.y < g_Player.shotType->itemAutoCollectLine ? 1 : 0)
                  ? maxValue
                  : maxValue / 2 - (int)(this->pos.y - g_Player.shotType->itemAutoCollectLine) *
-                                      (g_GameManager.stats->unk_24 / 1000);
+                                      (g_GameManager.stats->maxPointValue / 1000);
     if (this->countsFullValue == 1)
     {
         amount = maxValue;
@@ -516,7 +516,7 @@ void Item::CollectTimeOrb()
 
     if (g_Player.bombJustStarted == 0)
     {
-        if (g_GameManager.stats->unk_2c >= 2000)
+        if (g_GameManager.stats->stageClearPoints >= 2000)
         {
             amount = 10000;
         }

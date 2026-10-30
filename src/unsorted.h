@@ -1135,31 +1135,31 @@ struct GameManagerStats
     // LoadHighScores stores from the best entry, as th07's.
     DWORD highScore;
     BYTE bestContinuesUsed;
-    unsigned char unk_19[0x3];
+    unsigned char pad_19[0x3];
     int spellCardsCaptured;
     // A copy of unk_22, which is kept in each replay stage; Func43c0bb
     // moves it.
-    short unk_20;
-    short unk_22;
-    int unk_24;
-    char unk_28;
+    short gaugeCopy;
+    short gauge;
+    int maxPointValue;
+    char clock;
     BYTE continuesUsed;
-    unsigned char unk_2a[0x2];
-    int unk_2c;
+    unsigned char pad_2a[0x2];
+    int stageClearPoints;
     int pointItemsTotal;
     // Kept in each replay stage.
-    int unk_34;
-    int unk_38;
+    int checksumKeyStage;
+    int checksumKeyPoints;
     // Func43c35f compares them.
-    int unk_3c;
-    int unk_40;
-    int unk_44;
+    int timeOrbs;
+    int timeOrbsNeeded;
+    int timeOrbsCollected;
     // Set to 6543 plus a random number under 100000 by
     // RerollStatsChecksumKeys, as th07's.
     DWORD lifeChecksumKeys[7];
     // Floats, as th07's.
     float deaths;
-    float unk_68;
+    float stageDeaths;
     // Set to random floats from 6543 up by RerollStatsChecksumKeys, as
     // statsChecksumKeysB, lifeChecksumKeysF and statsChecksumKeysC.
     float statsChecksumKeysA[2];
@@ -1169,7 +1169,7 @@ struct GameManagerStats
     // The bombs left, the same way.
     float bombs;
     float bombsUsed;
-    float unk_88;
+    float stageBombsUsed;
     float lifeChecksumKeysF[3];
     // The power, a float now.
     float power;
@@ -1323,7 +1323,7 @@ public:
             memset(&g_App, 0xff, sizeof(App));
         }
         this->stats->deaths += deaths;
-        this->stats->unk_68 += deaths;
+        this->stats->stageDeaths += deaths;
         this->hscr.misses++;
         this->RerollChecksumKeys();
     }
@@ -1334,14 +1334,14 @@ public:
             memset(&g_App, 0xff, sizeof(App));
         }
         this->stats->bombsUsed += bombs;
-        this->stats->unk_88 += bombs;
+        this->stats->stageBombsUsed += bombs;
         this->RerollChecksumKeys();
     }
     // Sets stats->unk_22. Inline; the copy at 0x44e140 is the player
     // object's.
     void SetUnk22(short value)
     {
-        this->stats->unk_22 = value;
+        this->stats->gauge = value;
     }
     // Sets isPaused. Inline and expanded where it is used (SetUpTitleScene,
     // in the MainMenu object): that expansion is what leaves the 11 slots
@@ -1399,30 +1399,30 @@ public:
     // 0x406d10 to 0x406da0 are in an /Od object.
     int GetUnk22()
     {
-        return this->stats->unk_22;
+        return this->stats->gauge;
     }
     BOOL IsUnk22AtLow1()
     {
-        return this->stats->unk_22 <= this->unk22Low1;
+        return this->stats->gauge <= this->unk22Low1;
     }
     BOOL IsUnk22AtLow2()
     {
-        return this->stats->unk_22 <= this->unk22Low2;
+        return this->stats->gauge <= this->unk22Low2;
     }
     BOOL IsUnk22AtHigh1()
     {
-        return this->stats->unk_22 >= this->unk22High1;
+        return this->stats->gauge >= this->unk22High1;
     }
     BOOL IsUnk22AtHigh2()
     {
-        return this->stats->unk_22 >= this->unk22High2;
+        return this->stats->gauge >= this->unk22High2;
     }
     // stats->unk_3c and unk_40, which DrawHud shows as "%d/%d" on its last
     // row, in 0xfffff0c0 once unk_3c reaches unk_40. Inline; the copies at
     // 0x421b60 and 0x421b80 are in an /Od object.
     int GetUnk3c()
     {
-        return this->stats->unk_3c;
+        return this->stats->timeOrbs;
     }
     // Adds `amount` time orbs (stats->unk_3c; a negative amount larger
     // than what there is clears them instead) to unk_3c, stats->unk_44
@@ -1431,26 +1431,26 @@ public:
     // an /Od object.
     void AddTimeOrbs(int amount)
     {
-        if (amount >= 0 || this->stats->unk_3c >= -amount)
+        if (amount >= 0 || this->stats->timeOrbs >= -amount)
         {
-            this->stats->unk_3c += amount;
-            this->stats->unk_44 += amount;
+            this->stats->timeOrbs += amount;
+            this->stats->timeOrbsCollected += amount;
             this->hscr.timeOrbs += amount;
             this->RerollChecksumKeys();
             if (amount > 0)
             {
-                amount += this->stats->unk_44 & 1;
-                this->stats->unk_24 += amount / 2 * 10;
+                amount += this->stats->timeOrbsCollected & 1;
+                this->stats->maxPointValue += amount / 2 * 10;
             }
         }
         else
         {
-            this->stats->unk_3c = 0;
+            this->stats->timeOrbs = 0;
         }
     }
     int GetUnk40()
     {
-        return this->stats->unk_40;
+        return this->stats->timeOrbsNeeded;
     }
     // Whether a demo plays: unk_3dbac's bit 1, as th07's stateFlags.
     // Inline; the copy at 0x406cb0 is in an /Od object.
@@ -1532,17 +1532,17 @@ public:
     // and 0x453c60 are another object's and the replay object's.
     char GetUnk28()
     {
-        return this->stats->unk_28;
+        return this->stats->clock;
     }
     void SetUnk28(int value)
     {
-        this->stats->unk_28 = value;
+        this->stats->clock = value;
     }
     // Adds `amount` to stats->unk_28. Inline; the copy at 0x406df0 is in
     // an /Od object.
     void AddUnk28(char amount)
     {
-        this->stats->unk_28 += amount;
+        this->stats->clock += amount;
     }
     // Whether a spell card is practised (bit 14 of unk_3dbac). Inline;
     // the copy at 0x406c70 is an /Od object's.

@@ -512,7 +512,7 @@ void GameManager::LoadingThread(GameManager *arg)
         *mgr->savedConfig = *(GameManagerUnk4 *)&g_App.controllerMapping;
         MemFree(mgr->tempBuffer);
         mgr->powerItemCombo = 0;
-        mgr->stats->unk_22 = 0;
+        mgr->stats->gauge = 0;
         mgr->SetUnk28(g_GameManager.stage == 8 ? 6 : 0);
         if (g_GameManager.difficulty >= 4)
         {
@@ -556,22 +556,22 @@ void GameManager::LoadingThread(GameManager *arg)
         switch (g_GameManager.difficulty)
         {
         case 0:
-            mgr->stats->unk_24 = 60000;
+            mgr->stats->maxPointValue = 60000;
             break;
         case 1:
-            mgr->stats->unk_24 = 100000;
+            mgr->stats->maxPointValue = 100000;
             break;
         case 2:
-            mgr->stats->unk_24 = 200000;
+            mgr->stats->maxPointValue = 200000;
             break;
         case 3:
-            mgr->stats->unk_24 = 300000;
+            mgr->stats->maxPointValue = 300000;
             break;
         case 4:
-            mgr->stats->unk_24 = 300000;
+            mgr->stats->maxPointValue = 300000;
             break;
         }
-        mgr->stats->unk_34 = 0;
+        mgr->stats->checksumKeyStage = 0;
         Func440470();
         if (LoadScoreFile() != 0)
         {
@@ -579,10 +579,10 @@ void GameManager::LoadingThread(GameManager *arg)
         }
         mgr->SetRankForDifficulty();
         mgr->stats->deaths = 0.0f;
-        mgr->stats->unk_68 = 0.0f;
+        mgr->stats->stageDeaths = 0.0f;
         mgr->RerollChecksumKeys();
         mgr->stats->bombsUsed = 0.0f;
-        mgr->stats->unk_88 = 0.0f;
+        mgr->stats->stageBombsUsed = 0.0f;
         mgr->RerollChecksumKeys();
         mgr->stats->spellCardsCaptured = 0;
         mgr->gaugeFramesTotal = 0;
@@ -618,9 +618,9 @@ void GameManager::LoadingThread(GameManager *arg)
     {
         mgr->stats->guiScore = mgr->stats->score;
         mgr->stats->scoreIncrement = 0;
-        mgr->stats->unk_68 = 0.0f;
+        mgr->stats->stageDeaths = 0.0f;
         mgr->RerollChecksumKeys();
-        mgr->stats->unk_88 = 0.0f;
+        mgr->stats->stageBombsUsed = 0.0f;
         mgr->RerollChecksumKeys();
         if (Player::RegisterChain(0) != 0)
         {
@@ -633,7 +633,7 @@ void GameManager::LoadingThread(GameManager *arg)
         }
     }
     mgr->subRank = 0;
-    mgr->stats->unk_2c = 0;
+    mgr->stats->stageClearPoints = 0;
     mgr->stats->graze = 0;
     mgr->isPaused = 0;
     mgr->stateFlags &= ~0x180;
@@ -641,16 +641,16 @@ void GameManager::LoadingThread(GameManager *arg)
     mgr->gaugeFrames = 0;
     mgr->highGaugeFrames = 0;
     mgr->lowGaugeFrames = 0;
-    mgr->stats->unk_20 = mgr->stats->unk_22;
-    mgr->stats->unk_3c = 0;
-    mgr->stats->unk_44 = 0;
+    mgr->stats->gaugeCopy = mgr->stats->gauge;
+    mgr->stats->timeOrbs = 0;
+    mgr->stats->timeOrbsCollected = 0;
     if (!(g_GameManager.stateFlags >> 14 & 1))
     {
-        mgr->stats->unk_40 = g_Unknown4c77f0[mgr->stage][g_GameManager.difficulty];
+        mgr->stats->timeOrbsNeeded = g_Unknown4c77f0[mgr->stage][g_GameManager.difficulty];
     }
     else
     {
-        mgr->stats->unk_40 = 0;
+        mgr->stats->timeOrbsNeeded = 0;
     }
     if (mgr->stateFlags & 1)
     {
@@ -1073,16 +1073,16 @@ void GameManager::Func43c0bb(int amount, int force)
     {
         return;
     }
-    this->stats->unk_22 += amount;
-    if (this->stats->unk_22 < this->gaugeMin)
+    this->stats->gauge += amount;
+    if (this->stats->gauge < this->gaugeMin)
     {
-        this->stats->unk_22 = this->gaugeMin;
+        this->stats->gauge = this->gaugeMin;
     }
-    else if (this->stats->unk_22 > this->gaugeMax)
+    else if (this->stats->gauge > this->gaugeMax)
     {
-        this->stats->unk_22 = this->gaugeMax;
+        this->stats->gauge = this->gaugeMax;
     }
-    this->stats->unk_20 = this->stats->unk_22;
+    this->stats->gaugeCopy = this->stats->gauge;
 }
 
 int GameManager::HasExtraOpen(int shot)
@@ -1130,8 +1130,8 @@ int GameManager::Func43c35f()
     {
     case 0:
     {
-        int value = g_GameManager.stats->unk_3c;
-        int limit = g_GameManager.stats->unk_40;
+        int value = g_GameManager.stats->timeOrbs;
+        int limit = g_GameManager.stats->timeOrbsNeeded;
         if (value >= limit)
         {
             return 1;
@@ -1140,8 +1140,8 @@ int GameManager::Func43c35f()
     }
     case 1:
     {
-        int value = g_GameManager.stats->unk_3c;
-        int limit = g_GameManager.stats->unk_40;
+        int value = g_GameManager.stats->timeOrbs;
+        int limit = g_GameManager.stats->timeOrbsNeeded;
         if (value >= limit)
         {
             return 1;
@@ -1150,8 +1150,8 @@ int GameManager::Func43c35f()
     }
     case 2:
     {
-        int value = g_GameManager.stats->unk_3c;
-        int limit = g_GameManager.stats->unk_40;
+        int value = g_GameManager.stats->timeOrbs;
+        int limit = g_GameManager.stats->timeOrbsNeeded;
         if (value >= limit)
         {
             return 1;
@@ -1160,8 +1160,8 @@ int GameManager::Func43c35f()
     }
     case 3:
     {
-        int value = g_GameManager.stats->unk_3c;
-        int limit = g_GameManager.stats->unk_40;
+        int value = g_GameManager.stats->timeOrbs;
+        int limit = g_GameManager.stats->timeOrbsNeeded;
         if (value >= limit)
         {
             return 1;
@@ -1170,8 +1170,8 @@ int GameManager::Func43c35f()
     }
     case 4:
     {
-        int value = g_GameManager.stats->unk_3c;
-        int limit = g_GameManager.stats->unk_40;
+        int value = g_GameManager.stats->timeOrbs;
+        int limit = g_GameManager.stats->timeOrbsNeeded;
         if (value >= limit)
         {
             return 1;
@@ -1180,8 +1180,8 @@ int GameManager::Func43c35f()
     }
     case 5:
     {
-        int value = g_GameManager.stats->unk_3c;
-        int limit = g_GameManager.stats->unk_40;
+        int value = g_GameManager.stats->timeOrbs;
+        int limit = g_GameManager.stats->timeOrbsNeeded;
         if (value >= limit)
         {
             return 1;
