@@ -169,7 +169,7 @@ struct PlayerOption
     int state;
     // Its index among the four.
     int index;
-    int unk_2d4;
+    int unusedInt2d4;
     // Where it is on its circle (UpdateCirclingOption).
     float orbitAngle;
     // The direction it aims (FireOptionAimedShot).
