@@ -160,7 +160,7 @@ public:
     // mode. In wave mode it queues sound command 2 for the slot, after
     // command 4 with g_App.flags.preloadBgm. Either way it then marks
     // `bgm` heard in g_GameManager.plst, unless bit 3 or 1 of
-    // g_GameManager.unk_3dbac is set. Returns 0.
+    // g_GameManager.stateFlags is set. Returns 0.
     int PlayMidi(int slot, int bgm);
     // Plays the MIDI file at `path` from the start in MIDI mode, or
     // queues sound command 2 for the .wav of the same name in wave mode,
@@ -176,7 +176,7 @@ public:
     // game runs slow. Returns -1 if the music mode is neither wave nor
     // MIDI, otherwise 0.
     int FadeOutMusic(float seconds);
-    // Whether g_GameManager.unk_4 is set and its scoreDisabled is not 0.
+    // Whether g_GameManager.savedConfig is set and its scoreDisabled is not 0.
     // The result screen records no score then.
     int IsScoreDisabled();
     // Bit 3 of stateFlags: no score is recorded. Inline; the copy at
@@ -307,7 +307,7 @@ public:
     // The scene the game came from.
     int prevScene;
     // Cleared by GameManager::AddedCallback in scenes 3, 11 and 12, else
-    // set; unk_168 the same by DeletedCallback.
+    // set; freesResources the same by DeletedCallback.
     int loadsResources;
     int freesResources;
     // Set by OnUpdate when a game restarts from scene 11.
@@ -334,7 +334,7 @@ public:
     float achievedFrames;
     float expectedFrames;
     // The frame rate rounded, as DrawFps shows it with bit 3 of
-    // g_GameManager.unk_3dbac.
+    // g_GameManager.stateFlags.
     short roundedFps;
     unsigned char pad_19a[0x2];
     // text.anm, loaded by LoadingThread.
@@ -360,8 +360,8 @@ public:
     DWORD subThreadId;
     // Set by CloseSubThread while it waits for the thread to end.
     int closeSubThread;
-    // Set by StartSubThread. OnUpdate returns early while unk_294 is set
-    // and this is.
+    // Set by StartSubThread. OnUpdate returns early while
+    // loadingThreadState is set and this is.
     int subThreadRunning;
     // OnUpdate quits when it is 2.
     int loadingThreadState;
@@ -1103,8 +1103,8 @@ public:
     // Signalled as the wave music plays.
     HANDLE notifyEvent;
     DWORD unusedDword5210;
-    // Added to every BgmFormat offset by CWaveFile::ResetFile (th07's
-    // unk_39c8).
+    // Added to every BgmFormat offset by CWaveFile::ResetFile (as
+    // th07's).
     DWORD bgmFileOffset;
     // The music and sound effect volumes in percent, 100 at first, then
     // copied from the config (App+0x13f, App+0x140). Not in th07:
@@ -1137,7 +1137,7 @@ struct GameManagerStats
     BYTE bestContinuesUsed;
     unsigned char pad_19[0x3];
     int spellCardsCaptured;
-    // A copy of unk_22, which is kept in each replay stage; AddGauge
+    // A copy of gauge, which is kept in each replay stage; AddGauge
     // moves it.
     short gaugeCopy;
     short gauge;
@@ -1195,7 +1195,7 @@ struct GameConfig
 };
 ASSERT_SIZE(GameConfig, 0x3c);
 
-// th07's GameManager (g_Unknown626270 there), at 0x160f508. Only the
+// th07's GameManager (g_GameManager there), at 0x160f508. Only the
 // fields known so far.
 class GameManager
 {
@@ -1204,10 +1204,11 @@ public:
     // as th07's GameManager's.
     static int OnUpdate(GameManager *mgr);
     // The update element's added callback, split as App's: clears or sets
-    // App::unk_164 by the scene, sets unk_38, starts the loading sprites
-    // (and, coming from the title, the loading screen effect), turns the
-    // result screen's mode 2 and 3 into 1 and runs LoadingThread in the
-    // sub thread for th07's AddedCallback proper. Returns 0.
+    // App::loadsResources by the scene, sets loadingThreadState, starts the
+    // loading sprites (and, coming from the title, the loading screen
+    // effect), turns the result screen's mode 2 and 3 into 1 and runs
+    // LoadingThread in the sub thread for th07's AddedCallback proper.
+    // Returns 0.
     static int AddedCallback(GameManager *mgr);
     // The rest of th07's AddedCallback, run in the sub thread (with /Gr,
     // a fastcall function passed to CreateThread). Works on g_GameManager.
@@ -1215,7 +1216,7 @@ public:
     static int DeletedCallback(GameManager *mgr);
     // The draw chain callback: moves isPaused on from 1 to 2. Returns 1,
     // or 3 outside scene 2, in the result screen's mode (bits 5-6 of
-    // unk_3dbac) 1 or while unk_38 is set.
+    // stateFlags) 1 or while loadingThreadState is set.
     static int OnDraw(GameManager *mgr);
     // Zeroes the GameManager and sets arena to the play area (32, 16,
     // 384, 448) and demoIndex to 3. Emitted where g_GameManager is defined
@@ -1283,7 +1284,7 @@ public:
         this->arena2[3] = 416.0f;
     }
     // The checksum: ChecksumBytes over stats from lifeChecksumKeys to
-    // checksum, over stats->checksumKeysE, over the config unk_4 points
+    // checksum, over stats->checksumKeysE, over the config savedConfig points
     // at, over g_App's config (0x3c bytes each) and, new in th08, over
     // hscr.
     int ComputeChecksum();
@@ -1311,8 +1312,8 @@ public:
         this->stats->lifeChecksumKeysF[1] = g_Rng.GetRandomF32InRange(100000.0f) + 6543.0f;
         this->stats->lifeChecksumKeysF[2] = g_Rng.GetRandomF32InRange(100000.0f) + 6543.0f;
     }
-    // Adds `deaths` to stats->deaths and unk_68 and counts a miss in
-    // hscr; adds `bombs` to stats->bombsUsed and unk_88. Both wipe g_App
+    // Adds `deaths` to stats->deaths and stageDeaths and counts a miss in
+    // hscr; adds `bombs` to stats->bombsUsed and stageBombsUsed. Both wipe g_App
     // first if the checksums were wrong, as th07's (which were out of
     // line). Inline; the copies at 0x44e260 and 0x44e2e0 are the player
     // object's.
@@ -1337,7 +1338,7 @@ public:
         this->stats->stageBombsUsed += bombs;
         this->RerollChecksumKeys();
     }
-    // Sets stats->unk_22. Inline; the copy at 0x44e140 is the player
+    // Sets stats->gauge. Inline; the copy at 0x44e140 is the player
     // object's.
     void SetGauge(short value)
     {
@@ -1364,8 +1365,8 @@ public:
     // Takes `amount` hundredths from the rank, as th07's.
     void SubSubRank(int amount);
     // Unless g_PlayerBombRunning is set and `force` is not, adds `amount` to
-    // stats->unk_22, within unk_3ddf8 and unk_3ddfa, and copies it to
-    // stats->unk_20.
+    // stats->gauge, within gaugeMin and gaugeMax, and copies it to
+    // stats->gaugeCopy.
     void AddGauge(int amount, int force);
     // Whether shot type `shot` (0 to 3) cleared one of the four main
     // difficulties, as th07's (0x43c15f).
@@ -1385,16 +1386,16 @@ public:
     int IsSpellCardSeen(int card);
     // th07's IsPhantasmOpen, which returns 0 in th08 (0x43c317).
     int IsPhantasmOpen();
-    // Whether a replay (bit 3 of unk_3dbac) of a practice is playing.
+    // Whether a replay (bit 3 of stateFlags) of a practice is playing.
     int IsPracticeReplay();
     // By stage: 0 for 6 and 7, 4 past them, else 1, or 2 while stats'
-    // unk_3c is below unk_40.
+    // timeOrbs is below timeOrbsNeeded.
     int GetStageClearClockStep();
     // Moves `stage` on to the next stage: from stage 3 (index 2) to 4A or
-    // 4B by the shot type, and from 6 to 6B if bits 11-12 of unk_3dbac
+    // 4B by the shot type, and from 6 to 6B if bits 11-12 of stateFlags
     // are set, else 6A (0x43c4b3).
     void AdvanceStage();
-    // stats->unk_22, and whether it reached each of gaugeLow1, gaugeLow2,
+    // stats->gauge, and whether it reached each of gaugeLow1, gaugeLow2,
     // gaugeHigh1 and gaugeHigh2. Inline; the copies at 0x406cf0 and
     // 0x406d10 to 0x406da0 are in an /Od object.
     int GetGauge()
@@ -1417,18 +1418,18 @@ public:
     {
         return this->stats->gauge >= this->gaugeHigh2;
     }
-    // stats->unk_3c and unk_40, which DrawHud shows as "%d/%d" on its last
-    // row, in 0xfffff0c0 once unk_3c reaches unk_40. Inline; the copies at
-    // 0x421b60 and 0x421b80 are in an /Od object.
+    // stats->timeOrbs and timeOrbsNeeded, which DrawHud shows as "%d/%d" on
+    // its last row, in 0xfffff0c0 once timeOrbs reaches timeOrbsNeeded.
+    // Inline; the copies at 0x421b60 and 0x421b80 are in an /Od object.
     int GetTimeOrbs()
     {
         return this->stats->timeOrbs;
     }
-    // Adds `amount` time orbs (stats->unk_3c; a negative amount larger
-    // than what there is clears them instead) to unk_3c, stats->unk_44
-    // and hscr.timeOrbs; a gain also raises stats->unk_24 by 10 per two,
-    // rounding with unk_44's parity. Inline; the copy at 0x418220 is in
-    // an /Od object.
+    // Adds `amount` time orbs (stats->timeOrbs; a negative amount larger than
+    // what there is clears them instead) to timeOrbs, stats->timeOrbsCollected
+    // and hscr.timeOrbs; a gain also raises stats->maxPointValue by 10 per two,
+    // rounding with timeOrbsCollected's parity. Inline; the copy at 0x418220 is
+    // in an /Od object.
     void AddTimeOrbs(int amount)
     {
         if (amount >= 0 || this->stats->timeOrbs >= -amount)
@@ -1452,13 +1453,13 @@ public:
     {
         return this->stats->timeOrbsNeeded;
     }
-    // Whether a demo plays: unk_3dbac's bit 1, as th07's stateFlags.
+    // Whether a demo plays: stateFlags's bit 1, as th07's stateFlags.
     // Inline; the copy at 0x406cb0 is in an /Od object.
     int IsDemo()
     {
         return this->stateFlags >> 1 & 1;
     }
-    // Whether the game is a practice: unk_3dbac's bit 0, which th07 read
+    // Whether the game is a practice: stateFlags's bit 0, which th07 read
     // directly. Inline; the copy at 0x406cd0 is in an /Od object.
     int IsInPractice()
     {
@@ -1528,7 +1529,7 @@ public:
         this->stats->power = power;
         this->RerollChecksumKeys();
     }
-    // stats->unk_28 and a setter for it, inline: the copies at 0x406dd0
+    // stats->clock and a setter for it, inline: the copies at 0x406dd0
     // and 0x453c60 are another object's and the replay object's.
     char GetClock()
     {
@@ -1538,19 +1539,19 @@ public:
     {
         this->stats->clock = value;
     }
-    // Adds `amount` to stats->unk_28. Inline; the copy at 0x406df0 is in
+    // Adds `amount` to stats->clock. Inline; the copy at 0x406df0 is in
     // an /Od object.
     void AddClock(char amount)
     {
         this->stats->clock += amount;
     }
-    // Whether a spell card is practised (bit 14 of unk_3dbac). Inline;
+    // Whether a spell card is practised (bit 14 of stateFlags). Inline;
     // the copy at 0x406c70 is an /Od object's.
     int IsInSpellCardPractice()
     {
         return this->stateFlags >> 14 & 1;
     }
-    // Whether the spell card practised (bit 14 of unk_3dbac) is `card`,
+    // Whether the spell card practised (bit 14 of stateFlags) is `card`,
     // or one from `first` to `last`. Inline.
     int IsPracticingSpellCard(int card)
     {
@@ -1572,7 +1573,7 @@ public:
     {
         return this->clrds[shot].stagesCleared[difficulty] & (1 << stage);
     }
-    // Whether a replay plays (bit 3 of unk_3dbac). Inline; the copy at
+    // Whether a replay plays (bit 3 of stateFlags). Inline; the copy at
     // 0x406c90 is an /Od object's.
     void SetIsReplay(int isReplay)
     {
@@ -1593,7 +1594,7 @@ public:
     // Set while the game is paused: the screen shakes hold still. As
     // th07's isFrozen.
     char isFrozen;
-    // As th07's unk_d: while it is set, the frame rate is not measured
+    // As th07's skipFpsMeasure: while it is set, the frame rate is not measured
     // and the buttons are only added to.
     char skipFpsMeasure;
     unsigned char pad_2e[0x2];
@@ -1601,7 +1602,7 @@ public:
     // 1 << difficulty, or 0xf from Extra on, as th07's.
     int difficultyMask;
     // OnDraw returns 3 while it is set; OnUpdate returns 4 while it is 2
-    // and counts unk_3c up while it is otherwise set.
+    // and counts loadingFrames up while it is otherwise set.
     int loadingThreadState;
     int loadingFrames;
     Catk catks[0xde];
@@ -1631,7 +1632,7 @@ public:
     union
     {
         // Bit 2: the speed is measured; 3: it is shown, as th07's
-        // unk_93d8.
+        // stateFlags.
         DWORD stateFlags;
         struct
         {
@@ -1645,7 +1646,7 @@ public:
             // The result screen's mode: OnDraw returns 3 in mode 1, and
             // AddedCallback turns 2 and 3 into 1.
             unsigned int stageEndState : 2;
-            // Gui::DrawHud draws GuiImpl::unk_5484 with the lives and
+            // Gui::DrawHud draws GuiImpl::livesBombsOverlay with the lives and
             // bombs while it is 1 and g_SpellCard.IsActive().
             unsigned int lastSpellState : 2;
             unsigned int stageClearStarted : 1;
@@ -1657,8 +1658,8 @@ public:
             unsigned int bossHitAnywhere : 1;
             // Set while a spell card is practised (IsInSpellCardPractice).
             unsigned int isInSpellCardPractice : 1;
-            // AnyShotHasExtraOpen, AnyShotHasClearedFinalA and AllShotsHaveExtraOpen
-            // as App::AddedCallback found them.
+            // AnyShotHasExtraOpen, AnyShotHasClearedFinalA and
+            // AllShotsHaveExtraOpen as App::AddedCallback found them.
             unsigned int anyShotHasExtraOpen : 1;
             unsigned int anyShotHasClearedFinalA : 1;
             unsigned int allShotsHaveExtraOpen : 1;
@@ -1666,7 +1667,7 @@ public:
         };
     };
     // The spell card being practised, kept in the replay when bit 14 of
-    // unk_3dbac is set.
+    // stateFlags is set.
     short practiceSpellCard;
     // While it is set, PresentFrame keeps redrawFrames and fade outs
     // hold still. As th07's isPaused.
@@ -1702,10 +1703,10 @@ public:
     float arena2[4];
     // As th07's checksumValue: SetBombs sets it.
     float checksumValue;
-    // The bounds of stats->unk_22.
+    // The bounds of stats->gauge.
     short gaugeMin;
     short gaugeMax;
-    // Where AsciiText::DrawPopups starts tinting the stats->unk_22
+    // Where AsciiText::DrawPopups starts tinting the stats->gauge
     // gauge: blue at or below gaugeLow1 (light blue at gaugeLow2), red at
     // or above gaugeHigh1 (light red at gaugeHigh2).
     short gaugeLow1;
@@ -1860,7 +1861,7 @@ struct GuiMsg
     BYTE textBoxShown;
     // The Extra/clear level StartMsgScript picks for the ending dialogue
     // (index 10 of stage 6), kept in bits 11-12 of
-    // GameManager::unk_3dbac. Opcode 21 lets the player pick it (up and
+    // GameManager::stateFlags. Opcode 21 lets the player pick it (up and
     // down) and opcode 22 keeps it and starts script 1 or 2.
     BYTE clearLevel;
     unsigned char pad_156f[0x1];
@@ -1885,7 +1886,7 @@ struct GuiImpl
     // Starts dialogue script `index`, as th07's: clears msg (keeping the
     // file), picks the ending dialogue by the clears for index 10 of
     // stage 6 and a shorter one past index 5 of stage 6B while
-    // stats->unk_28 is 12 or more, sets the dialogue's defaults and
+    // stats->clock is 12 or more, sets the dialogue's defaults and
     // clears the bullets, the enemies and the items (0x43396d).
     void StartMsgScript(int index);
     // Runs the dialogue script, as th07's (0x433db3).
@@ -1947,8 +1948,9 @@ public:
     // g_App.redrawFrames at 8 or more while button 0x100 is held and
     // counts frameCounter up. Returns 1.
     static int OnUpdate(Gui *gui);
-    // The draw chain callback: DrawStageClear while impl->stageClearShown is set,
-    // then the dialogue, the banners, the HUD and the popups. Returns 1.
+    // The draw chain callback: DrawStageClear while impl->stageClearShown
+    // is set, then the dialogue, the banners, the HUD and the popups.
+    // Returns 1.
     static int OnDraw(Gui *gui);
     // Whether the dialogue holds the timeline: impl is set,
     // msg.timelineRelease is 0 and a script runs, as th07's.
@@ -1980,7 +1982,7 @@ public:
     // Called by GameManager::OnUpdate when the result screen's mode ends
     // without a scene to go to (0x438f58).
     void StartLoadingBar();
-    // Restart the clock sprite (impl->unk_2156c) of times.anm on the
+    // Restart the clock sprite (impl->clock) of times.anm on the
     // hour (GameManager::GetClock), show the hour with interrupt 1 or 2,
     // or hide it (0x439007, 0x439050, 0x439093, 0x4390d6). Return 0.
     int StartClock();
@@ -2049,8 +2051,8 @@ public:
     // The update element's added callback: runs LoadResources.
     static int AddedCallback(Gui *gui);
     // Releases ANM slot 0xd unless GuiIsRestarting, frees the dialogue file
-    // and, if GuiIsFreeingResources, releases ANM slots 0xa to 0xe and frees impl.
-    // Returns 0.
+    // and, if GuiIsFreeingResources, releases ANM slots 0xa to 0xe and
+    // frees impl. Returns 0.
     static int DeletedCallback(Gui *gui);
     // Adds the Gui's chain elements, as th07's (0x437ad0): if
     // GuiIsLoadingResources, zeroes the Gui and allocates impl
@@ -2110,14 +2112,14 @@ extern Gui g_Gui;
 extern ChainElem g_GuiCalcChain;
 extern ChainElem g_GuiDrawChain;
 
-// Whether the game restarts (App::unk_16c), so the stage keeps its
+// Whether the game restarts (App::isRestarting), so the stage keeps its
 // loaded ANMs. Inline; the copy at 0x40b900 is an /Od object's.
 inline int IsRestarting()
 {
     return g_App.isRestarting;
 }
 
-// App::unk_164 and unk_168: whether the scene's objects load their
+// App::loadsResources and freesResources: whether the scene's objects load their
 // files as they are added, and free them as they are deleted. Inline;
 // the copies at 0x4338b0 and 0x4338c0 are an /Od object's.
 inline int IsLoadingResources()
@@ -2137,7 +2139,8 @@ inline int KeepsResources()
     return !IsLoadingResources();
 }
 
-// App::unk_164, unk_168 and unk_16c (0x438fe9, 0x438ff3, 0x438ffd).
+// App::loadsResources, freesResources and isRestarting (0x438fe9, 0x438ff3,
+// 0x438ffd).
 int GuiIsLoadingResources();
 int GuiIsFreeingResources();
 int GuiIsRestarting();
@@ -2282,8 +2285,8 @@ struct StageCamera
 
 class Stage;
 // Moves `out` from `from` to `to` over stage->cameraFadeFrames[i] frames, on
-// stage->cameraFadeTimer[i], eased by stage->cameraFadeMode[i]: 1 to 3 slow down, 4
-// to 6 speed up, 7 follows a Hermite curve with tangents m0 and m1.
+// stage->cameraFadeTimer[i], eased by stage->cameraFadeMode[i]: 1 to 3 slow
+// down, 4 to 6 speed up, 7 follows a Hermite curve with tangents m0 and m1.
 // Clears the frame count once the timer reaches it. As th07's.
 void UpdateEasedVector(Stage *stage, int i, D3DXVECTOR3 *out, D3DXVECTOR3 *from, D3DXVECTOR3 *to, D3DXVECTOR3 *m0, D3DXVECTOR3 *m1);
 // The cubic Hermite curve from p0 to p1, with tangents m0 and m1, at `t`
@@ -2316,9 +2319,9 @@ public:
     // Runs the stage script up to the current frame, as th07's, with
     // th08's opcodes: 32 sets camera.offset, 33 starts a camera shake
     // (shakeMode), 34 starts backgroundLayer2's script. In stage 7 it
-    // first spawns unk_ae8 and runs its script by waitLabel. Then fades
+    // first spawns stage7Effect and runs its script by waitLabel. Then fades
     // the cameras and the fog, shakes the camera, runs the sprites and
-    // spawns effect 0x3e at the first 12 of unk_6480 every third frame
+    // spawns effect 0x3e at the first 12 of effectSpawnPos every third frame
     // from frame 700 (or in spell practice). Returns 1, or 4 when
     // ChecksumMismatch finds the player's numbers tampered with
     // (checked every 500 frames).
@@ -2341,42 +2344,42 @@ public:
     // Sets tintColor to `color`, or to the average of the two while its
     // alpha byte is set, as th07's.
     void SetTintColor(D3DCOLOR color);
-    // Clears unk_6478 and the first 0x10 of unk_6480, sets the play area
-    // viewport, resets the SpriteEngine's render state, clears the play
-    // area to black once if clearScreenOnce is set, makes the
-    // SpriteEngine modulate by tintColor if its alpha is set (and resets
-    // it to gray), draws backgroundLayer0, backgroundLayer1 and
-    // unk_ae8, clears to clearColor (through DrawColorRect unless it is
-    // opaque), sets the fog (its color modulated as the SpriteEngine's)
-    // and draws layers 0 and 1 under the same conditions as OnDraw2.
-    // Returns 1. As th07's, with th08's additions.
+    // Clears effectSpawnPosCount and the first 0x10 of effectSpawnPos, sets
+    // the play area viewport, resets the SpriteEngine's render state, clears
+    // the play area to black once if clearScreenOnce is set, makes the
+    // SpriteEngine modulate by tintColor if its alpha is set (and resets it
+    // to gray), draws backgroundLayer0, backgroundLayer1 and stage7Effect,
+    // clears to clearColor (through DrawColorRect unless it is opaque), sets
+    // the fog (its color modulated as the SpriteEngine's) and draws layers 0
+    // and 1 under the same conditions as OnDraw2. Returns 1. As th07's, with
+    // th08's additions.
     static int OnDraw(Stage *stage);
     // Draws the objects on `layer` near enough the camera, as th07's
     // (0x40a1b0). Returns 0.
     // Draws layers 2 and 3 unless spellCardState is above 1 or the Gui's
     // loading sprite shows, with a rectangle fading in while
     // spellCardState is 1; then dialogueSprites's first
-    // dialogueSpriteCount sprites and unk_625c, the fixed camera
+    // dialogueSpriteCount sprites and spellCardDrawCallback, the fixed camera
     // (SetupFixedCamera) and the fog at 1000 to 2000. Resets the
     // SpriteEngine's color unless keepTintColor was set, and clears it
-    // and unk_647c. Returns 1. As th07's.
+    // and recordEffectSpawnPos. Returns 1. As th07's.
     static int OnDraw2(Stage *stage);
     int DrawLayer(int layer);
     // Resets the script, loads the stage's background ANM into slot 4
     // (or takes the one already there when restarting) and its data
     // (the spell practice version in spell practice), and sets the fog
     // and the cameras up as the constructor, with draw distance
-    // unk_6470 by stage. Returns 0, or -1 if loading fails. As th07's.
+    // drawDistanceSq by stage. Returns 0, or -1 if loading fails. As th07's.
     static int AddedCallback(Stage *stage);
     // Loads the stage data from `dataPath` (keeping the old data when
     // restarting) and starts the background sprites' scripts, as
-    // th07's, then starts unk_844 (0x409ce0). Returns 0, or -1 on
+    // th07's, then starts colorScaleSprite (0x409ce0). Returns 0, or -1 on
     // failure.
     int Load(char *dataPath);
-    // Sends unk_844 interrupt 1 or 2 as g_Player.unk_5 is set or
+    // Sends colorScaleSprite interrupt 1 or 2 as g_Player.isYoukai is set or
     // cleared, runs it, then runs one frame of the scripts of each
     // animated object's sprites, as th07's; objects whose last sprite has
-    // autoRotate 1 get unk_844's color as color2 (0x409f40). Returns 0.
+    // autoRotate 1 get colorScaleSprite's color as color2 (0x409f40). Returns 0.
     int StepObjects();
 
     // One Sprite per object sprite in the data.
@@ -2401,11 +2404,11 @@ public:
     int stage;
     D3DXVECTOR3 cameraPos;
     D3DCOLOR clearColor;
-    // Follows g_Player.unk_5: set, unk_844 gets interrupt 1, cleared,
-    // interrupt 2. New in th08.
+    // Follows g_Player.isYoukai: set, colorScaleSprite gets interrupt 1,
+    // cleared, interrupt 2. New in th08.
     BYTE colorScaleOn;
     unsigned char pad_835[0x3];
-    // Restarted whenever unk_834 changes. New in th08.
+    // Restarted whenever colorScaleOn changes. New in th08.
     Timer colorScaleTimer;
     // Script 0x21 of g_App.textAnm. Its color scales the color of the
     // petals and of some of the stage's sprites. New in th08.
@@ -2494,7 +2497,7 @@ struct SpellCardBgm
     int restartsMusic;
 };
 extern SpellCardBgm g_SpellCardBgms[];
-// By stage and difficulty: what LoadingThread sets stats->unk_40 to.
+// By stage and difficulty: what LoadingThread sets stats->timeOrbsNeeded to.
 extern int g_TimeOrbsNeeded[][4];
 // The difficulty (0 to 4) whose g_SpellCardLists list has spell card
 // `card`, else 5.
@@ -2512,7 +2515,7 @@ extern int g_ListedSpellCardCount;
 // registers it). Only what is known so far.
 struct SpellCard
 {
-    // Bit 0 of unk_0. Inline; the copy at 0x4178a0 is in an /Od object.
+    // Bit 0 of flags. Inline; the copy at 0x4178a0 is in an /Od object.
     int IsActive()
     {
         return this->flags & 1;
@@ -2557,14 +2560,14 @@ struct SpellCard
     // Starts the card named `name` (「リザレクション」) for `enemy` without a
     // capture: sets bit 10, clears bits 0 and 4 (0x415d10).
     void StartNameOnly(char *name, struct Enemy *enemy);
-    // Ends the name banners ShowName started: sets unk_139c's pending
-    // interrupt directly and sends unk_1e2c (and unk_2374 unless
-    // unk_0_10) interrupt 2 (0x416160).
+    // Ends the name banners ShowName started: sets spellName's pending
+    // interrupt directly and sends spellNameBar (and spellScoreBar unless
+    // nameOnly) interrupt 2 (0x416160).
     void EndSpellCardName();
-    // Hides the boss's card: clears unk_0_0 and ends the name banners
+    // Hides the boss's card: clears active and ends the name banners
     // (0x416af0).
     void Abort();
-    // Called with 8000 when a time orb is collected: unless unk_0_11 is
+    // Called with 8000 when a time orb is collected: unless bonusFrozen is
     // set, adds `amount` to the bonus, up to the bonus the card started
     // with, and below that `amount` / 120 to what it loses a second
     // (0x416b10).
@@ -2573,28 +2576,28 @@ struct SpellCard
     // (StartBomb): the portrait for `face` (0 or 1, else none), `name`
     // and sprite `sprite` (0x415d60).
     void StartBombCard(int face, char *name, int sprite);
-    // Bit 7 of unk_0: whether the player bombed during the spell card,
+    // Bit 7 of flags: whether the player bombed during the spell card,
     // as th07's spellCardBombed? Inline; the copy is at 0x42dff0.
     int WasBombed()
     {
         return this->flags >> 7 & 1;
     }
-    // Bit 9 of unk_0. Inline; the copy is at 0x405260.
+    // Bit 9 of flags. Inline; the copy is at 0x405260.
     int IsCaptured()
     {
         return this->flags >> 9 & 1;
     }
 
-    // Ends the spell card's bonus: sets unk_10f8's pending interrupt
-    // directly and sends unk_1b88 interrupt 2. Inline; the copy at
+    // Ends the spell card's bonus: sets bombName's pending interrupt
+    // directly and sends bombNameBar interrupt 2. Inline; the copy at
     // 0x416130 is an /Od object's.
     void EndBombName()
     {
         this->bombName.pendingInterrupt = 1;
         this->bombNameBar.SetPendingInterrupt(2);
     }
-    // Ends the spell card as a timer callback runs: clears unk_0_2 and
-    // unk_fc, sets unk_0_3. Inline; the copy at 0x42bc50 is an /Od
+    // Ends the spell card as a timer callback runs: clears capture and
+    // bonus, sets timedOut. Inline; the copy at 0x42bc50 is an /Od
     // object's.
     void TimeOut()
     {
@@ -2602,7 +2605,7 @@ struct SpellCard
         this->timedOut = 1;
         this->bonus = 0;
     }
-    // Clear unk_0_2 and unk_fc; the first also copies bit 0 to bit 7.
+    // Clear capture and bonus; the first also copies bit 0 to bit 7.
     // Called as a bomb starts and as the player dies. Inline; the copies
     // at 0x44cba0 and 0x44d150 are the player object's.
     void LoseCaptureToBomb()
@@ -2637,25 +2640,25 @@ struct SpellCard
             DWORD bonusFrozen : 1;
         };
     };
-    // unk_10. Inline; its copy is folded with ReplayManager::GetMode
+    // timeOrbBonus. Inline; its copy is folded with ReplayManager::GetMode
     // (0x453cc0).
     int GetTimeOrbBonus()
     {
         return this->timeOrbBonus;
     }
-    // Whether unk_0_0 and unk_0_5 are set. Inline; the copy is at
+    // Whether active and lastSpell are set. Inline; the copy is at
     // 0x417860.
     int IsLastSpellActive()
     {
         return this->IsActive() && this->lastSpell ? TRUE : FALSE;
     }
-    // Whether unk_0_0 and unk_0_2 are set. Inline; the copy is at
+    // Whether active and capture are set. Inline; the copy is at
     // 0x41fd90.
     int IsCapturable()
     {
         return this->IsActive() && this->capture ? TRUE : FALSE;
     }
-    // Set unk_0_6 and unk_0_11 (opcodes 164 and 184). Inline; the copies
+    // Set effectFixed and bonusFrozen (opcodes 164 and 184). Inline; the copies
     // at 0x41f0b0 and 0x41f0e0 are an /Od object's.
     void SetEffectFixed(int value)
     {
@@ -2668,7 +2671,7 @@ struct SpellCard
     // Puts the card's effect at (x, y, z). Inline; the copy at 0x41f040
     // is an /Od object's.
     void SetEffectPos(float x, float y, float z);
-    // unk_108 in frames. Inline; the copy is at 0x41fdd0.
+    // timeLeft in frames. Inline; the copy is at 0x41fdd0.
     int GetTimeLeft()
     {
         return this->timeLeft.AsFrames();
@@ -2726,14 +2729,15 @@ struct SpellCard
 };
 ASSERT_SIZE(SpellCard, 0x2644);
 extern SpellCard g_SpellCard;
-// Sets stats->unk_38 from stats->unk_34 by difficulty (0x440470).
+// Sets stats->checksumKeyPoints from stats->checksumKeyStage by difficulty
+// (0x440470).
 void SetChecksumKeyPoints();
-// SetChecksumKeyPoints's tables: stats->unk_38 by stats->unk_34 for the four main
-// difficulties (then 500 more each), and for Extra and Phantasm (then
-// 99999).
+// SetChecksumKeyPoints's tables: stats->checksumKeyPoints by
+// stats->checksumKeyStage for the four main difficulties (then 500 more
+// each), and for Extra and Phantasm (then 99999).
 extern int g_ExtendPointItems[6];
 extern int g_ExtendPointItemsExtra[3];
-// g_SpellCardBgms' unk_10 and unk_c for the spell card practised; both
-// ignore `card` (0x439916, 0x439961).
+// g_SpellCardBgms' restartsMusic and titleIndex for the spell card
+// practised; both ignore `card` (0x439916, 0x439961).
 int GetPracticeBgmRestarts(int card);
 int GetPracticeBgmTitleIndex(int card);

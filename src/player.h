@@ -36,7 +36,7 @@ struct ShotData
     float angle;
     float speed;
     short damage;
-    // Above 0, the bullet is drawn red while stats->unk_22 is at
+    // Above 0, the bullet is drawn red while stats->gauge is at
     // gaugeHigh1. New in th08.
     short side;
     // 0 for the player, else the option, from 1.
@@ -111,7 +111,7 @@ struct ShotTypeData
 // Placeholder name.
 struct PlayerBombHitbox
 {
-    // Zeroes it, then sets unk_38. Inline; the copy is at 0x44e370.
+    // Zeroes it, then sets damageInterval. Inline; the copy is at 0x44e370.
     void Reset()
     {
         memset(this, 0, sizeof(PlayerBombHitbox));
@@ -280,7 +280,7 @@ struct PlayerBullet
     unsigned char pad_46d[0x1];
     // ShotData::script.
     short script;
-    // Drawn red (ShotData::unk_1e).
+    // Drawn red (ShotData::side).
     char red;
     unsigned char pad_471[0x3];
     // The shot's callbacks, and the shot.
@@ -343,8 +343,8 @@ int DrawOption(Player *player, PlayerOption *option);
 
 // Fills `bullet` with shot `sd` and starts it, as th07's (0x44fb70):
 // from the player or its option, its script (from 10) and its panned
-// sound; red while stats->unk_22 is at gaugeHigh1 for shots with
-// unk_1e.
+// sound; red while stats->gauge is at gaugeHigh1 for shots with
+// side.
 void FireShot(Player *player, PlayerBullet *bullet, ShotData *sd);
 // Fires `sd` into `bullet` on frames where frame % interval is phase,
 // returning 1 if it did, as th07's (0x44fd80).
@@ -352,7 +352,7 @@ int TryFireShot(Player *player, PlayerBullet *bullet, int frame, ShotData *sd);
 // TryFireShot unless a bomb runs (0x44fdd0).
 int TryFireShotNoBomb(Player *player, PlayerBullet *bullet, int frame, ShotData *sd);
 // th07's FireTrailLaser: unless a bomb runs or bit 13 of
-// GameManager::unk_3dbac is set, fires laser sd->phase if it is free,
+// GameManager::stateFlags is set, fires laser sd->phase if it is free,
 // running its timer from 999, keeping sd->interval in trailLength and
 // moving the bullet and its 32 trail points to x = -999; while it flies
 // from another shot, sends its bullet interrupt 1 and frees it
@@ -377,9 +377,9 @@ int UpdateHomingOrb(Player *player, PlayerBullet *bullet);
 int UpdateAcceleratingBullet(Player *player, PlayerBullet *bullet);
 // th07's UpdateLaserBullet: its laser is ended once its timer runs out
 // (cut to 20 frames in dialogue, during a bomb or while bit 13 of
-// GameManager::unk_3dbac is set), else it keeps to its x offset,
+// GameManager::stateFlags is set), else it keeps to its x offset,
 // stretches to the top unless the player is dying and turns blue while
-// stats->unk_22 is at gaugeHigh1; below 100 frames its timer runs
+// stats->gauge is at gaugeHigh1; below 100 frames its timer runs
 // twice as fast (0x4505d0).
 int UpdateLaserBullet(Player *player, PlayerBullet *bullet);
 // th07's UpdateTrailLaserBullet, following the first option (0x450840).
@@ -455,7 +455,7 @@ public:
     // ticked. Bullets deal their damage (a fifth during a bomb), at most
     // 50 a frame, which also goes to `*damageTaken`; every
     // g_DamagePerTimeOrb of it there spawns a time orb at bullets whose
-    // shot has unk_1e below 0 while stats->unk_22 is at gaugeLow1. Then
+    // shot has side below 0 while stats->gauge is at gaugeLow1. Then
     // every bombHitboxes box or circle (turned by its angle) that meets
     // it on its damage frames, up to its maxDamage; during a bomb that
     // sets `*hitByBomb`. 6% more at gaugeHigh1 (0x451670).
@@ -479,17 +479,17 @@ public:
     // Scores a graze of the bullet at `pos` (0x44a930); `isLaser` is
     // set for lasers.
     void Graze(D3DXVECTOR3 *pos, int isLaser);
-    // Starts dying, as th07's: unfreezes the game, rerolls the
-    // checksums, bursts effect 6, sets playerState to 2 with stateTimer at
-    // 0, plays sound 4 and marks bit 9 of g_ReplayManager->frameEvents.
-    // With GameManager::unk_3dbac_7 set, just leaves 2 deathbombFrames
-    // and sets unk_6. Otherwise clears stats->unk_22 and, with bombs
-    // left, gives 6 deathbombFrames a bomb (7 more once the time orbs
-    // reach their target), at most 15, doubled up to 30 in a spell card
-    // and times 9/5 for characters 0, 4 and 5; tints the player and
-    // starts the last-words ring effect 0x3b (unk_e2b28), setting
-    // unk_3dbac_10 in a spell card. Without bombs, 2 deathbombFrames.
-    // Then recycles the collected items.
+    // Starts dying, as th07's: unfreezes the game, rerolls the checksums,
+    // bursts effect 6, sets playerState to 2 with stateTimer at 0, plays
+    // sound 4 and marks bit 9 of g_ReplayManager->frameEvents. With
+    // GameManager::lastSpellState set, just leaves 2 deathbombFrames and
+    // sets dissolveBombPending. Otherwise clears stats->gauge and, with
+    // bombs left, gives 6 deathbombFrames a bomb (7 more once the time orbs
+    // reach their target), at most 15, doubled up to 30 in a spell card and
+    // times 9/5 for characters 0, 4 and 5; tints the player and starts the
+    // last-words ring effect 0x3b (lastWordEffect), setting deathbombFreeze
+    // in a spell card. Without bombs, 2 deathbombFrames. Then recycles the
+    // collected items.
     void Die();
     // The angle from `pos` to the player, as th07's (0x44c1b0).
     float AngleFrom(D3DXVECTOR3 *pos);
@@ -515,12 +515,12 @@ public:
     {
         return this->bomb.running && this->bomb.type == 4 ? TRUE : FALSE;
     }
-    // Whether unk_5 is set. Inline; the copy is at 0x40bc40.
+    // Whether isYoukai is set. Inline; the copy is at 0x40bc40.
     int IsYoukai()
     {
         return this->isYoukai;
     }
-    // Whether unk_5 is clear. Inline; the copy is at 0x40bc20.
+    // Whether isYoukai is clear. Inline; the copy is at 0x40bc20.
     int IsHuman()
     {
         return !this->isYoukai;
@@ -533,12 +533,12 @@ public:
     char optionState;
     // Whether the player is focused (HandleInput; 2 until the first
     // frame), as th07's. Picks shotTypeFocused over shotType and the
-    // direction a time orb moves stats->unk_22.
+    // direction a time orb moves stats->gauge.
     BYTE focused;
     // Set while the last words run (UpdateDyingState): a bomb then
     // starts as the other character's last word.
     BYTE lastWordReady;
-    // Stage::StepObjects sends interrupt 1 to g_Stage.unk_844 as it is
+    // Stage::StepObjects sends interrupt 1 to g_Stage.colorScaleSprite as it is
     // set, 2 as it is cleared.
     BYTE isYoukai;
     BYTE dissolveBombPending;
@@ -613,7 +613,7 @@ public:
     // in.
     Timer fireTimer;
     Timer gaugeIdleTimer;
-    // Collecting a time orb moves stats->unk_22 while it is 0.
+    // Collecting a time orb moves stats->gauge while it is 0.
     Timer orbGaugeCooldown;
     Timer gaugeShiftTimer;
     // Runs through the player states, as th07's.
@@ -653,10 +653,10 @@ void DimPlayAreaForBomb(Player *player, D3DCOLOR tint);
 void StartBomb(Player *player, int face, char *name, int duration, int stateFrames, int sprite);
 // The bomb every character has in g_BombFuncs[..].update.funcs[4],
 // the Dissolve Spell (「ディゾルブスペル」) of a death while
-// GameManager::unk_3dbac_7 is set: on its first frame starts it (120
+// GameManager::lastSpellState is set: on its first frame starts it (120
 // frames, 40 in spell practice), bursts effect 0xc and a shrinking ring
 // 0x32 (90 frames, 30 in practice), plays sound 0xd, stops the player and
-// clears bit 6 of the bosses' unk_3324 (0x40d100).
+// clears bit 6 of the bosses' flags (0x40d100).
 void UpdateDissolveBomb(Player *player);
 // Its draw callback: tints the play area from 0x404040 up to 0xf0f0f0
 // over its first 60 frames (0x40d310).

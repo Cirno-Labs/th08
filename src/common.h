@@ -33,7 +33,7 @@ public:
     // Out-of-line copies of inline functions, at the end of the input
     // object (0x43ee90, 0x43eeb0); nothing references them.
     MemoryManager();
-    // Frees every block left in `blocks` if `unk_4000` is set.
+    // Frees every block left in `blocks` if `freeBlocksOnExit` is set.
     ~MemoryManager();
     // malloc() and free(); `name` is unused in the release build.
     // Inline; the copies are at 0x40b880 and 0x40b8a0.

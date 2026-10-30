@@ -28,11 +28,11 @@ struct ReplayStage
     int pointItemsTotal;
     // GameManagerStats::grazeTotal.
     int grazeTotal;
-    // GameManagerStats's unk_34, unk_38 and unk_24.
+    // GameManagerStats's checksumKeyStage, checksumKeyPoints and maxPointValue.
     int checksumKeyStage;
     int checksumKeyPoints;
     int maxPointValue;
-    // GameManagerStats::unk_22.
+    // GameManagerStats::clock.
     WORD gauge;
     // GameManager::rngSeed.
     WORD rngSeed;
@@ -41,11 +41,11 @@ struct ReplayStage
     BYTE bombs;
     // GameManager::rank.
     BYTE rank;
-    // GameManager::unk_3dba8.
+    // GameManager::powerItemCombo.
     BYTE powerItemCombo;
     // GameManagerStats::spellCardsCaptured.
     BYTE spellCardsCaptured;
-    // GameManagerStats::unk_28.
+    // GameManagerStats::clock.
     char clock;
     BYTE unusedByte23;
     WORD frames[1];
@@ -163,20 +163,20 @@ public:
     // random numbers. Returns 1.
     static int RecordOnUpdate2(ReplayManager *replay);
     // The update callback while recording: while bit 2 of
-    // GameManager::unk_3dbac is set, plays by g_Buttons and, unless the
+    // GameManager::stateFlags is set, plays by g_Buttons and, unless the
     // config's scoreDisabled or App::GetNoScore is set, records them (on
     // up to three frames while bit 9 is set) and every 30 frames the frame
     // rate (0x80 set while App::fastClockStreak is), then counts the frame.
     // Returns 1.
     static int RecordOnUpdate(ReplayManager *replay);
     // The second update callback while playing: unless bit 9 of
-    // GameManager::unk_3dbac is set, while bit 2 is, returns 6 on two
+    // GameManager::stateFlags is set, while bit 2 is, returns 6 on two
     // frames of every three while g_Gui's IsMsgRunning and IsMsgSkippable
     // hold, and on four of every five while replayMenuChoice is 2 and
     // g_EnemyManager.AnyBossActive() does not; otherwise 1.
     static int PlayOnUpdate2(ReplayManager *replay);
     // The update callback while playing: while bit 2 of
-    // GameManager::unk_3dbac is set and neither the config's
+    // GameManager::stateFlags is set and neither the config's
     // scoreDisabled nor bit 9 is, plays the recorded buttons for the
     // frame, with key repeat as in App::OnUpdate, and every 30 frames
     // puts the recorded frame rate back into App::roundedFps and
@@ -211,7 +211,7 @@ public:
 
     // The current frame.
     int frame;
-    // While bit 9 of GameManager::unk_3dbac is set, how many frames were
+    // While bit 9 of GameManager::stateFlags is set, how many frames were
     // recorded.
     int framesAfterStageClear;
     // The replay data.

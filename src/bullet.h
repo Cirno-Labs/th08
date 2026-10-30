@@ -236,14 +236,14 @@ public:
     // element (priority 0xe) and the draw element (priority 0xd), as
     // th07's. Returns 0, or -1 if adding fails.
     static int RegisterChain(char *anmPath);
-    // Unless g_GameManager.unk_3dbac_10 is set: updates the items, then
+    // Unless g_GameManager.deathbombFreeze is set: updates the items, then
     // runs every bullet's state, behaviors and collisions (from the
     // first, then from the last one down) and builds the draw lists, then
     // runs the lasers, as th07's. Returns 1.
     static int OnUpdate(BulletManager *mgr);
     // Draws the items, the lasers and the bullets' draw lists in order,
     // then the effects of EffectManager::OnDraw3, as th07's; tinted
-    // while g_GameManager.unk_3dbac_10 is set. Returns 1.
+    // while g_GameManager.deathbombFreeze is set. Returns 1.
     static int OnDraw(BulletManager *mgr);
     // Loads etama.anm (slot 6) into etamaAnm and g_EtamaAnm, or takes the
     // loaded one while the scene keeps its files; starts each bullet

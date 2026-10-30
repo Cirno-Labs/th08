@@ -39,7 +39,7 @@ struct Effect
     int segmentCount;
     // The reserved slot it was started in, by SpawnReservedEffect.
     int reservedSlot;
-    // A ring's y radius (an ellipse) when unk_334 is 0, else how far its
+    // A ring's y radius (an ellipse) when waveCount is 0, else how far its
     // radius waves.
     float radiusY;
     // A ring ellipse's rotation, or where its wave starts.
@@ -61,13 +61,13 @@ struct Effect
     char fadeOut;
     char fadeFrames;
     // Which of EffectManager's draw lists it goes in: 0 the first (the
-    // fourth with unk_355, the fifth with sprite blend mode 1), 2 the
+    // fourth with useDrawList3, the fifth with sprite blend mode 1), 2 the
     // third, others the second.
     char drawList;
     char useDrawList3;
     // Whether a ring's vertices are to be worked out again.
     char verticesDirty;
-    // Runs while bit 10 of GameManager::unk_3dbac stops the others.
+    // Runs while bit 10 of GameManager::stateFlags stops the others.
     char alwaysUpdates;
     // Memory the effect allocated, freed when its slot is reused.
     VertexTex1DiffuseXyzrwh *vertices;
@@ -118,9 +118,9 @@ int EffectUpdateOrbit(Effect *effect);
 int EffectInitBossPetal(Effect *effect);
 
 // An effect update for the petals of EffectInitBossPetal, as
-// EffectUpdatePetal; while the first boss has bit 3 of unk_3324,
+// EffectUpdatePetal; while the first boss has bit 3 of flags,
 // posOffset follows it (a tenth of the way each frame). Its color2 is its
-// color scaled by g_Stage.unk_844.color. New in th08; placeholder name.
+// color scaled by g_Stage.colorScaleSprite.color. New in th08; placeholder name.
 int EffectUpdateBossPetal(Effect *effect);
 
 // EffectInitBossPetal scattered twice as far up and down, with a y step
@@ -188,8 +188,8 @@ int EffectInitMoveOut(Effect *effect);
 int EffectInitRing(Effect *effect);
 
 // An effect draw callback: works out the ring's vertices when they are
-// dirty, a circle, an ellipse (unk_32c, turned by unk_330) or a wavy
-// circle (unk_334 waves of unk_32c), and draws them as a strip. Returns
+// dirty, a circle, an ellipse (radiusY, turned by ellipseAngle) or a wavy
+// circle (waveCount waves of radiusY), and draws them as a strip. Returns
 // 1. New in th08; placeholder name.
 int EffectDrawRing(Effect *effect);
 
@@ -221,7 +221,7 @@ int EffectUpdateBombRing42(Effect *effect);
 // 43: radius 256 easing out over 40 frames, 0x30 segments, an ellipse
 // half as high turned by pi/4, growing width after frame 40.
 int EffectUpdateBombRing43(Effect *effect);
-// 44: 43 turned the other way (and keeping unk_334).
+// 44: 43 turned the other way (and keeping waveCount).
 int EffectUpdateBombRing44(Effect *effect);
 // 45: radius 192 easing out over 40 frames, 8 segments, 8 wide.
 int EffectUpdateBombRing45(Effect *effect);
@@ -271,7 +271,7 @@ public:
     Effect *SpawnEffect2(int type, D3DXVECTOR3 *pos, int count, D3DCOLOR color);
     // The update chain element's callback, as th07's: runs the active
     // effects (all but the spare; while bit 10 of
-    // GameManager::unk_3dbac is set only those with unk_357), frees the
+    // GameManager::stateFlags is set only those with alwaysUpdates), frees the
     // vertices of inactive ones and sorts the rest into the draw lists,
     // all but type 0x40; every 300 frames checks the player's numbers.
     // Returns 4 if they were tampered with, otherwise 1.

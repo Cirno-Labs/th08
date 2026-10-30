@@ -106,7 +106,7 @@ public:
 ASSERT_SIZE(Ending, 0x2ab8);
 
 // The endings' scripts by character: the bad endings (without bit 4 of
-// g_GameManager.unk_3dbac), and the good endings after stage 6 and after
+// g_GameManager.stateFlags), and the good endings after stage 6 and after
 // stage 7. th07's were by shot type.
 extern char *g_BadEndingFiles[];
 extern char *g_EndingFiles[];

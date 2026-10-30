@@ -144,13 +144,13 @@ struct EnemySpawnArgs
 // correspond.
 struct Enemy
 {
-    // Whether unk_2da4 is clear and unk_8 is set. Inline; the copy at
+    // Whether leader is clear and nextFollower is set. Inline; the copy at
     // 0x41f000 is in an /Od object.
     BOOL IsLeader()
     {
         return this->leader == 0 && this->nextFollower != NULL ? TRUE : FALSE;
     }
-    // How many enemies follow it through unk_8, when IsLeader. Inline;
+    // How many enemies follow it through nextFollower, when IsLeader. Inline;
     // the copy at 0x41fd40 is in an /Od object. DrawBanners shows it
     // for the first boss.
     int CountFollowers()
@@ -171,7 +171,7 @@ struct Enemy
         return count;
     }
 
-    // The last enemy following it through unk_8, when IsLeader, else
+    // The last enemy following it through nextFollower, when IsLeader, else
     // itself. Inline; the copy at 0x41efc0 is in an /Od object.
     Enemy *GetLastFollower()
     {
@@ -188,32 +188,32 @@ struct Enemy
         return enemy;
     }
 
-    // Whether unk_2da4 is set. Inline; the copy at 0x41fd20 is in an
+    // Whether leader is set. Inline; the copy at 0x41fd20 is in an
     // /Od object.
     BOOL IsFollower()
     {
         return this->leader != 0;
     }
 
-    // Breaks up the list of enemies following it through unk_8 (and
+    // Breaks up the list of enemies following it through nextFollower (and
     // takes it out of its own leader's): with `collect`, each counts
     // as a kill shown by AsciiText::AddNumberPopup, bursts time orbs (more
     // for solo characters) and a hit area, drops items unless a boss
     // fight runs outside a spell card, and plays sound 2 or 3; then
-    // it shows unk_3380 and bursts twice as many orbs. A follower with
-    // `collect` also lowers stats->unk_22 by a twelfth and drops an orb.
+    // it shows followerCount and bursts twice as many orbs. A follower with
+    // `collect` also lowers stats->gauge by a twelfth and drops an orb.
     // Called with 0 on the bosses as a spell card bomb ends (0x42adb0).
     void ReleaseFollowers(int collect);
     // Ends it, as th07's: ReleaseFollowers(0) first; unless deathMode is set,
     // deactivates it; a boss leaves its slot, hides its nearby label and
-    // ends the boss fight; drops its effects, sends unk_53c8 interrupt
+    // ends the boss fight; drops its effects, sends attachedEffect interrupt
     // 3, clears its callbacks and frees threads (0x42bcf0).
     void Despawn();
-    // Takes it out of the list through unk_4 and unk_8 while IsFollower,
-    // clearing unk_2da4; else just clears both links (0x42b2f0).
+    // Takes it out of the list through prevFollower and nextFollower while
+    // IsFollower, clearing leader; else just clears both links (0x42b2f0).
     void LeaveFollowerList();
-    // Follows Player::unk_5 (the human/youkai side?): as it changes,
-    // bursts effect 0x1f or 0x1e, sends unk_53c8 interrupt 2 or 1 and
+    // Follows Player::isYoukai (the human/youkai side?): as it changes,
+    // bursts effect 0x1f or 0x1e, sends attachedEffect interrupt 2 or 1 and
     // plays sound 0x28 or 0x27 (0x42c420).
     void UpdateYoukaiState();
     // Moves it by velocity (x mirrored while mirrored is set), keeping
@@ -231,12 +231,12 @@ struct Enemy
         this->rankCount2Low = 0;
         this->rankCount2High = 0;
     }
-    // Runs the first life callback whose life the enemy dropped below,
-    // as th07's: restarts its script there, ends its timer callback,
-    // frees threads, ReleaseFollowers(1), kills the other non-boss enemies and
-    // makes the player invulnerable for 70 frames after a boss's.
-    // Returns 1 then, else 0 after setting unk_3328_4 by how close the
-    // life is to the next callback (or to 0) (0x42b490).
+    // Runs the first life callback whose life the enemy dropped below, as
+    // th07's: restarts its script there, ends its timer callback, frees
+    // threads, ReleaseFollowers(1), kills the other non-boss enemies and makes
+    // the player invulnerable for 70 frames after a boss's. Returns 1 then,
+    // else 0 after setting lifeCallbackProximity by how close the life is to
+    // the next callback (or to 0) (0x42b490).
     int CheckLifeCallback();
     // Runs the timer callback once callbackTimer reaches
     // timerCallbackTime, as th07's: shows boss 0's time left; then drops
@@ -254,14 +254,14 @@ struct Enemy
     // it is a boss or grazeable or a damage-sharing part of character 0
     // or 4. As th07's (0x42c290).
     void CheckPlayerContact(D3DXVECTOR3 *pos, D3DXVECTOR3 *size);
-    // Passes half of `damage` on to unk_2da4 while IsFollower (a ninth
-    // while unk_2da4, a boss, is invulnerable; none for others then),
+    // Passes half of `damage` on to leader while IsFollower (a ninth
+    // while leader, a boss, is invulnerable; none for others then),
     // keeping its life above its life callbacks (0x42b370).
     void ShareDamageWithLeader(int damage);
     // Drops its items, as th07's OnUpdate did: its item (or, at -1,
     // every third enemy one of g_EnemyItemDrops) with effect
-    // deathEffectIndex + 4, then unk_330c power items (big ones at full
-    // power) and unk_3308 point items around unk_2d88; `byBomb` makes
+    // deathEffectIndex + 4, then powerItems power items (big ones at full
+    // power) and pointItems point items around absPos; `byBomb` makes
     // them fly to the player (0x42bea0).
     void DropItems(int byBomb);
     // Frees and clears threads (0x42bc90).
@@ -339,7 +339,7 @@ struct Enemy
     // Its index in EnemyManager::enemies.
     int index;
     // g_DamagePerTimeOrb in EnemyManager's template; Player::AddedCallback
-    // sets the template's from Player::unk_e2b2c.
+    // sets the template's from Player::damagePerTimeOrb.
     int timeOrbDamage;
     Timer callbackTimer;
     D3DCOLOR color;
@@ -366,7 +366,7 @@ struct Enemy
     unsigned char pad_3315[0x3];
     Timer unusedTimer3318;
     // Bit 3: the petal effects drift towards it while it is the first
-    // boss. Bit 30 is cleared with unk_2dfc.
+    // boss. Bit 30 is cleared with life.
     union
     {
         DWORD flags;
@@ -382,11 +382,11 @@ struct Enemy
             DWORD hitByShots : 1;
             DWORD grazeable : 1;
             DWORD followsYoukaiState : 1;
-            // ReleaseFollowers moves unk_2d40 to its leader's pos while set.
+            // ReleaseFollowers moves posOrigin to its leader's pos while set.
             DWORD posRelativeToLeader : 1;
             // Set by ReleaseFollowers as it leaves its leader's list.
             DWORD releasedFromLeader : 1;
-            // Player::unk_5 as UpdateYoukaiState last saw it.
+            // Player::isYoukai as UpdateYoukaiState last saw it.
             DWORD isYoukai : 1;
             DWORD moveMode : 2;
             DWORD moveEasing : 3;
@@ -446,9 +446,9 @@ struct Enemy
     // left, 2 right, 0xff none yet.
     BYTE spriteDirection;
     // The draw list OnUpdate puts it in, as th07's: 0 or 2 by
-    // UpdateYoukaiState as Player::unk_5 changes.
+    // UpdateYoukaiState as Player::isYoukai changes.
     BYTE drawListIndex;
-    // 0x40 while Player::unk_5 is set, else 0x20 (UpdateYoukaiState).
+    // 0x40 while Player::isYoukai is set, else 0x20 (UpdateYoukaiState).
     BYTE difficultyMaskExtra;
     unsigned char pad_3331[0x1];
     // The sprite scripts for turning, as th07's, and a sixth one.
@@ -637,12 +637,12 @@ int *ResolveOperand(Enemy *enemy, int *operand, WORD mask, int bit);
 // 10082 (0x420120).
 float GetFloatOperand(Enemy *enemy, float id);
 // ResolveOperand for float variables, as th07's; 10042 to 10044 name
-// pos, which GetFloatOperand reads from unk_2d88 (0x420950).
+// pos, which GetFloatOperand reads from absPos (0x420950).
 float *ResolveFloatOperand(Enemy *enemy, float *operand, WORD mask, int bit);
 // Starts a timed move at an angle (argument 2, normalized), as th07's:
-// moveDelta is argument 3 times argument 0, from unk_2d88 (0x420d10).
+// moveDelta is argument 3 times argument 0, from absPos (0x420d10).
 void ScriptMoveAngle(Enemy *enemy, EnemyScriptInstr *instr);
-// Starts a timed move from unk_2d88 to (argument 2, argument 3), as
+// Starts a timed move from absPos to (argument 2, argument 3), as
 // th07's, with moveStart at pos (0x420f40).
 void ScriptMovePos(Enemy *enemy, EnemyScriptInstr *instr);
 // The interpolations of an instruction's loop, as th07's: writes to
@@ -701,7 +701,8 @@ void ScriptMoveRandom2(Enemy *enemy, EnemyScriptInstr *instr);
 // the first int and float variables (0x423390).
 void SetScriptFunc0Vars(Enemy *enemy, EnemyScriptInstr *instr);
 
-// Script function 1: a white flash of 60 frames, as th07's FlashScreen (0x4233d0).
+// Script function 1: a white flash of 60 frames, as th07's FlashScreen
+// (0x4233d0).
 void FlashScreen60(Enemy *enemy, EnemyScriptInstr *instr);
 
 // Script function 2: bounces the enemy off the sides and the top,
@@ -709,7 +710,7 @@ void FlashScreen60(Enemy *enemy, EnemyScriptInstr *instr);
 // ends below y 480 (0x423400).
 void BounceOffSides(Enemy *enemy, EnemyScriptInstr *instr);
 
-// Draws reserved effects 9 and 10 as the stage's unk_625c callback
+// Draws reserved effects 9 and 10 as the stage's spellCardDrawCallback
 // (0x4235a0).
 void DrawTwinEffects();
 
@@ -754,7 +755,7 @@ void FlashScreen180(Enemy *enemy, EnemyScriptInstr *instr);
 void SetGameSpeed(Enemy *enemy, EnemyScriptInstr *instr);
 
 // Script function 19: sets the first int variable to the practised
-// spell card (GameManager::unk_3dbb0) (0x424fc0).
+// spell card (GameManager::practiceSpellCard) (0x424fc0).
 void GetPracticeCard(Enemy *enemy, EnemyScriptInstr *instr);
 
 // Script function 22: starts 「リザレクション」 through
@@ -768,27 +769,28 @@ void ScriptEndSpellCardName(Enemy *enemy, EnemyScriptInstr *instr);
 // captured this game (0x425040).
 void GetSpellCardsCaptured(Enemy *enemy, EnemyScriptInstr *instr);
 
-// Script function 26: sets GameManager::isFrozen to argument 1 and
-// sends the stage's first two dialogue sprites interrupt 2 (frozen) or 1 (0x425070).
+// Script function 26: sets GameManager::isFrozen to argument 1 and sends
+// the stage's first two dialogue sprites interrupt 2 (frozen) or 1
+// (0x425070).
 void SetFrozen(Enemy *enemy, EnemyScriptInstr *instr);
 
 // Script function 31: drops item 3 at the enemy while a bomb runs,
 // else item 5 (0x425390).
 void DropBombOrLifeItem(Enemy *enemy, EnemyScriptInstr *instr);
 
-// Spawns subroutine argument 0 at (argument 1, argument 2) with life,
-// item and score arguments 3 to 5 and the current context's variables,
-// as th07's spawn instructions; unless the enemy is dead or unk_3324_10
-// is set, which sets spawnFailed. Returns the enemy, or the spare one (0x41f110).
+// Spawns subroutine argument 0 at (argument 1, argument 2) with life, item and
+// score arguments 3 to 5 and the current context's variables, as th07's spawn
+// instructions; unless the enemy is dead or releasedFromLeader is set, which
+// sets spawnFailed. Returns the enemy, or the spare one (0x41f110).
 Enemy *ScriptSpawnEnemy(Enemy *enemy, EnemyScriptInstr *instr);
 
-// ScriptSpawnEnemy relative to the enemy (unk_2d88) (0x41f280).
+// ScriptSpawnEnemy relative to the enemy (absPos) (0x41f280).
 Enemy *ScriptSpawnEnemyRel(Enemy *enemy, EnemyScriptInstr *instr);
 
 // The fire instructions (96 on), as th07's 64 to 72: sets the shooter
 // up from the arguments, with the rank outside spell cards, and fires;
 // unless flag 0x8000 or 0x10000 of argument 7 rules out the enemy's side
-// (unk_3324_11) or the player is within sqrt(unk_3350) (0x422720).
+// (isYoukai) or the player is within sqrt(minShootDistSq) (0x422720).
 void ScriptFireBullets(Enemy *enemy, EnemyScriptInstr *instr);
 
 // Moves the enemy by its move mode, as th07's RunEnemy did after the
@@ -820,7 +822,7 @@ void MarkFollowersNearBullets(Enemy *enemy, EnemyScriptInstr *instr);
 // 20, which it clears (0x4250d0).
 void SpawnEnemiesAtMarkedBullets(Enemy *enemy, EnemyScriptInstr *instr);
 
-// Script function 9: a beam 590 long and 160 wide from unk_2d88 minus
+// Script function 9: a beam 590 long and 160 wide from absPos minus
 // floats[0] and floats[1], turned by the sprite's rotation, hits the
 // player; every 12 frames a 128-wide box grazes (0x424730).
 void BeamHitsPlayer160(Enemy *enemy, EnemyScriptInstr *instr);
@@ -830,7 +832,7 @@ void BeamHitsPlayer160(Enemy *enemy, EnemyScriptInstr *instr);
 // player; every 12 frames a 192-wide box grazes (0x424820).
 void BeamHitsPlayer240(Enemy *enemy, EnemyScriptInstr *instr);
 
-// Script function 25: a beam 590 long and 288 wide from unk_2d88 minus
+// Script function 25: a beam 590 long and 288 wide from absPos minus
 // floats[0] and floats[1], turned by the sprite's rotation, hits the
 // player; every 12 frames a 224-wide box grazes (0x424910).
 void BeamHitsPlayer288(Enemy *enemy, EnemyScriptInstr *instr);
@@ -838,7 +840,7 @@ void BeamHitsPlayer288(Enemy *enemy, EnemyScriptInstr *instr);
 // Script function 12: toggles the bullets with any activeFlags bit of
 // ints[0]: autoRotate 1 ones turn additive (sprite + 0x10) and move at
 // floats[0] and floats[1], the others back; then halts the followers
-// (unk_3328_7) unless ints[1], with the stage's dialogue sprites
+// (halted) unless ints[1], with the stage's dialogue sprites
 // interrupt 2, else releases them with 1 (0x424a20).
 void ToggleMarkedBullets(Enemy *enemy, EnemyScriptInstr *instr);
 
@@ -847,7 +849,7 @@ void ToggleMarkedBullets(Enemy *enemy, EnemyScriptInstr *instr);
 // 0 fade in over 15 frames as 2, the others go back (0x424c40).
 void CycleMarkedBullets(Enemy *enemy, EnemyScriptInstr *instr);
 
-// Script function 8: numbers the followers of unk_2da4 with the same
+// Script function 8: numbers the followers of leader with the same
 // ints2[2] (into their ints2[1]), counts them into ints[6] (ints[5] set
 // when the count changed) and, for all but the leader, eases orbitAngle
 // towards an even share of the circle from the leader's (0x4244f0).
@@ -893,7 +895,7 @@ public:
     // (0x42e140).
     static int DrawEnemies(EnemyManager *mgr, int from, int to);
     // The draw chain callbacks, as th07's: lists 0 to 2, then 2 to 4 in
-    // red while bit 10 of g_GameManager.unk_3dbac is set (0x42e120,
+    // red while bit 10 of g_GameManager.stateFlags is set (0x42e120,
     // 0x42eb90).
     static int OnDraw(EnemyManager *mgr);
     static int OnDraw2(EnemyManager *mgr);

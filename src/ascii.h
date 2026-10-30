@@ -93,8 +93,8 @@ public:
     // digit, digit2 (sprite 0x88, new) and glyph up and glyphWidth to 13
     // (th07 14) (0x402450).
     void Initialize();
-    // Steps summaryPopup to summaryPopup4, unk_127c, nearbyLabels[] and
-    // unk_1520 for a frame, as th07's. Inline; the copy is at 0x406fd0.
+    // Steps summaryPopup to summaryPopup4, summaryDigit, nearbyLabels[] and
+    // summaryBombIcon for a frame, as th07's. Inline; the copy is at 0x406fd0.
     void RunScripts()
     {
         g_SpriteEngine->Step(&this->summaryPopup);
@@ -108,15 +108,15 @@ public:
         g_SpriteEngine->Step(&this->nearbyLabels[3]);
         g_SpriteEngine->Step(&this->summaryBombIcon);
     }
-    // Starts the scripts of the summary sprites (5 to 9, 4 for unk_127c)
+    // Starts the scripts of the summary sprites (5 to 9, 4 for summaryDigit)
     // and nearbyLabels[] (10), moves summaryPopup2 and summaryPopup3 by
-    // g_GameManager.unk_3ddf8 and unk_3ddfa and resends
+    // g_GameManager.gaugeMin and gaugeMax and resends
     // summaryPendingInterrupt (0x402600). th07's StartScripts.
     void StartScripts();
     // The update element's callback, as th07's: moves the popups up and
     // retires them after 60 frames (90 for numberPopups) unless the game
     // is paused, in the continue menu or holds still (bit 10 of
-    // GameManager::unk_3dbac), runs the menus, the summary sprites and
+    // GameManager::stateFlags), runs the menus, the summary sprites and
     // demoIcon (script 11) while a demo plays, and counts frameCounter
     // up. Returns 1 (0x402200).
     static int OnUpdate(AsciiText *text);
@@ -139,10 +139,10 @@ public:
     void DrawStrings();
     // Draws the popups (0x405420).
     void DrawPopups();
-    // Draws `value` in hundredths at `pos` in `color` with unk_127c: a
+    // Draws `value` in hundredths at `pos` in `color` with summaryDigit: a
     // minus, the whole part, ascii.anm's sprite 0x93, two smaller
     // decimals (100.00 for 10000 and more), then sprite 0x92. For
-    // DrawPopups' stats->unk_22 gauge (0x405e10). New in th08.
+    // DrawPopups' stats->gauge (0x405e10). New in th08.
     void DrawPercent(D3DXVECTOR3 *pos, int value, D3DCOLOR color);
     // Queues `text` to be drawn at `pos` (0x402920).
     void AddString(D3DXVECTOR3 *pos, char *text);
@@ -157,8 +157,8 @@ public:
     void AddPopup(D3DXVECTOR3 *pos, int value, D3DCOLOR color);
     // Like AddPopup, in the last three popups, as th07's (0x403330).
     void AddPopup2(D3DXVECTOR3 *pos, int value, D3DCOLOR color);
-    // AddNumberPopupBrief at `pos` in play-area coordinates, in the scale text is
-    // added with (0x403460). New in th08.
+    // AddNumberPopupBrief at `pos` in play-area coordinates, in the scale
+    // text is added with (0x403460). New in th08.
     void AddNumberPopup(D3DXVECTOR3 *pos, int count, int value, D3DCOLOR color);
     // Queues `count` and `value` as a string of glyphs 0xf, `value`'s
     // digits, 0xe, `count`'s digits and 0xd at `pos`, in `color`, in the

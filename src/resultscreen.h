@@ -90,7 +90,7 @@ struct Hscr
             unsigned char pad_45[0x1f];
         };
     };
-    // The frames played: HandleNameEntry copies GameManager::unk_3db94.
+    // The frames played: HandleNameEntry copies GameManager::playFrames.
     int playFrames;
     // The point items collected.
     int pointItems;
@@ -103,7 +103,7 @@ struct Hscr
     // The time orbs (刻符) collected.
     int timeOrbs;
     // How human the player was, in hundredths of a percent:
-    // GameManager::unk_3dba0 / unk_3dba4 times 10000 (HandleNameEntry).
+    // GameManager::humanFrames / humanRateFrames times 10000 (HandleNameEntry).
     int humanRate;
     // Set for each spell card captured, by card number.
     BYTE spellCards[0xde];
@@ -196,7 +196,7 @@ struct Catk
     char name[0x30];
     // The card's comment, set with the name as the card starts.
     char comment[0x30];
-    // SpellCard::unk_74 and unk_b4 (xor 0xdd and 0xee), set as a
+    // SpellCard::text2 and text3 (xor 0xdd and 0xee), set as a
     // practised card is captured.
     char note[0x40];
     char note2[0x40];

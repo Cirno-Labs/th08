@@ -64,7 +64,7 @@ public:
     // 17: number and name, comment and difficulty, the counts for the
     // character and all, and the two comment lines or, for a last
     // spell not yet open, how to open it. Outside subState 0, only what
-    // unk_c29c (counting down from 0x15 as the cursor moves) reaches
+    // cardDetailsTimer (counting down from 0x15 as the cursor moves) reaches
     // this frame (0x46d7f9).
     void UpdateCardDetails();
 

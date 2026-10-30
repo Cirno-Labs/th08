@@ -25,9 +25,9 @@ struct Item
     void CollectPower();
     void CollectBigPower();
     // What collecting a point item (type 1) does, as th07's UpdateItems:
-    // stats->unk_24 points above the auto-collect line or when it counts
+    // stats->maxPointValue points above the auto-collect line or when it counts
     // in full (which also marks it so), else half of it less
-    // unk_24 / 1000 per pixel below the line; doubled at gaugeLow1. Then
+    // maxPointValue / 1000 per pixel below the line; doubled at gaugeLow1. Then
     // counts it and gives the extends it reaches (0x440e40).
     void CollectPoint();
     // What collecting a type 8 item (a power item at full power) does:
@@ -36,10 +36,11 @@ struct Item
     void CollectFullPowerItem();
     // What collecting a time orb (type 7) does: points (half the point
     // items collected, in tens, at least 100; 10000 from 2000 stats->
-    // unk_2c on; 100 while Player::unk_e2a7c is set) with a popup unless
-    // there is no item, a time orb, g_SpellCard.AddBonus(8000), and
-    // stats->unk_22 moved by 111 one way or the other while
-    // Player::unk_e2adc is 0 (0x4412b0). New in th08.
+    // stageClearPoints on; 100 while Player::bombJustStarted is set) with a
+    // popup unless there is no item, a time orb,
+    // g_SpellCard.AddBonus(8000), and stats->gauge moved by 111 one way or
+    // the other while Player::orbGaugeCooldown is 0 (0x4412b0). New in
+    // th08.
     void CollectTimeOrb();
 
     Sprite sprite;
@@ -83,9 +84,9 @@ public:
     // frame, as th07's: items fly to their target (state 2), fly up
     // (states 3 and 5), are drawn in (state 1, at full power or for
     // characters 1 and 6 above the auto-collect line, or while
-    // Player::unk_3 is set) or fall; collecting one runs its type's
+    // Player::focused is set) or fall; collecting one runs its type's
     // Collect function and plays sound 0x15 (0x2c if it counted in full).
-    // Counts Player::unk_e2adc down (0x440500).
+    // Counts Player::orbGaugeCooldown down (0x440500).
     void UpdateItems();
     // Turns every active power item (types 0 and 2) except `except` into
     // type 8, with effect 0 on it, as th07's ConvertPowerItems (type 7

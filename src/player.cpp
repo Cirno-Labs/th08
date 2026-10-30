@@ -1413,7 +1413,7 @@ int Player::AddedCallback(Player *player)
     g_AsciiText.SetNearbyLabelInterrupt(0, 2);
     g_AsciiText.SetNearbyLabelInterrupt(1, 2);
     g_AsciiText.SetNearbyLabelInterrupt(2, 2);
-    // The bounds of stats->unk_22 and where its gauge changes color.
+    // The bounds of stats->gauge and where its gauge changes color.
     g_GameManager.gaugeMin = -10000;
     g_GameManager.gaugeLow1 = -8000;
     g_GameManager.gaugeLow2 = -2000;

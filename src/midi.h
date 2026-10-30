@@ -76,8 +76,9 @@ public:
     int Stop();
 
     // Called on every tick when the timer was started without a callback
-    // of its own. Empty here; the linker folded it with another empty
-    // function, which Func441e10 calls directly.
+    // of its own. Empty here; the linker folded it with ~SpriteEngine,
+    // which SpriteEngine's scalar deleting destructor (0x441e10) calls
+    // directly.
     virtual void OnTimer();
 
     // The timeSetEvent callback used when Start gets none: calls OnTimer
@@ -147,7 +148,7 @@ public:
     // is playing. Returns -1 on failure, otherwise 0.
     int LoadFile(int slot, char *path);
     // Sends every channel's volume, scaled and offset by `offset`, unless
-    // unk_2d4 is set.
+    // suppressVolume is set.
     void SendVolume(int offset);
     // Stops playback and closes the device. Returns -1 if nothing is
     // loaded, otherwise 0.
