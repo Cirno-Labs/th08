@@ -249,7 +249,7 @@ address,size,name,symbol
 0x0041fd20,28,Enemy::Func41fd20,?Func41fd20@Enemy@@QAEHXZ
 0x0041fd40,70,Enemy::Func41fd40,?Func41fd40@Enemy@@QAEHXZ
 0x0041fd90,59,SpellCard::Func41fd90,?Func41fd90@SpellCard@@QAEHXZ
-0x0041fdd0,25,Func41fdd0,
+0x0041fdd0,25,SpellCard::Func41fdd0,?Func41fdd0@SpellCard@@QAEHXZ
 0x0041fdf0,25,Func41fdf0,
 0x0041fe10,548,Func41fe10,
 0x00420120,1687,Func420120,
