@@ -415,9 +415,6 @@ extern float g_Unknown4e3d24;
 extern int g_Unknown17d6ed4;
 // The damage an enemy takes per time orb Player::CalcDamage spawns.
 extern int g_Unknown18b8a24;
-// Removes chain elements GameManager::DeletedCallback removes before the
-// stage's; probably a manager th07 did not have (0x4180f0).
-void Func4180f0();
 // Copies the stage's portrait into the dialogue texture by
 // g_GameManager.stage and, in a spell card practice, the card (0x438046).
 void Func438046();
@@ -2458,11 +2455,8 @@ extern AnmLoaded *g_Unknown577eb8;
 // 171 to 190), and how many.
 extern int g_ListedSpellCards[];
 extern int g_ListedSpellCardCount;
-// The spell card manager's RegisterChain (0x417f60), the counterpart of
-// Func4180f0.
-int Func417f60();
-// The spell card manager, at 0x4ea670 (Func417f60 registers it). Only
-// what is known so far.
+// The spell card manager, at 0x4ea670 (SpellCard::RegisterChain
+// registers it). Only what is known so far.
 struct SpellCard
 {
     // Bit 0 of unk_0. Inline; the copy at 0x4178a0 is in an /Od object.
@@ -2470,6 +2464,26 @@ struct SpellCard
     {
         return this->unk_0 & 1;
     }
+    // Initializes g_SpellCard and adds its update element (priority 0xc)
+    // and draw element (priority 0xf), both allocated by
+    // Chain::CreateElem. Returns 0, or -1 if Initialize fails (0x417f60).
+    static int RegisterChain();
+    // The chain callbacks: run Update and Draw (0x418010, 0x418030).
+    static int OnUpdate(SpellCard *sc);
+    static int OnDraw(SpellCard *sc);
+    // Releases the boss faces (slots 0x12 and 0x13) unless restarting,
+    // and the background and team faces (0xf to 0x11) while the scene
+    // frees its files, then removes the draw element. Returns 0
+    // (0x418050).
+    static int DeletedCallback(SpellCard *sc);
+    // Removes the update element, which deletes the draw element too;
+    // GameManager::DeletedCallback calls it before the stage's
+    // (0x4180f0).
+    static void RemoveChain();
+    // The card's frame: bonus, timers, banners (0x416b90).
+    int Update();
+    // Draws the card's portraits, name and bonus (0x4178c0).
+    int Draw();
     // Zeroes everything and loads (or, while the scene keeps its files,
     // takes) the dialogue background (slot 0xf), the two faces of the
     // player's team (slots 0x10 and 0x11, not while a card is practised)

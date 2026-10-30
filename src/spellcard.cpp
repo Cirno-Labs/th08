@@ -5,6 +5,7 @@
 
 #include "ascii.h"
 #include "bullet.h"
+#include "chain.h"
 #include "effect.h"
 #include "enemy.h"
 #include "resultscreen.h"
@@ -526,4 +527,22 @@ void SpellCard::Func416b10(int amount)
             this->unk_100 += amount / 120;
         }
     }
+}
+
+int SpellCard::RegisterChain()
+{
+    SpellCard *sc = &g_SpellCard;
+
+    if (sc->Initialize() != 0)
+    {
+        return -1;
+    }
+    sc->calcChain = g_Chain.CreateElem((ChainCallback)SpellCard::OnUpdate);
+    sc->drawChain = g_Chain.CreateElem((ChainCallback)SpellCard::OnDraw);
+    sc->calcChain->deletedCallback = (ChainCallback)SpellCard::DeletedCallback;
+    sc->calcChain->arg = sc;
+    sc->drawChain->arg = sc;
+    g_Chain.AddToCalcChain(sc->calcChain, 0xc);
+    g_Chain.AddToDrawChain(sc->drawChain, 0xf);
+    return 0;
 }

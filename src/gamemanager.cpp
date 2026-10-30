@@ -742,7 +742,7 @@ void GameManager::LoadingThread(GameManager *arg)
         LogPrintf(&g_Log, "error : 2D表示の初期化に失敗しました\r\n");
         goto fail;
     }
-    if (Func417f60() != 0)
+    if (SpellCard::RegisterChain() != 0)
     {
         if (g_App.closeSubThread)
         {
@@ -1003,7 +1003,7 @@ int GameManager::DeletedCallback(GameManager *mgr)
     while (g_SoundPlayer.PlayQueuedSounds())
     {
     }
-    Func4180f0();
+    SpellCard::RemoveChain();
     Stage::RemoveChain();
     BulletManager::RemoveChain();
     Player::RemoveChain();
