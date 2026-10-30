@@ -53,14 +53,20 @@ struct Bullet
     unsigned char unk_2a4[0xaa0];
     D3DXVECTOR3 pos;
     D3DXVECTOR3 velocity;
-    unsigned char unk_d5c[0x18];
+    unsigned char unk_d5c[0xc];
+    float speed;
+    unsigned char unk_d6c[0x8];
     float angle;
     unsigned char unk_d78[0x38];
     DWORD activeFlags;
     unsigned char unk_db4[0x4];
     // 0 while the slot is free, as th07's.
     WORD state;
-    unsigned char unk_dba[0x2fe];
+    unsigned char unk_dba[0x2fa];
+    // Set as the toggling script functions switch it to its additive
+    // sprite.
+    BYTE unk_10b4;
+    unsigned char unk_10b5[0x3];
 };
 ASSERT_SIZE(Bullet, 0x10b8);
 

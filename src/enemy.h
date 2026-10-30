@@ -779,6 +779,13 @@ void BeamHitsPlayer240(Enemy *enemy, EnemyScriptInstr *instr);
 // player; every 12 frames a 224-wide box grazes (0x424910).
 void BeamHitsPlayer288(Enemy *enemy, EnemyScriptInstr *instr);
 
+// Script function 12: toggles the bullets with any activeFlags bit of
+// ints[0]: autoRotate 1 ones turn additive (sprite + 0x10) and move at
+// floats[0] and floats[1], the others back; then halts the followers
+// (unk_3328_7) unless ints[1], with the stage's dialogue sprites
+// interrupt 2, else releases them with 1 (0x424a20).
+void ToggleMarkedBullets(Enemy *enemy, EnemyScriptInstr *instr);
+
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
 // The enemy scripts by stage, by stage in spell practice (stage + 9),
