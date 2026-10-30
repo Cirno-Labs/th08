@@ -1165,3 +1165,8 @@ void ShakeScreenRamp(Enemy *enemy, EnemyScriptInstr *instr)
 {
     ScreenEffect::StartEffect(7, 16, 20, 20, 20, 0x15);
 }
+
+void FlashScreen180(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    ScreenEffect::StartEffect(3, 180, 1, 0xffffffff, 0, 0x15);
+}

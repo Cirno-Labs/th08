@@ -688,6 +688,9 @@ void TintStageRed(Enemy *enemy, EnemyScriptInstr *instr);
 // falls for 20 frames each (0x424e20).
 void ShakeScreenRamp(Enemy *enemy, EnemyScriptInstr *instr);
 
+// Script function 17: a white flash of 180 frames (0x424f60).
+void FlashScreen180(Enemy *enemy, EnemyScriptInstr *instr);
+
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
 // The enemy scripts by stage, by stage in spell practice (stage + 9),
