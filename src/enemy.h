@@ -774,6 +774,11 @@ void BeamHitsPlayer160(Enemy *enemy, EnemyScriptInstr *instr);
 // player; every 12 frames a 192-wide box grazes (0x424820).
 void BeamHitsPlayer240(Enemy *enemy, EnemyScriptInstr *instr);
 
+// Script function 25: a beam 590 long and 288 wide from unk_2d88 minus
+// floats[0] and floats[1], turned by the sprite's rotation, hits the
+// player; every 12 frames a 224-wide box grazes (0x424910).
+void BeamHitsPlayer288(Enemy *enemy, EnemyScriptInstr *instr);
+
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
 // The enemy scripts by stage, by stage in spell practice (stage + 9),

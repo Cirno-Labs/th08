@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">87.19% (973)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">9.59% (107)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">87.28% (974)</tspan> · <tspan class="decompiled">3.23% (36)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">9.50% (106)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="651.28" height="6" x="0" y="0" class="named"/>
-<rect width="24.10" height="6" x="651.28" y="0" class="decompiled"/>
-<rect width="71.62" height="6" x="675.38" y="0" class="todo"/>
+<rect width="651.95" height="6" x="0" y="0" class="named"/>
+<rect width="24.10" height="6" x="651.95" y="0" class="decompiled"/>
+<rect width="70.95" height="6" x="676.05" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -371,7 +371,7 @@
 <rect width="12" height="12" x="0" y="90" class="named"><title>0x004246e0 FlashAndShakeScreen (68 bytes)</title></rect>
 <rect width="12" height="12" x="15" y="90" class="named"><title>0x00424730 BeamHitsPlayer160 (228 bytes)</title></rect>
 <rect width="12" height="12" x="30" y="90" class="named"><title>0x00424820 BeamHitsPlayer240 (228 bytes)</title></rect>
-<rect width="12" height="12" x="45" y="90" class="todo"><title>0x00424910 Func424910 (228 bytes)</title></rect>
+<rect width="12" height="12" x="45" y="90" class="named"><title>0x00424910 BeamHitsPlayer288 (228 bytes)</title></rect>
 <rect width="12" height="12" x="60" y="90" class="named"><title>0x00424a00 SetUnknown18b8a2c (28 bytes)</title></rect>
 <rect width="12" height="12" x="75" y="90" class="todo"><title>0x00424a20 Func424a20 (536 bytes)</title></rect>
 <rect width="12" height="12" x="90" y="90" class="todo"><title>0x00424c40 Func424c40 (443 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">80.47%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">17.96%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">80.52%</tspan> · <tspan class="decompiled">1.58%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">17.91%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="601.09" height="6" x="0" y="0" class="named"/>
-<rect width="11.78" height="6" x="601.09" y="0" class="decompiled"/>
-<rect width="134.13" height="6" x="612.87" y="0" class="todo"/>
+<rect width="601.46" height="6" x="0" y="0" class="named"/>
+<rect width="11.78" height="6" x="601.46" y="0" class="decompiled"/>
+<rect width="133.76" height="6" x="613.24" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -1606,7 +1606,7 @@
 <rect width="8.43" height="8.37" x="569.79" y="166.35" class="named"><title>0x004748c0 DatArchive::Open (229 bytes)</title></rect>
 <rect width="8.38" height="8.37" x="581.22" y="166.35" class="named"><title>0x00424730 BeamHitsPlayer160 (228 bytes)</title></rect>
 <rect width="8.38" height="8.37" x="592.60" y="166.35" class="named"><title>0x00424820 BeamHitsPlayer240 (228 bytes)</title></rect>
-<rect width="8.38" height="8.37" x="603.98" y="166.35" class="todo"><title>0x00424910 Func424910 (228 bytes)</title></rect>
+<rect width="8.38" height="8.37" x="603.98" y="166.35" class="named"><title>0x00424910 BeamHitsPlayer288 (228 bytes)</title></rect>
 <rect width="8.33" height="8.37" x="615.36" y="166.35" class="named"><title>0x0043aaf4 GameManager::AddedCallback (227 bytes)</title></rect>
 <rect width="8.33" height="8.37" x="626.68" y="166.35" class="named"><title>0x0043c960 Chain::AddToDrawChain (227 bytes)</title></rect>
 <rect width="8.28" height="8.37" x="638.01" y="166.35" class="named"><title>0x0045e0f0 BgmNotificationProc (226 bytes)</title></rect>
