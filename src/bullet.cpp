@@ -1187,3 +1187,23 @@ void WrapAroundX(Bullet *bullet)
         bullet->ex[6].timer--;
     }
 }
+
+void WrapAroundY(Bullet *bullet)
+{
+    if (bullet->pos.y < 0.0)
+    {
+        bullet->pos.y += 448.0f;
+    }
+    else if (bullet->pos.y > 448.0)
+    {
+        bullet->pos.y -= 448.0f;
+    }
+    if (bullet->ex[6].timer <= 0)
+    {
+        bullet->activeFlags ^= 0x800000;
+    }
+    else
+    {
+        bullet->ex[6].timer--;
+    }
+}
