@@ -884,11 +884,13 @@ void BounceBulletsAtZones2(Enemy *enemy, EnemyScriptInstr *instr);
 // (192.0, 224.0) across the gap (0x4241e0).
 void BounceBulletsAtZones3(Enemy *enemy, EnemyScriptInstr *instr);
 
-// The enemy ANMs by stage, then by last spell (card - 0xc4).
-extern char *g_EnemyAnmPaths[];
-// The enemy scripts by stage, by stage in spell practice (stage + 9),
-// then by last spell (card - 0xba).
-extern char *g_EclPaths[];
+// The enemy ANMs by stage. The code reads on into the last spells'
+// table after it (card - 0xc4).
+extern char *g_EnemyAnmPaths[9];
+// The enemy scripts by stage. The code reads on into the tables after it:
+// by stage in spell practice (stage + 9), then by last spell (card -
+// 0xba).
+extern char *g_EclPaths[9];
 
 // The enemies, at 0x577f20. Only what is known so far.
 class EnemyManager

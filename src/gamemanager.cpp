@@ -52,7 +52,7 @@ char *g_SpellPracticeStageDataFiles[9] = {
     "stage7_s.std",
     "stage8_s.std",
 };
-char *g_EnemyAnmPaths[26] = {
+char *g_EnemyAnmPaths[9] = {
     "stg1enm.anm",
     "stg2enm.anm",
     "stg3enm.anm",
@@ -62,6 +62,10 @@ char *g_EnemyAnmPaths[26] = {
     "stg6enm.anm",
     "stg7enm.anm",
     "stg8enm.anm",
+};
+// The last words' (cards 0xcd to 0xdd): the code reads them as
+// g_EnemyAnmPaths[card - 0xc4].
+char *g_LastWordEnemyAnmPaths[17] = {
     "stg1enm.anm",
     "stg2enm.anm",
     "stg3enm.anm",
@@ -80,7 +84,7 @@ char *g_EnemyAnmPaths[26] = {
     "stgenm_yy.anm",
     "stgenm_yk.anm",
 };
-char *g_EclPaths[36] = {
+char *g_EclPaths[9] = {
     "ecldata1.ecl",
     "ecldata2.ecl",
     "ecldata3.ecl",
@@ -90,6 +94,10 @@ char *g_EclPaths[36] = {
     "ecldata6.ecl",
     "ecldata7.ecl",
     "ecldata8.ecl",
+};
+// The stages' scripts in stage practice, read as g_EclPaths[stage + 9],
+// and the last words', read as g_EclPaths[card - 0xba].
+char *g_StagePracticeEclPaths[10] = {
     "ecldata1sp.ecl",
     "ecldata2sp.ecl",
     "ecldata3sp.ecl",
@@ -100,6 +108,8 @@ char *g_EclPaths[36] = {
     "ecldata7sp.ecl",
     "ecldata8sp.ecl",
     NULL,
+};
+char *g_LastWordEclPaths[17] = {
     "ecldata1sp.ecl",
     "ecldata2sp.ecl",
     "ecldata3sp.ecl",
