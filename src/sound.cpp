@@ -597,10 +597,8 @@ void SoundPlayer::QueueSoundPanned(int idx, float x)
     this->queueArgCounts[i]++;
 }
 
-// Not matched yet: the original has a two-byte jump to the next
-// instruction after case 7 that this code does not produce. Only the
-// standalone exe builds it; the DLL keeps the original's.
-#ifdef TH08_EXE
+// Does not match: the original has a two-byte jump to the next
+// instruction after case 7 (0x45de43) that this code does not produce.
 int SoundPlayer::PlayQueuedSounds()
 {
     int sound;
@@ -895,7 +893,6 @@ done:
     }
     return this->commands[0].type;
 }
-#endif // TH08_EXE
 
 DWORD WINAPI BgmNotificationProc(LPVOID lpParameter)
 {

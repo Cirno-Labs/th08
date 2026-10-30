@@ -61,10 +61,10 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">99.64% (1112)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">0.36% (4)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">99.91% (1115)</tspan> · <tspan class="decompiled">0% (0)</tspan> · <tspan class="nonmatching">0.09% (1)</tspan> · <tspan class="todo">0% (0)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="744.32" height="6" x="0" y="0" class="named"/>
-<rect width="2.68" height="6" x="744.32" y="0" class="todo"/>
+<rect width="746.33" height="6" x="0" y="0" class="named"/>
+<rect width="0.67" height="6" x="746.33" y="0" class="nonmatching"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -993,16 +993,16 @@
 <rect width="12" height="12" x="345" y="270" class="named"><title>0x0045d3f0 SoundPlayer::LoadSounds (342 bytes)</title></rect>
 <rect width="12" height="12" x="360" y="270" class="named"><title>0x0045d550 SoundPlayer::QueueSound (267 bytes)</title></rect>
 <rect width="12" height="12" x="375" y="270" class="named"><title>0x0045d660 SoundPlayer::QueueSoundPanned (296 bytes)</title></rect>
-<rect width="12" height="12" x="390" y="270" class="todo"><title>0x0045d790 SoundPlayer::PlayQueuedSounds (2358 bytes)</title></rect>
+<rect width="12" height="12" x="390" y="270" class="nonmatching"><title>0x0045d790 SoundPlayer::PlayQueuedSounds (2358 bytes)</title></rect>
 <rect width="12" height="12" x="405" y="270" class="named"><title>0x0045e0f0 BgmNotificationProc (226 bytes)</title></rect>
 <rect width="12" height="12" x="420" y="270" class="named"><title>0x0045e1e0 SoundPlayer::QueueSoundCommand (225 bytes)</title></rect>
-<rect width="12" height="12" x="435" y="270" class="todo"><title>0x0045e2d0 CWaveFile::GetFormat (20 bytes)</title></rect>
+<rect width="12" height="12" x="435" y="270" class="named"><title>0x0045e2d0 CWaveFile::GetFormat (20 bytes)</title></rect>
 <rect width="12" height="12" x="450" y="270" class="named"><title>0x0045e2f0 CSoundManager::GetDirectSound (16 bytes)</title></rect>
 <rect width="12" height="12" x="465" y="270" class="named"><title>0x0045e300 CSound::GetWaveFile (17 bytes)</title></rect>
 <rect width="12" height="12" x="480" y="270" class="named"><title>0x0045e320 SoundPlayer::SoundPlayer (76 bytes)</title></rect>
 <rect width="12" height="12" x="495" y="270" class="named"><title>0x0045e370 SoundPlayer::FreePreloadedBgm (70 bytes)</title></rect>
-<rect width="12" height="12" x="510" y="270" class="todo"><title>0x0045e3c0 SoundPlayer::FadeOutBgm (43 bytes)</title></rect>
-<rect width="12" height="12" x="525" y="270" class="todo"><title>0x0045e3f0 CStreamingSound::FadeOut (55 bytes)</title></rect>
+<rect width="12" height="12" x="510" y="270" class="named"><title>0x0045e3c0 SoundPlayer::FadeOutBgm (43 bytes)</title></rect>
+<rect width="12" height="12" x="525" y="270" class="named"><title>0x0045e3f0 CStreamingSound::FadeOut (55 bytes)</title></rect>
 <rect width="12" height="12" x="540" y="270" class="named"><title>0x0045e430 AnmLoaded::SetSprite (333 bytes)</title></rect>
 <rect width="12" height="12" x="555" y="270" class="named"><title>0x0045e580 AnmLoaded::SetScript (206 bytes)</title></rect>
 <rect width="12" height="12" x="570" y="270" class="named"><title>0x0045e650 Sprite::ResolveFloatArgument (166 bytes)</title></rect>
@@ -1187,10 +1187,10 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">99.46%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">0.54%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">99.49%</tspan> · <tspan class="decompiled">0%</tspan> · <tspan class="nonmatching">0.51%</tspan> · <tspan class="todo">0%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="742.98" height="6" x="0" y="0" class="named"/>
-<rect width="4.02" height="6" x="742.98" y="0" class="todo"/>
+<rect width="743.17" height="6" x="0" y="0" class="named"/>
+<rect width="3.83" height="6" x="743.17" y="0" class="nonmatching"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="named"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -1227,7 +1227,7 @@
 <rect width="32.04" height="35.82" x="226.20" y="118.39" class="named"><title>0x00435900 Gui::UpdateInterface (2397 bytes)</title></rect>
 <rect width="32.04" height="35.59" x="226.20" y="157.21" class="named"><title>0x00469636 MainMenu::UpdateKeyConfig (2383 bytes)</title></rect>
 <rect width="32.04" height="35.30" x="226.20" y="195.80" class="named"><title>0x0046d7f9 MainMenu::UpdateCardDetails (2365 bytes)</title></rect>
-<rect width="32.04" height="35.19" x="226.20" y="234.10" class="todo"><title>0x0045d790 SoundPlayer::PlayQueuedSounds (2358 bytes)</title></rect>
+<rect width="32.04" height="35.19" x="226.20" y="234.10" class="nonmatching"><title>0x0045d790 SoundPlayer::PlayQueuedSounds (2358 bytes)</title></rect>
 <rect width="32.04" height="34.96" x="226.20" y="272.29" class="named"><title>0x00413990 UpdateYuyukoLastWord (2344 bytes)</title></rect>
 <rect width="32.04" height="34.75" x="226.20" y="310.25" class="named"><title>0x004161b0 SpellCard::End (2331 bytes)</title></rect>
 <rect width="29.54" height="34.28" x="261.24" y="0" class="named"><title>0x0042f5f0 BulletManager::SpawnBullet (2138 bytes)</title></rect>
@@ -1999,7 +1999,7 @@
 <rect width="2.37" height="2.81" x="712.71" y="272.19" class="named"><title>0x00432170 Bullet::FreeBullet (55 bytes)</title></rect>
 <rect width="2.37" height="2.81" x="718.08" y="272.19" class="named"><title>0x00446f0b SpriteEngine::ReleaseVertexBuffer (55 bytes)</title></rect>
 <rect width="2.37" height="2.81" x="723.45" y="272.19" class="named"><title>0x00456938 FormatTodayDate (55 bytes)</title></rect>
-<rect width="2.37" height="2.81" x="728.81" y="272.19" class="todo"><title>0x0045e3f0 CStreamingSound::FadeOut (55 bytes)</title></rect>
+<rect width="2.37" height="2.81" x="728.81" y="272.19" class="named"><title>0x0045e3f0 CStreamingSound::FadeOut (55 bytes)</title></rect>
 <rect width="2.27" height="2.81" x="734.18" y="272.19" class="named"><title>0x0040b540 D3DXVec3Dot (54 bytes)</title></rect>
 <rect width="2.27" height="2.81" x="739.46" y="272.19" class="named"><title>0x0041efc0 Enemy::GetLastFollower (54 bytes)</title></rect>
 <rect width="2.27" height="2.81" x="744.73" y="272.19" class="named"><title>0x00444220 MidiPlayer::UnloadFile (54 bytes)</title></rect>
@@ -2062,7 +2062,7 @@
 <rect width="2" height="1.88" x="710.38" y="283.37" class="named"><title>0x0040ec00 Sprite::SetRotationZ (43 bytes)</title></rect>
 <rect width="2" height="1.88" x="715.38" y="283.37" class="named"><title>0x00421ba0 GameManager::RankLerp (43 bytes)</title></rect>
 <rect width="2" height="1.88" x="720.37" y="283.37" class="named"><title>0x00454c87 ResultScreen::ReleaseScores (43 bytes)</title></rect>
-<rect width="2" height="1.88" x="725.37" y="283.37" class="todo"><title>0x0045e3c0 SoundPlayer::FadeOutBgm (43 bytes)</title></rect>
+<rect width="2" height="1.88" x="725.37" y="283.37" class="named"><title>0x0045e3c0 SoundPlayer::FadeOutBgm (43 bytes)</title></rect>
 <rect width="2" height="1.88" x="730.37" y="283.37" class="named"><title>0x004739c0 File::Tell (43 bytes)</title></rect>
 <rect width="1.88" height="1.88" x="735.36" y="283.37" class="named"><title>0x00404720 D3DXVECTOR3::D3DXVECTOR3 (42 bytes)</title></rect>
 <rect width="1.88" height="1.88" x="740.24" y="283.37" class="named"><title>0x00406520 ChainElem::SetCallback (42 bytes)</title></rect>
@@ -2264,7 +2264,7 @@
 <rect width="0.33" height="0.41" x="746.67" y="324.27" class="named"><title>0x00421b80 GameManager::GetTimeOrbsNeeded (20 bytes)</title></rect>
 <rect width="0.44" height="0.30" x="729.70" y="327.68" class="named"><title>0x0042dfb0 EnemyScripts::GetTimelineCount (20 bytes)</title></rect>
 <rect width="0.44" height="0.30" x="733.14" y="327.68" class="named"><title>0x00445bc0 App::OnDraw (20 bytes)</title></rect>
-<rect width="0.44" height="0.30" x="736.58" y="327.68" class="todo"><title>0x0045e2d0 CWaveFile::GetFormat (20 bytes)</title></rect>
+<rect width="0.44" height="0.30" x="736.58" y="327.68" class="named"><title>0x0045e2d0 CWaveFile::GetFormat (20 bytes)</title></rect>
 <rect width="0.44" height="0.30" x="740.02" y="327.68" class="named"><title>0x00473c60 FileBase::~FileBase (20 bytes)</title></rect>
 <rect width="0.27" height="0.30" x="743.46" y="327.68" class="named"><title>0x004178a0 SpellCard::IsActive (19 bytes)</title></rect>
 <rect width="0.27" height="0.30" x="746.73" y="327.68" class="named"><title>0x00418010 SpellCard::OnUpdate (19 bytes)</title></rect>
