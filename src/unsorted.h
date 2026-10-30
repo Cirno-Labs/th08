@@ -1938,6 +1938,12 @@ public:
     void FreeMsgFile();
     // Starts dialogue script `index`, as th07's (0x439810).
     void StartMsg(int index);
+    // Sets bossTimer, as th07's. Inline; the copy at 0x42f340 is an /Od
+    // object's.
+    void SetBossTimer(int seconds)
+    {
+        this->bossTimer = seconds;
+    }
     // Sets bossPresent and returns `present`. New in th08. Inline; the
     // copy at 0x422c20 is an /Od object's.
     BYTE SetBossPresent(BYTE present)
@@ -2420,6 +2426,15 @@ struct SpellCard
         this->unk_12f6 = 1;
         this->unk_1b88.SetPendingInterrupt(2);
     }
+    // Ends the spell card as a timer callback runs: clears unk_0_2 and
+    // unk_fc, sets unk_0_3. Inline; the copy at 0x42bc50 is an /Od
+    // object's.
+    void Func42bc50()
+    {
+        this->unk_0_2 = 0;
+        this->unk_0_3 = 1;
+        this->unk_fc = 0;
+    }
     // Clear unk_0_2 and unk_fc; the first also copies bit 0 to bit 7.
     // Called as a bomb starts and as the player dies. Inline; the copies
     // at 0x44cba0 and 0x44d150 are the player object's.
@@ -2443,7 +2458,8 @@ struct SpellCard
             DWORD unk_0_0 : 1;
             DWORD unk_0_1 : 1;
             DWORD unk_0_2 : 1;
-            DWORD unk_0_3 : 4;
+            DWORD unk_0_3 : 1;
+            DWORD unk_0_4 : 3;
             DWORD unk_0_7 : 1;
         };
     };

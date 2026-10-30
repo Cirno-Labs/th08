@@ -127,6 +127,14 @@ struct Enemy
     // Returns 1 then, else 0 after setting unk_3328_4 by how close the
     // life is to the next callback (or to 0) (0x42b490).
     int CheckLifeCallback();
+    // Runs the timer callback once callbackTimer reaches
+    // timerCallbackTime, as th07's: shows boss 0's time left; then drops
+    // the life to the highest life callback, restarts the script at
+    // timerCallbackSub, ends the spell card (unless keepSpellCard),
+    // makes the player invulnerable for 70 frames after a boss's,
+    // Func42adb0(0), kills the other non-boss enemies and frees unk_3384.
+    // Returns 1 then, else 0 (0x42b930).
+    int CheckTimerCallback();
     // Keeps pos within lowerBound and upperBound while clampPos is set,
     // as th07's (0x42c180).
     void ClampPos();
@@ -255,7 +263,11 @@ struct Enemy
             DWORD unk_3324_23 : 1;
             DWORD onScreen : 1;
             DWORD rotateSprite : 1;
-            DWORD unk_3324_26 : 4;
+            DWORD unk_3324_26 : 1;
+            // A timer callback leaves the spell card running while set,
+            // as th07's.
+            DWORD keepSpellCard : 1;
+            DWORD unk_3324_28 : 2;
             DWORD unk_3324_30 : 1;
         };
     };

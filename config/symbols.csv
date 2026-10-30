@@ -397,8 +397,8 @@ address,size,name,symbol
 0x0042b2f0,117,Enemy::Func42b2f0,?Func42b2f0@Enemy@@QAEXXZ
 0x0042b370,288,Enemy::Func42b370,?Func42b370@Enemy@@QAEXH@Z
 0x0042b490,1180,Enemy::CheckLifeCallback,?CheckLifeCallback@Enemy@@QAEHXZ
-0x0042b930,796,Func42b930,
-0x0042bc50,50,Func42bc50,
+0x0042b930,796,Enemy::CheckTimerCallback,?CheckTimerCallback@Enemy@@QAEHXZ
+0x0042bc50,50,SpellCard::Func42bc50,?Func42bc50@SpellCard@@QAEXXZ
 0x0042bc90,96,Enemy::Func42bc90,?Func42bc90@Enemy@@QAEXXZ
 0x0042bcf0,432,Enemy::Despawn,?Despawn@Enemy@@QAEXXZ
 0x0042bea0,734,Enemy::DropItems,?DropItems@Enemy@@QAEXH@Z
@@ -428,7 +428,7 @@ address,size,name,symbol
 0x0042f2d0,29,Func42f2d0,
 0x0042f2f0,37,Func42f2f0,
 0x0042f320,17,Gui::IsBossPresent,?IsBossPresent@Gui@@QAEEXZ
-0x0042f340,22,Func42f340,
+0x0042f340,22,Gui::SetBossTimer,?SetBossTimer@Gui@@QAEXH@Z
 0x0042f360,177,Func42f360,
 0x0042f420,117,Func42f420,
 0x0042f4a0,92,Func42f4a0,
@@ -440,7 +440,7 @@ address,size,name,symbol
 0x0042fea0,204,Func42fea0,
 0x0042ff70,67,Func42ff70,
 0x0042ffc0,2075,Func42ffc0,
-0x00430830,620,Func430830,
+0x00430830,620,BulletManager::Func430830,?Func430830@BulletManager@@QAEXH@Z
 0x00430aa0,651,Func430aa0,
 0x00430d30,214,Func430d30,
 0x00430e10,259,Func430e10,

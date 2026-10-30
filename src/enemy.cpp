@@ -659,6 +659,93 @@ int Enemy::CheckLifeCallback()
     return 0;
 }
 
+int Enemy::CheckTimerCallback()
+{
+    Enemy *enemy;
+    int i;
+    int j;
+    int idx;
+    int best;
+
+    if (this->isBoss && this->bossIndex == 0)
+    {
+        g_Gui.SetBossTimer((this->timerCallbackTime - this->callbackTimer.AsFrames()) / 60);
+    }
+    if (this->callbackTimer >= this->timerCallbackTime)
+    {
+        this->unk_53cc = 0;
+        best = 0;
+        for (i = 0; i < 4; i++)
+        {
+            if (this->lifeCallbackLife[i] < 0)
+            {
+                continue;
+            }
+            if (best < this->lifeCallbackLife[i])
+            {
+                best = this->lifeCallbackLife[i];
+                idx = i;
+            }
+        }
+        if (best > 0)
+        {
+            this->life = this->lifeCallbackLife[idx];
+            this->unk_2e04 = this->life;
+            this->lifeCallbackLife[idx] = -1;
+        }
+        g_EnemyScripts.StartSub(&this->ctx, this->timerCallbackSub);
+        this->timerCallbackTime = -1;
+        this->timerCallbackSub = this->deathSub;
+        this->callbackTimer = 0;
+        if (!this->keepSpellCard)
+        {
+            g_SpellCard.Func42bc50();
+            g_BulletManager.Func430830(4);
+        }
+        if (this->isBoss && g_Player.playerState == 0)
+        {
+            g_Player.stateTimer = 70;
+            g_Player.playerState = 3;
+        }
+        this->Func42adb0(0);
+        for (enemy = g_EnemyManager.enemies, j = 0; j < 0x1e0; j++, enemy++)
+        {
+            if (!enemy->active)
+            {
+                continue;
+            }
+            if (enemy->isBoss)
+            {
+                continue;
+            }
+            enemy->life = 0;
+            if (enemy->deathSub >= 0)
+            {
+                g_EnemyScripts.StartSub(&enemy->ctx, enemy->deathSub);
+                enemy->deathSub = -1;
+            }
+        }
+        for (idx = 0; idx < 4; idx++)
+        {
+            if (this->unk_3384[idx] != NULL)
+            {
+                g_MemoryManager.Free(this->unk_3384[idx]);
+                this->unk_3384[idx] = NULL;
+            }
+        }
+        this->shooter = g_EnemyManager.enemyTemplate.shooter;
+        this->shootInterval = 0;
+        this->ResetRankSpeeds();
+        this->stackDepth = 0;
+        this->unk_3328_4 = 0;
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
 void Enemy::DropItems(int byBomb)
 {
     D3DXVECTOR3 pos;

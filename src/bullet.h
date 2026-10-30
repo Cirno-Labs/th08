@@ -43,6 +43,9 @@ public:
     static int RegisterChain(char *path);
     // Clears the bullets, as th07's ClearAll (0x415c60).
     void Func415c60();
+    // Called with 4 as a timer callback ends a spell card, as th07's
+    // ClearAll(10) was (0x430830).
+    void Func430830(int arg);
 
     unsigned char unk_0[0x6ba538];
     // The bullets alive, as th07's.
