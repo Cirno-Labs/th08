@@ -683,7 +683,7 @@ struct CryptParams
     BYTE type;
     BYTE key;
     BYTE step;
-    BYTE unk_3;
+    BYTE unusedByte3;
     int blockSize;
     int limit;
 };
