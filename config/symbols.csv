@@ -629,7 +629,7 @@ address,size,name,symbol
 0x004417e0,79,ItemManager::CountType7Items,?CountType7Items@ItemManager@@QAEHXZ
 0x00441830,27,Timer::operator!=,??9Timer@@QAEHH@Z
 0x00441850,77,GameManager::AddPower,?AddPower@GameManager@@QAEXH@Z
-0x004418a0,28,GameWindow::GameWindow,
+0x004418a0,28,GameWindow::GameWindow,??0GameWindow@@QAE@XZ
 0x004418c0,1354,WinMain,_WinMain@16
 0x00441e10,46,SpriteEngine::`scalar deleting destructor',??_GSpriteEngine@@QAEPAXI@Z
 0x00441e40,46,MidiPlayer::`scalar deleting destructor',??_GMidiPlayer@@QAEPAXI@Z

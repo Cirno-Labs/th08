@@ -17,6 +17,11 @@
 #include "sprite.h"
 #include "unsorted.h"
 
+EXE_INLINE GameWindow::GameWindow()
+{
+    memset(this, 0, sizeof(GameWindow));
+}
+
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
     int runResult = 0;

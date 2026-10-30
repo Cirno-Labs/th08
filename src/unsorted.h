@@ -497,6 +497,10 @@ inline int Timer::NextTick()
 #pragma pack(push, 4)
 struct GameWindow
 {
+    // Zeroes the window, as th07's; only g_GameWindow's static initializer
+    // calls it (0x4418a0).
+    GameWindow();
+
     // Runs one frame of the main loop. Returns 0 to go on, else what
     // App::RegisterChain's result means. New in th08: paces the frames
     // by nextFrameTime, 1/60 s apart, and sleeps while it is ahead.
