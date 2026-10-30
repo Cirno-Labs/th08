@@ -1275,3 +1275,35 @@ int BulletManager::OnDraw(BulletManager *mgr)
     }
     return 1;
 }
+
+void DrawBullet(Bullet *bullet)
+{
+    Sprite *sprite;
+
+    switch (bullet->state)
+    {
+    case 2:
+        sprite = &bullet->sprites.sprite1;
+        break;
+    case 3:
+        sprite = &bullet->sprites.sprite2;
+        break;
+    case 4:
+        sprite = &bullet->sprites.sprite3;
+        break;
+    case 5:
+        sprite = &bullet->sprites.sprite4;
+        break;
+    default:
+        sprite = &bullet->sprites.sprite0;
+    }
+    sprite->pos[0] = g_GameManager.arena[0] + bullet->pos[0];
+    sprite->pos[1] = g_GameManager.arena[1] + bullet->pos[1];
+    sprite->pos[2] = 0.05f;
+    sprite->color = sprite->color & 0xff000000 | 0xffffff;
+    if (sprite->autoRotate != 0)
+    {
+        sprite->SetRotationZ(AddNormalizeAngle(1.5707964f + bullet->angle, 0.0f));
+    }
+    g_SpriteEngine->Draw(sprite);
+}
