@@ -699,6 +699,10 @@ void StartSlowdown(Enemy *enemy, EnemyScriptInstr *instr);
 // spell card (GameManager::unk_3dbb0) (0x424fc0).
 void GetPracticeCard(Enemy *enemy, EnemyScriptInstr *instr);
 
+// Script function 22: starts 「リザレクション」 through
+// SpellCard::Func415d10 (0x424ff0).
+void StartResurrection(Enemy *enemy, EnemyScriptInstr *instr);
+
 // The enemy ANMs by stage, then by last spell (card - 0xc4).
 extern char *g_EnemyAnmPaths[];
 // The enemy scripts by stage, by stage in spell practice (stage + 9),

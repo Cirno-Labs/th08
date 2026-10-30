@@ -61,11 +61,11 @@
 </g>
 <g transform="translate(0 116)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the physical function order:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">85.30% (952)</tspan> · <tspan class="decompiled">3.14% (35)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">11.56% (129)</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">85.39% (953)</tspan> · <tspan class="decompiled">3.14% (35)</tspan> · <tspan class="nonmatching">0% (0)</tspan> · <tspan class="todo">11.47% (128)</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="637.23" height="6" x="0" y="0" class="named"/>
-<rect width="23.43" height="6" x="637.23" y="0" class="decompiled"/>
-<rect width="86.35" height="6" x="660.65" y="0" class="todo"/>
+<rect width="637.90" height="6" x="0" y="0" class="named"/>
+<rect width="23.43" height="6" x="637.90" y="0" class="decompiled"/>
+<rect width="85.68" height="6" x="661.32" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="12" height="12" x="0" y="0" class="named"><title>0x00402000 AsciiText::AsciiText (296 bytes)</title></rect>
@@ -381,7 +381,7 @@
 <rect width="12" height="12" x="150" y="90" class="named"><title>0x00424f60 FlashScreen180 (39 bytes)</title></rect>
 <rect width="12" height="12" x="165" y="90" class="named"><title>0x00424f90 StartSlowdown (46 bytes)</title></rect>
 <rect width="12" height="12" x="180" y="90" class="named"><title>0x00424fc0 GetPracticeCard (35 bytes)</title></rect>
-<rect width="12" height="12" x="195" y="90" class="todo"><title>0x00424ff0 Func424ff0 (35 bytes)</title></rect>
+<rect width="12" height="12" x="195" y="90" class="named"><title>0x00424ff0 StartResurrection (35 bytes)</title></rect>
 <rect width="12" height="12" x="210" y="90" class="todo"><title>0x00425020 Func425020 (26 bytes)</title></rect>
 <rect width="12" height="12" x="225" y="90" class="todo"><title>0x00425040 Func425040 (37 bytes)</title></rect>
 <rect width="12" height="12" x="240" y="90" class="todo"><title>0x00425070 Func425070 (89 bytes)</title></rect>
@@ -1188,11 +1188,11 @@
 </g>
 <g transform="translate(0 516)">
 <text x="0" y="7.50">東方永夜抄 1.00d progress according to the function sizes:</text>
-<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">79.26%</tspan> · <tspan class="decompiled">1.57%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">19.17%</tspan></tspan></text>
+<text class="todo" style="font-size: 12px; " x="747" y="9"><tspan text-anchor="end"><tspan class="named">79.27%</tspan> · <tspan class="decompiled">1.57%</tspan> · <tspan class="nonmatching">0%</tspan> · <tspan class="todo">19.16%</tspan></tspan></text>
 <g transform="translate(0 20)">
-<rect width="592.09" height="6" x="0" y="0" class="named"/>
-<rect width="11.74" height="6" x="592.09" y="0" class="decompiled"/>
-<rect width="143.17" height="6" x="603.83" y="0" class="todo"/>
+<rect width="592.15" height="6" x="0" y="0" class="named"/>
+<rect width="11.74" height="6" x="592.15" y="0" class="decompiled"/>
+<rect width="143.11" height="6" x="603.89" y="0" class="todo"/>
 </g>
 <g transform="translate(0 31)">
 <rect width="83.52" height="171.71" x="0" y="0" class="todo"><title>0x004184b0 EnemyScripts::RunEnemy (26638 bytes)</title></rect>
@@ -2107,7 +2107,7 @@
 <rect width="1.44" height="1.60" x="745.56" y="292.88" class="todo"><title>0x00406fa0 GameManager::SetPower (36 bytes)</title></rect>
 <rect width="1.32" height="1.59" x="695.08" y="297.47" class="named"><title>0x004028f0 AsciiText::RemoveChain (35 bytes)</title></rect>
 <rect width="1.32" height="1.59" x="695.08" y="302.07" class="named"><title>0x00424fc0 GetPracticeCard (35 bytes)</title></rect>
-<rect width="1.32" height="1.59" x="695.08" y="306.66" class="todo"><title>0x00424ff0 Func424ff0 (35 bytes)</title></rect>
+<rect width="1.32" height="1.59" x="695.08" y="306.66" class="named"><title>0x00424ff0 StartResurrection (35 bytes)</title></rect>
 <rect width="1.32" height="1.59" x="695.08" y="311.25" class="named"><title>0x004286b0 EffectManager::RemoveChain (35 bytes)</title></rect>
 <rect width="1.32" height="1.59" x="695.08" y="315.85" class="todo"><title>0x00433820 Func433820 (35 bytes)</title></rect>
 <rect width="1.32" height="1.59" x="695.08" y="320.44" class="todo"><title>0x00433850 BulletManager::RemoveChain (35 bytes)</title></rect>

@@ -1185,3 +1185,8 @@ void GetPracticeCard(Enemy *enemy, EnemyScriptInstr *instr)
 {
     enemy->currentCtx->vars.ints[0] = g_GameManager.unk_3dbb0;
 }
+
+void StartResurrection(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    g_SpellCard.Func415d10("「リザレクション」", enemy);
+}
