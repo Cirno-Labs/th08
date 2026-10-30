@@ -403,7 +403,7 @@ address,size,name,symbol
 0x0042bcf0,432,Enemy::Despawn,?Despawn@Enemy@@QAEXXZ
 0x0042bea0,734,Enemy::DropItems,?DropItems@Enemy@@QAEXH@Z
 0x0042c180,270,Enemy::ClampPos,?ClampPos@Enemy@@QAEXXZ
-0x0042c290,284,Func42c290,
+0x0042c290,284,Enemy::CheckPlayerContact,?CheckPlayerContact@Enemy@@QAEXPAUD3DXVECTOR3@@0@Z
 0x0042c3b0,110,Func42c3b0,
 0x0042c420,367,Func42c420,
 0x0042c590,203,EnemyManager::RegisterChain,?RegisterChain@EnemyManager@@SIHXZ

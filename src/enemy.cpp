@@ -551,6 +551,26 @@ void Enemy::ClampPos()
     }
 }
 
+void Enemy::CheckPlayerContact(D3DXVECTOR3 *pos, D3DXVECTOR3 *size)
+{
+    D3DXVECTOR3 box;
+
+    box = *size / 0.7f;
+    if (this->grazeable && this->callbackTimer.HasTicked() && this->callbackTimer % 6 == 0)
+    {
+        g_Player.CheckGraze(pos, &box);
+    }
+    if ((g_GameManager.character == 0 || g_GameManager.character == 4) && this->Func41fd20())
+    {
+        return;
+    }
+    box = *size / 1.5f;
+    if (g_Player.CheckHitIgnoringAreas(pos, &box) == 1 && !this->isBoss && !this->grazeable)
+    {
+        this->life -= 10;
+    }
+}
+
 int EnemyManager::RegisterChain()
 {
     EnemyManager *em = &g_EnemyManager;
