@@ -691,3 +691,17 @@ void MidiTimer::StopTimer()
 {
     this->Stop();
 }
+
+#ifdef TH08_EXE
+// Unused: the original's object also counted the MIDI devices and raised
+// a thread's priority, from code /OPT:REF dropped. The two import objects
+// still load (Rich Import0) and, by where they sort, decide part of
+// WINMM's and KERNEL32's IAT order.
+#pragma code_seg(".text$u")
+UINT UnusedPrepareMidiThread(HANDLE thread)
+{
+    SetThreadPriority(thread, THREAD_PRIORITY_TIME_CRITICAL);
+    return midiOutGetNumDevs();
+}
+#pragma code_seg()
+#endif // TH08_EXE

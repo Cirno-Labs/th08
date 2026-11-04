@@ -316,3 +316,23 @@ char *DatArchive::DuplicateString(char *str)
     }
     return copy;
 }
+
+#ifdef TH08_EXE
+// Unused: the original also read data from a module's resources, from
+// code /OPT:REF dropped, as th06's did. It mentions four of the resource
+// functions only D3DX8 otherwise uses, and two more, after the game's
+// other KERNEL32 imports; where those six import objects sort decides
+// part of KERNEL32's IAT order.
+#pragma code_seg(".text$u")
+void *UnusedLoadResource(LPCSTR path, LPCSTR name, LPCSTR type, DWORD *size)
+{
+    HMODULE module = LoadLibraryExA(path, NULL, LOAD_LIBRARY_AS_DATAFILE);
+    HRSRC resource = FindResourceA(module, name, type);
+    HGLOBAL handle = LoadResource(module, resource);
+
+    *size = SizeofResource(module, resource);
+    FreeResource(handle);
+    return LockResource(handle);
+}
+#pragma code_seg()
+#endif // TH08_EXE

@@ -320,15 +320,19 @@ void ReleaseTextSurface()
 }
 
 #ifdef TH08_EXE
-// Unused: the original's object also set the DC's background mode and
-// text color before its first TextOutA, from code /OPT:REF dropped, as
-// th06's does. A function's references come out in reverse order, so
-// SetTextColor loads first.
+// Unused: the original's object also drew text with DrawTextA, setting
+// the DC's background mode and then its text color before its first
+// TextOutA, from code /OPT:REF dropped, as th06's does. A function's
+// references come out in reverse order, so SetTextColor loads first;
+// DrawTextA and ReleaseDC are USER32 import objects the original loaded
+// and dropped.
 #pragma code_seg(".text$u")
-void UnusedSetTextStyle(HDC hdc, COLORREF color)
+void UnusedDrawText(HWND window, HDC hdc, char *text, RECT *rect, COLORREF color)
 {
     SetBkMode(hdc, TRANSPARENT);
     SetTextColor(hdc, color);
+    DrawTextA(hdc, text, -1, rect, DT_LEFT);
+    ReleaseDC(window, hdc);
 }
 #pragma code_seg()
 #endif // TH08_EXE
