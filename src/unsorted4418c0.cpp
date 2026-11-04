@@ -783,13 +783,13 @@ int CheckSingleInstance(HINSTANCE instance)
         extension = strrchr(startup.lpTitle, '.');
         if (FileExists(startup.lpTitle) && extension != NULL)
         {
-            if (_stricmp(extension, ".lnk") == 0)
+            if (strcmpi(extension, ".lnk") == 0)
             {
                 do
                 {
                     ResolveShortcut(startup.lpTitle, consoleTitle, 0x104);
                     extension = strrchr(consoleTitle, '.');
-                } while (_stricmp(extension, ".lnk") == 0);
+                } while (strcmpi(extension, ".lnk") == 0);
             }
             else
             {

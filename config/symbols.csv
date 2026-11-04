@@ -2052,7 +2052,7 @@ address,size,name,symbol
 0x004b1d3e,9,__flushall,
 0x004b1d47,73,Func4b1d47,
 0x004b1d90,440,Func4b1d90,
-0x004b1f5f,105,__stricmp,__stricmp
+0x004b1f5f,105,__stricmp,__stricmp _strcmpi
 0x004b1fc8,78,__mbsnbicoll,
 0x004b2016,107,Func4b2016,
 0x004b2081,461,Func4b2081,
