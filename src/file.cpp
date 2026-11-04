@@ -2,6 +2,12 @@
 
 #include "archive.h"
 
+File::File()
+{
+    this->handle = INVALID_HANDLE_VALUE;
+    this->access = 0;
+}
+
 // The game's data, as the original defines it here. The DLL build uses
 // the original's copies instead.
 #ifdef TH08_EXE
@@ -11,12 +17,6 @@ BYTE g_UnusedFileData[8];
 // Constructed, but nothing uses them.
 DatArchive g_UnusedArchives[20];
 #endif // TH08_EXE
-
-File::File()
-{
-    this->handle = INVALID_HANDLE_VALUE;
-    this->access = 0;
-}
 
 File::~File()
 {
