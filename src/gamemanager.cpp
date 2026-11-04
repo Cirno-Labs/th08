@@ -425,10 +425,10 @@ int GameManager::OnUpdate(GameManager *mgr)
         g_SoundPlayer.QueueSoundCommand(6, 0, "Pause");
         g_SoundPlayer.QueueSound(0x22, 0);
         g_App.AddTotalPlayTime();
-        g_Rng.savedSeed = g_Rng.seed;
+        g_Random.savedSeed = g_Random.seed;
         mgr->hscr.pauses++;
         g_GameManager.RerollChecksumKeys();
-        g_Rng.seed = g_Rng.savedSeed;
+        g_Random.seed = g_Random.savedSeed;
     }
     g_App.viewport.X = mgr->arena[0];
     g_App.viewport.Y = mgr->arena[1];
@@ -690,7 +690,7 @@ void GameManager::LoadingThread(GameManager *arg)
             delete mgr->stats;
             mgr->stats = NULL;
         }
-        size = g_Rng.GetRandomU32InRange(0xffff) + 0x10;
+        size = g_Random.GetRandomU32InRange(0xffff) + 0x10;
         mgr->tempBuffer = malloc(size);
         mgr->savedConfig = new GameConfig;
         mgr->stats = new GameManagerStats;
@@ -714,7 +714,7 @@ void GameManager::LoadingThread(GameManager *arg)
             {
                 return;
             }
-            LogPrintf(&g_Log, "error : プレイヤーの初期化に失敗しました\r\n");
+            LogPrintf(&g_AppLog, "error : プレイヤーの初期化に失敗しました\r\n");
             goto fail;
         }
         if (!(g_GameManager.stateFlags >> 3 & 1))
@@ -814,7 +814,7 @@ void GameManager::LoadingThread(GameManager *arg)
             {
                 return;
             }
-            LogPrintf(&g_Log, "error : プレイヤーの初期化に失敗しました\r\n");
+            LogPrintf(&g_AppLog, "error : プレイヤーの初期化に失敗しました\r\n");
             goto fail;
         }
     }
@@ -878,18 +878,18 @@ void GameManager::LoadingThread(GameManager *arg)
     {
         mgr->SetRankForDifficulty();
         ReplayManager::RegisterChain(1, g_GameManager.replayFile);
-        seed = g_Rng.seed;
+        seed = g_Random.seed;
         mgr->RerollChecksumKeys();
-        g_Rng.seed = seed;
+        g_Random.seed = seed;
     }
-    mgr->rngSeed = g_Rng.seed;
+    mgr->rngSeed = g_Random.seed;
     if (Stage::RegisterChain(mgr->stage) != 0)
     {
         if (g_App.closeSubThread)
         {
             return;
         }
-        LogPrintf(&g_Log, "error : 背景データの初期化に失敗しました\r\n");
+        LogPrintf(&g_AppLog, "error : 背景データの初期化に失敗しました\r\n");
         goto fail;
     }
     if (BulletManager::RegisterChain("etama.anm") != 0)
@@ -898,7 +898,7 @@ void GameManager::LoadingThread(GameManager *arg)
         {
             return;
         }
-        LogPrintf(&g_Log, "error : 敵弾の初期化に失敗しました\r\n");
+        LogPrintf(&g_AppLog, "error : 敵弾の初期化に失敗しました\r\n");
         goto fail;
     }
     if (EnemyManager::RegisterChain() != 0)
@@ -907,7 +907,7 @@ void GameManager::LoadingThread(GameManager *arg)
         {
             return;
         }
-        LogPrintf(&g_Log, "error : 敵の初期化に失敗しました\r\n");
+        LogPrintf(&g_AppLog, "error : 敵の初期化に失敗しました\r\n");
         goto fail;
     }
     if (EffectManager::RegisterChain() != 0)
@@ -916,7 +916,7 @@ void GameManager::LoadingThread(GameManager *arg)
         {
             return;
         }
-        LogPrintf(&g_Log, "error : エフェクトの初期化に失敗しました\r\n");
+        LogPrintf(&g_AppLog, "error : エフェクトの初期化に失敗しました\r\n");
         goto fail;
     }
     if (Gui::RegisterChain() != 0)
@@ -925,7 +925,7 @@ void GameManager::LoadingThread(GameManager *arg)
         {
             return;
         }
-        LogPrintf(&g_Log, "error : 2D表示の初期化に失敗しました\r\n");
+        LogPrintf(&g_AppLog, "error : 2D表示の初期化に失敗しました\r\n");
         goto fail;
     }
     if (SpellCard::RegisterChain() != 0)
@@ -934,7 +934,7 @@ void GameManager::LoadingThread(GameManager *arg)
         {
             return;
         }
-        LogPrintf(&g_Log, "error : スペルカードの初期化に失敗しました\r\n");
+        LogPrintf(&g_AppLog, "error : スペルカードの初期化に失敗しました\r\n");
         goto fail;
     }
     if (!(g_GameManager.stateFlags >> 3 & 1))
@@ -1071,34 +1071,34 @@ void RerollStatsChecksumKeys()
     int sum;
     int j;
 
-    g_GameManager.stats->grazeCount = g_Rng.GetRandomU32InRange(100000) + 6543;
+    g_GameManager.stats->grazeCount = g_Random.GetRandomU32InRange(100000) + 6543;
     for (j = 0; j < ARRAY_SIZE(g_GameManager.stats->lifeChecksumKeys); j++)
     {
-        g_GameManager.stats->lifeChecksumKeys[j] = g_Rng.GetRandomU32InRange(100000) + 6543;
+        g_GameManager.stats->lifeChecksumKeys[j] = g_Random.GetRandomU32InRange(100000) + 6543;
     }
     for (j = 0; j < ARRAY_SIZE(g_GameManager.stats->checksumKeysD); j++)
     {
-        g_GameManager.stats->checksumKeysD[j] = g_Rng.GetRandomU32InRange(100000) + 6543;
+        g_GameManager.stats->checksumKeysD[j] = g_Random.GetRandomU32InRange(100000) + 6543;
     }
     for (j = 0; j < ARRAY_SIZE(g_GameManager.stats->statsChecksumKeysA); j++)
     {
-        g_GameManager.stats->statsChecksumKeysA[j] = g_Rng.GetRandomF32ZeroToOne() * 100000.0f + 6543.0f;
+        g_GameManager.stats->statsChecksumKeysA[j] = g_Random.GetRandomF32ZeroToOne() * 100000.0f + 6543.0f;
     }
     for (j = 0; j < ARRAY_SIZE(g_GameManager.stats->statsChecksumKeysB); j++)
     {
-        g_GameManager.stats->statsChecksumKeysB[j] = g_Rng.GetRandomF32ZeroToOne() * 100000.0f + 6543.0f;
+        g_GameManager.stats->statsChecksumKeysB[j] = g_Random.GetRandomF32ZeroToOne() * 100000.0f + 6543.0f;
     }
     for (j = 0; j < ARRAY_SIZE(g_GameManager.stats->lifeChecksumKeysF); j++)
     {
-        g_GameManager.stats->lifeChecksumKeysF[j] = g_Rng.GetRandomF32ZeroToOne() * 100000.0f + 6543.0f;
+        g_GameManager.stats->lifeChecksumKeysF[j] = g_Random.GetRandomF32ZeroToOne() * 100000.0f + 6543.0f;
     }
     for (j = 0; j < ARRAY_SIZE(g_GameManager.stats->statsChecksumKeysC); j++)
     {
-        g_GameManager.stats->statsChecksumKeysC[j] = g_Rng.GetRandomF32ZeroToOne() * 100000.0f + 6543.0f;
+        g_GameManager.stats->statsChecksumKeysC[j] = g_Random.GetRandomF32ZeroToOne() * 100000.0f + 6543.0f;
     }
     for (j = 0; j < ARRAY_SIZE(g_GameManager.stats->checksumKeysE); j++)
     {
-        g_GameManager.stats->checksumKeysE[j] = g_Rng.GetRandomU32InRange(100000) + 6543;
+        g_GameManager.stats->checksumKeysE[j] = g_Random.GetRandomU32InRange(100000) + 6543;
     }
     g_GameManager.stats->checksum = g_GameManager.stats->lifeChecksumKeys[2];
     sum = g_GameManager.ComputeChecksum();
@@ -1133,7 +1133,7 @@ int LoadScoreFile()
     data = LoadScoreDat("score.dat");
     if (data == NULL)
     {
-        LogPrintf(&g_Log, "error : スコアファイルの読み取りに失敗しました\r\n");
+        LogPrintf(&g_AppLog, "error : スコアファイルの読み取りに失敗しました\r\n");
         return -1;
     }
     g_GameManager.stats->highScore = LoadHighScores(data, NULL, g_GameManager.character, g_GameManager.difficulty,

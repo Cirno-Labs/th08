@@ -93,15 +93,15 @@ Item *ItemManager::SpawnItem(D3DXVECTOR3 *pos, int type, int state)
         item->timer = 0;
         if (state == 2)
         {
-            item->target.x = g_Rng.GetRandomF32InRange(288.0f) + 48.0f;
-            item->target.y = g_Rng.GetRandomF32InRange(192.0f) - 64.0f;
+            item->target.x = g_Random.GetRandomF32InRange(288.0f) + 48.0f;
+            item->target.y = g_Random.GetRandomF32InRange(192.0f) - 64.0f;
             item->target.z = 0.0f;
             item->velocity = item->pos;
         }
         else if (state == 3)
         {
-            item->velocity.y = -2.0f - g_Rng.GetRandomF32InRange(0.2f);
-            item->velocity.x = g_Rng.GetRandomF32SignedInRange(0.6f);
+            item->velocity.y = -2.0f - g_Random.GetRandomF32InRange(0.2f);
+            item->velocity.x = g_Random.GetRandomF32SignedInRange(0.6f);
             if (g_Player.playerState == 2)
             {
                 item->state = 0;
@@ -112,8 +112,8 @@ Item *ItemManager::SpawnItem(D3DXVECTOR3 *pos, int type, int state)
         }
         else if (state == 5)
         {
-            item->velocity.y = -2.0f - g_Rng.GetRandomF32InRange(0.2f);
-            item->velocity.x = g_Rng.GetRandomF32SignedInRange(0.6f);
+            item->velocity.y = -2.0f - g_Random.GetRandomF32InRange(0.2f);
+            item->velocity.x = g_Random.GetRandomF32SignedInRange(0.6f);
             if (g_Player.playerState == 2)
             {
                 item->state = 0;

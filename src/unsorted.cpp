@@ -20,15 +20,18 @@ CryptParams g_CryptParams[8] = {
 BYTE g_CryptMagic[4] = {
     0x85, 0xa4, 0xda, 0x00,
 };
-JOYCAPSA g_JoyCaps;
+// MSVC lays these out by identifier hash. Keep the names: this order
+// puts the input state and the following constructed globals at their
+// original addresses, starting with the joystick caps at 0x164d388.
+JOYCAPSA g_JoyDeviceCaps;
 WORD g_ShotHeldFrames;
-Rng g_Rng;
+Rng g_Random;
 WORD g_Buttons;
-WORD g_GameButtons;
-WORD g_PrevButtons;
-WORD g_PrevGameButtons;
-WORD g_ButtonRepeat;
-WORD g_ButtonFrames;
+WORD g_PlayButtons;
+WORD g_PreviousButtons;
+WORD g_PreviousPlayButtons;
+WORD g_InputRepeat;
+WORD g_ButtonsHeldFrames;
 #endif // TH08_EXE
 
 WORD InitJoystick()
@@ -39,10 +42,10 @@ WORD InitJoystick()
     joyInfo.dwFlags = JOY_RETURNALL;
     if (joyGetPosEx(JOYSTICKID1, &joyInfo) != JOYERR_NOERROR)
     {
-        LogPrintf(&g_Log, "使えるパッドが存在しないようです、残念\r\n");
+        LogPrintf(&g_AppLog, "使えるパッドが存在しないようです、残念\r\n");
         return 1;
     }
-    joyGetDevCapsA(JOYSTICKID1, &g_JoyCaps, sizeof(g_JoyCaps));
+    joyGetDevCapsA(JOYSTICKID1, &g_JoyDeviceCaps, sizeof(g_JoyDeviceCaps));
     return 0;
 }
 
@@ -96,12 +99,12 @@ WORD ReadJoystick(WORD buttons)
         SetButtonFromJoystick(&buttons, g_App.controllerMapping.leftButton, 0x40, joyInfo.dwButtons);
         SetButtonFromJoystick(&buttons, g_App.controllerMapping.rightButton, 0x80, joyInfo.dwButtons);
         SetButtonFromJoystick(&buttons, g_App.controllerMapping.skipButton, 0x100, joyInfo.dwButtons);
-        margin = (g_JoyCaps.wXmax - g_JoyCaps.wXmin) / 2 / 2;
-        buttons |= ((g_JoyCaps.wXmin + g_JoyCaps.wXmax) / 2 + margin < joyInfo.dwXpos) ? 0x80 : 0;
-        buttons |= (joyInfo.dwXpos < (g_JoyCaps.wXmin + g_JoyCaps.wXmax) / 2 - margin) ? 0x40 : 0;
-        margin = (g_JoyCaps.wYmax - g_JoyCaps.wYmin) / 2 / 2;
-        buttons |= ((g_JoyCaps.wYmin + g_JoyCaps.wYmax) / 2 + margin < joyInfo.dwYpos) ? 0x20 : 0;
-        buttons |= (joyInfo.dwYpos < (g_JoyCaps.wYmin + g_JoyCaps.wYmax) / 2 - margin) ? 0x10 : 0;
+        margin = (g_JoyDeviceCaps.wXmax - g_JoyDeviceCaps.wXmin) / 2 / 2;
+        buttons |= ((g_JoyDeviceCaps.wXmin + g_JoyDeviceCaps.wXmax) / 2 + margin < joyInfo.dwXpos) ? 0x80 : 0;
+        buttons |= (joyInfo.dwXpos < (g_JoyDeviceCaps.wXmin + g_JoyDeviceCaps.wXmax) / 2 - margin) ? 0x40 : 0;
+        margin = (g_JoyDeviceCaps.wYmax - g_JoyDeviceCaps.wYmin) / 2 / 2;
+        buttons |= ((g_JoyDeviceCaps.wYmin + g_JoyDeviceCaps.wYmax) / 2 + margin < joyInfo.dwYpos) ? 0x20 : 0;
+        buttons |= (joyInfo.dwYpos < (g_JoyDeviceCaps.wYmin + g_JoyDeviceCaps.wYmax) / 2 - margin) ? 0x10 : 0;
         return buttons;
     }
     else
@@ -363,7 +366,7 @@ BYTE *DecryptData(BYTE *data, int size, BYTE key, BYTE step, int blockSize, int 
 
     tail = (size % blockSize < blockSize / 4) ? size % blockSize : 0;
     p = data;
-    dest = (BYTE *)g_MemoryManager.Alloc(size, GLOBAL_H);
+    dest = (BYTE *)g_MemoryTracker.Alloc(size, GLOBAL_H);
     wp = dest;
     if (dest == NULL)
     {
@@ -423,7 +426,7 @@ BYTE *DecryptFileData(BYTE *data, int *size, int fileSize)
         }
         result = DecryptData(p + 4, fileSize - 4, g_CryptParams[j].key, g_CryptParams[j].step,
                              g_CryptParams[j].blockSize, g_CryptParams[j].limit);
-        g_MemoryManager.Free(data);
+        g_MemoryTracker.Free(data);
         return result;
     }
     return p;
@@ -441,7 +444,7 @@ BYTE *EncryptData(BYTE *data, int size, BYTE key, BYTE step, int blockSize, int 
 
     tail = (size % blockSize < blockSize / 4) ? size % blockSize : 0;
     p = data;
-    dest = (BYTE *)g_MemoryManager.Alloc(size, GLOBAL_H);
+    dest = (BYTE *)g_MemoryTracker.Alloc(size, GLOBAL_H);
     wp = dest;
     if (dest == NULL)
     {
@@ -511,25 +514,25 @@ void *LoadFileData(char *path, int *size, int isExternal)
         {
             name++;
         }
-        dataSize = g_Archive.GetEntrySize(name);
+        dataSize = g_GameArchive.GetEntrySize(name);
         if (size != NULL)
         {
             *size = dataSize;
         }
         if (dataSize == 0)
         {
-            LogError(&g_Log, "error : %s is not found in arcfile.\r\n", name);
+            LogError(&g_AppLog, "error : %s is not found in arcfile.\r\n", name);
             goto fail;
         }
         if (dataSize != 0)
         {
             DebugPrint("%s Decode ... \r\n", name);
-            buffer = g_MemoryManager.Alloc(dataSize, path);
+            buffer = g_MemoryTracker.Alloc(dataSize, path);
             if (buffer == NULL)
             {
                 goto fail;
             }
-            g_Archive.Decode(name, buffer);
+            g_GameArchive.Decode(name, buffer);
             buffer = DecryptFileData((BYTE *)buffer, size, dataSize);
             goto done;
         }
@@ -543,7 +546,7 @@ void *LoadFileData(char *path, int *size, int isExternal)
         goto fail;
     }
     dataSize = GetFileSize(handle, NULL);
-    buffer = g_MemoryManager.Alloc(dataSize, path);
+    buffer = g_MemoryTracker.Alloc(dataSize, path);
     if (buffer == NULL)
     {
         DebugPrint("error : %s allocation error.\r\n", path);
@@ -718,9 +721,9 @@ void Rotate2D(D3DXVECTOR3 *out, D3DXVECTOR3 *in, float angle)
 // copies of the constructors and destructors inline here follow them.
 #ifdef TH08_EXE
 Chain g_Chain;
-MemoryManager g_MemoryManager;
-DatArchive g_Archive;
-Log g_Log;
+MemoryManager g_MemoryTracker;
+DatArchive g_GameArchive;
+Log g_AppLog;
 #endif // TH08_EXE
 
 EXE_INLINE MemoryManager::MemoryManager()

@@ -372,7 +372,7 @@ public:
     // copy at 0x45a0dc.
     ~ResultScreen()
     {
-        g_MemoryManager.Free(this->scoreDat);
+        g_MemoryTracker.Free(this->scoreDat);
     }
 
     // Allocates the screen and adds it to the chains (update priority
@@ -562,7 +562,7 @@ extern char *g_PlainDifficultyNames[5];
 extern char *g_DifficultyNames[5];
 // By difficulty: what the statistics' rating starts from, and what
 // each spell card captured adds to it, as th07's.
-extern float g_DifficultyRatings[5];
+extern const float g_DifficultyRatings[5];
 extern float g_SpellCardRatings[5];
 
 // Returns g_StageNames[stage], or "Clear" for 9 and over. New in th08.

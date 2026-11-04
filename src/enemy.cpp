@@ -272,7 +272,7 @@ void EnemyTimeline::RunTimeline()
                     EnemyTimelineSpawnRandomX *args = (EnemyTimelineSpawnRandomX *)this->pos->args;
                     D3DXVECTOR3 pos;
 
-                    pos.x = g_Rng.GetRandomF32InRange(args->xMax - args->xMin) + args->xMin;
+                    pos.x = g_Random.GetRandomF32InRange(args->xMax - args->xMin) + args->xMin;
                     pos.y = args->y;
                     pos.z = 0.0f;
                     g_EnemyManager.Spawn(args->sub, &pos, args->life, args->item, args->score, mirror);
@@ -286,7 +286,7 @@ void EnemyTimeline::RunTimeline()
                     EnemyTimelineSpawnAnyX *args = (EnemyTimelineSpawnAnyX *)this->pos->args;
                     D3DXVECTOR3 pos;
 
-                    pos.x = g_Rng.GetRandomF32InRange(384.0f);
+                    pos.x = g_Random.GetRandomF32InRange(384.0f);
                     pos.y = args->y;
                     pos.z = 0.0f;
                     g_EnemyManager.Spawn(args->sub, &pos, args->life, args->item, args->score, mirror);
@@ -418,8 +418,8 @@ void Enemy::ReleaseFollowers(int collect)
                 g_Player.AddHitAreaCircle(&cur->absPos, 32.0f, 2.0f, 8, areaType);
                 for (i = 0; i < items; i++)
                 {
-                    ((Vector2 *)&pos)->SetPolar(g_Rng.GetRandomF32SignedInRange(3.1415927f),
-                                                g_Rng.GetRandomF32InRange(items * 2.0f));
+                    ((Vector2 *)&pos)->SetPolar(g_Random.GetRandomF32SignedInRange(3.1415927f),
+                                                g_Random.GetRandomF32InRange(items * 2.0f));
                     pos.z = 0.0f;
                     pos += cur->absPos;
                     g_ItemManager.SpawnItem(&pos, 7, 3);
@@ -444,8 +444,8 @@ void Enemy::ReleaseFollowers(int collect)
             g_AsciiText.SetScale(1.0f, 1.0f);
             for (count = 0; count < this->followerCount * 2; count++)
             {
-                ((Vector2 *)&pos)->SetPolar(g_Rng.GetRandomF32SignedInRange(3.1415927f),
-                                            g_Rng.GetRandomF32InRange(128.0f));
+                ((Vector2 *)&pos)->SetPolar(g_Random.GetRandomF32SignedInRange(3.1415927f),
+                                            g_Random.GetRandomF32InRange(128.0f));
                 pos.z = 0.0f;
                 pos += this->absPos;
                 g_ItemManager.SpawnItem(&pos, 7, 1);
@@ -545,7 +545,7 @@ void Enemy::FreeThreads()
     {
         if (this->threads[i] != NULL)
         {
-            g_MemoryManager.Free(this->threads[i]);
+            g_MemoryTracker.Free(this->threads[i]);
             this->threads[i] = NULL;
         }
     }
@@ -625,7 +625,7 @@ int Enemy::CheckLifeCallback()
             {
                 if (this->threads[tmp] != NULL)
                 {
-                    g_MemoryManager.Free(this->threads[tmp]);
+                    g_MemoryTracker.Free(this->threads[tmp]);
                     this->threads[tmp] = NULL;
                 }
             }
@@ -850,7 +850,7 @@ int Enemy::CheckTimerCallback()
         {
             if (this->threads[idx] != NULL)
             {
-                g_MemoryManager.Free(this->threads[idx]);
+                g_MemoryTracker.Free(this->threads[idx]);
                 this->threads[idx] = NULL;
             }
         }
@@ -896,8 +896,8 @@ void Enemy::DropItems(int byBomb)
         for (i = 0; i < this->powerItems; i++)
         {
             pos = this->absPos;
-            pos[0] += g_Rng.GetRandomF32ZeroToOne() * 128.0f - 64.0f;
-            pos[1] += g_Rng.GetRandomF32ZeroToOne() * 128.0f - 64.0f;
+            pos[0] += g_Random.GetRandomF32ZeroToOne() * 128.0f - 64.0f;
+            pos[1] += g_Random.GetRandomF32ZeroToOne() * 128.0f - 64.0f;
             if (g_GameManager.GetPower() < 0x80)
             {
                 g_ItemManager.SpawnItem(&pos, 0, 0);
@@ -914,8 +914,8 @@ void Enemy::DropItems(int byBomb)
         for (i = 0; i < this->pointItems; i++)
         {
             pos = this->absPos;
-            pos[0] += g_Rng.GetRandomF32ZeroToOne() * 128.0f - 64.0f;
-            pos[1] += g_Rng.GetRandomF32ZeroToOne() * 128.0f - 64.0f;
+            pos[0] += g_Random.GetRandomF32ZeroToOne() * 128.0f - 64.0f;
+            pos[1] += g_Random.GetRandomF32ZeroToOne() * 128.0f - 64.0f;
             g_ItemManager.SpawnItem(&pos, 1, 0);
         }
         this->pointItems = 0;
@@ -1376,7 +1376,7 @@ int EnemyManager::OnUpdate(EnemyManager *mgr)
             {
                 if (enemy->threads[k] != NULL)
                 {
-                    g_MemoryManager.Free(enemy->threads[k]);
+                    g_MemoryTracker.Free(enemy->threads[k]);
                     enemy->threads[k] = NULL;
                 }
             }
@@ -1956,8 +1956,8 @@ int EnemyManager::AddedCallback(EnemyManager *mgr)
         g_EnemyScripts.file = savedFile;
         g_EnemyScripts.subs = subs;
     }
-    mgr->dropCounter = g_Rng.GetRandomU16InRange(3);
-    mgr->dropIndex = g_Rng.GetRandomU16InRange(8);
+    mgr->dropCounter = g_Random.GetRandomU16InRange(3);
+    mgr->dropIndex = g_Random.GetRandomU16InRange(8);
     D3DXVECTOR3 nowhere(-999.0f, -999.0f, -999.0f);
     g_AsciiText.SetNearbyLabelPos(0, &nowhere);
     g_AsciiText.SetNearbyLabelPos(1, &nowhere);

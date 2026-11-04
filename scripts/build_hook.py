@@ -1,39 +1,57 @@
-"""th08's build hook (build.hook in project.toml): the standalone exe's
-DOS stub.
+"""th08's build hook: the standalone exe's function and data order."""
+import csv
+from pathlib import Path
 
-The original's headers take 0x1e00 bytes: after the section table they
-hold the .comment sections (compiler banners) of D3DX8's Intel-compiled
-objects. Those come from a DirectX 8.1 build we don't have, and the
-linker leaves ours out, so its headers would take 0x400 bytes and every
-section would start 0x1000 bytes early. A DOS stub padded to 0x1a00
-bytes (/STUB in exe.ldflags) takes up that room: the sections then
-start at the original's addresses and file offsets. The stub's first
-0x80 bytes are the linker's usual DOS header and program.
-"""
-import os, struct
-
-STUB = "build/stub.bin"
-SIZE = 0x1A00
-
-# The usual 16-bit program: prints "This program cannot be run in DOS
-# mode." and exits.
-PROGRAM = bytes.fromhex(
-    "0e1fba0e00b409cd21b8014ccd21546869732070726f6772616d2063616e6e6f"
-    "742062652072756e20696e20444f53206d6f64652e0d0d0a2400000000000000")
+ORDER = "build/exe_order.txt"
+ROOT = Path(__file__).resolve().parents[1]
 
 
-def stub():
-    header = bytearray(0x40)
-    # MZ, 0x90 bytes in the last page, 3 pages, 4 paragraphs of header,
-    # 0xffff paragraphs at most, sp 0xb8, relocations at 0x40.
-    struct.pack_into("<2sHHHHHHHHHHHH", header, 0, b"MZ", 0x90, 3, 0, 4, 0, 0xFFFF, 0, 0xB8, 0, 0, 0, 0x40)
-    return bytes(header + PROGRAM).ljust(SIZE, b"\0")
+def exe_objects(objects: list[str], feats: list[str]) -> list[str]:
+    """Reconstruct game code and readonly COMDAT placement.
 
+    This uses /ORDER as a layout reconstruction aid, without claiming
+    that the original build used it. Folded aliases must all be listed:
+    LINK orders the ICF representative, which can be a different symbol
+    from the function whose original address is known.
+    """
+    import coff
+    import project
 
-def exe_flags(feats):
-    data = stub()
-    os.makedirs(os.path.dirname(STUB), exist_ok=True)
-    if not os.path.exists(STUB) or open(STUB, "rb").read() != data:
-        with open(STUB, "wb") as f:
-            f.write(data)
-    return []
+    defined: set[str] = set()
+    constants: set[str] = set()
+    for path in objects:
+        obj = coff.Object(path)
+        defined.update(
+            symbol.name
+            for symbol in obj.externals()
+            if symbol.section > 0
+            and obj.sections[symbol.section - 1].flags & coff.CODE
+        )
+        constants.update(
+            symbol.name
+            for symbol in obj.externals()
+            if symbol.section > 0
+            and obj.sections[symbol.section - 1].name == ".rdata"
+            and obj.sections[symbol.section - 1].flags & 0x1000  # COMDAT
+        )
+    with (ROOT / "config/symbols.csv").open() as handle:
+        addresses: dict[str, int] = {
+            symbol: int(row["address"], 16)
+            for row in csv.DictReader(handle)
+            if row["size"] and 0x402000 <= int(row["address"], 16) < project.GAME_END
+            for symbol in row["symbol"].split()
+            if symbol in defined
+        }
+    with (ROOT / "config/exe_constants.csv").open() as handle:
+        addresses.update(
+            (row["symbol"], int(row["address"], 16))
+            for row in csv.DictReader(handle)
+            if row["symbol"] in constants
+        )
+    # LINK supplies the leading underscore for C/stdcall names itself.
+    names = [
+        symbol.removeprefix("_")
+        for symbol in sorted(addresses, key=lambda symbol: (addresses[symbol], symbol))
+    ]
+    (ROOT / ORDER).write_text("\n".join(names) + "\n")
+    return objects

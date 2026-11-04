@@ -496,35 +496,35 @@ int HandleInput(Player *player)
     deltaX = 0.0f;
     deltaY = 0.0f;
     previous = player->direction;
-    if ((g_GameButtons & 0x50) == 0x50)
+    if ((g_PlayButtons & 0x50) == 0x50)
     {
         player->direction = 5;
     }
-    else if ((g_GameButtons & 0x60) == 0x60)
+    else if ((g_PlayButtons & 0x60) == 0x60)
     {
         player->direction = 7;
     }
-    else if ((g_GameButtons & 0x90) == 0x90)
+    else if ((g_PlayButtons & 0x90) == 0x90)
     {
         player->direction = 6;
     }
-    else if ((g_GameButtons & 0xa0) == 0xa0)
+    else if ((g_PlayButtons & 0xa0) == 0xa0)
     {
         player->direction = 8;
     }
-    else if (g_GameButtons & 0x20)
+    else if (g_PlayButtons & 0x20)
     {
         player->direction = 2;
     }
-    else if (g_GameButtons & 0x10)
+    else if (g_PlayButtons & 0x10)
     {
         player->direction = 1;
     }
-    else if (g_GameButtons & 0x40)
+    else if (g_PlayButtons & 0x40)
     {
         player->direction = 3;
     }
-    else if (g_GameButtons & 0x80)
+    else if (g_PlayButtons & 0x80)
     {
         player->direction = 4;
     }
@@ -532,7 +532,7 @@ int HandleInput(Player *player)
     {
         player->direction = 0;
     }
-    focused = player->bomb.running ? player->bomb.type & 1 : g_GameButtons & 4;
+    focused = player->bomb.running ? player->bomb.type & 1 : g_PlayButtons & 4;
     if (focused)
     {
         DWORD idx;
@@ -856,7 +856,7 @@ int HandleInput(Player *player)
             }
         }
     }
-    if ((g_GameButtons & 1) && !g_Gui.IsMsgRunning() && !g_GameManager.ChecksumMismatch())
+    if ((g_PlayButtons & 1) && !g_Gui.IsMsgRunning() && !g_GameManager.ChecksumMismatch())
     {
         Player::StartFiring(player);
     }
@@ -1154,12 +1154,12 @@ void UpdateBombState(Player *player)
         }
         return;
     }
-    if ((g_GameButtons & 2) && !g_GameManager.ChecksumMismatch() && !g_Gui.IsMsgRunning() &&
+    if ((g_PlayButtons & 2) && !g_GameManager.ChecksumMismatch() && !g_Gui.IsMsgRunning() &&
         player->deathbombFrames != 0 && g_GameManager.GetBombs() > 0 && player->bombCooldown == 0)
     {
         if (g_GameManager.lastSpellState != 0 || g_GameManager.isInSpellCardPractice)
         {
-            if ((g_GameButtons & 2) && (g_GameButtons & 2) != (g_PrevGameButtons & 2))
+            if ((g_PlayButtons & 2) && (g_PlayButtons & 2) != (g_PreviousPlayButtons & 2))
             {
                 g_SoundPlayer.QueueSound(0x29, 0);
             }
@@ -1628,12 +1628,12 @@ int Player::DeletedCallback(Player *player)
         g_AsciiText.SetNearbyLabelInterrupt(2, 99);
         if (g_Player.shotType != NULL)
         {
-            g_MemoryManager.Free(g_Player.shotType);
+            g_MemoryTracker.Free(g_Player.shotType);
             g_Player.shotType = NULL;
         }
         if (g_Player.shotTypeFocused != NULL)
         {
-            g_MemoryManager.Free(g_Player.shotTypeFocused);
+            g_MemoryTracker.Free(g_Player.shotTypeFocused);
             g_Player.shotTypeFocused = NULL;
         }
     }

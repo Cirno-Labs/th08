@@ -91,7 +91,7 @@ int SoundPlayer::Initialize(HWND hwnd)
     this->manager = new CSoundManager();
     if (this->manager->Initialize(hwnd, DSSCL_PRIORITY, 2, 44100, 16) < 0)
     {
-        LogPrintf(&g_Log, "DirectSound オブジェクトの初期化が失敗したよ\r\n");
+        LogPrintf(&g_AppLog, "DirectSound オブジェクトの初期化が失敗したよ\r\n");
         if (this->manager != NULL)
         {
             delete this->manager;
@@ -129,7 +129,7 @@ int SoundPlayer::Initialize(HWND hwnd)
     this->seVolume = 100;
     SetTimer(hwnd, 0, 250, NULL);
     this->hwnd = hwnd;
-    LogPrintf(&g_Log, "DirectSound は正常に初期化されました\r\n");
+    LogPrintf(&g_AppLog, "DirectSound は正常に初期化されました\r\n");
     return 0;
 }
 
@@ -139,7 +139,7 @@ int SoundPlayer::Release()
 
     if (this->bgmFormat != NULL)
     {
-        g_MemoryManager.Free(this->bgmFormat);
+        g_MemoryTracker.Free(this->bgmFormat);
     }
     for (i = 0; i < 0x80; i++)
     {
@@ -250,8 +250,8 @@ int SoundPlayer::LoadSound(int index, char *path)
     }
     if (strncmp(cursor, "RIFF", 4))
     {
-        LogPrintf(&g_Log, "Wav ファイルじゃない %s\r\n", path);
-        g_MemoryManager.Free(wavBuf);
+        LogPrintf(&g_AppLog, "Wav ファイルじゃない %s\r\n", path);
+        g_MemoryTracker.Free(wavBuf);
         return -1;
     }
     cursor += 4;
@@ -259,24 +259,24 @@ int SoundPlayer::LoadSound(int index, char *path)
     cursor += 4;
     if (strncmp(cursor, "WAVE", 4))
     {
-        LogPrintf(&g_Log, "Wav ファイルじゃない? %s\r\n", path);
-        g_MemoryManager.Free(wavBuf);
+        LogPrintf(&g_AppLog, "Wav ファイルじゃない? %s\r\n", path);
+        g_MemoryTracker.Free(wavBuf);
         return -1;
     }
     cursor += 4;
     chunk = FindRiffChunk(cursor, "fmt ", &size, totalSize2 - 12);
     if (chunk == NULL)
     {
-        LogPrintf(&g_Log, "Wav ファイルじゃない? %s\r\n", path);
-        g_MemoryManager.Free(wavBuf);
+        LogPrintf(&g_AppLog, "Wav ファイルじゃない? %s\r\n", path);
+        g_MemoryTracker.Free(wavBuf);
         return -1;
     }
     formatInfo = *(WAVEFORMATEX *)chunk;
     chunk = FindRiffChunk(cursor, "data", &size, totalSize2 - 12);
     if (chunk == NULL)
     {
-        LogPrintf(&g_Log, "Wav ファイルじゃない? %s\r\n", path);
-        g_MemoryManager.Free(wavBuf);
+        LogPrintf(&g_AppLog, "Wav ファイルじゃない? %s\r\n", path);
+        g_MemoryTracker.Free(wavBuf);
         return -1;
     }
     memset(&params, 0, sizeof(params));
@@ -286,12 +286,12 @@ int SoundPlayer::LoadSound(int index, char *path)
     params.lpwfxFormat = &formatInfo;
     if (this->dsound->CreateSoundBuffer(&params, &this->soundBuffers[index], NULL) < 0)
     {
-        g_MemoryManager.Free(wavBuf);
+        g_MemoryTracker.Free(wavBuf);
         return -1;
     }
     if (this->soundBuffers[index]->Lock(0, size, &audioPtr_1, &sizeOne, &audioPtrTwo, &size2, 0) < 0)
     {
-        g_MemoryManager.Free(wavBuf);
+        g_MemoryTracker.Free(wavBuf);
         return -1;
     }
     memcpy(audioPtr_1, chunk, sizeOne);
@@ -300,7 +300,7 @@ int SoundPlayer::LoadSound(int index, char *path)
         memcpy(audioPtrTwo, chunk + sizeOne, size2);
     }
     this->soundBuffers[index]->Unlock(audioPtr_1, sizeOne, audioPtrTwo, size2);
-    g_MemoryManager.Free(wavBuf);
+    g_MemoryTracker.Free(wavBuf);
     return 0;
 }
 
@@ -408,7 +408,7 @@ int SoundPlayer::PreloadBgm(int slot, char *path)
     }
     i = this->FindTrackIndex(path);
     SetFilePointer(file, this->bgmFormat[i].offset, NULL, FILE_BEGIN);
-    data = g_MemoryManager.Alloc(this->bgmFormat[i].size, GLOBAL_H);
+    data = g_MemoryTracker.Alloc(this->bgmFormat[i].size, GLOBAL_H);
     if (data == NULL)
     {
         CloseHandle(file);
@@ -518,7 +518,7 @@ int SoundPlayer::LoadSounds()
     {
         if (this->LoadSound(i, g_SoundPaths[i]) != 0)
         {
-            LogPrintf(&g_Log, "error : Sound ファイルが読み込めない データを確認 %s\r\n", g_SoundPaths[i]);
+            LogPrintf(&g_AppLog, "error : Sound ファイルが読み込めない データを確認 %s\r\n", g_SoundPaths[i]);
             return -1;
         }
     }

@@ -350,8 +350,8 @@ void UpdateReimuLastWord(Player *player)
             }
             else
             {
-                target.x = g_Rng.GetRandomF32InRange(320.0f) + 32.0f;
-                target.y = g_Rng.GetRandomF32InRange(384.0f) + 32.0f;
+                target.x = g_Random.GetRandomF32InRange(320.0f) + 32.0f;
+                target.y = g_Random.GetRandomF32InRange(384.0f) + 32.0f;
                 target.z = 0.0f;
             }
             orbs->pos = target;
@@ -1043,7 +1043,7 @@ void UpdateRemiliaBomb(Player *player)
             start.y = 0.0f;
             start.z = 0.0f;
             to.x = 192.0f;
-            to.y = g_Rng.GetRandomF32InRange(128.0f);
+            to.y = g_Random.GetRandomF32InRange(128.0f);
             to.z = 0.0f;
             eff->sprite.SetMoveInterp(30, 4, &start, &to);
             scaleStart[0] = 64.0f;
@@ -1156,7 +1156,7 @@ void UpdateRemiliaLastWord(Player *player)
             start.y = 0.0f;
             start.z = 0.0f;
             to.x = 192.0f;
-            to.y = g_Rng.GetRandomF32InRange(128.0f);
+            to.y = g_Random.GetRandomF32InRange(128.0f);
             to.z = 0.0f;
             eff->sprite.SetMoveInterp(30, 4, &start, &to);
             scaleStart[0] = 64.0f;
@@ -1236,9 +1236,9 @@ void UpdateSakuyaBomb(Player *player)
             player->anm->StartScriptAtOrigin(s, 0x16);
             angle = i * 6.2831855f / 96.0f - 3.1415927f;
             blade->angle = angle;
-            blade->speed = g_Rng.GetRandomF32InRange(1.0f) + g_Half;
-            blade->homingSpeed = g_Rng.GetRandomF32InRange(0.1f) + 0.03f;
-            blade->acceleration.x = g_Rng.GetRandomU16InRange(1) ? 0.15707964f : -0.15707964f;
+            blade->speed = g_Random.GetRandomF32InRange(1.0f) + g_Half;
+            blade->homingSpeed = g_Random.GetRandomF32InRange(0.1f) + 0.03f;
+            blade->acceleration.x = g_Random.GetRandomU16InRange(1) ? 0.15707964f : -0.15707964f;
             blade->velocity.x = cosf(blade->angle) * 24.0f;
             blade->velocity.y = sinf(blade->angle) * 24.0f;
             blade->pos = player->pos + blade->velocity;
@@ -1370,9 +1370,9 @@ void UpdateSakuyaLastWord(Player *player)
             player->anm->StartScriptAtOrigin(s, 0x14);
             angle = AddNormalizeAngle(i * 6.2831855f / 64.0f - 3.1415927f, 0.0f);
             blade->angle = angle;
-            blade->speed = g_Rng.GetRandomF32InRange(1.0f) + g_Half;
-            blade->homingSpeed = g_Rng.GetRandomF32InRange(0.1f) + 0.03f;
-            blade->acceleration.x = g_Rng.GetRandomU16InRange(1) ? 0.15707964f : -0.15707964f;
+            blade->speed = g_Random.GetRandomF32InRange(1.0f) + g_Half;
+            blade->homingSpeed = g_Random.GetRandomF32InRange(0.1f) + 0.03f;
+            blade->acceleration.x = g_Random.GetRandomU16InRange(1) ? 0.15707964f : -0.15707964f;
             blade->velocity.x = cosf(blade->angle) * 24.0f;
             blade->velocity.y = sinf(blade->angle) * 24.0f;
             blade->pos = player->pos + blade->velocity;
@@ -2321,7 +2321,7 @@ void UpdateYuyukoLastWord(Player *player)
         int count;
         float base;
 
-        base = g_Rng.GetRandomF32SignedInRange(3.1415927f);
+        base = g_Random.GetRandomF32SignedInRange(3.1415927f);
         count = 0;
         for (butterfly = pb->parts, i = 0; i < 0x80; i++, butterfly++)
         {

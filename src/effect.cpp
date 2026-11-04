@@ -116,7 +116,7 @@ Effect *EffectManager::SpawnEffect(int type, D3DXVECTOR3 *pos, int count, D3DCOL
         }
         if (effect->vertices != NULL)
         {
-            g_MemoryManager.Free(effect->vertices);
+            g_MemoryTracker.Free(effect->vertices);
         }
         memset(effect, 0, sizeof(Effect));
         effect->active = 1;
@@ -178,7 +178,7 @@ Effect *EffectManager::SpawnEffectWithVelocity(int type, D3DXVECTOR3 *pos, D3DXV
         }
         if (effect->vertices != NULL)
         {
-            g_MemoryManager.Free(effect->vertices);
+            g_MemoryTracker.Free(effect->vertices);
         }
         memset(effect, 0, sizeof(Effect));
         effect->active = 1;
@@ -220,7 +220,7 @@ Effect *EffectManager::SpawnReservedEffect(int type, D3DXVECTOR3 *pos, int slot,
     effect = &this->effects[slot + 0x280];
     if (effect->vertices != NULL)
     {
-        g_MemoryManager.Free(effect->vertices);
+        g_MemoryTracker.Free(effect->vertices);
     }
     memset(effect, 0, sizeof(Effect));
     effect->reservedSlot = slot;
@@ -252,7 +252,7 @@ Effect *EffectManager::SpawnReservedWithVelocity(int type, D3DXVECTOR3 *pos, D3D
     effect = &this->effects[slot + 0x280];
     if (effect->vertices != NULL)
     {
-        g_MemoryManager.Free(effect->vertices);
+        g_MemoryTracker.Free(effect->vertices);
     }
     memset(effect, 0, sizeof(Effect));
     effect->reservedSlot = slot;
@@ -292,7 +292,7 @@ Effect *EffectManager::SpawnEffect2(int type, D3DXVECTOR3 *pos, int count, D3DCO
         }
         if (eff->vertices != NULL)
         {
-            g_MemoryManager.Free(eff->vertices);
+            g_MemoryTracker.Free(eff->vertices);
         }
         eff->vertices = NULL;
         eff->draw = NULL;
@@ -326,8 +326,8 @@ Effect *EffectManager::SpawnEffect2(int type, D3DXVECTOR3 *pos, int count, D3DCO
 
 int EffectInitDrift(Effect *effect)
 {
-    effect->step[0] = (g_Rng.GetRandomF32InRange(256.0f) - 128.0f) / 12.0f;
-    effect->step[1] = (g_Rng.GetRandomF32InRange(256.0f) - 128.0f) / 12.0f;
+    effect->step[0] = (g_Random.GetRandomF32InRange(256.0f) - 128.0f) / 12.0f;
+    effect->step[1] = (g_Random.GetRandomF32InRange(256.0f) - 128.0f) / 12.0f;
     effect->step[2] = 0.0f;
     effect->acceleration = -effect->step / 19.0f;
     effect->step *= g_App.gameSpeed;
@@ -344,8 +344,8 @@ int EffectUpdateMove(Effect *effect)
 
 int EffectInitDriftFast(Effect *effect)
 {
-    effect->step[0] = (g_Rng.GetRandomF32InRange(256.0f) - 128.0f) * 4.0f / 33.0f;
-    effect->step[1] = (g_Rng.GetRandomF32InRange(256.0f) - 128.0f) * 4.0f / 33.0f;
+    effect->step[0] = (g_Random.GetRandomF32InRange(256.0f) - 128.0f) * 4.0f / 33.0f;
+    effect->step[1] = (g_Random.GetRandomF32InRange(256.0f) - 128.0f) * 4.0f / 33.0f;
     effect->step[2] = 0.0f;
     effect->acceleration = -effect->step / 20.0f;
     effect->step *= g_App.gameSpeed;
@@ -418,14 +418,14 @@ int EffectInitBossPetal(Effect *effect)
 
     back = -g_Stage.camera.at;
     effect->truePos = g_Stage.camera.at + g_Stage.camera.eye;
-    effect->truePos.x += g_Rng.GetRandomF32SignedInRange(60.0f) + back.x / 2.0f;
-    effect->truePos.y += g_Rng.GetRandomF32SignedInRange(100.0f) - 50.0f + back.y / 2.0f;
-    effect->truePos.z += g_Rng.GetRandomF32InRange(100.0f) - 100.0f + back.z / 2.0f;
-    effect->step.x = g_Rng.GetRandomF32SignedInRange(0.001f) + effect->velocity.x;
-    effect->step.y = g_Rng.GetRandomF32SignedInRange(0.03f) + effect->velocity.y;
-    effect->step.z = -g_Rng.GetRandomF32InRange(0.1f) - 0.3f + effect->velocity.z;
-    effect->acceleration.x = g_Rng.GetRandomF32SignedInRange(0.0001f);
-    effect->acceleration.y = g_Rng.GetRandomF32SignedInRange(0.0001f);
+    effect->truePos.x += g_Random.GetRandomF32SignedInRange(60.0f) + back.x / 2.0f;
+    effect->truePos.y += g_Random.GetRandomF32SignedInRange(100.0f) - 50.0f + back.y / 2.0f;
+    effect->truePos.z += g_Random.GetRandomF32InRange(100.0f) - 100.0f + back.z / 2.0f;
+    effect->step.x = g_Random.GetRandomF32SignedInRange(0.001f) + effect->velocity.x;
+    effect->step.y = g_Random.GetRandomF32SignedInRange(0.03f) + effect->velocity.y;
+    effect->step.z = -g_Random.GetRandomF32InRange(0.1f) - 0.3f + effect->velocity.z;
+    effect->acceleration.x = g_Random.GetRandomF32SignedInRange(0.0001f);
+    effect->acceleration.y = g_Random.GetRandomF32SignedInRange(0.0001f);
     effect->acceleration.z = -0.0003f;
     effect->step = effect->step * g_App.gameSpeed;
     effect->acceleration = effect->acceleration * g_App.gameSpeed;
@@ -482,14 +482,14 @@ int EffectInitBossPetal2(Effect *effect)
 
     back = -g_Stage.camera.at;
     effect->truePos = g_Stage.camera.at + g_Stage.camera.eye;
-    effect->truePos.x += g_Rng.GetRandomF32SignedInRange(60.0f) + back.x / 2.0f;
-    effect->truePos.y += g_Rng.GetRandomF32SignedInRange(200.0f) - 200.0f + back.y / 2.0f;
-    effect->truePos.z += g_Rng.GetRandomF32InRange(100.0f) - 100.0f + back.z / 2.0f;
-    effect->step.x = g_Rng.GetRandomF32SignedInRange(0.001f) + effect->velocity.x;
-    effect->step.y = g_Rng.GetRandomF32SignedInRange(0.03f) + 0.4f;
-    effect->step.z = -g_Rng.GetRandomF32InRange(0.1f) - 0.3f + effect->velocity.z;
-    effect->acceleration.x = g_Rng.GetRandomF32SignedInRange(0.0001f);
-    effect->acceleration.y = g_Rng.GetRandomF32SignedInRange(0.0001f);
+    effect->truePos.x += g_Random.GetRandomF32SignedInRange(60.0f) + back.x / 2.0f;
+    effect->truePos.y += g_Random.GetRandomF32SignedInRange(200.0f) - 200.0f + back.y / 2.0f;
+    effect->truePos.z += g_Random.GetRandomF32InRange(100.0f) - 100.0f + back.z / 2.0f;
+    effect->step.x = g_Random.GetRandomF32SignedInRange(0.001f) + effect->velocity.x;
+    effect->step.y = g_Random.GetRandomF32SignedInRange(0.03f) + 0.4f;
+    effect->step.z = -g_Random.GetRandomF32InRange(0.1f) - 0.3f + effect->velocity.z;
+    effect->acceleration.x = g_Random.GetRandomF32SignedInRange(0.0001f);
+    effect->acceleration.y = g_Random.GetRandomF32SignedInRange(0.0001f);
     effect->acceleration.z = -0.0003f;
     effect->step = effect->step * g_App.gameSpeed;
     effect->acceleration = effect->acceleration * g_App.gameSpeed;
@@ -541,7 +541,7 @@ int EffectInitConverge(Effect *effect)
 
     effect->origin = effect->pos;
     effect->origin.z = 0.0f;
-    f = g_Rng.GetRandomF32InRange(6.2831855f) - 3.1415927f;
+    f = g_Random.GetRandomF32InRange(6.2831855f) - 3.1415927f;
     effect->axis.x = cosf(f);
     effect->axis.y = sinf(f);
     effect->axis.z = 0.0f;
@@ -620,19 +620,19 @@ int EffectInitPetal(Effect *effect)
 
     back = -g_Stage.camera.at;
     effect->truePos = g_Stage.camera.at + g_Stage.camera.eye;
-    effect->truePos.x += g_Rng.GetRandomF32InRange(120.0f) - 60.0f + back.x / 2.0f;
-    effect->truePos.y += g_Rng.GetRandomF32InRange(200.0f) - 100.0f + back.y / 2.0f;
-    effect->truePos.z += g_Rng.GetRandomF32InRange(100.0f) - 100.0f + back.z / 2.0f;
-    effect->step.x = g_Rng.GetRandomF32InRange(0.06f) - 0.03f + effect->velocity.x;
-    effect->step.y = g_Rng.GetRandomF32InRange(0.06f) - 0.03f + effect->velocity.y;
-    effect->step.z = g_Rng.GetRandomF32InRange(0.1f) + 0.03f + effect->velocity.z;
-    effect->acceleration.x = g_Rng.GetRandomF32InRange(0.0002f) - 0.0001f;
-    effect->acceleration.y = g_Rng.GetRandomF32InRange(0.0002f) - 0.0001f;
+    effect->truePos.x += g_Random.GetRandomF32InRange(120.0f) - 60.0f + back.x / 2.0f;
+    effect->truePos.y += g_Random.GetRandomF32InRange(200.0f) - 100.0f + back.y / 2.0f;
+    effect->truePos.z += g_Random.GetRandomF32InRange(100.0f) - 100.0f + back.z / 2.0f;
+    effect->step.x = g_Random.GetRandomF32InRange(0.06f) - 0.03f + effect->velocity.x;
+    effect->step.y = g_Random.GetRandomF32InRange(0.06f) - 0.03f + effect->velocity.y;
+    effect->step.z = g_Random.GetRandomF32InRange(0.1f) + 0.03f + effect->velocity.z;
+    effect->acceleration.x = g_Random.GetRandomF32InRange(0.0002f) - 0.0001f;
+    effect->acceleration.y = g_Random.GetRandomF32InRange(0.0002f) - 0.0001f;
     effect->step = effect->step * g_App.gameSpeed;
     effect->acceleration = effect->acceleration * g_App.gameSpeed;
     effect->drawList = 1;
-    effect->sprite.rotation.z = g_Rng.GetRandomF32InRange(6.2831855f) - 3.1415927f;
-    effect->sprite.rotation.x = g_Rng.GetRandomF32InRange(0.031415928f) - 0.015707964f;
+    effect->sprite.rotation.z = g_Random.GetRandomF32InRange(6.2831855f) - 3.1415927f;
+    effect->sprite.rotation.x = g_Random.GetRandomF32InRange(0.031415928f) - 0.015707964f;
     return 0;
 }
 
@@ -646,14 +646,14 @@ int EffectInitDiverge(Effect *effect)
     }
     else
     {
-        angle = g_Rng.GetRandomF32InRange(6.2831855f) - 3.1415927f;
+        angle = g_Random.GetRandomF32InRange(6.2831855f) - 3.1415927f;
     }
     effect->origin = effect->pos;
     effect->origin.z = 0.0f;
     effect->axis.x = cosf(angle);
     effect->axis.y = sinf(angle);
     effect->axis.z = 0.0f;
-    effect->axis *= g_Rng.GetRandomF32InRange(1.5f) + 1.0f;
+    effect->axis *= g_Random.GetRandomF32InRange(1.5f) + 1.0f;
     return 0;
 }
 
@@ -686,7 +686,7 @@ int EffectInitMoveOut(Effect *effect)
 
 int EffectInitRing(Effect *effect)
 {
-    effect->vertices = (VertexTex1DiffuseXyzrwh *)g_MemoryManager.Alloc(0x1c38, "Effect");
+    effect->vertices = (VertexTex1DiffuseXyzrwh *)g_MemoryTracker.Alloc(0x1c38, "Effect");
     if (effect->vertices == NULL)
     {
         return -1;
@@ -917,7 +917,7 @@ int EffectManager::OnUpdate(EffectManager *mgr)
         {
             if (eff->vertices != NULL)
             {
-                g_MemoryManager.Free(eff->vertices);
+                g_MemoryTracker.Free(eff->vertices);
                 eff->vertices = NULL;
             }
             continue;
@@ -1164,7 +1164,7 @@ int EffectManager::DeletedCallback(EffectManager *mgr)
     {
         if (eff->vertices != NULL)
         {
-            g_MemoryManager.Free(eff->vertices);
+            g_MemoryTracker.Free(eff->vertices);
             eff->vertices = NULL;
         }
     }

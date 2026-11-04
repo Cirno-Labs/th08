@@ -882,12 +882,12 @@ int Stage::DeletedCallback(Stage *stage)
     }
     if (stage->sprites != NULL)
     {
-        g_MemoryManager.Free(stage->sprites);
+        g_MemoryTracker.Free(stage->sprites);
         stage->sprites = NULL;
     }
     if (!IsRestarting() && stage->data != NULL)
     {
-        g_MemoryManager.Free(stage->data);
+        g_MemoryTracker.Free(stage->data);
         stage->data = NULL;
     }
     return 0;
@@ -912,7 +912,7 @@ int Stage::Load(char *dataPath)
         this->data = (StageData *)LoadFileData(dataPath, NULL, 0);
         if (this->data == NULL)
         {
-            LogPrintf(&g_Log, "ステージデータが見つかりません。データが壊れています\r\n");
+            LogPrintf(&g_AppLog, "ステージデータが見つかりません。データが壊れています\r\n");
             return -1;
         }
     }
@@ -928,7 +928,7 @@ int Stage::Load(char *dataPath)
             this->objects[i] = (StageObject *)((int)this->objects[i] + (int)this->data);
         }
     }
-    this->sprites = (Sprite *)g_MemoryManager.Alloc(this->quadCount * sizeof(Sprite), "bgscroll");
+    this->sprites = (Sprite *)g_MemoryTracker.Alloc(this->quadCount * sizeof(Sprite), "bgscroll");
     for (i = 0, count = 0; i < this->objectCount; i++)
     {
         ob = this->objects[i];

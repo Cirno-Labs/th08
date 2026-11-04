@@ -236,7 +236,7 @@ int GuiImpl::RunMsg()
     {
         this->msg.timelineRelease--;
     }
-    if (this->msg.skippable && (g_GameButtons & 0x100))
+    if (this->msg.skippable && (g_PlayButtons & 0x100))
     {
         this->msg.timer = this->msg.instr->time;
     }
@@ -479,7 +479,7 @@ int GuiImpl::RunMsg()
             break;
         }
         case 21:
-            if ((g_GameButtons & 0x10) && (g_GameButtons & 0x10) != (g_PrevGameButtons & 0x10))
+            if ((g_PlayButtons & 0x10) && (g_PlayButtons & 0x10) != (g_PreviousPlayButtons & 0x10))
             {
                 if (this->msg.clearLevel == 1)
                 {
@@ -487,7 +487,7 @@ int GuiImpl::RunMsg()
                 }
                 this->msg.clearLevel = 0;
             }
-            if ((g_GameButtons & 0x20) && (g_GameButtons & 0x20) != (g_PrevGameButtons & 0x20))
+            if ((g_PlayButtons & 0x20) && (g_PlayButtons & 0x20) != (g_PreviousPlayButtons & 0x20))
             {
                 if (this->msg.clearLevel == 0)
                 {
@@ -497,7 +497,7 @@ int GuiImpl::RunMsg()
             }
             this->msg.text[this->msg.clearLevel].color = 0xffffffff;
             this->msg.text[1 - this->msg.clearLevel].color = 0xe0606060;
-            if (!(g_GameButtons & 1) || (g_GameButtons & 1) == (g_PrevGameButtons & 1) || this->msg.waitFrames < 60)
+            if (!(g_PlayButtons & 1) || (g_PlayButtons & 1) == (g_PreviousPlayButtons & 1) || this->msg.waitFrames < 60)
             {
                 if (this->msg.waitFrames >= this->msg.instr->i)
                 {
@@ -515,9 +515,9 @@ int GuiImpl::RunMsg()
             g_Gui.StartMsg(this->msg.clearLevel + 1);
             continue;
         case 4:
-            if (!this->msg.skippable || !(g_GameButtons & 0x100))
+            if (!this->msg.skippable || !(g_PlayButtons & 0x100))
             {
-                if (!(g_GameButtons & 1) || (g_GameButtons & 1) == (g_PrevGameButtons & 1) ||
+                if (!(g_PlayButtons & 1) || (g_PlayButtons & 1) == (g_PreviousPlayButtons & 1) ||
                     this->msg.waitFrames < this->msg.minWaitFrames)
                 {
                     if (this->msg.waitFrames >= this->msg.instr->i)
@@ -652,7 +652,7 @@ stepSprites:
     g_SpriteEngine->Step(&this->msg.text[1]);
     g_SpriteEngine->Step(&this->msg.nameplates[0]);
     g_SpriteEngine->Step(&this->msg.nameplates[1]);
-    if (this->msg.timer < 60 && this->msg.skippable && (g_GameButtons & 0x100))
+    if (this->msg.timer < 60 && this->msg.skippable && (g_PlayButtons & 0x100))
     {
         this->msg.timer = 60;
     }
@@ -1015,7 +1015,7 @@ void Gui::UpdateInterface()
             if (this->impl->stageClearClock2 < this->impl->stageClearLastTime)
             {
                 this->impl->stageClearClock2++;
-                if ((g_GameButtons & 1) || (g_GameButtons & 0x100))
+                if ((g_PlayButtons & 1) || (g_PlayButtons & 0x100))
                 {
                     this->impl->stageClearClock2 += 3;
                 }
@@ -1431,7 +1431,7 @@ int Gui::DeletedCallback(Gui *gui)
         g_SpriteEngine->ReleaseAnm(0xc);
         g_SpriteEngine->ReleaseAnm(0xb);
         g_SpriteEngine->ReleaseAnm(0xe);
-        g_MemoryManager.Unregister(gui->impl);
+        g_MemoryTracker.Unregister(gui->impl);
         delete gui->impl;
         gui->impl = NULL;
     }
@@ -1445,7 +1445,7 @@ int Gui::RegisterChain()
     if (GuiIsLoadingResources())
     {
         memset(gui, 0, sizeof(Gui));
-        gui->impl = (GuiImpl *)g_MemoryManager.Register(new GuiImpl, sizeof(GuiImpl), "FRScreenImplInf");
+        gui->impl = (GuiImpl *)g_MemoryTracker.Register(new GuiImpl, sizeof(GuiImpl), "FRScreenImplInf");
     }
     g_GuiCalcElem.SetCallback((ChainCallback)Gui::OnUpdate);
     g_GuiCalcElem.addedCallback = (ChainCallback)Gui::AddedCallback;
@@ -2026,7 +2026,7 @@ int Gui::LoadMsg(char *path)
     this->impl->msg.msgFile = (MsgFile *)LoadFileData(path, NULL, 0);
     if (this->impl->msg.msgFile == NULL)
     {
-        LogPrintf(&g_Log, "error : メッセージファイル %s が読み込めませんでした\r\n", path);
+        LogPrintf(&g_AppLog, "error : メッセージファイル %s が読み込めませんでした\r\n", path);
         return -1;
     }
     this->impl->msg.scriptIndex = -1;
@@ -2042,7 +2042,7 @@ void Gui::FreeMsgFile()
 {
     if (this->impl->msg.msgFile != NULL)
     {
-        g_MemoryManager.Free(this->impl->msg.msgFile);
+        g_MemoryTracker.Free(this->impl->msg.msgFile);
         this->impl->msg.msgFile = NULL;
     }
 }

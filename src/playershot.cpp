@@ -97,7 +97,7 @@ int UpdateHomingOption(Player *player, PlayerOption *option)
             {
                 MoveOptionToEnemy(player, option);
             }
-            if ((player->fireTimer < 0 && !(g_GameButtons & 1)) || player->homingEnemy == NULL)
+            if ((player->fireTimer < 0 && !(g_PlayButtons & 1)) || player->homingEnemy == NULL)
             {
                 player->homingEnemy = NULL;
                 option->sprite.SetPendingInterrupt(1);
@@ -765,7 +765,7 @@ int FireRandomShot(Player *player, PlayerBullet *bullet, int frame, ShotData *sd
     if (frame % sd->interval == sd->phase)
     {
         FireShot(player, bullet, sd);
-        bullet->angle = g_Rng.GetRandomF32MinusOneToOne() * 3.1415927f / 48.0f - 1.5707964f;
+        bullet->angle = g_Random.GetRandomF32MinusOneToOne() * 3.1415927f / 48.0f - 1.5707964f;
         ((Vector2 *)&bullet->velocity)->SetPolar(bullet->angle, sd->speed);
         return 1;
     }
@@ -840,7 +840,7 @@ int UpdateAcceleratingBullet(Player *player, PlayerBullet *bullet)
 {
     if (bullet->state == 1)
     {
-        bullet->velocity.y -= g_Rng.GetRandomF32InRange(0.1f) + 0.27f;
+        bullet->velocity.y -= g_Random.GetRandomF32InRange(0.1f) + 0.27f;
     }
     return 0;
 }
@@ -1005,7 +1005,7 @@ int UpdateBombShot(Player *player, PlayerBullet *bullet, D3DXVECTOR3 *pos)
     }
     else
     {
-        angle = g_Rng.GetRandomF32InRange(1.5707964f) - 2.3561945f;
+        angle = g_Random.GetRandomF32InRange(1.5707964f) - 2.3561945f;
         switch (bullet->sprite.scriptIndex)
         {
         case 0xc:
@@ -1239,7 +1239,7 @@ int UpdateFiring(Player *player)
     {
         player->fireTimer = -1;
     }
-    if ((g_GameButtons & 1) && player->fireTimer.AsFrames() < 0 && !g_Gui.IsMsgRunning())
+    if ((g_PlayButtons & 1) && player->fireTimer.AsFrames() < 0 && !g_Gui.IsMsgRunning())
     {
         player->fireTimer = 0;
     }

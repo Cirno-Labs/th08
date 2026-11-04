@@ -82,7 +82,7 @@ ReplayHeader *ValidateReplay(void *data, int size)
     {
         goto fail;
     }
-    decoded = (ReplayHeader *)g_MemoryManager.Alloc(file->dataSize + 0x68 + (size - file->size), GLOBAL_H);
+    decoded = (ReplayHeader *)g_MemoryTracker.Alloc(file->dataSize + 0x68 + (size - file->size), GLOBAL_H);
     memcpy(decoded, data, 0x68);
     LzssDecompress((BYTE *)file + 0x68, file->compressedSize, (BYTE *)decoded + 0x68, file->dataSize);
     memcpy((BYTE *)decoded + file->dataSize + 0x68, (BYTE *)data + file->size, size - file->size);
@@ -95,16 +95,16 @@ ReplayHeader *ValidateReplay(void *data, int size)
     {
         goto failDecoded;
     }
-    g_MemoryManager.Free(data);
+    g_MemoryTracker.Free(data);
     return decoded;
 
 fail:
-    g_MemoryManager.Free(data);
+    g_MemoryTracker.Free(data);
     return NULL;
 
 failDecoded:
-    g_MemoryManager.Free(data);
-    g_MemoryManager.Free(decoded);
+    g_MemoryTracker.Free(data);
+    g_MemoryTracker.Free(decoded);
     return NULL;
 }
 
@@ -112,11 +112,11 @@ int ReplayManager::RegisterChain(int mode, char *path)
 {
     ReplayManager *replay;
 
-    g_PrevGameButtons = 0;
-    g_GameButtons = 0;
+    g_PreviousPlayButtons = 0;
+    g_PlayButtons = 0;
     if (g_ReplayManager == NULL)
     {
-        replay = (ReplayManager *)g_MemoryManager.Register(new ReplayManager, sizeof(ReplayManager), "ReplayInf");
+        replay = (ReplayManager *)g_MemoryTracker.Register(new ReplayManager, sizeof(ReplayManager), "ReplayInf");
         g_ReplayManager = replay;
         memset(replay, 0, sizeof(ReplayManager));
         replay->data = NULL;
@@ -184,8 +184,8 @@ int ReplayManager::RegisterChain(int mode, char *path)
 int ReplayManager::RecordOnUpdate2(ReplayManager *replay)
 {
     replay->frameEvents = 0;
-    replay->frameSeed = g_Rng.GetSeed();
-    g_Rng.ResetGenerated();
+    replay->frameSeed = g_Random.GetSeed();
+    g_Random.ResetGenerated();
     if (g_GameManager.pauseRequested)
     {
         replay->frameEvents |= 0x100;
@@ -203,8 +203,8 @@ int ReplayManager::RecordOnUpdate(ReplayManager *replay)
     {
         return 1;
     }
-    g_PrevGameButtons = g_GameButtons;
-    g_GameButtons = g_Buttons;
+    g_PreviousPlayButtons = g_PlayButtons;
+    g_PlayButtons = g_Buttons;
     if (g_GameManager.savedConfig->scoreDisabled != 0)
     {
         return 1;
@@ -223,7 +223,7 @@ int ReplayManager::RecordOnUpdate(ReplayManager *replay)
     }
     idx = g_GameManager.replayStage;
     buttons = g_Buttons;
-    g_GameButtons = buttons;
+    g_PlayButtons = buttons;
     replay->cursor++;
     replay->stageEnds[idx] = replay->cursor + 1;
     *replay->cursor = buttons;
@@ -277,28 +277,28 @@ int ReplayManager::PlayOnUpdate(ReplayManager *replay)
         return 1;
     }
     unused = 0;
-    g_PrevGameButtons = g_GameButtons;
-    g_GameButtons = *replay->cursor;
+    g_PreviousPlayButtons = g_PlayButtons;
+    g_PlayButtons = *replay->cursor;
     replay->cursor++;
-    g_ButtonRepeat = 0;
-    if (g_PrevGameButtons == g_GameButtons)
+    g_InputRepeat = 0;
+    if (g_PreviousPlayButtons == g_PlayButtons)
     {
-        if (g_ButtonFrames >= 30)
+        if (g_ButtonsHeldFrames >= 30)
         {
-            if (g_ButtonFrames % 8 == 0)
+            if (g_ButtonsHeldFrames % 8 == 0)
             {
-                g_ButtonRepeat = 1;
+                g_InputRepeat = 1;
             }
-            if (g_ButtonFrames >= 38)
+            if (g_ButtonsHeldFrames >= 38)
             {
-                g_ButtonFrames = 30;
+                g_ButtonsHeldFrames = 30;
             }
         }
-        g_ButtonFrames++;
+        g_ButtonsHeldFrames++;
     }
     else
     {
-        g_ButtonFrames = 0;
+        g_ButtonsHeldFrames = 0;
     }
     if (replay->frame % 30 == 0)
     {
@@ -327,33 +327,33 @@ int ReplayManager::PlayOnUpdateWithSeeds(ReplayManager *replay)
         return 1;
     }
     unused = 0;
-    g_PrevGameButtons = g_GameButtons;
-    g_GameButtons = replay->seedCursor->input;
+    g_PreviousPlayButtons = g_PlayButtons;
+    g_PlayButtons = replay->seedCursor->input;
     // Compiles to nothing, but without it the registers after it
     // differ: something the original tested here was compiled out.
     if (0)
     {
     }
     replay->seedCursor++;
-    g_ButtonRepeat = 0;
-    if (g_PrevGameButtons == g_GameButtons)
+    g_InputRepeat = 0;
+    if (g_PreviousPlayButtons == g_PlayButtons)
     {
-        if (g_ButtonFrames >= 30)
+        if (g_ButtonsHeldFrames >= 30)
         {
-            if (g_ButtonFrames % 8 == 0)
+            if (g_ButtonsHeldFrames % 8 == 0)
             {
-                g_ButtonRepeat = 1;
+                g_InputRepeat = 1;
             }
-            if (g_ButtonFrames >= 38)
+            if (g_ButtonsHeldFrames >= 38)
             {
-                g_ButtonFrames = 30;
+                g_ButtonsHeldFrames = 30;
             }
         }
-        g_ButtonFrames++;
+        g_ButtonsHeldFrames++;
     }
     else
     {
-        g_ButtonFrames = 0;
+        g_ButtonsHeldFrames = 0;
     }
     if (replay->frame % 30 == 0)
     {
@@ -376,7 +376,7 @@ int ReplayManager::RecordAddedCallback(ReplayManager *replay)
     replay->frameRateBuffer = NULL;
     if (replay->data == NULL)
     {
-        replay->data = (ReplayHeader *)g_MemoryManager.Register(new ReplayHeader, sizeof(ReplayHeader), "ReplayDataInf");
+        replay->data = (ReplayHeader *)g_MemoryTracker.Register(new ReplayHeader, sizeof(ReplayHeader), "ReplayDataInf");
         memset(replay->data, 0, sizeof(ReplayHeader));
         *(DWORD *)replay->data->magic = *(DWORD *)"T8RP";
         replay->data->isSaved = 0;
@@ -429,14 +429,14 @@ int ReplayManager::RecordAddedCallback(ReplayManager *replay)
     idx = g_GameManager.stage;
     if (replay->data->stages[idx] != NULL)
     {
-        g_MemoryManager.Free(replay->data->stages[idx]);
+        g_MemoryTracker.Free(replay->data->stages[idx]);
     }
     if (replay->data->extras[idx] != NULL)
     {
-        g_MemoryManager.Free(replay->data->extras[idx]);
+        g_MemoryTracker.Free(replay->data->extras[idx]);
     }
-    replay->data->stages[idx] = (ReplayStage *)g_MemoryManager.Alloc(0xd2f00, "rep data");
-    replay->data->extras[idx] = (BYTE *)g_MemoryManager.Alloc(0xd2f00, "rep data");
+    replay->data->stages[idx] = (ReplayStage *)g_MemoryTracker.Alloc(0xd2f00, "rep data");
+    replay->data->extras[idx] = (BYTE *)g_MemoryTracker.Alloc(0xd2f00, "rep data");
     cur = replay->data->stages[idx];
     extras = replay->data->extras[idx];
     cur->grazeTotal = g_GameManager.stats->grazeTotal;
@@ -458,7 +458,7 @@ int ReplayManager::RecordAddedCallback(ReplayManager *replay)
     replay->extraCursor = extras;
     *replay->cursor = 0;
     replay->seedCursor->events = 0;
-    replay->seedCursor->seed = g_Rng.GetSeed();
+    replay->seedCursor->seed = g_Random.GetSeed();
     replay->framesAfterStageClear = 0;
     replay->clearedAtRecordStart = 0;
     return 0;
@@ -516,7 +516,7 @@ int ReplayManager::PlayAddedCallback(ReplayManager *replay)
     g_GameManager.powerItemCombo = cur->powerItemCombo;
     g_GameManager.stats->maxPointValue = cur->maxPointValue;
     *g_GameManager.savedConfig = *(GameConfig *)replay->data->config;
-    g_Rng.SetSeed(cur->rngSeed);
+    g_Random.SetSeed(cur->rngSeed);
     g_GameManager.stats->spellCardsCaptured = cur->spellCardsCaptured;
     g_GameManager.stats->checksumKeyStage = cur->checksumKeyStage;
     g_GameManager.stats->checksumKeyPoints = cur->checksumKeyPoints;
@@ -552,12 +552,12 @@ int ReplayManager::DeletedCallback(ReplayManager *replay)
         g_Chain.Remove(replay->calcChain3);
         replay->calcChain3 = NULL;
     }
-    g_MemoryManager.Free(g_ReplayManager->data);
+    g_MemoryTracker.Free(g_ReplayManager->data);
     if (replay->frameRateBuffer != NULL)
     {
-        g_MemoryManager.Free(replay->frameRateBuffer);
+        g_MemoryTracker.Free(replay->frameRateBuffer);
     }
-    g_MemoryManager.Unregister(g_ReplayManager);
+    g_MemoryTracker.Unregister(g_ReplayManager);
     delete g_ReplayManager;
     g_ReplayManager = NULL;
     g_ReplayManager = NULL;
@@ -621,7 +621,7 @@ void SaveReplay(char *path, char *name)
             if (path != NULL)
             {
                 DebugPrint("info : Replay File write %s\r\n", path);
-                rpyBytes = (BYTE *)g_MemoryManager.Alloc(0x400000, "rep tmp");
+                rpyBytes = (BYTE *)g_MemoryTracker.Alloc(0x400000, "rep tmp");
                 hX = *replayTmp->data;
                 ReplayManager::EndStage();
                 i = g_GameManager.replayStage;
@@ -696,16 +696,16 @@ void SaveReplay(char *path, char *name)
                 hX.isSaved = 1;
                 strcpy(hX.name, name);
                 FormatTodayDate(hX.date);
-                hX.key = g_Rng.GetRandomU16InRange(0x80) + 0x40;
-                hX.randomByte = g_Rng.GetRandomU16InRange(0x100);
-                hX.secondaryKey = g_Rng.GetRandomU16InRange(0x100);
+                hX.key = g_Random.GetRandomU16InRange(0x80) + 0x40;
+                hX.randomByte = g_Random.GetRandomU16InRange(0x100);
+                hX.secondaryKey = g_Random.GetRandomU16InRange(0x100);
                 hX.slowdown2 = hX.slowdown + 1.12f;
                 hX.replayFormatVersion = 30;
                 memcpy(rpyBytes, &hX.randomByte, sizeof(ReplayHeader) - 0x68);
                 DebugPrint("info : original size %d\r\n", offsets);
                 hX.dataSize = offsets - 0x68;
                 compressedData = (BYTE *)LzssCompress(rpyBytes, hX.dataSize, &hX.compressedSize);
-                g_MemoryManager.Free(rpyBytes);
+                g_MemoryTracker.Free(rpyBytes);
                 compSize = hX.compressedSize;
                 bpCur = &hX.key;
                 checksum = 0x3f000318;
@@ -751,11 +751,11 @@ void SaveReplay(char *path, char *name)
             {
                 if (g_ReplayManager->data->stages[i] != NULL)
                 {
-                    g_MemoryManager.Free(g_ReplayManager->data->stages[i]);
+                    g_MemoryTracker.Free(g_ReplayManager->data->stages[i]);
                 }
                 if (replayTmp->data->extras[i] != NULL)
                 {
-                    g_MemoryManager.Free(g_ReplayManager->data->extras[i]);
+                    g_MemoryTracker.Free(g_ReplayManager->data->extras[i]);
                 }
             }
         }

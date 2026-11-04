@@ -19,18 +19,32 @@ our own analysis or, for library code, from the libraries themselves.
 ## Status
 
 All 1116 game functions are decompiled and match the original byte for
-byte (`just compare`: 1127/1127, counting the copies of inline functions
-the original keeps in more than one place).
+byte (`just compare`: 1130/1130, counting separately emitted inline
+copies and folded symbols).
 
 The standalone executable (`just exe`) is built from this source alone,
 boots and plays (with `FEAT=orig_checksum`, see below). It is not yet
-identical to the original as a file: every function matches with
-addresses masked, but only 149 of 1116 sit at their original address, so
-`just compare-exe` finds 16.7% of the file and 16.2% of `.text`
-identical (`.rdata` 71.5%, `.data` 88.7%, resources 100%). Most of the
-difference is where each object puts the header's inline functions: the
-original was compiled with a precompiled header, which the tools support
-(`exe.pch`) but whose layout we have yet to reconstruct.
+identical to the original as a file, but it has the original's size,
+section layout and optional header fields except the entry point:
+`just compare-exe` finds 83.5% of the file identical (`.text` 82.4%,
+`.rdata` 97.1%, `.data` 92.9%, `.data1` and resources 100%). Every game
+function matches with addresses masked, all 1116 sit at their original
+address and 954 are identical as they are. All 136 named writable
+globals also sit at their original addresses, including function
+statics absent from the public link map (`python3 scripts/check_exe_layout.py`).
+The build reconstructs game-function and readonly-data placement with the
+linker's `/ORDER` option, generated from symbols.csv, exe_constants.csv
+and the compiled objects; this does
+not establish that the original build used `/ORDER`. The CRT's and
+D3DX8's internal placement, the import order and the Rich header still
+differ. The original's precompiled-header layout remains unknown.
+
+`config/exe_constants.csv` records 1143 compiler constant/string COMDAT
+addresses recovered through the original operands and our object
+relocations. After a vanilla build, `python3 scripts/recover_exe_constants.py`
+regenerates it; `scripts/check_exe_layout.py` verifies every recorded
+address. The game's readonly pool is 99.94% identical; its remaining
+differences are FileBase vtable pointers to the moved CRT `__purecall`.
 
 Ghidra finds 2225 functions. As in th06 and th07, the game code is mostly
 compiled without optimization, so its functions start with `push ebp;
@@ -72,20 +86,27 @@ Read from the Rich header (`tools/peinfo.py`):
 | C++ compiler 13.00 | 9466 | 63 | Game code |
 | C compiler 13.00 | 9466 | 130 | MSVC CRT |
 | MASM 7.00 | 9466 | 48 | MSVC CRT |
-| C++ compiler 13.00 | 9177 | 69 | Static libraries, probably D3DX8 |
+| C++ compiler 13.00 | 9177 | 69 | DirectX libraries, mostly D3DX8 |
 | C compiler 13.00 | 9177, 9178 | 3, 3 | Static libraries |
-| Import library 7.00 | 9210 | 12 | DirectX SDK import libraries |
-| Import library | 9111 | 7 | |
+| Import library 7.00 | 9210 | 12 | Platform SDK import libraries |
+| Import library | 9111 | 7 | DirectX import libraries |
 | Linker 7.00 | 9466 | | |
 
 This is the th06 and th07 toolchain: Visual C++ .NET 2002 (MSVC 7.0,
-`cl` 13.00.9466) with the DirectX 8 SDK. Unlike th07, no object was
-compiled with `/GL`. The static libraries come from a different build
-(9177) than th07's (8830): the DirectX 8.1 SDK's (its C++ objects say
-9178), while the game code still includes DirectX 8.0's headers. The
-standalone exe links the libraries of `dx81sdk_full.exe`
-(`DXF/DXSDK/lib`), copied to `C:\dx81\lib` in the Wine prefix. The
-compiler flags start as th07's and change as functions show otherwise.
+`cl` 13.00.9466). Unlike th07, no object was compiled with `/GL`. The
+game code still includes DirectX 8.0's headers, but the DirectX
+libraries are not a DirectX SDK's: they are the ones Visual Studio .NET
+2002 itself installs in `Vc7\PlatformSDK\lib\prerelease`. Their
+d3dx8.lib objects say 9177 and their d3d8, dinput8 and dsound import
+libraries 9111, which no DirectX 8.1 SDK provides (9178 and 9210), and
+D3DX8's Intel-compiled objects bring the compiler banners that fill the
+original's 0x1e00 bytes of headers. They are not loose files on the
+media: they come with the merge module `zDxF_pre_b.common.msm` in
+disc 1's `vs_setup.msi`, which `tools/msi_extract.py` unpacks as
+`tools/psdk_libs.py` does for the Platform SDK. The standalone exe links
+them from `C:\msvc7\PlatformSDK\Lib\prerelease` in the Wine prefix.
+The compiler flags start as th07's and change as functions show
+otherwise.
 
 ## Workflow
 

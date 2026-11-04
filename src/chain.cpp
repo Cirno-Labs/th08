@@ -224,13 +224,13 @@ void Chain::ReleaseList(ChainElem *root)
     ChainElem *tmp;
     ChainElem *cur;
 
-    tail = (ChainElem *)g_MemoryManager.Register(new ChainElem(), sizeof(ChainElem), "funcChainInf");
+    tail = (ChainElem *)g_MemoryTracker.Register(new ChainElem(), sizeof(ChainElem), "funcChainInf");
     list.next = tail;
     cur = root;
     while (cur != NULL)
     {
         tail->self = cur;
-        tail->next = (ChainElem *)g_MemoryManager.Register(new ChainElem(), sizeof(ChainElem), "funcChainInf");
+        tail->next = (ChainElem *)g_MemoryTracker.Register(new ChainElem(), sizeof(ChainElem), "funcChainInf");
         tail = tail->next;
         cur = cur->next;
     }
@@ -244,7 +244,7 @@ void Chain::ReleaseList(ChainElem *root)
     while (tail != NULL)
     {
         tmp = tail->next;
-        g_MemoryManager.Unregister(tail);
+        g_MemoryTracker.Unregister(tail);
         delete tail;
         tail = NULL;
         tail = tmp;
@@ -260,7 +260,7 @@ void Chain::Release()
 
 ChainElem *Chain::CreateElem(ChainCallback callback)
 {
-    ChainElem *elem = (ChainElem *)g_MemoryManager.Register(new ChainElem(), sizeof(ChainElem), "funcChainInf");
+    ChainElem *elem = (ChainElem *)g_MemoryTracker.Register(new ChainElem(), sizeof(ChainElem), "funcChainInf");
     elem->SetCallback(callback);
     elem->allocated = 1;
     return elem;
@@ -321,7 +321,7 @@ found:
         {
             // The element's deleted callback runs outside the section.
             g_App.LeaveCriticalSection(0);
-            g_MemoryManager.Unregister(elem);
+            g_MemoryTracker.Unregister(elem);
             delete elem;
             elem = NULL;
             g_App.EnterCriticalSection(0);

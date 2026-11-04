@@ -33,6 +33,15 @@ char *g_PracticeStageNames[9] = {
     "Stage6B",
     "StageEX",
 };
+// A COMDAT, interleaved with the stage-name strings rather than the
+// object's ordinary .rdata. Its absolute address still depends on the
+// order of the preceding string pools.
+__declspec(selectany) const int g_CharacterMenuSprites[12][4] = {
+    {119, 111, 112, -1}, {120, 114, 113, -1}, {121, 115, 116, -1},
+    {122, 118, 117, -1}, {123, 111, -1, 112}, {124, 112, -1, 111},
+    {125, 114, -1, 113}, {126, 113, -1, 114}, {127, 115, -1, 116},
+    {128, 116, -1, 115}, {129, 118, -1, 117}, {130, 117, -1, 118},
+};
 char *g_SpellPracticeStageNames[10] = {
     "Stage1   ",
     "Stage2   ",
@@ -84,71 +93,6 @@ char *g_SpellPracticeDifficultyNames[6] = {
     "待宵（ルナティック）",
     "望月（エキストラ）",
     "極意（ラストワード）",
-};
-char *g_TitleHelpTexts[9] = {
-    "ゲームを開始します",
-    "エキストラステージを開始します",
-    "敵にスペルカード戦をお願いします",
-    "ステージを選択し、練習を開始します",
-    "リプレイを鑑賞できます",
-    "過去のスコアやスペルカードの取得歴を見られます",
-    "音楽を聴けます",
-    "各種設定できます",
-    "いろいろと終了します",
-};
-char *g_OptionsHelpTexts[10] = {
-    "プレイヤーの初期数を変更します。（初期設定　３）",
-    "画面の色数を変更します。３２ＢＩＴだと最も綺麗に表示されます。",
-    "ＢＧＭの再生方法を変更します。（初期設定　ＷＡＶ）",
-    "ＢＧＭの音量を調整します",
-    "効果音の音量を調整します",
-    "ウィンドウかフルスクリーンか選択します",
-    "弾が多い場面でわざと処理落ちさせます(スコア、リプレイ記録不可)",
-    "全て初期設定にします",
-    "パッド操作のボタン配置を変更します",
-    "おいそれと終了します",
-};
-short g_LastPressedKey = 32;
-char *g_KeyConfigHelpTexts[12] = {
-    "ショット、決定ボタンを設定します",
-    "ボム、キャンセルボタンを設定します",
-    "低速移動ボタンを設定します",
-    "メッセージスキップボタンを設定します",
-    "ポーズボタンを設定します",
-    "上移動ボタンを設定します",
-    "下移動ボタンを設定します",
-    "左移動ボタンを設定します",
-    "右移動ボタンを設定します",
-    "ショット押しっぱなしで低速移動になるようにします",
-    "初期設定に戻します",
-    "おおよそ終了します",
-};
-char *g_MenuShotTypeNames[12] = {
-    "Rm & Yk",
-    "Ms & Al",
-    "Sk & Rr",
-    "Ym & Yy",
-    "Reimu  ",
-    "Yukari ",
-    "Marisa ",
-    "Alice  ",
-    "Sakuya ",
-    "Remilia",
-    "Youmu  ",
-    "Yuyuko ",
-};
-char *g_MenuDifficultyNames[5] = {
-    "Easy    ",
-    "Normal  ",
-    "Hard    ",
-    "Lunatic ",
-    "Extra   ",
-};
-const int g_CharacterMenuSprites[12][4] = {
-    {119, 111, 112, -1}, {120, 114, 113, -1}, {121, 115, 116, -1},
-    {122, 118, 117, -1}, {123, 111, -1, 112}, {124, 112, -1, 111},
-    {125, 114, -1, 113}, {126, 113, -1, 114}, {127, 115, -1, 116},
-    {128, 116, -1, 115}, {129, 118, -1, 117}, {130, 117, -1, 118},
 };
 char g_FullWidthString[0x40];
 MainMenu *g_MainMenu;
@@ -210,6 +154,19 @@ int MainMenu::OnUpdate(MainMenu *menu)
 }
 int MainMenu::StartTitle()
 {
+#ifdef TH08_EXE
+    static char *g_TitleHelpTexts[9] = {
+        "ゲームを開始します",
+        "エキストラステージを開始します",
+        "敵にスペルカード戦をお願いします",
+        "ステージを選択し、練習を開始します",
+        "リプレイを鑑賞できます",
+        "過去のスコアやスペルカードの取得歴を見られます",
+        "音楽を聴けます",
+        "各種設定できます",
+        "いろいろと終了します",
+    };
+#endif // TH08_EXE
     int i;
     int size;
 
@@ -486,6 +443,20 @@ int MainMenu::StartTitle()
 
 int MainMenu::UpdateOptions()
 {
+#ifdef TH08_EXE
+    static char *g_OptionsHelpTexts[10] = {
+        "プレイヤーの初期数を変更します。（初期設定　３）",
+        "画面の色数を変更します。３２ＢＩＴだと最も綺麗に表示されます。",
+        "ＢＧＭの再生方法を変更します。（初期設定　ＷＡＶ）",
+        "ＢＧＭの音量を調整します",
+        "効果音の音量を調整します",
+        "ウィンドウかフルスクリーンか選択します",
+        "弾が多い場面でわざと処理落ちさせます(スコア、リプレイ記録不可)",
+        "全て初期設定にします",
+        "パッド操作のボタン配置を変更します",
+        "おいそれと終了します",
+    };
+#endif // TH08_EXE
     int i;
 
     switch (this->subState)
@@ -730,7 +701,7 @@ int MainMenu::UpdateOptions()
                 break;
             }
         }
-        if (WAS_PRESSED(0x40) || g_ButtonFrames >= 30 && (g_Buttons & 0x40))
+        if (WAS_PRESSED(0x40) || g_ButtonsHeldFrames >= 30 && (g_Buttons & 0x40))
         {
             switch (this->cursor)
             {
@@ -750,7 +721,7 @@ int MainMenu::UpdateOptions()
                 break;
             }
         }
-        if (WAS_PRESSED(0x80) || g_ButtonFrames >= 30 && (g_Buttons & 0x80))
+        if (WAS_PRESSED(0x80) || g_ButtonsHeldFrames >= 30 && (g_Buttons & 0x80))
         {
             switch (this->cursor)
             {
@@ -958,6 +929,23 @@ void MainMenu::ReassignButton(short button, short replacement, int unused)
 
 int MainMenu::UpdateKeyConfig()
 {
+#ifdef TH08_EXE
+    static short g_LastPressedKey = 32;
+    static char *g_KeyConfigHelpTexts[12] = {
+        "ショット、決定ボタンを設定します",
+        "ボム、キャンセルボタンを設定します",
+        "低速移動ボタンを設定します",
+        "メッセージスキップボタンを設定します",
+        "ポーズボタンを設定します",
+        "上移動ボタンを設定します",
+        "下移動ボタンを設定します",
+        "左移動ボタンを設定します",
+        "右移動ボタンを設定します",
+        "ショット押しっぱなしで低速移動になるようにします",
+        "初期設定に戻します",
+        "おおよそ終了します",
+    };
+#endif // TH08_EXE
     Sprite *digit;
     int i;
     short key;
@@ -2670,7 +2658,7 @@ int MainMenu::UpdateReplayMenu()
                 this->cursor++;
                 if (this->cursor > 8)
                 {
-                    LogError(&g_Log, "リプレイデータが異常\r\n");
+                    LogError(&g_AppLog, "リプレイデータが異常\r\n");
                     g_App.scene = -1;
                     return 0;
                 }
@@ -2811,6 +2799,29 @@ int MainMenu::UpdateReplayMenu()
 
 int MainMenu::DrawReplayMenu()
 {
+#ifdef TH08_EXE
+    static char *g_MenuShotTypeNames[12] = {
+        "Rm & Yk",
+        "Ms & Al",
+        "Sk & Rr",
+        "Ym & Yy",
+        "Reimu  ",
+        "Yukari ",
+        "Marisa ",
+        "Alice  ",
+        "Sakuya ",
+        "Remilia",
+        "Youmu  ",
+        "Yuyuko ",
+    };
+    static char *g_MenuDifficultyNames[5] = {
+        "Easy    ",
+        "Normal  ",
+        "Hard    ",
+        "Lunatic ",
+        "Extra   ",
+    };
+#endif // TH08_EXE
     Sprite *text;
     int top;
     int entry;

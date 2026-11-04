@@ -405,11 +405,16 @@ struct VertexTex1Xyzrwh
     } uv;
 };
 
-// A vertex with a position and texture coordinates.
+// A vertex with a position and texture coordinates. Like the other
+// vertex types, its implicit constructor constructs only pos (0x40b580).
 struct VertexTex1Xyz
 {
     D3DXVECTOR3 pos;
-    D3DXVECTOR2 uv;
+    struct
+    {
+        float x;
+        float y;
+    } uv;
 };
 
 // A vertex with a position, a color and texture coordinates. uv is no
@@ -1008,4 +1013,4 @@ extern const D3DFORMAT g_TextureFormats[];
 extern const int g_TextureFormatSizes[];
 
 // The loading screen's sprites, right after g_App (0x17ceac0).
-extern Sprite g_LoadingSprites[3];
+extern Sprite g_LoadingScreenSprites[3];

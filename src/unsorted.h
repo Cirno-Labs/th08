@@ -98,7 +98,7 @@ public:
     // releases it. Returns 1.
     static int OnDrawLogo(App *arg);
     // The third draw chain callback, new in th08: draws
-    // g_LoadingSprites, each moved by its posOffset. Returns 1.
+    // g_LoadingScreenSprites, each moved by its posOffset. Returns 1.
     static int OnDrawLoading(App *arg);
     // Whether holding shoot also focuses (shootFocuses). th07 read the
     // field directly; th08 calls this out-of-line copy.
@@ -115,7 +115,7 @@ public:
     // then closes its handle. New in th08.
     void CloseSubThread();
     // Unless the loading screen shows (loadingState), starts
-    // g_LoadingSprites on scripts 0 to 2 of loadingAnm at `pos` and sets
+    // g_LoadingScreenSprites on scripts 0 to 2 of loadingAnm at `pos` and sets
     // loadingState to 1. New in th08.
     // Whether the sub thread is running.
     BOOL HasSubThread()
@@ -123,7 +123,7 @@ public:
         return this->subThread != NULL;
     }
     void StartLoadingSprites(D3DXVECTOR3 *pos);
-    // If the loading screen is in state 1, sends g_LoadingSprites
+    // If the loading screen is in state 1, sends g_LoadingScreenSprites
     // interrupt 1 and clears loadingState. Then ends
     // g_LoadingScreenEffect if there is one.
     void StopLoadingSprites();
@@ -339,7 +339,7 @@ public:
     unsigned char pad_19a[0x2];
     // text.anm, loaded by LoadingThread.
     AnmLoaded *textAnm;
-    // nowloading.anm, with g_LoadingSprites' scripts (AddedCallback).
+    // nowloading.anm, with g_LoadingScreenSprites' scripts (AddedCallback).
     AnmLoaded *loadingAnm;
     // As th07's: bit 1: the device does T&L in hardware; 2: the back
     // buffer is lockable; 4: A8R8G8B8 textures work; 8: no score is
@@ -370,7 +370,7 @@ public:
     CRITICAL_SECTION criticalSections[4];
     // How deep each of criticalSections is entered.
     BYTE criticalSectionDepths[4];
-    // The loading screen's state: 0 for none, 1 while g_LoadingSprites
+    // The loading screen's state: 0 for none, 1 while g_LoadingScreenSprites
     // show, then from 2 on a frame counter while OnDrawLogo blinks
     // "Press Shot Button". OnDrawLogo shows surface 8 while it is
     // nonzero.
@@ -420,7 +420,7 @@ void CopyStageSprite();
 // counter when there is one, and shows it when `draw` is set, as th07's.
 void DrawFps(int draw);
 
-// Opens th08.dat as g_Archive and loads its version file,
+// Opens th08.dat as g_GameArchive and loads its version file,
 // "th08_0100d.ver", into g_App.verFile. Returns 0, or -1 after logging
 // an error if either is missing.
 int OpenGameArchive();
@@ -561,7 +561,7 @@ void DebugPrint(const char *fmt, ...);
 // th07's.
 void DebugPrint2(const char *fmt, ...);
 
-// Loads a whole file into a buffer from g_MemoryManager; NULL on
+// Loads a whole file into a buffer from g_MemoryTracker; NULL on
 // failure. Unlike th07's, it stores the file's size in `size` if that is
 // not NULL, where th07 kept it in g_FileSize; the last argument says
 // whether the file is read from disk rather than from the archives.
@@ -578,7 +578,7 @@ public:
     // Set by LogError, the error logger.
     char hasError;
 
-    // Starts empty. Only g_Log's static initializer calls it.
+    // Starts empty. Only g_AppLog's static initializer calls it.
     Log();
     // Empty; the static initializer has atexit run it (0x43ef40, folded
     // with ~SpriteEngine and MmTimer::OnTimer).
@@ -590,7 +590,7 @@ public:
     // error.
     void Flush();
 };
-extern Log g_Log;
+extern Log g_AppLog;
 
 // Logs a printf-style message to a log object.
 int LogPrintf(Log *log, const char *fmt, ...);
@@ -606,10 +606,10 @@ int FileExists(char *path);
 int WriteToFile(char *path, void *data, int size);
 
 // The joystick's capabilities, from joyGetDevCaps.
-extern JOYCAPSA g_JoyCaps;
+extern JOYCAPSA g_JoyDeviceCaps;
 
 // Checks that joystick 1 is there and reads its capabilities into
-// g_JoyCaps. Returns 1 when there is none.
+// g_JoyDeviceCaps. Returns 1 when there is none.
 WORD InitJoystick();
 
 // Ors `bit` into `buttons` while button `button` (a bit index into
@@ -643,29 +643,29 @@ WORD ReadButtons();
 
 // The buttons held this frame and the frame before, as bits.
 extern WORD g_Buttons;
-extern WORD g_PrevButtons;
+extern WORD g_PreviousButtons;
 // The buttons the game plays by this frame and the frame before: the
 // held ones, or a replay's.
-extern WORD g_GameButtons;
-extern WORD g_PrevGameButtons;
+extern WORD g_PlayButtons;
+extern WORD g_PreviousPlayButtons;
 // 1 on every 8th frame once the buttons have been held unchanged for 30
 // frames, for key repeat.
-extern WORD g_ButtonRepeat;
+extern WORD g_InputRepeat;
 // How many frames the buttons have been held unchanged, cycling from 38
 // back to 30.
-extern WORD g_ButtonFrames;
+extern WORD g_ButtonsHeldFrames;
 
 // Whether a button of `mask` went down this frame.
-#define WAS_PRESSED(mask) ((g_Buttons & (mask)) && (g_Buttons & (mask)) != (g_PrevButtons & (mask)))
+#define WAS_PRESSED(mask) ((g_Buttons & (mask)) && (g_Buttons & (mask)) != (g_PreviousButtons & (mask)))
 // WAS_PRESSED, or held long enough to repeat.
-#define WAS_PRESSED_OR_HELD(mask) (WAS_PRESSED(mask) || ((g_Buttons & (mask)) && g_ButtonRepeat))
+#define WAS_PRESSED_OR_HELD(mask) (WAS_PRESSED(mask) || ((g_Buttons & (mask)) && g_InputRepeat))
 
 // Clears the down bit (0x80) of every key in the thread's keyboard
 // state.
 void ResetKeyboard();
 
 // Decrypts `size` bytes of `data` into a new buffer from
-// g_MemoryManager and returns it (or `data` if the allocation fails).
+// g_MemoryTracker and returns it (or `data` if the allocation fails).
 // The first `limit` bytes go in blocks of `blockSize`: each block's
 // bytes are xored with a key that starts at `key` and grows by `step`,
 // and land at every other byte from the block's end backwards, then
@@ -762,7 +762,7 @@ public:
     // How many times the generator was advanced.
     DWORD generated;
 };
-extern Rng g_Rng;
+extern Rng g_Random;
 
 // A 2D vector, as th07's.
 struct Vector2
@@ -1029,7 +1029,7 @@ public:
     {
         if (this->bgmPreloadData[slot] != NULL)
         {
-            g_MemoryManager.Free(this->bgmPreloadData[slot]);
+            g_MemoryTracker.Free(this->bgmPreloadData[slot]);
             this->bgmPreloadData[slot] = NULL;
         }
     }
@@ -1220,8 +1220,8 @@ public:
     // 0x406e50 is the ascii object's.
     void RerollChecksumKeys()
     {
-        this->stats->lifeChecksumKeys[2] = g_Rng.GetRandomU32InRange(100000) + 6543;
-        this->stats->checksumKeysD[3] = g_Rng.GetRandomU32InRange(100000) + 6543;
+        this->stats->lifeChecksumKeys[2] = g_Random.GetRandomU32InRange(100000) + 6543;
+        this->stats->checksumKeysD[3] = g_Random.GetRandomU32InRange(100000) + 6543;
         this->stats->checksum = this->stats->lifeChecksumKeys[2];
         this->stats->computedChecksum = this->ComputeChecksum();
         this->checksumValue = this->stats->computedChecksum + this->stats->checksumKeysD[3];
@@ -1293,14 +1293,14 @@ public:
     // Inline; the copy at 0x44e160 is the player object's.
     void RerollLifeChecksumKeys()
     {
-        this->stats->lifeChecksumKeys[0] = g_Rng.GetRandomU32InRange(100000) + 6543;
-        this->stats->lifeChecksumKeys[1] = g_Rng.GetRandomU32InRange(100000) + 6543;
-        this->stats->lifeChecksumKeys[2] = g_Rng.GetRandomU32InRange(100000) + 6543;
-        this->stats->lifeChecksumKeys[3] = g_Rng.GetRandomU32InRange(100000) + 6543;
-        this->stats->lifeChecksumKeys[4] = g_Rng.GetRandomU32InRange(100000) + 6543;
-        this->stats->lifeChecksumKeysF[0] = g_Rng.GetRandomF32InRange(100000.0f) + 6543.0f;
-        this->stats->lifeChecksumKeysF[1] = g_Rng.GetRandomF32InRange(100000.0f) + 6543.0f;
-        this->stats->lifeChecksumKeysF[2] = g_Rng.GetRandomF32InRange(100000.0f) + 6543.0f;
+        this->stats->lifeChecksumKeys[0] = g_Random.GetRandomU32InRange(100000) + 6543;
+        this->stats->lifeChecksumKeys[1] = g_Random.GetRandomU32InRange(100000) + 6543;
+        this->stats->lifeChecksumKeys[2] = g_Random.GetRandomU32InRange(100000) + 6543;
+        this->stats->lifeChecksumKeys[3] = g_Random.GetRandomU32InRange(100000) + 6543;
+        this->stats->lifeChecksumKeys[4] = g_Random.GetRandomU32InRange(100000) + 6543;
+        this->stats->lifeChecksumKeysF[0] = g_Random.GetRandomF32InRange(100000.0f) + 6543.0f;
+        this->stats->lifeChecksumKeysF[1] = g_Random.GetRandomF32InRange(100000.0f) + 6543.0f;
+        this->stats->lifeChecksumKeysF[2] = g_Random.GetRandomF32InRange(100000.0f) + 6543.0f;
     }
     // Adds `deaths` to stats->deaths and stageDeaths and counts a miss in
     // hscr; adds `bombs` to stats->bombsUsed and stageBombsUsed. Both wipe g_App

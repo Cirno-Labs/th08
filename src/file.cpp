@@ -5,6 +5,9 @@
 // The game's data, as the original defines it here. The DLL build uses
 // the original's copies instead.
 #ifdef TH08_EXE
+// Eight unreferenced bytes precede the archive array at 0x18bde18.
+// The original's array initializer and destructor both name that address.
+BYTE g_UnusedFileData[8];
 // Constructed, but nothing uses them.
 DatArchive g_UnusedArchives[20];
 #endif // TH08_EXE

@@ -23,7 +23,7 @@ int InsertScore(ListNode *head, Hscr *entry)
         index++;
     }
     next = head->next;
-    head->next = (ListNode *)g_MemoryManager.Alloc(sizeof(ListNode), "result");
+    head->next = (ListNode *)g_MemoryTracker.Alloc(sizeof(ListNode), "result");
     head->next->prev = head;
     head = head->next;
     head->data = entry;
@@ -39,7 +39,7 @@ void FreeListNodes(ListNode *head)
     while (head != NULL)
     {
         next = head->next;
-        g_MemoryManager.Free(head);
+        g_MemoryTracker.Free(head);
         head = next;
     }
 }
@@ -69,9 +69,9 @@ ScoreDat *LoadScoreDat(char *path)
         DebugPrint("info : score recreate\r\n");
         if (dat != NULL)
         {
-            g_MemoryManager.Free(dat);
+            g_MemoryTracker.Free(dat);
         }
-        dat = (ScoreDat *)g_MemoryManager.Alloc(sizeof(ScoreDat), "scorefile");
+        dat = (ScoreDat *)g_MemoryTracker.Alloc(sizeof(ScoreDat), "scorefile");
         dat->dataOffset = sizeof(ScoreDat);
         dat->fileSize = sizeof(ScoreDat);
         goto done;
@@ -79,11 +79,11 @@ ScoreDat *LoadScoreDat(char *path)
     if (readSize < sizeof(ScoreDat))
     {
         DebugPrint("warning : score.dat size is short\r\n");
-        g_MemoryManager.Free(dat);
+        g_MemoryTracker.Free(dat);
         goto fail;
     }
     decoded = DecryptData((BYTE *)dat, readSize, 0x59, 0x79, 0x100, 0xc00);
-    g_MemoryManager.Free(dat);
+    g_MemoryTracker.Free(dat);
     dat = (ScoreDat *)decoded;
     remaining0 = readSize - 2;
     checksumVal0 = 0;
@@ -118,11 +118,11 @@ ScoreDat *LoadScoreDat(char *path)
         DebugPrint("warning : score.dat version mismatch\r\n");
         goto fail;
     }
-    unpacked = (ScoreDat *)g_MemoryManager.Alloc(sizeof(ScoreDat) + 0xa0000, "scorefile2");
+    unpacked = (ScoreDat *)g_MemoryTracker.Alloc(sizeof(ScoreDat) + 0xa0000, "scorefile2");
     memcpy(unpacked, dat, sizeof(ScoreDat));
     LzssDecompress((BYTE *)dat + sizeof(ScoreDat), dat->packedSize, (BYTE *)unpacked + sizeof(ScoreDat),
                    dat->dataSize);
-    g_MemoryManager.Free(dat);
+    g_MemoryTracker.Free(dat);
     dat = unpacked;
     left2 = dat->fileSize;
     found2 = FALSE;
@@ -158,7 +158,7 @@ ScoreDat *LoadScoreDat(char *path)
         goto fail;
     }
 done:
-    dat->scores = (ListNode *)g_MemoryManager.Alloc(sizeof(ListNode), "result");
+    dat->scores = (ListNode *)g_MemoryTracker.Alloc(sizeof(ListNode), "result");
     dat->scores->next = NULL;
     dat->scores->data = NULL;
     dat->scores->prev = NULL;
@@ -386,6 +386,6 @@ int LoadPlstChunk(void *scoreDat, Plst *plst)
 void ReleaseScoreDat(ScoreDat *dat)
 {
     FreeListNodes(dat->scores);
-    g_MemoryManager.Free(dat->scores);
-    g_MemoryManager.Free(dat);
+    g_MemoryTracker.Free(dat->scores);
+    g_MemoryTracker.Free(dat);
 }

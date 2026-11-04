@@ -19,6 +19,10 @@
 // The game's data, as the original defines it here. The DLL build uses
 // the original's copies instead.
 #ifdef TH08_EXE
+// Public COMDAT so /ORDER can place it in the original readonly pool.
+__declspec(selectany) const float g_DifficultyRatings[5] = {
+    -30.0f, -10.0f, 20.0f, 30.0f, 30.0f,
+};
 char *g_NameAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ.,:;_@abcdefghijklmnopqrstuvwxyz+-/*=%0123456789#!?'\"$(){}[]<>&\\|~^ --";
 char *g_ShotNames[13] = {
     "霊夢＆紫　　　　",
@@ -57,30 +61,6 @@ char *g_PlainDifficultyNames[5] = {
     "Lunatic",
     "Extra",
 };
-float g_SpellCardRatings[5] = {
-    1.0f, 1.5f, 1.5f, 2.0f, 2.5f,
-};
-char *g_DifficultyNames[5] = {
-    "      Easy",
-    "    Normal",
-    "      Hard",
-    "   Lunatic",
-    "     Extra",
-};
-char *g_ShotTypeNames[12] = {
-    "Rm & Yk",
-    "Ms & Al",
-    "Sk & Rr",
-    "Ym & Yy",
-    "Reimu  ",
-    "Yukari ",
-    "Marisa ",
-    "Alice  ",
-    "Sakuya ",
-    "Remilia",
-    "Youmu  ",
-    "Yuyuko ",
-};
 #endif // TH08_EXE
 
 // The original allocates in an inline from global.h, whose __FILE__ names
@@ -118,7 +98,7 @@ void SaveScoreDat(ResultScreen *screen)
     int n;
     int i;
 
-    buf = (BYTE *)g_MemoryManager.Alloc(0x640000, GLOBAL_H);
+    buf = (BYTE *)g_MemoryTracker.Alloc(0x640000, GLOBAL_H);
     memcpy(buf + size0, screen->scoreDat, sizeof(ScoreDat));
     size0 += sizeof(ScoreDat);
     screen->th8k.magic = 0x4b384854;
@@ -217,8 +197,8 @@ void SaveScoreDat(ResultScreen *screen)
     header = (ScoreDat *)buf;
     header->dataOffset = sizeof(ScoreDat);
     header->checksum = 0;
-    header->key = g_Rng.GetRandomU16InRange(256);
-    header->secondaryKey = g_Rng.GetRandomU16InRange(256);
+    header->key = g_Random.GetRandomU16InRange(256);
+    header->secondaryKey = g_Random.GetRandomU16InRange(256);
     header->version = 1;
     for (m = 4; m < size0; m++)
     {
@@ -241,8 +221,8 @@ void SaveScoreDat(ResultScreen *screen)
     }
     encrypted = EncryptData(buf, size0, 0x59, 0x79, 0x100, 0xc00);
     WriteToFile("score.dat", encrypted, size0);
-    g_MemoryManager.Free(buf);
-    g_MemoryManager.Free(encrypted);
+    g_MemoryTracker.Free(buf);
+    g_MemoryTracker.Free(encrypted);
 }
 
 char *FormatAndAdvance(char *buf, const char *fmt, ...)
@@ -281,7 +261,7 @@ void ResultScreen::WriteScoreText()
     int i;
 
     dummy = 0;
-    buf = p0 = (char *)g_MemoryManager.Alloc(0x640000, GLOBAL_H);
+    buf = p0 = (char *)g_MemoryTracker.Alloc(0x640000, GLOBAL_H);
     memset(p0, 0, 0x640000);
     p0 = FormatAndAdvance(p0, "# 東方永夜抄　～ Imperishable Night. ver 1.00d 記録テキスト版\r\n# \r\n");
     p0 = FormatAndAdvance(p0, "# このファイルは、現在の記録をダンプした物です。\r\n");
@@ -294,7 +274,7 @@ void ResultScreen::WriteScoreText()
     p0 = FormatAndAdvance(p0, "\r\n\r\n");
     p0 = FormatAndAdvance(p0, "Version: %.2f\r\n", 0.01f);
     p0 = FormatAndAdvance(p0, "\r\n");
-    shotText0 = p22 = (char *)g_MemoryManager.Alloc(0x10004, GLOBAL_H);
+    shotText0 = p22 = (char *)g_MemoryTracker.Alloc(0x10004, GLOBAL_H);
     catk1 = g_GameManager.catks;
     for (i = 0; i < 0xde; i++, catk1++)
     {
@@ -426,9 +406,9 @@ void ResultScreen::WriteScoreText()
                          g_GameManager.plst.counts[1].practices, g_GameManager.plst.counts[2].practices,
                          g_GameManager.plst.counts[3].practices, g_GameManager.plst.counts[4].practices,
                          g_GameManager.plst.counts[6].practices);
-    g_MemoryManager.Free(shotText0);
+    g_MemoryTracker.Free(shotText0);
     WriteToFile("score.txt", buf, strlen(buf));
-    g_MemoryManager.Free(buf);
+    g_MemoryTracker.Free(buf);
 }
 
 int ResultScreen::AddScore(Hscr *entry, int difficulty, int shot)
@@ -1414,7 +1394,7 @@ int ResultScreen::HandleReplaySaving()
                 if (replay != NULL)
                 {
                     this->replays[k] = *replay;
-                    g_MemoryManager.Free(replay);
+                    g_MemoryTracker.Free(replay);
                 }
             }
         }
@@ -1819,6 +1799,18 @@ int ResultScreen::RunStatisticsMenu()
 
 int ResultScreen::DrawStatistics()
 {
+#ifdef TH08_EXE
+    static float g_SpellCardRatings[5] = {
+        1.0f, 1.5f, 1.5f, 2.0f, 2.5f,
+    };
+    static char *g_DifficultyNames[5] = {
+        "      Easy",
+        "    Normal",
+        "      Hard",
+        "   Lunatic",
+        "     Extra",
+    };
+#endif // TH08_EXE
     Sprite *spr;
     D3DXVECTOR3 cursorPos;
     float progress;
@@ -1856,11 +1848,6 @@ int ResultScreen::DrawStatistics()
         }
         cursorPos.y += 22.0f;
         g_AsciiText.AddString(&cursorPos, g_DifficultyNames[g_GameManager.difficulty]);
-#ifdef TH08_EXE
-        static const float g_DifficultyRatings[5] = {
-            -30.0f, -10.0f, 20.0f, 30.0f, 30.0f,
-        };
-#endif // TH08_EXE
         rating += g_DifficultyRatings[g_GameManager.difficulty];
         cursorPos.x += g_AsciiText.glyphWidth;
         cursorPos.y += 22.0f;
@@ -1934,7 +1921,7 @@ int ResultScreen::DrawStatistics()
 
 int ResultScreen::RegisterChain(int mode)
 {
-    ResultScreen *screen = (ResultScreen *)g_MemoryManager.Register(new ResultScreen, sizeof(ResultScreen),
+    ResultScreen *screen = (ResultScreen *)g_MemoryTracker.Register(new ResultScreen, sizeof(ResultScreen),
                                                                     "ResultSysInf");
 
     g_ScreenEffectHoldFrames = 0;
@@ -2066,6 +2053,22 @@ int ResultScreen::OnUpdate(ResultScreen *screen)
 
 int ResultScreen::OnDraw(ResultScreen *screen)
 {
+#ifdef TH08_EXE
+    static char *g_ShotTypeNames[12] = {
+        "Rm & Yk",
+        "Ms & Al",
+        "Sk & Rr",
+        "Ym & Yy",
+        "Reimu  ",
+        "Yukari ",
+        "Marisa ",
+        "Alice  ",
+        "Sakuya ",
+        "Remilia",
+        "Youmu  ",
+        "Yuyuko ",
+    };
+#endif // TH08_EXE
     Sprite *sprite = screen->sprites;
     char str[2];
     // Never used; th07's unused D3DXVECTOR3 slot, without a constructor
@@ -2564,7 +2567,7 @@ int ResultScreen::DeletedCallback(ResultScreen *screen)
     g_SpriteEngine->MoveSurface(8, 0);
     g_Chain.Remove(screen->drawChain);
     screen->drawChain = NULL;
-    g_MemoryManager.Unregister(screen);
+    g_MemoryTracker.Unregister(screen);
     delete screen;
     screen = NULL;
     return 0;

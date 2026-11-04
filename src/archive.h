@@ -166,4 +166,4 @@ public:
     File *file;
 };
 ASSERT_SIZE(DatArchive, 0x10);
-extern DatArchive g_Archive;
+extern DatArchive g_GameArchive;

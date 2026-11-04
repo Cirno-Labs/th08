@@ -109,7 +109,7 @@ address,size,name,symbol
 0x0040b4c0,58,D3DXVec3Length,?D3DXVec3Length@@YIMPBUD3DXVECTOR3@@@Z
 0x0040b500,49,D3DXVec3LengthSq,?D3DXVec3LengthSq@@YIMPBUD3DXVECTOR3@@@Z
 0x0040b540,54,D3DXVec3Dot,?D3DXVec3Dot@@YIMPBUD3DXVECTOR3@@0@Z
-0x0040b580,22,VertexTex1DiffuseXyzrwh::VertexTex1DiffuseXyzrwh,??0VertexTex1DiffuseXyzrwh@@QAE@XZ ??0VertexTex1Xyzrwh@@QAE@XZ ??0VertexTex1DiffuseXyz@@QAE@XZ
+0x0040b580,22,VertexTex1DiffuseXyzrwh::VertexTex1DiffuseXyzrwh,??0VertexTex1DiffuseXyzrwh@@QAE@XZ ??0VertexTex1Xyzrwh@@QAE@XZ ??0VertexTex1DiffuseXyz@@QAE@XZ ??0VertexDiffuseXyzrwh@@QAE@XZ ??0VertexTex1Xyz@@QAE@XZ
 0x0040b5a0,292,Stage::SetupFixedCamera,?SetupFixedCamera@Stage@@QAEXXZ
 0x0040b6d0,283,Stage::SetupCamera,?SetupCamera@Stage@@QAEXXZ
 0x0040b7f0,132,D3DXVec3Cross,?D3DXVec3Cross@@YIPAUD3DXVECTOR3@@PAU1@PBU1@1@Z
@@ -588,7 +588,7 @@ address,size,name,symbol
 0x0043ee90,27,MemoryManager::MemoryManager,??0MemoryManager@@QAE@XZ
 0x0043eeb0,84,MemoryManager::~MemoryManager,??1MemoryManager@@QAE@XZ
 0x0043ef10,48,Log::Log,??0Log@@QAE@XZ
-0x0043ef40,11,MmTimer::OnTimer,?OnTimer@MmTimer@@UAEXXZ ??1SpriteEngine@@QAE@XZ
+0x0043ef40,11,MmTimer::OnTimer,?OnTimer@MmTimer@@UAEXXZ ??1SpriteEngine@@QAE@XZ ??1Log@@QAE@XZ
 0x0043ef50,21,App::GetShootFocuses,?GetShootFocuses@App@@QAEHXZ
 0x0043ef70,63,App::EnterCriticalSection,?EnterCriticalSection@App@@QAEXH@Z
 0x0043efb0,63,App::LeaveCriticalSection,?LeaveCriticalSection@App@@QAEXH@Z
@@ -2395,7 +2395,7 @@ address,size,name,symbol
 0x004b4284,4,CoUninitialize,__imp__CoUninitialize@0
 0x004b4288,4,CoInitialize,__imp__CoInitialize@4
 0x004b4ad8,,g_BulletTypeScripts,?g_BulletTypeScripts@@3QAY04$$CBHA
-0x004b7b14,,g_DifficultyRatings,?g_DifficultyRatings@@3PAMA
+0x004b7b14,,g_DifficultyRatings,?g_DifficultyRatings@@3PAMA ?g_DifficultyRatings@@3QBMB
 0x004b847c,,g_Half,?g_Half@@3MB
 0x004b8480,,g_TextureFormats,?g_TextureFormats@@3QBW4_D3DFORMAT@@B
 0x004b8498,,g_TextureFormatSizes,?g_TextureFormatSizes@@3QBHB
@@ -2516,19 +2516,19 @@ address,size,name,symbol
 0x0160f508,,g_GameManager,?g_GameManager@@3VGameManager@@A
 0x0164d344,,g_GameManagerCalcChainElem,?g_GameManagerCalcChainElem@@3UChainElem@@A
 0x0164d364,,g_GameManagerDrawProc,?g_GameManagerDrawProc@@3UChainElem@@A
-0x0164d388,,g_JoyCaps,?g_JoyCaps@@3UtagJOYCAPSA@@A
+0x0164d388,,g_JoyDeviceCaps,?g_JoyDeviceCaps@@3UtagJOYCAPSA@@A
 0x0164d51c,,g_ShotHeldFrames,?g_ShotHeldFrames@@3GA
-0x0164d520,,g_Rng,?g_Rng@@3VRng@@A
+0x0164d520,,g_Random,?g_Random@@3VRng@@A
 0x0164d528,,g_Buttons,?g_Buttons@@3GA
-0x0164d52c,,g_GameButtons,?g_GameButtons@@3GA
-0x0164d530,,g_PrevButtons,?g_PrevButtons@@3GA
-0x0164d534,,g_PrevGameButtons,?g_PrevGameButtons@@3GA
-0x0164d538,,g_ButtonRepeat,?g_ButtonRepeat@@3GA
-0x0164d53c,,g_ButtonFrames,?g_ButtonFrames@@3GA
-0x0164d540,,g_Log,?g_Log@@3VLog@@A
+0x0164d52c,,g_PlayButtons,?g_PlayButtons@@3GA
+0x0164d530,,g_PreviousButtons,?g_PreviousButtons@@3GA
+0x0164d534,,g_PreviousPlayButtons,?g_PreviousPlayButtons@@3GA
+0x0164d538,,g_InputRepeat,?g_InputRepeat@@3GA
+0x0164d53c,,g_ButtonsHeldFrames,?g_ButtonsHeldFrames@@3GA
+0x0164d540,,g_AppLog,?g_AppLog@@3VLog@@A
 0x0164f548,,g_Chain,?g_Chain@@3VChain@@A
-0x0164f588,,g_Archive,?g_Archive@@3VDatArchive@@A
-0x0164f598,,g_MemoryManager,?g_MemoryManager@@3VMemoryManager@@A
+0x0164f588,,g_GameArchive,?g_GameArchive@@3VDatArchive@@A
+0x0164f598,,g_MemoryTracker,?g_MemoryTracker@@3VMemoryManager@@A
 0x016535a0,,g_PadButtons,?g_PadButtons@@3PAEA
 0x01653620,,g_TextSurface,?g_TextSurface@@3PAUIDirect3DSurface8@@A
 0x01653648,,g_ItemManager,?g_ItemManager@@3VItemManager@@A
@@ -2537,7 +2537,7 @@ address,size,name,symbol
 0x017ce744,,g_MidiTimerLastCounter,?g_MidiTimerLastCounter@@3T_LARGE_INTEGER@@A
 0x017ce750,,g_LoadingScreenEffect,?g_LoadingScreenEffect@@3PAVScreenEffect@@A
 0x017ce758,,g_App,?g_App@@3VApp@@A
-0x017ceac0,,g_LoadingSprites,?g_LoadingSprites@@3PAVSprite@@A
+0x017ceac0,,g_LoadingScreenSprites,?g_LoadingScreenSprites@@3PAVSprite@@A
 0x017d5ef8,,g_Player,?g_Player@@3VPlayer@@A
 0x018b8a28,,g_ReplayManager,?g_ReplayManager@@3PAVReplayManager@@A
 0x018b8a2c,,g_ScreenEffectHoldFrames,?g_ScreenEffectHoldFrames@@3HA

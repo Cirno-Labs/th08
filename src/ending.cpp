@@ -356,7 +356,7 @@ int Ending::Load(char *path)
     if (this->file == NULL)
     {
         this->file = oldFile;
-        LogPrintf(&g_Log, "error : エンディングファイルが読み込めない、ファイルが破壊されています\r\n");
+        LogPrintf(&g_AppLog, "error : エンディングファイルが読み込めない、ファイルが破壊されています\r\n");
         return -1;
     }
     this->cursor = this->file;
@@ -365,14 +365,14 @@ int Ending::Load(char *path)
     this->timer = 0;
     if (oldFile != NULL)
     {
-        g_MemoryManager.Free(oldFile);
+        g_MemoryTracker.Free(oldFile);
     }
     return 0;
 }
 
 int Ending::RegisterChain()
 {
-    Ending *ending = (Ending *)g_MemoryManager.Register(new Ending(), sizeof(Ending), "EndingInf");
+    Ending *ending = (Ending *)g_MemoryTracker.Register(new Ending(), sizeof(Ending), "EndingInf");
 
     ending->calcChain = g_Chain.CreateElem((ChainCallback)Ending::OnUpdate);
     ending->calcChain->arg = ending;
@@ -511,10 +511,10 @@ int Ending::DeletedCallback(Ending *ending)
     g_SpriteEngine->ReleaseAnm(0x18);
     g_App.scene = 6;
     g_SpriteEngine->ReleaseSurface(0);
-    g_MemoryManager.Free(ending->file);
+    g_MemoryTracker.Free(ending->file);
     g_Chain.Remove(ending->drawChain);
     ending->drawChain = NULL;
-    g_MemoryManager.Unregister(ending);
+    g_MemoryTracker.Unregister(ending);
     delete ending;
     ending = NULL;
     g_App.hideFps = 0;

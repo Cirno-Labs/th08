@@ -363,7 +363,7 @@ int MusicScreen::AddedCallback(MusicScreen *screen)
         return -1;
     }
     screen->tunes =
-        (MusicTune *)g_MemoryManager.Register(new MusicTune[0x20], sizeof(MusicTune) * 0x20, "MusicCmtInf");
+        (MusicTune *)g_MemoryTracker.Register(new MusicTune[0x20], sizeof(MusicTune) * 0x20, "MusicCmtInf");
     i = -1;
     while ((DWORD)(rp - data) < (DWORD)fileSize)
     {
@@ -466,13 +466,13 @@ done:
         screen->titles[i].pos.z = 0.0f;
         screen->titles[i].flags |= 0x1800;
     }
-    g_MemoryManager.Free(data);
+    g_MemoryTracker.Free(data);
     return 0;
 }
 
 int MusicScreen::DeletedCallback(MusicScreen *screen)
 {
-    g_MemoryManager.Unregister(screen->tunes);
+    g_MemoryTracker.Unregister(screen->tunes);
     delete screen->tunes;
     screen->tunes = NULL;
     g_SpriteEngine->ReleaseSurface(0);

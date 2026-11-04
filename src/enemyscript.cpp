@@ -90,12 +90,12 @@ int EnemyScripts::Load(char *path)
     this->file = (EnemyScriptHeader *)LoadFileData(path, NULL, 0);
     if (this->file == NULL)
     {
-        LogPrintf(&g_Log, "敵データの読み込みに失敗しました、データが壊れてるか失われています\r\n");
+        LogPrintf(&g_AppLog, "敵データの読み込みに失敗しました、データが壊れてるか失われています\r\n");
         return -1;
     }
     if (this->file->version != 0x800)
     {
-        LogPrintf(&g_Log, "敵データのバージョンが違います\r\n");
+        LogPrintf(&g_AppLog, "敵データのバージョンが違います\r\n");
         return -1;
     }
     for (i = 0; i < 16; i++)
@@ -114,7 +114,7 @@ void EnemyScripts::Release()
 {
     if (this->file != NULL)
     {
-        g_MemoryManager.Free(this->file);
+        g_MemoryTracker.Free(this->file);
     }
     this->file = NULL;
 }
@@ -199,10 +199,10 @@ loop:
             FLOAT_VAR(0) = FLOAT_ARG(1);
             break;
         case 8:
-            INT_VAR(0) = (g_Rng.GetRandomU16() & 1 ? 1 : -1) * INT_ARG(1);
+            INT_VAR(0) = (g_Random.GetRandomU16() & 1 ? 1 : -1) * INT_ARG(1);
             break;
         case 9:
-            FLOAT_VAR(0) = (g_Rng.GetRandomU16() & 1 ? 1.0f : -1.0f) * FLOAT_ARG(1);
+            FLOAT_VAR(0) = (g_Random.GetRandomU16() & 1 ? 1.0f : -1.0f) * FLOAT_ARG(1);
             break;
         case 10:
             INT_VAR(0) += INT_ARG(1);
@@ -735,7 +735,7 @@ loop:
             {
                 enemy->shootInterval +=
                     g_GameManager.RankLerp(enemy->shootInterval / 5, -enemy->shootInterval / 5);
-                enemy->shootTimer = g_Rng.GetRandomU32InRange(enemy->shootInterval);
+                enemy->shootTimer = g_Random.GetRandomU32InRange(enemy->shootInterval);
             }
             break;
         case 107:
@@ -1007,13 +1007,13 @@ loop:
             value = INT_ARG(0);
             if (enemy->threads[value] != NULL)
             {
-                g_MemoryManager.Free(enemy->threads[value]);
+                g_MemoryTracker.Free(enemy->threads[value]);
             }
             enemy->threads[value] = NULL;
             if (INT_ARG(1) >= 0)
             {
                 enemy->threads[value] =
-                    (EnemyScriptThread *)g_MemoryManager.Alloc(sizeof(EnemyScriptThread), "ECLInt");
+                    (EnemyScriptThread *)g_MemoryTracker.Alloc(sizeof(EnemyScriptThread), "ECLInt");
                 if (enemy->threads[value] != NULL)
                 {
                     memset(enemy->threads[value], 0, sizeof(EnemyScriptThread));
@@ -1053,8 +1053,8 @@ loop:
             for (i = 0; i < count; i++)
             {
                 pos = enemy->pos;
-                pos[0] += g_Rng.GetRandomF32ZeroToOne() * 128.0f - 64.0f;
-                pos[1] += g_Rng.GetRandomF32ZeroToOne() * 128.0f - 64.0f;
+                pos[0] += g_Random.GetRandomF32ZeroToOne() * 128.0f - 64.0f;
+                pos[1] += g_Random.GetRandomF32ZeroToOne() * 128.0f - 64.0f;
                 if (g_GameManager.GetPower() < 0x80)
                 {
                     g_ItemManager.SpawnItem(&pos, i == 0 ? 2 : 0, 0);
@@ -1076,8 +1076,8 @@ loop:
             for (i = 0; i < count; i++)
             {
                 pos = enemy->pos;
-                pos[0] += g_Rng.GetRandomF32ZeroToOne() * 128.0f - 64.0f;
-                pos[1] += g_Rng.GetRandomF32ZeroToOne() * 128.0f - 64.0f;
+                pos[0] += g_Random.GetRandomF32ZeroToOne() * 128.0f - 64.0f;
+                pos[1] += g_Random.GetRandomF32ZeroToOne() * 128.0f - 64.0f;
                 g_ItemManager.SpawnItem(&pos, 1, 0);
             }
             break;
@@ -1234,11 +1234,11 @@ loop:
         case 169:
             if ((g_Player.pos.x < enemy->pos.x && enemy->pos.x > 96.0f) || enemy->pos.x > 288.0f)
             {
-                FLOAT_VAR(0) = AddNormalizeAngle(g_Rng.GetRandomF32InRange(1.5707964f) + 2.3561945f, 0.0f);
+                FLOAT_VAR(0) = AddNormalizeAngle(g_Random.GetRandomF32InRange(1.5707964f) + 2.3561945f, 0.0f);
             }
             else
             {
-                FLOAT_VAR(0) = g_Rng.GetRandomF32InRange(1.5707964f) - 0.7853982f;
+                FLOAT_VAR(0) = g_Random.GetRandomF32InRange(1.5707964f) - 0.7853982f;
             }
             break;
         case 173:
@@ -1524,13 +1524,13 @@ int GetIntOperand(Enemy *enemy, int id)
     case 10039:
         return enemy->currentCtx->vars.ints2[3];
     case 10032:
-        return g_Rng.GetRandomU32() & 0x7fffffff;
+        return g_Random.GetRandomU32() & 0x7fffffff;
     case 10033:
-        return g_Rng.GetRandomF32ZeroToOne();
+        return g_Random.GetRandomF32ZeroToOne();
     case 10034:
-        return g_Rng.GetRandomU32();
+        return g_Random.GetRandomU32();
     case 10035:
-        return g_Rng.GetRandomF32MinusOneToOne();
+        return g_Random.GetRandomF32MinusOneToOne();
     case 10040:
         return g_GameManager.difficulty;
     case 10041:
@@ -1810,15 +1810,15 @@ float GetFloatOperand(Enemy *enemy, float id)
     case 10039:
         return enemy->currentCtx->vars.ints2[3];
     case 10032:
-        return g_Rng.GetRandomU32() & 0x7fffffff;
+        return g_Random.GetRandomU32() & 0x7fffffff;
     case 10033:
-        return g_Rng.GetRandomF32ZeroToOne();
+        return g_Random.GetRandomF32ZeroToOne();
     case 10034:
-        return (int)g_Rng.GetRandomU32();
+        return (int)g_Random.GetRandomU32();
     case 10035:
-        return g_Rng.GetRandomF32MinusOneToOne();
+        return g_Random.GetRandomF32MinusOneToOne();
     case 10082:
-        return g_Rng.GetRandomF32InRange(6.2831855f) - 3.1415927f;
+        return g_Random.GetRandomF32InRange(6.2831855f) - 3.1415927f;
     case 10040:
         return g_GameManager.difficulty;
     case 10041:
@@ -2296,7 +2296,7 @@ int ScriptReturn(Enemy *enemy, EnemyScriptInstr *instr)
         i = enemy->currentCtx->timedCallActive - 1;
         if (enemy->threads[i] != NULL)
         {
-            g_MemoryManager.Free(enemy->threads[i]);
+            g_MemoryTracker.Free(enemy->threads[i]);
         }
         enemy->threads[i] = NULL;
         enemy->callStack = enemy->savedCtx;
@@ -2353,11 +2353,11 @@ void ScriptMoveRandom(Enemy *enemy, EnemyScriptInstr *instr)
 
     if (g_Player.pos.x < enemy->pos.x)
     {
-        angle = AddNormalizeAngle(g_Rng.GetRandomF32InRange(1.5707964f) + 2.3561945f, 0.0f);
+        angle = AddNormalizeAngle(g_Random.GetRandomF32InRange(1.5707964f) + 2.3561945f, 0.0f);
     }
     else
     {
-        angle = g_Rng.GetRandomF32InRange(1.5707964f) - 0.7853982f;
+        angle = g_Random.GetRandomF32InRange(1.5707964f) - 0.7853982f;
     }
     if (enemy->pos[0] < enemy->lowerBound[0] + 96.0f)
     {
@@ -2419,18 +2419,18 @@ void ScriptMoveRandom2(Enemy *enemy, EnemyScriptInstr *instr)
     float bound;
     float angle;
 
-    if (g_Rng.GetRandomU32InRange(4))
+    if (g_Random.GetRandomU32InRange(4))
     {
         if (g_Player.pos.x < enemy->pos.x)
         {
             bound = g_Player.pos.x + 384.0f;
             if (enemy->pos.x - g_Player.pos.x < bound - enemy->pos.x)
             {
-                angle = AddNormalizeAngle(g_Rng.GetRandomF32InRange(1.5707964f) + 2.3561945f, 0.0f);
+                angle = AddNormalizeAngle(g_Random.GetRandomF32InRange(1.5707964f) + 2.3561945f, 0.0f);
             }
             else
             {
-                angle = AddNormalizeAngle(g_Rng.GetRandomF32InRange(1.5707964f) - 0.7853982f, 0.0f);
+                angle = AddNormalizeAngle(g_Random.GetRandomF32InRange(1.5707964f) - 0.7853982f, 0.0f);
             }
         }
         else
@@ -2438,17 +2438,17 @@ void ScriptMoveRandom2(Enemy *enemy, EnemyScriptInstr *instr)
             bound = g_Player.pos.x - 384.0f;
             if (g_Player.pos.x - enemy->pos.x < enemy->pos.x - bound)
             {
-                angle = g_Rng.GetRandomF32InRange(1.5707964f) - 0.7853982f;
+                angle = g_Random.GetRandomF32InRange(1.5707964f) - 0.7853982f;
             }
             else
             {
-                angle = AddNormalizeAngle(g_Rng.GetRandomF32InRange(1.5707964f) + 2.3561945f, 0.0f);
+                angle = AddNormalizeAngle(g_Random.GetRandomF32InRange(1.5707964f) + 2.3561945f, 0.0f);
             }
         }
     }
     else
     {
-        angle = g_Rng.GetRandomF32SignedInRange(3.1415927f);
+        angle = g_Random.GetRandomF32SignedInRange(3.1415927f);
     }
     if (enemy->pos[1] < enemy->lowerBound[1] + 48.0f && angle < 0.0f)
     {

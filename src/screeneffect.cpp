@@ -190,7 +190,7 @@ ScreenEffect *ScreenEffect::StartEffect(int type, int duration, int a, int b, in
 {
     ChainElem *calc = NULL;
     ChainElem *drawElem = NULL;
-    ScreenEffect *effect = (ScreenEffect *)g_MemoryManager.Register(new ScreenEffect, sizeof(ScreenEffect), "ScreenInf");
+    ScreenEffect *effect = (ScreenEffect *)g_MemoryTracker.Register(new ScreenEffect, sizeof(ScreenEffect), "ScreenInf");
 
     if (effect == NULL)
     {
@@ -360,7 +360,7 @@ int ScreenEffect::OnUpdateShake(ScreenEffect *effect)
     shake = effect->timer.AsFloat() * (effect->shakeTo - effect->shakeFrom);
     shake = shake / effect->duration;
     shake = effect->shakeFrom + shake;
-    switch (g_Rng.GetRandomU32InRange(3))
+    switch (g_Random.GetRandomU32InRange(3))
     {
     case 0:
         g_SpriteEngine->shakeX = 0.0f;
@@ -372,7 +372,7 @@ int ScreenEffect::OnUpdateShake(ScreenEffect *effect)
         g_SpriteEngine->shakeX = -shake;
         break;
     }
-    switch (g_Rng.GetRandomU32InRange(3))
+    switch (g_Random.GetRandomU32InRange(3))
     {
     case 0:
         g_SpriteEngine->shakeY = 0.0f;
@@ -422,7 +422,7 @@ int ScreenEffect::OnUpdateShakeRamp(ScreenEffect *effect)
         return 0;
     }
     shake = effect->duration * shake;
-    switch (g_Rng.GetRandomU32InRange(3))
+    switch (g_Random.GetRandomU32InRange(3))
     {
     case 0:
         g_SpriteEngine->shakeX = 0.0f;
@@ -434,7 +434,7 @@ int ScreenEffect::OnUpdateShakeRamp(ScreenEffect *effect)
         g_SpriteEngine->shakeX = -shake;
         break;
     }
-    switch (g_Rng.GetRandomU32InRange(3))
+    switch (g_Random.GetRandomU32InRange(3))
     {
     case 0:
         g_SpriteEngine->shakeY = 0.0f;
@@ -460,7 +460,7 @@ int ScreenEffect::DeletedCallback(ScreenEffect *effect)
     effect->calcElem->deletedCallback = NULL;
     g_Chain.Remove(effect->drawElem);
     effect->drawElem = NULL;
-    g_MemoryManager.Unregister(effect);
+    g_MemoryTracker.Unregister(effect);
     delete effect;
     effect = NULL;
     return 0;

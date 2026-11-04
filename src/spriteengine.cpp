@@ -13,9 +13,12 @@
 // The game's data, as the original defines it here. The DLL build uses
 // the original's copies instead.
 #ifdef TH08_EXE
-// /OPT:ICF folds the compiler's other 0.5f constants into it, as th07's.
-__declspec(selectany) extern const float g_Half = 0.5f;
-const D3DFORMAT g_TextureFormats[6] = {
+// MSVC emits these COMDATs in reverse declaration order. Keeping
+// g_Half first in the image also folds the compiler's 0.5f pool into it.
+__declspec(selectany) const int g_TextureFormatSizes[6] = {
+    4, 4, 2, 2, 3, 2,
+};
+__declspec(selectany) const D3DFORMAT g_TextureFormats[6] = {
     D3DFMT_UNKNOWN,
     D3DFMT_A8R8G8B8,
     D3DFMT_A1R5G5B5,
@@ -23,9 +26,7 @@ const D3DFORMAT g_TextureFormats[6] = {
     D3DFMT_R8G8B8,
     D3DFMT_A4R4G4B4,
 };
-const int g_TextureFormatSizes[7] = {
-    4, 4, 2, 2, 3, 2, 1869363770,
-};
+__declspec(selectany) extern const float g_Half = 0.5f;
 SpriteEngine *g_SpriteEngine;
 VertexTex1Xyzrwh g_TexQuad[4];
 VertexTex1DiffuseXyzrwh g_DiffuseQuad[4];
@@ -606,10 +607,10 @@ int SpriteEngine::Step(Sprite *vm)
             ANM_FLOAT_VAR(0) = fmodf(ANM_FLOAT_ARG(0), ANM_FLOAT_ARG(1));
             break;
         case 59:
-            ANM_INT_VAR(0) = g_Rng.GetRandomU32InRange(ANM_INT_ARG(1));
+            ANM_INT_VAR(0) = g_Random.GetRandomU32InRange(ANM_INT_ARG(1));
             break;
         case 60:
-            ANM_FLOAT_VAR(0) = g_Rng.GetRandomF32InRange(ANM_FLOAT_ARG(1));
+            ANM_FLOAT_VAR(0) = g_Random.GetRandomF32InRange(ANM_FLOAT_ARG(1));
             break;
         case 61:
             ANM_FLOAT_VAR(0) = sinf(ANM_FLOAT_ARG(1));
@@ -2132,7 +2133,7 @@ AnmLoaded *SpriteEngine::PreloadAnmFile(int slot, char *path)
     DebugPrint("::preloadAnim : %s\n", path);
     if (slot >= 0x19)
     {
-        LogError(&g_Log, "テクスチャ格納先が足りません\r\n");
+        LogError(&g_AppLog, "テクスチャ格納先が足りません\r\n");
         return NULL;
     }
     this->ReleaseAnm(slot);
@@ -2161,10 +2162,10 @@ AnmLoaded *SpriteEngine::PreloadAnmFile(int slot, char *path)
         header = (AnmFile *)((BYTE *)header + header->nextOffset);
     }
     anm->anmCount = anmCount;
-    anm->textures = (AnmTexture *)g_MemoryManager.Alloc(anmCount * sizeof(AnmTexture), GLOBAL_H);
+    anm->textures = (AnmTexture *)g_MemoryTracker.Alloc(anmCount * sizeof(AnmTexture), GLOBAL_H);
     memset(anm->textures, 0, anmCount * sizeof(AnmTexture));
-    anm->sprites = (SpriteData *)g_MemoryManager.Alloc(spriteCount * sizeof(SpriteData), GLOBAL_H);
-    anm->scripts = (void **)g_MemoryManager.Alloc(numScripts * sizeof(void *), GLOBAL_H);
+    anm->sprites = (SpriteData *)g_MemoryTracker.Alloc(spriteCount * sizeof(SpriteData), GLOBAL_H);
+    anm->scripts = (void **)g_MemoryTracker.Alloc(numScripts * sizeof(void *), GLOBAL_H);
     header = data;
     anmCount = 0;
     spriteCount = 0;
@@ -2215,13 +2216,13 @@ int SpriteEngine::PreloadAnmTexture(AnmLoaded *anm, int index, int *spriteIndex,
     highest = 0;
     if (file == NULL)
     {
-        LogError(&g_Log, "アニメが読み込めません。データが失われてるか壊れています\r\n");
+        LogError(&g_AppLog, "アニメが読み込めません。データが失われてるか壊れています\r\n");
         return -1;
     }
     anmHeader = file;
     if (anmHeader->version != 3)
     {
-        LogError(&g_Log, "アニメのバージョンが違います\r\n");
+        LogError(&g_AppLog, "アニメのバージョンが違います\r\n");
         return -1;
     }
     if (!anmHeader->hasImage)
@@ -2232,7 +2233,7 @@ int SpriteEngine::PreloadAnmTexture(AnmLoaded *anm, int index, int *spriteIndex,
             data = LoadFileData(name, &size, 1);
             if (data == NULL)
             {
-                LogError(&g_Log, "テクスチャ %s が読み込めません。データが失われてるか壊れています\r\n", name);
+                LogError(&g_AppLog, "テクスチャ %s が読み込めません。データが失われてるか壊れています\r\n", name);
                 return -1;
             }
             anm->textures[index].size = size;
@@ -2304,13 +2305,13 @@ int SpriteEngine::LoadAnmSprites(AnmLoaded *anm, int index, int spriteOffset, in
     highest = 0;
     if (file == NULL)
     {
-        LogError(&g_Log, "アニメが読み込めません。データが失われてるか壊れています\r\n");
+        LogError(&g_AppLog, "アニメが読み込めません。データが失われてるか壊れています\r\n");
         return -1;
     }
     anmHeader = file;
     if (anmHeader->version != 3)
     {
-        LogError(&g_Log, "アニメのバージョンが違います\r\n");
+        LogError(&g_AppLog, "アニメのバージョンが違います\r\n");
         return -1;
     }
     if (!anmHeader->hasImage)
@@ -2322,7 +2323,7 @@ int SpriteEngine::LoadAnmSprites(AnmLoaded *anm, int index, int spriteOffset, in
         }
         else if (this->LoadTexture(&anm->textures[index], anmHeader->format, anmHeader->colorKey) != 0)
         {
-            LogError(&g_Log, "テクスチャ %s が作成できません。データが失われてるか壊れています\r\n", name);
+            LogError(&g_AppLog, "テクスチャ %s が作成できません。データが失われてるか壊れています\r\n", name);
             return -1;
         }
     }
@@ -2330,7 +2331,7 @@ int SpriteEngine::LoadAnmSprites(AnmLoaded *anm, int index, int spriteOffset, in
                                           (AnmImage *)((BYTE *)anmHeader + anmHeader->imageOffset),
                                           anmHeader->format) != 0)
     {
-        LogError(&g_Log, "テクスチャが読み込めません。データが失われてるか壊れています\r\n");
+        LogError(&g_AppLog, "テクスチャが読み込めません。データが失われてるか壊れています\r\n");
         return -1;
     }
     anm->textures[index].texture->SetPriority(anmHeader->priority);
@@ -2392,10 +2393,10 @@ void SpriteEngine::ReleaseAnm(int slot)
         {
             this->ReleaseTexture(&this->anms[slot].textures[i]);
         }
-        g_MemoryManager.Free(this->anms[slot].textures);
-        g_MemoryManager.Free(this->anms[slot].sprites);
-        g_MemoryManager.Free(this->anms[slot].scripts);
-        g_MemoryManager.Free(this->anms[slot].file);
+        g_MemoryTracker.Free(this->anms[slot].textures);
+        g_MemoryTracker.Free(this->anms[slot].sprites);
+        g_MemoryTracker.Free(this->anms[slot].scripts);
+        g_MemoryTracker.Free(this->anms[slot].file);
         memset(&this->anms[slot], 0, sizeof(AnmLoaded));
     }
 }
@@ -2409,7 +2410,7 @@ void SpriteEngine::ReleaseTexture(AnmTexture *tex)
     }
     if (tex->data != NULL)
     {
-        g_MemoryManager.Free(tex->data);
+        g_MemoryTracker.Free(tex->data);
     }
 }
 
@@ -2519,7 +2520,7 @@ int SpriteEngine::LoadSurface(int surface, char *path)
         data = LoadFileData(path, &size, 0);
         if (data == NULL)
         {
-            LogError(&g_Log, "%sが読み込めないです。\r\n", path);
+            LogError(&g_AppLog, "%sが読み込めないです。\r\n", path);
             return -1;
         }
     }
@@ -2568,7 +2569,7 @@ int SpriteEngine::LoadSurface(int surface, char *path)
         srcSurface->Release();
         srcSurface = NULL;
     }
-    g_MemoryManager.Free(data);
+    g_MemoryTracker.Free(data);
     return 0;
 
 fail:
@@ -2577,7 +2578,7 @@ fail:
         srcSurface->Release();
         srcSurface = NULL;
     }
-    g_MemoryManager.Free(data);
+    g_MemoryTracker.Free(data);
     return -1;
 }
 
@@ -2593,7 +2594,7 @@ int SpriteEngine::PreloadSurface(int surface, char *path)
     data = LoadFileData(path, &size, 0);
     if (data == NULL)
     {
-        LogError(&g_Log, "%sが読み込めないです。\r\n", path);
+        LogError(&g_AppLog, "%sが読み込めないです。\r\n", path);
         return -1;
     }
     this->surfaceFiles[surface] = data;
@@ -2615,7 +2616,7 @@ void SpriteEngine::ReleaseSurface(int surface)
     }
     if (this->surfaceFiles[surface] != NULL)
     {
-        g_MemoryManager.Free(this->surfaceFiles[surface]);
+        g_MemoryTracker.Free(this->surfaceFiles[surface]);
     }
     this->surfaceFiles[surface] = NULL;
 }

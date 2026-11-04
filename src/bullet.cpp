@@ -20,7 +20,7 @@ int g_BulletColorOffsets16[16] = {
 int g_BulletColorOffsets32[8] = {
     0, 1, 1, 2, 2, 3, 4, 0,
 };
-const int g_BulletTypeScripts[21][5] = {
+__declspec(selectany) const int g_BulletTypeScripts[21][5] = {
     {0, 18, 19, 20, 15},
     {1, 21, 22, 23, 16},
     {2, 21, 22, 23, 16},
@@ -170,16 +170,16 @@ int BulletManager::SpawnBullet(BulletShooter *shooter, int col, int row, float a
         angle += shooter->angle1;
         break;
     case 6:
-        angle = g_Rng.GetRandomF32InRange(shooter->angle1 - shooter->angle2) + shooter->angle2;
+        angle = g_Random.GetRandomF32InRange(shooter->angle1 - shooter->angle2) + shooter->angle2;
         break;
     case 7:
-        v = g_Rng.GetRandomF32InRange(shooter->speed1 - shooter->speed2) + shooter->speed2;
+        v = g_Random.GetRandomF32InRange(shooter->speed1 - shooter->speed2) + shooter->speed2;
         angle += col * 6.2831855f / shooter->count1;
         angle += row * shooter->angle2 + shooter->angle1;
         break;
     case 8:
-        angle = g_Rng.GetRandomF32InRange(shooter->angle1 - shooter->angle2) + shooter->angle2;
-        v = g_Rng.GetRandomF32InRange(shooter->speed1 - shooter->speed2) + shooter->speed2;
+        angle = g_Random.GetRandomF32InRange(shooter->angle1 - shooter->angle2) + shooter->angle2;
+        v = g_Random.GetRandomF32InRange(shooter->speed1 - shooter->speed2) + shooter->speed2;
         break;
     }
     cur->state = 1;

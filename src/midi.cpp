@@ -195,7 +195,7 @@ int MidiPlayer::LoadFile(int slot, char *path)
     if (this->fileData[slot] == NULL)
     {
         // "\rv\r\n" in the original.
-        LogPrintf(&g_Log, "error : MIDI File が読み込めない %s \rv\r\n", path);
+        LogPrintf(&g_AppLog, "error : MIDI File が読み込めない %s \rv\r\n", path);
         return -1;
     }
     return 0;
@@ -203,7 +203,7 @@ int MidiPlayer::LoadFile(int slot, char *path)
 
 void MidiPlayer::UnloadFile(int slot)
 {
-    g_MemoryManager.Free(this->fileData[slot]);
+    g_MemoryTracker.Free(this->fileData[slot]);
     this->fileData[slot] = NULL;
 }
 
@@ -213,9 +213,9 @@ void MidiPlayer::FreeTracks()
 
     for (i = 0; i < this->trackCount; i++)
     {
-        g_MemoryManager.Free(this->tracks[i].data);
+        g_MemoryTracker.Free(this->tracks[i].data);
     }
-    g_MemoryManager.Free(this->tracks);
+    g_MemoryTracker.Free(this->tracks);
     this->tracks = NULL;
     this->trackCount = 0;
 }
@@ -247,7 +247,7 @@ int MidiPlayer::ParseFile(int slot)
     this->format = SwapBytes16(*(WORD *)header);
     this->division = SwapBytes16(*(WORD *)(header + 4));
     this->trackCount = SwapBytes16(*(WORD *)(header + 2));
-    this->tracks = (MidiTrack *)g_MemoryManager.Alloc(this->trackCount * sizeof(MidiTrack), "midi");
+    this->tracks = (MidiTrack *)g_MemoryTracker.Alloc(this->trackCount * sizeof(MidiTrack), "midi");
     memset(this->tracks, 0, this->trackCount * sizeof(MidiTrack));
     for (i = 0; i < this->trackCount; i++)
     {
@@ -255,7 +255,7 @@ int MidiPlayer::ParseFile(int slot)
         cursor += sizeof(MidiChunk);
         trackLen = SwapBytes32(((MidiChunk *)track)->length);
         this->tracks[i].length = trackLen;
-        this->tracks[i].data = (BYTE *)g_MemoryManager.Alloc(trackLen, "midi");
+        this->tracks[i].data = (BYTE *)g_MemoryTracker.Alloc(trackLen, "midi");
         this->tracks[i].active = 1;
         memcpy(this->tracks[i].data, cursor, trackLen);
         cursor += trackLen;
@@ -374,8 +374,8 @@ found:
     {
         DebugPrint("error :\r\n");
     }
-    g_MemoryManager.Free(header->lpData);
-    g_MemoryManager.Free(header);
+    g_MemoryTracker.Free(header->lpData);
+    g_MemoryTracker.Free(header);
     return 0;
 }
 
@@ -468,11 +468,11 @@ void MidiPlayer::ProcessEvent(MidiTrack *track)
             {
                 this->ReleaseHeader(this->headers[this->nextHeader]);
             }
-            this->headers[this->nextHeader] = (LPMIDIHDR)g_MemoryManager.Alloc(sizeof(MIDIHDR), "midiHDR");
+            this->headers[this->nextHeader] = (LPMIDIHDR)g_MemoryTracker.Alloc(sizeof(MIDIHDR), "midiHDR");
             header = this->headers[this->nextHeader];
             numBytes = ReadVarLen(&track->cursor);
             memset(header, 0, sizeof(MIDIHDR));
-            header->lpData = (LPSTR)g_MemoryManager.Alloc(numBytes + 1, "midiHDR->lpData");
+            header->lpData = (LPSTR)g_MemoryTracker.Alloc(numBytes + 1, "midiHDR->lpData");
             header->lpData[0] = 0xf0;
             header->dwFlags = 0;
             header->dwBufferLength = numBytes + 1;
@@ -483,8 +483,8 @@ void MidiPlayer::ProcessEvent(MidiTrack *track)
             }
             if (this->device.SendLongMsg(header) != 0)
             {
-                g_MemoryManager.Free(header->lpData);
-                g_MemoryManager.Free(header);
+                g_MemoryTracker.Free(header->lpData);
+                g_MemoryTracker.Free(header);
                 this->headers[this->nextHeader] = NULL;
             }
             this->nextHeader++;
@@ -664,9 +664,10 @@ void MidiPlayer::SendVolume(int offset)
 void MidiTimer::OnTimer()
 {
 #ifdef TH08_EXE
-    static LARGE_INTEGER g_MidiTimerLastCounter;
+    // The original's counter at 0x17ce744 is only 4-aligned.
+    static DWORD g_MidiTimerLastCounter[2];
 #endif // TH08_EXE
-    QueryPerformanceCounter(&g_MidiTimerLastCounter);
+    QueryPerformanceCounter((LARGE_INTEGER *)&g_MidiTimerLastCounter);
 }
 
 void MidiTimer::StartTimer()

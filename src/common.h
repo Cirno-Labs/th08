@@ -74,4 +74,4 @@ public:
     void *blocks[0x1000];
     int freeBlocksOnExit;
 };
-extern MemoryManager g_MemoryManager;
+extern MemoryManager g_MemoryTracker;
