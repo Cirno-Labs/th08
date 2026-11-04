@@ -874,6 +874,30 @@ int Stage::RegisterChain(int stage)
     return 0;
 }
 
+#ifdef TH08_EXE
+// Unused: the original's object mentions sqrt and tan before malloc and
+// free, as its MemoryManager copies come late (before ChecksumMismatch).
+// The C runtime's members load, and are laid out, in that order: sqrt,
+// tan, malloc, free. One function each, as a function's references come
+// out in hash order; free follows from DeletedCallback's Free.
+#pragma code_seg(".text$u")
+double UnusedSqrt(double x)
+{
+    return sqrt(x);
+}
+
+double UnusedTan(double x)
+{
+    return tan(x);
+}
+
+void *UnusedAlloc(size_t size)
+{
+    return malloc(size);
+}
+#pragma code_seg()
+#endif // TH08_EXE
+
 int Stage::DeletedCallback(Stage *stage)
 {
     if (!IsRestarting())

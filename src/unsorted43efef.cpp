@@ -22,6 +22,19 @@ FormatInfo g_FormatInfos[7] = {
 IDirect3DSurface8 *g_TextSurface;
 #endif // TH08_EXE
 
+#ifdef TH08_EXE
+// Unused: the original's object also made a font before GdiSurface's
+// first GDI call, from code /OPT:REF dropped: the hint/name table loads
+// CreateFontA first of GDI32's, which decides GDI32's IAT order.
+#pragma code_seg(".text$u")
+HFONT UnusedCreateFont(int height)
+{
+    return CreateFontA(height, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, SHIFTJIS_CHARSET, OUT_DEFAULT_PRECIS,
+                       CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, FIXED_PITCH | FF_ROMAN, NULL);
+}
+#pragma code_seg()
+#endif // TH08_EXE
+
 GdiSurface::GdiSurface()
 {
     this->format = -1;
@@ -305,6 +318,20 @@ void ReleaseTextSurface()
         g_TextSurface = NULL;
     }
 }
+
+#ifdef TH08_EXE
+// Unused: the original's object also set the DC's background mode and
+// text color before its first TextOutA, from code /OPT:REF dropped, as
+// th06's does. A function's references come out in reverse order, so
+// SetTextColor loads first.
+#pragma code_seg(".text$u")
+void UnusedSetTextStyle(HDC hdc, COLORREF color)
+{
+    SetBkMode(hdc, TRANSPARENT);
+    SetTextColor(hdc, color);
+}
+#pragma code_seg()
+#endif // TH08_EXE
 
 void RenderTextToTextureBold(int x, int y, int width, int unused, int fontHeight, int destHeight, COLORREF textColor,
                              COLORREF shadowColor, char *text, IDirect3DTexture8 *texture)

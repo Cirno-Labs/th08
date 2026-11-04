@@ -616,6 +616,23 @@ int WriteToFile(char *path, void *data, int size)
     return 0;
 }
 
+#ifdef TH08_EXE
+// Unused: the original's object also asked for the Windows version, from
+// code /OPT:REF discarded. The hint/name table shows GetVersionExA loaded
+// between GetLastError and EnterCriticalSection, which is where this
+// object's references put it.
+#pragma code_seg(".text$u")
+DWORD UnusedGetPlatform()
+{
+    OSVERSIONINFOA info;
+
+    info.dwOSVersionInfoSize = sizeof(info);
+    GetVersionExA(&info);
+    return info.dwPlatformId;
+}
+#pragma code_seg()
+#endif // TH08_EXE
+
 int LogPrintf(Log *log, const char *fmt, ...)
 {
     int len2;

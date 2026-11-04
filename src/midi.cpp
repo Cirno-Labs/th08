@@ -12,6 +12,18 @@ MidiDevice::~MidiDevice()
     this->Close();
 }
 
+#ifdef TH08_EXE
+// Unused: the original's object also opened a MIDI device before Close,
+// from code /OPT:REF dropped: the hint/name table loads midiOutOpen
+// before midiOutClose and midiOutReset, which decides WINMM's IAT order.
+#pragma code_seg(".text$u")
+MMRESULT UnusedOpenMidi(HMIDIOUT *handle, UINT deviceId)
+{
+    return midiOutOpen(handle, deviceId, 0, 0, CALLBACK_NULL);
+}
+#pragma code_seg()
+#endif // TH08_EXE
+
 int MidiDevice::Close()
 {
     if (this->handle == 0)

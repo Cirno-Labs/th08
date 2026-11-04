@@ -520,3 +520,16 @@ int Ending::DeletedCallback(Ending *ending)
     g_App.hideFps = 0;
     return 0;
 }
+
+#ifdef TH08_EXE
+// Unused: the original rethrew from code /OPT:REF discarded. The linker
+// still loaded libcmt's throw.obj, between exsup and mkdir, and with it
+// RaiseException and the C++ unhandled exception filter (unhandld.obj),
+// which the hint/name table and the C runtime's layout show early.
+#pragma code_seg(".text$u")
+void UnusedThrow()
+{
+    throw;
+}
+#pragma code_seg()
+#endif // TH08_EXE
