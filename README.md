@@ -26,10 +26,10 @@ The standalone executable (`just exe`) is built from this source alone,
 boots and plays (with `FEAT=orig_checksum`, see below). It is not yet
 identical to the original as a file, but it has the original's size,
 section layout and optional header fields except the entry point:
-`just compare-exe` finds 88.7% of the file identical (`.text` 87.1%,
-`.rdata` 99.6%, `.data` 99.2%, `.data1` and resources 100%). Every game
+`just compare-exe` finds 98.6% of the file identical (`.text` 98.5%,
+`.rdata` 99.9%, `.data` 99.9%, `.data1` and resources 100%). Every game
 function matches with addresses masked, all 1116 sit at their original
-address and 1083 are identical as they are. All 136 named writable
+address and 1115 are identical as they are. All 136 named writable
 globals also sit at their original addresses, including function
 statics absent from the public link map (`python3 scripts/check_exe_layout.py`).
 The C runtime's objects load, and so lie, in the original's order, and
@@ -42,9 +42,9 @@ objects mentioned some only in code `/OPT:REF` dropped; exe-only
 The build reconstructs game-function and readonly-data placement with the
 linker's `/ORDER` option, generated from symbols.csv, exe_constants.csv
 and the compiled objects; this does
-not establish that the original build used `/ORDER`. The C runtime
-lies one byte late, the D3DX8 SSE objects' placement and the Rich
-header still differ. The original's precompiled-header layout remains unknown.
+not establish that the original build used `/ORDER`. The C runtime lies
+at its original address too. Which copies of D3DX8's SSE functions
+/OPT:ICF keeps and the Rich header still differ. The original's precompiled-header layout remains unknown.
 
 `config/exe_constants.csv` records 1143 compiler constant/string COMDAT
 addresses recovered through the original operands and our object

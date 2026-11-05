@@ -466,3 +466,15 @@ void RenderTextToTexture(int x, int y, int width, int unused, int fontHeight, in
         dstSurface = NULL;
     }
 }
+
+#ifdef TH08_EXE
+// Unused: the original's object also moved memory with memmove, from code
+// /OPT:REF dropped, as th06's does. libcmt's memmove.obj then loads, and
+// lies, right after strlen.obj.
+#pragma code_seg(".text$u")
+void UnusedMoveBits(void *dst, void *src, size_t size)
+{
+    memmove(dst, src, size);
+}
+#pragma code_seg()
+#endif // TH08_EXE
