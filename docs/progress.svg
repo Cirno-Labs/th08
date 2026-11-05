@@ -76,11 +76,10 @@
 <text class="todo" style="font-size: 12px; " text-anchor="start" x="483" y="75"><tspan class="named">98 KB</tspan> · 300/300 globals placed · 11 unmapped</text>
 <text text-anchor="start" x="0" y="92.50">Executable file</text>
 <g transform="translate(130 86.50)">
-<rect width="275.80" height="12" x="0" y="0" class="named"><title>834 KB · 99.21%</title></rect>
-<rect width="2.20" height="12" x="275.80" y="0" class="todo"><title>7 KB · 0.79%</title></rect>
+<rect width="278" height="12" x="0" y="0" class="named"><title>841 KB · 100%</title></rect>
 </g>
-<text text-anchor="end" x="468" y="92.50">99.2%</text>
-<text class="todo" style="font-size: 12px; " text-anchor="start" x="483" y="92"><tspan class="named">834 KB</tspan> · <tspan class="todo">7 KB</tspan></text>
+<text text-anchor="end" x="468" y="92.50">100.0%</text>
+<text class="todo" style="font-size: 12px; " text-anchor="start" x="483" y="92"><tspan class="named">841 KB</tspan></text>
 </g>
 <g transform="translate(0 145)">
 <text text-anchor="start" x="0" y="7.50">By function order</text>
