@@ -1,5 +1,6 @@
-// The file from about 0x43d0c0: input, file I/O, the log, the random
-// number generator and math helpers, as in th07's unsorted.cpp.
+// The file from 0x43d0c0 to 0x43ea00: input and file I/O, and the
+// globals of th07's unsorted.cpp, including the log's and the random
+// number generator's (log.cpp, rng.cpp, utils.cpp and app.cpp follow).
 
 #include <math.h>
 #include <stdio.h>
@@ -633,109 +634,8 @@ DWORD UnusedGetPlatform()
 #pragma code_seg()
 #endif // TH08_EXE
 
-int LogPrintf(Log *log, const char *fmt, ...)
-{
-    int len2;
-    char buf[0x2000];
-    va_list args;
-
-    va_start(args, fmt);
-    g_App.EnterCriticalSection(3);
-    vsprintf(buf, fmt, args);
-    len2 = strlen(buf);
-    if (log->cursor + len2 < log->buffer + sizeof(log->buffer) - 1)
-    {
-        strcpy(log->cursor, buf);
-        log->cursor += len2;
-        *log->cursor = '\0';
-    }
-    va_end(args);
-    g_App.LeaveCriticalSection(3);
-    return (int)fmt;
-}
-
-int LogError(Log *log, const char *fmt, ...)
-{
-    int len2;
-    char buf[0x200];
-    va_list args;
-
-    va_start(args, fmt);
-    g_App.EnterCriticalSection(3);
-    vsprintf(buf, fmt, args);
-    len2 = strlen(buf);
-    if (log->cursor + len2 < log->buffer + sizeof(log->buffer) - 1)
-    {
-        strcpy(log->cursor, buf);
-        log->cursor += len2;
-        *log->cursor = '\0';
-    }
-    va_end(args);
-    log->hasError = 1;
-    g_App.LeaveCriticalSection(3);
-    return (int)fmt;
-}
-
-WORD Rng::GetRandomU16()
-{
-    WORD a;
-
-    a = (this->seed ^ 0x9630) - 0x6553;
-    this->seed = (((a & 0xc000) >> 14) + a * 4) & 0xffff;
-    this->generated++;
-    return this->seed;
-}
-
-DWORD Rng::GetRandomU32()
-{
-    return (this->GetRandomU16() << 16) | this->GetRandomU16();
-}
-
-float Rng::GetRandomF32ZeroToOne()
-{
-    return this->GetRandomU32() / 4294967296.0f;
-}
-
-float Rng::GetRandomF32MinusOneToOne()
-{
-    return this->GetRandomU32() / 2147483648.0f - 1.0f;
-}
-
-float AddNormalizeAngle(float a, float b)
-{
-    int i = 0;
-
-    a += b;
-    while (a > 3.1415927f)
-    {
-        a -= 6.2831855f;
-        if (i++ > 16)
-        {
-            break;
-        }
-    }
-    while (a < -3.1415927f)
-    {
-        a += 6.2831855f;
-        if (i++ > 16)
-        {
-            break;
-        }
-    }
-    return a;
-}
-
-void Rotate2D(D3DXVECTOR3 *out, D3DXVECTOR3 *in, float angle)
-{
-    float s = sinf(angle);
-    float c = cosf(angle);
-
-    out->x = c * in->x - s * in->y;
-    out->y = c * in->y + s * in->x;
-}
-
-// The constructed globals come after the functions: the original's
-// copies of the constructors and destructors inline here follow them.
+// The constructed globals come after the functions; the constructors and
+// destructors of the memory manager and the log are app.cpp's.
 #ifdef TH08_EXE
 Chain g_Chain;
 MemoryManager g_MemoryTracker;
@@ -743,51 +643,3 @@ DatArchive g_GameArchive;
 Log g_AppLog;
 #endif // TH08_EXE
 
-EXE_INLINE MemoryManager::MemoryManager()
-{
-    this->freeBlocksOnExit = 0;
-}
-
-EXE_INLINE MemoryManager::~MemoryManager()
-{
-    int i;
-
-    if (this->freeBlocksOnExit != 0)
-    {
-        for (i = 0; i < 0x1000; i++)
-        {
-            if (this->blocks[i] != NULL)
-            {
-                free(this->blocks[i]);
-            }
-        }
-    }
-}
-
-EXE_INLINE Log::Log()
-{
-    this->cursor = this->buffer;
-    *this->cursor = '\0';
-    this->hasError = 0;
-}
-
-EXE_INLINE Log::~Log()
-{
-}
-
-int App::GetShootFocuses()
-{
-    return this->shootFocuses;
-}
-
-void App::EnterCriticalSection(int idx)
-{
-    ::EnterCriticalSection(&this->criticalSections[idx]);
-    this->criticalSectionDepths[idx]++;
-}
-
-void App::LeaveCriticalSection(int idx)
-{
-    ::LeaveCriticalSection(&this->criticalSections[idx]);
-    this->criticalSectionDepths[idx]--;
-}
