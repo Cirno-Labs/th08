@@ -867,6 +867,19 @@ int ChecksumExecutable()
     return -1;
 }
 
+#ifdef TH08_EXE
+// Unused: the original's object also named the shell link's class before
+// ResolveShortcut, from code /OPT:REF dropped. uuid.lib's shguids.obj
+// then loads before objidl_i.obj, and IID_IShellLinkA and CLSID_ShellLink
+// lie in front of IID_IPersistFile as in the original.
+#pragma code_seg(".text$u")
+const CLSID *UnusedShellLinkClass()
+{
+    return &CLSID_ShellLink;
+}
+#pragma code_seg()
+#endif // TH08_EXE
+
 int ResolveShortcut(char *path, char *out, int size)
 {
     HRESULT res;
