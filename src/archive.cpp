@@ -7,11 +7,6 @@
 // The game's data, as the original defines it here. The DLL build uses
 // the original's copies instead.
 #ifdef TH08_EXE
-char *g_FileModes[3] = {
-    "r",
-    "w",
-    "a",
-};
 __declspec(selectany) const DWORD g_SeekOrigins[3] = {
     0, 1, 2,
 };
