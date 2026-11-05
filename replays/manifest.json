@@ -1,0 +1,605 @@
+{
+ "source": "https://maribelhearn.com/wr",
+ "fetched": "2026-11-05",
+ "replays": [
+  {
+   "file": "th8_udEaBT.rpy",
+   "shot": "Border Team",
+   "difficulty": "Easy",
+   "score": 2637629490,
+   "player": "coco",
+   "date": "22/01/2012",
+   "url": "https://maribelhearn.com/media/replays/th8_udEaBT.rpy",
+   "sha1": "44be2dc95c7c0e376f35f27c194ddeba373f4998"
+  },
+  {
+   "file": "th8_udNoBT.rpy",
+   "shot": "Border Team",
+   "difficulty": "Normal",
+   "score": 3893073500,
+   "player": "coco",
+   "date": "19/04/2012",
+   "url": "https://maribelhearn.com/media/replays/2012-04-19/th8_udNoBT.rpy",
+   "sha1": "4dbc9c76b61caf9156835b96ad7cdb8c9df203bb"
+  },
+  {
+   "file": "th8_udHaBT.rpy",
+   "shot": "Border Team",
+   "difficulty": "Hard",
+   "score": 4513722630,
+   "player": "NALIS",
+   "date": "12/07/2013",
+   "url": "https://maribelhearn.com/media/replays/4513722630/th8_udHaBT.rpy",
+   "sha1": "14b9fb30d47c8a6b8fb54ec7c060dbf1b9e0fbfb"
+  },
+  {
+   "file": "th8_udLuBT.rpy",
+   "shot": "Border Team",
+   "difficulty": "Lunatic",
+   "score": 6137057200,
+   "player": "\u7eff\u7eff\u53ef\u67da",
+   "date": "08/04/2021",
+   "url": "https://maribelhearn.com/media/replays/6137057200/th8_udLuBT.rpy",
+   "sha1": "15044e1fdebd002ae4b979647ceba48718b47f94"
+  },
+  {
+   "file": "th8_udExBT.rpy",
+   "shot": "Border Team",
+   "difficulty": "Extra",
+   "score": 2957550150,
+   "player": "ASL",
+   "date": "25/11/2013",
+   "url": "https://maribelhearn.com/media/replays/2013-11-25/th8_udExBT.rpy",
+   "sha1": "cee38be476018f6c0c39e16c410acd1b685982ad"
+  },
+  {
+   "file": "th8_udEaMT.rpy",
+   "shot": "Magic Team",
+   "difficulty": "Easy",
+   "score": 3084533670,
+   "player": "coco",
+   "date": "15/12/2014",
+   "url": "https://maribelhearn.com/media/replays/th8_udEaMT.rpy",
+   "sha1": "c831872ee2300fb5d6ff86e41028120ec546347b"
+  },
+  {
+   "file": "th8_udNoMT.rpy",
+   "shot": "Magic Team",
+   "difficulty": "Normal",
+   "score": 3902217860,
+   "player": "NALIS",
+   "date": "19/01/2014",
+   "url": "https://maribelhearn.com/media/replays/3902217860/th8_udNoMT.rpy",
+   "sha1": "5e11006d787f886692213684bcb0adfa0c30484c"
+  },
+  {
+   "file": "th8_udHaMT.rpy",
+   "shot": "Magic Team",
+   "difficulty": "Hard",
+   "score": 4737213890,
+   "player": "YASU",
+   "date": "20/11/2010",
+   "url": "https://maribelhearn.com/media/replays/th8_udHaMT.rpy",
+   "sha1": "69ff7d38a0bbd669dbb528c55fb4f89fedfac713"
+  },
+  {
+   "file": "th8_udLuMT.rpy",
+   "shot": "Magic Team",
+   "difficulty": "Lunatic",
+   "score": 6168365790,
+   "player": "Alan",
+   "date": "09/06/2014",
+   "url": "https://maribelhearn.com/media/replays/th8_udLuMT.rpy",
+   "sha1": "d9e50e62d122ca3ce8fd784a99bcfcfba3a741ef"
+  },
+  {
+   "file": "th8_udExMT.rpy",
+   "shot": "Magic Team",
+   "difficulty": "Extra",
+   "score": 3021639920,
+   "player": "ASL",
+   "date": "14/06/2009",
+   "url": "https://maribelhearn.com/media/replays/th8_udExMT.rpy",
+   "sha1": "4ce76d068835f29d0826ff29e7f49ace740118ea"
+  },
+  {
+   "file": "th8_udEaST.rpy",
+   "shot": "Scarlet Team",
+   "difficulty": "Easy",
+   "score": 3012091640,
+   "player": "coco",
+   "date": "04/06/2014",
+   "url": "https://maribelhearn.com/media/replays/th8_udEaST.rpy",
+   "sha1": "47dabc74b051965c107e1808ad34dcc958d090b4"
+  },
+  {
+   "file": "th8_udNoST.rpy",
+   "shot": "Scarlet Team",
+   "difficulty": "Normal",
+   "score": 4007899720,
+   "player": "LET",
+   "date": "19/11/2006",
+   "url": "https://maribelhearn.com/media/replays/2006-11-19/th8_udNoST.rpy",
+   "sha1": "4d012521985fb7ef412efcef91f4b59002c184b1"
+  },
+  {
+   "file": "th8_udHaST.rpy",
+   "shot": "Scarlet Team",
+   "difficulty": "Hard",
+   "score": 4790041420,
+   "player": "YASU",
+   "date": "23/12/2009",
+   "url": "https://maribelhearn.com/media/replays/th8_udHaST.rpy",
+   "sha1": "c85b37fbecb40a1a87624fbcf0174f3bf1587209"
+  },
+  {
+   "file": "th8_udLuST.rpy",
+   "shot": "Scarlet Team",
+   "difficulty": "Lunatic",
+   "score": 6755587090,
+   "player": "Levea",
+   "date": "13/07/2025",
+   "url": "https://maribelhearn.com/media/replays/6755587090/th8_udLuST.rpy",
+   "sha1": "beadf2fc1cff896f303b3eb76599773a34360ee1"
+  },
+  {
+   "file": "th8_udExST.rpy",
+   "shot": "Scarlet Team",
+   "difficulty": "Extra",
+   "score": 3000284220,
+   "player": "ASL",
+   "date": "13/03/2012",
+   "url": "https://maribelhearn.com/media/replays/th8_udExST.rpy",
+   "sha1": "57c1b8b0329166dfb2c14cfab9299569621674e3"
+  },
+  {
+   "file": "th8_udEaGT.rpy",
+   "shot": "Ghost Team",
+   "difficulty": "Easy",
+   "score": 2764571140,
+   "player": "coco",
+   "date": "22/04/2015",
+   "url": "https://maribelhearn.com/media/replays/th8_udEaGT.rpy",
+   "sha1": "31e9e4133684057cbd8828cadf4ba855026fa420"
+  },
+  {
+   "file": "th8_udNoGT.rpy",
+   "shot": "Ghost Team",
+   "difficulty": "Normal",
+   "score": 3907285270,
+   "player": "LET",
+   "date": "25/06/2009",
+   "url": "https://maribelhearn.com/media/replays/th8_udNoGT.rpy",
+   "sha1": "5f71a7371ece929fad4cf1f14451d9a6acc30dc6"
+  },
+  {
+   "file": "th8_udHaGT.rpy",
+   "shot": "Ghost Team",
+   "difficulty": "Hard",
+   "score": 4740779550,
+   "player": "YASU",
+   "date": "13/10/2012",
+   "url": "https://maribelhearn.com/media/replays/th8_udHaGT.rpy",
+   "sha1": "c01687a9aa2f40f3a6c3a97cf0c7ad6421eadf48"
+  },
+  {
+   "file": "th8_udLuGT.rpy",
+   "shot": "Ghost Team",
+   "difficulty": "Lunatic",
+   "score": 6711233720,
+   "player": "Levea",
+   "date": "02/02/2023",
+   "url": "https://maribelhearn.com/media/replays/th8_udLuGT.rpy",
+   "sha1": "9e66525793a8e28e1e3662f902b619b65993b818"
+  },
+  {
+   "file": "th8_udExGT.rpy",
+   "shot": "Ghost Team",
+   "difficulty": "Extra",
+   "score": 3024418500,
+   "player": "Levea",
+   "date": "28/03/2023",
+   "url": "https://maribelhearn.com/media/replays/3024418500/th8_udExGT.rpy",
+   "sha1": "04a842d5ae508b463119481158a8226722a598e3"
+  },
+  {
+   "file": "th8_udEaRe.rpy",
+   "shot": "Reimu",
+   "difficulty": "Easy",
+   "score": 2728141020,
+   "player": "NALIS",
+   "date": "14/08/2013",
+   "url": "https://maribelhearn.com/media/replays/2728141020/th8_udEaRe.rpy",
+   "sha1": "feee3bb4a28307637086ad536bfde23086d4124b"
+  },
+  {
+   "file": "th8_udNoRe.rpy",
+   "shot": "Reimu",
+   "difficulty": "Normal",
+   "score": 3670515640,
+   "player": "FRED",
+   "date": "15/01/2010",
+   "url": "https://maribelhearn.com/media/replays/th8_udNoRe.rpy",
+   "sha1": "432afaaf3f078f0380bf527517101968bf991b13"
+  },
+  {
+   "file": "th8_udHaRe.rpy",
+   "shot": "Reimu",
+   "difficulty": "Hard",
+   "score": 4167375470,
+   "player": "NALIS",
+   "date": "15/04/2013",
+   "url": "https://maribelhearn.com/media/replays/4167375470/th8_udHaRe.rpy",
+   "sha1": "dcc8c8a73f84ef3026feeb2b40a0877b7009d40e"
+  },
+  {
+   "file": "th8_udLuRe.rpy",
+   "shot": "Reimu",
+   "difficulty": "Lunatic",
+   "score": 4952610380,
+   "player": "YASU",
+   "date": "30/04/2010",
+   "url": "https://maribelhearn.com/media/replays/th8_udLuRe.rpy",
+   "sha1": "65362bbe33ed386ee61129bef40dd93ab0674236"
+  },
+  {
+   "file": "th8_udExRe.rpy",
+   "shot": "Reimu",
+   "difficulty": "Extra",
+   "score": 2501958550,
+   "player": "LET",
+   "date": "07/06/2025",
+   "url": "https://maribelhearn.com/media/replays/2501958550/th8_udExRe.rpy",
+   "sha1": "f64e8af6687ed734e891ce598d254f1a8ad34a59"
+  },
+  {
+   "file": "th8_udEaYu.rpy",
+   "shot": "Yukari",
+   "difficulty": "Easy",
+   "score": 1803297350,
+   "player": "NALIS",
+   "date": "28/09/2013",
+   "url": "https://maribelhearn.com/media/replays/1803297350/th8_udEaYu.rpy",
+   "sha1": "3ec5f178ed6dce1f9aaab1043f2ff1afc1bb5e1d"
+  },
+  {
+   "file": "th8_udNoYu.rpy",
+   "shot": "Yukari",
+   "difficulty": "Normal",
+   "score": 2645583680,
+   "player": "NALIS",
+   "date": "18/11/2013",
+   "url": "https://maribelhearn.com/media/replays/2645583680/th8_udNoYu.rpy",
+   "sha1": "f7bb7fbc0c199759591d0fc557685d11968d1909"
+  },
+  {
+   "file": "th8_udHaYu.rpy",
+   "shot": "Yukari",
+   "difficulty": "Hard",
+   "score": 3282506140,
+   "player": "YASU",
+   "date": "10/10/2012",
+   "url": "https://maribelhearn.com/media/replays/th8_udHaYu.rpy",
+   "sha1": "623c1b112ae8a8e546a33fd6f4fada4aeab880fe"
+  },
+  {
+   "file": "th8_udLuYu.rpy",
+   "shot": "Yukari",
+   "difficulty": "Lunatic",
+   "score": 3973007340,
+   "player": "YASU",
+   "date": "20/06/2009",
+   "url": "https://maribelhearn.com/media/replays/th8_udLuYu.rpy",
+   "sha1": "5058ba784b8ba98c8aa007274ec2f217471c86d7"
+  },
+  {
+   "file": "th8_udExYu.rpy",
+   "shot": "Yukari",
+   "difficulty": "Extra",
+   "score": 2112244750,
+   "player": "ASL",
+   "date": "11/10/2009",
+   "url": "https://maribelhearn.com/media/replays/th8_udExYu.rpy",
+   "sha1": "d70e30db5caf44303f08fc0394dc154e61298d54"
+  },
+  {
+   "file": "th8_udEaMa.rpy",
+   "shot": "Marisa",
+   "difficulty": "Easy",
+   "score": 3127823070,
+   "player": "coco",
+   "date": "10/01/2015",
+   "url": "https://maribelhearn.com/media/replays/2015-01-10/th8_udEaMa.rpy",
+   "sha1": "e8af661fa0123bdfa3b3e4d6b7944d293a4bcbe7"
+  },
+  {
+   "file": "th8_udNoMa.rpy",
+   "shot": "Marisa",
+   "difficulty": "Normal",
+   "score": 3966520420,
+   "player": "NALIS",
+   "date": "17/10/2016",
+   "url": "https://maribelhearn.com/media/replays/th8_udNoMa.rpy",
+   "sha1": "e2f77afc86d4c68ce785c6f58877ef7c575a793d"
+  },
+  {
+   "file": "th8_udHaMa.rpy",
+   "shot": "Marisa",
+   "difficulty": "Hard",
+   "score": 4531729800,
+   "player": "NALIS",
+   "date": "31/05/2013",
+   "url": "https://maribelhearn.com/media/replays/4531729800/th8_udHaMa.rpy",
+   "sha1": "bcf880d2af65a4317610c19c5c905fd5dcd12463"
+  },
+  {
+   "file": "th8_udLuMa.rpy",
+   "shot": "Marisa",
+   "difficulty": "Lunatic",
+   "score": 5409275820,
+   "player": "YASU",
+   "date": "12/06/2021",
+   "url": "https://maribelhearn.com/media/replays/5527494830/th8_udLuMa.rpy",
+   "sha1": "41cb7502e1351456aa1207a88450fbf17c058038"
+  },
+  {
+   "file": "th8_udExMa.rpy",
+   "shot": "Marisa",
+   "difficulty": "Extra",
+   "score": 2639609600,
+   "player": "LET",
+   "date": "02/05/2021",
+   "url": "https://maribelhearn.com/media/replays/2021-05-02/th8_udExMa.rpy",
+   "sha1": "e90fd5b65d330640a976c0beb66dce83443e21d0"
+  },
+  {
+   "file": "th8_udEaAl.rpy",
+   "shot": "Alice",
+   "difficulty": "Easy",
+   "score": 1904845180,
+   "player": "NALIS",
+   "date": "24/07/2013",
+   "url": "https://maribelhearn.com/media/replays/1904845180/th8_udEaAl.rpy",
+   "sha1": "c7a19c016289ed2c4c91740ec39c1a4415688057"
+  },
+  {
+   "file": "th8_udNoAl.rpy",
+   "shot": "Alice",
+   "difficulty": "Normal",
+   "score": 2647949080,
+   "player": "NALIS",
+   "date": "19/09/2013",
+   "url": "https://maribelhearn.com/media/replays/2647949080/th8_udNoAl.rpy",
+   "sha1": "3f34592ebe6d87bc847995472b8b8cd1e9cef147"
+  },
+  {
+   "file": "th8_udHaAl.rpy",
+   "shot": "Alice",
+   "difficulty": "Hard",
+   "score": 3174921590,
+   "player": "NALIS",
+   "date": "12/12/2013",
+   "url": "https://maribelhearn.com/media/replays/3174921590/th8_udHaAl.rpy",
+   "sha1": "473c69849d8a49f634f864f89c0f6857a7bfd9a3"
+  },
+  {
+   "file": "th8_udLuAl.rpy",
+   "shot": "Alice",
+   "difficulty": "Lunatic",
+   "score": 4004023650,
+   "player": "R24",
+   "date": "03/03/2026",
+   "url": "https://maribelhearn.com/media/replays/4004023650/th8_udLuAl.rpy",
+   "sha1": "8bb16a79edf824c6442ad42f2dd4ed4f8b6665a8"
+  },
+  {
+   "file": "th8_udExAl.rpy",
+   "shot": "Alice",
+   "difficulty": "Extra",
+   "score": 2092010760,
+   "player": "ASL",
+   "date": "25/07/2009",
+   "url": "https://maribelhearn.com/media/replays/th8_udExAl.rpy",
+   "sha1": "575d8c2e03dd10b34ea8497208740d67b66d80db"
+  },
+  {
+   "file": "th8_udEaSk.rpy",
+   "shot": "Sakuya",
+   "difficulty": "Easy",
+   "score": 2679115310,
+   "player": "NALIS",
+   "date": "17/08/2013",
+   "url": "https://maribelhearn.com/media/replays/2679115310/th8_udEaSk.rpy",
+   "sha1": "39b95e6f3d3558d01ecd686d53b7f19faa65ca57"
+  },
+  {
+   "file": "th8_udNoSk.rpy",
+   "shot": "Sakuya",
+   "difficulty": "Normal",
+   "score": 3437783740,
+   "player": "FRED",
+   "date": "07/10/2009",
+   "url": "https://maribelhearn.com/media/replays/th8_udNoSk.rpy",
+   "sha1": "3b64d180087039720931dd3191dbd34568a30b3c"
+  },
+  {
+   "file": "th8_udHaSk.rpy",
+   "shot": "Sakuya",
+   "difficulty": "Hard",
+   "score": 3989262780,
+   "player": "NALIS",
+   "date": "27/02/2013",
+   "url": "https://maribelhearn.com/media/replays/3989262780/th8_udHaSk.rpy",
+   "sha1": "ee1df297d52ef1c4ce9fed708ef2baca18b29f3e"
+  },
+  {
+   "file": "th8_udLuSk.rpy",
+   "shot": "Sakuya",
+   "difficulty": "Lunatic",
+   "score": 4780013310,
+   "player": "YASU",
+   "date": "13/04/2013",
+   "url": "https://maribelhearn.com/media/replays/th8_udLuSk.rpy",
+   "sha1": "0a9ec5f682a3006a9b3647f66f95a67fcbeedb5f"
+  },
+  {
+   "file": "th8_udExSk.rpy",
+   "shot": "Sakuya",
+   "difficulty": "Extra",
+   "score": 2525295090,
+   "player": "ASL",
+   "date": "04/10/2012",
+   "url": "https://maribelhearn.com/media/replays/th8_udExSk.rpy",
+   "sha1": "89ab5eb6d1b9c62ebbcbb33f031a0691618163b8"
+  },
+  {
+   "file": "th8_udEaRr.rpy",
+   "shot": "Remilia",
+   "difficulty": "Easy",
+   "score": 2024924590,
+   "player": "NALIS",
+   "date": "26/07/2013",
+   "url": "https://maribelhearn.com/media/replays/2024924590/th8_udEaRr.rpy",
+   "sha1": "b5dfeaba24d5534bdde94627ed9ad4518671e640"
+  },
+  {
+   "file": "th8_udNoRr.rpy",
+   "shot": "Remilia",
+   "difficulty": "Normal",
+   "score": 2846791090,
+   "player": "NALIS",
+   "date": "01/05/2013",
+   "url": "https://maribelhearn.com/media/replays/2846791090/th8_udNoRr.rpy",
+   "sha1": "be41fca4d57f1e55ddec18532c472bcb9af5bf86"
+  },
+  {
+   "file": "th8_udLuRr.rpy",
+   "shot": "Remilia",
+   "difficulty": "Lunatic",
+   "score": 4209142350,
+   "player": "YASU",
+   "date": "15/06/2009",
+   "url": "https://maribelhearn.com/media/replays/th8_udLuRr.rpy",
+   "sha1": "20feb4027a676040227f410a48718c17956ec50f"
+  },
+  {
+   "file": "th8_udExRr.rpy",
+   "shot": "Remilia",
+   "difficulty": "Extra",
+   "score": 2221694800,
+   "player": "ASL",
+   "date": "02/08/2011",
+   "url": "https://maribelhearn.com/media/replays/th8_udExRr.rpy",
+   "sha1": "0d06865d0670a8325f2f6f775364c447745cee8f"
+  },
+  {
+   "file": "th8_udEaYo.rpy",
+   "shot": "Youmu",
+   "difficulty": "Easy",
+   "score": 3379425090,
+   "player": "coco",
+   "date": "13/04/2015",
+   "url": "https://maribelhearn.com/media/replays/2015-04-13/th8_udEaYo.rpy",
+   "sha1": "18c1767b30b30e41493bcf4787b0422d883975b1"
+  },
+  {
+   "file": "th8_udNoYo.rpy",
+   "shot": "Youmu",
+   "difficulty": "Normal",
+   "score": 4496668100,
+   "player": "coco",
+   "date": "15/09/2016",
+   "url": "https://maribelhearn.com/media/replays/th8_udNoYo.rpy",
+   "sha1": "404bc35e3ced546c8f65310572cee1c294d62710"
+  },
+  {
+   "file": "th8_udHaYo.rpy",
+   "shot": "Youmu",
+   "difficulty": "Hard",
+   "score": 5242086820,
+   "player": "PALM",
+   "date": "29/04/2015",
+   "url": "https://maribelhearn.com/media/replays/2015-04-29/th8_udHaYo.rpy",
+   "sha1": "f85592d02da28a6098fa3b96f63083655bfbdad3"
+  },
+  {
+   "file": "th8_udLuYo.rpy",
+   "shot": "Youmu",
+   "difficulty": "Lunatic",
+   "score": 7053332460,
+   "player": "IwanaM",
+   "date": "14/07/2026",
+   "url": "https://maribelhearn.com/media/replays/7053332460/th8_udLuYo.rpy",
+   "sha1": "32f075fa5330b6688d1fd9146a02d917ac7df0ea"
+  },
+  {
+   "file": "th8_udExYo.rpy",
+   "shot": "Youmu",
+   "difficulty": "Extra",
+   "score": 3178460830,
+   "player": "Sakurei",
+   "date": "21/06/2022",
+   "url": "https://maribelhearn.com/media/replays/th8_udExYo.rpy",
+   "sha1": "fa4f7e2952dbeb008c7a1ee8eba4012388ac497d"
+  },
+  {
+   "file": "th8_udEaYy.rpy",
+   "shot": "Yuyuko",
+   "difficulty": "Easy",
+   "score": 1782294780,
+   "player": "Reika",
+   "date": "19/07/2013",
+   "url": "https://maribelhearn.com/media/replays/1782294780/th8_udEaYy.rpy",
+   "sha1": "6f1cd22b2b8a5a1b0f137c50420483b094604689"
+  },
+  {
+   "file": "th8_udNoYy.rpy",
+   "shot": "Yuyuko",
+   "difficulty": "Normal",
+   "score": 2635382400,
+   "player": "NALIS",
+   "date": "17/11/2013",
+   "url": "https://maribelhearn.com/media/replays/2635382400/th8_udNoYy.rpy",
+   "sha1": "203520cb1d3dc8256eef82e8972dad01e1a7b37f"
+  },
+  {
+   "file": "th8_udHaYy.rpy",
+   "shot": "Yuyuko",
+   "difficulty": "Hard",
+   "score": 3215420830,
+   "player": "NALIS",
+   "date": "22/12/2013",
+   "url": "https://maribelhearn.com/media/replays/3215420830/th8_udHaYy.rpy",
+   "sha1": "ec91cad207d3358e7692440909285be37c5621ac"
+  },
+  {
+   "file": "th8_udLuYy.rpy",
+   "shot": "Yuyuko",
+   "difficulty": "Lunatic",
+   "score": 4078342600,
+   "player": "\u7eff\u7eff\u53ef\u67da",
+   "date": "30/10/2020",
+   "url": "https://maribelhearn.com/media/replays/4078342600/th8_udLuYy.rpy",
+   "sha1": "396dbe70461f94d0500013908ad8902b5b290f9e"
+  },
+  {
+   "file": "th8_udExYy.rpy",
+   "shot": "Yuyuko",
+   "difficulty": "Extra",
+   "score": 2101505790,
+   "player": "ASL",
+   "date": "18/04/2009",
+   "url": "https://maribelhearn.com/media/replays/th8_udExYy.rpy",
+   "sha1": "7f20bd4f2985b78b2e4fdd4a7ca7fd87414e008a"
+  }
+ ],
+ "skipped": [
+  {
+   "file": "th8_udHaRr.rpy",
+   "shot": "Remilia",
+   "difficulty": "Hard",
+   "url": "https://maribelhearn.com/media/replays/th8_udHaRr.rpy",
+   "reason": "empty file"
+  }
+ ]
+}
