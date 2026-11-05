@@ -84,11 +84,6 @@ ChainElem g_EffectCalcChain;
 ChainElem g_EffectDrawElement;
 #endif // TH08_EXE
 
-void EffectManager::Reset()
-{
-    memset(this, 0, sizeof(EffectManager));
-}
-
 Effect *EffectManager::SpawnEffect(int type, D3DXVECTOR3 *pos, int count, D3DCOLOR color)
 {
     Effect *effect;
@@ -351,6 +346,13 @@ int EffectInitDriftFast(Effect *effect)
     effect->step *= g_App.gameSpeed;
     effect->acceleration *= g_App.gameSpeed;
     return 0;
+}
+
+// This definition order, together with MidiPlayer::FadeOut's, selects
+// D3DX8's original SSE folds. /ORDER preserves Reset's game address.
+void EffectManager::Reset()
+{
+    memset(this, 0, sizeof(EffectManager));
 }
 
 int EffectInitForeground(Effect *effect)

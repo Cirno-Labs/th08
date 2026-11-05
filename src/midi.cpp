@@ -24,6 +24,18 @@ MMRESULT UnusedOpenMidi(HMIDIOUT *handle, UINT deviceId)
 #pragma code_seg()
 #endif // TH08_EXE
 
+// Keep this before MidiDevice::Close for D3DX8's SSE fold selection;
+// the executable's /ORDER file preserves FadeOut's game address.
+int MidiPlayer::FadeOut(int duration)
+{
+    this->volumeScale = 0.0f;
+    this->fadeDuration = duration;
+    this->fadeElapsed = 0;
+    this->framesSinceRewind = 0;
+    this->fading = 1;
+    return 0;
+}
+
 int MidiDevice::Close()
 {
     if (this->handle == 0)
@@ -388,16 +400,6 @@ found:
     }
     g_MemoryTracker.Free(header->lpData);
     g_MemoryTracker.Free(header);
-    return 0;
-}
-
-int MidiPlayer::FadeOut(int duration)
-{
-    this->volumeScale = 0.0f;
-    this->fadeDuration = duration;
-    this->fadeElapsed = 0;
-    this->framesSinceRewind = 0;
-    this->fading = 1;
     return 0;
 }
 

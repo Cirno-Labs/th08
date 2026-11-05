@@ -7,6 +7,9 @@
 #ifdef TH08_EXE
 LzssNode g_LzssTree[0x2001];
 BYTE g_LzssWindow[0x2000];
+// The original has four unreferenced bytes before D3DX8's BSS. Its
+// references establish the allocation size, but not the type or name.
+DWORD g_LzssUnusedWord;
 #endif // TH08_EXE
 
 // The next input byte, or -1 past the end.
