@@ -61,3 +61,6 @@ orig_checksum = "FEAT_ORIG_CHECKSUM"
 
 [hooks]
 progress = true
+
+[replay]
+hook = "scripts/replay_hook.py"
