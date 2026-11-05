@@ -203,6 +203,20 @@ int AsciiText::DeletedCallback(AsciiText *text)
     return 0;
 }
 
+#ifdef TH08_EXE
+// Unused: the original's object also had a function here, 25 bytes with
+// two relocations, that /OPT:REF dropped. /OPT:ICF sorts every code
+// COMDAT, dropped ones included, by relocation count and size, and
+// keeps the first copy of each identical class: this entry makes it
+// keep the original's copies of the empty functions (D3DX8's, not
+// fpinit's __fpclear) and of zcfree (zutil's, not jmemnobs').
+void *UnusedSwapChainArg(void *arg)
+{
+    g_AsciiCalcChain.arg = arg;
+    return g_AsciiTextElemDraw.arg;
+}
+#endif // TH08_EXE
+
 void AsciiText::RemoveChain()
 {
     g_Chain.Remove(&g_AsciiCalcChain);
