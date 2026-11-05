@@ -25,15 +25,15 @@ copies and folded symbols).
 The standalone executable (`just exe`) is built from this source alone,
 boots and plays (with `FEAT=orig_checksum`, see below). Every section is
 byte for byte the original's: `.text`, `.rdata`, `.data`, `.data1`,
-resources, the import tables and every PE header field. `just compare-exe`
-finds 99.98% of the file identical; the 132 bytes that differ are the
-Rich header, which counts 48 C++ objects compiled by the game's
-compiler where the original has 63. The branch `rich-splits` splits the
-source into 63 objects at seams nothing in the binary pins down (each
-new file's first lines say what is known), and its exe is the original
-byte for byte. All 136 named writable globals sit at their original
-addresses too, including function statics absent from the
-public link map (`python3 scripts/check_exe_layout.py`).
+resources, the import tables and every PE header field. On this branch,
+`rich-splits`, the whole file is: the Rich header counts the original's
+63 C++ objects, because the source is split into 63 objects. Where
+th08's bytes don't show a seam, the splits follow th06's and th07's
+objects for the same code and data, and three have neither (each new
+file's first lines say which); `main` stops one step earlier, at 48 of
+63. All 136 named writable globals sit at their original addresses
+too, including function statics absent from the public link map
+(`python3 scripts/check_exe_layout.py`).
 
 Getting there took the original's link inputs as well as its code. The
 build reconstructs game-function and readonly-data placement with the
