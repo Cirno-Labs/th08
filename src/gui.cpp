@@ -1,6 +1,6 @@
 // cflags: /Os
-// The /Os file with Gui, as th07's, from 0x4338ca to GameManager at
-// 0x4399ac.
+// The /Os file with Gui, as th07's, from 0x4338ca to 0x439916
+// (practicebgm.cpp follows).
 
 #include <stdio.h>
 #include <string.h>
@@ -2080,34 +2080,3 @@ void Gui::StartMsg(int index)
     this->impl->StartMsgScript(index);
 }
 
-int GetPracticeBgmRestarts(int card)
-{
-    int i;
-
-    i = 0;
-    while (g_SpellCardBgms[i].lastCard >= 0)
-    {
-        if (g_GameManager.practiceSpellCard <= g_SpellCardBgms[i].lastCard)
-        {
-            return g_SpellCardBgms[i].restartsMusic;
-        }
-        i++;
-    }
-    return 0;
-}
-
-int GetPracticeBgmTitleIndex(int card)
-{
-    int i;
-
-    i = 0;
-    while (g_SpellCardBgms[i].lastCard >= 0)
-    {
-        if (g_GameManager.practiceSpellCard <= g_SpellCardBgms[i].lastCard)
-        {
-            return g_SpellCardBgms[i].titleIndex;
-        }
-        i++;
-    }
-    return 0;
-}
