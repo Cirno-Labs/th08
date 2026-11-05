@@ -23,8 +23,7 @@ byte (`just compare`: 1130/1130, counting separately emitted inline
 copies and folded symbols).
 
 The standalone executable (`just exe`) is built from this source alone,
-boots and plays (with `FEAT=orig_checksum`, see below), and is byte for
-byte the original: `build/th08.exe` has the original's SHA-1,
+boots and plays, and is byte for byte the original: `build/th08.exe` has the original's SHA-1,
 `2044fea52667be4f61bcd78efc8f7d63fbbc244f`. That includes every
 section, the import tables, the PE headers and the Rich header, which
 counts the original's 63 C++ objects because the source is split into
@@ -33,6 +32,9 @@ th06's and th07's objects for the same code and data, and three have
 neither (each new file's first lines say which). All 136 named writable
 globals sit at their original addresses too, including function statics
 absent from the public link map (`python3 scripts/check_exe_layout.py`).
+Only the link timestamp is copied from the original, and the
+resources, the game's data, are taken from it; the code, data, imports,
+headers and Rich header come out of the build.
 
 Getting there took the original's link inputs as well as its code. The
 build reconstructs game-function and readonly-data placement with the
