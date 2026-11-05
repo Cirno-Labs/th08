@@ -70,6 +70,13 @@ just analyze   # writes build/functions_100d.csv
 treemap by size, coloured by whether it is decompiled and matching.
 `just hooks` makes every commit redraw it and include it.
 
+`just replay` uses th06's shared replay harness with th08's format and
+tracer to compare complete playback runs. See [replay parity](docs/replay.md)
+for setup, the 59-recording world record corpus, saved-trace audits and
+validation limits. Replay checks require natural completion and recorded
+stage scores as well as exact original/rebuild trace equality. All 59
+recordings pass, and their traces match both original runs.
+
 ## Target
 
 Retail 1.00d, released 2004-09-19, the last official update:
