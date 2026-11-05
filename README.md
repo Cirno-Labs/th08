@@ -30,9 +30,9 @@ section, the import tables, the PE headers and the Rich header, which
 counts the original's 63 C++ objects because the source is split into
 63 objects. Where th08's bytes don't show a seam, the splits follow
 th06's and th07's objects for the same code and data, and three have
-neither (each new file's first lines say which). All 136 named writable globals sit at their original addresses
-too, including function statics absent from the public link map
-(`python3 scripts/check_exe_layout.py`).
+neither (each new file's first lines say which). All 136 named writable
+globals sit at their original addresses too, including function statics
+absent from the public link map (`python3 scripts/check_exe_layout.py`).
 
 Getting there took the original's link inputs as well as its code. The
 build reconstructs game-function and readonly-data placement with the
@@ -155,8 +155,10 @@ Everything runs headless, so it works over SSH. `just` lists the recipes.
    checksum.
 6. Standalone (`just exe`): links the same objects, without the hook
    DLL, into `build/th08.exe`, a game that needs nothing from the
-   original executable. It needs the game's data and global objects in
-   `src/exe/`. `just exe STEPS` runs it like `just run`.
+   original executable. The game's data and global objects are defined
+   in the files that own them, under `TH08_EXE`; the DLL uses the
+   original's instead. `just exe STEPS` runs it like `just run`, and
+   `just compare-exe` compares it with the original.
 
 ### Hooking
 
@@ -176,9 +178,12 @@ in `symbols.csv` too, so the game and the new code share one heap.
 
 ```
 orig/     your game files (not tracked) and their checksums
-src/      decompiled source; src/dll/ is the hook DLL's own code,
-          src/exe/ the game's data and globals for the standalone exe
-config/   symbols.csv: address, size, name and mangled symbol
+src/      decompiled source; src/dll/ is the hook DLL's own code
+config/   symbols.csv: address, size, name and mangled symbol;
+          exe_constants.csv: the readonly constants' addresses
+scripts/  th08's build hook, layout checks and replay hook and tracer
+replays/  the world record replay corpus and its manifest
+docs/     progress image and replay documentation
 tools/    build, compare, exe patcher, symbol seeding, Ghidra scripts:
           the decomp-tools repository shared with th06 and th07, as a
           git submodule (just tools-init, tools-pull, tools-push)
