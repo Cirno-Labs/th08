@@ -154,8 +154,8 @@ Everything runs headless, so it works over SSH. `just` lists the recipes.
    well as matching. Steps drive it and take screenshots, e.g.
    `just run wait:12 key:Escape key:z wait:2 shot:menu` writes
    `build/shots/menu.png`. The patched executable is not the original,
-   so the game's own check of it crashes after about a minute, or as
-   soon as it loads a `score.dat` record a patched game wrote:
+   so the game's own check of it quits the game after about a minute,
+   and rejects the `score.dat` records and replays a patched game wrote:
    `FEAT=orig_checksum just run` makes the DLL claim the original's
    checksum.
 6. Standalone (`just exe`): links the same objects, without the hook

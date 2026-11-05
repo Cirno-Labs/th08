@@ -853,10 +853,11 @@ int ChecksumExecutable()
         DebugPrint("main sum %d\r\n", sum);
         g_MemoryTracker.Free(data);
 #if FEAT_ORIG_CHECKSUM
-        // Claims to be the 1.00d exe, the only one th08_0100d.ver lists:
-        // for any other, CheckVersionFile runs off the end of the file,
-        // whose last line has no line break, and crashes when the game
-        // loads score.dat.
+        // Claims to be the 1.00d exe. th08_0100d.ver lists the size and
+        // checksum of every version from 0.09 to 1.00d, and the game
+        // accepts only 0100d's: with any other exe, App::OnUpdate's check
+        // every 4000 frames ends the main loop, and CheckVersionFile
+        // rejects the score.dat records and replays this exe writes.
         sum = 0xa26861b9;
         fileSize = 840704;
 #endif
