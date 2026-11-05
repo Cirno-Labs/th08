@@ -42,7 +42,8 @@ def encode(data: bytearray, user: bytes = b"USER\x0c\0\0\0\0\0\0\0") -> bytes:
     return bytes(file) + user
 
 
-# Five recorded inputs: playback plays the initial empty one and two.
+# Five recorded inputs: playback plays the initial empty one and two,
+# or three.
 INPUTS = [0, 1, 2, 3, 0x10, 0x11]
 FINAL_TAIL = [0, 0, 0xcdcd, 0xcdcd]
 
@@ -77,11 +78,11 @@ def decoded(difficulty: int = 1, stages: list[tuple[int, int, list[int]]] | None
     return data
 
 
-FIELDS = [*replay.REQUIRED_FIELDS, "entry"]
+FIELDS = [*replay.REQUIRED_FIELDS, "entry", "clearFrame"]
 
 
 def trace(score: int = 123, frames: int = 3, end_entry: int | None = None,
-          title: bool = True, stage: int = 0) -> replay.Trace:
+          title: bool = True, stage: int = 0, clear: int | None = None) -> replay.Trace:
     records: list[tuple[int, ...]] = []
 
     def add(kind: int, **values: int) -> None:
@@ -95,7 +96,8 @@ def trace(score: int = 123, frames: int = 3, end_entry: int | None = None,
         add(replay.CALC, replayFrame=frame, entry=frame, flags=1)
     # The stage clear's calculations play no inputs.
     add(replay.CALC, replayFrame=frames, entry=frames, flags=0x400)
-    add(replay.REPLAY_END, replayFrame=frames, entry=frames if end_entry is None else end_entry, score=score)
+    add(replay.REPLAY_END, replayFrame=frames, entry=frames if end_entry is None else end_entry, score=score,
+        clearFrame=frames if clear is None else clear)
     if title:
         add(replay.TITLE)
     return replay.Trace(FIELDS, "test", records)
@@ -116,7 +118,7 @@ class ReplayTest(unittest.TestCase):
         self.assertEqual(record.version, "0100d")
         self.assertEqual(record.user[:4], b"USER")
         self.assertEqual(record.start(), "0,1,4,-1")
-        self.assertEqual(record.stages[0], dict(score=123, frames=3, frame_counts=[3], entries=10,
+        self.assertEqual(record.stages[0], dict(score=123, frames=3, frame_counts=[3, 4], entries=10,
                                                seed=0xabcd, lives=2, bombs=3, power=128, rank=16))
 
     def test_downloaded_corpus(self) -> None:
@@ -251,7 +253,11 @@ class ReplayTest(unittest.TestCase):
 
     def test_inputs_recorded_after_the_stage_clear_are_not_played(self) -> None:
         record = hook.Replay(self.path)
-        for frames in (2, 4, 6):
+        for frames in (3, 4):
+            with self.subTest(frames=frames), patch.object(replay, "hook", return_value=hook):
+                result = replay.validate(record, trace(frames=frames))
+            self.assertTrue(result["passed"], result["failures"])
+        for frames in (2, 5, 6):
             with self.subTest(frames=frames), patch.object(replay, "hook", return_value=hook):
                 result = replay.validate(record, trace(frames=frames))
             self.assertFalse(result["passed"], "only the endpoint passes")
@@ -267,10 +273,11 @@ class ReplayTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "initial empty input"):
             hook.Replay(self.path)
         self.path.write_bytes(encode(decoded(stages=[(0, 123, INPUTS + [0, 0, 0x1234, 0x5678])])))
-        self.assertEqual(hook.Replay(self.path).stages[0]["frame_counts"], [3])
+        self.assertEqual(hook.Replay(self.path).stages[0]["frame_counts"], [3, 4])
 
     def test_incomplete_runs_fail(self) -> None:
-        for bad in (trace(score=122), trace(frames=2), trace(end_entry=4), trace(title=False), trace(stage=1)):
+        for bad in (trace(score=122), trace(frames=2), trace(end_entry=4), trace(title=False), trace(stage=1),
+                    trace(clear=0xffffffff), trace(clear=2)):
             with patch.object(replay, "hook", return_value=hook):
                 result = replay.validate(hook.Replay(self.path), bad)
             self.assertFalse(result["passed"], result)

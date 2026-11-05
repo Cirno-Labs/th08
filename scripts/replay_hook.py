@@ -45,11 +45,14 @@ REPLAY_PATH = "replay/harness.rpy"
 HEADER = 0x68  # stored as is; the rest is compressed
 DECODED = 0x134  # sizeof(ReplayHeader)
 STAGE_HEADER = 0x24  # ReplayStage up to its frames
-# RecordOnUpdate records the input of the calculation the stage clear
-# starts in (Gui sets stateFlags bit 9, after PlayOnUpdate's priority
-# but before RecordOnUpdate's) and of the next two; PlayOnUpdate plays
-# none of them.
-CLEAR_FRAMES = 3
+# PlayOnUpdate plays no input once the stage clear started (stateFlags
+# bit 9), and RecordOnUpdate records three more: those of the
+# calculation it starts in (Gui sets the bit after PlayOnUpdate's
+# priority, before RecordOnUpdate's) and of the next two. So playback
+# leaves the last three recorded inputs. Some recordings leave two
+# instead, in every stage: their stage clears start a calculation later
+# in playback than the recording did. Which recordings do is not known.
+CLEAR_FRAMES = (3, 2)
 
 
 class Stage(TypedDict):
@@ -187,7 +190,7 @@ class Replay:
             # one more, and keeps two uninitialized words after it.
             final = off == max(offsets)
             padding = 5 if final else 1
-            if entries <= padding + CLEAR_FRAMES or inputs[0] != 0:
+            if entries <= padding + max(CLEAR_FRAMES) or inputs[0] != 0:
                 raise ValueError(f"{path}: missing initial empty input or gameplay frames")
             if final and inputs[-4:-2] != (0, 0):
                 raise ValueError(f"{path}: missing terminal empty input")
@@ -195,10 +198,11 @@ class Replay:
             # Recording writes an input after the player used it,
             # playback reads it before: playback plays the initial empty
             # input and the recorded ones but the last CLEAR_FRAMES.
-            frames = recorded + 1 - CLEAR_FRAMES
+            frame_counts = [recorded + 1 - n for n in CLEAR_FRAMES]
+            frames = frame_counts[0]
             seed, power, lives, bombs, rank = struct.unpack_from("<HBBBB", data, off + 0x1a)
             self.stages[idx] = Stage(score=struct.unpack_from("<I", data, off)[0],
-                                     frames=frames, frame_counts=[frames],
+                                     frames=frames, frame_counts=frame_counts,
                                      entries=entries, seed=seed,
                                      lives=lives, bombs=bombs, power=power, rank=rank)
         if not self.stages:
@@ -269,4 +273,8 @@ def stage_failures(stage: int, recorded: Stage, last: tuple[int, ...], end: tupl
         failures.append("last calculation did not consume the recorded inputs")
     if get(end, "entry") != consumed:
         failures.append("stage played inputs after its last calculation")
+    # Playback stopped because the stage clear started, as PlayOnUpdate
+    # does, not for a game over or the end of the inputs.
+    if get(end, "clearFrame") != consumed:
+        failures.append("the stage clear did not start after the last input played")
     return failures

@@ -80,6 +80,7 @@ extern "C" int _fltused = 0;
     X(replayFrame) \
     X(entry) \
     X(recordedInput) \
+    X(clearFrame) \
     X(stage) \
     X(stageFrames) \
     X(flags) \
@@ -219,8 +220,10 @@ static DWORD s_crashCode;
 static DWORD s_crashAddress;
 
 // The stage PlayAddedCallback last started, whose entries `entry`
-// counts.
+// counts, and the replay frame its stage clear started at (stateFlags
+// bit 9 as PlayOnUpdate saw it), or -1.
 static int s_stage = -1;
+static DWORD s_clearFrame = 0xffffffff;
 
 static DWORD Bits(float f)
 {
@@ -411,13 +414,19 @@ static void Emit(int kind, ReplayManager *replay, int consumed)
             }
         }
     }
+    r.clearFrame = s_clearFrame;
     r.stage = GM->stage;
     r.stageFrames = GM->stageFrames;
     // Bit 0: this calculation played a recorded input. Then
     // GameManager::stateFlags.
     r.flags = (consumed ? 1 : 0) | GM->stateFlags << 1;
     r.pause = GM->isPaused | GM->isInContinueMenu << 8 | (BYTE)GM->isFrozen << 16 | GM->replayMenuChoice << 24;
-    r.scene = (WORD)APP->scene | APP->curScene << 16;
+    // App::OnUpdate moves the scene on from 3 to 2 while the loading
+    // thread writes the stage records.
+    if (kind != TRACE_KIND_STAGE_START && kind != TRACE_KIND_STAGE_END)
+    {
+        r.scene = (WORD)APP->scene | APP->curScene << 16;
+    }
     if (stats != NULL)
     {
         r.score = stats->score;
@@ -490,6 +499,10 @@ static int __fastcall PlayOnUpdate(ReplayManager *replay)
         s_gamePasses++;
         s_passCounted = 1;
     }
+    if (GM->stageClearStarted && s_clearFrame == 0xffffffff)
+    {
+        s_clearFrame = replay->frame;
+    }
     res = ((ReplayCallback)s_addrs[A_PlayOnUpdate])(replay);
 
     Emit(TRACE_KIND_CALC, replay, replay->frame != frame);
@@ -519,6 +532,7 @@ static int __fastcall PlayAddedCallback(ReplayManager *replay)
     }
     res = ((ReplayCallback)s_addrs[A_PlayAddedCallback])(replay);
     s_stage = GM->stage;
+    s_clearFrame = 0xffffffff;
     Emit(TRACE_KIND_STAGE_START, replay, 0);
     return res;
 }
