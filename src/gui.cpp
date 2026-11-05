@@ -1876,6 +1876,34 @@ int Gui::AdvanceClock()
     return 0;
 }
 
+#ifdef TH08_EXE
+// Unused: the original's object had a function here, about 200 bytes
+// with no relocations, that /OPT:REF dropped. /OPT:ICF sorts every code
+// COMDAT, dropped ones included, and keeps the first copy of each
+// identical class; with this entry it keeps the original's copies of
+// D3DX8's SSE math functions and of an init stub in d3dxmath.obj.
+DWORD UnusedMixClock(DWORD *values, int count, DWORD seed)
+{
+    DWORD hash = seed;
+    DWORD carry = 0;
+    int i;
+
+    for (i = 0; i < count; i++)
+    {
+        hash = (hash << 5) + hash + values[i];
+        hash ^= hash >> 13;
+        carry += hash & 0xff;
+        values[i] = hash;
+    }
+    for (i = count - 1; i > 0; i--)
+    {
+        values[i - 1] += values[i] >> (i & 7);
+        carry = carry * 3 + values[i - 1];
+    }
+    return hash ^ carry;
+}
+#endif // TH08_EXE
+
 int Gui::AdvanceClockToEnd()
 {
     this->timesAnm->SetSprite(&this->impl->clock, g_GameManager.GetClock());

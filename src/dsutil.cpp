@@ -11,6 +11,20 @@
 // From the SDK's dxerr8.h, as in a release build.
 #define DXTRACE_ERR(str, hr) (hr)
 
+#ifdef TH08_EXE
+// Unused: a function with one relocation, dropped by /OPT:REF, that with
+// gui.cpp's UnusedMixClock gives /OPT:ICF the original's choice of kept
+// copies (see there).
+HRESULT UnusedInitSound(CSoundManager *manager, HWND hWnd, DWORD level)
+{
+    if (manager == NULL)
+    {
+        return E_FAIL;
+    }
+    return manager->Initialize(hWnd, level, 2, 22050, 16);
+}
+#endif // TH08_EXE
+
 CSoundManager::CSoundManager()
 {
     m_pDS = NULL;
