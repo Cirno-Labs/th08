@@ -2698,6 +2698,17 @@ void ScriptUpdateShooting(Enemy *enemy)
     }
 }
 
+#ifdef TH08_EXE
+// Unused: a five-byte function with one relocation, a bare jump, that
+// /OPT:REF dropped. /OPT:ICF sorts it among D3DX8's identical five-byte
+// codec destructors, which decides which of their copies it keeps (see
+// UnusedShiftResults in resultscreen.cpp).
+__declspec(naked) void UnusedJumpToUpdateShooting()
+{
+    __asm jmp ScriptUpdateShooting
+}
+#endif // TH08_EXE
+
 void SetScriptFunc0Vars(Enemy *enemy, EnemyScriptInstr *instr)
 {
     g_AsciiText.ringAlpha = enemy->currentCtx->vars.ints[0];
@@ -2970,6 +2981,11 @@ void EndTwinEffects(Enemy *enemy, EnemyScriptInstr *instr)
     g_EffectManager.GetReservedEffect(9)->active = 0;
     g_EffectManager.GetReservedEffect(10)->active = 0;
     g_Stage.dialogueSpriteCount = 2;
+}
+
+void StartResurrection(Enemy *enemy, EnemyScriptInstr *instr)
+{
+    g_SpellCard.StartNameOnly("「リザレクション」", enemy);
 }
 
 void SpawnTwinEffects3A(Enemy *enemy, EnemyScriptInstr *instr)
@@ -3316,11 +3332,6 @@ void SetGameSpeed(Enemy *enemy, EnemyScriptInstr *instr)
 void GetPracticeCard(Enemy *enemy, EnemyScriptInstr *instr)
 {
     enemy->currentCtx->vars.ints[0] = g_GameManager.practiceSpellCard;
-}
-
-void StartResurrection(Enemy *enemy, EnemyScriptInstr *instr)
-{
-    g_SpellCard.StartNameOnly("「リザレクション」", enemy);
 }
 
 void ScriptEndSpellCardName(Enemy *enemy, EnemyScriptInstr *instr)

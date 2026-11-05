@@ -919,6 +919,35 @@ int ResultScreen::UpdateSpellDifficultySelect()
     return 0;
 }
 
+#ifdef TH08_EXE
+// Unused: the original's object had a function here, about 150 bytes with
+// three relocations, that /OPT:REF dropped. /OPT:ICF sorts every code
+// COMDAT, dropped ones included, by relocation count and size, and keeps
+// the first copy of each identical class. With the two five-byte jumps
+// (enemyscript.cpp, unsorted43efef.cpp) and the order of a few functions
+// (spellcard.cpp, enemyscript.cpp, unsorted445453.cpp, lzss.cpp), this
+// entry makes it keep the original's copies of D3DX8's codec
+// destructors, constructors and scalar deleting destructors.
+int UnusedShiftResults(ResultScreen *screen, int first, int last)
+{
+    int i;
+
+    for (i = first; i <= last; i++)
+    {
+        if (i - first == screen->cursor)
+        {
+            screen->sprites[i].pendingInterrupt = 0x14;
+        }
+        else
+        {
+            screen->sprites[i].pendingInterrupt = 0x15;
+        }
+        g_SpriteEngine->Step(&screen->sprites[i]);
+    }
+    return last - first + (g_SpriteEngine != NULL);
+}
+#endif // TH08_EXE
+
 int ResultScreen::UpdateSpellShotSelect()
 {
     int i;

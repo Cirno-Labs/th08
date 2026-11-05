@@ -23,30 +23,27 @@ byte (`just compare`: 1130/1130, counting separately emitted inline
 copies and folded symbols).
 
 The standalone executable (`just exe`) is built from this source alone,
-boots and plays (with `FEAT=orig_checksum`, see below). It is not yet
-identical to the original as a file, but it has the original's size,
-section layout and optional header fields, including the entry point:
-`just compare-exe` finds 99.73% of the file identical (`.text` 99.72%,
-`.rdata` 99.9%, `.data` 100%, `.data1` and resources 100%). Every game
-function matches with addresses masked, all 1116 sit at their original
-address and all are identical as they are. All 136 named writable
-globals also sit at their original addresses, including function
-statics absent from the public link map (`python3 scripts/check_exe_layout.py`).
-The C runtime's objects load, and so lie, in the original's order, and
-the import tables are the original's: the name table's order is the
-order the linker loads the import objects in, and the address table's
-comes from the linker sorting them, the ones it later drops included. Both come from the order each object
-first mentions an import or C runtime function, and the original's
-objects mentioned some only in code `/OPT:REF` dropped; exe-only
-`Unused*` functions mention them in their place.
-The build reconstructs game-function and readonly-data placement with the
+boots and plays (with `FEAT=orig_checksum`, see below). Every section is
+byte for byte the original's: `.text`, `.rdata`, `.data`, `.data1`,
+resources, the import tables and every PE header field. `just compare-exe`
+finds 99.98% of the file identical; the 132 bytes that differ are the
+Rich header, whose tool counts still differ in two entries (alias
+objects 2 of 3, and 44 C++ objects compiled by the game's compiler
+where the original has 63). All 136 named writable globals sit at their
+original addresses too, including function statics absent from the
+public link map (`python3 scripts/check_exe_layout.py`).
+
+Getting there took the original's link inputs as well as its code. The
+build reconstructs game-function and readonly-data placement with the
 linker's `/ORDER` option, generated from symbols.csv, exe_constants.csv
-and the compiled objects; this does
-not establish that the original build used `/ORDER`. The C runtime lies
-at its original address too, and D3DX8's SSE math code now matches.
-The remaining 2238 differing bytes are in D3DX8's codec function folds,
-their references and the Rich header. The original's precompiled-header
-layout remains unknown.
+and the compiled objects; this does not establish that the original
+build used `/ORDER`. The C runtime's objects and the import objects load
+in the original's order, and `/OPT:ICF` keeps the original's copy of
+every identical function, because the objects mention, and give the
+linker, what the original's did, including code `/OPT:REF` dropped:
+exe-only `Unused*` functions stand in for that dropped code, and a few
+functions sit in a different order in their files. The original's
+precompiled-header layout remains unknown.
 
 `config/exe_constants.csv` records 1143 compiler constant/string COMDAT
 addresses recovered through the original operands and our object

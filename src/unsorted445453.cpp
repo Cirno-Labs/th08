@@ -31,6 +31,12 @@ App g_App;
 Sprite g_LoadingScreenSprites[3];
 #endif // TH08_EXE
 
+int App::OnDraw(App *arg)
+{
+    DrawFps(1);
+    return 1;
+}
+
 int App::OnUpdate(App *arg)
 {
     if ((arg->stateFlags >> 7 & 1) && !arg->HasSubThread())
@@ -296,12 +302,6 @@ App::App()
     memset(this, 0, sizeof(App));
     this->stateFlags |= 0x40;
     this->stateFlags |= 0x100;
-}
-
-int App::OnDraw(App *arg)
-{
-    DrawFps(1);
-    return 1;
 }
 
 int App::OnDrawLogo(App *arg)

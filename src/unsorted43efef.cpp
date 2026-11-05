@@ -70,6 +70,17 @@ bool GdiSurface::Release()
     return false;
 }
 
+#ifdef TH08_EXE
+// Unused: a five-byte function with one relocation, a bare jump, that
+// /OPT:REF dropped. /OPT:ICF sorts it among D3DX8's identical five-byte
+// codec destructors, which decides which of their copies it keeps (see
+// UnusedShiftResults in resultscreen.cpp).
+__declspec(naked) void UnusedJumpToTextSurface()
+{
+    __asm jmp CreateTextSurface
+}
+#endif // TH08_EXE
+
 bool GdiSurface::Create(int width, int height, int format)
 {
     if (this->CreateInFormat(width, height, format))

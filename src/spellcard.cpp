@@ -158,6 +158,14 @@ int g_StageSpellCardCounts[10] = {
 SpellCard g_SpellCard;
 #endif // TH08_EXE
 
+void SpellCard::StartNameOnly(char *name, Enemy *enemy)
+{
+    this->nameOnly = 1;
+    this->active = 0;
+    this->unusedFlag0_4 = 0;
+    this->ShowName(-1, name, 1);
+}
+
 EXE_INLINE SpellCard::SpellCard()
 {
 }
@@ -579,14 +587,6 @@ void SpellCard::Start(int card, char *name, int face, DWORD bonus, Enemy *enemy,
 void BulletManager::ClearAllToItems()
 {
     this->ClearAll(1);
-}
-
-void SpellCard::StartNameOnly(char *name, Enemy *enemy)
-{
-    this->nameOnly = 1;
-    this->active = 0;
-    this->unusedFlag0_4 = 0;
-    this->ShowName(-1, name, 1);
 }
 
 void SpellCard::StartBombCard(int face, char *name, int sprite)

@@ -274,14 +274,6 @@ void *LzssDecompress(BYTE *data, int dataSize, BYTE *out, int outSize)
     return out;
 }
 
-void LzssTreeInitNode(int pos)
-{
-    g_LzssTree[0x2000].largerChild = pos;
-    g_LzssTree[pos].parent = 0x2000;
-    g_LzssTree[pos].largerChild = 0;
-    g_LzssTree[pos].smallerChild = 0;
-}
-
 void LzssClearWindow()
 {
     int i;
@@ -419,4 +411,12 @@ int LzssPredecessor(int node)
         next = g_LzssTree[next].largerChild;
     }
     return next;
+}
+
+void LzssTreeInitNode(int pos)
+{
+    g_LzssTree[0x2000].largerChild = pos;
+    g_LzssTree[pos].parent = 0x2000;
+    g_LzssTree[pos].largerChild = 0;
+    g_LzssTree[pos].smallerChild = 0;
 }
