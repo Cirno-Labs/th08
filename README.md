@@ -23,15 +23,14 @@ byte (`just compare`: 1130/1130, counting separately emitted inline
 copies and folded symbols).
 
 The standalone executable (`just exe`) is built from this source alone,
-boots and plays (with `FEAT=orig_checksum`, see below). Every section is
-byte for byte the original's: `.text`, `.rdata`, `.data`, `.data1`,
-resources, the import tables and every PE header field. On this branch,
-`rich-splits`, the whole file is: the Rich header counts the original's
-63 C++ objects, because the source is split into 63 objects. Where
-th08's bytes don't show a seam, the splits follow th06's and th07's
-objects for the same code and data, and three have neither (each new
-file's first lines say which); `main` stops one step earlier, at 48 of
-63. All 136 named writable globals sit at their original addresses
+boots and plays (with `FEAT=orig_checksum`, see below), and is byte for
+byte the original: `build/th08.exe` has the original's SHA-1,
+`2044fea52667be4f61bcd78efc8f7d63fbbc244f`. That includes every
+section, the import tables, the PE headers and the Rich header, which
+counts the original's 63 C++ objects because the source is split into
+63 objects. Where th08's bytes don't show a seam, the splits follow
+th06's and th07's objects for the same code and data, and three have
+neither (each new file's first lines say which). All 136 named writable globals sit at their original addresses
 too, including function statics absent from the public link map
 (`python3 scripts/check_exe_layout.py`).
 
