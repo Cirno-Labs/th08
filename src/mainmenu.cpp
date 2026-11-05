@@ -1057,27 +1057,27 @@ int MainMenu::UpdateKeyConfig()
                 this->ReassignButton(key, this->controllerMapping.focusButton, 1);
                 this->controllerMapping.focusButton = key;
                 break;
-            case 3:
+            case 4:
                 this->ReassignButton(key, this->controllerMapping.menuButton, 0);
                 this->controllerMapping.menuButton = key;
                 break;
-            case 4:
+            case 5:
                 this->ReassignButton(key, this->controllerMapping.upButton, 0);
                 this->controllerMapping.upButton = key;
                 break;
-            case 5:
+            case 6:
                 this->ReassignButton(key, this->controllerMapping.downButton, 0);
                 this->controllerMapping.downButton = key;
                 break;
-            case 6:
+            case 7:
                 this->ReassignButton(key, this->controllerMapping.leftButton, 0);
                 this->controllerMapping.leftButton = key;
                 break;
-            case 7:
+            case 8:
                 this->ReassignButton(key, this->controllerMapping.rightButton, 0);
                 this->controllerMapping.rightButton = key;
                 break;
-            case 8:
+            case 3:
                 this->ReassignButton(key, this->controllerMapping.skipButton, 0);
                 this->controllerMapping.skipButton = key;
                 break;
