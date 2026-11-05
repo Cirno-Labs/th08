@@ -789,7 +789,7 @@ int CheckSingleInstance(HINSTANCE instance)
                 {
                     ResolveShortcut(startup.lpTitle, consoleTitle, 0x104);
                     extension = strrchr(consoleTitle, '.');
-                } while (strcmpi(extension, ".lnk") == 0);
+                } while (stricmp(extension, ".lnk") == 0);
             }
             else
             {
