@@ -52,6 +52,18 @@ relocations. After a vanilla build, `python3 scripts/recover_exe_constants.py`
 regenerates it; `scripts/check_exe_layout.py` verifies every recorded
 address. All recorded game readonly constants and initialized globals
 are identical, including the FileBase vtable's CRT `__purecall` pointers.
+**`just check-exe`** builds and enforces whole-file equality;
+`just compare-exe` gives the detailed report. See
+[executable parity](docs/exe-parity.md) for the reconstruction details
+and the earlier checkpoints.
+
+`just replay` uses the shared replay harness (`tools/replay/`, from
+th06) with th08's format and tracer to compare complete playback runs.
+See [replay parity](docs/replay.md) for setup, the 59-recording world
+record corpus, saved-trace audits and validation limits. Replay checks
+require natural completion and recorded stage scores as well as exact
+original/rebuild trace equality. All 59 recordings pass, and their
+traces match both original runs.
 
 Ghidra finds 2225 functions. As in th06 and th07, the game code is mostly
 compiled without optimization, so its functions start with `push ebp;
@@ -69,13 +81,6 @@ just analyze   # writes build/functions_100d.csv
 `just progress` renders it: every game function, by address and as a
 treemap by size, coloured by whether it is decompiled and matching.
 `just hooks` makes every commit redraw it and include it.
-
-`just replay` uses th06's shared replay harness with th08's format and
-tracer to compare complete playback runs. See [replay parity](docs/replay.md)
-for setup, the 59-recording world record corpus, saved-trace audits and
-validation limits. Replay checks require natural completion and recorded
-stage scores as well as exact original/rebuild trace equality. All 59
-recordings pass, and their traces match both original runs.
 
 ## Target
 
@@ -125,8 +130,6 @@ otherwise.
 ## Workflow
 
 Everything runs headless, so it works over SSH. `just` lists the recipes.
-`tools/` is a submodule: clone with `--recursive`, or run
-`git submodule update --init tools` after cloning.
 
 1. Analyze the binary with Ghidra in headless mode (`just analyze`).
    New functions are added to `config/symbols.csv` with placeholder names
@@ -159,6 +162,7 @@ Everything runs headless, so it works over SSH. `just` lists the recipes.
    in the files that own them, under `TH08_EXE`; the DLL uses the
    original's instead. `just exe STEPS` runs it like `just run`, and
    `just compare-exe` compares it with the original.
+   [`docs/exe-parity.md`](docs/exe-parity.md) has how it matches.
 
 ### Hooking
 
@@ -181,24 +185,32 @@ orig/     your game files (not tracked) and their checksums
 src/      decompiled source; src/dll/ is the hook DLL's own code
 config/   symbols.csv: address, size, name and mangled symbol;
           exe_constants.csv: the readonly constants' addresses
-scripts/  th08's build hook, layout checks and replay hook and tracer
-replays/  the world record replay corpus and its manifest
-docs/     progress image and replay documentation
-tools/    build, compare, exe patcher, symbol seeding, Ghidra scripts:
-          the decomp-tools repository shared with th06 and th07, as a
-          git submodule (just tools-init, tools-pull, tools-push)
-project.toml  th08's settings for tools/
+tools/    the shared decomp-tools: build, compare, exe patcher, symbol
+          seeding, Ghidra scripts, the replay harness and the just recipes
+project.toml  th08's settings for the tools: exe, flags, link order
+scripts/  th08's own: its build hook, the exe constants' recovery and
+          layout check, the replay hook, tracer, fixtures, audit and tests
+replays/  world record replays for just replay, their manifest and README
+docs/     progress image, executable and replay parity
 build/    outputs; build/game/ is a runnable copy of the patched game
 ```
 
+`tools/` is the decomp-tools repository, shared with the other games, as
+a git submodule: clone with `--recursive`, or run
+`git submodule update --init tools` after cloning, and `just tools-init`
+to put it on its `main` branch. A change to the tools is a commit made in
+`tools/` and sent with `just tools-push`; `just tools-pull` brings in the
+other games' changes. Either way, commit the new `tools` pointer here.
+
 ## Requirements
 
-- Wine (32-bit), Python 3, [just](https://github.com/casey/just),
-  binutils (`objdump`), 7-Zip
-- For `just run`: Xvfb, xdotool, ImageMagick, 32-bit Mesa OpenGL
-  (`libgl1-mesa-dri:i386`, `libglx-mesa0:i386`) and the `ja_JP.UTF-8`
-  locale
-- The original toolchain in the Wine prefix at `.wine/` (bring your own
+- Wine (32-bit, with its `msidb`), Python 3,
+  [just](https://github.com/casey/just), binutils (`objdump`), 7-Zip
+- For `just run` and `just replay`: Xvfb, xdotool, ImageMagick, 32-bit
+  Mesa OpenGL (`libgl1-mesa-dri:i386`, `libglx-mesa0:i386`) and the
+  `ja_JP.UTF-8` locale
+- Visual C++ .NET 2002, the Windows XP SP2 Platform SDK and the
+  DirectX 8.0 SDK in the Wine prefix at `.wine/` (bring your own
   copies)
 - Ghidra (for analysis, optional)
 
