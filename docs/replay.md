@@ -186,10 +186,11 @@ setup removes the shared runner's symlinks for these paths.
 ## Validation status
 
 The standalone executable is byte-identical to the original (SHA-1
-`2044fea52667be4f61bcd78efc8f7d63fbbc244f`), so both runs use the same
-code and differ only in their symbol tables: `config/symbols.csv` and
-the link map, which put every hooked function and global at the same
-address.
+`2044fea52667be4f61bcd78efc8f7d63fbbc244f`; `just check-exe` enforces
+whole-file equality, see [executable parity](exe-parity.md)), so both
+runs use the same code and differ only in their symbol tables:
+`config/symbols.csv` and the link map, which put every hooked function
+and global at the same address.
 
 **All 59 recordings pass and match.** Each runs once in the standalone
 executable and twice in the original; every run passes complete-route
