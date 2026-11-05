@@ -27,10 +27,12 @@ boots and plays (with `FEAT=orig_checksum`, see below). Every section is
 byte for byte the original's: `.text`, `.rdata`, `.data`, `.data1`,
 resources, the import tables and every PE header field. `just compare-exe`
 finds 99.98% of the file identical; the 132 bytes that differ are the
-Rich header, whose tool counts still differ in two entries (alias
-objects 2 of 3, and 44 C++ objects compiled by the game's compiler
-where the original has 63). All 136 named writable globals sit at their
-original addresses too, including function statics absent from the
+Rich header, which counts 48 C++ objects compiled by the game's
+compiler where the original has 63. The branch `rich-splits` splits the
+source into 63 objects at seams nothing in the binary pins down (each
+new file's first lines say what is known), and its exe is the original
+byte for byte. All 136 named writable globals sit at their original
+addresses too, including function statics absent from the
 public link map (`python3 scripts/check_exe_layout.py`).
 
 Getting there took the original's link inputs as well as its code. The
