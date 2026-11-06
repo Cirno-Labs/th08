@@ -787,19 +787,19 @@ public:
     int SetPendingSurfaceCopy(int texture, int srcLeft, int srcTop, int srcWidth, int srcHeight, int dstLeft, int dstTop,
                        int dstWidth, int dstHeight)
     {
-        if (this->pendingCopyTexture >= 0)
+        if (this->pendingSurfaceCopySurface >= 0)
         {
             return -1;
         }
-        this->pendingCopyTexture = texture;
-        this->pendingCopySrcLeft = srcLeft;
-        this->pendingCopySrcTop = srcTop;
-        this->pendingCopySrcWidth = srcWidth;
-        this->pendingCopySrcHeight = srcHeight;
-        this->pendingCopyDstLeft = dstLeft;
-        this->pendingCopyDstTop = dstTop;
-        this->pendingCopyDstWidth = dstWidth;
-        this->pendingCopyDstHeight = dstHeight;
+        this->pendingSurfaceCopySurface = texture;
+        this->pendingSurfaceCopySrcLeft = srcLeft;
+        this->pendingSurfaceCopySrcTop = srcTop;
+        this->pendingSurfaceCopySrcWidth = srcWidth;
+        this->pendingSurfaceCopySrcHeight = srcHeight;
+        this->pendingSurfaceCopyDstLeft = dstLeft;
+        this->pendingSurfaceCopyDstTop = dstTop;
+        this->pendingSurfaceCopyDstWidth = dstWidth;
+        this->pendingSurfaceCopyDstHeight = dstHeight;
         return 0;
     }
 
@@ -914,9 +914,9 @@ public:
     // set.
     D3DCOLOR modulateColor;
     int modulateColorEnabled;
-    // The surface SetPendingCopy's copy goes to; negative for none. The
-    // rest of the copy's parameters are at the end.
-    int pendingCopyTexture;
+    // The surface SetPendingSurfaceCopy's copy goes to; negative for
+    // none. The rest of the copy's parameters are at the end.
+    int pendingSurfaceCopySurface;
     // Counters, cleared every frame.
     int scriptStartCount;
     int stepCount;
@@ -976,14 +976,14 @@ public:
     int pendingTexCopyDstTop;
     int pendingTexCopyDstWidth;
     int pendingTexCopyDstHeight;
-    int pendingCopySrcLeft;
-    int pendingCopySrcTop;
-    int pendingCopySrcWidth;
-    int pendingCopySrcHeight;
-    int pendingCopyDstLeft;
-    int pendingCopyDstTop;
-    int pendingCopyDstWidth;
-    int pendingCopyDstHeight;
+    int pendingSurfaceCopySrcLeft;
+    int pendingSurfaceCopySrcTop;
+    int pendingSurfaceCopySrcWidth;
+    int pendingSurfaceCopySrcHeight;
+    int pendingSurfaceCopyDstLeft;
+    int pendingSurfaceCopyDstTop;
+    int pendingSurfaceCopyDstWidth;
+    int pendingSurfaceCopyDstHeight;
 };
 ASSERT_SIZE(SpriteEngine, 0x2a2570);
 extern SpriteEngine *g_SpriteEngine;

@@ -994,11 +994,11 @@ inline void SpriteEngine::DoPendingCopy()
                                       this->pendingTexCopyDstHeight);
         this->pendingTexCopyTexture = -1;
     }
-    if (this->pendingCopyTexture >= 0)
+    if (this->pendingSurfaceCopySurface >= 0)
     {
-        this->CopyBackBufferToSurface(this->pendingCopyTexture, this->pendingCopySrcLeft, this->pendingCopySrcTop,
-                                      this->pendingCopySrcWidth, this->pendingCopySrcHeight, this->pendingCopyDstLeft,
-                                      this->pendingCopyDstTop, this->pendingCopyDstWidth, this->pendingCopyDstHeight);
-        this->pendingCopyTexture = -1;
+        this->CopyBackBufferToSurface(this->pendingSurfaceCopySurface, this->pendingSurfaceCopySrcLeft, this->pendingSurfaceCopySrcTop,
+                                      this->pendingSurfaceCopySrcWidth, this->pendingSurfaceCopySrcHeight, this->pendingSurfaceCopyDstLeft,
+                                      this->pendingSurfaceCopyDstTop, this->pendingSurfaceCopyDstWidth, this->pendingSurfaceCopyDstHeight);
+        this->pendingSurfaceCopySurface = -1;
     }
 }

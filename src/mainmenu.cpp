@@ -3490,7 +3490,7 @@ void MainMenu::LoadingThread(MainMenu *arg)
 {
     int i;
 
-    while (g_SpriteEngine->pendingCopyTexture >= 0)
+    while (g_SpriteEngine->pendingSurfaceCopySurface >= 0)
     {
         Sleep(1);
     }

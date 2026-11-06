@@ -990,7 +990,7 @@ SpriteEngine::SpriteEngine()
     this->lastCameraSetupFlag = 0xff;
     this->zWriteDisabled = 0;
     this->pendingTexCopyTexture = -1;
-    this->pendingCopyTexture = -1;
+    this->pendingSurfaceCopySurface = -1;
 }
 
 SpriteEngine::~SpriteEngine()
