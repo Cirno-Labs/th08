@@ -1114,7 +1114,7 @@ void UpdateBombState(Player *player)
     {
         if (player->bomb.timer.HasTicked())
         {
-            g_Gui.frameItemsHideTimer = 2;
+            g_Gui.pointsChanged = 2;
         }
         if (player->bomb.timer >= player->bomb.duration)
         {

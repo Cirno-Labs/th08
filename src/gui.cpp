@@ -1077,7 +1077,7 @@ void Gui::DrawHud()
             vm->pos = D3DXVECTOR3(xx, 152.0f, 0.48f);
             g_SpriteEngine->DrawUnrotated(vm);
         }
-        if (this->frameItemsHideTimer)
+        if (this->pointsChanged)
         {
             vm->pos = D3DXVECTOR3(xx, 168.0f, 0.48f);
             g_SpriteEngine->DrawUnrotated(vm);
@@ -1128,7 +1128,7 @@ void Gui::DrawHud()
         this->livesChanged = 2;
         this->bombsChanged = 2;
         this->grazeChanged = 2;
-        this->frameItemsHideTimer = 2;
+        this->pointsChanged = 2;
         this->powerChanged = 2;
         this->timeOrbsChanged = 2;
     }
@@ -1180,7 +1180,7 @@ void Gui::DrawHud()
             scorePos = D3DXVECTOR3(488.0f, 152.0f, 0.0f);
             g_AsciiText.AddFormat(&scorePos, "%d", g_GameManager.stats->grazeTotal);
         }
-        if (this->frameItemsHideTimer || g_App.GetNoFrameItems())
+        if (this->pointsChanged || g_App.GetNoFrameItems())
         {
             scorePos = D3DXVECTOR3(488.0f, 168.0f, 0.0f);
             scorePos.x += g_AsciiText.AddFormatLen(&scorePos, "%d", g_GameManager.stats->pointItemsTotal) * 13;
@@ -1270,9 +1270,9 @@ void Gui::DrawHud()
     {
         this->grazeChanged--;
     }
-    if (this->frameItemsHideTimer)
+    if (this->pointsChanged)
     {
-        this->frameItemsHideTimer--;
+        this->pointsChanged--;
     }
     if (this->timeOrbsChanged)
     {
@@ -2029,7 +2029,7 @@ int Gui::LoadResources()
     this->livesChanged = 2;
     this->bombsChanged = 2;
     this->grazeChanged = 2;
-    this->frameItemsHideTimer = 2;
+    this->pointsChanged = 2;
     this->powerChanged = 2;
     this->timeOrbsChanged = 2;
     g_AsciiText.anm->StartScript(&this->impl->timePassedDigit, 3);

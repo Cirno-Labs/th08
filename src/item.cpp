@@ -433,7 +433,7 @@ void Item::CollectPoint()
     g_GameManager.AddScore(amount);
     g_GameManager.stats->stageClearPoints++;
     g_GameManager.stats->pointItemsTotal++;
-    g_Gui.frameItemsHideTimer = 2;
+    g_Gui.pointsChanged = 2;
     if (amount >= maxValue)
     {
         g_GameManager.AddSubRank(10);

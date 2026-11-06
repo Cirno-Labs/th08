@@ -2060,7 +2060,7 @@ public:
     unsigned int bombsChanged : 2;
     unsigned int powerChanged : 2;
     unsigned int grazeChanged : 2;
-    unsigned int frameItemsHideTimer : 2;
+    unsigned int pointsChanged : 2;
     unsigned int timeOrbsChanged : 2;
     GuiImpl *impl;
     // front.anm (ANM slot 10), as th07's ANM slot.
