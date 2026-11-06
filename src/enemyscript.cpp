@@ -80,7 +80,7 @@ EXE_INLINE EnemyScripts::EnemyScripts()
 {
 }
 
-EXE_INLINE EnemyScriptsUnusedBlock::EnemyScriptsUnusedBlock()
+EXE_INLINE EnemyScriptsStar::EnemyScriptsStar()
 {
 }
 

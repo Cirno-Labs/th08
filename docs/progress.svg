@@ -316,7 +316,7 @@
 <rect width="12" height="12" x="435" y="60" class="named"><title>0x004181f0 GameManager::AddScore (44 bytes)</title></rect>
 <rect width="12" height="12" x="450" y="60" class="named"><title>0x00418220 GameManager::AddTimeOrbs (180 bytes)</title></rect>
 <rect width="12" height="12" x="465" y="60" class="named"><title>0x004182e0 EnemyScripts::EnemyScripts (25 bytes)</title></rect>
-<rect width="12" height="12" x="480" y="60" class="named"><title>0x00418300 EnemyScriptsUnusedBlock::EnemyScriptsUnusedBlock (37 bytes)</title></rect>
+<rect width="12" height="12" x="480" y="60" class="named"><title>0x00418300 EnemyScriptsStar::EnemyScriptsStar (37 bytes)</title></rect>
 <rect width="12" height="12" x="495" y="60" class="named"><title>0x00418330 EnemyScripts::Load (239 bytes)</title></rect>
 <rect width="12" height="12" x="510" y="60" class="named"><title>0x00418420 EnemyScripts::Release (44 bytes)</title></rect>
 <rect width="12" height="12" x="525" y="60" class="named"><title>0x00418450 EnemyScripts::StartSub (88 bytes)</title></rect>
@@ -2107,7 +2107,7 @@
 <rect width="3.80" height="3.98" x="663.32" y="251.76" class="named"><title>0x00406da0 GameManager::IsGaugeAtHigh2 (38 bytes)</title></rect>
 <rect width="3.80" height="3.98" x="670.12" y="251.76" class="named"><title>0x00406df0 GameManager::AddClock (38 bytes)</title></rect>
 <rect width="3.70" height="3.98" x="676.92" y="251.76" class="named"><title>0x00415ce0 Stage::StartSpellCard (37 bytes)</title></rect>
-<rect width="3.70" height="3.98" x="683.62" y="251.76" class="named"><title>0x00418300 EnemyScriptsUnusedBlock::EnemyScriptsUnusedBlock (37 bytes)</title></rect>
+<rect width="3.70" height="3.98" x="683.62" y="251.76" class="named"><title>0x00418300 EnemyScriptsStar::EnemyScriptsStar (37 bytes)</title></rect>
 <rect width="3.70" height="3.98" x="690.32" y="251.76" class="named"><title>0x0041f0b0 SpellCard::SetEffectFixed (37 bytes)</title></rect>
 <rect width="3.70" height="3.98" x="697.02" y="251.76" class="named"><title>0x00425040 GetSpellCardsCaptured (37 bytes)</title></rect>
 <rect width="3.70" height="3.98" x="703.72" y="251.76" class="named"><title>0x0042f2f0 AsciiText::SetScale (37 bytes)</title></rect>
