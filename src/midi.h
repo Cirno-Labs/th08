@@ -247,6 +247,6 @@ public:
     // Stops the timer.
     void StopTimer();
 
-    int unusedInt10;
+    int pad_10;
 };
 ASSERT_SIZE(MidiTimer, 0x14);

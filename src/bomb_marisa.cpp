@@ -48,10 +48,10 @@ void UpdateMarisaBomb(Player *player)
         pos = player->pos;
         pos.y /= 2.0f;
         hitbox = player->AddBombHitbox(&pos, 128.0f, pos.y * 2.0f, 12, 0);
-        hitbox->unusedByte3d = 1;
+        hitbox->unk_3d = 1;
         pos.x = 192.0f;
         hitbox = player->AddBombHitbox(&pos, 384.0f, pos.y * 2.0f, 6, 0);
-        hitbox->unusedByte3d = 1;
+        hitbox->unk_3d = 1;
     }
     g_SpriteEngine->StepSprites(&bomb->parts[0].sprites[0], 5);
 }
@@ -153,10 +153,10 @@ void UpdateMarisaLastWord(Player *player)
         pos = player->pos;
         pos.y /= 2.0f;
         hitbox = player->AddBombHitbox(&pos, 128.0f, pos.y * 2.0f, 12, 0);
-        hitbox->unusedByte3d = 1;
+        hitbox->unk_3d = 1;
         pos.x = 192.0f;
         hitbox = player->AddBombHitbox(&pos, 384.0f, pos.y * 2.0f, 7, 0);
-        hitbox->unusedByte3d = 1;
+        hitbox->unk_3d = 1;
     }
     g_SpriteEngine->StepSprites(&bomb->parts[0].sprites[0], 5);
 }

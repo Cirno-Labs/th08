@@ -2551,7 +2551,7 @@ int ResultScreen::AddedCallback(ResultScreen *screen)
     screen->spellCursor = 0xc;
     screen->shownShotType = 0xc;
     screen->spellInfoSliding = 0;
-    screen->unusedSprite10ef8.spriteIndex = -1;
+    screen->unk_10ef8.spriteIndex = -1;
     g_GameManager.plst.counts[6].continues =
         g_GameManager.plst.counts[0].continues + g_GameManager.plst.counts[1].continues +
         g_GameManager.plst.counts[2].continues + g_GameManager.plst.counts[3].continues +

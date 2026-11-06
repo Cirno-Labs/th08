@@ -47,7 +47,7 @@ struct ReplayStage
     BYTE spellCardsCaptured;
     // GameStats::clock.
     char clock;
-    BYTE unusedByte23;
+    BYTE pad_23;
     WORD frames[1];
 };
 
@@ -223,10 +223,10 @@ public:
     int mode;
     char *path;
     // Constructed and zeroed, never used.
-    D3DXVECTOR3 unusedVector18;
-    D3DXVECTOR3 unusedVector24;
-    D3DXVECTOR3 unusedVector30;
-    D3DXVECTOR3 unusedVector3c;
+    D3DXVECTOR3 pad_18;
+    D3DXVECTOR3 pad_24;
+    D3DXVECTOR3 pad_30;
+    D3DXVECTOR3 pad_3c;
     unsigned char pad_48[0x6];
     WORD clearedAtRecordStart;
     // The last frame recorded or played; [stage] is where that stage's

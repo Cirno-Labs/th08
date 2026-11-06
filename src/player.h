@@ -150,7 +150,7 @@ struct PlayerHitArea
     int damageInterval;
     BYTE active;
     // Set on the boxes of UpdateTrailLaserBullet's lasers.
-    BYTE unusedByte3d;
+    BYTE unk_3d;
     unsigned char pad_3e[0x2];
 };
 
@@ -169,7 +169,7 @@ struct PlayerOption
     int state;
     // Its index among the four.
     int index;
-    int unusedInt2d4;
+    int pad_2d4;
     // Where it is on its circle (UpdateCirclingOption).
     float orbitAngle;
     // The direction it aims (FireOptionAimedShot).
@@ -550,7 +550,7 @@ public:
     Sprite sprite;
     // The player's position.
     D3DXVECTOR3 pos;
-    D3DXVECTOR3 unusedVector2c0;
+    D3DXVECTOR3 pad_2c0;
     // The player's last positions.
     D3DXVECTOR3 posHistory[0x10];
     // The corners of the hitbox and of the graze box, as th07's.

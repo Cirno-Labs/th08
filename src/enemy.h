@@ -26,7 +26,7 @@ struct EnemyScriptInstr
     short opcode;
     // The size of the instruction, arguments included.
     short size;
-    BYTE unusedByte8;
+    BYTE pad_8;
     BYTE difficultyMask;
     // Bit n: argument n names a variable.
     WORD paramMask;
@@ -101,7 +101,7 @@ struct EnemyScriptState
     int compareResult;
     int timedCallActive;
     short sub;
-    short unusedShort226;
+    short pad_226;
 };
 ASSERT_SIZE(EnemyScriptState, 0x228);
 
@@ -120,7 +120,7 @@ ASSERT_SIZE(EnemyBox, 0x1c);
 struct EnemyScriptThread
 {
     int sub;
-    short unusedShort4;
+    short pad_4;
     // Enemy::stackDepth while the thread runs.
     short stackDepth;
     EnemyScriptState ctx;
@@ -289,13 +289,13 @@ struct Enemy
     // stackDepth to go back to as ScriptReturn leaves a context set.
     short savedStackDepth;
     short stackDepth;
-    short unusedShort2cec;
+    short pad_2cec;
     short deathSub;
     // The subroutines of the interrupts opcode 125 (or another enemy's
     // 89) starts, set by opcode 126, as th07's.
     short interrupts[0x20];
     short pendingInterrupt;
-    short unusedShort2d32;
+    short pad_2d32;
     // Where it is.
     D3DXVECTOR3 pos;
     D3DXVECTOR3 posOrigin;
@@ -367,7 +367,7 @@ struct Enemy
     BYTE bossIndex;
     BYTE hitFlashTimer;
     unsigned char pad_3315[0x3];
-    Timer unusedTimer3318;
+    Timer pad_3318;
     // Bit 3: the petal effects drift towards it while it is the first
     // boss. Bit 30 is cleared with life.
     union
@@ -399,7 +399,7 @@ struct Enemy
             DWORD mirrored : 1;
             DWORD clampPos : 1;
             DWORD deathMode : 3;
-            DWORD unusedFlag3324_23 : 1;
+            DWORD unk_3324_23 : 1;
             DWORD onScreen : 1;
             DWORD rotateSprite : 1;
             // Calls save no context while set, as th07's.
@@ -424,7 +424,7 @@ struct Enemy
         DWORD flags2;
         struct
         {
-            DWORD unusedFlag3328_0 : 1;
+            DWORD pad_3328_0 : 1;
             // UpdateYoukaiState bursts effect 0x26 every other frame while set.
             DWORD emitsEffect26 : 1;
             // Its sprites run their scripts from the stage's enemy ANM

@@ -1423,7 +1423,7 @@ int EnemyManager::OnUpdate(EnemyManager *mgr)
                 break;
             case 1:
                 g_GameManager.AddScore(enemy->score);
-                enemy->unusedFlag3324_23 = 1;
+                enemy->unk_3324_23 = 1;
                 enemy->shootable = 0;
                 enemy->contactDamage = 0;
                 enemy->hitByShots = 0;

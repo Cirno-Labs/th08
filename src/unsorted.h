@@ -681,7 +681,7 @@ struct CryptParams
     BYTE type;
     BYTE key;
     BYTE step;
-    BYTE unusedByte3;
+    BYTE pad_3;
     int blockSize;
     int limit;
 };
@@ -1049,7 +1049,7 @@ public:
     void UpdateBgmFades();
 
     IDirectSound8 *dsound;
-    DWORD unusedDword004;
+    DWORD pad_004;
     // The loaded sound files' buffers.
     IDirectSoundBuffer *soundBuffers[0x80];
     // Each sound effect's own buffer.
@@ -1066,7 +1066,7 @@ public:
     // The thread streaming the wave music and its ID.
     DWORD notifyThreadId;
     HANDLE notifyThread;
-    DWORD unusedDword61c;
+    DWORD pad_61c;
     // The sound effects to play, or -1.
     int queue[0xc];
     // How many arguments each queued sound has, and the arguments. Not
@@ -1093,7 +1093,7 @@ public:
     CStreamingSound *bgm;
     // Signalled as the wave music plays.
     HANDLE notifyEvent;
-    DWORD unusedDword5210;
+    DWORD pad_5210;
     // Added to every BgmFormat offset by CWaveFile::ResetFile (as
     // th07's).
     DWORD bgmFileOffset;
@@ -2209,7 +2209,7 @@ struct StageInstr
 {
     int frame;
     short opcode;
-    short unusedShort06;
+    short pad_06;
     D3DXVECTOR3 args;
 };
 
@@ -2238,7 +2238,7 @@ struct StageObject
 struct StageInstance
 {
     short id;
-    short unusedShort02;
+    short pad_02;
     D3DXVECTOR3 pos;
 };
 
@@ -2249,7 +2249,7 @@ struct StageData
     short quadCount;
     int instancesOffset;
     int scriptOffset;
-    DWORD unusedDword0c;
+    DWORD pad_0c;
     char name[0x80];
     char songNames[4][0x80];
     // The stage's MIDI files; a path starting with ' ' is unused.
@@ -2424,7 +2424,7 @@ public:
     // spell card is practised, and by the Gui.
     int dialogueScriptOffset;
     Sprite dialogueSprites[0x20];
-    Sprite unusedSprite5fb8;
+    Sprite pad_5fb8;
     // Called by OnDraw2 after the dialogue sprites. New in th08.
     void (*spellCardDrawCallback)();
     int waitLabel;
@@ -2617,10 +2617,10 @@ struct SpellCard
         struct
         {
             DWORD active : 1;
-            DWORD unusedFlag0_1 : 1;
+            DWORD pad_0_1 : 1;
             DWORD capture : 1;
             DWORD timedOut : 1;
-            DWORD unusedFlag0_4 : 1;
+            DWORD unk_0_4 : 1;
             DWORD lastSpell : 1;
             DWORD effectFixed : 1;
             DWORD bombed : 1;

@@ -1302,7 +1302,7 @@ int BulletManager::OnDraw(BulletManager *mgr)
             laser->sprite1.pos[1] = laser->pos[1] + s * laser->startOffset;
             laser->sprite1.pos[2] = 0.05f;
             laser->sprite1.color = laser->sprite0.color;
-            laser->sprite1.unusedFlag6 = 1;
+            laser->sprite1.unk_bit6 = 1;
             laser->sprite1.color = laser->sprite1.color & 0xffffff | 0xff000000;
             laser->sprite1.scaleX = laser->width / 10.0f * ((16.0f - laser->startOffset) / 16.0f);
             laser->sprite1.scaleY = laser->sprite1.scaleX;

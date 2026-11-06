@@ -162,7 +162,7 @@ void SpellCard::StartNameOnly(char *name, Enemy *enemy)
 {
     this->nameOnly = 1;
     this->active = 0;
-    this->unusedFlag0_4 = 0;
+    this->unk_0_4 = 0;
     this->ShowSpellCardName(-1, name, 1);
 }
 
@@ -439,7 +439,7 @@ void SpellCard::Start(int card, char *name, int face, DWORD bonus, Enemy *enemy,
     this->captured = 0;
     this->active = 1;
     this->capture = 1;
-    this->unusedFlag0_4 = 0;
+    this->unk_0_4 = 0;
     this->timedOut = 0;
     this->effectFixed = 0;
     this->bombed = 0;

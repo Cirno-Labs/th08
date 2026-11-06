@@ -78,7 +78,7 @@ struct SpriteData
     // rectangle's size is divided by these.
     float scaleX;
     float scaleY;
-    int unusedInt40;
+    int pad_40;
 };
 ASSERT_SIZE(SpriteData, 0x44);
 
@@ -177,8 +177,8 @@ struct SpriteBase
             DWORD rotationChanged : 1;
             DWORD scaleChanged : 1;
             DWORD blendMode : 2;
-            DWORD unusedFlag6 : 1;
-            DWORD unusedFlag7 : 1;
+            DWORD unk_bit6 : 1;
+            DWORD pad_bit7 : 1;
             // Step's position instructions move posOffset instead of
             // pos.
             DWORD usePosOffset : 1;
@@ -192,7 +192,7 @@ struct SpriteBase
             DWORD cameraSetup : 1;
             DWORD freezeMatrix : 1;
             DWORD useColor2 : 1;
-            DWORD unusedFlag18 : 1;
+            DWORD pad_bit18 : 1;
             // Step does nothing while it is set. New in th08.
             DWORD scriptPaused : 1;
         };
@@ -929,7 +929,7 @@ public:
     AnmLoaded anms[0x100];
     // The world matrix ProjectSprite3D last projected with.
     D3DXMATRIX lastWorldMatrix;
-    Sprite unk_1c64;
+    Sprite pad_1c64;
     unsigned char pad_1f08[0x130];
     // Images loaded as surfaces to copy to the back buffer from.
     IDirect3DSurface8 *surfaces[0x20];

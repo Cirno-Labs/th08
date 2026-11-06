@@ -132,7 +132,7 @@ public:
     // Not in th06: Play's priority and flags, for ResumeBuffer.
     DWORD dwPlayPriority;
     DWORD dwPlayFlags;
-    DWORD unusedDword28;
+    DWORD pad_28;
     // Cleared by Play.
     DWORD clearedOnPlay;
     // Set while the first buffer plays: ResumeBuffer sets it, PauseBuffer

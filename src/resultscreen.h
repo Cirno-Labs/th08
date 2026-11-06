@@ -75,7 +75,7 @@ struct Hscr
     // "%m/%d" and a NUL.
     char date[6];
     BYTE continuesUsed;
-    unsigned char unusedByte27;
+    unsigned char pad_27;
     union
     {
         // The config it was played with, in GameConfig's layout:
@@ -94,7 +94,7 @@ struct Hscr
     int playFrames;
     // The point items collected.
     int pointItems;
-    int unusedInt6c;
+    int pad_6c;
     // The misses, bombs, last spells and pauses.
     int misses;
     int bombs;
@@ -109,7 +109,7 @@ struct Hscr
     BYTE spellCards[0xde];
     // 1 in the entries the lists start with.
     BYTE isDefault;
-    BYTE unusedByte167;
+    BYTE pad_167;
 };
 ASSERT_SIZE(Hscr, 0x168);
 
@@ -305,7 +305,7 @@ ASSERT_SIZE(Vrsm, 0x1c);
 // with DecryptData's block cipher (new in th08).
 struct ScoreDat
 {
-    BYTE unusedByte00;
+    BYTE pad_00;
     // Where the key starts; random.
     BYTE key;
     // The sum of the bytes from the fifth on.
@@ -314,7 +314,7 @@ struct ScoreDat
     WORD version;
     // Random; never read.
     BYTE randomByte;
-    BYTE unusedByte07;
+    BYTE pad_07;
     // Where the chunks start.
     int dataOffset;
     // The list of the score entries read from the chunks.
@@ -463,7 +463,7 @@ public:
     int cursor;
     // The menu cursor, kept while away, as th07's.
     int savedCursor;
-    int unusedInt24;
+    int pad_24;
     // The replay slot chosen, 0 to 14, as th07's.
     int replaySlot;
     // The character of g_NameAlphabet selected, as th07's.
@@ -505,7 +505,7 @@ public:
     // Text drawn with RenderText, as th07's.
     Sprite textSprites[0x1e];
     // Never drawn; AddedCallback clears its spriteIndex, as th07's.
-    Sprite unusedSprite10ef8;
+    Sprite unk_10ef8;
     Sprite spellCardRowDivider;
     // "result00.anm" and "resulttext.anm".
     AnmLoaded *resultAnm;
