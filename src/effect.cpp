@@ -698,9 +698,9 @@ int EffectInitRing(Effect *effect)
     effect->axis.x = 0.0f;
     effect->axis.y = 0.0f;
     effect->axis.z = 1.0f;
-    effect->unusedVector2f8.x = 0.0f;
-    effect->unusedVector2f8.y = -1.0f;
-    effect->unusedVector2f8.z = 0.0f;
+    effect->unk_2f8.x = 0.0f;
+    effect->unk_2f8.y = -1.0f;
+    effect->unk_2f8.z = 0.0f;
     effect->angle = effect->velocity.x;
     effect->radius = effect->velocity.y;
     effect->ringWidth = effect->velocity.z;

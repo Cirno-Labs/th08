@@ -31,7 +31,7 @@ struct Effect
     D3DXVECTOR3 origin;
     D3DXVECTOR3 axis;
     // Set to (0, -1, 0) by EffectInitRing, as axis to (0, 0, 1).
-    D3DXVECTOR3 unusedVector2f8;
+    D3DXVECTOR3 unk_2f8;
     D3DXQUATERNION rotation;
     float radius;
     float angle;

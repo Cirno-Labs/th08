@@ -2528,7 +2528,7 @@ void ScriptFireBullets(Enemy *enemy, EnemyScriptInstr *instr)
             bs->speed2 = 0.3f;
         }
     }
-    bs->unusedAfterFireC2 = 0;
+    bs->unk_1fa = 0;
     bs->flags = bulletArgs[7].i;
     shortArg = ((short *)bulletArgs)[1];
     bs->color = INT_OP(shortArg, 2);

@@ -148,7 +148,7 @@ struct BulletShooter
     // Which of the fire instructions (96 on) set it.
     WORD aimMode;
     // Cleared by the fire instructions; nothing reads it.
-    WORD unusedAfterFireC2;
+    WORD unk_1fa;
     int flags;
     int sound;
     // Bullet::sound.
