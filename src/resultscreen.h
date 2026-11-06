@@ -312,7 +312,8 @@ struct ScoreDat
     WORD checksum;
     // 1 (th07 0xb).
     WORD version;
-    BYTE secondaryKey;
+    // Random; never read.
+    BYTE randomByte;
     BYTE unusedByte07;
     // Where the chunks start.
     int dataOffset;

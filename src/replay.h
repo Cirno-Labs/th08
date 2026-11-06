@@ -68,7 +68,8 @@ struct ReplayHeader
     int size;
     // 0x3f000318 plus the bytes from `key` on.
     int checksum;
-    BYTE secondaryKey;
+    // Random; never read.
+    BYTE randomFill;
     // The bytes from `compressedSize` on are stored plus key, key + 7,
     // key + 14, ...
     BYTE key;

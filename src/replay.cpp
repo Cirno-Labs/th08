@@ -698,7 +698,7 @@ void SaveReplay(char *path, char *name)
                 FormatTodayDate(hX.date);
                 hX.key = g_Random.GetRandomU16InRange(0x80) + 0x40;
                 hX.randomByte = g_Random.GetRandomU16InRange(0x100);
-                hX.secondaryKey = g_Random.GetRandomU16InRange(0x100);
+                hX.randomFill = g_Random.GetRandomU16InRange(0x100);
                 hX.slowdown2 = hX.slowdown + 1.12f;
                 hX.replayFormatVersion = 30;
                 memcpy(rpyBytes, &hX.randomByte, sizeof(ReplayHeader) - 0x68);

@@ -198,7 +198,7 @@ void SaveScoreDat(ResultScreen *screen)
     header->dataOffset = sizeof(ScoreDat);
     header->checksum = 0;
     header->key = g_Random.GetRandomU16InRange(256);
-    header->secondaryKey = g_Random.GetRandomU16InRange(256);
+    header->randomByte = g_Random.GetRandomU16InRange(256);
     header->version = 1;
     for (m = 4; m < size0; m++)
     {
