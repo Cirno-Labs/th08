@@ -362,8 +362,8 @@
 <rect width="12" height="12" x="375" y="75" class="named"><title>0x004224a0 ScriptMoveRandom2 (630 bytes)</title></rect>
 <rect width="12" height="12" x="390" y="75" class="named"><title>0x00422720 ScriptFireBullets (1110 bytes)</title></rect>
 <rect width="12" height="12" x="405" y="75" class="named"><title>0x00422b80 GameManager::RankLerpF (39 bytes)</title></rect>
-<rect width="12" height="12" x="420" y="75" class="named"><title>0x00422bb0 AsciiText::SetNearbyLabelInterrupt (42 bytes)</title></rect>
-<rect width="12" height="12" x="435" y="75" class="named"><title>0x00422be0 AsciiText::SetNearbyLabelPos (51 bytes)</title></rect>
+<rect width="12" height="12" x="420" y="75" class="named"><title>0x00422bb0 AsciiText::SetBossMarkerInterrupt (42 bytes)</title></rect>
+<rect width="12" height="12" x="435" y="75" class="named"><title>0x00422be0 AsciiText::SetBossMarkerPos (51 bytes)</title></rect>
 <rect width="12" height="12" x="450" y="75" class="named"><title>0x00422c20 Gui::SetBossPresent (25 bytes)</title></rect>
 <rect width="12" height="12" x="465" y="75" class="named"><title>0x00422c40 ScriptUpdateMovement (1122 bytes)</title></rect>
 <rect width="12" height="12" x="480" y="75" class="named"><title>0x004230c0 Gui::SetBossHealth (22 bytes)</title></rect>
@@ -510,7 +510,7 @@
 <rect width="12" height="12" x="345" y="120" class="named"><title>0x0042f230 GameManager::IsSoloHuman (64 bytes)</title></rect>
 <rect width="12" height="12" x="360" y="120" class="named"><title>0x0042f270 GameManager::IsSoloYoukai (64 bytes)</title></rect>
 <rect width="12" height="12" x="375" y="120" class="named"><title>0x0042f2b0 GameManager::GetLives (25 bytes)</title></rect>
-<rect width="12" height="12" x="390" y="120" class="named"><title>0x0042f2d0 AsciiText::SetNearbyLabelDimmed (29 bytes)</title></rect>
+<rect width="12" height="12" x="390" y="120" class="named"><title>0x0042f2d0 AsciiText::SetBossMarkerState (29 bytes)</title></rect>
 <rect width="12" height="12" x="405" y="120" class="named"><title>0x0042f2f0 AsciiText::SetScale (37 bytes)</title></rect>
 <rect width="12" height="12" x="420" y="120" class="named"><title>0x0042f320 Gui::IsBossPresent (17 bytes)</title></rect>
 <rect width="12" height="12" x="435" y="120" class="named"><title>0x0042f340 Gui::SetBossTimer (22 bytes)</title></rect>
@@ -2030,7 +2030,7 @@
 <rect width="4.37" height="4.74" x="634.77" y="283.74" class="named"><title>0x00440010 ItemManager::ItemManager (52 bytes)</title></rect>
 <rect width="4.37" height="4.74" x="634.77" y="291.47" class="named"><title>0x00462750 ModulateChannel (52 bytes)</title></rect>
 <rect width="4.37" height="4.65" x="634.77" y="299.21" class="named"><title>0x0040bb20 SpriteEngine::ClearDrawStats (51 bytes)</title></rect>
-<rect width="4.37" height="4.65" x="634.77" y="306.86" class="named"><title>0x00422be0 AsciiText::SetNearbyLabelPos (51 bytes)</title></rect>
+<rect width="4.37" height="4.65" x="634.77" y="306.86" class="named"><title>0x00422be0 AsciiText::SetBossMarkerPos (51 bytes)</title></rect>
 <rect width="4.37" height="4.65" x="634.77" y="314.50" class="named"><title>0x00473680 CWaveFile::Close (51 bytes)</title></rect>
 <rect width="4.37" height="4.65" x="634.77" y="322.15" class="named"><title>0x004736c0 File::File (51 bytes)</title></rect>
 <rect width="4.37" height="4.65" x="634.77" y="329.80" class="named"><title>0x00473a20 File::Seek (51 bytes)</title></rect>
@@ -2078,7 +2078,7 @@
 <rect width="4.14" height="4.14" x="728.77" y="244.62" class="named"><title>0x004739c0 File::Tell (43 bytes)</title></rect>
 <rect width="4.04" height="4.14" x="735.91" y="244.62" class="named"><title>0x00404720 D3DXVECTOR3::D3DXVECTOR3 (42 bytes)</title></rect>
 <rect width="4.04" height="4.14" x="742.96" y="244.62" class="named"><title>0x00406520 ChainElem::SetCallback (42 bytes)</title></rect>
-<rect width="3.88" height="4.31" x="649.75" y="251.76" class="named"><title>0x00422bb0 AsciiText::SetNearbyLabelInterrupt (42 bytes)</title></rect>
+<rect width="3.88" height="4.31" x="649.75" y="251.76" class="named"><title>0x00422bb0 AsciiText::SetBossMarkerInterrupt (42 bytes)</title></rect>
 <rect width="3.88" height="4.31" x="649.75" y="259.07" class="named"><title>0x004337f0 ItemManager::Reset (42 bytes)</title></rect>
 <rect width="3.88" height="4.21" x="649.75" y="266.38" class="named"><title>0x00406610 Timer::Set (41 bytes)</title></rect>
 <rect width="3.88" height="4.21" x="649.75" y="273.59" class="named"><title>0x00443e20 MmTimer::~MmTimer (41 bytes)</title></rect>
@@ -2151,7 +2151,7 @@
 <rect width="3.28" height="3.64" x="670.12" y="305.73" class="named"><title>0x004180f0 SpellCard::RemoveChain (30 bytes)</title></rect>
 <rect width="3.28" height="3.64" x="670.12" y="312.38" class="named"><title>0x00443f30 SwapBytes16 (30 bytes)</title></rect>
 <rect width="3.28" height="3.64" x="670.12" y="319.02" class="named"><title>0x004751e0 File::ReadDword (30 bytes)</title></rect>
-<rect width="3.28" height="3.52" x="670.12" y="325.67" class="named"><title>0x0042f2d0 AsciiText::SetNearbyLabelDimmed (29 bytes)</title></rect>
+<rect width="3.28" height="3.52" x="670.12" y="325.67" class="named"><title>0x0042f2d0 AsciiText::SetBossMarkerState (29 bytes)</title></rect>
 <rect width="3.28" height="3.40" x="670.12" y="332.19" class="named"><title>0x00406c30 SoundPlayer::Pause (28 bytes)</title></rect>
 <rect width="3.28" height="3.40" x="670.12" y="338.60" class="named"><title>0x00406c50 SoundPlayer::UnPause (28 bytes)</title></rect>
 <rect width="3.17" height="3.51" x="676.40" y="265.28" class="named"><title>0x0041fd20 Enemy::IsFollower (28 bytes)</title></rect>

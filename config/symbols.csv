@@ -277,8 +277,8 @@ address,size,name,symbol
 0x004224a0,630,ScriptMoveRandom2,?ScriptMoveRandom2@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00422720,1110,ScriptFireBullets,?ScriptFireBullets@@YIXPAUEnemy@@PAUEnemyScriptInstr@@@Z
 0x00422b80,39,GameManager::RankLerpF,?RankLerpF@GameManager@@QAEMMM@Z
-0x00422bb0,42,AsciiText::SetNearbyLabelInterrupt,?SetNearbyLabelInterrupt@AsciiText@@QAEXHF@Z
-0x00422be0,51,AsciiText::SetNearbyLabelPos,?SetNearbyLabelPos@AsciiText@@QAEXHPAUD3DXVECTOR3@@@Z
+0x00422bb0,42,AsciiText::SetBossMarkerInterrupt,?SetBossMarkerInterrupt@AsciiText@@QAEXHF@Z
+0x00422be0,51,AsciiText::SetBossMarkerPos,?SetBossMarkerPos@AsciiText@@QAEXHPAUD3DXVECTOR3@@@Z
 0x00422c20,25,Gui::SetBossPresent,?SetBossPresent@Gui@@QAEEE@Z
 0x00422c40,1122,ScriptUpdateMovement,?ScriptUpdateMovement@@YIXPAUEnemy@@@Z
 0x004230c0,22,Gui::SetBossHealth,?SetBossHealth@Gui@@QAEXM@Z
@@ -425,7 +425,7 @@ address,size,name,symbol
 0x0042f230,64,GameManager::IsSoloHuman,?IsSoloHuman@GameManager@@QAEHXZ
 0x0042f270,64,GameManager::IsSoloYoukai,?IsSoloYoukai@GameManager@@QAEHXZ
 0x0042f2b0,25,GameManager::GetLives,?GetLives@GameManager@@QAEHXZ
-0x0042f2d0,29,AsciiText::SetNearbyLabelDimmed,?SetNearbyLabelDimmed@AsciiText@@QAEXHH@Z
+0x0042f2d0,29,AsciiText::SetBossMarkerState,?SetBossMarkerState@AsciiText@@QAEXHH@Z
 0x0042f2f0,37,AsciiText::SetScale,?SetScale@AsciiText@@QAEXMM@Z
 0x0042f320,17,Gui::IsBossPresent,?IsBossPresent@Gui@@QAEEXZ
 0x0042f340,22,Gui::SetBossTimer,?SetBossTimer@Gui@@QAEXH@Z

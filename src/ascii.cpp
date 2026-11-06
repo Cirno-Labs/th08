@@ -148,10 +148,10 @@ void AsciiText::StartScripts()
     this->anm->StartScript(&this->summaryPopup4, 8);
     this->anm->StartScript(&this->summaryDigit, 4);
     this->anm->StartScript(&this->summaryBombIcon, 9);
-    this->anm->StartScript(&this->nearbyLabels[0], 10);
-    this->anm->StartScript(&this->nearbyLabels[1], 10);
-    this->anm->StartScript(&this->nearbyLabels[2], 10);
-    this->anm->StartScript(&this->nearbyLabels[3], 10);
+    this->anm->StartScript(&this->bossMarkers[0], 10);
+    this->anm->StartScript(&this->bossMarkers[1], 10);
+    this->anm->StartScript(&this->bossMarkers[2], 10);
+    this->anm->StartScript(&this->bossMarkers[3], 10);
     this->summaryPopup2.pos.x -= g_GameManager.gaugeMin * 56.0f / -10000.0f;
     this->summaryPopup3.pos.x += g_GameManager.gaugeMax * 56.0f / 10000.0f;
     this->SetSummaryPendingInterrupt(this->GetSummaryPendingInterrupt());
@@ -352,40 +352,40 @@ void AsciiText::DrawStrings()
     }
     for (idx = 0; idx < 4; idx++)
     {
-        if (this->nearbyLabels[idx].pos.x >= 56.0f && this->nearbyLabels[idx].pos.x <= 392.0f)
+        if (this->bossMarkers[idx].pos.x >= 56.0f && this->bossMarkers[idx].pos.x <= 392.0f)
         {
-            advance = fabsf(this->nearbyLabels[idx].pos.x - 32.0f - g_Player.pos.x);
-            this->nearbyLabels[idx].spriteData = this->anm->GetSprite(0x9d);
-            switch (this->nearbyLabelDimmed[idx])
+            advance = fabsf(this->bossMarkers[idx].pos.x - 32.0f - g_Player.pos.x);
+            this->bossMarkers[idx].spriteData = this->anm->GetSprite(0x9d);
+            switch (this->bossMarkerStates[idx])
             {
             case 0:
             normal:
-                this->nearbyLabels[idx].colorRgb[2] = 0xff;
-                this->nearbyLabels[idx].colorRgb[1] = 0xff;
-                this->nearbyLabels[idx].colorRgb[0] = 0xff;
+                this->bossMarkers[idx].colorRgb[2] = 0xff;
+                this->bossMarkers[idx].colorRgb[1] = 0xff;
+                this->bossMarkers[idx].colorRgb[0] = 0xff;
                 if (advance < 64.0f)
                 {
-                    this->nearbyLabels[idx].alpha = advance * 64.0f / 64.0f + 96.0f;
+                    this->bossMarkers[idx].alpha = advance * 64.0f / 64.0f + 96.0f;
                 }
                 else
                 {
-                    this->nearbyLabels[idx].alpha = 0xa0;
+                    this->bossMarkers[idx].alpha = 0xa0;
                 }
                 break;
             case 1:
-                this->nearbyLabels[idx].alpha = 0x80;
-                this->nearbyLabels[idx].colorRgb[2] = 0xff;
-                this->nearbyLabels[idx].colorRgb[1] = 0x40;
-                this->nearbyLabels[idx].colorRgb[0] = 0x40;
+                this->bossMarkers[idx].alpha = 0x80;
+                this->bossMarkers[idx].colorRgb[2] = 0xff;
+                this->bossMarkers[idx].colorRgb[1] = 0x40;
+                this->bossMarkers[idx].colorRgb[0] = 0x40;
                 break;
             case 2:
                 if (this->frameCounter % 8 == 0)
                 {
-                    this->nearbyLabels[idx].spriteData = this->anm->GetSprite(0x9e);
-                    this->nearbyLabels[idx].alpha = 0xff;
-                    this->nearbyLabels[idx].colorRgb[2] = 0xff;
-                    this->nearbyLabels[idx].colorRgb[1] = 0xff;
-                    this->nearbyLabels[idx].colorRgb[0] = 0xff;
+                    this->bossMarkers[idx].spriteData = this->anm->GetSprite(0x9e);
+                    this->bossMarkers[idx].alpha = 0xff;
+                    this->bossMarkers[idx].colorRgb[2] = 0xff;
+                    this->bossMarkers[idx].colorRgb[1] = 0xff;
+                    this->bossMarkers[idx].colorRgb[0] = 0xff;
                 }
                 else
                 {
@@ -395,11 +395,11 @@ void AsciiText::DrawStrings()
             case 3:
                 if (this->frameCounter % 4 == 0)
                 {
-                    this->nearbyLabels[idx].spriteData = this->anm->GetSprite(0x9e);
-                    this->nearbyLabels[idx].alpha = 0xff;
-                    this->nearbyLabels[idx].colorRgb[2] = 0xff;
-                    this->nearbyLabels[idx].colorRgb[1] = 0xff;
-                    this->nearbyLabels[idx].colorRgb[0] = 0xff;
+                    this->bossMarkers[idx].spriteData = this->anm->GetSprite(0x9e);
+                    this->bossMarkers[idx].alpha = 0xff;
+                    this->bossMarkers[idx].colorRgb[2] = 0xff;
+                    this->bossMarkers[idx].colorRgb[1] = 0xff;
+                    this->bossMarkers[idx].colorRgb[0] = 0xff;
                 }
                 else
                 {
@@ -409,11 +409,11 @@ void AsciiText::DrawStrings()
             case 4:
                 if (this->frameCounter % 2 == 0)
                 {
-                    this->nearbyLabels[idx].spriteData = this->anm->GetSprite(0x9e);
-                    this->nearbyLabels[idx].alpha = 0xff;
-                    this->nearbyLabels[idx].colorRgb[2] = 0xff;
-                    this->nearbyLabels[idx].colorRgb[1] = 0xff;
-                    this->nearbyLabels[idx].colorRgb[0] = 0xff;
+                    this->bossMarkers[idx].spriteData = this->anm->GetSprite(0x9e);
+                    this->bossMarkers[idx].alpha = 0xff;
+                    this->bossMarkers[idx].colorRgb[2] = 0xff;
+                    this->bossMarkers[idx].colorRgb[1] = 0xff;
+                    this->bossMarkers[idx].colorRgb[0] = 0xff;
                 }
                 else
                 {
@@ -421,7 +421,7 @@ void AsciiText::DrawStrings()
                 }
                 break;
             }
-            g_SpriteEngine->DrawUnrotated(&this->nearbyLabels[idx]);
+            g_SpriteEngine->DrawUnrotated(&this->bossMarkers[idx]);
         }
     }
 }

@@ -1542,9 +1542,9 @@ int Player::AddedCallback(Player *player)
     {
         g_AsciiText.SetSummaryPendingInterrupt(1);
     }
-    g_AsciiText.SetNearbyLabelInterrupt(0, 2);
-    g_AsciiText.SetNearbyLabelInterrupt(1, 2);
-    g_AsciiText.SetNearbyLabelInterrupt(2, 2);
+    g_AsciiText.SetBossMarkerInterrupt(0, 2);
+    g_AsciiText.SetBossMarkerInterrupt(1, 2);
+    g_AsciiText.SetBossMarkerInterrupt(2, 2);
     // The bounds of stats->gauge and where its gauge changes color.
     g_GameManager.gaugeMin = -10000;
     g_GameManager.gaugeLow1 = -8000;
@@ -1623,9 +1623,9 @@ int Player::DeletedCallback(Player *player)
     {
         g_SpriteEngine->ReleaseAnm(5);
         g_AsciiText.SetSummaryPendingInterrupt(99);
-        g_AsciiText.SetNearbyLabelInterrupt(0, 99);
-        g_AsciiText.SetNearbyLabelInterrupt(1, 99);
-        g_AsciiText.SetNearbyLabelInterrupt(2, 99);
+        g_AsciiText.SetBossMarkerInterrupt(0, 99);
+        g_AsciiText.SetBossMarkerInterrupt(1, 99);
+        g_AsciiText.SetBossMarkerInterrupt(2, 99);
         if (g_Player.shotType != NULL)
         {
             g_MemoryTracker.Free(g_Player.shotType);

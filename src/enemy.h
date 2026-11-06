@@ -205,7 +205,7 @@ struct Enemy
     // Called with 0 on the bosses as a spell card bomb ends (0x42adb0).
     void ReleaseFollowers(int collect);
     // Ends it, as th07's: ReleaseFollowers(0) first; unless deathMode is set,
-    // deactivates it; a boss leaves its slot, hides its nearby label and
+    // deactivates it; a boss leaves its slot, hides its boss marker and
     // ends the boss fight; drops its effects, sends attachedEffect interrupt
     // 3, clears its callbacks and frees threads (0x42bcf0).
     void Despawn();

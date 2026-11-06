@@ -888,7 +888,7 @@ loop:
                 }
                 enemy->isBoss = 1;
                 enemy->bossIndex = INT_ARG(0);
-                g_AsciiText.SetNearbyLabelInterrupt(enemy->bossIndex, 1);
+                g_AsciiText.SetBossMarkerInterrupt(enemy->bossIndex, 1);
                 enemy->minShootDistSq = 0.0f;
             }
             else
@@ -899,9 +899,9 @@ loop:
                 }
                 g_EnemyManager.bosses[enemy->bossIndex] = NULL;
                 enemy->isBoss = 0;
-                g_AsciiText.SetNearbyLabelInterrupt(enemy->bossIndex, 2);
+                g_AsciiText.SetBossMarkerInterrupt(enemy->bossIndex, 2);
                 ReleaseEnemyEffects(enemy);
-                g_AsciiText.SetNearbyLabelPos(enemy->bossIndex, &D3DXVECTOR3(-999.0f, -999.0f, 0.0f));
+                g_AsciiText.SetBossMarkerPos(enemy->bossIndex, &D3DXVECTOR3(-999.0f, -999.0f, 0.0f));
             }
             break;
         case 128:

@@ -93,7 +93,7 @@ public:
     // digit, digit2 (sprite 0x88, new) and glyph up and glyphWidth to 13
     // (th07 14) (0x402450).
     void Initialize();
-    // Steps summaryPopup to summaryPopup4, summaryDigit, nearbyLabels[] and
+    // Steps summaryPopup to summaryPopup4, summaryDigit, bossMarkers[] and
     // summaryBombIcon for a frame, as th07's. Inline; the copy is at 0x406fd0.
     void RunScripts()
     {
@@ -102,14 +102,14 @@ public:
         g_SpriteEngine->Step(&this->summaryPopup3);
         g_SpriteEngine->Step(&this->summaryPopup4);
         g_SpriteEngine->Step(&this->summaryDigit);
-        g_SpriteEngine->Step(&this->nearbyLabels[0]);
-        g_SpriteEngine->Step(&this->nearbyLabels[1]);
-        g_SpriteEngine->Step(&this->nearbyLabels[2]);
-        g_SpriteEngine->Step(&this->nearbyLabels[3]);
+        g_SpriteEngine->Step(&this->bossMarkers[0]);
+        g_SpriteEngine->Step(&this->bossMarkers[1]);
+        g_SpriteEngine->Step(&this->bossMarkers[2]);
+        g_SpriteEngine->Step(&this->bossMarkers[3]);
         g_SpriteEngine->Step(&this->summaryBombIcon);
     }
     // Starts the scripts of the summary sprites (5 to 9, 4 for summaryDigit)
-    // and nearbyLabels[] (10), moves summaryPopup2 and summaryPopup3 by
+    // and bossMarkers[] (10), moves summaryPopup2 and summaryPopup3 by
     // g_GameManager.gaugeMin and gaugeMax and resends
     // summaryPendingInterrupt (0x402600). th07's StartScripts.
     void StartScripts();
@@ -216,24 +216,24 @@ public:
         this->summaryPendingInterrupt = value;
     }
 
-    // Moves nearbyLabels[i] to `pos`, as th07's. Inline; the copy at
+    // Moves bossMarkers[i] to `pos`, as th07's. Inline; the copy at
     // 0x422be0 is in an /Od object.
-    void SetNearbyLabelPos(int i, D3DXVECTOR3 *pos)
+    void SetBossMarkerPos(int i, D3DXVECTOR3 *pos)
     {
-        this->nearbyLabels[i].pos = *pos;
+        this->bossMarkers[i].pos = *pos;
     }
-    // Sets nearbyLabelDimmed[i], as th07's: 1 dims the label, 2 to 4
+    // Sets bossMarkerStates[i], as th07's: 1 dims the marker, 2 to 4
     // colour it by the boss's danger level. Inline; the copy is at
     // 0x42f2d0.
-    void SetNearbyLabelDimmed(int i, int value)
+    void SetBossMarkerState(int i, int value)
     {
-        this->nearbyLabelDimmed[i] = value;
+        this->bossMarkerStates[i] = value;
     }
-    // Sends nearbyLabels[i] `interrupt`. Inline; the copy at 0x422bb0
+    // Sends bossMarkers[i] `interrupt`. Inline; the copy at 0x422bb0
     // is in an /Od object.
-    void SetNearbyLabelInterrupt(int i, short interrupt)
+    void SetBossMarkerInterrupt(int i, short interrupt)
     {
-        this->nearbyLabels[i].SetPendingInterrupt(interrupt);
+        this->bossMarkers[i].SetPendingInterrupt(interrupt);
     }
 
     // The glyph DrawStrings draws each character with, as th07's.
@@ -249,9 +249,9 @@ public:
     Sprite summaryPopup4;
     Sprite summaryDigit;
     Sprite summaryBombIcon;
-    Sprite nearbyLabels[4];
-    // Whether nearbyLabels[i] is drawn dimmed, as th07's.
-    int nearbyLabelDimmed[4];
+    Sprite bossMarkers[4];
+    // How bossMarkers[i] is drawn, as th07's; see SetBossMarkerState.
+    int bossMarkerStates[4];
     AsciiString strings[0x100];
     // How many strings are queued.
     int stringCount;

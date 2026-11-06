@@ -565,8 +565,8 @@ void Enemy::Despawn()
         g_Gui.SetBossPresent(0);
         g_EnemyManager.bosses[this->bossIndex] = NULL;
         this->isBoss = 0;
-        g_AsciiText.SetNearbyLabelInterrupt(this->bossIndex, 2);
-        g_AsciiText.SetNearbyLabelPos(this->bossIndex, &D3DXVECTOR3(-999.0f, -999.0f, 0.0f));
+        g_AsciiText.SetBossMarkerInterrupt(this->bossIndex, 2);
+        g_AsciiText.SetBossMarkerPos(this->bossIndex, &D3DXVECTOR3(-999.0f, -999.0f, 0.0f));
     }
     if (this->effectCount != 0)
     {
@@ -1549,14 +1549,14 @@ int EnemyManager::OnUpdate(EnemyManager *mgr)
                 }
                 markerPos.y = 472.0f;
                 markerPos.z = 0.0f;
-                g_AsciiText.SetNearbyLabelPos(enemy->bossIndex, &markerPos);
+                g_AsciiText.SetBossMarkerPos(enemy->bossIndex, &markerPos);
                 if (enemy->lifeCallbackProximity == 0)
                 {
-                    g_AsciiText.SetNearbyLabelDimmed(enemy->bossIndex, enemy->sprite.useColor2 != 0);
+                    g_AsciiText.SetBossMarkerState(enemy->bossIndex, enemy->sprite.useColor2 != 0);
                 }
                 else
                 {
-                    g_AsciiText.SetNearbyLabelDimmed(enemy->bossIndex, enemy->lifeCallbackProximity + 1);
+                    g_AsciiText.SetBossMarkerState(enemy->bossIndex, enemy->lifeCallbackProximity + 1);
                 }
             }
         }
@@ -1959,10 +1959,10 @@ int EnemyManager::AddedCallback(EnemyManager *mgr)
     mgr->dropCounter = g_Random.GetRandomU16InRange(3);
     mgr->dropIndex = g_Random.GetRandomU16InRange(8);
     D3DXVECTOR3 nowhere(-999.0f, -999.0f, -999.0f);
-    g_AsciiText.SetNearbyLabelPos(0, &nowhere);
-    g_AsciiText.SetNearbyLabelPos(1, &nowhere);
-    g_AsciiText.SetNearbyLabelPos(2, &nowhere);
-    g_AsciiText.SetNearbyLabelPos(3, &nowhere);
+    g_AsciiText.SetBossMarkerPos(0, &nowhere);
+    g_AsciiText.SetBossMarkerPos(1, &nowhere);
+    g_AsciiText.SetBossMarkerPos(2, &nowhere);
+    g_AsciiText.SetBossMarkerPos(3, &nowhere);
     return 0;
 }
 
@@ -1988,10 +1988,10 @@ int EnemyManager::DeletedCallback(EnemyManager *mgr)
         g_EnemyScripts.Release();
     }
     D3DXVECTOR3 nowhere(-999.0f, -999.0f, -999.0f);
-    g_AsciiText.SetNearbyLabelPos(0, &nowhere);
-    g_AsciiText.SetNearbyLabelPos(1, &nowhere);
-    g_AsciiText.SetNearbyLabelPos(2, &nowhere);
-    g_AsciiText.SetNearbyLabelPos(3, &nowhere);
+    g_AsciiText.SetBossMarkerPos(0, &nowhere);
+    g_AsciiText.SetBossMarkerPos(1, &nowhere);
+    g_AsciiText.SetBossMarkerPos(2, &nowhere);
+    g_AsciiText.SetBossMarkerPos(3, &nowhere);
     return 0;
 }
 
