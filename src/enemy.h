@@ -376,7 +376,9 @@ struct Enemy
             DWORD isBoss : 1;
             DWORD shootable : 1;
             DWORD contactDamage : 1;
-            DWORD hideFollowEffects : 1;
+            // Hides the enemy, as th06's: it isn't drawn, touched or shot,
+            // and the effects following it are hidden too.
+            DWORD hidden : 1;
             DWORD hiddenByBomb : 1;
             // Cleared for the bosses as a Dissolve Spell starts.
             DWORD hitByShots : 1;

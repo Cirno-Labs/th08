@@ -70,7 +70,7 @@ void EnemyManager::Initialize()
     enemy->turnStill = -1;
     enemy->shootable = 1;
     enemy->contactDamage = 1;
-    enemy->hideFollowEffects = 0;
+    enemy->hidden = 0;
     enemy->hitByShots = 1;
     enemy->grazeable = 0;
     enemy->deathMode = 0;
@@ -1165,9 +1165,9 @@ int EnemyManager::OnUpdate(EnemyManager *mgr)
         }
         if (enemy->sprite.spriteData == NULL)
         {
-            enemy->hideFollowEffects = 1;
+            enemy->hidden = 1;
         }
-        if (!enemy->hideFollowEffects && !enemy->onScreen &&
+        if (!enemy->hidden && !enemy->onScreen &&
             g_GameManager.IsInPlayArea(enemy->absPos[0], enemy->absPos[1], enemy->sprite.spriteData->width,
                                        enemy->sprite.spriteData->height))
         {
@@ -1210,7 +1210,7 @@ int EnemyManager::OnUpdate(EnemyManager *mgr)
             }
         }
         bomb = g_Player.bomb.running;
-        if (!enemy->hideFollowEffects && !enemy->hiddenByBomb && !enemy->isYoukai &&
+        if (!enemy->hidden && !enemy->hiddenByBomb && !enemy->isYoukai &&
             (!enemy->intangibleDuringBomb || !g_Player.bomb.running))
         {
             if (enemy->shootable)
@@ -1539,7 +1539,7 @@ int EnemyManager::OnUpdate(EnemyManager *mgr)
             }
             if (enemy->isBoss < 4)
             {
-                if (!enemy->hideFollowEffects)
+                if (!enemy->hidden)
                 {
                     markerPos.x = enemy->absPos.x + 32.0f;
                 }
@@ -1569,7 +1569,7 @@ int EnemyManager::OnUpdate(EnemyManager *mgr)
         {
             enemy->invulnTimer--;
         }
-        if (!enemy->hideFollowEffects && enemy->active)
+        if (!enemy->hidden && enemy->active)
         {
             enemy->nextInDrawList = mgr->drawListHeads[enemy->drawListIndex];
             mgr->drawListHeads[enemy->drawListIndex] = enemy;
@@ -1611,7 +1611,7 @@ void MoveEnemyEffects(Enemy *enemy)
         {
             continue;
         }
-        eff->sprite.visible = !enemy->hideFollowEffects;
+        eff->sprite.visible = !enemy->hidden;
         eff->origin = enemy->pos;
         if (eff->radius < enemy->effectRadius)
         {
