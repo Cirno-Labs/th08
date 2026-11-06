@@ -114,7 +114,7 @@ struct SpriteBase
     Timer interpDuration[7];
     Timer interpFrame[7];
     // How Step eases each of them.
-    BYTE interpEasing;
+    BYTE posInterpEasing;
     BYTE colorInterpEasing;
     BYTE alphaInterpEasing;
     BYTE rotationInterpEasing;
@@ -259,7 +259,7 @@ public:
     {
         this->interpDuration[0] = 0;
         this->interpFrame[0] = frames;
-        this->interpEasing = easing;
+        this->posInterpEasing = easing;
         this->moveStart = *from;
         this->moveEnd = *to;
     }
@@ -929,7 +929,7 @@ public:
     AnmLoaded anms[0x100];
     // The world matrix ProjectSprite3D last projected with.
     D3DXMATRIX lastWorldMatrix;
-    Sprite unusedSprite1c64;
+    Sprite unk_1c64;
     unsigned char pad_1f08[0x130];
     // Images loaded as surfaces to copy to the back buffer from.
     IDirect3DSurface8 *surfaces[0x20];

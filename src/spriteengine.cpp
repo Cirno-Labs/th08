@@ -341,13 +341,13 @@ int SpriteEngine::Step(Sprite *vm)
             }
             break;
         case 19:
-            vm->interpEasing = 6;
+            vm->posInterpEasing = 6;
             goto posInterp;
         case 18:
-            vm->interpEasing = 4;
+            vm->posInterpEasing = 4;
             goto posInterp;
         case 17:
-            vm->interpEasing = 0;
+            vm->posInterpEasing = 0;
         posInterp:
             if (!vm->usePosOffset)
             {
@@ -466,7 +466,7 @@ int SpriteEngine::Step(Sprite *vm)
         case 32:
             vm->interpDuration[0] = 0;
             vm->interpFrame[0] = ANM_INT_ARG(0);
-            vm->interpEasing = curInstr->args[1].i;
+            vm->posInterpEasing = curInstr->args[1].i;
             if (!vm->usePosOffset)
             {
                 vm->moveStart = vm->pos;
@@ -740,7 +740,7 @@ done:
             {
                 t = vm->interpDuration[k].AsFloat() / vm->interpFrame[k].AsFloat();
             }
-            switch ((&vm->interpEasing)[k])
+            switch ((&vm->posInterpEasing)[k])
             {
             case 1:
                 t = t * t;

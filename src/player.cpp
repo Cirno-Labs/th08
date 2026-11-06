@@ -84,7 +84,7 @@ char *g_ShotFilesFocused[12] = {
     "ply03a.sht",
     "ply03as.sht",
 };
-OptionFunc g_OptionUpdateFuncs[13][4] = {
+PlayerOptionFunc g_OptionUpdateFuncs[13][4] = {
     {UpdateHomingOption, NULL, NULL, NULL},
     {UpdateFrontOption, NULL, NULL, NULL},
     {UpdateCirclingOption, UpdateCirclingOption, UpdateCirclingOption, UpdateCirclingOption},
@@ -99,7 +99,7 @@ OptionFunc g_OptionUpdateFuncs[13][4] = {
     {UpdateSwirlOption, UpdateSwirlOption, NULL, NULL},
     {NULL, NULL, UpdateTrailingOption, NULL},
 };
-OptionFunc g_OptionDrawFuncs[13][4] = {
+PlayerOptionFunc g_OptionDrawFuncs[13][4] = {
     {DrawOption, NULL, NULL, NULL},
     {DrawOption, NULL, NULL, NULL},
     {DrawOption, DrawOption, DrawOption, DrawOption},
@@ -149,9 +149,9 @@ Player::Player()
 {
 }
 
-int Player::CheckAreaHit(D3DXVECTOR3 *pos, D3DXVECTOR3 *size)
+int Player::CheckHitAreas(D3DXVECTOR3 *pos, D3DXVECTOR3 *size)
 {
-    PlayerBombHitbox *area;
+    PlayerHitArea *area;
     int idx;
     // The point, from the area's centre, and turned into its frame.
     D3DXVECTOR3 d2;
@@ -215,7 +215,7 @@ int Player::CheckHit(D3DXVECTOR3 *pos, D3DXVECTOR3 *size)
     D3DXVECTOR3 end;
 
     this->areaItemType = 6;
-    if (this->CheckAreaHit(pos, size))
+    if (this->CheckHitAreas(pos, size))
     {
         return 2;
     }
@@ -269,7 +269,7 @@ int Player::CheckGraze(D3DXVECTOR3 *pos, D3DXVECTOR3 *size)
     D3DXVECTOR3 end;
 
     this->areaItemType = 6;
-    if (this->CheckAreaHit(pos, size))
+    if (this->CheckHitAreas(pos, size))
     {
         return 2;
     }
@@ -459,7 +459,7 @@ void Player::Die()
             effect = this->lastWordEffect;
             effect->sprite.interpDuration[0] = 0;
             effect->sprite.interpFrame[0] = this->deathbombFrames;
-            effect->sprite.interpEasing = 4;
+            effect->sprite.posInterpEasing = 4;
             effect->sprite.moveStart.x = 128.0f;
             effect->sprite.moveEnd.x = 8.0f;
             effect->sprite.moveStart.y = 32.0f;
@@ -821,21 +821,21 @@ int HandleInput(Player *player)
     player->moveDelta.y = deltaY * g_App.gameSpeed;
     player->pos[0] += player->moveDelta.x;
     player->pos[1] += player->moveDelta.y;
-    if (player->pos[0] < g_GameManager.arena2[0])
+    if (player->pos[0] < g_GameManager.playerArea[0])
     {
-        player->pos[0] = g_GameManager.arena2[0];
+        player->pos[0] = g_GameManager.playerArea[0];
     }
-    else if (player->pos[0] > g_GameManager.arena2[0] + g_GameManager.arena2[2])
+    else if (player->pos[0] > g_GameManager.playerArea[0] + g_GameManager.playerArea[2])
     {
-        player->pos[0] = g_GameManager.arena2[0] + g_GameManager.arena2[2];
+        player->pos[0] = g_GameManager.playerArea[0] + g_GameManager.playerArea[2];
     }
-    if (player->pos[1] < g_GameManager.arena2[1])
+    if (player->pos[1] < g_GameManager.playerArea[1])
     {
-        player->pos[1] = g_GameManager.arena2[1];
+        player->pos[1] = g_GameManager.playerArea[1];
     }
-    else if (player->pos[1] > g_GameManager.arena2[1] + g_GameManager.arena2[3])
+    else if (player->pos[1] > g_GameManager.playerArea[1] + g_GameManager.playerArea[3])
     {
-        player->pos[1] = g_GameManager.arena2[1] + g_GameManager.arena2[3];
+        player->pos[1] = g_GameManager.playerArea[1] + g_GameManager.playerArea[3];
     }
     player->hitboxMin = player->pos - player->hitboxSize;
     player->hitboxMax = player->pos + player->hitboxSize;
@@ -955,7 +955,7 @@ int HandleInput(Player *player)
     return 0;
 }
 
-float Player::AngleFrom(D3DXVECTOR3 *pos)
+float Player::AngleToPlayer(D3DXVECTOR3 *pos)
 {
     float x;
     float y;
@@ -1027,7 +1027,7 @@ int Player::OnUpdate(Player *player)
     {
         player->gaugeFullEffect->sprite.scriptPaused = 0;
     }
-    UpdateHitboxAreas(player);
+    UpdateHitAreas(player);
     UpdateBombState(player);
     if (player->playerState == 2)
     {
@@ -1070,9 +1070,9 @@ int Player::OnUpdate(Player *player)
     return 1;
 }
 
-void UpdateHitboxAreas(Player *player)
+void UpdateHitAreas(Player *player)
 {
-    PlayerBombHitbox *area;
+    PlayerHitArea *area;
     int i;
 
     // Both arrays, bombHitboxes and hitAreas.
@@ -1676,9 +1676,9 @@ int LoadShotTypeFile(ShotTypeData **out, char *path)
     return 0;
 }
 
-PlayerBombHitbox *Player::AddHitArea(D3DXVECTOR3 *pos, float width, float height, int itemType, int framesLeft)
+PlayerHitArea *Player::AddHitArea(D3DXVECTOR3 *pos, float width, float height, int itemType, int framesLeft)
 {
-    PlayerBombHitbox *area;
+    PlayerHitArea *area;
     int j;
 
     area = this->hitAreas;
@@ -1700,10 +1700,10 @@ PlayerBombHitbox *Player::AddHitArea(D3DXVECTOR3 *pos, float width, float height
     return area;
 }
 
-PlayerBombHitbox *Player::AddHitAreaCircle(D3DXVECTOR3 *pos, float radius, float radiusGrowth, int framesLeft,
+PlayerHitArea *Player::AddHitAreaCircle(D3DXVECTOR3 *pos, float radius, float radiusGrowth, int framesLeft,
                                            int itemType)
 {
-    PlayerBombHitbox *area;
+    PlayerHitArea *area;
     int j;
 
     area = this->hitAreas;
@@ -1725,9 +1725,9 @@ PlayerBombHitbox *Player::AddHitAreaCircle(D3DXVECTOR3 *pos, float radius, float
     return area;
 }
 
-PlayerBombHitbox *Player::AddBombHitbox(D3DXVECTOR3 *pos, float width, float height, int damage, int framesLeft)
+PlayerHitArea *Player::AddBombHitbox(D3DXVECTOR3 *pos, float width, float height, int damage, int framesLeft)
 {
-    PlayerBombHitbox *area;
+    PlayerHitArea *area;
     int j;
 
     area = this->bombHitboxes;
@@ -1749,10 +1749,10 @@ PlayerBombHitbox *Player::AddBombHitbox(D3DXVECTOR3 *pos, float width, float hei
     return area;
 }
 
-PlayerBombHitbox *Player::AddBombHitboxCircle(D3DXVECTOR3 *pos, float radius, float radiusGrowth, int damage,
+PlayerHitArea *Player::AddBombHitboxCircle(D3DXVECTOR3 *pos, float radius, float radiusGrowth, int damage,
                                               int framesLeft)
 {
-    PlayerBombHitbox *area;
+    PlayerHitArea *area;
     int j;
 
     area = this->bombHitboxes;

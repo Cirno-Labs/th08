@@ -693,7 +693,7 @@ void GameManager::LoadingThread(GameManager *arg)
         size = g_Random.GetRandomU32InRange(0xffff) + 0x10;
         mgr->tempBuffer = malloc(size);
         mgr->savedConfig = new GameConfig;
-        mgr->stats = new GameManagerStats;
+        mgr->stats = new GameStats;
         RerollStatsChecksumKeys();
         *mgr->savedConfig = *(GameConfig *)&g_App.controllerMapping;
         MemFree(mgr->tempBuffer);
@@ -702,11 +702,11 @@ void GameManager::LoadingThread(GameManager *arg)
         mgr->SetClock(g_GameManager.stage == 8 ? 6 : 0);
         if (g_GameManager.difficulty >= 4)
         {
-            mgr->savedConfig->lifeCount = 2;
+            mgr->savedConfig->lives = 2;
         }
         if (g_GameManager.stateFlags & 1)
         {
-            mgr->savedConfig->lifeCount = 8;
+            mgr->savedConfig->lives = 8;
         }
         if (Player::RegisterChain(0) != 0)
         {
@@ -719,7 +719,7 @@ void GameManager::LoadingThread(GameManager *arg)
         }
         if (!(g_GameManager.stateFlags >> 3 & 1))
         {
-            g_GameManager.SetLives(mgr->savedConfig->lifeCount);
+            g_GameManager.SetLives(mgr->savedConfig->lives);
             g_GameManager.SetBombs(g_Player.shotType->bombs);
         }
         mgr->SetPlayArea();

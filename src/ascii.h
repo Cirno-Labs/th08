@@ -285,7 +285,7 @@ public:
     int nextPopup;
     int nextPopup2;
     int nextNumberPopup;
-    int unusedAfterInit829c;
+    int unk_829c;
     PauseMenu pauseMenu;
     ContinueMenu continueMenu;
     Sprite demoIcon;

@@ -981,7 +981,7 @@ void Gui::UpdateInterface()
             clearBonus *= 2;
             break;
         }
-        switch (g_GameManager.savedConfig->lifeCount)
+        switch (g_GameManager.savedConfig->lives)
         {
         case 3:
             clearBonus = clearBonus * 5 / 10;
@@ -1695,7 +1695,7 @@ void Gui::DrawStageClear()
     if (g_GameManager.difficulty < 4 && !(g_GameManager.stateFlags & 1))
     {
         cursor.y += 16.0f;
-        switch (g_GameManager.savedConfig->lifeCount)
+        switch (g_GameManager.savedConfig->lives)
         {
         case 3:
             g_AsciiText.SetColor(0xffff8080);

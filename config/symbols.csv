@@ -208,8 +208,8 @@ address,size,name,symbol
 0x00415c80,85,Enemy::ResetRankSpeeds,?ResetRankSpeeds@Enemy@@QAEXXZ
 0x00415ce0,37,Stage::StartSpellCard,?StartSpellCard@Stage@@QAEXXZ
 0x00415d10,71,SpellCard::StartNameOnly,?StartNameOnly@SpellCard@@QAEXPADPAUEnemy@@@Z
-0x00415d60,415,SpellCard::StartBombCard,?StartBombCard@SpellCard@@QAEXHPADH@Z
-0x00415f00,558,SpellCard::ShowName,?ShowName@SpellCard@@QAEXHPADH@Z
+0x00415d60,415,SpellCard::ShowBombName,?ShowBombName@SpellCard@@QAEXHPADH@Z
+0x00415f00,558,SpellCard::ShowSpellCardName,?ShowSpellCardName@SpellCard@@QAEXHPADH@Z
 0x00416130,39,SpellCard::EndBombName,?EndBombName@SpellCard@@QAEXXZ
 0x00416160,70,SpellCard::EndSpellCardName,?EndSpellCardName@SpellCard@@QAEXXZ
 0x004161b0,2331,SpellCard::End,?End@SpellCard@@QAEXXZ
@@ -415,7 +415,7 @@ address,size,name,symbol
 0x0042e010,257,MoveEnemyEffects,?MoveEnemyEffects@@YIXPAUEnemy@@@Z
 0x0042e120,23,EnemyManager::OnDraw,?OnDraw@EnemyManager@@SIHPAV1@@Z
 0x0042e140,2504,EnemyManager::DrawEnemies,?DrawEnemies@EnemyManager@@SIHPAV1@HH@Z
-0x0042eb10,114,LerpAngle,?LerpAngle@@YIMMMM@Z
+0x0042eb10,114,LerpAngleShort,?LerpAngleShort@@YIMMMM@Z
 0x0042eb90,92,EnemyManager::OnDraw2,?OnDraw2@EnemyManager@@SIHPAV1@@Z
 0x0042ebf0,642,EnemyManager::AddedCallback,?AddedCallback@EnemyManager@@SIHPAV1@@Z
 0x0042ee80,225,EnemyManager::DeletedCallback,?DeletedCallback@EnemyManager@@SIHPAV1@@Z
@@ -609,7 +609,7 @@ address,size,name,symbol
 0x0043f898,232,GdiSurface::CopyToSurface,?CopyToSurface@GdiSurface@@QAE_NPAUIDirect3DSurface8@@@Z
 0x0043f980,35,CreateTextSurface,?CreateTextSurface@@YIXXZ
 0x0043f9a3,37,ReleaseTextSurface,?ReleaseTextSurface@@YIXXZ
-0x0043f9c8,801,RenderTextToTextureBold,?RenderTextToTextureBold@@YIXHHHHHHKKPADPAUIDirect3DTexture8@@@Z
+0x0043f9c8,801,RenderTextToTextureLarge,?RenderTextToTextureLarge@@YIXHHHHHHKKPADPAUIDirect3DTexture8@@@Z
 0x0043fce9,793,RenderTextToTexture,?RenderTextToTexture@@YIXHHHHHHKKPADPAUIDirect3DTexture8@@@Z
 0x00440010,52,ItemManager::ItemManager,??0ItemManager@@QAE@XZ
 0x00440050,78,Item::Item,??0Item@@QAE@XZ
@@ -749,7 +749,7 @@ address,size,name,symbol
 0x00449ef0,87,PlayerBullet::PlayerBullet,??0PlayerBullet@@QAE@XZ
 0x00449f50,22,PlayerLaser::PlayerLaser,??0PlayerLaser@@QAE@XZ ??0EnemyTimeline@@QAE@XZ
 0x00449f70,115,PlayerBombPart::PlayerBombPart,??0PlayerBombPart@@QAE@XZ
-0x00449ff0,563,Player::CheckAreaHit,?CheckAreaHit@Player@@QAEHPAUD3DXVECTOR3@@0@Z
+0x00449ff0,563,Player::CheckHitAreas,?CheckHitAreas@Player@@QAEHPAUD3DXVECTOR3@@0@Z
 0x0044a230,302,Player::CheckHit,?CheckHit@Player@@QAEHPAUD3DXVECTOR3@@0@Z
 0x0044a360,272,Player::CheckHitIgnoringAreas,?CheckHitIgnoringAreas@Player@@QAEHPAUD3DXVECTOR3@@0@Z
 0x0044a470,303,Player::CheckGraze,?CheckGraze@Player@@QAEHPAUD3DXVECTOR3@@0@Z
@@ -758,10 +758,10 @@ address,size,name,symbol
 0x0044a930,521,Player::Graze,?Graze@Player@@QAEXPAUD3DXVECTOR3@@H@Z
 0x0044ab40,888,Player::Die,?Die@Player@@QAEXXZ
 0x0044aec0,4769,HandleInput,?HandleInput@@YIHPAVPlayer@@@Z
-0x0044c1b0,118,Player::AngleFrom,?AngleFrom@Player@@QAEMPAUD3DXVECTOR3@@@Z
+0x0044c1b0,118,Player::AngleToPlayer,?AngleToPlayer@Player@@QAEMPAUD3DXVECTOR3@@@Z
 0x0044c230,351,Player::RegisterChain,?RegisterChain@Player@@SIHH@Z
 0x0044c390,529,Player::OnUpdate,?OnUpdate@Player@@SIHPAV1@@Z
-0x0044c5b0,159,UpdateHitboxAreas,?UpdateHitboxAreas@@YIXPAVPlayer@@@Z
+0x0044c5b0,159,UpdateHitAreas,?UpdateHitAreas@@YIXPAVPlayer@@@Z
 0x0044c650,1352,UpdateBombState,?UpdateBombState@@YIXPAVPlayer@@@Z
 0x0044cba0,69,SpellCard::LoseCaptureToBomb,?LoseCaptureToBomb@SpellCard@@QAEXXZ
 0x0044cbf0,1373,UpdateDyingState,?UpdateDyingState@@YIHPAVPlayer@@@Z
@@ -775,10 +775,10 @@ address,size,name,symbol
 0x0044dc60,164,Player::DeletedCallback,?DeletedCallback@Player@@SIHPAV1@@Z
 0x0044dd10,85,Player::RemoveChain,?RemoveChain@Player@@SIXXZ
 0x0044dd70,233,LoadShotTypeFile,?LoadShotTypeFile@@YIHPAPAUShotTypeData@@PAD@Z
-0x0044de60,153,Player::AddHitArea,?AddHitArea@Player@@QAEPAUPlayerBombHitbox@@PAUD3DXVECTOR3@@MMHH@Z
-0x0044df00,153,Player::AddHitAreaCircle,?AddHitAreaCircle@Player@@QAEPAUPlayerBombHitbox@@PAUD3DXVECTOR3@@MMHH@Z
-0x0044dfa0,153,Player::AddBombHitbox,?AddBombHitbox@Player@@QAEPAUPlayerBombHitbox@@PAUD3DXVECTOR3@@MMHH@Z
-0x0044e040,153,Player::AddBombHitboxCircle,?AddBombHitboxCircle@Player@@QAEPAUPlayerBombHitbox@@PAUD3DXVECTOR3@@MMHH@Z
+0x0044de60,153,Player::AddHitArea,?AddHitArea@Player@@QAEPAUPlayerHitArea@@PAUD3DXVECTOR3@@MMHH@Z
+0x0044df00,153,Player::AddHitAreaCircle,?AddHitAreaCircle@Player@@QAEPAUPlayerHitArea@@PAUD3DXVECTOR3@@MMHH@Z
+0x0044dfa0,153,Player::AddBombHitbox,?AddBombHitbox@Player@@QAEPAUPlayerHitArea@@PAUD3DXVECTOR3@@MMHH@Z
+0x0044e040,153,Player::AddBombHitboxCircle,?AddBombHitboxCircle@Player@@QAEPAUPlayerHitArea@@PAUD3DXVECTOR3@@MMHH@Z
 0x0044e0e0,15,KeepsResources,?KeepsResources@@YIHXZ
 0x0044e0f0,35,Sprite::SetBlendModeAdd,?SetBlendModeAdd@Sprite@@QAEXXZ
 0x0044e120,32,Sprite::SetBlendModeNormal,?SetBlendModeNormal@Sprite@@QAEXXZ
@@ -786,8 +786,8 @@ address,size,name,symbol
 0x0044e160,255,GameManager::RerollLifeChecksumKeys,?RerollLifeChecksumKeys@GameManager@@QAEXXZ
 0x0044e260,113,GameManager::AddDeaths,?AddDeaths@GameManager@@QAEXH@Z
 0x0044e2e0,104,GameManager::AddBombsUsed,?AddBombsUsed@GameManager@@QAEXH@Z
-0x0044e350,18,PlayerBombHitbox::Deactivate,?Deactivate@PlayerBombHitbox@@QAEXXZ
-0x0044e370,35,PlayerBombHitbox::Reset,?Reset@PlayerBombHitbox@@QAEXXZ
+0x0044e350,18,PlayerHitArea::Deactivate,?Deactivate@PlayerHitArea@@QAEXXZ
+0x0044e370,35,PlayerHitArea::Reset,?Reset@PlayerHitArea@@QAEXXZ
 0x0044e3a0,949,UpdateHomingOption,?UpdateHomingOption@@YIHPAVPlayer@@PAUPlayerOption@@@Z
 0x0044e770,352,MoveOptionToPlayer,?MoveOptionToPlayer@@YIXPAVPlayer@@PAUPlayerOption@@@Z
 0x0044e8d0,269,MoveOptionToEnemy,?MoveOptionToEnemy@@YIXPAVPlayer@@PAUPlayerOption@@@Z

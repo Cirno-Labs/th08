@@ -126,7 +126,7 @@ void AsciiText::Initialize()
     this->highlight = 0;
     this->nextPopup = 0;
     this->nextPopup2 = 0;
-    this->unusedAfterInit829c = 0;
+    this->unk_829c = 0;
     this->color = 0xffffffff;
     this->scaleY = 1.0f;
     this->scaleX = 1.0f;
@@ -1190,7 +1190,7 @@ int ContinueMenu::UpdateContinueMenu()
             g_GameManager.stats->guiScore = g_GameManager.stats->continuesUsed;
             g_GameManager.stats->scoreIncrement = 0;
             g_GameManager.stats->score = g_GameManager.stats->guiScore;
-            g_GameManager.SetLives(g_GameManager.savedConfig->lifeCount);
+            g_GameManager.SetLives(g_GameManager.savedConfig->lives);
             g_GameManager.SetBombs(g_Player.shotType->bombs);
             g_GameManager.stats->graze = 0;
             g_GameManager.stats->stageClearPoints = 0;

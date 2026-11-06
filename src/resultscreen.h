@@ -85,7 +85,7 @@ struct Hscr
         {
             unsigned char pad_28[0x1c];
             // The lives the game started with, less one: the config's
-            // lifeCount.
+            // lives.
             BYTE initialLives;
             unsigned char pad_45[0x1f];
         };

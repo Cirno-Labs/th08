@@ -163,7 +163,7 @@ void SpellCard::StartNameOnly(char *name, Enemy *enemy)
     this->nameOnly = 1;
     this->active = 0;
     this->unusedFlag0_4 = 0;
-    this->ShowName(-1, name, 1);
+    this->ShowSpellCardName(-1, name, 1);
 }
 
 EXE_INLINE SpellCard::SpellCard()
@@ -460,7 +460,7 @@ void SpellCard::Start(int card, char *name, int face, DWORD bonus, Enemy *enemy,
     {
         this->name[i] = (BYTE)name[i] ^ 0xaa;
     }
-    this->ShowName(face, this->name, 0);
+    this->ShowSpellCardName(face, this->name, 0);
     g_BulletManager.ClearAllToItems();
     g_StageManager.StartSpellCard();
     for (i = 0; i < g_StageManager.dialogueSpriteCount; i++)
@@ -486,7 +486,7 @@ void SpellCard::Start(int card, char *name, int face, DWORD bonus, Enemy *enemy,
     this->effect = g_EffectManager.SpawnReservedEffect(g_GameManager.lastSpellState ? 0x34 : 0x27, &this->enemy->pos, 1, 1, 0xffffffff);
     this->effect->sprite.interpDuration[0] = 0;
     this->effect->sprite.interpFrame[0] = 100;
-    this->effect->sprite.interpEasing = 6;
+    this->effect->sprite.posInterpEasing = 6;
     this->effect->sprite.moveStart.x = 8.0f;
     this->effect->sprite.moveEnd.x = 256.0f;
     this->effect->sprite.moveStart.y = 64.0f;
@@ -589,7 +589,7 @@ void BulletManager::ClearAllToItems()
     this->ClearAll(1);
 }
 
-void SpellCard::StartBombCard(int face, char *name, int sprite)
+void SpellCard::ShowBombName(int face, char *name, int sprite)
 {
     if (face == 0)
     {
@@ -613,7 +613,7 @@ void SpellCard::StartBombCard(int face, char *name, int sprite)
     g_App.redrawFrames = 2;
 }
 
-void SpellCard::ShowName(int face, char *name, int sprite)
+void SpellCard::ShowSpellCardName(int face, char *name, int sprite)
 {
     if (face >= 0)
     {
@@ -826,7 +826,7 @@ void SpellCard::End()
                 }
                 this->effect->sprite.interpDuration[0] = 0;
                 this->effect->sprite.interpFrame[0] = 30;
-                this->effect->sprite.interpEasing = 6;
+                this->effect->sprite.posInterpEasing = 6;
                 this->effect->sprite.moveStart.x = this->effect->radius;
                 this->effect->sprite.moveEnd.x = 256.0f;
                 this->effect->sprite.moveStart.y = this->effect->radiusY;
@@ -938,7 +938,7 @@ int SpellCard::Update()
         {
             this->effect->sprite.interpDuration[0] = 0;
             this->effect->sprite.interpFrame[0] = this->enemy->timerCallbackTime - 100;
-            this->effect->sprite.interpEasing = 0;
+            this->effect->sprite.posInterpEasing = 0;
             this->effect->sprite.moveStart.x = 256.0f;
             this->effect->sprite.moveEnd.x = 8.0f;
             this->effect->sprite.moveStart.y = 0.0f;
@@ -963,7 +963,7 @@ int SpellCard::Update()
             this->captureEffect->sprite.scaleTween.z = 64.0f;
             this->captureEffect->sprite.interpDuration[0] = 0;
             this->captureEffect->sprite.interpFrame[0] = 100;
-            this->captureEffect->sprite.interpEasing = 4;
+            this->captureEffect->sprite.posInterpEasing = 4;
             this->captureEffect->sprite.moveStart.x = this->captureEffect->radius;
             this->captureEffect->sprite.moveEnd.x = 0.0f;
             this->captureEffect->sprite.moveStart.y = this->captureEffect->radiusY;

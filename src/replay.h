@@ -24,15 +24,15 @@ struct ReplayStage
 {
     // The score the stage started with, divided by 10.
     int score;
-    // GameManagerStats::pointItemsTotal.
+    // GameStats::pointItemsTotal.
     int pointItemsTotal;
-    // GameManagerStats::grazeTotal.
+    // GameStats::grazeTotal.
     int grazeTotal;
-    // GameManagerStats's checksumKeyStage, checksumKeyPoints and maxPointValue.
+    // GameStats's checksumKeyStage, checksumKeyPoints and maxPointValue.
     int checksumKeyStage;
     int checksumKeyPoints;
     int maxPointValue;
-    // GameManagerStats::clock.
+    // GameStats::clock.
     WORD gauge;
     // GameManager::rngSeed.
     WORD rngSeed;
@@ -43,9 +43,9 @@ struct ReplayStage
     BYTE rank;
     // GameManager::powerItemCombo.
     BYTE powerItemCombo;
-    // GameManagerStats::spellCardsCaptured.
+    // GameStats::spellCardsCaptured.
     BYTE spellCardsCaptured;
-    // GameManagerStats::clock.
+    // GameStats::clock.
     char clock;
     BYTE unusedByte23;
     WORD frames[1];

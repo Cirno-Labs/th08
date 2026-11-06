@@ -293,8 +293,8 @@
 <rect width="12" height="12" x="90" y="60" class="named"><title>0x00415c80 Enemy::ResetRankSpeeds (85 bytes)</title></rect>
 <rect width="12" height="12" x="105" y="60" class="named"><title>0x00415ce0 Stage::StartSpellCard (37 bytes)</title></rect>
 <rect width="12" height="12" x="120" y="60" class="named"><title>0x00415d10 SpellCard::StartNameOnly (71 bytes)</title></rect>
-<rect width="12" height="12" x="135" y="60" class="named"><title>0x00415d60 SpellCard::StartBombCard (415 bytes)</title></rect>
-<rect width="12" height="12" x="150" y="60" class="named"><title>0x00415f00 SpellCard::ShowName (558 bytes)</title></rect>
+<rect width="12" height="12" x="135" y="60" class="named"><title>0x00415d60 SpellCard::ShowBombName (415 bytes)</title></rect>
+<rect width="12" height="12" x="150" y="60" class="named"><title>0x00415f00 SpellCard::ShowSpellCardName (558 bytes)</title></rect>
 <rect width="12" height="12" x="165" y="60" class="named"><title>0x00416130 SpellCard::EndBombName (39 bytes)</title></rect>
 <rect width="12" height="12" x="180" y="60" class="named"><title>0x00416160 SpellCard::EndSpellCardName (70 bytes)</title></rect>
 <rect width="12" height="12" x="195" y="60" class="named"><title>0x004161b0 SpellCard::End (2331 bytes)</title></rect>
@@ -500,7 +500,7 @@
 <rect width="12" height="12" x="195" y="120" class="named"><title>0x0042e010 MoveEnemyEffects (257 bytes)</title></rect>
 <rect width="12" height="12" x="210" y="120" class="named"><title>0x0042e120 EnemyManager::OnDraw (23 bytes)</title></rect>
 <rect width="12" height="12" x="225" y="120" class="named"><title>0x0042e140 EnemyManager::DrawEnemies (2504 bytes)</title></rect>
-<rect width="12" height="12" x="240" y="120" class="named"><title>0x0042eb10 LerpAngle (114 bytes)</title></rect>
+<rect width="12" height="12" x="240" y="120" class="named"><title>0x0042eb10 LerpAngleShort (114 bytes)</title></rect>
 <rect width="12" height="12" x="255" y="120" class="named"><title>0x0042eb90 EnemyManager::OnDraw2 (92 bytes)</title></rect>
 <rect width="12" height="12" x="270" y="120" class="named"><title>0x0042ebf0 EnemyManager::AddedCallback (642 bytes)</title></rect>
 <rect width="12" height="12" x="285" y="120" class="named"><title>0x0042ee80 EnemyManager::DeletedCallback (225 bytes)</title></rect>
@@ -694,7 +694,7 @@
 <rect width="12" height="12" x="105" y="180" class="named"><title>0x0043f898 GdiSurface::CopyToSurface (232 bytes)</title></rect>
 <rect width="12" height="12" x="120" y="180" class="named"><title>0x0043f980 CreateTextSurface (35 bytes)</title></rect>
 <rect width="12" height="12" x="135" y="180" class="named"><title>0x0043f9a3 ReleaseTextSurface (37 bytes)</title></rect>
-<rect width="12" height="12" x="150" y="180" class="named"><title>0x0043f9c8 RenderTextToTextureBold (801 bytes)</title></rect>
+<rect width="12" height="12" x="150" y="180" class="named"><title>0x0043f9c8 RenderTextToTextureLarge (801 bytes)</title></rect>
 <rect width="12" height="12" x="165" y="180" class="named"><title>0x0043fce9 RenderTextToTexture (793 bytes)</title></rect>
 <rect width="12" height="12" x="180" y="180" class="named"><title>0x00440010 ItemManager::ItemManager (52 bytes)</title></rect>
 <rect width="12" height="12" x="195" y="180" class="named"><title>0x00440050 Item::Item (78 bytes)</title></rect>
@@ -834,7 +834,7 @@
 <rect width="12" height="12" x="705" y="210" class="named"><title>0x00449ef0 PlayerBullet::PlayerBullet (87 bytes)</title></rect>
 <rect width="12" height="12" x="720" y="210" class="named"><title>0x00449f50 PlayerLaser::PlayerLaser (22 bytes)</title></rect>
 <rect width="12" height="12" x="735" y="210" class="named"><title>0x00449f70 PlayerBombPart::PlayerBombPart (115 bytes)</title></rect>
-<rect width="12" height="12" x="0" y="225" class="named"><title>0x00449ff0 Player::CheckAreaHit (563 bytes)</title></rect>
+<rect width="12" height="12" x="0" y="225" class="named"><title>0x00449ff0 Player::CheckHitAreas (563 bytes)</title></rect>
 <rect width="12" height="12" x="15" y="225" class="named"><title>0x0044a230 Player::CheckHit (302 bytes)</title></rect>
 <rect width="12" height="12" x="30" y="225" class="named"><title>0x0044a360 Player::CheckHitIgnoringAreas (272 bytes)</title></rect>
 <rect width="12" height="12" x="45" y="225" class="named"><title>0x0044a470 Player::CheckGraze (303 bytes)</title></rect>
@@ -843,10 +843,10 @@
 <rect width="12" height="12" x="90" y="225" class="named"><title>0x0044a930 Player::Graze (521 bytes)</title></rect>
 <rect width="12" height="12" x="105" y="225" class="named"><title>0x0044ab40 Player::Die (888 bytes)</title></rect>
 <rect width="12" height="12" x="120" y="225" class="named"><title>0x0044aec0 HandleInput (4769 bytes)</title></rect>
-<rect width="12" height="12" x="135" y="225" class="named"><title>0x0044c1b0 Player::AngleFrom (118 bytes)</title></rect>
+<rect width="12" height="12" x="135" y="225" class="named"><title>0x0044c1b0 Player::AngleToPlayer (118 bytes)</title></rect>
 <rect width="12" height="12" x="150" y="225" class="named"><title>0x0044c230 Player::RegisterChain (351 bytes)</title></rect>
 <rect width="12" height="12" x="165" y="225" class="named"><title>0x0044c390 Player::OnUpdate (529 bytes)</title></rect>
-<rect width="12" height="12" x="180" y="225" class="named"><title>0x0044c5b0 UpdateHitboxAreas (159 bytes)</title></rect>
+<rect width="12" height="12" x="180" y="225" class="named"><title>0x0044c5b0 UpdateHitAreas (159 bytes)</title></rect>
 <rect width="12" height="12" x="195" y="225" class="named"><title>0x0044c650 UpdateBombState (1352 bytes)</title></rect>
 <rect width="12" height="12" x="210" y="225" class="named"><title>0x0044cba0 SpellCard::LoseCaptureToBomb (69 bytes)</title></rect>
 <rect width="12" height="12" x="225" y="225" class="named"><title>0x0044cbf0 UpdateDyingState (1373 bytes)</title></rect>
@@ -871,8 +871,8 @@
 <rect width="12" height="12" x="510" y="225" class="named"><title>0x0044e160 GameManager::RerollLifeChecksumKeys (255 bytes)</title></rect>
 <rect width="12" height="12" x="525" y="225" class="named"><title>0x0044e260 GameManager::AddDeaths (113 bytes)</title></rect>
 <rect width="12" height="12" x="540" y="225" class="named"><title>0x0044e2e0 GameManager::AddBombsUsed (104 bytes)</title></rect>
-<rect width="12" height="12" x="555" y="225" class="named"><title>0x0044e350 PlayerBombHitbox::Deactivate (18 bytes)</title></rect>
-<rect width="12" height="12" x="570" y="225" class="named"><title>0x0044e370 PlayerBombHitbox::Reset (35 bytes)</title></rect>
+<rect width="12" height="12" x="555" y="225" class="named"><title>0x0044e350 PlayerHitArea::Deactivate (18 bytes)</title></rect>
+<rect width="12" height="12" x="570" y="225" class="named"><title>0x0044e370 PlayerHitArea::Reset (35 bytes)</title></rect>
 <rect width="12" height="12" x="585" y="225" class="named"><title>0x0044e3a0 UpdateHomingOption (949 bytes)</title></rect>
 <rect width="12" height="12" x="600" y="225" class="named"><title>0x0044e770 MoveOptionToPlayer (352 bytes)</title></rect>
 <rect width="12" height="12" x="615" y="225" class="named"><title>0x0044e8d0 MoveOptionToEnemy (269 bytes)</title></rect>
@@ -1331,7 +1331,7 @@
 <rect width="19.18" height="17.21" x="363.37" y="324.79" class="named"><title>0x00465cc0 SpriteEngine::LoadAnmSprites (829 bytes)</title></rect>
 <rect width="18.10" height="18.03" x="385.55" y="0" class="named"><title>0x004718d0 CSoundManager::CreateStreaming (819 bytes)</title></rect>
 <rect width="18.10" height="17.83" x="385.55" y="21.03" class="named"><title>0x0044f5e0 UpdateTintedTrailingOption (810 bytes)</title></rect>
-<rect width="18.10" height="17.63" x="385.55" y="41.86" class="named"><title>0x0043f9c8 RenderTextToTextureBold (801 bytes)</title></rect>
+<rect width="18.10" height="17.63" x="385.55" y="41.86" class="named"><title>0x0043f9c8 RenderTextToTextureLarge (801 bytes)</title></rect>
 <rect width="18.10" height="17.52" x="385.55" y="62.49" class="named"><title>0x0042b930 Enemy::CheckTimerCallback (796 bytes)</title></rect>
 <rect width="18.10" height="17.50" x="385.55" y="83.02" class="named"><title>0x00471c40 CSoundManager::CreateStreamingFromMemory (795 bytes)</title></rect>
 <rect width="18.10" height="17.46" x="385.55" y="103.52" class="named"><title>0x0043fce9 RenderTextToTexture (793 bytes)</title></rect>
@@ -1397,8 +1397,8 @@
 <rect width="14.53" height="15.62" x="680.20" y="19.22" class="named"><title>0x0044f930 UpdateSwirlOption (570 bytes)</title></rect>
 <rect width="14.46" height="15.62" x="697.74" y="19.22" class="named"><title>0x004114e0 EffectUpdateBombRing36 (567 bytes)</title></rect>
 <rect width="14.46" height="15.62" x="715.19" y="19.22" class="named"><title>0x00423150 ScriptUpdateShooting (567 bytes)</title></rect>
-<rect width="14.35" height="15.62" x="732.65" y="19.22" class="named"><title>0x00449ff0 Player::CheckAreaHit (563 bytes)</title></rect>
-<rect width="15.11" height="14.71" x="425.30" y="37.84" class="named"><title>0x00415f00 SpellCard::ShowName (558 bytes)</title></rect>
+<rect width="14.35" height="15.62" x="732.65" y="19.22" class="named"><title>0x00449ff0 Player::CheckHitAreas (563 bytes)</title></rect>
+<rect width="15.11" height="14.71" x="425.30" y="37.84" class="named"><title>0x00415f00 SpellCard::ShowSpellCardName (558 bytes)</title></rect>
 <rect width="15.11" height="14.66" x="425.30" y="55.55" class="named"><title>0x00420d10 ScriptMoveAngle (556 bytes)</title></rect>
 <rect width="15.11" height="14.55" x="425.30" y="73.21" class="named"><title>0x0043bbe1 LoadScoreFile (552 bytes)</title></rect>
 <rect width="15.11" height="14.45" x="425.30" y="90.76" class="named"><title>0x0041fe10 ResolveOperand (548 bytes)</title></rect>
@@ -1460,7 +1460,7 @@
 <rect width="13.32" height="12.56" x="542.48" y="54.89" class="named"><title>0x00403600 AsciiText::AddNumberPopupBrief (420 bytes)</title></rect>
 <rect width="13.32" height="12.56" x="558.81" y="54.89" class="named"><title>0x00474fa0 DatArchive::BuildEntryTable (420 bytes)</title></rect>
 <rect width="13.26" height="12.56" x="575.13" y="54.89" class="named"><title>0x0046f429 MainMenu::DrawPracticeScores (418 bytes)</title></rect>
-<rect width="13.16" height="12.56" x="591.39" y="54.89" class="named"><title>0x00415d60 SpellCard::StartBombCard (415 bytes)</title></rect>
+<rect width="13.16" height="12.56" x="591.39" y="54.89" class="named"><title>0x00415d60 SpellCard::ShowBombName (415 bytes)</title></rect>
 <rect width="13.10" height="12.56" x="607.55" y="54.89" class="named"><title>0x0042a680 EnemyManager::SpawnWithVars (413 bytes)</title></rect>
 <rect width="13.04" height="12.56" x="623.65" y="54.89" class="named"><title>0x00403460 AsciiText::AddNumberPopup (411 bytes)</title></rect>
 <rect width="13.04" height="12.56" x="639.69" y="54.89" class="named"><title>0x00428310 EffectDrawBossPetal (411 bytes)</title></rect>
@@ -1702,7 +1702,7 @@
 <rect width="7.89" height="8.18" x="685.30" y="136.22" class="named"><title>0x004287e0 Effect::Effect (162 bytes)</title></rect>
 <rect width="7.89" height="8.18" x="696.19" y="136.22" class="named"><title>0x0043ce60 Chain::CreateElem (162 bytes)</title></rect>
 <rect width="7.74" height="8.18" x="707.08" y="136.22" class="named"><title>0x00428740 EffectManager::EffectManager (159 bytes)</title></rect>
-<rect width="7.74" height="8.18" x="717.82" y="136.22" class="named"><title>0x0044c5b0 UpdateHitboxAreas (159 bytes)</title></rect>
+<rect width="7.74" height="8.18" x="717.82" y="136.22" class="named"><title>0x0044c5b0 UpdateHitAreas (159 bytes)</title></rect>
 <rect width="7.74" height="8.18" x="728.56" y="136.22" class="named"><title>0x0045a500 InsertScore (159 bytes)</title></rect>
 <rect width="7.69" height="8.18" x="739.31" y="136.22" class="named"><title>0x00427b50 EffectUpdateRingAt (158 bytes)</title></rect>
 <rect width="8.25" height="7.63" x="552.42" y="147.40" class="named"><title>0x00439b29 GameManager::AddLifeOrBomb (158 bytes)</title></rect>
@@ -1789,7 +1789,7 @@
 <rect width="7.03" height="6.74" x="573.05" y="267.75" class="named"><title>0x0040e2d0 EffectUpdateBombRing45 (119 bytes)</title></rect>
 <rect width="7.03" height="6.74" x="573.05" y="277.50" class="named"><title>0x00448081 App::StopMusic (119 bytes)</title></rect>
 <rect width="7.03" height="6.68" x="573.05" y="287.24" class="named"><title>0x00416b10 SpellCard::AddBonus (118 bytes)</title></rect>
-<rect width="7.03" height="6.68" x="573.05" y="296.92" class="named"><title>0x0044c1b0 Player::AngleFrom (118 bytes)</title></rect>
+<rect width="7.03" height="6.68" x="573.05" y="296.92" class="named"><title>0x0044c1b0 Player::AngleToPlayer (118 bytes)</title></rect>
 <rect width="7.03" height="6.63" x="573.05" y="306.61" class="named"><title>0x0042b2f0 Enemy::LeaveFollowerList (117 bytes)</title></rect>
 <rect width="7.03" height="6.63" x="573.05" y="316.23" class="named"><title>0x0042f420 BulletManager::BulletManager (117 bytes)</title></rect>
 <rect width="7.03" height="6.63" x="573.05" y="325.86" class="named"><title>0x0044871b App::CloseSubThread (117 bytes)</title></rect>
@@ -1802,7 +1802,7 @@
 <rect width="6.90" height="6.64" x="632.57" y="168.35" class="named"><title>0x00465a40 SpriteEngine::PreloadAnm (115 bytes)</title></rect>
 <rect width="6.84" height="6.64" x="642.46" y="168.35" class="named"><title>0x00427260 EffectInitMoveOut (114 bytes)</title></rect>
 <rect width="6.84" height="6.64" x="652.30" y="168.35" class="named"><title>0x00427a60 EffectUpdateRingTimed (114 bytes)</title></rect>
-<rect width="6.84" height="6.64" x="662.13" y="168.35" class="named"><title>0x0042eb10 LerpAngle (114 bytes)</title></rect>
+<rect width="6.84" height="6.64" x="662.13" y="168.35" class="named"><title>0x0042eb10 LerpAngleShort (114 bytes)</title></rect>
 <rect width="6.84" height="6.64" x="671.97" y="168.35" class="named"><title>0x0043f03c GdiSurface::Release (114 bytes)</title></rect>
 <rect width="6.84" height="6.64" x="681.81" y="168.35" class="named"><title>0x004441a0 MidiPlayer::LoadFile (114 bytes)</title></rect>
 <rect width="6.78" height="6.64" x="691.64" y="168.35" class="named"><title>0x0044e260 GameManager::AddDeaths (113 bytes)</title></rect>
@@ -2126,7 +2126,7 @@
 <rect width="3.80" height="3.67" x="663.32" y="298.75" class="named"><title>0x0043f980 CreateTextSurface (35 bytes)</title></rect>
 <rect width="3.80" height="3.67" x="663.32" y="305.42" class="named"><title>0x00443990 Log::Reset (35 bytes)</title></rect>
 <rect width="3.80" height="3.67" x="663.32" y="312.08" class="named"><title>0x0044e0f0 Sprite::SetBlendModeAdd (35 bytes)</title></rect>
-<rect width="3.80" height="3.67" x="663.32" y="318.75" class="named"><title>0x0044e370 PlayerBombHitbox::Reset (35 bytes)</title></rect>
+<rect width="3.80" height="3.67" x="663.32" y="318.75" class="named"><title>0x0044e370 PlayerHitArea::Reset (35 bytes)</title></rect>
 <rect width="3.80" height="3.56" x="663.32" y="325.42" class="named"><title>0x004253e0 EffectManager::GetReservedEffect (34 bytes)</title></rect>
 <rect width="3.80" height="3.56" x="663.32" y="331.98" class="named"><title>0x0045c160 ScreenEffect::Finish (34 bytes)</title></rect>
 <rect width="3.80" height="3.46" x="663.32" y="338.54" class="named"><title>0x00406e20 GameManager::SetLives (33 bytes)</title></rect>
@@ -2288,7 +2288,7 @@
 <rect width="2.36" height="3.17" x="744.64" y="307.56" class="named"><title>0x004748a0 DatArchive::~DatArchive (19 bytes)</title></rect>
 <rect width="3.11" height="2.28" x="717.83" y="313.73" class="named"><title>0x004031e0 fabsf (18 bytes)</title></rect>
 <rect width="3.11" height="2.28" x="717.83" y="319.01" class="named"><title>0x0040bc40 Player::IsYoukai (18 bytes)</title></rect>
-<rect width="3.11" height="2.28" x="717.83" y="324.29" class="named"><title>0x0044e350 PlayerBombHitbox::Deactivate (18 bytes)</title></rect>
+<rect width="3.11" height="2.28" x="717.83" y="324.29" class="named"><title>0x0044e350 PlayerHitArea::Deactivate (18 bytes)</title></rect>
 <rect width="3.11" height="2.14" x="717.83" y="329.58" class="named"><title>0x0040d3b0 Timer::AsFrames (17 bytes)</title></rect>
 <rect width="3.11" height="2.14" x="717.83" y="334.72" class="named"><title>0x0042f320 Gui::IsBossPresent (17 bytes)</title></rect>
 <rect width="3.11" height="2.14" x="717.83" y="339.86" class="named"><title>0x00437a2f Gui::AddedCallback (17 bytes)</title></rect>

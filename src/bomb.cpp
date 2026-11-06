@@ -46,7 +46,7 @@ void DimPlayAreaForBomb(Player *player, D3DCOLOR tint)
     out.a = 0x80;
     g_SpriteEngine->ResetColorModulation();
     g_StageManager.SetTintColor(out.color);
-    g_StageManager.keepTintColor = 1;
+    g_StageManager.keepColorModulation = 1;
 }
 
 void StartBomb(Player *player, int face, char *name, int duration, int stateFrames, int sprite)
@@ -55,7 +55,7 @@ void StartBomb(Player *player, int face, char *name, int duration, int stateFram
     PlayerBombPart *part;
     PlayerBomb *pb = &player->bomb;
 
-    g_SpellCard.StartBombCard(face, name, sprite);
+    g_SpellCard.ShowBombName(face, name, sprite);
     pb->duration = duration;
     player->stateTimer = stateFrames;
     player->playerState = 3;
@@ -141,7 +141,7 @@ void UpdateReimuBomb(Player *player)
         float x;
         float y;
         float len;
-        PlayerBombHitbox *hitbox;
+        PlayerHitArea *hitbox;
 
         if (pb->timer == 40)
         {
@@ -287,7 +287,7 @@ void UpdateReimuLastWord(Player *player)
     }
     {
         D3DXVECTOR3 oldPos;
-        PlayerBombHitbox *hitbox;
+        PlayerHitArea *hitbox;
 
         for (orbs = pb->parts, i = 0; (int)i < 0x10; i++, orbs++)
         {
@@ -336,7 +336,7 @@ void UpdateReimuLastWord(Player *player)
     {
         D3DXVECTOR3 target;
         D3DCOLOR color;
-        PlayerBombHitbox *hitbox;
+        PlayerHitArea *hitbox;
 
         if (pb->timer % 20 == 0)
         {
@@ -433,7 +433,7 @@ void UpdateDissolveBomb(Player *player)
         {
             effect->sprite.interpFrame[0] = 30;
         }
-        effect->sprite.interpEasing = 5;
+        effect->sprite.posInterpEasing = 5;
         effect->sprite.moveStart.x = 8.0f;
         effect->sprite.moveEnd.x = 128.0f;
         effect->sprite.moveStart.y = 64.0f;

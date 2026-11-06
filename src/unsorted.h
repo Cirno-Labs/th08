@@ -275,7 +275,7 @@ public:
     // How far the DirectInput stick must lean to count as a direction.
     short padThresholdX;
     short padThresholdY;
-    BYTE lifeCount;
+    BYTE lives;
     BYTE bombCount;
     BYTE colorMode16Bits;
     BYTE musicMode;
@@ -889,7 +889,7 @@ void RenderTextToTexture(int x, int y, int width, int unused, int fontHeight, in
 
 // th07's RenderTextToTexture, but semibold rather than bold. The other
 // font of SpriteEngine's text rendering (0x466340).
-void RenderTextToTextureBold(int x, int y, int width, int unused, int fontHeight, int destHeight, COLORREF textColor,
+void RenderTextToTextureLarge(int x, int y, int width, int unused, int fontHeight, int destHeight, COLORREF textColor,
                              COLORREF shadowColor, char *text, IDirect3DTexture8 *texture);
 
 class CSoundManager;
@@ -1110,7 +1110,7 @@ extern SoundPlayer g_SoundPlayer;
 // What th07's GameManager points to at +0x8 and +0x4. Only the fields
 // known so far.
 // th07's GameStats, laid out anew.
-struct GameManagerStats
+struct GameStats
 {
     // The score shown.
     DWORD guiScore;
@@ -1178,7 +1178,7 @@ struct GameConfig
 {
     unsigned char pad_0[0x1c];
     // The lives a game starts with, as th07's.
-    BYTE lifeCount;
+    BYTE lives;
     unsigned char pad_1d[0x8];
     // App::IsScoreDisabled tests it.
     BYTE scoreDisabled;
@@ -1260,7 +1260,7 @@ public:
         this->stats->power += power;
         this->RerollChecksumKeys();
     }
-    // Sets arena to the play area (32, 16, 384, 448) and arena2 to (8,
+    // Sets arena to the play area (32, 16, 384, 448) and playerArea to (8,
     // 16, 368, 416), as th07's. Inline; the copy at 0x43c686 is the
     // GameManager object's.
     void SetPlayArea()
@@ -1269,10 +1269,10 @@ public:
         this->arena[1] = 16.0f;
         this->arena[2] = 384.0f;
         this->arena[3] = 448.0f;
-        this->arena2[0] = 8.0f;
-        this->arena2[1] = 16.0f;
-        this->arena2[2] = 368.0f;
-        this->arena2[3] = 416.0f;
+        this->playerArea[0] = 8.0f;
+        this->playerArea[1] = 16.0f;
+        this->playerArea[2] = 368.0f;
+        this->playerArea[3] = 416.0f;
     }
     // The checksum: ChecksumBytes over stats from lifeChecksumKeys to
     // checksum, over stats->checksumKeysE, over the config savedConfig points
@@ -1566,9 +1566,9 @@ public:
     }
     // Whether a replay plays (bit 3 of stateFlags). Inline; the copy at
     // 0x406c90 is an /Od object's.
-    void SetIsReplay(int isReplay)
+    void SetIsInReplay(int isInReplay)
     {
-        this->isReplay = isReplay;
+        this->isInReplay = isInReplay;
     }
     int IsReplay()
     {
@@ -1579,7 +1579,7 @@ public:
     // as th07's tempBuffer.
     void *tempBuffer;
     GameConfig *savedConfig;
-    GameManagerStats *stats;
+    GameStats *stats;
     // The score file's chunks, loaded by App::AddedCallback.
     Flsp flsp;
     // Set while the game is paused: the screen shakes hold still. As
@@ -1632,7 +1632,7 @@ public:
             // th07's isPlaying.
             unsigned int isPlaying : 1;
             // IsReplay, as th07's isInReplay.
-            unsigned int isReplay : 1;
+            unsigned int isInReplay : 1;
             unsigned int isGameCleared : 1;
             // The result screen's mode: OnDraw returns 3 in mode 1, and
             // AddedCallback turns 2 and 3 into 1.
@@ -1691,7 +1691,7 @@ public:
     // The play area: x, y, width and height, and a second rectangle set
     // with it by SetPlayArea, as th07's.
     float arena[4];
-    float arena2[4];
+    float playerArea[4];
     // As th07's checksumValue: SetBombs sets it.
     float checksumValue;
     // The bounds of stats->gauge.
@@ -2352,7 +2352,7 @@ public:
     // spellCardState is 1; then dialogueSprites's first
     // dialogueSpriteCount sprites and spellCardDrawCallback, the fixed camera
     // (SetupFixedCamera) and the fog at 1000 to 2000. Resets the
-    // SpriteEngine's color unless keepTintColor was set, and clears it
+    // SpriteEngine's color unless keepColorModulation was set, and clears it
     // and recordEffectSpawnPos. Returns 1. As th07's.
     static int OnDraw2(Stage *stage);
     int DrawLayer(int layer);
@@ -2443,7 +2443,7 @@ public:
     BYTE cameraOffsetChanged;
     unsigned char pad_6465[0x3];
     ColorBytes tintColor;
-    int keepTintColor;
+    int keepColorModulation;
     // Probably the squared distance DrawLayer draws objects within:
     // 1150 squared, 1350 squared for stage 5, 1800 squared for stages 6
     // and 7. New in th08.
@@ -2545,13 +2545,13 @@ struct SpellCard
                char *text3);
     // Shows the card's name `name` with sprite `sprite`, and face `face`
     // unless it is negative (0x415f00).
-    void ShowName(int face, char *name, int sprite);
+    void ShowSpellCardName(int face, char *name, int sprite);
     // Ends the spell card, as th07's EndSpellCard did (0x4161b0).
     void End();
     // Starts the card named `name` (「リザレクション」) for `enemy` without a
     // capture: sets bit 10, clears bits 0 and 4 (0x415d10).
     void StartNameOnly(char *name, struct Enemy *enemy);
-    // Ends the name banners ShowName started: sets spellName's pending
+    // Ends the name banners ShowSpellCardName started: sets spellName's pending
     // interrupt directly and sends spellNameBar (and spellScoreBar unless
     // nameOnly) interrupt 2 (0x416160).
     void EndSpellCardName();
@@ -2566,7 +2566,7 @@ struct SpellCard
     // Shows the name of a bomb's spell card as the bomb starts
     // (StartBomb): the portrait for `face` (0 or 1, else none), `name`
     // and sprite `sprite` (0x415d60).
-    void StartBombCard(int face, char *name, int sprite);
+    void ShowBombName(int face, char *name, int sprite);
     // Bit 7 of flags: whether the player bombed during the spell card,
     // as th07's spellCardBombed? Inline; the copy is at 0x42dff0.
     int WasBombed()

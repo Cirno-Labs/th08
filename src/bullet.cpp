@@ -429,8 +429,8 @@ void BulletManager::ClearAll(int mode)
         {
             continue;
         }
-        areaResult = g_Player.CheckAreaHit(&curBullet->pos, &curBullet->sprites.hitboxSize);
-        if (g_Player.CheckAreaHit(&curBullet->pos, &curBullet->sprites.hitboxSize) == 2)
+        areaResult = g_Player.CheckHitAreas(&curBullet->pos, &curBullet->sprites.hitboxSize);
+        if (g_Player.CheckHitAreas(&curBullet->pos, &curBullet->sprites.hitboxSize) == 2)
         {
             g_ItemManager.SpawnItem(&curBullet->pos, g_Player.areaItemType, 1);
             memset(curBullet, 0, sizeof(Bullet));
@@ -503,7 +503,7 @@ int BulletManager::ClearAllWithBonus(int maxBonus, int toItems)
         {
             continue;
         }
-        if (g_Player.CheckAreaHit(&curBullet->pos, &curBullet->sprites.hitboxSize) == 2)
+        if (g_Player.CheckHitAreas(&curBullet->pos, &curBullet->sprites.hitboxSize) == 2)
         {
             g_ItemManager.SpawnItem(&curBullet->pos, g_Player.areaItemType, 1);
         }
@@ -590,7 +590,7 @@ int BulletManager::FirePattern(BulletShooter *shooter)
         return 0;
     }
     shooter->typeSprites = &this->typeSprites[shooter->sprite];
-    playerAngle = g_Player.AngleFrom(&shooter->pos);
+    playerAngle = g_Player.AngleToPlayer(&shooter->pos);
     for (row = 0; row < shooter->count2; row++)
     {
         for (col = 0; col < shooter->count1; col++)
@@ -635,7 +635,7 @@ Laser *BulletManager::SpawnLaser(BulletShooter *shooter)
         laser->angle = shooter->angle1;
         if (shooter->aimMode == 0)
         {
-            laser->angle += g_Player.AngleFrom(&shooter->pos);
+            laser->angle += g_Player.AngleToPlayer(&shooter->pos);
         }
         laser->flags = shooter->flags;
         laser->timer = 0;
@@ -856,7 +856,7 @@ int BulletManager::OnUpdate(BulletManager *mgr)
         case 2:
             bullet->grazeDelayTimer--;
             bullet->pos += bullet->velocity / 2.0f;
-            if (!(bullet->flags & 0x1000) && g_Player.CheckAreaHit(&bullet->pos, &bullet->sprites.hitboxSize) == 2)
+            if (!(bullet->flags & 0x1000) && g_Player.CheckHitAreas(&bullet->pos, &bullet->sprites.hitboxSize) == 2)
             {
                 bullet->spawnedInArea = 1;
             }
@@ -873,7 +873,7 @@ int BulletManager::OnUpdate(BulletManager *mgr)
         case 3:
             bullet->grazeDelayTimer--;
             bullet->pos += bullet->velocity / 2.5f;
-            if (!(bullet->flags & 0x1000) && g_Player.CheckAreaHit(&bullet->pos, &bullet->sprites.hitboxSize) == 2)
+            if (!(bullet->flags & 0x1000) && g_Player.CheckHitAreas(&bullet->pos, &bullet->sprites.hitboxSize) == 2)
             {
                 bullet->spawnedInArea = 1;
             }
@@ -890,7 +890,7 @@ int BulletManager::OnUpdate(BulletManager *mgr)
         case 4:
             bullet->grazeDelayTimer--;
             bullet->pos += bullet->velocity / 3.0f;
-            if (!(bullet->flags & 0x1000) && g_Player.CheckAreaHit(&bullet->pos, &bullet->sprites.hitboxSize) == 2)
+            if (!(bullet->flags & 0x1000) && g_Player.CheckHitAreas(&bullet->pos, &bullet->sprites.hitboxSize) == 2)
             {
                 bullet->spawnedInArea = 1;
             }
@@ -1183,7 +1183,7 @@ void StopTurnToPlayer(Bullet *bullet)
         {
             bullet->activeFlags &= ~0x80;
         }
-        bullet->angle = AddNormalizeAngle(g_Player.AngleFrom(&bullet->pos), bullet->ex[3].turnAngle);
+        bullet->angle = AddNormalizeAngle(g_Player.AngleToPlayer(&bullet->pos), bullet->ex[3].turnAngle);
         bullet->speed = bullet->ex[3].turnSpeed;
         speed = bullet->speed;
         bullet->ex[3].timer = 0;

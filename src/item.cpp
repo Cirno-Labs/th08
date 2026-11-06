@@ -233,7 +233,7 @@ void ItemManager::UpdateItems()
         {
             if (g_Player.playerState != 2 && g_Player.playerState != 1)
             {
-                angle = g_Player.AngleFrom(&entry->pos);
+                angle = g_Player.AngleToPlayer(&entry->pos);
                 ((Vector2 *)&entry->velocity)->SetPolar(angle, g_Player.shotType->itemPullSpeed);
                 entry->state = 1;
                 entry->pos += entry->velocity * g_App.gameSpeed;

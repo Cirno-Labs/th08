@@ -1209,7 +1209,7 @@ int App::LoadConfig(char *path)
     {
         LogPrintf(&g_Logger, "コンフィグデータが見つからないので初期化しました\r\n");
     reset:
-        g_App.lifeCount = 2;
+        g_App.lives = 2;
         g_App.bombCount = 3;
         g_App.colorMode16Bits = 0;
         g_App.version = 0x80001;
@@ -1273,7 +1273,7 @@ int App::LoadConfig(char *path)
                 }
             }
         }
-        if (g_App.lifeCount >= 7 || g_App.bombCount >= 4 || g_App.colorMode16Bits >= 2 || g_App.musicMode >= 3 ||
+        if (g_App.lives >= 7 || g_App.bombCount >= 4 || g_App.colorMode16Bits >= 2 || g_App.musicMode >= 3 ||
             g_App.defaultDifficulty >= 6 || g_App.playSounds >= 2 || g_App.windowed >= 2 || g_App.frameSkip >= 3 ||
             g_App.effectsQuality >= 3 || g_App.optionsMenuCursor >= 2 || g_App.shootFocuses >= 2 || g_App.version != 0x80001 ||
             configFileSize != sizeof(ConfigCopy))

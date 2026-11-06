@@ -70,7 +70,7 @@ int Stage::OnUpdate(Stage *stage)
             sprite->moveStart = copy.moveStart;
             sprite->interpDuration[0] = copy.interpDuration[0];
             sprite->interpFrame[0] = copy.interpFrame[0];
-            sprite->interpEasing = copy.interpEasing;
+            sprite->posInterpEasing = copy.posInterpEasing;
             sprite->color = copy.color;
         }
         else if (stage->waitLabel == 3)
@@ -83,7 +83,7 @@ int Stage::OnUpdate(Stage *stage)
             sprite->moveStart = copy.moveStart;
             sprite->interpDuration[0] = copy.interpDuration[0];
             sprite->interpFrame[0] = copy.interpFrame[0];
-            sprite->interpEasing = copy.interpEasing;
+            sprite->posInterpEasing = copy.posInterpEasing;
             sprite->color = copy.color;
         }
         else if (stage->waitLabel == 4)
@@ -96,7 +96,7 @@ int Stage::OnUpdate(Stage *stage)
             sprite->moveStart = copy.moveStart;
             sprite->interpDuration[0] = copy.interpDuration[0];
             sprite->interpFrame[0] = copy.interpFrame[0];
-            sprite->interpEasing = copy.interpEasing;
+            sprite->posInterpEasing = copy.posInterpEasing;
             sprite->color = copy.color;
         }
     }
@@ -766,11 +766,11 @@ int Stage::OnDraw2(Stage *stage)
     g_App.SetRenderState(D3DRS_FOGSTART, *(DWORD *)&fog);
     fog = 2000.0f;
     g_App.SetRenderState(D3DRS_FOGEND, *(DWORD *)&fog);
-    if (stage->keepTintColor == 0)
+    if (stage->keepColorModulation == 0)
     {
         g_SpriteEngine->ResetColorModulation();
     }
-    stage->keepTintColor = 0;
+    stage->keepColorModulation = 0;
     stage->recordEffectSpawnPos = 0;
     return 1;
 }

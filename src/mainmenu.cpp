@@ -197,7 +197,7 @@ int MainMenu::StartTitle()
                 this->SetState(7);
                 g_SpriteEngine->SendInterruptToLoadedSprites(this->sprites, this->spriteCount, 13);
                 this->helpSprite->SetPendingInterrupt(2);
-                g_GameManager.SetIsReplay(0);
+                g_GameManager.SetIsInReplay(0);
                 return 1;
             }
             if (this->returningFromPractice != 0)
@@ -287,7 +287,7 @@ int MainMenu::StartTitle()
             }
             else
             {
-                g_GameManager.SetIsReplay(1);
+                g_GameManager.SetIsInReplay(1);
                 g_GameManager.stateFlags |= 2;
                 g_GameManager.demoFrames = 0;
                 g_GameManager.difficulty = this->loadedReplay->difficulty;
@@ -508,7 +508,7 @@ int MainMenu::UpdateOptions()
         {
             this->sprites[0x1a].flags &= ~2;
         }
-        i = g_App.lifeCount + 0x14;
+        i = g_App.lives + 0x14;
         this->titleAnm->SetSprite(&this->sprites[i], this->sprites[i].baseSpriteIndex);
         for (i = 0x1b; i <= 0x1c; i++)
         {
@@ -594,13 +594,13 @@ int MainMenu::UpdateOptions()
                 {
                     i--;
                 }
-                if (g_App.lifeCount == 0)
+                if (g_App.lives == 0)
                 {
-                    g_App.lifeCount = i - 1;
+                    g_App.lives = i - 1;
                 }
                 else
                 {
-                    g_App.lifeCount--;
+                    g_App.lives--;
                 }
                 break;
             case 1:
@@ -757,13 +757,13 @@ int MainMenu::UpdateOptions()
                 {
                     i--;
                 }
-                if (g_App.lifeCount >= i - 1)
+                if (g_App.lives >= i - 1)
                 {
-                    g_App.lifeCount = 0;
+                    g_App.lives = 0;
                 }
                 else
                 {
-                    g_App.lifeCount++;
+                    g_App.lives++;
                 }
                 break;
             case 1:
@@ -838,7 +838,7 @@ int MainMenu::UpdateOptions()
             switch (this->cursor)
             {
             case 7:
-                g_App.lifeCount = 2;
+                g_App.lives = 2;
                 g_App.bombCount = 3;
                 g_App.musicMode = 1;
                 g_App.playSounds = 1;
@@ -1471,7 +1471,7 @@ int MainMenu::UpdateCharacterMenu()
                 g_GameManager.stage = g_GameManager.difficulty + 4;
             }
             g_App.scene = 2;
-            g_GameManager.SetIsReplay(0);
+            g_GameManager.SetIsInReplay(0);
             g_App.StopMusic();
             return 0;
         }
@@ -1606,7 +1606,7 @@ int MainMenu::UpdateGameStartMenu()
             g_GameManager.difficulty = g_App.defaultDifficulty;
             g_GameManager.stage = this->cursor;
             g_App.scene = 2;
-            g_GameManager.SetIsReplay(0);
+            g_GameManager.SetIsInReplay(0);
             g_App.StopMusic();
             return 0;
         }
@@ -2073,7 +2073,7 @@ int MainMenu::UpdateState17()
                     g_GameManager.difficulty = 1;
                 }
                 g_App.scene = 2;
-                g_GameManager.SetIsReplay(0);
+                g_GameManager.SetIsInReplay(0);
                 g_App.StopMusic();
                 return 0;
             }
@@ -2757,7 +2757,7 @@ int MainMenu::UpdateReplayMenu()
         }
         if (WAS_PRESSED(0x1001))
         {
-            g_GameManager.SetIsReplay(1);
+            g_GameManager.SetIsInReplay(1);
             strcpy(g_GameManager.replayFile, this->replayPaths[this->replayCursor]);
             g_GameManager.difficulty = this->loadedReplay->difficulty;
             g_GameManager.character = this->loadedReplay->shotType;
@@ -3401,7 +3401,7 @@ int MainMenu::InitTitleScene()
         delete g_GameManager.stats;
         g_GameManager.stats = NULL;
     }
-    g_GameManager.stats = new GameManagerStats;
+    g_GameManager.stats = new GameStats;
     g_App.gameSpeed = 1.0f;
     if (g_GameManager.stateFlags >> 3 & 1)
     {

@@ -38,7 +38,7 @@ void UpdateMarisaBomb(Player *player)
     }
     if (player->bomb.timer.HasTicked() && player->bomb.timer.AsFrames() % 4 != 0)
     {
-        PlayerBombHitbox *hitbox;
+        PlayerHitArea *hitbox;
         D3DXVECTOR3 pos;
 
         pos = player->pos;
@@ -143,7 +143,7 @@ void UpdateMarisaLastWord(Player *player)
     }
     if (player->bomb.timer.HasTicked() && player->bomb.timer.AsFrames() % 4 != 0)
     {
-        PlayerBombHitbox *hitbox;
+        PlayerHitArea *hitbox;
         D3DXVECTOR3 pos;
 
         pos = player->pos;

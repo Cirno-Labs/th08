@@ -40,7 +40,7 @@ void UnusedDrawText(HWND window, HDC hdc, char *text, RECT *rect, COLORREF color
 #pragma code_seg()
 #endif // TH08_EXE
 
-void RenderTextToTextureBold(int x, int y, int width, int unused, int fontHeight, int destHeight, COLORREF textColor,
+void RenderTextToTextureLarge(int x, int y, int width, int unused, int fontHeight, int destHeight, COLORREF textColor,
                              COLORREF shadowColor, char *text, IDirect3DTexture8 *texture)
 {
     HDC hdcMem;

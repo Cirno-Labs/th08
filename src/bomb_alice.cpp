@@ -67,7 +67,7 @@ void UpdateAliceBomb(Player *player)
         else if (bomb->timer.HasTickedTo(90))
         {
             Effect *effect;
-            PlayerBombHitbox *hitbox;
+            PlayerHitArea *hitbox;
 
             g_SoundPlayer.QueueSound(0xf, 0);
             effect = g_EffectManager.SpawnEffect(0x2a, &player->options[0].pos, 1, 0xffffffff);
@@ -168,7 +168,7 @@ void UpdateAliceLastWord(Player *player)
         else if (bomb->timer.HasTickedTo(120))
         {
             Effect *effect;
-            PlayerBombHitbox *hitbox;
+            PlayerHitArea *hitbox;
 
             g_SoundPlayer.QueueSound(0xf, 0);
             effect = g_EffectManager.SpawnEffect(0x2a, &player->options[0].pos, 1, 0xffffffff);

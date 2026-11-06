@@ -109,12 +109,12 @@ struct ShotTypeData
 // Player::bombHitboxes, the boxes and circles that damage enemies, and
 // Player::hitAreas, th07's PlayerArea grown, which hit bullets.
 // Placeholder name.
-struct PlayerBombHitbox
+struct PlayerHitArea
 {
     // Zeroes it, then sets damageInterval. Inline; the copy is at 0x44e370.
     void Reset()
     {
-        memset(this, 0, sizeof(PlayerBombHitbox));
+        memset(this, 0, sizeof(PlayerHitArea));
         this->damageInterval = 1;
     }
     // Inline; the copy is at 0x44e350.
@@ -137,7 +137,7 @@ struct PlayerBombHitbox
     float angle;
     // Counts down; the area ends when it reaches 0. Below 0 it never ends.
     int framesLeft;
-    // Player::areaItemType when CheckAreaHit meets it (hitAreas).
+    // Player::areaItemType when CheckHitAreas meets it (hitAreas).
     int itemType;
     // The damage it deals (bombHitboxes).
     int damage;
@@ -197,8 +197,8 @@ struct PlayerBombPart
     Effect *effect;
     Timer timer;
     // The bomb hitbox and the hit area that follow it, if any.
-    PlayerBombHitbox *hitbox;
-    PlayerBombHitbox *hitArea;
+    PlayerHitArea *hitbox;
+    PlayerHitArea *hitArea;
 };
 ASSERT_SIZE(PlayerBombPart, 0x16f0);
 
@@ -218,9 +218,9 @@ extern D3DCOLOR g_BombFlashColors[7];
 
 // The option callbacks, by character; NULL where a character has fewer
 // than four options.
-typedef int (*OptionFunc)(Player *player, PlayerOption *option);
-extern OptionFunc g_OptionUpdateFuncs[][4];
-extern OptionFunc g_OptionDrawFuncs[][4];
+typedef int (*PlayerOptionFunc)(Player *player, PlayerOption *option);
+extern PlayerOptionFunc g_OptionUpdateFuncs[][4];
+extern PlayerOptionFunc g_OptionDrawFuncs[][4];
 
 // The shot type files of each character's two shot types, and its ANM,
 // by character.
@@ -400,7 +400,7 @@ void FireShots(Player *player, int frame);
 // OnUpdate's steps, as th07's (0x44c5b0, 0x44c650, 0x44cbf0,
 // 0x44d180, 0x44d2c0, 0x44aec0, 0x44d420): UpdateDyingState returns
 // nonzero when the player respawns.
-void UpdateHitboxAreas(Player *player);
+void UpdateHitAreas(Player *player);
 void UpdateBombState(Player *player);
 int UpdateDyingState(Player *player);
 void UpdateRespawningState(Player *player);
@@ -443,9 +443,9 @@ public:
     // is set. Keeps the area's itemType in areaItemType, counts its hits
     // and returns 2 if so, else returns 0. As th07's, which tested the
     // whole box and had no turned ones; `size` is unused now.
-    int CheckAreaHit(D3DXVECTOR3 *pos, D3DXVECTOR3 *size);
+    int CheckHitAreas(D3DXVECTOR3 *pos, D3DXVECTOR3 *size);
     // Whether a `size` box at `pos` hits the player, as th07's: 2 if it
-    // meets one of hitAreas (CheckAreaHit; areaItemType 6 otherwise),
+    // meets one of hitAreas (CheckHitAreas; areaItemType 6 otherwise),
     // else 1 if it meets the hitbox, else 0. A hit marks bit 1 of
     // g_ReplayManager->frameEvents and kills the player while
     // playerState is 0.
@@ -492,7 +492,7 @@ public:
     // collected items.
     void Die();
     // The angle from `pos` to the player, as th07's (0x44c1b0).
-    float AngleFrom(D3DXVECTOR3 *pos);
+    float AngleToPlayer(D3DXVECTOR3 *pos);
     // Whether the box of `size` at `pos` touches the player's graze box,
     // as th07's (0x44a5a0).
     int TouchesGrazeBox(D3DXVECTOR3 *pos, D3DXVECTOR3 *size);
@@ -500,14 +500,14 @@ public:
     // last, and starts it as a `width` by `height` box at `pos` (x and
     // y) for `framesLeft` frames with `itemType`, as th07's
     // AddHitboxArea. Returns it (0x44de60).
-    PlayerBombHitbox *AddHitArea(D3DXVECTOR3 *pos, float width, float height, int itemType, int framesLeft);
+    PlayerHitArea *AddHitArea(D3DXVECTOR3 *pos, float width, float height, int itemType, int framesLeft);
     // The same with a circle of `radius`, growing by `radiusGrowth`
     // (0x44df00).
-    PlayerBombHitbox *AddHitAreaCircle(D3DXVECTOR3 *pos, float radius, float radiusGrowth, int framesLeft,
+    PlayerHitArea *AddHitAreaCircle(D3DXVECTOR3 *pos, float radius, float radiusGrowth, int framesLeft,
                                        int itemType);
     // The same in bombHitboxes, dealing `damage` (0x44dfa0, 0x44e040).
-    PlayerBombHitbox *AddBombHitbox(D3DXVECTOR3 *pos, float width, float height, int damage, int framesLeft);
-    PlayerBombHitbox *AddBombHitboxCircle(D3DXVECTOR3 *pos, float radius, float radiusGrowth, int damage,
+    PlayerHitArea *AddBombHitbox(D3DXVECTOR3 *pos, float width, float height, int damage, int framesLeft);
+    PlayerHitArea *AddBombHitboxCircle(D3DXVECTOR3 *pos, float radius, float radiusGrowth, int damage,
                                           int framesLeft);
     // Whether a spell-card bomb (type 4) runs. Inline; the copy is at
     // 0x451d50.
@@ -571,8 +571,8 @@ public:
     float moveScaleY;
     PlayerOption options[4];
     PlayerBomb bomb;
-    PlayerBombHitbox bombHitboxes[0xc0];
-    PlayerBombHitbox hitAreas[0xc0];
+    PlayerHitArea bombHitboxes[0xc0];
+    PlayerHitArea hitAreas[0xc0];
     Effect *optionEffect;
     PlayerBullet bullets[0x80];
     PlayerLaser lasers[3];
@@ -590,7 +590,7 @@ public:
     // The shot each laser was fired from, by ShotData::phase, as th07's.
     ShotData *laserShots[3];
     unsigned char pad_e2a8c[0x4];
-    // The itemType of the area CheckAreaHit met last, as th07's.
+    // The itemType of the area CheckHitAreas met last, as th07's.
     int areaItemType;
     // Counts hits on enemies, to burst an effect every few, as th07's.
     BYTE hitCounter;
@@ -641,11 +641,11 @@ extern Player g_Player;
 // th07's DimPlayAreaForBomb, towards `tint`: over the bomb's first and
 // last 60 frames the stage tint fades between gray (0x80) and `tint`,
 // through Stage::SetTintColor, after resetting the SpriteEngine's color;
-// sets the stage's keepTintColor (0x40bc60).
+// sets the stage's keepColorModulation (0x40bc60).
 void DimPlayAreaForBomb(Player *player, D3DCOLOR tint);
 
 // The start shared by the bombs' first frames: shows the spell card
-// (SpellCard::StartBombCard with `face`, `name` and `sprite`), sets the
+// (SpellCard::ShowBombName with `face`, `name` and `sprite`), sets the
 // bomb's duration and
 // stateTimer, makes the player invulnerable (playerState 3) with an
 // aura, clears the bomb's parts, collects all items and keeps the

@@ -1465,7 +1465,7 @@ void SpriteEngine::RenderTextToTextureIndex(IDirect3DTexture8 *texture, int x, i
     }
     if (fontHeight > 8)
     {
-        RenderTextToTextureBold(x, y, width, unused, fontHeight * scaleX, destHeight * scaleY, textColor, shadowColor,
+        RenderTextToTextureLarge(x, y, width, unused, fontHeight * scaleX, destHeight * scaleY, textColor, shadowColor,
                                 text, texture);
     }
     else

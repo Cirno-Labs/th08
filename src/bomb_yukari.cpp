@@ -19,7 +19,7 @@ void UpdateYukariBomb(Player *player)
 
     if (bomb->timer.HasTicked() && bomb->timer == 0)
     {
-        PlayerBombHitbox *hitbox;
+        PlayerHitArea *hitbox;
         float theta;
         PlayerBombPart *part;
 
@@ -37,7 +37,7 @@ void UpdateYukariBomb(Player *player)
     if (bomb->timer.HasTickedTo(10))
     {
         Effect *eff;
-        PlayerBombHitbox *hitbox;
+        PlayerHitArea *hitbox;
 
         player->AddHitAreaCircle(&player->pos, 100.0f, 1.0f, 40, 6);
         hitbox = player->AddBombHitboxCircle(&player->pos, 100.0f, 1.0f, 70, 40);
@@ -50,7 +50,7 @@ void UpdateYukariBomb(Player *player)
     if (bomb->timer.HasTickedTo(20))
     {
         Effect *eff;
-        PlayerBombHitbox *hitbox;
+        PlayerHitArea *hitbox;
 
         player->AddHitAreaCircle(&player->pos, 100.0f, 1.0f, 40, 6);
         hitbox = player->AddBombHitboxCircle(&player->pos, 100.0f, 1.0f, 70, 40);
@@ -63,7 +63,7 @@ void UpdateYukariBomb(Player *player)
     if (bomb->timer.HasTickedTo(30))
     {
         Effect *eff;
-        PlayerBombHitbox *hitbox;
+        PlayerHitArea *hitbox;
 
         player->AddHitAreaCircle(&player->pos, 100.0f, 1.0f, 40, 6);
         hitbox = player->AddBombHitboxCircle(&player->pos, 100.0f, 1.0f, 70, 40);
@@ -82,7 +82,7 @@ void UpdateYukariLastWord(Player *player)
 
     if (bomb->timer.HasTicked() && bomb->timer == 0)
     {
-        PlayerBombHitbox *hitbox;
+        PlayerHitArea *hitbox;
         float theta;
         PlayerBombPart *part;
 
@@ -102,7 +102,7 @@ void UpdateYukariLastWord(Player *player)
     if (bomb->timer.HasTickedTo(10))
     {
         Effect *eff;
-        PlayerBombHitbox *hitbox;
+        PlayerHitArea *hitbox;
 
         player->AddHitAreaCircle(&player->pos, 100.0f, 1.0f, 40, 6);
         hitbox = player->AddBombHitboxCircle(&player->pos, 100.0f, 1.0f, 70, 40);
@@ -115,7 +115,7 @@ void UpdateYukariLastWord(Player *player)
     if (bomb->timer.HasTickedTo(20))
     {
         Effect *eff;
-        PlayerBombHitbox *hitbox;
+        PlayerHitArea *hitbox;
 
         player->AddHitAreaCircle(&player->pos, 100.0f, 1.0f, 100, 6);
         hitbox = player->AddBombHitboxCircle(&player->pos, 100.0f, 1.0f, 70, 40);
@@ -128,7 +128,7 @@ void UpdateYukariLastWord(Player *player)
     if (bomb->timer.HasTickedTo(30))
     {
         Effect *eff;
-        PlayerBombHitbox *hitbox;
+        PlayerHitArea *hitbox;
 
         player->AddHitAreaCircle(&player->pos, 100.0f, 1.0f, 100, 6);
         hitbox = player->AddBombHitboxCircle(&player->pos, 100.0f, 1.0f, 70, 40);
@@ -178,7 +178,7 @@ int EffectUpdateBombRing36(Effect *effect)
         if (effect->timer == 0x28)
         {
             int i;
-            PlayerBombHitbox *laser;
+            PlayerHitArea *laser;
             float angle;
             float spread;
 
@@ -240,7 +240,7 @@ int EffectUpdateBombRing37(Effect *effect)
         if (effect->timer == 0x32)
         {
             int i;
-            PlayerBombHitbox *laser;
+            PlayerHitArea *laser;
             float angle;
             float spread;
 

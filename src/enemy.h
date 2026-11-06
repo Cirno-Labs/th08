@@ -403,7 +403,7 @@ struct Enemy
             DWORD onScreen : 1;
             DWORD rotateSprite : 1;
             // Calls save no context while set, as th07's.
-            DWORD disableCallStack : 1;
+            DWORD noCallStack : 1;
             // A timer callback leaves the spell card running while set,
             // as th07's.
             DWORD keepSpellCard : 1;
@@ -575,7 +575,7 @@ void ReleaseEnemyEffects(Enemy *enemy);
 
 // The angle `t` of the way from `a` to `b`, the short way round, as
 // th07's (0x42eb10).
-float LerpAngle(float a, float b, float t);
+float LerpAngleShort(float a, float b, float t);
 
 // The head of an enemy script file, as th07's after a version (0x800):
 // the subroutine count, the timeline count, the offsets of sixteen
@@ -688,14 +688,14 @@ void ScriptStartInterp(Enemy *enemy, EnemyScriptInstr *instr);
 // argument 3 bytes on, else NULL (0x4215f0).
 EnemyScriptInstr *ScriptJumpIf(Enemy *enemy, EnemyScriptInstr *instr);
 // Calls subroutine `sub` from `instr`, as th07's call instruction:
-// saves the current context on callStack (unless disableCallStack),
+// saves the current context on callStack (unless noCallStack),
 // starts `sub` in it with callArgs (0x421bd0).
 void ScriptCallSub(Enemy *enemy, EnemyScriptInstr *instr, int sub);
 // Returns from a subroutine call, as th07's return instruction: takes
 // the caller's context back from callStack and returns 0; past the
 // bottom of the stack, frees thread timedCallActive - 1,
 // goes back to ctx, savedCtx and savedStackDepth and returns 1. Prints
-// an error under disableCallStack (0x421cb0).
+// an error under noCallStack (0x421cb0).
 int ScriptReturn(Enemy *enemy, EnemyScriptInstr *instr);
 // Sets the turning sprite scripts, as th07's instruction 96, and
 // clears spriteDirection (0x421de0).

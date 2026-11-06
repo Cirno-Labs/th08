@@ -423,13 +423,13 @@ loop:
             ScriptMoveRandom2(enemy, instr);
             break;
         case 68:
-            enemy->angle = AddNormalizeAngle(FLOAT_ARG(0), g_Player.AngleFrom(&enemy->pos));
+            enemy->angle = AddNormalizeAngle(FLOAT_ARG(0), g_Player.AngleToPlayer(&enemy->pos));
             enemy->speed = FLOAT_ARG(1);
             break;
         case 69:
             if (INT_ARG(0) <= 0)
             {
-                enemy->angle = AddNormalizeAngle(FLOAT_ARG(2), g_Player.AngleFrom(&enemy->pos));
+                enemy->angle = AddNormalizeAngle(FLOAT_ARG(2), g_Player.AngleToPlayer(&enemy->pos));
                 enemy->speed = FLOAT_ARG(3);
                 enemy->moveMode = 1;
                 enemy->moveTimer = enemy->moveDuration = INT_ARG(0);
@@ -809,7 +809,7 @@ loop:
             value = INT_ARG(0);
             if (enemy->lasers[value] != NULL)
             {
-                enemy->lasers[value]->angle = g_Player.AngleFrom(&enemy->lasers[value]->pos) + FLOAT_ARG(1);
+                enemy->lasers[value]->angle = g_Player.AngleToPlayer(&enemy->lasers[value]->pos) + FLOAT_ARG(1);
             }
             break;
         case 119:
@@ -940,7 +940,7 @@ loop:
             enemy->pendingInterrupt = INT_ARG(0);
         interrupt:
             enemy->currentCtx->code = (char *)instr + instr->size;
-            if (!enemy->disableCallStack)
+            if (!enemy->noCallStack)
             {
                 enemy->callStack[enemy->stackDepth] = enemy->ctx;
             }
@@ -1175,7 +1175,7 @@ loop:
             enemy->shooter.bulletSound = INT_ARG(1);
             break;
         case 151:
-            enemy->disableCallStack = *(BYTE *)instr->args;
+            enemy->noCallStack = *(BYTE *)instr->args;
             break;
         case 152:
             enemy->rankSpeedLow = FLOAT_ARG(0);
@@ -1659,7 +1659,7 @@ int GetIntOperand(Enemy *enemy, int id)
     case 10096:
         return enemy->IsLeader() ? enemy->CountFollowers() : (enemy->IsFollower() ? enemy->leader->CountFollowers() : 0);
     case 10048:
-        return g_Player.AngleFrom(&enemy->absPos);
+        return g_Player.AngleToPlayer(&enemy->absPos);
     case 10050:
     {
         D3DXVECTOR3 diff = g_Player.pos - enemy->absPos;
@@ -1933,7 +1933,7 @@ float GetFloatOperand(Enemy *enemy, float id)
     case 10091:
         return enemy->lifeCallbackLife[3];
     case 10048:
-        return g_Player.AngleFrom(&enemy->absPos);
+        return g_Player.AngleToPlayer(&enemy->absPos);
     case 10069:
         return enemy->angle;
     case 10070:
@@ -2271,13 +2271,13 @@ EnemyScriptInstr *ScriptJumpIf(Enemy *enemy, EnemyScriptInstr *instr)
 void ScriptCallSub(Enemy *enemy, EnemyScriptInstr *instr, int sub)
 {
     enemy->currentCtx->code = (char *)instr + instr->size;
-    if (!enemy->disableCallStack)
+    if (!enemy->noCallStack)
     {
         enemy->callStack[enemy->stackDepth] = *enemy->currentCtx;
     }
     g_EnemyScripts.StartSub(enemy->currentCtx, sub);
     enemy->currentCtx->vars.args = g_EnemyScripts.callArgs;
-    if (!enemy->disableCallStack && enemy->stackDepth < 15)
+    if (!enemy->noCallStack && enemy->stackDepth < 15)
     {
         enemy->stackDepth++;
     }
@@ -2287,7 +2287,7 @@ int ScriptReturn(Enemy *enemy, EnemyScriptInstr *instr)
 {
     int i;
 
-    if (enemy->disableCallStack)
+    if (enemy->noCallStack)
     {
         DebugPrint("error : no Stack Ret\r\n");
     }

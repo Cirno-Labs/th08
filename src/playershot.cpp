@@ -897,7 +897,7 @@ int UpdateLaserBullet(Player *player, PlayerBullet *bullet)
 
 int UpdateTrailLaserBullet(Player *player, PlayerBullet *bullet)
 {
-    PlayerBombHitbox *area;
+    PlayerHitArea *area;
     int j;
 
     if (player->lasers[bullet->laserIndex].bullet != bullet || g_Gui.IsMsgRunning() ||
@@ -1279,7 +1279,7 @@ int Player::CalcDamage(D3DXVECTOR3 *pos, D3DXVECTOR3 *size, int *damageTaken, in
     D3DXVECTOR3 targetHi;
     float rotZ;
     int damage2;
-    PlayerBombHitbox *hitbox;
+    PlayerHitArea *hitbox;
 
     damage2 = 0;
     if (!this->stateTimer.HasTicked())

@@ -1754,11 +1754,11 @@ int EnemyManager::DrawEnemies(EnemyManager *mgr, int from, int to)
                             }
                             else
                             {
-                                theta = LerpAngle(enemy->trailBoxes[b - 1].angle, enemy->trailBoxes[b].angle, 0.5f);
+                                theta = LerpAngleShort(enemy->trailBoxes[b - 1].angle, enemy->trailBoxes[b].angle, 0.5f);
                             }
                             if ((enemy->trailFlags & 2) && b > 0 && b + enemy->trailSegmentStep < enemy->trailSegmentCount)
                             {
-                                sinA = LerpAngle(enemy->trailBoxes[b + enemy->trailSegmentStep - 1].angle,
+                                sinA = LerpAngleShort(enemy->trailBoxes[b + enemy->trailSegmentStep - 1].angle,
                                                  enemy->trailBoxes[enemy->trailSegmentStep].angle, 0.5f);
                                 if (fabsf(lastTheta - theta) < 0.00001f && fabsf(theta - sinA) < 0.00001f)
                                 {
@@ -1840,7 +1840,7 @@ int EnemyManager::DrawEnemies(EnemyManager *mgr, int from, int to)
     return 1;
 }
 
-float LerpAngle(float a, float b, float t)
+float LerpAngleShort(float a, float b, float t)
 {
     float diff;
     float wrap;
