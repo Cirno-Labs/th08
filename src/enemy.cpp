@@ -60,8 +60,8 @@ void EnemyManager::Initialize()
     enemy->life = 1;
     enemy->score = 100;
     enemy->deathEffect = 0;
-    enemy->deathEffectIndex = 0;
-    enemy->deathEffectVariant = 0;
+    enemy->deathEffect2 = 0;
+    enemy->deathEffect3 = 0;
     enemy->shootInterval = 0;
     enemy->shootTimer = 0;
     enemy->shootOffset = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
@@ -874,14 +874,14 @@ void Enemy::DropItems(int byBomb)
 
     if (this->item >= 0)
     {
-        g_EffectManager.SpawnEffect(this->deathEffectIndex + 4, &this->absPos, 3, 0xffffffff);
+        g_EffectManager.SpawnEffect(this->deathEffect2 + 4, &this->absPos, 3, 0xffffffff);
         g_ItemManager.SpawnItem(&this->absPos, this->item, byBomb != 0);
     }
     else if (this->item == -1)
     {
         if (g_EnemyManager.dropCounter % 3 == 0)
         {
-            g_EffectManager.SpawnEffect(this->deathEffectIndex + 4, &this->absPos, 6, 0xffffffff);
+            g_EffectManager.SpawnEffect(this->deathEffect2 + 4, &this->absPos, 6, 0xffffffff);
             g_ItemManager.SpawnItem(&this->absPos, g_EnemyItemDrops[g_EnemyManager.dropIndex], byBomb != 0);
             g_EnemyManager.dropIndex++;
             if (g_EnemyManager.dropIndex >= 0x20)
@@ -1466,7 +1466,7 @@ int EnemyManager::OnUpdate(EnemyManager *mgr)
                 if (enemy->deathEffect >= 0)
                 {
                     g_EffectManager.SpawnEffect(enemy->deathEffect, &enemy->absPos, 1, 0xffffffff);
-                    g_EffectManager.SpawnEffect(enemy->deathEffectIndex + 4, &enemy->absPos, 4, 0xffffffff);
+                    g_EffectManager.SpawnEffect(enemy->deathEffect2 + 4, &enemy->absPos, 4, 0xffffffff);
                 }
                 if (g_GameManager.IsGaugeAtLow1() || g_GameManager.IsGaugeAtHigh1())
                 {

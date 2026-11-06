@@ -260,7 +260,7 @@ struct Enemy
     void ShareDamageWithLeader(int damage);
     // Drops its items, as th07's OnUpdate did: its item (or, at -1,
     // every third enemy one of g_EnemyItemDrops) with effect
-    // deathEffectIndex + 4, then powerItems power items (big ones at full
+    // deathEffect2 + 4, then powerItems power items (big ones at full
     // power) and pointItems point items around absPos; `byBomb` makes
     // them fly to the player (0x42bea0).
     void DropItems(int byBomb);
@@ -357,9 +357,12 @@ struct Enemy
     // items DropItems drops.
     int pointItems;
     int powerItems;
+    // The effects the enemy's death spawns, set together by opcode 138
+    // (th06's 100): deathEffect, and deathEffect2 + 4, which an item drop
+    // also spawns. Nothing reads deathEffect3.
     char deathEffect;
-    BYTE deathEffectIndex;
-    BYTE deathEffectVariant;
+    BYTE deathEffect2;
+    BYTE deathEffect3;
     // Its index in EnemyManager::bosses while isBoss is set.
     BYTE bossIndex;
     BYTE hitFlashTimer;
