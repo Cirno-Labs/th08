@@ -172,8 +172,10 @@ struct SpriteBase
             // Bits 0 and 1, for bitfield stores.
             DWORD shown : 1;
             DWORD visible : 1;
-            DWORD unusedFlag2 : 1;
-            DWORD unusedFlag3 : 1;
+            // Set when the rotation or the scale changes; the draw
+            // functions then rebuild drawMatrix and clear both.
+            DWORD rotationChanged : 1;
+            DWORD scaleChanged : 1;
             DWORD blendMode : 2;
             DWORD unusedFlag6 : 1;
             DWORD unusedFlag7 : 1;
