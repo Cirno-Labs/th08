@@ -125,42 +125,42 @@ int ReplayManager::RegisterChain(int mode, char *path)
         switch (mode)
         {
         case 0:
-            replay->calcChain = g_Chain.CreateElem((ChainCallback)ReplayManager::RecordOnUpdate);
-            replay->calcChain->addedCallback = (ChainCallback)ReplayManager::RecordAddedCallback;
-            replay->calcChain->deletedCallback = (ChainCallback)ReplayManager::DeletedCallback;
-            replay->calcChain->arg = replay;
-            if (g_Chain.AddToCalcChain(replay->calcChain, 0x11) != 0)
+            replay->calcElem = g_Chain.CreateElem((ChainCallback)ReplayManager::RecordOnUpdate);
+            replay->calcElem->addedCallback = (ChainCallback)ReplayManager::RecordAddedCallback;
+            replay->calcElem->deletedCallback = (ChainCallback)ReplayManager::DeletedCallback;
+            replay->calcElem->arg = replay;
+            if (g_Chain.AddToCalcChain(replay->calcElem, 0x11) != 0)
             {
                 return -1;
             }
-            replay->calcChain2 = NULL;
-            replay->calcChain3 = g_Chain.CreateElem((ChainCallback)ReplayManager::RecordOnUpdate2);
-            replay->calcChain3->arg = replay;
-            g_Chain.AddToCalcChain(replay->calcChain3, 7);
+            replay->calcElem2 = NULL;
+            replay->calcElem3 = g_Chain.CreateElem((ChainCallback)ReplayManager::RecordOnUpdate2);
+            replay->calcElem3->arg = replay;
+            g_Chain.AddToCalcChain(replay->calcElem3, 7);
             ReplayManager::RecordOnUpdate2(replay);
             break;
         case 1:
-            replay->calcChain = g_Chain.CreateElem((ChainCallback)ReplayManager::PlayOnUpdate);
-            replay->calcChain->addedCallback = (ChainCallback)ReplayManager::PlayAddedCallback;
-            replay->calcChain->deletedCallback = (ChainCallback)ReplayManager::DeletedCallback;
-            replay->calcChain->arg = replay;
-            if (g_Chain.AddToCalcChain(replay->calcChain, 6) != 0)
+            replay->calcElem = g_Chain.CreateElem((ChainCallback)ReplayManager::PlayOnUpdate);
+            replay->calcElem->addedCallback = (ChainCallback)ReplayManager::PlayAddedCallback;
+            replay->calcElem->deletedCallback = (ChainCallback)ReplayManager::DeletedCallback;
+            replay->calcElem->arg = replay;
+            if (g_Chain.AddToCalcChain(replay->calcElem, 6) != 0)
             {
                 return -1;
             }
             if (replay->data->withSeeds)
             {
-                replay->calcChain->callback = (ChainCallback)ReplayManager::PlayOnUpdateWithSeeds;
+                replay->calcElem->callback = (ChainCallback)ReplayManager::PlayOnUpdateWithSeeds;
             }
-            replay->calcChain2 = g_Chain.CreateElem((ChainCallback)ReplayManager::PlayOnUpdate2);
-            replay->calcChain2->arg = replay;
-            g_Chain.AddToCalcChain(replay->calcChain2, 0x12);
-            replay->calcChain3 = NULL;
+            replay->calcElem2 = g_Chain.CreateElem((ChainCallback)ReplayManager::PlayOnUpdate2);
+            replay->calcElem2->arg = replay;
+            g_Chain.AddToCalcChain(replay->calcElem2, 0x12);
+            replay->calcElem3 = NULL;
             if (replay->data->withSeeds)
             {
-                replay->calcChain3 = g_Chain.CreateElem((ChainCallback)ReplayManager::RecordOnUpdate2);
-                replay->calcChain3->arg = replay;
-                g_Chain.AddToCalcChain(replay->calcChain3, 7);
+                replay->calcElem3 = g_Chain.CreateElem((ChainCallback)ReplayManager::RecordOnUpdate2);
+                replay->calcElem3->arg = replay;
+                g_Chain.AddToCalcChain(replay->calcElem3, 7);
                 ReplayManager::RecordOnUpdate2(replay);
             }
             break;
@@ -542,15 +542,15 @@ int ReplayManager::PlayAddedCallback(ReplayManager *replay)
 
 int ReplayManager::DeletedCallback(ReplayManager *replay)
 {
-    if (replay->calcChain2 != NULL)
+    if (replay->calcElem2 != NULL)
     {
-        g_Chain.Remove(replay->calcChain2);
-        replay->calcChain2 = NULL;
+        g_Chain.Remove(replay->calcElem2);
+        replay->calcElem2 = NULL;
     }
-    if (replay->calcChain3 != NULL)
+    if (replay->calcElem3 != NULL)
     {
-        g_Chain.Remove(replay->calcChain3);
-        replay->calcChain3 = NULL;
+        g_Chain.Remove(replay->calcElem3);
+        replay->calcElem3 = NULL;
     }
     g_MemoryTracker.Free(g_ReplayManager->data);
     if (replay->bufferFreedOnDelete != NULL)
@@ -759,6 +759,6 @@ void SaveReplay(char *path, char *name)
                 }
             }
         }
-        g_Chain.Remove(g_ReplayManager->calcChain);
+        g_Chain.Remove(g_ReplayManager->calcElem);
     }
 }

@@ -164,8 +164,8 @@ public:
     // The update element (priority 4, with the added and deleted
     // callbacks) and the draw element (priority 3), created by
     // SetUpTitleScene.
-    ChainElem *calcChain;
-    ChainElem *drawChain;
+    ChainElem *calcElem;
+    ChainElem *drawElem;
     // The button mapping the options screen edits.
     ControllerMapping controllerMapping;
     unsigned char pad_14452[0x2];

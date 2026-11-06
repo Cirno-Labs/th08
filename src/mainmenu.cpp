@@ -3647,17 +3647,17 @@ int SetUpTitleScene(int unused)
 
     memset(menu, 0, sizeof(MainMenu));
     g_GameManager.SetIsPaused(0);
-    menu->calcChain = g_Chain.CreateElem((ChainCallback)MainMenu::OnUpdate);
-    menu->calcChain->arg = menu;
-    menu->calcChain->addedCallback = (ChainCallback)MainMenu::AddedCallback;
-    menu->calcChain->deletedCallback = (ChainCallback)MainMenu::DeletedCallback;
-    if (g_Chain.AddToCalcChain(menu->calcChain, 4) != 0)
+    menu->calcElem = g_Chain.CreateElem((ChainCallback)MainMenu::OnUpdate);
+    menu->calcElem->arg = menu;
+    menu->calcElem->addedCallback = (ChainCallback)MainMenu::AddedCallback;
+    menu->calcElem->deletedCallback = (ChainCallback)MainMenu::DeletedCallback;
+    if (g_Chain.AddToCalcChain(menu->calcElem, 4) != 0)
     {
         return -1;
     }
-    menu->drawChain = g_Chain.CreateElem((ChainCallback)MainMenu::OnDraw);
-    menu->drawChain->arg = menu;
-    g_Chain.AddToDrawChain(menu->drawChain, 3);
+    menu->drawElem = g_Chain.CreateElem((ChainCallback)MainMenu::OnDraw);
+    menu->drawElem->arg = menu;
+    g_Chain.AddToDrawChain(menu->drawElem, 3);
     return 0;
 }
 
@@ -3672,8 +3672,8 @@ int MainMenu::DeletedCallback(MainMenu *menu)
     g_SpriteEngine->ReleaseAnm(0x14);
     g_SpriteEngine->ReleaseAnm(0x16);
     g_SpriteEngine->ReleaseSurface(0);
-    g_Chain.Remove(menu->drawChain);
-    menu->drawChain = NULL;
+    g_Chain.Remove(menu->drawElem);
+    menu->drawElem = NULL;
     menu->ReleaseTitleScene();
     delete menu;
     menu = NULL;

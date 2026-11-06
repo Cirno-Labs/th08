@@ -223,17 +223,17 @@ int MusicScreen::RegisterChain()
     MusicScreen *screen = &g_MusicScreen;
 
     memset(screen, 0, sizeof(MusicScreen));
-    screen->calcChain = g_Chain.CreateElem((ChainCallback)MusicScreen::OnUpdate);
-    screen->calcChain->arg = screen;
-    screen->calcChain->addedCallback = (ChainCallback)MusicScreen::AddedCallback;
-    screen->calcChain->deletedCallback = (ChainCallback)MusicScreen::DeletedCallback;
-    if (g_Chain.AddToCalcChain(screen->calcChain, 4) != 0)
+    screen->calcElem = g_Chain.CreateElem((ChainCallback)MusicScreen::OnUpdate);
+    screen->calcElem->arg = screen;
+    screen->calcElem->addedCallback = (ChainCallback)MusicScreen::AddedCallback;
+    screen->calcElem->deletedCallback = (ChainCallback)MusicScreen::DeletedCallback;
+    if (g_Chain.AddToCalcChain(screen->calcElem, 4) != 0)
     {
         return -1;
     }
-    screen->drawChain = g_Chain.CreateElem((ChainCallback)MusicScreen::OnDraw);
-    screen->drawChain->arg = screen;
-    g_Chain.AddToDrawChain(screen->drawChain, 3);
+    screen->drawElem = g_Chain.CreateElem((ChainCallback)MusicScreen::OnDraw);
+    screen->drawElem->arg = screen;
+    g_Chain.AddToDrawChain(screen->drawElem, 3);
     return 0;
 }
 
@@ -477,7 +477,7 @@ int MusicScreen::DeletedCallback(MusicScreen *screen)
     screen->tunes = NULL;
     g_SpriteEngine->ReleaseSurface(0);
     g_SpriteEngine->ReleaseAnm(0x17);
-    g_Chain.Remove(screen->drawChain);
-    screen->drawChain = NULL;
+    g_Chain.Remove(screen->drawElem);
+    screen->drawElem = NULL;
     return 0;
 }

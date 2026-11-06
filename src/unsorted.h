@@ -2715,8 +2715,8 @@ struct SpellCard
     AnmLoaded *backgroundAnm;
     // The bonus the card starts with.
     DWORD startBonus;
-    ChainElem *calcChain;
-    ChainElem *drawChain;
+    ChainElem *calcElem;
+    ChainElem *drawElem;
 };
 ASSERT_SIZE(SpellCard, 0x2644);
 extern SpellCard g_SpellCard;

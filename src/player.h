@@ -622,9 +622,9 @@ public:
     // The angle the aimed shots fly at, as th07's.
     float aimedShotAngle;
     // The update element and the two draw elements, as th07's.
-    ChainElem *calcChain;
-    ChainElem *drawChain;
-    ChainElem *drawChain2;
+    ChainElem *calcElem;
+    ChainElem *drawElem;
+    ChainElem *drawElem2;
     // Effects that follow the player, as th07's.
     Effect *invulnerabilityEffect;
     Effect *bombInvulnerabilityEffect;

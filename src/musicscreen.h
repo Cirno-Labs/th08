@@ -70,8 +70,8 @@ public:
     // restarts the tune playing. Returns nonzero to stop.
     int UpdateList();
 
-    ChainElem *calcChain;
-    ChainElem *drawChain;
+    ChainElem *calcElem;
+    ChainElem *drawElem;
     // music00.anm, loaded by AddedCallback.
     AnmLoaded *anm;
     // Each tune's g_GameManager.plst.bgmHeard, as AddedCallback found

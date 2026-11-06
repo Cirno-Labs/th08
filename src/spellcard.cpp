@@ -1193,13 +1193,13 @@ int SpellCard::RegisterChain()
     {
         return -1;
     }
-    sc->calcChain = g_Chain.CreateElem((ChainCallback)SpellCard::OnUpdate);
-    sc->drawChain = g_Chain.CreateElem((ChainCallback)SpellCard::OnDraw);
-    sc->calcChain->deletedCallback = (ChainCallback)SpellCard::DeletedCallback;
-    sc->calcChain->arg = sc;
-    sc->drawChain->arg = sc;
-    g_Chain.AddToCalcChain(sc->calcChain, 0xc);
-    g_Chain.AddToDrawChain(sc->drawChain, 0xf);
+    sc->calcElem = g_Chain.CreateElem((ChainCallback)SpellCard::OnUpdate);
+    sc->drawElem = g_Chain.CreateElem((ChainCallback)SpellCard::OnDraw);
+    sc->calcElem->deletedCallback = (ChainCallback)SpellCard::DeletedCallback;
+    sc->calcElem->arg = sc;
+    sc->drawElem->arg = sc;
+    g_Chain.AddToCalcChain(sc->calcElem, 0xc);
+    g_Chain.AddToDrawChain(sc->drawElem, 0xf);
     return 0;
 }
 
@@ -1226,19 +1226,19 @@ int SpellCard::DeletedCallback(SpellCard *sc)
         g_SpriteEngine->ReleaseAnm(0x10);
         g_SpriteEngine->ReleaseAnm(0x11);
     }
-    if (sc->calcChain != NULL)
+    if (sc->calcElem != NULL)
     {
-        sc->calcChain->deletedCallback = NULL;
+        sc->calcElem->deletedCallback = NULL;
     }
-    g_Chain.Remove(sc->drawChain);
-    sc->drawChain = NULL;
+    g_Chain.Remove(sc->drawElem);
+    sc->drawElem = NULL;
     return 0;
 }
 
 void SpellCard::RemoveChain()
 {
-    if (g_SpellCard.calcChain != NULL)
+    if (g_SpellCard.calcElem != NULL)
     {
-        g_Chain.Remove(g_SpellCard.calcChain);
+        g_Chain.Remove(g_SpellCard.calcElem);
     }
 }
