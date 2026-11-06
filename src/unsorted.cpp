@@ -11,7 +11,7 @@
 // The game's data, as the original defines it here. The DLL build uses
 // the original's copies instead.
 #ifdef TH08_EXE
-ControllerMapping g_DefaultControllerMapping = {0, 1, 2, 4, -1, -1, -1, -1, 3};
+ControllerMapping g_ControllerMapping = {0, 1, 2, 4, -1, -1, -1, -1, 3};
 CryptParams g_CryptParams[8] = {
     {0x5d, 0x1b, 0x37, 0xaa, 64, 10240}, {0x74, 0x51, 0xe9, 0xbb, 64, 12288},
     {0x71, 0xc1, 0x51, 0xcc, 5120, 8192}, {0x8a, 0x03, 0x19, 0xdd, 5120, 30720},
@@ -515,7 +515,7 @@ void *LoadFileData(char *path, int *size, int isExternal)
         {
             name++;
         }
-        dataSize = g_GameArchive.GetEntrySize(name);
+        dataSize = g_Archive.GetEntrySize(name);
         if (size != NULL)
         {
             *size = dataSize;
@@ -533,7 +533,7 @@ void *LoadFileData(char *path, int *size, int isExternal)
             {
                 goto fail;
             }
-            g_GameArchive.Decode(name, buffer);
+            g_Archive.Decode(name, buffer);
             buffer = DecryptFileData((BYTE *)buffer, size, dataSize);
             goto done;
         }
@@ -639,7 +639,7 @@ DWORD UnusedGetPlatform()
 #ifdef TH08_EXE
 Chain g_Chain;
 MemoryManager g_MemoryTracker;
-DatArchive g_GameArchive;
+DatArchive g_Archive;
 Log g_AppLog;
 #endif // TH08_EXE
 

@@ -63,7 +63,7 @@ char *g_LoadingAnmPaths[12] = {
     "loading03a.anm",
 };
 ChainElem g_GuiCalcElem;
-ChainElem g_GuiDrawElement;
+ChainElem g_GuiDrawElem;
 Gui g_Gui;
 #endif // TH08_EXE
 
@@ -1455,9 +1455,9 @@ int Gui::RegisterChain()
     {
         return -1;
     }
-    g_GuiDrawElement.SetCallback((ChainCallback)Gui::OnDraw);
-    g_GuiDrawElement.arg = gui;
-    g_Chain.AddToDrawChain(&g_GuiDrawElement, 17);
+    g_GuiDrawElem.SetCallback((ChainCallback)Gui::OnDraw);
+    g_GuiDrawElem.arg = gui;
+    g_Chain.AddToDrawChain(&g_GuiDrawElem, 17);
     return 0;
 }
 
@@ -1468,7 +1468,7 @@ void DebugPrint2(const char *fmt, ...)
 void Gui::RemoveChain()
 {
     g_Chain.Remove(&g_GuiCalcElem);
-    g_Chain.Remove(&g_GuiDrawElement);
+    g_Chain.Remove(&g_GuiDrawElem);
 }
 
 BOOL Gui::IsLoadingShown()

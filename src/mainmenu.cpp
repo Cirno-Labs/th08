@@ -1120,7 +1120,7 @@ int MainMenu::UpdateKeyConfig()
             case 10:
                 g_SoundPlayer.QueueSound(10, 0);
                 g_SoundPlayer.PlayQueuedSounds();
-                this->controllerMapping = g_DefaultControllerMapping;
+                this->controllerMapping = g_ControllerMapping;
                 g_App.shootFocuses = 1;
                 break;
             case 11:

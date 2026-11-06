@@ -20,9 +20,9 @@
 // the original's copies instead.
 #ifdef TH08_EXE
 AsciiText g_AsciiText;
-ChainElem g_AsciiCalcChain;
-ChainElem g_AsciiTextElemDraw;
-ChainElem g_AsciiDrawChain2;
+ChainElem g_AsciiCalcElem;
+ChainElem g_AsciiDrawElem;
+ChainElem g_AsciiDrawElem2;
 #endif // TH08_EXE
 
 AsciiText::AsciiText()
@@ -161,20 +161,20 @@ int AsciiText::RegisterChain()
 {
     AsciiText *text = &g_AsciiText;
 
-    g_AsciiCalcChain.SetCallback((ChainCallback)AsciiText::OnUpdate);
-    g_AsciiCalcChain.addedCallback = (ChainCallback)AsciiText::AddedCallback;
-    g_AsciiCalcChain.deletedCallback = (ChainCallback)AsciiText::DeletedCallback;
-    g_AsciiCalcChain.arg = text;
-    if (g_Chain.AddToCalcChain(&g_AsciiCalcChain, 1) != 0)
+    g_AsciiCalcElem.SetCallback((ChainCallback)AsciiText::OnUpdate);
+    g_AsciiCalcElem.addedCallback = (ChainCallback)AsciiText::AddedCallback;
+    g_AsciiCalcElem.deletedCallback = (ChainCallback)AsciiText::DeletedCallback;
+    g_AsciiCalcElem.arg = text;
+    if (g_Chain.AddToCalcChain(&g_AsciiCalcElem, 1) != 0)
     {
         return -1;
     }
-    g_AsciiTextElemDraw.SetCallback((ChainCallback)AsciiText::OnDraw);
-    g_AsciiTextElemDraw.arg = text;
-    g_Chain.AddToDrawChain(&g_AsciiTextElemDraw, 0x14);
-    g_AsciiDrawChain2.SetCallback((ChainCallback)AsciiText::OnDraw2);
-    g_AsciiDrawChain2.arg = text;
-    g_Chain.AddToDrawChain(&g_AsciiDrawChain2, 0xe);
+    g_AsciiDrawElem.SetCallback((ChainCallback)AsciiText::OnDraw);
+    g_AsciiDrawElem.arg = text;
+    g_Chain.AddToDrawChain(&g_AsciiDrawElem, 0x14);
+    g_AsciiDrawElem2.SetCallback((ChainCallback)AsciiText::OnDraw2);
+    g_AsciiDrawElem2.arg = text;
+    g_Chain.AddToDrawChain(&g_AsciiDrawElem2, 0xe);
     return 0;
 }
 
@@ -212,15 +212,15 @@ int AsciiText::DeletedCallback(AsciiText *text)
 // fpinit's __fpclear) and of zcfree (zutil's, not jmemnobs').
 void *UnusedSwapChainArg(void *arg)
 {
-    g_AsciiCalcChain.arg = arg;
-    return g_AsciiTextElemDraw.arg;
+    g_AsciiCalcElem.arg = arg;
+    return g_AsciiDrawElem.arg;
 }
 #endif // TH08_EXE
 
 void AsciiText::RemoveChain()
 {
-    g_Chain.Remove(&g_AsciiCalcChain);
-    g_Chain.Remove(&g_AsciiTextElemDraw);
+    g_Chain.Remove(&g_AsciiCalcElem);
+    g_Chain.Remove(&g_AsciiDrawElem);
 }
 
 void AsciiText::AddString(D3DXVECTOR3 *pos, char *text)

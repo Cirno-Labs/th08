@@ -61,7 +61,7 @@ EnemyScriptFunc g_EnemyScriptFuncs[32] = {
     DropBombOrLifeItem,
 };
 // Constructed, but nothing uses it.
-ChainElem g_UnusedEclChain;
+ChainElem g_UnusedEnemyScriptElem;
 EnemyScripts g_EnemyScripts;
 #endif // TH08_EXE
 

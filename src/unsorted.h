@@ -420,7 +420,7 @@ void CopyStageSprite();
 // counter when there is one, and shows it when `draw` is set, as th07's.
 void DrawFps(int draw);
 
-// Opens th08.dat as g_GameArchive and loads its version file,
+// Opens th08.dat as g_Archive and loads its version file,
 // "th08_0100d.ver", into g_App.verFile. Returns 0, or -1 after logging
 // an error if either is missing.
 int OpenGameArchive();
@@ -2101,7 +2101,7 @@ extern Gui g_Gui;
 
 // The update and draw chain elements of g_Gui.
 extern ChainElem g_GuiCalcElem;
-extern ChainElem g_GuiDrawElement;
+extern ChainElem g_GuiDrawElem;
 
 // Whether the game restarts (App::isRestarting), so the stage keeps its
 // loaded ANMs. Inline; the copy at 0x40b900 is an /Od object's.
@@ -2459,7 +2459,7 @@ ASSERT_SIZE(Stage, 0x6600);
 extern Stage g_Stage;
 // Stage's statically allocated chain elements.
 extern ChainElem g_StageCalcChain;
-extern ChainElem g_StageDrawChain;
+extern ChainElem g_StageDrawElem;
 extern ChainElem g_StageElementDraw2;
 // The background ANM of each stage (4A and 4B share one).
 extern char *g_StageAnmPaths[9];

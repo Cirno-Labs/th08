@@ -973,4 +973,4 @@ extern EnemyManager g_EnemyManager;
 extern BYTE g_EnemyItemDrops[0x20];
 extern ChainElem g_EnemyCalcChainElem;
 extern ChainElem g_EnemyDrawElem;
-extern ChainElem g_EnemyManagerDrawChain2;
+extern ChainElem g_EnemyDrawElem2;

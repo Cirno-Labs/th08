@@ -304,9 +304,9 @@ extern AsciiText g_AsciiText;
 
 // AsciiText's chain elements: the update element and the two draw
 // elements, as th07's.
-extern ChainElem g_AsciiCalcChain;
-extern ChainElem g_AsciiTextElemDraw;
-extern ChainElem g_AsciiDrawChain2;
+extern ChainElem g_AsciiCalcElem;
+extern ChainElem g_AsciiDrawElem;
+extern ChainElem g_AsciiDrawElem2;
 
 // Adds 1 to `*count` unless it reached `max`, as th07's (which ignored
 // `max`). ContinueMenu::UpdateContinueMenu calls it on six counters of

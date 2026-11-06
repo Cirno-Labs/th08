@@ -467,7 +467,7 @@ int OpenGameArchive()
     char path[0x80];
     int size;
 
-    if (g_GameArchive.Open("th08.dat"))
+    if (g_Archive.Open("th08.dat"))
     {
         sprintf(path, "th08_%.4x%c.ver", 0x100, 'd');
         g_App.verFile = LoadFileData(path, &size, 0);
@@ -865,7 +865,7 @@ int App::DeletedCallback(App *arg)
         delete g_GameManager.savedConfig;
         g_GameManager.savedConfig = NULL;
     }
-    g_GameArchive.Release();
+    g_Archive.Release();
     if (g_App.timer != NULL)
     {
         g_App.timer->StopTimer();
@@ -1244,7 +1244,7 @@ int App::LoadConfig(char *path)
         g_App.defaultDifficulty = 1;
         g_App.windowed = 0;
         g_App.frameSkip = 0;
-        g_App.controllerMapping = g_DefaultControllerMapping;
+        g_App.controllerMapping = g_ControllerMapping;
         g_App.effectsQuality = 2;
         g_App.optionsMenuCursor = 0;
         g_App.shootFocuses = 0;
@@ -1282,7 +1282,7 @@ int App::LoadConfig(char *path)
             memset(&g_App.controllerMapping, 0, sizeof(ConfigCopy));
             goto reset;
         }
-        g_DefaultControllerMapping = g_App.controllerMapping;
+        g_ControllerMapping = g_App.controllerMapping;
     }
     g_App.flags.emulateColorAdd = 1;
     if (this->flags.noVertexBuffer)

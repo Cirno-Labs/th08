@@ -234,4 +234,4 @@ extern short g_LastPressedKey;
 extern MainMenu *g_MainMenu;
 
 // The button mapping the key config's reset entry restores.
-extern ControllerMapping g_DefaultControllerMapping;
+extern ControllerMapping g_ControllerMapping;

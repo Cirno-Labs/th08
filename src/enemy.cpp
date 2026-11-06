@@ -19,7 +19,7 @@ BYTE g_EnemyItemDrops[0x20] = {
 };
 ChainElem g_EnemyCalcChainElem;
 ChainElem g_EnemyDrawElem;
-ChainElem g_EnemyManagerDrawChain2;
+ChainElem g_EnemyDrawElem2;
 EnemyManager g_EnemyManager;
 #endif // TH08_EXE
 
@@ -1033,9 +1033,9 @@ int EnemyManager::RegisterChain()
     {
         return -1;
     }
-    g_EnemyManagerDrawChain2.SetCallback((ChainCallback)EnemyManager::OnDraw2);
-    g_EnemyManagerDrawChain2.arg = em;
-    if (g_Chain.AddToDrawChain(&g_EnemyManagerDrawChain2, 11) != 0)
+    g_EnemyDrawElem2.SetCallback((ChainCallback)EnemyManager::OnDraw2);
+    g_EnemyDrawElem2.arg = em;
+    if (g_Chain.AddToDrawChain(&g_EnemyDrawElem2, 11) != 0)
     {
         return -1;
     }
@@ -1999,7 +1999,7 @@ void EnemyManager::RemoveChain()
 {
     g_Chain.Remove(&g_EnemyCalcChainElem);
     g_Chain.Remove(&g_EnemyDrawElem);
-    g_Chain.Remove(&g_EnemyManagerDrawChain2);
+    g_Chain.Remove(&g_EnemyDrawElem2);
 }
 
 int EnemyManager::ClearEnemiesForBonus(int maxBonus, int start)
