@@ -196,7 +196,7 @@ public:
     // 0, or -1 if the replay or the stage is missing.
     static int PlayAddedCallback(ReplayManager *replay);
     // Removes the second update elements, frees the replay data and
-    // frameRateBuffer and deletes the ReplayManager. Returns 0.
+    // bufferFreedOnDelete and deletes the ReplayManager. Returns 0.
     static int DeletedCallback(ReplayManager *replay);
     // Ends the current stage's record with an empty frame and keeps
     // where it ends.
@@ -217,7 +217,7 @@ public:
     // The replay data.
     ReplayHeader *data;
     // Freed by DeletedCallback; never allocated.
-    void *frameRateBuffer;
+    void *bufferFreedOnDelete;
     // RegisterChain's arguments.
     int mode;
     char *path;

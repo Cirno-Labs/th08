@@ -373,7 +373,7 @@ int ReplayManager::RecordAddedCallback(ReplayManager *replay)
     ReplayStage *earlier;
 
     replay->frame = 0;
-    replay->frameRateBuffer = NULL;
+    replay->bufferFreedOnDelete = NULL;
     if (replay->data == NULL)
     {
         replay->data = (ReplayHeader *)g_MemoryTracker.Register(new ReplayHeader, sizeof(ReplayHeader), "ReplayDataInf");
@@ -481,7 +481,7 @@ int ReplayManager::PlayAddedCallback(ReplayManager *replay)
         {
             return -1;
         }
-        replay->frameRateBuffer = NULL;
+        replay->bufferFreedOnDelete = NULL;
         for (idx = 0; idx < 9; idx++)
         {
             if (replay->data->stages[idx] != NULL)
@@ -553,9 +553,9 @@ int ReplayManager::DeletedCallback(ReplayManager *replay)
         replay->calcChain3 = NULL;
     }
     g_MemoryTracker.Free(g_ReplayManager->data);
-    if (replay->frameRateBuffer != NULL)
+    if (replay->bufferFreedOnDelete != NULL)
     {
-        g_MemoryTracker.Free(replay->frameRateBuffer);
+        g_MemoryTracker.Free(replay->bufferFreedOnDelete);
     }
     g_MemoryTracker.Unregister(g_ReplayManager);
     delete g_ReplayManager;
