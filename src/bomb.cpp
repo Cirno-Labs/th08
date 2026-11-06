@@ -45,8 +45,8 @@ void DimPlayAreaForBomb(Player *player, D3DCOLOR tint)
     }
     out.a = 0x80;
     g_SpriteEngine->ResetColorModulation();
-    g_Stage.SetTintColor(out.color);
-    g_Stage.keepTintColor = 1;
+    g_StageManager.SetTintColor(out.color);
+    g_StageManager.keepTintColor = 1;
 }
 
 void StartBomb(Player *player, int face, char *name, int duration, int stateFrames, int sprite)

@@ -608,7 +608,7 @@ public:
     int DrawRotatedNoRound(Sprite *vm);
     // Draws `vm` at its 3D position projected to the screen, as th07's.
     // Sets g_DiffuseQuad to `vm` projected from its 3D position, rotated,
-    // its size scaled by how far g_Stage.camera.cameraRight from it reaches on
+    // its size scaled by how far g_StageManager.camera.cameraRight from it reaches on
     // the screen, as th07's. Returns 0, or -1 when it is outside the
     // depth range.
     int ProjectSprite(Sprite *vm);

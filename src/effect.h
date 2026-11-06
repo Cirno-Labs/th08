@@ -112,8 +112,8 @@ int EffectInitForeground(Effect *effect);
 int EffectUpdateOrbit(Effect *effect);
 
 // An effect init for petals that drift to the boss, like th07's
-// EffectInitPetal20: starts truePos at g_Stage.camera.eye plus half of
-// g_Stage.camera.at, scattered at random, with a random step on top of
+// EffectInitPetal20: starts truePos at g_StageManager.camera.eye plus half of
+// g_StageManager.camera.at, scattered at random, with a random step on top of
 // velocity and a little acceleration, both scaled by App::gameSpeed; puts
 // it in the second draw list. Sets posOffset.x to -9999 (no boss yet)
 // and clears the sprite fields EffectDrawBossPetal uses. Returns 0. New
@@ -123,7 +123,7 @@ int EffectInitBossPetal(Effect *effect);
 // An effect update for the petals of EffectInitBossPetal, as
 // EffectUpdatePetal; while the first boss has bit 3 of flags,
 // posOffset follows it (a tenth of the way each frame). Its color2 is its
-// color scaled by g_Stage.colorScaleSprite.color. New in th08; placeholder name.
+// color scaled by g_StageManager.colorScaleSprite.color. New in th08; placeholder name.
 int EffectUpdateBossPetal(Effect *effect);
 
 // EffectInitBossPetal scattered twice as far up and down, with a y step
@@ -157,13 +157,13 @@ void OffsetPetalEffects(D3DXVECTOR3 *offset);
 // An effect update for falling petals, as th07's: moves truePos by step,
 // which changes by acceleration, and draws the effect there, turning it
 // by its x rotation. Ends it (returns 0) once it is out of the view along
-// g_Stage.camera.dir from g_Stage.camera.eye, or at z 0 and above;
+// g_StageManager.camera.dir from g_StageManager.camera.eye, or at z 0 and above;
 // otherwise returns 1.
 int EffectUpdatePetal(Effect *effect);
 
 // An effect init for falling petals, as th07's EffectInitPetal20 without
-// its bonus sprite: starts truePos at g_Stage.camera.eye plus half of
-// g_Stage.camera.at, scattered at random, with a random step on top of
+// its bonus sprite: starts truePos at g_StageManager.camera.eye plus half of
+// g_StageManager.camera.at, scattered at random, with a random step on top of
 // velocity and a little acceleration, both scaled by App::gameSpeed, and
 // a random spin; puts it in the second draw list. Returns 0.
 int EffectInitPetal(Effect *effect);
@@ -338,8 +338,8 @@ ASSERT_SIZE(EffectManager, 0x8b05c);
 extern EffectManager g_EffectManager;
 
 // EffectManager's statically allocated chain elements.
-extern ChainElem g_EffectCalcChain;
-extern ChainElem g_EffectDrawElement;
+extern ChainElem g_EffectCalcElem;
+extern ChainElem g_EffectsDrawElem;
 
 // The stages' effect ANMs, then those of the last spell cards (from card
 // 0xd8).

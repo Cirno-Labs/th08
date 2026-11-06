@@ -280,25 +280,25 @@ int ReplayManager::PlayOnUpdate(ReplayManager *replay)
     g_PreviousPlayButtons = g_PlayButtons;
     g_PlayButtons = *replay->cursor;
     replay->cursor++;
-    g_InputRepeat = 0;
+    g_RepeatButtons = 0;
     if (g_PreviousPlayButtons == g_PlayButtons)
     {
-        if (g_ButtonsHeldFrames >= 30)
+        if (g_ButtonHeldFrames >= 30)
         {
-            if (g_ButtonsHeldFrames % 8 == 0)
+            if (g_ButtonHeldFrames % 8 == 0)
             {
-                g_InputRepeat = 1;
+                g_RepeatButtons = 1;
             }
-            if (g_ButtonsHeldFrames >= 38)
+            if (g_ButtonHeldFrames >= 38)
             {
-                g_ButtonsHeldFrames = 30;
+                g_ButtonHeldFrames = 30;
             }
         }
-        g_ButtonsHeldFrames++;
+        g_ButtonHeldFrames++;
     }
     else
     {
-        g_ButtonsHeldFrames = 0;
+        g_ButtonHeldFrames = 0;
     }
     if (replay->frame % 30 == 0)
     {
@@ -335,25 +335,25 @@ int ReplayManager::PlayOnUpdateWithSeeds(ReplayManager *replay)
     {
     }
     replay->seedCursor++;
-    g_InputRepeat = 0;
+    g_RepeatButtons = 0;
     if (g_PreviousPlayButtons == g_PlayButtons)
     {
-        if (g_ButtonsHeldFrames >= 30)
+        if (g_ButtonHeldFrames >= 30)
         {
-            if (g_ButtonsHeldFrames % 8 == 0)
+            if (g_ButtonHeldFrames % 8 == 0)
             {
-                g_InputRepeat = 1;
+                g_RepeatButtons = 1;
             }
-            if (g_ButtonsHeldFrames >= 38)
+            if (g_ButtonHeldFrames >= 38)
             {
-                g_ButtonsHeldFrames = 30;
+                g_ButtonHeldFrames = 30;
             }
         }
-        g_ButtonsHeldFrames++;
+        g_ButtonHeldFrames++;
     }
     else
     {
-        g_ButtonsHeldFrames = 0;
+        g_ButtonHeldFrames = 0;
     }
     if (replay->frame % 30 == 0)
     {

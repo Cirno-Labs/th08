@@ -112,14 +112,14 @@ void GuiImpl::StartMsgScript(int index)
             CopySpriteToTexture(0x16);
             break;
         case 6:
-            g_Stage.dialogueScriptOffset = 2;
+            g_StageManager.dialogueScriptOffset = 2;
             break;
         case 7:
         {
             AnmLoaded *tmp = g_SpellCard.faceAnms[2];
             g_SpellCard.faceAnms[2] = g_SpellCard.faceAnms[3];
             g_SpellCard.faceAnms[3] = tmp;
-            g_Stage.dialogueScriptOffset = 2;
+            g_StageManager.dialogueScriptOffset = 2;
             CopySpriteToTexture(0x18);
             break;
         }
@@ -128,7 +128,7 @@ void GuiImpl::StartMsgScript(int index)
             AnmLoaded *tmp = g_SpellCard.faceAnms[2];
             g_SpellCard.faceAnms[2] = g_SpellCard.faceAnms[3];
             g_SpellCard.faceAnms[3] = tmp;
-            g_Stage.dialogueScriptOffset = 2;
+            g_StageManager.dialogueScriptOffset = 2;
             CopySpriteToTexture(0x19);
             break;
         }
@@ -552,7 +552,7 @@ int GuiImpl::RunMsg()
                 if (g_App.PlayMidi(this->msg.instr->i,
                                    (&g_StageBgms[g_GameManager.stage].stageBgm)[this->msg.instr->i]) != 0)
                 {
-                    g_App.PlayMusic(g_Stage.data->songPaths[this->msg.instr->i],
+                    g_App.PlayMusic(g_StageManager.data->songPaths[this->msg.instr->i],
                                     (&g_StageBgms[g_GameManager.stage].stageBgm)[this->msg.instr->i]);
                 }
             }
@@ -2054,7 +2054,7 @@ int Gui::LoadMsg(char *path)
     this->impl->msg.msgFile = (MsgFile *)LoadFileData(path, NULL, 0);
     if (this->impl->msg.msgFile == NULL)
     {
-        LogPrintf(&g_AppLog, "error : メッセージファイル %s が読み込めませんでした\r\n", path);
+        LogPrintf(&g_Logger, "error : メッセージファイル %s が読み込めませんでした\r\n", path);
         return -1;
     }
     this->impl->msg.scriptIndex = -1;

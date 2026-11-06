@@ -43,7 +43,7 @@ __declspec(selectany) const int g_BulletTypeScripts[21][5] = {
     {114, 24, 24, 24, 17},
     {115, 24, 24, 24, 17},
 };
-ChainElem g_BulletCalcChainElem;
+ChainElem g_BulletChainCalc;
 ChainElem g_BulletDrawElem;
 BulletManager g_BulletManager;
 #endif // TH08_EXE
@@ -669,11 +669,11 @@ int BulletManager::RegisterChain(char *anmPath)
 
     mgr->Reset();
     mgr->anmPath = anmPath;
-    g_BulletCalcChainElem.SetCallback((ChainCallback)BulletManager::OnUpdate);
-    g_BulletCalcChainElem.addedCallback = (ChainCallback)BulletManager::AddedCallback;
-    g_BulletCalcChainElem.deletedCallback = (ChainCallback)BulletManager::DeletedCallback;
-    g_BulletCalcChainElem.arg = mgr;
-    if (g_Chain.AddToCalcChain(&g_BulletCalcChainElem, 0xe) != 0)
+    g_BulletChainCalc.SetCallback((ChainCallback)BulletManager::OnUpdate);
+    g_BulletChainCalc.addedCallback = (ChainCallback)BulletManager::AddedCallback;
+    g_BulletChainCalc.deletedCallback = (ChainCallback)BulletManager::DeletedCallback;
+    g_BulletChainCalc.arg = mgr;
+    if (g_Chain.AddToCalcChain(&g_BulletChainCalc, 0xe) != 0)
     {
         return -1;
     }
@@ -1486,6 +1486,6 @@ int BulletManager::DeletedCallback(BulletManager *mgr)
 
 void BulletManager::RemoveChain()
 {
-    g_Chain.Remove(&g_BulletCalcChainElem);
+    g_Chain.Remove(&g_BulletChainCalc);
     g_Chain.Remove(&g_BulletDrawElem);
 }

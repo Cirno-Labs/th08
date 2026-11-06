@@ -91,7 +91,7 @@ int SoundPlayer::Initialize(HWND hwnd)
     this->manager = new CSoundManager();
     if (this->manager->Initialize(hwnd, DSSCL_PRIORITY, 2, 44100, 16) < 0)
     {
-        LogPrintf(&g_AppLog, "DirectSound オブジェクトの初期化が失敗したよ\r\n");
+        LogPrintf(&g_Logger, "DirectSound オブジェクトの初期化が失敗したよ\r\n");
         if (this->manager != NULL)
         {
             delete this->manager;
@@ -129,7 +129,7 @@ int SoundPlayer::Initialize(HWND hwnd)
     this->seVolume = 100;
     SetTimer(hwnd, 0, 250, NULL);
     this->hwnd = hwnd;
-    LogPrintf(&g_AppLog, "DirectSound は正常に初期化されました\r\n");
+    LogPrintf(&g_Logger, "DirectSound は正常に初期化されました\r\n");
     return 0;
 }
 
@@ -250,7 +250,7 @@ int SoundPlayer::LoadSound(int index, char *path)
     }
     if (strncmp(cursor, "RIFF", 4))
     {
-        LogPrintf(&g_AppLog, "Wav ファイルじゃない %s\r\n", path);
+        LogPrintf(&g_Logger, "Wav ファイルじゃない %s\r\n", path);
         g_MemoryTracker.Free(wavBuf);
         return -1;
     }
@@ -259,7 +259,7 @@ int SoundPlayer::LoadSound(int index, char *path)
     cursor += 4;
     if (strncmp(cursor, "WAVE", 4))
     {
-        LogPrintf(&g_AppLog, "Wav ファイルじゃない? %s\r\n", path);
+        LogPrintf(&g_Logger, "Wav ファイルじゃない? %s\r\n", path);
         g_MemoryTracker.Free(wavBuf);
         return -1;
     }
@@ -267,7 +267,7 @@ int SoundPlayer::LoadSound(int index, char *path)
     chunk = FindRiffChunk(cursor, "fmt ", &size, totalSize2 - 12);
     if (chunk == NULL)
     {
-        LogPrintf(&g_AppLog, "Wav ファイルじゃない? %s\r\n", path);
+        LogPrintf(&g_Logger, "Wav ファイルじゃない? %s\r\n", path);
         g_MemoryTracker.Free(wavBuf);
         return -1;
     }
@@ -275,7 +275,7 @@ int SoundPlayer::LoadSound(int index, char *path)
     chunk = FindRiffChunk(cursor, "data", &size, totalSize2 - 12);
     if (chunk == NULL)
     {
-        LogPrintf(&g_AppLog, "Wav ファイルじゃない? %s\r\n", path);
+        LogPrintf(&g_Logger, "Wav ファイルじゃない? %s\r\n", path);
         g_MemoryTracker.Free(wavBuf);
         return -1;
     }
@@ -518,7 +518,7 @@ int SoundPlayer::LoadSounds()
     {
         if (this->LoadSound(i, g_SoundPaths[i]) != 0)
         {
-            LogPrintf(&g_AppLog, "error : Sound ファイルが読み込めない データを確認 %s\r\n", g_SoundPaths[i]);
+            LogPrintf(&g_Logger, "error : Sound ファイルが読み込めない データを確認 %s\r\n", g_SoundPaths[i]);
             return -1;
         }
     }

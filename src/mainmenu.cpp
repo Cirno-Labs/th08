@@ -701,7 +701,7 @@ int MainMenu::UpdateOptions()
                 break;
             }
         }
-        if (WAS_PRESSED(0x40) || g_ButtonsHeldFrames >= 30 && (g_Buttons & 0x40))
+        if (WAS_PRESSED(0x40) || g_ButtonHeldFrames >= 30 && (g_Buttons & 0x40))
         {
             switch (this->cursor)
             {
@@ -721,7 +721,7 @@ int MainMenu::UpdateOptions()
                 break;
             }
         }
-        if (WAS_PRESSED(0x80) || g_ButtonsHeldFrames >= 30 && (g_Buttons & 0x80))
+        if (WAS_PRESSED(0x80) || g_ButtonHeldFrames >= 30 && (g_Buttons & 0x80))
         {
             switch (this->cursor)
             {
@@ -2658,7 +2658,7 @@ int MainMenu::UpdateReplayMenu()
                 this->cursor++;
                 if (this->cursor > 8)
                 {
-                    LogError(&g_AppLog, "リプレイデータが異常\r\n");
+                    LogError(&g_Logger, "リプレイデータが異常\r\n");
                     g_App.scene = -1;
                     return 0;
                 }

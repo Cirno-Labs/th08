@@ -31,8 +31,8 @@ WORD g_Buttons;
 WORD g_PlayButtons;
 WORD g_PreviousButtons;
 WORD g_PreviousPlayButtons;
-WORD g_InputRepeat;
-WORD g_ButtonsHeldFrames;
+WORD g_RepeatButtons;
+WORD g_ButtonHeldFrames;
 #endif // TH08_EXE
 
 WORD InitJoystick()
@@ -43,7 +43,7 @@ WORD InitJoystick()
     joyInfo.dwFlags = JOY_RETURNALL;
     if (joyGetPosEx(JOYSTICKID1, &joyInfo) != JOYERR_NOERROR)
     {
-        LogPrintf(&g_AppLog, "使えるパッドが存在しないようです、残念\r\n");
+        LogPrintf(&g_Logger, "使えるパッドが存在しないようです、残念\r\n");
         return 1;
     }
     joyGetDevCapsA(JOYSTICKID1, &g_JoyDeviceCaps, sizeof(g_JoyDeviceCaps));
@@ -522,7 +522,7 @@ void *LoadFileData(char *path, int *size, int isExternal)
         }
         if (dataSize == 0)
         {
-            LogError(&g_AppLog, "error : %s is not found in arcfile.\r\n", name);
+            LogError(&g_Logger, "error : %s is not found in arcfile.\r\n", name);
             goto fail;
         }
         if (dataSize != 0)
@@ -640,6 +640,6 @@ DWORD UnusedGetPlatform()
 Chain g_Chain;
 MemoryManager g_MemoryTracker;
 DatArchive g_Archive;
-Log g_AppLog;
+Log g_Logger;
 #endif // TH08_EXE
 

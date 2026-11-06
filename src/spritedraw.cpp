@@ -452,7 +452,7 @@ int SpriteEngine::ProjectSprite(Sprite *vm)
     {
         return -1;
     }
-    D3DXVec3Project(&edge, &g_Stage.camera.cameraRight, &g_App.viewport, (D3DXMATRIX *)&g_App.projectionMatrix,
+    D3DXVec3Project(&edge, &g_StageManager.camera.cameraRight, &g_App.viewport, (D3DXMATRIX *)&g_App.projectionMatrix,
                     (D3DXMATRIX *)&g_App.viewMatrix, &world);
     d = edge - origin;
     x = D3DXVec3Length(&d) * 0.5f;
@@ -613,7 +613,7 @@ int SpriteEngine::ProjectSpriteWithCallback(Sprite *vm, void (*callback)(Sprite 
     {
         return -1;
     }
-    D3DXVec3Project(&edge, &g_Stage.camera.cameraRight, &g_App.viewport, (D3DXMATRIX *)&g_App.projectionMatrix,
+    D3DXVec3Project(&edge, &g_StageManager.camera.cameraRight, &g_App.viewport, (D3DXMATRIX *)&g_App.projectionMatrix,
                     (D3DXMATRIX *)&g_App.viewMatrix, &world);
     d = edge - origin;
     x = D3DXVec3Length(&d) * 0.5f;
@@ -1157,7 +1157,7 @@ AnmLoaded *SpriteEngine::PreloadAnmFile(int slot, char *path)
     DebugPrint("::preloadAnim : %s\n", path);
     if (slot >= 0x19)
     {
-        LogError(&g_AppLog, "テクスチャ格納先が足りません\r\n");
+        LogError(&g_Logger, "テクスチャ格納先が足りません\r\n");
         return NULL;
     }
     this->ReleaseAnm(slot);
@@ -1240,13 +1240,13 @@ int SpriteEngine::PreloadAnmTexture(AnmLoaded *anm, int index, int *spriteIndex,
     highest = 0;
     if (file == NULL)
     {
-        LogError(&g_AppLog, "アニメが読み込めません。データが失われてるか壊れています\r\n");
+        LogError(&g_Logger, "アニメが読み込めません。データが失われてるか壊れています\r\n");
         return -1;
     }
     anmHeader = file;
     if (anmHeader->version != 3)
     {
-        LogError(&g_AppLog, "アニメのバージョンが違います\r\n");
+        LogError(&g_Logger, "アニメのバージョンが違います\r\n");
         return -1;
     }
     if (!anmHeader->hasImage)
@@ -1257,7 +1257,7 @@ int SpriteEngine::PreloadAnmTexture(AnmLoaded *anm, int index, int *spriteIndex,
             data = LoadFileData(name, &size, 1);
             if (data == NULL)
             {
-                LogError(&g_AppLog, "テクスチャ %s が読み込めません。データが失われてるか壊れています\r\n", name);
+                LogError(&g_Logger, "テクスチャ %s が読み込めません。データが失われてるか壊れています\r\n", name);
                 return -1;
             }
             anm->textures[index].size = size;
@@ -1329,13 +1329,13 @@ int SpriteEngine::LoadAnmSprites(AnmLoaded *anm, int index, int spriteOffset, in
     highest = 0;
     if (file == NULL)
     {
-        LogError(&g_AppLog, "アニメが読み込めません。データが失われてるか壊れています\r\n");
+        LogError(&g_Logger, "アニメが読み込めません。データが失われてるか壊れています\r\n");
         return -1;
     }
     anmHeader = file;
     if (anmHeader->version != 3)
     {
-        LogError(&g_AppLog, "アニメのバージョンが違います\r\n");
+        LogError(&g_Logger, "アニメのバージョンが違います\r\n");
         return -1;
     }
     if (!anmHeader->hasImage)
@@ -1347,7 +1347,7 @@ int SpriteEngine::LoadAnmSprites(AnmLoaded *anm, int index, int spriteOffset, in
         }
         else if (this->LoadTexture(&anm->textures[index], anmHeader->format, anmHeader->colorKey) != 0)
         {
-            LogError(&g_AppLog, "テクスチャ %s が作成できません。データが失われてるか壊れています\r\n", name);
+            LogError(&g_Logger, "テクスチャ %s が作成できません。データが失われてるか壊れています\r\n", name);
             return -1;
         }
     }
@@ -1355,7 +1355,7 @@ int SpriteEngine::LoadAnmSprites(AnmLoaded *anm, int index, int spriteOffset, in
                                           (AnmImage *)((BYTE *)anmHeader + anmHeader->imageOffset),
                                           anmHeader->format) != 0)
     {
-        LogError(&g_AppLog, "テクスチャが読み込めません。データが失われてるか壊れています\r\n");
+        LogError(&g_Logger, "テクスチャが読み込めません。データが失われてるか壊れています\r\n");
         return -1;
     }
     anm->textures[index].texture->SetPriority(anmHeader->priority);
@@ -1544,7 +1544,7 @@ int SpriteEngine::LoadSurface(int surface, char *path)
         data = LoadFileData(path, &size, 0);
         if (data == NULL)
         {
-            LogError(&g_AppLog, "%sが読み込めないです。\r\n", path);
+            LogError(&g_Logger, "%sが読み込めないです。\r\n", path);
             return -1;
         }
     }
@@ -1618,7 +1618,7 @@ int SpriteEngine::PreloadSurface(int surface, char *path)
     data = LoadFileData(path, &size, 0);
     if (data == NULL)
     {
-        LogError(&g_AppLog, "%sが読み込めないです。\r\n", path);
+        LogError(&g_Logger, "%sが読み込めないです。\r\n", path);
         return -1;
     }
     this->surfaceFiles[surface] = data;

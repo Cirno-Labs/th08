@@ -538,7 +538,7 @@ public:
     // Set while the last words run (UpdateDyingState): a bomb then
     // starts as the other character's last word.
     BYTE lastWordReady;
-    // Stage::StepObjects sends interrupt 1 to g_Stage.colorScaleSprite as it is
+    // Stage::StepObjects sends interrupt 1 to g_StageManager.colorScaleSprite as it is
     // set, 2 as it is cleared.
     BYTE isYoukai;
     BYTE dissolveBombPending;

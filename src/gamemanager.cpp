@@ -199,7 +199,7 @@ RankSettings g_Ranks[6] = {
 };
 GameManager g_GameManager;
 ChainElem g_GameManagerCalcChainElem;
-ChainElem g_GameManagerDrawProc;
+ChainElem g_GameManagerDrawChainElem;
 #endif // TH08_EXE
 
 BOOL GameManager::IsInPlayArea(float x, float y, float width, float height)
@@ -500,7 +500,7 @@ int GameManager::OnUpdate(GameManager *mgr)
             g_GameManager.checksumValue = -9999.0f;
         }
     }
-    g_App.d3dDevice->Clear(0, NULL, D3DCLEAR_ZBUFFER, g_Stage.fog.color, 1.0f, 0);
+    g_App.d3dDevice->Clear(0, NULL, D3DCLEAR_ZBUFFER, g_StageManager.fog.color, 1.0f, 0);
     if (mgr->isPaused == 1 || mgr->isPaused == 2 || mgr->isInContinueMenu)
     {
         return 3;
@@ -620,9 +620,9 @@ int RegisterGameManagerChain()
     {
         return -1;
     }
-    g_GameManagerDrawProc.SetCallback((ChainCallback)GameManager::OnDraw);
-    g_GameManagerDrawProc.arg = mgr;
-    g_Chain.AddToDrawChain(&g_GameManagerDrawProc, 5);
+    g_GameManagerDrawChainElem.SetCallback((ChainCallback)GameManager::OnDraw);
+    g_GameManagerDrawChainElem.arg = mgr;
+    g_Chain.AddToDrawChain(&g_GameManagerDrawChainElem, 5);
     return 0;
 }
 
@@ -714,7 +714,7 @@ void GameManager::LoadingThread(GameManager *arg)
             {
                 return;
             }
-            LogPrintf(&g_AppLog, "error : プレイヤーの初期化に失敗しました\r\n");
+            LogPrintf(&g_Logger, "error : プレイヤーの初期化に失敗しました\r\n");
             goto fail;
         }
         if (!(g_GameManager.stateFlags >> 3 & 1))
@@ -814,7 +814,7 @@ void GameManager::LoadingThread(GameManager *arg)
             {
                 return;
             }
-            LogPrintf(&g_AppLog, "error : プレイヤーの初期化に失敗しました\r\n");
+            LogPrintf(&g_Logger, "error : プレイヤーの初期化に失敗しました\r\n");
             goto fail;
         }
     }
@@ -889,7 +889,7 @@ void GameManager::LoadingThread(GameManager *arg)
         {
             return;
         }
-        LogPrintf(&g_AppLog, "error : 背景データの初期化に失敗しました\r\n");
+        LogPrintf(&g_Logger, "error : 背景データの初期化に失敗しました\r\n");
         goto fail;
     }
     if (BulletManager::RegisterChain("etama.anm") != 0)
@@ -898,7 +898,7 @@ void GameManager::LoadingThread(GameManager *arg)
         {
             return;
         }
-        LogPrintf(&g_AppLog, "error : 敵弾の初期化に失敗しました\r\n");
+        LogPrintf(&g_Logger, "error : 敵弾の初期化に失敗しました\r\n");
         goto fail;
     }
     if (EnemyManager::RegisterChain() != 0)
@@ -907,7 +907,7 @@ void GameManager::LoadingThread(GameManager *arg)
         {
             return;
         }
-        LogPrintf(&g_AppLog, "error : 敵の初期化に失敗しました\r\n");
+        LogPrintf(&g_Logger, "error : 敵の初期化に失敗しました\r\n");
         goto fail;
     }
     if (EffectManager::RegisterChain() != 0)
@@ -916,7 +916,7 @@ void GameManager::LoadingThread(GameManager *arg)
         {
             return;
         }
-        LogPrintf(&g_AppLog, "error : エフェクトの初期化に失敗しました\r\n");
+        LogPrintf(&g_Logger, "error : エフェクトの初期化に失敗しました\r\n");
         goto fail;
     }
     if (Gui::RegisterChain() != 0)
@@ -925,7 +925,7 @@ void GameManager::LoadingThread(GameManager *arg)
         {
             return;
         }
-        LogPrintf(&g_AppLog, "error : 2D表示の初期化に失敗しました\r\n");
+        LogPrintf(&g_Logger, "error : 2D表示の初期化に失敗しました\r\n");
         goto fail;
     }
     if (SpellCard::RegisterChain() != 0)
@@ -934,7 +934,7 @@ void GameManager::LoadingThread(GameManager *arg)
         {
             return;
         }
-        LogPrintf(&g_AppLog, "error : スペルカードの初期化に失敗しました\r\n");
+        LogPrintf(&g_Logger, "error : スペルカードの初期化に失敗しました\r\n");
         goto fail;
     }
     if (!(g_GameManager.stateFlags >> 3 & 1))
@@ -952,19 +952,19 @@ void GameManager::LoadingThread(GameManager *arg)
         case 6:
             if (!g_GameManager.IsPracticingSpellCardIn(0x77, 0x7a))
             {
-                g_Stage.dialogueScriptOffset = 2;
+                g_StageManager.dialogueScriptOffset = 2;
             }
             break;
         case 7:
             if (!g_GameManager.IsPracticingSpellCardIn(0x93, 0x96))
             {
-                g_Stage.dialogueScriptOffset = 2;
+                g_StageManager.dialogueScriptOffset = 2;
             }
             break;
         case 8:
             if (!g_GameManager.IsPracticingSpellCardIn(0xbf, 0xc1) && !g_GameManager.IsPracticingSpellCard(0xd5))
             {
-                g_Stage.dialogueScriptOffset = 2;
+                g_StageManager.dialogueScriptOffset = 2;
             }
             break;
         }
@@ -986,14 +986,14 @@ void GameManager::LoadingThread(GameManager *arg)
         }
         else
         {
-            g_App.LoadMidi(0, g_Stage.data->songPaths[0]);
-            if (g_Stage.data->songPaths[1][0] != ' ')
+            g_App.LoadMidi(0, g_StageManager.data->songPaths[0]);
+            if (g_StageManager.data->songPaths[1][0] != ' ')
             {
-                g_App.LoadMidi(1, g_Stage.data->songPaths[1]);
+                g_App.LoadMidi(1, g_StageManager.data->songPaths[1]);
             }
-            if (g_Stage.data->songPaths[2][0] != ' ')
+            if (g_StageManager.data->songPaths[2][0] != ' ')
             {
-                g_App.LoadMidi(2, g_Stage.data->songPaths[2]);
+                g_App.LoadMidi(2, g_StageManager.data->songPaths[2]);
             }
         }
     }
@@ -1133,7 +1133,7 @@ int LoadScoreFile()
     data = LoadScoreDat("score.dat");
     if (data == NULL)
     {
-        LogPrintf(&g_AppLog, "error : スコアファイルの読み取りに失敗しました\r\n");
+        LogPrintf(&g_Logger, "error : スコアファイルの読み取りに失敗しました\r\n");
         return -1;
     }
     g_GameManager.stats->highScore = LoadHighScores(data, NULL, g_GameManager.character, g_GameManager.difficulty,
@@ -1216,7 +1216,7 @@ int GameManager::DeletedCallback(GameManager *mgr)
 void RemoveGameManagerChain()
 {
     g_Chain.Remove(&g_GameManagerCalcChainElem);
-    g_Chain.Remove(&g_GameManagerDrawProc);
+    g_Chain.Remove(&g_GameManagerDrawChainElem);
     if (g_GameManager.stats->score >= 1000000000)
     {
         g_GameManager.stats->score = 999999999;

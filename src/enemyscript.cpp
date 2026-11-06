@@ -91,12 +91,12 @@ int EnemyScripts::Load(char *path)
     this->file = (EnemyScriptHeader *)LoadFileData(path, NULL, 0);
     if (this->file == NULL)
     {
-        LogPrintf(&g_AppLog, "敵データの読み込みに失敗しました、データが壊れてるか失われています\r\n");
+        LogPrintf(&g_Logger, "敵データの読み込みに失敗しました、データが壊れてるか失われています\r\n");
         return -1;
     }
     if (this->file->version != 0x800)
     {
-        LogPrintf(&g_AppLog, "敵データのバージョンが違います\r\n");
+        LogPrintf(&g_Logger, "敵データのバージョンが違います\r\n");
         return -1;
     }
     for (i = 0; i < 16; i++)
@@ -1107,7 +1107,7 @@ loop:
             g_ItemManager.SpawnItem(&enemy->pos, INT_ARG(0), 0);
             break;
         case 147:
-            g_Stage.waitLabel = INT_ARG(0);
+            g_StageManager.waitLabel = INT_ARG(0);
             break;
         case 148:
             g_Gui.SetBossLives(INT_ARG(0));

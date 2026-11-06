@@ -462,12 +462,12 @@ void SpellCard::Start(int card, char *name, int face, DWORD bonus, Enemy *enemy,
     }
     this->ShowName(face, this->name, 0);
     g_BulletManager.ClearAllToItems();
-    g_Stage.StartSpellCard();
-    for (i = 0; i < g_Stage.dialogueSpriteCount; i++)
+    g_StageManager.StartSpellCard();
+    for (i = 0; i < g_StageManager.dialogueSpriteCount; i++)
     {
-        g_EffectManager.stageAnm->StartScript(&g_Stage.dialogueSprites[i], i + g_Stage.dialogueScriptOffset);
+        g_EffectManager.stageAnm->StartScript(&g_StageManager.dialogueSprites[i], i + g_StageManager.dialogueScriptOffset);
     }
-    g_Stage.spellCardDrawCallback = NULL;
+    g_StageManager.spellCardDrawCallback = NULL;
     this->enemy->ResetRankSpeeds();
     this->nameColor = 0x80808080;
     if (this->bonusPending)
@@ -857,7 +857,7 @@ void SpellCard::End()
         g_Gui.bombsChanged = 3;
         g_Gui.livesChanged = 3;
         g_SoundPlayer.QueueSound(0xf, 0);
-        g_Stage.EndSpellCard();
+        g_StageManager.EndSpellCard();
     }
     if (this->enemy != NULL)
     {

@@ -578,7 +578,7 @@ public:
     // Set by LogError, the error logger.
     char hasError;
 
-    // Starts empty. Only g_AppLog's static initializer calls it.
+    // Starts empty. Only g_Logger's static initializer calls it.
     Log();
     // Empty; the static initializer has atexit run it (0x43ef40, folded
     // with ~SpriteEngine and MmTimer::OnTimer).
@@ -590,7 +590,7 @@ public:
     // error.
     void Flush();
 };
-extern Log g_AppLog;
+extern Log g_Logger;
 
 // Logs a printf-style message to a log object.
 int LogPrintf(Log *log, const char *fmt, ...);
@@ -650,15 +650,15 @@ extern WORD g_PlayButtons;
 extern WORD g_PreviousPlayButtons;
 // 1 on every 8th frame once the buttons have been held unchanged for 30
 // frames, for key repeat.
-extern WORD g_InputRepeat;
+extern WORD g_RepeatButtons;
 // How many frames the buttons have been held unchanged, cycling from 38
 // back to 30.
-extern WORD g_ButtonsHeldFrames;
+extern WORD g_ButtonHeldFrames;
 
 // Whether a button of `mask` went down this frame.
 #define WAS_PRESSED(mask) ((g_Buttons & (mask)) && (g_Buttons & (mask)) != (g_PreviousButtons & (mask)))
 // WAS_PRESSED, or held long enough to repeat.
-#define WAS_PRESSED_OR_HELD(mask) (WAS_PRESSED(mask) || ((g_Buttons & (mask)) && g_InputRepeat))
+#define WAS_PRESSED_OR_HELD(mask) (WAS_PRESSED(mask) || ((g_Buttons & (mask)) && g_RepeatButtons))
 
 // Clears the down bit (0x80) of every key in the thread's keyboard
 // state.
@@ -1734,7 +1734,7 @@ extern GameManager g_GameManager;
 
 // The update and draw chain elements of g_GameManager, after it.
 extern ChainElem g_GameManagerCalcChainElem;
-extern ChainElem g_GameManagerDrawProc;
+extern ChainElem g_GameManagerDrawChainElem;
 
 // The rank a game starts at and its bounds, as th07's.
 struct RankSettings
@@ -2456,11 +2456,11 @@ public:
     D3DXVECTOR3 effectSpawnPos[0x20];
 };
 ASSERT_SIZE(Stage, 0x6600);
-extern Stage g_Stage;
+extern Stage g_StageManager;
 // Stage's statically allocated chain elements.
-extern ChainElem g_StageCalcChain;
+extern ChainElem g_StageBgCalcElem;
 extern ChainElem g_StageDrawElem;
-extern ChainElem g_StageElementDraw2;
+extern ChainElem g_StageDrawElem2;
 // The background ANM of each stage (4A and 4B share one).
 extern char *g_StageAnmPaths[9];
 // The stage data file of each stage.

@@ -1,4 +1,4 @@
-// The log helpers, 0x43ea00 to 0x43ecc0, as th06's log.cpp (g_AppLog is
+// The log helpers, 0x43ea00 to 0x43ecc0, as th06's log.cpp (g_Logger is
 // defined in unsorted.cpp): split at a plausible seam (nothing in the
 // binary shows it).
 

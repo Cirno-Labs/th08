@@ -17,7 +17,7 @@ BYTE g_EnemyItemDrops[0x20] = {
     0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0,
     1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0,
 };
-ChainElem g_EnemyCalcChainElem;
+ChainElem g_EnemyManagerUpdate;
 ChainElem g_EnemyDrawElem;
 ChainElem g_EnemyDrawElem2;
 EnemyManager g_EnemyManager;
@@ -1019,11 +1019,11 @@ int EnemyManager::RegisterChain()
     int unused = 0;
 
     em->Initialize();
-    g_EnemyCalcChainElem.SetCallback((ChainCallback)EnemyManager::OnUpdate);
-    g_EnemyCalcChainElem.addedCallback = (ChainCallback)EnemyManager::AddedCallback;
-    g_EnemyCalcChainElem.deletedCallback = (ChainCallback)EnemyManager::DeletedCallback;
-    g_EnemyCalcChainElem.arg = em;
-    if (g_Chain.AddToCalcChain(&g_EnemyCalcChainElem, 11) != 0)
+    g_EnemyManagerUpdate.SetCallback((ChainCallback)EnemyManager::OnUpdate);
+    g_EnemyManagerUpdate.addedCallback = (ChainCallback)EnemyManager::AddedCallback;
+    g_EnemyManagerUpdate.deletedCallback = (ChainCallback)EnemyManager::DeletedCallback;
+    g_EnemyManagerUpdate.arg = em;
+    if (g_Chain.AddToCalcChain(&g_EnemyManagerUpdate, 11) != 0)
     {
         return -1;
     }
@@ -1997,7 +1997,7 @@ int EnemyManager::DeletedCallback(EnemyManager *mgr)
 
 void EnemyManager::RemoveChain()
 {
-    g_Chain.Remove(&g_EnemyCalcChainElem);
+    g_Chain.Remove(&g_EnemyManagerUpdate);
     g_Chain.Remove(&g_EnemyDrawElem);
     g_Chain.Remove(&g_EnemyDrawElem2);
 }

@@ -80,8 +80,8 @@ EffectInfo g_EffectInfos[66] = {
     {98, EffectUpdateRingFull, EffectInitRing2},
 };
 EffectManager g_EffectManager;
-ChainElem g_EffectCalcChain;
-ChainElem g_EffectDrawElement;
+ChainElem g_EffectCalcElem;
+ChainElem g_EffectsDrawElem;
 #endif // TH08_EXE
 
 Effect *EffectManager::SpawnEffect(int type, D3DXVECTOR3 *pos, int count, D3DCOLOR color)
@@ -418,8 +418,8 @@ int EffectInitBossPetal(Effect *effect)
 {
     D3DXVECTOR3 back;
 
-    back = -g_Stage.camera.at;
-    effect->truePos = g_Stage.camera.at + g_Stage.camera.eye;
+    back = -g_StageManager.camera.at;
+    effect->truePos = g_StageManager.camera.at + g_StageManager.camera.eye;
     effect->truePos.x += g_Random.GetRandomF32SignedInRange(60.0f) + back.x / 2.0f;
     effect->truePos.y += g_Random.GetRandomF32SignedInRange(100.0f) - 50.0f + back.y / 2.0f;
     effect->truePos.z += g_Random.GetRandomF32InRange(100.0f) - 100.0f + back.z / 2.0f;
@@ -451,9 +451,9 @@ int EffectUpdateBossPetal(Effect *effect)
     effect->truePos += effect->step;
     effect->pos = effect->truePos;
     D3DXVECTOR3 v;
-    v = effect->pos - g_Stage.camera.eye;
+    v = effect->pos - g_StageManager.camera.eye;
     D3DXVec3Normalize(&v, &v);
-    cosine = D3DXVec3Dot(&g_Stage.camera.dir, &v);
+    cosine = D3DXVec3Dot(&g_StageManager.camera.dir, &v);
     if (cosine < 0.94f)
     {
         return 0;
@@ -471,10 +471,10 @@ int EffectUpdateBossPetal(Effect *effect)
         }
     }
     effect->sprite.flags |= 0x20000;
-    effect->sprite.color2Rgb[2] = (DWORD)effect->sprite.colorRgb[2] * g_Stage.colorScaleSprite.colorRgb[2] >> 8;
-    effect->sprite.color2Rgb[1] = (DWORD)effect->sprite.colorRgb[1] * g_Stage.colorScaleSprite.colorRgb[1] >> 8;
-    effect->sprite.color2Rgb[0] = (DWORD)effect->sprite.colorRgb[0] * g_Stage.colorScaleSprite.colorRgb[0] >> 8;
-    effect->sprite.color2Alpha = (DWORD)effect->sprite.alpha * g_Stage.colorScaleSprite.alpha >> 8;
+    effect->sprite.color2Rgb[2] = (DWORD)effect->sprite.colorRgb[2] * g_StageManager.colorScaleSprite.colorRgb[2] >> 8;
+    effect->sprite.color2Rgb[1] = (DWORD)effect->sprite.colorRgb[1] * g_StageManager.colorScaleSprite.colorRgb[1] >> 8;
+    effect->sprite.color2Rgb[0] = (DWORD)effect->sprite.colorRgb[0] * g_StageManager.colorScaleSprite.colorRgb[0] >> 8;
+    effect->sprite.color2Alpha = (DWORD)effect->sprite.alpha * g_StageManager.colorScaleSprite.alpha >> 8;
     return 1;
 }
 
@@ -482,8 +482,8 @@ int EffectInitBossPetal2(Effect *effect)
 {
     D3DXVECTOR3 back;
 
-    back = -g_Stage.camera.at;
-    effect->truePos = g_Stage.camera.at + g_Stage.camera.eye;
+    back = -g_StageManager.camera.at;
+    effect->truePos = g_StageManager.camera.at + g_StageManager.camera.eye;
     effect->truePos.x += g_Random.GetRandomF32SignedInRange(60.0f) + back.x / 2.0f;
     effect->truePos.y += g_Random.GetRandomF32SignedInRange(200.0f) - 200.0f + back.y / 2.0f;
     effect->truePos.z += g_Random.GetRandomF32InRange(100.0f) - 100.0f + back.z / 2.0f;
@@ -515,9 +515,9 @@ int EffectUpdateBossPetal2(Effect *effect)
     effect->truePos += effect->step;
     effect->pos = effect->truePos;
     D3DXVECTOR3 v;
-    v = effect->pos - g_Stage.camera.eye;
+    v = effect->pos - g_StageManager.camera.eye;
     D3DXVec3Normalize(&v, &v);
-    cosine = D3DXVec3Dot(&g_Stage.camera.dir, &v);
+    cosine = D3DXVec3Dot(&g_StageManager.camera.dir, &v);
     if (cosine < 0.94f)
     {
         return 0;
@@ -601,9 +601,9 @@ int EffectUpdatePetal(Effect *effect)
     effect->truePos += effect->step;
     effect->pos = effect->truePos;
     D3DXVECTOR3 v;
-    v = effect->pos - g_Stage.camera.eye;
+    v = effect->pos - g_StageManager.camera.eye;
     D3DXVec3Normalize(&v, &v);
-    cosine = D3DXVec3Dot(&g_Stage.camera.dir, &v);
+    cosine = D3DXVec3Dot(&g_StageManager.camera.dir, &v);
     if (cosine < 0.94f)
     {
         return 0;
@@ -620,8 +620,8 @@ int EffectInitPetal(Effect *effect)
 {
     D3DXVECTOR3 back;
 
-    back = -g_Stage.camera.at;
-    effect->truePos = g_Stage.camera.at + g_Stage.camera.eye;
+    back = -g_StageManager.camera.at;
+    effect->truePos = g_StageManager.camera.at + g_StageManager.camera.eye;
     effect->truePos.x += g_Random.GetRandomF32InRange(120.0f) - 60.0f + back.x / 2.0f;
     effect->truePos.y += g_Random.GetRandomF32InRange(200.0f) - 100.0f + back.y / 2.0f;
     effect->truePos.z += g_Random.GetRandomF32InRange(100.0f) - 100.0f + back.z / 2.0f;
@@ -1133,8 +1133,8 @@ int EffectManager::AddedCallback(EffectManager *mgr)
 {
     mgr->Reset();
     mgr->anm = g_SpriteEngine->GetAnm(6);
-    g_Stage.dialogueScriptOffset = 0;
-    g_Stage.dialogueSpriteCount = 2;
+    g_StageManager.dialogueScriptOffset = 0;
+    g_StageManager.dialogueSpriteCount = 2;
     if (!IsRestarting())
     {
         if (!g_GameManager.IsInSpellCardPractice() || g_GameManager.practiceSpellCard < 0xd8)
@@ -1182,24 +1182,24 @@ int EffectManager::RegisterChain()
     EffectManager *mgr = &g_EffectManager;
 
     mgr->Reset();
-    g_EffectCalcChain.SetCallback((ChainCallback)EffectManager::OnUpdate);
-    g_EffectCalcChain.addedCallback = (ChainCallback)EffectManager::AddedCallback;
-    g_EffectCalcChain.deletedCallback = (ChainCallback)EffectManager::DeletedCallback;
-    g_EffectCalcChain.arg = mgr;
-    if (g_Chain.AddToCalcChain(&g_EffectCalcChain, 13) != 0)
+    g_EffectCalcElem.SetCallback((ChainCallback)EffectManager::OnUpdate);
+    g_EffectCalcElem.addedCallback = (ChainCallback)EffectManager::AddedCallback;
+    g_EffectCalcElem.deletedCallback = (ChainCallback)EffectManager::DeletedCallback;
+    g_EffectCalcElem.arg = mgr;
+    if (g_Chain.AddToCalcChain(&g_EffectCalcElem, 13) != 0)
     {
         return -1;
     }
-    g_EffectDrawElement.SetCallback((ChainCallback)EffectManager::OnDraw);
-    g_EffectDrawElement.arg = mgr;
-    g_Chain.AddToDrawChain(&g_EffectDrawElement, 12);
+    g_EffectsDrawElem.SetCallback((ChainCallback)EffectManager::OnDraw);
+    g_EffectsDrawElem.arg = mgr;
+    g_Chain.AddToDrawChain(&g_EffectsDrawElem, 12);
     return 0;
 }
 
 void EffectManager::RemoveChain()
 {
-    g_Chain.Remove(&g_EffectCalcChain);
-    g_Chain.Remove(&g_EffectDrawElement);
+    g_Chain.Remove(&g_EffectCalcElem);
+    g_Chain.Remove(&g_EffectsDrawElem);
 }
 
 void Vector2::SetPolar(float angle, float radius)

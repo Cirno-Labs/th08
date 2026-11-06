@@ -12,10 +12,10 @@
 // The game's data, as the original defines it here. The DLL build uses
 // the original's copies instead.
 #ifdef TH08_EXE
-Stage g_Stage;
-ChainElem g_StageCalcChain;
+Stage g_StageManager;
+ChainElem g_StageBgCalcElem;
 ChainElem g_StageDrawElem;
-ChainElem g_StageElementDraw2;
+ChainElem g_StageDrawElem2;
 #endif // TH08_EXE
 
 Stage::Stage()
@@ -843,7 +843,7 @@ int Stage::AddedCallback(Stage *stage)
 
 int Stage::RegisterChain(int stage)
 {
-    Stage *s = &g_Stage;
+    Stage *s = &g_StageManager;
     StageData *prevData;
 
     if (IsRestarting())
@@ -857,20 +857,20 @@ int Stage::RegisterChain(int stage)
     }
     s->checksumCheckFrames = 0;
     s->stage = stage;
-    g_StageCalcChain.SetCallback((ChainCallback)Stage::OnUpdate);
-    g_StageCalcChain.addedCallback = (ChainCallback)Stage::AddedCallback;
-    g_StageCalcChain.deletedCallback = (ChainCallback)Stage::DeletedCallback;
-    g_StageCalcChain.arg = s;
-    if (g_Chain.AddToCalcChain(&g_StageCalcChain, 8) != 0)
+    g_StageBgCalcElem.SetCallback((ChainCallback)Stage::OnUpdate);
+    g_StageBgCalcElem.addedCallback = (ChainCallback)Stage::AddedCallback;
+    g_StageBgCalcElem.deletedCallback = (ChainCallback)Stage::DeletedCallback;
+    g_StageBgCalcElem.arg = s;
+    if (g_Chain.AddToCalcChain(&g_StageBgCalcElem, 8) != 0)
     {
         return -1;
     }
     g_StageDrawElem.SetCallback((ChainCallback)Stage::OnDraw);
     g_StageDrawElem.arg = s;
     g_Chain.AddToDrawChain(&g_StageDrawElem, 6);
-    g_StageElementDraw2.SetCallback((ChainCallback)Stage::OnDraw2);
-    g_StageElementDraw2.arg = s;
-    g_Chain.AddToDrawChain(&g_StageElementDraw2, 7);
+    g_StageDrawElem2.SetCallback((ChainCallback)Stage::OnDraw2);
+    g_StageDrawElem2.arg = s;
+    g_Chain.AddToDrawChain(&g_StageDrawElem2, 7);
     return 0;
 }
 
@@ -919,9 +919,9 @@ int Stage::DeletedCallback(Stage *stage)
 
 void Stage::RemoveChain()
 {
-    g_Chain.Remove(&g_StageCalcChain);
+    g_Chain.Remove(&g_StageBgCalcElem);
     g_Chain.Remove(&g_StageDrawElem);
-    g_Chain.Remove(&g_StageElementDraw2);
+    g_Chain.Remove(&g_StageDrawElem2);
 }
 
 int Stage::Load(char *dataPath)
@@ -936,7 +936,7 @@ int Stage::Load(char *dataPath)
         this->data = (StageData *)LoadFileData(dataPath, NULL, 0);
         if (this->data == NULL)
         {
-            LogPrintf(&g_AppLog, "ステージデータが見つかりません。データが壊れています\r\n");
+            LogPrintf(&g_Logger, "ステージデータが見つかりません。データが壊れています\r\n");
             return -1;
         }
     }

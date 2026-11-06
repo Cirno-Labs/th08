@@ -977,12 +977,12 @@ void SpriteEngine::SetRenderStateForSprite(Sprite *vm)
         this->lastCameraSetupFlag = vm->flags >> 15 & 1;
         if (this->lastCameraSetupFlag == 0)
         {
-            g_Stage.SetupFixedCamera();
+            g_StageManager.SetupFixedCamera();
             g_App.d3dDevice->SetViewport(&g_App.viewport);
         }
         else
         {
-            g_Stage.SetupCamera();
+            g_StageManager.SetupCamera();
             g_App.d3dDevice->SetViewport(&g_App.viewport);
         }
     }

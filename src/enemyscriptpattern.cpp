@@ -62,7 +62,7 @@ void SpawnTwinEffects38(Enemy *enemy, EnemyScriptInstr *instr)
     effect = g_EffectManager.SpawnReservedEffect(0x38, &enemy->pos, 9, 1, 0xffffffff);
     effect = g_EffectManager.SpawnReservedEffect(0x38, &enemy->pos, 10, 1, 0xffffffff);
     g_EffectManager.anm->StartScript(&effect->sprite, 0x61);
-    g_Stage.spellCardDrawCallback = DrawTwinEffects;
+    g_StageManager.spellCardDrawCallback = DrawTwinEffects;
 }
 
 void DrawTwinEffects()
@@ -78,7 +78,7 @@ void DrawTwinEffects()
 
     first = g_EffectManager.GetReservedEffect(9);
     second = g_EffectManager.GetReservedEffect(10);
-    spr = &g_Stage.dialogueSprites[0];
+    spr = &g_StageManager.dialogueSprites[0];
     r1 = first->sprite.pos.x * 0.70710683f;
     r2 = second->sprite.pos.x * 0.70710683f;
     vertices[0].pos.x = 32.0f + first->pos.x - r1;
@@ -121,28 +121,28 @@ void DrawTwinEffects()
     g_App.d3dDevice->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE);
     g_App.d3dDevice->SetTextureStageState(0, D3DTSS_COLORARG1, D3DTA_TEXTURE);
     g_App.SetRenderState(D3DRS_ZFUNC, D3DCMP_LESSEQUAL);
-    g_Stage.dialogueSprites[0].scaleX = -1.5f;
-    g_Stage.dialogueSprites[0].scaleY = -1.75f;
-    g_Stage.dialogueSprites[0].pos.z = 0.7f;
-    g_Stage.dialogueSprites[0].pos.x = 416.0f;
-    g_Stage.dialogueSprites[0].pos.y = 464.0f;
-    saved = g_Stage.dialogueSprites[0].color;
-    g_Stage.dialogueSprites[0].color = 0xffe0c0c0;
-    g_SpriteEngine->Draw(&g_Stage.dialogueSprites[0]);
-    g_Stage.dialogueSprites[0].scaleX = 1.5f;
-    g_Stage.dialogueSprites[0].scaleY = 1.75f;
-    g_Stage.dialogueSprites[0].pos.z = 0.5f;
-    g_Stage.dialogueSprites[0].pos.x = 32.0f;
-    g_Stage.dialogueSprites[0].pos.y = 16.0f;
-    g_Stage.dialogueSprites[0].color = saved;
-    g_Stage.dialogueSprites[1].rotation.z = g_Stage.dialogueSprites[1].rotation.z * -1.0f;
-    g_Stage.dialogueSprites[1].pos.z = 0.6f;
-    saved = g_Stage.dialogueSprites[1].color;
-    g_Stage.dialogueSprites[1].color = 0xffe0c0c0;
-    g_SpriteEngine->DrawAndFlush(&g_Stage.dialogueSprites[1]);
-    g_Stage.dialogueSprites[1].rotation.z = g_Stage.dialogueSprites[1].rotation.z * -1.0f;
-    g_Stage.dialogueSprites[1].pos.z = 0.5f;
-    g_Stage.dialogueSprites[1].color = saved;
+    g_StageManager.dialogueSprites[0].scaleX = -1.5f;
+    g_StageManager.dialogueSprites[0].scaleY = -1.75f;
+    g_StageManager.dialogueSprites[0].pos.z = 0.7f;
+    g_StageManager.dialogueSprites[0].pos.x = 416.0f;
+    g_StageManager.dialogueSprites[0].pos.y = 464.0f;
+    saved = g_StageManager.dialogueSprites[0].color;
+    g_StageManager.dialogueSprites[0].color = 0xffe0c0c0;
+    g_SpriteEngine->Draw(&g_StageManager.dialogueSprites[0]);
+    g_StageManager.dialogueSprites[0].scaleX = 1.5f;
+    g_StageManager.dialogueSprites[0].scaleY = 1.75f;
+    g_StageManager.dialogueSprites[0].pos.z = 0.5f;
+    g_StageManager.dialogueSprites[0].pos.x = 32.0f;
+    g_StageManager.dialogueSprites[0].pos.y = 16.0f;
+    g_StageManager.dialogueSprites[0].color = saved;
+    g_StageManager.dialogueSprites[1].rotation.z = g_StageManager.dialogueSprites[1].rotation.z * -1.0f;
+    g_StageManager.dialogueSprites[1].pos.z = 0.6f;
+    saved = g_StageManager.dialogueSprites[1].color;
+    g_StageManager.dialogueSprites[1].color = 0xffe0c0c0;
+    g_SpriteEngine->DrawAndFlush(&g_StageManager.dialogueSprites[1]);
+    g_StageManager.dialogueSprites[1].rotation.z = g_StageManager.dialogueSprites[1].rotation.z * -1.0f;
+    g_StageManager.dialogueSprites[1].pos.z = 0.5f;
+    g_StageManager.dialogueSprites[1].color = saved;
     g_App.SetRenderState(D3DRS_ZFUNC, D3DCMP_ALWAYS);
 }
 
@@ -216,7 +216,7 @@ void SpawnTwinEffects41(Enemy *enemy, EnemyScriptInstr *instr)
     effect = g_EffectManager.SpawnReservedEffect(0x41, &enemy->pos, 9, 1, 0xffffffff);
     effect = g_EffectManager.SpawnReservedEffect(0x41, &enemy->pos, 10, 1, 0xffffffff);
     g_EffectManager.anm->StartScript(&effect->sprite, 0x63);
-    g_Stage.spellCardDrawCallback = DrawTwinEffects;
+    g_StageManager.spellCardDrawCallback = DrawTwinEffects;
 }
 
 void BounceBulletsAtZones2(Enemy *enemy, EnemyScriptInstr *instr)
@@ -286,7 +286,7 @@ void EndTwinEffects(Enemy *enemy, EnemyScriptInstr *instr)
 {
     g_EffectManager.GetReservedEffect(9)->active = 0;
     g_EffectManager.GetReservedEffect(10)->active = 0;
-    g_Stage.dialogueSpriteCount = 2;
+    g_StageManager.dialogueSpriteCount = 2;
 }
 
 void StartResurrection(Enemy *enemy, EnemyScriptInstr *instr)
@@ -301,7 +301,7 @@ void SpawnTwinEffects3A(Enemy *enemy, EnemyScriptInstr *instr)
     effect = g_EffectManager.SpawnReservedEffect(0x3a, &enemy->pos, 9, 1, 0xffffffff);
     effect = g_EffectManager.SpawnReservedEffect(0x3a, &enemy->pos, 10, 1, 0xffffffff);
     g_EffectManager.anm->StartScript(&effect->sprite, 0x65);
-    g_Stage.spellCardDrawCallback = DrawTwinEffects;
+    g_StageManager.spellCardDrawCallback = DrawTwinEffects;
 }
 
 void BounceBulletsAtZones3(Enemy *enemy, EnemyScriptInstr *instr)
@@ -519,8 +519,8 @@ void ToggleMarkedBullets(Enemy *enemy, EnemyScriptInstr *instr)
             follower = follower->nextFollower;
             follower->halted = 1;
         }
-        g_Stage.dialogueSprites[0].SetPendingInterrupt(2);
-        g_Stage.dialogueSprites[1].SetPendingInterrupt(2);
+        g_StageManager.dialogueSprites[0].SetPendingInterrupt(2);
+        g_StageManager.dialogueSprites[1].SetPendingInterrupt(2);
     }
     else
     {
@@ -531,8 +531,8 @@ void ToggleMarkedBullets(Enemy *enemy, EnemyScriptInstr *instr)
             follower = follower->nextFollower;
             follower->halted = 0;
         }
-        g_Stage.dialogueSprites[0].SetPendingInterrupt(1);
-        g_Stage.dialogueSprites[1].SetPendingInterrupt(1);
+        g_StageManager.dialogueSprites[0].SetPendingInterrupt(1);
+        g_StageManager.dialogueSprites[1].SetPendingInterrupt(1);
     }
 }
 
@@ -579,7 +579,7 @@ void CycleMarkedBullets(Enemy *enemy, EnemyScriptInstr *instr)
 
 void TintStageRed(Enemy *enemy, EnemyScriptInstr *instr)
 {
-    g_Stage.SetTintColor(0xffc03030);
+    g_StageManager.SetTintColor(0xffc03030);
 }
 
 void ShakeScreenRamp(Enemy *enemy, EnemyScriptInstr *instr)
@@ -655,13 +655,13 @@ void SetFrozen(Enemy *enemy, EnemyScriptInstr *instr)
     g_GameManager.isFrozen = instr->args[1].i;
     if (g_GameManager.isFrozen)
     {
-        g_Stage.dialogueSprites[0].SetPendingInterrupt(2);
-        g_Stage.dialogueSprites[1].SetPendingInterrupt(2);
+        g_StageManager.dialogueSprites[0].SetPendingInterrupt(2);
+        g_StageManager.dialogueSprites[1].SetPendingInterrupt(2);
     }
     else
     {
-        g_Stage.dialogueSprites[0].SetPendingInterrupt(1);
-        g_Stage.dialogueSprites[1].SetPendingInterrupt(1);
+        g_StageManager.dialogueSprites[0].SetPendingInterrupt(1);
+        g_StageManager.dialogueSprites[1].SetPendingInterrupt(1);
     }
 }
 
@@ -694,8 +694,8 @@ void StartSlowdown(Enemy *enemy, EnemyScriptInstr *instr)
     int i;
 
     g_App.gameSpeed = 1.0f / instr->args[1].i;
-    g_Stage.dialogueSprites[0].SetPendingInterrupt(2);
-    g_Stage.dialogueSprites[1].SetPendingInterrupt(2);
+    g_StageManager.dialogueSprites[0].SetPendingInterrupt(2);
+    g_StageManager.dialogueSprites[1].SetPendingInterrupt(2);
     bullet = g_BulletManager.bullets;
     for (i = 0; i < 0x600; i++, bullet++)
     {
@@ -736,8 +736,8 @@ void EndSlowdown(Enemy *enemy, EnemyScriptInstr *instr)
         g_App.stateFlags |= 0x20;
     }
     g_App.gameSpeed = 1.0f;
-    g_Stage.dialogueSprites[0].SetPendingInterrupt(1);
-    g_Stage.dialogueSprites[1].SetPendingInterrupt(1);
+    g_StageManager.dialogueSprites[0].SetPendingInterrupt(1);
+    g_StageManager.dialogueSprites[1].SetPendingInterrupt(1);
 }
 
 void DropBombOrLifeItem(Enemy *enemy, EnemyScriptInstr *instr)

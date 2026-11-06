@@ -356,7 +356,7 @@ int Ending::Load(char *path)
     if (this->file == NULL)
     {
         this->file = oldFile;
-        LogPrintf(&g_AppLog, "error : エンディングファイルが読み込めない、ファイルが破壊されています\r\n");
+        LogPrintf(&g_Logger, "error : エンディングファイルが読み込めない、ファイルが破壊されています\r\n");
         return -1;
     }
     this->cursor = this->file;
