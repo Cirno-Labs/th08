@@ -421,7 +421,7 @@ struct Enemy
     };
     union
     {
-        DWORD unusedDword3328;
+        DWORD flags2;
         struct
         {
             DWORD unusedFlag3328_0 : 1;
