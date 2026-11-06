@@ -43,10 +43,10 @@ MidiPlayer::MidiPlayer()
     this->transpose = 0;
     this->volumeScale = 0.0f;
     this->lastVolume = 0;
-    this->unusedAfterConstruct2d0 = 0;
+    this->unk_2d0 = 0;
     this->suppressVolume = 0;
-    this->unusedAfterConstruct2d8 = 0;
-    this->framesSinceRewind = 0;
+    this->unk_2d8 = 0;
+    this->unk_2dc = 0;
     this->fading = 0;
     for (i = 0; i < 0x20; i++)
     {
@@ -187,7 +187,7 @@ void MidiPlayer::Rewind()
 
     track = this->tracks;
     this->volumeScale = 1.0f;
-    this->framesSinceRewind = 0;
+    this->unk_2dc = 0;
     this->fading = 0;
     this->ticks = 0;
     this->baseTime = 0;
