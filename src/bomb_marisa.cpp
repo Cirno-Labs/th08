@@ -73,8 +73,8 @@ void DrawMarisaBomb(Player *player)
             theta += 6.2831855f;
         }
         sprite->pos = player->pos;
-        sprite->pos.x += cosf(theta) * sprite->spriteData->width * sprite->scaleY / 2.0f;
-        sprite->pos.y += sinf(theta) * sprite->spriteData->width * sprite->scaleY / 2.0f;
+        sprite->pos.x += cosf(theta) * sprite->spriteData->width * sprite->scaleX / 2.0f;
+        sprite->pos.y += sinf(theta) * sprite->spriteData->width * sprite->scaleX / 2.0f;
         sprite->SetRotationZ(theta);
         sprite->pos.x += g_GameManager.arena[0];
         sprite->pos.y += g_GameManager.arena[1];

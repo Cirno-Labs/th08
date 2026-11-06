@@ -80,7 +80,7 @@ void SpawnBombAura(Player *player)
     effect->sprite.interpDuration[4] = 0;
     effect->sprite.interpFrame[4] = player->stateTimer;
     effect->sprite.scaleInterpEasing = 0;
-    *(D3DXVECTOR2 *)&effect->sprite.scaleTween = *(D3DXVECTOR2 *)&effect->sprite.scaleY;
+    *(D3DXVECTOR2 *)&effect->sprite.scaleTween = *(D3DXVECTOR2 *)&effect->sprite.scaleX;
     effect->sprite.scaleTween.z = 0.0625f;
     effect->sprite.colorTween.x = 0.0625f;
     effect->sprite.scriptVar0 = player->stateTimer.AsFrames();

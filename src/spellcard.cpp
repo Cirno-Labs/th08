@@ -924,7 +924,7 @@ int SpellCard::Update()
         {
             g_EffectManager.anm->SetSprite(&this->effect->sprite, 0xde);
             this->effect->sprite.scaleTween.z = 4.0f;
-            this->effect->sprite.scaleY = 4.0f;
+            this->effect->sprite.scaleX = 4.0f;
         }
         if (this->effect->waveCount != 0.0f)
         {

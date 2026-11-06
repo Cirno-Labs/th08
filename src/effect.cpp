@@ -408,8 +408,8 @@ int EffectUpdateOrbit(Effect *effect)
         }
         a2 = 1.0f - effect->fadeFrames / 16.0f;
         effect->sprite.color = (effect->sprite.color & 0xffffff) | ((int)(a2 * 255.0f) << 24);
-        effect->sprite.scaleX = 2.0f - a2;
-        effect->sprite.scaleY = effect->sprite.scaleX;
+        effect->sprite.scaleY = 2.0f - a2;
+        effect->sprite.scaleX = effect->sprite.scaleY;
     }
     return 1;
 }
@@ -838,7 +838,7 @@ int EffectInitRing2(Effect *effect)
 int EffectUpdateRing(Effect *effect)
 {
     effect->verticesDirty = 1;
-    effect->ringWidth = effect->sprite.scaleY;
+    effect->ringWidth = effect->sprite.scaleX;
     effect->radius = effect->sprite.pos.x;
     return 1;
 }
@@ -847,7 +847,7 @@ int EffectUpdateRingFull(Effect *effect)
 {
     effect->segmentCount = effect->sprite.scriptVar0;
     effect->waveCount = effect->sprite.scriptVar1;
-    effect->ringWidth = effect->sprite.scaleY;
+    effect->ringWidth = effect->sprite.scaleX;
     effect->radius = effect->sprite.pos.x;
     effect->radiusY = effect->sprite.pos.y;
     effect->angle = effect->sprite.rotation.z;
@@ -859,7 +859,7 @@ int EffectUpdateRingFull(Effect *effect)
 int EffectUpdateRingTimed(Effect *effect)
 {
     effect->segmentCount = 0x20;
-    effect->ringWidth = effect->sprite.scaleY;
+    effect->ringWidth = effect->sprite.scaleX;
     effect->radius = effect->sprite.pos.x;
     effect->radiusY = effect->sprite.pos.y;
     effect->verticesDirty = 1;
@@ -873,7 +873,7 @@ int EffectUpdateRingTimed(Effect *effect)
 int EffectUpdateRingFade(Effect *effect)
 {
     effect->verticesDirty = 1;
-    effect->ringWidth = effect->sprite.scaleY;
+    effect->ringWidth = effect->sprite.scaleX;
     effect->radius = effect->sprite.pos.x;
     effect->radiusY = effect->sprite.pos.y;
     effect->angle = effect->sprite.rotation.z;
@@ -888,7 +888,7 @@ int EffectUpdateRingAt(Effect *effect)
 {
     effect->segmentCount = effect->sprite.scriptVar0;
     effect->waveCount = effect->sprite.scriptVar1;
-    effect->ringWidth = effect->sprite.scaleY;
+    effect->ringWidth = effect->sprite.scaleX;
     effect->radius = effect->sprite.scriptVarF1;
     effect->angle = effect->sprite.rotation.z;
     effect->ellipseAngle = effect->sprite.rotation.y;

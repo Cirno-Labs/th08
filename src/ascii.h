@@ -16,8 +16,8 @@ struct AsciiString
     char text[0x40];
     D3DXVECTOR3 pos;
     D3DCOLOR color;
-    float scaleX;
     float scaleY;
+    float scaleX;
     // Drawn with the second glyph set, in white.
     int highlight;
     // Drawn inside the play area's viewport.
@@ -68,8 +68,8 @@ struct AsciiPopup
     D3DXVECTOR3 pos;
     D3DCOLOR color;
     Timer timer;
-    float scaleX;
     float scaleY;
+    float scaleX;
     BYTE active;
     BYTE digitCount;
     unsigned char pad_32[0x6];
@@ -182,8 +182,8 @@ public:
     // Inline; the copy at 0x42f2f0 is in an /Od object.
     void SetScale(float x, float y)
     {
-        this->scaleX = x;
-        this->scaleY = y;
+        this->scaleY = x;
+        this->scaleX = y;
     }
     // Inline; the copy at 0x4398ff is the Gui object's.
     void SetInArena(int inArena)
@@ -266,8 +266,8 @@ public:
         };
     };
     // The scale of the characters added next.
-    float scaleX;
     float scaleY;
+    float scaleX;
     // Whether positions are relative to the play area, as th07's.
     int inArena;
     // Drawn with the second glyph set, as th07's.

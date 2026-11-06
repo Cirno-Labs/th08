@@ -313,8 +313,8 @@ int App::OnDrawLogo(App *arg)
         pos.x = 288.0f;
         pos.y = 454.0f;
         pos.z = 0.0f;
-        g_AsciiText.scaleX = 0.5f;
         g_AsciiText.scaleY = 0.5f;
+        g_AsciiText.scaleX = 0.5f;
         if (arg->loadingState < 35)
         {
             g_AsciiText.SetAlpha(255 - (arg->loadingState - 5) * 128 / 30);
@@ -324,8 +324,8 @@ int App::OnDrawLogo(App *arg)
             g_AsciiText.SetAlpha(255 - (65 - arg->loadingState) * 128 / 30);
         }
         g_AsciiText.AddFormat(&pos, "Press Shot Button");
-        g_AsciiText.scaleX = 1.0f;
         g_AsciiText.scaleY = 1.0f;
+        g_AsciiText.scaleX = 1.0f;
         g_AsciiText.DrawStrings();
         g_AsciiText.stringCount = 0;
         if (arg->loadingState >= 65)

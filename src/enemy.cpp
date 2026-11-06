@@ -1630,7 +1630,7 @@ int EnemyManager::OnDraw(EnemyManager *mgr)
     return EnemyManager::DrawEnemies(mgr, 0, 2);
 }
 
-// Sprite::scaleY and scaleX, as DrawEnemies saves them around a trail.
+// Sprite::scaleX and scaleY, as DrawEnemies saves them around a trail.
 // th07 used a D3DXVECTOR2, whose constructor th08 would call.
 struct EnemySpriteScale
 {
@@ -1695,7 +1695,7 @@ int EnemyManager::DrawEnemies(EnemyManager *mgr, int from, int to)
             enemy->sprite.pos.z = 0.25f;
             if (enemy->trailFlags)
             {
-                savedScale = *(EnemySpriteScale *)&enemy->sprite.scaleY;
+                savedScale = *(EnemySpriteScale *)&enemy->sprite.scaleX;
                 savedColor = enemy->sprite.color;
                 if (!(enemy->trailFlags & 8))
                 {
@@ -1711,7 +1711,7 @@ int EnemyManager::DrawEnemies(EnemyManager *mgr, int from, int to)
                         }
                         if (enemy->trailFlags & 2)
                         {
-                            enemy->sprite.scaleY = savedScale.x - b * savedScale.x / enemy->trailSegmentCount;
+                            enemy->sprite.scaleX = savedScale.x - b * savedScale.x / enemy->trailSegmentCount;
                         }
                         if (enemy->trailFlags & 4)
                         {
@@ -1805,7 +1805,7 @@ int EnemyManager::DrawEnemies(EnemyManager *mgr, int from, int to)
                         }
                     }
                 }
-                *(EnemySpriteScale *)&enemy->sprite.scaleY = savedScale;
+                *(EnemySpriteScale *)&enemy->sprite.scaleX = savedScale;
                 enemy->sprite.color = savedColor;
             }
             if (!(enemy->trailFlags & 0x10) && !enemy->hiddenByBomb)

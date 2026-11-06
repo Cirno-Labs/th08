@@ -200,7 +200,7 @@ int EffectDrawRing(Effect *effect);
 int EffectInitRing2(Effect *effect);
 
 // Ring effect updates: take the ring's shape from the sprite its script
-// runs: the width from scaleY, the radius from pos.x, the y radius or
+// runs: the width from scaleX, the radius from pos.x, the y radius or
 // wave from pos.y, the angle from rotation.z, the ellipse rotation or
 // wave start from rotation.y, the segment count from scriptVar0 and the
 // waves from scriptVar1. Each returns 1 while the effect lasts. New in

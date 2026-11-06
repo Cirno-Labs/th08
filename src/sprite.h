@@ -92,12 +92,12 @@ struct SpriteBase
     D3DXVECTOR3 rotation;
     // The rotation speeds about x, y and z, which Step adds each frame.
     D3DXVECTOR3 rotationSpeed;
-    // Draw scales the sprite's height and width by these, as th07's.
-    float scaleY;
+    // Draw scales the sprite's width and height by these, as th07's.
     float scaleX;
-    // The scale speeds, which Step adds to scaleY and scaleX each frame.
-    float scaleSpeedY;
+    float scaleY;
+    // The scale speeds, which Step adds to scaleX and scaleY each frame.
     float scaleSpeedX;
+    float scaleSpeedY;
     // The size the draw functions draw the sprite at before scaling;
     // th07's used spriteData->width and height.
     float spriteWidth;
@@ -311,8 +311,8 @@ public:
     void Initialize()
     {
         memset(this, 0, sizeof(SpriteBase));
-        this->scaleY = 1.0f;
         this->scaleX = 1.0f;
+        this->scaleY = 1.0f;
         this->color = 0xffffffff;
         D3DXMatrixIdentity(&this->matrix);
         *(WORD *)&this->flags = 7;

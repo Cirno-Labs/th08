@@ -1112,15 +1112,15 @@ int Stage::DrawLayer(int layer)
                     spr->pos.x = spr->posOffset.x + quad->pos.x + placement->pos.x - this->cameraPos.x;
                     spr->pos.y = spr->posOffset.y + quad->pos.y + placement->pos.y - this->cameraPos.y;
                     spr->pos.z = spr->posOffset.z + quad->pos.z + placement->pos.z - this->cameraPos.z;
-                    // scaleY and scaleX are SpriteBase's +0x18 and +0x1c,
+                    // scaleX and scaleY are SpriteBase's +0x18 and +0x1c,
                     // really the horizontal and vertical scales.
                     if (quad->width != 0.0f)
                     {
-                        spr->scaleY = quad->width / spr->spriteData->width;
+                        spr->scaleX = quad->width / spr->spriteData->width;
                     }
                     if (quad->height != 0.0f)
                     {
-                        spr->scaleX = quad->height / spr->spriteData->height;
+                        spr->scaleY = quad->height / spr->spriteData->height;
                     }
                     if ((spr->autoRotate & 0xf) == 2)
                     {
@@ -1137,17 +1137,17 @@ int Stage::DrawLayer(int layer)
                         {
                             w2 = spr->spriteData->width;
                         }
-                        mat._41 += rightValue.x * w2 * spr->scaleY;
-                        mat._42 += rightValue.y * w2 * spr->scaleY;
-                        mat._43 += rightValue.z * w2 * spr->scaleY;
+                        mat._41 += rightValue.x * w2 * spr->scaleX;
+                        mat._42 += rightValue.y * w2 * spr->scaleX;
+                        mat._43 += rightValue.z * w2 * spr->scaleX;
                         D3DXVec3Project(&diff2, &origin, &g_App.viewport, (D3DXMATRIX *)&g_App.projectionMatrix,
                                         (D3DXMATRIX *)&g_App.viewMatrix, &mat);
                         diff2 = diff2 - centre;
-                        spr->scaleY = D3DXVec3Length(&diff2) / w2;
-                        spr->scaleX = spr->scaleY;
+                        spr->scaleX = D3DXVec3Length(&diff2) / w2;
+                        spr->scaleY = spr->scaleX;
                         if (w2 < 0.0f)
                         {
-                            spr->scaleX = -spr->scaleX;
+                            spr->scaleY = -spr->scaleY;
                         }
                         diff2 = spr->pos - (this->camera.eye + this->camera.offset);
                         w2 = D3DXVec3Length(&diff2);

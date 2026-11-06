@@ -194,8 +194,8 @@ int SpriteEngine::DrawUnrotated(Sprite *vm)
     {
         return -1;
     }
-    w = vm->spriteWidth * vm->scaleY / 2.0f;
-    h = vm->spriteHeight * vm->scaleX / 2.0f;
+    w = vm->spriteWidth * vm->scaleX / 2.0f;
+    h = vm->spriteHeight * vm->scaleY / 2.0f;
     if (((vm->flags >> 11 & 3) & 1) == 0)
     {
         g_DiffuseQuad[0].pos.x = g_DiffuseQuad[2].pos.x = vm->pos.x - w;
@@ -262,8 +262,8 @@ int SpriteEngine::Draw(Sprite *vm)
     }
     x0 = vm->pos.x;
     cy = vm->pos.y;
-    halfWidth = vm->spriteWidth * vm->scaleY / 2.0f;
-    halfH = vm->spriteHeight * vm->scaleX / 2.0f;
+    halfWidth = vm->spriteWidth * vm->scaleX / 2.0f;
+    halfH = vm->spriteHeight * vm->scaleY / 2.0f;
     this->RotatePoint((float *)&g_DiffuseQuad[0].pos, -halfWidth, -halfH, s, cosine, x0, cy);
     this->RotatePoint((float *)&g_DiffuseQuad[1].pos, halfWidth, -halfH, s, cosine, x0, cy);
     this->RotatePoint((float *)&g_DiffuseQuad[2].pos, -halfWidth, halfH, s, cosine, x0, cy);
@@ -320,8 +320,8 @@ int SpriteEngine::DrawRotatedNoRound(Sprite *vm)
         }
         x0 = vm->pos.x;
         cy = vm->pos.y;
-        halfWidth = vm->spriteWidth * vm->scaleY / 2.0f;
-        halfH = vm->spriteHeight * vm->scaleX / 2.0f;
+        halfWidth = vm->spriteWidth * vm->scaleX / 2.0f;
+        halfH = vm->spriteHeight * vm->scaleY / 2.0f;
         this->RotatePoint((float *)&g_DiffuseQuad[0].pos, -halfWidth, -halfH, s, cosine, x0, cy);
         this->RotatePoint((float *)&g_DiffuseQuad[1].pos, halfWidth, -halfH, s, cosine, x0, cy);
         this->RotatePoint((float *)&g_DiffuseQuad[2].pos, -halfWidth, halfH, s, cosine, x0, cy);
@@ -348,8 +348,8 @@ int SpriteEngine::DrawRotatedNoRound(Sprite *vm)
         float h;
 
         // Unlike DrawUnrotated, leaves the quad's z as it was.
-        w = vm->spriteWidth * vm->scaleY / 2.0f;
-        h = vm->spriteHeight * vm->scaleX / 2.0f;
+        w = vm->spriteWidth * vm->scaleX / 2.0f;
+        h = vm->spriteHeight * vm->scaleY / 2.0f;
         if (((vm->flags >> 11 & 3) & 1) == 0)
         {
             g_DiffuseQuad[0].pos.x = g_DiffuseQuad[2].pos.x = vm->pos.x - w;
@@ -391,8 +391,8 @@ int SpriteEngine::DrawNoRound(Sprite *vm)
     {
         return -1;
     }
-    w = vm->spriteWidth * vm->scaleY / 2.0f;
-    h = vm->spriteHeight * vm->scaleX / 2.0f;
+    w = vm->spriteWidth * vm->scaleX / 2.0f;
+    h = vm->spriteHeight * vm->scaleY / 2.0f;
     if (((vm->flags >> 11 & 3) & 1) == 0)
     {
         g_DiffuseQuad[0].pos.x = g_DiffuseQuad[2].pos.x = vm->pos.x - w;
@@ -456,8 +456,8 @@ int SpriteEngine::ProjectSprite(Sprite *vm)
                     (D3DXMATRIX *)&g_App.viewMatrix, &world);
     d = edge - origin;
     x = D3DXVec3Length(&d) * 0.5f;
-    w = x * vm->spriteWidth * vm->scaleY;
-    h = x * vm->spriteHeight * vm->scaleX;
+    w = x * vm->spriteWidth * vm->scaleX;
+    h = x * vm->spriteHeight * vm->scaleY;
     x = origin.x;
     y = origin.y;
     this->RotatePoint((float *)&g_DiffuseQuad[0].pos, -w, -h, s, c, x, y);
@@ -511,8 +511,8 @@ void SpriteEngine::ProjectSprite3D(Sprite *vm)
     if ((vm->flags >> 16 & 1) == 0 && ((vm->flags >> 3 & 1) != 0 || (vm->flags >> 2 & 1) != 0))
     {
         vm->drawMatrix = vm->matrix;
-        vm->drawMatrix._11 *= vm->scaleY;
-        vm->drawMatrix._22 *= vm->scaleX;
+        vm->drawMatrix._11 *= vm->scaleX;
+        vm->drawMatrix._22 *= vm->scaleY;
         vm->flags &= ~8;
         if (vm->rotation.x != 0.0)
         {
@@ -538,7 +538,7 @@ void SpriteEngine::ProjectSprite3D(Sprite *vm)
     }
     else
     {
-        worldMatrix._41 = fabsf(vm->spriteWidth * vm->scaleY / 2.0f) + vm->pos.x;
+        worldMatrix._41 = fabsf(vm->spriteWidth * vm->scaleX / 2.0f) + vm->pos.x;
     }
     if (((vm->flags >> 11 & 3) & 2) == 0)
     {
@@ -546,7 +546,7 @@ void SpriteEngine::ProjectSprite3D(Sprite *vm)
     }
     else
     {
-        worldMatrix._42 = fabsf(vm->spriteHeight * vm->scaleX / 2.0f) + vm->pos.y;
+        worldMatrix._42 = fabsf(vm->spriteHeight * vm->scaleY / 2.0f) + vm->pos.y;
     }
     worldMatrix._43 = vm->pos.z;
     D3DXVec3Project(&g_DiffuseQuad[0].pos, &this->quad[0].pos, &g_App.viewport, (D3DXMATRIX *)&g_App.projectionMatrix,
@@ -617,8 +617,8 @@ int SpriteEngine::ProjectSpriteWithCallback(Sprite *vm, void (*callback)(Sprite 
                     (D3DXMATRIX *)&g_App.viewMatrix, &world);
     d = edge - origin;
     x = D3DXVec3Length(&d) * 0.5f;
-    w = x * vm->spriteWidth * vm->scaleY;
-    h = x * vm->spriteHeight * vm->scaleX;
+    w = x * vm->spriteWidth * vm->scaleX;
+    h = x * vm->spriteHeight * vm->scaleY;
     if (callback != NULL)
     {
         callback(vm, &origin);
@@ -693,8 +693,8 @@ int SpriteEngine::Draw3D(Sprite *vm)
     if ((vm->flags >> 16 & 1) == 0 && ((vm->flags >> 3 & 1) != 0 || (vm->flags >> 2 & 1) != 0))
     {
         vm->drawMatrix = vm->matrix;
-        vm->drawMatrix._11 *= vm->scaleY;
-        vm->drawMatrix._22 *= vm->scaleX;
+        vm->drawMatrix._11 *= vm->scaleX;
+        vm->drawMatrix._22 *= vm->scaleY;
         vm->flags &= ~8;
         if (vm->rotation.x != 0.0)
         {
@@ -720,7 +720,7 @@ int SpriteEngine::Draw3D(Sprite *vm)
     }
     else
     {
-        worldMatrix._41 = fabsf(vm->spriteWidth * vm->scaleY / 2.0f) + vm->pos.x;
+        worldMatrix._41 = fabsf(vm->spriteWidth * vm->scaleX / 2.0f) + vm->pos.x;
     }
     if (((vm->flags >> 11 & 3) & 2) == 0)
     {
@@ -728,7 +728,7 @@ int SpriteEngine::Draw3D(Sprite *vm)
     }
     else
     {
-        worldMatrix._42 = fabsf(vm->spriteHeight * vm->scaleX / 2.0f) + vm->pos.y;
+        worldMatrix._42 = fabsf(vm->spriteHeight * vm->scaleY / 2.0f) + vm->pos.y;
     }
     worldMatrix._41 += this->shakeX;
     worldMatrix._42 += this->shakeY;

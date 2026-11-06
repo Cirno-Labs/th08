@@ -1307,8 +1307,8 @@ int UpdateDyingState(Player *player)
     else
     {
         progress = player->stateTimer.AsFloat() / 30.0f;
-        player->sprite.scaleX = 3.0f * progress + 1.0f;
-        player->sprite.scaleY = 1.0f - 1.0f * progress;
+        player->sprite.scaleY = 3.0f * progress + 1.0f;
+        player->sprite.scaleX = 1.0f - 1.0f * progress;
         player->sprite.color = (int)(255.0f - player->stateTimer.AsFloat() * 255.0f / 30.0f) << 24 | 0xffffff;
         player->sprite.SetBlendModeAdd();
         player->velocityX = 0.0f;
@@ -1320,8 +1320,8 @@ int UpdateDyingState(Player *player)
             player->pos[1] = g_GameManager.arena[3] - 64.0f;
             player->pos[2] = 0.2f;
             player->stateTimer = 0;
-            player->sprite.scaleY = 3.0f;
             player->sprite.scaleX = 3.0f;
+            player->sprite.scaleY = 3.0f;
             if ((g_GameManager.character < 4 && !player->focused) || !(g_GameManager.character & 1))
             {
                 player->anm->StartScript(&player->sprite, 0);
@@ -1353,8 +1353,8 @@ void UpdateRespawningState(Player *player)
 
     player->respawnClearFrames = 60;
     progress = 1.0f - player->stateTimer.AsFloat() / 30.0f;
-    player->sprite.scaleX = 2.0f * progress + 1.0f;
-    player->sprite.scaleY = 1.0f - 1.0f * progress;
+    player->sprite.scaleY = 2.0f * progress + 1.0f;
+    player->sprite.scaleX = 1.0f - 1.0f * progress;
     player->sprite.SetBlendModeAdd();
     player->moveScaleY = 1.0f;
     player->moveScaleX = 1.0f;
@@ -1363,8 +1363,8 @@ void UpdateRespawningState(Player *player)
     if (player->stateTimer.AsFrames() >= 30)
     {
         player->playerState = 3;
-        player->sprite.scaleY = 1.0f;
         player->sprite.scaleX = 1.0f;
+        player->sprite.scaleY = 1.0f;
         player->sprite.color = 0xffffffff;
         player->sprite.SetBlendModeNormal();
         if (!g_GameManager.isInSpellCardPractice)

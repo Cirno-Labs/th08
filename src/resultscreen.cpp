@@ -2213,7 +2213,7 @@ int ResultScreen::OnDraw(ResultScreen *screen)
                 pos3[0] += 320.0f;
                 pos3[1] += 16.0f;
                 screen->spellCardRowDivider.pos = pos3;
-                screen->spellCardRowDivider.scaleY = 2.375f;
+                screen->spellCardRowDivider.scaleX = 2.375f;
                 g_SpriteEngine->DrawUnrotated(&screen->spellCardRowDivider);
                 pos3[1] -= 16.0f;
                 pos3[0] = x0;

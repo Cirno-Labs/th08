@@ -35,18 +35,18 @@ int UpdateHomingOption(Player *player, PlayerOption *option)
             {
                 option->sprite.SetPendingInterrupt(2);
                 option->state = 1;
-                if (option->sprite.scaleY < 0.0f)
+                if (option->sprite.scaleX < 0.0f)
                 {
-                    option->sprite.scaleY = -option->sprite.scaleY;
+                    option->sprite.scaleX = -option->sprite.scaleX;
                 }
             }
             else if (option->velocity.x > 0.0f)
             {
                 option->sprite.SetPendingInterrupt(2);
                 option->state = 2;
-                if (option->sprite.scaleY > 0.0f)
+                if (option->sprite.scaleX > 0.0f)
                 {
-                    option->sprite.scaleY = -option->sprite.scaleY;
+                    option->sprite.scaleX = -option->sprite.scaleX;
                 }
             }
             break;
@@ -56,18 +56,18 @@ int UpdateHomingOption(Player *player, PlayerOption *option)
             {
                 option->sprite.SetPendingInterrupt(1);
                 option->state = 0;
-                if (option->sprite.scaleY < 0.0f)
+                if (option->sprite.scaleX < 0.0f)
                 {
-                    option->sprite.scaleY = -option->sprite.scaleY;
+                    option->sprite.scaleX = -option->sprite.scaleX;
                 }
             }
             else if (option->velocity.x > 0.0f)
             {
                 option->sprite.SetPendingInterrupt(2);
                 option->state = 2;
-                if (option->sprite.scaleY > 0.0f)
+                if (option->sprite.scaleX > 0.0f)
                 {
-                    option->sprite.scaleY = -option->sprite.scaleY;
+                    option->sprite.scaleX = -option->sprite.scaleX;
                 }
             }
             break;
@@ -77,18 +77,18 @@ int UpdateHomingOption(Player *player, PlayerOption *option)
             {
                 option->sprite.SetPendingInterrupt(1);
                 option->state = 0;
-                if (option->sprite.scaleY < 0.0f)
+                if (option->sprite.scaleX < 0.0f)
                 {
-                    option->sprite.scaleY = -option->sprite.scaleY;
+                    option->sprite.scaleX = -option->sprite.scaleX;
                 }
             }
             else if (option->velocity.x < 0.0f)
             {
                 option->sprite.SetPendingInterrupt(2);
                 option->state = 1;
-                if (option->sprite.scaleY < 0.0f)
+                if (option->sprite.scaleX < 0.0f)
                 {
-                    option->sprite.scaleY = -option->sprite.scaleY;
+                    option->sprite.scaleX = -option->sprite.scaleX;
                 }
             }
             break;
@@ -873,7 +873,7 @@ int UpdateLaserBullet(Player *player, PlayerBullet *bullet)
     {
         return 1;
     }
-    bullet->sprite.scaleX = bullet->pos.y / 14.0f;
+    bullet->sprite.scaleY = bullet->pos.y / 14.0f;
     bullet->size.y = bullet->pos.y;
     bullet->pos.y /= 2.0f;
     if (player->lasers[bullet->laserIndex].timer < 100)

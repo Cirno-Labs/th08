@@ -128,8 +128,8 @@ void AsciiText::Initialize()
     this->nextPopup2 = 0;
     this->unusedAfterInit829c = 0;
     this->color = 0xffffffff;
-    this->scaleX = 1.0f;
     this->scaleY = 1.0f;
+    this->scaleX = 1.0f;
     this->digit.flags |= 0x1800;
     this->digit2.flags |= 0x1800;
     this->anm->InitSprite(&this->digit, 0);
@@ -236,8 +236,8 @@ void AsciiText::AddString(D3DXVECTOR3 *pos, char *text)
     strcpy(str->text, text);
     str->pos = *pos;
     str->color = this->color;
-    str->scaleX = this->scaleX;
     str->scaleY = this->scaleY;
+    str->scaleX = this->scaleX;
     str->inArena = this->inArena;
     if (g_App.HasFlag0Or8())
     {
@@ -288,9 +288,9 @@ void AsciiText::DrawStrings()
     {
         this->glyph.pos = string->pos;
         c = (BYTE *)string->text;
-        this->glyph.scaleY = string->scaleX;
         this->glyph.scaleX = string->scaleY;
-        advance = this->glyphWidth * string->scaleX;
+        this->glyph.scaleY = string->scaleX;
+        advance = this->glyphWidth * string->scaleY;
         if (clipped != string->inArena)
         {
             clipped = string->inArena;
@@ -316,7 +316,7 @@ void AsciiText::DrawStrings()
         {
             if (*c == '\n')
             {
-                this->glyph.pos.y += 16.0f * string->scaleY;
+                this->glyph.pos.y += 16.0f * string->scaleX;
                 this->glyph.pos.x = string->pos.x;
             }
             else if (*c == ' ')
@@ -553,8 +553,8 @@ void AsciiText::AddNumberPopup(D3DXVECTOR3 *pos, int count, int value, D3DCOLOR 
     popup->pos = *pos;
     popup->pos.x += g_GameManager.arena[0];
     popup->pos.y += g_GameManager.arena[1];
-    popup->scaleX = this->scaleX;
     popup->scaleY = this->scaleY;
+    popup->scaleX = this->scaleX;
     this->nextNumberPopup++;
 }
 
@@ -605,8 +605,8 @@ void AsciiText::AddNumberPopupBrief(D3DXVECTOR3 *pos, int count, int value, D3DC
     popup->pos = *pos;
     popup->pos.x += n * 3.5f + g_GameManager.arena[0];
     popup->pos.y += g_GameManager.arena[1];
-    popup->scaleX = this->scaleX;
     popup->scaleY = this->scaleY;
+    popup->scaleX = this->scaleX;
     this->nextNumberPopup++;
 }
 
@@ -1314,8 +1314,8 @@ void AsciiText::DrawPopups()
         {
             alpha = 0x50;
         }
-        this->digit.scaleY = this->scaleX;
         this->digit.scaleX = this->scaleY;
+        this->digit.scaleY = this->scaleX;
         digitPtr = p->digits + p->digitCount - 1;
         for (count = p->digitCount; count > 0; count--)
         {
@@ -1388,8 +1388,8 @@ void AsciiText::DrawPopups()
             DrawColorRect(rect, tint);
         }
         g_EffectManager.anm->StartScript(&this->ring, 0x69);
-        this->ring.scaleX = this->ringRadius / 63.0f;
-        this->ring.scaleY = this->ring.scaleX;
+        this->ring.scaleY = this->ringRadius / 63.0f;
+        this->ring.scaleX = this->ring.scaleY;
         this->ring.pos = g_Player.pos;
         this->ring.pos.x += 32.0f;
         this->ring.pos.y += 16.0f;
@@ -1421,8 +1421,8 @@ void AsciiText::DrawPopups()
         {
             alpha = 0x50;
         }
-        this->digit2.scaleY = p->scaleX;
         this->digit2.scaleX = p->scaleY;
+        this->digit2.scaleY = p->scaleX;
         digitPtr = p->digits + p->digitCount - 1;
         for (count = p->digitCount; count > 0; count--)
         {
@@ -1430,7 +1430,7 @@ void AsciiText::DrawPopups()
             this->digit2.alpha = alpha;
             this->digit2.spriteWidth = this->digit2.spriteData->width;
             g_SpriteEngine->DrawUnrotated(&this->digit2);
-            this->digit2.pos.x += 7.0f * p->scaleX;
+            this->digit2.pos.x += 7.0f * p->scaleY;
             digitPtr--;
         }
     }
@@ -1550,8 +1550,8 @@ void AsciiText::DrawPercent(D3DXVECTOR3 *pos, int value, D3DCOLOR color)
         this->anm->SetSprite(&this->summaryDigit, 0x93);
         g_SpriteEngine->DrawUnrotated(&this->summaryDigit);
         this->summaryDigit.pos.x += 5.0f;
-        this->summaryDigit.scaleX = 0.8f;
         this->summaryDigit.scaleY = 0.8f;
+        this->summaryDigit.scaleX = 0.8f;
         this->summaryDigit.pos.y += 2.0f;
         this->anm->SetSprite(&this->summaryDigit, 0x88);
         g_SpriteEngine->DrawUnrotated(&this->summaryDigit);
@@ -1574,8 +1574,8 @@ void AsciiText::DrawPercent(D3DXVECTOR3 *pos, int value, D3DCOLOR color)
         this->anm->SetSprite(&this->summaryDigit, 0x93);
         g_SpriteEngine->DrawUnrotated(&this->summaryDigit);
         this->summaryDigit.pos.x += 5.0f;
-        this->summaryDigit.scaleX = 0.8f;
         this->summaryDigit.scaleY = 0.8f;
+        this->summaryDigit.scaleX = 0.8f;
         this->summaryDigit.pos.y += 2.0f;
         this->anm->SetSprite(&this->summaryDigit, len / 10 + 0x88);
         len %= 10;
@@ -1595,8 +1595,8 @@ void AsciiText::DrawPercent(D3DXVECTOR3 *pos, int value, D3DCOLOR color)
         this->anm->SetSprite(&this->summaryDigit, 0x93);
         g_SpriteEngine->DrawUnrotated(&this->summaryDigit);
         this->summaryDigit.pos.x += 5.0f;
-        this->summaryDigit.scaleX = 0.8f;
         this->summaryDigit.scaleY = 0.8f;
+        this->summaryDigit.scaleX = 0.8f;
         this->summaryDigit.pos.y += 2.0f;
         this->anm->SetSprite(&this->summaryDigit, len / 10 + 0x88);
         len %= 10;
@@ -1606,8 +1606,8 @@ void AsciiText::DrawPercent(D3DXVECTOR3 *pos, int value, D3DCOLOR color)
         g_SpriteEngine->DrawUnrotated(&this->summaryDigit);
         this->summaryDigit.pos.x += 7.0f;
     }
-    this->summaryDigit.scaleX = 1.0f;
     this->summaryDigit.scaleY = 1.0f;
+    this->summaryDigit.scaleX = 1.0f;
     this->summaryDigit.pos.y -= 2.0f;
     this->anm->SetSprite(&this->summaryDigit, 0x92);
     g_SpriteEngine->DrawUnrotated(&this->summaryDigit);
